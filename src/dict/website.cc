@@ -7,7 +7,7 @@
 #include <QDir>
 #include <QFileInfo>
 #include "globalbroadcaster.hh"
-#include "fmt/compile.h"
+#include <fmt/compile.h>
 #include <QRegularExpression>
 #include <QCoreApplication>
 
@@ -32,7 +32,7 @@ public:
     iconFilename( iconFilename_ )
   {
     dictionaryName        = name_;
-    urlTemplate           = QUrl( urlTemplate_ ).toEncoded();
+    urlTemplate           = urlTemplate_.toUtf8();
     dictionaryDescription = QObject::tr( "Website Url:" ) + urlTemplate_ + "<br><br>"
       + QObject::tr( "In the Url, \"%GDWORD%\" will be replaced with the word being searched." );
   }

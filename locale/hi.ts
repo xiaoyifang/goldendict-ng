@@ -57,16 +57,46 @@
       <translation>स्वागत है!</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt; &lt;b&gt;गोल्डनडिक्ट&lt;/b&gt;में आपका स्वागत है!&lt;/h3&gt;&lt;p&gt;प्रोग्राम के साथ काम शुरू करने के लिए सबसे पहले &lt;em&gt;संपादित करें | पर जाएँ शब्दकोश&lt;/em&gt; कुछ निर्देशिका पथ जोड़ने के लिए जहां शब्दकोश फ़ाइलों की खोज करें, विभिन्न विकिपीडिया साइटों या अन्य स्रोतों को सेट करें, शब्दकोश क्रम को समायोजित करें या शब्दकोश समूह बनाएं।&lt;p&gt;और फिर आप&apos;अपने शब्दों पर गौर करने के लिए तैयार हैं! आप इस विंडो में बाईं ओर एक फलक का उपयोग करके ऐसा कर सकते हैं, या आप &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;अन्य सक्रिय अनुप्रयोगों&lt;/a&gt;से शब्दों को देख सकते हैं। &lt;p&gt;प्रोग्राम को अनुकूलित करने के लिए, &lt;em&gt;संपादन | पर उपलब्ध प्राथमिकताएँ देखें प्राथमिकताएँ&lt;/em&gt;. वहां सभी सेटिंग्स में टूलटिप्स हैं, यदि आप किसी भी चीज़ के बारे में संदेह में हैं तो उन्हें पढ़ना सुनिश्चित करें।&lt;p&gt;यदि आपको और सहायता की आवश्यकता हो, कोई प्रश्न, सुझाव हो या आप आश्चर्य करें कि दूसरे क्या सोचते हैं, तो कार्यक्रम&apos;एस &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;फोरम&lt;/a&gt;में आपका स्वागत है।&lt;p&gt;अपडेट के लिए प्रोग्राम&apos;एस &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;वेबसाइट&lt;/a&gt; जांच करें। &lt;p&gt;(सी) 2008-2013 कॉन्स्टेंटिन इसाकोव। GPLv3 या बाद के संस्करण के अंतर्गत लाइसेंस प्राप्त।</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(शीर्षकहीन)</translation>
     </message>
     <message>
       <source>(picture)</source>
       <translation>(छवि)</translation>
+    </message>
+    <message>
+      <source>
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</source>
+      <translation type="unfinished">
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</translation>
     </message>
   </context>
   <context>
@@ -255,16 +285,24 @@
       <translation>&amp;अंकी नोट बनाएं</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation type="unfinished">Error Loading</translation>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation type="unfinished">&amp;Copy sound to clipboard</translation>
     </message>
     <message>
-      <source>Page Load Failed</source>
-      <translation type="unfinished">Page Load Failed</translation>
+      <source>Failed to copy sound</source>
+      <translation type="unfinished">Failed to copy sound</translation>
     </message>
     <message>
-      <source>Unable to load the requested page content</source>
-      <translation type="unfinished">Unable to load the requested page content</translation>
+      <source>Failed to write complete audio data</source>
+      <translation type="unfinished">Failed to write complete audio data</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation type="unfinished">Sound copied to clipboard</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation type="unfinished">Failed to download sound</translation>
     </message>
   </context>
   <context>
@@ -437,6 +475,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>&quot;%1&quot;के साथ समूहों को मिलाएं</translation>
+    </message>
+    <message>
+      <source>Remove group</source>
+      <translation>समूह निकालें</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>क्या आप वस्तुतः &lt;b&gt;%1&lt;/b&gt; समूह को निकालना चाहते हैं?</translation>
     </message>
   </context>
   <context>
@@ -704,6 +750,30 @@ between classic and school orthography in cyrillic)</source>
       <source>Restore selection</source>
       <translation type="unfinished">Restore selection</translation>
     </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation type="unfinished">Cancel reindex</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation type="unfinished">Schedule for reindex</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation type="unfinished">Cancel schedule reindex</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation type="unfinished">The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</translation>
+    </message>
+    <message>
+      <source>Change display name</source>
+      <translation type="unfinished">Change display name</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation type="unfinished">New display name:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -968,28 +1038,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>टैब २</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>नया शब्दकोश समूह बनाएँ</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>तथा समूह जोड़ें</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>वर्तमान शब्दकोश समूह का नाम बदलें</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>समूह का नाम बदलें</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>वर्तमान शब्दकोश समूह निकालें</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>तथा समूह निकालें</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
@@ -2399,10 +2453,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Nouvel onglet</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Bienvenue !</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>L&apos;API d&apos;accessibilité n&apos;est pas activée</translation>
     </message>
@@ -2475,38 +2525,6 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <source>Print Article</source>
       <translation>Imprimer l&apos;article</translation>
-    </message>
-    <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>पूर्ण HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>एकल HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>माइम HTML (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Enregister l&apos;article sous</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Erreur</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Impossible d&apos;enregistrer l&apos;article : %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Sauvegarde de l&apos;article...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>आलेख पूर्ण सहेजें</translation>
     </message>
     <message>
       <source>The main window is set to be always on top.</source>
@@ -2601,16 +2619,8 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <translation>दिखाना</translation>
     </message>
     <message>
-      <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+      <source>Lock Panels</source>
+      <translation type="unfinished">Lock Panels</translation>
     </message>
   </context>
   <context>
@@ -2734,6 +2744,14 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>शब्दकोश सक्रिय: %1, निष्क्रिय: %2</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation type="unfinished">Change display name</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation type="unfinished">New display name:</translation>
+    </message>
   </context>
   <context>
     <name>PathsModel</name>
@@ -2775,18 +2793,8 @@ switching to them.</source>
       <translation>पृष्ठभूमि में नए टैब खोलें</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>इसके चालू होने पर, नया टैब वर्तमान सक्रिय टैब के ठीक बाद खोला जाता है अन्यथा उन्हें अंतिम में जोड़ा जाता है।</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>वर्तमान के बाद नए टैब खोलें</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>यदि आप केवल एक टैब खोले जाने पर मुख्य टैब रेखिका नहीं देखना चाहते हैं, तो इस विकल्प का चयन करें।</translation>
     </message>
     <message>
       <source>Hide single tab</source>
@@ -2880,8 +2888,124 @@ the application.</source>
       <translation>संदर्भ मेनू में शब्दकोशों की सीमा:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>तंन्त्र औत्सर्गिक</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>औत्सर्गिक</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>क्लासिक</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>आधुनिक</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>लिंग्वो</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>बेबीलोन</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>लिंगोज</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>लिंगोज-नीला</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>कुछ प्रणालियों पर ऑटो कुछ भी नहीं करता।</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>भाषा परिवर्तन लागू करने के लिए प्रोग्राम को पुनरारंभ करें।</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>इंटरफ़ेस शैली परिवर्तन लागू करने के लिए पुनरारंभ करें।</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>इंटरफ़ेस फ़ॉन्ट परिवर्तन लागू करने के लिए पुनरारंभ करें।</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>पुनः प्रारंभ करने की आवश्यकता है</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>सक्षम</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>अक्षम करना</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>स्वचालित</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>कोई नही</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation type="unfinished">With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation type="unfinished">&amp;Style</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>उपस्थिति</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2898,6 +3022,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>डार्क रीडर मोड</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -2922,10 +3054,6 @@ the application.</source>
     <message>
       <source>Monospace Font</source>
       <translation>मोनोस्पेस फ़ॉन्ट</translation>
-    </message>
-    <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;स्कैन पॉपअप</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
@@ -3252,8 +3380,12 @@ download page.</source>
       <translation>अधिकतम इतिहास का आकार:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>इतिहास रक्षण अंतराल। यदि 0 पर सेट किया जाता है तो इतिहास केवल निकास के दौरान ही सहेजा जाएगा।</translation>
+      <source>Favorites</source>
+      <translation>पसंदीदा</translation>
+    </message>
+    <message>
+      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
+      <translation>पसंदीदा रक्षण अंतराल। यदि 0 पर सेट किया जाता है तो पसंदीदा केवल निकास के समय रक्षण किया जाएगा।</translation>
     </message>
     <message>
       <source>Save every</source>
@@ -3262,14 +3394,6 @@ download page.</source>
     <message>
       <source>minutes</source>
       <translation>मिनट</translation>
-    </message>
-    <message>
-      <source>Favorites</source>
-      <translation>पसंदीदा</translation>
-    </message>
-    <message>
-      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation>पसंदीदा रक्षण अंतराल। यदि 0 पर सेट किया जाता है तो पसंदीदा केवल निकास के समय रक्षण किया जाएगा।</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3367,116 +3491,24 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>बाहर निकलने पर अमान्य अनुक्रमणिका हटाएँ</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>तंन्त्र औत्सर्गिक</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>औत्सर्गिक</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>क्लासिक</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>आधुनिक</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>लिंग्वो</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>बेबीलोन</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>लिंगोज</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>लिंगोज-नीला</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>कुछ प्रणालियों पर ऑटो कुछ भी नहीं करता।</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>भाषा परिवर्तन लागू करने के लिए प्रोग्राम को पुनरारंभ करें।</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>इंटरफ़ेस शैली परिवर्तन लागू करने के लिए पुनरारंभ करें।</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>इंटरफ़ेस फ़ॉन्ट परिवर्तन लागू करने के लिए पुनरारंभ करें।</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>पुनः प्रारंभ करने की आवश्यकता है</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>सक्षम</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>अक्षम करना</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>स्वचालित</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>Interface language</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Article Display style</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Add-on style</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Interface Style</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Preview Font</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation type="unfinished">Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>कोई नही</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation type="unfinished">Suppress JavaScript alerts, confirms, and prompts in the article view.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation type="unfinished">Suppress JavaScript dialogs</translation>
     </message>
   </context>
   <context>
@@ -3630,6 +3662,50 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation type="unfinished">Save Article As</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation type="unfinished">Save article complete</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>त्रुटि</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation type="unfinished">Can&apos;t save article: %1</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation type="unfinished">Save PDF complete</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation type="unfinished">Save PDF failed</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation type="unfinished">Saving article... (%1/%2)</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3725,6 +3801,10 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Sauver l&apos;article</translation>
     </message>
   </context>
   <context>

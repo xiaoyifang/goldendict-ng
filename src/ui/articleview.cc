@@ -10,6 +10,7 @@
 #include "utils.hh"
 #include "webmultimediadownload.hh"
 #include "htmlescape.hh"
+#include "article_maker.hh"
 #include <QBuffer>
 #include <QClipboard>
 #include <QDebug>
@@ -85,9 +86,6 @@ QString ArticleView::scrollToFromDictionaryId( const QString & dictionaryId )
 
 ArticleView::ArticleView( QWidget * parent,
                           ArticleNetworkAccessManager & nm,
-                          const AudioPlayerPtr & audioPlayer_,
-                          const std::vector< sptr< Dictionary::Class > > & allDictionaries_,
-                          const Instances::Groups & groups_,
                           bool popupView_,
                           const Config::Class & cfg_,
                           const QLineEdit * translateLine_,
@@ -95,8 +93,9 @@ ArticleView::ArticleView( QWidget * parent,
                           unsigned int currentGroupId_ ):
   QWidget( parent ),
   articleNetMgr( nm ),
-  audioPlayer( audioPlayer_ ),
-  dictionaryGroup( std::make_unique< DictionaryGroup >( allDictionaries_, groups_ ) ),
+  audioPlayer( *GlobalBroadcaster::instance()->getAudioPlayer() ),
+  dictionaryGroup( std::make_unique< DictionaryGroup >( *GlobalBroadcaster::instance()->getAllDictionaries(),
+                                                        *GlobalBroadcaster::instance()->getGroups() ) ),
   popupView( popupView_ ),
   cfg( cfg_ ),
   pasteAction( this ),
@@ -212,17 +211,14 @@ ArticleView::ArticleView( QWidget * parent,
   QWebEngineSettings * settings = webview->settings();
   settings->setUnknownUrlSchemePolicy( QWebEngineSettings::UnknownUrlSchemePolicy::DisallowUnknownUrlSchemes );
 
-  settings->setAttribute( QWebEngineSettings::LocalContentCanAccessRemoteUrls, true );
-  settings->setAttribute( QWebEngineSettings::LocalContentCanAccessFileUrls, true );
+  // More secure settings to prevent XSS attacks and filesystem access
+  settings->setAttribute( QWebEngineSettings::LocalContentCanAccessRemoteUrls, false );
+  settings->setAttribute( QWebEngineSettings::LocalContentCanAccessFileUrls, false );
   settings->setAttribute( QWebEngineSettings::ErrorPageEnabled, false );
   settings->setAttribute( QWebEngineSettings::LinksIncludedInFocusChain, false );
   settings->setAttribute( QWebEngineSettings::PlaybackRequiresUserGesture, false );
-  settings->setAttribute( QWebEngineSettings::JavascriptCanAccessClipboard, true );
+  settings->setAttribute( QWebEngineSettings::JavascriptCanAccessClipboard, false );
   settings->setAttribute( QWebEngineSettings::PrintElementBackgrounds, false );
-
-  auto html = articleNetMgr.getHtml( ResourceType::UNTITLE );
-
-  webview->setHtml( QString::fromStdString( html ) );
 
   expandOptionalParts = cfg.preferences.alwaysExpandOptionalParts;
 #ifndef Q_OS_MACOS
@@ -443,21 +439,15 @@ void ArticleView::loadFinished( bool result )
   webview->unsetCursor();
   if ( !result ) {
     qWarning() << "article loaded unsuccessful:" << webview->url().toString();
-
-    // Only show custom error page if openWebsiteInNewTab is true and URL is external link
-    if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab
-         && Utils::isExternalLink( webview->url() ) ) {
-      // Create custom error page with internationalization support
-      QString errorHtml = createErrorPageHtml( webview->url() );
-      webview->setHtml( errorHtml, webview->url() );
-    }
     return;
   }
   QUrl url = webview->url();
   if ( url.url() == "about:blank" ) {
     return;
   }
-  qDebug() << "article view loaded url:" << url.url().left( 50 ) << result;
+  const QString urlString = url.url();
+  qDebug() << "article view loaded url:" << ( urlString.length() > 50 ? urlString.left( 50 ) + "..." : urlString )
+           << result;
 
   // Skip dictionary-specific logic for website views
   if ( !isWebsiteView ) {
@@ -805,58 +795,6 @@ bool ArticleView::isDarkModeEnabled() const
   return GlobalBroadcaster::instance()->isDarkModeEnabled();
 }
 
-QString ArticleView::createErrorPageHtml( const QUrl & url ) const
-{
-  bool darkModeEnabled = isDarkModeEnabled();
-
-  return QString(
-           R"(
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset='UTF-8'>
-<title>%1</title>
-<script src='qrc:///scripts/darkreader.js'></script>
-<style>
-body { margin: 20px; font-family: system-ui; }
-.error-content { max-width: 800px; margin: 0 auto; }
-</style>
-<script>
-// Initialize Dark Reader based on configuration
-if (typeof DarkReader !== 'undefined') {
-  const darkMode = %4;
-  if (darkMode) {
-    // Set fetch method with no-cors mode to bypass CORS restrictions
-    if (typeof DarkReader.setFetchMethod !== 'undefined') {
-      // Custom fetch wrapper with no-cors mode
-      const customFetch = (url, options = {}) => {
-        const fetchOptions = {...options, mode: 'no-cors'};
-        return window.fetch(url, fetchOptions);
-      };
-      DarkReader.setFetchMethod(customFetch);
-    }
-    DarkReader.enable({
-      brightness: 100,
-      contrast: 90,
-      sepia: 10
-    });
-  }
-}
-</script>
-</head>
-<body>
-<div class='error-content'>
-<h2>%2</h2>
-<p>%3</p>
-</div>
-</body>
-</html>
-           )" )
-    .arg( tr( "Error Loading" ) )
-    .arg( tr( "Page Load Failed" ) )
-    .arg( tr( "Unable to load the requested page content" ) )
-    .arg( darkModeEnabled ? "true" : "false" );
-}
 
 bool ArticleView::handleF3( QObject * /*obj*/, QEvent * ev )
 {
@@ -1281,7 +1219,11 @@ void ArticleView::playAudio( const QUrl & url )
 
       if ( dict ) {
         try {
-          sptr< Dictionary::DataRequest > req = dict->getResource( url.path().mid( 1 ).toUtf8().data() );
+          QString requestUrlPath = url.path();
+          if ( url.hasFragment() ) {
+            requestUrlPath = url.path() + "#" + url.fragment();
+          }
+          sptr< Dictionary::DataRequest > req = dict->getResource( requestUrlPath.mid( 1 ).toUtf8().data() );
 
           if ( !req->isFinished() ) {
             // Queued loading
@@ -1991,10 +1933,11 @@ void ArticleView::pasteTriggered()
   QString word = cfg.preferences.sanitizeInputPhrase( QApplication::clipboard()->text() );
 
   if ( !word.isEmpty() ) {
-    unsigned groupId = getGroup( webview->url() );
-    if ( groupId == 0 || groupId == GroupId::HelpGroupId ) {
-      // We couldn't figure out the group out of the URL,
-      // so let's try the currently selected group.
+    unsigned groupId = getGroup( webview->url() ); // Try to get group from the current article URL
+
+    // If the group couldn't be determined from the URL (e.g., on internal or external pages),
+    // fall back to the currently selected group in the UI.
+    if ( groupId == GroupId::NoGroupId ) {
       groupId = currentGroupId;
     }
     showDefinition( word, groupId, getCurrentArticle() );
@@ -2148,8 +2091,11 @@ void ArticleView::doubleClicked( QPoint pos )
       else {
         const QUrl & ref = webview->url();
 
-        auto groupId = getGroup( ref );
-        if ( groupId == 0 || groupId == GroupId::HelpGroupId ) {
+        auto groupId = getGroup( ref ); // Try to get group ID from the current article URL
+
+        // If the group can't be determined from the URL (e.g. on internal or
+        // external pages), fall back to the currently selected group in the UI.
+        if ( groupId == GroupId::NoGroupId || isInternalPage() ) {
           groupId = currentGroupId;
         }
         if ( Utils::Url::hasQueryItem( ref, "dictionaries" ) ) {

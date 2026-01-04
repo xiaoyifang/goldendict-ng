@@ -804,6 +804,10 @@ Class load()
     c.preferences.hideMenubar   = ( preferences.namedItem( "hideMenubar" ).toElement().text() == "1" );
 #ifndef Q_OS_MACOS // // macOS uses the dock menu instead of the tray icon
     c.preferences.enableTrayIcon = ( preferences.namedItem( "enableTrayIcon" ).toElement().text() == "1" );
+
+    if ( !preferences.namedItem( "panelsLocked" ).isNull() ) {
+      c.preferences.panelsLocked = ( preferences.namedItem( "panelsLocked" ).toElement().text() == "1" );
+    }
     c.preferences.startToTray    = ( preferences.namedItem( "startToTray" ).toElement().text() == "1" );
     c.preferences.closeToTray    = ( preferences.namedItem( "closeToTray" ).toElement().text() == "1" );
 #endif
@@ -976,6 +980,10 @@ Class load()
       c.preferences.openWebsiteInNewTab = ( preferences.namedItem( "openWebsiteInNewTab" ).toElement().text() == "1" );
     }
 
+    if ( !preferences.namedItem( "suppressWebDialogs" ).isNull() ) {
+      c.preferences.suppressWebDialogs = ( preferences.namedItem( "suppressWebDialogs" ).toElement().text() == "1" );
+    }
+
     if ( !preferences.namedItem( "maxStringsInHistory" ).isNull() ) {
       c.preferences.maxStringsInHistory = preferences.namedItem( "maxStringsInHistory" ).toElement().text().toUInt();
     }
@@ -991,10 +999,6 @@ Class load()
 
     if ( !preferences.namedItem( "addonStyle" ).isNull() ) {
       c.preferences.addonStyle = preferences.namedItem( "addonStyle" ).toElement().text();
-    }
-
-    if ( !preferences.namedItem( "historyStoreInterval" ).isNull() ) {
-      c.preferences.historyStoreInterval = preferences.namedItem( "historyStoreInterval" ).toElement().text().toUInt();
     }
 
     if ( !preferences.namedItem( "favoritesStoreInterval" ).isNull() ) {
@@ -1748,6 +1752,10 @@ void save( const Class & c )
     opt.appendChild( dd.createTextNode( c.preferences.hideMenubar ? "1" : "0" ) );
     preferences.appendChild( opt );
 
+    opt = dd.createElement( "panelsLocked" );
+    opt.appendChild( dd.createTextNode( c.preferences.panelsLocked ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
     opt = dd.createElement( "enableTrayIcon" );
     opt.appendChild( dd.createTextNode( c.preferences.enableTrayIcon ? "1" : "0" ) );
     preferences.appendChild( opt );
@@ -1891,10 +1899,6 @@ void save( const Class & c )
     opt.appendChild( dd.createTextNode( c.preferences.searchInDock ? "1" : "0" ) );
     preferences.appendChild( opt );
 
-    opt = dd.createElement( "historyStoreInterval" );
-    opt.appendChild( dd.createTextNode( QString::number( c.preferences.historyStoreInterval ) ) );
-    preferences.appendChild( opt );
-
     opt = dd.createElement( "favoritesStoreInterval" );
     opt.appendChild( dd.createTextNode( QString::number( c.preferences.favoritesStoreInterval ) ) );
     preferences.appendChild( opt );
@@ -2004,6 +2008,10 @@ void save( const Class & c )
 
     opt = dd.createElement( "openWebsiteInNewTab" );
     opt.appendChild( dd.createTextNode( c.preferences.openWebsiteInNewTab ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "suppressWebDialogs" );
+    opt.appendChild( dd.createTextNode( c.preferences.suppressWebDialogs ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "maxStringsInHistory" );
@@ -2301,7 +2309,7 @@ std::optional< std::string > getUserJsFileName()
 {
   QString userJsPath = getHomeDir().filePath( "article-script.js" );
   if ( QFileInfo::exists( userJsPath ) ) {
-    return userJsPath.toStdString();
+    return "article-script.js";
   }
   else {
     return std::nullopt;

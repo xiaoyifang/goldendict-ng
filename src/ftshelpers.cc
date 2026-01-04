@@ -23,7 +23,9 @@ const static std::string finish_mark = std::string( "dehsinif" );
 bool ftsIndexIsOldOrBad( BtreeIndexing::BtreeDictionary * dict )
 {
   try {
-    const Xapian::WritableDatabase db( dict->ftsIndexName() );
+    const QByteArray encodedPath = QFile::encodeName( QString::fromStdString( dict->ftsIndexName() ) );
+    const Xapian::WritableDatabase db( encodedPath.toStdString() );
+
     auto docid    = db.get_lastdocid();
     auto document = db.get_document( docid );
 
@@ -57,7 +59,9 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     }
 
     // Open the database for update, creating a new database if necessary.
-    Xapian::WritableDatabase db( dict->ftsIndexName() + "_temp", Xapian::DB_CREATE_OR_OPEN );
+    const std::string path       = dict->ftsIndexName() + "_temp";
+    const QByteArray encodedPath = QFile::encodeName( QString::fromStdString( path ) );
+    Xapian::WritableDatabase db( encodedPath.toStdString(), Xapian::DB_CREATE_OR_OPEN );
 
     Xapian::TermGenerator indexer;
     //  Xapian::Stem stemmer("english");
@@ -156,7 +160,8 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
     db.commit();
 
-    db.compact( dict->ftsIndexName() );
+    const QByteArray encodedFtsPath = QFile::encodeName( QString::fromStdString( dict->ftsIndexName() ) );
+    db.compact( encodedFtsPath.toStdString() );
 
     db.close();
 
@@ -180,7 +185,8 @@ void FTSResultsRequest::run()
       //no need to parse the search string,  use xapian directly.
       //if the search mode is wildcard, change xapian search query flag?
       // Open the database for searching.
-      Xapian::Database db( dict.ftsIndexName() );
+      const QByteArray encodedPath = QFile::encodeName( QString::fromStdString( dict.ftsIndexName() ) );
+      Xapian::Database db( encodedPath.toStdString() );
 
       // Start an enquire session.
       Xapian::Enquire enquire( db );

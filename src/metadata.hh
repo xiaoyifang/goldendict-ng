@@ -1,5 +1,6 @@
 #pragma once
 #include <QStringView>
+#include <string_view>
 #include <optional>
 #include <vector>
 
@@ -16,5 +17,6 @@ struct result
 };
 
 [[nodiscard]] std::optional< Metadata::result > load( std::string_view filepath );
+void saveDisplayName( std::string_view filepath, std::string_view name );
 
 } // namespace Metadata

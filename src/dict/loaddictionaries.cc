@@ -43,6 +43,7 @@
   #include "dict/transliteration/chinese.hh"
 #endif
 
+#include <QThreadPool>
 #include <QMessageBox>
 #include <QDir>
 #include <QString>
@@ -90,7 +91,7 @@ LoadDictionaries::LoadDictionaries( const Config::Class & cfg ):
     ;
 }
 
-void LoadDictionaries::run()
+void LoadDictionaries::load()
 {
   try {
     for ( const auto & path : paths ) {
@@ -149,6 +150,8 @@ void LoadDictionaries::run()
   catch ( std::exception & e ) {
     exceptionTexts << QString::fromUtf8( e.what() );
   }
+
+  emit finished();
 }
 
 void LoadDictionaries::addDicts( const std::vector< sptr< Dictionary::Class > > & dicts )
@@ -229,13 +232,13 @@ void loadDictionaries( QWidget * parent,
   QObject::connect( &loadDicts, &LoadDictionaries::loadingDictionarySignal, &init, &Initializing::loading );
   QEventLoop localLoop;
 
-  QObject::connect( &loadDicts, &QThread::finished, &localLoop, &QEventLoop::quit );
+  QObject::connect( &loadDicts, &LoadDictionaries::finished, &localLoop, &QEventLoop::quit );
 
-  loadDicts.start();
+  QThreadPool::globalInstance()->start( [ &loadDicts ]() {
+    loadDicts.load();
+  } );
 
   localLoop.exec();
-
-  loadDicts.wait();
 
   if ( loadDicts.getExceptionText().size() ) {
     QMessageBox::critical( parent,

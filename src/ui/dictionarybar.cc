@@ -4,6 +4,9 @@
 #include <QAction>
 #include <QApplication>
 #include <QMenu>
+#include <QInputDialog>
+#include "metadata.hh"
+#include "common/utils.hh"
 #include <QContextMenuEvent>
 #include <QStyle>
 
@@ -23,7 +26,7 @@ DictionaryBar::DictionaryBar( QWidget * parent,
   setObjectName( "dictionaryBar" );
 
   maxDictionaryRefsAction =
-    new QAction( QIcon( ":/icons/expand_opt.png" ), tr( "Extended menu with all dictionaries..." ), this );
+    new QAction( QIcon( ":/icons/addtab.svg" ), tr( "Extended menu with all dictionaries..." ), this );
 
   connect( &events, &Config::Events::mutedDictionariesChanged, this, &DictionaryBar::mutedDictionariesChanged );
 
@@ -139,16 +142,17 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
   const QAction * editAction            = nullptr;
   const QAction * infoAction            = nullptr;
   const QAction * headwordsAction       = nullptr;
-  const QAction * openDictFolderAction = nullptr;
+  Dictionary::Class * pDict             = nullptr;
+  const QAction * changeNameAction      = nullptr;
+  const QAction * openDictFolderAction  = nullptr;
   const QAction * scheduleReindexAction = nullptr;
 
   editAction = menu.addAction( QIcon( ":/icons/bookcase.svg" ), tr( "Edit this group" ) );
 
   QString dictFilename;
 
-  const QAction * dictAction = actionAt( event->x(), event->y() );
+  QAction * dictAction = actionAt( event->x(), event->y() );
   if ( dictAction ) {
-    Dictionary::Class * pDict = nullptr;
     const QString id          = dictAction->data().toString();
     for ( const auto & dictionary : allDictionaries ) {
       if ( id.compare( dictionary->getId().c_str() ) == 0 ) {
@@ -160,8 +164,11 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
     if ( pDict ) {
       infoAction = menu.addAction( tr( "Dictionary info" ) );
 
-      // Add schedule/cancel reindex action for local dictionaries
+      // All actions below are only for local dictionaries
       if ( pDict->isLocalDictionary() ) {
+        changeNameAction = menu.addAction( tr( "Change display name" ) );
+
+        // Add schedule/cancel reindex action
         Config::Class * cfg  = GlobalBroadcaster::instance()->getConfig();
         const QString dictId = pDict->getId().c_str();
         if ( cfg && cfg->dictionariesToReindex.contains( dictId ) ) {
@@ -170,13 +177,11 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
         else {
           scheduleReindexAction = menu.addAction( tr( "Schedule for reindex" ) );
         }
-      }
 
-      if ( pDict->isLocalDictionary() ) {
+        // Add dictionary headwords action
         if ( pDict->getWordCount() > 0 ) {
           headwordsAction = menu.addAction( tr( "Dictionary headwords" ) );
         }
-
         openDictFolderAction = menu.addAction( tr( "Open dictionary folder" ) );
       }
     }
@@ -216,6 +221,26 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
     const QString id = dictAction->data().toString();
     emit showDictionaryInfo( id );
     return;
+  }
+
+  if ( result && result == changeNameAction ) {
+    if ( !pDict ) {
+      return;
+    }
+    bool ok;
+    QString newName = QInputDialog::getText( this,
+                                             tr( "Change display name" ),
+                                             tr( "New display name:" ),
+                                             QLineEdit::Normal,
+                                             QString::fromUtf8( pDict->getName().c_str() ),
+                                             &ok );
+    if ( ok && !newName.isEmpty() && !pDict->getContainingFolder().isEmpty() ) {
+      Metadata::saveDisplayName( Utils::Path::combine( pDict->getContainingFolder(), "metadata.toml" ).toStdString(),
+                                 newName.toStdString() );
+      pDict->setName( newName.toStdString() );
+      dictAction->setText( elideDictName( newName ) );
+      dictAction->setToolTip( newName );
+    }
   }
 
   if ( result && result == scheduleReindexAction ) {

@@ -1,5 +1,8 @@
-// This file was generated automatically. Do not edit directly.
+// This file was generated automatically from https://www.unicode.org/Public/UCD/latest/ucd/CaseFolding.txt.
+// Do not edit directly!
+
 #pragma once
+
 enum {
   foldCaseMaxOut = 3
 };
@@ -1638,6 +1641,9 @@ inline size_t foldCase( char32_t in, char32_t * out )
       return 1;
     case 0x1c88:
       *out = 0xa64b;
+      return 1;
+    case 0x1c89:
+      *out = 0x1c8a;
       return 1;
     case 0x1c90:
       *out = 0x10d0;
@@ -3557,14 +3563,35 @@ inline size_t foldCase( char32_t in, char32_t * out )
     case 0xa7c9:
       *out = 0xa7ca;
       return 1;
+    case 0xa7cb:
+      *out = 0x264;
+      return 1;
+    case 0xa7cc:
+      *out = 0xa7cd;
+      return 1;
+    case 0xa7ce:
+      *out = 0xa7cf;
+      return 1;
     case 0xa7d0:
       *out = 0xa7d1;
+      return 1;
+    case 0xa7d2:
+      *out = 0xa7d3;
+      return 1;
+    case 0xa7d4:
+      *out = 0xa7d5;
       return 1;
     case 0xa7d6:
       *out = 0xa7d7;
       return 1;
     case 0xa7d8:
       *out = 0xa7d9;
+      return 1;
+    case 0xa7da:
+      *out = 0xa7db;
+      return 1;
+    case 0xa7dc:
+      *out = 0x19b;
       return 1;
     case 0xa7f5:
       *out = 0xa7f6;
@@ -4423,6 +4450,72 @@ inline size_t foldCase( char32_t in, char32_t * out )
     case 0x10cb2:
       *out = 0x10cf2;
       return 1;
+    case 0x10d50:
+      *out = 0x10d70;
+      return 1;
+    case 0x10d51:
+      *out = 0x10d71;
+      return 1;
+    case 0x10d52:
+      *out = 0x10d72;
+      return 1;
+    case 0x10d53:
+      *out = 0x10d73;
+      return 1;
+    case 0x10d54:
+      *out = 0x10d74;
+      return 1;
+    case 0x10d55:
+      *out = 0x10d75;
+      return 1;
+    case 0x10d56:
+      *out = 0x10d76;
+      return 1;
+    case 0x10d57:
+      *out = 0x10d77;
+      return 1;
+    case 0x10d58:
+      *out = 0x10d78;
+      return 1;
+    case 0x10d59:
+      *out = 0x10d79;
+      return 1;
+    case 0x10d5a:
+      *out = 0x10d7a;
+      return 1;
+    case 0x10d5b:
+      *out = 0x10d7b;
+      return 1;
+    case 0x10d5c:
+      *out = 0x10d7c;
+      return 1;
+    case 0x10d5d:
+      *out = 0x10d7d;
+      return 1;
+    case 0x10d5e:
+      *out = 0x10d7e;
+      return 1;
+    case 0x10d5f:
+      *out = 0x10d7f;
+      return 1;
+    case 0x10d60:
+      *out = 0x10d80;
+      return 1;
+    case 0x10d61:
+      *out = 0x10d81;
+      return 1;
+    case 0x10d62:
+      *out = 0x10d82;
+      return 1;
+    case 0x10d63:
+      *out = 0x10d83;
+      return 1;
+    case 0x10d64:
+      *out = 0x10d84;
+      return 1;
+    case 0x10d65:
+      *out = 0x10d85;
+      return 1;
     case 0x118a0:
       *out = 0x118c0;
       return 1;
@@ -4614,6 +4707,81 @@ inline size_t foldCase( char32_t in, char32_t * out )
       return 1;
     case 0x16e5f:
       *out = 0x16e7f;
+      return 1;
+    case 0x16ea0:
+      *out = 0x16ebb;
+      return 1;
+    case 0x16ea1:
+      *out = 0x16ebc;
+      return 1;
+    case 0x16ea2:
+      *out = 0x16ebd;
+      return 1;
+    case 0x16ea3:
+      *out = 0x16ebe;
+      return 1;
+    case 0x16ea4:
+      *out = 0x16ebf;
+      return 1;
+    case 0x16ea5:
+      *out = 0x16ec0;
+      return 1;
+    case 0x16ea6:
+      *out = 0x16ec1;
+      return 1;
+    case 0x16ea7:
+      *out = 0x16ec2;
+      return 1;
+    case 0x16ea8:
+      *out = 0x16ec3;
+      return 1;
+    case 0x16ea9:
+      *out = 0x16ec4;
+      return 1;
+    case 0x16eaa:
+      *out = 0x16ec5;
+      return 1;
+    case 0x16eab:
+      *out = 0x16ec6;
+      return 1;
+    case 0x16eac:
+      *out = 0x16ec7;
+      return 1;
+    case 0x16ead:
+      *out = 0x16ec8;
+      return 1;
+    case 0x16eae:
+      *out = 0x16ec9;
+      return 1;
+    case 0x16eaf:
+      *out = 0x16eca;
+      return 1;
+    case 0x16eb0:
+      *out = 0x16ecb;
+      return 1;
+    case 0x16eb1:
+      *out = 0x16ecc;
+      return 1;
+    case 0x16eb2:
+      *out = 0x16ecd;
+      return 1;
+    case 0x16eb3:
+      *out = 0x16ece;
+      return 1;
+    case 0x16eb4:
+      *out = 0x16ecf;
+      return 1;
+    case 0x16eb5:
+      *out = 0x16ed0;
+      return 1;
+    case 0x16eb6:
+      *out = 0x16ed1;
+      return 1;
+    case 0x16eb7:
+      *out = 0x16ed2;
+      return 1;
+    case 0x16eb8:
+      *out = 0x16ed3;
       return 1;
     case 0x1e900:
       *out = 0x1e922;
@@ -5794,6 +5962,8 @@ char32_t foldCaseSimple( char32_t in )
       return 0x463;
     case 0x1c88:
       return 0xa64b;
+    case 0x1c89:
+      return 0x1c8a;
     case 0x1c90:
       return 0x10d0;
     case 0x1c91:
@@ -6302,6 +6472,8 @@ char32_t foldCaseSimple( char32_t in )
       return 0x1f75;
     case 0x1fcc:
       return 0x1fc3;
+    case 0x1fd3:
+      return 0x390;
     case 0x1fd8:
       return 0x1fd0;
     case 0x1fd9:
@@ -6310,6 +6482,8 @@ char32_t foldCaseSimple( char32_t in )
       return 0x1f76;
     case 0x1fdb:
       return 0x1f77;
+    case 0x1fe3:
+      return 0x3b0;
     case 0x1fe8:
       return 0x1fe0;
     case 0x1fe9:
@@ -6894,12 +7068,26 @@ char32_t foldCaseSimple( char32_t in )
       return 0xa7c8;
     case 0xa7c9:
       return 0xa7ca;
+    case 0xa7cb:
+      return 0x264;
+    case 0xa7cc:
+      return 0xa7cd;
+    case 0xa7ce:
+      return 0xa7cf;
     case 0xa7d0:
       return 0xa7d1;
+    case 0xa7d2:
+      return 0xa7d3;
+    case 0xa7d4:
+      return 0xa7d5;
     case 0xa7d6:
       return 0xa7d7;
     case 0xa7d8:
       return 0xa7d9;
+    case 0xa7da:
+      return 0xa7db;
+    case 0xa7dc:
+      return 0x19b;
     case 0xa7f5:
       return 0xa7f6;
     case 0xab70:
@@ -7062,6 +7250,8 @@ char32_t foldCaseSimple( char32_t in )
       return 0x13ee;
     case 0xabbf:
       return 0x13ef;
+    case 0xfb05:
+      return 0xfb06;
     case 0xff21:
       return 0xff41;
     case 0xff22:
@@ -7438,6 +7628,50 @@ char32_t foldCaseSimple( char32_t in )
       return 0x10cf1;
     case 0x10cb2:
       return 0x10cf2;
+    case 0x10d50:
+      return 0x10d70;
+    case 0x10d51:
+      return 0x10d71;
+    case 0x10d52:
+      return 0x10d72;
+    case 0x10d53:
+      return 0x10d73;
+    case 0x10d54:
+      return 0x10d74;
+    case 0x10d55:
+      return 0x10d75;
+    case 0x10d56:
+      return 0x10d76;
+    case 0x10d57:
+      return 0x10d77;
+    case 0x10d58:
+      return 0x10d78;
+    case 0x10d59:
+      return 0x10d79;
+    case 0x10d5a:
+      return 0x10d7a;
+    case 0x10d5b:
+      return 0x10d7b;
+    case 0x10d5c:
+      return 0x10d7c;
+    case 0x10d5d:
+      return 0x10d7d;
+    case 0x10d5e:
+      return 0x10d7e;
+    case 0x10d5f:
+      return 0x10d7f;
+    case 0x10d60:
+      return 0x10d80;
+    case 0x10d61:
+      return 0x10d81;
+    case 0x10d62:
+      return 0x10d82;
+    case 0x10d63:
+      return 0x10d83;
+    case 0x10d64:
+      return 0x10d84;
+    case 0x10d65:
+      return 0x10d85;
     case 0x118a0:
       return 0x118c0;
     case 0x118a1:
@@ -7566,6 +7800,56 @@ char32_t foldCaseSimple( char32_t in )
       return 0x16e7e;
     case 0x16e5f:
       return 0x16e7f;
+    case 0x16ea0:
+      return 0x16ebb;
+    case 0x16ea1:
+      return 0x16ebc;
+    case 0x16ea2:
+      return 0x16ebd;
+    case 0x16ea3:
+      return 0x16ebe;
+    case 0x16ea4:
+      return 0x16ebf;
+    case 0x16ea5:
+      return 0x16ec0;
+    case 0x16ea6:
+      return 0x16ec1;
+    case 0x16ea7:
+      return 0x16ec2;
+    case 0x16ea8:
+      return 0x16ec3;
+    case 0x16ea9:
+      return 0x16ec4;
+    case 0x16eaa:
+      return 0x16ec5;
+    case 0x16eab:
+      return 0x16ec6;
+    case 0x16eac:
+      return 0x16ec7;
+    case 0x16ead:
+      return 0x16ec8;
+    case 0x16eae:
+      return 0x16ec9;
+    case 0x16eaf:
+      return 0x16eca;
+    case 0x16eb0:
+      return 0x16ecb;
+    case 0x16eb1:
+      return 0x16ecc;
+    case 0x16eb2:
+      return 0x16ecd;
+    case 0x16eb3:
+      return 0x16ece;
+    case 0x16eb4:
+      return 0x16ecf;
+    case 0x16eb5:
+      return 0x16ed0;
+    case 0x16eb6:
+      return 0x16ed1;
+    case 0x16eb7:
+      return 0x16ed2;
+    case 0x16eb8:
+      return 0x16ed3;
     case 0x1e900:
       return 0x1e922;
     case 0x1e901:
