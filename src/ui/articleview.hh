@@ -94,9 +94,6 @@ public:
   /// The groups aren't copied -- rather than that, the reference is kept
   ArticleView( QWidget * parent,
                ArticleNetworkAccessManager &,
-               const AudioPlayerPtr &,
-               const std::vector< sptr< Dictionary::Class > > & allDictionaries,
-               const Instances::Groups &,
                bool popupView,
                const Config::Class & cfg,
                const QLineEdit * translateLine,
@@ -113,6 +110,9 @@ public:
   void clearContent();
 
   ~ArticleView();
+
+  /// Loads a page at @p url into view.
+  void load( const QUrl & url, const QString & customTitle = {} );
 
   void load( QString url, const QString & customTitle = {} );
 
@@ -178,8 +178,14 @@ public:
 
   QString getCurrentWord();
 
+  /// Returns whether this view is an internal page (welcome, untitled, etc.)
+  bool isInternalPage() const
+  {
+    return webview->url().scheme() == "gdinternal";
+  }
 
 private:
+
   // widgets
   ArticleWebView * webview;
   SearchPanel * searchPanel;
@@ -439,10 +445,6 @@ private:
 
   bool isDarkModeEnabled() const;
 
-  QString createErrorPageHtml( const QUrl & url ) const;
-
-  /// Loads a page at @p url into view.
-  void load( const QUrl & url, const QString & customTitle = {} );
 
   /// Attempts removing last temporary file created.
   void cleanupTemp();

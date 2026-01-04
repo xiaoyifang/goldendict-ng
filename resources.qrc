@@ -19,29 +19,22 @@
         <file>icons/icon32_dictd.png</file>
         <file>icons/icon32_hunspell.png</file>
         <file>icons/icon32_wiki.png</file>
-        <file>icons/wiktionary.png</file>
+        <file>icons/wiktionary.svg</file>
         <file>icons/forvo.png</file>
         <file>icons/lingualibre.svg</file>
         <file>icons/highlighter.png</file>
         <file>icons/icon32_sdict.png</file>
         <file>icons/icon32_aard.png</file>
-        <file>icons/expand_opt.png</file>
         <file>icons/expand_opt.svg</file>
-        <file>icons/collapse_opt.png</file>
         <file>icons/collapse_opt.svg</file>
         <file>icons/menu_button.svg</file>
         <file>icons/clear.png</file>
         <file>icons/icon32_lingoes.png</file>
         <file>icons/mdict.png</file>
-        <file>icons/downarrow.png</file>
         <file>icons/downarrow.svg</file>
-        <file>icons/expand_article_hovered.png</file>
-        <file>icons/expand_article.png</file>
         <file>icons/expand_article_hovered.svg</file>
         <file>icons/expand_article.svg</file>
-        <file>icons/collapse_article_hovered.png</file>
         <file>icons/collapse_article_hovered.svg</file>
-        <file>icons/collapse_article.png</file>
         <file>icons/collapse_article.svg</file>
         <file>icons/video.png</file>
         <file>icons/programicon_old.png</file>
@@ -54,6 +47,7 @@
         <file>icons/ontop.svg</file>
         <file>icons/addtab.svg</file>
         <file>icons/book.svg</file>
+        <file>icons/font.svg</file>
         <file>icons/bookcase.svg</file>
         <file>icons/closetab.svg</file>
         <file>icons/configure.svg</file>
@@ -105,6 +99,7 @@
         <file>icons/splash.png</file>
         <file>icons/fts_disabled.svg</file>
         <file>icons/fts_enabled.svg</file>
+        <file>icons/scan.svg</file>
         <file>icons/sc.svg</file>
         <file>icons/tc.svg</file>
         <file>icons/hk.svg</file>

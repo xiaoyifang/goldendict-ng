@@ -667,14 +667,49 @@ public:
     isCancelled.ref();
     f.waitForFinished();
   }
+
+private:
+  // Detect CSS file encoding:
+  // 1. BOM (UTF-8, UTF-16LE, UTF-16BE, UTF-32LE, UTF-32BE)
+  // 2. UTF-8 validity check (content-based detection)
+  // 3. Dictionary encoding fallback
+  // 4. UTF-8 fallback
+  static QString detectCssEncoding( const vector< char > & data, const string & dictEncoding )
+  {
+    if ( data.empty() ) {
+      return "UTF-8";
+    }
+
+    // Check for BOM using Text utility
+    string bomEncoding = Text::detectEncodingFromBom( data.data(), data.size() );
+    if ( !bomEncoding.empty() ) {
+      return QString::fromStdString( bomEncoding );
+    }
+
+    // Check if content is valid UTF-8 (heuristic for files without BOM)
+    if ( Text::isValidUtf8( data.data(), data.size() ) ) {
+      return "UTF-8";
+    }
+
+    // Fallback to dictionary encoding
+    if ( !dictEncoding.empty() ) {
+      return QString::fromStdString( dictEncoding );
+    }
+
+    // Final fallback
+    return "UTF-8";
+  }
 };
+
 
 QByteArray MddResourceRequest::isolate_css()
 {
 
   const QString id = QString::fromUtf8( dict.getId().c_str() );
 
-  QString css = QString::fromUtf8( data.data(), data.size() );
+  // Detect CSS encoding from BOM, @charset rule, or fallback to dictionary encoding
+  QString encoding = detectCssEncoding( data, dict.encoding );
+  QString css      = MdictParser::toUtf16( encoding, data.data(), data.size() );
 
   int pos = 0;
 
@@ -1326,7 +1361,7 @@ static bool indexIsOldOrBad( const vector< string > & dictFiles, const string & 
 
   return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != kSignature
     || header.formatVersion != kCurrentFormatVersion || header.parserVersion != MdictParser::kParserVersion
-    || header.foldingVersion != Folding::Version || header.mddIndexInfosCount != dictFiles.size() - 1;
+    || header.foldingVersion != Folding::Version;
 }
 
 static void findResourceFiles( const string & mdx, vector< string > & dictFiles )

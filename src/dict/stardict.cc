@@ -24,6 +24,7 @@
 #include <QDomDocument>
 #include "ufile.hh"
 #include "utils.hh"
+#include <charconv>
 #include <QRegularExpression>
 #include "globalregex.hh"
 #include <QDir>
@@ -528,7 +529,7 @@ string StardictDictionary::handleResource( char type, const char * resource, siz
           std::string newTag = addAudioLink( audioLink, getId() ) + "<span class=\"sdict_h_wav\"><a href=" + href + ">";
           newTag += match.captured( 4 ).toUtf8().constData();
           if ( match.captured( 4 ).indexOf( "<img " ) < 0 ) {
-            newTag += R"( <img src="qrc:///icons/playsound.png" border="0" alt="Play">)";
+            newTag += R"( <img src="qrc:///icons/playsound.svg" border="0" alt="Play">)";
           }
           newTag += "</a></span>";
 
@@ -1437,11 +1438,27 @@ sptr< Dictionary::DataRequest > StardictDictionary::getArticle( const std::u32st
 }
 
 
+/**
+ * @brief Checks if the string 'str' begins with the substring 'substr'.
+ *
+ * Compares the characters of 'substr' with the beginning of 'str'. If all characters
+ * in 'substr' match the corresponding characters in 'str', returns a pointer to the
+ * position in 'str' immediately after the matched substring. If 'substr' is not a
+ * prefix of 'str', or if either pointer is null, returns nullptr.
+ *
+ * @param substr The substring to check as a prefix.
+ * @param str The string to check against.
+ * @return const char* Pointer to the character in 'str' after the matched prefix,
+ *         or nullptr if 'substr' is not a prefix of 'str' or if any argument is null.
+ */
 static const char * beginsWith( const char * substr, const char * str )
 {
-  size_t len = strlen( substr );
-
-  return strncmp( str, substr, len ) == 0 ? str + len : 0;
+  if ( !substr || !str )
+    return nullptr;
+  for ( ; *substr; ++substr, ++str )
+    if ( *substr != *str )
+      return nullptr;
+  return str;
 }
 
 
@@ -1484,22 +1501,26 @@ Ifo::Ifo( const QString & fileName )
         bookname = val;
       }
       else if ( const char * val = beginsWith( "wordcount=", optionData ) ) {
-        if ( sscanf( val, "%u", &wordcount ) != 1 ) {
+        auto [ ptr, ec ] = std::from_chars( val, val + strlen( val ), wordcount );
+        if ( ec != std::errc{} ) {
           throw exBadFieldInIfo( optionData );
         }
       }
       else if ( const char * val = beginsWith( "synwordcount=", optionData ) ) {
-        if ( sscanf( val, "%u", &synwordcount ) != 1 ) {
+        auto [ ptr, ec ] = std::from_chars( val, val + strlen( val ), synwordcount );
+        if ( ec != std::errc{} ) {
           throw exBadFieldInIfo( optionData );
         }
       }
       else if ( const char * val = beginsWith( "idxfilesize=", optionData ) ) {
-        if ( sscanf( val, "%u", &idxfilesize ) != 1 ) {
+        auto [ ptr, ec ] = std::from_chars( val, val + strlen( val ), idxfilesize );
+        if ( ec != std::errc{} ) {
           throw exBadFieldInIfo( optionData );
         }
       }
       else if ( const char * val = beginsWith( "idxoffsetbits=", optionData ) ) {
-        if ( sscanf( val, "%u", &idxoffsetbits ) != 1 || ( idxoffsetbits != 32 && idxoffsetbits != 64 ) ) {
+        auto [ ptr, ec ] = std::from_chars( val, val + strlen( val ), idxoffsetbits );
+        if ( ec != std::errc{} || ( idxoffsetbits != 32 && idxoffsetbits != 64 ) ) {
           throw exBadFieldInIfo( optionData );
         }
       }

@@ -13,6 +13,8 @@ pkg_check_modules(PKGCONFIG_DEPS IMPORTED_TARGET
         xapian-core
 )
 
+find_package(fmt CONFIG REQUIRED)
+
 target_link_libraries(${GOLDENDICT}
         PRIVATE
         PkgConfig::PKGCONFIG_DEPS
@@ -22,6 +24,7 @@ target_link_libraries(${GOLDENDICT}
         Vorbis::vorbis
         Vorbis::vorbisfile
         ZLIB::ZLIB
+        fmt::fmt
 )
 
 if (WITH_VCPKG_BREAKPAD)

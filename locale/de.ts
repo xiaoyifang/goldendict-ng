@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: kann&apos;t eine Karte ohne Wort erstellen</translation>
+      <translation>Anki: Ohne Wort kann keine Karte erstellt werden</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -57,16 +57,47 @@
       <translation>Willkommen!</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Willkommen bei &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Um mit der Arbeit mit dem Programm zu beginnen, rufen Sie zunächst &lt;em&gt;Bearbeiten | auf Wörterbücher&lt;/em&gt; , um einige Verzeichnispfade hinzuzufügen, in denen nach Wörterbuchdateien gesucht werden kann, verschiedene Wikipedia-Sites oder andere Quellen einzurichten, die Wörterbuchreihenfolge anzupassen oder Wörterbuchgruppen zu erstellen.&lt;p&gt;Und dann bist du&apos;, deine Worte nachzuschlagen! Sie können dies in diesem Fenster tun, indem Sie einen Bereich auf der linken Seite verwenden, oder Sie können &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;aus anderen aktiven Anwendungen nachschlagen&lt;/a&gt;. &lt;p&gt;Um das Programm anzupassen, sehen Sie sich die verfügbaren Einstellungen unter &lt;em&gt;Bearbeiten | an Präferenzen&lt;/em&gt;. Alle dortigen Einstellungen verfügen über Tooltips. Lesen Sie diese unbedingt durch, wenn Sie Zweifel haben.&lt;p&gt;Sollten Sie weitere Hilfe benötigen, Fragen oder Anregungen haben oder sich einfach nur fragen, was die anderen denken, sind Sie im Programm&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;Forum&lt;/a&gt;herzlich willkommen.&lt;p&gt;Überprüfen Sie die Website&lt;/a&gt; des Programms&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;auf Aktualisierungen. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Lizenziert unter GPLv3 oder höher.</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(unbenannt)</translation>
     </message>
     <message>
       <source>(picture)</source>
       <translation>(Bild)</translation>
+    </message>
+    <message>
+      <source>
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</source>
+      <translation>
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Willkommen bei &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        
+        &lt;h4&gt;Um zu starten:&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Gehe zu &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Bearbeite&lt;/span&gt;&lt;span&gt;Wörterbücher&lt;/span&gt;&lt;/span&gt; um deine Wörterbuchdateien hinzuzufügen. Online-Quellen wie Wikipedia einrichten und in Gruppen organisieren.&lt;/li&gt;
+          &lt;li&gt;Einmal eingerichtet Sie können Wörter in diesem Fenster nachschlagen oder &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;von anderen Anwendungen mit dem Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;Um das Programm anzupassen erkunden Sie die Einstellungen in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;Einstellungen&lt;/span&gt;&lt;/span&gt;. Alle Einstellungen haben Tooltipps, also sollten Sie diese unbedingt lesen, wenn irgendetwas unklar ist.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Sollten Sie weitere Hilfe benötigen, haben irgendwelche Fragen oder Anregungen, Sie sind willkommen im Programm&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;Forum&lt;/a&gt; und &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;Website&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Basierend auf dem Original GoldenDict von Konstantin Isakov (c) 2008-2013. Verwaltet und entwickelt von der GoldenDict-NG Community. lizenziert unter GPLv3 oder neuer.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</translation>
     </message>
   </context>
   <context>
@@ -255,16 +286,24 @@
       <translation>Anki-Notiz &amp;erstellen</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>Fehler beim Laden</translation>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>&amp;Ton in Zwischenablage kopieren</translation>
     </message>
     <message>
-      <source>Page Load Failed</source>
-      <translation>Laden der Seite fehlgeschlagen</translation>
+      <source>Failed to copy sound</source>
+      <translation>Fehler beim Kopieren des Tons</translation>
     </message>
     <message>
-      <source>Unable to load the requested page content</source>
-      <translation>Der angeforderte Seiteninhalt konnte nicht geladen werden</translation>
+      <source>Failed to write complete audio data</source>
+      <translation>Fehler beim Schreiben der kompletten Audiodaten</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>Ton in Zwischenablage kopiert</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>Fehler beim Herunterladen des Tons</translation>
     </message>
   </context>
   <context>
@@ -437,6 +476,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Gruppen kombinieren mit &quot;%1&quot;</translation>
+    </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Gruppe entfernen</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Möchten Sie wirklich die Gruppe &lt;b&gt;%1&lt;/b&gt; entfernen?</translation>
     </message>
   </context>
   <context>
@@ -704,6 +751,30 @@ between classic and school orthography in cyrillic)</source>
       <source>Restore selection</source>
       <translation>Auswahl wiederherstellen</translation>
     </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Neuindex abbrechen</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Zeitplan für Neuindex</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Zeitplan neu indizieren</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>Das Wörterbuch wurde für die Neuindizierung geplant. Der Index wird beim nächsten Anwendungs-Neustart neu aufgebaut.</translation>
+    </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Anzeigename ändern</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Neuer Anzeigename:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -968,28 +1039,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Tab 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Eine neue Gruppe von Wörterbüchern erzeugen</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>Gruppe &amp;hinzufügen</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Die ausgewählte Wörterbüchgruppe umbenennen</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>Gruppe &amp;umbenennen</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Die ausgewählte Wörterbuchgruppe entfernen</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>Gruppe &amp;entfernen</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
@@ -2399,10 +2454,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Neuer Tab</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Willkommen!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>Barrierefreiheit-API ist nicht aktiviert </translation>
     </message>
@@ -2475,38 +2526,6 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
     <message>
       <source>Print Article</source>
       <translation>Drucke Artikel</translation>
-    </message>
-    <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Vollständiges HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Einzelnes HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime-HTML (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Artikel speichern als</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Fehler</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Kann Artikel nicht speichern: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Artikel wird gespeichert...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Abspeichern des Artikels abgeschlossen</translation>
     </message>
     <message>
       <source>The main window is set to be always on top.</source>
@@ -2601,16 +2620,8 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
       <translation>Anzeigen</translation>
     </message>
     <message>
-      <source>Save PDF complete</source>
-      <translation>PDF speichern abgeschlossen</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>PDF speichern fehlgeschlagen</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>PDF-Dokument (*.pdf *.PDF)</translation>
+      <source>Lock Panels</source>
+      <translation>Sperrbildschirm</translation>
     </message>
   </context>
   <context>
@@ -2734,6 +2745,14 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Wörterbücher aktiv: %1, inaktiv: %2</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Anzeigename ändern</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Neuer Anzeigename:</translation>
+    </message>
   </context>
   <context>
     <name>PathsModel</name>
@@ -2777,19 +2796,8 @@ sie zu selektionieren.</translation>
       <translation>Neue Reiter im Hintergrund öffnen</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>Mit dieser Option werden neue Reiter nach dem aktuellen, sprich aktiven Reiter, geöffnet. 
-Andernfalls werden sie ans Ende hinzugefügt.</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>Neue Reiter nach dem aktuellen öffnen</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Wählen Sie diese Option, falls sie die Reiterleiste bei einem offenem Reiter nicht sehen möchten.</translation>
     </message>
     <message>
       <source>Hide single tab</source>
@@ -2884,8 +2892,124 @@ the application.</source>
       <translation>Wörterbuchlimit im Kontextmenü:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>Systemvorgabe</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Standard</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Klassisch</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Modern</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Babylon</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Lingos</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Lingoes-Blau</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auf manchen Systemen passiert bei Auto gar nichts.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Starten Sie das Programm neu, um den Sprachwechsel abzuschließen.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Neustarten, um die Änderung des Interface-Stils zu übernehmen.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Neustarten, um die Änderung der Schnittstellenschriftart anzuwenden.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Neustart erforderlich</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Aktivieren</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Deaktivieren</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Automatisch</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Keines</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Wählen Sie diese Option, wenn Sie&apos;t die Haupt-Tableiste sehen möchten, wenn nur ein einziger Tab
+                  geöffnet ist.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation>Damit werden neue Tabs direkt nach dem
+aktuellen geöffnet, aktiv. Andernfalls werden sie zu
+als letzte hinzugefügt.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation>&amp;Stil</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Erscheinungsbild</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Interface-Schriftart aktivieren</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Schnittstellensprache</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Artikel-Anzeigestil</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on-Stil</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Schnittstellenstil</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2902,6 +3026,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Dunkler Lesemodus</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Vorschau der Schriftart</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng ist eine Wörterbuch-Software.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -2926,10 +3058,6 @@ the application.</source>
     <message>
       <source>Monospace Font</source>
       <translation>Monospace-Schriftart</translation>
-    </message>
-    <message>
-      <source>&amp;Popup</source>
-      <translation>Popup &amp;scannen</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
@@ -3261,8 +3389,12 @@ Download-Seite.</translation>
       <translation>Maximale Verlaufgröße:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Intervall zum speichern des Verlaufs. Falls 0, wird der Verlauf beim Programmende gespeichert.</translation>
+      <source>Favorites</source>
+      <translation>Favoriten</translation>
+    </message>
+    <message>
+      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
+      <translation>Automatischer Speicherintervall für Lesezeichen. Falls der Wert 0 eingetragen wird, erfolgt die Speicherung nur bei Beendigung des Programms.</translation>
     </message>
     <message>
       <source>Save every</source>
@@ -3271,14 +3403,6 @@ Download-Seite.</translation>
     <message>
       <source>minutes</source>
       <translation>Minuten</translation>
-    </message>
-    <message>
-      <source>Favorites</source>
-      <translation>Favoriten</translation>
-    </message>
-    <message>
-      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation>Automatischer Speicherintervall für Lesezeichen. Falls der Wert 0 eingetragen wird, erfolgt die Speicherung nur bei Beendigung des Programms.</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3376,116 +3500,24 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Ungültigen Index beim Beenden entfernen</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Systemvorgabe</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Standard</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Klassisch</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Modern</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Babylon</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Lingos</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Lingoes-Blau</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auf manchen Systemen passiert bei Auto gar nichts.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Starten Sie das Programm neu, um den Sprachwechsel abzuschließen.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Neustarten, um die Änderung des Interface-Stils zu übernehmen.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Neustarten, um die Änderung der Schnittstellenschriftart anzuwenden.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Neustart erforderlich</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Aktivieren</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Deaktivieren</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Automatisch</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Debug-Nachrichten in gd_log.txt im Konfigurationsordner speichern</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>Schnittstellensprache</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Artikel-Anzeigestil</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Add-on-Stil</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Schnittstellenstil</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Vorschau der Schriftart</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng ist eine Wörterbuch-Software.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation>Interface-Schriftart aktivieren</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Keines</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Website-Wörterbuch in separatem Tab öffnen</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation>&amp;Dosieren</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>JavaScript-Warnungen unterdrücken, Bestätigungen und Abfragen in der Artikelansicht.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>JavaScript-Dialoge unterdrücken</translation>
     </message>
   </context>
   <context>
@@ -3639,6 +3671,50 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>In der Url wird &quot;%GDWORD%&quot; durch das Suchwort ersetzt.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Einzelne Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF-Dokument (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>Artikel speichern als</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>Artikel speichern abgeschlossen</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Fehler</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>Kann Artikel nicht speichern: %1</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>PDF speichern abgeschlossen</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>PDF speichern fehlgeschlagen</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Artikel speichern... (%1/%2)</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3734,6 +3810,10 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>Benutzen Sie dies, um das Fenster herunterzupinnen, so dass es auf dem Bildschirm bleiben würde,
 kann auf andere Weise skaliert oder verwaltet werden.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Artikel speichern</translation>
     </message>
   </context>
   <context>

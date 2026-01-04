@@ -305,42 +305,19 @@ void DictHeadwords::exportAllWords( QProgressDialog & progress, QTextStream & ou
     return;
   }
 
-  const int headwordsNumber = model->totalCount();
-
-  const QMutexLocker _( &mutex );
-  QSet< QString > allHeadwords;
-
   int totalCount = 0;
-  for ( int i = 0; i < headwordsNumber && i < model->wordCount(); ++i ) {
-    if ( progress.wasCanceled() ) {
-      break;
-    }
-
-    QVariant value = model->getRow( i );
-    if ( !value.canConvert< QString >() ) {
-      continue;
-    }
-
-    allHeadwords.insert( value.toString() );
-  }
-
-  for ( const auto & item : allHeadwords ) {
-    progress.setValue( totalCount++ );
-
-    writeWordToFile( out, item );
-  }
-
-  // continue to write the remaining headword
-  int nodeIndex  = model->getCurrentIndex();
+  // Continue to write the remaining headwords in batches
+  int nodeIndex  = 0;
   auto headwords = model->getRemainRows( nodeIndex );
   while ( !headwords.isEmpty() ) {
     if ( progress.wasCanceled() ) {
       break;
     }
-
-    for ( const auto & item : std::as_const( headwords ) ) {
-      progress.setValue( totalCount++ );
-
+    // Sort and write the batch
+    QList< QString > sortedBatch = headwords.values();
+    sortedBatch.sort( Qt::CaseInsensitive );
+    for ( const auto & item : sortedBatch ) {
+      progress.setValue( ++totalCount );
       writeWordToFile( out, item );
     }
 
@@ -351,29 +328,19 @@ void DictHeadwords::exportAllWords( QProgressDialog & progress, QTextStream & ou
 
 void DictHeadwords::loadRegex( QProgressDialog & progress, QTextStream & out )
 {
-
-  const QMutexLocker _( &mutex );
-  QSet< QString > allHeadwords;
-
   int totalCount = 0;
-  for ( int i = 0; i < model->wordCount(); ++i ) {
+  // Process already loaded (and filtered) words from proxy
+  for ( int i = 0; i < proxy->rowCount(); ++i ) {
     if ( progress.wasCanceled() ) {
       break;
     }
 
-    QVariant value = model->getRow( i );
-    if ( !value.canConvert< QString >() ) {
-      continue;
+    QModelIndex proxyIndex = proxy->index( i, 0 );
+    QVariant value         = proxy->data( proxyIndex, Qt::DisplayRole );
+    if ( value.canConvert< QString >() ) {
+      writeWordToFile( out, value.toString() );
+      progress.setValue( ++totalCount );
     }
-
-    allHeadwords.insert( value.toString() );
-  }
-
-  progress.setMaximum( allHeadwords.size() );
-  for ( const auto & item : allHeadwords ) {
-    progress.setValue( totalCount++ );
-
-    writeWordToFile( out, item );
   }
 }
 

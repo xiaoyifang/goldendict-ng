@@ -247,7 +247,7 @@ int main( int argc, char ** argv )
   // natively on Wayland. This workaround will force GoldenDict to use
   // XWayland.
 
-  if ( qEnvironmentVariableIsEmpty( "GOLDENDICT_FORCE_WAYLAND" ) ) {
+  if ( qEnvironmentVariableIsEmpty( "GOLDENDICT_FORCE_WAYLAND" ) && !Utils::isWayland() ) {
     char * xdg_envc     = getenv( "XDG_SESSION_TYPE" );
     QString xdg_session = xdg_envc ? QString::fromLatin1( xdg_envc ) : QString();
     if ( !QString::compare( xdg_session, QString( "wayland" ), Qt::CaseInsensitive ) ) {
@@ -274,12 +274,30 @@ int main( int argc, char ** argv )
   qputenv( "QT_QPA_PLATFORM", "windows:darkmode=1" );
 
 #endif
-  //high dpi screen support
-  if ( !qEnvironmentVariableIsSet( "QT_ENABLE_HIGHDPI_SCALING" )
-       || qEnvironmentVariableIsEmpty( "QT_ENABLE_HIGHDPI_SCALING" ) ) {
-    qputenv( "QT_ENABLE_HIGHDPI_SCALING", "1" );
+  // High DPI screen support
+  QGuiApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
+  
+  // Registration of custom URL schemes must be done before QCoreApplication/QApplication is created.
+  const QStringList localSchemes = { "gdlookup",
+                                     "gdau",
+                                     "gico",
+                                     "qrcx",
+                                     "bres",
+                                     "bword",
+                                     "gdprg",
+                                     "gdvideo",
+                                     "gdtts",
+                                     "gdinternal",
+                                     "entry",
+                                     "iframe-http",
+                                     "iframe-https" };
+
+  for ( const auto & localScheme : localSchemes ) {
+    QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
+    webUiScheme.setSyntax( QWebEngineUrlScheme::Syntax::Host );
+    webUiScheme.setFlags( QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled );
+    QWebEngineUrlScheme::registerScheme( webUiScheme );
   }
-  QApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
 
   GD_QApplication app( "GoldenDict-ng", argc, argv );
 
@@ -324,34 +342,13 @@ int main( int argc, char ** argv )
     processCommandLine( &app, &gdcl );
   }
 
-#ifdef __WIN32
+#ifdef Q_OS_WIN
 
   // Under Windows, increase the amount of fopen()-able file descriptors from
-  // the default 512 up to 2048.
-  _setmaxstdio( 2048 );
+  // the default 512 up to 8192.
+  _setmaxstdio( 8192 );
 
 #endif
-
-  const QStringList localSchemes = { "gdlookup",
-                                     "gdau",
-                                     "gico",
-                                     "qrcx",
-                                     "bres",
-                                     "bword",
-                                     "gdprg",
-                                     "gdvideo",
-                                     "gdtts",
-                                     "entry",
-                                     "iframe-http",
-                                     "iframe-https" };
-
-  for ( const auto & localScheme : localSchemes ) {
-    QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
-    webUiScheme.setSyntax( QWebEngineUrlScheme::Syntax::Host );
-    webUiScheme.setFlags( QWebEngineUrlScheme::LocalScheme | QWebEngineUrlScheme::LocalAccessAllowed
-                          | QWebEngineUrlScheme::CorsEnabled );
-    QWebEngineUrlScheme::registerScheme( webUiScheme );
-  }
 
   QFont f = QApplication::font();
   f.setStyleStrategy( QFont::PreferAntialias );
@@ -451,7 +448,7 @@ int main( int argc, char ** argv )
     QApplication::setFont( font );
   }
   else {
-    qDebug() << "Invalid font size:" << cfg.preferences.interfaceFontSize << ", using default";
+    qDebug() << "Use default font";
     cfg.preferences.interfaceFontSize = Config::DEFAULT_FONT_SIZE;
   }
 
@@ -484,10 +481,16 @@ int main( int argc, char ** argv )
     // If interfaceLanguage is explicitly set, uses filename-based loading, because GD have more languages than Qt & its locale database.
     // If not, then let Qt's qlocale mechanism decide which one to use, because "locale" handling is different in all 3 platforms, and we don't want to deal with that.
 
-    // Only load qt & webengine translators if GD's translation loading succeeds to avoid inconsistency
-    if ( cfg.preferences.interfaceLanguage.isEmpty() ?
-           loadTranslation_qlocale( *gd_ts, QString(), QString(), Config::getLocDir() ) :
-           gd_ts->load( cfg.preferences.interfaceLanguage, Config::getLocDir() ) ) {
+    bool loaded = false;
+    if ( cfg.preferences.interfaceLanguage.isEmpty() ) {
+      loaded = loadTranslation_qlocale( *gd_ts, QString(), QString(), Config::getLocDir() );
+    }
+    else if ( cfg.preferences.interfaceLanguage != "en" ) {
+      loaded = gd_ts->load( cfg.preferences.interfaceLanguage, Config::getLocDir() );
+    }
+
+    // Only install translator if loading succeeds
+    if ( loaded ) {
       QCoreApplication::installTranslator( gd_ts );
       qDebug() << "TS found: " << gd_ts->filePath();
 

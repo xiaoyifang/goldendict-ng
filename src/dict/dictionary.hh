@@ -6,7 +6,6 @@
 #include <map>
 #include <string>
 #include <vector>
-
 #include <QMutex>
 #include <QString>
 #include <QWaitCondition>
@@ -14,7 +13,6 @@
 
 #include "config.hh"
 #include "ex.hh"
-#include "globalbroadcaster.hh"
 #include "langcoder.hh"
 #include "sptr.hh"
 #include "utils.hh"
@@ -379,17 +377,7 @@ public:
   /// Returns the number of articles in the dictionary.
   virtual unsigned long getArticleCount() noexcept = 0;
 
-  void setIndexedFtsDoc( long _indexedFtsDoc )
-  {
-    indexedFtsDoc = _indexedFtsDoc;
-
-    auto newProgress = getIndexingFtsProgress();
-    if ( newProgress != lastProgress ) {
-      lastProgress = newProgress;
-      emit GlobalBroadcaster::instance()
-        -> indexingDictionary( QString( "%1......%%2" ).arg( QString::fromStdString( getName() ) ).arg( newProgress ) );
-    }
-  }
+  void setIndexedFtsDoc( long _indexedFtsDoc );
 
   int getIndexingFtsProgress()
   {

@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
+      <translation>Anki: نمی توان بدون کلمه کارت ایجاد کرد</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -57,16 +57,46 @@
       <translation>خوش آمدید!</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;به &lt;b&gt;GoldenDict&lt;/b&gt;خوش آمدید!&lt;/h3&gt;&lt;p&gt;برای شروع کار با برنامه، ابتدا از &lt;em&gt;ویرایش | Dictionaries&lt;/em&gt; برای افزودن برخی مسیرهای فهرست راهنمای جستجو برای فایل های فرهنگ لغت، راه اندازی سایت های مختلف ویکی پدیا یا منابع دیگر، تنظیم ترتیب فرهنگ لغت یا ایجاد گروه های فرهنگ لغت.&lt;p&gt;و سپس شما&apos;آماده هستید تا کلمات خود را جستجو کنید! شما می توانید این کار را در این پنجره با استفاده از یک صفحه در سمت چپ انجام دهید، یا می توانید &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;کلمات را از سایر برنامه های فعال جستجو کنید&lt;/a&gt;. &lt;p&gt;برای سفارشی کردن برنامه، تنظیمات برگزیده موجود را در &lt;em&gt;Edit | بررسی کنید ترجیحات&lt;/em&gt;. همه تنظیمات در آنجا دارای نکات ابزار هستند، اگر در مورد چیزی شک دارید، حتما آنها را بخوانید.&lt;p&gt;اگر به کمک بیشتری نیاز دارید، سؤال، پیشنهادی دارید یا فقط می‌پرسید دیگران چه فکری می‌کنند، در انجمن برنامه&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;خوش آمدید&lt;/a&gt;.&lt;p&gt;برنامه&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;وب سایت&lt;/a&gt; برای به روز رسانی بررسی کنید. &lt;p&gt;(ج) 2008-2013 کنستانتین ایزاکوف. تحت مجوز GPLv3 یا بالاتر.</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(بی‌عنوان)</translation>
     </message>
     <message>
       <source>(picture)</source>
       <translation>(عکس)</translation>
+    </message>
+    <message>
+      <source>
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</source>
+      <translation type="unfinished">
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</translation>
     </message>
   </context>
   <context>
@@ -255,16 +285,24 @@
       <translation>&amp;ایجاد یادداشت Anki</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation type="unfinished">Error Loading</translation>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation type="unfinished">&amp;Copy sound to clipboard</translation>
     </message>
     <message>
-      <source>Page Load Failed</source>
-      <translation type="unfinished">Page Load Failed</translation>
+      <source>Failed to copy sound</source>
+      <translation type="unfinished">Failed to copy sound</translation>
     </message>
     <message>
-      <source>Unable to load the requested page content</source>
-      <translation type="unfinished">Unable to load the requested page content</translation>
+      <source>Failed to write complete audio data</source>
+      <translation type="unfinished">Failed to write complete audio data</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation type="unfinished">Sound copied to clipboard</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation type="unfinished">Failed to download sound</translation>
     </message>
   </context>
   <context>
@@ -438,6 +476,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>گروه‌ها را ترکیب کنید با &quot;%1&quot;</translation>
+    </message>
+    <message>
+      <source>Remove group</source>
+      <translation>حذف گروه</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>آیا شما از حذف گروه &lt;b&gt;%1&lt;/b&gt; اطمینان دارید؟</translation>
     </message>
   </context>
   <context>
@@ -705,6 +751,30 @@ between classic and school orthography in cyrillic)</source>
       <source>Restore selection</source>
       <translation type="unfinished">Restore selection</translation>
     </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation type="unfinished">Cancel reindex</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation type="unfinished">Schedule for reindex</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation type="unfinished">Cancel schedule reindex</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation type="unfinished">The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</translation>
+    </message>
+    <message>
+      <source>Change display name</source>
+      <translation type="unfinished">Change display name</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation type="unfinished">New display name:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -969,28 +1039,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>زبانه ۲</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>ساخت گروه واژه‌نامه تازه</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>&amp;افزودن گروه</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>تغییرنام گروه واژه‌نامه جاری</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>&amp;تغییرنام گروه</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>حذف گروه واژه‌نامه جاری</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>&amp;حذف گروه</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
@@ -2400,10 +2454,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>زبانه تازه</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>خوش آمدید!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>API دست‌رسی به‌کار نیفتاده است</translation>
     </message>
@@ -2476,38 +2526,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Print Article</source>
       <translation>چاپ بند</translation>
-    </message>
-    <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Html کامل (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Html تکی (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime Html (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>ذخیره بند به‌عنوان</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>خطا</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>نمی‌تواند بند: %1 را ذخیره کند</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>درحال ذخیره بند...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>ذخیره مقاله کامل</translation>
     </message>
     <message>
       <source>The main window is set to be always on top.</source>
@@ -2602,16 +2620,8 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>نمایش دهید</translation>
     </message>
     <message>
-      <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+      <source>Lock Panels</source>
+      <translation type="unfinished">Lock Panels</translation>
     </message>
   </context>
   <context>
@@ -2735,6 +2745,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>دیکشنری های فعال: %1, غیر فعال: %2</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation type="unfinished">Change display name</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation type="unfinished">New display name:</translation>
+    </message>
   </context>
   <context>
     <name>PathsModel</name>
@@ -2777,20 +2795,8 @@ switching to them.</source>
       <translation>باز کردن زبانه‌های تازه در پس‌زمینه</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>با فعال کردن ابن، زبانه‌های تازه پس از 
-زبانه فعلی فعال باز می‌شوند، وگرنه
-به‌عنوان آخرین زیانه افزوده می‌شوند.</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>باز کردن زبانه تازه پس از زبانه جاری</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>اگر نمی‌خواهید نوار زبانه اصلی را هنگامی‌که تنها یک زبانه باز شده دارید ببینید این را برگزینید.</translation>
     </message>
     <message>
       <source>Hide single tab</source>
@@ -2887,8 +2893,124 @@ the application.</source>
       <translation>شمار واژه‌نامه‌های فهرست زمینه:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>پیش‌فرض سیستم</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>پیش‌فرض</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>کلاسیک</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>نوین</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>لینگوُ</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>بابیلون</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>لینگوز</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>لینگوز-آبی</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>خودکار در برخی از سیستم ها هیچ کاری نمی کند.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>برای به‌کار برده شدن تغییر زبان برنامه را دوباره راه‌اندازی کنید.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>برای اعمال تغییر سبک رابط، راه اندازی مجدد کنید.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>برای اعمال تغییر فونت رابط، راه اندازی مجدد کنید.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>نیاز به راه اندازی مجدد</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>فعال کردن</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>غیر فعال کردن</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>خودکار</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>هیج کدام</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation type="unfinished">With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation type="unfinished">&amp;Style</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>ظاهر</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2905,6 +3027,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>حالت خواننده تاریک</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -2929,10 +3059,6 @@ the application.</source>
     <message>
       <source>Monospace Font</source>
       <translation>فونت Monospace</translation>
-    </message>
-    <message>
-      <source>&amp;Popup</source>
-      <translation>پویش &amp;واشو</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
@@ -3266,8 +3392,12 @@ download page.</source>
       <translation>بیشینه اندازه پیشینه:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>وقفه ذخیره پیشینه. اگر ۰ قرار داده شود پیشینه تنها هنگام ترک برنامه ذخیره خواهد شد.</translation>
+      <source>Favorites</source>
+      <translation>پسندیده‌ها</translation>
+    </message>
+    <message>
+      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
+      <translation>فاصله ذخیره موارد دلخواه. اگر روی 0 تنظیم شود، موارد دلخواه فقط در حین خروج ذخیره می شود.</translation>
     </message>
     <message>
       <source>Save every</source>
@@ -3276,14 +3406,6 @@ download page.</source>
     <message>
       <source>minutes</source>
       <translation>دقیقه</translation>
-    </message>
-    <message>
-      <source>Favorites</source>
-      <translation>پسندیده‌ها</translation>
-    </message>
-    <message>
-      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation>فاصله ذخیره موارد دلخواه. اگر روی 0 تنظیم شود، موارد دلخواه فقط در حین خروج ذخیره می شود.</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3382,116 +3504,24 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>هنگام خروج، فهرست نامعتبر را حذف کنید</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>پیش‌فرض سیستم</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>پیش‌فرض</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>کلاسیک</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>نوین</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>لینگوُ</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>بابیلون</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>لینگوز</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>لینگوز-آبی</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>خودکار در برخی از سیستم ها هیچ کاری نمی کند.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>برای به‌کار برده شدن تغییر زبان برنامه را دوباره راه‌اندازی کنید.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>برای اعمال تغییر سبک رابط، راه اندازی مجدد کنید.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>برای اعمال تغییر فونت رابط، راه اندازی مجدد کنید.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>نیاز به راه اندازی مجدد</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>فعال کردن</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>غیر فعال کردن</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>خودکار</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>Interface language</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Article Display style</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Add-on style</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Interface Style</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Preview Font</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation type="unfinished">Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>هیج کدام</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation type="unfinished">Suppress JavaScript alerts, confirms, and prompts in the article view.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation type="unfinished">Suppress JavaScript dialogs</translation>
     </message>
   </context>
   <context>
@@ -3645,6 +3675,50 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation type="unfinished">Save Article As</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation type="unfinished">Save article complete</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>خطا</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation type="unfinished">Can&apos;t save article: %1</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation type="unfinished">Save PDF complete</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation type="unfinished">Save PDF failed</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation type="unfinished">Saving article... (%1/%2)</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3740,6 +3814,10 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>ذخیره بند</translation>
     </message>
   </context>
   <context>

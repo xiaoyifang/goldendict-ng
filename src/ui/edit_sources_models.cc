@@ -609,7 +609,7 @@ void WebSitesModel::addNewSite()
 {
   Config::WebSite w;
 
-  w.enabled = false;
+  w.enabled = true;
   w.id      = Dictionary::generateRandomDictionaryId();
   w.url = "http://";
 

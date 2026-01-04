@@ -57,16 +57,45 @@
       <translation>Ласкаво просимо!</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Ласкаво просимо до &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Щоб розпочати роботу з програмою, спочатку відвідайте &lt;em&gt;Редагувати | Словники&lt;/em&gt; , щоб додати деякі шляхи до каталогу, де шукати файли словників, налаштувати різні сайти Вікіпедії чи інші джерела, налаштувати порядок словників або створити групи словників.&lt;p&gt;І тоді ви&apos;готові переглянути свої слова! Ви можете зробити це в цьому вікні, використовуючи панель ліворуч, або ви можете &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;шукати слова з інших активних програм&lt;/a&gt;. &lt;p&gt;Щоб налаштувати програму, перегляньте доступні налаштування на &lt;em&gt;Редагувати | Уподобання&lt;/em&gt;. До всіх налаштувань є підказки, обов’язково прочитайте їх, якщо у вас є сумніви.&lt;p&gt;Якщо вам потрібна додаткова допомога, у вас є запитання, пропозиції чи просто цікаво, що думають інші, ласкаво просимо на форум програми&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Перевірте програму&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;веб-сайт&lt;/a&gt; на наявність оновлень. &lt;p&gt;(c) 2008-2013 Костянтин Ісаков. Ліцензовано під GPLv3 або новішої версії.</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(без назви)</translation>
     </message>
     <message>
       <source>(picture)</source>
       <translation>(зображення)</translation>
+    </message>
+    <message>
+      <source>
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</source>
+      <translation>&lt;div class=&quot;welcome-container&quot;&gt;
+&lt;h3&gt;Ласкаво просимо до &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+&lt;section&gt;
+&lt;h4&gt;Щоб розпочати:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Перейдіть до розділу &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Редагувати&lt;/span&gt;&lt;span&gt;Словники&lt;/span&gt;&lt;/span&gt;, щоб додати файли словників, налаштувати онлайн-джерела, такі як Вікіпедія, та організувати їх у групи.&lt;/li&gt;
+&lt;li&gt;Після налаштування ви можете шукати слова в цьому вікні або &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;з інших програм за допомогою спливаючого вікна сканування&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Щоб налаштувати програму, перегляньте параметри в розділі &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Редагувати&lt;/span&gt;&lt;span&gt;Налаштування&lt;/span&gt;&lt;/span&gt;. Усі налаштування мають підказки, тому обов’язково прочитайте їх, якщо щось незрозуміло.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;p&gt;Якщо вам потрібна додаткова допомога, у вас є запитання чи пропозиції, ласкаво просимо на &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;форум&lt;/a&gt; та &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;вебсайт&lt;/a&gt; програми.&lt;/p&gt;
+&lt;footer class=&quot;welcome-footer&quot;&gt;
+&lt;small&gt;На основі оригінального GoldenDict від Костянтина Ісакова (c) 2008-2013. Підтримується та розробляється спільнотою GoldenDict-NG. Ліцензовано за ліцензією GPLv3 або пізнішої версії.&lt;/small&gt;
+&lt;/footer&gt;
+&lt;/div&gt;</translation>
     </message>
   </context>
   <context>
@@ -255,16 +284,24 @@
       <translation>&amp;Створити примітку</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>Помилка під час завантаження</translation>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>&amp;Копіювати звук в буфер обміну</translation>
     </message>
     <message>
-      <source>Page Load Failed</source>
-      <translation>Помилка завантаження сторінки</translation>
+      <source>Failed to copy sound</source>
+      <translation>Не вдалося скопіювати звук</translation>
     </message>
     <message>
-      <source>Unable to load the requested page content</source>
-      <translation>Не вдається завантажити вміст запитаної сторінки</translation>
+      <source>Failed to write complete audio data</source>
+      <translation>Не вдалося записати повні дані аудіо</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>Звук скопійовано в буфер обміну</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>Не вдалося завантажити звук</translation>
     </message>
   </context>
   <context>
@@ -438,6 +475,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Об&apos;єднати групи з &quot;%1&quot;</translation>
+    </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Вилучити групу</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Бажаєте вилучити групу &lt;b&gt;%1&lt;/b&gt;?</translation>
     </message>
   </context>
   <context>
@@ -705,6 +750,30 @@ between classic and school orthography in cyrillic)</source>
       <source>Restore selection</source>
       <translation>Відновити вибране</translation>
     </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Відмінити переіндексування</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Розклад для переіндексу</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Відмінити переіндексацію розкладу</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>Цей словник заплановано до переіндексації. Індекс буде перебудований при наступному перезапуску програми.</translation>
+    </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Змінити відображуване ім'я</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Нове ім'я для відображення:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -969,28 +1038,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Вкладка 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Створити нову групу словників</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>&amp;Додати групу</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Перейменувати поточну групу</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>&amp;Перейменувати</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Вилучити поточну групу</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>&amp;Вилучити групу</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
@@ -2401,10 +2454,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Нова вкладка</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Ласкаво просимо!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>API доступності не ввімкнено</translation>
     </message>
@@ -2477,38 +2526,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Print Article</source>
       <translation>Надрукувати статтю</translation>
-    </message>
-    <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Повний Html (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Один Html (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime Html (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Зберегти статтю як</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Помилка</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Неможливо зберегти статтю: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Збередення статті…</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Зберегти статтю завершено</translation>
     </message>
     <message>
       <source>The main window is set to be always on top.</source>
@@ -2603,16 +2620,8 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Показати</translation>
     </message>
     <message>
-      <source>Save PDF complete</source>
-      <translation>Збереження PDF завершено</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>Не вдалося зберегти PDF</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>PDF документ (*.pdf *.PDF)</translation>
+      <source>Lock Panels</source>
+      <translation>Блокування панелей</translation>
     </message>
   </context>
   <context>
@@ -2736,6 +2745,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Словники активні: %1, неактивний: %2</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Змінити відображуване ім'я</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Нове ім'я для відображення:</translation>
+    </message>
   </context>
   <context>
     <name>PathsModel</name>
@@ -2779,20 +2796,8 @@ switching to them.</source>
       <translation>Відкрити нові вкладки фоново</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>Коли це ввімкнено, нові вкладки відкриватимуть 
-одразу за поточною. Інакше вони додаватимуться 
-до останніх.</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>Відкрити нові вкладки за поточною</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Оберіть цю опцію якщови не хочете бачити головну вкладку, у випадку якщо відкрито лише одну вкладку.</translation>
     </message>
     <message>
       <source>Hide single tab</source>
@@ -2888,8 +2893,122 @@ the application.</source>
       <translation>Обмеження контекстного меню для словників:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>Системна</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Типово</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Класичний</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Модерн</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Вавилон</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Лінго</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Лінго-Блю</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auto нічого не робить у деяких системах.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Перезапустіть програму, щоб змінити мову.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Перезапустіть, щоб застосувати зміну стилю інтерфейсу.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Перезапустіть програму, щоб застосувати зміни шрифту інтерфейсу.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Потрібен перезапуск</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Увімкнути</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Вимкнути</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Автоматичний</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Нема</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Виберіть цей параметр, якщо ви не хочете бачити головну панель вкладок, коли відкрито лише одну вкладку.</translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation type="unfinished">With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation>&amp;Стиль</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Зовнішній вигляд</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Увімкнути шрифт інтерфейсу</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Мова інтерфейсу</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Відображати стиль статей</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Стиль додатку</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Стиль інтерфейсу</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2906,6 +3025,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Темний режим читання</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Попередній перегляд шрифту</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>Золота Dict-ng - словникова програма.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -2930,10 +3057,6 @@ the application.</source>
     <message>
       <source>Monospace Font</source>
       <translation>Моноширинний шрифт</translation>
-    </message>
-    <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Контекстне вікно</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
@@ -3269,8 +3392,12 @@ download page.</source>
       <translation>Максимальний розмір історії:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Проміжок збереження історії. Якщо вказати 0, то історія зберігатиметься тільки після виходу з програми.</translation>
+      <source>Favorites</source>
+      <translation>Вподобання</translation>
+    </message>
+    <message>
+      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
+      <translation>Інтервал збереження уподобань. Якщо встановлено 0 Обраних буде збережено тільки під час виходу.</translation>
     </message>
     <message>
       <source>Save every</source>
@@ -3279,14 +3406,6 @@ download page.</source>
     <message>
       <source>minutes</source>
       <translation>хвилин</translation>
-    </message>
-    <message>
-      <source>Favorites</source>
-      <translation>Вподобання</translation>
-    </message>
-    <message>
-      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation>Інтервал збереження уподобань. Якщо встановлено 0 Обраних буде збережено тільки під час виходу.</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3385,116 +3504,24 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Видалити недійсний індекс під час виходу</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Системна</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Типово</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Класичний</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Модерн</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Вавилон</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Лінго</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Лінго-Блю</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto нічого не робить у деяких системах.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Перезапустіть програму, щоб змінити мову.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Перезапустіть, щоб застосувати зміну стилю інтерфейсу.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Перезапустіть програму, щоб застосувати зміни шрифту інтерфейсу.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Потрібен перезапуск</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Увімкнути</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Вимкнути</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Автоматичний</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Зберігати повідомлення налагодження в gd_log.txt в теці налаштувань</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>Мова інтерфейсу</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Відображати стиль статей</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Стиль додатку</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Стиль інтерфейсу</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Попередній перегляд шрифту</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>Золота Dict-ng - словникова програма.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation>Увімкнути шрифт інтерфейсу</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Нема</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Відкрити словник веб-сайту в окремій вкладці</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation>С&amp;творити</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>Ігнорувати попередження JavaScript, підтвердження, та запити у поданні статті.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>Ігнорувати діалогові вікна JavaScript</translation>
     </message>
   </context>
   <context>
@@ -3648,6 +3675,50 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>В Url, &quot;%GDWORD%&quot; буде замінено вимовленим словом.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Одинарний Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF документ (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>Зберегти статтю як</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>Зберегти статтю завершено</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Помилка</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>Може&apos;зберігати статтю: %1</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Збереження PDF завершено</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Не вдалося зберегти PDF</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Збереження статті... (%1/%2)</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3743,6 +3814,10 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>Використовуйте для закріплення вікна, щоб воно залишалося на екрані,
 може бути змінене або кероване іншими способами.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Зберегти статтю</translation>
     </message>
   </context>
   <context>

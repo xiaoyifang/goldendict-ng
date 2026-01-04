@@ -2,3 +2,8 @@ div.gdactivearticle .gddictname {
   color: initial;
   background: rgb(0, 102, 184);
 }
+
+.menu-path > span {
+  --menu-path-text-color: #a7c5f3;
+  --menu-path-arrow-color: #7889a4;
+}

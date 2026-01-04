@@ -4,9 +4,20 @@
 #include <string>
 #include <QBuffer>
 #include <QMimeDatabase>
+#include <QGuiApplication>
 
 using std::string;
 namespace Utils {
+
+bool isWayland()
+{
+  // QGuiApplication::platformName() is the most reliable way for a Qt application
+  // to check the windowing system it is running on.
+  // It returns "wayland" or "wayland-egl" for Wayland sessions.
+  // It returns "xcb" for X11 sessions.
+  return QGuiApplication::platformName().startsWith( "wayland", Qt::CaseInsensitive );
+}
+
 QMap< QString, QString > str2map( const QString & contextsEncoded )
 {
   QMap< QString, QString > contexts;
@@ -172,7 +183,7 @@ QString urlReplaceWord( const QString url, QString inputWord )
   //copy temp url
   auto urlString = url;
 
-  urlString.replace( "%25GDWORD%25", inputWord.toUtf8().toPercentEncoding() );
+  urlString.replace( "%GDWORD%", inputWord.toUtf8().toPercentEncoding() );
 
   return urlString;
 }

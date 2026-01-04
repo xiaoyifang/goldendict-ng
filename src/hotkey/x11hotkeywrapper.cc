@@ -339,6 +339,10 @@ quint32 HotkeyWrapper::nativeKey( int key )
     case Qt::Key_Insert:
       keySymName = "Insert";
       break;
+    case Qt::Key_Meta:
+      // QKeySequenceEdit might not recognize the Super key, but we can handle it.
+      keySymName = "Super_L";
+      break;
     default:
       keySymName = QKeySequence( key ).toString();
       break;
