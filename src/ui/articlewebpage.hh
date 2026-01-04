@@ -18,7 +18,17 @@ signals:
   void linkClicked( const QUrl & url );
 
 protected:
-  virtual bool acceptNavigationRequest( const QUrl & url, NavigationType type, bool isMainFrame );
+  bool acceptNavigationRequest( const QUrl & url, NavigationType type, bool isMainFrame ) override;
+  void javaScriptAlert( const QUrl & securityOrigin, const QString & msg ) override;
+  bool javaScriptConfirm( const QUrl & securityOrigin, const QString & msg ) override;
+  bool javaScriptPrompt( const QUrl & securityOrigin,
+                         const QString & msg,
+                         const QString & defaultValue,
+                         QString * result ) override;
+  void javaScriptConsoleMessage( JavaScriptConsoleMessageLevel level,
+                                 const QString & message,
+                                 int lineNumber,
+                                 const QString & sourceID ) override;
 
 private:
   LastReqInfo lastReq;

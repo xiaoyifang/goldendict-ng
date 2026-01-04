@@ -1,6 +1,7 @@
 #include "articlewebpage.hh"
 #include "utils.hh"
 #include "common/globalbroadcaster.hh"
+#include <QTimer>
 
 ArticleWebPage::ArticleWebPage( QObject * parent ):
   QWebEnginePage{ parent }
@@ -19,7 +20,10 @@ bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationTyp
     urlQuery.addQueryItem( "group", lastReq.group );
     urlQuery.addQueryItem( "muted", lastReq.mutedDicts );
     url.setQuery( urlQuery );
-    setUrl( url );
+
+    // Use singleShot to avoid synchronous navigation request within acceptNavigationRequest,
+    // which can lead to reentrancy issues or crashes.
+    QTimer::singleShot( 0, this, [ this, url ]() { setUrl( url ); } );
     return false;
   }
 
@@ -38,9 +42,50 @@ bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationTyp
         return true;
       }
     }
-    emit linkClicked( url );
+
+    // Use singleShot to emit signal asynchronously. This prevents crashes if the
+    // signal handler deletes this object or the containing tab.
+    QTimer::singleShot( 0, this, [ this, url ]() { emit linkClicked( url ); } );
     return false;
   }
 
   return QWebEnginePage::acceptNavigationRequest( url, type, isMainFrame );
 }
+
+void ArticleWebPage::javaScriptAlert( const QUrl & securityOrigin, const QString & msg )
+{
+  if ( !GlobalBroadcaster::instance()->getPreference()->suppressWebDialogs ) {
+    QWebEnginePage::javaScriptAlert( securityOrigin, msg );
+    return;
+  }
+  qDebug() << "JavaScript Alert:" << msg << "from" << securityOrigin;
+  runJavaScript( QString( "console.log('JavaScript Alert:', decodeURIComponent('%1'))" )
+                   .arg( QString::fromUtf8( msg.toUtf8().toPercentEncoding() ) ) );
+}
+
+bool ArticleWebPage::javaScriptConfirm( const QUrl & securityOrigin, const QString & msg )
+{
+  if ( !GlobalBroadcaster::instance()->getPreference()->suppressWebDialogs ) {
+    return QWebEnginePage::javaScriptConfirm( securityOrigin, msg );
+  }
+  qDebug() << "JavaScript Confirm:" << msg << "from" << securityOrigin;
+  runJavaScript( QString( "console.log('JavaScript Confirm:', decodeURIComponent('%1'))" )
+                   .arg( QString::fromUtf8( msg.toUtf8().toPercentEncoding() ) ) );
+  return true;
+}
+
+bool ArticleWebPage::javaScriptPrompt( const QUrl & securityOrigin,
+                                       const QString & msg,
+                                       const QString & defaultValue,
+                                       QString * result )
+{
+  if ( !GlobalBroadcaster::instance()->getPreference()->suppressWebDialogs ) {
+    return QWebEnginePage::javaScriptPrompt( securityOrigin, msg, defaultValue, result );
+  }
+  qDebug() << "JavaScript Prompt:" << msg << "Default:" << defaultValue << "from" << securityOrigin;
+  runJavaScript( QString( "console.log('JavaScript Prompt:', decodeURIComponent('%1'))" )
+                   .arg( QString::fromUtf8( msg.toUtf8().toPercentEncoding() ) ) );
+  return false;
+}
+
+void ArticleWebPage::javaScriptConsoleMessage( JavaScriptConsoleMessageLevel, const QString &, int, const QString & ) {}

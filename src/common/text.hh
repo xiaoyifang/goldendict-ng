@@ -61,4 +61,13 @@ LineFeed initLineFeed( Encoding e );
 std::u32string removeTrailingZero( const std::u32string & v );
 std::u32string removeTrailingZero( const QString & in );
 std::u32string normalize( const std::u32string & );
+
+/// Detect text encoding from Byte Order Mark (BOM)
+/// Returns the detected encoding name, or empty string if no BOM found
+/// Supports: UTF-8, UTF-16LE, UTF-16BE, UTF-32LE, UTF-32BE
+std::string detectEncodingFromBom( const char * data, size_t size );
+
+/// Check if data is valid UTF-8 by validating byte sequences
+/// Returns true if all bytes form valid UTF-8 sequences, false otherwise
+bool isValidUtf8( const char * data, size_t size );
 } // namespace Text

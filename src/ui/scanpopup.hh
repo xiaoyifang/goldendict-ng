@@ -30,13 +30,7 @@ class ScanPopup: public QMainWindow, KeyboardState
 
 public:
 
-  ScanPopup( QWidget * parent,
-             Config::Class & cfg,
-             ArticleNetworkAccessManager &,
-             const AudioPlayerPtr &,
-             const std::vector< sptr< Dictionary::Class > > & allDictionaries,
-             const Instances::Groups &,
-             History & );
+  ScanPopup( QWidget * parent, Config::Class & cfg, ArticleNetworkAccessManager &, History & );
 
   ~ScanPopup();
 
@@ -204,6 +198,7 @@ private slots:
   void showStatusBarMessage( const QString & message, int timeout = 3000, const QPixmap & icon = QPixmap() );
 
   void pronounceButton_clicked() const;
+  void saveArticleButton_clicked();
   void sendWordButton_clicked();
   void sendWordToFavoritesButton_clicked();
   void goBackButton_clicked() const;

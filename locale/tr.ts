@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
+      <translation>Anki: kelime olmadan kart oluşturulamaz</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -285,18 +285,6 @@
       <translation>&amp;Anki notu oluştur</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation type="unfinished">Error Loading</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation type="unfinished">Page Load Failed</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation type="unfinished">Unable to load the requested page content</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation type="unfinished">&amp;Copy sound to clipboard</translation>
     </message>
@@ -488,6 +476,14 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>&quot;%1&quot; ile grupları birleştir</translation>
+    </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Grubu kaldır</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>&lt;b&gt;%1&lt;/b&gt; isimli grubu kaldırmak istiyor musunuz?</translation>
     </message>
   </context>
   <context>
@@ -771,6 +767,14 @@ arasındaki farkı giderir)</translation>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation type="unfinished">The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation type="unfinished">Change display name</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation type="unfinished">New display name:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -1035,28 +1039,12 @@ arasındaki farkı giderir)</translation>
       <translation>2. Sekme</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Yeni sözlük grubu oluştur</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>Grup &amp;ekle</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Geçerli grubu yeniden adlandır</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>Grubu &amp; yeniden adlandır</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Geçerli grubu sil</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>Grubu &amp;kaldır</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
@@ -2540,38 +2528,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Maddeyi Yazdır</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Tam Html (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Tek Html (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mim Html (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Maddeyi Farklı Kaydet</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Hata</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Kurtarılmamış yazı: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Madde kaydediliyor...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Makaleyi kaydetme tamamlandı</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>Ana pencere her zaman üstte olacak şekilde ayarlanmıştır.</translation>
     </message>
@@ -2662,18 +2618,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Show</source>
       <translation>Göster</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -2801,6 +2745,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Açık sözlükler: %1, kapalı sözlükler: %2</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation type="unfinished">Change display name</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation type="unfinished">New display name:</translation>
+    </message>
   </context>
   <context>
     <name>PathsModel</name>
@@ -2841,13 +2793,6 @@ Bu seçenekleyse, yeni sekmeler açıldığında hemen o sekmeye geçilmeyecek.<
     <message>
       <source>Open new tabs in background</source>
       <translation>Yeni sekmeleri arkaplanda aç</translation>
-    </message>
-    <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>Bu seçenekle, yeni sekmeler etkin sekmede açılır.
-Aksi takdirde sekmelerin sonuna eklenecektir.</translation>
     </message>
     <message>
       <source>Open new tabs after the current one</source>
@@ -2947,8 +2892,124 @@ yerine onu gizler.</translation>
       <translation>Bağlam menüsü sözlükleri sınırı:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>Sistem varsayılanı</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Varsayılan</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Klasik</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Modern</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Babil</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Lingolar</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Lingoes-Mavi</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Bazı sistemlerde Auto hiçbir şey yapmaz.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Dil değişikliğini tamamlamak için programı yeniden başlatın.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Arayüz stili değişikliğini uygulamak için yeniden başlatın.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Arayüz yazı tipi değişikliğini uygulamak için yeniden başlatın.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Yeniden başlatma gerekli</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Olanak vermek</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Devre dışı bırakmak</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Otomatik</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Yok</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation type="unfinished">With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation type="unfinished">&amp;Style</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Dış görünüş</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2965,6 +3026,14 @@ yerine onu gizler.</translation>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Karanlık Okuyucu Modu</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -2989,10 +3058,6 @@ yerine onu gizler.</translation>
     <message>
       <source>Monospace Font</source>
       <translation>Tek Aralıklı Yazı Tipi</translation>
-    </message>
-    <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Ekranda Kelime Yakala</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
@@ -3325,8 +3390,12 @@ ve muhtemelen indirme sayfasını açar.</translation>
       <translation>Azami geçmiş boyutu:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Tarih kaydetme aralığı. 0 olarak ayarlanırsa, geçmiş yalnızca çıkış sırasında kaydedilir.</translation>
+      <source>Favorites</source>
+      <translation>Favoriler</translation>
+    </message>
+    <message>
+      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
+      <translation>Favori kaydetme aralığı. 0 olarak ayarlanırsa Favoriler yalnızca çıkış sırasında kaydedilecektir.</translation>
     </message>
     <message>
       <source>Save every</source>
@@ -3335,14 +3404,6 @@ ve muhtemelen indirme sayfasını açar.</translation>
     <message>
       <source>minutes</source>
       <translation>dakika</translation>
-    </message>
-    <message>
-      <source>Favorites</source>
-      <translation>Favoriler</translation>
-    </message>
-    <message>
-      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation>Favori kaydetme aralığı. 0 olarak ayarlanırsa Favoriler yalnızca çıkış sırasında kaydedilecektir.</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3441,124 +3502,24 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <translation>Çıkışta geçersiz dizini kaldır</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Sistem varsayılanı</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Varsayılan</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Klasik</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Modern</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Babil</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Lingolar</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Lingoes-Mavi</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Bazı sistemlerde Auto hiçbir şey yapmaz.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Dil değişikliğini tamamlamak için programı yeniden başlatın.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Arayüz stili değişikliğini uygulamak için yeniden başlatın.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Arayüz yazı tipi değişikliğini uygulamak için yeniden başlatın.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Yeniden başlatma gerekli</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Olanak vermek</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Devre dışı bırakmak</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Otomatik</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
-    </message>
-    <message>
-      <source>Interface language</source>
-      <translation>Interface language</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Article Display style</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Add-on style</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Interface Style</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Preview Font</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation type="unfinished">Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Yok</translation>
     </message>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation type="unfinished">Suppress JavaScript alerts, confirms, and prompts in the article view.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation type="unfinished">Suppress JavaScript dialogs</translation>
     </message>
   </context>
   <context>
@@ -3712,6 +3673,50 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation type="unfinished">Save Article As</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation type="unfinished">Save article complete</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Hata</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation type="unfinished">Can&apos;t save article: %1</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation type="unfinished">Save PDF complete</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation type="unfinished">Save PDF failed</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation type="unfinished">Saving article... (%1/%2)</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3807,6 +3812,10 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
 could be resized or managed in other ways.</source>
       <translation>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Maddeyi Kaydet</translation>
     </message>
   </context>
   <context>

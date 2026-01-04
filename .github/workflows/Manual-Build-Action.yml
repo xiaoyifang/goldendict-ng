@@ -44,6 +44,7 @@ jobs:
             lzip \
             ninja \
             opencc \
+            fmt \
             xapian || true
       - name: Install eb
         run: |

@@ -285,18 +285,6 @@
       <translation>&amp;Sukurti Anki užrašą</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation type="unfinished">Error Loading</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation type="unfinished">Page Load Failed</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation type="unfinished">Unable to load the requested page content</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation type="unfinished">&amp;Copy sound to clipboard</translation>
     </message>
@@ -487,6 +475,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Apjungti grupes pagal „%1“</translation>
+    </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Pašalinti grupę</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Tikrai norite pašalinti &lt;b&gt;%1&lt;/b&gt; grupę?</translation>
     </message>
   </context>
   <context>
@@ -770,6 +766,14 @@ between classic and school orthography in cyrillic)</source>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation type="unfinished">The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation type="unfinished">Change display name</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation type="unfinished">New display name:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -1034,28 +1038,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Kortelė</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Sukurti naują žodynų grupę</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>Pri&amp;dėti grupę</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Pervadinti esamą žodynų grupę</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>Per&amp;vadinti grupę</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Pašalinti esamą žodynų grupę</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>Pašali&amp;nti grupę</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
@@ -2540,38 +2528,6 @@ Norėdami atverti parsisiuntimo puslapį, spauskite &lt;b&gt;Parsisiųsti&lt;/b&
       <translation>Spausdinti straipsnį</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Pilnas HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Vienas HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>MIM HTML (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Įrašyti straipsnį kaip</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Klaida</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Nepavyksta įrašyti straipsnio: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Įrašomas straipsnis...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Išsaugoti straipsnį baigtas</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>Pagrindinis langas visada rodomas virš kitų programų langų.</translation>
     </message>
@@ -2662,18 +2618,6 @@ Norėdami atverti parsisiuntimo puslapį, spauskite &lt;b&gt;Parsisiųsti&lt;/b&
     <message>
       <source>Show</source>
       <translation>Rodyti</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -2801,6 +2745,14 @@ Norėdami atverti parsisiuntimo puslapį, spauskite &lt;b&gt;Parsisiųsti&lt;/b&
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Aktyvių žodynų: %1. Neaktyvių: %2</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation type="unfinished">Change display name</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation type="unfinished">New display name:</translation>
+    </message>
   </context>
   <context>
     <name>PathsModel</name>
@@ -2842,14 +2794,6 @@ Pažymėjus šią parinktį, naujos kortelės nebus aktyvuojamos.
     <message>
       <source>Open new tabs in background</source>
       <translation>Naujas korteles atverti fone</translation>
-    </message>
-    <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>Pažymėjus šią parinktį, naujos kortelės atveriamos
-greta aktyviosios. Priešingu atveju, jos pridedamos
-prie paskutiniųjų.</translation>
     </message>
     <message>
       <source>Open new tabs after the current one</source>
@@ -2950,8 +2894,124 @@ tiesiog paslepiama.</translation>
       <translation>Žodynų kiekio riba kontekstiniame meniu:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>Sistemoje numatyta</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Numatytasis</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Klasika</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Šiuolaikinis</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Babilonas</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Lingos</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Lingoes mėlynas</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Automatinis kai kuriose sistemose nieko nedaro.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Naująją kalbą programa naudos po to, kai ją atversite iš naujo.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Paleiskite iš naujo, kad pritaikytumėte sąsajos stiliaus pakeitimą.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Paleiskite iš naujo, kad pritaikytumėte sąsajos šrifto pakeitimą.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Reikia paleisti iš naujo</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Įgalinti</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Išjungti</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Automatinis</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Nieko</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation type="unfinished">With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation type="unfinished">&amp;Style</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Išvaizda</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2968,6 +3028,14 @@ tiesiog paslepiama.</translation>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Tamsus skaitytuvo režimas</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -2992,10 +3060,6 @@ tiesiog paslepiama.</translation>
     <message>
       <source>Monospace Font</source>
       <translation>Monospace šriftas</translation>
-    </message>
-    <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Iškylantis langas</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
@@ -3328,8 +3392,12 @@ ir pasiūlys atverti parsisiuntimo puslapį.
       <translation>Žurnalo įrašų didžiausias kiekis:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Žurnalo įrašymo dažnumas. 0 reiškia įrašymą tik užveriant programą.</translation>
+      <source>Favorites</source>
+      <translation>Žymelės</translation>
+    </message>
+    <message>
+      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
+      <translation>Žymelių įsiminimo dažnumas. Jei 0, žymelės įrašysimos tik užveriant programą.</translation>
     </message>
     <message>
       <source>Save every</source>
@@ -3338,14 +3406,6 @@ ir pasiūlys atverti parsisiuntimo puslapį.
     <message>
       <source>minutes</source>
       <translation>min</translation>
-    </message>
-    <message>
-      <source>Favorites</source>
-      <translation>Žymelės</translation>
-    </message>
-    <message>
-      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation>Žymelių įsiminimo dažnumas. Jei 0, žymelės įrašysimos tik užveriant programą.</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3443,124 +3503,24 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Išeidami pašalinkite netinkamą indeksą</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Sistemoje numatyta</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Numatytasis</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Klasika</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Šiuolaikinis</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Babilonas</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Lingos</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Lingoes mėlynas</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Automatinis kai kuriose sistemose nieko nedaro.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Naująją kalbą programa naudos po to, kai ją atversite iš naujo.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Paleiskite iš naujo, kad pritaikytumėte sąsajos stiliaus pakeitimą.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Paleiskite iš naujo, kad pritaikytumėte sąsajos šrifto pakeitimą.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Reikia paleisti iš naujo</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Įgalinti</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Išjungti</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Automatinis</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
-    </message>
-    <message>
-      <source>Interface language</source>
-      <translation>Interface language</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Article Display style</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Add-on style</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Interface Style</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Preview Font</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation type="unfinished">Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Nieko</translation>
     </message>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation type="unfinished">Suppress JavaScript alerts, confirms, and prompts in the article view.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation type="unfinished">Suppress JavaScript dialogs</translation>
     </message>
   </context>
   <context>
@@ -3714,6 +3674,50 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation type="unfinished">Save Article As</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation type="unfinished">Save article complete</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Klaida</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation type="unfinished">Can&apos;t save article: %1</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation type="unfinished">Save PDF complete</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation type="unfinished">Save PDF failed</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation type="unfinished">Saving article... (%1/%2)</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3809,6 +3813,10 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Įrašyti straipsnį</translation>
     </message>
   </context>
   <context>

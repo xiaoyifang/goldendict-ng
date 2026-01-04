@@ -3,9 +3,13 @@
 
 #include "edit_orderandprops.hh"
 #include "instances.hh"
+#include "metadata.hh"
 #include "langcoder.hh"
 #include "language.hh"
 #include <algorithm>
+#include <QInputDialog>
+#include "common/utils.hh"
+#include <QDir>
 #include <utility>
 #include <QMenu>
 
@@ -275,6 +279,12 @@ void OrderAndProps::contextMenuRequested( const QPoint & pos )
     menu.addAction( showHeadwordsAction );
   }
 
+  QAction * changeNameAction = nullptr;
+  if ( dict ) {
+    changeNameAction = new QAction( tr( "Change display name" ), &menu );
+    menu.addAction( changeNameAction );
+  }
+
   QAction * sortNameAction = new QAction( tr( "Sort by name" ), &menu );
   menu.addAction( sortNameAction );
   QAction * sortLangAction = new QAction( tr( "Sort by languages" ), &menu );
@@ -295,6 +305,24 @@ void OrderAndProps::contextMenuRequested( const QPoint & pos )
 
   if ( result && result == showHeadwordsAction ) {
     emit showDictionaryHeadwords( dict.get() );
+  }
+
+  if ( result && result == changeNameAction ) {
+    bool ok;
+    QString newName = QInputDialog::getText( this,
+                                             tr( "Change display name" ),
+                                             tr( "New display name:" ),
+                                             QLineEdit::Normal,
+                                             QString::fromUtf8( dict->getName().c_str() ),
+                                             &ok );
+    if ( ok && !newName.isEmpty() ) {
+      QString metadataPath = dict->getContainingFolder();
+      if ( !metadataPath.isEmpty() ) {
+        auto filePath = Utils::Path::combine( metadataPath, "metadata.toml" );
+        dict->setName( newName.toStdString() );
+        Metadata::saveDisplayName( filePath.toStdString(), newName.toStdString() );
+      }
+    }
   }
 }
 

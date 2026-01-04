@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
+      <translation>Anki: não pode criar um cartão sem uma palavra</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -285,18 +285,6 @@
       <translation>&amp;Criar nota Anki</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>Erro ao Carregar</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>Falha ao carregar página</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>Não foi possível carregar o conteúdo da página solicitada</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>&amp;Copiar som para área de transferência</translation>
     </message>
@@ -488,6 +476,14 @@ entre ortografia clássica e escolar em ciílico)</translation>
     <message>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Combinar grupos com &quot;%1&quot;</translation>
+    </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Remover grupo</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Você tem certeza que deseja remover o grupo &lt;b&gt;%1&lt;/b&gt;?</translation>
     </message>
   </context>
   <context>
@@ -771,6 +767,14 @@ entre ortografia clássica e escolar em ciílico)</translation>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>O dicionário foi agendado para reindexação. O índice será reconstruído na próxima reinicialização do aplicativo.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Alterar nome de exibição</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Novo nome de exibição:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -1035,28 +1039,12 @@ entre ortografia clássica e escolar em ciílico)</translation>
       <translation>Tab 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Criar novo grupo de dicionário</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>&amp;Adicionar grupo</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Renomear grupo de dicionário atual</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>Re&amp;nomear grupo</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Remover grupo de dicionário atual</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>&amp;Remover grupo</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
@@ -2540,38 +2528,6 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
       <translation>Imprimir artigo</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Html completo (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>HTML único (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mímica Html (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Salvar Artigo Como</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>ERRO</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Pode&apos;t salvar artigo: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Salvando artigo...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Salvar artigo completo</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>A janela principal é definida para estar sempre no topo.</translation>
     </message>
@@ -2662,18 +2618,6 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <source>Show</source>
       <translation>Apresentar</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>Salvar PDF completo</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>Falha ao salvar PDF</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>Documento PDF (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -2801,6 +2745,14 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Dicionários ativos: %1, inativo: %2</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Alterar nome de exibição</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Novo nome de exibição:</translation>
+    </message>
   </context>
   <context>
     <name>PathsModel</name>
@@ -2842,14 +2794,6 @@ mudar para elas.</translation>
     <message>
       <source>Open new tabs in background</source>
       <translation>Abrir novas abas em segundo plano</translation>
-    </message>
-    <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>Com isso ligado, novas abas são abertas logo após a
-atual, ativa. Caso contrário, elas são adicionadas para
-serem as últimas.</translation>
     </message>
     <message>
       <source>Open new tabs after the current one</source>
@@ -2950,8 +2894,124 @@ a aplicação.</translation>
       <translation>Limite de dicionários do menu de contexto:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>Padrão do sistema</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Padrão</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Clássico</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Moderno</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Babilônia</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Lanoes</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Lais-Cola</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>O Auto não faz nada em alguns sistemas.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Reinicie o programa para aplicar a mudança de idioma.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Reinicie para aplicar a mudança de estilo de interface.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Reinicie para aplicar a alteração da fonte da interface.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Reiniciar necessário</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Habilitar</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Desabilitar</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Automático</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Nenhuma</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Selecione esta opção se você don&apos;t quer ver a barra de abas principal quando apenas uma aba for
+                  aberta.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation type="unfinished">With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation>&amp;Estilo</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Aparência</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Habilitar Fonte de Interface</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Idioma da interface</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Estilo de Exibição do Artigo</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Estilo do complemento</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Estilo da interface</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2968,6 +3028,14 @@ a aplicação.</translation>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Modo Dark Reader</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Visualizar Fonte</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng é um software de dicionário.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -2992,10 +3060,6 @@ a aplicação.</translation>
     <message>
       <source>Monospace Font</source>
       <translation>Fonte monoespaçada</translation>
-    </message>
-    <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Escanear pop-up</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
@@ -3330,8 +3394,12 @@ página de download.</translation>
       <translation>Tamanho máximo do histórico:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Intervalo de salvamento do histórico. Se definido como 0 o histórico será salvo apenas durante a saída.</translation>
+      <source>Favorites</source>
+      <translation>Atalhos</translation>
+    </message>
+    <message>
+      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
+      <translation>Intervalo de salvamento dos favoritos. Se definido como 0 Favoritos só será salvo durante a saída.</translation>
     </message>
     <message>
       <source>Save every</source>
@@ -3340,14 +3408,6 @@ página de download.</translation>
     <message>
       <source>minutes</source>
       <translation>Minutos</translation>
-    </message>
-    <message>
-      <source>Favorites</source>
-      <translation>Atalhos</translation>
-    </message>
-    <message>
-      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation>Intervalo de salvamento dos favoritos. Se definido como 0 Favoritos só será salvo durante a saída.</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3446,124 +3506,24 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <translation>Remover índice inválido ao sair</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Padrão do sistema</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Padrão</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Clássico</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Moderno</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Babilônia</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Lanoes</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Lais-Cola</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>O Auto não faz nada em alguns sistemas.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Reinicie o programa para aplicar a mudança de idioma.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Reinicie para aplicar a mudança de estilo de interface.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Reinicie para aplicar a alteração da fonte da interface.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Reiniciar necessário</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Habilitar</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Desabilitar</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Automático</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Salvar mensagens de depuração no gd_log.txt na pasta config</translation>
-    </message>
-    <message>
-      <source>Interface language</source>
-      <translation>Idioma da interface</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Estilo de Exibição do Artigo</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Estilo do complemento</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Estilo da interface</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Visualizar Fonte</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng é um software de dicionário.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation>Habilitar Fonte de Interface</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Nenhuma</translation>
     </message>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Abrir o dicionário do site na guia separada</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Selecione esta opção se você don&apos;t quer ver a barra de abas principal quando apenas uma aba for
-                  aberta.
-                 </translation>
+      <source>S&amp;can</source>
+      <translation>&amp;Abrir</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>Suprimir alertas JavaScript, confirmar e prompts na visualização de artigos.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>Suprimir diálogos JavaScript</translation>
     </message>
   </context>
   <context>
@@ -3717,6 +3677,50 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>Na Url, &quot;%GDWORD%&quot; será substituído pela palavra sendo pesquisada.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Html simples (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>Documento PDF (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>Salvar Artigo Como</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>Salvar artigo completo</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>ERRO</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>Pode&apos;t artigo salvo: %1</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Salvar PDF completo</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Falha ao salvar PDF</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Salvando artigo... (%1/%2)</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3812,6 +3816,10 @@ no Stardict, Babilônia e dicionários GLS</translation>
 could be resized or managed in other ways.</source>
       <translation>Use isto para fixar a janela para que ela fique na tela,
 poderia ser redimensionado ou gerenciado de outras formas.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Salvar Artigo</translation>
     </message>
   </context>
   <context>

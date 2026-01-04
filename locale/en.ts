@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="be" sourcelanguage="en">
+<TS version="2.1" language="en" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
       <source>About</source>
-      <translation>Пра праграму</translation>
+      <translation type="unfinished">About</translation>
     </message>
     <message>
       <source>Licensed under GNU GPLv3 or later</source>
-      <translation>Ліцэнзія GNU GPLv3 або пазнейшая</translation>
+      <translation type="unfinished">Licensed under GNU GPLv3 or later</translation>
     </message>
     <message>
       <source>Copy version info</source>
-      <translation>Скапіяваць звесткі пра версію</translation>
+      <translation type="unfinished">Copy version info</translation>
     </message>
   </context>
   <context>
@@ -24,7 +24,7 @@
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
-      <translation>Пошук у Anki: AnkiConnect не ўключаны.</translation>
+      <translation type="unfinished">Anki search: AnkiConnect is not enabled.</translation>
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
@@ -39,30 +39,30 @@
     <name>ArticleInspector</name>
     <message>
       <source>Inspect</source>
-      <translation>Інспектаванне</translation>
+      <translation type="unfinished">Inspect</translation>
     </message>
   </context>
   <context>
     <name>ArticleMaker</name>
     <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation>У групе &lt;b&gt;%2&lt;/b&gt;не знойдзены пераклад для &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt;.</translation>
+      <translation type="unfinished">No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
-      <translation>У групе &lt;b&gt;%1&lt;/b&gt; не знойдзены пераклад.</translation>
+      <translation type="unfinished">No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>Welcome!</source>
-      <translation>Вітаем!</translation>
+      <translation type="unfinished">Welcome!</translation>
     </message>
     <message>
       <source>(untitled)</source>
-      <translation>(без назвы)</translation>
+      <translation type="unfinished">(untitled)</translation>
     </message>
     <message>
       <source>(picture)</source>
-      <translation>(выява)</translation>
+      <translation type="unfinished">(picture)</translation>
     </message>
     <message>
       <source>
@@ -103,186 +103,186 @@
     <name>ArticleRequest</name>
     <message>
       <source>From </source>
-      <translation>З </translation>
+      <translation type="unfinished">From </translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
-      <translation>Стварыць новую нататку Anki</translation>
+      <translation type="unfinished">Make a new Anki note</translation>
     </message>
     <message>
       <source>Query error: %1</source>
-      <translation>Памылка запыту: %1</translation>
+      <translation type="unfinished">Query error: %1</translation>
     </message>
     <message>
       <source>Close words: </source>
-      <translation>Падобныя словы: </translation>
+      <translation type="unfinished">Close words: </translation>
     </message>
     <message>
       <source>Compound expressions: </source>
-      <translation>Словазлучэнні: </translation>
+      <translation type="unfinished">Compound expressions: </translation>
     </message>
     <message>
       <source>Individual words: </source>
-      <translation>Словы паасобку: </translation>
+      <translation type="unfinished">Individual words: </translation>
     </message>
   </context>
   <context>
     <name>ArticleView</name>
     <message>
       <source>Phrase not found</source>
-      <translation>Фраза не знойдзена</translation>
+      <translation type="unfinished">Phrase not found</translation>
     </message>
     <message>
       <source>%1 of %2 matches</source>
-      <translation>%1 з %2 супадзенняў</translation>
+      <translation type="unfinished">%1 of %2 matches</translation>
     </message>
     <message>
       <source>Select Current Article</source>
-      <translation>Абраць бягучы артыкул</translation>
+      <translation type="unfinished">Select Current Article</translation>
     </message>
     <message>
       <source>Copy as text</source>
-      <translation>Скапіяваць як тэкст</translation>
+      <translation type="unfinished">Copy as text</translation>
     </message>
     <message>
       <source>Inspect</source>
-      <translation>Інспектаванне</translation>
+      <translation type="unfinished">Inspect</translation>
     </message>
     <message>
       <source>Resource</source>
-      <translation>Рэсурс</translation>
+      <translation type="unfinished">Resource</translation>
     </message>
     <message>
       <source>TTS Voice</source>
-      <translation>Сінтэз маўлення</translation>
+      <translation type="unfinished">TTS Voice</translation>
     </message>
     <message>
       <source>Audio</source>
-      <translation>Аўдыё</translation>
+      <translation type="unfinished">Audio</translation>
     </message>
     <message>
       <source>Video</source>
-      <translation>Відэа</translation>
+      <translation type="unfinished">Video</translation>
     </message>
     <message>
       <source>Video: %1</source>
-      <translation>Відэа: %1</translation>
+      <translation type="unfinished">Video: %1</translation>
     </message>
     <message>
       <source>Definition from dictionary &quot;%1&quot;: %2</source>
-      <translation>Азначэнне са слоўніка &quot;%1&quot;: %2</translation>
+      <translation type="unfinished">Definition from dictionary &quot;%1&quot;: %2</translation>
     </message>
     <message>
       <source>Definition: %1</source>
-      <translation>Азначэнне: %1</translation>
+      <translation type="unfinished">Definition: %1</translation>
     </message>
     <message>
       <source>ERROR: %1</source>
-      <translation>ПАМЫЛКА: %1</translation>
+      <translation type="unfinished">ERROR: %1</translation>
     </message>
     <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
-      <translation>Праграма па спасылцы не існуе.</translation>
+      <translation type="unfinished">The referenced audio program doesn&apos;t exist.</translation>
     </message>
     <message>
       <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>Рэсурс па спасылцы не існуе.</translation>
+      <translation type="unfinished">The referenced resource doesn&apos;t exist.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
-      <translation>Ад&amp;крыць спасылку</translation>
+      <translation type="unfinished">Op&amp;en Link</translation>
     </message>
     <message>
       <source>Open Link in New &amp;Tab</source>
-      <translation>Адкрыць спасылку ў новай &amp;укладцы</translation>
+      <translation type="unfinished">Open Link in New &amp;Tab</translation>
     </message>
     <message>
       <source>Open Link in &amp;External Browser</source>
-      <translation>Адкрыць спасылку ў &amp;вонкавым браўзеры</translation>
+      <translation type="unfinished">Open Link in &amp;External Browser</translation>
     </message>
     <message>
       <source>Save &amp;image...</source>
-      <translation>Захаваць &amp;выяву...</translation>
+      <translation type="unfinished">Save &amp;image...</translation>
     </message>
     <message>
       <source>Open image in system viewer...</source>
-      <translation>Адкрыць выяву ў сістэмнай праграме для прагляду...</translation>
+      <translation type="unfinished">Open image in system viewer...</translation>
     </message>
     <message>
       <source>Save s&amp;ound...</source>
-      <translation>Захаваць &amp;гук...</translation>
+      <translation type="unfinished">Save s&amp;ound...</translation>
     </message>
     <message>
       <source>&amp;Look up &quot;%1&quot;</source>
-      <translation>&amp;Шукаць &quot;%1&quot;</translation>
+      <translation type="unfinished">&amp;Look up &quot;%1&quot;</translation>
     </message>
     <message>
       <source>Look up &quot;%1&quot; in &amp;New Tab</source>
-      <translation>Шукаць &quot;%1&quot; у &amp;новай укладцы</translation>
+      <translation type="unfinished">Look up &quot;%1&quot; in &amp;New Tab</translation>
     </message>
     <message>
       <source>Send &quot;%1&quot; to input line</source>
-      <translation>Адправіць &quot;%1&quot; у радок уводу</translation>
+      <translation type="unfinished">Send &quot;%1&quot; to input line</translation>
     </message>
     <message>
       <source>&amp;Add &quot;%1&quot; to history</source>
-      <translation>&amp;Дадаць &quot;%1&quot; у гісторыю</translation>
+      <translation type="unfinished">&amp;Add &quot;%1&quot; to history</translation>
     </message>
     <message>
       <source>Look up &quot;%1&quot; in %2</source>
-      <translation>Шукаць &quot;%1&quot; у %2</translation>
+      <translation type="unfinished">Look up &quot;%1&quot; in %2</translation>
     </message>
     <message>
       <source>Look up &quot;%1&quot; in %2 in &amp;New Tab</source>
-      <translation>Шукаць &quot;%1&quot; у %2 у &amp;новай укладцы</translation>
+      <translation type="unfinished">Look up &quot;%1&quot; in %2 in &amp;New Tab</translation>
     </message>
     <message>
       <source>Save &amp;Bookmark &quot;%1...&quot;</source>
-      <translation>Захаваць &amp;закладку &quot;%1...&quot;</translation>
+      <translation type="unfinished">Save &amp;Bookmark &quot;%1...&quot;</translation>
     </message>
     <message>
       <source>&amp;Send Current Article to Anki</source>
-      <translation>&amp;Адправіць бягучы артыкул у Anki</translation>
+      <translation type="unfinished">&amp;Send Current Article to Anki</translation>
     </message>
     <message>
       <source>&amp;Send selected text to Anki</source>
-      <translation>&amp;Адправіць абраны тэкст у Anki</translation>
+      <translation type="unfinished">&amp;Send selected text to Anki</translation>
     </message>
     <message>
       <source>Save sound</source>
-      <translation>Захавць гук</translation>
+      <translation type="unfinished">Save sound</translation>
     </message>
     <message>
       <source>Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
-      <translation>Гукавыя файлы (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;Усе файлы (*.*)</translation>
+      <translation type="unfinished">Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</translation>
     </message>
     <message>
       <source>Save image</source>
-      <translation>Захаваць выяву</translation>
+      <translation type="unfinished">Save image</translation>
     </message>
     <message>
       <source>Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</source>
-      <translation>Файлы выяў (*.bmp *.jpg *.png *.tif);;Усе файлы (*.*)</translation>
+      <translation type="unfinished">Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</translation>
     </message>
     <message>
       <source>Failed to play sound file: %1</source>
-      <translation>Не ўдалося прайграць гукавы файл: %1</translation>
+      <translation type="unfinished">Failed to play sound file: %1</translation>
     </message>
     <message>
       <source>Failed to create temporary file.</source>
-      <translation>Не ўдалося стварыць часовы файл.</translation>
+      <translation type="unfinished">Failed to create temporary file.</translation>
     </message>
     <message>
       <source>Failed to auto-open resource file, try opening manually: %1.</source>
-      <translation>Не ўдалося аўтаматычна адкрыць файл рэсурсу, паспрабуйце адкрыць уласнаручна: %1.</translation>
+      <translation type="unfinished">Failed to auto-open resource file, try opening manually: %1.</translation>
     </message>
     <message>
       <source>WARNING: Audio Player: %1</source>
-      <translation>УВАГА: аўдыяпрайгравальнік: %1</translation>
+      <translation type="unfinished">WARNING: Audio Player: %1</translation>
     </message>
     <message>
       <source>&amp;Create Anki note</source>
-      <translation>&amp;Стварыць нататку Anki</translation>
+      <translation type="unfinished">&amp;Create Anki note</translation>
     </message>
     <message>
       <source>&amp;Copy sound to clipboard</source>
@@ -309,56 +309,56 @@
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
-      <translation>Беларуская транслітарацыя з лацініцы ў кірыліцу (класічны правапіс)</translation>
+      <translation type="unfinished">Belarusian transliteration from latin to cyrillic (classic orthography)</translation>
     </message>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (school orthography)</source>
-      <translation>Беларуская транслітарацыя з лацініцы ў кірыліцу (акадэмічны правапіс)</translation>
+      <translation type="unfinished">Belarusian transliteration from latin to cyrillic (school orthography)</translation>
     </message>
     <message>
       <source>Belarusian transliteration (smoothes out the difference
 between classic and school orthography in cyrillic)</source>
-      <translation>Беларуская транслітарацыя (згладжвае розніцу
-паміж класічным і акадэмічным правапісам)</translation>
+      <translation type="unfinished">Belarusian transliteration (smoothes out the difference
+between classic and school orthography in cyrillic)</translation>
     </message>
   </context>
   <context>
     <name>ChineseConversion</name>
     <message>
       <source>Chinese Conversion</source>
-      <translation>Канверсія кітайскай мовы</translation>
+      <translation type="unfinished">Chinese Conversion</translation>
     </message>
     <message>
       <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Уключыць канверсію паміж знакамі спрошчанага і традыцыйнага кітайскага пісьма</translation>
+      <translation type="unfinished">Enable conversion between simplified and traditional Chinese characters</translation>
     </message>
     <message>
       <source>Chinese Con&amp;version</source>
-      <translation>Канверсія &amp;кітайскай мовы</translation>
+      <translation type="unfinished">Chinese Con&amp;version</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Уключыць канверсію са знакаў спрошчанага кітайскага пісьма ў знакі традыцыйнага пісьма (тайванскі варыянт)</translation>
+      <translation type="unfinished">Enable conversion from simplified characters to traditional (Taiwan variant) characters</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Уключыць канверсію са знакаў спрошчанага кітайскага пісьма ў знакі традыцыйнага пісьма (ганконгскі варыянт)</translation>
+      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong variant) characters</translation>
     </message>
     <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Уключыць канверсію са знакаў традыцыйнага кітайскага пісьма ў знакі спрошчанага пісьма</translation>
+      <translation type="unfinished">Enable conversion from traditional characters to simplified characters</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Канверсія знакаў спрошчанага кітайскага пісьма ў знакі традыцыйнага пісьма (тайванскі варыянт)</translation>
+      <translation type="unfinished">Simplified to traditional Chinese (Taiwan variant) conversion</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Канверсія знакаў спрошчанага кітайскага пісьма ў знакі традыцыйнага пісьма (ганконгскі варыянт)</translation>
+      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong variant) conversion</translation>
     </message>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
-      <translation>Канверсія знакаў традыцыйнага кітайскага пісьма ў знакі спрошчанага пісьма</translation>
+      <translation type="unfinished">Traditional to simplified Chinese conversion</translation>
     </message>
     <message>
       <source>Taiwan variant</source>
@@ -377,224 +377,224 @@ between classic and school orthography in cyrillic)</source>
     <name>CustomTranslit</name>
     <message>
       <source>custom transliteration</source>
-      <translation>адвольная транслітарацыя</translation>
+      <translation type="unfinished">custom transliteration</translation>
     </message>
   </context>
   <context>
     <name>DictGroupWidget</name>
     <message>
       <source>Form</source>
-      <translation>Форма</translation>
+      <translation type="unfinished">Form</translation>
     </message>
     <message>
       <source>Group icon:</source>
-      <translation>Значок групы:</translation>
+      <translation type="unfinished">Group icon:</translation>
     </message>
     <message>
       <source>Shortcut:</source>
-      <translation>Спалучэнне клавіш:</translation>
+      <translation type="unfinished">Shortcut:</translation>
     </message>
     <message>
       <source>Favorites folder:</source>
-      <translation>Каталог улюбёнага:</translation>
+      <translation type="unfinished">Favorites folder:</translation>
     </message>
     <message>
       <source>None</source>
-      <translation>Няма</translation>
+      <translation type="unfinished">None</translation>
     </message>
     <message>
       <source>From file...</source>
-      <translation>З файла...</translation>
+      <translation type="unfinished">From file...</translation>
     </message>
     <message>
       <source>Choose a file to use as group icon</source>
-      <translation>Абраць файл выявы, які будзе выкарыстоўвацца як значок групы</translation>
+      <translation type="unfinished">Choose a file to use as group icon</translation>
     </message>
     <message>
       <source>Images</source>
-      <translation>Выявы</translation>
+      <translation type="unfinished">Images</translation>
     </message>
     <message>
       <source>All files</source>
-      <translation>Усе файлы</translation>
+      <translation type="unfinished">All files</translation>
     </message>
     <message>
       <source>Error</source>
-      <translation>Памылка</translation>
+      <translation type="unfinished">Error</translation>
     </message>
     <message>
       <source>Can&apos;t read the specified image file.</source>
-      <translation>Не ўдалося прачытаць вызначаны файл выявы.</translation>
+      <translation type="unfinished">Can&apos;t read the specified image file.</translation>
     </message>
   </context>
   <context>
     <name>DictGroupsWidget</name>
     <message>
       <source>Dictionaries: </source>
-      <translation>Слоўнікі: </translation>
+      <translation type="unfinished">Dictionaries: </translation>
     </message>
     <message>
       <source>Confirmation</source>
-      <translation>Пацвярджэнне</translation>
+      <translation type="unfinished">Confirmation</translation>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on language pairs?</source>
-      <translation>Сапраўды хочаце стварыць набор групаў згодна з моўнымі парамі?</translation>
+      <translation type="unfinished">Are you sure you want to generate a set of groups based on language pairs?</translation>
     </message>
     <message>
       <source>Unassigned</source>
-      <translation>Не прызначана</translation>
+      <translation type="unfinished">Unassigned</translation>
     </message>
     <message>
       <source>Auto group by folder failed.</source>
-      <translation>Не ўдалося выканаць групаванне па каталогах.</translation>
+      <translation type="unfinished">Auto group by folder failed.</translation>
     </message>
     <message>
       <source>The parent directory of %1 can not be reached.</source>
-      <translation>Немагчыма дасягнуць бацькоўскага каталога %1.</translation>
+      <translation type="unfinished">The parent directory of %1 can not be reached.</translation>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
-      <translation>Сапраўды хочаце стварыць набор групаў на аснове каталогаў, якія змяшчаюцца?</translation>
+      <translation type="unfinished">Are you sure you want to generate a set of groups based on containing folders?</translation>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Сапраўды хочаце стварыць набор групаў на аснове metadata.toml?</translation>
+      <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.toml?</translation>
     </message>
     <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
-      <translation>Спалучыць групы паводле зыходнай мовы &quot;%1-&gt;&quot;</translation>
+      <translation type="unfinished">Combine groups by source language to &quot;%1-&gt;&quot;</translation>
     </message>
     <message>
       <source>Combine groups by target language to &quot;-&gt;%1&quot;</source>
-      <translation>Спалучыць групы паводле мэтавай мовы &quot;%1-&gt;&quot;</translation>
+      <translation type="unfinished">Combine groups by target language to &quot;-&gt;%1&quot;</translation>
     </message>
     <message>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
-      <translation>Стварыць групу двухбаковага перакладу &quot;%1-%2-%1&quot;</translation>
+      <translation type="unfinished">Make two-side translate group &quot;%1-%2-%1&quot;</translation>
     </message>
     <message>
       <source>Combine groups with &quot;%1&quot;</source>
-      <translation>Спалучыць групы з &quot;%1&quot;</translation>
+      <translation type="unfinished">Combine groups with &quot;%1&quot;</translation>
     </message>
     <message>
       <source>Remove group</source>
-      <translation>Выдаліць групу</translation>
+      <translation type="unfinished">Remove group</translation>
     </message>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
-      <translation>Сапраўды хочаце выдаліць групу &lt;b&gt;%1&lt;/b&gt;?</translation>
+      <translation type="unfinished">Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</translation>
     </message>
   </context>
   <context>
     <name>DictHeadwords</name>
     <message>
       <source>If checked any filter changes will we immediately applied to headwords list</source>
-      <translation>Калі адзначана, любыя змены фільтра будуць неадкладна ўжывацца да спіса загалоўных слоў</translation>
+      <translation type="unfinished">If checked any filter changes will we immediately applied to headwords list</translation>
     </message>
     <message>
       <source>Auto apply</source>
-      <translation>Аўтаматычнае ўжыванне</translation>
+      <translation type="unfinished">Auto apply</translation>
     </message>
     <message>
       <source>Press this button to apply filter to headwords list</source>
-      <translation>Націсніце гэтую кнопку, каб ужыць фільтр да спіса загалоўных слоў</translation>
+      <translation type="unfinished">Press this button to apply filter to headwords list</translation>
     </message>
     <message>
       <source>Apply</source>
-      <translation>Ужыць</translation>
+      <translation type="unfinished">Apply</translation>
     </message>
     <message>
       <source>Filter string (fixed string, wildcards or regular expression)</source>
-      <translation>Радок фільтра (фіксаваны радок, знакі падстаноўкі або рэгулярны выраз)</translation>
+      <translation type="unfinished">Filter string (fixed string, wildcards or regular expression)</translation>
     </message>
     <message>
       <source>Filter:</source>
-      <translation>Фільтр:</translation>
+      <translation type="unfinished">Filter:</translation>
     </message>
     <message>
       <source>Search mode</source>
-      <translation>Рэжым пошуку</translation>
+      <translation type="unfinished">Search mode</translation>
     </message>
     <message>
       <source>This element determines how filter string will be interpreted</source>
-      <translation>Гэты элемент вызначае тлумачэнне радка спіса</translation>
+      <translation type="unfinished">This element determines how filter string will be interpreted</translation>
     </message>
     <message>
       <source>If checked on the symbols case will be take in account when filtering</source>
-      <translation>Калі адзначаны рэгістр сімвалаў, ён будзе ўлічвацца пры фільтраванні</translation>
+      <translation type="unfinished">If checked on the symbols case will be take in account when filtering</translation>
     </message>
     <message>
       <source>Match case</source>
-      <translation>Зважаць на рэгістр</translation>
+      <translation type="unfinished">Match case</translation>
     </message>
     <message>
       <source>Exports headwords to file</source>
-      <translation>Экспартаванне загалоўных слоў у файл</translation>
+      <translation type="unfinished">Exports headwords to file</translation>
     </message>
     <message>
       <source>Export</source>
-      <translation>Экспартаванне</translation>
+      <translation type="unfinished">Export</translation>
     </message>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
-      <translation>Укажыце максімальную колькасць вернутых адфільтраваных загалоўных слоў.</translation>
+      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
     </message>
     <message>
       <source>Filter max results:</source>
-      <translation>Максімальныя вынікі фільтра:</translation>
+      <translation type="unfinished">Filter max results:</translation>
     </message>
     <message>
       <source>Help</source>
-      <translation>Даведка</translation>
+      <translation type="unfinished">Help</translation>
     </message>
     <message>
       <source>OK</source>
-      <translation>Добра</translation>
+      <translation type="unfinished">OK</translation>
     </message>
     <message>
       <source>Text</source>
-      <translation>Тэкст</translation>
+      <translation type="unfinished">Text</translation>
     </message>
     <message>
       <source>Wildcards</source>
-      <translation>Знакі падстаноўкі</translation>
+      <translation type="unfinished">Wildcards</translation>
     </message>
     <message>
       <source>Unique headwords total: %1.</source>
-      <translation>Усяго унікальных загалоўных слоў: %1.</translation>
+      <translation type="unfinished">Unique headwords total: %1.</translation>
     </message>
     <message>
       <source>Unique headwords total: %1, filtered(limited): %2</source>
-      <translation>Усяго унікальных загалоўных слоў: %1, адфільтравана (абмежавана): %2</translation>
+      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
     <message>
       <source>Save headwords to file</source>
-      <translation>Захаваць загалоўныя словы ў файл</translation>
+      <translation type="unfinished">Save headwords to file</translation>
     </message>
     <message>
       <source>Text files (*.txt);;All files (*.*)</source>
-      <translation>Тэкставыя файлы (*.txt);;Усе файлы (*.*)</translation>
+      <translation type="unfinished">Text files (*.txt);;All files (*.*)</translation>
     </message>
     <message>
       <source>Can not open exported file</source>
-      <translation>Немагчыма адкрыць экспартаваны файл</translation>
+      <translation type="unfinished">Can not open exported file</translation>
     </message>
     <message>
       <source>Export headwords...</source>
-      <translation>Экспартаваць загалоўныя словы...</translation>
+      <translation type="unfinished">Export headwords...</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation>Скасаваць</translation>
+      <translation type="unfinished">Cancel</translation>
     </message>
     <message>
       <source>Export process is interrupted</source>
-      <translation>Працэс экспартавання перарваны</translation>
+      <translation type="unfinished">Export process is interrupted</translation>
     </message>
     <message>
       <source>Export finished</source>
-      <translation>Экспартаванне завершана</translation>
+      <translation type="unfinished">Export finished</translation>
     </message>
     <message>
       <source>Regular Expression</source>
@@ -605,147 +605,147 @@ between classic and school orthography in cyrillic)</source>
     <name>DictInfo</name>
     <message>
       <source>Open index folder</source>
-      <translation>Адкрыць індэксны каталог</translation>
+      <translation type="unfinished">Open index folder</translation>
     </message>
     <message>
       <source>Total articles:</source>
-      <translation>Агулам артыкулаў:</translation>
+      <translation type="unfinished">Total articles:</translation>
     </message>
     <message>
       <source>Index filename:</source>
-      <translation>Назва індэкснага файла:</translation>
+      <translation type="unfinished">Index filename:</translation>
     </message>
     <message>
       <source>Total words:</source>
-      <translation>Агулам слоў:</translation>
+      <translation type="unfinished">Total words:</translation>
     </message>
     <message>
       <source>Open folder</source>
-      <translation>Адкрыць каталог</translation>
+      <translation type="unfinished">Open folder</translation>
     </message>
     <message>
       <source>Translates from:</source>
-      <translation>Зыходная мова:</translation>
+      <translation type="unfinished">Translates from:</translation>
     </message>
     <message>
       <source>Translates to:</source>
-      <translation>Мэтавая мова:</translation>
+      <translation type="unfinished">Translates to:</translation>
     </message>
     <message>
       <source>Files comprising this dictionary:</source>
-      <translation>Файлы, з якіх складаецца слоўнік:</translation>
+      <translation type="unfinished">Files comprising this dictionary:</translation>
     </message>
     <message>
       <source>Description:</source>
-      <translation>Апісанне:</translation>
+      <translation type="unfinished">Description:</translation>
     </message>
     <message>
       <source>Show all unique dictionary headwords</source>
-      <translation>Паказваць усе ўнікальны загалоўныя словы слоўніка</translation>
+      <translation type="unfinished">Show all unique dictionary headwords</translation>
     </message>
     <message>
       <source>Headwords</source>
-      <translation>Загалоўныя словы</translation>
+      <translation type="unfinished">Headwords</translation>
     </message>
     <message>
       <source>Full-text search enabled</source>
-      <translation>Паўнатэкставы пошук уключаны</translation>
+      <translation type="unfinished">Full-text search enabled</translation>
     </message>
     <message>
       <source>Full-text search disabled</source>
-      <translation>Паўнатэкставы пошук адключаны</translation>
+      <translation type="unfinished">Full-text search disabled</translation>
     </message>
   </context>
   <context>
     <name>DictListModel</name>
     <message>
       <source>%1 entries</source>
-      <translation>%1 запісаў</translation>
+      <translation type="unfinished">%1 entries</translation>
     </message>
   </context>
   <context>
     <name>DictServer</name>
     <message>
       <source>Url: </source>
-      <translation>Url-адрас: </translation>
+      <translation type="unfinished">Url: </translation>
     </message>
     <message>
       <source>Databases: </source>
-      <translation>Базы даных: </translation>
+      <translation type="unfinished">Databases: </translation>
     </message>
     <message>
       <source>Search strategies: </source>
-      <translation>Правілы пошуку: </translation>
+      <translation type="unfinished">Search strategies: </translation>
     </message>
     <message>
       <source>Server databases</source>
-      <translation>Базы даных сервера</translation>
+      <translation type="unfinished">Server databases</translation>
     </message>
   </context>
   <context>
     <name>DictServersModel</name>
     <message>
       <source>Enabled</source>
-      <translation>Уключана</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Назва</translation>
+      <translation type="unfinished">Name</translation>
     </message>
     <message>
       <source>Address</source>
-      <translation>Адрас</translation>
+      <translation type="unfinished">Address</translation>
     </message>
     <message>
       <source>Databases</source>
-      <translation>Базы даных</translation>
+      <translation type="unfinished">Databases</translation>
     </message>
     <message>
       <source>Strategies</source>
-      <translation>Правілы</translation>
+      <translation type="unfinished">Strategies</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>Значок</translation>
+      <translation type="unfinished">Icon</translation>
     </message>
     <message>
       <source>Comma-delimited list of databases
 (empty string or &quot;*&quot; matches all databases)</source>
-      <translation>Спіс базаў даных, падзеленых коскамі
-(пусты радок або &quot;*&quot; - базы даных)</translation>
+      <translation type="unfinished">Comma-delimited list of databases
+(empty string or &quot;*&quot; matches all databases)</translation>
     </message>
     <message>
       <source>Comma-delimited list of search strategies
 (empty string mean &quot;prefix&quot; strategy)</source>
-      <translation>Спіс правіл, падзеленых коскамі
-(пусты радок - правілы &quot;прэфікса&quot;)</translation>
+      <translation type="unfinished">Comma-delimited list of search strategies
+(empty string mean &quot;prefix&quot; strategy)</translation>
     </message>
   </context>
   <context>
     <name>DictionaryBar</name>
     <message>
       <source>&amp;Dictionary Bar</source>
-      <translation>&amp;Панэль слоўнікаў</translation>
+      <translation type="unfinished">&amp;Dictionary Bar</translation>
     </message>
     <message>
       <source>Extended menu with all dictionaries...</source>
-      <translation>Пашыранае меню з усімі слоўнікамі...</translation>
+      <translation type="unfinished">Extended menu with all dictionaries...</translation>
     </message>
     <message>
       <source>Edit this group</source>
-      <translation>Рэдагаваць гэтую групу</translation>
+      <translation type="unfinished">Edit this group</translation>
     </message>
     <message>
       <source>Dictionary info</source>
-      <translation>Інфармацыя пра слоўнік</translation>
+      <translation type="unfinished">Dictionary info</translation>
     </message>
     <message>
       <source>Dictionary headwords</source>
-      <translation>Загалоўныя словы слоўніка</translation>
+      <translation type="unfinished">Dictionary headwords</translation>
     </message>
     <message>
       <source>Open dictionary folder</source>
-      <translation>Адкрыць каталог слоўніка</translation>
+      <translation type="unfinished">Open dictionary folder</translation>
     </message>
     <message>
       <source>Restore selection</source>
@@ -780,1389 +780,1389 @@ between classic and school orthography in cyrillic)</source>
     <name>EditDictionaries</name>
     <message>
       <source>Dictionaries</source>
-      <translation>Слоўнікі</translation>
+      <translation type="unfinished">Dictionaries</translation>
     </message>
     <message>
       <source>&amp;Sources</source>
-      <translation>&amp;Крыніцы</translation>
+      <translation type="unfinished">&amp;Sources</translation>
     </message>
     <message>
       <source>&amp;Dictionaries</source>
-      <translation>&amp;Слоўнікі</translation>
+      <translation type="unfinished">&amp;Dictionaries</translation>
     </message>
     <message>
       <source>&amp;Groups</source>
-      <translation>&amp;Групы</translation>
+      <translation type="unfinished">&amp;Groups</translation>
     </message>
     <message>
       <source>Sources changed</source>
-      <translation>Крыніцы змяніліся</translation>
+      <translation type="unfinished">Sources changed</translation>
     </message>
     <message>
       <source>Some sources were changed. Would you like to accept the changes?</source>
-      <translation>Некаторыя крыніцы змяніліся. Хочаце ўхваліць змены?</translation>
+      <translation type="unfinished">Some sources were changed. Would you like to accept the changes?</translation>
     </message>
     <message>
       <source>Accept</source>
-      <translation>Ухваліць</translation>
+      <translation type="unfinished">Accept</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation>Скасаваць</translation>
+      <translation type="unfinished">Cancel</translation>
     </message>
   </context>
   <context>
     <name>Epwing::EpwingDictionary</name>
     <message>
       <source>Previous Page</source>
-      <translation>Папярэдняя старонка</translation>
+      <translation type="unfinished">Previous Page</translation>
     </message>
     <message>
       <source>Next Page</source>
-      <translation>Наступная старонка</translation>
+      <translation type="unfinished">Next Page</translation>
     </message>
   </context>
   <context>
     <name>ExternalViewer</name>
     <message>
       <source>the viewer program name is empty</source>
-      <translation>назва праграмы для прагляду пустая</translation>
+      <translation type="unfinished">the viewer program name is empty</translation>
     </message>
   </context>
   <context>
     <name>FTS::FullTextSearchDialog</name>
     <message>
       <source>Full-text search</source>
-      <translation>Паўнатэкставы пошук</translation>
+      <translation type="unfinished">Full-text search</translation>
     </message>
     <message>
       <source>Default</source>
-      <translation>Прадвызначана</translation>
+      <translation type="unfinished">Default</translation>
     </message>
     <message>
       <source>Wildcards</source>
-      <translation>Знакі падстаноўкі</translation>
+      <translation type="unfinished">Wildcards</translation>
     </message>
     <message>
       <source>Support xapian search syntax, such as AND OR +/- etc.</source>
-      <translation>Падтрымка сінтаксісу пошуку xapian. Напрыклад: І АБО +/- і г.д.</translation>
+      <translation type="unfinished">Support xapian search syntax, such as AND OR +/- etc.</translation>
     </message>
     <message>
       <source>Articles found: </source>
-      <translation>Знойдзена артыкулаў: </translation>
+      <translation type="unfinished">Articles found: </translation>
     </message>
     <message>
       <source>Now indexing: </source>
-      <translation>Зараз індэксуецца: </translation>
+      <translation type="unfinished">Now indexing: </translation>
     </message>
     <message>
       <source>None</source>
-      <translation>Няма</translation>
+      <translation type="unfinished">None</translation>
     </message>
     <message>
       <source>The querying word can not be empty.</source>
-      <translation>Слова запыту не можа быць пустым.</translation>
+      <translation type="unfinished">The querying word can not be empty.</translation>
     </message>
     <message>
       <source>No dictionaries for full-text search</source>
-      <translation>Няма слоўнікаў для паўнатэкставага пошуку</translation>
+      <translation type="unfinished">No dictionaries for full-text search</translation>
     </message>
   </context>
   <context>
     <name>FavoritesModel</name>
     <message>
       <source>Error in favorities file</source>
-      <translation>Памылка ў файле ўлюбёнага</translation>
+      <translation type="unfinished">Error in favorities file</translation>
     </message>
   </context>
   <context>
     <name>FavoritesPaneWidget</name>
     <message>
       <source>&amp;Delete Selected</source>
-      <translation>&amp;Выдаліць абранае</translation>
+      <translation type="unfinished">&amp;Delete Selected</translation>
     </message>
     <message>
       <source>Copy Selected</source>
-      <translation>Скапіяваць абранае</translation>
+      <translation type="unfinished">Copy Selected</translation>
     </message>
     <message>
       <source>Add folder</source>
-      <translation>Дадаць каталог</translation>
+      <translation type="unfinished">Add folder</translation>
     </message>
     <message>
       <source>Clear All</source>
-      <translation>Ачысціць усе</translation>
+      <translation type="unfinished">Clear All</translation>
     </message>
     <message>
       <source>Favorites:</source>
-      <translation>Улюбёнае:</translation>
+      <translation type="unfinished">Favorites:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
-      <translation>Усе абраныя элементы былі выдаленыя. Працягнуць?</translation>
+      <translation type="unfinished">All selected items will be deleted. Continue?</translation>
     </message>
     <message>
       <source>Clear All Items</source>
-      <translation>Ачысціць усе элементы</translation>
+      <translation type="unfinished">Clear All Items</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all items?</source>
-      <translation>Вы ўпэўнены, што хочаце выдаліць усе элементы?</translation>
+      <translation type="unfinished">Are you sure you want to clear all items?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
-      <translation>Make this folder the target of adding/removing words actions.</translation>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
     </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
     <message>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation>Не ўдалося разабраць файл XML: %1 — радок %2, слупок %3</translation>
+      <translation type="unfinished">XML parse error: %1 at %2,%3</translation>
     </message>
     <message>
       <source>Added %1</source>
-      <translation>Дададзена %1</translation>
+      <translation type="unfinished">Added %1</translation>
     </message>
     <message>
       <source>by</source>
-      <translation>ад</translation>
+      <translation type="unfinished">by</translation>
     </message>
     <message>
       <source>Male</source>
-      <translation>Мужчына</translation>
+      <translation type="unfinished">Male</translation>
     </message>
     <message>
       <source>Female</source>
-      <translation>Жанчына</translation>
+      <translation type="unfinished">Female</translation>
     </message>
     <message>
       <source>from</source>
-      <translation>з</translation>
+      <translation type="unfinished">from</translation>
     </message>
   </context>
   <context>
     <name>FtsSearchPanel</name>
     <message>
       <source>&amp;Previous</source>
-      <translation>&amp;Назад</translation>
+      <translation type="unfinished">&amp;Previous</translation>
     </message>
     <message>
       <source>&amp;Next</source>
-      <translation>&amp;Далей</translation>
+      <translation type="unfinished">&amp;Next</translation>
     </message>
   </context>
   <context>
     <name>FullTextSearchDialog</name>
     <message>
       <source>Search</source>
-      <translation>Пошук</translation>
+      <translation type="unfinished">Search</translation>
     </message>
     <message>
       <source>Mode:</source>
-      <translation>Рэжым:</translation>
+      <translation type="unfinished">Mode:</translation>
     </message>
     <message>
       <source>Articles found:</source>
-      <translation>Знойдзена артыкулаў:</translation>
+      <translation type="unfinished">Articles found:</translation>
     </message>
     <message>
       <source>Available dictionaries in group:</source>
-      <translation>Даступныя слоўнікі ў групе:</translation>
+      <translation type="unfinished">Available dictionaries in group:</translation>
     </message>
     <message>
       <source>Wait for indexing:</source>
-      <translation>Чакаюць індэксацыі:</translation>
+      <translation type="unfinished">Wait for indexing:</translation>
     </message>
     <message>
       <source>Total:</source>
-      <translation>Агулам:</translation>
+      <translation type="unfinished">Total:</translation>
     </message>
     <message>
       <source>Indexed:</source>
-      <translation>Індэксаваныя:</translation>
+      <translation type="unfinished">Indexed:</translation>
     </message>
     <message>
       <source>Now indexing: None</source>
-      <translation>Зараз індэксуюцца: няма</translation>
+      <translation type="unfinished">Now indexing: None</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation>Скасаваць</translation>
+      <translation type="unfinished">Cancel</translation>
     </message>
     <message>
       <source>Help</source>
-      <translation>Даведка</translation>
+      <translation type="unfinished">Help</translation>
     </message>
   </context>
   <context>
     <name>GermanTranslit</name>
     <message>
       <source>German Transliteration</source>
-      <translation>Нямецкая траслітарацыя</translation>
+      <translation type="unfinished">German Transliteration</translation>
     </message>
   </context>
   <context>
     <name>GreekTranslit</name>
     <message>
       <source>Greek Transliteration</source>
-      <translation>Грэчаская траслітарацыя</translation>
+      <translation type="unfinished">Greek Transliteration</translation>
     </message>
   </context>
   <context>
     <name>GroupComboBox</name>
     <message>
       <source>Choose a Group (Alt+G)</source>
-      <translation>Абраць групу (Alt+G)</translation>
+      <translation type="unfinished">Choose a Group (Alt+G)</translation>
     </message>
   </context>
   <context>
     <name>Groups</name>
     <message>
       <source>Dictionaries available:</source>
-      <translation>Даступныя слоўнікі:</translation>
+      <translation type="unfinished">Dictionaries available:</translation>
     </message>
     <message>
       <source>Add selected dictionaries to group (Ins)</source>
-      <translation>Дадаць абраныя слоўнікі ў групу (Ins)</translation>
+      <translation type="unfinished">Add selected dictionaries to group (Ins)</translation>
     </message>
     <message>
       <source>Remove selected dictionaries from group (Del)</source>
-      <translation>Выдаліць абраныя слоўнікі з групы (Del)</translation>
+      <translation type="unfinished">Remove selected dictionaries from group (Del)</translation>
     </message>
     <message>
       <source>Groups:</source>
-      <translation>Групы:</translation>
+      <translation type="unfinished">Groups:</translation>
     </message>
     <message>
       <source>Tab 2</source>
-      <translation>Укладка 2</translation>
+      <translation type="unfinished">Tab 2</translation>
     </message>
     <message>
       <source>Rename current dictionary group</source>
-      <translation>Змяніць назву бягучай групы</translation>
+      <translation type="unfinished">Rename current dictionary group</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
-      <translation>&amp;Змяніць назву групы</translation>
+      <translation type="unfinished">Re&amp;name group</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
-      <translation>Выдаліць усе групы слоўнікаў</translation>
+      <translation type="unfinished">Remove all dictionary groups</translation>
     </message>
     <message>
       <source>Remove all groups</source>
-      <translation>Выдаліць усе групы</translation>
+      <translation type="unfinished">Remove all groups</translation>
     </message>
     <message>
       <source>Create language-based groups</source>
-      <translation>Стварыць групы на падставе мовы</translation>
+      <translation type="unfinished">Create language-based groups</translation>
     </message>
     <message>
       <source>Group by Languages</source>
-      <translation>Групаваць па мове</translation>
+      <translation type="unfinished">Group by Languages</translation>
     </message>
     <message>
       <source>Create folder-based groups.</source>
-      <translation>Стварыць групы на аснове каталогаў.</translation>
+      <translation type="unfinished">Create folder-based groups.</translation>
     </message>
     <message>
       <source>Group by Folders</source>
-      <translation>Групаванне па каталогах</translation>
+      <translation type="unfinished">Group by Folders</translation>
     </message>
     <message>
       <source>Group by Metadata</source>
-      <translation>Групаванне па метаданых</translation>
+      <translation type="unfinished">Group by Metadata</translation>
     </message>
     <message>
       <source>Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</source>
-      <translation>Перацягвайце слоўнікі ў групы або з іх. Размяркоўвайце іх унутры групы з дапамогай мышы.</translation>
+      <translation type="unfinished">Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</translation>
     </message>
     <message>
       <source>Group tabs</source>
-      <translation>Групаванне ўкладак</translation>
+      <translation type="unfinished">Group tabs</translation>
     </message>
     <message>
       <source>Open groups list</source>
-      <translation>Адкрыць спіс групаў</translation>
+      <translation type="unfinished">Open groups list</translation>
     </message>
     <message>
       <source>Add group</source>
-      <translation>Дадаць групу</translation>
+      <translation type="unfinished">Add group</translation>
     </message>
     <message>
       <source>Give a name for the new group:</source>
-      <translation>Дайце назву новай групе:</translation>
+      <translation type="unfinished">Give a name for the new group:</translation>
     </message>
     <message>
       <source>Rename group</source>
-      <translation>Змяніць назву групы</translation>
+      <translation type="unfinished">Rename group</translation>
     </message>
     <message>
       <source>Give a new name for the group:</source>
-      <translation>Дайце новую назву групе:</translation>
+      <translation type="unfinished">Give a new name for the group:</translation>
     </message>
     <message>
       <source>Remove group</source>
-      <translation>Выдаліць групу</translation>
+      <translation type="unfinished">Remove group</translation>
     </message>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
-      <translation>Сапраўды хочаце выдаліць групу &lt;b&gt;%1&lt;/b&gt;?</translation>
+      <translation type="unfinished">Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</translation>
     </message>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
-      <translation>Сапраўды хочаце выдаліць усе групы?</translation>
+      <translation type="unfinished">Are you sure you want to remove all the groups?</translation>
     </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
     <message>
       <source>&amp;Delete Selected</source>
-      <translation>&amp;Выдаліць абранае</translation>
+      <translation type="unfinished">&amp;Delete Selected</translation>
     </message>
     <message>
       <source>Copy Selected</source>
-      <translation>Скапіяваць абранае</translation>
+      <translation type="unfinished">Copy Selected</translation>
     </message>
     <message>
       <source>History:</source>
-      <translation>Гісторыя:</translation>
+      <translation type="unfinished">History:</translation>
     </message>
     <message>
       <source>%1/%2</source>
-      <translation>%1/%2</translation>
+      <translation type="unfinished">%1/%2</translation>
     </message>
     <message>
       <source>History size: %1 entries out of maximum %2</source>
-      <translation>Памер гісторыі: %1 запісаў з %2 магчымых</translation>
+      <translation type="unfinished">History size: %1 entries out of maximum %2</translation>
     </message>
   </context>
   <context>
     <name>Hunspell</name>
     <message>
       <source>Spelling suggestions: </source>
-      <translation>Арфаграфічныя прапановы: </translation>
+      <translation type="unfinished">Spelling suggestions: </translation>
     </message>
     <message>
       <source>%1 Morphology</source>
-      <translation>Марфалогія %1</translation>
+      <translation type="unfinished">%1 Morphology</translation>
     </message>
   </context>
   <context>
     <name>HunspellDictsModel</name>
     <message>
       <source>Enabled</source>
-      <translation>Уключана</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Назва</translation>
+      <translation type="unfinished">Name</translation>
     </message>
   </context>
   <context>
     <name>Initializing</name>
     <message>
       <source>GoldenDict-ng - Initializing</source>
-      <translation>GoldenDict-ng - ініцыялізацыя</translation>
+      <translation type="unfinished">GoldenDict-ng - Initializing</translation>
     </message>
     <message>
       <source>Indexing: </source>
-      <translation>Індэксаванне: </translation>
+      <translation type="unfinished">Indexing: </translation>
     </message>
     <message>
       <source>Dictionary Name</source>
-      <translation>Назва слоўніка</translation>
+      <translation type="unfinished">Dictionary Name</translation>
     </message>
     <message>
       <source>Please wait...</source>
-      <translation>Калі ласка, пачакайце...</translation>
+      <translation type="unfinished">Please wait...</translation>
     </message>
     <message>
       <source>Indexing...</source>
-      <translation>Індэксаванне...</translation>
+      <translation type="unfinished">Indexing...</translation>
     </message>
     <message>
       <source>Loading...</source>
-      <translation>Загрузка...</translation>
+      <translation type="unfinished">Loading...</translation>
     </message>
   </context>
   <context>
     <name>Language</name>
     <message>
       <source>Afar</source>
-      <translation>Афар</translation>
+      <translation type="unfinished">Afar</translation>
     </message>
     <message>
       <source>Abkhazian</source>
-      <translation>Абхазская</translation>
+      <translation type="unfinished">Abkhazian</translation>
     </message>
     <message>
       <source>Avestan</source>
-      <translation>Авестыйская</translation>
+      <translation type="unfinished">Avestan</translation>
     </message>
     <message>
       <source>Afrikaans</source>
-      <translation>Афрыканс</translation>
+      <translation type="unfinished">Afrikaans</translation>
     </message>
     <message>
       <source>Akan</source>
-      <translation>Акан</translation>
+      <translation type="unfinished">Akan</translation>
     </message>
     <message>
       <source>Amharic</source>
-      <translation>Амхарская</translation>
+      <translation type="unfinished">Amharic</translation>
     </message>
     <message>
       <source>Aragonese</source>
-      <translation>Арагонская</translation>
+      <translation type="unfinished">Aragonese</translation>
     </message>
     <message>
       <source>Arabic</source>
-      <translation>Арабская</translation>
+      <translation type="unfinished">Arabic</translation>
     </message>
     <message>
       <source>Assamese</source>
-      <translation>Асамская</translation>
+      <translation type="unfinished">Assamese</translation>
     </message>
     <message>
       <source>Avaric</source>
-      <translation>Аварская</translation>
+      <translation type="unfinished">Avaric</translation>
     </message>
     <message>
       <source>Aymara</source>
-      <translation>Аймара</translation>
+      <translation type="unfinished">Aymara</translation>
     </message>
     <message>
       <source>Azerbaijani</source>
-      <translation>Азербайджанская</translation>
+      <translation type="unfinished">Azerbaijani</translation>
     </message>
     <message>
       <source>Bashkir</source>
-      <translation>Башкірская</translation>
+      <translation type="unfinished">Bashkir</translation>
     </message>
     <message>
       <source>Belarusian</source>
-      <translation>Беларуская</translation>
+      <translation type="unfinished">Belarusian</translation>
     </message>
     <message>
       <source>Bulgarian</source>
-      <translation>Балгарская</translation>
+      <translation type="unfinished">Bulgarian</translation>
     </message>
     <message>
       <source>Bihari</source>
-      <translation>Біхары</translation>
+      <translation type="unfinished">Bihari</translation>
     </message>
     <message>
       <source>Bislama</source>
-      <translation>Біслама</translation>
+      <translation type="unfinished">Bislama</translation>
     </message>
     <message>
       <source>Bambara</source>
-      <translation>Бамбара</translation>
+      <translation type="unfinished">Bambara</translation>
     </message>
     <message>
       <source>Bengali</source>
-      <translation>Бенгальская</translation>
+      <translation type="unfinished">Bengali</translation>
     </message>
     <message>
       <source>Tibetan</source>
-      <translation>Тыбецкая</translation>
+      <translation type="unfinished">Tibetan</translation>
     </message>
     <message>
       <source>Breton</source>
-      <translation>Брэтонская</translation>
+      <translation type="unfinished">Breton</translation>
     </message>
     <message>
       <source>Bosnian</source>
-      <translation>Баснійская</translation>
+      <translation type="unfinished">Bosnian</translation>
     </message>
     <message>
       <source>Catalan</source>
-      <translation>Каталанская</translation>
+      <translation type="unfinished">Catalan</translation>
     </message>
     <message>
       <source>Chechen</source>
-      <translation>Чачэнская</translation>
+      <translation type="unfinished">Chechen</translation>
     </message>
     <message>
       <source>Chamorro</source>
-      <translation>Чамора</translation>
+      <translation type="unfinished">Chamorro</translation>
     </message>
     <message>
       <source>Corsican</source>
-      <translation>Карсіканская</translation>
+      <translation type="unfinished">Corsican</translation>
     </message>
     <message>
       <source>Cree</source>
-      <translation>Кры</translation>
+      <translation type="unfinished">Cree</translation>
     </message>
     <message>
       <source>Czech</source>
-      <translation>Чэшская</translation>
+      <translation type="unfinished">Czech</translation>
     </message>
     <message>
       <source>Church Slavic</source>
-      <translation>Царкоўнаславянская</translation>
+      <translation type="unfinished">Church Slavic</translation>
     </message>
     <message>
       <source>Chuvash</source>
-      <translation>Чувашская</translation>
+      <translation type="unfinished">Chuvash</translation>
     </message>
     <message>
       <source>Welsh</source>
-      <translation>Валійская</translation>
+      <translation type="unfinished">Welsh</translation>
     </message>
     <message>
       <source>Danish</source>
-      <translation>Дацкая</translation>
+      <translation type="unfinished">Danish</translation>
     </message>
     <message>
       <source>German</source>
-      <translation>Нямецкая</translation>
+      <translation type="unfinished">German</translation>
     </message>
     <message>
       <source>Divehi</source>
-      <translation>Дывехі</translation>
+      <translation type="unfinished">Divehi</translation>
     </message>
     <message>
       <source>Dzongkha</source>
-      <translation>Дзонг-кэ</translation>
+      <translation type="unfinished">Dzongkha</translation>
     </message>
     <message>
       <source>Ewe</source>
-      <translation>Эве</translation>
+      <translation type="unfinished">Ewe</translation>
     </message>
     <message>
       <source>Greek</source>
-      <translation>Грэчаская</translation>
+      <translation type="unfinished">Greek</translation>
     </message>
     <message>
       <source>English</source>
-      <translation>Англійская</translation>
+      <translation type="unfinished">English</translation>
     </message>
     <message>
       <source>Esperanto</source>
-      <translation>Эсперанта</translation>
+      <translation type="unfinished">Esperanto</translation>
     </message>
     <message>
       <source>Spanish</source>
-      <translation>Іспанская</translation>
+      <translation type="unfinished">Spanish</translation>
     </message>
     <message>
       <source>Estonian</source>
-      <translation>Эстонская</translation>
+      <translation type="unfinished">Estonian</translation>
     </message>
     <message>
       <source>Basque</source>
-      <translation>Басконская</translation>
+      <translation type="unfinished">Basque</translation>
     </message>
     <message>
       <source>Persian</source>
-      <translation>Персідская</translation>
+      <translation type="unfinished">Persian</translation>
     </message>
     <message>
       <source>Fulah</source>
-      <translation>Фула</translation>
+      <translation type="unfinished">Fulah</translation>
     </message>
     <message>
       <source>Finnish</source>
-      <translation>Фінская</translation>
+      <translation type="unfinished">Finnish</translation>
     </message>
     <message>
       <source>Fijian</source>
-      <translation>Фіджыйская</translation>
+      <translation type="unfinished">Fijian</translation>
     </message>
     <message>
       <source>Faroese</source>
-      <translation>Фарэрская</translation>
+      <translation type="unfinished">Faroese</translation>
     </message>
     <message>
       <source>French</source>
-      <translation>Французская</translation>
+      <translation type="unfinished">French</translation>
     </message>
     <message>
       <source>Western Frisian</source>
-      <translation>Заходнефрызская</translation>
+      <translation type="unfinished">Western Frisian</translation>
     </message>
     <message>
       <source>Irish</source>
-      <translation>Ірландская</translation>
+      <translation type="unfinished">Irish</translation>
     </message>
     <message>
       <source>Scottish Gaelic</source>
-      <translation>Гаэльская (Шатландыя)</translation>
+      <translation type="unfinished">Scottish Gaelic</translation>
     </message>
     <message>
       <source>Galician</source>
-      <translation>Галісійская</translation>
+      <translation type="unfinished">Galician</translation>
     </message>
     <message>
       <source>Guarani</source>
-      <translation>Гуарані</translation>
+      <translation type="unfinished">Guarani</translation>
     </message>
     <message>
       <source>Gujarati</source>
-      <translation>Гуджараці</translation>
+      <translation type="unfinished">Gujarati</translation>
     </message>
     <message>
       <source>Manx</source>
-      <translation>Мэнская</translation>
+      <translation type="unfinished">Manx</translation>
     </message>
     <message>
       <source>Hausa</source>
-      <translation>Хаўса</translation>
+      <translation type="unfinished">Hausa</translation>
     </message>
     <message>
       <source>Hebrew</source>
-      <translation>Іўрыт</translation>
+      <translation type="unfinished">Hebrew</translation>
     </message>
     <message>
       <source>Hindi</source>
-      <translation>Хіндзі</translation>
+      <translation type="unfinished">Hindi</translation>
     </message>
     <message>
       <source>Hiri Motu</source>
-      <translation>Хіры-моту</translation>
+      <translation type="unfinished">Hiri Motu</translation>
     </message>
     <message>
       <source>Croatian</source>
-      <translation>Харвацкая</translation>
+      <translation type="unfinished">Croatian</translation>
     </message>
     <message>
       <source>Haitian</source>
-      <translation>Гаіцянская</translation>
+      <translation type="unfinished">Haitian</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation>Венгерская</translation>
+      <translation type="unfinished">Hungarian</translation>
     </message>
     <message>
       <source>Armenian</source>
-      <translation>Армянская</translation>
+      <translation type="unfinished">Armenian</translation>
     </message>
     <message>
       <source>Herero</source>
-      <translation>Герэра</translation>
+      <translation type="unfinished">Herero</translation>
     </message>
     <message>
       <source>Interlingua</source>
-      <translation>Інтэрлінгва</translation>
+      <translation type="unfinished">Interlingua</translation>
     </message>
     <message>
       <source>Indonesian</source>
-      <translation>Інданезійская</translation>
+      <translation type="unfinished">Indonesian</translation>
     </message>
     <message>
       <source>Interlingue</source>
-      <translation>Інтэрлінгвэ</translation>
+      <translation type="unfinished">Interlingue</translation>
     </message>
     <message>
       <source>Igbo</source>
-      <translation>Ігба</translation>
+      <translation type="unfinished">Igbo</translation>
     </message>
     <message>
       <source>Sichuan Yi</source>
-      <translation>Носу</translation>
+      <translation type="unfinished">Sichuan Yi</translation>
     </message>
     <message>
       <source>Inupiaq</source>
-      <translation>Інупяк</translation>
+      <translation type="unfinished">Inupiaq</translation>
     </message>
     <message>
       <source>Ido</source>
-      <translation>Іда</translation>
+      <translation type="unfinished">Ido</translation>
     </message>
     <message>
       <source>Icelandic</source>
-      <translation>Ісландская</translation>
+      <translation type="unfinished">Icelandic</translation>
     </message>
     <message>
       <source>Italian</source>
-      <translation>Італьянская</translation>
+      <translation type="unfinished">Italian</translation>
     </message>
     <message>
       <source>Inuktitut</source>
-      <translation>Інукцітут</translation>
+      <translation type="unfinished">Inuktitut</translation>
     </message>
     <message>
       <source>Japanese</source>
-      <translation>Японская</translation>
+      <translation type="unfinished">Japanese</translation>
     </message>
     <message>
       <source>Javanese</source>
-      <translation>Яванская</translation>
+      <translation type="unfinished">Javanese</translation>
     </message>
     <message>
       <source>Georgian</source>
-      <translation>Грузінская</translation>
+      <translation type="unfinished">Georgian</translation>
     </message>
     <message>
       <source>Kongo</source>
-      <translation>Конга</translation>
+      <translation type="unfinished">Kongo</translation>
     </message>
     <message>
       <source>Kikuyu</source>
-      <translation>Кікую</translation>
+      <translation type="unfinished">Kikuyu</translation>
     </message>
     <message>
       <source>Kwanyama</source>
-      <translation>Кваньяма</translation>
+      <translation type="unfinished">Kwanyama</translation>
     </message>
     <message>
       <source>Kazakh</source>
-      <translation>Казахская</translation>
+      <translation type="unfinished">Kazakh</translation>
     </message>
     <message>
       <source>Kalaallisut</source>
-      <translation>Грэнландская</translation>
+      <translation type="unfinished">Kalaallisut</translation>
     </message>
     <message>
       <source>Khmer</source>
-      <translation>Кхмерская</translation>
+      <translation type="unfinished">Khmer</translation>
     </message>
     <message>
       <source>Kannada</source>
-      <translation>Канада</translation>
+      <translation type="unfinished">Kannada</translation>
     </message>
     <message>
       <source>Korean</source>
-      <translation>Карэйская</translation>
+      <translation type="unfinished">Korean</translation>
     </message>
     <message>
       <source>Kanuri</source>
-      <translation>Кануры</translation>
+      <translation type="unfinished">Kanuri</translation>
     </message>
     <message>
       <source>Kashmiri</source>
-      <translation>Кашміры</translation>
+      <translation type="unfinished">Kashmiri</translation>
     </message>
     <message>
       <source>Kurdish</source>
-      <translation>Курдская</translation>
+      <translation type="unfinished">Kurdish</translation>
     </message>
     <message>
       <source>Komi</source>
-      <translation>Комі</translation>
+      <translation type="unfinished">Komi</translation>
     </message>
     <message>
       <source>Cornish</source>
-      <translation>Корнская</translation>
+      <translation type="unfinished">Cornish</translation>
     </message>
     <message>
       <source>Kirghiz</source>
-      <translation>Кіргізская</translation>
+      <translation type="unfinished">Kirghiz</translation>
     </message>
     <message>
       <source>Latin</source>
-      <translation>Лацінская</translation>
+      <translation type="unfinished">Latin</translation>
     </message>
     <message>
       <source>Luxembourgish</source>
-      <translation>Люксембургская</translation>
+      <translation type="unfinished">Luxembourgish</translation>
     </message>
     <message>
       <source>Ganda</source>
-      <translation>Ганда</translation>
+      <translation type="unfinished">Ganda</translation>
     </message>
     <message>
       <source>Limburgish</source>
-      <translation>Лімбургская</translation>
+      <translation type="unfinished">Limburgish</translation>
     </message>
     <message>
       <source>Lingala</source>
-      <translation>Лінгала</translation>
+      <translation type="unfinished">Lingala</translation>
     </message>
     <message>
       <source>Lao</source>
-      <translation>Лаоская</translation>
+      <translation type="unfinished">Lao</translation>
     </message>
     <message>
       <source>Lithuanian</source>
-      <translation>Летувіская</translation>
+      <translation type="unfinished">Lithuanian</translation>
     </message>
     <message>
       <source>Luba-Katanga</source>
-      <translation>Луба-катанга</translation>
+      <translation type="unfinished">Luba-Katanga</translation>
     </message>
     <message>
       <source>Latvian</source>
-      <translation>Латышская</translation>
+      <translation type="unfinished">Latvian</translation>
     </message>
     <message>
       <source>Malagasy</source>
-      <translation>Малагасійская</translation>
+      <translation type="unfinished">Malagasy</translation>
     </message>
     <message>
       <source>Marshallese</source>
-      <translation>Маршальская</translation>
+      <translation type="unfinished">Marshallese</translation>
     </message>
     <message>
       <source>Maori</source>
-      <translation>Маары</translation>
+      <translation type="unfinished">Maori</translation>
     </message>
     <message>
       <source>Macedonian</source>
-      <translation>Македонская</translation>
+      <translation type="unfinished">Macedonian</translation>
     </message>
     <message>
       <source>Malayalam</source>
-      <translation>Малаялам</translation>
+      <translation type="unfinished">Malayalam</translation>
     </message>
     <message>
       <source>Mongolian</source>
-      <translation>Мангольская</translation>
+      <translation type="unfinished">Mongolian</translation>
     </message>
     <message>
       <source>Marathi</source>
-      <translation>Маратхі</translation>
+      <translation type="unfinished">Marathi</translation>
     </message>
     <message>
       <source>Malay</source>
-      <translation>Малайская</translation>
+      <translation type="unfinished">Malay</translation>
     </message>
     <message>
       <source>Maltese</source>
-      <translation>Мальтыйская</translation>
+      <translation type="unfinished">Maltese</translation>
     </message>
     <message>
       <source>Burmese</source>
-      <translation>Бірманская</translation>
+      <translation type="unfinished">Burmese</translation>
     </message>
     <message>
       <source>Nauru</source>
-      <translation>Науру</translation>
+      <translation type="unfinished">Nauru</translation>
     </message>
     <message>
       <source>Norwegian Bokmal</source>
-      <translation>Нарвежская (Букмал)</translation>
+      <translation type="unfinished">Norwegian Bokmal</translation>
     </message>
     <message>
       <source>North Ndebele</source>
-      <translation>Паўночная ндэбеле</translation>
+      <translation type="unfinished">North Ndebele</translation>
     </message>
     <message>
       <source>Nepali</source>
-      <translation>Непальская</translation>
+      <translation type="unfinished">Nepali</translation>
     </message>
     <message>
       <source>Ndonga</source>
-      <translation>Ндонга</translation>
+      <translation type="unfinished">Ndonga</translation>
     </message>
     <message>
       <source>Dutch</source>
-      <translation>Галандская</translation>
+      <translation type="unfinished">Dutch</translation>
     </message>
     <message>
       <source>Norwegian Nynorsk</source>
-      <translation>Нарвежская (нюнорск)</translation>
+      <translation type="unfinished">Norwegian Nynorsk</translation>
     </message>
     <message>
       <source>Norwegian</source>
-      <translation>Нарвежская</translation>
+      <translation type="unfinished">Norwegian</translation>
     </message>
     <message>
       <source>South Ndebele</source>
-      <translation>Паўднёвая ндэбеле</translation>
+      <translation type="unfinished">South Ndebele</translation>
     </message>
     <message>
       <source>Navajo</source>
-      <translation>Наваха</translation>
+      <translation type="unfinished">Navajo</translation>
     </message>
     <message>
       <source>Chichewa</source>
-      <translation>Ньянджа</translation>
+      <translation type="unfinished">Chichewa</translation>
     </message>
     <message>
       <source>Occitan</source>
-      <translation>Аксітанская</translation>
+      <translation type="unfinished">Occitan</translation>
     </message>
     <message>
       <source>Ojibwa</source>
-      <translation>Аджыбва</translation>
+      <translation type="unfinished">Ojibwa</translation>
     </message>
     <message>
       <source>Oromo</source>
-      <translation>Арома</translation>
+      <translation type="unfinished">Oromo</translation>
     </message>
     <message>
       <source>Oriya</source>
-      <translation>Орыя</translation>
+      <translation type="unfinished">Oriya</translation>
     </message>
     <message>
       <source>Ossetian</source>
-      <translation>Асецінская</translation>
+      <translation type="unfinished">Ossetian</translation>
     </message>
     <message>
       <source>Panjabi</source>
-      <translation>Панджабі</translation>
+      <translation type="unfinished">Panjabi</translation>
     </message>
     <message>
       <source>Pali</source>
-      <translation>Палі</translation>
+      <translation type="unfinished">Pali</translation>
     </message>
     <message>
       <source>Polish</source>
-      <translation>Польская</translation>
+      <translation type="unfinished">Polish</translation>
     </message>
     <message>
       <source>Pashto</source>
-      <translation>Пушту</translation>
+      <translation type="unfinished">Pashto</translation>
     </message>
     <message>
       <source>Portuguese</source>
-      <translation>Партугальская</translation>
+      <translation type="unfinished">Portuguese</translation>
     </message>
     <message>
       <source>Quechua</source>
-      <translation>Кечуа</translation>
+      <translation type="unfinished">Quechua</translation>
     </message>
     <message>
       <source>Raeto-Romance</source>
-      <translation>Рэтараманская</translation>
+      <translation type="unfinished">Raeto-Romance</translation>
     </message>
     <message>
       <source>Kirundi</source>
-      <translation>Кірундзі</translation>
+      <translation type="unfinished">Kirundi</translation>
     </message>
     <message>
       <source>Romanian</source>
-      <translation>Румынская</translation>
+      <translation type="unfinished">Romanian</translation>
     </message>
     <message>
       <source>Russian</source>
-      <translation>Расійская</translation>
+      <translation type="unfinished">Russian</translation>
     </message>
     <message>
       <source>Kinyarwanda</source>
-      <translation>Кіньяруанда</translation>
+      <translation type="unfinished">Kinyarwanda</translation>
     </message>
     <message>
       <source>Sanskrit</source>
-      <translation>Санскрыт</translation>
+      <translation type="unfinished">Sanskrit</translation>
     </message>
     <message>
       <source>Sardinian</source>
-      <translation>Сардзінская</translation>
+      <translation type="unfinished">Sardinian</translation>
     </message>
     <message>
       <source>Sindhi</source>
-      <translation>Сіндхі</translation>
+      <translation type="unfinished">Sindhi</translation>
     </message>
     <message>
       <source>Northern Sami</source>
-      <translation>Паўночнасаамская</translation>
+      <translation type="unfinished">Northern Sami</translation>
     </message>
     <message>
       <source>Sango</source>
-      <translation>Санга</translation>
+      <translation type="unfinished">Sango</translation>
     </message>
     <message>
       <source>Serbo-Croatian</source>
-      <translation>Сербскахарвацкая</translation>
+      <translation type="unfinished">Serbo-Croatian</translation>
     </message>
     <message>
       <source>Sinhala</source>
-      <translation>Сінгальская</translation>
+      <translation type="unfinished">Sinhala</translation>
     </message>
     <message>
       <source>Slovak</source>
-      <translation>Славацкая</translation>
+      <translation type="unfinished">Slovak</translation>
     </message>
     <message>
       <source>Slovenian</source>
-      <translation>Славенская</translation>
+      <translation type="unfinished">Slovenian</translation>
     </message>
     <message>
       <source>Samoan</source>
-      <translation>Самоанская</translation>
+      <translation type="unfinished">Samoan</translation>
     </message>
     <message>
       <source>Shona</source>
-      <translation>Шона</translation>
+      <translation type="unfinished">Shona</translation>
     </message>
     <message>
       <source>Somali</source>
-      <translation>Самалійская</translation>
+      <translation type="unfinished">Somali</translation>
     </message>
     <message>
       <source>Albanian</source>
-      <translation>Албанская</translation>
+      <translation type="unfinished">Albanian</translation>
     </message>
     <message>
       <source>Serbian</source>
-      <translation>Сербская</translation>
+      <translation type="unfinished">Serbian</translation>
     </message>
     <message>
       <source>Swati</source>
-      <translation>Свазі</translation>
+      <translation type="unfinished">Swati</translation>
     </message>
     <message>
       <source>Southern Sotho</source>
-      <translation>Паўднёвая сота</translation>
+      <translation type="unfinished">Southern Sotho</translation>
     </message>
     <message>
       <source>Sundanese</source>
-      <translation>Сунданская</translation>
+      <translation type="unfinished">Sundanese</translation>
     </message>
     <message>
       <source>Swedish</source>
-      <translation>Шведская</translation>
+      <translation type="unfinished">Swedish</translation>
     </message>
     <message>
       <source>Swahili</source>
-      <translation>Суахілі</translation>
+      <translation type="unfinished">Swahili</translation>
     </message>
     <message>
       <source>Tamil</source>
-      <translation>Тамільская</translation>
+      <translation type="unfinished">Tamil</translation>
     </message>
     <message>
       <source>Telugu</source>
-      <translation>Тэлугу</translation>
+      <translation type="unfinished">Telugu</translation>
     </message>
     <message>
       <source>Tajik</source>
-      <translation>Таджыкская</translation>
+      <translation type="unfinished">Tajik</translation>
     </message>
     <message>
       <source>Thai</source>
-      <translation>Тайская</translation>
+      <translation type="unfinished">Thai</translation>
     </message>
     <message>
       <source>Tigrinya</source>
-      <translation>Тыгрынья</translation>
+      <translation type="unfinished">Tigrinya</translation>
     </message>
     <message>
       <source>Turkmen</source>
-      <translation>Туркменская</translation>
+      <translation type="unfinished">Turkmen</translation>
     </message>
     <message>
       <source>Tagalog</source>
-      <translation>Тагальская</translation>
+      <translation type="unfinished">Tagalog</translation>
     </message>
     <message>
       <source>Tswana</source>
-      <translation>Тсвана</translation>
+      <translation type="unfinished">Tswana</translation>
     </message>
     <message>
       <source>Tonga</source>
-      <translation>Тонга</translation>
+      <translation type="unfinished">Tonga</translation>
     </message>
     <message>
       <source>Turkish</source>
-      <translation>Турэцкая</translation>
+      <translation type="unfinished">Turkish</translation>
     </message>
     <message>
       <source>Tsonga</source>
-      <translation>Тсонга</translation>
+      <translation type="unfinished">Tsonga</translation>
     </message>
     <message>
       <source>Tatar</source>
-      <translation>Татарская</translation>
+      <translation type="unfinished">Tatar</translation>
     </message>
     <message>
       <source>Twi</source>
-      <translation>Тві</translation>
+      <translation type="unfinished">Twi</translation>
     </message>
     <message>
       <source>Tahitian</source>
-      <translation>Таіцянская</translation>
+      <translation type="unfinished">Tahitian</translation>
     </message>
     <message>
       <source>Uighur</source>
-      <translation>Уйгурская</translation>
+      <translation type="unfinished">Uighur</translation>
     </message>
     <message>
       <source>Ukrainian</source>
-      <translation>Украінская</translation>
+      <translation type="unfinished">Ukrainian</translation>
     </message>
     <message>
       <source>Urdu</source>
-      <translation>Урду</translation>
+      <translation type="unfinished">Urdu</translation>
     </message>
     <message>
       <source>Uzbek</source>
-      <translation>Узбекская</translation>
+      <translation type="unfinished">Uzbek</translation>
     </message>
     <message>
       <source>Venda</source>
-      <translation>Венда</translation>
+      <translation type="unfinished">Venda</translation>
     </message>
     <message>
       <source>Vietnamese</source>
-      <translation>В'етнамская</translation>
+      <translation type="unfinished">Vietnamese</translation>
     </message>
     <message>
       <source>Volapuk</source>
-      <translation>Валапюк</translation>
+      <translation type="unfinished">Volapuk</translation>
     </message>
     <message>
       <source>Walloon</source>
-      <translation>Валонская</translation>
+      <translation type="unfinished">Walloon</translation>
     </message>
     <message>
       <source>Wolof</source>
-      <translation>Валоф</translation>
+      <translation type="unfinished">Wolof</translation>
     </message>
     <message>
       <source>Xhosa</source>
-      <translation>Коса</translation>
+      <translation type="unfinished">Xhosa</translation>
     </message>
     <message>
       <source>Yiddish</source>
-      <translation>Ідыш</translation>
+      <translation type="unfinished">Yiddish</translation>
     </message>
     <message>
       <source>Yoruba</source>
-      <translation>Ёруба</translation>
+      <translation type="unfinished">Yoruba</translation>
     </message>
     <message>
       <source>Zhuang</source>
-      <translation>Чжуанская</translation>
+      <translation type="unfinished">Zhuang</translation>
     </message>
     <message>
       <source>Chinese</source>
-      <translation>Кітайская</translation>
+      <translation type="unfinished">Chinese</translation>
     </message>
     <message>
       <source>Zulu</source>
-      <translation>Зулу</translation>
+      <translation type="unfinished">Zulu</translation>
     </message>
     <message>
       <source>Lojban</source>
-      <translation>Ложбан</translation>
+      <translation type="unfinished">Lojban</translation>
     </message>
     <message>
       <source>Traditional Chinese</source>
-      <translation>Кітайская традыцыйная</translation>
+      <translation type="unfinished">Traditional Chinese</translation>
     </message>
     <message>
       <source>Simplified Chinese</source>
-      <translation>Кітайская спрошчаная</translation>
+      <translation type="unfinished">Simplified Chinese</translation>
     </message>
     <message>
       <source>Other</source>
-      <translation>Іншая</translation>
+      <translation type="unfinished">Other</translation>
     </message>
     <message>
       <source>Other Simplified Chinese dialects</source>
-      <translation>Іншыя дыялекты спрошчанай кітайскай</translation>
+      <translation type="unfinished">Other Simplified Chinese dialects</translation>
     </message>
     <message>
       <source>Other Traditional Chinese dialects</source>
-      <translation>Іншыя дыялекты традыцыйнай кітайскай</translation>
+      <translation type="unfinished">Other Traditional Chinese dialects</translation>
     </message>
     <message>
       <source>Other Eastern-European languages</source>
-      <translation>Іншыя ўсходнееўрапейскія мовы</translation>
+      <translation type="unfinished">Other Eastern-European languages</translation>
     </message>
     <message>
       <source>Other Western-European languages</source>
-      <translation>Іншыя заходнееўрапейскія мовы</translation>
+      <translation type="unfinished">Other Western-European languages</translation>
     </message>
     <message>
       <source>Other Russian languages</source>
-      <translation>Іншыя расійскія мовы</translation>
+      <translation type="unfinished">Other Russian languages</translation>
     </message>
     <message>
       <source>Other Japanese languages</source>
-      <translation>Іншыя японскія мовы</translation>
+      <translation type="unfinished">Other Japanese languages</translation>
     </message>
     <message>
       <source>Other Baltic languages</source>
-      <translation>Іншыя балцкія мовы</translation>
+      <translation type="unfinished">Other Baltic languages</translation>
     </message>
     <message>
       <source>Other Greek languages</source>
-      <translation>Іншыя грэчаскія мовы</translation>
+      <translation type="unfinished">Other Greek languages</translation>
     </message>
     <message>
       <source>Other Korean dialects</source>
-      <translation>Іншыя карэйскія дыялекты</translation>
+      <translation type="unfinished">Other Korean dialects</translation>
     </message>
     <message>
       <source>Other Turkish dialects</source>
-      <translation>Іншыя турэцкія дыялекты</translation>
+      <translation type="unfinished">Other Turkish dialects</translation>
     </message>
     <message>
       <source>Other Thai dialects</source>
-      <translation>Іншыя тайскія дыялекты</translation>
+      <translation type="unfinished">Other Thai dialects</translation>
     </message>
     <message>
       <source>Tamazight</source>
-      <translation>Тамазігхт</translation>
+      <translation type="unfinished">Tamazight</translation>
     </message>
   </context>
   <context>
     <name>Language::Db</name>
     <message>
       <source>French</source>
-      <translation>Французская</translation>
+      <translation type="unfinished">French</translation>
     </message>
     <message>
       <source>Spanish</source>
-      <translation>Іспанская</translation>
+      <translation type="unfinished">Spanish</translation>
     </message>
     <message>
       <source>Belarusian</source>
-      <translation>Беларуская</translation>
+      <translation type="unfinished">Belarusian</translation>
     </message>
     <message>
       <source>Bulgarian</source>
-      <translation>Балгарская</translation>
+      <translation type="unfinished">Bulgarian</translation>
     </message>
     <message>
       <source>Czech</source>
-      <translation>Чэшская</translation>
+      <translation type="unfinished">Czech</translation>
     </message>
     <message>
       <source>German</source>
-      <translation>Нямецкая</translation>
+      <translation type="unfinished">German</translation>
     </message>
     <message>
       <source>Greek</source>
-      <translation>Грэчаская</translation>
+      <translation type="unfinished">Greek</translation>
     </message>
     <message>
       <source>Finnish</source>
-      <translation>Фінская</translation>
+      <translation type="unfinished">Finnish</translation>
     </message>
     <message>
       <source>Italian</source>
-      <translation>Італьянская</translation>
+      <translation type="unfinished">Italian</translation>
     </message>
     <message>
       <source>Japanese</source>
-      <translation>Японская</translation>
+      <translation type="unfinished">Japanese</translation>
     </message>
     <message>
       <source>Korean</source>
-      <translation>Карэйская</translation>
+      <translation type="unfinished">Korean</translation>
     </message>
     <message>
       <source>Lithuanian</source>
-      <translation>Летувіская</translation>
+      <translation type="unfinished">Lithuanian</translation>
     </message>
     <message>
       <source>Macedonian</source>
-      <translation>Македонская</translation>
+      <translation type="unfinished">Macedonian</translation>
     </message>
     <message>
       <source>Dutch</source>
-      <translation>Галандская</translation>
+      <translation type="unfinished">Dutch</translation>
     </message>
     <message>
       <source>Polish</source>
-      <translation>Польская</translation>
+      <translation type="unfinished">Polish</translation>
     </message>
     <message>
       <source>Portuguese</source>
-      <translation>Партугальская</translation>
+      <translation type="unfinished">Portuguese</translation>
     </message>
     <message>
       <source>Russian</source>
-      <translation>Расійская</translation>
+      <translation type="unfinished">Russian</translation>
     </message>
     <message>
       <source>Slovak</source>
-      <translation>Славацкая</translation>
+      <translation type="unfinished">Slovak</translation>
     </message>
     <message>
       <source>Albanian</source>
-      <translation>Албанская</translation>
+      <translation type="unfinished">Albanian</translation>
     </message>
     <message>
       <source>Swedish</source>
-      <translation>Шведская</translation>
+      <translation type="unfinished">Swedish</translation>
     </message>
     <message>
       <source>Turkish</source>
-      <translation>Турэцкая</translation>
+      <translation type="unfinished">Turkish</translation>
     </message>
     <message>
       <source>Ukrainian</source>
-      <translation>Украінская</translation>
+      <translation type="unfinished">Ukrainian</translation>
     </message>
     <message>
       <source>Chinese Simplified</source>
-      <translation>Кітайская спрошчаная</translation>
+      <translation type="unfinished">Chinese Simplified</translation>
     </message>
     <message>
       <source>Chinese Traditional</source>
-      <translation>Кітайская традыцыйная</translation>
+      <translation type="unfinished">Chinese Traditional</translation>
     </message>
     <message>
       <source>Vietnamese</source>
-      <translation>В'етнамская</translation>
+      <translation type="unfinished">Vietnamese</translation>
     </message>
     <message>
       <source>Portuguese, Brazilian</source>
-      <translation>Партугальская, Бразілія</translation>
+      <translation type="unfinished">Portuguese, Brazilian</translation>
     </message>
     <message>
       <source>Persian</source>
-      <translation>Персідская</translation>
+      <translation type="unfinished">Persian</translation>
     </message>
     <message>
       <source>Spanish, Argentina</source>
-      <translation>Іспанская, Аргентына</translation>
+      <translation type="unfinished">Spanish, Argentina</translation>
     </message>
     <message>
       <source>Hindi</source>
-      <translation>Хіндзі</translation>
+      <translation type="unfinished">Hindi</translation>
     </message>
     <message>
       <source>Esperanto</source>
-      <translation>Эсперанта</translation>
+      <translation type="unfinished">Esperanto</translation>
     </message>
     <message>
       <source>German, Switzerland</source>
-      <translation>Нямецкая, Швейцарыя</translation>
+      <translation type="unfinished">German, Switzerland</translation>
     </message>
     <message>
       <source>Spanish, Bolivia</source>
-      <translation>Іспанская, Балівія</translation>
+      <translation type="unfinished">Spanish, Bolivia</translation>
     </message>
     <message>
       <source>Tajik</source>
-      <translation>Таджыкская</translation>
+      <translation type="unfinished">Tajik</translation>
     </message>
     <message>
       <source>Quechua</source>
-      <translation>Кечуа</translation>
+      <translation type="unfinished">Quechua</translation>
     </message>
     <message>
       <source>Aymara</source>
-      <translation>Аймара</translation>
+      <translation type="unfinished">Aymara</translation>
     </message>
     <message>
       <source>Turkmen</source>
-      <translation>Туркменская</translation>
+      <translation type="unfinished">Turkmen</translation>
     </message>
     <message>
       <source>Interlingue</source>
-      <translation>Інтэрлінгвэ</translation>
+      <translation type="unfinished">Interlingue</translation>
     </message>
     <message>
       <source>Lojban</source>
-      <translation>Ложбан</translation>
+      <translation type="unfinished">Lojban</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation>Венгерская</translation>
+      <translation type="unfinished">Hungarian</translation>
     </message>
     <message>
       <source>English</source>
-      <translation>Англійская</translation>
+      <translation type="unfinished">English</translation>
     </message>
     <message>
       <source>Arabic</source>
-      <translation>Арабская</translation>
+      <translation type="unfinished">Arabic</translation>
     </message>
     <message>
       <source>Serbian</source>
-      <translation>Сербская</translation>
+      <translation type="unfinished">Serbian</translation>
     </message>
     <message>
       <source>Kabyle</source>
@@ -2173,451 +2173,451 @@ between classic and school orthography in cyrillic)</source>
     <name>LoadDictionaries</name>
     <message>
       <source>Error loading dictionaries</source>
-      <translation>Не ўдалося загрузіць слоўнікі</translation>
+      <translation type="unfinished">Error loading dictionaries</translation>
     </message>
   </context>
   <context>
     <name>Main</name>
     <message>
       <source>Error in configuration file. Continue with default settings?</source>
-      <translation>Памылка ў файле канфігурацыі. Працягнуць з прадвызначанымі наладамі?</translation>
+      <translation type="unfinished">Error in configuration file. Continue with default settings?</translation>
     </message>
   </context>
   <context>
     <name>MainWindow</name>
     <message>
       <source>&amp;File</source>
-      <translation>&amp;Файл</translation>
+      <translation type="unfinished">&amp;File</translation>
     </message>
     <message>
       <source>&amp;Edit</source>
-      <translation>&amp;Рэдагаванне</translation>
+      <translation type="unfinished">&amp;Edit</translation>
     </message>
     <message>
       <source>&amp;Help</source>
-      <translation>&amp;Даведка</translation>
+      <translation type="unfinished">&amp;Help</translation>
     </message>
     <message>
       <source>&amp;View</source>
-      <translation>&amp;Выгляд</translation>
+      <translation type="unfinished">&amp;View</translation>
     </message>
     <message>
       <source>&amp;Zoom</source>
-      <translation>&amp;Маштабаванне</translation>
+      <translation type="unfinished">&amp;Zoom</translation>
     </message>
     <message>
       <source>H&amp;istory</source>
-      <translation>&amp;Гісторыя</translation>
+      <translation type="unfinished">H&amp;istory</translation>
     </message>
     <message>
       <source>Search</source>
-      <translation>Пошук</translation>
+      <translation type="unfinished">Search</translation>
     </message>
     <message>
       <source>Favo&amp;rites</source>
-      <translation>Улю&amp;бёнае</translation>
+      <translation type="unfinished">Favo&amp;rites</translation>
     </message>
     <message>
       <source>&amp;Search Pane</source>
-      <translation>Панэль по&amp;шуку</translation>
+      <translation type="unfinished">&amp;Search Pane</translation>
     </message>
     <message>
       <source>&amp;Results Navigation Pane</source>
-      <translation>Панэль &amp;навігацыі ў выніках</translation>
+      <translation type="unfinished">&amp;Results Navigation Pane</translation>
     </message>
     <message>
       <source>Favor&amp;ites Pane</source>
-      <translation>Па&amp;нэль улюбёнага</translation>
+      <translation type="unfinished">Favor&amp;ites Pane</translation>
     </message>
     <message>
       <source>&amp;History Pane</source>
-      <translation>Панэль &amp;гісторыі</translation>
+      <translation type="unfinished">&amp;History Pane</translation>
     </message>
     <message>
       <source>&amp;Dictionaries...</source>
-      <translation>&amp;Слоўнікі...</translation>
+      <translation type="unfinished">&amp;Dictionaries...</translation>
     </message>
     <message>
       <source>&amp;Preferences...</source>
-      <translation>&amp;Налады...</translation>
+      <translation type="unfinished">&amp;Preferences...</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
-      <translation>&amp;Хатняя старонка</translation>
+      <translation type="unfinished">&amp;Homepage</translation>
     </message>
     <message>
       <source>&amp;About</source>
-      <translation>&amp;Пра праграму</translation>
+      <translation type="unfinished">&amp;About</translation>
     </message>
     <message>
       <source>About GoldenDict-ng</source>
-      <translation>Пра GoldenDict-ng</translation>
+      <translation type="unfinished">About GoldenDict-ng</translation>
     </message>
     <message>
       <source>&amp;Quit</source>
-      <translation>&amp;Выйсці</translation>
+      <translation type="unfinished">&amp;Quit</translation>
     </message>
     <message>
       <source>Quit from application</source>
-      <translation>Выйсці з праграмы</translation>
+      <translation type="unfinished">Quit from application</translation>
     </message>
     <message>
       <source>&amp;Forum</source>
-      <translation>&amp;Форум</translation>
+      <translation type="unfinished">&amp;Forum</translation>
     </message>
     <message>
       <source>&amp;Close To Tray</source>
-      <translation>Згарнуць на &amp;прастору апавяшчэнняў</translation>
+      <translation type="unfinished">&amp;Close To Tray</translation>
     </message>
     <message>
       <source>Minimizes the window to tray</source>
-      <translation>Згортванне акна на прастору апавяшчэнняў</translation>
+      <translation type="unfinished">Minimizes the window to tray</translation>
     </message>
     <message>
       <source>&amp;Save Article</source>
-      <translation>&amp;Захаваць артыкул</translation>
+      <translation type="unfinished">&amp;Save Article</translation>
     </message>
     <message>
       <source>Save Article</source>
-      <translation>Захаваць артыкул</translation>
+      <translation type="unfinished">Save Article</translation>
     </message>
     <message>
       <source>&amp;Print</source>
-      <translation>&amp;Друкаванне</translation>
+      <translation type="unfinished">&amp;Print</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
-      <translation>Налады &amp;старонкі</translation>
+      <translation type="unfinished">Page Set&amp;up</translation>
     </message>
     <message>
       <source>Print Pre&amp;view</source>
-      <translation>Папярэдні п&amp;рагляд друку</translation>
+      <translation type="unfinished">Print Pre&amp;view</translation>
     </message>
     <message>
       <source>&amp;Rescan Files</source>
-      <translation>Пера&amp;сканаваць файлы</translation>
+      <translation type="unfinished">&amp;Rescan Files</translation>
     </message>
     <message>
       <source>&amp;Clear</source>
-      <translation>&amp;Ачысціць</translation>
+      <translation type="unfinished">&amp;Clear</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
-      <translation>&amp;Новая ўкладка</translation>
+      <translation type="unfinished">&amp;New Tab</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
-      <translation>Каталог &amp;канфігурацыі</translation>
+      <translation type="unfinished">&amp;Configuration Folder</translation>
     </message>
     <message>
       <source>&amp;Show</source>
-      <translation>&amp;Паказваць</translation>
+      <translation type="unfinished">&amp;Show</translation>
     </message>
     <message>
       <source>Ctrl+H</source>
-      <translation>Ctrl+H</translation>
+      <translation type="unfinished">Ctrl+H</translation>
     </message>
     <message>
       <source>&amp;Export</source>
-      <translation>&amp;Экспартаваць</translation>
+      <translation type="unfinished">&amp;Export</translation>
     </message>
     <message>
       <source>&amp;Import</source>
-      <translation>&amp;Імпартаваць</translation>
+      <translation type="unfinished">&amp;Import</translation>
     </message>
     <message>
       <source>&amp;Always on Top</source>
-      <translation>&amp;Заўсёды наверсе</translation>
+      <translation type="unfinished">&amp;Always on Top</translation>
     </message>
     <message>
       <source>Always on Top</source>
-      <translation>Заўсёды наверсе</translation>
+      <translation type="unfinished">Always on Top</translation>
     </message>
     <message>
       <source>Ctrl+O</source>
-      <translation>Ctrl+O</translation>
+      <translation type="unfinished">Ctrl+O</translation>
     </message>
     <message>
       <source>Menu Button</source>
-      <translation>Кнопка меню</translation>
+      <translation type="unfinished">Menu Button</translation>
     </message>
     <message>
       <source>Search in page</source>
-      <translation>Пошук на старонцы</translation>
+      <translation type="unfinished">Search in page</translation>
     </message>
     <message>
       <source>Full-text search</source>
-      <translation>Паўнатэкставы пошук</translation>
+      <translation type="unfinished">Full-text search</translation>
     </message>
     <message>
       <source>GoldenDict reference</source>
-      <translation>Спасылка на GoldenDict-ng</translation>
+      <translation type="unfinished">GoldenDict reference</translation>
     </message>
     <message>
       <source>Export</source>
-      <translation>Экспартаваць</translation>
+      <translation type="unfinished">Export</translation>
     </message>
     <message>
       <source>Import</source>
-      <translation>Імпартаваць</translation>
+      <translation type="unfinished">Import</translation>
     </message>
     <message>
       <source>Add</source>
-      <translation>Дадаць</translation>
+      <translation type="unfinished">Add</translation>
     </message>
     <message>
       <source>Add current tab to Favorites</source>
-      <translation>Дадаць бягучую ўкладку ва ўлюбёнае</translation>
+      <translation type="unfinished">Add current tab to Favorites</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
-      <translation>Паказваць &amp;назвы на панэлі слоўнікаў</translation>
+      <translation type="unfinished">Show Names in Dictionary &amp;Bar</translation>
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>Паказваць &amp;маленькія значкі на панэлі інструментаў</translation>
+      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>Паказваць &amp;вялікія значкі на панэлі інструментаў</translation>
+      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>Паказваць &amp;звычайныя значкі на панэлі інструментаў</translation>
+      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
-      <translation>Панэль &amp;меню</translation>
+      <translation type="unfinished">&amp;Menubar</translation>
     </message>
     <message>
       <source>&amp;Navigation</source>
-      <translation>&amp;Навігацыя</translation>
+      <translation type="unfinished">&amp;Navigation</translation>
     </message>
     <message>
       <source>Back</source>
-      <translation>Назад</translation>
+      <translation type="unfinished">Back</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Далей</translation>
+      <translation type="unfinished">Forward</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation>Пераключыць маніторынг буфера абмену</translation>
+      <translation type="unfinished">Toggle clipboard monitoring</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Вымавіць слова (Alt+S)</translation>
+      <translation type="unfinished">Pronounce Word (Alt+S)</translation>
     </message>
     <message>
       <source>Zoom In</source>
-      <translation>Павялічыць</translation>
+      <translation type="unfinished">Zoom In</translation>
     </message>
     <message>
       <source>Zoom Out</source>
-      <translation>Паменшыць</translation>
+      <translation type="unfinished">Zoom Out</translation>
     </message>
     <message>
       <source>Normal Size</source>
-      <translation>Звычайны памер</translation>
+      <translation type="unfinished">Normal Size</translation>
     </message>
     <message>
       <source>Found in Dictionaries:</source>
-      <translation>Знойдзена ў наступных слоўніках:</translation>
+      <translation type="unfinished">Found in Dictionaries:</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
-      <translation>Паказаць &amp;галоўнае акно</translation>
+      <translation type="unfinished">Show &amp;Main Window</translation>
     </message>
     <message>
       <source>Opened tabs</source>
-      <translation>Адкрытыя ўкладкі</translation>
+      <translation type="unfinished">Opened tabs</translation>
     </message>
     <message>
       <source>Close current tab</source>
-      <translation>Закрыць бягучую ўкладку</translation>
+      <translation type="unfinished">Close current tab</translation>
     </message>
     <message>
       <source>Close all tabs</source>
-      <translation>Закрыць усе ўкладкі</translation>
+      <translation type="unfinished">Close all tabs</translation>
     </message>
     <message>
       <source>Close all tabs except current</source>
-      <translation>Закрыць усе ўкладкі апроч бягучай</translation>
+      <translation type="unfinished">Close all tabs except current</translation>
     </message>
     <message>
       <source>Add all tabs to Favorites</source>
-      <translation>Дадаць усе ўкладкі ва ўлюбёнае</translation>
+      <translation type="unfinished">Add all tabs to Favorites</translation>
     </message>
     <message>
       <source>New Tab</source>
-      <translation>Новая ўкладка</translation>
+      <translation type="unfinished">New Tab</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
-      <translation>Accessibility API не ўключаны</translation>
+      <translation type="unfinished">Accessibility API is not enabled</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation>УВАГА: %1</translation>
+      <translation type="unfinished">WARNING: %1</translation>
     </message>
     <message>
       <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
 To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</source>
-      <translation>Радок для пошуку ў слоўніках. Дазволены знакі падстаноўкі &apos;*&apos;, &apos;?&apos; і наборы сімвалаў &apos;[...]&apos;.
-Каб знайсці &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; выкарыстоўвайце адпаведна &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos;</translation>
+      <translation type="unfinished">String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
+To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</translation>
     </message>
     <message>
       <source>%1 dictionaries, %2 articles, %3 words</source>
-      <translation>%1 слоўнікаў, %2 артыкулаў, %3 слоў</translation>
+      <translation type="unfinished">%1 dictionaries, %2 articles, %3 words</translation>
     </message>
     <message>
       <source>All</source>
-      <translation>Усе</translation>
+      <translation type="unfinished">All</translation>
     </message>
     <message>
       <source>Open Tabs List</source>
-      <translation>Адкрыць спіс укладак</translation>
+      <translation type="unfinished">Open Tabs List</translation>
     </message>
     <message>
       <source>(untitled)</source>
-      <translation>(без назвы)</translation>
+      <translation type="unfinished">(untitled)</translation>
     </message>
     <message>
       <source>Remove current tab from Favorites</source>
-      <translation>Выдаліць бягучую ўкладку з улюбёнага</translation>
+      <translation type="unfinished">Remove current tab from Favorites</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
-      <translation>Не ўдалося ініцыялізаваць механізм назірання за спалучэннямі клавіш.&lt;br&gt;Пераканайцеся, што ў XServer уключана пашырэнне RECORD.</translation>
+      <translation type="unfinished">Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</translation>
     </message>
     <message>
       <source>New Release Available</source>
-      <translation>Дастуны новы выпуск</translation>
+      <translation type="unfinished">New Release Available</translation>
     </message>
     <message>
       <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
-      <translation>GoldenDict-ng версіі &lt;b&gt;%1&lt;/b&gt; даступны для спампоўвання.&lt;br&gt;Пстрыкніце па &lt;b&gt;Спампаваць&lt;/b&gt;, каб перайсці на старонку спампоўвання.</translation>
+      <translation type="unfinished">Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</translation>
     </message>
     <message>
       <source>Download</source>
-      <translation>Спампаваць</translation>
+      <translation type="unfinished">Download</translation>
     </message>
     <message>
       <source>Skip This Release</source>
-      <translation>Прапусціць гэты выпуск</translation>
+      <translation type="unfinished">Skip This Release</translation>
     </message>
     <message>
       <source>You have chosen to hide a menubar. Use %1 to show it back.</source>
-      <translation>Панэль меню схаваная. Скарыстайцеся %1, каб вярнуць яе назад.</translation>
+      <translation type="unfinished">You have chosen to hide a menubar. Use %1 to show it back.</translation>
     </message>
     <message>
       <source>Ctrl+M</source>
-      <translation>Ctrl+M</translation>
+      <translation type="unfinished">Ctrl+M</translation>
     </message>
     <message>
       <source>Page Setup</source>
-      <translation>Налады старонкі</translation>
+      <translation type="unfinished">Page Setup</translation>
     </message>
     <message>
       <source>No printer is available. Please install one first.</source>
-      <translation>Няма даступных прынтараў. Спачатку наладзьце хоць адзін.</translation>
+      <translation type="unfinished">No printer is available. Please install one first.</translation>
     </message>
     <message>
       <source>Print Article</source>
-      <translation>Надрукаваць артыкул</translation>
+      <translation type="unfinished">Print Article</translation>
     </message>
     <message>
       <source>The main window is set to be always on top.</source>
-      <translation>Галоўнае акно цяпер заўсёды будзе знаходзіцца вышэй за іншыя.</translation>
+      <translation type="unfinished">The main window is set to be always on top.</translation>
     </message>
     <message>
       <source>&amp;Hide</source>
-      <translation>С&amp;хаваць</translation>
+      <translation type="unfinished">&amp;Hide</translation>
     </message>
     <message>
       <source>Export history to file</source>
-      <translation>Экспартаваць гісторыю ў файл</translation>
+      <translation type="unfinished">Export history to file</translation>
     </message>
     <message>
       <source>Text files (*.txt);;All files (*.*)</source>
-      <translation>Тэкставыя файлы (*.txt);;Усе файлы (*.*)</translation>
+      <translation type="unfinished">Text files (*.txt);;All files (*.*)</translation>
     </message>
     <message>
       <source>Export error: </source>
-      <translation>Не ўдалося экспартаваць: </translation>
+      <translation type="unfinished">Export error: </translation>
     </message>
     <message>
       <source>History export complete</source>
-      <translation>Экспартаванне гісторыі скончылася</translation>
+      <translation type="unfinished">History export complete</translation>
     </message>
     <message>
       <source>Import history from file</source>
-      <translation>Імпартаваць гісторыю з файла</translation>
+      <translation type="unfinished">Import history from file</translation>
     </message>
     <message>
       <source>Import error: </source>
-      <translation>Не ўдалося імпартаваць: </translation>
+      <translation type="unfinished">Import error: </translation>
     </message>
     <message>
       <source>Import error: invalid data in file</source>
-      <translation>Не ўдалося імпартаваць: хібныя даныя ў файле</translation>
+      <translation type="unfinished">Import error: invalid data in file</translation>
     </message>
     <message>
       <source>History import complete</source>
-      <translation>Імпартаванне гісторыі скончылася</translation>
+      <translation type="unfinished">History import complete</translation>
     </message>
     <message>
       <source>Export Favorites to file</source>
-      <translation>Экспартаваць улюбёнае ў файл</translation>
+      <translation type="unfinished">Export Favorites to file</translation>
     </message>
     <message>
       <source>Text files (*.txt);;XML files (*.xml)</source>
-      <translation>Тэкставыя файлы (*.txt);;файлы XML (*.xml)</translation>
+      <translation type="unfinished">Text files (*.txt);;XML files (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
-      <translation>Экспартаванне ўлюбёнага скончылася</translation>
+      <translation type="unfinished">Favorites export complete</translation>
     </message>
     <message>
       <source>Import Favorites from file</source>
-      <translation>Імпартаваць улюбёнае з файла</translation>
+      <translation type="unfinished">Import Favorites from file</translation>
     </message>
     <message>
       <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
-      <translation>Тэкставыя і XML-файлы (*.txt *.xml);;Усе файлы (*.*)</translation>
+      <translation type="unfinished">Text and XML files (*.txt *.xml);;All files (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
-      <translation>Не ўдалося разабраць даныя</translation>
+      <translation type="unfinished">Data parsing error</translation>
     </message>
     <message>
       <source>Favorites import complete</source>
-      <translation>Імпартаванне ўлюбёнага скончылася</translation>
+      <translation type="unfinished">Favorites import complete</translation>
     </message>
     <message>
       <source>Dictionary info</source>
-      <translation>Інфармацыя пра слоўнік</translation>
+      <translation type="unfinished">Dictionary info</translation>
     </message>
     <message>
       <source>Dictionary headwords</source>
-      <translation>Загалоўныя словы слоўніка</translation>
+      <translation type="unfinished">Dictionary headwords</translation>
     </message>
     <message>
       <source>Open dictionary folder</source>
-      <translation>Адкрыць каталог слоўніка</translation>
+      <translation type="unfinished">Open dictionary folder</translation>
     </message>
     <message>
       <source>Now indexing for full-text search: </source>
-      <translation>Зараз індэксуюцца для паўнатэкставага пошуку: </translation>
+      <translation type="unfinished">Now indexing for full-text search: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
-      <translation>Выдаліць загалоўнае слова &quot;%1&quot; з улюбёнана?</translation>
+      <translation type="unfinished">Remove headword &quot;%1&quot; from Favorites?</translation>
     </message>
     <message>
       <source>Show</source>
-      <translation>Паказваць</translation>
+      <translation type="unfinished">Show</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -2628,122 +2628,122 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <name>Mdx::MdxArticleRequest</name>
     <message>
       <source>Dictionary file was tampered or corrupted</source>
-      <translation>Файл слоўніка быў падроблены або пашкоджаны</translation>
+      <translation type="unfinished">Dictionary file was tampered or corrupted</translation>
     </message>
     <message>
       <source>Failed loading article from %1, reason: %2</source>
-      <translation>Не ўдалося загрузіць артыкул з %1, прычына: %2</translation>
+      <translation type="unfinished">Failed loading article from %1, reason: %2</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation>Не ўдалося разабраць файл XML: %1 у %2, %3</translation>
+      <translation type="unfinished">XML parse error: %1 at %2,%3</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation>Не ўдалося разабраць файл XML: %1 у %2, %3</translation>
+      <translation type="unfinished">XML parse error: %1 at %2,%3</translation>
     </message>
   </context>
   <context>
     <name>MediaWikisModel</name>
     <message>
       <source>Enabled</source>
-      <translation>Уключана</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Назва</translation>
+      <translation type="unfinished">Name</translation>
     </message>
     <message>
       <source>Address</source>
-      <translation>Адрас</translation>
+      <translation type="unfinished">Address</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>Значок</translation>
+      <translation type="unfinished">Icon</translation>
     </message>
     <message>
       <source>Language Variant</source>
-      <translation>Варыянт мовы</translation>
+      <translation type="unfinished">Language Variant</translation>
     </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>
     <message>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation>Не ўдалося адкрыць аўдыябуфер для чытання.</translation>
+      <translation type="unfinished">Couldn&apos;t open audio buffer for reading.</translation>
     </message>
   </context>
   <context>
     <name>OrderAndProps</name>
     <message>
       <source>Form</source>
-      <translation>Форма</translation>
+      <translation type="unfinished">Form</translation>
     </message>
     <message>
       <source>Dictionary order:</source>
-      <translation>Парадак слоўнікаў:</translation>
+      <translation type="unfinished">Dictionary order:</translation>
     </message>
     <message>
       <source>Inactive (disabled) dictionaries:</source>
-      <translation>Неактыўныя (адключаныя) слоўнікі:</translation>
+      <translation type="unfinished">Inactive (disabled) dictionaries:</translation>
     </message>
     <message>
       <source>Dictionary information</source>
-      <translation>Інфармацыя пра слоўнік</translation>
+      <translation type="unfinished">Dictionary information</translation>
     </message>
     <message>
       <source>Name:</source>
-      <translation>Назва:</translation>
+      <translation type="unfinished">Name:</translation>
     </message>
     <message>
       <source>Total articles:</source>
-      <translation>Агулам артыкулаў:</translation>
+      <translation type="unfinished">Total articles:</translation>
     </message>
     <message>
       <source>Total words:</source>
-      <translation>Агулам слоў:</translation>
+      <translation type="unfinished">Total words:</translation>
     </message>
     <message>
       <source>Translates from:</source>
-      <translation>Зыходная мова:</translation>
+      <translation type="unfinished">Translates from:</translation>
     </message>
     <message>
       <source>Translates to:</source>
-      <translation>Мэтавая мова:</translation>
+      <translation type="unfinished">Translates to:</translation>
     </message>
     <message>
       <source>Description:</source>
-      <translation>Апісанне:</translation>
+      <translation type="unfinished">Description:</translation>
     </message>
     <message>
       <source>Files comprising this dictionary:</source>
-      <translation>Файлы, з якіх складаецца слоўнік:</translation>
+      <translation type="unfinished">Files comprising this dictionary:</translation>
     </message>
     <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
-      <translation>Упарадкуйце слоўнікі, перацягваючы іх мышшу. Каб адключыць слоўнік, перацягніце яго ў групу неактыўных слоўнікаў.</translation>
+      <translation type="unfinished">Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</translation>
     </message>
     <message>
       <source>Dictionary headwords</source>
-      <translation>Загалоўныя словы слоўніка</translation>
+      <translation type="unfinished">Dictionary headwords</translation>
     </message>
     <message>
       <source>Sort by name</source>
-      <translation>Сартаваць па назве</translation>
+      <translation type="unfinished">Sort by name</translation>
     </message>
     <message>
       <source>Sort by languages</source>
-      <translation>Сартаваць па мовах</translation>
+      <translation type="unfinished">Sort by languages</translation>
     </message>
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
-      <translation>Актыўныя слоўнікі: %1, адключаныя: %2</translation>
+      <translation type="unfinished">Dictionaries active: %1, inactive: %2</translation>
     </message>
     <message>
       <source>Change display name</source>
@@ -2758,203 +2758,208 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <name>PathsModel</name>
     <message>
       <source>Path</source>
-      <translation>Шлях</translation>
+      <translation type="unfinished">Path</translation>
     </message>
     <message>
       <source>Recursive</source>
-      <translation>Рэкурсіўна</translation>
+      <translation type="unfinished">Recursive</translation>
     </message>
   </context>
   <context>
     <name>Preferences</name>
     <message>
       <source>Preferences</source>
-      <translation>Налады</translation>
+      <translation type="unfinished">Preferences</translation>
     </message>
     <message>
       <source>&amp;Interface</source>
-      <translation>&amp;Інтэрфейс</translation>
+      <translation type="unfinished">&amp;Interface</translation>
     </message>
     <message>
       <source>Double-click translates the word clicked</source>
-      <translation>Перакладаць абранае слова падвойным пстрыканнем</translation>
+      <translation type="unfinished">Double-click translates the word clicked</translation>
     </message>
     <message>
       <source>Tabbed browsing</source>
-      <translation>Кіраванне ўкладкамі</translation>
+      <translation type="unfinished">Tabbed browsing</translation>
     </message>
     <message>
       <source>Normally, opening a new tab switches to it immediately.
 With this on however, new tabs will be opened without
 switching to them.</source>
-      <translation>Звычайна адразу выконваецца пераход у новую адкрытую ўкладку.
-Калі ўключыць гэты параметр, не будзе выконвацца пераход у новыя адкрытыя ўкладкі.</translation>
+      <translation type="unfinished">Normally, opening a new tab switches to it immediately.
+With this on however, new tabs will be opened without
+switching to them.</translation>
     </message>
     <message>
       <source>Open new tabs in background</source>
-      <translation>Адкрываць новыя ўкладкі ў фоне</translation>
+      <translation type="unfinished">Open new tabs in background</translation>
     </message>
     <message>
       <source>Open new tabs after the current one</source>
-      <translation>Адкрываць новыя ўкладкі пасля бягучай</translation>
+      <translation type="unfinished">Open new tabs after the current one</translation>
     </message>
     <message>
       <source>Hide single tab</source>
-      <translation>Хаваць панэль пры адной ўкладцы</translation>
+      <translation type="unfinished">Hide single tab</translation>
     </message>
     <message>
       <source>MRU order: Most recently used order.</source>
-      <translation>Парадак MRU: апошні выкарыстаны парадак.</translation>
+      <translation type="unfinished">MRU order: Most recently used order.</translation>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
-      <translation>Ctrl-Tab пераключае ўкладкі ў парадку выкарыстання</translation>
+      <translation type="unfinished">Ctrl-Tab navigates tabs in MRU order</translation>
     </message>
     <message>
       <source>Normally, pressing ESC key moves focus to the translation line.
 With this on however, it will hide the main window.</source>
-      <translation>Звычайна пры націсканні клавішы ESC фокус перамяшчаецца на радок перакладу.
-Калі гэты параметр ўключаны, будзе хавацца галоўнае акно.</translation>
+      <translation type="unfinished">Normally, pressing ESC key moves focus to the translation line.
+With this on however, it will hide the main window.</translation>
     </message>
     <message>
       <source>ESC key hides main window</source>
-      <translation>Клавіша ESC хавае галоўнае акно</translation>
+      <translation type="unfinished">ESC key hides main window</translation>
     </message>
     <message>
       <source>Turn this option on if you want to select words by single mouse click</source>
-      <translation>Уключыце гэты параметр, калі хочаце абіраць словы адным пстрыканнем мышшу</translation>
+      <translation type="unfinished">Turn this option on if you want to select words by single mouse click</translation>
     </message>
     <message>
       <source>Select word by single click</source>
-      <translation>Абіраць словы адным пстрыканнем</translation>
+      <translation type="unfinished">Select word by single click</translation>
     </message>
     <message>
       <source>Startup</source>
-      <translation>Запуск</translation>
+      <translation type="unfinished">Startup</translation>
     </message>
     <message>
       <source>Automatically starts GoldenDict after operation system bootup.</source>
-      <translation>Аўтаматычна запвскаць GoldenDict пасля запуску аперацыйнай сістэмы.</translation>
+      <translation type="unfinished">Automatically starts GoldenDict after operation system bootup.</translation>
     </message>
     <message>
       <source>Start with system</source>
-      <translation>Запускаць разам з сістэмай</translation>
+      <translation type="unfinished">Start with system</translation>
     </message>
     <message>
       <source>Normally, clicking on a link, double-clicking on a word or looking up
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
 however, the article from the topmost dictionary is shown.</source>
-      <translation>Звычайна пры пстрыканні па спасылцы, падвойным пстрыканні па слове або пошуку ў артыкулах загружаецца пераклад і амаль адразу
-выконваецца пракручванне да артыкула з таго ж слоўніка. Калі гэты параметр адключаны, паказваецца артыкул з самага верхняга слоўніка.</translation>
+      <translation type="unfinished">Normally, clicking on a link, double-clicking on a word or looking up
+selection in an article loads the translation and almost immediately
+scrolls to the article from the same dictionary. With this option off,
+however, the article from the topmost dictionary is shown.</translation>
     </message>
     <message>
       <source>Automatically scroll to target article</source>
-      <translation>Аўтаматычнае пракручванне да мэтавага артыкула</translation>
+      <translation type="unfinished">Automatically scroll to target article</translation>
     </message>
     <message>
       <source>When enabled, an icon appears in the system tray area which can be used
 to open main window and perform other tasks.</source>
-      <translation>Калі ўключана, на прасторы апавяшчэнняў з'явіцца значок, які можна
-выкарыстоўваць для адкрыцця галоўнага акна і выканання іншых задач.</translation>
+      <translation type="unfinished">When enabled, an icon appears in the system tray area which can be used
+to open main window and perform other tasks.</translation>
     </message>
     <message>
       <source>Enable system tray icon</source>
-      <translation>Уключыць значок на прасторы апавяшчэнняў</translation>
+      <translation type="unfinished">Enable system tray icon</translation>
     </message>
     <message>
       <source>With this on, the application starts directly to system tray without showing
 its main window.</source>
-      <translation>Калі параметр уключаны, праграма будзе запускацца згорнутай на прастору апавяшчэнняў, галоўнае акно не будзе адкрывацца.</translation>
+      <translation type="unfinished">With this on, the application starts directly to system tray without showing
+its main window.</translation>
     </message>
     <message>
       <source>Start to system tray</source>
-      <translation>Запускаць на прасторы апавяшчэнняў</translation>
+      <translation type="unfinished">Start to system tray</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
 the application.</source>
-      <translation>Калі параметр уключаны, пры закрыцці галоўнага акна праграма будзе згортвацца на прастору апавяшчэнняў.</translation>
+      <translation type="unfinished">With this on, an attempt to close main window would hide it instead of closing
+the application.</translation>
     </message>
     <message>
       <source>Close to system tray</source>
-      <translation>Закрываць на прастору апавяшчэнняў</translation>
+      <translation type="unfinished">Close to system tray</translation>
     </message>
     <message>
       <source>Adjust this value to avoid huge context menus.</source>
-      <translation>Падладзьце гэтае значэнне, каб пазбегнуць вялікіх кантэкстных меню.</translation>
+      <translation type="unfinished">Adjust this value to avoid huge context menus.</translation>
     </message>
     <message>
       <source>Context menu dictionaries limit:</source>
-      <translation>Абмежаванне колькасці слоўнікаў у кантэкстным меню:</translation>
+      <translation type="unfinished">Context menu dictionaries limit:</translation>
     </message>
     <message>
       <source>System default</source>
-      <translation>Сістэмная</translation>
+      <translation type="unfinished">System default</translation>
     </message>
     <message>
       <source>Default</source>
-      <translation>Прадвызначана</translation>
+      <translation type="unfinished">Default</translation>
     </message>
     <message>
       <source>Classic</source>
-      <translation>Класічная</translation>
+      <translation type="unfinished">Classic</translation>
     </message>
     <message>
       <source>Modern</source>
-      <translation>Сучасны</translation>
+      <translation type="unfinished">Modern</translation>
     </message>
     <message>
       <source>Lingvo</source>
-      <translation>Lingvo</translation>
+      <translation type="unfinished">Lingvo</translation>
     </message>
     <message>
       <source>Babylon</source>
-      <translation>Babylon</translation>
+      <translation type="unfinished">Babylon</translation>
     </message>
     <message>
       <source>Lingoes</source>
-      <translation>Lingoes</translation>
+      <translation type="unfinished">Lingoes</translation>
     </message>
     <message>
       <source>Lingoes-Blue</source>
-      <translation>Lingoes-Blue</translation>
+      <translation type="unfinished">Lingoes-Blue</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>
-      <translation>Auto нічога не робіць у некаторых сістэмах.</translation>
+      <translation type="unfinished">Auto does nothing on some systems.</translation>
     </message>
     <message>
       <source>Restart the program to apply the language change.</source>
-      <translation>Каб ужыць новую мову, перазапусціце праграму.</translation>
+      <translation type="unfinished">Restart the program to apply the language change.</translation>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
-      <translation>Перазапусціце, каб ужыць змену стылю інтэрфейсу.</translation>
+      <translation type="unfinished">Restart to apply the interface style change.</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation>Перазапусціце, каб ужыць новы шрыфт інтэрфейсу.</translation>
+      <translation type="unfinished">Restart to apply the interface font change.</translation>
     </message>
     <message>
       <source>Restart needed</source>
-      <translation>Патрабуецца перазапуск</translation>
+      <translation type="unfinished">Restart needed</translation>
     </message>
     <message>
       <source>Enable</source>
-      <translation>Уключыць</translation>
+      <translation type="unfinished">Enable</translation>
     </message>
     <message>
       <source>Disable</source>
-      <translation>Адключыць</translation>
+      <translation type="unfinished">Disable</translation>
     </message>
     <message>
       <source>Automatic</source>
-      <translation>Аўтаматычны</translation>
+      <translation type="unfinished">Automatic</translation>
     </message>
     <message>
       <source>None</source>
-      <translation>Няма</translation>
+      <translation type="unfinished">None</translation>
     </message>
     <message>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
@@ -2978,7 +2983,7 @@ be the last ones.</translation>
     </message>
     <message>
       <source>Appearance</source>
-      <translation>Выгляд</translation>
+      <translation type="unfinished">Appearance</translation>
     </message>
     <message>
       <source>Enable Interface Font</source>
@@ -2994,39 +2999,39 @@ be the last ones.</translation>
     </message>
     <message>
       <source>Interface language</source>
-      <translation>Interface language</translation>
+      <translation type="unfinished">Interface language</translation>
     </message>
     <message>
       <source>Article Display style</source>
-      <translation>Article Display style</translation>
+      <translation type="unfinished">Article Display style</translation>
     </message>
     <message>
       <source>Add-on style</source>
-      <translation>Add-on style</translation>
+      <translation type="unfinished">Add-on style</translation>
     </message>
     <message>
       <source>Interface Style</source>
-      <translation>Interface Style</translation>
+      <translation type="unfinished">Interface Style</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
-      <translation>Пераключыць інтэрфейс у цёмны рэжым.</translation>
+      <translation type="unfinished">Turn the UI to dark.</translation>
     </message>
     <message>
       <source>Dark Mode</source>
-      <translation>Цёмны рэжым</translation>
+      <translation type="unfinished">Dark Mode</translation>
     </message>
     <message>
       <source>Turn the article display style to dark.</source>
-      <translation>Пераключыць стыль паказу артыкулаў на цёмны.</translation>
+      <translation type="unfinished">Turn the article display style to dark.</translation>
     </message>
     <message>
       <source>Dark Reader Mode</source>
-      <translation>Цёмны рэжым чытання</translation>
+      <translation type="unfinished">Dark Reader Mode</translation>
     </message>
     <message>
       <source>Preview Font</source>
-      <translation>Preview Font</translation>
+      <translation type="unfinished">Preview Font</translation>
     </message>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
@@ -3034,296 +3039,299 @@ be the last ones.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
-      <translation>Гэтыя шрыфты будуць ужывацца, калі не ўдасца знайсці шрыфты, пазначаныя ў слоўніку.</translation>
+      <translation type="unfinished">These fonts will be applied when the fonts specified by a dictionary are not found.</translation>
     </message>
     <message>
       <source>Fallback Fonts</source>
-      <translation>Запасныя шрыфты</translation>
+      <translation type="unfinished">Fallback Fonts</translation>
     </message>
     <message>
       <source>Standard Font</source>
-      <translation>Стандартны шрыфт</translation>
+      <translation type="unfinished">Standard Font</translation>
     </message>
     <message>
       <source>Serif Font</source>
-      <translation>Шрыфт з засечкамі</translation>
+      <translation type="unfinished">Serif Font</translation>
     </message>
     <message>
       <source>Sans-serif Font</source>
-      <translation>Шрыфт без засечак</translation>
+      <translation type="unfinished">Sans-serif Font</translation>
     </message>
     <message>
       <source>Monospace Font</source>
-      <translation>Монашырынны шрыфт</translation>
+      <translation type="unfinished">Monospace Font</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Выбірае, ці будзе маніторынг буфера абмену ўключацца па змаўчанні пры запуску праграмы&apos;.</translation>
+      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation>Пачніце з уключанага маніторынгу буфера абмену</translation>
+      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
     </message>
     <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
-      <translation>Адпраўляць слова для перакладу ў галоўнае акно замест выплыўнога</translation>
+      <translation type="unfinished">Send translated word to main window instead of to show it in popup window</translation>
     </message>
     <message>
       <source>Send translated word to main window</source>
-      <translation>Адпраўляць слова для перакладу ў галоўнае акно</translation>
+      <translation type="unfinished">Send translated word to main window</translation>
     </message>
     <message>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
-      <translation>Сачэнне за зменамі ў буферы абмену, калі ўключана апрацоўванне ў выплыўных вокнах. Увага! Гэты параметр павінен быць заўсёды ўключаны, калі вы выкарыстоўваеце не Linux.</translation>
+      <translation type="unfinished">Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</translation>
     </message>
     <message>
       <source>Track Clipboard change</source>
-      <translation>Сачыць за зменамі ў буферы абмену</translation>
+      <translation type="unfinished">Track Clipboard change</translation>
     </message>
     <message>
       <source>Track Selection change</source>
-      <translation>Сачыць за зменамі абірання тэксту</translation>
+      <translation type="unfinished">Track Selection change</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
 in the pressed state when the word selection changes.</source>
-      <translation>Калі параметр уключаны, выплыўное акно будзе паказвацца толькі тады, калі пры змене слова будуць націснутыя ўсе абраныя клавішы.</translation>
+      <translation type="unfinished">With this enabled, the popup would only show up if all chosen keys are
+in the pressed state when the word selection changes.</translation>
     </message>
     <message>
       <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Сачыць за абіраннем тэксту толькі націсканні ўсіх наступных клавіш:</translation>
+      <translation type="unfinished">Only tack selection when all selected keys are kept pressed:</translation>
     </message>
     <message>
       <source>Alt key</source>
-      <translation>Клавіша Alt</translation>
+      <translation type="unfinished">Alt key</translation>
     </message>
     <message>
       <source>Ctrl key</source>
-      <translation>Клавіша Ctrl</translation>
+      <translation type="unfinished">Ctrl key</translation>
     </message>
     <message>
       <source>Shift key</source>
-      <translation>Клавіша Shift</translation>
+      <translation type="unfinished">Shift key</translation>
     </message>
     <message>
       <source>Windows key or Meta key</source>
-      <translation>Клавіша Windows або клавіша Meta</translation>
+      <translation type="unfinished">Windows key or Meta key</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
-      <translation>Паказваць акно са сцягам перад паказам выплыўнона акна. Каб паказалася акно, трэба пстрыкнуць па сцягу. </translation>
+      <translation type="unfinished">Show a flag window before showing popup window, click the flag to show popup window. </translation>
     </message>
     <message>
       <source>Show scan flag when word is selected</source>
-      <translation>Паказваць сцяг сканавання пры выбары слова</translation>
+      <translation type="unfinished">Show scan flag when word is selected</translation>
     </message>
     <message>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Не паказваць выплыўное акно пры змене абранага слова або слова з буфера абмену ў вокнах GoldenDict-ng</translation>
+      <translation type="unfinished">Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</translation>
     </message>
     <message>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>Не зважаць на змену абранага і змены ў буферы абмену ў вокнах GoldenDict-ng</translation>
+      <translation type="unfinished">Ignore GoldenDict&apos;s own selection and clipboard changes</translation>
     </message>
     <message>
       <source>Delay time</source>
-      <translation>Час затрымлівання</translation>
+      <translation type="unfinished">Delay time</translation>
     </message>
     <message>
       <source> ms</source>
-      <translation> мс</translation>
+      <translation type="unfinished"> ms</translation>
     </message>
     <message>
       <source>Hotkeys</source>
-      <translation>Спалучэнні клавіш</translation>
+      <translation type="unfinished">Hotkeys</translation>
     </message>
     <message>
       <source>Use the following hotkey to show or hide the main window:</source>
-      <translation>Выкарыстоўваць наступнае спалучэнне клавіш для паказу або хавання галоўнага акна:</translation>
+      <translation type="unfinished">Use the following hotkey to show or hide the main window:</translation>
     </message>
     <message>
       <source>Use the following hotkey to translate a word from clipboard:</source>
-      <translation>Выкарыстоўваць наступнае спалучэнне клавіш для перакладу слова з буфера абмену:</translation>
+      <translation type="unfinished">Use the following hotkey to translate a word from clipboard:</translation>
     </message>
     <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
-      <translation>Спалучэнні клавіш працуюць глабальна і дзейнічаюць у кожнай праграме ў кожным кантэксце, пакуль GoldenDict працуе ў фоне.</translation>
+      <translation type="unfinished">The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</translation>
     </message>
     <message>
       <source>&amp;Audio</source>
-      <translation>&amp;Аўдыё</translation>
+      <translation type="unfinished">&amp;Audio</translation>
     </message>
     <message>
       <source>Pronunciation</source>
-      <translation>Вымаўленне</translation>
+      <translation type="unfinished">Pronunciation</translation>
     </message>
     <message>
       <source>Auto-pronounce words in main window</source>
-      <translation>Аўтаматычна вымаўляць словы ў галоўным акне</translation>
+      <translation type="unfinished">Auto-pronounce words in main window</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation>Аўтаматычнае вымаўленне слоў ва ўсплываючым акне</translation>
+      <translation type="unfinished">Auto-pronounce words in the popup</translation>
     </message>
     <message>
       <source>Playback</source>
-      <translation>Прайграванне</translation>
+      <translation type="unfinished">Playback</translation>
     </message>
     <message>
       <source>Play audio files via built-in audio support</source>
-      <translation>Прайграваць аўдыяфайлы з дапамогай убудаваных сродкаў</translation>
+      <translation type="unfinished">Play audio files via built-in audio support</translation>
     </message>
     <message>
       <source>Use internal player:</source>
-      <translation>Выкарыстоўваць унутраны прайгравальнік:</translation>
+      <translation type="unfinished">Use internal player:</translation>
     </message>
     <message>
       <source>Choose audio back end</source>
-      <translation>Абраць гукавы рухавіх</translation>
+      <translation type="unfinished">Choose audio back end</translation>
     </message>
     <message>
       <source>Use any external program to play audio files</source>
-      <translation>Выкарыстоўваць вонкавую праграму для прайгравання аўдыяфайлаў</translation>
+      <translation type="unfinished">Use any external program to play audio files</translation>
     </message>
     <message>
       <source>Use external program:</source>
-      <translation>Прайграваць у вонкавай праграме:</translation>
+      <translation type="unfinished">Use external program:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
-      <translation>Увайсці ў камандны радок аўдыяпрайгравальніка</translation>
+      <translation type="unfinished">Enter audio player command line</translation>
     </message>
     <message>
       <source>&amp;Network</source>
-      <translation>&amp;Сетка</translation>
+      <translation type="unfinished">&amp;Network</translation>
     </message>
     <message>
       <source>Enable if you wish to use a proxy server
 for all program&apos;s network requests.</source>
-      <translation>Уключыце, каб выкарыстоўваць проксі-сервер для ўсіх сеткавых запытаў праграмы.</translation>
+      <translation type="unfinished">Enable if you wish to use a proxy server
+for all program&apos;s network requests.</translation>
     </message>
     <message>
       <source>Use proxy server</source>
-      <translation>Выкарыстоўваць проксі-сервер</translation>
+      <translation type="unfinished">Use proxy server</translation>
     </message>
     <message>
       <source>System proxy</source>
-      <translation>Сістэмны проксі-сервер</translation>
+      <translation type="unfinished">System proxy</translation>
     </message>
     <message>
       <source>Custom proxy</source>
-      <translation>Адвольны проксі-сервер</translation>
+      <translation type="unfinished">Custom proxy</translation>
     </message>
     <message>
       <source>Custom settings</source>
-      <translation>Адвольныя налады</translation>
+      <translation type="unfinished">Custom settings</translation>
     </message>
     <message>
       <source>Type:</source>
-      <translation>Тып:</translation>
+      <translation type="unfinished">Type:</translation>
     </message>
     <message>
       <source>Host:</source>
-      <translation>Хост:</translation>
+      <translation type="unfinished">Host:</translation>
     </message>
     <message>
       <source>Port:</source>
-      <translation>Порт:</translation>
+      <translation type="unfinished">Port:</translation>
     </message>
     <message>
       <source>User:</source>
-      <translation>Карыстальнік:</translation>
+      <translation type="unfinished">User:</translation>
     </message>
     <message>
       <source>Password:</source>
-      <translation>Пароль:</translation>
+      <translation type="unfinished">Password:</translation>
     </message>
     <message>
       <source>Anki Connect</source>
-      <translation>Падлучэнне Anki</translation>
+      <translation type="unfinished">Anki Connect</translation>
     </message>
     <message>
       <source>http://</source>
-      <translation>http://</translation>
+      <translation type="unfinished">http://</translation>
     </message>
     <message>
       <source>Deck:</source>
-      <translation>Калода:</translation>
+      <translation type="unfinished">Deck:</translation>
     </message>
     <message>
       <source>Model:</source>
-      <translation>Мадэль:</translation>
+      <translation type="unfinished">Model:</translation>
     </message>
     <message>
       <source>Word</source>
-      <translation>Слова</translation>
+      <translation type="unfinished">Word</translation>
     </message>
     <message>
       <source>Vocabulary field...</source>
-      <translation>Поле слоўніка...</translation>
+      <translation type="unfinished">Vocabulary field...</translation>
     </message>
     <message>
       <source>Text</source>
-      <translation>Тэкст</translation>
+      <translation type="unfinished">Text</translation>
     </message>
     <message>
       <source>Definition field...</source>
-      <translation>Поле азначэння...</translation>
+      <translation type="unfinished">Definition field...</translation>
     </message>
     <message>
       <source>Sentence</source>
-      <translation>Сказ</translation>
+      <translation type="unfinished">Sentence</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
-      <translation>Поле сказа (можа быць пустым)...</translation>
+      <translation type="unfinished">Sentence field (can be empty)...</translation>
     </message>
     <message>
       <source>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</source>
-      <translation>Уключэнне гэтага параметра дасць GoldenDict магчымасць блакаваць большасць рэкламы шляхам забароны
-пэўнага змесціва (выяў, фрэймаў), якое не належаць сайтам, якія вы праглядаеце.
-Калі нейкія сайты не працуюць, паспрабуйце адключыць гэты параметр.</translation>
+      <translation type="unfinished">Enabling this would make GoldenDict block most advertisements
+by disallowing content (images, frames) not originating from the site
+you are browsing. If some site breaks because of this, try disabling this.</translation>
     </message>
     <message>
       <source>Disallow loading content from other sites (hides most advertisements)</source>
-      <translation>Забараніць загрузку змесціва з іншых сайтаў (хавае большасць рэкламы)</translation>
+      <translation type="unfinished">Disallow loading content from other sites (hides most advertisements)</translation>
     </message>
     <message>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
-      <translation>Некаторыя сайты пазнаюць GoldenDict па HTTP-загалоўках
-і блакуюць запыты. Уключыце гэты параметр, каб развязаць праблему.</translation>
+      <translation type="unfinished">Some sites detect GoldenDict via HTTP headers and block the requests.
+Enable this option to workaround the problem.</translation>
     </message>
     <message>
       <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Не пазначаць GoldenDict у HTTP-загалоўках</translation>
+      <translation type="unfinished">Do not identify GoldenDict in HTTP headers</translation>
     </message>
     <message>
       <source>Maximum network cache size:</source>
-      <translation>Максімальны памер сеткавага кэшу:</translation>
+      <translation type="unfinished">Maximum network cache size:</translation>
     </message>
     <message>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Максімальная прастора на дыску, якую займае сеткавы кэш GoldenDict
+      <translation type="unfinished">Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
- Калі 0, кэш сеткавага дыска будзе адключаны.</translation>
+If set to 0 the network disk cache will be disabled.</translation>
     </message>
     <message>
       <source> MiB</source>
-      <translation> Міб</translation>
+      <translation type="unfinished"> MiB</translation>
     </message>
     <message>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
-      <translation>Калі гэты параметр уключаны, GoldenDict падчас выхаду будзе ачышчаць свой сеткавы кэш.</translation>
+      <translation type="unfinished">When this option is enabled, GoldenDict
+clears its network cache from disk during exit.</translation>
     </message>
     <message>
       <source>Clear network cache on exit</source>
-      <translation>Ачышчаць сеткавы кэш падчас выхаду</translation>
+      <translation type="unfinished">Clear network cache on exit</translation>
     </message>
     <message>
       <source>When this is enabled, the program periodically
@@ -3331,173 +3339,175 @@ checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
 informs the user about it and prompts to open a
 download page.</source>
-      <translation>Калі параметр уключаны, праграма будзе перыядычна правяраць
-наяўнасць абнаўленняў GoldenDict. Калі наяўнасць
-пацвердзіцца, праграма нагадае пра гэта
-і прапануе наведаць старонку для спампоўвання абнаўлення.</translation>
+      <translation type="unfinished">When this is enabled, the program periodically
+checks if a new, updated version of GoldenDict
+is available for download. If it is so, the program
+informs the user about it and prompts to open a
+download page.</translation>
     </message>
     <message>
       <source>Check for new program releases periodically</source>
-      <translation>Правяраць наяўнасць новых выпускаў праграмы</translation>
+      <translation type="unfinished">Check for new program releases periodically</translation>
     </message>
     <message>
       <source>Full-text search</source>
-      <translation>Паўнатэкставы пошук</translation>
+      <translation type="unfinished">Full-text search</translation>
     </message>
     <message>
       <source>Allow full-text search for:</source>
-      <translation>Дазволіць паўнатэкставы пошук для:</translation>
+      <translation type="unfinished">Allow full-text search for:</translation>
     </message>
     <message>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation>Не шукаць у слоўніках, якія змяшчаюць больш за</translation>
+      <translation type="unfinished">Don&apos;t search in dictionaries containing more than</translation>
     </message>
     <message>
       <source>articles (0 - unlimited)</source>
-      <translation>артыкул(аў) (0 - не абмежавана)</translation>
+      <translation type="unfinished">articles (0 - unlimited)</translation>
     </message>
     <message>
       <source>Create fulltext index with parallel threads </source>
-      <translation>Стварыць паўнатэкставы індэкс з паралельнымі плынямі </translation>
+      <translation type="unfinished">Create fulltext index with parallel threads </translation>
     </message>
     <message>
       <source>Ad&amp;vanced</source>
-      <translation>&amp;Дадаткова</translation>
+      <translation type="unfinished">Ad&amp;vanced</translation>
     </message>
     <message>
       <source>History</source>
-      <translation>Гісторыя</translation>
+      <translation type="unfinished">History</translation>
     </message>
     <message>
       <source>Turn this option on to store history of the translated words</source>
-      <translation>Уключыце гэты параметр, каб захоўваць гісторыю слоў</translation>
+      <translation type="unfinished">Turn this option on to store history of the translated words</translation>
     </message>
     <message>
       <source>Store &amp;history</source>
-      <translation>Захоўваць &amp;гісторыю</translation>
+      <translation type="unfinished">Store &amp;history</translation>
     </message>
     <message>
       <source>Specify the maximum number of entries to keep in history.</source>
-      <translation>Вызначае максімальную колькасць запісаў у гісторыі.</translation>
+      <translation type="unfinished">Specify the maximum number of entries to keep in history.</translation>
     </message>
     <message>
       <source>Maximum history size:</source>
-      <translation>Максімальны памер гісторыі:</translation>
+      <translation type="unfinished">Maximum history size:</translation>
     </message>
     <message>
       <source>Favorites</source>
-      <translation>Улюбёнае</translation>
+      <translation type="unfinished">Favorites</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation>Інтэрвал захавання ўлюбёнага. Калі 0, то будзе захоўвацца толькі падчас выхаду.</translation>
+      <translation type="unfinished">Favorites saving interval. If set to 0 Favorites will be saved only during exit.</translation>
     </message>
     <message>
       <source>Save every</source>
-      <translation>Захоўваць кожныя</translation>
+      <translation type="unfinished">Save every</translation>
     </message>
     <message>
       <source>minutes</source>
-      <translation>хв</translation>
+      <translation type="unfinished">minutes</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
-      <translation>Уключыце гэты параметр, каб пацвярджаць кожную аперацыю па выдаленні элементаў</translation>
+      <translation type="unfinished">Turn this option on to confirm every operation of items deletion</translation>
     </message>
     <message>
       <source>Confirmation for items deletion</source>
-      <translation>Пацвярджэнне выдалення элементаў</translation>
+      <translation type="unfinished">Confirmation for items deletion</translation>
     </message>
     <message>
       <source>Articles</source>
-      <translation>Артыкулы</translation>
+      <translation type="unfinished">Articles</translation>
     </message>
     <message>
       <source>Ignore punctuation while searching</source>
-      <translation>Не зважаць на пунктуацыю падчас пошуку</translation>
+      <translation type="unfinished">Ignore punctuation while searching</translation>
     </message>
     <message>
       <source>Input phrases longer than this size will be ignored</source>
-      <translation>Фразы, якія перавышаюць гэты памер, будуць ігнаравацца</translation>
+      <translation type="unfinished">Input phrases longer than this size will be ignored</translation>
     </message>
     <message>
       <source>symbols</source>
-      <translation>сімвалаў</translation>
+      <translation type="unfinished">symbols</translation>
     </message>
     <message>
       <source>Select this option to automatic collapse big articles</source>
-      <translation>Уключыце гэты параметр, каб вялікія артыкулы аўтаматычна згортваліся</translation>
+      <translation type="unfinished">Select this option to automatic collapse big articles</translation>
     </message>
     <message>
       <source>Collapse articles more than</source>
-      <translation>Згортваць артыкулы, якія маюць больш за</translation>
+      <translation type="unfinished">Collapse articles more than</translation>
     </message>
     <message>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
-      <translation>Уключыце гэты параметр, каб ігнараваць неапраўдана доўгі тэкст, якія атрымліваецца
-пры навядзенні мышы, выбары, з буфера абмену або каманднага радка</translation>
+      <translation type="unfinished">Turn this option on to ignore unreasonably long input text
+from mouse-over, selection, clipboard or command line</translation>
     </message>
     <message>
       <source>Ignore input phrases longer than</source>
-      <translation>Не зважаць на фразы, даўжэйшыя за</translation>
+      <translation type="unfinished">Ignore input phrases longer than</translation>
     </message>
     <message>
       <source>Articles longer than this size will be collapsed</source>
-      <translation>Артыкулы, памер якіх большы за гэтае значэнне, будуць згортвацца</translation>
+      <translation type="unfinished">Articles longer than this size will be collapsed</translation>
     </message>
     <message>
       <source>Turn this option on to always expand optional parts of articles</source>
-      <translation>Уключыце гэты параметр, каб дадатковыя раздзелы артыкулаў заўсёды разгортваліся</translation>
+      <translation type="unfinished">Turn this option on to always expand optional parts of articles</translation>
     </message>
     <message>
       <source>Expand optional &amp;parts</source>
-      <translation>Разгортваць дадатковыя &amp;раздзелы</translation>
+      <translation type="unfinished">Expand optional &amp;parts</translation>
     </message>
     <message>
       <source>Turn this option on to ignore diacritics while searching articles</source>
-      <translation>Уключыце гэты параметр, каб не зважаць на дыякрытычныя знакі падчас пошуку артыкулаў</translation>
+      <translation type="unfinished">Turn this option on to ignore diacritics while searching articles</translation>
     </message>
     <message>
       <source>Ignore diacritics while searching</source>
-      <translation>Не зважаць на дыякрытычныя знакі падчас пошуку</translation>
+      <translation type="unfinished">Ignore diacritics while searching</translation>
     </message>
     <message>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
-      <translation>Падчас выканання паслядоўных пошукаў, калі адзін слоўнік згортваецца ўручную, ён застанецца згорнутым пры выкананні наступнага пошуку</translation>
+      <translation type="unfinished">During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</translation>
     </message>
     <message>
       <source>Session collapse</source>
-      <translation>Згарнуць сеанс</translation>
+      <translation type="unfinished">Session collapse</translation>
     </message>
     <message>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
-      <translation>Уключыце гэты параметр, каб уключыць дадатковы пошук артыкулаў па спісах сінонімаў са слоўнікаў Stardict, Babylon і GLS</translation>
+      <translation type="unfinished">Turn this option on to enable extra articles search via synonym lists
+from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Extra search via synonyms</source>
-      <translation>Дадатковы пошук сінонімаў</translation>
+      <translation type="unfinished">Extra search via synonyms</translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation>Пры выкарыстанні буфера абмену выдаляць усё пасля новага радка</translation>
+      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
     </message>
     <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Пры выкананні новага пошуку факусавацца на галоўным або выплыўным акне, нават калі яно бачнае</translation>
+      <translation type="unfinished">On a new search, focus the main or popup window even if it&apos;s visible</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation>Рознае</translation>
+      <translation type="unfinished">Miscellaneous</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation>Выдаляць хібны індэкс пры выхадзе</translation>
+      <translation type="unfinished">Remove invalid index on exit</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Save debug messages to gd_log.txt in the config folder</translation>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
       <source>Open website dictionary in seperate tab</source>
@@ -3520,136 +3530,136 @@ from Stardict, Babylon and GLS dictionaries</source>
     <name>ProgramTypeEditor</name>
     <message>
       <source>Audio</source>
-      <translation>Аўдыё</translation>
+      <translation type="unfinished">Audio</translation>
     </message>
     <message>
       <source>Plain Text</source>
-      <translation>Просты тэкст</translation>
+      <translation type="unfinished">Plain Text</translation>
     </message>
     <message>
       <source>Html</source>
-      <translation>Html</translation>
+      <translation type="unfinished">Html</translation>
     </message>
     <message>
       <source>Prefix Match</source>
-      <translation>Паводле прэфікса</translation>
+      <translation type="unfinished">Prefix Match</translation>
     </message>
     <message>
       <source>Unknown</source>
-      <translation>Невядома</translation>
+      <translation type="unfinished">Unknown</translation>
     </message>
   </context>
   <context>
     <name>Programs::RunInstance</name>
     <message>
       <source>No program name was given.</source>
-      <translation>Не пададзена назва праграмы.</translation>
+      <translation type="unfinished">No program name was given.</translation>
     </message>
     <message>
       <source>The program has crashed.</source>
-      <translation>Праграма аварыйна завяршыла працэс.</translation>
+      <translation type="unfinished">The program has crashed.</translation>
     </message>
     <message>
       <source>The program has returned exit code %1.</source>
-      <translation>Праграма вярнула код %1.</translation>
+      <translation type="unfinished">The program has returned exit code %1.</translation>
     </message>
   </context>
   <context>
     <name>ProgramsModel</name>
     <message>
       <source>Enabled</source>
-      <translation>Уключана</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
     <message>
       <source>Type</source>
-      <translation>Тып</translation>
+      <translation type="unfinished">Type</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Назва</translation>
+      <translation type="unfinished">Name</translation>
     </message>
     <message>
       <source>Command Line</source>
-      <translation>Камандны радок</translation>
+      <translation type="unfinished">Command Line</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>Значок</translation>
+      <translation type="unfinished">Icon</translation>
     </message>
   </context>
   <context>
     <name>QObject</name>
     <message>
       <source>Article loading error</source>
-      <translation>Не ўдалося загрузіць артыкул</translation>
+      <translation type="unfinished">Article loading error</translation>
     </message>
     <message>
       <source>Article decoding error</source>
-      <translation>Не ўдалося дэкадаваць артыкул</translation>
+      <translation type="unfinished">Article decoding error</translation>
     </message>
     <message>
       <source>Copyright: %1%2</source>
-      <translation>Аўтарскія правы: %1%2</translation>
+      <translation type="unfinished">Copyright: %1%2</translation>
     </message>
     <message>
       <source>Version: %1%2</source>
-      <translation>Версія: %1%2</translation>
+      <translation type="unfinished">Version: %1%2</translation>
     </message>
     <message>
       <source>Author: %1%2</source>
-      <translation>Аўтар: %1%2</translation>
+      <translation type="unfinished">Author: %1%2</translation>
     </message>
     <message>
       <source>E-mail: %1%2</source>
-      <translation>Электронная пошта: %1%2</translation>
+      <translation type="unfinished">E-mail: %1%2</translation>
     </message>
     <message>
       <source>Title: %1%2</source>
-      <translation>Назва: %1%2</translation>
+      <translation type="unfinished">Title: %1%2</translation>
     </message>
     <message>
       <source>Website: %1%2</source>
-      <translation>Вэб-сайт: %1%2</translation>
+      <translation type="unfinished">Website: %1%2</translation>
     </message>
     <message>
       <source>Date: %1%2</source>
-      <translation>Дата: %1%2</translation>
+      <translation type="unfinished">Date: %1%2</translation>
     </message>
     <message>
       <source>A dictionary lookup program.</source>
-      <translation>Праграму для пошуку ў слоўніках.</translation>
+      <translation type="unfinished">A dictionary lookup program.</translation>
     </message>
     <message>
       <source>Word or sentence to query.</source>
-      <translation>Слова або фраза для запыту.</translation>
+      <translation type="unfinished">Word or sentence to query.</translation>
     </message>
     <message>
       <source>Reset window state.</source>
-      <translation>Скінуць стан акна.</translation>
+      <translation type="unfinished">Reset window state.</translation>
     </message>
     <message>
       <source>Disable tts.</source>
-      <translation>Адключыць tts.</translation>
+      <translation type="unfinished">Disable tts.</translation>
     </message>
     <message>
       <source>Change the group of main window.</source>
-      <translation>Змяніць групу галоўнага акна.</translation>
+      <translation type="unfinished">Change the group of main window.</translation>
     </message>
     <message>
       <source>Change the group of popup.</source>
-      <translation>Змяніць групу выплыўных акон.</translation>
+      <translation type="unfinished">Change the group of popup.</translation>
     </message>
     <message>
       <source>Toggle popup.</source>
-      <translation>Уключыць або адключыць апрацоўванне ў выплыўных вокнах.</translation>
+      <translation type="unfinished">Toggle popup.</translation>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>
-      <translation>Вывад версіі і звестак дыягностыкі.</translation>
+      <translation type="unfinished">Print version and diagnosis info.</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Захоўваць адладачныя паведамленні ў gd_log.txt у каталозе канфігурацыі.</translation>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder.</translation>
     </message>
     <message>
       <source>Force the word to be translated in Popup.</source>
@@ -3693,11 +3703,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Error</source>
-      <translation>Памылка</translation>
+      <translation type="unfinished">Error</translation>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation>Не ўдалося захаваць артыкул: %1</translation>
+      <translation type="unfinished">Can&apos;t save article: %1</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
@@ -3716,70 +3726,70 @@ from Stardict, Babylon and GLS dictionaries</source>
     <name>QuickFilterLine</name>
     <message>
       <source>Dictionary search/filter (Ctrl+F)</source>
-      <translation>Пошук/фільтраванне слоўнікаў (Ctrl+F)</translation>
+      <translation type="unfinished">Dictionary search/filter (Ctrl+F)</translation>
     </message>
     <message>
       <source>Clear Search</source>
-      <translation>Ачысціць пошук</translation>
+      <translation type="unfinished">Clear Search</translation>
     </message>
   </context>
   <context>
     <name>ResourceToSaveHandler</name>
     <message>
       <source>ERROR: %1</source>
-      <translation>ПАМЫЛКА: %1</translation>
+      <translation type="unfinished">ERROR: %1</translation>
     </message>
     <message>
       <source>Resource saving error: </source>
-      <translation>Не ўдалося захаваць рэсурс: </translation>
+      <translation type="unfinished">Resource saving error: </translation>
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation>УВАГА: %1</translation>
+      <translation type="unfinished">WARNING: %1</translation>
     </message>
     <message>
       <source>The referenced resource failed to download.</source>
-      <translation>Не ўдалося спампаваць пазначаны рэсурс.</translation>
+      <translation type="unfinished">The referenced resource failed to download.</translation>
     </message>
   </context>
   <context>
     <name>Romaji</name>
     <message>
       <source>Hepburn Romaji for Hiragana</source>
-      <translation>Сістэма лацінізацыі Хэпбёрна для Хіраганы</translation>
+      <translation type="unfinished">Hepburn Romaji for Hiragana</translation>
     </message>
     <message>
       <source>Hepburn Romaji for Katakana</source>
-      <translation>Сістэма лацінізацыі Хэпбёрна для Катаканы</translation>
+      <translation type="unfinished">Hepburn Romaji for Katakana</translation>
     </message>
   </context>
   <context>
     <name>RussianTranslit</name>
     <message>
       <source>Russian Transliteration</source>
-      <translation>Расійская траслітарацыя</translation>
+      <translation type="unfinished">Russian Transliteration</translation>
     </message>
   </context>
   <context>
     <name>ScanPopup</name>
     <message>
       <source>WARNING: %1</source>
-      <translation>УВАГА: %1</translation>
+      <translation type="unfinished">WARNING: %1</translation>
     </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Back</translation>
+      <translation type="unfinished">Back</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Forward</translation>
+      <translation type="unfinished">Forward</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Pronounce Word (Alt+S)</translation>
+      <translation type="unfinished">Pronounce Word (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3787,7 +3797,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Send word to main window (Alt+W)</translation>
+      <translation type="unfinished">Send word to main window (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
@@ -3795,110 +3805,110 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>Add word to Favorites (Ctrl+E)</translation>
+      <translation type="unfinished">Add word to Favorites (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation>Always stay on top of all other windows</translation>
+      <translation type="unfinished">Always stay on top of all other windows</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Use this to pin down the window so it would stay on screen,
+      <translation type="unfinished">Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</translation>
     </message>
     <message>
       <source>Save Article</source>
-      <translation>Захаваць артыкул</translation>
+      <translation type="unfinished">Save Article</translation>
     </message>
   </context>
   <context>
     <name>SearchPanel</name>
     <message>
       <source>&amp;Previous</source>
-      <translation>&amp;Назад</translation>
+      <translation type="unfinished">&amp;Previous</translation>
     </message>
     <message>
       <source>Ctrl+Shift+G</source>
-      <translation>Ctrl+Shift+G</translation>
+      <translation type="unfinished">Ctrl+Shift+G</translation>
     </message>
     <message>
       <source>&amp;Next</source>
-      <translation>&amp;Далей</translation>
+      <translation type="unfinished">&amp;Next</translation>
     </message>
     <message>
       <source>Ctrl+G</source>
-      <translation>Ctrl+G</translation>
+      <translation type="unfinished">Ctrl+G</translation>
     </message>
     <message>
       <source>&amp;Case Sensitive</source>
-      <translation>&amp;Зважаць на рэгістр</translation>
+      <translation type="unfinished">&amp;Case Sensitive</translation>
     </message>
     <message>
       <source>Find:</source>
-      <translation>Шукаць:</translation>
+      <translation type="unfinished">Find:</translation>
     </message>
   </context>
   <context>
     <name>SoundDirsModel</name>
     <message>
       <source>Path</source>
-      <translation>Шлях</translation>
+      <translation type="unfinished">Path</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Назва</translation>
+      <translation type="unfinished">Name</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>Значок</translation>
+      <translation type="unfinished">Icon</translation>
     </message>
   </context>
   <context>
     <name>Sources</name>
     <message>
       <source>Files</source>
-      <translation>Файлы</translation>
+      <translation type="unfinished">Files</translation>
     </message>
     <message>
       <source>Paths to search for the dictionary files:</source>
-      <translation>Шляхі для пошуку файлаў слоўнікаў:</translation>
+      <translation type="unfinished">Paths to search for the dictionary files:</translation>
     </message>
     <message>
       <source>&amp;Add...</source>
-      <translation>&amp;Дадаць...</translation>
+      <translation type="unfinished">&amp;Add...</translation>
     </message>
     <message>
       <source>&amp;Remove</source>
-      <translation>&amp;Выдаліць</translation>
+      <translation type="unfinished">&amp;Remove</translation>
     </message>
     <message>
       <source>Re&amp;scan now</source>
-      <translation>Пера&amp;сканаваць</translation>
+      <translation type="unfinished">Re&amp;scan now</translation>
     </message>
     <message>
       <source>Sound Dirs</source>
-      <translation>Каталогі гукавых файлаў</translation>
+      <translation type="unfinished">Sound Dirs</translation>
     </message>
     <message>
       <source>Make dictionaries from bunches of audiofiles by adding paths here:</source>
-      <translation>Стварыць слоўнікі з некалькіх аўдыяфайлаў па дададзеных шляхах:</translation>
+      <translation type="unfinished">Make dictionaries from bunches of audiofiles by adding paths here:</translation>
     </message>
     <message>
       <source>Morphology</source>
-      <translation>Марфалогія</translation>
+      <translation type="unfinished">Morphology</translation>
     </message>
     <message>
       <source>Path to a directory with Hunspell/Myspell dictionaries:</source>
-      <translation>Шлях да каталога са слоўнікамі Hunspell/Myspell:</translation>
+      <translation type="unfinished">Path to a directory with Hunspell/Myspell dictionaries:</translation>
     </message>
     <message>
       <source>&amp;Change...</source>
-      <translation>&amp;Змяніць...</translation>
+      <translation type="unfinished">&amp;Change...</translation>
     </message>
     <message>
       <source>Available morphology dictionaries:</source>
-      <translation>Даступныя марфалагічныя слоўнікі:</translation>
+      <translation type="unfinished">Available morphology dictionaries:</translation>
     </message>
     <message>
       <source>Each morphology dictionary appears as a
@@ -3907,180 +3917,184 @@ provides stem words for searches and
 spelling suggestions for mistyped words.
 Add appropriate dictionaries to the bottoms
 of the appropriate groups to use them.</source>
-      <translation>Кожны марфалагічны слоўнік - асобны дапаможны слоўнік, які падае асноўныя словы для пошуку і прапановы па выпраўленні слоў, напісаных з памылкамі.
-Дадавайце слоўнікі ў канцы адпаведных групаў.</translation>
+      <translation type="unfinished">Each morphology dictionary appears as a
+separate auxiliary dictionary which
+provides stem words for searches and
+spelling suggestions for mistyped words.
+Add appropriate dictionaries to the bottoms
+of the appropriate groups to use them.</translation>
     </message>
     <message>
       <source>Wikipedia</source>
-      <translation>Вікіпедыя</translation>
+      <translation type="unfinished">Wikipedia</translation>
     </message>
     <message>
       <source>Wikipedia (MediaWiki) sites:</source>
-      <translation>Сайты Вікіпедыі (MediaWiki):</translation>
+      <translation type="unfinished">Wikipedia (MediaWiki) sites:</translation>
     </message>
     <message>
       <source>Websites</source>
-      <translation>Вэб-сайты</translation>
+      <translation type="unfinished">Websites</translation>
     </message>
     <message>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
-      <translation>Любыя вэб-сайты. %GDWORD% заменіцца на запытанае слова:</translation>
+      <translation type="unfinished">Any websites. A string %GDWORD% will be replaced with the query word:</translation>
     </message>
     <message>
       <source>DICT servers</source>
-      <translation>Серверы DICT</translation>
+      <translation type="unfinished">DICT servers</translation>
     </message>
     <message>
       <source>DICT servers:</source>
-      <translation>Серверы DICT:</translation>
+      <translation type="unfinished">DICT servers:</translation>
     </message>
     <message>
       <source>Programs</source>
-      <translation>Праграмы</translation>
+      <translation type="unfinished">Programs</translation>
     </message>
     <message>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-      <translation>Любыя вонкавыя праграмы. %GDWORD% заменіцца на запытанае слова. Радок %GDSEARCH% будзе заменены тэкстам у радку пошуку. Калі абодва параметры не вызначаныя, загалоўнае слова будзе адпраўлена ў стандартны ўвод.</translation>
+      <translation type="unfinished">Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</translation>
     </message>
     <message>
       <source>Lingua Libre</source>
-      <translation>Lingua Libre</translation>
+      <translation type="unfinished">Lingua Libre</translation>
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronunciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Вымаўленне пададзена &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, сумеснай лінгвістычнай медыятэкай Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronunciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <source>Enable Lingua Libre</source>
-      <translation>Уключыць Lingua Libre</translation>
+      <translation type="unfinished">Enable Lingua Libre</translation>
     </message>
     <message>
       <source>ISO 639-3 language code</source>
-      <translation>Код мовы ў фармаце ISO 639-3</translation>
+      <translation type="unfinished">ISO 639-3 language code</translation>
     </message>
     <message>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation>Прыклады:  &amp;quot;eng&amp;quot; для англійскай, &amp;quot;fra&amp;quot; для французскай &lt;br&gt;
+      <translation type="unfinished">Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
-Поўны спіс даступных моў можна знайсці &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; тут &lt;/a&gt;</translation>
+Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</translation>
     </message>
     <message>
       <source>Forvo</source>
-      <translation>Forvo</translation>
+      <translation type="unfinished">Forvo</translation>
     </message>
     <message>
       <source>Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</source>
-      <translation>Жывое вымаўленне з &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. Гэты сайт дае людзям магчымасць запісваць і дзяліцца вымаўленнем слоў. Іх можна паслухаць пры дапамозе GoldenDict.</translation>
+      <translation type="unfinished">Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</translation>
     </message>
     <message>
       <source>Enable pronunciations from Forvo</source>
-      <translation>Уключыць вымаўленне з Forvo</translation>
+      <translation type="unfinished">Enable pronunciations from Forvo</translation>
     </message>
     <message>
       <source>API Key:</source>
-      <translation>Ключ API:</translation>
+      <translation type="unfinished">API Key:</translation>
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Каб карыстацца Forvo, патрэбны API-ключ. Зарэгіструйцеся на сайце, каб атрымаць свой уласны ключ.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Атрымайце свой уласны ключ &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;тут&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <source>Language codes (comma-separated):</source>
-      <translation>Коды моў (праз коску):</translation>
+      <translation type="unfinished">Language codes (comma-separated):</translation>
     </message>
     <message>
       <source>List of language codes you would like to have. Example: &quot;en, ru&quot;.</source>
-      <translation>Пералік кодаў моў. Прыклад: &quot;en, be&quot;.</translation>
+      <translation type="unfinished">List of language codes you would like to have. Example: &quot;en, ru&quot;.</translation>
     </message>
     <message>
       <source>Full list of language codes is available &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;here&lt;/a&gt;.</source>
-      <translation>Поўны спіс моўных кодаў даступны &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;тут&lt;/a&gt;.</translation>
+      <translation type="unfinished">Full list of language codes is available &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;here&lt;/a&gt;.</translation>
     </message>
     <message>
       <source>Transliteration</source>
-      <translation>Транслітарацыя</translation>
+      <translation type="unfinished">Transliteration</translation>
     </message>
     <message>
       <source>Greek transliteration</source>
-      <translation>Грэчаская транслітарацыя</translation>
+      <translation type="unfinished">Greek transliteration</translation>
     </message>
     <message>
       <source>Russian transliteration</source>
-      <translation>Расійская транслітарацыя</translation>
+      <translation type="unfinished">Russian transliteration</translation>
     </message>
     <message>
       <source>German transliteration</source>
-      <translation>Нямецкая транслітарацыя</translation>
+      <translation type="unfinished">German transliteration</translation>
     </message>
     <message>
       <source>Belarusian transliteration</source>
-      <translation>Беларуская транслітарацыя</translation>
+      <translation type="unfinished">Belarusian transliteration</translation>
     </message>
     <message>
       <source>Enables to use the Latin alphabet to write the Japanese language</source>
-      <translation>Уключае лацінскі алфавіт для японскай мовы</translation>
+      <translation type="unfinished">Enables to use the Latin alphabet to write the Japanese language</translation>
     </message>
     <message>
       <source>Japanese Romaji</source>
-      <translation>Японская раманізацыя</translation>
+      <translation type="unfinished">Japanese Romaji</translation>
     </message>
     <message>
       <source>Systems:</source>
-      <translation>Сістэмы:</translation>
+      <translation type="unfinished">Systems:</translation>
     </message>
     <message>
       <source>Hepburn</source>
-      <translation>Хэпбёрн</translation>
+      <translation type="unfinished">Hepburn</translation>
     </message>
     <message>
       <source>Syllabaries:</source>
-      <translation>Складовае пісьмо:</translation>
+      <translation type="unfinished">Syllabaries:</translation>
     </message>
     <message>
       <source>Hiragana Japanese syllabary</source>
-      <translation>Японскае складовае пісьмо Хірагана</translation>
+      <translation type="unfinished">Hiragana Japanese syllabary</translation>
     </message>
     <message>
       <source>Hiragana</source>
-      <translation>Хірагана</translation>
+      <translation type="unfinished">Hiragana</translation>
     </message>
     <message>
       <source>Katakana Japanese syllabary</source>
-      <translation>Японскае складовае пісьмо Катакана</translation>
+      <translation type="unfinished">Katakana Japanese syllabary</translation>
     </message>
     <message>
       <source>Katakana</source>
-      <translation>Катакана</translation>
+      <translation type="unfinished">Katakana</translation>
     </message>
     <message>
       <source>Custom transliteration</source>
-      <translation>Адвольная транслітарацыя</translation>
+      <translation type="unfinished">Custom transliteration</translation>
     </message>
     <message>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation>Гэта ўжываецца толькі ў фразе пошуку, дзе кожны радок уяўляе сабой транслітарацыю, падзеленую кропкай з коскай. Напрыклад, ae;æ, карыстальнікі могуць увесці ae, каб паказаць æ у мэтавым слове.</translation>
+      <translation type="unfinished">This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</translation>
     </message>
     <message>
       <source>ae;æ #this is an example</source>
-      <translation>ae;æ #гэта прыклад</translation>
+      <translation type="unfinished">ae;æ #this is an example</translation>
     </message>
     <message>
       <source>Text to Speech</source>
-      <translation>Сінтэз маўлення</translation>
+      <translation type="unfinished">Text to Speech</translation>
     </message>
     <message>
       <source>Choose a directory</source>
-      <translation>Абраць каталог</translation>
+      <translation type="unfinished">Choose a directory</translation>
     </message>
     <message>
       <source>Confirm removal</source>
-      <translation>Пацвярджэнне выдалення</translation>
+      <translation type="unfinished">Confirm removal</translation>
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
@@ -4111,93 +4125,93 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <name>TextToSpeechSource</name>
     <message>
       <source>Selected voice engines:</source>
-      <translation>Абраныя сістэмы маўлення:</translation>
+      <translation type="unfinished">Selected voice engines:</translation>
     </message>
     <message>
       <source>&amp;Add</source>
-      <translation>&amp;Дадаць</translation>
+      <translation type="unfinished">&amp;Add</translation>
     </message>
     <message>
       <source>&amp;Remove</source>
-      <translation>&amp;Выдаліць</translation>
+      <translation type="unfinished">&amp;Remove</translation>
     </message>
     <message>
       <source>Preferences</source>
-      <translation>Налады</translation>
+      <translation type="unfinished">Preferences</translation>
     </message>
     <message>
       <source>Volume:</source>
-      <translation>Гучнасць:</translation>
+      <translation type="unfinished">Volume:</translation>
     </message>
     <message>
       <source>Rate:</source>
-      <translation>Хуткасць:</translation>
+      <translation type="unfinished">Rate:</translation>
     </message>
     <message>
       <source>Preview</source>
-      <translation>Праслухоўванне</translation>
+      <translation type="unfinished">Preview</translation>
     </message>
     <message>
       <source>Available voice engines:</source>
-      <translation>Даступныя сістэмы маўлення:</translation>
+      <translation type="unfinished">Available voice engines:</translation>
     </message>
     <message>
       <source>Text to be previewed:</source>
-      <translation>Тэкст для праслухоўвання:</translation>
+      <translation type="unfinished">Text to be previewed:</translation>
     </message>
     <message>
       <source>Type text to be previewed here.</source>
-      <translation>Упішыце сюды тэкст, каб праслухаць.</translation>
+      <translation type="unfinished">Type text to be previewed here.</translation>
     </message>
     <message>
       <source>&amp;Preview</source>
-      <translation>&amp;Праслухаць</translation>
+      <translation type="unfinished">&amp;Preview</translation>
     </message>
     <message>
       <source>No TTS voice available</source>
-      <translation>Няма даступных сістэм сінтэзу маўлення</translation>
+      <translation type="unfinished">No TTS voice available</translation>
     </message>
     <message>
       <source>Cannot find available TTS voice.&lt;br&gt;Please make sure that at least one TTS engine installed on your computer already.</source>
-      <translation>Не ўдалося знайсці сістэмы сінтэзу маўлення.&lt;br&gt;Пераканайся, што на камп'ютары ўсталяваная прынамсі адна сістэма.</translation>
+      <translation type="unfinished">Cannot find available TTS voice.&lt;br&gt;Please make sure that at least one TTS engine installed on your computer already.</translation>
     </message>
     <message>
       <source>Confirm removal</source>
-      <translation>Пацвярджэнне выдалення</translation>
+      <translation type="unfinished">Confirm removal</translation>
     </message>
     <message>
       <source>Remove voice engine &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Выдаліць сістэму сінтэзу маўлення &lt;b&gt;%1&lt;/b&gt; са спіса?</translation>
+      <translation type="unfinished">Remove voice engine &lt;b&gt;%1&lt;/b&gt; from the list?</translation>
     </message>
   </context>
   <context>
     <name>TranslateBox</name>
     <message>
       <source>Type a word or phrase to search dictionaries</source>
-      <translation>Упішыце слова ці выраз для пошуку ў слоўніках</translation>
+      <translation type="unfinished">Type a word or phrase to search dictionaries</translation>
     </message>
     <message>
       <source>Drop-down</source>
-      <translation>Выплыўны спіс</translation>
+      <translation type="unfinished">Drop-down</translation>
     </message>
   </context>
   <context>
     <name>VoiceEnginesModel</name>
     <message>
       <source>Enabled</source>
-      <translation>Уключана</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Назва</translation>
+      <translation type="unfinished">Name</translation>
     </message>
     <message>
       <source>Id</source>
-      <translation>ідэнтыфікатар</translation>
+      <translation type="unfinished">Id</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>Значок</translation>
+      <translation type="unfinished">Icon</translation>
     </message>
   </context>
   <context>
@@ -4211,19 +4225,19 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
-      <translation>Уключана</translation>
+      <translation type="unfinished">Enabled</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Назва</translation>
+      <translation type="unfinished">Name</translation>
     </message>
     <message>
       <source>Address</source>
-      <translation>Адрас</translation>
+      <translation type="unfinished">Address</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>Значок</translation>
+      <translation type="unfinished">Icon</translation>
     </message>
     <message>
       <source>Script</source>
@@ -4242,7 +4256,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <name>WordFinder</name>
     <message>
       <source>Failed to query some dictionaries.</source>
-      <translation>Не ўдалося выканаць запыт у некаторых слоўніках.</translation>
+      <translation type="unfinished">Failed to query some dictionaries.</translation>
     </message>
   </context>
 </TS>

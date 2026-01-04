@@ -285,18 +285,6 @@
       <translation>&amp; إنشاء ملاحظة Anki</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>خطأ في التحميل</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>فشل تحميل الصفحة</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>غير قادر على تحميل محتوى الصفحة المطلوبة</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>&amp;نسخ الصوت إلى الحافظة</translation>
     </message>
@@ -487,6 +475,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>ادمج المجموعات بـ &quot;%1&quot;</translation>
+    </message>
+    <message>
+      <source>Remove group</source>
+      <translation>أزل المجموعة</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>هل أنت متأكد من إزالة المجموعة &lt;b&gt;%1&lt;/b&gt;؟</translation>
     </message>
   </context>
   <context>
@@ -770,6 +766,14 @@ between classic and school orthography in cyrillic)</source>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>تم جدولة القاموس لإعادة تكسيسه. سيتم إعادة بناء الفهرس على إعادة تشغيل التطبيق التالي.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>تغيير اسم العرض</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>اسم العرض الجديد:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -1034,28 +1038,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>لسان 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>أنشئ مجموعة قواميس جديدة</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>أ&amp;ضف مجموعة</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>أعد تسمية مجموعة القواميس الحالية</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>أ&amp;عد تسمية المجموعة</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>أزل مجموعة القواميس الحالية</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>أ&amp;زل المجموعة</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
@@ -2539,38 +2527,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>اطبع المقالة</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Complete Html (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Single Html (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime Html (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>احفظ المقالة كـ</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>خطأ</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>تعذّر حفظ المقالة: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>يحفظ المقالة...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>اكتمل حفظ المقال</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>عُيّنت النافذة الرئيسية في الأعلى دائمًا.</translation>
     </message>
@@ -2661,18 +2617,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Show</source>
       <translation>عرض</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>Save PDF complete</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>Save PDF failed</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>وثيقة PDF (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -2800,6 +2744,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>قواميس نشطة: %1، غير نشطة: %2</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>تغيير اسم العرض</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>اسم العرض الجديد:</translation>
+    </message>
   </context>
   <context>
     <name>PathsModel</name>
@@ -2841,14 +2793,6 @@ switching to them.</source>
     <message>
       <source>Open new tabs in background</source>
       <translation>افتح الألسنة الجديدة في الخلفية</translation>
-    </message>
-    <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>بهذه، الألسنة ستُفتح فقط بعد
-الحاليّة، النشطة. وإلّا ستُضاف
-إلى الألسنة الأخيرة.</translation>
     </message>
     <message>
       <source>Open new tabs after the current one</source>
@@ -2949,8 +2893,124 @@ the application.</source>
       <translation>حد القواميس في قائمة السياق:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>افتراضي النظام</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>الافتراضي</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>كلاسيك</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>عصري</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>لنغفو</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>بابيلون</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>لِنْغوز</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>لِنْغوز-بلو</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auto does nothing on some systems.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>أعد تشغيل البرنامج لتطبيق تغيير اللغة.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>أعد التشغيل لتطبيق تغيير نمط الواجهة.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>أعد التشغيل لتطبيق تغيير خط الواجهة.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>إعادة التشغيل مطلوبة</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Enable</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Disable</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Automatic</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>لا شيء</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>حدد هذا الخيار إذا كنت don&apos;وتريد أن ترى شريط التبويب الرئيسي عند فتح علامة تبويب واحدة فقط
+                  .
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation>مع هذا ، يتم فتح علامات تبويب جديدة مباشرة بعد
+الحالي ، نشط. وإلا ، يتم إضافتها إلى
+لتكون آخر علامات التبويب.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation>&amp;نمط</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>مظهر</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>تمكين خط الواجهة</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2967,6 +3027,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>وضع القارئ الداكن</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng is a dictionary software.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -2991,10 +3059,6 @@ the application.</source>
     <message>
       <source>Monospace Font</source>
       <translation>الخط الأحادي الفضاء</translation>
-    </message>
-    <message>
-      <source>&amp;Popup</source>
-      <translation>منبثقة الا&amp;ستكشاف</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
@@ -3328,8 +3392,12 @@ download page.</source>
       <translation>حجم التأريخ الأقصى:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>فترة حفظ التأريخ. إن عُيِّنت إلى 0، سيُحفظ التأريخ أثناء إنهاء التطبيق فقط.</translation>
+      <source>Favorites</source>
+      <translation>المفضلة</translation>
+    </message>
+    <message>
+      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
+      <translation>الفاصل الزمني لحفظ المفضلة. إذا تم التعيين على 0 المفضلة ، فسيتم حفظها أثناء الخروج فقط.</translation>
     </message>
     <message>
       <source>Save every</source>
@@ -3338,14 +3406,6 @@ download page.</source>
     <message>
       <source>minutes</source>
       <translation>دقيقة</translation>
-    </message>
-    <message>
-      <source>Favorites</source>
-      <translation>المفضلة</translation>
-    </message>
-    <message>
-      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation>الفاصل الزمني لحفظ المفضلة. إذا تم التعيين على 0 المفضلة ، فسيتم حفظها أثناء الخروج فقط.</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3444,124 +3504,24 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>قم بإزالة الفهرس غير الصالح عند الخروج</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>افتراضي النظام</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>الافتراضي</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>كلاسيك</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>عصري</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>لنغفو</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>بابيلون</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>لِنْغوز</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>لِنْغوز-بلو</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto does nothing on some systems.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>أعد تشغيل البرنامج لتطبيق تغيير اللغة.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>أعد التشغيل لتطبيق تغيير نمط الواجهة.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>أعد التشغيل لتطبيق تغيير خط الواجهة.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>إعادة التشغيل مطلوبة</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Enable</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Disable</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Automatic</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
-    </message>
-    <message>
-      <source>Interface language</source>
-      <translation>Interface language</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Article Display style</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Add-on style</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Interface Style</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Preview Font</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng is a dictionary software.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation>تمكين خط الواجهة</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>لا شيء</translation>
     </message>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>فتح قاموس الموقع في علامة تبويب منفصلة</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>حدد هذا الخيار إذا كنت don&apos;وتريد أن ترى شريط التبويب الرئيسي عند فتح علامة تبويب واحدة فقط
-                  .
-                 </translation>
+      <source>S&amp;can</source>
+      <translation>امسح</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>قمع تنبيهات جافا سكريبت والتأكيدات والمطالبات في عرض المقالة.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>قمع مربعات حوار جافا سكريبت</translation>
     </message>
   </context>
   <context>
@@ -3715,6 +3675,50 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>في الرابط، سيتم استبدال &quot;%GDWORD%&quot; بالكلمة التي يتم بحثها.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Html واحد (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>وثيقة PDF (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>حفظ المقالة كـ</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>حفظ المقالة اكتمل</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>خطأ</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation type="unfinished">Can&apos;t save article: %1</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>اكتمل حفظ PDF</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>فشل حفظ PDF</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>حفظ المقال... (%1/%2)</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3810,6 +3814,10 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>احفظ المقالة</translation>
     </message>
   </context>
   <context>

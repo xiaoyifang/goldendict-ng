@@ -465,27 +465,3 @@ signals:
   /// Set group for popup window
   void setPopupGroupByName( const QString & name );
 };
-
-class ArticleSaveProgressDialog: public QProgressDialog
-{
-  Q_OBJECT
-
-public:
-  explicit ArticleSaveProgressDialog( QWidget * parent = nullptr, Qt::WindowFlags f = Qt::Widget ):
-    QProgressDialog( parent, f )
-  {
-    setAutoReset( false );
-    setAutoClose( false );
-  }
-
-public slots:
-  void perform()
-  {
-    int progress = value() + 1;
-    if ( progress == maximum() ) {
-      emit close();
-      deleteLater();
-    }
-    setValue( progress );
-  }
-};

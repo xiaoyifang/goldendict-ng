@@ -3,11 +3,19 @@
 
 #include "scanpopup.hh"
 #include "folding.hh"
+#include "articlesaver.hh"
 #include <QCursor>
 #include <QPixmap>
 #include <QMenu>
 #include <QMouseEvent>
+#include <QFileDialog>
+#include <QMessageBox>
 #include "gestures.hh"
+
+using std::set;
+using std::map;
+using std::pair;
+
 
 #ifdef Q_OS_MAC
   #include "macos/macmouseover.hh"
@@ -37,14 +45,11 @@ static const Qt::WindowFlags pinnedWindowFlags =
 ScanPopup::ScanPopup( QWidget * parent,
                       Config::Class & cfg_,
                       ArticleNetworkAccessManager & articleNetMgr,
-                      const AudioPlayerPtr & audioPlayer_,
-                      const std::vector< sptr< Dictionary::Class > > & allDictionaries_,
-                      const Instances::Groups & groups_,
                       History & history_ ):
   QMainWindow( parent ),
   cfg( cfg_ ),
-  allDictionaries( allDictionaries_ ),
-  groups( groups_ ),
+  allDictionaries( *GlobalBroadcaster::instance()->getAllDictionaries() ),
+  groups( *GlobalBroadcaster::instance()->getGroups() ),
   history( history_ ),
   escapeAction( this ),
   switchExpandModeAction( this ),
@@ -105,9 +110,6 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   definition = new ArticleView( this,
                                 articleNetMgr,
-                                audioPlayer_,
-                                allDictionaries,
-                                groups,
                                 true,
                                 cfg,
                                 translateBox->translateLine(),
@@ -127,6 +129,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( ui.goBackButton, &QToolButton::pressed, this, &ScanPopup::goBackButton_clicked );
   connect( ui.goForwardButton, &QToolButton::pressed, this, &ScanPopup::goForwardButton_clicked );
   connect( ui.pronounceButton, &QToolButton::pressed, this, &ScanPopup::pronounceButton_clicked );
+  connect( ui.saveArticleButton, &QToolButton::pressed, this, &ScanPopup::saveArticleButton_clicked );
   connect( ui.sendWordButton, &QToolButton::pressed, this, &ScanPopup::sendWordButton_clicked );
   connect( ui.sendWordToFavoritesButton, &QToolButton::pressed, this, &ScanPopup::sendWordToFavoritesButton_clicked );
 
@@ -942,6 +945,16 @@ void ScanPopup::prefixMatchFinished()
 void ScanPopup::pronounceButton_clicked() const
 {
   definition->playSound();
+}
+
+void ScanPopup::saveArticleButton_clicked()
+{
+  // Delegate to centralized saver object; ScanPopup will display status messages
+  auto * saver = new ArticleSaver( this, definition, cfg );
+  connect( saver, &ArticleSaver::statusMessage, this, [ this ]( const QString & message, int timeout ) {
+    showStatusBarMessage( message, timeout );
+  } );
+  saver->save();
 }
 
 void ScanPopup::pinButtonClicked( bool checked )

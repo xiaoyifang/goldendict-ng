@@ -285,18 +285,6 @@
       <translation>&amp;Maak Anki-notitie</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>Fout bij laden</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>Pagina laden mislukt</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>Niet in staat om de gewenste pagina-inhoud te laden</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>&amp;Geluid kopiëren naar klembord</translation>
     </message>
@@ -488,6 +476,14 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Groepen met &quot;%1&quot; combineren</translation>
+    </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Groep verwijderen</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Weet u zeker dat u de groep &lt;b&gt;%1&lt;/b&gt; wilt verwijderen?</translation>
     </message>
   </context>
   <context>
@@ -771,6 +767,14 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>Het woordenboek is gepland voor herindexering. De index wordt opnieuw opgebouwd bij de volgende applicatie.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Weergavenaam wijzigen</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Nieuwe weergavenaam</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -1035,28 +1039,12 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Tab 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Nieuwe woordenboekgroep maken</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>Groep &amp;toevoegen</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Huidige groep hernoemen</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>Groep &amp;hernoemen</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Huidige groep verwijderen</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>Groep &amp;verwijderen</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
@@ -2540,38 +2528,6 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <translation>Artikel afdrukken</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Volledige HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Enkele Html (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime-HTML (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Artikel opslaan als</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Fout</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Kan artikel niet opslaan: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Artikel opslaan...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Bewaar artikel voltooid</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>Het hoofdvenster wordt nu altijd op de voorgrond weergegeven.</translation>
     </message>
@@ -2662,18 +2618,6 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
     <message>
       <source>Show</source>
       <translation>Weergeven</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>PDF-bestand opslaan voltooid</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>Opslaan PDF mislukt</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>PDF-document (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -2801,6 +2745,14 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Actieve woordenboeken: %1, inactief: %2</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Weergavenaam wijzigen</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Nieuwe weergavenaam</translation>
+    </message>
   </context>
   <context>
     <name>PathsModel</name>
@@ -2842,13 +2794,6 @@ geopend zonder ze te selecteren.</translation>
     <message>
       <source>Open new tabs in background</source>
       <translation>Nieuwe tabbladen op de achtergrond openen</translation>
-    </message>
-    <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>Hiermee worden nieuwe tabbladen geopend na het actieve tabblad.
-Indien uitgeschakeld worden ze als laatste toegevoegd.</translation>
     </message>
     <message>
       <source>Open new tabs after the current one</source>
@@ -2949,8 +2894,124 @@ the application.</source>
       <translation>Woordenboeken in contextmenu beperken tot:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>Systeemstandaard</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Standaard</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Klassiek</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Vernieuwend</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Babylon</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Bellen</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Lingoes-Blauw</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auto doet niets op sommige systemen.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Start het programma opnieuw om de toepassingstaal te wijzigen.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Start opnieuw om de wijziging van de interfacestijl toe te passen.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Herstart om de lettertypewijziging van de interface toe te passen.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Opnieuw opstarten nodig</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Inschakelen</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Uitzetten</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Automatisch</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Geen</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation>Met dit aan worden nieuwe tabbladen geopend net na de
+huidige, actief. Anders worden ze toegevoegd aan
+de laatste.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation>&amp;Stijl</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Verschijning</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Interfacetlettertype inschakelen</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface taal</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Weergavestijl artikel</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on stijl</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Stijl</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2967,6 +3028,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Donkere lezer Modus</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Voorbeeld lettertype</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng is een woordenboeksoftware.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -2991,10 +3060,6 @@ the application.</source>
     <message>
       <source>Monospace Font</source>
       <translation>Monospace-lettertype</translation>
-    </message>
-    <message>
-      <source>&amp;Popup</source>
-      <translation>Scan &amp;Popup</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
@@ -3326,8 +3391,12 @@ gevraagd een downloadpagina te openen.</translation>
       <translation>Maximale grootte geschiedenis:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Opslag-interval voor geschiedenis (instellen op 0 om alleen op te slaan bij afsluiten).</translation>
+      <source>Favorites</source>
+      <translation>Favorieten</translation>
+    </message>
+    <message>
+      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
+      <translation>Favorieten opslaan interval. Indien ingesteld op 0 favorieten zal alleen worden opgeslagen tijdens het afsluiten.</translation>
     </message>
     <message>
       <source>Save every</source>
@@ -3336,14 +3405,6 @@ gevraagd een downloadpagina te openen.</translation>
     <message>
       <source>minutes</source>
       <translation>minuten opslaan</translation>
-    </message>
-    <message>
-      <source>Favorites</source>
-      <translation>Favorieten</translation>
-    </message>
-    <message>
-      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation>Favorieten opslaan interval. Indien ingesteld op 0 favorieten zal alleen worden opgeslagen tijdens het afsluiten.</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3442,124 +3503,24 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Verwijder ongeldige index bij afsluiten</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Systeemstandaard</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Standaard</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Klassiek</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Vernieuwend</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Babylon</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Bellen</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Lingoes-Blauw</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto doet niets op sommige systemen.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Start het programma opnieuw om de toepassingstaal te wijzigen.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Start opnieuw om de wijziging van de interfacestijl toe te passen.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Herstart om de lettertypewijziging van de interface toe te passen.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Opnieuw opstarten nodig</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Inschakelen</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Uitzetten</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Automatisch</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Debug berichten opslaan in gd_log.txt in de configuratie map</translation>
-    </message>
-    <message>
-      <source>Interface language</source>
-      <translation>Interface taal</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Weergavestijl artikel</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Add-on stijl</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Interface Stijl</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Voorbeeld lettertype</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng is een woordenboeksoftware.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation>Interfacetlettertype inschakelen</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Geen</translation>
     </message>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Open het website-woordenboek in apart tabblad</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
+      <source>S&amp;can</source>
+      <translation>&amp;Kan</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>Onderdruk JavaScript waarschuwingen, bevestigingen en aanwijzingen in de artikelweergave.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>Onderdruk JavaScript dialogen</translation>
     </message>
   </context>
   <context>
@@ -3713,6 +3674,50 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>In de Url, &quot;%GDWORD%&quot; wordt vervangen door het woord dat wordt gezocht.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Enkele HTML (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF-document (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>Artikel opslaan als</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>Artikel opslaan voltooid</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Fout</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>Kan artikel niet opslaan: %1</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>PDF-bestand opslaan voltooid</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Opslaan PDF mislukt</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Artikel opslaan... (%1/%2)</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3808,6 +3813,10 @@ van Stardict, Babylon en GLS woordenboeken</translation>
 could be resized or managed in other ways.</source>
       <translation>Gebruik dit om het venster te spelden zodat het op het scherm zou blijven,
 kan op andere manieren worden aangepast of beheerd.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Artikel opslaan</translation>
     </message>
   </context>
   <context>

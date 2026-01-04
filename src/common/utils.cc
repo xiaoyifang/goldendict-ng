@@ -183,7 +183,7 @@ QString urlReplaceWord( const QString url, QString inputWord )
   //copy temp url
   auto urlString = url;
 
-  urlString.replace( "%25GDWORD%25", inputWord.toUtf8().toPercentEncoding() );
+  urlString.replace( "%GDWORD%", inputWord.toUtf8().toPercentEncoding() );
 
   return urlString;
 }

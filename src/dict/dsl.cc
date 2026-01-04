@@ -33,6 +33,7 @@
 #include <QSvgRenderer>
 #include <QtConcurrentRun>
 #include "utils.hh"
+#include "common/globalbroadcaster.hh"
 
 namespace Dsl {
 
@@ -825,7 +826,7 @@ string DslDictionary::nodeToHtml( const ArticleDom::Node & node )
       result += addAudioLink( url.toEncoded(), getId() );
 
       result += "<span class=\"dsl_s_wav\"><a href=" + ref
-        + R"(><img src="qrc:///icons/playsound.png" border="0" align="absmiddle" alt="Play"/></a></span>)";
+        + R"(><img src="qrc:///icons/playsound.svg" border="0" align="absmiddle" alt="Play"/></a></span>)";
     }
     else if ( Filetype::isNameOfPicture( filename ) ) {
       QUrl url;
@@ -1619,7 +1620,34 @@ void DslResourceRequest::run()
       }
     }
     else {
-      throw std::runtime_error( "Resource zip not opened" );
+      // try the .lsa dictionary if existed.
+      // The original resource request failed. Let's try to find a matching .lsa dictionary.
+      QString containingFolder = dict.getContainingFolder();
+      if ( !containingFolder.isEmpty() ) {
+        QDir dir( containingFolder );
+        QStringList lsaFiles = dir.entryList( QStringList() << "*.lsa", QDir::Files );
+
+        if ( !lsaFiles.isEmpty() ) {
+          QString lsaFilePath = dir.absoluteFilePath( lsaFiles.first() );
+          QString lsaDictId   = GlobalBroadcaster::instance()->getLsaIdFromPath( lsaFilePath );
+
+          if ( !lsaDictId.isEmpty() ) {
+            sptr< Dictionary::Class > lsaDict = GlobalBroadcaster::instance()->getDictionaryById( lsaDictId );
+
+            if ( lsaDict ) {
+              sptr< Dictionary::DataRequest > lsaReq = lsaDict->getResource( resourceName );
+
+              if ( lsaReq->isFinished() && lsaReq->dataSize() > 0 ) {
+                data       = lsaReq->getFullData();
+                hasAnyData = true;
+              }
+            }
+          }
+        }
+      }
+      if ( !hasAnyData ) {
+        throw std::runtime_error( "Resource not found." );
+      }
     }
 
     if ( Filetype::isNameOfTiff( resourceName ) ) {
@@ -1630,10 +1658,9 @@ void DslResourceRequest::run()
     hasAnyData = true;
   }
   catch ( std::exception & ex ) {
-    qWarning( "DSL: Failed loading resource \"%s\" for \"%s\", reason: %s",
-              resourceName.c_str(),
-              dict.getName().c_str(),
-              ex.what() );
+    qWarning() << "DSL: Failed loading resource" << QString::fromStdString( resourceName ) << "for"
+               << QString::fromStdString( dict.getName() ) << ", reason:" << ex.what();
+
     // Resource not loaded -- we don't set the hasAnyData flag then
   }
 

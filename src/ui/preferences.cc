@@ -240,7 +240,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   ui.storeHistory->setChecked( p.storeHistory );
   ui.historyMaxSizeField->setValue( p.maxStringsInHistory );
-  ui.historySaveIntervalField->setValue( p.historyStoreInterval );
   ui.alwaysExpandOptionalParts->setChecked( p.alwaysExpandOptionalParts );
 
   ui.favoritesSaveIntervalField->setValue( p.favoritesStoreInterval );
@@ -374,6 +373,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.removeInvalidIndexOnExit->setChecked( p.removeInvalidIndexOnExit );
   ui.enableApplicationLog->setChecked( p.enableApplicationLog );
   ui.openWebsiteInNewTab->setChecked( p.openWebsiteInNewTab );
+  ui.suppressWebDialogs->setChecked( p.suppressWebDialogs );
 
   //initialize add-on styles
   QString stylesDir = Config::getStylesDir();
@@ -508,7 +508,6 @@ Config::Preferences Preferences::getPreferences()
 
   p.storeHistory              = ui.storeHistory->isChecked();
   p.maxStringsInHistory       = ui.historyMaxSizeField->text().toUInt();
-  p.historyStoreInterval      = ui.historySaveIntervalField->text().toUInt();
   p.alwaysExpandOptionalParts = ui.alwaysExpandOptionalParts->isChecked();
 
   p.favoritesStoreInterval   = ui.favoritesSaveIntervalField->text().toUInt();
@@ -565,6 +564,7 @@ Config::Preferences Preferences::getPreferences()
   p.removeInvalidIndexOnExit = ui.removeInvalidIndexOnExit->isChecked();
   p.enableApplicationLog     = ui.enableApplicationLog->isChecked();
   p.openWebsiteInNewTab      = ui.openWebsiteInNewTab->isChecked();
+  p.suppressWebDialogs       = ui.suppressWebDialogs->isChecked();
 
   p.addonStyle = ui.addonStyles->currentText();
 

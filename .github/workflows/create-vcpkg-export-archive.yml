@@ -15,14 +15,15 @@ jobs:
       - uses: actions/checkout@v4
       - name: Create export
         run: |
+          # Create directory manually to avoid "path not found" errors
+          mkdir exports
+
           # ensure always up to date
           vcpkg x-update-baseline
   
-          vcpkg install --x-feature=breakpad
-          vcpkg export --raw --output-dir=.\exports --output=${{ env.outputName }}
-          echo "Starts compressing..."
-          cd .\exports
-          cmake -E tar c ${{ env.outputName }}.tar.zst --zstd .\${{ env.outputName }}
+          vcpkg install --x-feature=breakpad --allow-unsupported
+          vcpkg export --zip --output-dir=.\exports --output=${{ env.outputName }} 
+          ls .\exports
 
       - name: Upload as release
         env:
@@ -34,7 +35,7 @@ jobs:
           $tagName = "vcpkg_${dateString}_${vcpkgBaselineVersion}"
 
           cd .\exports\
-          $fileHash = $(Get-FileHash ${{ env.outputName }}.tar.zst SHA512).Hash
+          $fileHash = $(Get-FileHash ${{ env.outputName }}.zip SHA512).Hash
           
           
           $notes=@"
@@ -55,4 +56,4 @@ jobs:
           
           
           gh release create "${tagName}" --notes-file=.\note.txt --title "vcpkg package export archive" --latest=false
-          gh release upload "${tagName}" ${{ env.outputName }}.tar.zst  --clobber
+          gh release upload "${tagName}" ${{ env.outputName }}.zip  --clobber

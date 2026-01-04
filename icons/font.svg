@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="38"
+   height="38"
+   viewBox="0 0 10.054167 10.054167"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   sodipodi:docname="font.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="8.2142634"
+     inkscape:cx="34.452267"
+     inkscape:cy="35.730532"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient1"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#0b87da;stop-opacity:1;"
+         offset="0"
+         id="stop1" />
+      <stop
+         style="stop-color:#0b8772;stop-opacity:0.4745098;"
+         offset="0.83903134"
+         id="stop3" />
+      <stop
+         style="stop-color:#0b8714;stop-opacity:0;"
+         offset="1"
+         id="stop2" />
+    </linearGradient>
+    <rect
+       x="79.884834"
+       y="265.82367"
+       width="316.96555"
+       height="295.43616"
+       id="rect1" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1"
+       id="linearGradient2"
+       x1="21.781099"
+       y1="108.23342"
+       x2="73.362808"
+       y2="108.23342"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.11144821,0,0,0.11144821,34.948292,80.899408)" />
+  </defs>
+  <g
+     inkscape:label="图层 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-36.941654,-87.934747)">
+    <path
+       d="m 43.124445,96.13683 h -0.899832 l -0.622632,-1.76981 h -2.746406 l -0.622633,1.76981 h -0.857186 l 2.311417,-6.35 h 1.125856 z m -1.782605,-2.494795 -1.113062,-3.117428 -1.117327,3.117428 z"
+       id="text1"
+       style="font-size:192px;white-space:pre;fill:url(#linearGradient2);stroke-width:1.71929;stroke-linecap:square;paint-order:markers stroke fill"
+       aria-label="A" />
+    <g
+       id="g6"
+       transform="matrix(0.07746532,0,0,0.07746532,39.033675,81.695516)">
+      <path
+         d="M 71.975452,170.032 V 120.84172 A 24.594961,24.594961 0 0 0 47.38057,145.4366 24.594961,24.594961 0 0 0 71.975452,170.032 Z"
+         style="fill:#d3bc5f;stroke-width:10;stroke-linecap:square;paint-order:markers stroke fill"
+         id="path5" />
+      <path
+         d="M 71.975452,170.032 A 24.594961,24.594961 0 0 0 96.570333,145.4366 24.594961,24.594961 0 0 0 71.975452,120.84172 Z"
+         style="fill:#454837;stroke-width:10;stroke-linecap:square;paint-order:markers stroke fill"
+         id="path6" />
+    </g>
+  </g>
+</svg>

@@ -285,18 +285,6 @@
       <translation>&amp;Vytvořit Anki poznámku</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>Chyba při načítání</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>Načtení stránky se nezdařilo</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>Nelze načíst požadovaný obsah stránky</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>&amp;Kopírovat zvuk do schránky</translation>
     </message>
@@ -488,6 +476,14 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Sloučit skupiny s &quot;%1&quot;</translation>
+    </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Odstranit skupinu</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Opravdu chcete odstranit skupinu &lt;b&gt;%1&lt;/b&gt;?</translation>
     </message>
   </context>
   <context>
@@ -771,6 +767,14 @@ a školní ortografií v cyrilici)</translation>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>Pro reindexaci byl naplánován slovník. Index bude rekonstruován na příštím restartu aplikace.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Změnit zobrazovaný název</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Nové zobrazovací jméno:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -1035,28 +1039,12 @@ a školní ortografií v cyrilici)</translation>
       <translation>Tab 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Vytvořit novou skupinu slovníků</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>Přid&amp;at skupinu</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Přejmenovat tuto skupinu slovníků</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>Přejme&amp;novat skupinu</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Odstranit tuto skupinu slovníků</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>Odst&amp;ranit skupinu</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
@@ -2540,38 +2528,6 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <translation>Vytisknout článek</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Kompletní HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Jeden HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime HTML (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Uložit článek jako</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Chyba</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Nemohu uložit článek: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Ukládá se článek...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Uložit článek hotový</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>Hlavní okno je nastaveno vždy nahoře.</translation>
     </message>
@@ -2662,18 +2618,6 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
     <message>
       <source>Show</source>
       <translation>Zobrazit</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>Uložení PDF dokončeno</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>Uložení PDF selhalo</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>PDF dokument (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -2801,6 +2745,14 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Aktivní slovníky: %1, neaktivní: %2</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Změnit zobrazovaný název</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Nové zobrazovací jméno:</translation>
+    </message>
   </context>
   <context>
     <name>PathsModel</name>
@@ -2841,13 +2793,6 @@ Takto se budou nové karty otevírat bez přepnutí.</translation>
     <message>
       <source>Open new tabs in background</source>
       <translation>Otevřít nové karty na pozadí</translation>
-    </message>
-    <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>S touto volbou jsou nové karty otevřeny za používanou 
-kartou. Jinak jsou otevřeny jako poslední.</translation>
     </message>
     <message>
       <source>Open new tabs after the current one</source>
@@ -2948,8 +2893,124 @@ ukončení aplikace.</translation>
       <translation>Limit slovníků kontextové nabídky:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>Výchozí systému</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Výchozí</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Klasický</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Moderní</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Babylon</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Pór</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Lingoes modrá</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auto na některých systémech nedělá nic.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Restartujte program aby se provedla změna jazyka.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Chcete-li použít změnu stylu rozhraní, restartujte.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Restartujte pro aplikaci změny písma rozhraní.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Je potřeba restart</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Umožnit</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Zakázat</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Automatický</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Žádná</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation>S tímto zapnutím jsou nové panely otevřeny těsně po
+aktuální, aktivní. V opačném případě jsou přidány do
+jako poslední.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation>&amp;Styl</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Vzhled</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Povolit písmo rozhraní</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Jazyk rozhraní</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Styl zobrazení článku</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Styl doplňku</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Styl rozhraní</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2966,6 +3027,14 @@ ukončení aplikace.</translation>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Tmavý čtecí režim</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Náhled písma</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng je slovníkový software.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -2990,10 +3059,6 @@ ukončení aplikace.</translation>
     <message>
       <source>Monospace Font</source>
       <translation>Jednoprostorové písmo</translation>
-    </message>
-    <message>
-      <source>&amp;Popup</source>
-      <translation>Vy&amp;skakovací okno</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
@@ -3327,8 +3392,12 @@ a nabídne otevření stránky s aktualizací ke stažení.</translation>
       <translation>Maximální velikost historie:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Interval ukládání historie. Pokud nastaven na 0, historie bude uložena při ukončení.</translation>
+      <source>Favorites</source>
+      <translation>Oblíbené</translation>
+    </message>
+    <message>
+      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
+      <translation>Interval ukládání Oblíbených položek. Je-li nastaveno na 0 Oblíbených bude uloženo pouze při ukončení.</translation>
     </message>
     <message>
       <source>Save every</source>
@@ -3337,14 +3406,6 @@ a nabídne otevření stránky s aktualizací ke stažení.</translation>
     <message>
       <source>minutes</source>
       <translation>minut</translation>
-    </message>
-    <message>
-      <source>Favorites</source>
-      <translation>Oblíbené</translation>
-    </message>
-    <message>
-      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation>Interval ukládání Oblíbených položek. Je-li nastaveno na 0 Oblíbených bude uloženo pouze při ukončení.</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3443,124 +3504,24 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Při ukončení odstraňte neplatný index</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Výchozí systému</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Výchozí</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Klasický</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Moderní</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Babylon</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Pór</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Lingoes modrá</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto na některých systémech nedělá nic.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Restartujte program aby se provedla změna jazyka.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Chcete-li použít změnu stylu rozhraní, restartujte.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Restartujte pro aplikaci změny písma rozhraní.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Je potřeba restart</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Umožnit</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Zakázat</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Automatický</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Ukládat zprávy ladění do gd_log.txt do složky s konfigurací</translation>
-    </message>
-    <message>
-      <source>Interface language</source>
-      <translation>Jazyk rozhraní</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Styl zobrazení článku</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Styl doplňku</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Styl rozhraní</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Náhled písma</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng je slovníkový software.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation>Povolit písmo rozhraní</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Žádná</translation>
     </message>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Otevřít webový slovník v samostatné záložce</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
+      <source>S&amp;can</source>
+      <translation>&amp;Skenovat</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>Potlačit výstrahy JavaScriptu, potvrzení a výzvy v zobrazení článku.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>Potlačit dialogová okna JavaScriptu</translation>
     </message>
   </context>
   <context>
@@ -3714,6 +3675,50 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>V Urlu bude &quot;%GDWORD%&quot; nahrazeno hledaným slovem.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Jednoduchý Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF dokument (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>Uložit článek jako</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>Uložení článku dokončeno</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Chyba</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>Nemohu uložit článek: %1</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Uložení PDF dokončeno</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Uložení PDF selhalo</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Ukládání článku... (%1/%2)</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3809,6 +3814,10 @@ ze Stardict, Babylon a GLS slovníků</translation>
 could be resized or managed in other ways.</source>
       <translation>Použij toto pro připnutí okna, takže by zůstal na obrazovce,
 by mohl být změněn nebo spravován jiným způsobem.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Uložit článek</translation>
     </message>
   </context>
   <context>

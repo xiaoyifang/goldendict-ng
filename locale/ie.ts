@@ -285,18 +285,6 @@
       <translation>&amp;Create Anki note</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation type="unfinished">Error Loading</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation type="unfinished">Page Load Failed</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation type="unfinished">Unable to load the requested page content</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation type="unfinished">&amp;Copy sound to clipboard</translation>
     </message>
@@ -488,6 +476,14 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Combinar gruppes per «%1»</translation>
+    </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Remover li gruppe</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Esque vu vole remover li gruppe &lt;b&gt;%1&lt;/b&gt;?</translation>
     </message>
   </context>
   <context>
@@ -771,6 +767,14 @@ between classic and school orthography in cyrillic)</translation>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation type="unfinished">The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation type="unfinished">Change display name</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation type="unfinished">New display name:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -1035,28 +1039,12 @@ between classic and school orthography in cyrillic)</translation>
       <translation>Tab 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Crear un nov gruppe de dictionariums</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>&amp;Adjunter</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Renominar li actual gruppe de dictionariums</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>Re&amp;nominar</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Remover li actual gruppe de dictionariums</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>&amp;Remover</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
@@ -2540,38 +2528,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Printar li articul</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Complete Html (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Single Html (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime Html (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Gardar li articul quam</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Errore</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Ne successat gardar li article: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Gardante li articul...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Save article complete</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>The main window is set to be always on top.</translation>
     </message>
@@ -2662,18 +2618,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Show</source>
       <translation>Monstrar</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -2801,6 +2745,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Dictionariums: activ: %1, ínactiv: %2</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation type="unfinished">Change display name</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation type="unfinished">New display name:</translation>
+    </message>
   </context>
   <context>
     <name>PathsModel</name>
@@ -2842,14 +2794,6 @@ switching to them.</translation>
     <message>
       <source>Open new tabs in background</source>
       <translation>Aperter nov cartes in li funde</translation>
-    </message>
-    <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</translation>
     </message>
     <message>
       <source>Open new tabs after the current one</source>
@@ -2950,8 +2894,124 @@ the application.</translation>
       <translation>Max dictionariums in li menú:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>Predefinit</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Predefinit</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Classic</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Modern</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>popup</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Babylon</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Lingoes</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Lingoes-Blue</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auto does nothing on some systems.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Relansa li programma por cambiar li lingue.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Restart to apply the interface style change.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Restart to apply the interface font change.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Restart needed</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Enable</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Disable</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Automatic</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Null</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation type="unfinished">With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation type="unfinished">&amp;Style</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Appearance</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2968,6 +3028,14 @@ the application.</translation>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Dark Reader Mode</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -2992,10 +3060,6 @@ the application.</translation>
     <message>
       <source>Monospace Font</source>
       <translation>Monospace Font</translation>
-    </message>
-    <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Monitor</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
@@ -3330,8 +3394,12 @@ download page.</translation>
       <translation>Max grandore:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>History saving interval. If set to 0 history will be saved only during exit.</translation>
+      <source>Favorites</source>
+      <translation>Preferet</translation>
+    </message>
+    <message>
+      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
+      <translation>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</translation>
     </message>
     <message>
       <source>Save every</source>
@@ -3340,14 +3408,6 @@ download page.</translation>
     <message>
       <source>minutes</source>
       <translation>minutes</translation>
-    </message>
-    <message>
-      <source>Favorites</source>
-      <translation>Preferet</translation>
-    </message>
-    <message>
-      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3446,124 +3506,24 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <translation>Remove invalid index on exit</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Predefinit</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Predefinit</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Classic</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Modern</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>popup</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Babylon</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Lingoes</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Lingoes-Blue</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto does nothing on some systems.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Relansa li programma por cambiar li lingue.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Restart to apply the interface style change.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Restart to apply the interface font change.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Restart needed</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Enable</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Disable</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Automatic</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
-    </message>
-    <message>
-      <source>Interface language</source>
-      <translation>Interface language</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Article Display style</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Add-on style</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Interface Style</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Preview Font</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation type="unfinished">Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Null</translation>
     </message>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation type="unfinished">Suppress JavaScript alerts, confirms, and prompts in the article view.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation type="unfinished">Suppress JavaScript dialogs</translation>
     </message>
   </context>
   <context>
@@ -3717,6 +3677,50 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation type="unfinished">Save Article As</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation type="unfinished">Save article complete</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Errore</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>Ne successat gardar li article: %1</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation type="unfinished">Save PDF complete</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation type="unfinished">Save PDF failed</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation type="unfinished">Saving article... (%1/%2)</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3812,6 +3816,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
 could be resized or managed in other ways.</source>
       <translation>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Gardar li articul</translation>
     </message>
   </context>
   <context>

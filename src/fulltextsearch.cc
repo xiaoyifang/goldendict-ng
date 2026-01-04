@@ -4,6 +4,7 @@
 #include "ftshelpers.hh"
 #include "fulltextsearch.hh"
 #include "globalregex.hh"
+#include "common/globalbroadcaster.hh"
 #include "help.hh"
 #include <QFutureSynchronizer>
 #include <QMessageBox>
@@ -14,7 +15,6 @@ namespace FTS {
 void Indexing::run()
 {
   try {
-    timerThread->start();
     const int parallel_count = GlobalBroadcaster::instance()->getPreference()->fts.parallelThreads;
     QSemaphore sem( parallel_count < 1 ? 1 : parallel_count );
 
@@ -41,13 +41,11 @@ void Indexing::run()
     qDebug() << "waiting for all the fts creation to finish.";
     synchronizer.waitForFinished();
     qDebug() << "finished/cancel all the fts creation";
-    timerThread->quit();
-    timerThread->wait();
   }
   catch ( std::exception & ex ) {
     qWarning( "Exception occurred while full-text search: %s", ex.what() );
   }
-  emit sendNowIndexingName( QString() );
+  emit indexingFinished();
 }
 
 void Indexing::timeout()
@@ -80,27 +78,31 @@ FtsIndexing::FtsIndexing( const std::vector< sptr< Dictionary::Class > > & dicts
   dictionaries( dicts ),
   started( false )
 {
+  timer.setInterval( 2000 );
+  connect( &timer, &QTimer::timeout, this, &FtsIndexing::onTimeout );
 }
 
 void FtsIndexing::doIndexing()
 {
+  // If the task is already running, do nothing.
+  // If a force restart is needed, stopIndexing() should be called first.
   if ( started ) {
-    stopIndexing();
+    return;
   }
 
-  if ( !started ) {
-    while ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
-      isCancelled.deref();
-    }
-
-    Indexing * idx = new Indexing( isCancelled, dictionaries, indexingExited );
-
-    connect( idx, &Indexing::sendNowIndexingName, this, &FtsIndexing::setNowIndexedName );
-
-    QThreadPool::globalInstance()->start( idx );
-
-    started = true;
+  while ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    isCancelled.deref();
   }
+
+  indexing = new Indexing( isCancelled, dictionaries, indexingExited );
+
+  QObject::connect( indexing, &Indexing::sendNowIndexingName, this, &FtsIndexing::setNowIndexedName );
+  QObject::connect( indexing, &Indexing::indexingFinished, this, &FtsIndexing::onIndexingFinished );
+
+  QThreadPool::globalInstance()->start( indexing );
+
+  timer.start();
+  started = true;
 }
 
 void FtsIndexing::stopIndexing()
@@ -111,10 +113,29 @@ void FtsIndexing::stopIndexing()
     }
 
     indexingExited.acquire();
+    timer.stop();
     started = false;
 
     setNowIndexedName( QString() );
   }
+}
+
+void FtsIndexing::onTimeout()
+{
+  // QPointer automatically becomes null when the Indexing object is deleted
+  // No mutex needed - QPointer is thread-safe for null checks
+  if ( !indexing.isNull() ) {
+    indexing->timeout();
+  }
+}
+
+void FtsIndexing::onIndexingFinished()
+{
+  if ( started ) {
+    timer.stop();
+    started = false;
+  }
+  setNowIndexedName( QString() );
 }
 
 void FtsIndexing::setNowIndexedName( const QString & name )

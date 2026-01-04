@@ -1,4 +1,7 @@
 #include "globalbroadcaster.hh"
+#include "dict/dictionary.hh"
+#include "instances.hh"
+#include "audio/audioplayerinterface.hh"
 #include <QGlobalStatic>
 #include <QGuiApplication>
 #include <QStyleHints>
@@ -78,6 +81,66 @@ QString GlobalBroadcaster::getAbbrName( const QString & text )
   }
 
   return _icon_names.getIconName( simplified );
+}
+
+void GlobalBroadcaster::setAudioPlayer( const AudioPlayerPtr * _audioPlayer )
+{
+  audioPlayer = _audioPlayer;
+}
+
+const AudioPlayerPtr * GlobalBroadcaster::getAudioPlayer() const
+{
+  return audioPlayer;
+}
+
+void GlobalBroadcaster::setAllDictionaries( std::vector< sptr< Dictionary::Class > > * _allDictionaries )
+{
+  allDictionaries = _allDictionaries;
+}
+
+const std::vector< sptr< Dictionary::Class > > * GlobalBroadcaster::getAllDictionaries() const
+{
+  return allDictionaries;
+}
+
+sptr< Dictionary::Class > GlobalBroadcaster::getDictionaryById( const QString & dictId )
+{
+  if ( dictMap.empty() ) {
+    if ( allDictionaries != nullptr ) {
+      for ( const auto & dict : *allDictionaries ) {
+        dictMap.insert( QString::fromStdString( dict->getId() ), dict );
+      }
+    }
+  }
+  return dictMap.value( dictId );
+}
+
+void GlobalBroadcaster::setGroups( Instances::Groups * _groups )
+{
+  groups = _groups;
+}
+
+const Instances::Groups * GlobalBroadcaster::getGroups() const
+{
+  return groups;
+}
+
+void GlobalBroadcaster::addLsaDictMapping( const QString & dictId, const QString & path )
+{
+  auto nativePath = QDir::toNativeSeparators( path );
+  lsaIdToPathMap.insert( dictId, nativePath );
+  lsaPathToIdMap.insert( nativePath, dictId );
+}
+
+QString GlobalBroadcaster::getLsaPathFromId( const QString & dictId ) const
+{
+  return lsaIdToPathMap.value( dictId );
+}
+
+QString GlobalBroadcaster::getLsaIdFromPath( const QString & path ) const
+{
+  auto nativePath = QDir::toNativeSeparators( path );
+  return lsaPathToIdMap.value( nativePath );
 }
 
 bool GlobalBroadcaster::isDarkModeEnabled() const

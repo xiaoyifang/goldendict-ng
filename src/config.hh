@@ -355,6 +355,7 @@ struct Preferences
     false;
 #endif
   bool openWebsiteInNewTab = false;
+  bool suppressWebDialogs  = false;
 
   qreal zoomFactor;
   qreal helpZoomFactor;
@@ -363,7 +364,6 @@ struct Preferences
   unsigned storeHistory;
   bool alwaysExpandOptionalParts;
 
-  unsigned historyStoreInterval   = 15; // unit is minutes
   unsigned favoritesStoreInterval = 15;
 
   bool confirmFavoritesDeletion;

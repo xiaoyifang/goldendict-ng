@@ -50,7 +50,7 @@ signals:
 protected:
   QWebEngineView * createWindow( QWebEnginePage::WebWindowType type ) override;
   bool event( QEvent * event ) override;
-  void singleClickAction( QMouseEvent * event );
+  void singleClickAction();
   void sendCustomMouseEvent( QEvent::Type type );
   void doubleClickAction( QMouseEvent * event );
   void wheelEvent( QWheelEvent * event ) override;
