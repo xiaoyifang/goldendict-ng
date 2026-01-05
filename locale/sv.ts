@@ -3778,6 +3778,10 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <source>WARNING: %1</source>
       <translation>VARNING: %1</translation>
     </message>
+    <message>
+      <source>Definition</source>
+      <translation>Definition</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
