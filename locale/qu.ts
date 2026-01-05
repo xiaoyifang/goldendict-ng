@@ -3294,16 +3294,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>No permite la carga de contenido de otros sitios (oculta la mayoría de propaganda)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Wakin kitikuna GoldenDict HTTP umalliqkunawan tarinku chaymanta mañakuykunata harkanku.
-Kay akllanata atichiy sasachakuy allichanapaq.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Ama GoldenDictta HTTP umalliqkunapi riqsichiychu</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Llika waqaychasqa hatun sayaynin:</translation>
     </message>
