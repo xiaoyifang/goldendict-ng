@@ -3299,17 +3299,6 @@ webbplats slutar fungera p.g.a. det här, testa att inaktivera alternativet.</tr
       <translation>Blockera inläsning av innehåll från andra webbplatser (döljer merparten av annonserna)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Vissa webbplatser identifierar GoldenDict m.h.a. HTTP-huvuden och
-blockerar alla förfrågningar. Aktivera detta alternativ för att lösa
-det problemet.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Identifiera inte GoldenDict i HTTP-huvuden</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Maximal nätverkscache storlek:</translation>
     </message>
