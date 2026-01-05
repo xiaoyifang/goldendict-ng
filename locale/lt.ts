@@ -3296,16 +3296,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>Neleisti įkelti turinio iš kitų svetainių (dažniausiai reklamos)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Kai kurios svetainės aptinka GoldenDict pagal HTTP antraštę ir dėl to blokuoja užklausas.
-Ši parinktis leidžia apeiti problemą.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>HTTP antraštėse neidentifikuoti GoldenDict-ng</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Maksimalus tinklo talpyklos dydis:</translation>
     </message>
