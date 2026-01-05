@@ -2872,8 +2872,6 @@ void MainWindow::mutedDictionariesChanged()
 
 void MainWindow::showHistoryItem( const QString & word )
 {
-  // qDebug() << "Showing history item" << word;
-
   history.enableAdd( false );
 
   setInputLineText( word, WildcardPolicy::EscapeWildcards, DisablePopup );
@@ -2884,6 +2882,8 @@ void MainWindow::showHistoryItem( const QString & word )
 
 void MainWindow::showTranslationFor( const QString & word, unsigned inGroup, const QString & scrollTo )
 {
+  GlobalBroadcaster::instance()->is_popup = false;
+
   ArticleView * view = getFirstNonWebSiteArticleView();
 
   navPronounce->setEnabled( false );
