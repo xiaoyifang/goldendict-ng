@@ -3294,16 +3294,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>Không cho phép tải nội dung từ các trang khác (tắt các quảng cáo)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Một vài trang mạng nhận ra Từ điển Vàng thông qua phần đầu giao thức HTTP
-và chặn truy vấn. Bật tính năng này để không chèn định danh vào truy vấn HTTP.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Không định danh Từ điển Vàng trong phần đầu giao thức HTTP</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Kích thước bộ đệm mạng tối đa:</translation>
     </message>
