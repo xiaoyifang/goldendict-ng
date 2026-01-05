@@ -3776,6 +3776,10 @@ ze słowników Stardict, Babylon i GLS</translation>
       <source>WARNING: %1</source>
       <translation>UWAGA: %1</translation>
     </message>
+    <message>
+      <source>Definition</source>
+      <translation>Definicje</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
