@@ -3297,16 +3297,6 @@ Pokud se kvůli tomuto některé stránky rozbijí, zkuste toto vypnout.</transl
       <translation>Zakázat načítání obsahu z jiných stránek (skryje většinu reklam)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Některé stránky detekují GoldenDict přes hlavičky HTTP a blokují jeho požadavky.
-Povolením této volby problém obejdete.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Neidentifikovat GoldenDict v lavičkách HTTP</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Maximální velikost síťové mezipaměti:</translation>
     </message>
