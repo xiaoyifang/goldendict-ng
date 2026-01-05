@@ -3774,6 +3774,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>WARNING: %1</source>
       <translation>ПОПЕРЕДЖЕННЯ: %1</translation>
     </message>
+    <message>
+      <source>Definition</source>
+      <translation>Визначення процесу</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
