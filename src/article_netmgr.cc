@@ -10,6 +10,8 @@
 #include <QWebEngineUrlRequestJob>
 #include <stdint.h>
 
+#include <QRegularExpression>
+
 using std::string;
 
 
@@ -86,7 +88,10 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( const QNetworkRequ
   newReq.setUrl( url );
   newReq.setAttribute( QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy );
   if ( hideGoldenDictHeader && url.scheme().startsWith( "http", Qt::CaseInsensitive ) ) {
-    newReq.setRawHeader( "User-Agent", req.rawHeader( "User-Agent" ).replace( qApp->applicationName().toUtf8(), "" ) );
+    QString userAgent = req.rawHeader( "User-Agent" );
+    userAgent.replace( qApp->applicationName(), "" );
+    userAgent.replace( QRegularExpression( "QtWebEngine/[\\d.]+\\s*" ), "" );
+    newReq.setRawHeader( "User-Agent", userAgent.toUtf8() );
   }
 
   QNetworkReply * reply = QNetworkAccessManager::createRequest( op, newReq, nullptr );
