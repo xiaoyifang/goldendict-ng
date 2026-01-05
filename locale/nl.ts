@@ -3773,6 +3773,10 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <source>WARNING: %1</source>
       <translation>WAARSCHUWING: %1</translation>
     </message>
+    <message>
+      <source>Definition</source>
+      <translation>Definitie</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
