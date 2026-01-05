@@ -3297,16 +3297,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>امنع تحميل المحتوى من مواقع أخرى (يخفي أغلب الإعلانات)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>بعض المواقع تكتشف القاموس الذهبي من خلال ترويسات HTTP وتمنع الطلبات.
-مكّن هذا الخيار للالتفاف حول المشكلة.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>لا تعرّف القاموس الذهبي في ترويسات HTTP</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>الحد الأقصى لحجم ذاكرة التخزين المؤقت للشبكة:</translation>
     </message>
