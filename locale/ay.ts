@@ -3388,18 +3388,6 @@ ukan uñstkiti. Yaqhip sitio ukax uka tuqit p’akintaspa ukhax aka jan ch’ama
       <translation>Yaqha web laphinakat janiw apaqañakiti (yatiyanaka imantañataki)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Impedir la identificación de GoldenDict a partir de las cabeceras HTTP.
-
-Yaqhiq web laphi GoldenDict uk uñt&apos;apxi HTTP p&apos;iqi laphi kuampi 
-mayiwinakap jakt&apos;rakiwa. Jani wali utjañapatakixa, ak naktayam.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>GoldenDict-ng janiw uskañakiti HTTP p&apos;iqi tuqi laphina</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Llika cachep ukax kawkch&apos;akamasa:</translation>
     </message>
