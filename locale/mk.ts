@@ -3300,16 +3300,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>Оневозможи вчитување садржини од други сајтови (отстранува поголем дел од огласите)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Неки сајтови откривају GoldenDict преко HTTP заглавља и блок захтева.
-Омогућите ову могућност да бисте решили тај проблем.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Немојте да го идентификувате GoldenDict у HTTP заглавја</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Максимална големина на кешот на мрежата:</translation>
     </message>
