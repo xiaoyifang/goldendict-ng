@@ -3298,16 +3298,6 @@ malpermesante enhavon (bildoj, kadroj) ne devenantaj de la retejo
       <translation>Malpermesu ŝarĝi enhavon de aliaj retejoj (kaŝas plej multajn reklamojn)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Iuj retejoj detektas GoldenDict per HTTP-titoloj kaj blokas la petojn.
-Ebligu ĉi tiun opcion por solvi la problemon.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Ne identigu GoldenDict en HTTP-kapoj</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Maksimuma reta kaŝmemorgrandeco:</translation>
     </message>
