@@ -3298,16 +3298,6 @@ niedziałania niektórych witryn.</translation>
       <translation>Nie zezwalaj na wyświetlanie treści pochodzących z innych witryn (ukrywa większość reklam)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Niektóre witryny wykrywają program GoldenDict za pomocą nagłówków HTTP i blokują żądania.
-Włącz tę opcję, aby obejść ten problem.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Nie identyfikuj programu GoldenDict w nagłówkach HTTP</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Maksymalny rozmiar pamięci podręcznej sieci:</translation>
     </message>
