@@ -3776,6 +3776,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <source>WARNING: %1</source>
       <translation>VAROITUS: %1</translation>
     </message>
+    <message>
+      <source>Definition</source>
+      <translation>Määritelmä</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
