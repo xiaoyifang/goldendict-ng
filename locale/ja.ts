@@ -3295,16 +3295,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>他のサイトからのコンテンツの読み込みを無効にする (ほとんどの広告を非表示にします)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>一部のサイトでは、HTTPヘッダーを介してGoldenDictを検出し、リクエストをブロックします。
-このオプションを有効にして問題を回避します。</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>HTTPヘッダーでGoldenDictを識別しない</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>ネットワークキャッシュの最大サイズ:</translation>
     </message>
