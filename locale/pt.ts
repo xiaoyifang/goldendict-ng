@@ -3776,6 +3776,10 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <source>WARNING: %1</source>
       <translation>AVISO: %1</translation>
     </message>
+    <message>
+      <source>Definition</source>
+      <translation>Definição</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
