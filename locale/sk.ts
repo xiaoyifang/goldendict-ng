@@ -3769,6 +3769,10 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
       <source>WARNING: %1</source>
       <translation>UPOZORNENIE: %1</translation>
     </message>
+    <message>
+      <source>Definition</source>
+      <translation type="unfinished">Definition</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
