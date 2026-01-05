@@ -3291,16 +3291,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>Забараніць загрузку змесціва з іншых сайтаў (хавае большасць рэкламы)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Некаторыя сайты пазнаюць GoldenDict па HTTP-загалоўках
-і блакуюць запыты. Уключыце гэты параметр, каб развязаць праблему.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Не пазначаць GoldenDict у HTTP-загалоўках</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Максімальны памер сеткавага кэшу:</translation>
     </message>
