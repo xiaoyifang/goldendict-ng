@@ -3298,16 +3298,6 @@ Se alcuni siti dovessero bloccarsi, provare a disabilitare questa casella.</tran
       <translation>non permettere il caricamento dei contenuti da altri siti (nasconde la maggioranza dei messaggi pubblicitari)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Alcuni siti web rilevano GoldenDict via intestazione HTTP e ne bloccano le richieste.
-Spuntare questa casella per raggirare il problema.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>non consentire che GoldenDict venga identificato nelle intestazioni HTTP</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Dimensione massima cache di rete:</translation>
     </message>
