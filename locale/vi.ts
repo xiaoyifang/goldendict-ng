@@ -3769,6 +3769,10 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <source>WARNING: %1</source>
       <translation>CẢNH BÁO: %1</translation>
     </message>
+    <message>
+      <source>Definition</source>
+      <translation type="unfinished">Definition</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
