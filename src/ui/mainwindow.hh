@@ -24,7 +24,6 @@
 #include "base_type.hh"
 #include "hotkey/hotkeywrapper.hh"
 #include "resourceschemehandler.hh"
-#include "iframeschemehandler.hh"
 #ifdef WITH_X11
   #include <fixx11h.h>
 #endif
@@ -164,7 +163,6 @@ private:
   QIcon starIcon, blueStarIcon;
 
   LocalSchemeHandler * localSchemeHandler;
-  IframeSchemeHandler * iframeSchemeHandler;
   ResourceSchemeHandler * resourceSchemeHandler;
 
   BaseClipboardListener * clipboardListener;
