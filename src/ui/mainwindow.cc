@@ -2874,6 +2874,8 @@ void MainWindow::showHistoryItem( const QString & word )
 {
   // qDebug() << "Showing history item" << word;
 
+  GlobalBroadcaster::instance()->is_popup = false;
+
   history.enableAdd( false );
 
   setInputLineText( word, WildcardPolicy::EscapeWildcards, DisablePopup );
@@ -4342,6 +4344,7 @@ void MainWindow::setGroupByName( const QString & name, bool main_window )
 
 void MainWindow::headwordFromFavorites( const QString & headword, const QString & favFolderFullPath )
 {
+  GlobalBroadcaster::instance()->is_popup=false;
   if ( !favFolderFullPath.isEmpty() ) {
     // Find group by it Favorites folder
     for ( Instances::Groups::size_type i = 0; i < groupInstances.size(); i++ ) {
