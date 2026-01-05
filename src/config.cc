@@ -952,7 +952,6 @@ Class load()
     }
 
 
-
     if ( !preferences.namedItem( "maxNetworkCacheSize" ).isNull() ) {
       c.preferences.maxNetworkCacheSize = preferences.namedItem( "maxNetworkCacheSize" ).toElement().text().toInt();
     }
@@ -1982,7 +1981,6 @@ void save( const Class & c )
     opt = dd.createElement( "disallowContentFromOtherSites" );
     opt.appendChild( dd.createTextNode( c.preferences.disallowContentFromOtherSites ? "1" : "0" ) );
     preferences.appendChild( opt );
-
 
 
     opt = dd.createElement( "maxNetworkCacheSize" );
