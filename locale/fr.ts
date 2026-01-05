@@ -3774,6 +3774,10 @@ Erreur lors de l&apos;enregistrement de la ressource :</translation>
       <source>WARNING: %1</source>
       <translation>ATTENTION : %1</translation>
     </message>
+    <message>
+      <source>Definition</source>
+      <translation>Définition</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
