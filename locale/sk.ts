@@ -3291,16 +3291,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>Zakázať načítanie obsahu z iných webov (skryje väčšinu reklám)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Niektoré stránky odhalia GoldenDict cez HTTP hlavičky a blokujú jeho požiadavky.
-Povoľte toto nastavenie na obídenie problému.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Neidentifikovať GoldenDict v HTTP hlavičke</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Maximálna veľkosť vyr. pamäte siete:</translation>
     </message>
