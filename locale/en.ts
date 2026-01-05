@@ -3298,16 +3298,6 @@ you are browsing. If some site breaks because of this, try disabling this.</tran
       <translation type="unfinished">Disallow loading content from other sites (hides most advertisements)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation type="unfinished">Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation type="unfinished">Do not identify GoldenDict in HTTP headers</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation type="unfinished">Maximum network cache size:</translation>
     </message>
