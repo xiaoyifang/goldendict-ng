@@ -11,6 +11,7 @@
 #include <stdint.h>
 
 #include <QRegularExpression>
+#include "globalregex.hh"
 
 using std::string;
 
@@ -90,7 +91,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( const QNetworkRequ
   if ( hideGoldenDictHeader && url.scheme().startsWith( "http", Qt::CaseInsensitive ) ) {
     QString userAgent = req.rawHeader( "User-Agent" );
     userAgent.replace( qApp->applicationName(), "" );
-    userAgent.replace( QRegularExpression( "QtWebEngine/[\\d.]+\\s*" ), "" );
+    userAgent.replace( RX::qtWebEngineUserAgent, "" );
     newReq.setRawHeader( "User-Agent", userAgent.toUtf8() );
   }
 
