@@ -3297,16 +3297,6 @@ blokirlär. Şol sebäpli käbir sahypa döwülse, muny öçürip görüň.</tra
       <translation>Özge saýtlardan zat ýüklemegi gadagan et (köp sanly reklama/mahabt gizlemgegini üpjün edýär)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Käbir websaýtlar GoldenDict programmany HTTP ady arkaly görýärler we olara ýüz tutmaga rugsat berenoklar. 
-Şeýle meseläni çözmek üçin, şuny işlediň.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>GoldenDict-ng HTTP ady arkaly görkezme</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Ulgam keş keşiniň iň uly ululygy:</translation>
     </message>
