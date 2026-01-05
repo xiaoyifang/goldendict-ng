@@ -3293,16 +3293,6 @@ faqe shfaq probleme prej kësaj, çaktivizojeni.</translation>
       <translation>Mohoj përmbajtjen nga faqet e tjera (fsheh shumicën e reklamave)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Disa faqe e njohin GoldenDict me anë të kokëve HTTP, dhe i bllokojnë kërkesat.
-Ky opsion e anashkalon problemin.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Nuk identifikoj GoldenDict në kokët HTTP</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Madhësia maksimale e memories së rrjetit:</translation>
     </message>
