@@ -3298,16 +3298,6 @@ que você está navegando. Se algum site parar por causa disso, tente desativar 
       <translation>Proibir o carregamento de conteúdo de outros sites (oculta a maioria dos anúncios)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Alguns sites detectam GoldenDict através de cabeçalhos HTTP e bloqueiam as solicitações.
-Ative esta opção para contornar o problema.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Não identifique o GoldenDict nos cabeçalhos HTTP</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Tamanho máximo do cache de rede:</translation>
     </message>
