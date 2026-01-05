@@ -3287,15 +3287,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>禁止载入来自其它站点的内容（封杀广告）</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>部分网站屏蔽了使用 GoldenDict 浏览器标识（UA）的请求，启用此选项以绕过该问题。</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>不使用 GoldenDict 浏览器标识（UA）</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>允许的最大网络缓存：</translation>
     </message>
