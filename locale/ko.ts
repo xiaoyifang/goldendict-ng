@@ -3297,16 +3297,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>사이트 외부 자료 허용 안함(대부분의 광고를 차단함)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>일부 사이트는 HTTP 헤더를 통해서 GoldenDict을 탐지하여 요청을 블록합니다.
-이런 문제를 우회하려면 옵션을 선택하십시오.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>HTTP 헤더에 GoldenDict을 표시하지 않음</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>최대 네트워크 캐시 크기:</translation>
     </message>
