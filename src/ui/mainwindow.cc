@@ -158,8 +158,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   history( cfg_.preferences.maxStringsInHistory, cfg_.maxHeadwordSize ),
   dictionaryBar( this, configEvents, cfg.preferences.maxDictionaryRefsInContextMenu ),
   articleMaker( dictionaries, groupInstances, cfg.preferences ),
-  articleNetMgr(
-    this, dictionaries, articleMaker, dictionaries, articleMaker, cfg.preferences.disallowContentFromOtherSites ),
+  articleNetMgr( this, dictionaries, articleMaker, cfg.preferences.disallowContentFromOtherSites ),
   dictNetMgr( this ),
   audioPlayerFactory(
     cfg.preferences.useInternalPlayer, cfg.preferences.internalPlayerBackend, cfg.preferences.audioPlaybackProgram ),
