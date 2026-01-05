@@ -3297,16 +3297,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>بارگیری محتوا از دیگر پایگاه‌ها را می‌بندد (بیش‌تر آگهی‌ها را پنهان می‌کند)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>برخی پایگاه‌ها گلدن‌دیگت را از سرآیند HTTP می‌شناسند و درخواست‌ها
-را می‌بندند. این گزینه را به‌کار اندازید تا مشکل از بین برود.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>گلدن‌دیکت را در سرآیند HTTP نمایان نکن</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>حداکثر اندازه کش شبکه:</translation>
     </message>
