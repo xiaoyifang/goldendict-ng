@@ -3296,16 +3296,6 @@ que du contenu est manquant, essayez de désactiver cette option.</translation>
       <translation>Empêcher le chargement de contenu en provenance d&apos;autres sites (cache la plupart des publicités)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Certains sites détectent GoldenDict à travers les en-tête HTTP et bloquent les requêtes.
-Activer cette option permet de contourner ce problème.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Ne pas s&apos;identifier en tant que GoldenDict dans les en-têtes HTTP</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Taille maximale du cache réseau:</translation>
     </message>
