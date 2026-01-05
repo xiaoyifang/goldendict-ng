@@ -3299,16 +3299,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>Намоиши мӯҳтавои тиҷориро аз вебсайтҳои дигар қатъ кунед (рекламаро пинҳон мекунад)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Баъзе вебсайтҳо барномаи GoldenDict-ро тавассути сарварақҳои HTTP муайян мекунанд ва дархостҳои барномаро манъ мекунанд.
-Барои ҳал кардани ин мушкилӣ, ин имконотро фаъол кунед.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Пешгирии муайянкунии барномаи GoldenDict-ро дар сарварақҳои HTTP</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Андозаи максималии кэши шабака:</translation>
     </message>
