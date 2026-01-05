@@ -3289,16 +3289,6 @@ Sollten einige Seiten nicht mehr funktionieren, kann das Deaktivieren dieser Opt
       <translation>Inhalte nicht von fremden Seiten laden (unterbindet meist Werbung)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Einige Seiten erkennen GoldenDict mittels HTTP-Kopfzeilen und blockieren die Anfrage.
-Diese Option kann dieses Problem beheben.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>GoldenDict-ng nicht in HTTP-Kopfzeilen identifizieren</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Maximale Netwerk Cache Grösse:</translation>
     </message>
