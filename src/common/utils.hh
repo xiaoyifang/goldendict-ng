@@ -266,7 +266,15 @@ inline std::pair< bool, QString > getQueryWord( const QUrl & url )
       word = queryItemValue( url, "word" );
     }
     else {
-      word = url.path().mid( 1 );
+      word = url.host(); // Host syntax: gdlookup://word -> host=word
+      
+      if ( word.isEmpty() || word == "localhost" ) {
+        QString path = url.path();
+        while ( path.startsWith( '/' ) ) {
+          path.remove( 0, 1 );
+        }
+        word = path;
+      }
     }
   }
   if ( url.scheme().compare( "bword" ) == 0 || url.scheme().compare( "entry" ) == 0 ) {
@@ -275,14 +283,16 @@ inline std::pair< bool, QString > getQueryWord( const QUrl & url )
     auto path = url.path();
     // url like this , bword:word  or bword://localhost/word
     if ( !path.isEmpty() ) {
-      //url,bword://localhost/word
-      if ( path.startsWith( "/" ) )
-        word = path.mid( 1 );
-      else
-        word = path;
+      while ( path.startsWith( '/' ) ) {
+        path.remove( 0, 1 );
+      }
+      if ( path.startsWith( "localhost/" ) ) {
+        path.remove( 0, 10 );
+      }
+      word = path;
     }
     else {
-      // url looks like this, bword://word,or bword://localhost
+      // Fallback for Host mode compatibility if needed, though mostly handled by path now
       auto host = url.host();
       if ( host != "localhost" ) {
         word = host;
@@ -300,18 +310,28 @@ inline QString getParams( const QUrl & url, const QString & key )
       word = queryItemValue( url, key );
     }
     else {
-      word = url.path().mid( 1 );
+      word = url.host(); // Host syntax check
+      
+      if ( word.isEmpty() || word == "localhost" ) {
+        QString path = url.path();
+        while ( path.startsWith( '/' ) ) {
+          path.remove( 0, 1 );
+        }
+        word = path;
+      }
     }
   }
   if ( url.scheme().compare( "bword" ) == 0 || url.scheme().compare( "entry" ) == 0 ) {
     auto path = url.path();
     // url like this , bword:word  or bword://localhost/word
     if ( !path.isEmpty() ) {
-      //url,bword://localhost/word
-      if ( path.startsWith( "/" ) )
-        word = path.mid( 1 );
-      else
-        word = path;
+      while ( path.startsWith( '/' ) ) {
+        path.remove( 0, 1 );
+      }
+      if ( path.startsWith( "localhost/" ) ) {
+        path.remove( 0, 10 );
+      }
+      word = path;
     }
     else {
       // url looks like this, bword://word,or bword://localhost

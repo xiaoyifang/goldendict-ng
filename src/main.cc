@@ -278,22 +278,30 @@ int main( int argc, char ** argv )
   QGuiApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
   
   // Registration of custom URL schemes must be done before QCoreApplication/QApplication is created.
-  const QStringList localSchemes = { "gdlookup",
-                                     "gdau",
-                                     "gico",
-                                     "qrcx",
-                                     "bres",
-                                     "bword",
-                                     "gdprg",
-                                     "gdvideo",
-                                     "gdtts",
-                                     "gdinternal",
-                                     "entry",
-                                     "iframe-http",
-                                     "iframe-https" };
+  // Schemes that use Syntax::Path (e.g. scheme:path or scheme://path where // is part of path)
+  // bword/entry use Path syntax for flexibility.
+  const QStringList pathSchemes = { "bword", "entry" };
 
-  for ( const auto & localScheme : localSchemes ) {
-    QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
+  for ( const auto & scheme : pathSchemes ) {
+    QWebEngineUrlScheme webUiScheme( scheme.toLatin1() );
+    webUiScheme.setSyntax( QWebEngineUrlScheme::Syntax::Path );
+    webUiScheme.setFlags( QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled );
+    QWebEngineUrlScheme::registerScheme( webUiScheme );
+  }
+
+  // Schemes that use Syntax::Host (standard scheme://host/path structure)
+  const QStringList hostSchemes = { "gdlookup",
+                                    "gdau",
+                                    "gico",
+                                    "qrcx",
+                                    "bres",
+                                    "gdprg",
+                                    "gdvideo",
+                                    "gdtts",
+                                    "gdinternal" };
+
+  for ( const auto & scheme : hostSchemes ) {
+    QWebEngineUrlScheme webUiScheme( scheme.toLatin1() );
     webUiScheme.setSyntax( QWebEngineUrlScheme::Syntax::Host );
     webUiScheme.setFlags( QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled );
     QWebEngineUrlScheme::registerScheme( webUiScheme );

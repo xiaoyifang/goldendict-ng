@@ -22,11 +22,23 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( const QNetworkRequ
   QString contentType = mineType.name();
 
   if ( req.url().scheme() == "gdlookup" ) {
-    // This is for handling simple lookup URLs like "gdlookup://word"
-    QString path = url.path();
-    if ( path.size() > 1 ) {
+    // This is for handling simple lookup URLs like "gdlookup://word" or "gdlookup:word"
+    
+    // Check host first (Syntax::Host)
+    QString word = url.host();
+    
+    // If host is empty or localhost, try path (Syntax::Path or fallback)
+    if ( word.isEmpty() || word == "localhost" ) {
+      word = url.path();
+      while ( word.startsWith( '/' ) ) {
+        word.remove( 0, 1 );
+      }
+    }
+
+    if ( !word.isEmpty() ) {
       url.setPath( "" );
-      Utils::Url::addQueryItem( url, "word", path.mid( 1 ) );
+      url.setHost( "" ); // Clear host to ensure clean state
+      Utils::Url::addQueryItem( url, "word", word );
       Utils::Url::addQueryItem( url, "group", QString::number( GlobalBroadcaster::instance()->currentGroupId ) );
     }
   }
