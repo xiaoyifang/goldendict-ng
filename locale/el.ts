@@ -3300,16 +3300,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>Φραγή περιεχομένου από άλλους ιστοτόπους (εξαφανίζει τις περισσότερες διαφημίσεις)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Ορισμένες ιστοσελίδες εντοπίζουν το GoldenDict μέσω των κεφαλίδων HTTP και μπλοκάρουν τα αιτήματά του.
-Ενεργοποιήστε αυτή την επιλογή για να παρακάμψετε το πρόβλημα.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Μη ταυτοποίηση του GoldenDict στις κεφαλίδες HTTP</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Μέγιστο μέγεθος προσωρινής μνήμης δικτύου:</translation>
     </message>
