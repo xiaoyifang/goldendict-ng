@@ -3763,6 +3763,10 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
       <source>WARNING: %1</source>
       <translation>WARNUNG: %1</translation>
     </message>
+    <message>
+      <source>Definition</source>
+      <translation type="unfinished">Definition</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
