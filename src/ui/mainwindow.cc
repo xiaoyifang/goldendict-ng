@@ -12,6 +12,7 @@
 #include "edit_dictionaries.hh"
 #include "dict/loaddictionaries.hh"
 #include "preferences.hh"
+#include "globalregex.hh"
 #include "about.hh"
 #include "mruqmenu.hh"
 #include "gestures.hh"
@@ -205,6 +206,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   QWebEngineProfile::defaultProfile()->setUrlRequestInterceptor( new WebUrlRequestInterceptor( this ) );
 
 
+  // Identify as GoldenDict, but avoid standard "QtWebEngine/..." identifier which some sites might block
+  QString userAgent = QWebEngineProfile::defaultProfile()->httpUserAgent();
+  userAgent.replace( RX::qtWebEngineUserAgent, "" );
+  QWebEngineProfile::defaultProfile()->setHttpUserAgent( userAgent );
 #ifdef EPWING_SUPPORT
   Epwing::initialize();
 #endif
