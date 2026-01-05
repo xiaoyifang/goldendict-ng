@@ -3774,6 +3774,10 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <source>WARNING: %1</source>
       <translation>UPOZORNĚNÍ: %1</translation>
     </message>
+    <message>
+      <source>Definition</source>
+      <translation>Definice</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
