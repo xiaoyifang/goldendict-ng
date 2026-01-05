@@ -3299,15 +3299,6 @@ que está accediendo. Si algunos sitios web dejan de funcionar, intente desactiv
       <translation>No permitir la carga de contenido de otros sitios web (oculta la mayoría de los anuncios de publicidad)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Algunos sitios web detectan GoldenDict vía encabezados HTTP y de esta manera lo bloquean. Active esta opción para eludir este problema.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>No identificar GoldenDict en encabezados HTTP</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Tamaño máximo de caché de red:</translation>
     </message>
