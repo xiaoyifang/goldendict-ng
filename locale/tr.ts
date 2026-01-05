@@ -3296,16 +3296,6 @@ engellemesini sağlar. Bazı siteler bu nedenle bozulursa, bunu devre dışı b�
       <translation>İçeriğin diğer sitelerden yüklenmesine izin verme (çoğu reklamı gizler)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Bazı siteler GoldenDict'i HTTP başlıkları aracılığıyla algılar ve istekleri engeller.
-Sorunu çözmek için bu seçeneği etkinleştirin.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>GoldenDict'i HTTP başlıklarında tanımlamayın</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Maksimum ağ önbelleği boyutu:</translation>
     </message>
