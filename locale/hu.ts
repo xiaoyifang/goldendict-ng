@@ -3298,16 +3298,6 @@ keretek). Ha bizonyos oldalak nem működnének, próbálja meg ezt kikapcsolni.
       <translation>Más oldalakról származó tartalmak letiltása (elrejti a reklámot nagy részét)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Bizonyos oldalak érzékelik a GoldenDict HTTP fejlécet és letiltják a kérést.
-Kapcsolja be ezt, a probléma megkerüléséhez.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>GoldenDict azonosító kihagyása a HTTP fejlécből</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Hálózati gyorsítótár mérete:</translation>
     </message>
