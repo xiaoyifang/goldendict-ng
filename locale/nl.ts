@@ -3297,16 +3297,6 @@ onjuist functioneert moet u dit mogelijk uitschakelen.</translation>
       <translation>Inhoud van andere sites blokkeren (verbergt de meeste reclame)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Sommige websites detecteren GoldenDict met behulp van HTTP-headers
-en blokkeren de aanvragen. Selecteer deze optie om dit te voorkomen.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>GoldenDict-ng niet identificeren in HTTP-headers</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Maximale netwerkcache grootte:</translation>
     </message>
