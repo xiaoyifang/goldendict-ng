@@ -267,7 +267,7 @@ inline std::pair< bool, QString > getQueryWord( const QUrl & url )
     }
     else {
       word = url.host(); // Host syntax: gdlookup://word -> host=word
-      
+
       if ( word.isEmpty() || word == "localhost" ) {
         QString path = url.path();
         while ( path.startsWith( '/' ) ) {
@@ -311,7 +311,7 @@ inline QString getParams( const QUrl & url, const QString & key )
     }
     else {
       word = url.host(); // Host syntax check
-      
+
       if ( word.isEmpty() || word == "localhost" ) {
         QString path = url.path();
         while ( path.startsWith( '/' ) ) {

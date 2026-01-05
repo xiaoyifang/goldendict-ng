@@ -23,10 +23,10 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( const QNetworkRequ
 
   if ( req.url().scheme() == "gdlookup" ) {
     // This is for handling simple lookup URLs like "gdlookup://word" or "gdlookup:word"
-    
+
     // Check host first (Syntax::Host)
     QString word = url.host();
-    
+
     // If host is empty or localhost, try path (Syntax::Path or fallback)
     if ( word.isEmpty() || word == "localhost" ) {
       word = url.path();

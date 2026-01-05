@@ -276,7 +276,7 @@ int main( int argc, char ** argv )
 #endif
   // High DPI screen support
   QGuiApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
-  
+
   // Registration of custom URL schemes must be done before QCoreApplication/QApplication is created.
   // Schemes that use Syntax::Path (e.g. scheme:path or scheme://path where // is part of path)
   // bword/entry use Path syntax for flexibility.
@@ -290,15 +290,8 @@ int main( int argc, char ** argv )
   }
 
   // Schemes that use Syntax::Host (standard scheme://host/path structure)
-  const QStringList hostSchemes = { "gdlookup",
-                                    "gdau",
-                                    "gico",
-                                    "qrcx",
-                                    "bres",
-                                    "gdprg",
-                                    "gdvideo",
-                                    "gdtts",
-                                    "gdinternal" };
+  const QStringList hostSchemes =
+    { "gdlookup", "gdau", "gico", "qrcx", "bres", "gdprg", "gdvideo", "gdtts", "gdinternal" };
 
   for ( const auto & scheme : hostSchemes ) {
     QWebEngineUrlScheme webUiScheme( scheme.toLatin1() );
