@@ -3781,6 +3781,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>WARNING: %1</source>
       <translation>ВНИМАНИЕ: %1</translation>
     </message>
+    <message>
+      <source>Definition</source>
+      <translation>Определение</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
