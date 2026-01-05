@@ -344,7 +344,7 @@ struct Preferences
 
   bool checkForNewReleases;
   bool disallowContentFromOtherSites;
-  bool hideGoldenDictHeader;
+
   int maxNetworkCacheSize;
   bool clearNetworkCacheOnExit;
   bool removeInvalidIndexOnExit = false;

@@ -160,8 +160,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   articleNetMgr( this,
                  dictionaries,
                  articleMaker,
-                 cfg.preferences.disallowContentFromOtherSites,
-                 cfg.preferences.hideGoldenDictHeader ),
+                 dictionaries,
+                 articleMaker,
+                 cfg.preferences.disallowContentFromOtherSites ),
   dictNetMgr( this ),
   audioPlayerFactory(
     cfg.preferences.useInternalPlayer, cfg.preferences.internalPlayerBackend, cfg.preferences.audioPlaybackProgram ),
@@ -207,10 +208,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   QWebEngineProfile::defaultProfile()->setUrlRequestInterceptor( new WebUrlRequestInterceptor( this ) );
 
-  if ( !cfg.preferences.hideGoldenDictHeader ) {
-    QWebEngineProfile::defaultProfile()->setHttpUserAgent( QWebEngineProfile::defaultProfile()->httpUserAgent()
-                                                           + " GoldenDict/WebEngine" );
-  }
 
 #ifdef EPWING_SUPPORT
   Epwing::initialize();

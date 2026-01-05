@@ -1344,17 +1344,6 @@ you are browsing. If some site breaks because of this, try disabling this.</stri
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="hideGoldenDictHeader">
-         <property name="toolTip">
-          <string>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</string>
-         </property>
-         <property name="text">
-          <string>Do not identify GoldenDict in HTTP headers</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_11">
          <item>
           <widget class="QLabel" name="label_20">

@@ -88,9 +88,8 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( const QNetworkRequ
   QNetworkRequest newReq;
   newReq.setUrl( url );
   newReq.setAttribute( QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy );
-  if ( hideGoldenDictHeader && url.scheme().startsWith( "http", Qt::CaseInsensitive ) ) {
+  if ( url.scheme().startsWith( "http", Qt::CaseInsensitive ) ) {
     QString userAgent = req.rawHeader( "User-Agent" );
-    userAgent.replace( qApp->applicationName(), "" );
     userAgent.replace( RX::qtWebEngineUserAgent, "" );
     newReq.setRawHeader( "User-Agent", userAgent.toUtf8() );
   }
