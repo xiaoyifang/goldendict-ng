@@ -3293,16 +3293,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>No permite la carga de contenido de otros sitios (oculta la mayoría de propaganda)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Algunos sitios detectan GoldenDict a través de encabezados HTTP y bloquean las solicitudes.
-Habilite esta opción para solucionar el problema.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>No identifique GoldenDict en encabezados HTTP</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Tamaño máximo de caché de red:</translation>
     </message>
