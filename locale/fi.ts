@@ -3298,16 +3298,6 @@ joita selailet. Jos jokin sivusto rikkoo tämän vuoksi, kokeile poistaa tämä 
       <translation>Estä sisällön lataaminen muilta sivustoilta (piilottaa useimmat mainokset)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Jotkut sivustot havaitsevat GoldenDictin HTTP-otsikoiden kautta ja estävät pyynnöt.
-Ota tämä asetus käyttöön korjataksesi ongelman.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Älä tunnista GoldenDictia HTTP-otsikoissa</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Verkon välimuistin enimmäiskoko:</translation>
     </message>
