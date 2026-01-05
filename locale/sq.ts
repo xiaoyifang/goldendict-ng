@@ -3769,6 +3769,10 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <source>WARNING: %1</source>
       <translation>PARALAJMËRIM: %1</translation>
     </message>
+    <message>
+      <source>Definition</source>
+      <translation type="unfinished">Definition</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
