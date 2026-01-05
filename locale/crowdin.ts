@@ -3262,15 +3262,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Do not identify GoldenDict in HTTP headers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Maximum network cache size:</source>
         <translation type="unfinished"></translation>
     </message>

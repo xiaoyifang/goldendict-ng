@@ -144,7 +144,7 @@ Preferences::Preferences():
   useInternalPlayer( InternalPlayerBackend::anyAvailable() ),
   checkForNewReleases( true ),
   disallowContentFromOtherSites( false ),
-  hideGoldenDictHeader( false ),
+
   maxNetworkCacheSize( 50 ),
   clearNetworkCacheOnExit( true ),
   zoomFactor( 1 ),
@@ -951,10 +951,6 @@ Class load()
         ( preferences.namedItem( "disallowContentFromOtherSites" ).toElement().text() == "1" );
     }
 
-    if ( !preferences.namedItem( "hideGoldenDictHeader" ).isNull() ) {
-      c.preferences.hideGoldenDictHeader =
-        ( preferences.namedItem( "hideGoldenDictHeader" ).toElement().text() == "1" );
-    }
 
     if ( !preferences.namedItem( "maxNetworkCacheSize" ).isNull() ) {
       c.preferences.maxNetworkCacheSize = preferences.namedItem( "maxNetworkCacheSize" ).toElement().text().toInt();
@@ -1986,9 +1982,6 @@ void save( const Class & c )
     opt.appendChild( dd.createTextNode( c.preferences.disallowContentFromOtherSites ? "1" : "0" ) );
     preferences.appendChild( opt );
 
-    opt = dd.createElement( "hideGoldenDictHeader" );
-    opt.appendChild( dd.createTextNode( c.preferences.hideGoldenDictHeader ? "1" : "0" ) );
-    preferences.appendChild( opt );
 
     opt = dd.createElement( "maxNetworkCacheSize" );
     opt.appendChild( dd.createTextNode( QString::number( c.preferences.maxNetworkCacheSize ) ) );

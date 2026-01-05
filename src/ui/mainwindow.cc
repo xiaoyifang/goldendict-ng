@@ -12,6 +12,7 @@
 #include "edit_dictionaries.hh"
 #include "dict/loaddictionaries.hh"
 #include "preferences.hh"
+#include "globalregex.hh"
 #include "about.hh"
 #include "mruqmenu.hh"
 #include "gestures.hh"
@@ -157,11 +158,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   history( cfg_.preferences.maxStringsInHistory, cfg_.maxHeadwordSize ),
   dictionaryBar( this, configEvents, cfg.preferences.maxDictionaryRefsInContextMenu ),
   articleMaker( dictionaries, groupInstances, cfg.preferences ),
-  articleNetMgr( this,
-                 dictionaries,
-                 articleMaker,
-                 cfg.preferences.disallowContentFromOtherSites,
-                 cfg.preferences.hideGoldenDictHeader ),
+  articleNetMgr( this, dictionaries, articleMaker, cfg.preferences.disallowContentFromOtherSites ),
   dictNetMgr( this ),
   audioPlayerFactory(
     cfg.preferences.useInternalPlayer, cfg.preferences.internalPlayerBackend, cfg.preferences.audioPlaybackProgram ),
@@ -207,11 +204,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   QWebEngineProfile::defaultProfile()->setUrlRequestInterceptor( new WebUrlRequestInterceptor( this ) );
 
-  if ( !cfg.preferences.hideGoldenDictHeader ) {
-    QWebEngineProfile::defaultProfile()->setHttpUserAgent( QWebEngineProfile::defaultProfile()->httpUserAgent()
-                                                           + " GoldenDict/WebEngine" );
-  }
 
+  // Identify as GoldenDict, but avoid standard "QtWebEngine/..." identifier which some sites might block
+  QString userAgent = QWebEngineProfile::defaultProfile()->httpUserAgent();
+  userAgent.replace( RX::qtWebEngineUserAgent, "" );
+  QWebEngineProfile::defaultProfile()->setHttpUserAgent( userAgent );
 #ifdef EPWING_SUPPORT
   Epwing::initialize();
 #endif
