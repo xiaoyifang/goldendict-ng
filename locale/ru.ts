@@ -3303,16 +3303,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>Запретить загрузку информации с других сайтов (убирает большую часть рекламы)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Некоторые сайты опознают GoldenDict по заголовкам HTTP и блокируют запросы.
-Включите эту опцию, чтобы обойти проблему.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Не указывать GoldenDict в заголовках HTTP</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Максимальный размер кэша:</translation>
     </message>
