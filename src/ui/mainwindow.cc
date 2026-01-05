@@ -3028,9 +3028,11 @@ void MainWindow::installHotKeys()
 void MainWindow::hotKeyActivated( int hk )
 {
   if ( !hk ) {
+    GlobalBroadcaster::instance()->is_popup = false;
     toggleMainWindow( false );
   }
   else if ( scanPopup ) {
+    GlobalBroadcaster::instance()->is_popup = true;
 #if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
     // When the user requests translation with the Ctrl+C+C hotkey in certain apps
     // on some GNU/Linux systems, GoldenDict appears to handle Ctrl+C+C before the
@@ -4207,8 +4209,12 @@ void MainWindow::showFTSIndexingName( const QString & name )
   }
 }
 
-void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId )
+void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId, bool isPopup )
 {
+  if ( isPopup ) {
+    return;
+  }
+
   auto view = findArticleViewByDictId( dictId );
   if ( view == nullptr ) {
     view = createNewTab( false, name );

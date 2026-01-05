@@ -38,7 +38,10 @@ class GlobalBroadcaster: public QObject
   QMap< QString, QString > lsaPathToIdMap;
   QMap< QString, sptr< Dictionary::Class > > dictMap;
 
+
 public:
+  std::atomic_bool is_popup;
+
   void setConfig( Config::Class * _config );
   Config::Class * getConfig() const;
   void setAudioPlayer( const AudioPlayerPtr * _audioPlayer );
@@ -101,5 +104,5 @@ signals:
 
   void indexingDictionary( QString );
 
-  void websiteDictionarySignal( QString, QString, QString );
+  void websiteDictionarySignal( QString, QString, QString, bool );
 };

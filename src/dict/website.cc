@@ -111,8 +111,10 @@ sptr< DataRequest > WebSiteDictionary::getArticle( const std::u32string & str,
       auto word  = QString::fromStdU32String( str );
       auto title = QString::fromStdString( getName() );
       // Pass dictId to the websiteDictionarySignal
-      emit GlobalBroadcaster::instance()
-        -> websiteDictionarySignal( title + "-" + word, urlString, QString::fromStdString( getId() ) );
+      emit GlobalBroadcaster::instance() -> websiteDictionarySignal( title + "-" + word,
+                                                                     urlString,
+                                                                     QString::fromStdString( getId() ),
+                                                                     GlobalBroadcaster::instance()->is_popup );
     }
 
     fmt::format_to(

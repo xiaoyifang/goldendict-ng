@@ -283,7 +283,7 @@ private slots:
   void openDictionaryFolder( const QString & id );
 
   void showFTSIndexingName( const QString & name );
-  void openWebsiteInNewTab( QString name, QString url, QString dictId );
+  void openWebsiteInNewTab( QString name, QString url, QString dictId, bool isPopup );
 
   void handleAddToFavoritesButton();
 
