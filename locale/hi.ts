@@ -3288,16 +3288,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>अन्य साइटों से लोडिंग सामग्री को अस्वीकार करें (अधिकांश विज्ञापनों को छुपाता है)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>कुछ साइटें एच.टी.टी.पी. शीर्षक के माध्यम से गोल्डेनडिक्ट का पता लगाती हैं और अनुरोधों को रोकती हैं।
-समस्या को हल करने के लिए इस विकल्प को सक्षम करें।</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>एच.टी.टी.पी शीर्षक में गोलेडेनडिक्ट की पहचान न करें</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>अधिकतम नेटवर्क कैश आकार:</translation>
     </message>
