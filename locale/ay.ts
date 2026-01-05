@@ -3885,6 +3885,10 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <source>WARNING: %1</source>
       <translation>AKHAM LURASMA: %1</translation>
     </message>
+    <message>
+      <source>Definition</source>
+      <translation type="unfinished">Definition</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
