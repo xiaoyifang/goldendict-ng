@@ -5,7 +5,7 @@ concurrency:
    group: ${{ github.workflow }}-${{ github.ref }}
    cancel-in-progress: true
 env:
-  version: 26.1.0
+  version: 26.2.0
   prerelease: ${{ !contains(github.ref_name,'master') }}
   versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
 on:
