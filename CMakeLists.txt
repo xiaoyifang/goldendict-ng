@@ -38,8 +38,10 @@ endif ()
 
 include(FeatureSummary)
 
+file(READ "VERSION" PROJECT_VERSION_ST)
+string(STRIP "${PROJECT_VERSION_ST}" PROJECT_VERSION_ST)
 project(goldendict-ng
-        VERSION 26.2.0
+        VERSION ${PROJECT_VERSION_ST}
         LANGUAGES CXX C)
 
 if (APPLE)
