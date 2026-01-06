@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
+      <translation>Anki: ne povas fari karton sen vorto</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -1113,6 +1113,14 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Ĉu vi certas, ke vi volas forigi ĉiujn grupojn?</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation type="unfinished">Add a new dictionary group</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>&amp;Aldoni grupon</translation>
     </message>
   </context>
   <context>
@@ -3657,7 +3665,7 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
-      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
+      <translation>Devigu la vorton esti tradukita en la ĉeffenestro.</translation>
     </message>
     <message>
       <source>Website Url:</source>
@@ -3669,11 +3677,11 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+      <translation>Kompleta HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>Ununura HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
@@ -3681,15 +3689,15 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
-      <translation type="unfinished">Save Article As</translation>
+      <translation>Konservi artikolon kiel</translation>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>Konservu artikolon kompleta</translation>
     </message>
     <message>
       <source>Error</source>
@@ -3701,11 +3709,11 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
+      <translation>Save PDF complete</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
+      <translation>Save PDF failed</translation>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
