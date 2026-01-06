@@ -138,6 +138,16 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
+        <widget class="QPushButton" name="addGroup">
+         <property name="toolTip">
+          <string>Add a new dictionary group</string>
+         </property>
+         <property name="text">
+          <string>&amp;Add group</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="renameGroup">
          <property name="toolTip">
           <string>Rename current dictionary group</string>
