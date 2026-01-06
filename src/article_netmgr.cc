@@ -10,9 +10,6 @@
 #include <QWebEngineUrlRequestJob>
 #include <stdint.h>
 
-#include <QRegularExpression>
-#include "globalregex.hh"
-
 using std::string;
 
 
@@ -88,11 +85,6 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( const QNetworkRequ
   QNetworkRequest newReq;
   newReq.setUrl( url );
   newReq.setAttribute( QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy );
-  if ( url.scheme().startsWith( "http", Qt::CaseInsensitive ) ) {
-    QString userAgent = req.rawHeader( "User-Agent" );
-    userAgent.replace( RX::qtWebEngineUserAgent, "" );
-    newReq.setRawHeader( "User-Agent", userAgent.toUtf8() );
-  }
 
   QNetworkReply * reply = QNetworkAccessManager::createRequest( op, newReq, nullptr );
 
