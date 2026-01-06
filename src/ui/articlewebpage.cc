@@ -18,7 +18,6 @@ bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationTyp
     auto [ valid, word ] = Utils::Url::getQueryWord( resUrl );
     urlQuery.addQueryItem( "word", word );
     urlQuery.addQueryItem( "group", lastReq.group );
-    urlQuery.addQueryItem( "muted", lastReq.mutedDicts );
     url.setQuery( urlQuery );
 
     // Use singleShot to avoid synchronous navigation request within acceptNavigationRequest,
@@ -30,7 +29,6 @@ bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationTyp
   //save current gdlookup's values.
   if ( url.scheme() == "gdlookup" ) {
     lastReq.group      = Utils::Url::queryItemValue( url, "group" );
-    lastReq.mutedDicts = Utils::Url::queryItemValue( url, "muted" );
   }
 
   if ( type == QWebEnginePage::NavigationTypeLinkClicked ) {

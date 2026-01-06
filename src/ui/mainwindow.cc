@@ -171,6 +171,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   starIcon( ":/icons/star.svg" ),
   blueStarIcon( ":/icons/star_blue.svg" )
 {
+  articleNetMgr.setPopup( false );
   if ( QThreadPool::globalInstance()->maxThreadCount() < MIN_THREAD_COUNT ) {
     QThreadPool::globalInstance()->setMaxThreadCount( MIN_THREAD_COUNT );
   }

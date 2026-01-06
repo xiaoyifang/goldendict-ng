@@ -106,6 +106,8 @@ ScanPopup::ScanPopup( QWidget * parent,
     ui.goForwardButton->setIcon( QIcon( ":/icons/previous.svg" ) );
   }
 
+  articleNetMgr.setPopup( true );
+
   mainStatusBar = new MainStatusBar( this );
 
   tabWidget = new MainTabWidget( this );

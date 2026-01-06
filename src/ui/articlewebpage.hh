@@ -5,7 +5,6 @@
 struct LastReqInfo
 {
   QString group;
-  QString mutedDicts;
 };
 
 class ArticleWebPage: public QWebEnginePage
