@@ -1114,6 +1114,14 @@ between classic and school orthography in cyrillic)</translation>
       <source>Are you sure you want to remove all the groups?</source>
       <translation type="unfinished">Are you sure you want to remove all the groups?</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation type="unfinished">Add a new dictionary group</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation type="unfinished">&amp;Add group</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
