@@ -1114,6 +1114,14 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Weet u zeker dat u alle groepen wilt verwijderen?</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Een nieuwe woordenboekgroep toevoegen</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>Groep &amp;toevoegen</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
