@@ -1113,6 +1113,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>すべてのグループを削除してもよろしいですか?</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>新しい辞書グループを追加</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>グループの追加(&amp;A)</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
