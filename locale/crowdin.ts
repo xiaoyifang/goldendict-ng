@@ -1096,6 +1096,14 @@ between classic and school orthography in cyrillic)</source>
         <source>Are you sure you want to remove all the groups?</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Add a new dictionary group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Add group</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>HistoryPaneWidget</name>
