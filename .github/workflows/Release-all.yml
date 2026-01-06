@@ -5,7 +5,6 @@ concurrency:
    group: ${{ github.workflow }}-${{ github.ref }}
    cancel-in-progress: true
 env:
-  version: 26.2.0
   prerelease: ${{ !contains(github.ref_name,'master') }}
   versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
 on:
@@ -153,6 +152,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0 # need all tags to genearte changelog
+      - name: Load version from VERSION file
+        run: echo "version=$(xargs < VERSION)" >> $GITHUB_ENV
       - name: Get git short SHA
         id: shortSHA
         run: |
