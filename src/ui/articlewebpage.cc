@@ -28,7 +28,7 @@ bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationTyp
 
   //save current gdlookup's values.
   if ( url.scheme() == "gdlookup" ) {
-    lastReq.group      = Utils::Url::queryItemValue( url, "group" );
+    lastReq.group = Utils::Url::queryItemValue( url, "group" );
   }
 
   if ( type == QWebEnginePage::NavigationTypeLinkClicked ) {
