@@ -783,8 +783,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // Create and show the initial welcome tab
   history.enableAdd( false );
-  createNewTab( true, ArticleMaker::welcomeWord() )->load( QUrl( "gdinternal://welcome-page" ) );
-  history.enableAdd( cfg.preferences.storeHistory );
+  ArticleView * welcomeTab = createNewTab( true, ArticleMaker::welcomeWord() );
+  QTimer::singleShot( 0, this, [ this, welcomeTab ]() {
+    welcomeTab->load( QUrl( "gdinternal://welcome-page" ) );
+    history.enableAdd( cfg.preferences.storeHistory );
+  } );
 
   // restore should be called after all UI initialized but not necessarily after show()
   // This must be called before show() as of Qt6.5 on Windows, not sure if it is a bug
@@ -803,26 +806,28 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 
   // Scanpopup related
-  scanPopup = new ScanPopup( nullptr, cfg, articleNetMgr, history );
+  QTimer::singleShot( 1000, this, [ this ]() {
+    scanPopup = new ScanPopup( nullptr, cfg, articleNetMgr, history );
 
-  scanPopup->setStyleSheet( styleSheet() );
+    scanPopup->setStyleSheet( styleSheet() );
 
-  connect( scanPopup, &ScanPopup::editGroupRequest, this, &MainWindow::editDictionaries, Qt::QueuedConnection );
+    connect( scanPopup, &ScanPopup::editGroupRequest, this, &MainWindow::editDictionaries, Qt::QueuedConnection );
 
-  connect( scanPopup, &ScanPopup::sendPhraseToMainWindow, this, [ this ]( const QString & word ) {
-    wordReceived( word );
+    connect( scanPopup, &ScanPopup::sendPhraseToMainWindow, this, [ this ]( const QString & word ) {
+      wordReceived( word );
+    } );
+
+    connect( scanPopup, &ScanPopup::inspectSignal, this, &MainWindow::inspectElement );
+    connect( scanPopup, &ScanPopup::forceAddWordToHistory, this, &MainWindow::forceAddWordToHistory );
+    connect( scanPopup, &ScanPopup::showDictionaryInfo, this, &MainWindow::showDictionaryInfo );
+    connect( scanPopup, &ScanPopup::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
+    connect( scanPopup, &ScanPopup::sendWordToHistory, this, &MainWindow::addWordToHistory );
+    connect( this, &MainWindow::setPopupGroupByName, scanPopup, &ScanPopup::setGroupByName );
+    connect( scanPopup,
+             &ScanPopup::sendWordToFavorites,
+             ui.favoritesPaneWidget,
+             &FavoritesPaneWidget::addRemoveWordInActiveFav );
   } );
-
-  connect( scanPopup, &ScanPopup::inspectSignal, this, &MainWindow::inspectElement );
-  connect( scanPopup, &ScanPopup::forceAddWordToHistory, this, &MainWindow::forceAddWordToHistory );
-  connect( scanPopup, &ScanPopup::showDictionaryInfo, this, &MainWindow::showDictionaryInfo );
-  connect( scanPopup, &ScanPopup::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
-  connect( scanPopup, &ScanPopup::sendWordToHistory, this, &MainWindow::addWordToHistory );
-  connect( this, &MainWindow::setPopupGroupByName, scanPopup, &ScanPopup::setGroupByName );
-  connect( scanPopup,
-           &ScanPopup::sendWordToFavorites,
-           ui.favoritesPaneWidget,
-           &FavoritesPaneWidget::addRemoveWordInActiveFav );
 
   clipboardListener = clipboardListener::get_impl( this );
   connect( clipboardListener, &BaseClipboardListener::changed, this, &MainWindow::clipboardChange );
