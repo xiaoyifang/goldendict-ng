@@ -1113,6 +1113,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Бажаєте вилучити всі групи?</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Додати нову групу словників</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>&amp;Додати групу</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
