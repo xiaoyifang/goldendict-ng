@@ -1114,6 +1114,14 @@ entre ortografía clásica y escolar en cirílico)</translation>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>¿Esta seguro que quiere eliminar todos los grupos?</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Añadir un nuevo grupo de diccionarios</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>Añad&amp;ir grupo</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
