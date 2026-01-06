@@ -288,9 +288,7 @@ int main( int argc, char ** argv )
                                      "gdvideo",
                                      "gdtts",
                                      "gdinternal",
-                                     "entry",
-                                     "iframe-http",
-                                     "iframe-https" };
+                                     "entry" };
 
   for ( const auto & localScheme : localSchemes ) {
     QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
