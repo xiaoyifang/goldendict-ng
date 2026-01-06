@@ -1114,6 +1114,14 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Oletko varma, että haluat poistaa kaikki ryhmät?</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Lisää uusi sanakirja ryhmä</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>&amp;Lisää ryhmä</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -3298,16 +3306,6 @@ joita selailet. Jos jokin sivusto rikkoo tämän vuoksi, kokeile poistaa tämä 
       <translation>Estä sisällön lataaminen muilta sivustoilta (piilottaa useimmat mainokset)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Jotkut sivustot havaitsevat GoldenDictin HTTP-otsikoiden kautta ja estävät pyynnöt.
-Ota tämä asetus käyttöön korjataksesi ongelman.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Älä tunnista GoldenDictia HTTP-otsikoissa</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Verkon välimuistin enimmäiskoko:</translation>
     </message>
@@ -3775,6 +3773,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>WARNING: %1</source>
       <translation>VAROITUS: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>Määritelmä</translation>
     </message>
   </context>
   <context>

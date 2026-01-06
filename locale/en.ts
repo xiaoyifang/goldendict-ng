@@ -1114,6 +1114,14 @@ between classic and school orthography in cyrillic)</translation>
       <source>Are you sure you want to remove all the groups?</source>
       <translation type="unfinished">Are you sure you want to remove all the groups?</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation type="unfinished">Add a new dictionary group</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation type="unfinished">&amp;Add group</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -3298,16 +3306,6 @@ you are browsing. If some site breaks because of this, try disabling this.</tran
       <translation type="unfinished">Disallow loading content from other sites (hides most advertisements)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation type="unfinished">Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation type="unfinished">Do not identify GoldenDict in HTTP headers</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation type="unfinished">Maximum network cache size:</translation>
     </message>
@@ -3775,6 +3773,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>WARNING: %1</source>
       <translation type="unfinished">WARNING: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation type="unfinished">Definition</translation>
     </message>
   </context>
   <context>

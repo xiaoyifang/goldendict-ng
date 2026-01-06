@@ -1114,6 +1114,14 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Biztos, hogy törli az összes csoportot?</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation type="unfinished">Add a new dictionary group</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>Új &amp;csoport</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -3298,16 +3306,6 @@ keretek). Ha bizonyos oldalak nem működnének, próbálja meg ezt kikapcsolni.
       <translation>Más oldalakról származó tartalmak letiltása (elrejti a reklámot nagy részét)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Bizonyos oldalak érzékelik a GoldenDict HTTP fejlécet és letiltják a kérést.
-Kapcsolja be ezt, a probléma megkerüléséhez.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>GoldenDict azonosító kihagyása a HTTP fejlécből</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Hálózati gyorsítótár mérete:</translation>
     </message>
@@ -3678,11 +3676,11 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+      <translation>Teljes HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>Egyetlen HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
@@ -3690,15 +3688,15 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>Mime HTML (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
-      <translation type="unfinished">Save Article As</translation>
+      <translation>Szócikk mentése mint</translation>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>Szócikk mentése kész</translation>
     </message>
     <message>
       <source>Error</source>
@@ -3710,11 +3708,11 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
+      <translation>Save PDF complete</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
+      <translation>Save PDF failed</translation>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
@@ -3774,6 +3772,10 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     <message>
       <source>WARNING: %1</source>
       <translation>FIGYELEM: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation type="unfinished">Definition</translation>
     </message>
   </context>
   <context>

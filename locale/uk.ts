@@ -1113,6 +1113,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Бажаєте вилучити всі групи?</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Додати нову групу словників</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>&amp;Додати групу</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -3296,16 +3304,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>Заборонити завантажувати вміст з інших сайтів (ховає більшість реклами)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Деякі сайти виявлять GoldenDict через загловок HTTP і блокують запити.
-Щоб обійти цю проблему, ввімкніть цей параметр.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Не отожнювати GoldenDict в заголовках HTTP</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Максимальний розмір кеша в мережі :</translation>
     </message>
@@ -3773,6 +3771,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>WARNING: %1</source>
       <translation>ПОПЕРЕДЖЕННЯ: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>Визначення процесу</translation>
     </message>
   </context>
   <context>

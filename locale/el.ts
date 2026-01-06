@@ -1116,6 +1116,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Σίγουρα θέλετε να αφαιρέσετε όλες τις ομάδες;</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Προσθέστε μια νέα ομάδα λεξικών</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>Προσ&amp;θήκη ομάδας</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -3300,16 +3308,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>Φραγή περιεχομένου από άλλους ιστοτόπους (εξαφανίζει τις περισσότερες διαφημίσεις)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Ορισμένες ιστοσελίδες εντοπίζουν το GoldenDict μέσω των κεφαλίδων HTTP και μπλοκάρουν τα αιτήματά του.
-Ενεργοποιήστε αυτή την επιλογή για να παρακάμψετε το πρόβλημα.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Μη ταυτοποίηση του GoldenDict στις κεφαλίδες HTTP</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Μέγιστο μέγεθος προσωρινής μνήμης δικτύου:</translation>
     </message>
@@ -3776,6 +3774,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>WARNING: %1</source>
       <translation>ΠΡΟΕΙΔΟΠΟΙΗΣΗ: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>Ορισμός</translation>
     </message>
   </context>
   <context>

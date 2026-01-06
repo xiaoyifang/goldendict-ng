@@ -1112,6 +1112,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>您確定要移除全部群組嗎？</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation type="unfinished">Add a new dictionary group</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>新增群組(&amp;A)</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -3287,16 +3295,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>禁止載入來自其它網站的內容 (隱藏大多數廣告)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>有些網站會偵測 GoldenDict 的 HTTP 標頭檔，所以阻擋其請求。
-啟用此選項能應付此問題。</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>在 HTTP 標頭檔中不要顯示 GoldenDict-ng</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>最大網絡緩存大小：</translation>
     </message>
@@ -3669,23 +3667,23 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>單一 Html (*.html *.htm)</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+      <translation>PDF 文件 (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
-      <translation type="unfinished">Save Article As</translation>
+      <translation>條目另存新檔</translation>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>保存文章完成</translation>
     </message>
     <message>
       <source>Error</source>
@@ -3697,11 +3695,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
+      <translation>儲存 PDF 完成</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
+      <translation>儲存 PDF 失敗</translation>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
@@ -3761,6 +3759,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>WARNING: %1</source>
       <translation>警告： %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>定義</translation>
     </message>
   </context>
   <context>

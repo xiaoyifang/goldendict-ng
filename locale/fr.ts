@@ -1114,6 +1114,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Êtes-vous sûr de vouloir enlever tous les groupes ?</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Ajouter un nouveau groupe de dictionnaires</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>&amp;Ajouter groupe</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -3296,16 +3304,6 @@ que du contenu est manquant, essayez de désactiver cette option.</translation>
       <translation>Empêcher le chargement de contenu en provenance d&apos;autres sites (cache la plupart des publicités)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Certains sites détectent GoldenDict à travers les en-tête HTTP et bloquent les requêtes.
-Activer cette option permet de contourner ce problème.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Ne pas s&apos;identifier en tant que GoldenDict dans les en-têtes HTTP</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Taille maximale du cache réseau:</translation>
     </message>
@@ -3773,6 +3771,10 @@ Erreur lors de l&apos;enregistrement de la ressource :</translation>
     <message>
       <source>WARNING: %1</source>
       <translation>ATTENTION : %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>Définition</translation>
     </message>
   </context>
   <context>

@@ -1114,6 +1114,14 @@ entre ortografía clásica y escolar en cirílico)</translation>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>¿Esta seguro que quiere eliminar todos los grupos?</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Añadir un nuevo grupo de diccionarios</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>Añad&amp;ir grupo</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -3297,16 +3305,6 @@ que está accediendo. Si algunos sitios web dejan de funcionar, intente desactiv
       <translation>No permitir la descarga de contenido desde otros sitios (oculta la mayoría de los anuncios)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Algunos sitios web detectan GoldenDict mediante las cabeceras HTTP y bloquean las peticiones.
-Active esta opción para evitar el problema.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Impedir la identificación de GoldenDict a partir de las cabeceras HTTP</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Tamaño máximo de caché de red:</translation>
     </message>
@@ -3773,6 +3771,10 @@ de diccionarios Stardict, Babylon y GLS</translation>
     <message>
       <source>WARNING: %1</source>
       <translation>ADVERTENCIA: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>Definición</translation>
     </message>
   </context>
   <context>

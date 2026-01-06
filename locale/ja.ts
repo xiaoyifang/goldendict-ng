@@ -1113,6 +1113,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>すべてのグループを削除してもよろしいですか?</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>新しい辞書グループを追加</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>グループの追加(&amp;A)</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -3295,16 +3303,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>他のサイトからのコンテンツの読み込みを無効にする (ほとんどの広告を非表示にします)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>一部のサイトでは、HTTPヘッダーを介してGoldenDictを検出し、リクエストをブロックします。
-このオプションを有効にして問題を回避します。</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>HTTPヘッダーでGoldenDictを識別しない</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>ネットワークキャッシュの最大サイズ:</translation>
     </message>
@@ -3771,6 +3769,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>WARNING: %1</source>
       <translation>警告: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>定義</translation>
     </message>
   </context>
   <context>

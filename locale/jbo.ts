@@ -1114,6 +1114,14 @@ between classic and school orthography in cyrillic)</translation>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>.i xu do djica lo ka vimcu ro selcmi</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation type="unfinished">Add a new dictionary group</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>cupra pa selcmi</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -3298,16 +3306,6 @@ you are browsing. If some site breaks because of this, try disabling this.</tran
       <translation>Disallow loading content from other sites (hides most advertisements)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Do not identify GoldenDict in HTTP headers</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Maximum network cache size:</translation>
     </message>
@@ -3679,11 +3677,11 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+      <translation>Complete Html (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>Single Html (*.html *.htm)</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
@@ -3691,15 +3689,15 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
-      <translation type="unfinished">Save Article As</translation>
+      <translation>pa drata co&apos;a vreji fi pa notci</translation>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>Save article complete</translation>
     </message>
     <message>
       <source>Error</source>
@@ -3707,15 +3705,15 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation type="unfinished">Can&apos;t save article: %1</translation>
+      <translation>Can&apos;t save article: %1</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
+      <translation>Save PDF complete</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
+      <translation>Save PDF failed</translation>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
@@ -3775,6 +3773,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>WARNING: %1</source>
       <translation>WARNING: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation type="unfinished">Definition</translation>
     </message>
   </context>
   <context>

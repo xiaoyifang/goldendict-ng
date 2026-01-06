@@ -1114,6 +1114,14 @@ a školní ortografií v cyrilici)</translation>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Opravdu chcete odstranit všechny skupiny?</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Přidat novou skupinu slovníků</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>Přid&amp;at skupinu</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -3297,16 +3305,6 @@ Pokud se kvůli tomuto některé stránky rozbijí, zkuste toto vypnout.</transl
       <translation>Zakázat načítání obsahu z jiných stránek (skryje většinu reklam)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Některé stránky detekují GoldenDict přes hlavičky HTTP a blokují jeho požadavky.
-Povolením této volby problém obejdete.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Neidentifikovat GoldenDict v lavičkách HTTP</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Maximální velikost síťové mezipaměti:</translation>
     </message>
@@ -3773,6 +3771,10 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>WARNING: %1</source>
       <translation>UPOZORNĚNÍ: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>Definice</translation>
     </message>
   </context>
   <context>

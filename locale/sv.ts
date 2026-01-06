@@ -1114,6 +1114,14 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Är du säker på att du vill ta bort alla grupper?</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Lägg till en ny ordboksgrupp</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>&amp;Lägg till grupp</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -3299,17 +3307,6 @@ webbplats slutar fungera p.g.a. det här, testa att inaktivera alternativet.</tr
       <translation>Blockera inläsning av innehåll från andra webbplatser (döljer merparten av annonserna)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Vissa webbplatser identifierar GoldenDict m.h.a. HTTP-huvuden och
-blockerar alla förfrågningar. Aktivera detta alternativ för att lösa
-det problemet.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Identifiera inte GoldenDict i HTTP-huvuden</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Maximal nätverkscache storlek:</translation>
     </message>
@@ -3777,6 +3774,10 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>WARNING: %1</source>
       <translation>VARNING: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>Definition</translation>
     </message>
   </context>
   <context>

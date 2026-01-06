@@ -1112,6 +1112,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>确定移除全部群组吗？</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>添加新字典组</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>添加群组(&amp;A)</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -3287,15 +3295,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>禁止载入来自其它站点的内容（封杀广告）</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>部分网站屏蔽了使用 GoldenDict 浏览器标识（UA）的请求，启用此选项以绕过该问题。</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>不使用 GoldenDict 浏览器标识（UA）</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>允许的最大网络缓存：</translation>
     </message>
@@ -3702,7 +3701,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
-      <translation type="unfinished">Saving article... (%1/%2)</translation>
+      <translation>正在保存文章... (%1/%2)</translation>
     </message>
   </context>
   <context>
@@ -3758,6 +3757,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>WARNING: %1</source>
       <translation>警告： %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>定 义</translation>
     </message>
   </context>
   <context>

@@ -1113,6 +1113,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>هل أنت متأكد من إزالة كل المجموعات؟</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>إضافة مجموعة قاموس جديدة</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>أ&amp;ضف مجموعة</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -3297,16 +3305,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>امنع تحميل المحتوى من مواقع أخرى (يخفي أغلب الإعلانات)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>بعض المواقع تكتشف القاموس الذهبي من خلال ترويسات HTTP وتمنع الطلبات.
-مكّن هذا الخيار للالتفاف حول المشكلة.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>لا تعرّف القاموس الذهبي في ترويسات HTTP</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>الحد الأقصى لحجم ذاكرة التخزين المؤقت للشبكة:</translation>
     </message>
@@ -3705,7 +3703,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation type="unfinished">Can&apos;t save article: %1</translation>
+      <translation>تعذّر حفظ المقالة: %1</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
@@ -3773,6 +3771,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>WARNING: %1</source>
       <translation>تحذير: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>التعريف</translation>
     </message>
   </context>
   <context>

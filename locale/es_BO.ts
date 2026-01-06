@@ -1114,6 +1114,14 @@ entre la ortografía clásica y la escolar en cirílico)</translation>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>¿Está seguro que quiera eliminar todos los grupos?</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation type="unfinished">Add a new dictionary group</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>&amp;Añadir grupo</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -3293,16 +3301,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>No permite la carga de contenido de otros sitios (oculta la mayoría de propaganda)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Algunos sitios detectan GoldenDict a través de encabezados HTTP y bloquean las solicitudes.
-Habilite esta opción para solucionar el problema.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>No identifique GoldenDict en encabezados HTTP</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Tamaño máximo de caché de red:</translation>
     </message>
@@ -3674,11 +3672,11 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+      <translation>Complete Html (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>Single Html (*.html *.htm)</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
@@ -3686,15 +3684,15 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
-      <translation type="unfinished">Save Article As</translation>
+      <translation>Guardar articulo como</translation>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>Guardar artículo completo</translation>
     </message>
     <message>
       <source>Error</source>
@@ -3702,15 +3700,15 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation type="unfinished">Can&apos;t save article: %1</translation>
+      <translation>No puede guardar articulo: %1</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
+      <translation>Save PDF complete</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
+      <translation>Save PDF failed</translation>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
@@ -3770,6 +3768,10 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
     <message>
       <source>WARNING: %1</source>
       <translation>ADVERTENCIA: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation type="unfinished">Definition</translation>
     </message>
   </context>
   <context>

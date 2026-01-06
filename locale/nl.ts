@@ -1114,6 +1114,14 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Weet u zeker dat u alle groepen wilt verwijderen?</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Een nieuwe woordenboekgroep toevoegen</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>Groep &amp;toevoegen</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -3297,16 +3305,6 @@ onjuist functioneert moet u dit mogelijk uitschakelen.</translation>
       <translation>Inhoud van andere sites blokkeren (verbergt de meeste reclame)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Sommige websites detecteren GoldenDict met behulp van HTTP-headers
-en blokkeren de aanvragen. Selecteer deze optie om dit te voorkomen.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>GoldenDict-ng niet identificeren in HTTP-headers</translation>
-    </message>
-    <message>
       <source>Maximum network cache size:</source>
       <translation>Maximale netwerkcache grootte:</translation>
     </message>
@@ -3772,6 +3770,10 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>WARNING: %1</source>
       <translation>WAARSCHUWING: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>Definitie</translation>
     </message>
   </context>
   <context>
