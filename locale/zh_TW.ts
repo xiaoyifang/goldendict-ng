@@ -1112,6 +1112,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>您確定要移除全部群組嗎？</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation type="unfinished">Add a new dictionary group</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>新增群組(&amp;A)</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -3659,23 +3667,23 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>單一 Html (*.html *.htm)</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+      <translation>PDF 文件 (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
-      <translation type="unfinished">Save Article As</translation>
+      <translation>條目另存新檔</translation>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>保存文章完成</translation>
     </message>
     <message>
       <source>Error</source>
@@ -3687,11 +3695,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
+      <translation>儲存 PDF 完成</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
+      <translation>儲存 PDF 失敗</translation>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
@@ -3754,7 +3762,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Definition</source>
-      <translation type="unfinished">Definition</translation>
+      <translation>定義</translation>
     </message>
   </context>
   <context>
