@@ -1114,6 +1114,14 @@ a školní ortografií v cyrilici)</translation>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Opravdu chcete odstranit všechny skupiny?</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Přidat novou skupinu slovníků</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>Přid&amp;at skupinu</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
