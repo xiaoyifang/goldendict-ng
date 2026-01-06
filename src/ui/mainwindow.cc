@@ -190,11 +190,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( localScheme.toLatin1(), localSchemeHandler );
   }
 
-  iframeSchemeHandler = new IframeSchemeHandler( this );
-  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( ( Config::WEBSITE_PROXY_PREFIX + "http" ).toUtf8(),
-                                                                iframeSchemeHandler );
-  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( ( Config::WEBSITE_PROXY_PREFIX + "https" ).toUtf8(),
-                                                                iframeSchemeHandler );
 
   QStringList localSchemes = { "gdau", "gico", "qrcx", "bres", "gdprg", "gdvideo", "gdtts" };
   resourceSchemeHandler    = new ResourceSchemeHandler( articleNetMgr, this );

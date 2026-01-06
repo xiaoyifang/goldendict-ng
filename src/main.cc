@@ -278,19 +278,8 @@ int main( int argc, char ** argv )
   QGuiApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
   
   // Registration of custom URL schemes must be done before QCoreApplication/QApplication is created.
-  const QStringList localSchemes = { "gdlookup",
-                                     "gdau",
-                                     "gico",
-                                     "qrcx",
-                                     "bres",
-                                     "bword",
-                                     "gdprg",
-                                     "gdvideo",
-                                     "gdtts",
-                                     "gdinternal",
-                                     "entry",
-                                     "iframe-http",
-                                     "iframe-https" };
+  const QStringList localSchemes =
+    { "gdlookup", "gdau", "gico", "qrcx", "bres", "bword", "gdprg", "gdvideo", "gdtts", "gdinternal", "entry" };
 
   for ( const auto & localScheme : localSchemes ) {
     QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );

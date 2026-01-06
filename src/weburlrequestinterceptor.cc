@@ -10,9 +10,6 @@ WebUrlRequestInterceptor::WebUrlRequestInterceptor( QObject * p ):
 void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info )
 {
   auto url = info.requestUrl();
-  if ( url.scheme().startsWith( Config::WEBSITE_PROXY_PREFIX ) ) {
-    url.setScheme( url.scheme().mid( 7 ) );
-  }
 
   // When content is loaded inside GoldenDict's article view, we might face CORS issues.
   // Setting Origin and Referer headers can help bypass some CORS restrictions.
