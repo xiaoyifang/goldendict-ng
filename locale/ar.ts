@@ -1113,6 +1113,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>هل أنت متأكد من إزالة كل المجموعات؟</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>إضافة مجموعة قاموس جديدة</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>أ&amp;ضف مجموعة</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -3695,7 +3703,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation type="unfinished">Can&apos;t save article: %1</translation>
+      <translation>تعذّر حفظ المقالة: %1</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
