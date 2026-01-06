@@ -1116,6 +1116,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Σίγουρα θέλετε να αφαιρέσετε όλες τις ομάδες;</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Προσθέστε μια νέα ομάδα λεξικών</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>Προσ&amp;θήκη ομάδας</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
