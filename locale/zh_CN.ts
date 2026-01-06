@@ -1112,6 +1112,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>确定移除全部群组吗？</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>添加新字典组</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>添加群组(&amp;A)</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -3693,7 +3701,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
-      <translation type="unfinished">Saving article... (%1/%2)</translation>
+      <translation>正在保存文章... (%1/%2)</translation>
     </message>
   </context>
   <context>
