@@ -1114,6 +1114,14 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Är du säker på att du vill ta bort alla grupper?</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Lägg till en ny ordboksgrupp</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>&amp;Lägg till grupp</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
