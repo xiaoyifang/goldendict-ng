@@ -1114,6 +1114,14 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Oletko varma, että haluat poistaa kaikki ryhmät?</translation>
     </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Lisää uusi sanakirja ryhmä</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>&amp;Lisää ryhmä</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
