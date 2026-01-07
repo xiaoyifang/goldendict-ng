@@ -111,7 +111,8 @@ ArticleView::ArticleView( QWidget * parent,
   translateLine( translateLine_ )
 {
   // setup GUI
-  webview        = new ArticleWebView( this );
+  webview = new ArticleWebView( this );
+  webview->setPopup( popupView );
   ftsSearchPanel = new FtsSearchPanel( this );
   searchPanel    = new SearchPanel( this );
   searchPanel->hide();
@@ -322,6 +323,10 @@ void ArticleView::showDefinition( const QString & word,
   if ( Contexts::Iterator pos = contexts.find( "gdanchor" ); pos != contexts.end() ) {
     reqQuery.addQueryItem( "gdanchor", contexts[ "gdanchor" ] );
     contexts.erase( pos );
+  }
+
+  if ( popupView ) {
+    reqQuery.addQueryItem( "popup", "1" );
   }
 
   if ( contexts.size() ) {

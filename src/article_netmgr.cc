@@ -229,6 +229,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::handleLookupScheme(
     // If muted is not provided in URL, we get it from config
     const Config::Class * cfg = GlobalBroadcaster::instance()->getConfig();
     if ( cfg ) {
+      bool isPopup = Utils::Url::queryItemValue( url, "popup" ) == "1";
       const Config::Group * grp = cfg->getGroup( group );
       const Config::DictionarySets * mutedDictionaries;
       if ( group == GroupId::AllGroupId ) {

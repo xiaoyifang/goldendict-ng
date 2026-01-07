@@ -29,7 +29,6 @@ class ArticleNetworkAccessManager: public QNetworkAccessManager
   Q_OBJECT
   const vector< sptr< Dictionary::Class > > & dictionaries;
   const ArticleMaker & articleMaker;
-  bool isPopup = false;
   const bool & disallowContentFromOtherSites;
   QMimeDatabase db;
 
@@ -44,11 +43,6 @@ public:
     articleMaker( articleMaker_ ),
     disallowContentFromOtherSites( disallowContentFromOtherSites_ )
   {
-  }
-
-  void setPopup( bool isPopup_ )
-  {
-    isPopup = isPopup_;
   }
 
   /// Tries handling any kind of internal resources referenced by dictionaries.
