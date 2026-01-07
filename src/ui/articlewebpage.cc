@@ -4,7 +4,8 @@
 #include <QTimer>
 
 ArticleWebPage::ArticleWebPage( QObject * parent, bool isPopup_ ):
-  QWebEnginePage( parent ), isPopup( isPopup_ )
+  QWebEnginePage( parent ),
+  isPopup( isPopup_ )
 {
 }
 bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationType type, bool isMainFrame )
