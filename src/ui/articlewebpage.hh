@@ -14,7 +14,10 @@ class ArticleWebPage: public QWebEnginePage
 
 public:
   explicit ArticleWebPage( QObject * parent = nullptr, bool isPopup_ = false );
-  void setPopup( bool popup ) { isPopup = popup; }
+  void setPopup( bool popup )
+  {
+    isPopup = popup;
+  }
 signals:
   void linkClicked( const QUrl & url );
 
