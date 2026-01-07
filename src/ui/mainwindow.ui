@@ -128,6 +128,8 @@
     <addaction name="importFavorites"/>
     <addaction name="separator"/>
     <addaction name="actionAddToFavorites"/>
+    <addaction name="separator"/>
+    <addaction name="clearFavorites"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
@@ -557,6 +559,11 @@
    </property>
    <property name="shortcut">
     <string notr="true">Ctrl+E</string>
+   </property>
+  </action>
+  <action name="clearFavorites">
+   <property name="text">
+    <string>&amp;Clear</string>
    </property>
   </action>
  </widget>

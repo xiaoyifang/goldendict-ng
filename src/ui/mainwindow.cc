@@ -3256,8 +3256,20 @@ void MainWindow::toggleMenuBarTriggered( bool announce )
 
 void MainWindow::on_clearHistory_triggered()
 {
-  history.clear();
-  history.save();
+  QMessageBox::StandardButton reply;
+  reply = QMessageBox::question( this,
+                                 tr( "Clear History" ),
+                                 tr( "Are you sure you want to clear all history items?" ),
+                                 QMessageBox::Yes | QMessageBox::No );
+  if ( reply == QMessageBox::Yes ) {
+    history.clear();
+    history.save();
+  }
+}
+
+void MainWindow::on_clearFavorites_triggered()
+{
+  ui.favoritesPaneWidget->clearAllItems();
 }
 
 void MainWindow::on_newTab_triggered()
