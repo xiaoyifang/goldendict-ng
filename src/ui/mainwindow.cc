@@ -238,11 +238,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   groupListInToolbar->setObjectName( "groupListToolbar" );
   groupListInToolbar->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::MinimumExpanding );
   groupListInToolbar->setSizeAdjustPolicy( QComboBox::AdjustToContents );
-  translateBoxLayout->addWidget( groupListInToolbar );
+  translateBoxLayout->addWidget( groupListInToolbar, 0 );
 
   translateBox = new TranslateBox( navToolbar );
   translateBox->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::MinimumExpanding );
-  translateBoxLayout->addWidget( translateBox );
+  translateBoxLayout->addWidget( translateBox, 1 );
   translateBoxToolBarAction = navToolbar->addWidget( translateBoxWidget );
 
   // popup
