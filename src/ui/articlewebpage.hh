@@ -36,4 +36,5 @@ protected:
 
 private:
   LastReqInfo lastReq;
+  bool isPopup = false;
 };

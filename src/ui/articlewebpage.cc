@@ -3,8 +3,8 @@
 #include "common/globalbroadcaster.hh"
 #include <QTimer>
 
-ArticleWebPage::ArticleWebPage( QObject * parent ):
-  QWebEnginePage{ parent }
+ArticleWebPage::ArticleWebPage( QObject * parent, bool isPopup_ ):
+  QWebEnginePage( parent ), isPopup( isPopup_ )
 {
 }
 bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationType type, bool isMainFrame )
