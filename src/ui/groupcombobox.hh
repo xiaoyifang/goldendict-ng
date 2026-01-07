@@ -36,7 +36,10 @@ protected:
   /// We handle shortcut events here.
   virtual bool event( QEvent * event );
 
-  virtual QSize minimumSizeHint() const override { return sizeHint(); }
+  virtual QSize minimumSizeHint() const override
+  {
+    return sizeHint();
+  }
 
 private slots:
 
