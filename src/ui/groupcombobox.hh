@@ -35,6 +35,7 @@ protected:
 
   /// We handle shortcut events here.
   virtual bool event( QEvent * event ) override;
+  virtual QSize sizeHint() const override;
 
   virtual QSize minimumSizeHint() const override
   {
