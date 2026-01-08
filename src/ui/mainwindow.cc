@@ -1834,6 +1834,7 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, const QString & name )
 
   connect( view, &ArticleView::zoomOut, this, &MainWindow::zoomout );
   connect( view, &ArticleView::saveBookmarkSignal, this, &MainWindow::addBookmarkToFavorite );
+  connect( view, &ArticleView::translateSelectedText, this, &MainWindow::handleTranslateSelectedText );
 
   connect( ui.searchInPageAction, &QAction::triggered, view, [ this, view ]() {
 #ifdef Q_OS_MACOS
@@ -2812,6 +2813,39 @@ void MainWindow::showDefinitionInNewTab( const QString & word,
                                          const Contexts & contexts )
 {
   createNewTab( !cfg.preferences.newTabsOpenInBackground, word )->showDefinition( word, group, fromArticle, contexts );
+}
+
+void MainWindow::handleTranslateSelectedText( const QString & word, const QUrl & url, const QString & currentArticle )
+{
+  // Initiate translation
+  Qt::KeyboardModifiers kmod = QApplication::keyboardModifiers();
+  if ( kmod & ( Qt::ControlModifier | Qt::ShiftModifier ) ) { // open in new tab
+    // Create a new tab and show definition there
+    ArticleView * newView = createNewTab( !cfg.preferences.newTabsOpenInBackground, word );
+    auto groupId = newView->getGroup( url );
+    newView->showDefinition( word, groupId, currentArticle, Contexts() );
+  }
+  else {
+    // Get the current active ArticleView
+    ArticleView * currentView = getFirstNonWebSiteArticleView();
+    if ( currentView ) {
+      // Get group ID from the URL or fall back to current group
+      auto groupId = currentView->getGroup( url );
+      if ( groupId == GroupId::NoGroupId || currentView->isInternalPage() ) {
+        groupId = groupList->getCurrentGroup();
+      }
+      
+      // If the URL has dictionaries query parameter, use those dictionaries
+      if ( Utils::Url::hasQueryItem( url, "dictionaries" ) ) {
+        QStringList dictsList = Utils::Url::queryItemValue( url, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
+        currentView->showDefinition( word, dictsList, groupId, false );
+      }
+      else {
+        // Otherwise show definition in current tab
+        currentView->showDefinition( word, groupId, currentArticle );
+      }
+    }
+  }
 }
 
 void MainWindow::activeArticleChanged( const ArticleView * view, const QString & id )
