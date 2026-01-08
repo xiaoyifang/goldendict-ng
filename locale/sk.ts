@@ -890,10 +890,6 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <translation>Pridať priečinok</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Vymazať všetko</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Obľúbené:</translation>
     </message>
@@ -902,16 +898,20 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <translation>Všetky označené položky budú odstránené. Pokračovať?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Vymazať všetky položky</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Naozaj chcete vymazať všetky položky?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation type="unfinished">Clear</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation type="unfinished">Clear Favorites</translation>
     </message>
   </context>
   <context>
@@ -2631,6 +2631,14 @@ Pre vyhľadanie znakov &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos
     <message>
       <source>Lock Panels</source>
       <translation type="unfinished">Lock Panels</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation type="unfinished">Clear History</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
     </message>
   </context>
   <context>

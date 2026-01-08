@@ -889,10 +889,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Thêm thư mục</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Xóa tất cả</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>yêu thích:</translation>
     </message>
@@ -901,16 +897,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Tất cả các mục đã chọn sẽ bị xóa. Tiếp tục?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Xóa tất cả các mục</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Bạn có chắc chắn muốn xóa tất cả các mục không?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation type="unfinished">Clear</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation type="unfinished">Clear Favorites</translation>
     </message>
   </context>
   <context>
@@ -2629,6 +2629,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Lock Panels</source>
       <translation type="unfinished">Lock Panels</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation type="unfinished">Clear History</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
     </message>
   </context>
   <context>

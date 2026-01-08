@@ -890,10 +890,6 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>Dodaj folder</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Wyczyść wszystko</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Ulubione:</translation>
     </message>
@@ -902,16 +898,20 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>Wszystkie zaznaczone elementy zostaną usunięte. Kontynuować?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Wyczyść wszystkie elementy</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Czy na pewno chcesz usunąć wszystkie elementy?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>Wyczyść</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>Wyczyść ulubione</translation>
     </message>
   </context>
   <context>
@@ -2630,6 +2630,14 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
     <message>
       <source>Lock Panels</source>
       <translation>Zablokuj panele</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation>Wyczyść historię</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>Czy na pewno chcesz wyczyścić wszystkie elementy historii?</translation>
     </message>
   </context>
   <context>

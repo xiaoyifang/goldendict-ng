@@ -897,10 +897,6 @@ Se han modificado algunas fuentes.
       <translation>Q&apos;ipi yapaña</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Taqi kunat q’umachaña</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Munat arunaka:</translation>
     </message>
@@ -911,16 +907,20 @@ Se han modificado algunas fuentes.
 Todos los items seleccionados serán borrados. ¿Quiere continuar?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Taqi yänaka Q’umachaña</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>¿Taqi yänak q’umachañ munasmati?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation type="unfinished">Clear</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation type="unfinished">Clear Favorites</translation>
     </message>
   </context>
   <context>
@@ -2690,6 +2690,14 @@ Error de importación: datos incorrectos en el fichero.</translation>
     <message>
       <source>Lock Panels</source>
       <translation type="unfinished">Lock Panels</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation type="unfinished">Clear History</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
     </message>
   </context>
   <context>

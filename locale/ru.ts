@@ -892,10 +892,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Добавить папку</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Очистить все</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Избранное:</translation>
     </message>
@@ -904,16 +900,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Все выбранные элементы будут удалены. Продолжить?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Очистить все элементы</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Вы уверены, что хотите очистить все элементы?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>Очистить</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>Очистить избранное</translation>
     </message>
   </context>
   <context>
@@ -2633,6 +2633,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Lock Panels</source>
       <translation>Блокировать панели</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation>Очистить историю</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>Вы уверены, что хотите очистить все элементы истории?</translation>
     </message>
   </context>
   <context>

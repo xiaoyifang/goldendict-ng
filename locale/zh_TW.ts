@@ -888,10 +888,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>新增資料夾</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>全部清除</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>我的最愛：</translation>
     </message>
@@ -900,16 +896,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>所有選擇的項目都會被刪除。是否繼續？</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>清除所有項目</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>您確定要清除所有項目嗎？</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>使該資料夾成為新增/刪除單字操作的目標。</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation type="unfinished">Clear</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation type="unfinished">Clear Favorites</translation>
     </message>
   </context>
   <context>
@@ -2629,6 +2629,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Lock Panels</source>
       <translation>鎖定面板</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation type="unfinished">Clear History</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
     </message>
   </context>
   <context>

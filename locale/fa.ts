@@ -890,10 +890,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>افزودن پوشه</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>پاک کردن همه</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>پسندیده‌ها:</translation>
     </message>
@@ -902,16 +898,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>تمام موارد برگزیده حذف خواهند شد. ادامه می‌دهید؟</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>پاک کردن همه موارد</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>آیا مطمئن هستید که می خواهید همه موارد را پاک کنید؟</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation type="unfinished">Clear</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation type="unfinished">Clear Favorites</translation>
     </message>
   </context>
   <context>
@@ -2630,6 +2630,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Lock Panels</source>
       <translation type="unfinished">Lock Panels</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation type="unfinished">Clear History</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
     </message>
   </context>
   <context>

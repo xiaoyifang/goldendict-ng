@@ -890,10 +890,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Map toevoegen</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Alles wissen</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Favorieten:</translation>
     </message>
@@ -902,16 +898,20 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Alle geselecteerde items worden verwijderd. Doorgaan?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Alle items wissen</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Weet u zeker dat u alle items wilt wissen?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>Verwijderen</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>Favorieten wissen</translation>
     </message>
   </context>
   <context>
@@ -2630,6 +2630,14 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
     <message>
       <source>Lock Panels</source>
       <translation>Panelen vergrendelen</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation>Geschiedenis verwijderen</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>Weet u zeker dat u alle geschiedenis items wilt wissen?</translation>
     </message>
   </context>
   <context>
