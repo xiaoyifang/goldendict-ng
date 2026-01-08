@@ -890,10 +890,6 @@ a školní ortografií v cyrilici)</translation>
       <translation>Přidat složku</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Vymazat vše</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Oblíbené:</translation>
     </message>
@@ -902,16 +898,20 @@ a školní ortografií v cyrilici)</translation>
       <translation>Všechny vybrané položky budou odstraněny. Chcete pokračovat?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Vymazat všechny položky</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Opravdu chcete vymazat všechny položky?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>Vyčistit</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>Vymazat Oblíbené</translation>
     </message>
   </context>
   <context>
@@ -2630,6 +2630,14 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
     <message>
       <source>Lock Panels</source>
       <translation>Uzamknout panely</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation>Vymazat historii</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>Jste si jisti, že chcete vymazat všechny položky historie?</translation>
     </message>
   </context>
   <context>
