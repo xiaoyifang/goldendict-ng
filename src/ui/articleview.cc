@@ -2032,29 +2032,8 @@ void ArticleView::doubleClicked( QPoint pos )
 
     // Do some checks to make sure there's a sensible selection indeed
     if ( Folding::applyWhitespaceOnly( selectedText.toStdU32String() ).size() && selectedText.size() < 60 ) {
-      // Initiate translation
-      Qt::KeyboardModifiers kmod = QApplication::keyboardModifiers();
-      if ( kmod & ( Qt::ControlModifier | Qt::ShiftModifier ) ) { // open in new tab
-        emit showDefinitionInNewTab( selectedText, getGroup( webview->url() ), getCurrentArticle(), Contexts() );
-      }
-      else {
-        const QUrl & ref = webview->url();
-
-        auto groupId = getGroup( ref ); // Try to get group ID from the current article URL
-
-        // If the group can't be determined from the URL (e.g. on internal or
-        // external pages), fall back to the currently selected group in the UI.
-        if ( groupId == GroupId::NoGroupId || isInternalPage() ) {
-          groupId = currentGroupId;
-        }
-        if ( Utils::Url::hasQueryItem( ref, "dictionaries" ) ) {
-          QStringList dictsList = Utils::Url::queryItemValue( ref, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
-          showDefinition( selectedText, dictsList, groupId, false );
-        }
-        else {
-          showDefinition( selectedText, groupId, getCurrentArticle() );
-        }
-      }
+      // Send signal to MainWindow to handle translation
+      emit translateSelectedText( selectedText, webview->url(), getCurrentArticle() );
     }
   }
 }

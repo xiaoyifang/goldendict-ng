@@ -346,6 +346,9 @@ signals:
 
   void saveBookmarkSignal( const QString & bookmark );
 
+  /// Signal that the user has double-clicked a word and wants to translate it
+  void translateSelectedText( const QString & word, const QUrl & url, const QString & currentArticle );
+
 public slots:
 
   /// Opens the search (Ctrl+F)
@@ -414,11 +417,13 @@ private slots:
 
   void dictionaryClear( const ActiveDictIds & ad );
 
-private:
+public:
 
   /// Deduces group from the url. If there doesn't seem to be any group,
   /// returns 0.
   unsigned getGroup( const QUrl & );
+
+private:
 
   /// Returns current article in the view, in the form of "gdfrom-xxx" id.
   QString getCurrentArticle();

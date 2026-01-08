@@ -440,6 +440,9 @@ private slots:
 
   void closeHeadwordsDialog();
 
+  /// Handle translate selected text from ArticleView
+  void handleTranslateSelectedText( const QString & word, const QUrl & url, const QString & currentArticle );
+
   void focusHeadwordsDialog();
 
   void focusArticleView();
