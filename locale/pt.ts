@@ -890,10 +890,6 @@ entre ortografia clássica e escolar em ciílico)</translation>
       <translation>Adicionar pasta</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Limpar tudo</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Favoritos:</translation>
     </message>
@@ -902,16 +898,20 @@ entre ortografia clássica e escolar em ciílico)</translation>
       <translation>Todos os itens selecionados serão excluídos. Continuar?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Limpar todos os itens</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Tem certeza de que deseja limpar todos os itens?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>Limpar</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>Limpar favoritos</translation>
     </message>
   </context>
   <context>
@@ -2630,6 +2630,14 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <source>Lock Panels</source>
       <translation>Travar painéis</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation>Limpar Histórico</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>Tem certeza que deseja limpar todos os itens do histórico?</translation>
     </message>
   </context>
   <context>
