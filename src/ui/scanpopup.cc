@@ -1284,7 +1284,7 @@ ArticleView * ScanPopup::findArticleViewByDictId( const QString & dictId )
   return nullptr;
 }
 
-void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId, bool isPopup )
+void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId, bool isPopup, QString word )
 {
   if ( !isVisible() ) {
     return;
@@ -1298,6 +1298,10 @@ void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId, 
   for ( int i = 0; i < tabWidget->count(); ++i ) {
     if ( auto view = qobject_cast< ArticleView * >( tabWidget->widget( i ) ) ) {
       if ( view->isWebsite() && view->getActiveArticleId() == dictId ) {
+        // Set the current word for the existing website view
+        if ( !word.isEmpty() ) {
+          view->setCurrentWord( word );
+        }
         view->load( url, name );
         tabWidget->setTabText( i, name );
         return;
@@ -1316,6 +1320,10 @@ void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId, 
   view->setWebsite( true );
   view->setWebsiteHost( QUrl( url ).host() );
   view->setActiveArticleId( dictId );
+  // Set the current word for the new website view
+  if ( !word.isEmpty() ) {
+    view->setCurrentWord( word );
+  }
 
   // Connect vital signals
   connect( view, &ArticleView::inspectSignal, this, &ScanPopup::inspectElementWhenPinned );

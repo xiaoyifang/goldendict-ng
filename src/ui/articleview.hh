@@ -177,6 +177,7 @@ public:
   void syncBackgroundColorWithCfgDarkReader() const;
 
   QString getCurrentWord();
+  void setCurrentWord( const QString & word );
 
   /// Returns whether this view is an internal page (welcome, untitled, etc.)
   bool isInternalPage() const
