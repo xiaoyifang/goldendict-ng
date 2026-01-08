@@ -104,5 +104,5 @@ signals:
 
   void indexingDictionary( QString );
 
-  void websiteDictionarySignal( QString, QString, QString, bool );
+  void websiteDictionarySignal( QString, QString, QString, bool, QString );
 };

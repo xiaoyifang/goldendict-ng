@@ -4256,7 +4256,7 @@ void MainWindow::showFTSIndexingName( const QString & name )
   }
 }
 
-void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId, bool isPopup )
+void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId, bool isPopup, QString word )
 {
   if ( isPopup ) {
     return;
@@ -4268,6 +4268,11 @@ void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId,
     view->setWebsite( true );
     // Set the dictId for the website view
     view->setActiveArticleId( dictId );
+  }
+
+  // Set the current word for the website view
+  if ( !word.isEmpty() ) {
+    view->setCurrentWord( word );
   }
 
   view->load( url, name );

@@ -1338,6 +1338,11 @@ QString ArticleView::getCurrentWord()
   return currentWord;
 }
 
+void ArticleView::setCurrentWord( const QString & word )
+{
+  currentWord = word;
+}
+
 void ArticleView::back()
 {
   // Don't allow navigating back to page 0, which is usually the initial
