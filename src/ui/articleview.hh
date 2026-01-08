@@ -345,7 +345,7 @@ signals:
   void inspectSignal( QWebEnginePage * page );
 
   void saveBookmarkSignal( const QString & bookmark );
-  
+
   /// Signal that the user has double-clicked a word and wants to translate it
   void translateSelectedText( const QString & word, const QUrl & url, const QString & currentArticle );
 

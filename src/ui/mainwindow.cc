@@ -2822,7 +2822,7 @@ void MainWindow::handleTranslateSelectedText( const QString & word, const QUrl &
   if ( kmod & ( Qt::ControlModifier | Qt::ShiftModifier ) ) { // open in new tab
     // Create a new tab and show definition there
     ArticleView * newView = createNewTab( !cfg.preferences.newTabsOpenInBackground, word );
-    auto groupId = newView->getGroup( url );
+    auto groupId          = newView->getGroup( url );
     newView->showDefinition( word, groupId, currentArticle, Contexts() );
   }
   else {
@@ -2834,7 +2834,7 @@ void MainWindow::handleTranslateSelectedText( const QString & word, const QUrl &
       if ( groupId == GroupId::NoGroupId || currentView->isInternalPage() ) {
         groupId = groupList->getCurrentGroup();
       }
-      
+
       // If the URL has dictionaries query parameter, use those dictionaries
       if ( Utils::Url::hasQueryItem( url, "dictionaries" ) ) {
         QStringList dictsList = Utils::Url::queryItemValue( url, "dictionaries" ).split( ",", Qt::SkipEmptyParts );

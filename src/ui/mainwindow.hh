@@ -439,7 +439,7 @@ private slots:
   void storeResourceSavePath( const QString & );
 
   void closeHeadwordsDialog();
-  
+
   /// Handle translate selected text from ArticleView
   void handleTranslateSelectedText( const QString & word, const QUrl & url, const QString & currentArticle );
 
