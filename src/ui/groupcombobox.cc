@@ -11,6 +11,7 @@ GroupComboBox::GroupComboBox( QWidget * parent ):
   selectNextAction( this ),
   selectPreviousAction( this )
 {
+  setIconSize( QSize( 16, 16 ) );
   setSizeAdjustPolicy( AdjustToContents );
   setToolTip( tr( "Choose a Group (Alt+G)" ) );
 
@@ -62,6 +63,31 @@ void GroupComboBox::fill( const Instances::Groups & groups )
       shortcuts.insert( id, x );
     }
   }
+  updateGeometry();
+}
+
+QSize GroupComboBox::sizeHint() const
+{
+  QSize s = QComboBox::sizeHint();
+  if ( count() > 0 ) {
+    QFontMetrics fm( font() );
+    int maxW = 0;
+    for ( int i = 0; i < count(); ++i ) {
+      maxW = qMax( maxW, fm.horizontalAdvance( itemText( i ) ) );
+    }
+
+    int iconW = iconSize().width();
+    if ( iconW > 0 ) {
+      iconW += 6; // Icon plus some margin
+    }
+
+    // 35 pixels for the arrow and internal padding
+    int estimated = iconW + maxW + 35;
+    if ( s.width() < estimated ) {
+      s.setWidth( estimated );
+    }
+  }
+  return s;
 }
 
 bool GroupComboBox::event( QEvent * event )
