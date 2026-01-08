@@ -2824,7 +2824,7 @@ void MainWindow::handleTranslateSelectedText( const QString & word, const QUrl &
     ArticleView * newView = createNewTab( !cfg.preferences.newTabsOpenInBackground, word );
     auto groupId          = newView->getGroup( url );
     if ( groupId == GroupId::NoGroupId ) {
-        groupId = groupList->getCurrentGroup();
+      groupId = groupList->getCurrentGroup();
     }
     newView->showDefinition( word, groupId, currentArticle, Contexts() );
   }
