@@ -872,10 +872,6 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Clear All</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Favorites:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -884,15 +880,19 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Clear All Items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Are you sure you want to clear all items?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Make this folder the target of adding/removing words actions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear Favorites</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2610,6 +2610,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
         <source>Lock Panels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear History</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to clear all history items?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
