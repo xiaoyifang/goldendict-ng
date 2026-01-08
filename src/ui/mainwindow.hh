@@ -394,6 +394,7 @@ private slots:
   void toggleMenuBarTriggered( bool announce = true );
 
   void on_clearHistory_triggered();
+  void on_clearFavorites_triggered();
 
   void on_newTab_triggered();
 

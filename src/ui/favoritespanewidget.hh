@@ -52,6 +52,7 @@ public:
   void getDataInPlainText( QString & dataStr );
   bool setDataFromXml( const QString & dataStr );
   bool setDataFromTxt( const QString & dataStr );
+  void clearAllItems();
 
   void setFocusOnTree()
   {
@@ -83,7 +84,6 @@ private slots:
   void folderActivation();
   void copySelectedItems();
   void addFolder();
-  void clearAllItems();
 public slots:
   /// Add if exist, remove if not
   void addRemoveWordInActiveFav( const QString & word );
