@@ -417,11 +417,13 @@ private slots:
 
   void dictionaryClear( const ActiveDictIds & ad );
 
-private:
+public:
 
   /// Deduces group from the url. If there doesn't seem to be any group,
   /// returns 0.
   unsigned getGroup( const QUrl & );
+
+private:
 
   /// Returns current article in the view, in the form of "gdfrom-xxx" id.
   QString getCurrentArticle();
