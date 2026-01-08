@@ -890,10 +890,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Aldonu dosierujon</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Forigi Ĉion</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Plej ŝatataj:</translation>
     </message>
@@ -902,16 +898,20 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Ĉiuj elektitaj eroj estos forigitaj. Ĉu daŭrigi?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Forigi Ĉiujn Erojn</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Ĉu vi certas, ke vi volas forigi ĉiujn erojn?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation type="unfinished">Clear</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation type="unfinished">Clear Favorites</translation>
     </message>
   </context>
   <context>
@@ -2630,6 +2630,14 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
     <message>
       <source>Lock Panels</source>
       <translation type="unfinished">Lock Panels</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation type="unfinished">Clear History</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
     </message>
   </context>
   <context>
