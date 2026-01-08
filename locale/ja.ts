@@ -889,10 +889,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>フォルダを追加</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>すべてクリア</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>お気に入り:</translation>
     </message>
@@ -901,16 +897,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>選択したすべてのアイテムが削除されます。続行しますか？</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>すべての項目をクリア</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>すべての項目をクリアしてもよろしいですか?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>このフォルダを単語の追加/削除アクションのターゲットにします。</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>クリア</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>お気に入りをクリア</translation>
     </message>
   </context>
   <context>
@@ -2629,6 +2629,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Lock Panels</source>
       <translation>ロックパネル</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation>履歴を消去</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>すべての履歴アイテムを消去してもよろしいですか？</translation>
     </message>
   </context>
   <context>
