@@ -2823,6 +2823,9 @@ void MainWindow::handleTranslateSelectedText( const QString & word, const QUrl &
     // Create a new tab and show definition there
     ArticleView * newView = createNewTab( !cfg.preferences.newTabsOpenInBackground, word );
     auto groupId          = newView->getGroup( url );
+    if ( groupId == GroupId::NoGroupId || currentView->isInternalPage() ) {
+        groupId = groupList->getCurrentGroup();
+    }
     newView->showDefinition( word, groupId, currentArticle, Contexts() );
   }
   else {
