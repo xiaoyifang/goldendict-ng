@@ -10,6 +10,7 @@
 #include <QApplication>
 #include <QStringListModel>
 #include <QTimer>
+#include <QPainter>
 
 TranslateBox::TranslateBox( QWidget * parent ):
   QWidget( parent ),
@@ -32,7 +33,7 @@ TranslateBox::TranslateBox( QWidget * parent ):
   layout->setContentsMargins( 0, 0, 0, 0 );
   layout->addWidget( translate_line );
 
-  auto dropdown = new QAction( QIcon( ":/icons/1downarrow.svg" ), tr( "Drop-down" ), this );
+  dropdown = new QAction( QIcon( ":/icons/1downarrow.svg" ), tr( "Drop-down" ), this );
   connect( dropdown, &QAction::triggered, this, &TranslateBox::rightButtonClicked );
 
   translate_line->addAction( dropdown, QLineEdit::TrailingPosition );
@@ -89,6 +90,22 @@ void TranslateBox::setModel( QStringList & _words )
              translate_line->setText( text );
              emit returnPressed();
            } );
+}
+
+void TranslateBox::setNoResults( bool noResults )
+{
+  if ( noResults ) {
+    QIcon icon( ":/icons/1downarrow.svg" );
+    QPixmap pixmap = icon.pixmap( 32, 32 );
+    QPainter painter( &pixmap );
+    painter.setCompositionMode( QPainter::CompositionMode_SourceIn );
+    painter.fillRect( pixmap.rect(), QColor( 255, 0, 0, 200 ) );
+    painter.end();
+    dropdown->setIcon( QIcon( pixmap ) );
+  }
+  else {
+    dropdown->setIcon( QIcon( ":/icons/1downarrow.svg" ) );
+  }
 }
 
 void TranslateBox::showPopup()
