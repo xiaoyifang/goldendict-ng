@@ -219,7 +219,31 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::handleLookupScheme(
   }
 
   // See if we have some dictionaries muted
-  QStringList mutedDictLists = Utils::Url::queryItemValue( url, "muted" ).split( ',' );
+  QString mutedDictsEncoded = Utils::Url::queryItemValue( url, "muted" );
+  QStringList mutedDictLists;
+
+  if ( !mutedDictsEncoded.isEmpty() ) {
+    mutedDictLists = mutedDictsEncoded.split( ',' );
+  }
+  else {
+    // If muted is not provided in URL, we get it from config
+    const Config::Class * cfg = GlobalBroadcaster::instance()->getConfig();
+    if ( cfg ) {
+      bool isPopup              = Utils::Url::queryItemValue( url, "popup" ) == "1";
+      const Config::Group * grp = cfg->getGroup( group );
+      const Config::DictionarySets * mutedDictionaries;
+      if ( group == GroupId::AllGroupId ) {
+        mutedDictionaries = isPopup ? &cfg->popupMutedDictionaries : &cfg->mutedDictionaries;
+      }
+      else {
+        mutedDictionaries = grp ? ( isPopup ? &grp->popupMutedDictionaries : &grp->mutedDictionaries ) : nullptr;
+      }
+
+      if ( mutedDictionaries ) {
+        mutedDictLists = mutedDictionaries->values();
+      }
+    }
+  }
   QSet< QString > mutedDicts( mutedDictLists.begin(), mutedDictLists.end() );
 
   // Unpack contexts

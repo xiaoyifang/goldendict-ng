@@ -5,7 +5,7 @@
 struct LastReqInfo
 {
   QString group;
-  QString mutedDicts;
+  bool isPopup = false;
 };
 
 class ArticleWebPage: public QWebEnginePage
@@ -13,7 +13,11 @@ class ArticleWebPage: public QWebEnginePage
   Q_OBJECT
 
 public:
-  explicit ArticleWebPage( QObject * parent = nullptr );
+  explicit ArticleWebPage( QObject * parent = nullptr, bool isPopup_ = false );
+  void setPopup( bool popup )
+  {
+    isPopup = popup;
+  }
 signals:
   void linkClicked( const QUrl & url );
 
@@ -32,4 +36,5 @@ protected:
 
 private:
   LastReqInfo lastReq;
+  bool isPopup = false;
 };

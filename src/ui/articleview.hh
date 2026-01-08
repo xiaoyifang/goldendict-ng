@@ -452,12 +452,6 @@ private:
   bool eventFilter( QObject * obj, QEvent * ev ) override;
 
   void performFindOperation( bool backwards );
-
-  /// Returns the comma-separated list of dictionary ids which should be muted
-  /// for the given group. If there are none, returns empty string.
-  QString getMutedForGroup( unsigned group );
-
-  QStringList getMutedDictionaries( unsigned group );
 };
 
 class ResourceToSaveHandler: public QObject

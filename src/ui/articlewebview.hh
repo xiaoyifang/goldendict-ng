@@ -34,6 +34,7 @@ public:
   {
     selectionBySingleClick = set;
   }
+  void setPopup( bool isPopup );
 
   bool eventFilter( QObject * obj, QEvent * ev ) override;
 
