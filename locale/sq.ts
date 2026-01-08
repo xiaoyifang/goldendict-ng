@@ -889,10 +889,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Shto dosje</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Pastro të gjitha</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Të preferuarat:</translation>
     </message>
@@ -901,16 +897,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Të gjithë artikujt e zgjedhur do të fshihen. Të vazhdohet?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Pastro të gjithë artikujt</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Jeni i sigurt që dëshironi të pastroni të gjithë artikujt?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation type="unfinished">Clear</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation type="unfinished">Clear Favorites</translation>
     </message>
   </context>
   <context>
@@ -2629,6 +2629,14 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
     <message>
       <source>Lock Panels</source>
       <translation type="unfinished">Lock Panels</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation type="unfinished">Clear History</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
     </message>
   </context>
   <context>
