@@ -890,10 +890,6 @@ entre ortografía clásica y escolar en cirílico)</translation>
       <translation>Añadir carpeta</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Limpiar todo</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Favoritos:</translation>
     </message>
@@ -902,16 +898,20 @@ entre ortografía clásica y escolar en cirílico)</translation>
       <translation>Todos los elementos seleccionados serán eliminados. ¿Continuar?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Borrar todos los elementos</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>¿Está seguro de que desea borrar todos los elementos?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>Claro</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>Borrar favoritos</translation>
     </message>
   </context>
   <context>
@@ -2630,6 +2630,14 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <source>Lock Panels</source>
       <translation>Bloquear paneles</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation>Borrar historial</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>¿Está seguro que desea borrar todos los elementos del historial?</translation>
     </message>
   </context>
   <context>
