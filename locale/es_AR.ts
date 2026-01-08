@@ -889,10 +889,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Agregar carpeta</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Clear All</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Favoritos:</translation>
     </message>
@@ -901,16 +897,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Todos los elementos seleccionados serán eliminados. ¿Continuar?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Clear All Items</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Are you sure you want to clear all items?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation type="unfinished">Clear</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation type="unfinished">Clear Favorites</translation>
     </message>
   </context>
   <context>
@@ -2630,6 +2630,14 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; uso de
     <message>
       <source>Lock Panels</source>
       <translation type="unfinished">Lock Panels</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation type="unfinished">Clear History</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
     </message>
   </context>
   <context>
