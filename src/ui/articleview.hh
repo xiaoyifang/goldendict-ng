@@ -312,7 +312,7 @@ signals:
 
   /// Emitted when user types a text key. This should typically be used to
   /// switch focus to word input.
-  void typingEvent( const QString & text );
+  void typingEvent( const QString & text, QKeyEvent * keyEvent );
 
   void statusBarMessage( const QString & message, int timeout = 0, const QPixmap & pixmap = QPixmap() );
 

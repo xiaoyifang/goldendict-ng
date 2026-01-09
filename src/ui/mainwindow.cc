@@ -39,7 +39,7 @@
 #include <QStyleFactory>
 #include <QStyleHints>
 #include <QNetworkProxyFactory>
-
+#include <QInputMethodEvent>
 #include "weburlrequestinterceptor.hh"
 #include "folding.hh"
 #include "articlesaver.hh"
@@ -2737,7 +2737,9 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
       }
       // or don't make sense
       if ( !text.isEmpty() ) {
-        typingEvent( text );
+        // Create a new QKeyEvent copy to avoid double deletion
+        QKeyEvent * newKeyEvent = key_event->clone();
+        typingEvent( text, newKeyEvent );
         return true;
       }
     }
@@ -2872,12 +2874,15 @@ void MainWindow::activeArticleChanged( const ArticleView * view, const QString &
   }
 }
 
-void MainWindow::typingEvent( const QString & t )
+void MainWindow::typingEvent( const QString & t, QKeyEvent * keyEvent )
 {
   if ( t == "\n" || t == "\r" ) {
     if ( translateLine->isEnabled() ) {
       focusTranslateLine();
     }
+
+    // Delete the keyEvent to avoid memory leak
+    delete keyEvent;
   }
   else {
     if ( ( cfg.preferences.searchInDock && ui.searchPane->isFloating() ) || ui.dictsPane->isFloating() ) {
@@ -2891,9 +2896,17 @@ void MainWindow::typingEvent( const QString & t )
 
       translateLine->clear();
       translateLine->setFocus();
-      // Escaping the typed-in characters is the user's responsibility.
-      setInputLineText( t, WildcardPolicy::WildcardsAreAlreadyEscaped, EnablePopup );
-      translateLine->setCursorPosition( t.size() );
+      // Trigger an input method query event
+      QTimer::singleShot( 20, [ this, keyEvent ]() {
+        QCoreApplication::sendEvent( translateLine, keyEvent );
+        // Delete the keyEvent to avoid memory leak
+        delete keyEvent;
+      } );
+      // // Resend the key event to the translateLine
+      // QCoreApplication::sendEvent( translateLine, keyEvent );
+    }
+    else {
+      delete keyEvent;
     }
   }
 }

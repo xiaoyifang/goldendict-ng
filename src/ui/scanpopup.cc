@@ -10,6 +10,7 @@
 #include <QMouseEvent>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QInputMethodEvent>
 #include "gestures.hh"
 
 using std::set;
@@ -761,16 +762,22 @@ const vector< sptr< Dictionary::Class > > & ScanPopup::getActiveDicts()
   return dictionariesUnmuted;
 }
 
-void ScanPopup::typingEvent( const QString & t )
+void ScanPopup::typingEvent( const QString & t, QKeyEvent * keyEvent )
 {
   if ( t == "\n" || t == "\r" ) {
     focusTranslateLine();
+    // Delete the keyEvent to avoid memory leak
+    delete keyEvent;
   }
   else {
     translateBox->translateLine()->clear();
     translateBox->translateLine()->setFocus();
-    translateBox->setText( t, true );
-    translateBox->translateLine()->setCursorPosition( t.size() );
+    QTimer::singleShot( 20, [ this, keyEvent ]() {
+      QCoreApplication::postEvent( translateBox->translateLine(), keyEvent );
+
+      // Delete the keyEvent to avoid memory leak
+      delete keyEvent;
+    } );
   }
 
   updateSuggestionList();
@@ -808,7 +815,9 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
       }
       // or don't make sense
       if ( !text.isEmpty() ) {
-        typingEvent( text );
+        // Create a new QKeyEvent copy to avoid double deletion
+        QKeyEvent * newKeyEvent = key_event->clone();
+        typingEvent( text, newKeyEvent );
         return true;
       }
     }

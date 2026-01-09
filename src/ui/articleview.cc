@@ -933,7 +933,9 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
       QString text = keyEvent->text();
 
       if ( text.size() ) {
-        emit typingEvent( text );
+        // Create a new QKeyEvent copy to avoid the original event being destroyed
+        QKeyEvent * newKeyEvent = keyEvent->clone();
+        emit typingEvent( text, newKeyEvent );
         return true;
       }
     }

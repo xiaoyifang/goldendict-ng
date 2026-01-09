@@ -365,7 +365,7 @@ private slots:
                                unsigned group,
                                const QString & fromArticle,
                                const Contexts & contexts );
-  void typingEvent( const QString & );
+  void typingEvent( const QString &, QKeyEvent * keyEvent );
 
   void activeArticleChanged( const ArticleView *, const QString & id );
 
