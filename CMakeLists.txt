@@ -69,7 +69,7 @@ if (WITH_TTS)
     list(APPEND GD_QT_COMPONENTS TextToSpeech)
 endif ()
 
-find_package(Qt6 REQUIRED COMPONENTS ${GD_QT_COMPONENTS})
+find_package(Qt6 6.2 REQUIRED COMPONENTS ${GD_QT_COMPONENTS})
 
 qt_standard_project_setup()
 set(CMAKE_AUTORCC ON) # not included in the qt_standard_project_setup
