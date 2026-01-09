@@ -2872,7 +2872,7 @@ void MainWindow::activeArticleChanged( const ArticleView * view, const QString &
   }
 }
 
-void MainWindow::typingEvent( const QString & t )
+void MainWindow::typingEvent( const QString & t, QKeyEvent * keyEvent )
 {
   if ( t == "\n" || t == "\r" ) {
     if ( translateLine->isEnabled() ) {
@@ -2892,10 +2892,13 @@ void MainWindow::typingEvent( const QString & t )
       translateLine->clear();
       translateLine->setFocus();
       // Escaping the typed-in characters is the user's responsibility.
-      setInputLineText( t, WildcardPolicy::WildcardsAreAlreadyEscaped, EnablePopup );
-      translateLine->setCursorPosition( t.size() );
+      // Resend the key event to the translateLine
+      QCoreApplication::sendEvent( translateLine, keyEvent );
     }
   }
+
+  // Delete the keyEvent to avoid memory leak
+  delete keyEvent;
 }
 
 void MainWindow::mutedDictionariesChanged()

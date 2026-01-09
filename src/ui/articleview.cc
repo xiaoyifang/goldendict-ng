@@ -925,17 +925,24 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
         return false; // A non-typing modifier is pressed
       }
 
-      if ( Utils::ignoreKeyEvent( keyEvent ) || keyEvent->key() == Qt::Key_Return || keyEvent->key() == Qt::Key_Enter
-           || keyEvent->key() == Qt::Key_unknown ) {
+      if ( Utils::ignoreKeyEvent( keyEvent ) || keyEvent->key() == Qt::Key_Return
+           || keyEvent->key() == Qt::Key_Enter ) {
         return false; // Those key have other uses than to start typing
       }
 
       QString text = keyEvent->text();
 
       if ( text.size() ) {
-        emit typingEvent( text );
-        return true;
-      }
+          // Create a new QKeyEvent copy to avoid the original event being destroyed
+          QKeyEvent * newKeyEvent = new QKeyEvent( keyEvent->type(),
+                                                  keyEvent->key(),
+                                                  keyEvent->modifiers(),
+                                                  keyEvent->text(),
+                                                  keyEvent->isAutoRepeat(),
+                                                  keyEvent->count() );
+          emit typingEvent( text, newKeyEvent );
+          return true;
+        }
     }
     else if ( ev->type() == QEvent::Wheel ) {
       QWheelEvent * pe = static_cast< QWheelEvent * >( ev );

@@ -761,7 +761,7 @@ const vector< sptr< Dictionary::Class > > & ScanPopup::getActiveDicts()
   return dictionariesUnmuted;
 }
 
-void ScanPopup::typingEvent( const QString & t )
+void ScanPopup::typingEvent( const QString & t, QKeyEvent * keyEvent )
 {
   if ( t == "\n" || t == "\r" ) {
     focusTranslateLine();
@@ -769,11 +769,14 @@ void ScanPopup::typingEvent( const QString & t )
   else {
     translateBox->translateLine()->clear();
     translateBox->translateLine()->setFocus();
-    translateBox->setText( t, true );
-    translateBox->translateLine()->setCursorPosition( t.size() );
+    // Resend the key event to the translateLine
+    QCoreApplication::sendEvent( translateBox->translateLine(), keyEvent );
   }
 
   updateSuggestionList();
+  
+  // Delete the keyEvent to avoid memory leak
+  delete keyEvent;
 }
 
 bool ScanPopup::eventFilter( QObject * watched, QEvent * event )

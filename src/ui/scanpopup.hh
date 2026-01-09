@@ -231,7 +231,7 @@ private slots:
   void focusTranslateLine();
   void stopAudio() const;
 
-  void typingEvent( const QString & );
+  void typingEvent( const QString &, QKeyEvent * keyEvent );
 
   void alwaysOnTopClicked( bool checked );
 
