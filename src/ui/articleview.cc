@@ -933,16 +933,16 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
       QString text = keyEvent->text();
 
       if ( text.size() ) {
-          // Create a new QKeyEvent copy to avoid the original event being destroyed
-          QKeyEvent * newKeyEvent = new QKeyEvent( keyEvent->type(),
-                                                  keyEvent->key(),
-                                                  keyEvent->modifiers(),
-                                                  keyEvent->text(),
-                                                  keyEvent->isAutoRepeat(),
-                                                  keyEvent->count() );
-          emit typingEvent( text, newKeyEvent );
-          return true;
-        }
+        // Create a new QKeyEvent copy to avoid the original event being destroyed
+        QKeyEvent * newKeyEvent = new QKeyEvent( keyEvent->type(),
+                                                 keyEvent->key(),
+                                                 keyEvent->modifiers(),
+                                                 keyEvent->text(),
+                                                 keyEvent->isAutoRepeat(),
+                                                 keyEvent->count() );
+        emit typingEvent( text, newKeyEvent );
+        return true;
+      }
     }
     else if ( ev->type() == QEvent::Wheel ) {
       QWheelEvent * pe = static_cast< QWheelEvent * >( ev );

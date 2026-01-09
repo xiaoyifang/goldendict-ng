@@ -774,7 +774,7 @@ void ScanPopup::typingEvent( const QString & t, QKeyEvent * keyEvent )
   }
 
   updateSuggestionList();
-  
+
   // Delete the keyEvent to avoid memory leak
   delete keyEvent;
 }
