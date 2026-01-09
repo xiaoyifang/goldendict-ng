@@ -815,6 +815,9 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
         QKeyEvent * newKeyEvent = new QKeyEvent( key_event->type(),
                                                  key_event->key(),
                                                  key_event->modifiers(),
+                                                 key_event->nativeScanCode(),
+                                                 key_event->nativeVirtualKey(),
+                                                 key_event->nativeModifiers(),
                                                  key_event->text(),
                                                  key_event->isAutoRepeat(),
                                                  key_event->count() );

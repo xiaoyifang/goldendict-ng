@@ -937,6 +937,9 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
         QKeyEvent * newKeyEvent = new QKeyEvent( keyEvent->type(),
                                                  keyEvent->key(),
                                                  keyEvent->modifiers(),
+                                                 keyEvent->nativeScanCode(),
+                                                 keyEvent->nativeVirtualKey(),
+                                                 keyEvent->nativeModifiers(),
                                                  keyEvent->text(),
                                                  keyEvent->isAutoRepeat(),
                                                  keyEvent->count() );
