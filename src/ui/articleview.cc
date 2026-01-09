@@ -925,8 +925,8 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
         return false; // A non-typing modifier is pressed
       }
 
-      if ( Utils::ignoreKeyEvent( keyEvent ) || keyEvent->key() == Qt::Key_Return
-           || keyEvent->key() == Qt::Key_Enter || keyEvent->key() == Qt::Key_unknown ) {
+      if ( Utils::ignoreKeyEvent( keyEvent ) || keyEvent->key() == Qt::Key_Return || keyEvent->key() == Qt::Key_Enter
+           || keyEvent->key() == Qt::Key_unknown ) {
         return false; // Those key have other uses than to start typing
       }
 
