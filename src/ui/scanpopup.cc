@@ -769,6 +769,8 @@ void ScanPopup::typingEvent( const QString & t, QKeyEvent * keyEvent )
   else {
     translateBox->translateLine()->clear();
     translateBox->translateLine()->setFocus();
+    // Trigger an input method query event
+    QInputMethodEvent queryEvent( QInputMethodEvent::Query );
     // Resend the key event to the translateLine
     QCoreApplication::sendEvent( translateBox->translateLine(), keyEvent );
   }

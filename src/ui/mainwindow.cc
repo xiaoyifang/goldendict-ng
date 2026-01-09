@@ -2901,6 +2901,8 @@ void MainWindow::typingEvent( const QString & t, QKeyEvent * keyEvent )
 
       translateLine->clear();
       translateLine->setFocus();
+      // Trigger an input method query event
+      QInputMethodEvent queryEvent(QInputMethodEvent::Query);
       // Resend the key event to the translateLine
       QCoreApplication::sendEvent( translateLine, keyEvent );
     }
