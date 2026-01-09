@@ -2738,15 +2738,7 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
       // or don't make sense
       if ( !text.isEmpty() ) {
         // Create a new QKeyEvent copy to avoid double deletion
-        QKeyEvent * newKeyEvent = new QKeyEvent( key_event->type(),
-                                                 key_event->key(),
-                                                 key_event->modifiers(),
-                                                 key_event->nativeScanCode(),
-                                                 key_event->nativeVirtualKey(),
-                                                 key_event->nativeModifiers(),
-                                                 key_event->text(),
-                                                 key_event->isAutoRepeat(),
-                                                 key_event->count() );
+        QKeyEvent * newKeyEvent = key_event->clone();
         typingEvent( text, newKeyEvent );
         return true;
       }
