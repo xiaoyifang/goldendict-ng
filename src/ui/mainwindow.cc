@@ -2880,7 +2880,7 @@ void MainWindow::typingEvent( const QString & t, QKeyEvent * keyEvent )
     if ( translateLine->isEnabled() ) {
       focusTranslateLine();
     }
-    
+
     // Delete the keyEvent to avoid memory leak
     delete keyEvent;
   }
@@ -2905,11 +2905,10 @@ void MainWindow::typingEvent( const QString & t, QKeyEvent * keyEvent )
       // // Resend the key event to the translateLine
       // QCoreApplication::sendEvent( translateLine, keyEvent );
     }
-    else{
+    else {
       delete keyEvent;
     }
   }
-
 }
 
 void MainWindow::mutedDictionariesChanged()
