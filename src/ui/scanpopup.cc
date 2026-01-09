@@ -10,6 +10,7 @@
 #include <QMouseEvent>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QInputMethodEvent>
 #include "gestures.hh"
 
 using std::set;
@@ -771,6 +772,7 @@ void ScanPopup::typingEvent( const QString & t, QKeyEvent * keyEvent )
     translateBox->translateLine()->setFocus();
     // Trigger an input method query event
     QInputMethodEvent queryEvent( QInputMethodEvent::Query );
+    QCoreApplication::postEvent( translateBox->translateLine(), &queryEvent );
     // Resend the key event to the translateLine
     QCoreApplication::sendEvent( translateBox->translateLine(), keyEvent );
   }

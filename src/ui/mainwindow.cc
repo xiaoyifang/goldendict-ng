@@ -39,7 +39,7 @@
 #include <QStyleFactory>
 #include <QStyleHints>
 #include <QNetworkProxyFactory>
-
+#include <QInputMethodEvent>
 #include "weburlrequestinterceptor.hh"
 #include "folding.hh"
 #include "articlesaver.hh"
@@ -2903,6 +2903,7 @@ void MainWindow::typingEvent( const QString & t, QKeyEvent * keyEvent )
       translateLine->setFocus();
       // Trigger an input method query event
       QInputMethodEvent queryEvent(QInputMethodEvent::Query);
+      QCoreApplication::postEvent(translateLine, &queryEvent);
       // Resend the key event to the translateLine
       QCoreApplication::sendEvent( translateLine, keyEvent );
     }
