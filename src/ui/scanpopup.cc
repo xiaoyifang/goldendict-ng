@@ -811,7 +811,14 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
       }
       // or don't make sense
       if ( !text.isEmpty() ) {
-        typingEvent( text );
+        // Create a new QKeyEvent copy to avoid double deletion
+        QKeyEvent * newKeyEvent = new QKeyEvent( key_event->type(),
+                                               key_event->key(),
+                                               key_event->modifiers(),
+                                               key_event->text(),
+                                               key_event->isAutoRepeat(),
+                                               key_event->count() );
+        typingEvent( text, newKeyEvent );
         return true;
       }
     }

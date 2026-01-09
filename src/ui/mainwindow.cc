@@ -2737,7 +2737,14 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
       }
       // or don't make sense
       if ( !text.isEmpty() ) {
-        typingEvent( text );
+        // Create a new QKeyEvent copy to avoid double deletion
+        QKeyEvent * newKeyEvent = new QKeyEvent( key_event->type(),
+                                               key_event->key(),
+                                               key_event->modifiers(),
+                                               key_event->text(),
+                                               key_event->isAutoRepeat(),
+                                               key_event->count() );
+        typingEvent( text, newKeyEvent );
         return true;
       }
     }
@@ -2891,7 +2898,6 @@ void MainWindow::typingEvent( const QString & t, QKeyEvent * keyEvent )
 
       translateLine->clear();
       translateLine->setFocus();
-      // Escaping the typed-in characters is the user's responsibility.
       // Resend the key event to the translateLine
       QCoreApplication::sendEvent( translateLine, keyEvent );
     }
