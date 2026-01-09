@@ -766,21 +766,23 @@ void ScanPopup::typingEvent( const QString & t, QKeyEvent * keyEvent )
 {
   if ( t == "\n" || t == "\r" ) {
     focusTranslateLine();
+      // Delete the keyEvent to avoid memory leak
+  delete keyEvent;
   }
   else {
     translateBox->translateLine()->clear();
     translateBox->translateLine()->setFocus();
-    // Trigger an input method query event
-    QInputMethodEvent queryEvent( t );
-    QCoreApplication::postEvent( translateBox->translateLine(), &queryEvent );
-    // // Resend the key event to the translateLine
-    // QCoreApplication::sendEvent( translateBox->translateLine(), keyEvent );
+    QTimer::singleShot( 20, [ this, keyEvent ]() {
+      QCoreApplication::postEvent( translateBox->translateLine(), keyEvent );
+
+      // Delete the keyEvent to avoid memory leak
+      delete keyEvent;
+    } );
   }
 
   updateSuggestionList();
 
-  // Delete the keyEvent to avoid memory leak
-  delete keyEvent;
+
 }
 
 bool ScanPopup::eventFilter( QObject * watched, QEvent * event )

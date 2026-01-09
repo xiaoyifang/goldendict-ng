@@ -2880,6 +2880,9 @@ void MainWindow::typingEvent( const QString & t, QKeyEvent * keyEvent )
     if ( translateLine->isEnabled() ) {
       focusTranslateLine();
     }
+    
+    // Delete the keyEvent to avoid memory leak
+    delete keyEvent;
   }
   else {
     if ( ( cfg.preferences.searchInDock && ui.searchPane->isFloating() ) || ui.dictsPane->isFloating() ) {
@@ -2894,15 +2897,19 @@ void MainWindow::typingEvent( const QString & t, QKeyEvent * keyEvent )
       translateLine->clear();
       translateLine->setFocus();
       // Trigger an input method query event
-      QInputMethodEvent queryEvent( t );
-      QCoreApplication::postEvent( translateLine, &queryEvent );
+      QTimer::singleShot( 20, [ this, keyEvent ]() {
+        QCoreApplication::sendEvent( translateLine, keyEvent );
+        // Delete the keyEvent to avoid memory leak
+        delete keyEvent;
+      } );
       // // Resend the key event to the translateLine
       // QCoreApplication::sendEvent( translateLine, keyEvent );
     }
+    else{
+      delete keyEvent;
+    }
   }
 
-  // Delete the keyEvent to avoid memory leak
-  delete keyEvent;
 }
 
 void MainWindow::mutedDictionariesChanged()
