@@ -2912,14 +2912,12 @@ void MainWindow::typingEvent( const QString & t, QKeyEvent * keyEvent )
     translateLine->clear();
     translateLine->setFocus();
 
-    // Use QTimer to delay the event processing slightly.
-    // This gives Qt and the IME time to synchronize the input context with the new focus.
-    QTimer::singleShot( 200, [ this, keyEvent ]() {
-      if ( translateLine ) {
-        QCoreApplication::sendEvent( translateLine, keyEvent );
-      }
-      delete keyEvent;
-    } );
+    // Use QInputMethodEvent to simulate IME input directly
+    QInputMethodEvent event;
+    event.setPreeditString( t );
+    QCoreApplication::sendEvent( translateLine, &event );
+
+    delete keyEvent;
   }
   else {
     delete keyEvent;

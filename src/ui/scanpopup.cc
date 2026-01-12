@@ -773,13 +773,11 @@ void ScanPopup::typingEvent( const QString & t, QKeyEvent * keyEvent )
   translateBox->translateLine()->clear();
   translateBox->translateLine()->setFocus();
 
-  // Use QTimer to delay the event processing slightly.
-  QTimer::singleShot( 200, [ this, keyEvent ]() {
-    if ( translateBox && translateBox->translateLine() ) {
-      QCoreApplication::sendEvent( translateBox->translateLine(), keyEvent );
-    }
-    delete keyEvent;
-  } );
+  QInputMethodEvent event;
+  event.setPreeditString( t );
+  QCoreApplication::sendEvent( translateBox->translateLine(), &event );
+
+  delete keyEvent;
 
   updateSuggestionList();
 }
