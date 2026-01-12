@@ -2751,10 +2751,11 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
           translateLine->clear();
           translateLine->setFocus();
 
-          // Forward the event to the translateLine directly
-          // We must consume the original event (return true) because returning false
-          // would continue potentially sending it to the original target, not the new focus.
-          QCoreApplication::sendEvent( translateLine, ev );
+          // Post the event to the translateLine instead of sending it directly.
+          // This allows the event loop to process focus changes and IME state updates
+          // before the key event is handled, ensuring the first character triggers the IME.
+          QKeyEvent * newKeyEvent = key_event->clone();
+          QCoreApplication::postEvent( translateLine, newKeyEvent );
           return true;
         }
       }
@@ -2913,10 +2914,10 @@ void MainWindow::typingEvent( const QString & t, QKeyEvent * keyEvent )
     translateLine->clear();
     translateLine->setFocus();
 
-    // Directly send the event to translateLine for IME support
-    // No delay needed - let Qt handle the event routing naturally
-    QCoreApplication::sendEvent( translateLine, keyEvent );
-    delete keyEvent;
+    // Post the event to translateLine for IME support
+    // postEvent takes ownership of the event and deletes it after processing
+    QCoreApplication::postEvent( translateLine, keyEvent );
+    // delete keyEvent; // Do NOT delete, postEvent handles it
   }
   else {
     delete keyEvent;

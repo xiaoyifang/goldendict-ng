@@ -773,10 +773,10 @@ void ScanPopup::typingEvent( const QString & t, QKeyEvent * keyEvent )
   translateBox->translateLine()->clear();
   translateBox->translateLine()->setFocus();
 
-  // Directly send the event to translateLine for IME support
+  // Post the event to translateLine for IME support
   // No delay needed - let Qt handle the event routing naturally
-  QCoreApplication::sendEvent( translateBox->translateLine(), keyEvent );
-  delete keyEvent;
+  QCoreApplication::postEvent( translateBox->translateLine(), keyEvent );
+  // delete keyEvent; // postEvent takes ownership
 
   updateSuggestionList();
 }
@@ -817,8 +817,9 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
         translateBox->translateLine()->clear();
         translateBox->translateLine()->setFocus();
 
-        // Forward the event to the translateLine directly
-        QCoreApplication::sendEvent( translateBox->translateLine(), event );
+        // Post the event to the translateLine
+        QKeyEvent * newKeyEvent = key_event->clone();
+        QCoreApplication::postEvent( translateBox->translateLine(), newKeyEvent );
         return true;
       }
     }
