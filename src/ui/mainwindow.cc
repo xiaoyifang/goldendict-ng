@@ -2737,10 +2737,24 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
       }
       // or don't make sense
       if ( !text.isEmpty() ) {
-        // Create a new QKeyEvent copy to avoid double deletion
-        QKeyEvent * newKeyEvent = key_event->clone();
-        typingEvent( text, newKeyEvent );
-        return true;
+        // Activate search pane window if floating
+        if ( ( cfg.preferences.searchInDock && ui.searchPane->isFloating() ) || ui.dictsPane->isFloating() ) {
+          ui.searchPane->activateWindow();
+        }
+
+        if ( translateLine->isEnabled() ) {
+          if ( navToolbar->isFloating() ) {
+            navToolbar->activateWindow();
+          }
+
+          // Clear and set focus to translate line
+          translateLine->clear();
+          translateLine->setFocus();
+
+          // Return false to let the event propagate to translateLine
+          // This allows IME to properly receive and process the key event
+          return false;
+        }
       }
     }
   }
@@ -2880,34 +2894,30 @@ void MainWindow::typingEvent( const QString & t, QKeyEvent * keyEvent )
     if ( translateLine->isEnabled() ) {
       focusTranslateLine();
     }
+    delete keyEvent;
+    return;
+  }
 
-    // Delete the keyEvent to avoid memory leak
+  // Activate search pane window if floating
+  if ( ( cfg.preferences.searchInDock && ui.searchPane->isFloating() ) || ui.dictsPane->isFloating() ) {
+    ui.searchPane->activateWindow();
+  }
+
+  if ( translateLine->isEnabled() ) {
+    if ( navToolbar->isFloating() ) {
+      navToolbar->activateWindow();
+    }
+
+    translateLine->clear();
+    translateLine->setFocus();
+    
+    // Directly send the event to translateLine for IME support
+    // No delay needed - let Qt handle the event routing naturally
+    QCoreApplication::sendEvent( translateLine, keyEvent );
     delete keyEvent;
   }
   else {
-    if ( ( cfg.preferences.searchInDock && ui.searchPane->isFloating() ) || ui.dictsPane->isFloating() ) {
-      ui.searchPane->activateWindow();
-    }
-
-    if ( translateLine->isEnabled() ) {
-      if ( navToolbar->isFloating() ) {
-        navToolbar->activateWindow();
-      }
-
-      translateLine->clear();
-      translateLine->setFocus();
-      // Trigger an input method query event
-      QTimer::singleShot( 20, [ this, keyEvent ]() {
-        QCoreApplication::sendEvent( translateLine, keyEvent );
-        // Delete the keyEvent to avoid memory leak
-        delete keyEvent;
-      } );
-      // // Resend the key event to the translateLine
-      // QCoreApplication::sendEvent( translateLine, keyEvent );
-    }
-    else {
-      delete keyEvent;
-    }
+    delete keyEvent;
   }
 }
 
