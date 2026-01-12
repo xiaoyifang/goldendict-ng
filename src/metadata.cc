@@ -4,7 +4,7 @@
 #include <QSaveFile>
 #include <QFile>
 #ifdef Q_OS_FREEBSD
-#include <sstream>
+  #include <sstream>
 #endif
 
 std::optional< Metadata::result > Metadata::load( std::string_view filepath )
