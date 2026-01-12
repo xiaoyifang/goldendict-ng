@@ -2910,7 +2910,7 @@ void MainWindow::typingEvent( const QString & t, QKeyEvent * keyEvent )
 
     translateLine->clear();
     translateLine->setFocus();
-    
+
     // Directly send the event to translateLine for IME support
     // No delay needed - let Qt handle the event routing naturally
     QCoreApplication::sendEvent( translateLine, keyEvent );
