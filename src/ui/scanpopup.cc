@@ -766,19 +766,17 @@ void ScanPopup::typingEvent( const QString & t, QKeyEvent * keyEvent )
 {
   if ( t == "\n" || t == "\r" ) {
     focusTranslateLine();
-    // Delete the keyEvent to avoid memory leak
     delete keyEvent;
+    return;
   }
-  else {
-    translateBox->translateLine()->clear();
-    translateBox->translateLine()->setFocus();
-    QTimer::singleShot( 20, [ this, keyEvent ]() {
-      QCoreApplication::postEvent( translateBox->translateLine(), keyEvent );
 
-      // Delete the keyEvent to avoid memory leak
-      delete keyEvent;
-    } );
-  }
+  translateBox->translateLine()->clear();
+  translateBox->translateLine()->setFocus();
+
+  // Directly send the event to translateLine for IME support
+  // No delay needed - let Qt handle the event routing naturally
+  QCoreApplication::sendEvent( translateBox->translateLine(), keyEvent );
+  delete keyEvent;
 
   updateSuggestionList();
 }
@@ -815,10 +813,13 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
       }
       // or don't make sense
       if ( !text.isEmpty() ) {
-        // Create a new QKeyEvent copy to avoid double deletion
-        QKeyEvent * newKeyEvent = key_event->clone();
-        typingEvent( text, newKeyEvent );
-        return true;
+        // Clear and set focus to translate line
+        translateBox->translateLine()->clear();
+        translateBox->translateLine()->setFocus();
+
+        // Return false to let the event propagate to translateLine
+        // This allows IME to properly receive and process the key event
+        return false;
       }
     }
   }
