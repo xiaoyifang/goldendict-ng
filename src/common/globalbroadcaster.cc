@@ -13,7 +13,7 @@ Q_GLOBAL_STATIC( GlobalBroadcaster, bdcaster )
 GlobalBroadcaster::GlobalBroadcaster( QObject * parent ):
   QObject( parent )
 {
-  QStringList whiteUrlHosts = { "googleapis.com", "gstatic.com" };
+  QStringList whiteUrlHosts = { "googleapis.com", "gstatic.com", "cloudflare.com" };
 
   for ( auto & host : std::as_const( whiteUrlHosts ) ) {
     whitelist.insert( host );
