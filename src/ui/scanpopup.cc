@@ -817,9 +817,9 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
         translateBox->translateLine()->clear();
         translateBox->translateLine()->setFocus();
 
-        // Return false to let the event propagate to translateLine
-        // This allows IME to properly receive and process the key event
-        return false;
+        // Forward the event to the translateLine directly
+        QCoreApplication::sendEvent( translateBox->translateLine(), event );
+        return true;
       }
     }
   }

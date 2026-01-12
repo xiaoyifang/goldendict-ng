@@ -2751,9 +2751,11 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
           translateLine->clear();
           translateLine->setFocus();
 
-          // Return false to let the event propagate to translateLine
-          // This allows IME to properly receive and process the key event
-          return false;
+          // Forward the event to the translateLine directly
+          // We must consume the original event (return true) because returning false
+          // would continue potentially sending it to the original target, not the new focus.
+          QCoreApplication::sendEvent( translateLine, ev );
+          return true;
         }
       }
     }
