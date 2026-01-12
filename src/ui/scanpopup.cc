@@ -773,10 +773,13 @@ void ScanPopup::typingEvent( const QString & t, QKeyEvent * keyEvent )
   translateBox->translateLine()->clear();
   translateBox->translateLine()->setFocus();
 
-  // Post the event to translateLine for IME support
-  // No delay needed - let Qt handle the event routing naturally
-  QCoreApplication::postEvent( translateBox->translateLine(), keyEvent );
-  // delete keyEvent; // postEvent takes ownership
+  // Use QTimer to delay the event processing slightly.
+  QTimer::singleShot( 200, [ this, keyEvent ]() {
+    if ( translateBox && translateBox->translateLine() ) {
+      QCoreApplication::sendEvent( translateBox->translateLine(), keyEvent );
+    }
+    delete keyEvent;
+  } );
 
   updateSuggestionList();
 }
@@ -817,9 +820,9 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
         translateBox->translateLine()->clear();
         translateBox->translateLine()->setFocus();
 
-        // Post the event to the translateLine
+        // Pass to typingEvent which handles the delayed sending for IME support
         QKeyEvent * newKeyEvent = key_event->clone();
-        QCoreApplication::postEvent( translateBox->translateLine(), newKeyEvent );
+        typingEvent( text, newKeyEvent );
         return true;
       }
     }

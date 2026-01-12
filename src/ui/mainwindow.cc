@@ -2751,11 +2751,9 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
           translateLine->clear();
           translateLine->setFocus();
 
-          // Post the event to the translateLine instead of sending it directly.
-          // This allows the event loop to process focus changes and IME state updates
-          // before the key event is handled, ensuring the first character triggers the IME.
+          // Pass to typingEvent which handles the delayed sending for IME support
           QKeyEvent * newKeyEvent = key_event->clone();
-          QCoreApplication::postEvent( translateLine, newKeyEvent );
+          typingEvent( text, newKeyEvent );
           return true;
         }
       }
@@ -2914,10 +2912,14 @@ void MainWindow::typingEvent( const QString & t, QKeyEvent * keyEvent )
     translateLine->clear();
     translateLine->setFocus();
 
-    // Post the event to translateLine for IME support
-    // postEvent takes ownership of the event and deletes it after processing
-    QCoreApplication::postEvent( translateLine, keyEvent );
-    // delete keyEvent; // Do NOT delete, postEvent handles it
+    // Use QTimer to delay the event processing slightly.
+    // This gives Qt and the IME time to synchronize the input context with the new focus.
+    QTimer::singleShot( 200, [ this, keyEvent ]() {
+      if ( translateLine ) {
+        QCoreApplication::sendEvent( translateLine, keyEvent );
+      }
+      delete keyEvent;
+    } );
   }
   else {
     delete keyEvent;
