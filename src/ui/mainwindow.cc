@@ -2913,8 +2913,8 @@ void MainWindow::typingEvent( const QString & t, QKeyEvent * keyEvent )
     translateLine->setFocus();
 
     // Use QInputMethodEvent to simulate IME input directly
-    QInputMethodEvent event;
-    event.setPreeditString( t );
+    // Pass preedit string via constructor
+    QInputMethodEvent event( t, {} );
     QCoreApplication::sendEvent( translateLine, &event );
 
     delete keyEvent;

@@ -773,8 +773,7 @@ void ScanPopup::typingEvent( const QString & t, QKeyEvent * keyEvent )
   translateBox->translateLine()->clear();
   translateBox->translateLine()->setFocus();
 
-  QInputMethodEvent event;
-  event.setPreeditString( t );
+  QInputMethodEvent event( t, {} );
   QCoreApplication::sendEvent( translateBox->translateLine(), &event );
 
   delete keyEvent;
