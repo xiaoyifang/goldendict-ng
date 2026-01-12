@@ -10,9 +10,13 @@ void ResourceSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob
 {
   const QUrl url = requestJob->requestUrl();
   QString content_type;
-  const QMimeType mineType                    = db.mimeTypeForUrl( url );
   const sptr< Dictionary::DataRequest > reply = this->mManager.getResource( url, content_type );
-  content_type                                = mineType.name();
+
+  if ( content_type.isEmpty() )
+    content_type = db.mimeTypeForUrl( url ).name();
+
+  if ( content_type.startsWith( "text/" ) || content_type == "application/javascript" )
+    content_type.append( "; charset=utf-8" );
 
   if ( reply == nullptr ) {
     qDebug() << "Resource failed to load: " << url.toString();
