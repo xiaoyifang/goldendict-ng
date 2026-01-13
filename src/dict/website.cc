@@ -101,8 +101,10 @@ sptr< DataRequest > WebSiteDictionary::getArticle( const std::u32string & str,
 
   //heuristic add url to global whitelist.
   QUrl url( urlString );
+  GlobalBroadcaster::instance()->addHostWhitelist( url.host() );
+
   if ( Utils::Url::hasQueryItem( url, "whitelist" ) ) {
-    GlobalBroadcaster::instance()->addWhitelist( url.host() );
+    GlobalBroadcaster::instance()->addRefererWhitelist( url.host() );
     Utils::Url::removeQueryItem( url, "whitelist" );
     urlString = url.toString();
   }

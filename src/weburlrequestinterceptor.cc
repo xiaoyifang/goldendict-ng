@@ -29,12 +29,13 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
       return;
     }
     auto refererHost = QUrl( QString::fromUtf8( info.httpHeaders().value( "referer" ) ) ).host();
-    if ( GlobalBroadcaster::instance()->existedInWhitelist( Utils::Url::extractBaseDomain( url.host() ) )
-         || GlobalBroadcaster::instance()->existedInWhitelist(
+    if ( GlobalBroadcaster::instance()->existedInHostWhitelist( Utils::Url::extractBaseDomain( url.host() ) )
+         || GlobalBroadcaster::instance()->existedInRefererWhitelist(
            Utils::Url::extractBaseDomain( info.firstPartyUrl().host() ) )
          || ( !refererHost.isEmpty()
-              && GlobalBroadcaster::instance()->existedInWhitelist( Utils::Url::extractBaseDomain( refererHost ) ) ) ) {
-      // Target host, first party, or referring site is in whitelist - do not block
+              && GlobalBroadcaster::instance()->existedInRefererWhitelist(
+                Utils::Url::extractBaseDomain( refererHost ) ) ) ) {
+      // Target host or referring site is in respective whitelist - do not block
       return;
     }
     if ( info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeImage
