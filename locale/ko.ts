@@ -81,22 +81,21 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation type="unfinished">
-    &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
-      &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
-        &lt;ul&gt;
-          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
-          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/section&gt;
-      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
-      &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
-      &lt;/footer&gt;
-    &lt;/div&gt;</translation>
+      <translation>&lt;div class=&quot;welcome-container&quot;&gt;
+&lt;h3&gt;GoldenDict-ng에 오신 것을 환영합니다!&lt;/h3&gt;
+&lt;section&gt;
+&lt;h4&gt;시작하기:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;사전 파일을 추가하고, 위키피디아와 같은 온라인 소스를 설정하고, 그룹으로 정리하려면 &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;사전 편집&lt;/span&gt;&lt;span&gt;사전&lt;/span&gt;&lt;/span&gt;으로 이동하세요.&lt;/li&gt;
+&lt;li&gt;설정이 완료되면 이 창이나 &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;스캔 팝업&lt;/a&gt;을 사용하여 다른 응용 프로그램에서 단어를 검색할 수 있습니다.&lt;/li&gt;
+&lt;li&gt;프로그램을 사용자 지정하려면 &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;환경 설정 편집&lt;/span&gt;&lt;span&gt;설정&lt;/span&gt;&lt;/span&gt;을 살펴보세요. 모든 설정에는 툴팁이 있으므로, 이해가 안 되는 부분이 있으면 툴팁을 꼭 읽어보세요.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;p&gt;추가적인 도움이 필요하거나 질문, 또는 제안 사항이 있으시면 프로그램의 &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;포럼&lt;/a&gt;과 &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;웹사이트&lt;/a&gt;를 방문해 주세요.&lt;/p&gt;
+&lt;footer class=&quot;welcome-footer&quot;&gt;
+&lt;small&gt;Konstantin Isakov의 GoldenDict 원본(c) 2008-2013을 기반으로 합니다. GoldenDict-NG 커뮤니티에서 유지 관리 및 개발합니다. GPLv3 이상 라이선스가 적용됩니다.&lt;/small&gt;
+&lt;/footer&gt;
+&lt;/div&gt;</translation>
     </message>
   </context>
   <context>
@@ -286,15 +285,15 @@
     </message>
     <message>
       <source>&amp;Copy sound to clipboard</source>
-      <translation type="unfinished">&amp;Copy sound to clipboard</translation>
+      <translation>&amp;소리를 클립보드에 복사</translation>
     </message>
     <message>
       <source>Failed to copy sound</source>
-      <translation type="unfinished">Failed to copy sound</translation>
+      <translation>소리 복사에 실패했습니다</translation>
     </message>
     <message>
       <source>Failed to write complete audio data</source>
-      <translation type="unfinished">Failed to write complete audio data</translation>
+      <translation>완전한 오디오 데이터를 기록하는 데 실패했습니다.</translation>
     </message>
     <message>
       <source>Sound copied to clipboard</source>
@@ -757,7 +756,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Schedule for reindex</source>
-      <translation type="unfinished">Schedule for reindex</translation>
+      <translation>재색인 일정</translation>
     </message>
     <message>
       <source>Cancel schedule reindex</source>
@@ -765,15 +764,15 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
-      <translation type="unfinished">The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</translation>
+      <translation>사전의 색인 재구축이 예정되어 있습니다. 다음 애플리케이션 재시작 시 색인이 다시 생성될 예정입니다.</translation>
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>표시 이름 변경</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>새로운 표시 이름:</translation>
     </message>
   </context>
   <context>
@@ -2763,11 +2762,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>표시 이름 변경</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>새로운 표시 이름:</translation>
     </message>
   </context>
   <context>
@@ -3514,7 +3513,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Open website dictionary in seperate tab</source>
-      <translation type="unfinished">Open website dictionary in seperate tab</translation>
+      <translation>웹사이트 사전을 새 탭에서 엽니다.</translation>
     </message>
     <message>
       <source>S&amp;can</source>
@@ -3678,7 +3677,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
-      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
+      <translation>URL에서 "%GDWORD%"는 검색하려는 단어로 대체됩니다.</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
@@ -4260,7 +4259,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
-      <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
+      <translation>웹사이트를 별도의 탭에서 열었을 때만 사용 가능합니다. 파일 경로(설정 디렉터리를 기준으로 한 상대 경로 또는 절대 경로) 또는 스크립트 내용을 직접 지정할 수 있습니다.</translation>
     </message>
   </context>
   <context>
