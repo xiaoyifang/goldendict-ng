@@ -10,6 +10,7 @@
 #include <fmt/compile.h>
 #include <QRegularExpression>
 #include <QCoreApplication>
+#include "utils.hh"
 
 namespace WebSite {
 
@@ -100,7 +101,13 @@ sptr< DataRequest > WebSiteDictionary::getArticle( const std::u32string & str,
 
   //heuristic add url to global whitelist.
   QUrl url( urlString );
-  GlobalBroadcaster::instance()->addWhitelist( url.host() );
+  GlobalBroadcaster::instance()->addHostWhitelist( url.host() );
+
+  if ( Utils::Url::hasQueryItem( url, "whitelist" ) ) {
+    GlobalBroadcaster::instance()->addRefererWhitelist( url.host() );
+    Utils::Url::removeQueryItem( url, "whitelist" );
+    urlString = url.toString();
+  }
 
   const QString & encodeUrl = urlString;
 
