@@ -24,6 +24,10 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
       info.block( true );
       return;
     }
+
+    if ( info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeMainFrame ) {
+      return;
+    }
     auto refererHost = QUrl( QString::fromUtf8( info.httpHeaders().value( "referer" ) ) ).host();
     if ( GlobalBroadcaster::instance()->existedInWhitelist( Utils::Url::extractBaseDomain( url.host() ) )
          || GlobalBroadcaster::instance()->existedInWhitelist(
