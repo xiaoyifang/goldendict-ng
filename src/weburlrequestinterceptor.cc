@@ -25,7 +25,8 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
       return;
     }
     if ( GlobalBroadcaster::instance()->existedInWhitelist( Utils::Url::extractBaseDomain( url.host() ) )
-         || GlobalBroadcaster::instance()->existedInWhitelist( Utils::Url::extractBaseDomain( info.firstPartyUrl().host() ) ) ) {
+         || GlobalBroadcaster::instance()->existedInWhitelist(
+           Utils::Url::extractBaseDomain( info.firstPartyUrl().host() ) ) ) {
       // Target host or referring site is in whitelist - do not block
       return;
     }
