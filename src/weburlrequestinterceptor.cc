@@ -17,15 +17,16 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
     info.setHttpHeader( "origin", Utils::Url::getSchemeAndHost( url ).toUtf8() );
     info.setHttpHeader( "referer", url.url().toUtf8() );
   }
+
   if ( GlobalBroadcaster::instance()->getPreference()->disallowContentFromOtherSites && Utils::isExternalLink( url ) ) {
     // Block file:// links to prevent local file access
     if ( url.scheme() == "file" ) {
       info.block( true );
       return;
     }
-    auto hostBase = Utils::Url::extractBaseDomain( url.host() );
-    if ( GlobalBroadcaster::instance()->existedInWhitelist( hostBase ) ) {
-      //whitelist url does not block
+    if ( GlobalBroadcaster::instance()->existedInWhitelist( Utils::Url::extractBaseDomain( url.host() ) )
+         || GlobalBroadcaster::instance()->existedInWhitelist( Utils::Url::extractBaseDomain( info.firstPartyUrl().host() ) ) ) {
+      // Target host or referring site is in whitelist - do not block
       return;
     }
     if ( info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeImage
