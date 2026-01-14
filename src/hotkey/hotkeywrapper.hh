@@ -110,7 +110,7 @@ private:
   static CGEventRef eventTapCallback( CGEventTapProxy proxy, CGEventType type, CGEventRef event, void * refcon );
   void handleCGEvent( CGEventRef event );
 
-  CFMachPortRef eventTap = nullptr;
+  CFMachPortRef eventTap           = nullptr;
   CFRunLoopSourceRef runLoopSource = nullptr;
 
   quint32 keyC;
