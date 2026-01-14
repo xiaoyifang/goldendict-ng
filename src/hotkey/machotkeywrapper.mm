@@ -168,9 +168,8 @@ HotkeyWrapper::HotkeyWrapper(QObject* parent)
         return;
     }
 
-    runLoopSource = CFRunLoopAddSource(CFRunLoopGetCurrent(),
-        CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0),
-        kCFRunLoopCommonModes);
+    runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0);
+    CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, kCFRunLoopCommonModes);
 }
 
 HotkeyWrapper::~HotkeyWrapper()
