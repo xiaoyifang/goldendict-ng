@@ -98,63 +98,39 @@ quint32 qtKeyToNativeKey(UniChar key)
 
 } // namespace MacKeyMapping
 
-static pascal OSStatus hotKeyHandler(EventHandlerCallRef /* nextHandler */, EventRef theEvent, void* userData)
+CGEventRef HotkeyWrapper::eventTapCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void* refcon)
 {
-    EventHotKeyID hkID;
-    GetEventParameter(theEvent, kEventParamDirectObject, typeEventHotKeyID, NULL, sizeof(EventHotKeyID), NULL, &hkID);
-    static_cast<HotkeyWrapper*>(userData)->activated(hkID.id);
-    return noErr;
-}
-
-HotkeyWrapper::HotkeyWrapper(QObject* parent)
-{
-    (void)parent;
-    hotKeyFunction = NewEventHandlerUPP(hotKeyHandler);
-    EventTypeSpec type;
-    type.eventClass = kEventClassKeyboard;
-    type.eventKind = kEventHotKeyPressed;
-    InstallApplicationEventHandler(hotKeyFunction, 1, &type, this, &handlerRef);
-    keyC = nativeKey('c');
-}
-
-HotkeyWrapper::~HotkeyWrapper()
-{
-    unregister();
-    RemoveEventHandler(handlerRef);
-}
-
-void HotkeyWrapper::waitKey2()
-{
-    state2 = false;
-}
-void checkAndRequestAccessibilityPermission()
-{
-    if (AXIsProcessTrusted()) {
-        return;
+    if (type == kCGEventTapDisabledByTimeout || type == kCGEventTapDisabledByUserInput) {
+        return event;
     }
 
-    auto msgBox = std::make_unique<QMessageBox>(nullptr);
-    auto* turnOnPermission = new QPushButton(QObject::tr("Turn on Accessibility"), msgBox.get());
-
-    msgBox->setInformativeText(QObject::tr("Global shortcut using ⌘+C needs Accessibility permission. Please grant it to Goldendict or change ⌘+C to something else."));
-
-    msgBox->addButton(QMessageBox::Ok);
-    msgBox->addButton(turnOnPermission, QMessageBox::AcceptRole); // the role is unused.
-    msgBox->setDefaultButton(turnOnPermission);
-    msgBox->exec();
-
-    if (msgBox->clickedButton() == turnOnPermission) {
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility"]];
+    if (type == kCGEventKeyDown) {
+        static_cast<HotkeyWrapper*>(refcon)->handleCGEvent(event);
     }
+
+    return event;
 }
 
-void HotkeyWrapper::activated(int hkId)
+void HotkeyWrapper::handleCGEvent(CGEventRef event)
 {
+    CGEventFlags flags = CGEventGetFlags(event);
+    uint32_t vk = (uint32_t)CGEventGetIntegerValueField(event, kCGKeyboardEventKeycode);
+
+    // Convert CGEventFlags to a simpler bitmask for matching
+    uint32_t mod = 0;
+    if (flags & kCGEventFlagMaskCommand)
+        mod |= cmdKey;
+    if (flags & kCGEventFlagMaskAlternate)
+        mod |= optionKey;
+    if (flags & kCGEventFlagMaskShift)
+        mod |= shiftKey;
+    if (flags & kCGEventFlagMaskControl)
+        mod |= controlKey;
+
     if (state2) { // wait for 2nd key
-
         waitKey2(); // Cancel the 2nd-key wait stage
 
-        if (hkId == state2waiter.id + 1 || (hkId == state2waiter.id && state2waiter.key == state2waiter.key2)) {
+        if (vk == state2waiter.key2 && mod == state2waiter.modifier) {
             emit hotkeyActivated(state2waiter.handle);
             return;
         }
@@ -162,23 +138,7 @@ void HotkeyWrapper::activated(int hkId)
 
     for (int i = 0; i < hotkeys.count(); i++) {
         HotkeyStruct& hs = hotkeys[i];
-        if (hkId == hs.id) {
-            if (hs.key == keyC && hs.modifier == cmdKey) {
-                checkAndRequestAccessibilityPermission();
-
-                // If that was a copy-to-clipboard shortcut, re-emit it back so it could
-                // reach its original destination so it could be acted upon.
-                UnregisterEventHotKey(hs.hkRef);
-
-                sendCmdC();
-
-                EventHotKeyID hotKeyID;
-                hotKeyID.signature = 'GDHK';
-                hotKeyID.id = hs.id;
-
-                RegisterEventHotKey(hs.key, hs.modifier, hotKeyID, GetApplicationEventTarget(), 0, &hs.hkRef);
-            }
-
+        if (vk == hs.key && mod == hs.modifier) {
             if (hs.key2 == 0) {
                 emit hotkeyActivated(hs.handle);
                 return;
@@ -190,22 +150,71 @@ void HotkeyWrapper::activated(int hkId)
             return;
         }
     }
+}
 
+HotkeyWrapper::HotkeyWrapper(QObject* parent)
+{
+    (void)parent;
+    keyC = nativeKey('c');
+
+    // Create an event tap to listen for key down events
+    eventTap = CGEventTapCreate(kCGSessionEventTap, kCGHeadInsertEventTap, kCGEventTapOptionListenOnly,
+        CGEventMaskBit(kCGEventKeyDown), eventTapCallback, this);
+
+    if (!eventTap) {
+        checkAndRequestAccessibilityPermission();
+        return;
+    }
+
+    runLoopSource = CFRunLoopAddSource(CFRunLoopGetCurrent(),
+        CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0),
+        kCFRunLoopCommonModes);
+}
+
+HotkeyWrapper::~HotkeyWrapper()
+{
+    unregister();
+}
+
+void HotkeyWrapper::waitKey2()
+{
     state2 = false;
-    return;
+}
+
+void checkAndRequestAccessibilityPermission()
+{
+    if (AXIsProcessTrusted()) {
+        return;
+    }
+
+    auto msgBox = std::make_unique<QMessageBox>(nullptr);
+    auto* turnOnPermission = new QPushButton(QObject::tr("Turn on Accessibility"), msgBox.get());
+
+    msgBox->setInformativeText(QObject::tr("Global shortcuts need Accessibility permission to work. Please grant it to Goldendict or change the hotkeys."));
+
+    msgBox->addButton(QMessageBox::Ok);
+    msgBox->addButton(turnOnPermission, QMessageBox::AcceptRole);
+    msgBox->setDefaultButton(turnOnPermission);
+    msgBox->exec();
+
+    if (msgBox->clickedButton() == turnOnPermission) {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility"]];
+    }
+}
+
+void HotkeyWrapper::activated(int hkId)
+{
+    (void)hkId;
 }
 
 void HotkeyWrapper::unregister()
 {
-    for (int i = 0; i < hotkeys.count(); i++) {
-        HotkeyStruct const& hk = hotkeys.at(i);
-
-        UnregisterEventHotKey(hk.hkRef);
-
-        if (hk.key2 && hk.key2 != hk.key) {
-            UnregisterEventHotKey(hk.hkRef2);
-        }
+    if (eventTap) {
+        CGEventTapEnable(eventTap, false);
+        CFRelease(eventTap);
+        eventTap = nullptr;
     }
+    // Note: runLoopSource is cleaned up by CFRunLoop or handled via CFRelease if manually managed
 }
 
 bool HotkeyWrapper::setGlobalKey(QKeySequence const& seq, int handle)
@@ -216,11 +225,10 @@ bool HotkeyWrapper::setGlobalKey(QKeySequence const& seq, int handle)
     Qt::KeyboardModifiers modifier = hotkeyParse.modifiers;
 
     if (!key) {
-        return false; // We don't monitor empty combinations
+        return false;
     }
 
     quint32 vk = nativeKey(key);
-
     if (vk == 0) {
         return false;
     }
@@ -228,9 +236,6 @@ bool HotkeyWrapper::setGlobalKey(QKeySequence const& seq, int handle)
     quint32 vk2 = key2 ? nativeKey(key2) : 0;
 
     static int nextId = 1;
-    if (nextId > 0xBFFF - 1) {
-        nextId = 1;
-    }
 
     quint32 mod = 0;
     if (modifier & Qt::CTRL) {
@@ -246,26 +251,8 @@ bool HotkeyWrapper::setGlobalKey(QKeySequence const& seq, int handle)
         mod |= controlKey;
     }
 
-    hotkeys.append(HotkeyStruct(vk, vk2, mod, handle, nextId));
-    HotkeyStruct& hk = hotkeys.last();
-
-    EventHotKeyID hotKeyID;
-    hotKeyID.signature = 'GDHK';
-    hotKeyID.id = nextId;
-
-    OSStatus ret = RegisterEventHotKey(vk, mod, hotKeyID, GetApplicationEventTarget(), 0, &hk.hkRef);
-    if (ret != 0) {
-        return false;
-    }
-
-    if (vk2 && vk2 != vk) {
-        hotKeyID.id = nextId + 1;
-        ret = RegisterEventHotKey(vk2, mod, hotKeyID, GetApplicationEventTarget(), 0, &hk.hkRef2);
-    }
-
-    nextId += 2;
-
-    return ret == 0;
+    hotkeys.append(HotkeyStruct(vk, vk2, mod, handle, nextId++));
+    return true;
 }
 
 quint32 HotkeyWrapper::nativeKey(int key)
@@ -339,26 +326,3 @@ quint32 HotkeyWrapper::nativeKey(int key)
     }
     return MacKeyMapping::qtKeyToNativeKey(QChar(key).toLower().unicode());
 }
-
-void HotkeyWrapper::sendCmdC()
-{
-    CGEventFlags flags = kCGEventFlagMaskCommand;
-    CGEventRef ev;
-    CGEventSourceRef source = CGEventSourceCreate(kCGEventSourceStateCombinedSessionState);
-
-    // press down
-    ev = CGEventCreateKeyboardEvent(source, keyC, true);
-    CGEventSetFlags(ev, CGEventFlags(flags | CGEventGetFlags(ev))); // combine flags
-    CGEventPost(kCGAnnotatedSessionEventTap, ev);
-    CFRelease(ev);
-
-    // press up
-    ev = CGEventCreateKeyboardEvent(source, keyC, false);
-    CGEventSetFlags(ev, CGEventFlags(flags | CGEventGetFlags(ev))); // combine flags
-    CGEventPost(kCGAnnotatedSessionEventTap, ev);
-    CFRelease(ev);
-
-    CFRelease(source);
-}
-
-EventHandlerUPP HotkeyWrapper::hotKeyFunction = NULL;

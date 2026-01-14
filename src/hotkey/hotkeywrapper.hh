@@ -107,11 +107,13 @@ private slots:
 #ifdef Q_OS_MAC
 
 private:
-  void sendCmdC();
+  static CGEventRef eventTapCallback( CGEventTapProxy proxy, CGEventType type, CGEventRef event, void * refcon );
+  void handleCGEvent( CGEventRef event );
 
-  static EventHandlerUPP hotKeyFunction;
+  CFMachPortRef eventTap = nullptr;
+  CFRunLoopSourceRef runLoopSource = nullptr;
+
   quint32 keyC;
-  EventHandlerRef handlerRef;
 
 public:
   void activated( int hkId );
