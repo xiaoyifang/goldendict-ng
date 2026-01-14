@@ -888,10 +888,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>新增資料夾</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>全部清除</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>我的最愛：</translation>
     </message>
@@ -900,16 +896,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>所有選擇的項目都會被刪除。是否繼續？</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>清除所有項目</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>您確定要清除所有項目嗎？</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>使該資料夾成為新增/刪除單字操作的目標。</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>清除</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>清除收藏夾</translation>
     </message>
   </context>
   <context>
@@ -1114,7 +1114,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Add a new dictionary group</source>
-      <translation type="unfinished">Add a new dictionary group</translation>
+      <translation>新增新的字典組</translation>
     </message>
     <message>
       <source>&amp;Add group</source>
@@ -2630,6 +2630,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Lock Panels</source>
       <translation>鎖定面板</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation>清除歷史記錄</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>您確定要清除所有歷史記錄嗎？</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3703,7 +3711,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
-      <translation type="unfinished">Saving article... (%1/%2)</translation>
+      <translation>正在儲存文章…（%1/%2）</translation>
     </message>
   </context>
   <context>

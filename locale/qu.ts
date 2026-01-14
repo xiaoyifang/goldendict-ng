@@ -890,10 +890,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Carpeta yapay</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Tukuy Ch'uyanchana</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Munasqakuna:</translation>
     </message>
@@ -902,16 +898,20 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Llapan akllasqa kaqkunam qullusqa kanqa. Qatiq?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Tukuy Imakunatapas Ch’uyanchana</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>¿Segurochu kanki llapa imakunatapas chuyanchayta munasqaykimanta?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation type="unfinished">Clear</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation type="unfinished">Clear Favorites</translation>
     </message>
   </context>
   <context>
@@ -2630,6 +2630,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Lock Panels</source>
       <translation type="unfinished">Lock Panels</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation type="unfinished">Clear History</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
     </message>
   </context>
   <context>

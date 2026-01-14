@@ -889,10 +889,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>फ़ोल्डर जोड़ें</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>सभी साफ करें</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>पसंदीदा:</translation>
     </message>
@@ -901,16 +897,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>सभी चयनित मद हटा दिए जाएंगे। जारी रखें?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>सभी आइटम साफ़ करें</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>क्या आप वाकई सभी आइटम साफ़ करना चाहते हैं?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation type="unfinished">Clear</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation type="unfinished">Clear Favorites</translation>
     </message>
   </context>
   <context>
@@ -2629,6 +2629,14 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <source>Lock Panels</source>
       <translation type="unfinished">Lock Panels</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation type="unfinished">Clear History</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
     </message>
   </context>
   <context>

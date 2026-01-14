@@ -890,10 +890,6 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
       <translation>Aggiungi cartella</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Cancella tutto</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Preferiti:</translation>
     </message>
@@ -902,16 +898,20 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
       <translation>Tutti gli elementi selezionati verranno eliminati. Continuare?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Cancella tutti gli elementi</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Vuoi davvero cancellare tutti gli elementi?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>Pulisci</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>Cancella Preferiti</translation>
     </message>
   </context>
   <context>
@@ -2631,6 +2631,14 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
     <message>
       <source>Lock Panels</source>
       <translation>Blocca Pannelli</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation>Cancella Cronologia</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>Sei sicuro di voler cancellare tutti gli elementi della cronologia?</translation>
     </message>
   </context>
   <context>

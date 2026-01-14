@@ -890,10 +890,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <translation>Új mappa</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Összes törlése</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Kedvencek:</translation>
     </message>
@@ -902,16 +898,20 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <translation>Biztos, hogy töröl minden kijelölt elemet?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Minden elem törlése</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Biztosan törölni szeretné az összes elemet?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation type="unfinished">Clear</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation type="unfinished">Clear Favorites</translation>
     </message>
   </context>
   <context>
@@ -2630,6 +2630,14 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
     <message>
       <source>Lock Panels</source>
       <translation type="unfinished">Lock Panels</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation type="unfinished">Clear History</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
     </message>
   </context>
   <context>

@@ -890,10 +890,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Lägg till mapp</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Rensa alla</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Favoriter:</translation>
     </message>
@@ -902,16 +898,20 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Alla markerade objekt tas bort. Fortsätt?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Rensa alla objekt</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Är du säker på att du vill rensa alla objekt?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>Rensa</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>Rensa favoriter</translation>
     </message>
   </context>
   <context>
@@ -2630,6 +2630,14 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
     <message>
       <source>Lock Panels</source>
       <translation>Lås paneler</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation>Rensa historik</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>Är du säker på att du vill rensa alla historikobjekt?</translation>
     </message>
   </context>
   <context>

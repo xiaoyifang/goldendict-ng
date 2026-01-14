@@ -892,10 +892,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Προσθήκη φακέλου</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Εκκαθάριση όλων</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Αγαπημένα:</translation>
     </message>
@@ -904,16 +900,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Όλα τα επιλεγμένα στοιχεία θα διαγραφούν. Συνέχεια?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Εκκαθάριση όλων των αντικειμένων</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Είστε βέβαιοι ότι θέλετε να διαγράψετε όλα τα στοιχεία;</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>Εκκαθάριση</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>Εκκαθάριση Αγαπημένων</translation>
     </message>
   </context>
   <context>
@@ -2632,6 +2632,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Lock Panels</source>
       <translation>Κλείδωμα Πάνελ</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation>Εκκαθάριση Ιστορικού</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>Είστε βέβαιοι ότι θέλετε να καθαρίσετε όλα τα στοιχεία ιστορικού?</translation>
     </message>
   </context>
   <context>

@@ -889,10 +889,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>أضف المجلد</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Clear All</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>المفضلة:</translation>
     </message>
@@ -901,16 +897,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>سيتم حذف جميع العناصر المحددة. يكمل؟</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Clear All Items</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Are you sure you want to clear all items?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>مسح</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>مسح المفضلة</translation>
     </message>
   </context>
   <context>
@@ -2629,6 +2629,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Lock Panels</source>
       <translation>تأمين اللوحات</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation>مسح المحفوظات</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>هل أنت متأكد من أنك تريد مسح جميع عناصر التاريخ؟</translation>
     </message>
   </context>
   <context>

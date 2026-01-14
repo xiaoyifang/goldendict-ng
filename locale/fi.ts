@@ -890,10 +890,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Lisää kansio</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Tyhjennä kaikki</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Suosikit:</translation>
     </message>
@@ -902,16 +898,20 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Kaikki valitut kohteet poistetaan. Jatketaanko?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Tyhjennä kaikki kohteet</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Haluatko varmasti tyhjentää kaikki kohteet?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>Tyhjennä</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>Tyhjennä Suosikit</translation>
     </message>
   </context>
   <context>
@@ -2630,6 +2630,14 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
     <message>
       <source>Lock Panels</source>
       <translation>Lukitse Paneelit</translation>
+    </message>
+    <message>
+      <source>Clear History</source>
+      <translation>Tyhjennä Historia</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>Oletko varma, että haluat tyhjentää kaikki historian kohteet?</translation>
     </message>
   </context>
   <context>
