@@ -98,6 +98,8 @@ quint32 qtKeyToNativeKey(UniChar key)
 
 } // namespace MacKeyMapping
 
+void checkAndRequestAccessibilityPermission();
+
 CGEventRef HotkeyWrapper::eventTapCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void* refcon)
 {
     if (type == kCGEventTapDisabledByTimeout || type == kCGEventTapDisabledByUserInput) {
