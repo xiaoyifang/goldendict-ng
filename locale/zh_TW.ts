@@ -3502,10 +3502,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>將調試消息保存到配置文件夾中的 gd_log.txt</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>在另開的標籤頁中打開網站字典</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>掃描(&amp;C)</translation>
     </message>
@@ -3516,6 +3512,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>禁止顯示 JavaScript 對話框</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation type="unfinished">Open website dictionary in separate tab</translation>
     </message>
   </context>
   <context>
@@ -4244,6 +4244,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>僅在以分頁方式打開網站時可用。可以是檔案路徑（相對於配置目錄或絕對路徑）或直接的腳本內容。</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation type="unfinished">This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</translation>
     </message>
   </context>
   <context>
