@@ -3500,10 +3500,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>在配置文件夹中将调试消息保存到 gd_log.txt</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>在分隔符中打开网站词典</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>S&amp;can</translation>
     </message>
@@ -3514,6 +3510,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>禁用 JavaScript 对话框</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>在单独标签中打开网站词典</translation>
     </message>
   </context>
   <context>
@@ -4242,6 +4242,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>仅当以单独标签打开网站时可用。可以是文件路径(相对于配置目录或绝对目录)，也可以是直接脚本内容。</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>此列已禁用，因为 &quot;打开网站字典在单独标签&quot; 选项中未在“首选项”中启用。</translation>
     </message>
   </context>
   <context>
