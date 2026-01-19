@@ -3517,10 +3517,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Αποθήκευση μηνυμάτων αποσφαλμάτωσης στο gd_log.txt στο φάκελο ρυθμίσεων</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>Άνοιγμα λεξικού ιστοσελίδας σε διαχωριστική καρτέλα</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>Σ&amp;άρωση</translation>
     </message>
@@ -3531,6 +3527,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>Καταστολή διαλόγων JavaScript</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>Άνοιγμα λεξικού ιστοσελίδας σε ξεχωριστή καρτέλα</translation>
     </message>
   </context>
   <context>
@@ -4260,6 +4260,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>Διαθέσιμο μόνο όταν ανοίγετε ιστοσελίδες σε ξεχωριστές καρτέλες. Μπορεί να είναι μια διαδρομή αρχείου (σε σχέση με τον κατάλογο ρύθμισης ή απόλυτο) ή άμεση δέσμη ενεργειών περιεχομένου.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>Αυτή η στήλη είναι απενεργοποιημένη επειδή το λεξικό &quot;Open website σε ξεχωριστή καρτέλα&quot; επιλογή δεν είναι ενεργοποιημένη στις Προτιμήσεις.</translation>
     </message>
   </context>
   <context>
