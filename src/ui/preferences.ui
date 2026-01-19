@@ -1937,7 +1937,7 @@ from Stardict, Babylon and GLS dictionaries</string>
           <item>
            <widget class="QCheckBox" name="openWebsiteInNewTab">
             <property name="text">
-             <string>Open website dictionary in seperate tab</string>
+             <string>Open website dictionary in separate tab</string>
             </property>
            </widget>
           </item>

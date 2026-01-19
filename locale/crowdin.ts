@@ -3471,10 +3471,6 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open website dictionary in seperate tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>S&amp;can</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3484,6 +3480,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Suppress JavaScript dialogs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open website dictionary in separate tab</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4206,6 +4206,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
         <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
