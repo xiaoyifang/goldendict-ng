@@ -731,6 +731,9 @@ QVariant WebSitesModel::data( const QModelIndex & index, int role ) const
   }
 
   if ( role == Qt::ToolTipRole ) {
+    if ( index.column() == 4 && !GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+      return tr( "This column is disabled because \"Open websites in new tab\" option is not enabled in Preferences." );
+    }
     return QVariant();
   }
 
@@ -746,13 +749,6 @@ QVariant WebSitesModel::data( const QModelIndex & index, int role ) const
         return webSites[ index.row() ].script;
       default:
         return QVariant();
-    }
-  }
-
-  // Set appropriate background for disabled Script column based on dark mode
-  if ( role == Qt::BackgroundRole && index.column() == 4 ) { // Script column
-    if ( !GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
-      return getScriptColumnBackground();
     }
   }
 
