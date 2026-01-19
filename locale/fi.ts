@@ -3516,10 +3516,6 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Tallenna debug viestit gd_log.txt asetuskansioon</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>Avaa verkkosivuston sanakirja erillisessä välilehdessä</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>S&amp;can</translation>
     </message>
@@ -3530,6 +3526,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>Piilota JavaScript-ikkunat</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>Avaa verkkosivuston sanakirja erillisessä välilehdessä</translation>
     </message>
   </context>
   <context>
@@ -4260,6 +4260,10 @@ Täydellinen luettelo saatavilla olevista kielistä löytyy &lt;a href=&quot;htt
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>Saatavilla vain, kun sivustoja avataan erillisillä välilehdillä. Voi olla tiedostopolku (suhteessa config hakemistoon tai absoluuttiin) tai suora skriptin sisältö.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>Tämä sarake on pois päältä, koska &quot;Avaa verkkosivujen sanakirja erillisessä välilehdessä&quot; ei ole käytössä asetuksissa.</translation>
     </message>
   </context>
   <context>
