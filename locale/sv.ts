@@ -3517,10 +3517,6 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation>Spara felsökningsmeddelanden till gd_log.txt i konfigurationsmappen</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>Öppna webbplatsordbok i separat flik</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>&amp;Skanna</translation>
     </message>
@@ -3531,6 +3527,10 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>Undertrycka JavaScript dialogrutor</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>Öppna webbplatsordlista i separat flik</translation>
     </message>
   </context>
   <context>
@@ -4261,6 +4261,10 @@ Fullständig lista över tillgängliga språk finns &lt;a href=&quot;https://lin
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>Endast tillgängligt när webbplatser öppnas i separata flikar. Kan vara en filsökväg (relativ till konfigurationskatalog eller absolut) eller direkt skriptinnehåll.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>Denna kolumn är inaktiverad eftersom &quot;Öppna webbplatsordlista i separat flik&quot; alternativet är inte aktiverat i inställningar.</translation>
     </message>
   </context>
   <context>
