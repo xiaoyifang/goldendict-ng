@@ -3514,10 +3514,6 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Ukládat zprávy ladění do gd_log.txt do složky s konfigurací</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>Otevřít webový slovník v samostatné záložce</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>&amp;Skenovat</translation>
     </message>
@@ -3528,6 +3524,10 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>Potlačit dialogová okna JavaScriptu</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>Otevřít webový slovník v samostatné záložce</translation>
     </message>
   </context>
   <context>
@@ -4258,6 +4258,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>K dispozici pouze při otevírání webových stránek v oddělených kartách. Může být cesta k souborům (relativně k adresáři konfigurací nebo absolutním) nebo přímý obsah skriptu.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>Tento sloupec je zakázán, protože slovník &quot;Otevřené webové stránky v samostatné záložce&quot; není v nastavení povolen.</translation>
     </message>
   </context>
   <context>
