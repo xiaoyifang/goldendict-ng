@@ -4208,6 +4208,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
         <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>This column is disabled because &quot;Open websites in new tab&quot; option is not enabled in Preferences.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WordFinder</name>
