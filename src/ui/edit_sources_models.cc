@@ -732,7 +732,7 @@ QVariant WebSitesModel::data( const QModelIndex & index, int role ) const
 
   if ( role == Qt::ToolTipRole ) {
     if ( index.column() == 4 && !GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
-      return tr( "This column is disabled because \"Open websites in new tab\" option is not enabled in Preferences." );
+      return tr( "This column is disabled because \"Open website dictionary in separate tab\" option is not enabled in Preferences." );
     }
     return QVariant();
   }
