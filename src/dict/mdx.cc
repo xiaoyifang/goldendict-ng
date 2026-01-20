@@ -84,6 +84,12 @@ struct IdxHeader
 
   uint32_t mddIndexInfosOffset; // address of IndexInfos for resource files (.mdd)
   uint32_t mddIndexInfosCount;  // count of IndexInfos for resource files
+
+  // Original MDX format version: 2 = classic MDX (v2), 3 = ZDB/MDX v3.
+  // For now we always write 2 for indices built by MdictParser. When a v3
+  // parser is added, it should write 3 here so that loadArticle() can
+  // choose the correct decompression logic.
+  uint32_t mdictFormatVersion;
 };
 static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
@@ -1420,19 +1426,14 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
         continue;
       }
 
+      // MdictParser now auto-detects v3 format internally
+      bool isV3 = parser.isV3();
+      if ( isV3 ) {
+        qDebug( "MDict: Detected v3 (ZDB) format" );
+      }
+
       string title = parser.title().toStdString();
       initializing.indexingDictionary( title );
-
-      for ( vector< string >::const_iterator mddIter = dictFiles.begin() + 1; mddIter != dictFiles.end(); ++mddIter ) {
-        if ( Utils::Fs::exists( *mddIter ) ) {
-          sptr< MdictParser > mddParser = std::make_shared< MdictParser >();
-          if ( !mddParser->open( mddIter->c_str() ) ) {
-            qWarning( "Broken mdd (resource) file: %s", mddIter->c_str() );
-            continue;
-          }
-          mddParsers.push_back( mddParser );
-        }
-      }
 
       File::Index idx( indexFile, QIODevice::WriteOnly );
       IdxHeader idxHeader;
@@ -1453,10 +1454,6 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
       }
 
       // This is our index data that we accumulate during the loading process.
-      // For each new word encountered, we emit the article's body to the file
-      // immediately, inserting the word itself and its offset in this map.
-      // This map maps folded words to the original words and the corresponding
-      // articles' offsets.
       IndexedWords indexedWords;
       ChunkedStorage::Writer chunks( idx );
 
@@ -1468,6 +1465,18 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
         idxHeader.descriptionAddress = chunks.startNewBlock();
         chunks.addToBlock( description.c_str(), description.size() + 1 );
         idxHeader.descriptionSize = description.size() + 1;
+      }
+
+      // Open mdd resource files
+      for ( vector< string >::const_iterator mddIter = dictFiles.begin() + 1; mddIter != dictFiles.end(); ++mddIter ) {
+        if ( Utils::Fs::exists( *mddIter ) ) {
+          sptr< MdictParser > mddParser = std::make_shared< MdictParser >();
+          if ( !mddParser->open( mddIter->c_str() ) ) {
+            qWarning( "Broken mdd (resource) file: %s", mddIter->c_str() );
+            continue;
+          }
+          mddParsers.push_back( mddParser );
+        }
       }
 
       ArticleHandler articleHandler( chunks, indexedWords );
@@ -1530,7 +1539,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
         }
       }
 
-      // read languages from dictioanry's file name
+      // read languages from dictionary's file name
       auto langs = LangCoder::findLangIdPairFromPath( fileName );
 
       // if no languages found, try dictionary name
@@ -1560,13 +1569,15 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
         idx.write< uint32_t >( mddIndexInfos[ mi ].rootOffset );
       }
 
-      // That concludes it. Update the header.
+      // At this point the index is fully built. Update the header metadata.
       idxHeader.signature      = kSignature;
       idxHeader.formatVersion  = kCurrentFormatVersion;
       idxHeader.parserVersion  = MdictParser::kParserVersion;
       idxHeader.foldingVersion = Folding::Version;
       idxHeader.articleCount   = parser.wordCount();
       idxHeader.wordCount      = parser.wordCount();
+      // Mark the format version for runtime decompression logic
+      idxHeader.mdictFormatVersion = isV3 ? 3 : 2;
 
       idx.rewind();
       idx.write( &idxHeader, sizeof( idxHeader ) );

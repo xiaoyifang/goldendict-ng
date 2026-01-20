@@ -41,6 +41,23 @@ enum EncryptedSection {
   EcryptedHeadWordIndex  = 2
 };
 
+// V3 compression methods
+enum V3CompressionMethod : uint8_t {
+  V3CompNone    = 0,
+  V3CompLzo     = 1,
+  V3CompDeflate = 2,
+  V3CompLzma    = 3,
+  V3CompBzip2   = 4,
+  V3CompLz4     = 5
+};
+
+// V3 encryption methods
+enum V3EncryptionMethod : uint8_t {
+  V3EncNone    = 0,
+  V3EncSimple  = 1,
+  V3EncSalsa20 = 2
+};
+
 static inline int u16StrSize( const ushort * unicode )
 {
   int size = 0;
@@ -64,6 +81,176 @@ static QDomNamedNodeMap parseHeaderAttributes( const QString & headerText )
 
   return attributes;
 }
+
+// ============================================================================
+// Salsa20 implementation for V3 decryption
+// ============================================================================
+
+namespace {
+
+struct Salsa20Context {
+  uint32_t input[16];
+};
+
+inline uint32_t rotl32( uint32_t x, int n )
+{
+  return ( x << n ) | ( x >> ( 32 - n ) );
+}
+
+void salsa20Core( uint8_t output[64], const uint32_t input[16] )
+{
+  uint32_t x[16];
+  memcpy( x, input, 64 );
+
+  for ( int i = 0; i < 10; ++i ) {
+    // Column round
+    x[ 4] ^= rotl32( x[ 0] + x[12],  7 );
+    x[ 8] ^= rotl32( x[ 4] + x[ 0],  9 );
+    x[12] ^= rotl32( x[ 8] + x[ 4], 13 );
+    x[ 0] ^= rotl32( x[12] + x[ 8], 18 );
+    x[ 9] ^= rotl32( x[ 5] + x[ 1],  7 );
+    x[13] ^= rotl32( x[ 9] + x[ 5],  9 );
+    x[ 1] ^= rotl32( x[13] + x[ 9], 13 );
+    x[ 5] ^= rotl32( x[ 1] + x[13], 18 );
+    x[14] ^= rotl32( x[10] + x[ 6],  7 );
+    x[ 2] ^= rotl32( x[14] + x[10],  9 );
+    x[ 6] ^= rotl32( x[ 2] + x[14], 13 );
+    x[10] ^= rotl32( x[ 6] + x[ 2], 18 );
+    x[ 3] ^= rotl32( x[15] + x[11],  7 );
+    x[ 7] ^= rotl32( x[ 3] + x[15],  9 );
+    x[11] ^= rotl32( x[ 7] + x[ 3], 13 );
+    x[15] ^= rotl32( x[11] + x[ 7], 18 );
+
+    // Row round
+    x[ 1] ^= rotl32( x[ 0] + x[ 3],  7 );
+    x[ 2] ^= rotl32( x[ 1] + x[ 0],  9 );
+    x[ 3] ^= rotl32( x[ 2] + x[ 1], 13 );
+    x[ 0] ^= rotl32( x[ 3] + x[ 2], 18 );
+    x[ 6] ^= rotl32( x[ 5] + x[ 4],  7 );
+    x[ 7] ^= rotl32( x[ 6] + x[ 5],  9 );
+    x[ 4] ^= rotl32( x[ 7] + x[ 6], 13 );
+    x[ 5] ^= rotl32( x[ 4] + x[ 7], 18 );
+    x[11] ^= rotl32( x[10] + x[ 9],  7 );
+    x[ 8] ^= rotl32( x[11] + x[10],  9 );
+    x[ 9] ^= rotl32( x[ 8] + x[11], 13 );
+    x[10] ^= rotl32( x[ 9] + x[ 8], 18 );
+    x[12] ^= rotl32( x[15] + x[14],  7 );
+    x[13] ^= rotl32( x[12] + x[15],  9 );
+    x[14] ^= rotl32( x[13] + x[12], 13 );
+    x[15] ^= rotl32( x[14] + x[13], 18 );
+  }
+
+  for ( int i = 0; i < 16; ++i ) {
+    x[i] += input[i];
+    output[i*4 + 0] = (uint8_t)( x[i] );
+    output[i*4 + 1] = (uint8_t)( x[i] >> 8 );
+    output[i*4 + 2] = (uint8_t)( x[i] >> 16 );
+    output[i*4 + 3] = (uint8_t)( x[i] >> 24 );
+  }
+}
+
+void salsa20KeySetup( Salsa20Context * ctx, const uint8_t * key, int keyBits )
+{
+  static const char sigma[16] = "expand 32-byte k";
+  static const char tau[16]   = "expand 16-byte k";
+  const char * constants = ( keyBits == 256 ) ? sigma : tau;
+
+  ctx->input[0]  = qFromLittleEndian<uint32_t>( (const uchar *)constants );
+  ctx->input[5]  = qFromLittleEndian<uint32_t>( (const uchar *)constants + 4 );
+  ctx->input[10] = qFromLittleEndian<uint32_t>( (const uchar *)constants + 8 );
+  ctx->input[15] = qFromLittleEndian<uint32_t>( (const uchar *)constants + 12 );
+
+  ctx->input[1] = qFromLittleEndian<uint32_t>( key );
+  ctx->input[2] = qFromLittleEndian<uint32_t>( key + 4 );
+  ctx->input[3] = qFromLittleEndian<uint32_t>( key + 8 );
+  ctx->input[4] = qFromLittleEndian<uint32_t>( key + 12 );
+
+  if ( keyBits == 256 ) {
+    key += 16;
+  }
+
+  ctx->input[11] = qFromLittleEndian<uint32_t>( key );
+  ctx->input[12] = qFromLittleEndian<uint32_t>( key + 4 );
+  ctx->input[13] = qFromLittleEndian<uint32_t>( key + 8 );
+  ctx->input[14] = qFromLittleEndian<uint32_t>( key + 12 );
+}
+
+void salsa20IvSetup( Salsa20Context * ctx, const uint8_t * iv )
+{
+  ctx->input[6] = qFromLittleEndian<uint32_t>( iv );
+  ctx->input[7] = qFromLittleEndian<uint32_t>( iv + 4 );
+  ctx->input[8] = 0;
+  ctx->input[9] = 0;
+}
+
+void salsa20Decrypt( const uint8_t * input, uint8_t * output, size_t len, const uint8_t * key )
+{
+  Salsa20Context ctx;
+  uint8_t nonce[8] = {0};
+  salsa20KeySetup( &ctx, key, 128 );
+  salsa20IvSetup( &ctx, nonce );
+
+  uint8_t block[64];
+  while ( len > 0 ) {
+    salsa20Core( block, ctx.input );
+    ctx.input[8]++;
+    if ( ctx.input[8] == 0 ) {
+      ctx.input[9]++;
+    }
+
+    size_t blockLen = ( len < 64 ) ? len : 64;
+    for ( size_t i = 0; i < blockLen; ++i ) {
+      output[i] = input[i] ^ block[i];
+    }
+
+    input += blockLen;
+    output += blockLen;
+    len -= blockLen;
+  }
+}
+
+// Simple XOR decryption for V3
+void simpleDecryptV3( uint8_t * buffer, int len, const uint8_t * key, int keyLen )
+{
+  if ( keyLen == 0 ) return;
+
+  uint8_t lastByte = 0x36;
+  for ( int i = 0; i < len; ++i ) {
+    uint8_t b = buffer[i];
+    buffer[i] = ( ( ( b & 0x0f ) << 4 ) | ( ( b & 0xf0 ) >> 4 ) ) ^
+                key[i % keyLen] ^ (uint8_t)( i & 0xFF ) ^ lastByte;
+    lastByte = b;
+  }
+}
+
+// Fast hash for V3 crypto key generation from UUID
+QByteArray fastHashDigest( const QByteArray & data )
+{
+  QByteArray result( 16, 0 );
+  uint32_t hash = 0;
+  for ( int i = 0; i < data.size(); ++i ) {
+    hash = hash * 31 + (uint8_t)data[i];
+  }
+  for ( int i = 0; i < 4; ++i ) {
+    result[i] = (uint8_t)( hash >> ( i * 8 ) );
+    result[i+4] = (uint8_t)( hash >> ( i * 8 ) );
+    result[i+8] = (uint8_t)( hash >> ( i * 8 ) );
+    result[i+12] = (uint8_t)( hash >> ( i * 8 ) );
+  }
+  return result;
+}
+
+// RIPEMD-128 digest wrapper
+QByteArray ripemdDigest( const QByteArray & data )
+{
+  RIPEMD128 ripemd;
+  ripemd.update( (const uchar *)data.constData(), data.size() );
+  QByteArray digest( 16, 0 );
+  ripemd.digest( (uchar *)digest.data() );
+  return digest;
+}
+
+} // anonymous namespace
 
 size_t MdictParser::RecordIndex::bsearch( const vector< MdictParser::RecordIndex > & offsets, qint64 val )
 {
@@ -91,8 +278,24 @@ MdictParser::MdictParser():
   wordCount_( 0 ),
   numberTypeSize_( 0 ),
   encrypted_( 0 ),
-  rtl_( false )
+  rtl_( false ),
+  isUtf16Encoding_( false ),
+  contentDataOffset_( 0 ),
+  contentDataSize_( 0 ),
+  contentBlockCount_( 0 ),
+  keyDataOffset_( 0 ),
+  keyDataSize_( 0 ),
+  totalContentDecompressedSize_( 0 ),
+  currentKeyBlockIndex_( 0 ),
+  currentEntryNo_( 0 )
 {
+}
+
+MdictParser::~MdictParser()
+{
+  if ( file_ && file_->isOpen() ) {
+    file_->close();
+  }
 }
 
 bool MdictParser::open( const char * filename )
@@ -117,6 +320,13 @@ bool MdictParser::open( const char * filename )
     return false;
   }
 
+  // Branch based on format version
+  if ( isV3() ) {
+    qDebug( "MdictParser: Detected v3 (ZDB) format" );
+    return openV3();
+  }
+
+  // V1/V2 format
   if ( !readHeadWordBlockInfos( in ) ) {
     return false;
   }
@@ -130,6 +340,12 @@ bool MdictParser::open( const char * filename )
 
 bool MdictParser::readNextHeadWordIndex( MdictParser::HeadWordIndex & headWordIndex )
 {
+  // V3 uses different iteration logic
+  if ( isV3() ) {
+    return readNextHeadWordIndexV3( headWordIndex );
+  }
+
+  // V1/V2 logic
   if ( headWordBlockInfosIter_ == headWordBlockInfos_.end() ) {
     return false;
   }
@@ -289,72 +505,82 @@ bool MdictParser::readHeader( QDataStream & in )
   qint32 headerTextSize;
   in >> headerTextSize;
 
-  QByteArray headerTextUtf16 = file_->read( headerTextSize );
-  if ( headerTextUtf16.size() != headerTextSize ) {
+  // Sanity check
+  if ( headerTextSize <= 0 || headerTextSize > 1024 * 1024 ) {
+    qWarning( "MDict: readHeader: invalid header size %d", headerTextSize );
     return false;
   }
 
-  QString headerText = toUtf16( "UTF-16LE", headerTextUtf16.constData(), headerTextUtf16.size() );
+  QByteArray headerData = file_->read( headerTextSize );
+  if ( headerData.size() != headerTextSize ) {
+    return false;
+  }
 
-  // Adler-32 checksum of the header text (little-endian)
+  // Detect encoding: V3 uses UTF-8, V1/V2 uses UTF-16LE
+  // UTF-16LE starts with '<' (0x3C) followed by 0x00
+  QString headerText;
+  bool isHeaderUtf16 = ( headerTextSize > 1 && headerData[0] == '<' && headerData[1] == 0 );
+
+  if ( isHeaderUtf16 ) {
+    headerText = toUtf16( "UTF-16LE", headerData.constData(), headerTextSize );
+    // V1/V2: CRC is little-endian
+    in.setByteOrder( QDataStream::LittleEndian );
+  }
+  else {
+    headerText = QString::fromUtf8( headerData );
+    // V3: CRC is big-endian, keep BigEndian
+  }
+
+  // Read and verify Adler-32 checksum
   quint32 checksum;
-  in.setByteOrder( QDataStream::LittleEndian );
   in >> checksum;
-  if ( !checkAdler32( headerTextUtf16.constData(), headerTextUtf16.size(), checksum ) ) {
+  
+  // For v3 (big-endian CRC), we need to compare directly
+  // For v1/v2 (little-endian CRC), checkAdler32 works as-is
+  if ( !checkAdler32( headerData.constData(), headerTextSize, checksum ) ) {
     qWarning( "MDict: readHeader: checksum does not match" );
     return false;
   }
-  headerTextUtf16.clear();
+  
+  // Reset to BigEndian for subsequent reads
   in.setByteOrder( QDataStream::BigEndian );
 
-
-  //parse stylesheet
+  // Parse stylesheet
   QString styleSheets;
-
   if ( headerText.contains( "StyleSheet" ) ) {
-    // a workaround to bypass https://bugreports.qt.io/browse/QTBUG-102612
     const QRegularExpression rx( "StyleSheet=\"([^\"]*?)\"", QRegularExpression::CaseInsensitiveOption );
-
     auto match = rx.match( headerText );
-
     if ( match.hasMatch() || match.hasPartialMatch() ) {
       styleSheets = match.captured( 1 );
     }
   }
 
-  //with this control character ,qt6.x can not parse attribute value.
+  // Remove control characters that break Qt XML parsing
   headerText.remove( QRegularExpression( "\\p{C}", QRegularExpression::UseUnicodePropertiesOption ) );
 
   QDomNamedNodeMap headerAttributes = parseHeaderAttributes( headerText );
-
   if ( headerAttributes.isEmpty() ) {
     return false;
   }
 
-  encoding_ = headerAttributes.namedItem( "Encoding" ).toAttr().value();
-  if ( encoding_ == "GBK" || encoding_ == "GB2312" ) {
-    encoding_ = "GB18030";
+  // Determine version - check both GeneratedByEngineVersion and RequiredEngineVersion
+  QString versionStr = headerAttributes.namedItem( "GeneratedByEngineVersion" ).toAttr().value();
+  if ( versionStr.isEmpty() ) {
+    versionStr = headerAttributes.namedItem( "RequiredEngineVersion" ).toAttr().value();
   }
-  else if ( encoding_.isEmpty() || encoding_ == "UTF-16" ) {
-    encoding_ = "UTF-16LE";
-  }
+  version_ = versionStr.toDouble();
 
-  // stylesheet attribute if present takes form of:
-  //   styleId # 1-255
-  //   style.prefix
-  //   style.suffix
-  if ( !styleSheets.isEmpty() ) {
-    QStringList lines = styleSheets.split( QRegularExpression( "[\r\n]" ), Qt::KeepEmptyParts );
-
-    for ( int i = 0; i < lines.size() - 3; i += 3 ) {
-      styleSheets_[ lines[ i ].toInt() ] =
-        pair( Html::fromHtmlEscaped( lines[ i + 1 ] ), Html::fromHtmlEscaped( lines[ i + 2 ] ) );
+  // Also check for ZDB tag which indicates v3
+  QDomDocument doc;
+  doc.setContent( headerText );
+  QString rootTag = doc.documentElement().tagName().toLower();
+  if ( rootTag == "zdb" || rootTag == "library_data" ) {
+    if ( version_ < 3.0 ) {
+      version_ = 3.0;  // Force v3 for ZDB format
     }
   }
 
-  // before version 2.0, number is 4 bytes integer
-  // version 2.0 and above uses 8 bytes
-  version_ = headerAttributes.namedItem( "GeneratedByEngineVersion" ).toAttr().value().toDouble();
+  // Set number type size based on version
   if ( version_ < 2.0 ) {
     numberTypeSize_ = 4;
   }
@@ -362,14 +588,36 @@ bool MdictParser::readHeader( QDataStream & in )
     numberTypeSize_ = 8;
   }
 
-  // Encrypted ?
+  // Parse encoding
+  encoding_ = headerAttributes.namedItem( "Encoding" ).toAttr().value();
+  if ( encoding_.isEmpty() ) {
+    encoding_ = isV3() ? "UTF-8" : "UTF-16LE";
+  }
+  else if ( encoding_ == "GBK" || encoding_ == "GB2312" ) {
+    encoding_ = "GB18030";
+  }
+  else if ( encoding_ == "UTF-16" ) {
+    encoding_ = "UTF-16LE";
+  }
+  isUtf16Encoding_ = encoding_.startsWith( "UTF-16", Qt::CaseInsensitive );
+
+  // Parse stylesheet entries
+  if ( !styleSheets.isEmpty() ) {
+    QStringList lines = styleSheets.split( QRegularExpression( "[\r\n]" ), Qt::KeepEmptyParts );
+    for ( int i = 0; i < lines.size() - 3; i += 3 ) {
+      styleSheets_[ lines[ i ].toInt() ] =
+        pair( Html::fromHtmlEscaped( lines[ i + 1 ] ), Html::fromHtmlEscaped( lines[ i + 2 ] ) );
+    }
+  }
+
+  // Parse encryption type
   encrypted_ = headerAttributes.namedItem( "Encrypted" ).toAttr().value().toInt();
 
-  // Read metadata
-  rtl_          = headerAttributes.namedItem( "Left2Right" ).toAttr().value() != "Yes";
+  // Parse metadata
+  rtl_ = headerAttributes.namedItem( "Left2Right" ).toAttr().value() != "Yes";
+  
   QString title = headerAttributes.namedItem( "Title" ).toAttr().value();
   if ( title.isEmpty() || title == "Title (No HTML code allowed)" ) {
-    // Use filename instead
     QFileInfo fi( filename_ );
     title_ = fi.baseName();
   }
@@ -381,8 +629,17 @@ bool MdictParser::readHeader( QDataStream & in )
       title_ = title;
     }
   }
-  QString description = headerAttributes.namedItem( "Description" ).toAttr().value();
-  description_        = description; //QTextDocumentFragment::fromHtml( description ).toPlainText();
+
+  description_ = headerAttributes.namedItem( "Description" ).toAttr().value();
+
+  // V3 specific: UUID for crypto key generation
+  uuid_ = headerAttributes.namedItem( "UUID" ).toAttr().value();
+
+  // Generate crypto key for V3
+  if ( isV3() && !uuid_.isEmpty() ) {
+    cryptoKey_ = fastHashDigest( uuid_.toUtf8() );
+  }
+
   return true;
 }
 
@@ -562,6 +819,12 @@ MdictParser::HeadWordIndex MdictParser::splitHeadWordBlock( const QByteArray & b
 bool MdictParser::readRecordBlock( MdictParser::HeadWordIndex & headWordIndex,
                                    MdictParser::RecordHandler & recordHandler )
 {
+  // V3 uses different record block handling
+  if ( isV3() ) {
+    return readRecordBlockV3( headWordIndex, recordHandler );
+  }
+
+  // V1/V2 logic
   // cache the index, the headWordIndex is already sorted
   size_t idx = 0;
 
@@ -633,6 +896,451 @@ QString & MdictParser::substituteStylesheet( QString & article, const MdictParse
   }
   article += endStyle;
   return article;
+}
+
+// ============================================================================
+// V3 Format Implementation
+// ============================================================================
+
+bool MdictParser::parseCompressedBlockV3( const QByteArray & blockData,
+                                          const QByteArray & cryptoKey,
+                                          quint32 decompressedSize,
+                                          QByteArray & decompressedBlock )
+{
+  if ( blockData.size() < 8 ) {
+    qWarning( "MDict: V3 block data too small" );
+    return false;
+  }
+
+  const char * ptr = blockData.constData();
+  uint8_t compressionEncryption = (uint8_t)ptr[0];
+  uint8_t encryptedDataLength = (uint8_t)ptr[1];
+  // uint16_t reserved = qFromBigEndian<uint16_t>( (const uchar *)ptr + 2 );
+  uint32_t dataCrc = qFromBigEndian<uint32_t>( (const uchar *)ptr + 4 );
+
+  const int headerLength = 8;
+  QByteArray rawData = blockData.mid( headerLength );
+
+  V3EncryptionMethod encMethod = static_cast<V3EncryptionMethod>( ( compressionEncryption & 0xF0 ) >> 4 );
+  V3CompressionMethod compMethod = static_cast<V3CompressionMethod>( compressionEncryption & 0x0F );
+
+  // Decrypt if needed
+  if ( encMethod != V3EncNone && encryptedDataLength > 0 ) {
+    QByteArray key = cryptoKey;
+    if ( key.isEmpty() ) {
+      // Use CRC as key
+      QByteArray crcBytes( 4, 0 );
+      qToBigEndian( dataCrc, (uchar *)crcBytes.data() );
+      key = ripemdDigest( crcBytes );
+    }
+
+    if ( encMethod == V3EncSalsa20 ) {
+      QByteArray decrypted( encryptedDataLength, 0 );
+      salsa20Decrypt( (const uint8_t *)rawData.constData(), 
+                      (uint8_t *)decrypted.data(), 
+                      encryptedDataLength, 
+                      (const uint8_t *)key.constData() );
+      rawData.replace( 0, encryptedDataLength, decrypted );
+    }
+    else if ( encMethod == V3EncSimple ) {
+      simpleDecryptV3( (uint8_t *)rawData.data(), encryptedDataLength,
+                       (const uint8_t *)key.constData(), key.size() );
+    }
+  }
+
+  // Decompress
+  switch ( compMethod ) {
+    case V3CompNone:
+      decompressedBlock = rawData;
+      break;
+
+    case V3CompLzo: {
+      decompressedBlock.resize( decompressedSize );
+      lzo_uint outLen = decompressedSize;
+      int result = lzo1x_decompress_safe( (const uchar *)rawData.constData(), rawData.size(),
+                                          (uchar *)decompressedBlock.data(), &outLen, nullptr );
+      if ( result != LZO_E_OK || outLen != decompressedSize ) {
+        qWarning( "MDict: V3 LZO decompression failed" );
+        return false;
+      }
+    } break;
+
+    case V3CompDeflate:
+      decompressedBlock = zlibDecompress( rawData.constData(), rawData.size(), 0 );
+      if ( decompressedBlock.isEmpty() ) {
+        qWarning( "MDict: V3 Deflate decompression failed" );
+        return false;
+      }
+      break;
+
+    case V3CompLzma: {
+      std::string decompressed = decompressLzma2( rawData.constData(), rawData.size(), false );
+      decompressedBlock = QByteArray( decompressed.c_str(), decompressed.size() );
+    } break;
+
+    case V3CompBzip2: {
+      std::string decompressed = decompressBzip2( rawData.constData(), rawData.size() );
+      decompressedBlock = QByteArray( decompressed.c_str(), decompressed.size() );
+    } break;
+
+    case V3CompLz4:
+      qWarning( "MDict: V3 LZ4 compression not yet supported" );
+      return false;
+
+    default:
+      qWarning( "MDict: V3 unknown compression method %d", compMethod );
+      return false;
+  }
+
+  return true;
+}
+
+QByteArray MdictParser::readStorageBlockV3( QDataStream & in )
+{
+  quint32 originalDataLength;
+  quint32 dataBlockLength;
+  in >> originalDataLength;
+  in >> dataBlockLength;
+
+  QByteArray rawData( dataBlockLength, 0 );
+  in.readRawData( rawData.data(), dataBlockLength );
+
+  QByteArray decompressed;
+  if ( !parseCompressedBlockV3( rawData, cryptoKey_, originalDataLength, decompressed ) ) {
+    return QByteArray();
+  }
+
+  return decompressed;
+}
+
+bool MdictParser::openV3()
+{
+  QDataStream in( file_ );
+  in.setByteOrder( QDataStream::BigEndian );
+
+  // V3 unit order: Content -> ContentBlockIndex -> Key -> KeyBlockIndex
+  if ( !readContentUnitV3( in ) ) {
+    qWarning( "MDict: Failed to read content unit" );
+    return false;
+  }
+
+  if ( !readContentBlockIndexUnitV3( in ) ) {
+    qWarning( "MDict: Failed to read content block index unit" );
+    return false;
+  }
+
+  if ( !readKeyUnitV3( in ) ) {
+    qWarning( "MDict: Failed to read key unit" );
+    return false;
+  }
+
+  if ( !readKeyBlockIndexUnitV3( in ) ) {
+    qWarning( "MDict: Failed to read key block index unit" );
+    return false;
+  }
+
+  // Initialize iteration state
+  currentKeyBlockIndex_ = 0;
+  currentEntryNo_ = 0;
+
+  return true;
+}
+
+bool MdictParser::readContentUnitV3( QDataStream & in )
+{
+  // Read unit info section (20 bytes)
+  quint8 unitType;
+  in >> unitType;
+  
+  // Skip reserved bytes (3 + 8 = 11 bytes)
+  in.skipRawData( 11 );
+  
+  in >> contentBlockCount_;
+  in >> contentDataSize_;
+
+  contentDataOffset_ = file_->pos();
+
+  // Skip to end of content data section
+  file_->seek( contentDataOffset_ + contentDataSize_ );
+
+  // Read data info block (contains record count in XML)
+  QByteArray dataInfoBlock = readStorageBlockV3( in );
+  if ( dataInfoBlock.isEmpty() ) {
+    return false;
+  }
+
+  // Parse XML to get record count
+  QString dataInfoXml = QString::fromUtf8( dataInfoBlock );
+  QDomDocument doc;
+  if ( doc.setContent( dataInfoXml ) ) {
+    QDomElement root = doc.documentElement();
+    wordCount_ = root.attribute( "recordCount", "0" ).toUInt();
+  }
+
+  return true;
+}
+
+bool MdictParser::readContentBlockIndexUnitV3( QDataStream & in )
+{
+  // Read unit info section
+  quint8 unitType;
+  in >> unitType;
+  in.skipRawData( 11 );  // reserved
+  
+  quint32 blockCount;
+  quint64 dataSectionLength;
+  in >> blockCount;
+  in >> dataSectionLength;
+
+  qint64 curPos = file_->pos();
+  file_->seek( curPos + dataSectionLength );
+
+  // Read data info block
+  QByteArray dataInfoBlock = readStorageBlockV3( in );
+  qint64 endPos = file_->pos();
+
+  // Go back and read block index data
+  file_->seek( curPos );
+  QByteArray indexBlock = readStorageBlockV3( in );
+  if ( indexBlock.isEmpty() ) {
+    return false;
+  }
+
+  // Parse block indexes
+  QDataStream indexStream( indexBlock );
+  indexStream.setByteOrder( QDataStream::BigEndian );
+
+  quint64 blockOffsetInUnit = 0;
+  quint64 blockOffsetInDecompressed = 0;
+
+  contentBlockIndexesV3_.clear();
+  contentBlockIndexesV3_.reserve( contentBlockCount_ );
+
+  for ( quint32 i = 0; i < contentBlockCount_; ++i ) {
+    V3::ContentBlockIndex blockIndex;
+    indexStream >> blockIndex.blockCompressedSize;
+    indexStream >> blockIndex.blockDecompressedSize;
+    blockIndex.blockOffsetInContentData = blockOffsetInUnit;
+    blockIndex.blockOffsetInDecompressed = blockOffsetInDecompressed;
+
+    blockOffsetInUnit += blockIndex.blockCompressedSize;
+    blockOffsetInDecompressed += blockIndex.blockDecompressedSize;
+
+    contentBlockIndexesV3_.push_back( blockIndex );
+  }
+
+  totalContentDecompressedSize_ = blockOffsetInDecompressed;
+  file_->seek( endPos );
+
+  return true;
+}
+
+bool MdictParser::readKeyUnitV3( QDataStream & in )
+{
+  // Read unit info section
+  quint8 unitType;
+  in >> unitType;
+  in.skipRawData( 11 );  // reserved
+
+  quint32 blockCount;
+  quint64 dataSectionLength;
+  in >> blockCount;
+  in >> dataSectionLength;
+
+  keyDataOffset_ = file_->pos();
+  keyDataSize_ = dataSectionLength;
+
+  // Skip to end of key data section
+  file_->seek( keyDataOffset_ + keyDataSize_ );
+
+  // Read data info block
+  QByteArray dataInfoBlock = readStorageBlockV3( in );
+
+  return true;
+}
+
+bool MdictParser::readKeyBlockIndexUnitV3( QDataStream & in )
+{
+  // Read unit info section
+  quint8 unitType;
+  in >> unitType;
+  in.skipRawData( 11 );  // reserved
+
+  quint32 blockCount;
+  quint64 dataSectionLength;
+  in >> blockCount;
+  in >> dataSectionLength;
+
+  qint64 curPos = file_->pos();
+  file_->seek( curPos + dataSectionLength );
+
+  // Read data info block
+  QByteArray dataInfoBlock = readStorageBlockV3( in );
+  qint64 endPos = file_->pos();
+
+  // Go back and read block index data
+  file_->seek( curPos );
+  QByteArray indexBlock = readStorageBlockV3( in );
+  if ( indexBlock.isEmpty() ) {
+    return false;
+  }
+
+  // Parse block indexes
+  QDataStream indexStream( indexBlock );
+  indexStream.setByteOrder( QDataStream::BigEndian );
+
+  quint64 blockOffset = 0;
+  qint64 firstEntryNo = 0;
+
+  keyBlockIndexesV3_.clear();
+  keyBlockIndexesV3_.reserve( blockCount );
+
+  for ( quint32 i = 0; i < blockCount; ++i ) {
+    V3::KeyBlockIndex blockIndex;
+
+    // Read entry count
+    indexStream >> blockIndex.entryCount;
+
+    // Read first key
+    quint16 firstKeyLen;
+    indexStream >> firstKeyLen;
+    if ( isUtf16Encoding_ ) firstKeyLen *= 2;
+    QByteArray firstKeyData( firstKeyLen + (isUtf16Encoding_ ? 2 : 1), 0 );
+    indexStream.readRawData( firstKeyData.data(), firstKeyData.size() );
+    firstKeyData.truncate( firstKeyLen );
+    blockIndex.firstKey = isUtf16Encoding_ 
+      ? QString::fromUtf16( (const char16_t *)firstKeyData.constData(), firstKeyLen / 2 )
+      : QString::fromUtf8( firstKeyData );
+
+    // Read last key
+    quint16 lastKeyLen;
+    indexStream >> lastKeyLen;
+    if ( isUtf16Encoding_ ) lastKeyLen *= 2;
+    QByteArray lastKeyData( lastKeyLen + (isUtf16Encoding_ ? 2 : 1), 0 );
+    indexStream.readRawData( lastKeyData.data(), lastKeyData.size() );
+    lastKeyData.truncate( lastKeyLen );
+    blockIndex.lastKey = isUtf16Encoding_
+      ? QString::fromUtf16( (const char16_t *)lastKeyData.constData(), lastKeyLen / 2 )
+      : QString::fromUtf8( lastKeyData );
+
+    // Read block sizes
+    indexStream >> blockIndex.blockCompressedSize;
+    indexStream >> blockIndex.blockDecompressedSize;
+
+    blockIndex.blockOffsetInKeyData = blockOffset;
+    blockIndex.firstEntryNo = firstEntryNo;
+
+    blockOffset += blockIndex.blockCompressedSize;
+    firstEntryNo += blockIndex.entryCount;
+
+    keyBlockIndexesV3_.push_back( blockIndex );
+  }
+
+  file_->seek( endPos );
+  return true;
+}
+
+bool MdictParser::readNextHeadWordIndexV3( HeadWordIndex & headWordIndex )
+{
+  headWordIndex.clear();
+
+  if ( currentKeyBlockIndex_ >= keyBlockIndexesV3_.size() ) {
+    return false;
+  }
+
+  const V3::KeyBlockIndex & blockIndex = keyBlockIndexesV3_[ currentKeyBlockIndex_ ];
+
+  // Seek to key block and read it
+  file_->seek( keyDataOffset_ + blockIndex.blockOffsetInKeyData );
+  QDataStream in( file_ );
+  in.setByteOrder( QDataStream::BigEndian );
+
+  // Read storage block
+  QByteArray blockData = readStorageBlockV3( in );
+  if ( blockData.isEmpty() ) {
+    return false;
+  }
+
+  // Parse key entries from block data
+  const char * data = blockData.constData();
+  int dataLen = blockData.size();
+  int offset = 0;
+
+  for ( quint64 i = 0; i < blockIndex.entryCount && offset < dataLen; ++i ) {
+    // Read content offset (8 bytes in v3)
+    if ( offset + 8 > dataLen ) break;
+    qint64 contentOffset = qFromBigEndian<qint64>( (const uchar *)data + offset );
+    offset += 8;
+
+    // Read null-terminated key string
+    QString key;
+    if ( isUtf16Encoding_ ) {
+      int keyStart = offset;
+      while ( offset + 1 < dataLen ) {
+        if ( data[offset] == 0 && data[offset + 1] == 0 ) {
+          break;
+        }
+        offset += 2;
+      }
+      key = QString::fromUtf16( (const char16_t *)(data + keyStart), (offset - keyStart) / 2 );
+      offset += 2;  // Skip null terminator
+    }
+    else {
+      int keyStart = offset;
+      while ( offset < dataLen && data[offset] != 0 ) {
+        offset++;
+      }
+      key = QString::fromUtf8( data + keyStart, offset - keyStart );
+      offset++;  // Skip null terminator
+    }
+
+    headWordIndex.emplace_back( contentOffset, key );
+  }
+
+  currentKeyBlockIndex_++;
+  return true;
+}
+
+bool MdictParser::readRecordBlockV3( HeadWordIndex & headWordIndex, RecordHandler & recordHandler )
+{
+  for ( size_t i = 0; i < headWordIndex.size(); ++i ) {
+    qint64 contentOffset = headWordIndex[i].first;
+    const QString & headWord = headWordIndex[i].second;
+
+    // Find content block for this offset
+    size_t blockIdx = 0;
+    for ( size_t j = 0; j < contentBlockIndexesV3_.size(); ++j ) {
+      const V3::ContentBlockIndex & idx = contentBlockIndexesV3_[j];
+      if ( contentOffset >= (qint64)idx.blockOffsetInDecompressed &&
+           contentOffset < (qint64)(idx.blockOffsetInDecompressed + idx.blockDecompressedSize) ) {
+        blockIdx = j;
+        break;
+      }
+    }
+
+    const V3::ContentBlockIndex & blockIndex = contentBlockIndexesV3_[ blockIdx ];
+
+    // Calculate record size
+    qint64 recordSize;
+    if ( i + 1 < headWordIndex.size() ) {
+      recordSize = headWordIndex[i + 1].first - contentOffset;
+    }
+    else {
+      // Last entry in this block
+      recordSize = (blockIndex.blockOffsetInDecompressed + blockIndex.blockDecompressedSize) - contentOffset;
+    }
+
+    RecordInfo recordInfo;
+    recordInfo.compressedBlockPos = contentDataOffset_ + blockIndex.blockOffsetInContentData;
+    recordInfo.recordOffset = contentOffset - blockIndex.blockOffsetInDecompressed;
+    recordInfo.decompressedBlockSize = blockIndex.blockDecompressedSize;
+    recordInfo.compressedBlockSize = blockIndex.blockCompressedSize;
+    recordInfo.recordSize = recordSize;
+
+    recordHandler.handleRecord( headWord, recordInfo );
+  }
+
+  return true;
 }
 
 } // namespace Mdict

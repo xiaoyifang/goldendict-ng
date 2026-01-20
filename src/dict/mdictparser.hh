@@ -78,12 +78,38 @@ public:
   }
 };
 
+// V3 format structures
+namespace V3 {
+
+// Key block index entry for v3 format
+struct KeyBlockIndex
+{
+  quint64 entryCount;
+  QString firstKey;
+  QString lastKey;
+  quint64 blockCompressedSize;
+  quint64 blockDecompressedSize;
+  quint64 blockOffsetInKeyData;
+  qint64 firstEntryNo;
+};
+
+// Content block index entry for v3 format
+struct ContentBlockIndex
+{
+  quint64 blockCompressedSize;
+  quint64 blockDecompressedSize;
+  quint64 blockOffsetInContentData;
+  quint64 blockOffsetInDecompressed;
+};
+
+} // namespace V3
+
 class MdictParser
 {
 public:
 
   enum {
-    kParserVersion = 0x000000d
+    kParserVersion = 0x000000e  // Bumped for v3 support
   };
 
   struct RecordIndex
@@ -127,6 +153,7 @@ public:
   {
   public:
     virtual void handleRecord( const QString & name, const RecordInfo & recordInfo ) = 0;
+    virtual ~RecordHandler() = default;
   };
 
   using BlockInfoVector = vector< pair< qint64, qint64 > >;
@@ -168,8 +195,20 @@ public:
     return rtl_;
   }
 
+  // Check if this is v3 (ZDB) format
+  inline bool isV3() const
+  {
+    return version_ >= 3.0;
+  }
+
+  // Get format version (1.x, 2.x, or 3.x)
+  inline double formatVersion() const
+  {
+    return version_;
+  }
+
   MdictParser();
-  ~MdictParser() {}
+  ~MdictParser();
 
   bool open( const char * filename );
   bool readNextHeadWordIndex( HeadWordIndex & headWordIndex );
@@ -185,6 +224,11 @@ public:
                                     const char * compressedBlockPtr,
                                     qint64 decompressedBlockSize,
                                     QByteArray & decompressedBlock );
+  // V3 storage block decompression (handles encryption + compression)
+  static bool parseCompressedBlockV3( const QByteArray & blockData,
+                                      const QByteArray & cryptoKey,
+                                      quint32 decompressedSize,
+                                      QByteArray & decompressedBlock );
   static QString & substituteStylesheet( QString & article, const StyleSheets & styleSheets );
   static inline string substituteStylesheet( const string & article, const StyleSheets & styleSheets )
   {
@@ -203,6 +247,17 @@ protected:
   bool readRecordBlockInfos();
   BlockInfoVector decodeHeadWordBlockInfo( const QByteArray & headWordBlockInfo );
   HeadWordIndex splitHeadWordBlock( const QByteArray & block );
+
+  // V3 specific methods
+  bool openV3();
+  bool readHeaderV3( QDataStream & in );
+  bool readContentUnitV3( QDataStream & in );
+  bool readContentBlockIndexUnitV3( QDataStream & in );
+  bool readKeyUnitV3( QDataStream & in );
+  bool readKeyBlockIndexUnitV3( QDataStream & in );
+  bool readNextHeadWordIndexV3( HeadWordIndex & headWordIndex );
+  bool readRecordBlockV3( HeadWordIndex & headWordIndex, RecordHandler & recordHandler );
+  QByteArray readStorageBlockV3( QDataStream & in );
 
 protected:
   QString filename_;
@@ -229,6 +284,27 @@ protected:
   int numberTypeSize_;
   int encrypted_;
   bool rtl_;
+
+  // V3 specific members
+  QByteArray cryptoKey_;
+  QString uuid_;
+  bool isUtf16Encoding_;
+
+  // V3 unit positions and sizes
+  qint64 contentDataOffset_;
+  qint64 contentDataSize_;
+  quint32 contentBlockCount_;
+  qint64 keyDataOffset_;
+  qint64 keyDataSize_;
+
+  // V3 block indexes
+  vector< V3::KeyBlockIndex > keyBlockIndexesV3_;
+  vector< V3::ContentBlockIndex > contentBlockIndexesV3_;
+  quint64 totalContentDecompressedSize_;
+
+  // V3 iteration state
+  size_t currentKeyBlockIndex_;
+  qint64 currentEntryNo_;
 };
 
 } // namespace Mdict
