@@ -3513,10 +3513,6 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <translation>Enregistrer les messages de débogage dans gd_log.txt dans le dossier de configuration</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>Ouvrir le dictionnaire du site web dans un onglet séparé</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>&amp;Scanner</translation>
     </message>
@@ -3527,6 +3523,10 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>Supprimer les boîtes de dialogue JavaScript</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>Ouvrir le dictionnaire du site web dans un onglet séparé</translation>
     </message>
   </context>
   <context>
@@ -4256,6 +4256,10 @@ La liste complète des langues disponibles peut être trouvée &lt;a href=&quot;
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>Uniquement disponible lors de l'ouverture de sites Web dans des onglets séparés. Peut être un chemin de fichier (relatif au répertoire de configuration ou absolu) ou du contenu de script direct.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>Cette colonne est désactivée car l'option &quot;Ouvrir le dictionnaire du site Web dans un onglet&quot; séparé n'est pas activée dans les préférences.</translation>
     </message>
   </context>
   <context>

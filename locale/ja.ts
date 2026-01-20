@@ -3512,10 +3512,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>設定フォルダ内のgd_log.txtにデバッグメッセージを保存します</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>別タブでウェブサイト辞書を開く</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>缶(&amp;C)</translation>
     </message>
@@ -3526,6 +3522,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>JavaScriptダイアログを抑制する</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>ウェブサイト辞書を別タブで開く</translation>
     </message>
   </context>
   <context>
@@ -4251,6 +4251,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>個別のタブでウェブサイトを開くときにのみ利用できます。ファイルパス（設定ディレクトリまたは絶対ディレクトリからの相対）または直接スクリプトコンテンツにすることができます。</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>&quot;別タブ&quot; オプションでウェブサイト辞書を開く設定で有効になっていないため、この列は無効です。</translation>
     </message>
   </context>
   <context>

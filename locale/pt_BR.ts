@@ -3520,10 +3520,6 @@ dos dicionários Stardict, Babylon e GLS</translation>
       <translation>Salvar mensagens de depuração no gd_log.txt na pasta config</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>Abrir o dicionário do site na guia separada</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>&amp;Abrir</translation>
     </message>
@@ -3534,6 +3530,10 @@ dos dicionários Stardict, Babylon e GLS</translation>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>Suprimir diálogos JavaScript</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>Abrir dicionário do site em uma guia separada</translation>
     </message>
   </context>
   <context>
@@ -4267,6 +4267,10 @@ A lista completa de idiomas disponíveis pode ser encontrada &lt;a href=&quot;ht
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>Apenas disponível quando sites são abertos em abas separadas. Pode ser um caminho do arquivo (relativo ao diretório de configuração ou absoluto) ou um conteúdo direto de script.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>Esta coluna está desabilitada porque o dicionário &quot;Abrir site em uma guia separada&quot; opção não está ativada nas Preferências.</translation>
     </message>
   </context>
   <context>

@@ -3514,10 +3514,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Зберігати повідомлення налагодження в gd_log.txt в теці налаштувань</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>Відкрити словник веб-сайту в окремій вкладці</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>С&amp;творити</translation>
     </message>
@@ -3528,6 +3524,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>Ігнорувати діалогові вікна JavaScript</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>Відкрити словник веб-сайту в окремій вкладці</translation>
     </message>
   </context>
   <context>
@@ -4257,6 +4257,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>Доступно тільки при відкритті сайтів в окремих вкладках. Може бути шлях до файлу (відносно каталогу конфігурації або абсолютний) або прямий зміст скриптів.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>Цей стовпець вимкнено через те, що &quot;Відкрити словник веб-сайту в окремій вкладці&quot; параметр не увімкнено у «Налаштуванні».</translation>
     </message>
   </context>
   <context>

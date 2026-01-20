@@ -3513,10 +3513,6 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Debug berichten opslaan in gd_log.txt in de configuratie map</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>Open het website-woordenboek in apart tabblad</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>&amp;Kan</translation>
     </message>
@@ -3527,6 +3523,10 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>Onderdruk JavaScript dialogen</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>Open het website-woordenboek in apart tabblad</translation>
     </message>
   </context>
   <context>
@@ -4257,6 +4257,10 @@ De volledige lijst met beschikbare talen vindt u &lt;a href=&quot;https://lingua
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>Alleen beschikbaar bij het openen van websites op afzonderlijke tabbladen. Kan een bestandspad zijn (relatief aan configuratie-map of absolute) of directe script-inhoud.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>Deze kolom is uitgeschakeld omdat &quot;Open het websitewoordenboek in apart tabblad&quot; optie niet is ingeschakeld in Voorkeuren.</translation>
     </message>
   </context>
   <context>

@@ -3510,10 +3510,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Debug-Nachrichten in gd_log.txt im Konfigurationsordner speichern</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>Website-Wörterbuch in separatem Tab öffnen</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>&amp;Dosieren</translation>
     </message>
@@ -3524,6 +3520,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>JavaScript-Dialoge unterdrücken</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>Website-Wörterbuch in separatem Tab öffnen</translation>
     </message>
   </context>
   <context>
@@ -4255,6 +4255,10 @@ Eine vollständige Liste der verfügbaren Sprachen ist &lt;a href=&quot;https://
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>Nur verfügbar, wenn Webseiten in separaten Tabs geöffnet werden. Kann ein Dateipfad (relativ zum Konfigurationsverzeichnis oder absolut) oder direkter Skriptinhalt sein.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>Diese Spalte ist deaktiviert, da das &quot;Website-Wörterbuch in einem separaten Tab "&quot; " nicht in den Einstellungen aktiviert ist.</translation>
     </message>
   </context>
   <context>
