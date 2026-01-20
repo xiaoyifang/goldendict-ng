@@ -3515,7 +3515,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Open website dictionary in separate tab</source>
-      <translation type="unfinished">Open website dictionary in separate tab</translation>
+      <translation>在新分頁中開啟網站字典</translation>
     </message>
   </context>
   <context>
@@ -4247,7 +4247,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
-      <translation type="unfinished">This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</translation>
+      <translation>由於「首選項」中未啟用「在新分頁中開啟網站字典」選項，因此該列已停用。</translation>
     </message>
   </context>
   <context>
