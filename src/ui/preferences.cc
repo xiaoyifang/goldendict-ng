@@ -168,11 +168,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.InterfaceStyle->hide();
 #endif
 
-#ifdef Q_OS_WIN32
-  // 1 MB stands for 2^20 bytes on Windows. "MiB" is never used by this OS.
-  ui.maxNetworkCacheSize->setSuffix( " MB" );
-#endif
-  ui.maxNetworkCacheSize->setToolTip( ui.maxNetworkCacheSize->toolTip().arg( Config::getCacheDir() ) );
 
   ui.newTabsOpenAfterCurrentOne->setChecked( p.newTabsOpenAfterCurrentOne );
   ui.newTabsOpenInBackground->setChecked( p.newTabsOpenInBackground );
@@ -366,8 +361,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.checkForNewReleases->setChecked( p.checkForNewReleases );
   ui.disallowContentFromOtherSites->setChecked( p.disallowContentFromOtherSites );
 
-  ui.maxNetworkCacheSize->setValue( p.maxNetworkCacheSize );
-  ui.clearNetworkCacheOnExit->setChecked( p.clearNetworkCacheOnExit );
+  ui.incognitoMode->setChecked( p.incognitoMode );
 
   //Misc
   ui.removeInvalidIndexOnExit->setChecked( p.removeInvalidIndexOnExit );
@@ -558,8 +552,7 @@ Config::Preferences Preferences::getPreferences()
   p.checkForNewReleases           = ui.checkForNewReleases->isChecked();
   p.disallowContentFromOtherSites = ui.disallowContentFromOtherSites->isChecked();
 
-  p.maxNetworkCacheSize           = ui.maxNetworkCacheSize->value();
-  p.clearNetworkCacheOnExit       = ui.clearNetworkCacheOnExit->isChecked();
+  p.incognitoMode = ui.incognitoMode->isChecked();
 
   p.removeInvalidIndexOnExit = ui.removeInvalidIndexOnExit->isChecked();
   p.enableApplicationLog     = ui.enableApplicationLog->isChecked();
@@ -673,10 +666,6 @@ void Preferences::customProxyToggled( bool )
   ui.customSettingsGroup->setEnabled( ui.customProxy->isChecked() && ui.useProxyServer->isChecked() );
 }
 
-void Preferences::on_maxNetworkCacheSize_valueChanged( int value )
-{
-  ui.clearNetworkCacheOnExit->setEnabled( value != 0 );
-}
 
 void Preferences::on_collapseBigArticles_toggled( bool checked )
 {

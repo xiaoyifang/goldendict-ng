@@ -145,8 +145,7 @@ Preferences::Preferences():
   checkForNewReleases( true ),
   disallowContentFromOtherSites( false ),
 
-  maxNetworkCacheSize( 50 ),
-  clearNetworkCacheOnExit( true ),
+  incognitoMode( false ),
   zoomFactor( 1 ),
   helpZoomFactor( 1 ),
   maxStringsInHistory( 500 ),
@@ -952,13 +951,8 @@ Class load()
     }
 
 
-    if ( !preferences.namedItem( "maxNetworkCacheSize" ).isNull() ) {
-      c.preferences.maxNetworkCacheSize = preferences.namedItem( "maxNetworkCacheSize" ).toElement().text().toInt();
-    }
-
-    if ( !preferences.namedItem( "clearNetworkCacheOnExit" ).isNull() ) {
-      c.preferences.clearNetworkCacheOnExit =
-        ( preferences.namedItem( "clearNetworkCacheOnExit" ).toElement().text() == "1" );
+    if ( !preferences.namedItem( "incognitoMode" ).isNull() ) {
+      c.preferences.incognitoMode = ( preferences.namedItem( "incognitoMode" ).toElement().text() == "1" );
     }
 
 
@@ -1983,12 +1977,8 @@ void save( const Class & c )
     preferences.appendChild( opt );
 
 
-    opt = dd.createElement( "maxNetworkCacheSize" );
-    opt.appendChild( dd.createTextNode( QString::number( c.preferences.maxNetworkCacheSize ) ) );
-    preferences.appendChild( opt );
-
-    opt = dd.createElement( "clearNetworkCacheOnExit" );
-    opt.appendChild( dd.createTextNode( c.preferences.clearNetworkCacheOnExit ? "1" : "0" ) );
+    opt = dd.createElement( "incognitoMode" );
+    opt.appendChild( dd.createTextNode( c.preferences.incognitoMode ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "removeInvalidIndexOnExit" );
