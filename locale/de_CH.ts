@@ -3305,31 +3305,6 @@ Sollten einige Seiten nicht mehr funktionieren, kann das Deaktivieren dieser Opt
       <translation>Inhalte nicht von fremden Seiten laden (unterbindet meist Werbung)</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>Maximale Netwerk Cache Grösse:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Maximale Festplattengrösse benutzt durch GoldenDict Netzwerk Cache in 
-%1 .
-Wenn auf 0 gesetzt, wird Netzwerk Cache deaktiviert.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Wenn diese Option aktiviert ist, löscht GoldendDict den Netzwerk Cache während dem Beenden.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Netzwerk Cache löschen während dem Beenden</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
