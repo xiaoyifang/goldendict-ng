@@ -3313,32 +3313,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>امنع تحميل المحتوى من مواقع أخرى (يخفي أغلب الإعلانات)</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>الحد الأقصى لحجم ذاكرة التخزين المؤقت للشبكة:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>الحد الأقصى لمساحة القرص الذي يشغله GoldenDict&apos;s للشبكة ذاكرة التخزين المؤقت في
-%1
-إذا تم تعيين إلى 0 سيتم تعطيل ذاكرة التخزين المؤقت لقرص الشبكة.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>عند تمكين هذا الخيار ، يقوم GoldenDict
-بمسح ذاكرة التخزين المؤقت للشبكة من القرص أثناء الخروج.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>امسح ذاكرة التخزين المؤقت للشبكة عند الخروج</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
