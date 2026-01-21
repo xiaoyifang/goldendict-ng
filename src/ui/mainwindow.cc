@@ -753,8 +753,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            this,
            &MainWindow::proxyAuthentication );
 
-  setupNetworkCache();
-
   makeDictionaries();
 
   // After we have dictionaries and groups, we can populate history
@@ -1217,10 +1215,6 @@ void MainWindow::removeGroupComboBoxActionsFromDialog( QDialog * dialog, GroupCo
 
 void MainWindow::commitData()
 {
-  if ( cfg.preferences.incognitoMode ) {
-    QWebEngineProfile::defaultProfile()->clearHttpCache();
-  }
-
   //if the dictionaries is empty ,large chance that the config has corrupt.
   if ( cfg.preferences.removeInvalidIndexOnExit && !dictMap.isEmpty() ) {
     const QDir dir( Config::getIndexDir() );
@@ -1566,46 +1560,6 @@ void MainWindow::applyProxySettings()
   }
 
   QNetworkProxy::setApplicationProxy( proxy );
-}
-
-void MainWindow::setupNetworkCache()
-{
-  int maxSize    = 0;
-  auto * profile = QWebEngineProfile::defaultProfile();
-
-  if ( cfg.preferences.incognitoMode ) {
-    profile->setHttpCacheType( QWebEngineProfile::MemoryHttpCache );
-    maxSize = 0; // articleNetMgr will also use 0 (disabled)
-  }
-  else {
-    profile->setHttpCacheType( QWebEngineProfile::DiskHttpCache );
-    maxSize = 200; // Reasonable default for articleNetMgr
-    profile->setHttpCacheMaximumSize( maxSize << 20 );
-  }
-
-  // x << 20 == x * 2^20 converts mebibytes to bytes.
-  const qint64 maxCacheSizeInBytes = maxSize <= 0 ? qint64( 0 ) : static_cast< qint64 >( maxSize ) << 20;
-
-  if ( QAbstractNetworkCache * abstractCache = articleNetMgr.cache() ) {
-    QNetworkDiskCache * const diskCache = qobject_cast< QNetworkDiskCache * >( abstractCache );
-    Q_ASSERT_X( diskCache, Q_FUNC_INFO, "Unexpected network cache type." );
-    diskCache->setMaximumCacheSize( maxCacheSizeInBytes );
-    return;
-  }
-  if ( maxCacheSizeInBytes == 0 ) {
-    return; // There is currently no cache and it is not needed.
-  }
-
-  QString cacheDirectory = Config::getCacheDir();
-  if ( !QDir().mkpath( cacheDirectory ) ) {
-    cacheDirectory = QStandardPaths::writableLocation( QStandardPaths::CacheLocation );
-    qWarning( "Cannot create a cache directory %s. use default cache path.", cacheDirectory.toUtf8().constData() );
-  }
-
-  QNetworkDiskCache * const diskCache = new QNetworkDiskCache( this );
-  diskCache->setMaximumCacheSize( maxCacheSizeInBytes );
-  diskCache->setCacheDirectory( cacheDirectory );
-  articleNetMgr.setCache( diskCache );
 }
 
 void MainWindow::makeDictionaries()
@@ -2306,8 +2260,6 @@ void MainWindow::editPreferences()
       );
     }
 
-    bool oldIncognitoMode = cfg.preferences.incognitoMode;
-
     if ( cfg.preferences.favoritesStoreInterval != p.favoritesStoreInterval ) {
       ui.favoritesPaneWidget->setSaveInterval( p.favoritesStoreInterval );
     }
@@ -2322,10 +2274,6 @@ void MainWindow::editPreferences()
       );
 
     cfg.preferences = p;
-
-    if ( cfg.preferences.incognitoMode != oldIncognitoMode ) {
-      setupNetworkCache();
-    }
 
     // Loop through all tabs and reload pages due to ArticleMaker's change.
     for ( int x = 0; x < ui.tabWidget->count(); ++x ) {

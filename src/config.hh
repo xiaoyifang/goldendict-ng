@@ -344,7 +344,6 @@ struct Preferences
   bool checkForNewReleases;
   bool disallowContentFromOtherSites;
 
-  bool incognitoMode;
   bool removeInvalidIndexOnExit = false;
   bool enableApplicationLog =
 #ifdef Q_OS_WIN

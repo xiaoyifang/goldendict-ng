@@ -361,8 +361,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.checkForNewReleases->setChecked( p.checkForNewReleases );
   ui.disallowContentFromOtherSites->setChecked( p.disallowContentFromOtherSites );
 
-  ui.incognitoMode->setChecked( p.incognitoMode );
-
   //Misc
   ui.removeInvalidIndexOnExit->setChecked( p.removeInvalidIndexOnExit );
   ui.enableApplicationLog->setChecked( p.enableApplicationLog );
@@ -551,8 +549,6 @@ Config::Preferences Preferences::getPreferences()
 
   p.checkForNewReleases           = ui.checkForNewReleases->isChecked();
   p.disallowContentFromOtherSites = ui.disallowContentFromOtherSites->isChecked();
-
-  p.incognitoMode = ui.incognitoMode->isChecked();
 
   p.removeInvalidIndexOnExit = ui.removeInvalidIndexOnExit->isChecked();
   p.enableApplicationLog     = ui.enableApplicationLog->isChecked();

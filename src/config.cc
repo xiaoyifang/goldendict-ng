@@ -145,7 +145,6 @@ Preferences::Preferences():
   checkForNewReleases( true ),
   disallowContentFromOtherSites( false ),
 
-  incognitoMode( false ),
   zoomFactor( 1 ),
   helpZoomFactor( 1 ),
   maxStringsInHistory( 500 ),
@@ -949,12 +948,6 @@ Class load()
       c.preferences.disallowContentFromOtherSites =
         ( preferences.namedItem( "disallowContentFromOtherSites" ).toElement().text() == "1" );
     }
-
-
-    if ( !preferences.namedItem( "incognitoMode" ).isNull() ) {
-      c.preferences.incognitoMode = ( preferences.namedItem( "incognitoMode" ).toElement().text() == "1" );
-    }
-
 
     if ( !preferences.namedItem( "removeInvalidIndexOnExit" ).isNull() ) {
       c.preferences.removeInvalidIndexOnExit =
@@ -1976,10 +1969,6 @@ void save( const Class & c )
     opt.appendChild( dd.createTextNode( c.preferences.disallowContentFromOtherSites ? "1" : "0" ) );
     preferences.appendChild( opt );
 
-
-    opt = dd.createElement( "incognitoMode" );
-    opt.appendChild( dd.createTextNode( c.preferences.incognitoMode ? "1" : "0" ) );
-    preferences.appendChild( opt );
 
     opt = dd.createElement( "removeInvalidIndexOnExit" );
     opt.appendChild( dd.createTextNode( c.preferences.removeInvalidIndexOnExit ? "1" : "0" ) );

@@ -1344,18 +1344,6 @@ you are browsing. If some site breaks because of this, try disabling this.</stri
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="incognitoMode">
-         <property name="toolTip">
-          <string>Enable Incognito Mode (Privacy Mode).
-When enabled, all browsing data and network cache
-are kept in memory and cleared on exit.</string>
-         </property>
-         <property name="text">
-          <string>Incognito Mode (Privacy Mode)</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QCheckBox" name="checkForNewReleases">
          <property name="toolTip">
           <string>When this is enabled, the program periodically

@@ -190,7 +190,6 @@ private:
   void closeEvent( QCloseEvent * );
 
   void applyProxySettings();
-  void setupNetworkCache();
   void makeDictionaries();
   void updateStatusLine();
   void updateGroupList( bool reload = true );
