@@ -3314,32 +3314,6 @@ que você está navegando. Se algum site parar por causa disso, tente desativar 
       <translation>Proibir o carregamento de conteúdo de outros sites (oculta a maioria dos anúncios)</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>Tamanho máximo do cache de rede:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Espaço máximo em disco ocupado pelo cache de rede do GoldenDict em
-%1
-Se definido como 0, o cache do disco de rede será desabilitado.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Quando esta opção estiver ativada, o GoldenDict
-apaga seu cache de rede do disco durante a saída.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Limpar cache de rede ao sair</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
