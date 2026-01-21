@@ -3463,16 +3463,6 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>Open website dictionary in separate tab</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Enable Incognito Mode (Privacy Mode).
-When enabled, all browsing data and network cache
-are kept in memory and cleared on exit.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Incognito Mode (Privacy Mode)</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>ProgramTypeEditor</name>
