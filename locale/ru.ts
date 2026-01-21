@@ -3319,31 +3319,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>Запретить загрузку информации с других сайтов (убирает большую часть рекламы)</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>Максимальный размер кэша:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Максимальный объём, занимаемый сетевым кэшем GoldenDict в папке
-%1
-Установка параметра в 0 означает отключение кэширования</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation>MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Если опция включена,  GoldenDict удаляет содержимое кэша при выходе из программы</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Очищать кэш при выходе</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
