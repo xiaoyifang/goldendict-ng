@@ -3314,32 +3314,6 @@ niedziałania niektórych witryn.</translation>
       <translation>Nie zezwalaj na wyświetlanie treści pochodzących z innych witryn (ukrywa większość reklam)</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>Maksymalny rozmiar pamięci podręcznej sieci:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Maksymalna wielkość miejsca na dysku zajmowanego przez pamięć podręczną sieci GoldenDict w
-%1
-Ustawienie wartości 0 oznacza wyłączenie pamięci podręcznej sieci na dysku.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Gdy ta opcja jest włączona, program GoldenDict czyści swoją
-pamięć podręczną sieci z dysku podczas kończenia działania.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Wyczyść pamięć podręczną przy wychodzeniu</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
