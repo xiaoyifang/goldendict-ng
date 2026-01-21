@@ -3311,32 +3311,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>他のサイトからのコンテンツの読み込みを無効にする (ほとんどの広告を非表示にします)</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>ネットワークキャッシュの最大サイズ:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>GoldenDict&apos;s ネットワークキャッシュの最大ディスク容量
-%1
-に設定されている場合、ネットワークのディスクキャッシュは無効になります。</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>このオプションを有効にすると、GoldenDict
-は終了時にネットワークキャッシュをディスクから消去します。</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>終了時にネットワークキャッシュをクリア</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
