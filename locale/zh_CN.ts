@@ -3303,30 +3303,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>禁止载入来自其它站点的内容（封杀广告）</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>允许的最大网络缓存：</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>GoldenDict 使用的最大磁盘容量位于%1
-如果设置为0，磁盘缓存会被禁用。</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>GoldenDict 退出时清空网络缓存。</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>退出时清空网络缓存</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
