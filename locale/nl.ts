@@ -3313,32 +3313,6 @@ onjuist functioneert moet u dit mogelijk uitschakelen.</translation>
       <translation>Inhoud van andere sites blokkeren (verbergt de meeste reclame)</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>Maximale netwerkcache grootte:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Maximale schijfruimte ingenomen door de netwerkcache van GoldenDict in
-%1
-Indien ingesteld op 0, wordt de cache van de netwerkschijf uitgeschakeld.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Als deze optie is ingeschakeld, verwijdert GoldenDict
-zijn netwerkcache van schijf tijdens het afsluiten.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Wis netwerkcache bij afsluiten</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
