@@ -1,0 +1,37 @@
+# User-defined stopwords example file for GoldenDict-NG
+# 
+# To use this file:
+# 1. Copy this file to your GoldenDict configuration directory
+# 2. Rename it to "stopwords.txt" (remove the .example extension)
+# 3. Add your custom stopwords or remove built-in ones (see below)
+# 4. Rebuild your full-text search index for changes to take effect
+#
+# Configuration directory locations:
+# - Windows: %APPDATA%\GoldenDict\stopwords.txt
+# - Linux/Unix: ~/.goldendict/stopwords.txt or ~/.config/goldendict/stopwords.txt
+# - macOS: ~/.goldendict/stopwords.txt
+# - Portable: <program_directory>/portable/stopwords.txt
+#
+# Syntax:
+# - Lines starting with # are comments
+# - Empty lines are ignored
+# - Regular words (e.g., "example") will be ADDED to the stopwords list
+# - Words prefixed with minus (e.g., "-the") will be REMOVED from built-in stopwords
+# - Your custom stopwords will be MERGED with the built-in stopwords
+# - Duplicates are automatically removed
+#
+# IMPORTANT for CJK (Chinese/Japanese/Korean):
+# - Only 2-character stopwords are GUARANTEED to work reliably
+# - Single CJK characters: effectiveness UNCERTAIN (may only work if isolated)
+# - Multi-character phrases (>2): will NOT work (split into bigrams)
+# - Recommendation: Use 2-character combinations for best results
+
+# Example 1: Add your domain-specific stopwords
+# myterm
+# technical_jargon
+# acronym
+
+# Example 2: Remove built-in stopwords you want to search
+# -the
+# -and
+# -or

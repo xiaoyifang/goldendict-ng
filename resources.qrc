@@ -114,5 +114,6 @@
         <file>icons/by-trans-classic.svg</file>
         <file>icons/by-trans-school.svg</file>
         <file>icons/by-trans-cyrillic.svg</file>
+        <file>src/data/stopwords.txt</file>
     </qresource>
 </RCC>

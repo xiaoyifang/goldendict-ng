@@ -13,7 +13,7 @@ std::vector< std::string > getStopwords()
   QSet< QString > stopwordsSet;
 
   // Load built-in stopwords from the resource file
-  QFile bundledStopwords( ":/src/stopwords.txt" );
+  QFile bundledStopwords( ":/src/data/stopwords.txt" );
   if ( bundledStopwords.open( QIODevice::ReadOnly | QIODevice::Text ) ) {
     QTextStream in( &bundledStopwords );
     while ( !in.atEnd() ) {
@@ -25,7 +25,16 @@ std::vector< std::string > getStopwords()
     bundledStopwords.close();
   }
 
-  // Try to load and merge user-defined stopwords
+  // Try to load and merge user-defined stopwords from config directory
+  // Location:
+  //   Windows: %APPDATA%\GoldenDict\stopwords.txt
+  //   Linux/Unix: ~/.goldendict/stopwords.txt or ~/.config/goldendict/stopwords.txt
+  //   macOS: ~/.goldendict/stopwords.txt
+  //   Portable: <program_directory>/portable/stopwords.txt
+  //
+  // Users can:
+  //   1. Add custom stopwords: simply list words (one per line)
+  //   2. Remove built-in stopwords: prefix with minus sign (e.g., "-the" to remove "the")
   QString stopwordsFile = Config::getHomeDir().filePath( "stopwords.txt" );
   QFile customStopwords( stopwordsFile );
   if ( customStopwords.exists() && customStopwords.open( QIODevice::ReadOnly | QIODevice::Text ) ) {
@@ -34,7 +43,18 @@ std::vector< std::string > getStopwords()
     while ( !in.atEnd() ) {
       QString line = in.readLine().trimmed();
       if ( !line.isEmpty() && !line.startsWith( '#' ) ) {
-        stopwordsSet.insert( line );
+        // Check if this is a removal instruction (starts with '-')
+        if ( line.startsWith( '-' ) && line.length() > 1 ) {
+          QString wordToRemove = line.mid( 1 ).trimmed();
+          if ( !wordToRemove.isEmpty() ) {
+            stopwordsSet.remove( wordToRemove );
+            qDebug() << "Removed stopword:" << wordToRemove;
+          }
+        }
+        else {
+          // Add new stopword
+          stopwordsSet.insert( line );
+        }
       }
     }
     customStopwords.close();
