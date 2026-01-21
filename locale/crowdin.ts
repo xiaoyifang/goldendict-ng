@@ -3278,29 +3278,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Maximum network cache size:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source> MiB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clear network cache on exit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3484,6 +3461,16 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Open website dictionary in separate tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable Incognito Mode (Privacy Mode).
+When enabled, all browsing data and network cache
+are kept in memory and cleared on exit.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Incognito Mode (Privacy Mode)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
