@@ -3307,31 +3307,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>Забараніць загрузку змесціва з іншых сайтаў (хавае большасць рэкламы)</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>Максімальны памер сеткавага кэшу:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Максімальная прастора на дыску, якую займае сеткавы кэш GoldenDict
-%1
- Калі 0, кэш сеткавага дыска будзе адключаны.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> Міб</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Калі гэты параметр уключаны, GoldenDict падчас выхаду будзе ачышчаць свой сеткавы кэш.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Ачышчаць сеткавы кэш падчас выхаду</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
