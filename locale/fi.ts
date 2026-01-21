@@ -3314,32 +3314,6 @@ joita selailet. Jos jokin sivusto rikkoo tämän vuoksi, kokeile poistaa tämä 
       <translation>Estä sisällön lataaminen muilta sivustoilta (piilottaa useimmat mainokset)</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>Verkon välimuistin enimmäiskoko:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>GoldenDict&apos;s -verkkovälimuistin käyttämä levytila maksimissaan
-%1
-Jos arvo on 0, verkkovälimuisti ei ole käytössä.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Kun tämä asetus on käytössä, GoldenDict
-tyhjentää verkon välimuistin levyltä poistumisen aikana.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Tyhjennä verkkovälimuisti poistuttaessa</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
