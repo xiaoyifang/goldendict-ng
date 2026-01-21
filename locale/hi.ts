@@ -3304,32 +3304,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>अन्य साइटों से लोडिंग सामग्री को अस्वीकार करें (अधिकांश विज्ञापनों को छुपाता है)</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>अधिकतम नेटवर्क कैश आकार:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>
-%1
-में गोल्डनडिक्ट&apos;एस नेटवर्क कैश द्वारा कब्जा किया गया अधिकतम डिस्क स्थान यदि 0 पर सेट किया गया है तो नेटवर्क डिस्क कैश अक्षम हो जाएगा।</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> एमआईबी</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>जब यह विकल्प सक्षम होता है, तो गोल्डनडिक्ट
-बाहर निकलने के दौरान डिस्क से अपना नेटवर्क कैश साफ़ कर देता है।</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>बाहर निकलने पर नेटवर्क कैश साफ़ करें</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
