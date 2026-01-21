@@ -3312,32 +3312,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>사이트 외부 자료 허용 안함(대부분의 광고를 차단함)</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>최대 네트워크 캐시 크기:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>GoldenDict가 차지하는 최대 디스크 공간&apos;네트워크 캐시 in
-%1
-으로 설정하면 네트워크 디스크 캐시가 비활성화됩니다.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>이 옵션이 활성화되면 GoldenDict
-은 종료하는 동안 디스크에서 네트워크 캐시를 지웁니다.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>종료 시 네트워크 캐시 지우기</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
