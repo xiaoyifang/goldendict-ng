@@ -344,8 +344,6 @@ struct Preferences
   bool checkForNewReleases;
   bool disallowContentFromOtherSites;
 
-  int maxNetworkCacheSize;
-  bool clearNetworkCacheOnExit;
   bool removeInvalidIndexOnExit = false;
   bool enableApplicationLog =
 #ifdef Q_OS_WIN

@@ -753,8 +753,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            this,
            &MainWindow::proxyAuthentication );
 
-  setupNetworkCache( cfg.preferences.maxNetworkCacheSize );
-
   makeDictionaries();
 
   // After we have dictionaries and groups, we can populate history
@@ -1217,12 +1215,6 @@ void MainWindow::removeGroupComboBoxActionsFromDialog( QDialog * dialog, GroupCo
 
 void MainWindow::commitData()
 {
-  if ( cfg.preferences.clearNetworkCacheOnExit ) {
-    if ( QAbstractNetworkCache * cache = articleNetMgr.cache() ) {
-      cache->clear();
-    }
-  }
-
   //if the dictionaries is empty ,large chance that the config has corrupt.
   if ( cfg.preferences.removeInvalidIndexOnExit && !dictMap.isEmpty() ) {
     const QDir dir( Config::getIndexDir() );
@@ -1568,33 +1560,6 @@ void MainWindow::applyProxySettings()
   }
 
   QNetworkProxy::setApplicationProxy( proxy );
-}
-
-void MainWindow::setupNetworkCache( int maxSize )
-{
-  // x << 20 == x * 2^20 converts mebibytes to bytes.
-  const qint64 maxCacheSizeInBytes = maxSize <= 0 ? qint64( 0 ) : static_cast< qint64 >( maxSize ) << 20;
-
-  if ( QAbstractNetworkCache * abstractCache = articleNetMgr.cache() ) {
-    QNetworkDiskCache * const diskCache = qobject_cast< QNetworkDiskCache * >( abstractCache );
-    Q_ASSERT_X( diskCache, Q_FUNC_INFO, "Unexpected network cache type." );
-    diskCache->setMaximumCacheSize( maxCacheSizeInBytes );
-    return;
-  }
-  if ( maxCacheSizeInBytes == 0 ) {
-    return; // There is currently no cache and it is not needed.
-  }
-
-  QString cacheDirectory = Config::getCacheDir();
-  if ( !QDir().mkpath( cacheDirectory ) ) {
-    cacheDirectory = QStandardPaths::writableLocation( QStandardPaths::CacheLocation );
-    qWarning( "Cannot create a cache directory %s. use default cache path.", cacheDirectory.toUtf8().constData() );
-  }
-
-  QNetworkDiskCache * const diskCache = new QNetworkDiskCache( this );
-  diskCache->setMaximumCacheSize( maxCacheSizeInBytes );
-  diskCache->setCacheDirectory( cacheDirectory );
-  articleNetMgr.setCache( diskCache );
 }
 
 void MainWindow::makeDictionaries()
@@ -2299,10 +2264,6 @@ void MainWindow::editPreferences()
       ui.favoritesPaneWidget->setSaveInterval( p.favoritesStoreInterval );
     }
 
-    if ( cfg.preferences.maxNetworkCacheSize != p.maxNetworkCacheSize ) {
-      setupNetworkCache( p.maxNetworkCacheSize );
-    }
-
     bool needReload =
       ( cfg.preferences.displayStyle != p.displayStyle || cfg.preferences.addonStyle != p.addonStyle
         || cfg.preferences.darkReaderMode != p.darkReaderMode
@@ -2312,8 +2273,6 @@ void MainWindow::editPreferences()
         || p.darkReaderMode == Config::Dark::Auto // We cannot know if a reload is needed, just do it regardless.
       );
 
-    // This line must be here because the components below require cfg's value to reconfigure
-    // After this point, p must not be accessed.
     cfg.preferences = p;
 
     // Loop through all tabs and reload pages due to ArticleMaker's change.

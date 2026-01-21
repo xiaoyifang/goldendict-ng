@@ -145,8 +145,6 @@ Preferences::Preferences():
   checkForNewReleases( true ),
   disallowContentFromOtherSites( false ),
 
-  maxNetworkCacheSize( 50 ),
-  clearNetworkCacheOnExit( true ),
   zoomFactor( 1 ),
   helpZoomFactor( 1 ),
   maxStringsInHistory( 500 ),
@@ -950,17 +948,6 @@ Class load()
       c.preferences.disallowContentFromOtherSites =
         ( preferences.namedItem( "disallowContentFromOtherSites" ).toElement().text() == "1" );
     }
-
-
-    if ( !preferences.namedItem( "maxNetworkCacheSize" ).isNull() ) {
-      c.preferences.maxNetworkCacheSize = preferences.namedItem( "maxNetworkCacheSize" ).toElement().text().toInt();
-    }
-
-    if ( !preferences.namedItem( "clearNetworkCacheOnExit" ).isNull() ) {
-      c.preferences.clearNetworkCacheOnExit =
-        ( preferences.namedItem( "clearNetworkCacheOnExit" ).toElement().text() == "1" );
-    }
-
 
     if ( !preferences.namedItem( "removeInvalidIndexOnExit" ).isNull() ) {
       c.preferences.removeInvalidIndexOnExit =
@@ -1982,14 +1969,6 @@ void save( const Class & c )
     opt.appendChild( dd.createTextNode( c.preferences.disallowContentFromOtherSites ? "1" : "0" ) );
     preferences.appendChild( opt );
 
-
-    opt = dd.createElement( "maxNetworkCacheSize" );
-    opt.appendChild( dd.createTextNode( QString::number( c.preferences.maxNetworkCacheSize ) ) );
-    preferences.appendChild( opt );
-
-    opt = dd.createElement( "clearNetworkCacheOnExit" );
-    opt.appendChild( dd.createTextNode( c.preferences.clearNetworkCacheOnExit ? "1" : "0" ) );
-    preferences.appendChild( opt );
 
     opt = dd.createElement( "removeInvalidIndexOnExit" );
     opt.appendChild( dd.createTextNode( c.preferences.removeInvalidIndexOnExit ? "1" : "0" ) );
