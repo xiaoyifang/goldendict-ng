@@ -1570,13 +1570,14 @@ void MainWindow::applyProxySettings()
 
 void MainWindow::setupNetworkCache()
 {
-  int maxSize = 0;
+  int maxSize    = 0;
   auto * profile = QWebEngineProfile::defaultProfile();
 
   if ( cfg.preferences.incognitoMode ) {
     profile->setHttpCacheType( QWebEngineProfile::MemoryHttpCache );
     maxSize = 0; // articleNetMgr will also use 0 (disabled)
-  } else {
+  }
+  else {
     profile->setHttpCacheType( QWebEngineProfile::DiskHttpCache );
     maxSize = 200; // Reasonable default for articleNetMgr
     profile->setHttpCacheMaximumSize( maxSize << 20 );
