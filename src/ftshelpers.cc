@@ -4,6 +4,7 @@
 #include "xapian.h"
 #include <cstdlib>
 #include "fulltextsearch.hh"
+#include "folding.hh"
 #include "ftshelpers.hh"
 #include "dictfile.hh"
 #include "utils.hh"
@@ -80,14 +81,11 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
       throw exUserAbort();
     }
 
-    QList< uint32_t > offsets;
-    offsets.resize( setOfOffsets.size() );
-    uint32_t * ptr = offsets.data();
-
-    for ( QSet< uint32_t >::ConstIterator it = setOfOffsets.constBegin(); it != setOfOffsets.constEnd(); ++it ) {
-      *ptr = *it;
-      ptr++;
-    }
+    // More efficient way to get a sorted list of offsets
+    std::vector< uint32_t > offsets;
+    offsets.assign( setOfOffsets.begin(), setOfOffsets.end() );
+    // Sort offsets to allow for binary search resume
+    std::sort( offsets.begin(), offsets.end() );
 
     // Free memory
     setOfOffsets.clear();
@@ -116,17 +114,18 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
     long indexedDoc = 0L;
 
-    for ( const auto & address : offsets ) {
-      indexedDoc++;
+    auto start_it = offsets.cbegin();
+    if ( skip ) {
+      start_it         = std::upper_bound( offsets.cbegin(), offsets.cend(), lastAddress );
+      long num_skipped = std::distance( offsets.cbegin(), start_it );
+      qDebug() << "Resuming FTS indexing from offset" << ( start_it != offsets.cend() ? *start_it : -1 ) << "at index"
+               << num_skipped;
+      indexedDoc += num_skipped;
+    }
 
-      if ( address == lastAddress && skip ) {
-        skip = false;
-        continue;
-      }
-      //skip until to the lastAddress;
-      if ( skip ) {
-        continue;
-      }
+    for ( auto it = start_it; it != offsets.cend(); ++it ) {
+      const auto & address = *it;
+      indexedDoc++;
 
       if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
         return;
@@ -140,8 +139,8 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
       indexer.set_document( doc );
 
-      indexer.index_text( articleStr.toStdString() );
-      indexer.index_text( headword.toStdString() );
+      indexer.index_text( Folding::applyForIndex( articleStr ) );
+      indexer.index_text( Folding::applyForIndex( headword ) );
 
       doc.set_data( std::to_string( address ) );
       // Add the document to the database.
@@ -194,7 +193,7 @@ void FTSResultsRequest::run()
       // Combine the rest of the command line arguments with spaces between
       // them, so that simple queries don't have to be quoted at the shell
       // level.
-      string query_string( searchString.toStdString() );
+      string query_string( Folding::applyForIndex( searchString ) );
 
       // Parse the query string to produce a Xapian::Query object.
       Xapian::QueryParser qp;
