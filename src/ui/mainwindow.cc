@@ -1480,33 +1480,37 @@ void MainWindow::wheelEvent( QWheelEvent * ev )
 
 void MainWindow::closeEvent( QCloseEvent * ev )
 {
-  if ( cfg.preferences.enableTrayIcon && cfg.preferences.closeToTray ) {
-    if ( !cfg.preferences.searchInDock ) {
-      translateBox->setPopupEnabled( false );
-    }
-
-#ifdef Q_OS_MACOS
-    if ( !ev->spontaneous() || !isVisible() ) {
-      return;
-    }
-#endif
-#if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
-    // Don't ignore the close event, because doing so cancels session logout if
-    // the main window is visible when the user attempts to log out.
-    // The main window will be only hidden, because QApplication::quitOnLastWindowClosed
-    // property is false and Qt::WA_DeleteOnClose widget  is not set.
-    Q_ASSERT( !QApplication::quitOnLastWindowClosed() );
-    Q_ASSERT( !testAttribute( Qt::WA_DeleteOnClose ) );
-#else
-    // Ignore the close event because closing the main window breaks global hotkeys on Windows.
-    ev->ignore();
-    hide();
-#endif
-  }
-  else {
+  // If tray icon is disabled or closing to tray is not enabled, quit the application
+  if ( !cfg.preferences.enableTrayIcon || !cfg.preferences.closeToTray ) {
     ev->accept();
     quitApp();
+    return;
   }
+
+  // Hide translation popup if necessary
+  if ( !cfg.preferences.searchInDock ) {
+    translateBox->setPopupEnabled( false );
+  }
+
+#ifdef Q_OS_MACOS
+  // On macOS, ignore non-spontaneous events or already hidden windows to avoid redundant logic
+  if ( !ev->spontaneous() || !isVisible() ) {
+    return;
+  }
+#endif
+
+  // Handle window hiding based on platform characteristics
+#if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
+  // On Linux/Unix, do not call ignore() as it blocks session logout.
+  // The window is hidden instead of closed because quitOnLastWindowClosed is false.
+  Q_ASSERT( !QApplication::quitOnLastWindowClosed() );
+  Q_ASSERT( !testAttribute( Qt::WA_DeleteOnClose ) );
+#else
+  // On Windows and macOS (manual close), ignore the event and hide the window.
+  // This ensures global hotkey hooks remain valid on Windows.
+  ev->ignore();
+  hide();
+#endif
 }
 
 void MainWindow::quitApp()
