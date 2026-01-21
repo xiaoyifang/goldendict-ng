@@ -3313,32 +3313,6 @@ blokirlär. Şol sebäpli käbir sahypa döwülse, muny öçürip görüň.</tra
       <translation>Özge saýtlardan zat ýüklemegi gadagan et (köp sanly reklama/mahabt gizlemgegini üpjün edýär)</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>Ulgam keş keşiniň iň uly ululygy:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>GoldenDict-iň tor keşi tarapyndan iň köp disk ýeri
-% 1
-0-a gabat gelse, tor diski keşi ýapylar.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Bu opsiýa açyk bolsa, GoldenDict
-çykyş wagtynda tor keşini diskden arassalaýar.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Çykyşda tor keşini arassalaň</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
