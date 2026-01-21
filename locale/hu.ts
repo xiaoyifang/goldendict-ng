@@ -3314,32 +3314,6 @@ keretek). Ha bizonyos oldalak nem működnének, próbálja meg ezt kikapcsolni.
       <translation>Más oldalakról származó tartalmak letiltása (elrejti a reklámot nagy részét)</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>Hálózati gyorsítótár mérete:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>A GonldenDict által használható hálózati gyorsítótár lemezterület:
-%1
-Ha 0 van megadva, a gyorsítótár kikapcsolásra kerül.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Bekapcsolásakor a GoldenDict törli a hálózati
-gyorsítótár tartalmát a kilépéskor.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Gyorsítótár törlése a kilépéskor</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
