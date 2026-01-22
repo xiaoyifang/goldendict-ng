@@ -309,8 +309,8 @@ void HeadwordListModel::setDict( Dictionary::Class * dict )
 
   // Notify if index is recommended for large dictionaries
   if ( !useIndex && isLargeDictionary() ) {
-    qDebug() << "Headword index recommended for" << QString::fromStdString( dict->getName() )
-             << "(" << totalSize << "headwords)";
+    qDebug() << "Headword index recommended for" << QString::fromStdString( dict->getName() ) << "(" << totalSize
+             << "headwords)";
     emit indexBuildRecommended();
   }
 }

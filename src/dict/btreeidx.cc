@@ -1500,9 +1500,9 @@ std::string BtreeDictionary::getHeadwordIdxName() const
     return {};
   }
 
-  std::string ftsSuffix       = Dictionary::getFtsSuffix();
-  std::string headwordSuffix  = Dictionary::getHeadwordIdxSuffix();
-  std::string result          = ftsIdxName;
+  std::string ftsSuffix      = Dictionary::getFtsSuffix();
+  std::string headwordSuffix = Dictionary::getHeadwordIdxSuffix();
+  std::string result         = ftsIdxName;
 
   // Replace FTS suffix with headword suffix
   size_t pos = result.rfind( ftsSuffix );
@@ -1542,8 +1542,8 @@ void BtreeDictionary::makeHeadwordIndex( QAtomicInt & isCancelled )
   }
 
   // Check if we need to rebuild
-  if ( !Dictionary::needToRebuildIndex( getDictionaryFilenames(), idxName ) &&
-       HeadwordIndex::indexIsValid( idxName ) ) {
+  if ( !Dictionary::needToRebuildIndex( getDictionaryFilenames(), idxName )
+       && HeadwordIndex::indexIsValid( idxName ) ) {
     return;
   }
 

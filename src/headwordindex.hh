@@ -15,8 +15,8 @@ namespace HeadwordIndex {
 struct PagedResult
 {
   QStringList headwords;
-  int totalCount;       // Total matching count (estimated for searches)
-  bool hasMore;         // Whether there are more results available
+  int totalCount; // Total matching count (estimated for searches)
+  bool hasMore;   // Whether there are more results available
 };
 
 /// A Xapian-based index for efficient paginated headword retrieval and search.

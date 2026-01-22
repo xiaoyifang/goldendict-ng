@@ -19,7 +19,7 @@ static const std::string FINISH_MARKER = "hwindex_complete";
 // Term prefix for exact headword matching
 static const std::string TERM_PREFIX_EXACT = "XH";
 
-// Term prefix for folded (lowercase) headword matching  
+// Term prefix for folded (lowercase) headword matching
 static const std::string TERM_PREFIX_FOLDED = "XF";
 
 //////////////////////////////////////////////////////////////////////////////
@@ -160,9 +160,8 @@ PagedResult HeadwordXapianIndex::searchPrefix( const QString & prefix, int offse
 
   try {
     // Fold the prefix for case-insensitive matching
-    std::u32string folded = Folding::applySimpleCaseOnly( prefix.toStdU32String() );
-    std::string foldedUtf8 =
-      QString::fromStdU32String( folded ).toUtf8().toStdString();
+    std::u32string folded  = Folding::applySimpleCaseOnly( prefix.toStdU32String() );
+    std::string foldedUtf8 = QString::fromStdU32String( folded ).toUtf8().toStdString();
 
     // Create prefix query using the folded term prefix
     Xapian::Query query( Xapian::Query::OP_WILDCARD,
@@ -216,9 +215,8 @@ PagedResult HeadwordXapianIndex::searchWildcard( const QString & pattern, int of
     qp.add_prefix( "", TERM_PREFIX_FOLDED );
 
     // Fold the pattern
-    std::u32string folded = Folding::applySimpleCaseOnly( pattern.toStdU32String() );
-    std::string patternUtf8 =
-      QString::fromStdU32String( folded ).toUtf8().toStdString();
+    std::u32string folded   = Folding::applySimpleCaseOnly( pattern.toStdU32String() );
+    std::string patternUtf8 = QString::fromStdU32String( folded ).toUtf8().toStdString();
 
     int flags = Xapian::QueryParser::FLAG_WILDCARD | Xapian::QueryParser::FLAG_CJK_NGRAM;
 
@@ -265,12 +263,11 @@ QStringList HeadwordXapianIndex::suggestSpelling( const QString & term, int maxS
   }
 
   try {
-    std::u32string folded = Folding::applySimpleCaseOnly( term.toStdU32String() );
-    std::string foldedUtf8 =
-      QString::fromStdU32String( folded ).toUtf8().toStdString();
+    std::u32string folded  = Folding::applySimpleCaseOnly( term.toStdU32String() );
+    std::string foldedUtf8 = QString::fromStdU32String( folded ).toUtf8().toStdString();
 
     // Get spelling suggestions
-    Xapian::TermIterator it = d->db->spellings_begin();
+    Xapian::TermIterator it  = d->db->spellings_begin();
     Xapian::TermIterator end = d->db->spellings_end();
 
     // Simple approach: find terms that start similarly
@@ -278,8 +275,8 @@ QStringList HeadwordXapianIndex::suggestSpelling( const QString & term, int maxS
     for ( ; it != end && suggestions.size() < maxSuggestions; ++it ) {
       std::string suggestion = *it;
       // Basic similarity check - shares common prefix
-      if ( suggestion.substr( 0, std::min( suggestion.size(), foldedUtf8.size() / 2 + 1 ) ) ==
-           foldedUtf8.substr( 0, std::min( suggestion.size(), foldedUtf8.size() / 2 + 1 ) ) ) {
+      if ( suggestion.substr( 0, std::min( suggestion.size(), foldedUtf8.size() / 2 + 1 ) )
+           == foldedUtf8.substr( 0, std::min( suggestion.size(), foldedUtf8.size() / 2 + 1 ) ) ) {
         suggestions.append( QString::fromUtf8( suggestion.c_str() ) );
       }
     }
@@ -356,9 +353,8 @@ void HeadwordIndexBuilder::addHeadword( const QString & headword, uint32_t artic
     doc.add_term( TERM_PREFIX_EXACT + headwordUtf8 );
 
     // Add folded term for case-insensitive search
-    std::u32string folded = Folding::applySimpleCaseOnly( headword.toStdU32String() );
-    std::string foldedUtf8 =
-      QString::fromStdU32String( folded ).toUtf8().toStdString();
+    std::u32string folded  = Folding::applySimpleCaseOnly( headword.toStdU32String() );
+    std::string foldedUtf8 = QString::fromStdU32String( folded ).toUtf8().toStdString();
     doc.add_term( TERM_PREFIX_FOLDED + foldedUtf8 );
 
     // Index the headword text for full-text search within headwords

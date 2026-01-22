@@ -419,14 +419,14 @@ void DictHeadwords::writeWordToFile( QTextStream & out, const QString & word )
 
 void DictHeadwords::offerIndexBuild()
 {
-  const int ret = QMessageBox::question(
-    this,
-    tr( "Build Index" ),
-    tr( "This dictionary has %1 headwords. Building a headword index will significantly improve "
-        "browsing and search performance.\n\nDo you want to build the index now?" )
-      .arg( model->totalCount() ),
-    QMessageBox::Yes | QMessageBox::No,
-    QMessageBox::Yes );
+  const int ret =
+    QMessageBox::question( this,
+                           tr( "Build Index" ),
+                           tr( "This dictionary has %1 headwords. Building a headword index will significantly improve "
+                               "browsing and search performance.\n\nDo you want to build the index now?" )
+                             .arg( model->totalCount() ),
+                           QMessageBox::Yes | QMessageBox::No,
+                           QMessageBox::Yes );
 
   if ( ret == QMessageBox::Yes ) {
     // Show progress dialog
