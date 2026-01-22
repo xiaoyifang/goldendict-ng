@@ -1055,7 +1055,7 @@ static bool buildHeadwordIndex( const IndexedWords & indexedWords, const std::st
         // link.word contains the original headword in UTF-8
         QString headword = QString::fromUtf8( link.word.c_str() );
         if ( !headword.isEmpty() && addedHeadwords.insert( headword ).second ) {
-          builder.addHeadword( headword, link.articleOffset );
+          builder.addHeadword( headword );
         }
       }
     }

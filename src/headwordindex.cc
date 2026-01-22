@@ -126,14 +126,8 @@ PagedResult HeadwordXapianIndex::getPage( int offset, int limit ) const
     int count = 0;
     for ( Xapian::MSetIterator it = mset.begin(); it != mset.end() && count < limit; ++it, ++count ) {
       std::string data = it.get_document().get_data();
-      // Skip the finish marker
-      if ( data == FINISH_MARKER ) {
-        continue;
-      }
-      // Data format: "headword\tarticleOffset"
-      size_t tabPos = data.find( '\t' );
-      if ( tabPos != std::string::npos ) {
-        result.headwords.append( QString::fromUtf8( data.c_str(), tabPos ) );
+      if ( data != FINISH_MARKER ) {
+        result.headwords.append( QString::fromUtf8( data.c_str() ) );
       }
     }
 
@@ -179,12 +173,8 @@ PagedResult HeadwordXapianIndex::searchPrefix( const QString & prefix, int offse
     int count = 0;
     for ( Xapian::MSetIterator it = mset.begin(); it != mset.end() && count < limit; ++it, ++count ) {
       std::string data = it.get_document().get_data();
-      if ( data == FINISH_MARKER ) {
-        continue;
-      }
-      size_t tabPos = data.find( '\t' );
-      if ( tabPos != std::string::npos ) {
-        result.headwords.append( QString::fromUtf8( data.c_str(), tabPos ) );
+      if ( data != FINISH_MARKER ) {
+        result.headwords.append( QString::fromUtf8( data.c_str() ) );
       }
     }
 
@@ -234,12 +224,8 @@ PagedResult HeadwordXapianIndex::searchWildcard( const QString & pattern, int of
     int count = 0;
     for ( Xapian::MSetIterator it = mset.begin(); it != mset.end() && count < limit; ++it, ++count ) {
       std::string data = it.get_document().get_data();
-      if ( data == FINISH_MARKER ) {
-        continue;
-      }
-      size_t tabPos = data.find( '\t' );
-      if ( tabPos != std::string::npos ) {
-        result.headwords.append( QString::fromUtf8( data.c_str(), tabPos ) );
+      if ( data != FINISH_MARKER ) {
+        result.headwords.append( QString::fromUtf8( data.c_str() ) );
       }
     }
 
@@ -335,7 +321,7 @@ bool HeadwordIndexBuilder::start( const std::string & path )
   }
 }
 
-void HeadwordIndexBuilder::addHeadword( const QString & headword, uint32_t articleOffset )
+void HeadwordIndexBuilder::addHeadword( const QString & headword )
 {
   if ( !d->db ) {
     return;
@@ -344,9 +330,8 @@ void HeadwordIndexBuilder::addHeadword( const QString & headword, uint32_t artic
   try {
     Xapian::Document doc;
 
-    // Store original headword and article offset as document data
-    std::string data = headword.toUtf8().toStdString() + "\t" + std::to_string( articleOffset );
-    doc.set_data( data );
+    // Store original headword as document data
+    doc.set_data( headword.toUtf8().toStdString() );
 
     // Add exact term (original case)
     std::string headwordUtf8 = headword.toUtf8().toStdString();

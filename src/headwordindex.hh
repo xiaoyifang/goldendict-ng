@@ -97,8 +97,7 @@ public:
 
   /// Add a headword to the index
   /// @param headword The headword to add
-  /// @param articleOffset Associated article offset (stored as document data)
-  void addHeadword( const QString & headword, uint32_t articleOffset );
+  void addHeadword( const QString & headword );
 
   /// Finish building and compact the index
   /// @return true if finalization successful
