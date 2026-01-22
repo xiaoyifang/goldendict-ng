@@ -67,7 +67,13 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     Xapian::WritableDatabase db( encodedPath.toStdString(), Xapian::DB_CREATE_OR_OPEN );
 
     Xapian::TermGenerator indexer;
+    // Use FLAG_NGRAMS (added in Xapian 1.4.23) with fallback to FLAG_CJK_NGRAM for older versions
+    // FLAG_NGRAMS is the preferred name and supports more languages beyond CJK
+#ifdef FLAG_NGRAMS
+    indexer.set_flags( Xapian::TermGenerator::FLAG_NGRAMS );
+#else
     indexer.set_flags( Xapian::TermGenerator::FLAG_CJK_NGRAM );
+#endif
 
     std::vector< std::string > stopwords = Stopwords::getStopwords();
 
@@ -211,8 +217,12 @@ void FTSResultsRequest::run()
       Xapian::QueryParser qp;
       qp.set_database( db );
       qp.set_default_op( Xapian::Query::op::OP_AND );
-      int flag =
-        Xapian::QueryParser::FLAG_DEFAULT | Xapian::QueryParser::FLAG_PURE_NOT | Xapian::QueryParser::FLAG_CJK_NGRAM;
+      // Use FLAG_NGRAMS (preferred) with fallback to FLAG_CJK_NGRAM for compatibility
+#ifdef FLAG_NGRAMS
+      int flag = Xapian::QueryParser::FLAG_DEFAULT | Xapian::QueryParser::FLAG_PURE_NOT | Xapian::QueryParser::FLAG_NGRAMS;
+#else
+      int flag = Xapian::QueryParser::FLAG_DEFAULT | Xapian::QueryParser::FLAG_PURE_NOT | Xapian::QueryParser::FLAG_CJK_NGRAM;
+#endif
       if ( searchMode == FTS::Wildcards ) {
         flag = flag | Xapian::QueryParser::FLAG_WILDCARD;
         qp.set_max_expansion( 1 );
