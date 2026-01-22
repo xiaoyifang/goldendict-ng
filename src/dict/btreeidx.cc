@@ -1047,23 +1047,17 @@ static bool buildHeadwordIndex( const IndexedWords & indexedWords, const std::st
   try {
     // Extract unique headwords from IndexedWords
     // IndexedWords maps folded words -> vector of WordArticleLink
-    // We need the original (unfolded) headwords
-    QSet< QString > uniqueHeadwords;
+    // Multiple links may have the same original headword, so deduplicate
+    QSet< QString > addedHeadwords;
 
     for ( const auto & [ foldedWord, links ] : indexedWords ) {
       for ( const auto & link : links ) {
         // link.word contains the original headword in UTF-8
         QString headword = QString::fromUtf8( link.word.c_str() );
-        if ( !headword.isEmpty() ) {
-          uniqueHeadwords.insert( headword );
+        if ( !headword.isEmpty() && addedHeadwords.insert( headword ).second ) {
+          builder.addHeadword( headword, link.articleOffset );
         }
       }
-    }
-
-    // Add each unique headword to the index
-    uint32_t counter = 0;
-    for ( const QString & headword : std::as_const( uniqueHeadwords ) ) {
-      builder.addHeadword( headword, counter++ );
     }
 
     if ( !builder.finish() ) {
