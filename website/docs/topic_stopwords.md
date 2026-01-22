@@ -109,6 +109,19 @@ After modifying `stopwords.txt`, you need to rebuild your full-text search index
 
 ## Built-in Stopwords
 
+GoldenDict-NG includes stopwords for multiple languages:
+
+**English**: Common words like "the", "is", "and", "or", "not", etc. (49 words)
+
+**CJK Languages** (Chinese, Japanese, Korean):
+- **Single-character stopwords**: Included, but effectiveness is uncertain
+  - May work for isolated characters
+  - Included for potential benefit in some contexts
+  - Users can remove them if they cause issues (use `-的` syntax in custom config)
+- **2-character stopwords**: Guaranteed to work reliably (recommended)
+
+!!! note "CJK Stopwords Strategy"
+    The built-in list includes both single-character and 2-character CJK stopwords. While only 2-character stopwords are guaranteed to work due to N-GRAM indexing, single-character stopwords are also included as they may provide some benefit in certain contexts (e.g., isolated punctuation or standalone characters). You can selectively remove single-character stopwords using the `-word` syntax in your custom configuration if needed.
 
 To see the complete list, check: `src/data/stopwords.txt` in the source code.
 
@@ -165,15 +178,17 @@ For effective CJK stopword filtering:
 **Example:**
 
 ```text
-# ✅ Effective: 2-character Chinese stopwords
+# ✅ Effective: 2-character Chinese stopwords (guaranteed to work)
 一个  # Will filter the bigram "一个"
 这个  # Will filter the bigram "这个"
 因为  # Will filter the bigram "因为"
 所以  # Will filter the bigram "所以"
 
-# ⚠️ Uncertain: Single characters (may not work for embedded characters)
-的    # Effectiveness unclear - depends on whether it appears isolated
+# ⚠️ Uncertain: Single characters (included in built-in list)
+的    # Effectiveness unclear - may work for isolated characters
 了    # May only work if appears as standalone character
+# Note: These are included in the built-in stopwords.txt
+# You can remove them with: -的  -了  (in your custom config)
 
 # ❌ Ineffective: Multi-character phrases
 因为所以  # Splits into "因为", "为所", "所以" - cannot match as a whole
