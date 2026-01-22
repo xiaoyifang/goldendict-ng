@@ -584,6 +584,28 @@ between classic and school orthography in cyrillic)</source>
         <source>Regular Expression</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Build Index</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This dictionary has %1 headwords. Building a headword index will significantly improve browsing and search performance.
+
+Do you want to build the index now?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Building headword index...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Index Built</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Headword index has been built successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DictInfo</name>
