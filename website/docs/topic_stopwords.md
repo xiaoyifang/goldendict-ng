@@ -137,7 +137,7 @@ To see the complete list, check: `src/data/stopwords.txt` in the source code.
 ### CJK N-GRAM Indexing and Stopwords
 
 !!! warning "Important: CJK Stopwords Limitation"
-    GoldenDict uses Xapian's CJK N-GRAM mode for Chinese/Japanese/Korean text indexing, which splits CJK text into **2-character bigrams** before applying stopword filtering. This affects how stopwords work:
+    GoldenDict uses Xapian's N-GRAM mode (FLAG_NGRAMS, or FLAG_CJK_NGRAM in older Xapian versions) for Chinese/Japanese/Korean text indexing, which splits CJK text into **2-character bigrams** before applying stopword filtering. This affects how stopwords work:
 
 **How It Works:**
 
@@ -147,7 +147,10 @@ To see the complete list, check: `src/data/stopwords.txt` in the source code.
 
 **Important Note on Single Characters:**
 
-Xapian's `FLAG_CJK_NGRAM` primarily generates **bigrams only**. Single CJK characters are typically NOT indexed as independent terms unless they appear isolated (without adjacent CJK characters). This behavior is similar to Lucene's CJK bigram filter with `output_unigrams=false`.
+Xapian's N-GRAM mode (FLAG_NGRAMS) primarily generates **bigrams only**. Single CJK characters are typically NOT indexed as independent terms unless they appear isolated (without adjacent CJK characters). This behavior is similar to Lucene's CJK bigram filter with `output_unigrams=false`.
+
+!!! info "FLAG_NGRAMS vs FLAG_CJK_NGRAM"
+    Xapian 1.4.23+ uses FLAG_NGRAMS as the preferred flag name (added as an alias). The older FLAG_CJK_NGRAM is still supported for backward compatibility. GoldenDict automatically uses the appropriate flag based on your Xapian version.
 
 **For CJK Text:**
 
