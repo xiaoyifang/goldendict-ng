@@ -3404,32 +3404,6 @@ ukan uñstkiti. Yaqhip sitio ukax uka tuqit p’akintaspa ukhax aka jan ch’ama
       <translation>Yaqha web laphinakat janiw apaqañakiti (yatiyanaka imantañataki)</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>Llika cachep ukax kawkch&apos;akamasa:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Máximo espacio disco ocupado por GoldenDict&apos;s red caché en
-%1
-Ukaxa 0 ukjamaru utt’ayatawa red disco caché ukaxa janiwa ch’amanchatäkiti.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Programa ukat mistusinxa, GoldenDict
-ukax llikat cachep chhaqtayi.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Mistjani ukjax llika cache uk chhaqtayaña</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program

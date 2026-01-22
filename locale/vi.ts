@@ -3310,32 +3310,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>Không cho phép tải nội dung từ các trang khác (tắt các quảng cáo)</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>Kích thước bộ đệm mạng tối đa:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Dung lượng ổ đĩa tối đa do bộ đệm mạng của GoldenDict chiếm trong
-%1
-Nếu được đặt thành 0, bộ đệm đĩa mạng sẽ bị tắt.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Khi tùy chọn này được bật, GoldenDict
-sẽ xóa bộ đệm mạng của nó khỏi đĩa trong khi thoát.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Xóa bộ đệm mạng khi thoát</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program

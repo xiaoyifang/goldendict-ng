@@ -3315,32 +3315,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>Намоиши мӯҳтавои тиҷориро аз вебсайтҳои дигар қатъ кунед (рекламаро пинҳон мекунад)</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>Андозаи максималии кэши шабака:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Фазои максималии дискро кэши шабакаи GoldenDict ишғол мекунад
-% 1
-Агар ба 0 муқаррар карда шавад, кэши диски шабакавӣ ғайрифаъол мешавад.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> МБ</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Вақте ки ин хосият фаъол аст, GoldenDict
-кэши шабакавии худро аз диск ҳангоми баромадан тоза мекунад.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Кэши шабакаро ҳангоми баромадан тоза кунед</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program

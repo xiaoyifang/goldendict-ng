@@ -3309,32 +3309,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>No permite la carga de contenido de otros sitios (oculta la mayoría de propaganda)</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>Tamaño máximo de caché de red:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Espacio máximo en disco ocupado por el caché de red de GoldenDict&apos;en
-%1
-Si se establece en 0, el caché del disco de red se desactivará.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Cuando esta opción está habilitada, GoldenDict
-borra su caché de red del disco durante la salida.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Borrar caché de red al salir</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program

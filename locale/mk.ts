@@ -3316,32 +3316,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>Оневозможи вчитување садржини од други сајтови (отстранува поголем дел од огласите)</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>Максимална големина на кешот на мрежата:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Максимален простор на дискот окупиран од мрежната кеш меморија на GoldenDict
-%1
-Ако е поставено на 0, кешот на мрежниот диск ќе биде оневозможен.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Кога оваа опција е овозможена, GoldenDict
-го брише кешот на мрежата од дискот за време на излегувањето.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Исчистете го кешот на мрежата при излегување</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program

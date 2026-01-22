@@ -3307,32 +3307,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>Zakázať načítanie obsahu z iných webov (skryje väčšinu reklám)</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>Maximálna veľkosť vyr. pamäte siete:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Maximálny priestor na disku obsadený vyrovnávacou pamäťou siete GoldenDict v
-%1
-Ak nastavíte na 0, vyrovnávacia pamäť siete bude vypnutá.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Ak zapnete túto možnosť, GoldenDict
-vyčistí vyrovnávaciu pamäť siete pri ukončení aplikácie.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Vyčistiť vyr. pamäť siete pri ukončení</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program

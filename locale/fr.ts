@@ -3312,32 +3312,6 @@ que du contenu est manquant, essayez de désactiver cette option.</translation>
       <translation>Empêcher le chargement de contenu en provenance d&apos;autres sites (cache la plupart des publicités)</translation>
     </message>
     <message>
-      <source>Maximum network cache size:</source>
-      <translation>Taille maximale du cache réseau:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Espace disque maximal occupé par GoldenDict&apos;s cache réseau dans
-%1
-Si défini à 0, le cache du disque réseau sera désactivé.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> Mio</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Lorsque cette option est activée, GoldenDict
-efface le cache réseau du disque pendant la sortie.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Vider le cache réseau à la sortie</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
