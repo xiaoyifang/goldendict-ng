@@ -58,9 +58,83 @@ www
 # IMPORTANT: Due to CJK N-GRAM indexing, only 2-character stopwords are guaranteed to work!
 # - N-GRAM primarily generates 2-character bigrams before stopword filtering
 # - Single characters: EFFECTIVENESS UNCERTAIN (may only work if isolated/standalone)
+#   BUT included below as they may help in some contexts
 # - Multi-character phrases (>2) are split into bigrams → ineffective
 # - Best practice: Use 2-character combinations for reliable filtering
 # Examples that reliably work: "一个", "这个", "因为" (exactly 2 characters each)
+
+# Single-character stopwords (effectiveness uncertain, but may help)
+的
+了
+在
+是
+我
+有
+和
+就
+不
+人
+都
+一
+上
+也
+很
+到
+说
+要
+去
+你
+会
+着
+看
+好
+这
+那
+些
+与
+或
+为
+对
+而
+从
+以
+但
+等
+及
+个
+中
+大
+来
+可
+之
+于
+被
+将
+他
+她
+它
+们
+其
+用
+比
+由
+又
+把
+让
+给
+使
+得
+能
+已
+还
+更
+最
+如
+却
+只
+才
+
+# 2-character stopwords (guaranteed to work)
 一个
 这个
 这些
@@ -103,7 +177,39 @@ www
 # Japanese (日本語)
 # IMPORTANT: Due to CJK N-GRAM indexing, only 2-character stopwords are guaranteed to work!
 # Single hiragana/katakana characters: effectiveness uncertain (may only work if isolated).
+# BUT included below as they may help in some contexts.
 # Focus on 2-character hiragana/kanji combinations that commonly appear.
+
+# Single-character stopwords (effectiveness uncertain, but may help)
+の
+に
+は
+を
+た
+が
+で
+て
+と
+し
+れ
+さ
+も
+か
+ら
+な
+い
+や
+へ
+だ
+ず
+ば
+せ
+う
+き
+つ
+ん
+
+# 2-character stopwords (guaranteed to work)
 ある
 いる
 する
@@ -162,7 +268,32 @@ www
 # Korean (한국어)
 # IMPORTANT: Due to CJK N-GRAM indexing, only 2-character stopwords are guaranteed to work!
 # Single Hangul characters: effectiveness uncertain (may only work if isolated).
+# BUT included below as they may help in some contexts.
 # Focus on 2-character Hangul combinations that commonly appear.
+
+# Single-character stopwords (effectiveness uncertain, but may help)
+의
+가
+이
+은
+는
+과
+와
+에
+를
+을
+도
+만
+로
+고
+지
+어
+아
+한
+그
+저
+
+# 2-character stopwords (guaranteed to work)
 있다
 없다
 되다
