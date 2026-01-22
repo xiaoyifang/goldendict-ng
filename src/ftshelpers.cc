@@ -77,6 +77,15 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
     std::vector< std::string > stopwords = Stopwords::getStopwords();
 
+    qDebug() << "FTS Indexing: Loaded" << stopwords.size() << "stopwords";
+    if ( !stopwords.empty() ) {
+      // Print first few stopwords for verification
+      qDebug() << "First few stopwords:";
+      for ( size_t i = 0; i < std::min( size_t( 10 ), stopwords.size() ); ++i ) {
+        qDebug() << "  -" << QString::fromStdString( stopwords[ i ] );
+      }
+    }
+
     if ( !stopwords.empty() ) {
       Xapian::SimpleStopper * stopper = new Xapian::SimpleStopper();
       for ( const auto & word : stopwords ) {
@@ -85,6 +94,7 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
       indexer.set_stopper( stopper );
       // Set stopper strategy to STOP_ALL to apply stopwords even without stemming
       indexer.set_stopper_strategy( Xapian::TermGenerator::STOP_ALL );
+      qDebug() << "FTS Indexing: Stopper configured with STOP_ALL strategy";
     }
 
     //  Xapian::Stem stemmer("english");
@@ -214,6 +224,8 @@ void FTSResultsRequest::run()
       // them, so that simple queries don't have to be quoted at the shell
       // level.
       string query_string( Folding::applyForIndex( searchString ) );
+      qDebug() << "FTS Query: Original search string:" << searchString;
+      qDebug() << "FTS Query: Folded query string:" << QString::fromStdString( query_string );
 
       // Parse the query string to produce a Xapian::Query object.
       Xapian::QueryParser qp;
