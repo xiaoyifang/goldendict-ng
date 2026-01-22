@@ -83,6 +83,8 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
         stopper->add( word );
       }
       indexer.set_stopper( stopper );
+      // Set stopper strategy to STOP_ALL to apply stopwords even without stemming
+      indexer.set_stopper_strategy( Xapian::TermGenerator::STOP_ALL );
     }
 
     //  Xapian::Stem stemmer("english");
