@@ -1028,6 +1028,59 @@ void IndexedWords::addSingleWord( const std::u32string & index_word, uint32_t ar
   operator[]( Text::toUtf8( folded ) ).emplace_back( Text::toUtf8( word ), articleOffset );
 }
 
+// Helper function to build headword index from IndexedWords
+static bool buildHeadwordIndex( const IndexedWords & indexedWords, const std::string & headwordIdxPath )
+{
+  if ( indexedWords.empty() || headwordIdxPath.empty() ) {
+    return false;
+  }
+
+  qDebug() << "Building headword index at:" << QString::fromStdString( headwordIdxPath );
+
+  HeadwordIndex::HeadwordIndexBuilder builder;
+
+  if ( !builder.start( headwordIdxPath ) ) {
+    qWarning() << "Failed to start headword index builder";
+    return false;
+  }
+
+  try {
+    // Extract unique headwords from IndexedWords
+    // IndexedWords maps folded words -> vector of WordArticleLink
+    // We need the original (unfolded) headwords
+    QSet< QString > uniqueHeadwords;
+
+    for ( const auto & [ foldedWord, links ] : indexedWords ) {
+      for ( const auto & link : links ) {
+        // link.word contains the original headword in UTF-8
+        QString headword = QString::fromUtf8( link.word.c_str() );
+        if ( !headword.isEmpty() ) {
+          uniqueHeadwords.insert( headword );
+        }
+      }
+    }
+
+    // Add each unique headword to the index
+    uint32_t counter = 0;
+    for ( const QString & headword : std::as_const( uniqueHeadwords ) ) {
+      builder.addHeadword( headword, counter++ );
+    }
+
+    if ( !builder.finish() ) {
+      qWarning() << "Failed to finish headword index";
+      return false;
+    }
+
+    qDebug() << "Headword index built successfully:" << builder.getIndexedCount() << "headwords";
+    return true;
+  }
+  catch ( std::exception & ex ) {
+    qWarning() << "Failed to build headword index:" << ex.what();
+    builder.cancel();
+    return false;
+  }
+}
+
 IndexInfo buildIndex( const IndexedWords & indexedWords, File::Index & file )
 {
   size_t indexSize = indexedWords.size();
@@ -1059,6 +1112,14 @@ IndexInfo buildIndex( const IndexedWords & indexedWords, File::Index & file )
   uint32_t lastLeafOffset = 0;
 
   uint32_t rootOffset = buildBtreeNode( nextIndex, indexSize, file, btreeMaxElements, lastLeafOffset );
+
+  // Build headword index for paginated browsing
+  // Get the index file path and derive headword index path
+  QString indexFilePath = file.file().fileName();
+  if ( !indexFilePath.isEmpty() ) {
+    std::string headwordIdxPath = indexFilePath.toStdString() + Dictionary::getHeadwordIdxSuffix();
+    buildHeadwordIndex( indexedWords, headwordIdxPath );
+  }
 
   return IndexInfo( btreeMaxElements, rootOffset );
 }
@@ -1429,5 +1490,133 @@ void BtreeDictionary::findHeadWordsWithLenth( int & index, QSet< QString > * hea
 }
 
 void BtreeDictionary::getArticleText( uint32_t, QString &, QString & ) {}
+
+std::string BtreeDictionary::getHeadwordIdxName() const
+{
+  // Derive headword index name from FTS index name
+  // ftsIdxName is like: {indexDir}/{dictId}_FTS_x
+  // headwordIdxName should be: {indexDir}/{dictId}_headword_idx
+  if ( ftsIdxName.empty() ) {
+    return {};
+  }
+
+  std::string ftsSuffix       = Dictionary::getFtsSuffix();
+  std::string headwordSuffix  = Dictionary::getHeadwordIdxSuffix();
+  std::string result          = ftsIdxName;
+
+  // Replace FTS suffix with headword suffix
+  size_t pos = result.rfind( ftsSuffix );
+  if ( pos != std::string::npos ) {
+    result.replace( pos, ftsSuffix.length(), headwordSuffix );
+  }
+  else {
+    // Fallback: just append headword suffix
+    result += headwordSuffix;
+  }
+
+  return result;
+}
+
+bool BtreeDictionary::haveHeadwordIndex() const
+{
+  std::string idxName = getHeadwordIdxName();
+  if ( idxName.empty() ) {
+    return false;
+  }
+  return HeadwordIndex::indexIsValid( idxName );
+}
+
+void BtreeDictionary::makeHeadwordIndex( QAtomicInt & isCancelled )
+{
+  QMutexLocker locker( &headwordIdxMutex );
+
+  std::string idxName = getHeadwordIdxName();
+  if ( idxName.empty() ) {
+    qWarning() << "Cannot create headword index: ftsIdxName not set";
+    return;
+  }
+
+  // Check again after acquiring lock
+  if ( HeadwordIndex::indexIsValid( idxName ) ) {
+    return;
+  }
+
+  // Check if we need to rebuild
+  if ( !Dictionary::needToRebuildIndex( getDictionaryFilenames(), idxName ) &&
+       HeadwordIndex::indexIsValid( idxName ) ) {
+    return;
+  }
+
+  qDebug() << "Building headword index for:" << QString::fromStdString( getName() );
+
+  HeadwordIndex::HeadwordIndexBuilder builder;
+
+  if ( !builder.start( idxName ) ) {
+    qWarning() << "Failed to start headword index builder";
+    return;
+  }
+
+  try {
+    // Get all article links to extract headwords
+    QSet< uint32_t > offsets;
+    QSet< QString > headwords;
+
+    findArticleLinks( nullptr, &offsets, &headwords, &isCancelled );
+
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+      builder.cancel();
+      return;
+    }
+
+    // Add each headword to the index
+    // We use a simple counter as article offset since we just need unique headwords
+    uint32_t counter = 0;
+    for ( const QString & headword : std::as_const( headwords ) ) {
+      if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+        builder.cancel();
+        return;
+      }
+      builder.addHeadword( headword, counter++ );
+    }
+
+    if ( !builder.finish() ) {
+      qWarning() << "Failed to finish headword index";
+      return;
+    }
+
+    qDebug() << "Headword index built successfully:" << builder.getIndexedCount() << "headwords";
+  }
+  catch ( std::exception & ex ) {
+    qWarning() << "Failed to build headword index:" << ex.what();
+    builder.cancel();
+  }
+}
+
+HeadwordIndex::HeadwordXapianIndex * BtreeDictionary::getHeadwordIndex()
+{
+  QMutexLocker locker( &headwordIdxMutex );
+
+  if ( headwordIndex && headwordIndex->isOpen() ) {
+    return headwordIndex.get();
+  }
+
+  std::string idxName = getHeadwordIdxName();
+  if ( idxName.empty() ) {
+    return nullptr;
+  }
+
+  // Try to open existing index
+  if ( !HeadwordIndex::indexIsValid( idxName ) ) {
+    return nullptr;
+  }
+
+  headwordIndex = std::make_unique< HeadwordIndex::HeadwordXapianIndex >();
+  if ( !headwordIndex->open( idxName ) ) {
+    headwordIndex.reset();
+    return nullptr;
+  }
+
+  return headwordIndex.get();
+}
 
 } // namespace BtreeIndexing

@@ -5,7 +5,9 @@
 
 #include "dict/dictionary.hh"
 #include "dictfile.hh"
+#include "headwordindex.hh"
 #include <map>
+#include <memory>
 #include <stdint.h>
 #include <string>
 #include <vector>
@@ -196,6 +198,26 @@ public:
     return 0;
   }
 
+  /// Headword index support for paginated browsing
+  std::string headwordIndexName() const
+  {
+    return getHeadwordIdxName();
+  }
+
+  QMutex & getHeadwordIdxMutex()
+  {
+    return headwordIdxMutex;
+  }
+
+  /// Check if headword index exists and is valid
+  bool haveHeadwordIndex() const;
+
+  /// Build headword index if needed (called on-demand)
+  void makeHeadwordIndex( QAtomicInt & isCancelled );
+
+  /// Get the headword Xapian index (opens if needed)
+  HeadwordIndex::HeadwordXapianIndex * getHeadwordIndex();
+
   /// Called before each matching operation to ensure that any child init
   /// has completed. Mainly used for deferred init. The default implementation
   /// does nothing.
@@ -204,8 +226,14 @@ public:
   virtual const string & ensureInitDone();
 
 protected:
+  /// Get headword index path derived from ftsIdxName
+  std::string getHeadwordIdxName() const;
+
   QMutex ftsIdxMutex;
   string ftsIdxName;
+
+  mutable QMutex headwordIdxMutex;
+  std::unique_ptr< HeadwordIndex::HeadwordXapianIndex > headwordIndex;
 
   friend class BtreeWordSearchRequest;
   friend class FTSResultsRequest;
@@ -265,7 +293,7 @@ struct IndexedWords: public map< string, vector< WordArticleLink > >
 
 /// Builds the index, as a compressed btree. Returns IndexInfo.
 /// All the data is stored to the given file, beginning from its current
-/// position.
+/// position. Also builds headword index for paginated browsing.
 IndexInfo buildIndex( const IndexedWords &, File::Index & file );
 
 } // namespace BtreeIndexing

@@ -134,6 +134,14 @@ void DictHeadwords::setup( Dictionary::Class * dict_ )
   std::shared_ptr< HeadwordListModel > other = std::make_shared< HeadwordListModel >();
   model.swap( other );
   model->setMaxFilterResults( ui.filterMaxResult->value() );
+
+  // Connect signals before setDict to catch indexBuildRecommended
+  connect( model.get(), &HeadwordListModel::numberPopulated, this, [ this ]( int ) {
+    showHeadwordsNumber();
+  } );
+  connect( model.get(), &HeadwordListModel::indexBuildRecommended, this, &DictHeadwords::onIndexBuildRecommended );
+  connect( model.get(), &HeadwordListModel::indexBuildFinished, this, &DictHeadwords::onIndexBuildFinished );
+
   model->setDict( dict );
   proxy->setSourceModel( model.get() );
   proxy->sort( 0 );
@@ -153,9 +161,7 @@ void DictHeadwords::setup( Dictionary::Class * dict_ )
   dictId = QString( dict->getId().c_str() );
 
   QApplication::restoreOverrideCursor();
-  connect( model.get(), &HeadwordListModel::numberPopulated, this, [ this ]( int _ ) {
-    showHeadwordsNumber();
-  } );
+
   connect( proxy, &QAbstractItemModel::dataChanged, this, &DictHeadwords::showHeadwordsNumber );
   connect( ui.filterMaxResult, &QSpinBox::valueChanged, this, [ this ]( int _value ) {
     model->setMaxFilterResults( _value );
@@ -409,4 +415,57 @@ void DictHeadwords::writeWordToFile( QTextStream & out, const QString & word )
 
   //write one line
   out << line << Qt::endl;
+}
+
+void DictHeadwords::offerIndexBuild()
+{
+  const int ret = QMessageBox::question(
+    this,
+    tr( "Build Index" ),
+    tr( "This dictionary has %1 headwords. Building a headword index will significantly improve "
+        "browsing and search performance.\n\nDo you want to build the index now?" )
+      .arg( model->totalCount() ),
+    QMessageBox::Yes | QMessageBox::No,
+    QMessageBox::Yes );
+
+  if ( ret == QMessageBox::Yes ) {
+    // Show progress dialog
+    QProgressDialog progress( tr( "Building headword index..." ), tr( "Cancel" ), 0, 0, this );
+    progress.setWindowModality( Qt::WindowModal );
+    progress.setMinimumDuration( 0 );
+    progress.setValue( 0 );
+
+    // Connect cancel button
+    connect( &progress, &QProgressDialog::canceled, this, [ this ]() {
+      model->cancelIndexBuild();
+    } );
+
+    // Start building
+    model->buildHeadwordIndex( false );
+
+    // Wait for completion (the dialog will close when indexBuildFinished is emitted)
+    while ( model->isIndexBuilding() ) {
+      QApplication::processEvents();
+      if ( progress.wasCanceled() ) {
+        break;
+      }
+    }
+
+    progress.close();
+  }
+}
+
+void DictHeadwords::onIndexBuildRecommended()
+{
+  // Defer the dialog to allow the UI to finish setup
+  QTimer::singleShot( 100, this, &DictHeadwords::offerIndexBuild );
+}
+
+void DictHeadwords::onIndexBuildFinished( bool success )
+{
+  if ( success ) {
+    // Refresh the view to use the new index
+    showHeadwordsNumber();
+    QMessageBox::information( this, tr( "Index Built" ), tr( "Headword index has been built successfully." ) );
+  }
 }

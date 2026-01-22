@@ -729,6 +729,11 @@ string getFtsSuffix()
   return "_FTS_x";
 }
 
+string getHeadwordIdxSuffix()
+{
+  return "_headword_idx";
+}
+
 QString generateRandomDictionaryId()
 {
   return QCryptographicHash::hash( QUuid::createUuid().toString().toUtf8(), QCryptographicHash::Md5 ).toHex();

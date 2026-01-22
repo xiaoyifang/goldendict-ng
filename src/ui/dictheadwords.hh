@@ -39,6 +39,9 @@ private:
   QMutex mutex;
   static void writeWordToFile( QTextStream & out, const QString & word );
 
+  /// Offer to build headword index for large dictionaries
+  void offerIndexBuild();
+
 private slots:
   void savePos();
   void filterChangedInternal();
@@ -51,6 +54,8 @@ private slots:
   void showHeadwordsNumber();
   void exportAllWords( QProgressDialog & progress, QTextStream & out );
   void loadRegex( QProgressDialog & progress, QTextStream & out );
+  void onIndexBuildRecommended();
+  void onIndexBuildFinished( bool success );
   virtual void reject();
 
 signals:

@@ -549,6 +549,7 @@ string makeDictionaryId( const vector< string > & dictionaryFiles ) noexcept;
 bool needToRebuildIndex( const vector< string > & dictionaryFiles, const string & indexFile ) noexcept;
 
 string getFtsSuffix();
+string getHeadwordIdxSuffix();
 /// Returns a random dictionary id useful for interactively created
 /// dictionaries.
 QString generateRandomDictionaryId();

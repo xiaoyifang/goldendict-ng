@@ -1,12 +1,21 @@
 #include "headwordsmodel.hh"
+#include "btreeidx.hh"
+#include "utils.hh"
+#include "text.hh"
+#include <QtConcurrent>
 
 HeadwordListModel::HeadwordListModel( QObject * parent ):
   QAbstractListModel( parent ),
   filtering( false ),
   totalSize( 0 ),
+  maxFilterResults( 1000 ),
   finished( false ),
+  _dict( nullptr ),
   index( 0 ),
-  ptr( nullptr )
+  ptr( nullptr ),
+  currentOffset( 0 ),
+  useIndex( false ),
+  indexBuilding( false )
 {
 }
 
@@ -37,20 +46,26 @@ QString HeadwordListModel::getRow( int row )
 
 void HeadwordListModel::setFilter( const QRegularExpression & reg )
 {
-  //if the headword is already finished loaded, do nothing。
+  // If headword index is available, use it for searching
+  if ( useIndex && !reg.pattern().isEmpty() ) {
+    searchPrefix( reg.pattern(), 0, maxFilterResults );
+    return;
+  }
+
+  // If the headword is already finished loaded, do nothing
   if ( finished ) {
     return;
   }
-  //back to normal state ,restore the original model;
+
+  // Back to normal state, restore the original model
   if ( reg.pattern().isEmpty() ) {
     QMutexLocker _( &lock );
-    //race condition.
     if ( !filtering ) {
       return;
     }
     filtering = false;
+    currentSearchPrefix.clear();
 
-    //reset to previous models
     beginResetModel();
     words = QStringList( original_words );
     endResetModel();
@@ -59,12 +74,12 @@ void HeadwordListModel::setFilter( const QRegularExpression & reg )
   }
   else {
     QMutexLocker _( &lock );
-    //the first time to enter filtering mode.
     if ( !filtering ) {
       filtering      = true;
       original_words = QStringList( words );
     }
   }
+
   filterWords.clear();
   auto sr = _dict->prefixMatch( Text::removeTrailingZero( reg.pattern() ), maxFilterResults );
   connect( sr.get(), &Dictionary::Request::finished, this, [ this, sr ]() {
@@ -91,7 +106,6 @@ void HeadwordListModel::requestFinished( const sptr< Dictionary::WordSearchReque
       }
     }
   }
-
 
   if ( filterWords.isEmpty() ) {
     return;
@@ -137,24 +151,81 @@ void HeadwordListModel::fetchMore( const QModelIndex & parent )
     return;
   }
 
-  //arbitrary number
+  // Try to use headword index first
+  if ( useIndex ) {
+    if ( fetchFromIndex( currentOffset, HEADWORD_PAGE_SIZE ) ) {
+      return;
+    }
+  }
+
+  // Fallback to legacy btree-based fetching
+  fetchFromBtree();
+}
+
+bool HeadwordListModel::fetchFromIndex( int offset, int limit )
+{
+  auto * btreeDict = dynamic_cast< BtreeIndexing::BtreeDictionary * >( _dict );
+  if ( !btreeDict ) {
+    return false;
+  }
+
+  auto * hwIndex = btreeDict->getHeadwordIndex();
+  if ( !hwIndex ) {
+    return false;
+  }
+
+  HeadwordIndex::PagedResult result;
+
+  if ( currentSearchPrefix.isEmpty() ) {
+    result = hwIndex->getPage( offset, limit );
+  }
+  else {
+    result = hwIndex->searchPrefix( currentSearchPrefix, offset, limit );
+  }
+
+  if ( result.headwords.isEmpty() ) {
+    finished = true;
+    return true;
+  }
+
+  beginInsertRows( QModelIndex(), words.size(), words.size() + result.headwords.size() - 1 );
+  for ( const QString & word : std::as_const( result.headwords ) ) {
+    words << word;
+    hashedWords.insert( word );
+  }
+  endInsertRows();
+
+  currentOffset += result.headwords.size();
+
+  if ( !result.hasMore ) {
+    finished = true;
+  }
+
+  emit numberPopulated( words.size() );
+  return true;
+}
+
+void HeadwordListModel::fetchFromBtree()
+{
+  // For small dictionaries, load all at once
   if ( totalSize < HEADWORDS_MAX_LIMIT ) {
     finished = true;
 
     beginInsertRows( QModelIndex(), 0, totalSize - 1 );
     _dict->getHeadwords( words );
-
     endInsertRows();
+
     emit numberPopulated( words.size() );
     return;
   }
 
-
+  // For large dictionaries, load in batches
   QSet< QString > headword;
   QMutexLocker _( &lock );
 
-  _dict->findHeadWordsWithLenth( index, &headword, 1000 );
+  _dict->findHeadWordsWithLenth( index, &headword, HEADWORD_PAGE_SIZE );
   if ( headword.isEmpty() ) {
+    finished = true;
     return;
   }
 
@@ -184,6 +255,27 @@ void HeadwordListModel::setMaxFilterResults( int _maxFilterResults )
 
 QSet< QString > HeadwordListModel::getRemainRows( int & nodeIndex )
 {
+  // If using index, fetch remaining pages
+  if ( useIndex ) {
+    auto * btreeDict = dynamic_cast< BtreeIndexing::BtreeDictionary * >( _dict );
+    if ( btreeDict ) {
+      auto * hwIndex = btreeDict->getHeadwordIndex();
+      if ( hwIndex ) {
+        auto result = hwIndex->getPage( nodeIndex, 10000 );
+        nodeIndex += result.headwords.size();
+
+        QSet< QString > filtered;
+        for ( const QString & word : std::as_const( result.headwords ) ) {
+          if ( !containWord( word ) ) {
+            filtered.insert( word );
+          }
+        }
+        return filtered;
+      }
+    }
+  }
+
+  // Fallback to legacy method
   QSet< QString > headword;
   QMutexLocker _( &lock );
   _dict->findHeadWordsWithLenth( nodeIndex, &headword, 10000 );
@@ -199,6 +291,170 @@ QSet< QString > HeadwordListModel::getRemainRows( int & nodeIndex )
 
 void HeadwordListModel::setDict( Dictionary::Class * dict )
 {
-  _dict     = dict;
-  totalSize = _dict->getWordCount();
+  _dict         = dict;
+  totalSize     = _dict->getWordCount();
+  currentOffset = 0;
+  useIndex      = false;
+
+  // Check if headword index is available
+  auto * btreeDict = dynamic_cast< BtreeIndexing::BtreeDictionary * >( _dict );
+  if ( btreeDict && btreeDict->haveHeadwordIndex() ) {
+    auto * hwIndex = btreeDict->getHeadwordIndex();
+    if ( hwIndex ) {
+      useIndex  = true;
+      totalSize = hwIndex->getTotalCount();
+      qDebug() << "Using headword index for" << QString::fromStdString( dict->getName() );
+    }
+  }
+
+  // Notify if index is recommended for large dictionaries
+  if ( !useIndex && isLargeDictionary() ) {
+    qDebug() << "Headword index recommended for" << QString::fromStdString( dict->getName() )
+             << "(" << totalSize << "headwords)";
+    emit indexBuildRecommended();
+  }
+}
+
+bool HeadwordListModel::isLargeDictionary() const
+{
+  return totalSize > HEADWORDS_MAX_LIMIT;
+}
+
+bool HeadwordListModel::isIndexBuildRecommended() const
+{
+  return !useIndex && isLargeDictionary();
+}
+
+bool HeadwordListModel::isIndexBuilding() const
+{
+  return Utils::AtomicInt::loadAcquire( indexBuilding ) != 0;
+}
+
+void HeadwordListModel::cancelIndexBuild()
+{
+  indexBuildCancelled.ref();
+}
+
+bool HeadwordListModel::hasHeadwordIndex() const
+{
+  auto * btreeDict = dynamic_cast< BtreeIndexing::BtreeDictionary * >( _dict );
+  if ( !btreeDict ) {
+    return false;
+  }
+  return btreeDict->haveHeadwordIndex();
+}
+
+void HeadwordListModel::buildHeadwordIndex( bool autoBuild )
+{
+  auto * btreeDict = dynamic_cast< BtreeIndexing::BtreeDictionary * >( _dict );
+  if ( !btreeDict ) {
+    emit indexBuildFinished( false );
+    return;
+  }
+
+  // Don't build if already have index or already building
+  if ( btreeDict->haveHeadwordIndex() || isIndexBuilding() ) {
+    emit indexBuildFinished( btreeDict->haveHeadwordIndex() );
+    return;
+  }
+
+  // Reset cancellation flag
+  while ( Utils::AtomicInt::loadAcquire( indexBuildCancelled ) ) {
+    indexBuildCancelled.deref();
+  }
+
+  indexBuilding.ref();
+
+  qDebug() << "Building headword index for" << QString::fromStdString( _dict->getName() )
+           << ( autoBuild ? "(auto)" : "(manual)" );
+
+  QtConcurrent::run( [ this, btreeDict ]() {
+    btreeDict->makeHeadwordIndex( indexBuildCancelled );
+
+    bool success = false;
+
+    // Update model to use index if build succeeded
+    if ( btreeDict->haveHeadwordIndex() ) {
+      auto * hwIndex = btreeDict->getHeadwordIndex();
+      if ( hwIndex ) {
+        useIndex  = true;
+        totalSize = hwIndex->getTotalCount();
+        success   = true;
+        qDebug() << "Headword index built successfully:" << totalSize << "headwords";
+      }
+    }
+
+    // Clear building flag
+    while ( Utils::AtomicInt::loadAcquire( indexBuilding ) ) {
+      indexBuilding.deref();
+    }
+
+    emit indexBuildFinished( success );
+  } );
+}
+
+void HeadwordListModel::searchPrefix( const QString & prefix, int offset, int limit )
+{
+  if ( !useIndex ) {
+    return;
+  }
+
+  auto * btreeDict = dynamic_cast< BtreeIndexing::BtreeDictionary * >( _dict );
+  if ( !btreeDict ) {
+    return;
+  }
+
+  auto * hwIndex = btreeDict->getHeadwordIndex();
+  if ( !hwIndex ) {
+    return;
+  }
+
+  currentSearchPrefix = prefix;
+
+  auto result = hwIndex->searchPrefix( prefix, offset, limit );
+
+  beginResetModel();
+  words.clear();
+  for ( const QString & word : std::as_const( result.headwords ) ) {
+    words << word;
+  }
+  endResetModel();
+
+  filtering     = true;
+  currentOffset = result.headwords.size();
+  finished      = !result.hasMore;
+
+  emit numberPopulated( words.size() );
+}
+
+void HeadwordListModel::searchWildcard( const QString & pattern, int offset, int limit )
+{
+  if ( !useIndex ) {
+    return;
+  }
+
+  auto * btreeDict = dynamic_cast< BtreeIndexing::BtreeDictionary * >( _dict );
+  if ( !btreeDict ) {
+    return;
+  }
+
+  auto * hwIndex = btreeDict->getHeadwordIndex();
+  if ( !hwIndex ) {
+    return;
+  }
+
+  auto result = hwIndex->searchWildcard( pattern, offset, limit );
+
+  beginResetModel();
+  words.clear();
+  for ( const QString & word : std::as_const( result.headwords ) ) {
+    words << word;
+  }
+  endResetModel();
+
+  filtering     = true;
+  currentOffset = result.headwords.size();
+  finished      = !result.hasMore;
+
+  emit numberPopulated( words.size() );
 }
