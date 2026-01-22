@@ -368,7 +368,7 @@ void HeadwordListModel::buildHeadwordIndex( bool autoBuild )
   qDebug() << "Building headword index for" << QString::fromStdString( _dict->getName() )
            << ( autoBuild ? "(auto)" : "(manual)" );
 
-  QtConcurrent::run( [ this, btreeDict ]() {
+  QThreadPool::globalInstance()->start( [ this, btreeDict ]() {
     btreeDict->makeHeadwordIndex( indexBuildCancelled );
 
     bool success = false;
