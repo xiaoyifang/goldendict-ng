@@ -219,9 +219,11 @@ void FTSResultsRequest::run()
       qp.set_default_op( Xapian::Query::op::OP_AND );
       // Use FLAG_NGRAMS (preferred) with fallback to FLAG_CJK_NGRAM for compatibility
 #ifdef FLAG_NGRAMS
-      int flag = Xapian::QueryParser::FLAG_DEFAULT | Xapian::QueryParser::FLAG_PURE_NOT | Xapian::QueryParser::FLAG_NGRAMS;
+      int flag =
+        Xapian::QueryParser::FLAG_DEFAULT | Xapian::QueryParser::FLAG_PURE_NOT | Xapian::QueryParser::FLAG_NGRAMS;
 #else
-      int flag = Xapian::QueryParser::FLAG_DEFAULT | Xapian::QueryParser::FLAG_PURE_NOT | Xapian::QueryParser::FLAG_CJK_NGRAM;
+      int flag =
+        Xapian::QueryParser::FLAG_DEFAULT | Xapian::QueryParser::FLAG_PURE_NOT | Xapian::QueryParser::FLAG_CJK_NGRAM;
 #endif
       if ( searchMode == FTS::Wildcards ) {
         flag = flag | Xapian::QueryParser::FLAG_WILDCARD;
