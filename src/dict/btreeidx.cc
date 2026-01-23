@@ -1054,8 +1054,9 @@ static bool buildHeadwordIndex( const IndexedWords & indexedWords, const std::st
       for ( const auto & link : links ) {
         // link.word contains the original headword in UTF-8
         QString headword = QString::fromUtf8( link.word.c_str() );
-        if ( !headword.isEmpty() && addedHeadwords.insert( headword ).second ) {
+        if ( !headword.isEmpty() && !addedHeadwords.contains( headword ) ) {
           builder.addHeadword( headword );
+          addedHeadwords.insert( headword );
         }
       }
     }
@@ -1563,14 +1564,12 @@ void BtreeDictionary::makeHeadwordIndex( QAtomicInt & isCancelled )
     }
 
     // Add each headword to the index
-    // We use a simple counter as article offset since we just need unique headwords
-    uint32_t counter = 0;
     for ( const QString & headword : std::as_const( headwords ) ) {
       if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
         builder.cancel();
         return;
       }
-      builder.addHeadword( headword, counter++ );
+      builder.addHeadword( headword );
     }
 
     if ( !builder.finish() ) {
