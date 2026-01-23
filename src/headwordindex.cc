@@ -105,7 +105,7 @@ PagedResult HeadwordXapianIndex::getPage( int offset, int limit ) const
 
     // Total count is the estimated matches for MatchAll
     result.totalCount = mset.get_matches_estimated();
-    int count = 0;
+    int count         = 0;
     for ( Xapian::MSetIterator it = mset.begin(); it != mset.end() && count < limit; ++it, ++count ) {
       std::string data = it.get_document().get_data();
       if ( data != FINISH_MARKER ) {

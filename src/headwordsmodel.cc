@@ -305,7 +305,7 @@ void HeadwordListModel::setDict( Dictionary::Class * dict )
       // Get total count from a page query
       auto result = hwIndex->getPage( 0, 1 );
       qDebug() << "Index total count:" << result.totalCount << "headwords in first page:" << result.headwords.size();
-      
+
       if ( result.totalCount > 0 ) {
         useIndex  = true;
         totalSize = result.totalCount;
