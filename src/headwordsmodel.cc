@@ -301,8 +301,10 @@ void HeadwordListModel::setDict( Dictionary::Class * dict )
   if ( btreeDict && btreeDict->haveHeadwordIndex() ) {
     auto * hwIndex = btreeDict->getHeadwordIndex();
     if ( hwIndex ) {
-      useIndex  = true;
-      totalSize = hwIndex->getTotalCount();
+      useIndex = true;
+      // Get total count from a page query
+      auto result = hwIndex->getPage( 0, 1 );
+      totalSize   = result.totalCount;
       qDebug() << "Using headword index for" << QString::fromStdString( dict->getName() );
     }
   }
@@ -377,9 +379,11 @@ void HeadwordListModel::buildHeadwordIndex( bool autoBuild )
     if ( btreeDict->haveHeadwordIndex() ) {
       auto * hwIndex = btreeDict->getHeadwordIndex();
       if ( hwIndex ) {
-        useIndex  = true;
-        totalSize = hwIndex->getTotalCount();
-        success   = true;
+        useIndex = true;
+        // Get total count from a page query
+        auto result = hwIndex->getPage( 0, 1 );
+        totalSize   = result.totalCount;
+        success     = true;
         qDebug() << "Headword index built successfully:" << totalSize << "headwords";
       }
     }

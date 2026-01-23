@@ -41,9 +41,6 @@ public:
   /// Check if index is open and valid
   bool isOpen() const;
 
-  /// Get total headword count in the index
-  int getTotalCount() const;
-
   /// Get a page of headwords (sorted by document ID, which preserves insertion order)
   /// @param offset Starting position (0-based)
   /// @param limit Maximum number of results to return

@@ -82,17 +82,16 @@ bool HeadwordXapianIndex::isOpen() const
   return d->db != nullptr;
 }
 
-int HeadwordXapianIndex::getTotalCount() const
+// Internal helper without mutex (assumes caller holds lock)
+static int getTotalCountUnlocked( const std::unique_ptr< Xapian::Database > & db )
 {
-  QMutexLocker locker( &mutex );
-
-  if ( !d->db ) {
+  if ( !db ) {
     return 0;
   }
 
   try {
     // Subtract 1 for the marker document
-    return static_cast< int >( d->db->get_doccount() ) - 1;
+    return static_cast< int >( db->get_doccount() ) - 1;
   }
   catch ( const Xapian::Error & e ) {
     qWarning() << "Failed to get document count:" << e.get_description().c_str();
@@ -113,7 +112,7 @@ PagedResult HeadwordXapianIndex::getPage( int offset, int limit ) const
   }
 
   try {
-    result.totalCount = getTotalCount();
+    result.totalCount = getTotalCountUnlocked( d->db );
 
     // Use Enquire with MatchAll to iterate in docid order
     Xapian::Enquire enquire( *d->db );
