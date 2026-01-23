@@ -301,11 +301,19 @@ void HeadwordListModel::setDict( Dictionary::Class * dict )
   if ( btreeDict && btreeDict->haveHeadwordIndex() ) {
     auto * hwIndex = btreeDict->getHeadwordIndex();
     if ( hwIndex ) {
-      useIndex = true;
+      qDebug() << "Found headword index for" << QString::fromStdString( dict->getName() );
       // Get total count from a page query
       auto result = hwIndex->getPage( 0, 1 );
-      totalSize   = result.totalCount;
-      qDebug() << "Using headword index for" << QString::fromStdString( dict->getName() );
+      qDebug() << "Index total count:" << result.totalCount << "headwords in first page:" << result.headwords.size();
+      
+      if ( result.totalCount > 0 ) {
+        useIndex  = true;
+        totalSize = result.totalCount;
+        qDebug() << "Using headword index for" << QString::fromStdString( dict->getName() );
+      }
+      else {
+        qWarning() << "Headword index exists but returned 0 count, falling back to btree";
+      }
     }
   }
 

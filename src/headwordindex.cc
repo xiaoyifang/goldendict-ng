@@ -82,23 +82,6 @@ bool HeadwordXapianIndex::isOpen() const
   return d->db != nullptr;
 }
 
-// Internal helper without mutex (assumes caller holds lock)
-static int getTotalCountUnlocked( const std::unique_ptr< Xapian::Database > & db )
-{
-  if ( !db ) {
-    return 0;
-  }
-
-  try {
-    // Subtract 1 for the marker document
-    return static_cast< int >( db->get_doccount() ) - 1;
-  }
-  catch ( const Xapian::Error & e ) {
-    qWarning() << "Failed to get document count:" << e.get_description().c_str();
-    return 0;
-  }
-}
-
 PagedResult HeadwordXapianIndex::getPage( int offset, int limit ) const
 {
   PagedResult result;
@@ -112,8 +95,6 @@ PagedResult HeadwordXapianIndex::getPage( int offset, int limit ) const
   }
 
   try {
-    result.totalCount = getTotalCountUnlocked( d->db );
-
     // Use Enquire with MatchAll to iterate in docid order
     Xapian::Enquire enquire( *d->db );
     enquire.set_query( Xapian::Query::MatchAll );
@@ -122,6 +103,8 @@ PagedResult HeadwordXapianIndex::getPage( int offset, int limit ) const
     // Get results with offset
     Xapian::MSet mset = enquire.get_mset( offset, limit + 1 ); // +1 to check hasMore
 
+    // Total count is the estimated matches for MatchAll
+    result.totalCount = mset.get_matches_estimated();
     int count = 0;
     for ( Xapian::MSetIterator it = mset.begin(); it != mset.end() && count < limit; ++it, ++count ) {
       std::string data = it.get_document().get_data();
