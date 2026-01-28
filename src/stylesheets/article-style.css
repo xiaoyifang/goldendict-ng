@@ -586,14 +586,14 @@ div.xdxf {
 }
 
 .gdstemmedsuggestion_head {
-  margin-left: 11px;
+  margin-left: 12px;
   font-style: italic;
 }
 
 .gdstemmedsuggestion_body {
   display: block;
   width: 100%;
-  max-width: 800px;
+  margin: 12px;
 
   box-sizing: border-box;
   word-break: break-word;
