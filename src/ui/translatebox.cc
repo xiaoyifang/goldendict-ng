@@ -19,7 +19,7 @@ TranslateBox::TranslateBox( QWidget * parent ):
 {
   completer = new QCompleter( words, this );
   resize( 200, 90 );
-  QSizePolicy sizePolicy( QSizePolicy::Expanding, QSizePolicy::Preferred );
+  QSizePolicy sizePolicy( QSizePolicy::Maximum, QSizePolicy::Preferred );
   setSizePolicy( sizePolicy );
 
   setFocusProxy( translate_line );
