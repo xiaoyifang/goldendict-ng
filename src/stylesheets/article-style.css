@@ -106,9 +106,9 @@ pre {
 /* The separator is now redundant thanks to flow-root and clear:both on body */
 .gddictnamebodyseparator {
   display: none;
-  }
-  
-  .gdarticlebody {
+}
+
+.gdarticlebody {
   clear: both;
 }
 
