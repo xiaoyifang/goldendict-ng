@@ -591,6 +591,13 @@ div.xdxf {
 }
 
 .gdstemmedsuggestion_body {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+
+  box-sizing: border-box;
+  word-break: break-word;
+  line-height: 1.5;
 }
 
 /************* Dictd articles *****************/

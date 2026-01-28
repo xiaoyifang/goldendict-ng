@@ -111,6 +111,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   tabWidget = new MainTabWidget( this );
   tabWidget->setTabsClosable( true );
   tabWidget->setHideSingleTab( true );
+  tabWidget->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::Expanding );
   connect( tabWidget, &QTabWidget::tabCloseRequested, this, [ this ]( int index ) {
     if ( index > 0 ) {
       auto widget = tabWidget->widget( index );
@@ -139,6 +140,9 @@ ScanPopup::ScanPopup( QWidget * parent,
     int maxWidth = screen->availableGeometry().width() * 0.8; // 80% of screen width
     setMaximumWidth( maxWidth );
   }
+
+  translateBox->setMaximumWidth( 200 );
+  groupList->setMaximumWidth( 200 );
 
   connect( definition, &ArticleView::inspectSignal, this, &ScanPopup::inspectElementWhenPinned );
   connect( definition, &ArticleView::forceAddWordToHistory, this, &ScanPopup::forceAddWordToHistory );
@@ -654,7 +658,7 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
   showTranslationFor( pendingWord );
 }
 
-QString ScanPopup::elideInputWord()
+QString ScanPopup::elideInputWord() const
 {
   return pendingWord.size() > 32 ? pendingWord.mid( 0, 32 ) + "..." : pendingWord;
 }
@@ -736,7 +740,7 @@ void ScanPopup::showTranslationFor( const QString & word ) const
   definition->showDefinition( word, groupId );
   definition->focus();
   // definition is the first tab
-  tabWidget->setTabText( 0, word );
+  tabWidget->setTabText( 0, elideInputWord() );
 }
 
 const vector< sptr< Dictionary::Class > > & ScanPopup::getActiveDicts()

@@ -185,7 +185,7 @@ private:
   virtual void moveEvent( QMoveEvent * );
 
   /// Returns inputWord, chopped with appended ... if it's too long/
-  QString elideInputWord();
+  QString elideInputWord() const;
 
   void updateBackForwardButtons() const;
 

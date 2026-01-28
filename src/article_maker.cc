@@ -857,7 +857,7 @@ void ArticleRequest::compoundSearchNextStep( bool lastSearchSucceeded )
         // Append the beginning
         footer += R"(<div class="gdstemmedsuggestion"><span class="gdstemmedsuggestion_head">)"
           + Html::escape( tr( "Compound expressions: " ).toUtf8().data() )
-          + "</span><span class=\"gdstemmedsuggestion_body\">";
+          + "</span><div class=\"gdstemmedsuggestion_body\">";
 
         firstCompoundWasFound = true;
       }
@@ -877,14 +877,14 @@ void ArticleRequest::compoundSearchNextStep( bool lastSearchSucceeded )
       // The last word was the last possible to start from
 
       if ( firstCompoundWasFound ) {
-        footer += "</span>";
+        footer += "</div>";
       }
 
       // Now add links to all the individual words. They conclude the result.
 
       footer += R"(<div class="gdstemmedsuggestion"><span class="gdstemmedsuggestion_head">)"
         + Html::escape( tr( "Individual words: " ).toUtf8().data() )
-        + "</span><span class=\"gdstemmedsuggestion_body\"";
+        + "</span><div class=\"gdstemmedsuggestion_body\"";
       if ( splittedWords.first[ 0 ].isRightToLeft() ) {
         footer += " dir=\"rtl\"";
       }
@@ -897,7 +897,7 @@ void ArticleRequest::compoundSearchNextStep( bool lastSearchSucceeded )
         footer += escapeSpacing( splittedWords.second[ x + 1 ] );
       }
 
-      footer += "</span>";
+      footer += "</div>";
 
       footer += "</body></html>";
 
