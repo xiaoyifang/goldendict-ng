@@ -132,7 +132,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   tabWidget->tabBar()->setTabButton( 0, QTabBar::LeftSide, nullptr );
 
   resize( 247, 400 );
-  
+
   // Set maximum width based on screen size
   QScreen * screen = QGuiApplication::primaryScreen();
   if ( screen ) {
