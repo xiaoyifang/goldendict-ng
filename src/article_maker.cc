@@ -883,8 +883,7 @@ void ArticleRequest::compoundSearchNextStep( bool lastSearchSucceeded )
       // Now add links to all the individual words. They conclude the result.
 
       footer += R"(<div class="gdstemmedsuggestion"><span class="gdstemmedsuggestion_head">)"
-        + Html::escape( tr( "Individual words: " ).toUtf8().data() )
-        + "</span><div class=\"gdstemmedsuggestion_body\"";
+        + Html::escape( tr( "Individual words: " ).toUtf8().data() ) + "</span><div class=\"gdstemmedsuggestion_body\"";
       if ( splittedWords.first[ 0 ].isRightToLeft() ) {
         footer += " dir=\"rtl\"";
       }
