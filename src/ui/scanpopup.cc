@@ -84,7 +84,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   foundBar->setAllowedAreas( Qt::LeftToolBarArea | Qt::RightToolBarArea );
 
   // UI style
-  searchBar->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Maximum );
+  searchBar->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::Maximum );
   searchBar->setMovable( false );
   toolBar->setFloatable( false );
   dictionaryBar.setFloatable( false );
@@ -132,6 +132,13 @@ ScanPopup::ScanPopup( QWidget * parent,
   tabWidget->tabBar()->setTabButton( 0, QTabBar::LeftSide, nullptr );
 
   resize( 247, 400 );
+  
+  // Set maximum width based on screen size
+  QScreen * screen = QGuiApplication::primaryScreen();
+  if ( screen ) {
+    int maxWidth = screen->availableGeometry().width() * 0.8; // 80% of screen width
+    setMaximumWidth( maxWidth );
+  }
 
   connect( definition, &ArticleView::inspectSignal, this, &ScanPopup::inspectElementWhenPinned );
   connect( definition, &ArticleView::forceAddWordToHistory, this, &ScanPopup::forceAddWordToHistory );
