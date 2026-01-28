@@ -108,6 +108,7 @@ function gdExpandArticle(id) {
 
     dictNameElement.style.cursor = "pointer";
     dictNameElement.title = "";
+    dictNameElement.setAttribute("aria-expanded", "false");
 
     articleview.collapseInHtml(id, true);
   } else {
@@ -117,6 +118,7 @@ function gdExpandArticle(id) {
 
     dictNameElement.style.cursor = "default";
     dictNameElement.title = "";
+    dictNameElement.setAttribute("aria-expanded", "true");
 
     articleview.collapseInHtml(id, false);
   }

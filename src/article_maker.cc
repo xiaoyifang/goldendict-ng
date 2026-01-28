@@ -43,6 +43,7 @@ std::string ArticleMaker::makeHtmlHeader( const QString & word, const QString & 
   string result = R"(<!DOCTYPE html>
 <html><head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 )";
 
   // add jquery
@@ -629,7 +630,7 @@ void ArticleRequest::bodyFinished()
 
         fmt::format_to( std::back_inserter( head ),
                         FMT_COMPILE(
-                          R"( <div class="gdarticle {0} {1}" id="{2}"
+                          R"( <article class="gdarticle {0} {1}" id="{2}"
                               data-gd-id="{3}"
                               >)" ),
                         "",
@@ -639,19 +640,20 @@ void ArticleRequest::bodyFinished()
 
         fmt::format_to( std::back_inserter( head ),
                         FMT_COMPILE(
-                          R"(<div class="gddictname" {1}  id="gddictname-{0}" title="{2}">
-                      <span class="gddicticon"><img src="gico://{0}/dicticon.png"></span>
+                          R"(<header class="gddictname" {1}  id="gddictname-{0}" title="{2}" role="button" aria-expanded="{7}">
+                      <span class="gddicticon"><img src="gico://{0}/dicticon.png" alt=""></span>
                       <span class="gdfromprefix">{3}</span>
                       <span class="gddicttitle">{4}</span>
-                      <span class="collapse_expand_area"><img class="{5}" id="expandicon-{0}" title="{6}" ></span>
-                     </div>)" ),
+                      <span class="collapse_expand_area"><img class="{5}" id="expandicon-{0}" title="{6}" alt="" ></span>
+                     </header>)" ),
                         dictId,
                         collapse ? R"(style="cursor:pointer;")" : "",
                         "",
                         Html::escape( tr( "From " ).toStdString() ),
                         Html::escape( activeDict->getName() ),
                         collapse ? "gdexpandicon" : "gdcollapseicon",
-                        "" );
+                        "",
+                        collapse ? "false" : "true" );
 
         head += R"(<div class="gddictnamebodyseparator"></div>)";
 
@@ -669,7 +671,7 @@ void ArticleRequest::bodyFinished()
         fmt::format_to(
           std::back_inserter( head ),
           FMT_COMPILE(
-            R"(<div class="gdarticlebody gdlangfrom-{}" lang="{}" style="display:{}" id="gdarticlefrom-{}">)" ),
+            R"(<section class="gdarticlebody gdlangfrom-{}" lang="{}" style="display:{}" id="gdarticlefrom-{}">)" ),
           LangCoder::intToCode2( activeDict->getLangFrom() ).toStdString(),
           LangCoder::intToCode2( activeDict->getLangTo() ).toStdString(),
           collapse ? "none" : "block",
@@ -692,7 +694,7 @@ void ArticleRequest::bodyFinished()
           qWarning() << "getDataSlice error:" << e.what();
         }
 
-        auto separator = R"(</div></div><div style="clear:both;"></div><span class="gdarticleseparator"></span>)";
+        auto separator = R"(</section></article><div style="clear:both;"></div><span class="gdarticleseparator"></span>)";
         appendString( separator );
 
         wasUpdated = true;

@@ -38,6 +38,10 @@ h6 {
 
 p,
 em,
+article,
+header,
+section,
+main,
 span,
 div {
   unicode-bidi: plaintext;
@@ -66,6 +70,7 @@ pre {
 
 /* Dictionary's name heading */
 .gddictname {
+  display: flow-root;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   font-weight: bold;
@@ -98,7 +103,12 @@ pre {
   user-select: none;
 }
 
+/* The separator is now redundant thanks to flow-root and clear:both on body */
 .gddictnamebodyseparator {
+  display: none;
+  }
+  
+  .gdarticlebody {
   clear: both;
 }
 
@@ -110,7 +120,7 @@ pre {
 /* The article span. Here we have a padding/margin hack to make fragment links
    behave better (have some space before the start of article) */
 .gdarticle {
-  display: block;
+  display: flow-root;
   padding-top: 1px;
   margin-top: -8px;
   margin-bottom: 8px;
