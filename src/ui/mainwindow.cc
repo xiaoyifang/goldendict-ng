@@ -800,32 +800,14 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     focusTranslateLine();
   }
 
-  // Scanpopup related
-  scanPopup = new ScanPopup( nullptr, cfg, articleNetMgr, history );
-
-  scanPopup->setStyleSheet( styleSheet() );
-
-  connect( scanPopup, &ScanPopup::editGroupRequest, this, &MainWindow::editDictionaries, Qt::QueuedConnection );
-
-  connect( scanPopup, &ScanPopup::sendPhraseToMainWindow, this, [ this ]( const QString & word ) {
-    wordReceived( word );
-  } );
-
-  connect( scanPopup, &ScanPopup::inspectSignal, this, &MainWindow::inspectElement );
-  connect( scanPopup, &ScanPopup::forceAddWordToHistory, this, &MainWindow::forceAddWordToHistory );
-  connect( scanPopup, &ScanPopup::showDictionaryInfo, this, &MainWindow::showDictionaryInfo );
-  connect( scanPopup, &ScanPopup::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
-  connect( scanPopup, &ScanPopup::sendWordToHistory, this, &MainWindow::addWordToHistory );
-  connect( this, &MainWindow::setPopupGroupByName, scanPopup, &ScanPopup::setGroupByName );
-  connect( scanPopup,
-           &ScanPopup::sendWordToFavorites,
-           ui.favoritesPaneWidget,
-           &FavoritesPaneWidget::addRemoveWordInActiveFav );
+  // Delay ScanPopup creation until first use to speed up startup
+  // It will be created when user enables scanning or triggers scan hotkey
 
   clipboardListener = clipboardListener::get_impl( this );
   connect( clipboardListener, &BaseClipboardListener::changed, this, &MainWindow::clipboardChange );
 
   connect( enableScanningAction, &QAction::toggled, this, [ this ]( bool on ) {
+    ensureScanPopupInitialized();
     if ( on ) {
       enableScanningAction->setIcon( QIcon( ":/icons/wizard-selected.svg" ) );
     }
@@ -851,8 +833,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     trayIconUpdateOrInit();
   } );
 
+  // Trigger scanning after ensuring scanPopup is initialized
   if ( cfg.preferences.startWithScanPopupOn ) {
-    enableScanningAction->trigger();
+    QTimer::singleShot( 0, this, [ this ]() {
+      enableScanningAction->trigger();
+    } );
   }
 
   updateSearchPaneAndBar( cfg.preferences.searchInDock );
@@ -879,8 +864,13 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     toggleMenuBarTriggered( false );
   }
 
-  // makeDictionaries() didn't do deferred init - we do it here, at the end.
-  doDeferredInit( dictionaries );
+  // Defer dictionary initialization to background thread to speed up startup
+  QTimer::singleShot( 0, this, [ this ]() {
+    QThreadPool::globalInstance()->start( [ this ]() {
+      doDeferredInit( dictionaries );
+      qDebug( "Deferred dictionary initialization completed" );
+    } );
+  } );
 
   updateStatusLine();
 
@@ -1005,8 +995,37 @@ void MainWindow::refreshTranslateLine()
   }
 }
 
+void MainWindow::ensureScanPopupInitialized()
+{
+  if ( scanPopup ) {
+    return;
+  }
+
+  // Create scanPopup on first use
+  scanPopup = new ScanPopup( nullptr, cfg, articleNetMgr, history );
+  scanPopup->setStyleSheet( styleSheet() );
+
+  connect( scanPopup, &ScanPopup::editGroupRequest, this, &MainWindow::editDictionaries, Qt::QueuedConnection );
+  connect( scanPopup, &ScanPopup::sendPhraseToMainWindow, this, [ this ]( const QString & word ) {
+    wordReceived( word );
+  } );
+  connect( scanPopup, &ScanPopup::inspectSignal, this, &MainWindow::inspectElement );
+  connect( scanPopup, &ScanPopup::forceAddWordToHistory, this, &MainWindow::forceAddWordToHistory );
+  connect( scanPopup, &ScanPopup::showDictionaryInfo, this, &MainWindow::showDictionaryInfo );
+  connect( scanPopup, &ScanPopup::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
+  connect( scanPopup, &ScanPopup::sendWordToHistory, this, &MainWindow::addWordToHistory );
+  connect( this, &MainWindow::setPopupGroupByName, scanPopup, &ScanPopup::setGroupByName );
+  connect( scanPopup,
+           &ScanPopup::sendWordToFavorites,
+           ui.favoritesPaneWidget,
+           &FavoritesPaneWidget::addRemoveWordInActiveFav );
+
+  qDebug( "ScanPopup initialized on demand" );
+}
+
 void MainWindow::clipboardChange( QClipboard::Mode m )
 {
+  ensureScanPopupInitialized();
   if ( !scanPopup ) {
     return;
   }
@@ -2212,7 +2231,9 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
     }
   }
 
-  scanPopup->refresh();
+  if ( scanPopup ) {
+    scanPopup->refresh();
+  }
   installHotKeys();
 }
 
@@ -2326,7 +2347,9 @@ void MainWindow::editPreferences()
     Config::save( cfg );
   }
 
-  scanPopup->refresh();
+  if ( scanPopup ) {
+    scanPopup->refresh();
+  }
   installHotKeys();
 
   ftsIndexing.setDictionaries( dictionaries );
@@ -3399,7 +3422,9 @@ void MainWindow::on_rescanFiles_triggered()
   updateGroupList();
 
 
-  scanPopup->refresh();
+  if ( scanPopup ) {
+    scanPopup->refresh();
+  }
   installHotKeys();
 
   updateSuggestionList();
@@ -3504,7 +3529,9 @@ void MainWindow::scaleArticlesByCurrentZoomFactor()
     view.setZoomFactor( cfg.preferences.zoomFactor );
   }
 
-  scanPopup->applyZoomFactor();
+  if ( scanPopup ) {
+    scanPopup->applyZoomFactor();
+  }
 }
 
 void MainWindow::messageFromAnotherInstanceReceived( const QString & message )

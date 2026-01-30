@@ -194,6 +194,9 @@ private:
   void updateStatusLine();
   void updateGroupList( bool reload = true );
 
+  /// Lazily initialize scanPopup on first use to improve startup time
+  void ensureScanPopupInitialized();
+
   void updatePronounceAvailability();
 
   void updateBackForwardButtons();

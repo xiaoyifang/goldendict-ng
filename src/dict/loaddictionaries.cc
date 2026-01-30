@@ -234,6 +234,7 @@ void loadDictionaries( QWidget * parent,
 
   QObject::connect( &loadDicts, &LoadDictionaries::finished, &localLoop, &QEventLoop::quit );
 
+  // Start loading asynchronously to allow UI to show immediately
   QThreadPool::globalInstance()->start( [ &loadDicts ]() {
     loadDicts.load();
   } );
