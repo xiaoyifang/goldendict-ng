@@ -127,27 +127,63 @@ void LoadDictionaries::load()
 
     // Make dictionaries from all collected files in parallel
     std::vector< std::function< void() > > formatLoaders = {
-      [ & ]() { parallelFileLoader( ".mdx", Mdx::makeDictionaries ); },
-      [ & ]() { parallelFileLoader( ".ifo", Stardict::makeDictionaries, maxHeadwordToExpand ); },
-      [ & ]() { parallelFileLoader( ".dsl", Dsl::makeDictionaries, maxHeadwordSize ); },
-      [ & ]() { parallelFileLoader( ".dsl.dz", Dsl::makeDictionaries, maxHeadwordSize ); },
-      [ & ]() { parallelFileLoader( ".bgl", Bgl::makeDictionaries ); },
-      [ & ]() { parallelFileLoader( ".lsa", Lsa::makeDictionaries ); },
-      [ & ]() { parallelFileLoader( ".index", DictdFiles::makeDictionaries ); },
-      [ & ]() { parallelFileLoader( ".xdxf", Xdxf::makeDictionaries ); },
-      [ & ]() { parallelFileLoader( ".xdxf.dz", Xdxf::makeDictionaries ); },
-      [ & ]() { parallelFileLoader( ".dct", Sdict::makeDictionaries ); },
-      [ & ]() { parallelFileLoader( ".aar", Aard::makeDictionaries, maxHeadwordToExpand ); },
-      [ & ]() { parallelFileLoader( ".zips", ZipSounds::makeDictionaries ); },
-      [ & ]() { parallelFileLoader( ".gls", Gls::makeDictionaries ); },
-      [ & ]() { parallelFileLoader( ".gls.dz", Gls::makeDictionaries ); },
-      [ & ]() { parallelFileLoader( ".slob", Slob::makeDictionaries, maxHeadwordToExpand ); },
+      [ & ]() {
+        parallelFileLoader( ".mdx", Mdx::makeDictionaries );
+      },
+      [ & ]() {
+        parallelFileLoader( ".ifo", Stardict::makeDictionaries, maxHeadwordToExpand );
+      },
+      [ & ]() {
+        parallelFileLoader( ".dsl", Dsl::makeDictionaries, maxHeadwordSize );
+      },
+      [ & ]() {
+        parallelFileLoader( ".dsl.dz", Dsl::makeDictionaries, maxHeadwordSize );
+      },
+      [ & ]() {
+        parallelFileLoader( ".bgl", Bgl::makeDictionaries );
+      },
+      [ & ]() {
+        parallelFileLoader( ".lsa", Lsa::makeDictionaries );
+      },
+      [ & ]() {
+        parallelFileLoader( ".index", DictdFiles::makeDictionaries );
+      },
+      [ & ]() {
+        parallelFileLoader( ".xdxf", Xdxf::makeDictionaries );
+      },
+      [ & ]() {
+        parallelFileLoader( ".xdxf.dz", Xdxf::makeDictionaries );
+      },
+      [ & ]() {
+        parallelFileLoader( ".dct", Sdict::makeDictionaries );
+      },
+      [ & ]() {
+        parallelFileLoader( ".aar", Aard::makeDictionaries, maxHeadwordToExpand );
+      },
+      [ & ]() {
+        parallelFileLoader( ".zips", ZipSounds::makeDictionaries );
+      },
+      [ & ]() {
+        parallelFileLoader( ".gls", Gls::makeDictionaries );
+      },
+      [ & ]() {
+        parallelFileLoader( ".gls.dz", Gls::makeDictionaries );
+      },
+      [ & ]() {
+        parallelFileLoader( ".slob", Slob::makeDictionaries, maxHeadwordToExpand );
+      },
 #ifdef MAKE_ZIM_SUPPORT
-      [ & ]() { parallelFileLoader( ".zim", Zim::makeDictionaries, maxHeadwordToExpand ); },
-      [ & ]() { parallelFileLoader( ".zimaa", Zim::makeDictionaries, maxHeadwordToExpand ); },
+      [ & ]() {
+        parallelFileLoader( ".zim", Zim::makeDictionaries, maxHeadwordToExpand );
+      },
+      [ & ]() {
+        parallelFileLoader( ".zimaa", Zim::makeDictionaries, maxHeadwordToExpand );
+      },
 #endif
 #ifdef EPWING_SUPPORT
-      [ this ]() { addDicts( Epwing::makeDictionaries( allCollectedFiles, Config::getIndexDir().toStdString(), *this ) ); }
+      [ this ]() {
+        addDicts( Epwing::makeDictionaries( allCollectedFiles, Config::getIndexDir().toStdString(), *this ) );
+      }
 #endif
     };
 
