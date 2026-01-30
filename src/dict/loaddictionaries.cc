@@ -207,7 +207,7 @@ void LoadDictionaries::load()
     }
 
     //handle the custom dictionary name&fts option
-    QtConcurrent::blockingMap( dictionaries, [ this ]( const sptr< Dictionary::Class > & dict ) {
+    QtConcurrent::blockingMap( dictionaries, []( const sptr< Dictionary::Class > & dict ) {
       auto baseDir = dict->getContainingFolder();
       if ( baseDir.isEmpty() ) {
         return;
