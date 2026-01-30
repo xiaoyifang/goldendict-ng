@@ -216,6 +216,9 @@ private:
   /// Creates hotkeyWrapper and hooks the currently set keys for it
   void installHotKeys();
 
+  /// Initializes scanPopup if not already created (lazy initialization)
+  void ensureScanPopupInitialized();
+
   void applyZoomFactor();
   void adjustCurrentZoomFactor();
 
