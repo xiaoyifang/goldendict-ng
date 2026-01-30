@@ -44,6 +44,8 @@
 #endif
 
 #include <QThreadPool>
+#include <QtConcurrent>
+#include <functional>
 #include <QMessageBox>
 #include <QDir>
 #include <QString>
@@ -94,51 +96,99 @@ LoadDictionaries::LoadDictionaries( const Config::Class & cfg ):
 void LoadDictionaries::load()
 {
   try {
-    for ( const auto & path : paths ) {
-      qDebug() << "handle path:" << path.path;
+    QtConcurrent::blockingMap( paths, [ this ]( const Config::Path & path ) {
+      qDebug() << "collect files from path:" << path.path;
       try {
-        handlePath( path );
+        collectFiles( path );
       }
       catch ( const std::exception & e ) {
-        qWarning() << "Error handling path:" << path.path << "-" << e.what();
-        //hold last exception message.
+        qWarning() << "Error collecting files from path:" << path.path << "-" << e.what();
         auto exception = "[" + path.path.toStdString() + "]:" + e.what();
+        QMutexLocker _( &dictionariesMutex );
         exceptionTexts << QString::fromUtf8( exception );
       }
-    }
+    } );
+
+    // Helper to parallelize by file for formats that support it
+    auto parallelFileLoader = [ this ]( const char * extension, auto makeFunc, auto... args ) {
+      std::vector< std::string > triggerFiles;
+      for ( const auto & f : allCollectedFiles ) {
+        if ( Utils::endsWithIgnoreCase( f, extension ) ) {
+          triggerFiles.push_back( f );
+        }
+      }
+
+      if ( !triggerFiles.empty() ) {
+        QtConcurrent::blockingMap( triggerFiles, [ this, makeFunc, args... ]( const std::string & f ) {
+          addDicts( makeFunc( std::vector< std::string >{ f }, Config::getIndexDir().toStdString(), *this, args... ) );
+        } );
+      }
+    };
+
+    // Make dictionaries from all collected files in parallel
+    std::vector< std::function< void() > > formatLoaders = {
+      [ & ]() { parallelFileLoader( ".mdx", Mdx::makeDictionaries ); },
+      [ & ]() { parallelFileLoader( ".ifo", Stardict::makeDictionaries, maxHeadwordToExpand ); },
+      [ & ]() { parallelFileLoader( ".dsl", Dsl::makeDictionaries, maxHeadwordSize ); },
+      [ & ]() { parallelFileLoader( ".dsl.dz", Dsl::makeDictionaries, maxHeadwordSize ); },
+      [ & ]() { parallelFileLoader( ".bgl", Bgl::makeDictionaries ); },
+      [ & ]() { parallelFileLoader( ".lsa", Lsa::makeDictionaries ); },
+      [ & ]() { parallelFileLoader( ".index", DictdFiles::makeDictionaries ); },
+      [ & ]() { parallelFileLoader( ".xdxf", Xdxf::makeDictionaries ); },
+      [ & ]() { parallelFileLoader( ".xdxf.dz", Xdxf::makeDictionaries ); },
+      [ & ]() { parallelFileLoader( ".dct", Sdict::makeDictionaries ); },
+      [ & ]() { parallelFileLoader( ".aar", Aard::makeDictionaries, maxHeadwordToExpand ); },
+      [ & ]() { parallelFileLoader( ".zips", ZipSounds::makeDictionaries ); },
+      [ & ]() { parallelFileLoader( ".gls", Gls::makeDictionaries ); },
+      [ & ]() { parallelFileLoader( ".gls.dz", Gls::makeDictionaries ); },
+      [ & ]() { parallelFileLoader( ".slob", Slob::makeDictionaries, maxHeadwordToExpand ); },
+#ifdef MAKE_ZIM_SUPPORT
+      [ & ]() { parallelFileLoader( ".zim", Zim::makeDictionaries, maxHeadwordToExpand ); },
+      [ & ]() { parallelFileLoader( ".zimaa", Zim::makeDictionaries, maxHeadwordToExpand ); },
+#endif
+#ifdef EPWING_SUPPORT
+      [ this ]() { addDicts( Epwing::makeDictionaries( allCollectedFiles, Config::getIndexDir().toStdString(), *this ) ); }
+#endif
+    };
+
+    QtConcurrent::blockingMap( formatLoaders, []( const std::function< void() > & loader ) {
+      loader();
+    } );
 
     // Make soundDirs
     {
       vector< sptr< Dictionary::Class > > soundDirDictionaries =
         SoundDir::makeDictionaries( soundDirs, Config::getIndexDir().toStdString(), *this );
 
-      dictionaries.insert( dictionaries.end(), soundDirDictionaries.begin(), soundDirDictionaries.end() );
+      addDicts( soundDirDictionaries );
     }
 
     // Make hunspells
     {
       vector< sptr< Dictionary::Class > > hunspellDictionaries = HunspellMorpho::makeDictionaries( hunspell );
 
-      dictionaries.insert( dictionaries.end(), hunspellDictionaries.begin(), hunspellDictionaries.end() );
+      addDicts( hunspellDictionaries );
     }
 
     //handle the custom dictionary name&fts option
-    for ( const auto & dict : dictionaries ) {
+    QtConcurrent::blockingMap( dictionaries, [ this ]( const sptr< Dictionary::Class > & dict ) {
       auto baseDir = dict->getContainingFolder();
       if ( baseDir.isEmpty() ) {
-        continue;
+        return;
       }
 
       auto filePath = Utils::Path::combine( baseDir, "metadata.toml" );
 
       auto dictMetaData = Metadata::load( filePath.toStdString() );
-      if ( dictMetaData && dictMetaData->name ) {
-        dict->setName( dictMetaData->name.value() );
+      if ( dictMetaData ) {
+        if ( dictMetaData->name ) {
+          dict->setName( dictMetaData->name.value() );
+        }
+        if ( dictMetaData->fullindex ) {
+          dict->setFtsEnable( dictMetaData->fullindex.value() );
+        }
       }
-      if ( dictMetaData && dictMetaData->fullindex ) {
-        dict->setFtsEnable( dictMetaData->fullindex.value() );
-      }
-    }
+    } );
 
     // Save configuration to ensure custom dictionary names and FTS options are preserved
     Config::Class * cfg = GlobalBroadcaster::instance()->getConfig();
@@ -156,16 +206,17 @@ void LoadDictionaries::load()
 
 void LoadDictionaries::addDicts( const std::vector< sptr< Dictionary::Class > > & dicts )
 {
+  QMutexLocker _( &dictionariesMutex );
   std::move( dicts.begin(), dicts.end(), std::back_inserter( dictionaries ) );
 }
 
-void LoadDictionaries::handlePath( const Config::Path & path )
+void LoadDictionaries::collectFiles( const Config::Path & path )
 {
-  vector< string > allFiles;
-
   QDir dir( path.path );
 
   QFileInfoList entries = dir.entryInfoList( nameFilters, QDir::AllDirs | QDir::Files | QDir::NoDotAndDotDot );
+
+  std::vector< std::string > localFiles;
 
   for ( QFileInfoList::const_iterator i = entries.constBegin(); i != entries.constEnd(); ++i ) {
     QString fullName = i->absoluteFilePath();
@@ -174,33 +225,19 @@ void LoadDictionaries::handlePath( const Config::Path & path )
       // Make sure the path doesn't look like with dsl resources
       if ( !fullName.endsWith( ".dsl.files", Qt::CaseInsensitive )
            && !fullName.endsWith( ".dsl.dz.files", Qt::CaseInsensitive ) ) {
-        handlePath( Config::Path( fullName, true ) );
+        collectFiles( Config::Path( fullName, true ) );
       }
     }
 
     if ( !i->isDir() ) {
-      allFiles.push_back( QDir::toNativeSeparators( fullName ).toStdString() );
+      localFiles.push_back( QDir::toNativeSeparators( fullName ).toStdString() );
     }
   }
 
-  addDicts( Bgl::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
-  addDicts( Stardict::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
-  addDicts( Lsa::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
-  addDicts( Dsl::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordSize ) );
-  addDicts( DictdFiles::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
-  addDicts( Xdxf::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
-  addDicts( Sdict::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
-  addDicts( Aard::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
-  addDicts( ZipSounds::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
-  addDicts( Mdx::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
-  addDicts( Gls::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
-  addDicts( Slob::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
-#ifdef MAKE_ZIM_SUPPORT
-  addDicts( Zim::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
-#endif
-#ifdef EPWING_SUPPORT
-  addDicts( Epwing::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
-#endif
+  if ( !localFiles.empty() ) {
+    QMutexLocker _( &filesMutex );
+    std::move( localFiles.begin(), localFiles.end(), std::back_inserter( allCollectedFiles ) );
+  }
 }
 
 void LoadDictionaries::indexingDictionary( const string & dictionaryName ) noexcept
@@ -322,7 +359,7 @@ void loadDictionaries( QWidget * parent,
 
 void doDeferredInit( std::vector< sptr< Dictionary::Class > > & dictionaries )
 {
-  for ( const auto & dictionarie : dictionaries ) {
-    dictionarie->deferredInit();
-  }
+  QtConcurrent::blockingMap( dictionaries, []( const sptr< Dictionary::Class > & dict ) {
+    dict->deferredInit();
+  } );
 }

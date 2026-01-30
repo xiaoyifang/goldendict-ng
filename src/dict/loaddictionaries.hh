@@ -9,6 +9,7 @@
 #include <QThread>
 #include <QNetworkAccessManager>
 #include <QStringList>
+#include <QMutex>
 
 /// Use loadDictionaries() function below -- this is a helper thread class
 class LoadDictionaries: public QObject, public Dictionary::Initializing
@@ -24,6 +25,9 @@ class LoadDictionaries: public QObject, public Dictionary::Initializing
   QStringList exceptionTexts;
   unsigned int maxHeadwordSize;
   unsigned int maxHeadwordToExpand;
+  std::vector< std::string > allCollectedFiles;
+  mutable QMutex dictionariesMutex;
+  mutable QMutex filesMutex;
 
 public:
 
@@ -50,7 +54,7 @@ public:
 
 private:
 
-  void handlePath( const Config::Path & );
+  void collectFiles( const Config::Path & );
 
   // Helper function that will add a vector of dictionary::Class to the dictionary list
   void addDicts( const std::vector< sptr< Dictionary::Class > > & dicts );

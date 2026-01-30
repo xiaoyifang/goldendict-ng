@@ -30,6 +30,10 @@ struct Group
          const std::vector< sptr< Dictionary::Class > > & allDictionaries,
          const Config::Group & inactiveGroup );
 
+  Group( const Config::Group & cfgGroup,
+         const QMap< std::string, sptr< Dictionary::Class > > & dictMap,
+         const Config::Group & inactiveGroup );
+
   /// Creates an empty group.
   explicit Group();
 

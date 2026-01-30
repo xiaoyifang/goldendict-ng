@@ -1621,13 +1621,15 @@ void MainWindow::updateGroupList( bool reload )
 
   groupInstances.clear();
 
+  auto dictMap = Dictionary::dictToMap( dictionaries );
+
   // Add dictionaryOrder first, as the 'All' group.
   {
-    Instances::Group g( cfg.dictionaryOrder, dictionaries, Config::Group() );
+    Instances::Group g( cfg.dictionaryOrder, dictMap, Config::Group() );
 
     // Add any missing entries to dictionary order
     Instances::complementDictionaryOrder( g,
-                                          Instances::Group( cfg.inactiveDictionaries, dictionaries, Config::Group() ),
+                                          Instances::Group( cfg.inactiveDictionaries, dictMap, Config::Group() ),
                                           dictionaries );
 
     g.name = tr( "All" );
@@ -1638,7 +1640,7 @@ void MainWindow::updateGroupList( bool reload )
   }
 
   for ( auto & group : cfg.groups ) {
-    groupInstances.push_back( Instances::Group( group, dictionaries, cfg.inactiveDictionaries ) );
+    groupInstances.push_back( Instances::Group( group, dictMap, cfg.inactiveDictionaries ) );
   }
 
   // Update names for dictionaries that are present, so that they could be

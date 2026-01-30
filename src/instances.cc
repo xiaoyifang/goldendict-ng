@@ -14,6 +14,13 @@ using std::string;
 Group::Group( const Config::Group & cfgGroup,
               const std::vector< sptr< Dictionary::Class > > & allDictionaries,
               const Config::Group & inactiveGroup ):
+  Group( cfgGroup, Dictionary::dictToMap( allDictionaries ), inactiveGroup )
+{
+}
+
+Group::Group( const Config::Group & cfgGroup,
+              const QMap< string, sptr< Dictionary::Class > > & dictMap,
+              const Config::Group & inactiveGroup ):
   id( cfgGroup.id ),
   name( cfgGroup.name ),
   icon( cfgGroup.icon ),
@@ -26,7 +33,6 @@ Group::Group( const Config::Group & cfgGroup,
 
   QMap< string, sptr< Dictionary::Class > > groupDicts;
   QList< string > dictOrderList;
-  auto dictMap = Dictionary::dictToMap( allDictionaries );
 
   for ( const auto & dict : cfgGroup.dictionaries ) {
     const std::string dictId = dict.id.toStdString();
@@ -146,31 +152,52 @@ void complementDictionaryOrder( Group & group,
 
 void updateNames( Config::Group & group, const vector< sptr< Dictionary::Class > > & allDictionaries )
 {
+  auto dictMap = Dictionary::dictToMap( allDictionaries );
 
-  for ( unsigned x = group.dictionaries.size(); x--; ) {
-    const std::string id = group.dictionaries[ x ].id.toStdString();
+  for ( auto & dictionary : group.dictionaries ) {
+    const std::string id = dictionary.id.toStdString();
 
-    for ( unsigned y = allDictionaries.size(); y--; ) {
-      if ( allDictionaries[ y ]->getId() == id ) {
-        group.dictionaries[ x ].name = QString::fromUtf8( allDictionaries[ y ]->getName().c_str() );
-        break;
-      }
+    if ( auto it = dictMap.find( id ); it != dictMap.end() ) {
+      dictionary.name = QString::fromUtf8( it.value()->getName().c_str() );
     }
   }
 }
 
 void updateNames( Config::Groups & groups, const vector< sptr< Dictionary::Class > > & allDictionaries )
 {
+  auto dictMap = Dictionary::dictToMap( allDictionaries );
+
   for ( auto & group : groups ) {
-    updateNames( group, allDictionaries );
+    for ( auto & dictionary : group.dictionaries ) {
+      const std::string id = dictionary.id.toStdString();
+
+      if ( auto it = dictMap.find( id ); it != dictMap.end() ) {
+        dictionary.name = QString::fromUtf8( it.value()->getName().c_str() );
+      }
+    }
   }
 }
 
 void updateNames( Config::Class & cfg, const vector< sptr< Dictionary::Class > > & allDictionaries )
 {
-  updateNames( cfg.dictionaryOrder, allDictionaries );
-  updateNames( cfg.inactiveDictionaries, allDictionaries );
-  updateNames( cfg.groups, allDictionaries );
+  auto dictMap = Dictionary::dictToMap( allDictionaries );
+
+  auto updateGroup = [ &dictMap ]( Config::Group & group ) {
+    for ( auto & dictionary : group.dictionaries ) {
+      const std::string id = dictionary.id.toStdString();
+
+      if ( auto it = dictMap.find( id ); it != dictMap.end() ) {
+        dictionary.name = QString::fromUtf8( it.value()->getName().c_str() );
+      }
+    }
+  };
+
+  updateGroup( cfg.dictionaryOrder );
+  updateGroup( cfg.inactiveDictionaries );
+
+  for ( auto & group : cfg.groups ) {
+    updateGroup( group );
+  }
 }
 
 QIcon iconFromData( const QByteArray & iconData )
