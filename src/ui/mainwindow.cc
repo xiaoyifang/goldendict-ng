@@ -843,7 +843,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   updateSearchPaneAndBar( cfg.preferences.searchInDock );
   ui.searchPane->setVisible( cfg.preferences.searchInDock );
 
-  trayIconUpdateOrInit();
+  QTimer::singleShot( 1000, this, &MainWindow::trayIconUpdateOrInit );
 
   // Update zoomers
   adjustCurrentZoomFactor();
@@ -853,7 +853,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   setAutostart( cfg.preferences.autoStart );
 
   // Initialize global hotkeys
-  installHotKeys();
+  QTimer::singleShot( 2000, this, &MainWindow::installHotKeys );
 
   if ( cfg.preferences.alwaysOnTop ) {
     on_alwaysOnTop_triggered( true );
@@ -865,7 +865,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 
   // makeDictionaries() didn't do deferred init - we do it here, at the end.
-  doDeferredInit( dictionaries );
+  // Use a delay to let the UI breathe first
+  QTimer::singleShot( 3000, this, [ this ]() {
+    doDeferredInit( dictionaries );
+  } );
 
   updateStatusLine();
 
