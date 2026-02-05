@@ -801,26 +801,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 
   // Scanpopup related
-  scanPopup = new ScanPopup( nullptr, cfg, articleNetMgr, history );
-
-  scanPopup->setStyleSheet( styleSheet() );
-
-  connect( scanPopup, &ScanPopup::editGroupRequest, this, &MainWindow::editDictionaries, Qt::QueuedConnection );
-
-  connect( scanPopup, &ScanPopup::sendPhraseToMainWindow, this, [ this ]( const QString & word ) {
-    wordReceived( word );
-  } );
-
-  connect( scanPopup, &ScanPopup::inspectSignal, this, &MainWindow::inspectElement );
-  connect( scanPopup, &ScanPopup::forceAddWordToHistory, this, &MainWindow::forceAddWordToHistory );
-  connect( scanPopup, &ScanPopup::showDictionaryInfo, this, &MainWindow::showDictionaryInfo );
-  connect( scanPopup, &ScanPopup::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
-  connect( scanPopup, &ScanPopup::sendWordToHistory, this, &MainWindow::addWordToHistory );
-  connect( this, &MainWindow::setPopupGroupByName, scanPopup, &ScanPopup::setGroupByName );
-  connect( scanPopup,
-           &ScanPopup::sendWordToFavorites,
-           ui.favoritesPaneWidget,
-           &FavoritesPaneWidget::addRemoveWordInActiveFav );
+  // Deferred initialization until first use or if scanning is enabled
+  if ( cfg.preferences.startWithScanPopupOn ) {
+    ensureScanPopup();
+  }
 
   clipboardListener = clipboardListener::get_impl( this );
   connect( clipboardListener, &BaseClipboardListener::changed, this, &MainWindow::clipboardChange );
@@ -928,6 +912,36 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 }
 
+
+void MainWindow::ensureScanPopup()
+{
+  if ( scanPopup ) {
+    return;
+  }
+
+  // Scanpopup related
+  scanPopup = new ScanPopup( nullptr, cfg, articleNetMgr, history );
+
+  scanPopup->setStyleSheet( styleSheet() );
+
+  connect( scanPopup, &ScanPopup::editGroupRequest, this, &MainWindow::editDictionaries, Qt::QueuedConnection );
+
+  connect( scanPopup, &ScanPopup::sendPhraseToMainWindow, this, [ this ]( const QString & word ) {
+    wordReceived( word );
+  } );
+
+  connect( scanPopup, &ScanPopup::inspectSignal, this, &MainWindow::inspectElement );
+  connect( scanPopup, &ScanPopup::forceAddWordToHistory, this, &MainWindow::forceAddWordToHistory );
+  connect( scanPopup, &ScanPopup::showDictionaryInfo, this, &MainWindow::showDictionaryInfo );
+  connect( scanPopup, &ScanPopup::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
+  connect( scanPopup, &ScanPopup::sendWordToHistory, this, &MainWindow::addWordToHistory );
+  connect( this, &MainWindow::setPopupGroupByName, scanPopup, &ScanPopup::setGroupByName );
+  connect( scanPopup,
+           &ScanPopup::sendWordToFavorites,
+           ui.favoritesPaneWidget,
+           &FavoritesPaneWidget::addRemoveWordInActiveFav );
+}
+
 void MainWindow::prefixMatchUpdated()
 {
   updateMatchResults( false );
@@ -1007,9 +1021,7 @@ void MainWindow::refreshTranslateLine()
 
 void MainWindow::clipboardChange( QClipboard::Mode m )
 {
-  if ( !scanPopup ) {
-    return;
-  }
+  ensureScanPopup();
 
 #if defined( WITH_X11 )
   if ( m == QClipboard::Clipboard ) {
@@ -1420,6 +1432,9 @@ void MainWindow::updateAppearances( const QString & addonStyle,
 
   if ( !css.isEmpty() ) {
     setStyleSheet( css );
+    if ( scanPopup ) {
+      scanPopup->setStyleSheet( css );
+    }
   }
 }
 
@@ -2212,7 +2227,9 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
     }
   }
 
-  scanPopup->refresh();
+  if ( scanPopup ) {
+    scanPopup->refresh();
+  }
   installHotKeys();
 }
 
@@ -2326,7 +2343,9 @@ void MainWindow::editPreferences()
     Config::save( cfg );
   }
 
-  scanPopup->refresh();
+  if ( scanPopup ) {
+    scanPopup->refresh();
+  }
   installHotKeys();
 
   ftsIndexing.setDictionaries( dictionaries );
@@ -3029,7 +3048,8 @@ void MainWindow::hotKeyActivated( int hk )
     GlobalBroadcaster::instance()->is_popup = false;
     toggleMainWindow( false );
   }
-  else if ( scanPopup ) {
+  else {
+    ensureScanPopup();
     GlobalBroadcaster::instance()->is_popup = true;
 #if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
     // When the user requests translation with the Ctrl+C+C hotkey in certain apps
@@ -3119,6 +3139,7 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
     case QSystemTrayIcon::MiddleClick:
       // Middle mouse click on Tray translates selection
       // it is functional like as stardict
+      ensureScanPopup();
       scanPopup->translateWordFromSelection();
       break;
     default:
@@ -3207,7 +3228,9 @@ void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
 
   dictionaryBar.setDictionaryIconSize( getIconSizeLogical() );
 
-  scanPopup->setDictionaryIconSize();
+  if ( scanPopup ) {
+    scanPopup->setDictionaryIconSize();
+  }
 }
 
 void MainWindow::toggleMenuBarTriggered( bool announce )
@@ -3399,7 +3422,9 @@ void MainWindow::on_rescanFiles_triggered()
   updateGroupList();
 
 
-  scanPopup->refresh();
+  if ( scanPopup ) {
+    scanPopup->refresh();
+  }
   installHotKeys();
 
   updateSuggestionList();
@@ -3504,7 +3529,9 @@ void MainWindow::scaleArticlesByCurrentZoomFactor()
     view.setZoomFactor( cfg.preferences.zoomFactor );
   }
 
-  scanPopup->applyZoomFactor();
+  if ( scanPopup ) {
+    scanPopup->applyZoomFactor();
+  }
 }
 
 void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
@@ -3526,7 +3553,8 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
 
   if ( message.left( 15 ) == "translateWord: " ) {
     auto word = message.mid( 15 );
-    if ( ( consoleWindowOnce == "popup" ) && scanPopup ) {
+    if ( consoleWindowOnce == "popup" ) {
+      ensureScanPopup();
       scanPopup->translateWord( word );
     }
     else if ( consoleWindowOnce == "main" ) {
@@ -4351,6 +4379,7 @@ void MainWindow::setGroupByName( const QString & name, bool main_window )
     }
   }
   else {
+    ensureScanPopup();
     emit setPopupGroupByName( name );
   }
 }
