@@ -2356,7 +2356,10 @@ void MainWindow::editPreferences()
   installHotKeys();
 
   ftsIndexing.setDictionaries( dictionaries );
-  ftsIndexing.doIndexing();
+  // Delay indexing to avoid high IO load during startup
+  QTimer::singleShot( 5000, this, [ this ]() {
+    ftsIndexing.doIndexing();
+  } );
 }
 
 void MainWindow::currentGroupChanged( int )
