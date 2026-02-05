@@ -802,8 +802,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // Scanpopup related
   // Deferred initialization until first use or if scanning is enabled
+  // Use a delayed call to avoid blocking the main window's initial show-up
   if ( cfg.preferences.startWithScanPopupOn ) {
-    ensureScanPopup();
+    QTimer::singleShot( 1000, this, &MainWindow::ensureScanPopup );
   }
 
   clipboardListener = clipboardListener::get_impl( this );
