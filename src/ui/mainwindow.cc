@@ -888,7 +888,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     navForward->setIcon( QIcon( ":/icons/previous.svg" ) );
   }
 
-  inspector.reset( new ArticleInspector( this ) );
+  // inspector.reset( new ArticleInspector( this ) ); // Moved to lazy initialization in inspectElement()
 
 #ifdef Q_OS_WIN
   // Regiser and update URL Scheme for windows
@@ -909,7 +909,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   iconSizeActionTriggered( nullptr );
 
   if ( cfg.preferences.checkForNewReleases ) {
-    QTimer::singleShot( 0, this, &MainWindow::checkNewRelease );
+    QTimer::singleShot( 10000, this, &MainWindow::checkNewRelease );
   }
 }
 
@@ -1855,6 +1855,9 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, const QString & name )
 
 void MainWindow::inspectElement( QWebEnginePage * page )
 {
+  if ( !inspector ) {
+    inspector.reset( new ArticleInspector( this ) );
+  }
   inspector->triggerAction( page );
 }
 
