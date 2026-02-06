@@ -2987,7 +2987,7 @@ void MainWindow::toggleMainWindow( bool ensureShow )
 void MainWindow::installHotKeys()
 {
 #if defined( WITH_X11 )
-  if ( !qEnvironmentVariableIsEmpty( "GOLDENDICT_FORCE_WAYLAND" ) || Utils::isWayland() ) {
+  if ( QGuiApplication::platformName() != "xcb" ) {
     return;
   }
 #endif

@@ -341,18 +341,20 @@ ScanPopup::ScanPopup( QWidget * parent,
 #endif
 
 #ifdef WITH_X11
-  scanFlag = new ScanFlag( this );
+  if ( QGuiApplication::platformName() == "xcb" ) {
+    scanFlag = new ScanFlag( this );
 
-  connect( scanFlag, &ScanFlag::requestScanPopup, this, [ this ] {
-    translateWordFromSelection();
-  } );
+    connect( scanFlag, &ScanFlag::requestScanPopup, this, [ this ] {
+      translateWordFromSelection();
+    } );
 
-  // Use delay show to prevent popup from showing up while selection is still in progress
-  // Only certain software has this problem (e.g. Chrome)
-  selectionDelayTimer.setSingleShot( true );
-  selectionDelayTimer.setInterval( cfg.preferences.selectionChangeDelayTimer );
+    // Use delay show to prevent popup from showing up while selection is still in progress
+    // Only certain software has this problem (e.g. Chrome)
+    selectionDelayTimer.setSingleShot( true );
+    selectionDelayTimer.setInterval( cfg.preferences.selectionChangeDelayTimer );
 
-  connect( &selectionDelayTimer, &QTimer::timeout, this, &ScanPopup::translateWordFromSelection );
+    connect( &selectionDelayTimer, &QTimer::timeout, this, &ScanPopup::translateWordFromSelection );
+  }
 #endif
 
   applyZoomFactor();
@@ -447,7 +449,9 @@ void ScanPopup::refresh()
 
   connect( groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
 #ifdef WITH_X11
-  selectionDelayTimer.setInterval( cfg.preferences.selectionChangeDelayTimer );
+  if ( scanFlag ) {
+    selectionDelayTimer.setInterval( cfg.preferences.selectionChangeDelayTimer );
+  }
 #endif
 }
 
