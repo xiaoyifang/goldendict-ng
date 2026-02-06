@@ -243,15 +243,19 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
 int main( int argc, char ** argv )
 {
 #if defined( WITH_X11 )
-  // GoldenDict use lots of X11 functions and it currently cannot work
-  // natively on Wayland. This workaround will force GoldenDict to use
-  // XWayland.
+  // Platform selection: Higher priority to user intention
+  // 1. Respect QT_QPA_PLATFORM if already set.
+  // 2. GOLDENDICT_FORCE_XCB forces Xcb (fallback mode).
+  // 3. GOLDENDICT_FORCE_WAYLAND forces native Wayland.
+  // 4. By default, we let Qt decide (usually native Wayland on Wayland sessions).
+  //    This improves HiDPI support but might affect some X11-specific features.
 
-  if ( qEnvironmentVariableIsEmpty( "GOLDENDICT_FORCE_WAYLAND" ) && !Utils::isWayland() ) {
-    char * xdg_envc     = getenv( "XDG_SESSION_TYPE" );
-    QString xdg_session = xdg_envc ? QString::fromLatin1( xdg_envc ) : QString();
-    if ( !QString::compare( xdg_session, QString( "wayland" ), Qt::CaseInsensitive ) ) {
+  if ( qEnvironmentVariableIsEmpty( "QT_QPA_PLATFORM" ) ) {
+    if ( qEnvironmentVariableIsSet( "GOLDENDICT_FORCE_XCB" ) ) {
       setenv( "QT_QPA_PLATFORM", "xcb", 1 );
+    }
+    else if ( qEnvironmentVariableIsSet( "GOLDENDICT_FORCE_WAYLAND" ) ) {
+      setenv( "QT_QPA_PLATFORM", "wayland", 1 );
     }
   }
 #endif

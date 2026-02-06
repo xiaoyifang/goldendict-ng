@@ -146,7 +146,7 @@ private:
   QFont wordListDefaultFont, translateLineDefaultFont, groupListDefaultFont;
 
 #ifdef WITH_X11
-  ScanFlag * scanFlag;
+  ScanFlag * scanFlag = nullptr;
 #endif
 
   bool mouseEnteredOnce = false;
