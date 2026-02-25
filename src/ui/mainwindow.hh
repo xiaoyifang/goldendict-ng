@@ -172,6 +172,9 @@ private:
   // On macOS, this will be just Fusion.
   QString defaultInterfaceStyle;
 #endif
+  /// Ensures the scan popup is created and connected
+  void ensureScanPopup();
+
   /// Applies Qt stylesheets, use Windows dark palette etc....
   void updateAppearances( const QString & addonStyle,
                           const QString & displayStyle,
