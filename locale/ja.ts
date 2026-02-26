@@ -889,10 +889,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>フォルダを追加</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>すべてクリア</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>お気に入り:</translation>
     </message>
@@ -901,16 +897,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>選択したすべてのアイテムが削除されます。続行しますか？</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>すべての項目をクリア</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>すべての項目をクリアしてもよろしいですか?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>このフォルダを単語の追加/削除アクションのターゲットにします。</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>クリア</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>お気に入りをクリア</translation>
     </message>
   </context>
   <context>
@@ -1112,6 +1112,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>すべてのグループを削除してもよろしいですか?</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>新しい辞書グループを追加</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>グループの追加(&amp;A)</translation>
     </message>
   </context>
   <context>
@@ -2622,6 +2630,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Lock Panels</source>
       <translation>ロックパネル</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation>履歴を消去</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>すべての履歴アイテムを消去してもよろしいですか？</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3295,42 +3311,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>他のサイトからのコンテンツの読み込みを無効にする (ほとんどの広告を非表示にします)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>一部のサイトでは、HTTPヘッダーを介してGoldenDictを検出し、リクエストをブロックします。
-このオプションを有効にして問題を回避します。</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>HTTPヘッダーでGoldenDictを識別しない</translation>
-    </message>
-    <message>
-      <source>Maximum network cache size:</source>
-      <translation>ネットワークキャッシュの最大サイズ:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>GoldenDict&apos;s ネットワークキャッシュの最大ディスク容量
-%1
-に設定されている場合、ネットワークのディスクキャッシュは無効になります。</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>このオプションを有効にすると、GoldenDict
-は終了時にネットワークキャッシュをディスクから消去します。</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>終了時にネットワークキャッシュをクリア</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3506,10 +3486,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>設定フォルダ内のgd_log.txtにデバッグメッセージを保存します</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>別タブでウェブサイト辞書を開く</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>缶(&amp;C)</translation>
     </message>
@@ -3520,6 +3496,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>JavaScriptダイアログを抑制する</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>ウェブサイト辞書を別タブで開く</translation>
     </message>
   </context>
   <context>
@@ -3771,6 +3751,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>WARNING: %1</source>
       <translation>警告: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>定義</translation>
     </message>
   </context>
   <context>
@@ -4241,6 +4225,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>個別のタブでウェブサイトを開くときにのみ利用できます。ファイルパス（設定ディレクトリまたは絶対ディレクトリからの相対）または直接スクリプトコンテンツにすることができます。</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>&quot;別タブ&quot; オプションでウェブサイト辞書を開く設定で有効になっていないため、この列は無効です。</translation>
     </message>
   </context>
   <context>

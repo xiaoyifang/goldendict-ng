@@ -3,8 +3,9 @@
 #include "common/globalbroadcaster.hh"
 #include <QTimer>
 
-ArticleWebPage::ArticleWebPage( QObject * parent ):
-  QWebEnginePage{ parent }
+ArticleWebPage::ArticleWebPage( QObject * parent, bool isPopup_ ):
+  QWebEnginePage( parent ),
+  isPopup( isPopup_ )
 {
 }
 bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationType type, bool isMainFrame )
@@ -18,7 +19,9 @@ bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationTyp
     auto [ valid, word ] = Utils::Url::getQueryWord( resUrl );
     urlQuery.addQueryItem( "word", word );
     urlQuery.addQueryItem( "group", lastReq.group );
-    urlQuery.addQueryItem( "muted", lastReq.mutedDicts );
+    if ( lastReq.isPopup ) {
+      urlQuery.addQueryItem( "popup", "1" );
+    }
     url.setQuery( urlQuery );
 
     // Use singleShot to avoid synchronous navigation request within acceptNavigationRequest,
@@ -30,7 +33,14 @@ bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationTyp
   //save current gdlookup's values.
   if ( url.scheme() == "gdlookup" ) {
     lastReq.group      = Utils::Url::queryItemValue( url, "group" );
-    lastReq.mutedDicts = Utils::Url::queryItemValue( url, "muted" );
+    // Use the parameter if present, otherwise fall back to our own field
+    QString popupParam = Utils::Url::queryItemValue( url, "popup" );
+    if ( !popupParam.isEmpty() ) {
+      lastReq.isPopup = popupParam == "1";
+    }
+    else {
+      lastReq.isPopup = isPopup;
+    }
   }
 
   if ( type == QWebEnginePage::NavigationTypeLinkClicked ) {

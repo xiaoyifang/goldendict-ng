@@ -81,22 +81,21 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation type="unfinished">
-    &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
-      &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
-        &lt;ul&gt;
-          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
-          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/section&gt;
-      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
-      &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
-      &lt;/footer&gt;
-    &lt;/div&gt;</translation>
+      <translation>&lt;div class=&quot;welcome-container&quot;&gt;
+&lt;h3&gt;GoldenDict-ng에 오신 것을 환영합니다!&lt;/h3&gt;
+&lt;section&gt;
+&lt;h4&gt;시작하기:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;사전 파일을 추가하고, 위키피디아와 같은 온라인 소스를 설정하고, 그룹으로 정리하려면 &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;사전 편집&lt;/span&gt;&lt;span&gt;사전&lt;/span&gt;&lt;/span&gt;으로 이동하세요.&lt;/li&gt;
+&lt;li&gt;설정이 완료되면 이 창이나 &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;스캔 팝업&lt;/a&gt;을 사용하여 다른 응용 프로그램에서 단어를 검색할 수 있습니다.&lt;/li&gt;
+&lt;li&gt;프로그램을 사용자 지정하려면 &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;환경 설정 편집&lt;/span&gt;&lt;span&gt;설정&lt;/span&gt;&lt;/span&gt;을 살펴보세요. 모든 설정에는 툴팁이 있으므로, 이해가 안 되는 부분이 있으면 툴팁을 꼭 읽어보세요.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;p&gt;추가적인 도움이 필요하거나 질문, 또는 제안 사항이 있으시면 프로그램의 &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;포럼&lt;/a&gt;과 &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;웹사이트&lt;/a&gt;를 방문해 주세요.&lt;/p&gt;
+&lt;footer class=&quot;welcome-footer&quot;&gt;
+&lt;small&gt;Konstantin Isakov의 GoldenDict 원본(c) 2008-2013을 기반으로 합니다. GoldenDict-NG 커뮤니티에서 유지 관리 및 개발합니다. GPLv3 이상 라이선스가 적용됩니다.&lt;/small&gt;
+&lt;/footer&gt;
+&lt;/div&gt;</translation>
     </message>
   </context>
   <context>
@@ -286,15 +285,15 @@
     </message>
     <message>
       <source>&amp;Copy sound to clipboard</source>
-      <translation type="unfinished">&amp;Copy sound to clipboard</translation>
+      <translation>&amp;소리를 클립보드에 복사</translation>
     </message>
     <message>
       <source>Failed to copy sound</source>
-      <translation type="unfinished">Failed to copy sound</translation>
+      <translation>소리 복사에 실패했습니다</translation>
     </message>
     <message>
       <source>Failed to write complete audio data</source>
-      <translation type="unfinished">Failed to write complete audio data</translation>
+      <translation>완전한 오디오 데이터를 기록하는 데 실패했습니다.</translation>
     </message>
     <message>
       <source>Sound copied to clipboard</source>
@@ -757,7 +756,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Schedule for reindex</source>
-      <translation type="unfinished">Schedule for reindex</translation>
+      <translation>재색인 일정</translation>
     </message>
     <message>
       <source>Cancel schedule reindex</source>
@@ -765,15 +764,15 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
-      <translation type="unfinished">The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</translation>
+      <translation>사전의 색인 재구축이 예정되어 있습니다. 다음 애플리케이션 재시작 시 색인이 다시 생성될 예정입니다.</translation>
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>표시 이름 변경</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>새로운 표시 이름:</translation>
     </message>
   </context>
   <context>
@@ -890,10 +889,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>폴더 추가</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>모두 지우기</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>즐겨찾기:</translation>
     </message>
@@ -902,16 +897,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>선택한 모든 항목이 삭제됩니다. 계속하다?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>모든 항목 지우기</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>모든 항목을 지우시겠습니까?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>이 폴더를 단어 추가/제거 및 작업의 대상으로 만듭니다.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation type="unfinished">Clear</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation type="unfinished">Clear Favorites</translation>
     </message>
   </context>
   <context>
@@ -1113,6 +1112,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>모든 그룹을 삭제하시겠습니까?</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation type="unfinished">Add a new dictionary group</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>그룹 추가(&amp;A)</translation>
     </message>
   </context>
   <context>
@@ -2623,6 +2630,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Lock Panels</source>
       <translation type="unfinished">Lock Panels</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation type="unfinished">Clear History</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2747,11 +2762,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>표시 이름 변경</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>새로운 표시 이름:</translation>
     </message>
   </context>
   <context>
@@ -3297,42 +3312,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>사이트 외부 자료 허용 안함(대부분의 광고를 차단함)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>일부 사이트는 HTTP 헤더를 통해서 GoldenDict을 탐지하여 요청을 블록합니다.
-이런 문제를 우회하려면 옵션을 선택하십시오.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>HTTP 헤더에 GoldenDict을 표시하지 않음</translation>
-    </message>
-    <message>
-      <source>Maximum network cache size:</source>
-      <translation>최대 네트워크 캐시 크기:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>GoldenDict가 차지하는 최대 디스크 공간&apos;네트워크 캐시 in
-%1
-으로 설정하면 네트워크 디스크 캐시가 비활성화됩니다.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>이 옵션이 활성화되면 GoldenDict
-은 종료하는 동안 디스크에서 네트워크 캐시를 지웁니다.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>종료 시 네트워크 캐시 지우기</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3507,10 +3486,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>config 폴더의 gd_log.txt에 디버그 메시지를 저장합니다</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation type="unfinished">Open website dictionary in seperate tab</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation type="unfinished">S&amp;can</translation>
     </message>
@@ -3521,6 +3496,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation type="unfinished">Suppress JavaScript dialogs</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation type="unfinished">Open website dictionary in separate tab</translation>
     </message>
   </context>
   <context>
@@ -3672,15 +3651,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
-      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
+      <translation>URL에서 "%GDWORD%"는 검색하려는 단어로 대체됩니다.</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+      <translation>완전한 HTML(*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>단일 HTML(*.html *.htm)</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
@@ -3688,15 +3667,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>MIME HTML(*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
-      <translation type="unfinished">Save Article As</translation>
+      <translation>다른 이름으로 항목 저장</translation>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>기사 저장 완료</translation>
     </message>
     <message>
       <source>Error</source>
@@ -3704,15 +3683,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation type="unfinished">Can&apos;t save article: %1</translation>
+      <translation>항목을 저장할 수 없습니다: %1</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
+      <translation>PDF 저장 완료</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
+      <translation>PDF 저장 실패</translation>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
@@ -3772,6 +3751,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>WARNING: %1</source>
       <translation>경고: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation type="unfinished">Definition</translation>
     </message>
   </context>
   <context>
@@ -4250,7 +4233,11 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
-      <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
+      <translation>웹사이트를 별도의 탭에서 열었을 때만 사용 가능합니다. 파일 경로(설정 디렉터리를 기준으로 한 상대 경로 또는 절대 경로) 또는 스크립트 내용을 직접 지정할 수 있습니다.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation type="unfinished">This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</translation>
     </message>
   </context>
   <context>

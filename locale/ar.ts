@@ -889,10 +889,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>أضف المجلد</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Clear All</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>المفضلة:</translation>
     </message>
@@ -901,16 +897,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>سيتم حذف جميع العناصر المحددة. يكمل؟</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Clear All Items</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Are you sure you want to clear all items?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>مسح</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>مسح المفضلة</translation>
     </message>
   </context>
   <context>
@@ -1112,6 +1112,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>هل أنت متأكد من إزالة كل المجموعات؟</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>إضافة مجموعة قاموس جديدة</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>أ&amp;ضف مجموعة</translation>
     </message>
   </context>
   <context>
@@ -2622,6 +2630,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Lock Panels</source>
       <translation>تأمين اللوحات</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation>مسح المحفوظات</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>هل أنت متأكد من أنك تريد مسح جميع عناصر التاريخ؟</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3297,42 +3313,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>امنع تحميل المحتوى من مواقع أخرى (يخفي أغلب الإعلانات)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>بعض المواقع تكتشف القاموس الذهبي من خلال ترويسات HTTP وتمنع الطلبات.
-مكّن هذا الخيار للالتفاف حول المشكلة.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>لا تعرّف القاموس الذهبي في ترويسات HTTP</translation>
-    </message>
-    <message>
-      <source>Maximum network cache size:</source>
-      <translation>الحد الأقصى لحجم ذاكرة التخزين المؤقت للشبكة:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>الحد الأقصى لمساحة القرص الذي يشغله GoldenDict&apos;s للشبكة ذاكرة التخزين المؤقت في
-%1
-إذا تم تعيين إلى 0 سيتم تعطيل ذاكرة التخزين المؤقت لقرص الشبكة.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>عند تمكين هذا الخيار ، يقوم GoldenDict
-بمسح ذاكرة التخزين المؤقت للشبكة من القرص أثناء الخروج.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>امسح ذاكرة التخزين المؤقت للشبكة عند الخروج</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3508,10 +3488,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>فتح قاموس الموقع في علامة تبويب منفصلة</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>امسح</translation>
     </message>
@@ -3522,6 +3498,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>قمع مربعات حوار جافا سكريبت</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>فتح قاموس الموقع في علامة تبويب منفصلة</translation>
     </message>
   </context>
   <context>
@@ -3705,7 +3685,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation type="unfinished">Can&apos;t save article: %1</translation>
+      <translation>تعذّر حفظ المقالة: %1</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
@@ -3773,6 +3753,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>WARNING: %1</source>
       <translation>تحذير: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>التعريف</translation>
     </message>
   </context>
   <context>
@@ -4249,6 +4233,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>متاح فقط عند فتح المواقع في علامات تبويب منفصلة. يمكن أن يكون مسار الملف (نسبة إلى مجلد التكوين أو مطلق) أو محتوى البرنامج النصي المباشر.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>هذا العمود معطل لأن &quot;فتح قاموس الموقع في علامة تبويب منفصلة&quot; لم يتم تمكينه في التفضيلات.</translation>
     </message>
   </context>
   <context>

@@ -892,10 +892,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Добавить папку</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Очистить все</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Избранное:</translation>
     </message>
@@ -904,16 +900,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Все выбранные элементы будут удалены. Продолжить?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Очистить все элементы</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Вы уверены, что хотите очистить все элементы?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>Очистить</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>Очистить избранное</translation>
     </message>
   </context>
   <context>
@@ -1115,6 +1115,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Удалить все группы?</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Добавить новую группу словарей</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>&amp;Добавить</translation>
     </message>
   </context>
   <context>
@@ -2626,6 +2634,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Lock Panels</source>
       <translation>Блокировать панели</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation>Очистить историю</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>Вы уверены, что хотите очистить все элементы истории?</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3303,41 +3319,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>Запретить загрузку информации с других сайтов (убирает большую часть рекламы)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Некоторые сайты опознают GoldenDict по заголовкам HTTP и блокируют запросы.
-Включите эту опцию, чтобы обойти проблему.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Не указывать GoldenDict в заголовках HTTP</translation>
-    </message>
-    <message>
-      <source>Maximum network cache size:</source>
-      <translation>Максимальный размер кэша:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Максимальный объём, занимаемый сетевым кэшем GoldenDict в папке
-%1
-Установка параметра в 0 означает отключение кэширования</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation>MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Если опция включена,  GoldenDict удаляет содержимое кэша при выходе из программы</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Очищать кэш при выходе</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3515,10 +3496,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Сохранить отладочные сообщения в gd_log.txt в папке конфигурации</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>Открыть словарь сайта в отдельной вкладке</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>&amp;Сканировать</translation>
     </message>
@@ -3529,6 +3506,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>Отключить диалоги JavaScript</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>Открыть словарь сайта в отдельной вкладке</translation>
     </message>
   </context>
   <context>
@@ -3780,6 +3761,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>WARNING: %1</source>
       <translation>ВНИМАНИЕ: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>Определение</translation>
     </message>
   </context>
   <context>
@@ -4258,6 +4243,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>Доступно только при открытии сайтов в отдельных вкладках. Может быть путь к файлу (относительно конфигурационного каталога или абсолютного) или прямым содержанием скрипта.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>Этот столбец отключен, потому что &quot;Открыть словарь сайта на отдельной вкладке&quot; параметр не включен в Настройках.</translation>
     </message>
   </context>
   <context>

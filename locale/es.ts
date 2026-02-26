@@ -890,10 +890,6 @@ entre ortografía clásica y escolar en cirílico)</translation>
       <translation>Añadir carpeta</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Limpiar todo</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Favoritos:</translation>
     </message>
@@ -902,16 +898,20 @@ entre ortografía clásica y escolar en cirílico)</translation>
       <translation>Todos los elementos seleccionados serán eliminados. ¿Continuar?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Borrar todos los elementos</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>¿Está seguro de que desea borrar todos los elementos?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>Claro</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>Borrar favoritos</translation>
     </message>
   </context>
   <context>
@@ -1113,6 +1113,14 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>¿Esta seguro que quiere eliminar todos los grupos?</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Añadir un nuevo grupo de diccionarios</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>Añad&amp;ir grupo</translation>
     </message>
   </context>
   <context>
@@ -2623,6 +2631,14 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
       <source>Lock Panels</source>
       <translation>Bloquear paneles</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation>Borrar historial</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>¿Está seguro que desea borrar todos los elementos del historial?</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3297,42 +3313,6 @@ que está accediendo. Si algunos sitios web dejan de funcionar, intente desactiv
       <translation>No permitir la descarga de contenido desde otros sitios (oculta la mayoría de los anuncios)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Algunos sitios web detectan GoldenDict mediante las cabeceras HTTP y bloquean las peticiones.
-Active esta opción para evitar el problema.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Impedir la identificación de GoldenDict a partir de las cabeceras HTTP</translation>
-    </message>
-    <message>
-      <source>Maximum network cache size:</source>
-      <translation>Tamaño máximo de caché de red:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Espacio máximo en disco ocupado por la caché de red de GoldenDict en
-%1
-Si se establece en 0, la memoria caché del disco de red se desactivará.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Cuando esta opción está activada, GoldenDict
-borra su caché de red del disco durante la salida.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Borrar caché de red al salir</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3508,10 +3488,6 @@ de diccionarios Stardict, Babylon y GLS</translation>
       <translation>Guardar mensajes de depuración en gd_log.txt en la carpeta de configuración</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>Abrir diccionario de sitio web en pestaña separada</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>&amp;Escanear</translation>
     </message>
@@ -3522,6 +3498,10 @@ de diccionarios Stardict, Babylon y GLS</translation>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>Suprimir diálogos de JavaScript</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>Abrir diccionario del sitio web en una pestaña separada</translation>
     </message>
   </context>
   <context>
@@ -3773,6 +3753,10 @@ de diccionarios Stardict, Babylon y GLS</translation>
     <message>
       <source>WARNING: %1</source>
       <translation>ADVERTENCIA: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>Definición</translation>
     </message>
   </context>
   <context>
@@ -4248,6 +4232,10 @@ Puede encontrar la lista completa de idiomas disponibles &lt;a href=&quot;https:
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>Sólo disponible al abrir sitios web en pestañas separadas. Puede ser una ruta de archivo (relativa al directorio de configuración o absoluto) o el contenido de script directo.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>Esta columna está desactivada porque &quot;Abrir diccionario del sitio web en la pestaña separada&quot; opción no está habilitada en Preferencias.</translation>
     </message>
   </context>
   <context>

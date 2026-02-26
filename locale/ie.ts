@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
+      <translation>Anki: impossibil a crear un carte sin un parol</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -890,10 +890,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation>Adjunter un fólder</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Clear All</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Preferet:</translation>
     </message>
@@ -902,16 +898,20 @@ between classic and school orthography in cyrillic)</translation>
       <translation>Omni selectet elementes va esser removet. Continuar?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Clear All Items</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Are you sure you want to clear all items?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation type="unfinished">Clear</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation type="unfinished">Clear Favorites</translation>
     </message>
   </context>
   <context>
@@ -1113,6 +1113,14 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Esque vu vole remover omni gruppes?</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation type="unfinished">Add a new dictionary group</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>&amp;Adjunter</translation>
     </message>
   </context>
   <context>
@@ -2623,6 +2631,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Lock Panels</source>
       <translation type="unfinished">Lock Panels</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation type="unfinished">Clear History</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3298,42 +3314,6 @@ you are browsing. If some site breaks because of this, try disabling this.</tran
       <translation>Ne cargar contenete de altri sites (cela pluparte de reclams)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Do not identify GoldenDict in HTTP headers</translation>
-    </message>
-    <message>
-      <source>Maximum network cache size:</source>
-      <translation>Maximum network cache size:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> Mio</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Clear network cache on exit</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3510,10 +3490,6 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation type="unfinished">Open website dictionary in seperate tab</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation type="unfinished">S&amp;can</translation>
     </message>
@@ -3524,6 +3500,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation type="unfinished">Suppress JavaScript dialogs</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation type="unfinished">Open website dictionary in separate tab</translation>
     </message>
   </context>
   <context>
@@ -3667,7 +3647,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
-      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
+      <translation>Force the word to be translated in the mainwindow.</translation>
     </message>
     <message>
       <source>Website Url:</source>
@@ -3679,11 +3659,11 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+      <translation>Complete Html (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>Single Html (*.html *.htm)</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
@@ -3691,15 +3671,15 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
-      <translation type="unfinished">Save Article As</translation>
+      <translation>Gardar li articul quam</translation>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>Save article complete</translation>
     </message>
     <message>
       <source>Error</source>
@@ -3775,6 +3755,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>WARNING: %1</source>
       <translation>WARNING: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation type="unfinished">Definition</translation>
     </message>
   </context>
   <context>
@@ -4250,6 +4234,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation type="unfinished">This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</translation>
     </message>
   </context>
   <context>

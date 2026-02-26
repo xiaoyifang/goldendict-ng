@@ -890,10 +890,6 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
       <translation>Aggiungi cartella</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Cancella tutto</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Preferiti:</translation>
     </message>
@@ -902,16 +898,20 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
       <translation>Tutti gli elementi selezionati verranno eliminati. Continuare?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Cancella tutti gli elementi</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Vuoi davvero cancellare tutti gli elementi?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>Pulisci</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>Cancella Preferiti</translation>
     </message>
   </context>
   <context>
@@ -1113,6 +1113,14 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Sei sicuro di volere rimuovere ogni gruppo?</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Aggiungi un nuovo gruppo di dizionari</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>&amp;Aggiungi gruppo</translation>
     </message>
   </context>
   <context>
@@ -2624,6 +2632,14 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
       <source>Lock Panels</source>
       <translation>Blocca Pannelli</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation>Cancella Cronologia</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>Sei sicuro di voler cancellare tutti gli elementi della cronologia?</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3298,42 +3314,6 @@ Se alcuni siti dovessero bloccarsi, provare a disabilitare questa casella.</tran
       <translation>non permettere il caricamento dei contenuti da altri siti (nasconde la maggioranza dei messaggi pubblicitari)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Alcuni siti web rilevano GoldenDict via intestazione HTTP e ne bloccano le richieste.
-Spuntare questa casella per raggirare il problema.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>non consentire che GoldenDict venga identificato nelle intestazioni HTTP</translation>
-    </message>
-    <message>
-      <source>Maximum network cache size:</source>
-      <translation>Dimensione massima cache di rete:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Spazio massimo su disco occupato da GoldenDict&apos;s cache di rete in
-%1
-Se impostato a 0 la cache su disco di rete sarà disabilitata.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Quando questa opzione è abilitata, GoldenDict
-cancella la cache di rete dal disco durante l'uscita.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Cancella la cache di rete all'uscita</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3508,10 +3488,6 @@ dai dizionari di Stardict, Babylon e GLS</translation>
       <translation>Salva i messaggi di debug su gd_log.txt nella cartella di configurazione</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>Apri il dizionario del sito web in una scheda separata</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>S&amp;can</translation>
     </message>
@@ -3522,6 +3498,10 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>Sopprimi le finestre JavaScript</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>Apri il dizionario del sito in una scheda separata</translation>
     </message>
   </context>
   <context>
@@ -3773,6 +3753,10 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <source>WARNING: %1</source>
       <translation>ATTENZIONE: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>Definizione</translation>
     </message>
   </context>
   <context>
@@ -4248,6 +4232,10 @@ L'elenco completo delle lingue disponibili può essere trovato &lt;a href=&quot;
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>Disponibile solo quando si aprono siti web in schede separate. Può essere un percorso di file (relativo alla cartella di configurazione o assoluto) o un contenuto di script diretto.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>Questa colonna è disabilitata perché l'opzione &quot;Apri dizionario sito web in una scheda separata&quot; non è abilitata nelle Preferenze.</translation>
     </message>
   </context>
   <context>

@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
+      <translation>Anki: не мога да създам карта без дума</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -890,10 +890,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Добави папка</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Изчистване на всички</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Любими:</translation>
     </message>
@@ -902,16 +898,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Всички избрани елементи ще бъдат изтрити. Да продължи?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Изчистване на всички елементи</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Сигурни ли сте, че искате да изчистите всички елементи?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation type="unfinished">Clear</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation type="unfinished">Clear Favorites</translation>
     </message>
   </context>
   <context>
@@ -1113,6 +1113,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Сигурни ли сте, че желаете да премахнете всички групи?</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation type="unfinished">Add a new dictionary group</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>&amp;Добавяне на група</translation>
     </message>
   </context>
   <context>
@@ -2623,6 +2631,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Lock Panels</source>
       <translation type="unfinished">Lock Panels</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation type="unfinished">Clear History</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3298,42 +3314,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>Забрани зареждане на съдържание от други сайтове (скрива повечето реклами)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Някой сайтове идентифицират GoldenDict чрез HTTP хедери и блокират заявките.
-Включването на опцията може да реши проблема.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Не посочвай GoldenDict в заглавия HTTP</translation>
-    </message>
-    <message>
-      <source>Maximum network cache size:</source>
-      <translation>Максимален размер на мрежовия кеш:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Максимално дисково пространство, заето от мрежовия кеш на GoldenDict
-%1
-Ако е зададено на 0, кешът на мрежовия диск ще бъде деактивиран.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Когато тази опция е активирана, GoldenDict
-изчиства своя мрежов кеш от диска по време на излизане.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Изчистване на мрежовия кеш при излизане</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3509,10 +3489,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation type="unfinished">Open website dictionary in seperate tab</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation type="unfinished">S&amp;can</translation>
     </message>
@@ -3523,6 +3499,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation type="unfinished">Suppress JavaScript dialogs</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation type="unfinished">Open website dictionary in separate tab</translation>
     </message>
   </context>
   <context>
@@ -3666,7 +3646,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
-      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
+      <translation>Принудете думата да бъде преведена в главния прозорец.</translation>
     </message>
     <message>
       <source>Website Url:</source>
@@ -3678,11 +3658,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+      <translation>Пълен Html (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>Един Html (*.html *.htm)</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
@@ -3690,15 +3670,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
-      <translation type="unfinished">Save Article As</translation>
+      <translation>Запазване на статията като</translation>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>Запазването на статията е завършено</translation>
     </message>
     <message>
       <source>Error</source>
@@ -3710,11 +3690,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
+      <translation>Save PDF complete</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
+      <translation>Save PDF failed</translation>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
@@ -3774,6 +3754,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>WARNING: %1</source>
       <translation>ПРЕДУПРЕЖДЕНИЕ: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation type="unfinished">Definition</translation>
     </message>
   </context>
   <context>
@@ -4253,6 +4237,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation type="unfinished">This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</translation>
     </message>
   </context>
   <context>

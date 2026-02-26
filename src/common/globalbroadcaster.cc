@@ -16,7 +16,7 @@ GlobalBroadcaster::GlobalBroadcaster( QObject * parent ):
   QStringList whiteUrlHosts = { "googleapis.com", "gstatic.com" };
 
   for ( auto & host : std::as_const( whiteUrlHosts ) ) {
-    whitelist.insert( host );
+    hostWhitelist.insert( host );
   }
 }
 
@@ -40,29 +40,39 @@ Config::Preferences * GlobalBroadcaster::getPreference() const
   return config ? &config->preferences : nullptr;
 }
 
-void GlobalBroadcaster::addWhitelist( QString host )
+void GlobalBroadcaster::addHostWhitelist( QString host )
 {
-  whitelist.insert( host );
+  hostWhitelist.insert( host );
 }
 
-bool GlobalBroadcaster::existedInWhitelist( QString host ) const
+void GlobalBroadcaster::addRefererWhitelist( QString host )
+{
+  refererWhitelist.insert( host );
+}
+
+bool existedInWhitelistInternal( const QSet< QString > & whitelist, QString host )
 {
   for ( const QString & item : whitelist ) {
-    // Exact match - e.g. "www.example.com" matches "www.example.com"
     if ( host == item ) {
       return true;
     }
-
-    // Extract base domain from both host and item for comparison
     QString urlBaseDomain  = Utils::Url::extractBaseDomain( host );
     QString itemBaseDomain = Utils::Url::extractBaseDomain( item );
-
-    // Compare base domains
     if ( urlBaseDomain == itemBaseDomain ) {
       return true;
     }
   }
-  return false; // No match found
+  return false;
+}
+
+bool GlobalBroadcaster::existedInHostWhitelist( QString host ) const
+{
+  return existedInWhitelistInternal( hostWhitelist, host );
+}
+
+bool GlobalBroadcaster::existedInRefererWhitelist( QString host ) const
+{
+  return existedInWhitelistInternal( refererWhitelist, host );
 }
 
 

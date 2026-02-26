@@ -10,9 +10,6 @@ WebUrlRequestInterceptor::WebUrlRequestInterceptor( QObject * p ):
 void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info )
 {
   auto url = info.requestUrl();
-  if ( url.scheme().startsWith( Config::WEBSITE_PROXY_PREFIX ) ) {
-    url.setScheme( url.scheme().mid( 7 ) );
-  }
 
   // When content is loaded inside GoldenDict's article view, we might face CORS issues.
   // Setting Origin and Referer headers can help bypass some CORS restrictions.
@@ -20,15 +17,21 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
     info.setHttpHeader( "origin", Utils::Url::getSchemeAndHost( url ).toUtf8() );
     info.setHttpHeader( "referer", url.url().toUtf8() );
   }
+
   if ( GlobalBroadcaster::instance()->getPreference()->disallowContentFromOtherSites && Utils::isExternalLink( url ) ) {
     // Block file:// links to prevent local file access
     if ( url.scheme() == "file" ) {
       info.block( true );
       return;
     }
-    auto hostBase = Utils::Url::extractBaseDomain( url.host() );
-    if ( GlobalBroadcaster::instance()->existedInWhitelist( hostBase ) ) {
-      //whitelist url does not block
+
+    if ( info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeMainFrame ) {
+      return;
+    }
+    if ( GlobalBroadcaster::instance()->existedInHostWhitelist( Utils::Url::extractBaseDomain( url.host() ) )
+         || GlobalBroadcaster::instance()->existedInRefererWhitelist(
+           Utils::Url::extractBaseDomain( info.firstPartyUrl().host() ) ) ) {
+      // Target host or referring site is in respective whitelist - do not block
       return;
     }
     if ( info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeImage

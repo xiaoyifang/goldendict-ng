@@ -872,10 +872,6 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Clear All</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Favorites:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -884,15 +880,19 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Clear All Items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Are you sure you want to clear all items?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Make this folder the target of adding/removing words actions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear Favorites</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2612,6 +2612,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <source>Lock Panels</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Clear History</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to clear all history items?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3270,38 +3278,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Do not identify GoldenDict in HTTP headers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Maximum network cache size:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source> MiB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clear network cache on exit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3472,10 +3448,6 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open website dictionary in seperate tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>S&amp;can</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3485,6 +3457,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Suppress JavaScript dialogs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open website dictionary in separate tab</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3736,6 +3712,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <name>ScanPopup</name>
     <message>
         <source>WARNING: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Definition</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4203,6 +4183,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
         <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

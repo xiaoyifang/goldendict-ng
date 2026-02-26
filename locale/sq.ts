@@ -889,10 +889,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Shto dosje</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Pastro të gjitha</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Të preferuarat:</translation>
     </message>
@@ -901,16 +897,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Të gjithë artikujt e zgjedhur do të fshihen. Të vazhdohet?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Pastro të gjithë artikujt</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Jeni i sigurt që dëshironi të pastroni të gjithë artikujt?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation type="unfinished">Clear</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation type="unfinished">Clear Favorites</translation>
     </message>
   </context>
   <context>
@@ -1112,6 +1112,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Jeni i sigurt për heqjen e të gjitha grupeve?</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation type="unfinished">Add a new dictionary group</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>&amp;Shtoj grupin</translation>
     </message>
   </context>
   <context>
@@ -2622,6 +2630,14 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
       <source>Lock Panels</source>
       <translation type="unfinished">Lock Panels</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation type="unfinished">Clear History</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3293,42 +3309,6 @@ faqe shfaq probleme prej kësaj, çaktivizojeni.</translation>
       <translation>Mohoj përmbajtjen nga faqet e tjera (fsheh shumicën e reklamave)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Disa faqe e njohin GoldenDict me anë të kokëve HTTP, dhe i bllokojnë kërkesat.
-Ky opsion e anashkalon problemin.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Nuk identifikoj GoldenDict në kokët HTTP</translation>
-    </message>
-    <message>
-      <source>Maximum network cache size:</source>
-      <translation>Madhësia maksimale e memories së rrjetit:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Hapësira maksimale e diskut të zënë nga cache-i i rrjetit të GoldenDict në
-%1
-Nëse vendoset në 0 cache-i i diskut të rrjetit do të çaktivizohet.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Kur ky opsion aktivizohet, GoldenDict
-fshin cache-in e rrjetit të tij nga disku gjatë daljes.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Pastro memorien e rrjetit në dalje</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3503,10 +3483,6 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <translation>Ruani mesazhet e korrigjimit në gd_log.txt në dosjen e konfigurimit</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation type="unfinished">Open website dictionary in seperate tab</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation type="unfinished">S&amp;can</translation>
     </message>
@@ -3517,6 +3493,10 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation type="unfinished">Suppress JavaScript dialogs</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation type="unfinished">Open website dictionary in separate tab</translation>
     </message>
   </context>
   <context>
@@ -3660,7 +3640,7 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
-      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
+      <translation>Detyrojeni fjalën të përkthehet në dritaren kryesore.</translation>
     </message>
     <message>
       <source>Website Url:</source>
@@ -3672,11 +3652,11 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+      <translation>Plotësoni Html (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>Html e vetme (*.html *.htm)</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
@@ -3684,15 +3664,15 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
-      <translation type="unfinished">Save Article As</translation>
+      <translation>Ruaj artikullin si</translation>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>Ruaj artikullin i plotë</translation>
     </message>
     <message>
       <source>Error</source>
@@ -3700,15 +3680,15 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation type="unfinished">Can&apos;t save article: %1</translation>
+      <translation>Nuk ruan artikullin: %1</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
+      <translation>Save PDF complete</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
+      <translation>Save PDF failed</translation>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
@@ -3768,6 +3748,10 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>WARNING: %1</source>
       <translation>PARALAJMËRIM: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation type="unfinished">Definition</translation>
     </message>
   </context>
   <context>
@@ -4242,6 +4226,10 @@ Lista e plotë e gjuhëve të disponueshme mund të gjendet &lt;a href=&quot;htt
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation type="unfinished">This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</translation>
     </message>
   </context>
   <context>

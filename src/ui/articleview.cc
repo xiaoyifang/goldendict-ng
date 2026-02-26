@@ -111,7 +111,8 @@ ArticleView::ArticleView( QWidget * parent,
   translateLine( translateLine_ )
 {
   // setup GUI
-  webview        = new ArticleWebView( this );
+  webview = new ArticleWebView( this );
+  webview->setPopup( popupView );
   ftsSearchPanel = new FtsSearchPanel( this );
   searchPanel    = new SearchPanel( this );
   searchPanel->hide();
@@ -324,6 +325,10 @@ void ArticleView::showDefinition( const QString & word,
     contexts.erase( pos );
   }
 
+  if ( popupView ) {
+    reqQuery.addQueryItem( "popup", "1" );
+  }
+
   if ( contexts.size() ) {
     QBuffer buf;
     buf.open( QIODevice::WriteOnly );
@@ -332,12 +337,6 @@ void ArticleView::showDefinition( const QString & word,
     buf.close();
 
     reqQuery.addQueryItem( "contexts", QString::fromLatin1( buf.buffer().toBase64() ) );
-  }
-
-  QString mutedDicts = getMutedForGroup( group );
-
-  if ( !mutedDicts.isEmpty() ) {
-    reqQuery.addQueryItem( "muted", mutedDicts );
   }
 
 
@@ -957,53 +956,6 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
   return false;
 }
 
-QString ArticleView::getMutedForGroup( unsigned group )
-{
-  auto mutedDicts = getMutedDictionaries( group );
-  if ( !mutedDicts.empty() ) {
-    return mutedDicts.join( "," );
-  }
-
-  return {};
-}
-
-QStringList ArticleView::getMutedDictionaries( unsigned group )
-{
-  if ( dictionaryBarToggled && dictionaryBarToggled->isChecked() ) {
-    // Dictionary bar is active -- mute the muted dictionaries
-    const Instances::Group * groupInstance = dictionaryGroup->getGroupById( group );
-
-    // Find muted dictionaries for current group
-    const Config::Group * grp = cfg.getGroup( group );
-    const Config::DictionarySets * mutedDictionaries;
-    if ( group == GroupId::AllGroupId ) {
-      mutedDictionaries = popupView ? &cfg.popupMutedDictionaries : &cfg.mutedDictionaries;
-    }
-    else {
-      mutedDictionaries = grp ? ( popupView ? &grp->popupMutedDictionaries : &grp->mutedDictionaries ) : nullptr;
-    }
-    if ( !mutedDictionaries ) {
-      return {};
-    }
-
-    QStringList mutedDicts;
-
-    if ( groupInstance ) {
-      for ( const auto & dictionarie : groupInstance->dictionaries ) {
-        QString id = QString::fromStdString( dictionarie->getId() );
-
-        if ( mutedDictionaries->contains( id ) ) {
-          mutedDicts.append( id );
-        }
-      }
-    }
-
-    return mutedDicts;
-  }
-
-  return {};
-}
-
 void ArticleView::linkHovered( const QString & link )
 {
   QString msg;
@@ -1327,10 +1279,14 @@ ResourceToSaveHandler * ArticleView::saveResource( const QUrl & url, const QStri
 
 void ArticleView::updateMutedContents()
 {
+  if ( isWebsiteView ) {
+    return;
+  }
+
   QUrl currentUrl = webview->url();
 
   if ( currentUrl.scheme() != "gdlookup" ) {
-    return; // Weird url -- do nothing
+    return;
   }
 
   unsigned group = getGroup( currentUrl );
@@ -1339,22 +1295,9 @@ void ArticleView::updateMutedContents()
     return; // No group in url -- do nothing
   }
 
-  QString mutedDicts = getMutedForGroup( group );
-
-  if ( Utils::Url::queryItemValue( currentUrl, "muted" ) != mutedDicts ) {
-    // The list has changed -- update the url
-
-    Utils::Url::removeQueryItem( currentUrl, "muted" );
-
-    if ( mutedDicts.size() ) {
-      Utils::Url::addQueryItem( currentUrl, "muted", mutedDicts );
-    }
-
-    load( currentUrl );
-
-    //QApplication::setOverrideCursor( Qt::WaitCursor );
-    webview->setCursor( Qt::WaitCursor );
-  }
+  // We simply reload the article. ArticleNetworkAccessManager will use the updated muted settings.
+  load( currentUrl );
+  webview->setCursor( Qt::WaitCursor );
 }
 
 bool ArticleView::canGoBack()
@@ -1393,6 +1336,11 @@ void ArticleView::syncBackgroundColorWithCfgDarkReader() const
 QString ArticleView::getCurrentWord()
 {
   return currentWord;
+}
+
+void ArticleView::setCurrentWord( const QString & word )
+{
+  currentWord = word;
 }
 
 void ArticleView::back()
@@ -2070,6 +2018,7 @@ void ArticleView::onJsActiveArticleChanged( const QString & id )
 
 void ArticleView::doubleClicked( QPoint pos )
 {
+  GlobalBroadcaster::instance()->is_popup.store( popupView );
   // We might want to initiate translation of the selected word
   audioPlayer->stop();
   if ( cfg.preferences.doubleClickTranslates ) {
@@ -2081,31 +2030,15 @@ void ArticleView::doubleClicked( QPoint pos )
     }
 
     emit sendWordToInputLine( selectedText );
+
+    if ( popupView ) {
+      return;
+    }
+
     // Do some checks to make sure there's a sensible selection indeed
     if ( Folding::applyWhitespaceOnly( selectedText.toStdU32String() ).size() && selectedText.size() < 60 ) {
-      // Initiate translation
-      Qt::KeyboardModifiers kmod = QApplication::keyboardModifiers();
-      if ( kmod & ( Qt::ControlModifier | Qt::ShiftModifier ) ) { // open in new tab
-        emit showDefinitionInNewTab( selectedText, getGroup( webview->url() ), getCurrentArticle(), Contexts() );
-      }
-      else {
-        const QUrl & ref = webview->url();
-
-        auto groupId = getGroup( ref ); // Try to get group ID from the current article URL
-
-        // If the group can't be determined from the URL (e.g. on internal or
-        // external pages), fall back to the currently selected group in the UI.
-        if ( groupId == GroupId::NoGroupId || isInternalPage() ) {
-          groupId = currentGroupId;
-        }
-        if ( Utils::Url::hasQueryItem( ref, "dictionaries" ) ) {
-          QStringList dictsList = Utils::Url::queryItemValue( ref, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
-          showDefinition( selectedText, dictsList, groupId, false );
-        }
-        else {
-          showDefinition( selectedText, groupId, getCurrentArticle() );
-        }
-      }
+      // Send signal to MainWindow to handle translation
+      emit translateSelectedText( selectedText, webview->url(), getCurrentArticle() );
     }
   }
 }

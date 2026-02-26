@@ -58,6 +58,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   openSearchAction( this ),
   wordFinder( this ),
   dictionaryBar( this, configEvents, cfg.preferences.maxDictionaryRefsInContextMenu ),
+  articleNetMgr( articleNetMgr ),
   hideTimer( this )
 {
   // Init UI
@@ -83,7 +84,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   foundBar->setAllowedAreas( Qt::LeftToolBarArea | Qt::RightToolBarArea );
 
   // UI style
-  searchBar->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Maximum );
+  searchBar->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::Maximum );
   searchBar->setMovable( false );
   toolBar->setFloatable( false );
   dictionaryBar.setFloatable( false );
@@ -107,8 +108,19 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   mainStatusBar = new MainStatusBar( this );
 
+  tabWidget = new MainTabWidget( this );
+  tabWidget->setTabsClosable( true );
+  tabWidget->setHideSingleTab( true );
+  tabWidget->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::Expanding );
+  connect( tabWidget, &QTabWidget::tabCloseRequested, this, [ this ]( int index ) {
+    if ( index > 0 ) {
+      auto widget = tabWidget->widget( index );
+      tabWidget->removeTab( index );
+      widget->deleteLater();
+    }
+  } );
 
-  definition = new ArticleView( this,
+  definition = new ArticleView( tabWidget,
                                 articleNetMgr,
                                 true,
                                 cfg,
@@ -116,7 +128,21 @@ ScanPopup::ScanPopup( QWidget * parent,
                                 dictionaryBar.toggleViewAction(),
                                 cfg.lastPopupGroupId );
 
+  tabWidget->addTab( definition, tr( "Definition" ) );
+  tabWidget->tabBar()->setTabButton( 0, QTabBar::RightSide, nullptr );
+  tabWidget->tabBar()->setTabButton( 0, QTabBar::LeftSide, nullptr );
+
   resize( 247, 400 );
+
+  // Set maximum width based on screen size
+  QScreen * screen = QGuiApplication::primaryScreen();
+  if ( screen ) {
+    int maxWidth = screen->availableGeometry().width() * 0.8; // 80% of screen width
+    setMaximumWidth( maxWidth );
+  }
+
+  translateBox->setMaximumWidth( 200 );
+  groupList->setMaximumWidth( 200 );
 
   connect( definition, &ArticleView::inspectSignal, this, &ScanPopup::inspectElementWhenPinned );
   connect( definition, &ArticleView::forceAddWordToHistory, this, &ScanPopup::forceAddWordToHistory );
@@ -142,7 +168,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   translateLineDefaultFont = translateBox->font();
   groupListDefaultFont     = groupList->font();
 
-  setCentralWidget( definition );
+  setCentralWidget( tabWidget );
 
   translateBox->translateLine()->installEventFilter( this );
   definition->installEventFilter( this );
@@ -279,6 +305,17 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( definition, &ArticleView::statusBarMessage, this, &ScanPopup::showStatusBarMessage );
 
   connect( definition, &ArticleView::titleChanged, this, &ScanPopup::titleChanged );
+  connect( definition, &ArticleView::activeArticleChanged, this, &ScanPopup::activeArticleChanged );
+  connect( definition, &ArticleView::sendWordToInputLine, this, &ScanPopup::translateWord );
+
+  connect( GlobalBroadcaster::instance(),
+           &GlobalBroadcaster::websiteDictionarySignal,
+           this,
+           &ScanPopup::openWebsiteInNewTab );
+
+  connect( tabWidget, &QTabWidget::currentChanged, this, [ this ]( int ) {
+    updateBackForwardButtons();
+  } );
 
 #ifdef Q_OS_MAC
   connect( &MouseOver::instance(), &MouseOver::hovered, this, &ScanPopup::handleInputWord );
@@ -304,18 +341,20 @@ ScanPopup::ScanPopup( QWidget * parent,
 #endif
 
 #ifdef WITH_X11
-  scanFlag = new ScanFlag( this );
+  if ( QGuiApplication::platformName() == "xcb" ) {
+    scanFlag = new ScanFlag( this );
 
-  connect( scanFlag, &ScanFlag::requestScanPopup, this, [ this ] {
-    translateWordFromSelection();
-  } );
+    connect( scanFlag, &ScanFlag::requestScanPopup, this, [ this ] {
+      translateWordFromSelection();
+    } );
 
-  // Use delay show to prevent popup from showing up while selection is still in progress
-  // Only certain software has this problem (e.g. Chrome)
-  selectionDelayTimer.setSingleShot( true );
-  selectionDelayTimer.setInterval( cfg.preferences.selectionChangeDelayTimer );
+    // Use delay show to prevent popup from showing up while selection is still in progress
+    // Only certain software has this problem (e.g. Chrome)
+    selectionDelayTimer.setSingleShot( true );
+    selectionDelayTimer.setInterval( cfg.preferences.selectionChangeDelayTimer );
 
-  connect( &selectionDelayTimer, &QTimer::timeout, this, &ScanPopup::translateWordFromSelection );
+    connect( &selectionDelayTimer, &QTimer::timeout, this, &ScanPopup::translateWordFromSelection );
+  }
 #endif
 
   applyZoomFactor();
@@ -327,6 +366,14 @@ void ScanPopup::onActionTriggered()
   if ( action != nullptr ) {
     auto dictId = action->data().toString();
     qDebug() << "Action triggered:" << dictId;
+
+    if ( auto otherView = findArticleViewByDictId( dictId ) ) {
+      tabWidget->setCurrentWidget( otherView );
+      return;
+    }
+
+    tabWidget->setCurrentWidget( definition );
+
     definition->jumpToDictionary( dictId, true );
   }
 }
@@ -402,7 +449,9 @@ void ScanPopup::refresh()
 
   connect( groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
 #ifdef WITH_X11
-  selectionDelayTimer.setInterval( cfg.preferences.selectionChangeDelayTimer );
+  if ( scanFlag ) {
+    selectionDelayTimer.setInterval( cfg.preferences.selectionChangeDelayTimer );
+  }
 #endif
 }
 
@@ -434,7 +483,11 @@ void ScanPopup::inspectElementWhenPinned( QWebEnginePage * page )
 
 void ScanPopup::applyZoomFactor() const
 {
-  definition->setZoomFactor( cfg.preferences.zoomFactor );
+  for ( int i = 0; i < tabWidget->count(); ++i ) {
+    if ( auto view = qobject_cast< ArticleView * >( tabWidget->widget( i ) ) ) {
+      view->setZoomFactor( cfg.preferences.zoomFactor );
+    }
+  }
 }
 
 Qt::WindowFlags ScanPopup::unpinnedWindowFlags() const
@@ -459,6 +512,7 @@ void ScanPopup::editGroupRequested()
 
 void ScanPopup::translateWordFromClipboard( QClipboard::Mode m )
 {
+  GlobalBroadcaster::instance()->is_popup = true;
   QString subtype = QStringLiteral( "plain" );
   QString str     = QApplication::clipboard()->text( subtype, m );
   qDebug( "Translate from clipboard %d -> %s", qToUnderlying( m ), str.toStdString().c_str() );
@@ -608,7 +662,7 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
   showTranslationFor( pendingWord );
 }
 
-QString ScanPopup::elideInputWord()
+QString ScanPopup::elideInputWord() const
 {
   return pendingWord.size() > 32 ? pendingWord.mid( 0, 32 ) + "..." : pendingWord;
 }
@@ -669,8 +723,7 @@ void ScanPopup::updateSuggestionList( const QString & text )
   if ( !req.size() ) {
     // An empty request always results in an empty result
     wordFinder.cancel();
-
-
+    translateBox->setNoResults( false );
     return;
   }
 
@@ -690,6 +743,8 @@ void ScanPopup::showTranslationFor( const QString & word ) const
   unsigned groupId = groupList->getCurrentGroup();
   definition->showDefinition( word, groupId );
   definition->focus();
+  // definition is the first tab
+  tabWidget->setTabText( 0, elideInputWord() );
 }
 
 const vector< sptr< Dictionary::Class > > & ScanPopup::getActiveDicts()
@@ -934,9 +989,7 @@ void ScanPopup::prefixMatchFinished()
       }
 
       // Reset the noResults mark if it's on right now
-      auto translateLine = translateBox->translateLine();
-
-      Utils::Widget::setNoResultColor( translateLine, _results.isEmpty() );
+      translateBox->setNoResults( _results.isEmpty() );
       translateBox->setModel( _results );
     }
   }
@@ -1007,7 +1060,9 @@ void ScanPopup::focusTranslateLine()
 
 void ScanPopup::stopAudio() const
 {
-  definition->stopSound();
+  if ( auto view = qobject_cast< ArticleView * >( tabWidget->currentWidget() ) ) {
+    view->stopSound();
+  }
 }
 
 void ScanPopup::dictionaryBar_visibility_changed( bool visible )
@@ -1140,18 +1195,24 @@ void ScanPopup::switchExpandOptionalPartsMode()
 
 void ScanPopup::updateBackForwardButtons() const
 {
-  ui.goBackButton->setEnabled( definition->canGoBack() );
-  ui.goForwardButton->setEnabled( definition->canGoForward() );
+  if ( auto view = qobject_cast< ArticleView * >( tabWidget->currentWidget() ) ) {
+    ui.goBackButton->setEnabled( view->canGoBack() );
+    ui.goForwardButton->setEnabled( view->canGoForward() );
+  }
 }
 
 void ScanPopup::goBackButton_clicked() const
 {
-  definition->back();
+  if ( auto view = qobject_cast< ArticleView * >( tabWidget->currentWidget() ) ) {
+    view->back();
+  }
 }
 
 void ScanPopup::goForwardButton_clicked() const
 {
-  definition->forward();
+  if ( auto view = qobject_cast< ArticleView * >( tabWidget->currentWidget() ) ) {
+    view->forward();
+  }
 }
 
 void ScanPopup::setDictionaryIconSize()
@@ -1204,11 +1265,96 @@ void ScanPopup::alwaysOnTopClicked( bool checked )
   }
 }
 
-void ScanPopup::titleChanged( ArticleView *, const QString & title ) const
+void ScanPopup::titleChanged( ArticleView * view, const QString & title ) const
 {
-
   // Set icon for "Add to Favorites" button
   ui.sendWordToFavoritesButton->setIcon( isWordPresentedInFavorites( title ) ? blueStarIcon : starIcon );
+
+  if ( view->isWebsite() ) {
+    int index = tabWidget->indexOf( view );
+    if ( index != -1 ) {
+      tabWidget->setTabText( index, title );
+      tabWidget->setTabToolTip( index, title );
+    }
+  }
+}
+
+void ScanPopup::activeArticleChanged( const ArticleView * view, const QString & id )
+{
+  if ( view != tabWidget->currentWidget() || view->isWebsite() ) {
+    return;
+  }
+}
+
+ArticleView * ScanPopup::findArticleViewByDictId( const QString & dictId )
+{
+  if ( cfg.preferences.openWebsiteInNewTab ) {
+    for ( int i = 0; i < tabWidget->count(); i++ ) {
+      auto * view = qobject_cast< ArticleView * >( tabWidget->widget( i ) );
+      if ( view && view->isWebsite() && view->getActiveArticleId() == dictId ) {
+        return view;
+      }
+    }
+  }
+  return nullptr;
+}
+
+void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId, bool isPopup, QString word )
+{
+  if ( !isVisible() ) {
+    return;
+  }
+
+  if ( !isPopup ) {
+    return;
+  }
+
+  // Look for an existing tab with the same dictionary id
+  for ( int i = 0; i < tabWidget->count(); ++i ) {
+    if ( auto view = qobject_cast< ArticleView * >( tabWidget->widget( i ) ) ) {
+      if ( view->isWebsite() && view->getActiveArticleId() == dictId ) {
+        // Set the current word for the existing website view
+        if ( !word.isEmpty() ) {
+          view->setCurrentWord( word );
+        }
+        view->load( url, name );
+        tabWidget->setTabText( i, name );
+        return;
+      }
+    }
+  }
+
+  auto view = new ArticleView( tabWidget,
+                               articleNetMgr,
+                               true,
+                               cfg,
+                               translateBox->translateLine(),
+                               dictionaryBar.toggleViewAction(),
+                               groupList->getCurrentGroup() );
+
+  view->setWebsite( true );
+  view->setWebsiteHost( QUrl( url ).host() );
+  view->setActiveArticleId( dictId );
+  // Set the current word for the new website view
+  if ( !word.isEmpty() ) {
+    view->setCurrentWord( word );
+  }
+
+  // Connect vital signals
+  connect( view, &ArticleView::inspectSignal, this, &ScanPopup::inspectElementWhenPinned );
+  connect( view, &ArticleView::forceAddWordToHistory, this, &ScanPopup::forceAddWordToHistory );
+  connect( this, &ScanPopup::closeMenu, view, &ArticleView::closePopupMenu );
+  connect( view, &ArticleView::sendWordToHistory, this, &ScanPopup::sendWordToHistory );
+  connect( view, &ArticleView::typingEvent, this, &ScanPopup::typingEvent );
+  connect( view, &ArticleView::statusBarMessage, this, &ScanPopup::showStatusBarMessage );
+  connect( view, &ArticleView::pageLoaded, this, &ScanPopup::pageLoaded );
+  connect( view, &ArticleView::titleChanged, this, &ScanPopup::titleChanged );
+  connect( view, &ArticleView::sendWordToInputLine, this, &ScanPopup::translateWord );
+
+  int index = tabWidget->addTab( view, name );
+  tabWidget->setCurrentIndex( index );
+
+  view->load( url, name );
 }
 
 bool ScanPopup::isWordPresentedInFavorites( const QString & word ) const

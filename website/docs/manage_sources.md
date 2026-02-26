@@ -55,6 +55,18 @@ The query word can be inserted into the URL using the following placeholders:
 | %GDWORD%               | UTF-8                                   |
 
 
+### Open in New Tab
+
+By default, website dictionaries are embedded directly into the article view using an iframe. If you prefer to open a website in a separate tab within GoldenDict-ng:
+
+1.  Go to **Preferences -> Interface**.
+2.  Enable **Open websites in a new tab**.
+
+When this option is enabled:
+-   Websites will load in their own dedicated tabs instead of inside the article definition page.
+-   [Website Scripting](./topic_website_scripting.md) can be used to customize these pages.
+-   The layout is often cleaner as it bypasses iframe-related styling issues.
+
 ## DICT servers
 
 Here you can add servers which use the DICT protocol. To add such a server, you should set its URL, name for the dictionaries list, server bases list, search strategies list, and set a mark in the "Enabled" column. If the bases list is empty, GoldenDict will use all server bases. If the search strategies list is empty, GoldenDict will use the "prefix" strategy (comparing the first part of the word).

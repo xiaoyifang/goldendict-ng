@@ -157,7 +157,7 @@ MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( const std::u32string & s
   qDebug( "wiki request begin" );
   QUrl reqUrl( url + "/api.php?action=query&list=allpages&aplimit=40&format=xml" );
 
-  GlobalBroadcaster::instance()->addWhitelist( reqUrl.host() );
+  GlobalBroadcaster::instance()->addHostWhitelist( reqUrl.host() );
 
   Utils::Url::addQueryItem( reqUrl, "apprefix", QString::fromStdU32String( str ).replace( '+', "%2B" ) );
   Utils::Url::addQueryItem( reqUrl, "lang", lang );

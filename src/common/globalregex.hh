@@ -68,6 +68,7 @@ bool containHtmlEntity( const std::string & text );
 } // namespace Html
 
 const static QRegularExpression accentMark( R"(\p{M})", QRegularExpression::UseUnicodePropertiesOption );
+const static QRegularExpression accentPunc( R"(\p{M}\p{P})", QRegularExpression::UseUnicodePropertiesOption );
 //contain unicode space mark,invisible, and punctuation
 const static QRegularExpression markPuncSpace( R"([\p{M}\p{Z}\p{C}\p{P}])",
                                                QRegularExpression::UseUnicodePropertiesOption );
@@ -75,5 +76,7 @@ const static QRegularExpression markPuncSpace( R"([\p{M}\p{Z}\p{C}\p{P}])",
 const static QRegularExpression markSpace( R"([\p{M}\p{Z}])", QRegularExpression::UseUnicodePropertiesOption );
 
 const static QRegularExpression whiteSpace( "\\s+" );
+
+extern const QRegularExpression qtWebEngineUserAgent;
 
 } // namespace RX

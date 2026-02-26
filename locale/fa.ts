@@ -890,10 +890,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>افزودن پوشه</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>پاک کردن همه</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>پسندیده‌ها:</translation>
     </message>
@@ -902,16 +898,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>تمام موارد برگزیده حذف خواهند شد. ادامه می‌دهید؟</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>پاک کردن همه موارد</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>آیا مطمئن هستید که می خواهید همه موارد را پاک کنید؟</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation type="unfinished">Clear</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation type="unfinished">Clear Favorites</translation>
     </message>
   </context>
   <context>
@@ -1113,6 +1113,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>آیا شما از حذف همه گروه‌ها اطمینان دارید؟</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation type="unfinished">Add a new dictionary group</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>&amp;افزودن گروه</translation>
     </message>
   </context>
   <context>
@@ -2623,6 +2631,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Lock Panels</source>
       <translation type="unfinished">Lock Panels</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation type="unfinished">Clear History</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3297,42 +3313,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>بارگیری محتوا از دیگر پایگاه‌ها را می‌بندد (بیش‌تر آگهی‌ها را پنهان می‌کند)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>برخی پایگاه‌ها گلدن‌دیگت را از سرآیند HTTP می‌شناسند و درخواست‌ها
-را می‌بندند. این گزینه را به‌کار اندازید تا مشکل از بین برود.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>گلدن‌دیکت را در سرآیند HTTP نمایان نکن</translation>
-    </message>
-    <message>
-      <source>Maximum network cache size:</source>
-      <translation>حداکثر اندازه کش شبکه:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>حداکثر فضای دیسک اشغال شده توسط حافظه پنهان شبکه GoldenDict در
-%1
-اگر روی 0 تنظیم شود، کش دیسک شبکه غیرفعال می شود.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>هنگامی که این گزینه فعال است، GoldenDict
-حافظه پنهان شبکه خود را در هنگام خروج از دیسک پاک می کند.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>کش شبکه را در هنگام خروج پاک کنید</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3508,10 +3488,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation type="unfinished">Open website dictionary in seperate tab</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation type="unfinished">S&amp;can</translation>
     </message>
@@ -3522,6 +3498,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation type="unfinished">Suppress JavaScript dialogs</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation type="unfinished">Open website dictionary in separate tab</translation>
     </message>
   </context>
   <context>
@@ -3665,7 +3645,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
-      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
+      <translation>مجبور کنید کلمه را در پنجره اصلی ترجمه کنید.</translation>
     </message>
     <message>
       <source>Website Url:</source>
@@ -3677,11 +3657,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+      <translation>Html کامل (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>Html تکی (*.html *.htm)</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
@@ -3689,15 +3669,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
-      <translation type="unfinished">Save Article As</translation>
+      <translation>ذخیره بند به‌عنوان</translation>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>ذخیره مقاله کامل</translation>
     </message>
     <message>
       <source>Error</source>
@@ -3705,15 +3685,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation type="unfinished">Can&apos;t save article: %1</translation>
+      <translation>نمی‌تواند بند: %1 را ذخیره کند</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
+      <translation>Save PDF complete</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
+      <translation>Save PDF failed</translation>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
@@ -3773,6 +3753,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>WARNING: %1</source>
       <translation>هشدار: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation type="unfinished">Definition</translation>
     </message>
   </context>
   <context>
@@ -4248,6 +4232,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation type="unfinished">This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</translation>
     </message>
   </context>
   <context>

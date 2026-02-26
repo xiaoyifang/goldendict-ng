@@ -890,10 +890,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Map toevoegen</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Alles wissen</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Favorieten:</translation>
     </message>
@@ -902,16 +898,20 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Alle geselecteerde items worden verwijderd. Doorgaan?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Alle items wissen</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Weet u zeker dat u alle items wilt wissen?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>Verwijderen</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>Favorieten wissen</translation>
     </message>
   </context>
   <context>
@@ -1113,6 +1113,14 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Weet u zeker dat u alle groepen wilt verwijderen?</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Een nieuwe woordenboekgroep toevoegen</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>Groep &amp;toevoegen</translation>
     </message>
   </context>
   <context>
@@ -2623,6 +2631,14 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <source>Lock Panels</source>
       <translation>Panelen vergrendelen</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation>Geschiedenis verwijderen</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>Weet u zeker dat u alle geschiedenis items wilt wissen?</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3297,42 +3313,6 @@ onjuist functioneert moet u dit mogelijk uitschakelen.</translation>
       <translation>Inhoud van andere sites blokkeren (verbergt de meeste reclame)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Sommige websites detecteren GoldenDict met behulp van HTTP-headers
-en blokkeren de aanvragen. Selecteer deze optie om dit te voorkomen.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>GoldenDict-ng niet identificeren in HTTP-headers</translation>
-    </message>
-    <message>
-      <source>Maximum network cache size:</source>
-      <translation>Maximale netwerkcache grootte:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Maximale schijfruimte ingenomen door de netwerkcache van GoldenDict in
-%1
-Indien ingesteld op 0, wordt de cache van de netwerkschijf uitgeschakeld.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Als deze optie is ingeschakeld, verwijdert GoldenDict
-zijn netwerkcache van schijf tijdens het afsluiten.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Wis netwerkcache bij afsluiten</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3507,10 +3487,6 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Debug berichten opslaan in gd_log.txt in de configuratie map</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>Open het website-woordenboek in apart tabblad</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>&amp;Kan</translation>
     </message>
@@ -3521,6 +3497,10 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>Onderdruk JavaScript dialogen</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>Open het website-woordenboek in apart tabblad</translation>
     </message>
   </context>
   <context>
@@ -3772,6 +3752,10 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>WARNING: %1</source>
       <translation>WAARSCHUWING: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>Definitie</translation>
     </message>
   </context>
   <context>
@@ -4247,6 +4231,10 @@ De volledige lijst met beschikbare talen vindt u &lt;a href=&quot;https://lingua
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>Alleen beschikbaar bij het openen van websites op afzonderlijke tabbladen. Kan een bestandspad zijn (relatief aan configuratie-map of absolute) of directe script-inhoud.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>Deze kolom is uitgeschakeld omdat &quot;Open het websitewoordenboek in apart tabblad&quot; optie niet is ingeschakeld in Voorkeuren.</translation>
     </message>
   </context>
   <context>

@@ -26,7 +26,7 @@ enum {
 /// Applies the folding algorithm to each character in the given string,
 /// making another one as a result.
 std::u32string apply( const std::u32string &, bool preserveWildcards = false );
-
+std::string applyForIndex( const QString & in );
 /// Applies only simple case folding algorithm. Since many dictionaries have
 /// different case style, we interpret words differing only by case as synonyms.
 std::u32string applySimpleCaseOnly( const std::u32string & );

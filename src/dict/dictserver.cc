@@ -184,7 +184,7 @@ class DictServerDictionary: public Dictionary::Class
   QStringList serverDatabases;
   DictServerState state;
   QMutex mutex;
-  QTcpSocket socket;
+  QTcpSocket * socket;
   QString msgId;
 
 public:
@@ -197,7 +197,8 @@ public:
     Dictionary::Class( id, vector< string >() ),
     url( url_ ),
     icon( icon_ ),
-    langId( 0 )
+    langId( 0 ),
+    socket( nullptr )
   {
 
     dictionaryName = name_;
@@ -216,27 +217,36 @@ public:
     if ( strategies.isEmpty() ) {
       strategies.append( "prefix" );
     }
+  }
+
+  void deferredInit() override
+  {
+    if ( socket )
+      return;
+
+    socket = new QTcpSocket( this );
+
     QUrl serverUrl( url );
     quint16 port = serverUrl.port( DefaultPort );
     QString reply;
-    socket.connectToHost( serverUrl.host(), port );
-    connect( &socket, &QTcpSocket::connected, this, [ this ]() {
+    socket->connectToHost( serverUrl.host(), port );
+    connect( socket, &QTcpSocket::connected, this, [ this ]() {
       //initialize the description.
       QString req = QString( "SHOW DB\r\n" );
-      socket.write( req.toUtf8() );
+      socket->write( req.toUtf8() );
       state = DictServerState::DB;
     } );
 
     connect( this, &DictServerDictionary::finishDatabase, this, [ this ]() {
-      socket.write( QByteArray( "CLIENT GoldenDict\r\n" ) );
+      socket->write( QByteArray( "CLIENT GoldenDict\r\n" ) );
     } );
 
-    connect( &socket, &QTcpSocket::errorOccurred, this, []( QAbstractSocket::SocketError error ) {
+    connect( socket, &QTcpSocket::errorOccurred, this, []( QAbstractSocket::SocketError error ) {
       qDebug() << "socket error message: " << error;
     } );
-    connect( &socket, &QTcpSocket::readyRead, this, [ this ]() {
+    connect( socket, &QTcpSocket::readyRead, this, [ this ]() {
       const QMutexLocker _( &mutex );
-      QByteArray reply = socket.readLine();
+      QByteArray reply = socket->readLine();
       qDebug() << "received:" << reply;
       if ( state == DictServerState::DB ) {
 
@@ -249,14 +259,14 @@ public:
           // Read databases
           int x = 0;
           for ( ; x < count; x++ ) {
-            reply = socket.readLine();
+            reply = socket->readLine();
 
             if ( reply.isEmpty() ) {
               return;
             }
             reply = reply.trimmed();
 
-            qDebug().noquote() << "receive db:" << reply;
+            qDebug() << "receive db:" << reply;
 
             if ( reply[ 0 ] == '.' ) {
               state = DictServerState::DB_DATA_FINISHED;
@@ -278,7 +288,7 @@ public:
       else if ( state == DictServerState::DB_DATA ) {
         while ( !reply.isEmpty() ) {
 
-          qDebug().noquote() << "receive db:" << reply;
+          qDebug() << "receive db:" << reply;
           if ( reply[ 0 ] == '.' ) {
             state = DictServerState::DB_DATA_FINISHED;
             emit finishDatabase();
@@ -291,7 +301,7 @@ public:
             serverDatabases.append( reply );
           }
 
-          reply = socket.readLine();
+          reply = socket->readLine();
         }
       }
     } );
@@ -299,7 +309,10 @@ public:
 
   ~DictServerDictionary() override
   {
-    disconnectFromServer( socket );
+    if ( socket ) {
+      disconnectFromServer( *socket );
+      delete socket;
+    }
   }
 
 

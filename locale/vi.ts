@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
+      <translation>Anki: không thể tạo thẻ mà không có từ nào</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -889,10 +889,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Thêm thư mục</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Xóa tất cả</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>yêu thích:</translation>
     </message>
@@ -901,16 +897,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Tất cả các mục đã chọn sẽ bị xóa. Tiếp tục?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Xóa tất cả các mục</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Bạn có chắc chắn muốn xóa tất cả các mục không?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation type="unfinished">Clear</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation type="unfinished">Clear Favorites</translation>
     </message>
   </context>
   <context>
@@ -1112,6 +1112,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Bạn có muốn xóa hết các nhóm?</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation type="unfinished">Add a new dictionary group</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>Thê&amp;m nhóm</translation>
     </message>
   </context>
   <context>
@@ -2622,6 +2630,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Lock Panels</source>
       <translation type="unfinished">Lock Panels</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation type="unfinished">Clear History</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3294,42 +3310,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>Không cho phép tải nội dung từ các trang khác (tắt các quảng cáo)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Một vài trang mạng nhận ra Từ điển Vàng thông qua phần đầu giao thức HTTP
-và chặn truy vấn. Bật tính năng này để không chèn định danh vào truy vấn HTTP.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Không định danh Từ điển Vàng trong phần đầu giao thức HTTP</translation>
-    </message>
-    <message>
-      <source>Maximum network cache size:</source>
-      <translation>Kích thước bộ đệm mạng tối đa:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Dung lượng ổ đĩa tối đa do bộ đệm mạng của GoldenDict chiếm trong
-%1
-Nếu được đặt thành 0, bộ đệm đĩa mạng sẽ bị tắt.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Khi tùy chọn này được bật, GoldenDict
-sẽ xóa bộ đệm mạng của nó khỏi đĩa trong khi thoát.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Xóa bộ đệm mạng khi thoát</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3503,10 +3483,6 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <translation>Lưu thông điệp gỡ lỗi vào gd_log.txt trong thư mục cấu hình</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation type="unfinished">Open website dictionary in seperate tab</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation type="unfinished">S&amp;can</translation>
     </message>
@@ -3517,6 +3493,10 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation type="unfinished">Suppress JavaScript dialogs</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation type="unfinished">Open website dictionary in separate tab</translation>
     </message>
   </context>
   <context>
@@ -3660,7 +3640,7 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
-      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
+      <translation>Buộc dịch từ trong cửa sổ chính.</translation>
     </message>
     <message>
       <source>Website Url:</source>
@@ -3672,11 +3652,11 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+      <translation>Hoàn thành Html (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>Html đơn (*.html *.htm)</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
@@ -3684,15 +3664,15 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
-      <translation type="unfinished">Save Article As</translation>
+      <translation>Lưu Bài viết như</translation>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>Lưu bài viết hoàn tất</translation>
     </message>
     <message>
       <source>Error</source>
@@ -3700,15 +3680,15 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation type="unfinished">Can&apos;t save article: %1</translation>
+      <translation>Không thể lưu Bài viết: %1</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
+      <translation>Save PDF complete</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
+      <translation>Save PDF failed</translation>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
@@ -3768,6 +3748,10 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>WARNING: %1</source>
       <translation>CẢNH BÁO: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation type="unfinished">Definition</translation>
     </message>
   </context>
   <context>
@@ -4242,6 +4226,10 @@ Có thể tìm thấy danh sách đầy đủ các ngôn ngữ khả dụng &lt;
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation type="unfinished">This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</translation>
     </message>
   </context>
   <context>

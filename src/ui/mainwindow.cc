@@ -12,6 +12,7 @@
 #include "edit_dictionaries.hh"
 #include "dict/loaddictionaries.hh"
 #include "preferences.hh"
+#include "globalregex.hh"
 #include "about.hh"
 #include "mruqmenu.hh"
 #include "gestures.hh"
@@ -157,11 +158,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   history( cfg_.preferences.maxStringsInHistory, cfg_.maxHeadwordSize ),
   dictionaryBar( this, configEvents, cfg.preferences.maxDictionaryRefsInContextMenu ),
   articleMaker( dictionaries, groupInstances, cfg.preferences ),
-  articleNetMgr( this,
-                 dictionaries,
-                 articleMaker,
-                 cfg.preferences.disallowContentFromOtherSites,
-                 cfg.preferences.hideGoldenDictHeader ),
+  articleNetMgr( this, dictionaries, articleMaker, cfg.preferences.disallowContentFromOtherSites ),
   dictNetMgr( this ),
   audioPlayerFactory(
     cfg.preferences.useInternalPlayer, cfg.preferences.internalPlayerBackend, cfg.preferences.audioPlaybackProgram ),
@@ -193,11 +190,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( localScheme.toLatin1(), localSchemeHandler );
   }
 
-  iframeSchemeHandler = new IframeSchemeHandler( this );
-  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( ( Config::WEBSITE_PROXY_PREFIX + "http" ).toUtf8(),
-                                                                iframeSchemeHandler );
-  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( ( Config::WEBSITE_PROXY_PREFIX + "https" ).toUtf8(),
-                                                                iframeSchemeHandler );
 
   QStringList localSchemes = { "gdau", "gico", "qrcx", "bres", "gdprg", "gdvideo", "gdtts" };
   resourceSchemeHandler    = new ResourceSchemeHandler( articleNetMgr, this );
@@ -207,11 +199,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   QWebEngineProfile::defaultProfile()->setUrlRequestInterceptor( new WebUrlRequestInterceptor( this ) );
 
-  if ( !cfg.preferences.hideGoldenDictHeader ) {
-    QWebEngineProfile::defaultProfile()->setHttpUserAgent( QWebEngineProfile::defaultProfile()->httpUserAgent()
-                                                           + " GoldenDict/WebEngine" );
-  }
 
+  // Identify as GoldenDict, but avoid standard "QtWebEngine/..." identifier which some sites might block
+  QString userAgent = QWebEngineProfile::defaultProfile()->httpUserAgent();
+  userAgent.replace( RX::qtWebEngineUserAgent, "" );
+  QWebEngineProfile::defaultProfile()->setHttpUserAgent( userAgent );
 #ifdef EPWING_SUPPORT
   Epwing::initialize();
 #endif
@@ -246,11 +238,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   groupListInToolbar->setObjectName( "groupListToolbar" );
   groupListInToolbar->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::MinimumExpanding );
   groupListInToolbar->setSizeAdjustPolicy( QComboBox::AdjustToContents );
-  translateBoxLayout->addWidget( groupListInToolbar );
+  translateBoxLayout->addWidget( groupListInToolbar, 0 );
 
   translateBox = new TranslateBox( navToolbar );
   translateBox->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::MinimumExpanding );
-  translateBoxLayout->addWidget( translateBox );
+  translateBoxLayout->addWidget( translateBox, 1 );
   translateBoxToolBarAction = navToolbar->addWidget( translateBoxWidget );
 
   // popup
@@ -761,8 +753,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            this,
            &MainWindow::proxyAuthentication );
 
-  setupNetworkCache( cfg.preferences.maxNetworkCacheSize );
-
   makeDictionaries();
 
   // After we have dictionaries and groups, we can populate history
@@ -811,26 +801,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 
   // Scanpopup related
-  scanPopup = new ScanPopup( nullptr, cfg, articleNetMgr, history );
-
-  scanPopup->setStyleSheet( styleSheet() );
-
-  connect( scanPopup, &ScanPopup::editGroupRequest, this, &MainWindow::editDictionaries, Qt::QueuedConnection );
-
-  connect( scanPopup, &ScanPopup::sendPhraseToMainWindow, this, [ this ]( const QString & word ) {
-    wordReceived( word );
-  } );
-
-  connect( scanPopup, &ScanPopup::inspectSignal, this, &MainWindow::inspectElement );
-  connect( scanPopup, &ScanPopup::forceAddWordToHistory, this, &MainWindow::forceAddWordToHistory );
-  connect( scanPopup, &ScanPopup::showDictionaryInfo, this, &MainWindow::showDictionaryInfo );
-  connect( scanPopup, &ScanPopup::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
-  connect( scanPopup, &ScanPopup::sendWordToHistory, this, &MainWindow::addWordToHistory );
-  connect( this, &MainWindow::setPopupGroupByName, scanPopup, &ScanPopup::setGroupByName );
-  connect( scanPopup,
-           &ScanPopup::sendWordToFavorites,
-           ui.favoritesPaneWidget,
-           &FavoritesPaneWidget::addRemoveWordInActiveFav );
+  // Deferred initialization until first use or if scanning is enabled
+  // Use a delayed call to avoid blocking the main window's initial show-up
+  if ( cfg.preferences.startWithScanPopupOn ) {
+    QTimer::singleShot( 1000, this, &MainWindow::ensureScanPopup );
+  }
 
   clipboardListener = clipboardListener::get_impl( this );
   connect( clipboardListener, &BaseClipboardListener::changed, this, &MainWindow::clipboardChange );
@@ -868,7 +843,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   updateSearchPaneAndBar( cfg.preferences.searchInDock );
   ui.searchPane->setVisible( cfg.preferences.searchInDock );
 
-  trayIconUpdateOrInit();
+  QTimer::singleShot( 1000, this, &MainWindow::trayIconUpdateOrInit );
 
   // Update zoomers
   adjustCurrentZoomFactor();
@@ -878,7 +853,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   setAutostart( cfg.preferences.autoStart );
 
   // Initialize global hotkeys
-  installHotKeys();
+  QTimer::singleShot( 2000, this, &MainWindow::installHotKeys );
 
   if ( cfg.preferences.alwaysOnTop ) {
     on_alwaysOnTop_triggered( true );
@@ -890,7 +865,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 
   // makeDictionaries() didn't do deferred init - we do it here, at the end.
-  doDeferredInit( dictionaries );
+  // Use a delay to let the UI breathe first
+  QTimer::singleShot( 3000, this, [ this ]() {
+    doDeferredInit( dictionaries );
+  } );
 
   updateStatusLine();
 
@@ -913,7 +891,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     navForward->setIcon( QIcon( ":/icons/previous.svg" ) );
   }
 
-  inspector.reset( new ArticleInspector( this ) );
+  // inspector.reset( new ArticleInspector( this ) ); // Moved to lazy initialization in inspectElement()
 
 #ifdef Q_OS_WIN
   // Regiser and update URL Scheme for windows
@@ -934,8 +912,38 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   iconSizeActionTriggered( nullptr );
 
   if ( cfg.preferences.checkForNewReleases ) {
-    QTimer::singleShot( 0, this, &MainWindow::checkNewRelease );
+    QTimer::singleShot( 10000, this, &MainWindow::checkNewRelease );
   }
+}
+
+
+void MainWindow::ensureScanPopup()
+{
+  if ( scanPopup ) {
+    return;
+  }
+
+  // Scanpopup related
+  scanPopup = new ScanPopup( nullptr, cfg, articleNetMgr, history );
+
+  scanPopup->setStyleSheet( styleSheet() );
+
+  connect( scanPopup, &ScanPopup::editGroupRequest, this, &MainWindow::editDictionaries, Qt::QueuedConnection );
+
+  connect( scanPopup, &ScanPopup::sendPhraseToMainWindow, this, [ this ]( const QString & word ) {
+    wordReceived( word );
+  } );
+
+  connect( scanPopup, &ScanPopup::inspectSignal, this, &MainWindow::inspectElement );
+  connect( scanPopup, &ScanPopup::forceAddWordToHistory, this, &MainWindow::forceAddWordToHistory );
+  connect( scanPopup, &ScanPopup::showDictionaryInfo, this, &MainWindow::showDictionaryInfo );
+  connect( scanPopup, &ScanPopup::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
+  connect( scanPopup, &ScanPopup::sendWordToHistory, this, &MainWindow::addWordToHistory );
+  connect( this, &MainWindow::setPopupGroupByName, scanPopup, &ScanPopup::setGroupByName );
+  connect( scanPopup,
+           &ScanPopup::sendWordToFavorites,
+           ui.favoritesPaneWidget,
+           &FavoritesPaneWidget::addRemoveWordInActiveFav );
 }
 
 void MainWindow::prefixMatchUpdated()
@@ -1010,13 +1018,14 @@ void MainWindow::refreshTranslateLine()
   // Visually mark the input line to mark if there's no results
   bool setMark = wordFinder.getResults().empty() && !wordFinder.wasSearchUncertain();
   Utils::Widget::setNoResultColor( translateLine, setMark );
+  if ( !cfg.preferences.searchInDock ) {
+    translateBox->setNoResults( setMark );
+  }
 }
 
 void MainWindow::clipboardChange( QClipboard::Mode m )
 {
-  if ( !scanPopup ) {
-    return;
-  }
+  ensureScanPopup();
 
 #if defined( WITH_X11 )
   if ( m == QClipboard::Clipboard ) {
@@ -1222,12 +1231,6 @@ void MainWindow::removeGroupComboBoxActionsFromDialog( QDialog * dialog, GroupCo
 
 void MainWindow::commitData()
 {
-  if ( cfg.preferences.clearNetworkCacheOnExit ) {
-    if ( QAbstractNetworkCache * cache = articleNetMgr.cache() ) {
-      cache->clear();
-    }
-  }
-
   //if the dictionaries is empty ,large chance that the config has corrupt.
   if ( cfg.preferences.removeInvalidIndexOnExit && !dictMap.isEmpty() ) {
     const QDir dir( Config::getIndexDir() );
@@ -1433,6 +1436,9 @@ void MainWindow::updateAppearances( const QString & addonStyle,
 
   if ( !css.isEmpty() ) {
     setStyleSheet( css );
+    if ( scanPopup ) {
+      scanPopup->setStyleSheet( css );
+    }
   }
 }
 
@@ -1493,33 +1499,37 @@ void MainWindow::wheelEvent( QWheelEvent * ev )
 
 void MainWindow::closeEvent( QCloseEvent * ev )
 {
-  if ( cfg.preferences.enableTrayIcon && cfg.preferences.closeToTray ) {
-    if ( !cfg.preferences.searchInDock ) {
-      translateBox->setPopupEnabled( false );
-    }
-
-#ifdef Q_OS_MACOS
-    if ( !ev->spontaneous() || !isVisible() ) {
-      return;
-    }
-#endif
-#if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
-    // Don't ignore the close event, because doing so cancels session logout if
-    // the main window is visible when the user attempts to log out.
-    // The main window will be only hidden, because QApplication::quitOnLastWindowClosed
-    // property is false and Qt::WA_DeleteOnClose widget  is not set.
-    Q_ASSERT( !QApplication::quitOnLastWindowClosed() );
-    Q_ASSERT( !testAttribute( Qt::WA_DeleteOnClose ) );
-#else
-    // Ignore the close event because closing the main window breaks global hotkeys on Windows.
-    ev->ignore();
-    hide();
-#endif
-  }
-  else {
+  // If tray icon is disabled or closing to tray is not enabled, quit the application
+  if ( !cfg.preferences.enableTrayIcon || !cfg.preferences.closeToTray ) {
     ev->accept();
     quitApp();
+    return;
   }
+
+  // Hide translation popup if necessary
+  if ( !cfg.preferences.searchInDock ) {
+    translateBox->setPopupEnabled( false );
+  }
+
+#ifdef Q_OS_MACOS
+  // On macOS, ignore non-spontaneous events or already hidden windows to avoid redundant logic
+  if ( !ev->spontaneous() || !isVisible() ) {
+    return;
+  }
+#endif
+
+  // Handle window hiding based on platform characteristics
+#if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
+  // On Linux/Unix, do not call ignore() as it blocks session logout.
+  // The window is hidden instead of closed because quitOnLastWindowClosed is false.
+  Q_ASSERT( !QApplication::quitOnLastWindowClosed() );
+  Q_ASSERT( !testAttribute( Qt::WA_DeleteOnClose ) );
+#else
+  // On Windows and macOS (manual close), ignore the event and hide the window.
+  // This ensures global hotkey hooks remain valid on Windows.
+  ev->ignore();
+  hide();
+#endif
 }
 
 void MainWindow::quitApp()
@@ -1573,33 +1583,6 @@ void MainWindow::applyProxySettings()
   }
 
   QNetworkProxy::setApplicationProxy( proxy );
-}
-
-void MainWindow::setupNetworkCache( int maxSize )
-{
-  // x << 20 == x * 2^20 converts mebibytes to bytes.
-  const qint64 maxCacheSizeInBytes = maxSize <= 0 ? qint64( 0 ) : static_cast< qint64 >( maxSize ) << 20;
-
-  if ( QAbstractNetworkCache * abstractCache = articleNetMgr.cache() ) {
-    QNetworkDiskCache * const diskCache = qobject_cast< QNetworkDiskCache * >( abstractCache );
-    Q_ASSERT_X( diskCache, Q_FUNC_INFO, "Unexpected network cache type." );
-    diskCache->setMaximumCacheSize( maxCacheSizeInBytes );
-    return;
-  }
-  if ( maxCacheSizeInBytes == 0 ) {
-    return; // There is currently no cache and it is not needed.
-  }
-
-  QString cacheDirectory = Config::getCacheDir();
-  if ( !QDir().mkpath( cacheDirectory ) ) {
-    cacheDirectory = QStandardPaths::writableLocation( QStandardPaths::CacheLocation );
-    qWarning( "Cannot create a cache directory %s. use default cache path.", cacheDirectory.toUtf8().constData() );
-  }
-
-  QNetworkDiskCache * const diskCache = new QNetworkDiskCache( this );
-  diskCache->setMaximumCacheSize( maxCacheSizeInBytes );
-  diskCache->setCacheDirectory( cacheDirectory );
-  articleNetMgr.setCache( diskCache );
 }
 
 void MainWindow::makeDictionaries()
@@ -1839,6 +1822,7 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, const QString & name )
 
   connect( view, &ArticleView::zoomOut, this, &MainWindow::zoomout );
   connect( view, &ArticleView::saveBookmarkSignal, this, &MainWindow::addBookmarkToFavorite );
+  connect( view, &ArticleView::translateSelectedText, this, &MainWindow::handleTranslateSelectedText );
 
   connect( ui.searchInPageAction, &QAction::triggered, view, [ this, view ]() {
 #ifdef Q_OS_MACOS
@@ -1874,6 +1858,9 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, const QString & name )
 
 void MainWindow::inspectElement( QWebEnginePage * page )
 {
+  if ( !inspector ) {
+    inspector.reset( new ArticleInspector( this ) );
+  }
   inspector->triggerAction( page );
 }
 
@@ -2247,7 +2234,9 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
     }
   }
 
-  scanPopup->refresh();
+  if ( scanPopup ) {
+    scanPopup->refresh();
+  }
   installHotKeys();
 }
 
@@ -2303,10 +2292,6 @@ void MainWindow::editPreferences()
       ui.favoritesPaneWidget->setSaveInterval( p.favoritesStoreInterval );
     }
 
-    if ( cfg.preferences.maxNetworkCacheSize != p.maxNetworkCacheSize ) {
-      setupNetworkCache( p.maxNetworkCacheSize );
-    }
-
     bool needReload =
       ( cfg.preferences.displayStyle != p.displayStyle || cfg.preferences.addonStyle != p.addonStyle
         || cfg.preferences.darkReaderMode != p.darkReaderMode
@@ -2316,8 +2301,6 @@ void MainWindow::editPreferences()
         || p.darkReaderMode == Config::Dark::Auto // We cannot know if a reload is needed, just do it regardless.
       );
 
-    // This line must be here because the components below require cfg's value to reconfigure
-    // After this point, p must not be accessed.
     cfg.preferences = p;
 
     // Loop through all tabs and reload pages due to ArticleMaker's change.
@@ -2367,11 +2350,16 @@ void MainWindow::editPreferences()
     Config::save( cfg );
   }
 
-  scanPopup->refresh();
+  if ( scanPopup ) {
+    scanPopup->refresh();
+  }
   installHotKeys();
 
   ftsIndexing.setDictionaries( dictionaries );
-  ftsIndexing.doIndexing();
+  // Delay indexing to avoid high IO load during startup
+  QTimer::singleShot( 5000, this, [ this ]() {
+    ftsIndexing.doIndexing();
+  } );
 }
 
 void MainWindow::currentGroupChanged( int )
@@ -2475,6 +2463,9 @@ void MainWindow::updateSuggestionList( const QString & newValue )
 
     // Reset the noResults mark if it's on right now
     Utils::Widget::setNoResultColor( translateLine, false );
+    if ( !cfg.preferences.searchInDock ) {
+      translateBox->setNoResults( false );
+    }
     return;
   }
 
@@ -2816,6 +2807,42 @@ void MainWindow::showDefinitionInNewTab( const QString & word,
   createNewTab( !cfg.preferences.newTabsOpenInBackground, word )->showDefinition( word, group, fromArticle, contexts );
 }
 
+void MainWindow::handleTranslateSelectedText( const QString & word, const QUrl & url, const QString & currentArticle )
+{
+  // Initiate translation
+  Qt::KeyboardModifiers kmod = QApplication::keyboardModifiers();
+  if ( kmod & ( Qt::ControlModifier | Qt::ShiftModifier ) ) { // open in new tab
+    // Create a new tab and show definition there
+    ArticleView * newView = createNewTab( !cfg.preferences.newTabsOpenInBackground, word );
+    auto groupId          = newView->getGroup( url );
+    if ( groupId == GroupId::NoGroupId ) {
+      groupId = groupList->getCurrentGroup();
+    }
+    newView->showDefinition( word, groupId, currentArticle, Contexts() );
+  }
+  else {
+    // Get the current active ArticleView
+    ArticleView * currentView = getFirstNonWebSiteArticleView();
+    if ( currentView ) {
+      // Get group ID from the URL or fall back to current group
+      auto groupId = currentView->getGroup( url );
+      if ( groupId == GroupId::NoGroupId || currentView->isInternalPage() ) {
+        groupId = groupList->getCurrentGroup();
+      }
+
+      // If the URL has dictionaries query parameter, use those dictionaries
+      if ( Utils::Url::hasQueryItem( url, "dictionaries" ) ) {
+        QStringList dictsList = Utils::Url::queryItemValue( url, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
+        currentView->showDefinition( word, dictsList, groupId, false );
+      }
+      else {
+        // Otherwise show definition in current tab
+        currentView->showDefinition( word, groupId, currentArticle );
+      }
+    }
+  }
+}
+
 void MainWindow::activeArticleChanged( const ArticleView * view, const QString & id )
 {
   if ( view != getCurrentArticleView() || view->isWebsite() ) {
@@ -2872,8 +2899,6 @@ void MainWindow::mutedDictionariesChanged()
 
 void MainWindow::showHistoryItem( const QString & word )
 {
-  // qDebug() << "Showing history item" << word;
-
   history.enableAdd( false );
 
   setInputLineText( word, WildcardPolicy::EscapeWildcards, DisablePopup );
@@ -2884,6 +2909,8 @@ void MainWindow::showHistoryItem( const QString & word )
 
 void MainWindow::showTranslationFor( const QString & word, unsigned inGroup, const QString & scrollTo )
 {
+  GlobalBroadcaster::instance()->is_popup = false;
+
   ArticleView * view = getFirstNonWebSiteArticleView();
 
   navPronounce->setEnabled( false );
@@ -2989,7 +3016,7 @@ void MainWindow::toggleMainWindow( bool ensureShow )
 void MainWindow::installHotKeys()
 {
 #if defined( WITH_X11 )
-  if ( !qEnvironmentVariableIsEmpty( "GOLDENDICT_FORCE_WAYLAND" ) || Utils::isWayland() ) {
+  if ( QGuiApplication::platformName() != "xcb" ) {
     return;
   }
 #endif
@@ -3028,9 +3055,12 @@ void MainWindow::installHotKeys()
 void MainWindow::hotKeyActivated( int hk )
 {
   if ( !hk ) {
+    GlobalBroadcaster::instance()->is_popup = false;
     toggleMainWindow( false );
   }
-  else if ( scanPopup ) {
+  else {
+    ensureScanPopup();
+    GlobalBroadcaster::instance()->is_popup = true;
 #if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
     // When the user requests translation with the Ctrl+C+C hotkey in certain apps
     // on some GNU/Linux systems, GoldenDict appears to handle Ctrl+C+C before the
@@ -3119,6 +3149,7 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
     case QSystemTrayIcon::MiddleClick:
       // Middle mouse click on Tray translates selection
       // it is functional like as stardict
+      ensureScanPopup();
       scanPopup->translateWordFromSelection();
       break;
     default:
@@ -3207,7 +3238,9 @@ void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
 
   dictionaryBar.setDictionaryIconSize( getIconSizeLogical() );
 
-  scanPopup->setDictionaryIconSize();
+  if ( scanPopup ) {
+    scanPopup->setDictionaryIconSize();
+  }
 }
 
 void MainWindow::toggleMenuBarTriggered( bool announce )
@@ -3256,8 +3289,20 @@ void MainWindow::toggleMenuBarTriggered( bool announce )
 
 void MainWindow::on_clearHistory_triggered()
 {
-  history.clear();
-  history.save();
+  QMessageBox::StandardButton reply;
+  reply = QMessageBox::question( this,
+                                 tr( "Clear History" ),
+                                 tr( "Are you sure you want to clear all history items?" ),
+                                 QMessageBox::Yes | QMessageBox::No );
+  if ( reply == QMessageBox::Yes ) {
+    history.clear();
+    history.save();
+  }
+}
+
+void MainWindow::on_clearFavorites_triggered()
+{
+  ui.favoritesPaneWidget->clearAllItems();
 }
 
 void MainWindow::on_newTab_triggered()
@@ -3387,7 +3432,9 @@ void MainWindow::on_rescanFiles_triggered()
   updateGroupList();
 
 
-  scanPopup->refresh();
+  if ( scanPopup ) {
+    scanPopup->refresh();
+  }
   installHotKeys();
 
   updateSuggestionList();
@@ -3492,7 +3539,9 @@ void MainWindow::scaleArticlesByCurrentZoomFactor()
     view.setZoomFactor( cfg.preferences.zoomFactor );
   }
 
-  scanPopup->applyZoomFactor();
+  if ( scanPopup ) {
+    scanPopup->applyZoomFactor();
+  }
 }
 
 void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
@@ -3514,7 +3563,8 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
 
   if ( message.left( 15 ) == "translateWord: " ) {
     auto word = message.mid( 15 );
-    if ( ( consoleWindowOnce == "popup" ) && scanPopup ) {
+    if ( consoleWindowOnce == "popup" ) {
+      ensureScanPopup();
       scanPopup->translateWord( word );
     }
     else if ( consoleWindowOnce == "main" ) {
@@ -4207,14 +4257,23 @@ void MainWindow::showFTSIndexingName( const QString & name )
   }
 }
 
-void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId )
+void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId, bool isPopup, QString word )
 {
+  if ( isPopup ) {
+    return;
+  }
+
   auto view = findArticleViewByDictId( dictId );
   if ( view == nullptr ) {
     view = createNewTab( false, name );
     view->setWebsite( true );
     // Set the dictId for the website view
     view->setActiveArticleId( dictId );
+  }
+
+  // Set the current word for the website view
+  if ( !word.isEmpty() ) {
+    view->setCurrentWord( word );
   }
 
   view->load( url, name );
@@ -4330,6 +4389,7 @@ void MainWindow::setGroupByName( const QString & name, bool main_window )
     }
   }
   else {
+    ensureScanPopup();
     emit setPopupGroupByName( name );
   }
 }
