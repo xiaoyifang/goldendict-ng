@@ -10,6 +10,7 @@
 #include <fmt/compile.h>
 #include <QRegularExpression>
 #include <QCoreApplication>
+#include "utils.hh"
 
 namespace WebSite {
 
@@ -100,7 +101,13 @@ sptr< DataRequest > WebSiteDictionary::getArticle( const std::u32string & str,
 
   //heuristic add url to global whitelist.
   QUrl url( urlString );
-  GlobalBroadcaster::instance()->addWhitelist( url.host() );
+  GlobalBroadcaster::instance()->addHostWhitelist( url.host() );
+
+  if ( Utils::Url::hasQueryItem( url, "whitelist" ) ) {
+    GlobalBroadcaster::instance()->addRefererWhitelist( url.host() );
+    Utils::Url::removeQueryItem( url, "whitelist" );
+    urlString = url.toString();
+  }
 
   const QString & encodeUrl = urlString;
 
@@ -110,9 +117,12 @@ sptr< DataRequest > WebSiteDictionary::getArticle( const std::u32string & str,
     if ( !urlString.isEmpty() ) {
       auto word  = QString::fromStdU32String( str );
       auto title = QString::fromStdString( getName() );
-      // Pass dictId to the websiteDictionarySignal
-      emit GlobalBroadcaster::instance()
-        -> websiteDictionarySignal( title + "-" + word, urlString, QString::fromStdString( getId() ) );
+      // Pass dictId and word to the websiteDictionarySignal
+      emit GlobalBroadcaster::instance() -> websiteDictionarySignal( title + "-" + word,
+                                                                     urlString,
+                                                                     QString::fromStdString( getId() ),
+                                                                     GlobalBroadcaster::instance()->is_popup,
+                                                                     word );
     }
 
     fmt::format_to(

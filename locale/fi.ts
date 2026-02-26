@@ -890,10 +890,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Lisää kansio</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Tyhjennä kaikki</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Suosikit:</translation>
     </message>
@@ -902,16 +898,20 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Kaikki valitut kohteet poistetaan. Jatketaanko?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Tyhjennä kaikki kohteet</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Haluatko varmasti tyhjentää kaikki kohteet?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>Tyhjennä</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>Tyhjennä Suosikit</translation>
     </message>
   </context>
   <context>
@@ -1113,6 +1113,14 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Oletko varma, että haluat poistaa kaikki ryhmät?</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Lisää uusi sanakirja ryhmä</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>&amp;Lisää ryhmä</translation>
     </message>
   </context>
   <context>
@@ -2623,6 +2631,14 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <source>Lock Panels</source>
       <translation>Lukitse Paneelit</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation>Tyhjennä Historia</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>Oletko varma, että haluat tyhjentää kaikki historian kohteet?</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3298,42 +3314,6 @@ joita selailet. Jos jokin sivusto rikkoo tämän vuoksi, kokeile poistaa tämä 
       <translation>Estä sisällön lataaminen muilta sivustoilta (piilottaa useimmat mainokset)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Jotkut sivustot havaitsevat GoldenDictin HTTP-otsikoiden kautta ja estävät pyynnöt.
-Ota tämä asetus käyttöön korjataksesi ongelman.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Älä tunnista GoldenDictia HTTP-otsikoissa</translation>
-    </message>
-    <message>
-      <source>Maximum network cache size:</source>
-      <translation>Verkon välimuistin enimmäiskoko:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>GoldenDict&apos;s -verkkovälimuistin käyttämä levytila maksimissaan
-%1
-Jos arvo on 0, verkkovälimuisti ei ole käytössä.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Kun tämä asetus on käytössä, GoldenDict
-tyhjentää verkon välimuistin levyltä poistumisen aikana.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Tyhjennä verkkovälimuisti poistuttaessa</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3510,10 +3490,6 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Tallenna debug viestit gd_log.txt asetuskansioon</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>Avaa verkkosivuston sanakirja erillisessä välilehdessä</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>S&amp;can</translation>
     </message>
@@ -3524,6 +3500,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>Piilota JavaScript-ikkunat</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>Avaa verkkosivuston sanakirja erillisessä välilehdessä</translation>
     </message>
   </context>
   <context>
@@ -3775,6 +3755,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>WARNING: %1</source>
       <translation>VAROITUS: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>Määritelmä</translation>
     </message>
   </context>
   <context>
@@ -4250,6 +4234,10 @@ Täydellinen luettelo saatavilla olevista kielistä löytyy &lt;a href=&quot;htt
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>Saatavilla vain, kun sivustoja avataan erillisillä välilehdillä. Voi olla tiedostopolku (suhteessa config hakemistoon tai absoluuttiin) tai suora skriptin sisältö.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>Tämä sarake on pois päältä, koska &quot;Avaa verkkosivujen sanakirja erillisessä välilehdessä&quot; ei ole käytössä asetuksissa.</translation>
     </message>
   </context>
   <context>

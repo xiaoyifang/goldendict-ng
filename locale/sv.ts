@@ -890,10 +890,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Lägg till mapp</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Rensa alla</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Favoriter:</translation>
     </message>
@@ -902,16 +898,20 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Alla markerade objekt tas bort. Fortsätt?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Rensa alla objekt</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Är du säker på att du vill rensa alla objekt?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>Rensa</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>Rensa favoriter</translation>
     </message>
   </context>
   <context>
@@ -1113,6 +1113,14 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Är du säker på att du vill ta bort alla grupper?</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Lägg till en ny ordboksgrupp</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>&amp;Lägg till grupp</translation>
     </message>
   </context>
   <context>
@@ -2623,6 +2631,14 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
       <source>Lock Panels</source>
       <translation>Lås paneler</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation>Rensa historik</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>Är du säker på att du vill rensa alla historikobjekt?</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3299,43 +3315,6 @@ webbplats slutar fungera p.g.a. det här, testa att inaktivera alternativet.</tr
       <translation>Blockera inläsning av innehåll från andra webbplatser (döljer merparten av annonserna)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Vissa webbplatser identifierar GoldenDict m.h.a. HTTP-huvuden och
-blockerar alla förfrågningar. Aktivera detta alternativ för att lösa
-det problemet.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Identifiera inte GoldenDict i HTTP-huvuden</translation>
-    </message>
-    <message>
-      <source>Maximum network cache size:</source>
-      <translation>Maximal nätverkscache storlek:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Maximalt diskutrymme som upptas av GoldenDicts nätverkscache
-%1
-Om inställt på 0 kommer nätverksdiskcachen att inaktiveras.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>När det här alternativet är aktiverat rensar GoldenDict
-sin nätverkscache från disken under avslutning.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Rensa nätverkscachen vid avslut</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3512,10 +3491,6 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation>Spara felsökningsmeddelanden till gd_log.txt i konfigurationsmappen</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>Öppna webbplatsordbok i separat flik</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>&amp;Skanna</translation>
     </message>
@@ -3526,6 +3501,10 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>Undertrycka JavaScript dialogrutor</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>Öppna webbplatsordlista i separat flik</translation>
     </message>
   </context>
   <context>
@@ -3777,6 +3756,10 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>WARNING: %1</source>
       <translation>VARNING: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>Definition</translation>
     </message>
   </context>
   <context>
@@ -4252,6 +4235,10 @@ Fullständig lista över tillgängliga språk finns &lt;a href=&quot;https://lin
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>Endast tillgängligt när webbplatser öppnas i separata flikar. Kan vara en filsökväg (relativ till konfigurationskatalog eller absolut) eller direkt skriptinnehåll.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>Denna kolumn är inaktiverad eftersom &quot;Öppna webbplatsordlista i separat flik&quot; alternativet är inte aktiverat i inställningar.</translation>
     </message>
   </context>
   <context>

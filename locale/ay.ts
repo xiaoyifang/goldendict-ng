@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
+      <translation>Anki: can&apos;t mä tarjeta jan arut luraspa</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -897,10 +897,6 @@ Se han modificado algunas fuentes.
       <translation>Q&apos;ipi yapaña</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Taqi kunat q’umachaña</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Munat arunaka:</translation>
     </message>
@@ -911,16 +907,20 @@ Se han modificado algunas fuentes.
 Todos los items seleccionados serán borrados. ¿Quiere continuar?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Taqi yänaka Q’umachaña</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>¿Taqi yänak q’umachañ munasmati?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation type="unfinished">Clear</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation type="unfinished">Clear Favorites</translation>
     </message>
   </context>
   <context>
@@ -1140,6 +1140,14 @@ Abrir una lista de grupos</translation>
       <translation>Chiqpach taqpach qutunaka chhaqtayañ muntati?
 
 ¿Esta seguro que quiere eliminar todos los grupos?</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation type="unfinished">Add a new dictionary group</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>Qutu &amp;yapaña</translation>
     </message>
   </context>
   <context>
@@ -2683,6 +2691,14 @@ Error de importación: datos incorrectos en el fichero.</translation>
       <source>Lock Panels</source>
       <translation type="unfinished">Lock Panels</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation type="unfinished">Clear History</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3388,44 +3404,6 @@ ukan uñstkiti. Yaqhip sitio ukax uka tuqit p’akintaspa ukhax aka jan ch’ama
       <translation>Yaqha web laphinakat janiw apaqañakiti (yatiyanaka imantañataki)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Impedir la identificación de GoldenDict a partir de las cabeceras HTTP.
-
-Yaqhiq web laphi GoldenDict uk uñt&apos;apxi HTTP p&apos;iqi laphi kuampi 
-mayiwinakap jakt&apos;rakiwa. Jani wali utjañapatakixa, ak naktayam.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>GoldenDict-ng janiw uskañakiti HTTP p&apos;iqi tuqi laphina</translation>
-    </message>
-    <message>
-      <source>Maximum network cache size:</source>
-      <translation>Llika cachep ukax kawkch&apos;akamasa:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Máximo espacio disco ocupado por GoldenDict&apos;s red caché en
-%1
-Ukaxa 0 ukjamaru utt’ayatawa red disco caché ukaxa janiwa ch’amanchatäkiti.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Programa ukat mistusinxa, GoldenDict
-ukax llikat cachep chhaqtayi.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Mistjani ukjax llika cache uk chhaqtayaña</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3619,10 +3597,6 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation type="unfinished">Open website dictionary in seperate tab</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation type="unfinished">S&amp;can</translation>
     </message>
@@ -3633,6 +3607,10 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation type="unfinished">Suppress JavaScript dialogs</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation type="unfinished">Open website dictionary in separate tab</translation>
     </message>
   </context>
   <context>
@@ -3776,7 +3754,7 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
-      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
+      <translation>Jaqukipaña aru jach’a ventanana ch’amañchaña.</translation>
     </message>
     <message>
       <source>Website Url:</source>
@@ -3788,11 +3766,11 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+      <translation>Html (*.html *.htm) ukax phuqhatawa.</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>Mä sapa Html (*.html *.htm) .</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
@@ -3800,15 +3778,15 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>Mime Html (*.mhtml) ukax mä juk’a pachanakanwa.</translation>
     </message>
     <message>
       <source>Save Article As</source>
-      <translation type="unfinished">Save Article As</translation>
+      <translation>Kunjam qillqata imaña</translation>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>Artículo completo ukar imaña</translation>
     </message>
     <message>
       <source>Error</source>
@@ -3820,11 +3798,11 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
+      <translation>Save PDF complete</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
+      <translation>Save PDF failed</translation>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
@@ -3884,6 +3862,10 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     <message>
       <source>WARNING: %1</source>
       <translation>AKHAM LURASMA: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation type="unfinished">Definition</translation>
     </message>
   </context>
   <context>
@@ -4368,6 +4350,10 @@ Taqi lista utjki uka arunakax &lt;a href=&quot;https://lingualibre.org/wiki/Ling
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation type="unfinished">This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</translation>
     </message>
   </context>
   <context>

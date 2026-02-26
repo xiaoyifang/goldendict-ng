@@ -29,6 +29,13 @@ void ArticleWebView::setUp( Config::Class * _cfg )
   setZoomFactor( _cfg->preferences.zoomFactor );
 }
 
+void ArticleWebView::setPopup( bool isPopup )
+{
+  if ( auto page = qobject_cast< ArticleWebPage * >( this->page() ) ) {
+    page->setPopup( isPopup );
+  }
+}
+
 QWebEngineView * ArticleWebView::createWindow( QWebEnginePage::WebWindowType type )
 {
   if ( type == QWebEnginePage::WebWindowType::WebDialog ) {

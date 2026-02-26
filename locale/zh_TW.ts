@@ -888,10 +888,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>新增資料夾</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>全部清除</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>我的最愛：</translation>
     </message>
@@ -900,16 +896,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>所有選擇的項目都會被刪除。是否繼續？</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>清除所有項目</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>您確定要清除所有項目嗎？</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>使該資料夾成為新增/刪除單字操作的目標。</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>清除</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>清除收藏夾</translation>
     </message>
   </context>
   <context>
@@ -1111,6 +1111,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>您確定要移除全部群組嗎？</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>新增新的字典組</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>新增群組(&amp;A)</translation>
     </message>
   </context>
   <context>
@@ -2622,6 +2630,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Lock Panels</source>
       <translation>鎖定面板</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation>清除歷史記錄</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>您確定要清除所有歷史記錄嗎？</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3287,41 +3303,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>禁止載入來自其它網站的內容 (隱藏大多數廣告)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>有些網站會偵測 GoldenDict 的 HTTP 標頭檔，所以阻擋其請求。
-啟用此選項能應付此問題。</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>在 HTTP 標頭檔中不要顯示 GoldenDict-ng</translation>
-    </message>
-    <message>
-      <source>Maximum network cache size:</source>
-      <translation>最大網絡緩存大小：</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>GoldenDict的網絡緩存佔用的最大磁盤空間在%1
-如果設置為 0，網絡磁盤緩存將被禁用。</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>啟用此選項時，GoldenDict
-在退出期間從磁盤清除其網絡緩存。</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>結束時清除快取</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3496,10 +3477,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>將調試消息保存到配置文件夾中的 gd_log.txt</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>在另開的標籤頁中打開網站字典</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>掃描(&amp;C)</translation>
     </message>
@@ -3510,6 +3487,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>禁止顯示 JavaScript 對話框</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>在新分頁中開啟網站字典</translation>
     </message>
   </context>
   <context>
@@ -3669,23 +3650,23 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>單一 Html (*.html *.htm)</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+      <translation>PDF 文件 (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
-      <translation type="unfinished">Save Article As</translation>
+      <translation>條目另存新檔</translation>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>保存文章完成</translation>
     </message>
     <message>
       <source>Error</source>
@@ -3697,15 +3678,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
+      <translation>儲存 PDF 完成</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
+      <translation>儲存 PDF 失敗</translation>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
-      <translation type="unfinished">Saving article... (%1/%2)</translation>
+      <translation>正在儲存文章…（%1/%2）</translation>
     </message>
   </context>
   <context>
@@ -3761,6 +3742,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>WARNING: %1</source>
       <translation>警告： %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>定義</translation>
     </message>
   </context>
   <context>
@@ -4234,6 +4219,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>僅在以分頁方式打開網站時可用。可以是檔案路徑（相對於配置目錄或絕對路徑）或直接的腳本內容。</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>由於「首選項」中未啟用「在新分頁中開啟網站字典」選項，因此該列已停用。</translation>
     </message>
   </context>
   <context>

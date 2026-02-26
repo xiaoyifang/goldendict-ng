@@ -58,7 +58,7 @@ void FavoritesPaneWidget::setUp( Config::Class * cfg, std::initializer_list< QAc
   connect( m_addFolder, &QAction::triggered, this, &FavoritesPaneWidget::addFolder );
 
   m_clearAll = new QAction( this );
-  m_clearAll->setText( tr( "Clear All" ) );
+  m_clearAll->setText( tr( "Clear" ) );
   addAction( m_clearAll );
   connect( m_clearAll, &QAction::triggered, this, &FavoritesPaneWidget::clearAllItems );
 
@@ -304,7 +304,7 @@ void FavoritesPaneWidget::clearAllItems()
 {
   QMessageBox::StandardButton reply;
   reply = QMessageBox::question( this,
-                                 tr( "Clear All Items" ),
+                                 tr( "Clear Favorites" ),
                                  tr( "Are you sure you want to clear all items?" ),
                                  QMessageBox::Yes | QMessageBox::No );
   if ( reply == QMessageBox::Yes ) {

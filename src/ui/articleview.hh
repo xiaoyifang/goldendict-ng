@@ -177,6 +177,7 @@ public:
   void syncBackgroundColorWithCfgDarkReader() const;
 
   QString getCurrentWord();
+  void setCurrentWord( const QString & word );
 
   /// Returns whether this view is an internal page (welcome, untitled, etc.)
   bool isInternalPage() const
@@ -346,6 +347,9 @@ signals:
 
   void saveBookmarkSignal( const QString & bookmark );
 
+  /// Signal that the user has double-clicked a word and wants to translate it
+  void translateSelectedText( const QString & word, const QUrl & url, const QString & currentArticle );
+
 public slots:
 
   /// Opens the search (Ctrl+F)
@@ -414,11 +418,13 @@ private slots:
 
   void dictionaryClear( const ActiveDictIds & ad );
 
-private:
+public:
 
   /// Deduces group from the url. If there doesn't seem to be any group,
   /// returns 0.
   unsigned getGroup( const QUrl & );
+
+private:
 
   /// Returns current article in the view, in the form of "gdfrom-xxx" id.
   QString getCurrentArticle();
@@ -452,12 +458,6 @@ private:
   bool eventFilter( QObject * obj, QEvent * ev ) override;
 
   void performFindOperation( bool backwards );
-
-  /// Returns the comma-separated list of dictionary ids which should be muted
-  /// for the given group. If there are none, returns empty string.
-  QString getMutedForGroup( unsigned group );
-
-  QStringList getMutedDictionaries( unsigned group );
 };
 
 class ResourceToSaveHandler: public QObject

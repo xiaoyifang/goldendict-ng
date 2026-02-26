@@ -31,7 +31,6 @@ namespace Config {
 //define a default font fize value
 constexpr int DEFAULT_FONT_SIZE = 12;
 
-const QString WEBSITE_PROXY_PREFIX = "iframe-";
 
 // Tri states enum for Dark and Dark reader mode
 enum class Dark : std::uint8_t {
@@ -344,9 +343,7 @@ struct Preferences
 
   bool checkForNewReleases;
   bool disallowContentFromOtherSites;
-  bool hideGoldenDictHeader;
-  int maxNetworkCacheSize;
-  bool clearNetworkCacheOnExit;
+
   bool removeInvalidIndexOnExit = false;
   bool enableApplicationLog =
 #ifdef Q_OS_WIN

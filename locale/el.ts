@@ -892,10 +892,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Προσθήκη φακέλου</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Εκκαθάριση όλων</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Αγαπημένα:</translation>
     </message>
@@ -904,16 +900,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Όλα τα επιλεγμένα στοιχεία θα διαγραφούν. Συνέχεια?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Εκκαθάριση όλων των αντικειμένων</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Είστε βέβαιοι ότι θέλετε να διαγράψετε όλα τα στοιχεία;</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>Εκκαθάριση</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>Εκκαθάριση Αγαπημένων</translation>
     </message>
   </context>
   <context>
@@ -1115,6 +1115,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Σίγουρα θέλετε να αφαιρέσετε όλες τις ομάδες;</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Προσθέστε μια νέα ομάδα λεξικών</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>Προσ&amp;θήκη ομάδας</translation>
     </message>
   </context>
   <context>
@@ -2625,6 +2633,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Lock Panels</source>
       <translation>Κλείδωμα Πάνελ</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation>Εκκαθάριση Ιστορικού</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>Είστε βέβαιοι ότι θέλετε να καθαρίσετε όλα τα στοιχεία ιστορικού?</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3300,42 +3316,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>Φραγή περιεχομένου από άλλους ιστοτόπους (εξαφανίζει τις περισσότερες διαφημίσεις)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Ορισμένες ιστοσελίδες εντοπίζουν το GoldenDict μέσω των κεφαλίδων HTTP και μπλοκάρουν τα αιτήματά του.
-Ενεργοποιήστε αυτή την επιλογή για να παρακάμψετε το πρόβλημα.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Μη ταυτοποίηση του GoldenDict στις κεφαλίδες HTTP</translation>
-    </message>
-    <message>
-      <source>Maximum network cache size:</source>
-      <translation>Μέγιστο μέγεθος προσωρινής μνήμης δικτύου:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Ο μέγιστος χώρος στο δίσκο που καταλαμβάνει η μνήμη cache δικτύου GoldenDict&apos;s στο
-%1
-Εάν οριστεί στο 0, η μνήμη cache στο δίσκο δικτύου θα απενεργοποιηθεί.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Όταν αυτή η επιλογή είναι ενεργοποιημένη, το GoldenDict
-καθαρίζει την προσωρινή μνήμη δικτύου από το δίσκο κατά την έξοδο.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Εκκαθάριση προσωρινής μνήμης δικτύου κατά την έξοδο</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3511,10 +3491,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Αποθήκευση μηνυμάτων αποσφαλμάτωσης στο gd_log.txt στο φάκελο ρυθμίσεων</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>Άνοιγμα λεξικού ιστοσελίδας σε διαχωριστική καρτέλα</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>Σ&amp;άρωση</translation>
     </message>
@@ -3525,6 +3501,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>Καταστολή διαλόγων JavaScript</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>Άνοιγμα λεξικού ιστοσελίδας σε ξεχωριστή καρτέλα</translation>
     </message>
   </context>
   <context>
@@ -3776,6 +3756,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>WARNING: %1</source>
       <translation>ΠΡΟΕΙΔΟΠΟΙΗΣΗ: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>Ορισμός</translation>
     </message>
   </context>
   <context>
@@ -4250,6 +4234,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>Διαθέσιμο μόνο όταν ανοίγετε ιστοσελίδες σε ξεχωριστές καρτέλες. Μπορεί να είναι μια διαδρομή αρχείου (σε σχέση με τον κατάλογο ρύθμισης ή απόλυτο) ή άμεση δέσμη ενεργειών περιεχομένου.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>Αυτή η στήλη είναι απενεργοποιημένη επειδή το λεξικό &quot;Open website σε ξεχωριστή καρτέλα&quot; επιλογή δεν είναι ενεργοποιημένη στις Προτιμήσεις.</translation>
     </message>
   </context>
   <context>

@@ -34,11 +34,13 @@ public:
 protected:
 
   /// We handle shortcut events here.
-  virtual bool event( QEvent * event );
+  virtual bool event( QEvent * event ) override;
+  virtual QSize sizeHint() const override;
 
-  /// Work around the never-changing QComboBox::minimumSizeHint(), which prevents
-  /// reducing the width of a group combobox beyond the value at application start.
-  //  virtual QSize minimumSizeHint() const { return sizeHint(); }
+  virtual QSize minimumSizeHint() const override
+  {
+    return sizeHint();
+  }
 
 private slots:
 

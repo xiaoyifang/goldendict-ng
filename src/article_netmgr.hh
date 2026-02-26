@@ -30,7 +30,6 @@ class ArticleNetworkAccessManager: public QNetworkAccessManager
   const vector< sptr< Dictionary::Class > > & dictionaries;
   const ArticleMaker & articleMaker;
   const bool & disallowContentFromOtherSites;
-  const bool & hideGoldenDictHeader;
   QMimeDatabase db;
 
 public:
@@ -38,13 +37,11 @@ public:
   ArticleNetworkAccessManager( QObject * parent,
                                const vector< sptr< Dictionary::Class > > & dictionaries_,
                                const ArticleMaker & articleMaker_,
-                               const bool & disallowContentFromOtherSites_,
-                               const bool & hideGoldenDictHeader_ ):
+                               const bool & disallowContentFromOtherSites_ ):
     QNetworkAccessManager( parent ),
     dictionaries( dictionaries_ ),
     articleMaker( articleMaker_ ),
-    disallowContentFromOtherSites( disallowContentFromOtherSites_ ),
-    hideGoldenDictHeader( hideGoldenDictHeader_ )
+    disallowContentFromOtherSites( disallowContentFromOtherSites_ )
   {
   }
 

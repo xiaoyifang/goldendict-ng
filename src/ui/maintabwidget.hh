@@ -14,6 +14,7 @@ class MainTabWidget: public QTabWidget
   Q_PROPERTY( bool hideSingleTab READ isHideSingleTab WRITE setHideSingleTab )
 
 public:
+  using QTabWidget::tabBar;
   MainTabWidget( QWidget * parent = 0 );
 
   bool isHideSingleTab() const

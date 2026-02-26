@@ -24,7 +24,6 @@
 #include "base_type.hh"
 #include "hotkey/hotkeywrapper.hh"
 #include "resourceschemehandler.hh"
-#include "iframeschemehandler.hh"
 #ifdef WITH_X11
   #include <fixx11h.h>
 #endif
@@ -164,7 +163,6 @@ private:
   QIcon starIcon, blueStarIcon;
 
   LocalSchemeHandler * localSchemeHandler;
-  IframeSchemeHandler * iframeSchemeHandler;
   ResourceSchemeHandler * resourceSchemeHandler;
 
   BaseClipboardListener * clipboardListener;
@@ -174,6 +172,9 @@ private:
   // On macOS, this will be just Fusion.
   QString defaultInterfaceStyle;
 #endif
+  /// Ensures the scan popup is created and connected
+  void ensureScanPopup();
+
   /// Applies Qt stylesheets, use Windows dark palette etc....
   void updateAppearances( const QString & addonStyle,
                           const QString & displayStyle,
@@ -192,7 +193,6 @@ private:
   void closeEvent( QCloseEvent * );
 
   void applyProxySettings();
-  void setupNetworkCache( int maxSize );
   void makeDictionaries();
   void updateStatusLine();
   void updateGroupList( bool reload = true );
@@ -283,7 +283,7 @@ private slots:
   void openDictionaryFolder( const QString & id );
 
   void showFTSIndexingName( const QString & name );
-  void openWebsiteInNewTab( QString name, QString url, QString dictId );
+  void openWebsiteInNewTab( QString name, QString url, QString dictId, bool isPopup, QString word = QString() );
 
   void handleAddToFavoritesButton();
 
@@ -396,6 +396,7 @@ private slots:
   void toggleMenuBarTriggered( bool announce = true );
 
   void on_clearHistory_triggered();
+  void on_clearFavorites_triggered();
 
   void on_newTab_triggered();
 
@@ -440,6 +441,9 @@ private slots:
   void storeResourceSavePath( const QString & );
 
   void closeHeadwordsDialog();
+
+  /// Handle translate selected text from ArticleView
+  void handleTranslateSelectedText( const QString & word, const QUrl & url, const QString & currentArticle );
 
   void focusHeadwordsDialog();
 

@@ -890,10 +890,6 @@ a školní ortografií v cyrilici)</translation>
       <translation>Přidat složku</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Vymazat vše</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Oblíbené:</translation>
     </message>
@@ -902,16 +898,20 @@ a školní ortografií v cyrilici)</translation>
       <translation>Všechny vybrané položky budou odstraněny. Chcete pokračovat?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Vymazat všechny položky</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Opravdu chcete vymazat všechny položky?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>Vyčistit</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>Vymazat Oblíbené</translation>
     </message>
   </context>
   <context>
@@ -1113,6 +1113,14 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Opravdu chcete odstranit všechny skupiny?</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Přidat novou skupinu slovníků</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>Přid&amp;at skupinu</translation>
     </message>
   </context>
   <context>
@@ -2623,6 +2631,14 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <source>Lock Panels</source>
       <translation>Uzamknout panely</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation>Vymazat historii</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>Jste si jisti, že chcete vymazat všechny položky historie?</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3297,42 +3313,6 @@ Pokud se kvůli tomuto některé stránky rozbijí, zkuste toto vypnout.</transl
       <translation>Zakázat načítání obsahu z jiných stránek (skryje většinu reklam)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Některé stránky detekují GoldenDict přes hlavičky HTTP a blokují jeho požadavky.
-Povolením této volby problém obejdete.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Neidentifikovat GoldenDict v lavičkách HTTP</translation>
-    </message>
-    <message>
-      <source>Maximum network cache size:</source>
-      <translation>Maximální velikost síťové mezipaměti:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Maximální místo na disku obsazené mezipamětí sítě GoldenDict
-%1
-Pokud je nastaveno na 0, mezipaměť síťového disku bude zakázána.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MiB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Pokud je tato volba povolena, GoldenDict
-vymaže její síťovou mezipaměť při ukončení.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Vymazat síťovou mezipaměť při ukončení</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3508,10 +3488,6 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Ukládat zprávy ladění do gd_log.txt do složky s konfigurací</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>Otevřít webový slovník v samostatné záložce</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>&amp;Skenovat</translation>
     </message>
@@ -3522,6 +3498,10 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>Potlačit dialogová okna JavaScriptu</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>Otevřít webový slovník v samostatné záložce</translation>
     </message>
   </context>
   <context>
@@ -3773,6 +3753,10 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>WARNING: %1</source>
       <translation>UPOZORNĚNÍ: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>Definice</translation>
     </message>
   </context>
   <context>
@@ -4248,6 +4232,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>K dispozici pouze při otevírání webových stránek v oddělených kartách. Může být cesta k souborům (relativně k adresáři konfigurací nebo absolutním) nebo přímý obsah skriptu.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>Tento sloupec je zakázán, protože slovník &quot;Otevřené webové stránky v samostatné záložce&quot; není v nastavení povolen.</translation>
     </message>
   </context>
   <context>

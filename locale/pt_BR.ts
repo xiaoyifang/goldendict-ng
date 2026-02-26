@@ -890,10 +890,6 @@ entre clássico e ortografia escolar em cirílico)</translation>
       <translation>Adicionar pasta</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>Limpar tudo</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>Favoritos:</translation>
     </message>
@@ -902,16 +898,20 @@ entre clássico e ortografia escolar em cirílico)</translation>
       <translation>Todos os itens selecionados serão excluídos. Continuar?</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>Limpar todos os itens</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>Tem certeza de que deseja limpar todos os itens?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>Limpar</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>Limpar favoritos</translation>
     </message>
   </context>
   <context>
@@ -1113,6 +1113,14 @@ entre clássico e ortografia escolar em cirílico)</translation>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>Tem certeza de que quer remover todos os grupos?</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>Adicionar um novo grupo de dicionário</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>&amp;Adicionar</translation>
     </message>
   </context>
   <context>
@@ -2623,6 +2631,14 @@ Para encontrar os símbolos &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]
       <source>Lock Panels</source>
       <translation>Travar painéis</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation>Limpar Histórico</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>Tem certeza que deseja limpar todos os itens do histórico?</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3304,42 +3320,6 @@ para ver se o problema é solucionado.</translation>
       <translation>Não permitir o carregamento de conteúdo de outros sites (oculta a maioria das propagandas)</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>Alguns sites detectam GoldenDick via cabeçalhos HTTP e bloqueiam as solicitações.
-Ative essa opção para solucionar o problema.</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Não identificar GoldenDict nos cabeçalhos HTTP</translation>
-    </message>
-    <message>
-      <source>Maximum network cache size:</source>
-      <translation>Tamanho máximo do cache de rede:</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>Espaço máximo em disco ocupado pelo cache de rede do GoldenDict em
-%1
-Se definido como 0, o cache do disco de rede será desabilitado.</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>Quando esta opção estiver ativada, o GoldenDict
-apaga seu cache de rede do disco durante a saída.</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>Limpar cache de rede ao sair</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3514,10 +3494,6 @@ dos dicionários Stardict, Babylon e GLS</translation>
       <translation>Salvar mensagens de depuração no gd_log.txt na pasta config</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>Abrir o dicionário do site na guia separada</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>&amp;Abrir</translation>
     </message>
@@ -3528,6 +3504,10 @@ dos dicionários Stardict, Babylon e GLS</translation>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>Suprimir diálogos JavaScript</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>Abrir dicionário do site em uma guia separada</translation>
     </message>
   </context>
   <context>
@@ -3779,6 +3759,10 @@ dos dicionários Stardict, Babylon e GLS</translation>
     <message>
       <source>WARNING: %1</source>
       <translation>AVISO: %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>Definição</translation>
     </message>
   </context>
   <context>
@@ -4257,6 +4241,10 @@ A lista completa de idiomas disponíveis pode ser encontrada &lt;a href=&quot;ht
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>Apenas disponível quando sites são abertos em abas separadas. Pode ser um caminho do arquivo (relativo ao diretório de configuração ou absoluto) ou um conteúdo direto de script.</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>Esta coluna está desabilitada porque o dicionário &quot;Abrir site em uma guia separada&quot; opção não está ativada nas Preferências.</translation>
     </message>
   </context>
   <context>

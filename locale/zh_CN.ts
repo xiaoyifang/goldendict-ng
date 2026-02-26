@@ -888,10 +888,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>添加文件夹</translation>
     </message>
     <message>
-      <source>Clear All</source>
-      <translation>清除全部</translation>
-    </message>
-    <message>
       <source>Favorites:</source>
       <translation>收藏：</translation>
     </message>
@@ -900,16 +896,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>所有选中项将被删除。是否继续？</translation>
     </message>
     <message>
-      <source>Clear All Items</source>
-      <translation>清除所有条目</translation>
-    </message>
-    <message>
       <source>Are you sure you want to clear all items?</source>
       <translation>您确实要清除所有条目吗？</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
       <translation>将此文件夹作为添加/删除单词操作的目标。</translation>
+    </message>
+    <message>
+      <source>Clear</source>
+      <translation>清空</translation>
+    </message>
+    <message>
+      <source>Clear Favorites</source>
+      <translation>清除收藏夹</translation>
     </message>
   </context>
   <context>
@@ -1111,6 +1111,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
       <translation>确定移除全部群组吗？</translation>
+    </message>
+    <message>
+      <source>Add a new dictionary group</source>
+      <translation>添加新字典组</translation>
+    </message>
+    <message>
+      <source>&amp;Add group</source>
+      <translation>添加群组(&amp;A)</translation>
     </message>
   </context>
   <context>
@@ -2622,6 +2630,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Lock Panels</source>
       <translation>锁定面板</translation>
     </message>
+    <message>
+      <source>Clear History</source>
+      <translation>清除历史记录</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all history items?</source>
+      <translation>您确定要清除所有历史项目吗？</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3287,39 +3303,6 @@ you are browsing. If some site breaks because of this, try disabling this.</sour
       <translation>禁止载入来自其它站点的内容（封杀广告）</translation>
     </message>
     <message>
-      <source>Some sites detect GoldenDict via HTTP headers and block the requests.
-Enable this option to workaround the problem.</source>
-      <translation>部分网站屏蔽了使用 GoldenDict 浏览器标识（UA）的请求，启用此选项以绕过该问题。</translation>
-    </message>
-    <message>
-      <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>不使用 GoldenDict 浏览器标识（UA）</translation>
-    </message>
-    <message>
-      <source>Maximum network cache size:</source>
-      <translation>允许的最大网络缓存：</translation>
-    </message>
-    <message>
-      <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
-%1
-If set to 0 the network disk cache will be disabled.</source>
-      <translation>GoldenDict 使用的最大磁盘容量位于%1
-如果设置为0，磁盘缓存会被禁用。</translation>
-    </message>
-    <message>
-      <source> MiB</source>
-      <translation> MB</translation>
-    </message>
-    <message>
-      <source>When this option is enabled, GoldenDict
-clears its network cache from disk during exit.</source>
-      <translation>GoldenDict 退出时清空网络缓存。</translation>
-    </message>
-    <message>
-      <source>Clear network cache on exit</source>
-      <translation>退出时清空网络缓存</translation>
-    </message>
-    <message>
       <source>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
@@ -3493,10 +3476,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>在配置文件夹中将调试消息保存到 gd_log.txt</translation>
     </message>
     <message>
-      <source>Open website dictionary in seperate tab</source>
-      <translation>在分隔符中打开网站词典</translation>
-    </message>
-    <message>
       <source>S&amp;can</source>
       <translation>S&amp;can</translation>
     </message>
@@ -3507,6 +3486,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Suppress JavaScript dialogs</source>
       <translation>禁用 JavaScript 对话框</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in separate tab</source>
+      <translation>在单独标签中打开网站词典</translation>
     </message>
   </context>
   <context>
@@ -3702,7 +3685,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
-      <translation type="unfinished">Saving article... (%1/%2)</translation>
+      <translation>正在保存文章... (%1/%2)</translation>
     </message>
   </context>
   <context>
@@ -3758,6 +3741,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>WARNING: %1</source>
       <translation>警告： %1</translation>
+    </message>
+    <message>
+      <source>Definition</source>
+      <translation>定 义</translation>
     </message>
   </context>
   <context>
@@ -4231,6 +4218,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
       <translation>仅当以单独标签打开网站时可用。可以是文件路径(相对于配置目录或绝对目录)，也可以是直接脚本内容。</translation>
+    </message>
+    <message>
+      <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
+      <translation>此列已禁用，因为 &quot;打开网站字典在单独标签&quot; 选项中未在“首选项”中启用。</translation>
     </message>
   </context>
   <context>

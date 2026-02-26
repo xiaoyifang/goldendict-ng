@@ -123,18 +123,10 @@ QString Utils::Url::extractBaseDomain( const QString & domain )
 
 void Utils::Widget::setNoResultColor( QWidget * widget, bool noResult )
 {
-  if ( noResult ) {
-    auto font = widget->font();
-    font.setItalic( true );
-
-    widget->setFont( font );
-  }
-  else {
-    auto font = widget->font();
-    font.setItalic( false );
-
-    widget->setFont( font );
-  }
+  (void)widget;
+  (void)noResult;
+  // Italic font for no results is removed in favor of other visual cues like
+  // changing the dropdown button color in TranslateBox.
 }
 
 std::string Utils::Html::getHtmlCleaner()
