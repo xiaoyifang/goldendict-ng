@@ -250,13 +250,11 @@ int main( int argc, char ** argv )
   // 4. By default, we let Qt decide (usually native Wayland on Wayland sessions).
   //    This improves HiDPI support but might affect some X11-specific features.
 
-  if ( qEnvironmentVariableIsEmpty( "QT_QPA_PLATFORM" ) ) {
-    if ( qEnvironmentVariableIsSet( "GOLDENDICT_FORCE_XCB" ) ) {
-      setenv( "QT_QPA_PLATFORM", "xcb", 1 );
-    }
-    else if ( qEnvironmentVariableIsSet( "GOLDENDICT_FORCE_WAYLAND" ) ) {
-      setenv( "QT_QPA_PLATFORM", "wayland", 1 );
-    }
+  if ( qEnvironmentVariableIsSet( "GOLDENDICT_FORCE_XCB" ) ) {
+    setenv( "QT_QPA_PLATFORM", "xcb", 1 );
+  }
+  else if ( qEnvironmentVariableIsSet( "GOLDENDICT_FORCE_WAYLAND" ) ) {
+    setenv( "QT_QPA_PLATFORM", "wayland", 1 );
   }
 #endif
 
