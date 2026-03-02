@@ -32,7 +32,7 @@
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: post na Anki udany</translation>
+      <translation>Anki: post do Anki udany</translation>
     </message>
   </context>
   <context>
@@ -83,18 +83,18 @@
     &lt;/div&gt;</source>
       <translation>
     &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Witamy na &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;h3&gt;Witamy w &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
         &lt;h4&gt;Aby rozpocząć:&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Przejdź do &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edytuj&lt;/span&gt;&lt;span&gt;Słowniki&lt;/span&gt;&lt;/span&gt; aby dodać swoje pliki słowników, skonfigurować źródła online, takie jak Wikipedia, i zorganizować je w grupy.&lt;/li&gt;
-          &lt;li&gt;Po skonfigurowaniu, możesz wyszukać słowa w tym oknie lub &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;z innych aplikacji za pomocą wyskakującego okienka&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;Aby dostosować program, zobacz ustawienia w &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edytuj&lt;/span&gt;&lt;span&gt;Preferencje&lt;/span&gt;&lt;/span&gt;. Wszystkie ustawienia mają podpowiedzi, więc upewnij się, że przeczytano je jeśli cokolwiek nie jest jasne.&lt;/li&gt;
+          &lt;li&gt;Przejdź do &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edycja&lt;/span&gt;&lt;span&gt;Słowniki&lt;/span&gt;&lt;/span&gt;, aby dodać pliki słowników, skonfigurować źródła online, takie jak Wikipedia, i zorganizować je w grupy.&lt;/li&gt;
+          &lt;li&gt;Po ich skonfigurowaniu możesz wyszukiwać słowa w tym oknie lub &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;z innych aplikacji z użyciem okienka wyskakującego skanowania&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;Aby dostosować program, przejdź do ustawień w oknie &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edycja&lt;/span&gt;&lt;span&gt;Preferencje&lt;/span&gt;&lt;/span&gt;. Do wszystkich ustawień są podpowiedzi, więc przeczytaj je, jeśli cokolwiek nie jest jasne.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;
-      &lt;p&gt;Jeśli potrzebujesz dalszej pomocy, masz jakiekolwiek pytania lub sugestie, jesteś witany w programie&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; i &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;strona&lt;/a&gt;.&lt;/p&gt;
+      &lt;p&gt;Jeśli potrzebujesz dalszej pomocy, masz pytania lub sugestie, możesz skorzystać z &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; i &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;strony internetowej&lt;/a&gt; programu.&lt;/p&gt;
       &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Na podstawie oryginalnego GoldenDict Konstantin Isakov, c) 2008-2013. Utrzymywane i rozwijane przez społeczność GoldenDict-NG. Licencjonowane na mocy GPLv3 lub nowszej.&lt;/small&gt;
+        &lt;small&gt;Na podstawie oryginalnego programu GoldenDict Konstantina Isakova (c) 2008-2013. Utrzymywany i rozwijany przez społeczność GoldenDict-NG. Na licencji GPLv3 lub nowszej.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</translation>
     </message>
@@ -362,11 +362,11 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
+      <translation>Wariant tajwański</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
-      <translation>Wariant Hongkongu</translation>
+      <translation>Wariant hongkoński</translation>
     </message>
     <message>
       <source>Mainland variant</source>
@@ -753,19 +753,19 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     </message>
     <message>
       <source>Cancel reindex</source>
-      <translation>Anuluj reindeks</translation>
+      <translation>Anuluj ponowne indeksowanie</translation>
     </message>
     <message>
       <source>Schedule for reindex</source>
-      <translation>Harmonogram przeindeksowania</translation>
+      <translation>Zaplanuj ponowne indeksowanie</translation>
     </message>
     <message>
       <source>Cancel schedule reindex</source>
-      <translation>Anuluj przeindeksowanie harmonogramu</translation>
+      <translation>Anuluj harmonogram ponownego indeksowania</translation>
     </message>
     <message>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
-      <translation>Słownik został zaplanowany do przeindeksowania. Indeks zostanie przebudowany po ponownym uruchomieniu aplikacji.</translation>
+      <translation>Zaplanowano ponowne indeksowanie słownika. Indeks zostanie przebudowany po ponownym uruchomieniu aplikacji.</translation>
     </message>
     <message>
       <source>Change display name</source>
@@ -2980,17 +2980,15 @@ prowadzi do jego ukrycia, a nie do zamknięcia aplikacji.</translation>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
                   opened.
                  </source>
-      <translation>Zaznacz tę opcję, jeśli nie jesteś&apos;t chcesz zobaczyć pasek karty głównej, gdy tylko jedna karta jest otwarta
-                  .
+      <translation>Zaznacz tę opcję, jeśli nie chcesz, aby wyświetlany był główny pasek kart, gdy otwarta jest tylko jedna
+                  karta.
                  </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise, they are added to
 be the last ones.</source>
-      <translation>Wraz z tym nowe karty są otwierane tuż po aktywnym
-. W przeciwnym razie są dodawane do
-jako ostatnie.</translation>
+      <translation>Gdy ta opcja jest włączona, nowe karty są otwierane tuż za aktywną. W przeciwnym razie są dodawane jako ostatnie.</translation>
     </message>
     <message>
       <source>&amp;Style</source>
