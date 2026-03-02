@@ -3004,11 +3004,11 @@ be the last ones.</source>
     </message>
     <message>
       <source>Font</source>
-      <translation>Font</translation>
+      <translation>Czcionka</translation>
     </message>
     <message>
       <source>Font Size</source>
-      <translation>Font Size</translation>
+      <translation>Rozmiar czcionki</translation>
     </message>
     <message>
       <source>Interface language</source>
@@ -3489,19 +3489,19 @@ ze słowników Stardict, Babylon i GLS</translation>
     </message>
     <message>
       <source>S&amp;can</source>
-      <translation>&amp;Skanuj</translation>
+      <translation>Ska&amp;nowanie</translation>
     </message>
     <message>
       <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
-      <translation>Wyłącz alerty JavaScript, potwierdza i pyta w widoku artykułu.</translation>
+      <translation>Blokuj alerty, potwierdzenia i podpowiedzi JavaScript w widoku artykułu.</translation>
     </message>
     <message>
       <source>Suppress JavaScript dialogs</source>
-      <translation>Wyłącz dialogi JavaScript</translation>
+      <translation>Blokuj okna dialogowe JavaScript</translation>
     </message>
     <message>
       <source>Open website dictionary in separate tab</source>
-      <translation>Otwórz słownik strony w osobnej karcie</translation>
+      <translation>Otwórz słownik internetowy w osobnej karcie</translation>
     </message>
   </context>
   <context>
@@ -3637,11 +3637,11 @@ ze słowników Stardict, Babylon i GLS</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Zapisz wiadomości debugowania do gd_log.txt w folderze konfiguracyjnym.</translation>
+      <translation>Zapisuj komunikaty debugowania do pliku gd_log.txt w folderze konfiguracji.</translation>
     </message>
     <message>
       <source>Force the word to be translated in Popup.</source>
-      <translation>Wymuś tłumaczenie słowa w wyskakującym oknie.</translation>
+      <translation>Wymuś tłumaczenie słowa w okienku wyskakującym.</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
@@ -3649,19 +3649,19 @@ ze słowników Stardict, Babylon i GLS</translation>
     </message>
     <message>
       <source>Website Url:</source>
-      <translation>Adres strony internetowej:</translation>
+      <translation>Adres URL strony internetowej:</translation>
     </message>
     <message>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
-      <translation>W URL, &quot;%GDWORD%&quot; zostanie zastąpiony słowem wyszukiwanym.</translation>
+      <translation>Ciąg znaków „%GDWORD%” w adresie URL zostanie zastąpiony wyszukiwanym słowem.</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation>Complete Html (*.html *.htm)</translation>
+      <translation>Kompletny kod HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation>Pojedynczy Html (*.html *.htm)</translation>
+      <translation>Pojedyncza strona HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
@@ -3669,7 +3669,7 @@ ze słowników Stardict, Babylon i GLS</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation>Mime Html (*.mhtml)</translation>
+      <translation>Mime HTML (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -3685,7 +3685,7 @@ ze słowników Stardict, Babylon i GLS</translation>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation>Może&apos;t zapisać artykuł: %1</translation>
+      <translation>Nie można zapisać artykułu: %1</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
@@ -3756,7 +3756,7 @@ ze słowników Stardict, Babylon i GLS</translation>
     </message>
     <message>
       <source>Definition</source>
-      <translation>Definicje</translation>
+      <translation>Definicja</translation>
     </message>
   </context>
   <context>
@@ -4081,7 +4081,7 @@ Pełną listę dostępnych języków można znaleźć &lt;a href=&quot;https://l
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
-      <translation>Najczęściej używana metoda transkrypcji japońskiej oparta na angielskiej fonologii</translation>
+      <translation>Najczęściej używana metoda transkrypcji japońskiej oparta na fonologii angielskiej</translation>
     </message>
     <message>
       <source>Remove selected directories from the list?</source>
@@ -4089,19 +4089,19 @@ Pełną listę dostępnych języków można znaleźć &lt;a href=&quot;https://l
     </message>
     <message>
       <source>Remove %1 directories from the list?</source>
-      <translation>Usunąć katalogi %1 z listy?</translation>
+      <translation>Usunąć katalogi (%1) z listy?</translation>
     </message>
     <message>
       <source>Remove %1 sites from the list?</source>
-      <translation>Usunąć strony %1 z listy?</translation>
+      <translation>Usunąć witryny (%1) z listy?</translation>
     </message>
     <message>
       <source>Remove %1 servers from the list?</source>
-      <translation>Usunąć serwery %1 z listy?</translation>
+      <translation>Usunąć serwery (%1) z listy?</translation>
     </message>
     <message>
       <source>Remove %1 programs from the list?</source>
-      <translation>Usunąć programy %1 z listy?</translation>
+      <translation>Usunąć programy (%1) z listy?</translation>
     </message>
   </context>
   <context>
@@ -4201,7 +4201,7 @@ Pełną listę dostępnych języków można znaleźć &lt;a href=&quot;https://l
     <name>WebSite</name>
     <message>
       <source>This website dictionary is opened in a new tab</source>
-      <translation>Ten słownik strony jest otwarty w nowej karcie</translation>
+      <translation>Ten słownik internetowy jest otwarty w nowej karcie</translation>
     </message>
   </context>
   <context>
@@ -4228,15 +4228,15 @@ Pełną listę dostępnych języków można znaleźć &lt;a href=&quot;https://l
     </message>
     <message>
       <source>Icon file name. Relative to the config directory.</source>
-      <translation>Nazwa pliku ikony. W stosunku do katalogu konfiguracyjnego.</translation>
+      <translation>Nazwa pliku ikony. Względem katalogu konfiguracji.</translation>
     </message>
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
-      <translation>Dostępne tylko podczas otwierania stron internetowych w oddzielnych kartach. Może być ścieżką pliku (w stosunku do katalogu konfiguracyjnego lub bezwzględnego) lub bezpośrednią zawartością skryptu.</translation>
+      <translation>Dostępne tylko podczas otwierania stron internetowych w oddzielnych kartach. Może to być ścieżka pliku (względem katalogu konfiguracji lub bezwzględna) lub bezpośrednia zawartość skryptu.</translation>
     </message>
     <message>
       <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
-      <translation>Ta kolumna jest wyłączona, ponieważ opcja &quot;Otwórz słownik witryny w osobnej karcie&quot; nie jest włączona w Preferencjach.</translation>
+      <translation>Ta kolumna jest wyłączona, ponieważ opcja „Otwórz słownik internetowy w osobnej karcie” nie jest włączona w Preferencjach.</translation>
     </message>
   </context>
   <context>
