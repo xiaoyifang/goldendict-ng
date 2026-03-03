@@ -301,6 +301,7 @@ protected:
   QAtomicInt FTS_index_completed;
   bool synonymSearchEnabled;
   string dictionaryName;
+  string originalDictionaryName;
   std::optional< bool > metadata_enable_fts = std::nullopt;
   // Load user icon if it exist
   // By default set icon to empty
@@ -359,6 +360,16 @@ public:
 
   virtual void setName( string _dictionaryName )
   {
+    if ( _dictionaryName.empty() ) {
+      if ( !originalDictionaryName.empty() ) {
+        dictionaryName = originalDictionaryName;
+      }
+      return;
+    }
+
+    if ( originalDictionaryName.empty() ) {
+      originalDictionaryName = dictionaryName;
+    }
     dictionaryName = _dictionaryName;
   }
 

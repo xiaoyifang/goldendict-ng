@@ -234,12 +234,13 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
                                              QLineEdit::Normal,
                                              QString::fromUtf8( pDict->getName().c_str() ),
                                              &ok );
-    if ( ok && !newName.isEmpty() && !pDict->getContainingFolder().isEmpty() ) {
+    if ( ok && !pDict->getContainingFolder().isEmpty() ) {
       Metadata::saveDisplayName( Utils::Path::combine( pDict->getContainingFolder(), "metadata.toml" ).toStdString(),
                                  newName.toStdString() );
       pDict->setName( newName.toStdString() );
-      dictAction->setText( elideDictName( newName ) );
-      dictAction->setToolTip( newName );
+      QString effectiveName = QString::fromUtf8( pDict->getName().c_str() );
+      dictAction->setText( elideDictName( effectiveName ) );
+      dictAction->setToolTip( effectiveName );
     }
   }
 

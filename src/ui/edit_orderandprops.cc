@@ -315,7 +315,7 @@ void OrderAndProps::contextMenuRequested( const QPoint & pos )
                                              QLineEdit::Normal,
                                              QString::fromUtf8( dict->getName().c_str() ),
                                              &ok );
-    if ( ok && !newName.isEmpty() ) {
+    if ( ok ) {
       QString metadataPath = dict->getContainingFolder();
       if ( !metadataPath.isEmpty() ) {
         auto filePath = Utils::Path::combine( metadataPath, "metadata.toml" );
