@@ -308,20 +308,27 @@ void OrderAndProps::contextMenuRequested( const QPoint & pos )
   }
 
   if ( result && result == changeNameAction ) {
-    bool ok;
-    QString newName = QInputDialog::getText( this,
-                                             tr( "Change display name" ),
-                                             tr( "New display name:" ),
-                                             QLineEdit::Normal,
-                                             QString::fromUtf8( dict->getName().c_str() ),
-                                             &ok );
-    if ( ok ) {
-      QString metadataPath = dict->getContainingFolder();
-      if ( !metadataPath.isEmpty() ) {
-        auto filePath = Utils::Path::combine( metadataPath, "metadata.toml" );
-        dict->setName( newName.toStdString() );
-        Metadata::saveDisplayName( filePath.toStdString(), newName.toStdString() );
-      }
+    QString metadataPath = dict->getContainingFolder();
+    if ( metadataPath.isEmpty() ) {
+      return;
+    }
+
+    QInputDialog dialog( this );
+    dialog.setWindowTitle( tr( "Change display name" ) );
+    dialog.setLabelText( tr( "New display name:" ) );
+    dialog.setTextValue( QString::fromUtf8( dict->getName().c_str() ) );
+    if ( auto * lineEdit = dialog.findChild< QLineEdit * >() ) {
+      lineEdit->setClearButtonEnabled( true );
+    }
+
+    if ( dialog.exec() == QDialog::Accepted ) {
+      QString newName = dialog.textValue();
+      auto filePath = Utils::Path::combine( metadataPath, "metadata.toml" );
+      dict->setName( newName.toStdString() );
+      Metadata::saveDisplayName( filePath.toStdString(), newName.toStdString() );
+
+      ui.dictionaryOrder->update( idx );
+      describeDictionary( ui.dictionaryOrder, idx );
     }
   }
 }

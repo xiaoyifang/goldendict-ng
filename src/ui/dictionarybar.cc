@@ -224,17 +224,19 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
   }
 
   if ( result && result == changeNameAction ) {
-    if ( !pDict ) {
+    if ( !pDict || pDict->getContainingFolder().isEmpty() ) {
       return;
     }
-    bool ok;
-    QString newName = QInputDialog::getText( this,
-                                             tr( "Change display name" ),
-                                             tr( "New display name:" ),
-                                             QLineEdit::Normal,
-                                             QString::fromUtf8( pDict->getName().c_str() ),
-                                             &ok );
-    if ( ok && !pDict->getContainingFolder().isEmpty() ) {
+    QInputDialog dialog( this );
+    dialog.setWindowTitle( tr( "Change display name" ) );
+    dialog.setLabelText( tr( "New display name:" ) );
+    dialog.setTextValue( QString::fromUtf8( pDict->getName().c_str() ) );
+    if ( auto * lineEdit = dialog.findChild< QLineEdit * >() ) {
+      lineEdit->setClearButtonEnabled( true );
+    }
+
+    if ( dialog.exec() == QDialog::Accepted ) {
+      QString newName = dialog.textValue();
       Metadata::saveDisplayName( Utils::Path::combine( pDict->getContainingFolder(), "metadata.toml" ).toStdString(),
                                  newName.toStdString() );
       pDict->setName( newName.toStdString() );
