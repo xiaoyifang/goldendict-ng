@@ -296,6 +296,9 @@ void ArticleView::showDefinition( const QString & word,
                                   const Contexts & contexts_ )
 {
   GlobalBroadcaster::instance()->pronounce_engine.reset();
+  audioLink_.clear();
+  lastAudioData.clear();
+  lastAudioUrl.clear();
   currentWord = word.trimmed();
   if ( currentWord.isEmpty() ) {
     return;
@@ -437,6 +440,29 @@ void ArticleView::sendToAnki( const QString & word, const QString & dict_definit
   if ( data.isEmpty() && !lastAudioData.isEmpty() ) {
     data = lastAudioData;
     url  = lastAudioUrl;
+  }
+
+  // If no data yet, but we have a local sound link, try to fetch it first
+  if ( data.isEmpty() && !audioLink_.isEmpty() && !Utils::Url::isWebAudioUrl( QUrl( audioLink_ ) ) ) {
+    QUrl audioUrl( audioLink_ );
+    if ( audioUrl.scheme() == "gdau" ) {
+      sptr< Dictionary::Class > dict = dictionaryGroup->getDictionaryById( audioUrl.host().toStdString() );
+      if ( dict ) {
+        sptr< Dictionary::DataRequest > req = dict->getResource( audioUrl.path().mid( 1 ).toUtf8().data() );
+        if ( req->isFinished() ) {
+          const vector< char > & d = req->getFullData();
+          sendToAnki( word, dict_definition, sentence, QByteArray( d.data(), d.size() ), audioUrl.toString() );
+          return;
+        }
+        else {
+          connect( req.get(), &Dictionary::Request::finished, this, [ this, word, dict_definition, sentence, req, audioUrl ]() {
+            const vector< char > & d = req->getFullData();
+            sendToAnki( word, dict_definition, sentence, QByteArray( d.data(), d.size() ), audioUrl.toString() );
+          } );
+          return;
+        }
+      }
+    }
   }
 
   if ( !data.isEmpty() ) {
