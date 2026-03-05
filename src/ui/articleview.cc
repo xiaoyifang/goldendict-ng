@@ -27,6 +27,9 @@
 #include <QUuid>
 #include <QTimer>
 #include <QVariant>
+#include <QDateTime>
+#include <QJsonObject>
+#include <QJsonArray>
 #include <QWebChannel>
 #include <QWebEngineHistory>
 #include <QWebEngineScriptCollection>
@@ -264,7 +267,11 @@ unsigned ArticleView::getCurrentGroupId()
 
 void ArticleView::setAudioLink( QString audioLink )
 {
-  audioLink_ = audioLink;
+  if ( audioLink_ != audioLink ) {
+    audioLink_ = audioLink;
+    lastAudioData.clear();
+    lastAudioUrl.clear();
+  }
 }
 
 QString ArticleView::getAudioLink() const
@@ -420,9 +427,51 @@ void ArticleView::showDefinition( const QString & word,
   showDefinition( word, dictIDs, {}, group, ignoreDiacritics );
 }
 
-void ArticleView::sendToAnki( const QString & word, const QString & dict_definition, const QString & sentence )
+void ArticleView::sendToAnki( const QString & word, const QString & dict_definition, const QString & sentence,
+                               const QByteArray & audioData, const QString & audioFileName )
 {
-  ankiConnector->sendToAnki( word, dict_definition, sentence );
+  QJsonObject audioObj;
+  QByteArray data = audioData;
+  QString url     = audioFileName;
+
+  if ( data.isEmpty() && !lastAudioData.isEmpty() ) {
+    data = lastAudioData;
+    url  = lastAudioUrl;
+  }
+
+  if ( !data.isEmpty() ) {
+    audioObj.insert( "data", QString::fromLatin1( data.toBase64() ) );
+
+    QString ext = "mp3";
+    if ( url.contains( ".wav", Qt::CaseInsensitive ) )
+      ext = "wav";
+    else if ( url.contains( ".ogg", Qt::CaseInsensitive ) )
+      ext = "ogg";
+    else if ( url.contains( ".opus", Qt::CaseInsensitive ) )
+      ext = "opus";
+
+    audioObj.insert( "filename",
+                     QString( "%1_%2.%3" )
+                       .arg( Utils::trimNonChar( word ) )
+                       .arg( QDateTime::currentMSecsSinceEpoch() )
+                       .arg( ext ) );
+
+    QJsonArray fields;
+    fields.append( cfg.preferences.ankiConnectServer.text );
+    audioObj.insert( "fields", fields );
+  }
+  else if ( Utils::Url::isWebAudioUrl( QUrl( audioLink_ ) ) ) {
+    audioObj.insert( "url", audioLink_ );
+    audioObj.insert( "filename",
+                     QString( "%1_%2.mp3" )
+                       .arg( Utils::trimNonChar( word ) )
+                       .arg( QDateTime::currentMSecsSinceEpoch() ) );
+    QJsonArray fields;
+    fields.append( cfg.preferences.ankiConnectServer.text );
+    audioObj.insert( "fields", fields );
+  }
+
+  ankiConnector->sendToAnki( word, dict_definition, sentence, audioObj );
 }
 
 
@@ -1059,7 +1108,7 @@ void ArticleView::makeAnkiCardFromArticle( const QString & article_id )
 {
   const auto js_code = QString( R"EOF(document.getElementById("gdarticlefrom-%1").innerText)EOF" ).arg( article_id );
   webview->page()->runJavaScript( js_code, [ this ]( const QVariant & article_text ) {
-    sendToAnki( webview->title(), article_text.toString(), translateLine->text() );
+    sendToAnki( getWord(), article_text.toString(), translateLine->text() );
   } );
 }
 
@@ -1370,7 +1419,7 @@ void ArticleView::handleAnkiAction()
     makeAnkiCardFromArticle( getActiveArticleId() );
   }
   else {
-    sendToAnki( webview->title(), webview->selectedText(), translateLine->text() );
+    sendToAnki( getWord(), webview->selectedText(), translateLine->text() );
   }
 }
 
@@ -1813,6 +1862,9 @@ void ArticleView::resourceDownloadFinished( const sptr< Dictionary::DataRequest 
 
     if ( resourceDownloadUrl.scheme() == "gdau" || Utils::Url::isWebAudioUrl( resourceDownloadUrl ) ) {
       // Audio data
+      lastAudioData = QByteArray( data.data(), data.size() );
+      lastAudioUrl  = resourceDownloadUrl.toString();
+
       audioPlayer->stop();
       connect( audioPlayer.data(),
                &AudioPlayerInterface::error,
@@ -1855,6 +1907,8 @@ void ArticleView::audioDownloadFinished( const sptr< Dictionary::DataRequest > &
     // Ok, got one finished, all others are irrelevant now
     qDebug() << "audio download finished. Playing...";
     const vector< char > & data = req->getFullData();
+    lastAudioData               = QByteArray( data.data(), data.size() );
+    lastAudioUrl                = "internal";
 
     // Audio data
     audioPlayer->stop();

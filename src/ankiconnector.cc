@@ -1,5 +1,7 @@
 #include "ankiconnector.hh"
 #include "utils.hh"
+#include <QJsonArray>
+#include <QJsonDocument>
 
 QString markTargetWord( const QString & sentence, const QString & word )
 {
@@ -16,7 +18,7 @@ AnkiConnector::AnkiConnector( QObject * parent, const Config::Class & _cfg ):
   connect( mgr, &QNetworkAccessManager::finished, this, &AnkiConnector::finishedSlot );
 }
 
-void AnkiConnector::sendToAnki( const QString & word, QString text, const QString & sentence )
+void AnkiConnector::sendToAnki( const QString & word, QString text, const QString & sentence, const QJsonObject & audio )
 {
   if ( word.isEmpty() ) {
     emit this->errorText( tr( "Anki: can't create a card without a word" ) );
@@ -26,33 +28,41 @@ void AnkiConnector::sendToAnki( const QString & word, QString text, const QStrin
   // Anki doesn't understand the newline character, so it should be escaped.
   text = text.replace( "\n", "<br>" );
 
-  const QString postTemplate = R"anki({
-      "action": "addNote",
-      "version": 6,
-      "params": {
-          "note": {
-              "deckName": "%1",
-              "modelName": "%2",
-              "fields": %3,
-              "options": {
-                  "allowDuplicate": true
-              },
-              "tags": []
-          }
-      }
-  })anki";
-
+  QJsonObject params;
+  QJsonObject note;
   QJsonObject fields;
+
   fields.insert( cfg.preferences.ankiConnectServer.word, word );
   fields.insert( cfg.preferences.ankiConnectServer.text, text );
+
   if ( !cfg.preferences.ankiConnectServer.sentence.isEmpty() ) {
     QString sentence_changed = markTargetWord( sentence, word );
     fields.insert( cfg.preferences.ankiConnectServer.sentence, sentence_changed );
   }
 
-  QString postData = postTemplate.arg( cfg.preferences.ankiConnectServer.deck,
-                                       cfg.preferences.ankiConnectServer.model,
-                                       Utils::json2String( fields ) );
+  note.insert( "deckName", cfg.preferences.ankiConnectServer.deck );
+  note.insert( "modelName", cfg.preferences.ankiConnectServer.model );
+  note.insert( "fields", fields );
+
+  QJsonObject options;
+  options.insert( "allowDuplicate", true );
+  note.insert( "options", options );
+  note.insert( "tags", QJsonArray() );
+
+  if ( !audio.isEmpty() ) {
+    QJsonArray audioArray;
+    audioArray.append( audio );
+    note.insert( "audio", audioArray );
+  }
+
+  params.insert( "note", note );
+
+  QJsonObject root;
+  root.insert( "action", "addNote" );
+  root.insert( "version", 6 );
+  root.insert( "params", params );
+
+  QString postData = Utils::json2String( root );
 
   //  qDebug().noquote() << postData;
   postToAnki( postData );

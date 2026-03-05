@@ -72,6 +72,8 @@ class ArticleView: public QWidget
   QString activeDictId;
 
   QString audioLink_;
+  QByteArray lastAudioData;
+  QString lastAudioUrl;
 
   /// Search in results of full-text search
   QString firstAvailableText;
@@ -139,7 +141,8 @@ public:
                        bool ignoreDiacritics );
   void showDefinition( const QString & word, const QStringList & dictIDs, unsigned group, bool ignoreDiacritics );
 
-  void sendToAnki( const QString & word, const QString & text, const QString & sentence );
+  void sendToAnki( const QString & word, const QString & text, const QString & sentence,
+                   const QByteArray & audioData = QByteArray(), const QString & audioFileName = QString() );
 
   /// Create a new Anki card from a currently displayed article with the provided id.
   /// This function will call QWebEnginePage::runJavaScript() to fetch the corresponding HTML.
