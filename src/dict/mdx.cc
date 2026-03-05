@@ -1027,45 +1027,49 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
       if ( linkType.compare( "img" ) == 0 || linkType.compare( "source" ) == 0 ) {
         match = RX::Mdx::srcset.match( newLink );
         if ( match.hasMatch() ) {
-          auto srcsetOriginalText   = match.captured( "text" );
-          QStringList srcsetNewText = {};
+          auto srcsetOriginalText = match.captured( "text" );
 
-          // According to HTML spec: a comma is a separator only if followed by whitespace.
-          // This allows commas inside URLs (query params, data URIs) if not followed by space.
-          QStringList chunks = srcsetOriginalText.split( QRegularExpression( R"(,\s+)" ), Qt::SkipEmptyParts );
+          // PERFORMANCE & SAFETY: If the whole text is an absolute URL, don't even try to split/parse it.
+          // This prevents issues with complex URLs containing commas.
+          if ( srcsetOriginalText.contains( "//" ) || srcsetOriginalText.contains( ":" ) ) {
+            // Keep as is
+          }
+          else {
+            QStringList srcsetNewText = {};
+            // Split only when a comma is followed by whitespace, as per HTML Living Standard.
+            QStringList chunks = srcsetOriginalText.split( QRegularExpression( R"(,\s+)" ), Qt::SkipEmptyParts );
 
-          for ( QString chunk : chunks ) {
-            chunk = chunk.trimmed();
-            if ( chunk.isEmpty() )
-              continue;
+            for ( QString chunk : chunks ) {
+              chunk = chunk.trimmed();
+              if ( chunk.isEmpty() )
+                continue;
 
-            // First non-whitespace block is the URL, the rest is the descriptor
-            QString url, desc;
-            int firstSpace = chunk.indexOf( QRegularExpression( R"(\s)" ) );
-            if ( firstSpace != -1 ) {
-              url  = chunk.left( firstSpace );
-              desc = chunk.mid( firstSpace ).trimmed();
-            }
-            else {
-              url = chunk;
-            }
-
-            if ( !url.isEmpty() ) {
-              // Convert only relative local paths. External (//), protocols (:), or already prefixed paths are skipped.
-              if ( !url.contains( "//" ) && !url.contains( ":" ) ) {
-                QString converted = QString( R"(bres://%1/%2)" ).arg( id, url );
-                srcsetNewText.append( desc.isEmpty() ? converted : converted + " " + desc );
+              QString url, desc;
+              int firstSpace = chunk.indexOf( QRegularExpression( R"(\s)" ) );
+              if ( firstSpace != -1 ) {
+                url  = chunk.left( firstSpace );
+                desc = chunk.mid( firstSpace ).trimmed();
               }
               else {
-                // Keep external links, Data URIs, etc.
-                srcsetNewText.append( desc.isEmpty() ? url : url + " " + desc );
+                url = chunk;
+              }
+
+              if ( !url.isEmpty() ) {
+                if ( !url.contains( "//" ) && !url.contains( ":" ) ) {
+                  QString converted = QString( R"(bres://%1/%2)" ).arg( id, url );
+                  srcsetNewText.append( desc.isEmpty() ? converted : converted + " " + desc );
+                }
+                else {
+                  srcsetNewText.append( desc.isEmpty() ? url : url + " " + desc );
+                }
               }
             }
+            if ( !srcsetNewText.isEmpty() ) {
+              newLink.replace( match.capturedStart(),
+                               match.capturedLength(),
+                               match.captured( "before" ) % srcsetNewText.join( ',' ) % match.captured( "after" ) );
+            }
           }
-
-          newLink.replace( match.capturedStart(),
-                           match.capturedLength(),
-                           match.captured( "before" ) % srcsetNewText.join( ',' ) % match.captured( "after" ) );
         }
       }
 
