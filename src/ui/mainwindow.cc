@@ -3571,13 +3571,8 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
       wordReceived( word );
     }
     else {
-      //default logic
-      if ( scanPopup ) {
-        scanPopup->translateWord( word );
-      }
-      else {
-        wordReceived( word );
-      }
+      ensureScanPopup();
+      scanPopup->translateWord( word );
     }
 
     consoleWindowOnce.clear();
