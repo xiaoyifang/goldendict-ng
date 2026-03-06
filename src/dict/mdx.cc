@@ -1024,30 +1024,52 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
       // convert <img src="bres://{id}/a.png" srcset="a-1x.png 1x, b-2x.png 2x, c.png">
       // into    <img src="bres://{id}/a.png" srcset="bres://{id}/a-1x.png 1x,bres://{id}/b-2x.png 2x,bres://{id}/c.png">
 
-      if ( linkType.compare( "img" ) == 0 ) {
-        match = RX::Mdx::srcset.match( newLink ); // have to use newLink since linkTxt may already be modified
+      if ( linkType.compare( "img" ) == 0 || linkType.compare( "source" ) == 0 ) {
+        match = RX::Mdx::srcset.match( newLink );
         if ( match.hasMatch() ) {
-          auto srcsetOriginalText   = match.captured( "text" );
-          QStringList srcsetNewText = {};
+          auto srcsetOriginalText = match.captured( "text" );
 
-          auto ImageList = srcsetOriginalText.split( u',', Qt::SkipEmptyParts );
+          // PERFORMANCE & SAFETY: If the whole text is an absolute URL, don't even try to split/parse it.
+          // This prevents issues with complex URLs containing commas.
+          if ( srcsetOriginalText.contains( "//" ) || srcsetOriginalText.contains( ":" ) ) {
+            // Keep as is
+          }
+          else {
+            QStringList srcsetNewText = {};
+            // Split only when a comma is followed by whitespace, as per HTML Living Standard.
+            QStringList chunks = srcsetOriginalText.split( QRegularExpression( R"(,\s+)" ), Qt::SkipEmptyParts );
 
-          for ( auto & img : ImageList ) {
-            auto imgPair = img.split( RX::whiteSpace );
+            for ( QString chunk : chunks ) {
+              chunk = chunk.trimmed();
+              if ( chunk.isEmpty() )
+                continue;
 
-            if ( !imgPair.empty() && !imgPair.at( 0 ).contains( "//" ) ) {
-              if ( imgPair.length() == 1 ) {
-                srcsetNewText.append( QString( R"(bres://%1/%2)" ).arg( id, imgPair.at( 0 ) ) );
+              QString url, desc;
+              int firstSpace = chunk.indexOf( QRegularExpression( R"(\s)" ) );
+              if ( firstSpace != -1 ) {
+                url  = chunk.left( firstSpace );
+                desc = chunk.mid( firstSpace ).trimmed();
               }
-              else if ( imgPair.length() == 2 ) {
-                srcsetNewText.append( QString( R"(bres://%1/%2 %3)" ).arg( id, imgPair.at( 0 ), imgPair.at( 1 ) ) );
+              else {
+                url = chunk;
+              }
+
+              if ( !url.isEmpty() ) {
+                if ( !url.contains( "//" ) && !url.contains( ":" ) ) {
+                  QString converted = QString( R"(bres://%1/%2)" ).arg( id, url );
+                  srcsetNewText.append( desc.isEmpty() ? converted : converted + " " + desc );
+                }
+                else {
+                  srcsetNewText.append( desc.isEmpty() ? url : url + " " + desc );
+                }
               }
             }
+            if ( !srcsetNewText.isEmpty() ) {
+              newLink.replace( match.capturedStart(),
+                               match.capturedLength(),
+                               match.captured( "before" ) % srcsetNewText.join( ',' ) % match.captured( "after" ) );
+            }
           }
-
-          newLink.replace( match.capturedStart(),
-                           match.capturedLength(),
-                           match.captured( "before" ) % srcsetNewText.join( ',' ) % match.captured( "after" ) );
         }
       }
 
@@ -1056,8 +1078,12 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
         if ( match.hasMatch() ) {
           auto srcsetOriginalText = match.captured( "text" );
           QString srcsetNewText;
-          if ( !srcsetOriginalText.contains( "//" ) ) {
+          if ( !srcsetOriginalText.contains( "//" ) && !srcsetOriginalText.contains( ":" ) ) {
             srcsetNewText = QString( R"(bres://%1/%2)" ).arg( id, srcsetOriginalText );
+          }
+          else {
+            // Fix: Keep external URLs for object data
+            srcsetNewText = srcsetOriginalText;
           }
 
           newLink.replace( match.capturedStart(),
