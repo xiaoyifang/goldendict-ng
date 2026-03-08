@@ -2,7 +2,7 @@
 
 Popup is a mini window for rapid translation.
 
-Enable it by clicking the 💡 (enable clipboard trakcing) on the toolbar or using the context menu of the tray icon.
+Enable it by clicking the 📋 (Toggle clipboard monitoring) on the toolbar or using the context menu of the tray icon.
 
 A popup window will show up when copying text.
 
