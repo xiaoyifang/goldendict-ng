@@ -1029,46 +1029,44 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
         if ( match.hasMatch() ) {
           auto srcsetOriginalText = match.captured( "text" );
 
-          // PERFORMANCE & SAFETY: If the whole text is an absolute URL, don't even try to split/parse it.
-          // This prevents issues with complex URLs containing commas.
-          if ( srcsetOriginalText.contains( "//" ) || srcsetOriginalText.contains( ":" ) ) {
-            // Keep as is
-          }
-          else {
-            QStringList srcsetNewText = {};
-            // Split only when a comma is followed by whitespace, as per HTML Living Standard.
-            QStringList chunks = srcsetOriginalText.split( QRegularExpression( R"(,\s+)" ), Qt::SkipEmptyParts );
+          QStringList srcsetNewText = {};
+          // Split only when a comma is followed by whitespace, as per HTML Living Standard.
+          QStringList chunks = srcsetOriginalText.split( QRegularExpression( R"(,\s+)" ), Qt::SkipEmptyParts );
 
-            for ( QString chunk : chunks ) {
-              chunk = chunk.trimmed();
-              if ( chunk.isEmpty() )
-                continue;
+          for ( QString chunk : chunks ) {
+            chunk = chunk.trimmed();
+            if ( chunk.isEmpty() ) {
+              continue;
+            }
 
-              QString url, desc;
-              int firstSpace = chunk.indexOf( QRegularExpression( R"(\s)" ) );
-              if ( firstSpace != -1 ) {
-                url  = chunk.left( firstSpace );
-                desc = chunk.mid( firstSpace ).trimmed();
+            QString url, desc;
+            int firstSpace = chunk.indexOf( QRegularExpression( R"(\s)" ) );
+            if ( firstSpace != -1 ) {
+              url  = chunk.left( firstSpace );
+              desc = chunk.mid( firstSpace ).trimmed();
+            }
+            else {
+              url = chunk;
+            }
+
+            if ( !url.isEmpty() ) {
+              if ( url.startsWith( "//" ) ) {
+                url = "https:" + url;
+                srcsetNewText.append( desc.isEmpty() ? url : url + " " + desc );
+              }
+              else if ( !url.contains( "//" ) && !url.contains( ":" ) ) {
+                QString converted = QString( R"(bres://%1/%2)" ).arg( id, url );
+                srcsetNewText.append( desc.isEmpty() ? converted : converted + " " + desc );
               }
               else {
-                url = chunk;
-              }
-
-              if ( !url.isEmpty() ) {
-                if ( !url.contains( "//" ) && !url.contains( ":" ) ) {
-                  QString converted = QString( R"(bres://%1/%2)" ).arg( id, url );
-                  srcsetNewText.append( desc.isEmpty() ? converted : converted + " " + desc );
-                }
-                else {
-                  srcsetNewText.append( desc.isEmpty() ? url : url + " " + desc );
-                }
+                srcsetNewText.append( desc.isEmpty() ? url : url + " " + desc );
               }
             }
-            if ( !srcsetNewText.isEmpty() ) {
-              newLink.replace( match.capturedStart(),
-                               match.capturedLength(),
-                               match.captured( "before" ) % srcsetNewText.join( ',' ) % match.captured( "after" ) );
-            }
+          }
+          if ( !srcsetNewText.isEmpty() ) {
+            newLink.replace( match.capturedStart(),
+                             match.capturedLength(),
+                             match.captured( "before" ) % srcsetNewText.join( ',' ) % match.captured( "after" ) );
           }
         }
       }
