@@ -737,6 +737,11 @@ QByteArray MddResourceRequest::isolate_css()
     css = newCSS;
     newCSS.clear();
   }
+
+  // Replace body selector with section[data-from-body="true"]
+  css.replace( QRegularExpression( "\\bbody\\b", QRegularExpression::CaseInsensitiveOption ),
+               "section[data-from-body=\"true\"]" );
+
   dict.isolateCSS( css );
   auto bytes = css.toUtf8();
 
@@ -909,6 +914,12 @@ QString & MdxDictionary::filterResource( QString & article )
 {
   QString id = QString::fromStdString( getId() );
   replaceLinks( id, article );
+
+  // Replace body with section[data-from-body="true"] to avoid hoisting by browser
+  article.replace( QRegularExpression( "<body", QRegularExpression::CaseInsensitiveOption ),
+                   "<section data-from-body=\"true\"" );
+  article.replace( QRegularExpression( "</body>", QRegularExpression::CaseInsensitiveOption ), "</section>" );
+
   replaceStyleInHtml( id, article );
   article = isolateStyleCssInHtml( article );
   return article;
@@ -1121,6 +1132,10 @@ QString MdxDictionary::isolateStyleCssInHtml( const QString & description )
     while ( it.hasNext() ) {
       QRegularExpressionMatch match = it.next();
       QString styleContent          = match.captured( 1 );
+
+      // Replace body selector with section[data-from-body="true"]
+      styleContent.replace( QRegularExpression( "\\bbody\\b", QRegularExpression::CaseInsensitiveOption ),
+                            "section[data-from-body=\"true\"]" );
 
       // Call isolateCSS to process CSS content in <style> tags
       isolateCSS( styleContent, QString() );
