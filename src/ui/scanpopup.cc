@@ -224,7 +224,10 @@ ScanPopup::ScanPopup( QWidget * parent,
                return;
              }
              if ( cfg.preferences.pronounceOnLoadPopup ) {
-               definition->playAudio( QUrl::fromEncoded( audioUrl.toUtf8() ) );
+               // Use a small delay to avoid audio clipping on Windows during window activation/rendering
+               QTimer::singleShot( 150, definition, [ this, audioUrl ]() {
+                 definition->playAudio( QUrl::fromEncoded( audioUrl.toUtf8() ) );
+               } );
              }
            } );
   pinnedGeometry = cfg.popupWindowGeometry;
