@@ -67,16 +67,31 @@ public:
     }
   }
 
-  string getName() noexcept override { return name; }
-  unsigned long getArticleCount() noexcept override { return 0; }
-  unsigned long getWordCount() noexcept override { return 0; }
+  string getName() noexcept override
+  {
+    return name;
+  }
+  unsigned long getArticleCount() noexcept override
+  {
+    return 0;
+  }
+  unsigned long getWordCount() noexcept override
+  {
+    return 0;
+  }
 
   sptr< WordSearchRequest > prefixMatch( const std::u32string &, unsigned long maxResults ) override;
   sptr< DataRequest >
   getArticle( const std::u32string &, const vector< std::u32string > & alts, const std::u32string &, bool ) override;
 
-  quint32 getLangFrom() const override { return langId; }
-  quint32 getLangTo() const override { return langId; }
+  quint32 getLangFrom() const override
+  {
+    return langId;
+  }
+  quint32 getLangTo() const override
+  {
+    return langId;
+  }
 
 protected:
   void loadIcon() noexcept override;
@@ -89,35 +104,39 @@ public:
   static void generateToc( const QJsonArray & sections, QString & html )
   {
     const QString indicator = "<meta property=\"mw:PageProp/toc\" />";
-    int pos = html.indexOf( indicator );
+    int pos                 = html.indexOf( indicator );
     if ( pos == -1 || sections.isEmpty() )
       return;
 
-    QString toc = "<div id='toc' class='toc' role='navigation' aria-labelledby='mw-toc-heading'>"
-                  "<div class='toctitle'><h2 id='mw-toc-heading'>Contents</h2></div>\n";
-    
+    QString toc =
+      "<div id='toc' class='toc' role='navigation' aria-labelledby='mw-toc-heading'>"
+      "<div class='toctitle'><h2 id='mw-toc-heading'>Contents</h2></div>\n";
+
     int prevLevel = 0;
     for ( const QJsonValue & val : sections ) {
       QJsonObject s = val.toObject();
-      int level = s[ "toclevel" ].toInt();
-      if ( level <= 0 ) continue;
+      int level     = s[ "toclevel" ].toInt();
+      if ( level <= 0 )
+        continue;
 
       if ( level > prevLevel ) {
         toc += "<ul>\n";
-      } else {
+      }
+      else {
         while ( prevLevel > level ) {
           toc += "</li>\n</ul>\n";
           prevLevel--;
         }
         toc += "</li>\n";
       }
-      
+
       toc += QString( "<li><a href='#%1'>%2 %3</a>" )
                .arg( s[ "linkAnchor" ].toString(), s[ "number" ].toString(), s[ "line" ].toString() );
       prevLevel = level;
     }
 
-    while ( prevLevel-- > 0 ) toc += "</li>\n</ul>\n";
+    while ( prevLevel-- > 0 )
+      toc += "</li>\n</ul>\n";
     toc += "</div>";
 
     html.replace( pos, indicator.size(), toc );
@@ -132,9 +151,9 @@ class MediaWikiWordSearchRequest: public Dictionary::WordSearchRequest
 
 public:
   MediaWikiWordSearchRequest( const std::u32string & word,
-                               const QString & apiUrl,
-                               const QString & lang,
-                               QNetworkAccessManager & mgr )
+                              const QString & apiUrl,
+                              const QString & lang,
+                              QNetworkAccessManager & mgr )
   {
     QUrl url( apiUrl + "/api.php" );
     QUrlQuery query;
@@ -143,7 +162,8 @@ public:
     query.addQueryItem( "aplimit", "40" );
     query.addQueryItem( "format", "json" );
     query.addQueryItem( "apprefix", QString::fromStdU32String( word ) );
-    if ( !lang.isEmpty() ) query.addQueryItem( "lang", lang );
+    if ( !lang.isEmpty() )
+      query.addQueryItem( "lang", lang );
     url.setQuery( query );
 
     GlobalBroadcaster::instance()->addHostWhitelist( url.host() );
@@ -155,23 +175,27 @@ public:
     connect( netReply.get(), &QNetworkReply::finished, this, &MediaWikiWordSearchRequest::onFinished );
   }
 
-  void cancel() override {
+  void cancel() override
+  {
     isCancelling = true;
     netReply.reset();
     finish();
   }
 
 private:
-  void onFinished() {
-    if ( isCancelling || !netReply ) return;
+  void onFinished()
+  {
+    if ( isCancelling || !netReply )
+      return;
     if ( netReply->error() == QNetworkReply::NoError ) {
       QJsonDocument doc = QJsonDocument::fromJson( netReply->readAll() );
-      QJsonArray pages = doc.object()[ "query" ].toObject()[ "allpages" ].toArray();
+      QJsonArray pages  = doc.object()[ "query" ].toObject()[ "allpages" ].toArray();
       QMutexLocker locker( &dataMutex );
       for ( const QJsonValue & p : pages ) {
         matches.emplace_back( p.toObject()[ "title" ].toString().toStdU32String() );
       }
-    } else {
+    }
+    else {
       setErrorString( netReply->errorString() );
     }
     finish();
@@ -182,7 +206,11 @@ private:
 class MediaWikiArticleRequest: public Dictionary::DataRequest
 {
   Q_OBJECT
-  struct ReplyHandle { QNetworkReply * reply; bool finished; };
+  struct ReplyHandle
+  {
+    QNetworkReply * reply;
+    bool finished;
+  };
   std::list< ReplyHandle > replies;
   QString apiUrl;
   QString lang;
@@ -196,17 +224,28 @@ public:
                            const QString & lang_,
                            QNetworkAccessManager & mgr,
                            Class * dictPtr_ ):
-    apiUrl( apiUrl_ ), lang( lang_ ), dictPtr( dictPtr_ )
+    apiUrl( apiUrl_ ),
+    lang( lang_ ),
+    dictPtr( dictPtr_ )
   {
-    connect( &mgr, &QNetworkAccessManager::finished, this, &MediaWikiArticleRequest::onReplyFinished, Qt::QueuedConnection );
+    connect( &mgr,
+             &QNetworkAccessManager::finished,
+             this,
+             &MediaWikiArticleRequest::onReplyFinished,
+             Qt::QueuedConnection );
     addQuery( mgr, word );
-    for ( const auto & alt : alts ) addQuery( mgr, alt );
+    for ( const auto & alt : alts )
+      addQuery( mgr, alt );
   }
 
-  void cancel() override { finish(); }
+  void cancel() override
+  {
+    finish();
+  }
 
 private:
-  void addQuery( QNetworkAccessManager & mgr, const std::u32string & word ) {
+  void addQuery( QNetworkAccessManager & mgr, const std::u32string & word )
+  {
     QUrl url( apiUrl + "/api.php" );
     QUrlQuery query;
     query.addQueryItem( "action", "parse" );
@@ -214,7 +253,8 @@ private:
     query.addQueryItem( "format", "json" );
     query.addQueryItem( "redirects", "1" );
     query.addQueryItem( "page", QString::fromStdU32String( word ) );
-    if ( !lang.isEmpty() ) query.addQueryItem( "variant", lang );
+    if ( !lang.isEmpty() )
+      query.addQueryItem( "variant", lang );
     url.setQuery( query );
 
     QNetworkRequest req( url );
@@ -222,10 +262,15 @@ private:
     replies.push_back( { mgr.get( req ), false } );
   }
 
-  void onReplyFinished( QNetworkReply * r ) {
-    if ( isFinished() ) return;
-    auto it = std::find_if( replies.begin(), replies.end(), [r]( const ReplyHandle & h ) { return h.reply == r; } );
-    if ( it == replies.end() ) return;
+  void onReplyFinished( QNetworkReply * r )
+  {
+    if ( isFinished() )
+      return;
+    auto it = std::find_if( replies.begin(), replies.end(), [ r ]( const ReplyHandle & h ) {
+      return h.reply == r;
+    } );
+    if ( it == replies.end() )
+      return;
     it->finished = true;
 
     while ( !replies.empty() && replies.front().finished ) {
@@ -236,22 +281,28 @@ private:
       reply->deleteLater();
       replies.pop_front();
     }
-    if ( replies.empty() ) finish(); else update();
+    if ( replies.empty() )
+      finish();
+    else
+      update();
   }
 
-  void processResponse( const QByteArray & data ) {
+  void processResponse( const QByteArray & data )
+  {
     QJsonDocument doc = QJsonDocument::fromJson( data );
     QJsonObject parse = doc.object()[ "parse" ].toObject();
-    long long pageId = parse[ "pageid" ].toVariant().toLongLong();
+    long long pageId  = parse[ "pageid" ].toVariant().toLongLong();
 
-    if ( pageId == 0 || addedPageIds.contains( pageId ) ) return;
+    if ( pageId == 0 || addedPageIds.contains( pageId ) )
+      return;
     addedPageIds.insert( pageId );
 
     QString html = parse[ "text" ].toObject()[ "*" ].toString();
-    if ( html.isEmpty() ) return;
+    if ( html.isEmpty() )
+      return;
 
     QUrl base( apiUrl );
-    
+
     // 1. Fix resource and link paths
     html.replace( " src=\"//", " src=\"" + base.scheme() + "://" );
     html.replace( " src=\"/", " src=\"" + base.scheme() + "://" + base.host() + "/" );
@@ -261,19 +312,22 @@ private:
     // 2. Audio tags
     static QRegularExpression audioReg( "<audio[^>]*>.*?</audio>", QRegularExpression::DotMatchesEverythingOption );
     static QRegularExpression srcReg( "src=\"([^\"]+)\"" );
-    html.replace( audioReg, [&]( const QRegularExpressionMatch & m ) {
+    html.replace( audioReg, [ & ]( const QRegularExpressionMatch & m ) {
       auto srcMatch = srcReg.match( m.captured() );
       if ( srcMatch.hasMatch() ) {
-        QString src = fixWikiUrl( srcMatch.captured( 1 ), base );
+        QString src   = fixWikiUrl( srcMatch.captured( 1 ), base );
         string script = addAudioLink( src, dictPtr->getId() );
-        return QString::fromStdString( script ) + QString( "<a href=\"%1\"><img src=\"qrc:///icons/playsound.svg\" border=\"0\" align=\"absmiddle\" alt=\"Play\"/></a>" ).arg( src );
+        return QString::fromStdString( script )
+          + QString(
+              "<a href=\"%1\"><img src=\"qrc:///icons/playsound.svg\" border=\"0\" align=\"absmiddle\" alt=\"Play\"/></a>" )
+              .arg( src );
       }
       return m.captured();
     } );
 
     // 3. srcset fix
     static QRegularExpression srcsetReg( "srcset=\"([^\"]+)\"" );
-    html.replace( srcsetReg, [&]( const QRegularExpressionMatch & m ) {
+    html.replace( srcsetReg, [ & ]( const QRegularExpressionMatch & m ) {
       QString srcset = m.captured( 1 );
       srcset.replace( "//", base.scheme() + "://" );
       return QString( "srcset=\"%1\"" ).arg( srcset );
@@ -282,17 +336,18 @@ private:
     // 4. Internal links and index.php fixes
     html.replace( QRegularExpression( R"(<a\shref="(/([\w]*/)*index.php\?))" ),
                   QString( "<a href=\"%1%2" ).arg( base.scheme() + "://" + base.host(), "\\1" ) );
-    
+
     html.replace( "<a href=\"/wiki/", "<a href=\"" );
-    
+
     static QRegularExpression internalLinkValueReg( "<a\\s+href=\"([^/:\">#]+)" );
     html.replace( internalLinkValueReg, []( const QRegularExpressionMatch & m ) {
       return m.captured().replace( '_', ' ' );
     } );
 
     // Special file: fix
-    html.replace( QRegularExpression( R"(<a\s+href="([^:/"]*file%3A[^/"]+"))", QRegularExpression::CaseInsensitiveOption ),
-                  QString( "<a href=\"%1/index.php?title=\\1" ).arg( apiUrl ) );
+    html.replace(
+      QRegularExpression( R"(<a\s+href="([^:/"]*file%3A[^/"]+"))", QRegularExpression::CaseInsensitiveOption ),
+      QString( "<a href=\"%1/index.php?title=\\1" ).arg( apiUrl ) );
 
     // 5. TOC
     MediaWikiSectionsParser::generateToc( parse[ "sections" ].toArray(), html );
@@ -304,11 +359,14 @@ private:
   }
 };
 
-void MediaWikiDictionary::loadIcon() noexcept {
-  if ( dictionaryIconLoaded ) return;
+void MediaWikiDictionary::loadIcon() noexcept
+{
+  if ( dictionaryIconLoaded )
+    return;
   if ( !icon.isEmpty() ) {
     QFileInfo f( QDir( Config::getConfigDir() ), icon );
-    if ( f.isFile() ) loadIconFromFilePath( f.absoluteFilePath() );
+    if ( f.isFile() )
+      loadIconFromFilePath( f.absoluteFilePath() );
   }
   if ( dictionaryIcon.isNull() ) {
     dictionaryIcon = QIcon( url.contains( "tionary" ) ? ":/icons/wiktionary.svg" : ":/icons/icon32_wiki.png" );
@@ -316,22 +374,26 @@ void MediaWikiDictionary::loadIcon() noexcept {
   dictionaryIconLoaded = true;
 }
 
-sptr< WordSearchRequest > MediaWikiDictionary::prefixMatch( const std::u32string & word, unsigned long ) {
-  return ( word.size() > 80 ) ? std::make_shared< WordSearchRequestInstant >() : 
-                               std::make_shared< MediaWikiWordSearchRequest >( word, url, lang, netMgr );
+sptr< WordSearchRequest > MediaWikiDictionary::prefixMatch( const std::u32string & word, unsigned long )
+{
+  return ( word.size() > 80 ) ? std::make_shared< WordSearchRequestInstant >() :
+                                std::make_shared< MediaWikiWordSearchRequest >( word, url, lang, netMgr );
 }
 
 sptr< DataRequest > MediaWikiDictionary::getArticle( const std::u32string & word,
-                                                      const vector< std::u32string > & alts,
-                                                      const std::u32string &,
-                                                      bool ) {
+                                                     const vector< std::u32string > & alts,
+                                                     const std::u32string &,
+                                                     bool )
+{
   return ( word.size() > 80 ) ? std::make_shared< DataRequestInstant >( false ) :
-                               std::make_shared< MediaWikiArticleRequest >( word, alts, url, lang, netMgr, this );
+                                std::make_shared< MediaWikiArticleRequest >( word, alts, url, lang, netMgr, this );
 }
 
 } // namespace
 
-vector< sptr< Dictionary::Class > > makeDictionaries( Initializing &, const Config::MediaWikis & wikis, QNetworkAccessManager & mgr ) {
+vector< sptr< Dictionary::Class > >
+makeDictionaries( Initializing &, const Config::MediaWikis & wikis, QNetworkAccessManager & mgr )
+{
   vector< sptr< Dictionary::Class > > result;
   for ( const auto & wiki : wikis ) {
     if ( wiki.enabled ) {
