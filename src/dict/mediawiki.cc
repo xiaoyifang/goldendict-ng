@@ -374,19 +374,19 @@ void MediaWikiDictionary::loadIcon() noexcept
   dictionaryIconLoaded = true;
 }
 
-sptr< WordSearchRequest > MediaWikiDictionary::prefixMatch( const std::u32string & word, unsigned long )
-{
-  return ( word.size() > 80 ) ? std::make_shared< WordSearchRequestInstant >() :
-                                std::make_shared< MediaWikiWordSearchRequest >( word, url, lang, netMgr );
+sptr< WordSearchRequest > MediaWikiDictionary::prefixMatch( const std::u32string & word, unsigned long ) {
+  if ( word.size() > 80 )
+    return std::make_shared< WordSearchRequestInstant >();
+  return std::make_shared< MediaWikiWordSearchRequest >( word, url, lang, netMgr );
 }
 
 sptr< DataRequest > MediaWikiDictionary::getArticle( const std::u32string & word,
-                                                     const vector< std::u32string > & alts,
-                                                     const std::u32string &,
-                                                     bool )
-{
-  return ( word.size() > 80 ) ? std::make_shared< DataRequestInstant >( false ) :
-                                std::make_shared< MediaWikiArticleRequest >( word, alts, url, lang, netMgr, this );
+                                                      const vector< std::u32string > & alts,
+                                                      const std::u32string &,
+                                                      bool ) {
+  if ( word.size() > 80 )
+    return std::make_shared< DataRequestInstant >( false );
+  return std::make_shared< MediaWikiArticleRequest >( word, alts, url, lang, netMgr, this );
 }
 
 } // namespace
