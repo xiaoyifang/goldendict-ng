@@ -143,7 +143,7 @@ public:
 };
 
 // Word Search Request using JSON API
-class MediaWikiWordSearchRequest : public Dictionary::WordSearchRequest
+class MediaWikiWordSearchRequest: public Dictionary::WordSearchRequest
 {
   Q_OBJECT
   sptr< QNetworkReply > netReply;
@@ -187,9 +187,7 @@ MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( const std::u32string & w
   connect( netReply.get(), &QNetworkReply::finished, this, &MediaWikiWordSearchRequest::onFinished );
 }
 
-MediaWikiWordSearchRequest::~MediaWikiWordSearchRequest()
-{
-}
+MediaWikiWordSearchRequest::~MediaWikiWordSearchRequest() {}
 
 void MediaWikiWordSearchRequest::cancel()
 {
@@ -217,7 +215,7 @@ void MediaWikiWordSearchRequest::onFinished()
 }
 
 // Article Request using JSON API
-class MediaWikiArticleRequest : public Dictionary::DataRequest
+class MediaWikiArticleRequest: public Dictionary::DataRequest
 {
   Q_OBJECT
   struct ReplyHandle
@@ -253,7 +251,7 @@ MediaWikiArticleRequest::MediaWikiArticleRequest( const std::u32string & word,
                                                   const QString & apiUrl_,
                                                   const QString & lang_,
                                                   QNetworkAccessManager & mgr,
-                                                  Class * dictPtr_ ) :
+                                                  Class * dictPtr_ ):
   apiUrl( apiUrl_ ),
   lang( lang_ ),
   dictPtr( dictPtr_ )
@@ -268,9 +266,7 @@ MediaWikiArticleRequest::MediaWikiArticleRequest( const std::u32string & word,
     addQuery( mgr, alt );
 }
 
-MediaWikiArticleRequest::~MediaWikiArticleRequest()
-{
-}
+MediaWikiArticleRequest::~MediaWikiArticleRequest() {}
 
 void MediaWikiArticleRequest::cancel()
 {
@@ -336,98 +332,98 @@ void MediaWikiArticleRequest::processResponse( const QByteArray & data )
 
   QUrl base( apiUrl );
 
-    // 1. Fix resource and link paths
-    html.replace( " src=\"//", " src=\"" + base.scheme() + "://" );
-    html.replace( " src=\"/", " src=\"" + base.scheme() + "://" + base.host() + "/" );
-    html.replace( " href=\"//", " href=\"" + base.scheme() + "://" );
-    html.replace( " url(\"//", " url(\"" + base.scheme() + "://" );
+  // 1. Fix resource and link paths
+  html.replace( " src=\"//", " src=\"" + base.scheme() + "://" );
+  html.replace( " src=\"/", " src=\"" + base.scheme() + "://" + base.host() + "/" );
+  html.replace( " href=\"//", " href=\"" + base.scheme() + "://" );
+  html.replace( " url(\"//", " url(\"" + base.scheme() + "://" );
 
-    // 2. Audio tags
-    {
-      static QRegularExpression audioReg( "<audio[^>]*>.*?</audio>", QRegularExpression::DotMatchesEverythingOption );
-      static QRegularExpression srcReg( "src=\"([^\"]+)\"" );
-      QString newHtml;
-      int lastPos = 0;
-      auto it     = audioReg.globalMatch( html );
-      while ( it.hasNext() ) {
-        auto m = it.next();
-        newHtml += html.mid( lastPos, m.capturedStart() - lastPos );
-        auto srcMatch = srcReg.match( m.captured() );
-        if ( srcMatch.hasMatch() ) {
-          QString src   = fixWikiUrl( srcMatch.captured( 1 ), base );
-          string script = addAudioLink( src, dictPtr->getId() );
-          newHtml += QString::fromStdString( script )
-            + QString(
-                "<a href=\"%1\"><img src=\"qrc:///icons/playsound.svg\" border=\"0\" align=\"absmiddle\" alt=\"Play\"/></a>" )
-                .arg( src );
-        }
-        else {
-          newHtml += m.captured();
-        }
-        lastPos = m.capturedEnd();
+  // 2. Audio tags
+  {
+    static QRegularExpression audioReg( "<audio[^>]*>.*?</audio>", QRegularExpression::DotMatchesEverythingOption );
+    static QRegularExpression srcReg( "src=\"([^\"]+)\"" );
+    QString newHtml;
+    int lastPos = 0;
+    auto it     = audioReg.globalMatch( html );
+    while ( it.hasNext() ) {
+      auto m = it.next();
+      newHtml += html.mid( lastPos, m.capturedStart() - lastPos );
+      auto srcMatch = srcReg.match( m.captured() );
+      if ( srcMatch.hasMatch() ) {
+        QString src   = fixWikiUrl( srcMatch.captured( 1 ), base );
+        string script = addAudioLink( src, dictPtr->getId() );
+        newHtml += QString::fromStdString( script )
+          + QString(
+              "<a href=\"%1\"><img src=\"qrc:///icons/playsound.svg\" border=\"0\" align=\"absmiddle\" alt=\"Play\"/></a>" )
+              .arg( src );
       }
-      if ( lastPos > 0 ) {
-        newHtml += html.mid( lastPos );
-        html = newHtml;
+      else {
+        newHtml += m.captured();
       }
+      lastPos = m.capturedEnd();
     }
-
-    // 3. srcset fix
-    {
-      static QRegularExpression srcsetReg( "srcset=\"([^\"]+)\"" );
-      QString newHtml;
-      int lastPos = 0;
-      auto it     = srcsetReg.globalMatch( html );
-      while ( it.hasNext() ) {
-        auto m = it.next();
-        newHtml += html.mid( lastPos, m.capturedStart() - lastPos );
-        QString srcset = m.captured( 1 );
-        srcset.replace( "//", base.scheme() + "://" );
-        newHtml += QString( "srcset=\"%1\"" ).arg( srcset );
-        lastPos = m.capturedEnd();
-      }
-      if ( lastPos > 0 ) {
-        newHtml += html.mid( lastPos );
-        html = newHtml;
-      }
+    if ( lastPos > 0 ) {
+      newHtml += html.mid( lastPos );
+      html = newHtml;
     }
-
-    // 4. Internal links and index.php fixes
-    html.replace( QRegularExpression( R"(<a\shref="(/([\w]*/)*index.php\?))" ),
-                  QString( "<a href=\"%1%2" ).arg( base.scheme() + "://" + base.host(), "\\1" ) );
-
-    html.replace( "<a href=\"/wiki/", "<a href=\"" );
-
-    {
-      static QRegularExpression internalLinkValueReg( "<a\\s+href=\"([^/:\">#]+)" );
-      QString newHtml;
-      int lastPos = 0;
-      auto it     = internalLinkValueReg.globalMatch( html );
-      while ( it.hasNext() ) {
-        auto m = it.next();
-        newHtml += html.mid( lastPos, m.capturedStart() - lastPos );
-        newHtml += m.captured().replace( '_', ' ' );
-        lastPos = m.capturedEnd();
-      }
-      if ( lastPos > 0 ) {
-        newHtml += html.mid( lastPos );
-        html = newHtml;
-      }
-    }
-
-    // Special file: fix
-    html.replace(
-      QRegularExpression( R"(<a\s+href="([^:/"]*file%3A[^/"]+"))", QRegularExpression::CaseInsensitiveOption ),
-      QString( "<a href=\"%1/index.php?title=\\1" ).arg( apiUrl ) );
-
-    // 5. TOC
-    MediaWikiSectionsParser::generateToc( parse[ "sections" ].toArray(), html );
-
-    // 6. Final wrapping
-    QString wrapper = dictPtr->isToLanguageRTL() ? "<div class=\"mwiki\" dir=\"rtl\">" : "<div class=\"mwiki\">";
-    appendString( ( wrapper + html + "</div>" ).toStdString() );
-    hasAnyData = true;
   }
+
+  // 3. srcset fix
+  {
+    static QRegularExpression srcsetReg( "srcset=\"([^\"]+)\"" );
+    QString newHtml;
+    int lastPos = 0;
+    auto it     = srcsetReg.globalMatch( html );
+    while ( it.hasNext() ) {
+      auto m = it.next();
+      newHtml += html.mid( lastPos, m.capturedStart() - lastPos );
+      QString srcset = m.captured( 1 );
+      srcset.replace( "//", base.scheme() + "://" );
+      newHtml += QString( "srcset=\"%1\"" ).arg( srcset );
+      lastPos = m.capturedEnd();
+    }
+    if ( lastPos > 0 ) {
+      newHtml += html.mid( lastPos );
+      html = newHtml;
+    }
+  }
+
+  // 4. Internal links and index.php fixes
+  html.replace( QRegularExpression( R"(<a\shref="(/([\w]*/)*index.php\?))" ),
+                QString( "<a href=\"%1%2" ).arg( base.scheme() + "://" + base.host(), "\\1" ) );
+
+  html.replace( "<a href=\"/wiki/", "<a href=\"" );
+
+  {
+    static QRegularExpression internalLinkValueReg( "<a\\s+href=\"([^/:\">#]+)" );
+    QString newHtml;
+    int lastPos = 0;
+    auto it     = internalLinkValueReg.globalMatch( html );
+    while ( it.hasNext() ) {
+      auto m = it.next();
+      newHtml += html.mid( lastPos, m.capturedStart() - lastPos );
+      newHtml += m.captured().replace( '_', ' ' );
+      lastPos = m.capturedEnd();
+    }
+    if ( lastPos > 0 ) {
+      newHtml += html.mid( lastPos );
+      html = newHtml;
+    }
+  }
+
+  // Special file: fix
+  html.replace(
+    QRegularExpression( R"(<a\s+href="([^:/"]*file%3A[^/"]+"))", QRegularExpression::CaseInsensitiveOption ),
+    QString( "<a href=\"%1/index.php?title=\\1" ).arg( apiUrl ) );
+
+  // 5. TOC
+  MediaWikiSectionsParser::generateToc( parse[ "sections" ].toArray(), html );
+
+  // 6. Final wrapping
+  QString wrapper = dictPtr->isToLanguageRTL() ? "<div class=\"mwiki\" dir=\"rtl\">" : "<div class=\"mwiki\">";
+  appendString( ( wrapper + html + "</div>" ).toStdString() );
+  hasAnyData = true;
+}
 };
 
 void MediaWikiDictionary::loadIcon() noexcept
