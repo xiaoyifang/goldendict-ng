@@ -292,12 +292,6 @@ void MediaWikiSectionsParser::generateTableOfContents( const QJsonArray & sectio
     return;
   }
 
-  // Omit invisible and useless toctogglecheckbox, toctogglespan and toctogglelabel elements.
-  // The values of lang (e.g. 'en') and dir (e.g. 'ltr') attributes of the toctitle element depend on
-  // the article's language. These attributes have no visible effect and so are simply omitted here.
-  // TODO: the "Contents" string should be translated to the article's language, but I don't know how
-  // to implement this. Should "Contents" be enclosed in tr() to at least translate it to GoldenDict's
-  // interface language? Is there a language-agnostic Unicode symbol that stands for "Contents"?
   tableOfContents =
     "<div id='toc' class='toc' role='navigation' aria-labelledby='mw-toc-heading'>"
     "<div class='toctitle'><h2 id='mw-toc-heading'>📑</h2></div>";
