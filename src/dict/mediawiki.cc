@@ -5,7 +5,6 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QUrl>
-#include <QtXml>
 #include <QSet>
 #include <algorithm>
 #include <list>
@@ -14,6 +13,9 @@
 #include "utils.hh"
 
 #include <QRegularExpression>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
 #include "globalbroadcaster.hh"
 
 namespace MediaWiki {
@@ -155,7 +157,7 @@ MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( const std::u32string & s
   isCancelling( false )
 {
   qDebug( "wiki request begin" );
-  QUrl reqUrl( url + "/api.php?action=query&list=allpages&aplimit=40&format=xml" );
+  QUrl reqUrl( url + "/api.php?action=query&list=allpages&aplimit=40&format=json" );
 
   GlobalBroadcaster::instance()->addHostWhitelist( reqUrl.host() );
 
@@ -202,27 +204,24 @@ void MediaWikiWordSearchRequest::downloadFinished()
   }
 
   if ( netReply->error() == QNetworkReply::NoError ) {
-    QDomDocument dd;
+    QByteArray responseData = netReply->readAll();
+    QJsonDocument jsonDoc = QJsonDocument::fromJson( responseData );
 
-    QString errorStr;
-    int errorLine, errorColumn;
-
-    if ( !dd.setContent( netReply.get(), false, &errorStr, &errorLine, &errorColumn ) ) {
-      setErrorString(
-        QString( tr( "XML parse error: %1 at %2,%3" ).arg( errorStr ).arg( errorLine ).arg( errorColumn ) ) );
+    if ( jsonDoc.isNull() ) {
+      setErrorString( tr( "JSON parse error" ) );
     }
     else {
-      QDomNode pages = dd.namedItem( "api" ).namedItem( "query" ).namedItem( "allpages" );
+      QJsonObject rootObj = jsonDoc.object();
+      QJsonObject queryObj = rootObj.value( "query" ).toObject();
+      QJsonArray allpagesArray = queryObj.value( "allpages" ).toArray();
 
-      if ( !pages.isNull() ) {
-        QDomNodeList nl = pages.toElement().elementsByTagName( "p" );
+      QMutexLocker _( &dataMutex );
 
-        QMutexLocker _( &dataMutex );
-
-        qDebug() << "matches" << matches.size();
-        for ( int x = 0; x < nl.length(); ++x ) {
-          matches.emplace_back( nl.item( x ).toElement().attribute( "title" ).toStdU32String() );
-        }
+      qDebug() << "matches" << matches.size();
+      for ( const QJsonValue &value : allpagesArray ) {
+        QJsonObject pageObj = value.toObject();
+        QString title = pageObj.value( "title" ).toString();
+        matches.emplace_back( title.toStdU32String() );
       }
     }
     qDebug( "done." );
@@ -246,7 +245,9 @@ public:
   ///
   /// This function searches for an indicator of the empty ToC in an article HTML. If the indicator is present,
   /// generates ToC HTML from the sections element and replaces the indicator with the generated ToC.
-  static void generateTableOfContentsIfEmpty( const QDomNode & parseNode, QString & articleString )
+
+
+  static void generateTableOfContentsIfEmpty( const QJsonObject & parseObj, QString & articleString )
   {
     const QString emptyTocIndicator = "<meta property=\"mw:PageProp/toc\" />";
     const int emptyTocPos           = articleString.indexOf( emptyTocIndicator );
@@ -254,15 +255,15 @@ public:
       return; // The ToC must be absent or nonempty => nothing to do.
     }
 
-    const QDomElement sectionsElement = parseNode.firstChildElement( "sections" );
-    if ( sectionsElement.isNull() ) {
+    QJsonArray sectionsArray = parseObj.value( "sections" ).toArray();
+    if ( sectionsArray.isEmpty() ) {
       qWarning( "MediaWiki: empty table of contents and missing sections element." );
       return;
     }
 
     qDebug( "MediaWiki: generating table of contents from the sections element." );
     MediaWikiSectionsParser parser;
-    parser.generateTableOfContents( sectionsElement );
+    parser.generateTableOfContents( sectionsArray );
     articleString.replace( emptyTocPos, emptyTocIndicator.size(), parser.tableOfContents );
   }
 
@@ -271,7 +272,7 @@ private:
     previousLevel( 0 )
   {
   }
-  void generateTableOfContents( const QDomElement & sectionsElement );
+  void generateTableOfContents( const QJsonArray & sectionsArray );
 
   bool addListLevel( const QString & levelString );
   void closeListTags( int currentLevel );
@@ -280,18 +281,14 @@ private:
   int previousLevel;
 };
 
-void MediaWikiSectionsParser::generateTableOfContents( const QDomElement & sectionsElement )
-{
-  // A real example of a typical child of the <sections> element:
-  // <s linkAnchor="Marginal_densities" toclevel="2" fromtitle="Probability_density_function" level="3"
-  //  line="Marginal densities" byteoffset="15868" anchor="Marginal_densities" number="7.1" index="9"/>
 
+
+void MediaWikiSectionsParser::generateTableOfContents( const QJsonArray & sectionsArray )
+{
   // Use Wiktionary's ToC style, which had also been Wikipedia's ToC style until the UI redesign.
   // Replace double quotes with single quotes to avoid escaping " within string literals.
 
-  const QString elTagName = "s";
-  QDomElement el          = sectionsElement.firstChildElement( elTagName );
-  if ( el.isNull() ) {
+  if ( sectionsArray.isEmpty() ) {
     return;
   }
 
@@ -303,10 +300,12 @@ void MediaWikiSectionsParser::generateTableOfContents( const QDomElement & secti
   // interface language? Is there a language-agnostic Unicode symbol that stands for "Contents"?
   tableOfContents =
     "<div id='toc' class='toc' role='navigation' aria-labelledby='mw-toc-heading'>"
-    "<div class='toctitle'><h2 id='mw-toc-heading'>Contents</h2></div>";
+    "<div class='toctitle'><h2 id='mw-toc-heading'>📑</h2></div>";
 
-  do {
-    if ( !addListLevel( el.attribute( "toclevel" ) ) ) {
+  for ( const QJsonValue &value : sectionsArray ) {
+    QJsonObject sectionObj = value.toObject();
+    
+    if ( !addListLevel( sectionObj.value( "toclevel" ).toString() ) ) {
       tableOfContents.clear();
       return;
     }
@@ -316,19 +315,17 @@ void MediaWikiSectionsParser::generateTableOfContents( const QDomElement & secti
     // document.getElementById(). The linkAnchor property ... contains additional escaping appropriate for
     // use in a URL fragment, and should be used (eg) if you are creating the href attribute of an <a> tag.
     tableOfContents += "<a href='#";
-    tableOfContents += el.attribute( "linkAnchor" );
+    tableOfContents += sectionObj.value( "linkAnchor" ).toString();
     tableOfContents += "'>";
 
     // Omit <span class="tocnumber"> because it has no visible effect.
-    tableOfContents += el.attribute( "number" );
+    tableOfContents += sectionObj.value( "number" ).toString();
     tableOfContents += ' ';
     // Omit <span class="toctext"> because it has no visible effect.
-    tableOfContents += el.attribute( "line" );
+    tableOfContents += sectionObj.value( "line" ).toString();
 
     tableOfContents += "</a>";
-
-    el = el.nextSiblingElement( elTagName );
-  } while ( !el.isNull() );
+  }
 
   closeListTags( 1 );
   // Close the first-level list tag and the toc div tag.
@@ -447,7 +444,7 @@ void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, const std::
 {
   qDebug( "MediaWiki: requesting article %s", QString::fromStdU32String( str ).toUtf8().data() );
 
-  QUrl reqUrl( url + "/api.php?action=parse&prop=text|revid|sections&format=xml&redirects" );
+  QUrl reqUrl( url + "/api.php?action=parse&prop=text|revid|sections&format=json&redirects" );
 
   Utils::Url::addQueryItem( reqUrl, "page", QString::fromStdU32String( str ).replace( '+', "%2B" ) );
   Utils::Url::addQueryItem( reqUrl, "variant", lang );
@@ -498,30 +495,28 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
     QNetworkReply * netReply = netReplies.front().first;
 
     if ( netReply->error() == QNetworkReply::NoError ) {
-      QDomDocument dd;
+      QByteArray responseData = netReply->readAll();
+      QJsonDocument jsonDoc = QJsonDocument::fromJson( responseData );
 
-      QString errorStr;
-      int errorLine, errorColumn;
-
-      if ( !dd.setContent( netReply, false, &errorStr, &errorLine, &errorColumn ) ) {
-        setErrorString(
-          QString( tr( "XML parse error: %1 at %2,%3" ).arg( errorStr ).arg( errorLine ).arg( errorColumn ) ) );
+      if ( jsonDoc.isNull() ) {
+        setErrorString( tr( "JSON parse error" ) );
       }
       else {
-        QDomNode parseNode = dd.namedItem( "api" ).namedItem( "parse" );
+        QJsonObject rootObj = jsonDoc.object();
+        QJsonObject parseObj = rootObj.value( "parse" ).toObject();
 
         long long pageId = 0;
-        if ( !parseNode.isNull() && parseNode.toElement().attribute( "revid" ) != "0" ) {
-          pageId = parseNode.toElement().attribute( "pageid" ).toLongLong();
+        if ( !parseObj.isEmpty() && parseObj.value( "revid" ).toString() != "0" ) {
+          pageId = parseObj.value( "pageid" ).toString().toLongLong();
         }
 
         if ( pageId != 0 && !addedPageIds.contains( pageId ) ) {
           addedPageIds.insert( pageId );
 
-          QDomNode textNode = parseNode.namedItem( "text" );
+          QJsonObject textObj = parseObj.value( "text" ).toObject();
+          QString articleString = textObj.value( "*" ).toString();
 
-          if ( !textNode.isNull() ) {
-            QString articleString = textNode.toElement().text();
+          if ( !articleString.isEmpty() ) {
 
             // Replace all ":" in links, remove '#' part in links to other articles
             int pos = 0;
@@ -662,7 +657,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
 
 
             // Insert the ToC in the end to improve performance because no replacements are needed in the generated ToC.
-            MediaWikiSectionsParser::generateTableOfContentsIfEmpty( parseNode, articleString );
+            MediaWikiSectionsParser::generateTableOfContentsIfEmpty( parseObj, articleString );
 
             articleString.prepend( dictPtr->isToLanguageRTL() ? R"(<div class="mwiki" dir="rtl">)" :
                                                                 "<div class=\"mwiki\">" );
