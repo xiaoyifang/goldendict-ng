@@ -310,28 +310,51 @@ private:
     html.replace( " url(\"//", " url(\"" + base.scheme() + "://" );
 
     // 2. Audio tags
-    static QRegularExpression audioReg( "<audio[^>]*>.*?</audio>", QRegularExpression::DotMatchesEverythingOption );
-    static QRegularExpression srcReg( "src=\"([^\"]+)\"" );
-    html.replace( audioReg, [ & ]( const QRegularExpressionMatch & m ) {
-      auto srcMatch = srcReg.match( m.captured() );
-      if ( srcMatch.hasMatch() ) {
-        QString src   = fixWikiUrl( srcMatch.captured( 1 ), base );
-        string script = addAudioLink( src, dictPtr->getId() );
-        return QString::fromStdString( script )
-          + QString(
-              "<a href=\"%1\"><img src=\"qrc:///icons/playsound.svg\" border=\"0\" align=\"absmiddle\" alt=\"Play\"/></a>" )
-              .arg( src );
+    {
+      static QRegularExpression audioReg( "<audio[^>]*>.*?</audio>", QRegularExpression::DotMatchesEverythingOption );
+      static QRegularExpression srcReg( "src=\"([^\"]+)\"" );
+      QString newHtml;
+      int lastPos = 0;
+      auto it = audioReg.globalMatch( html );
+      while ( it.hasNext() ) {
+        auto m = it.next();
+        newHtml += html.mid( lastPos, m.capturedStart() - lastPos );
+        auto srcMatch = srcReg.match( m.captured() );
+        if ( srcMatch.hasMatch() ) {
+          QString src   = fixWikiUrl( srcMatch.captured( 1 ), base );
+          string script = addAudioLink( src, dictPtr->getId() );
+          newHtml += QString::fromStdString( script )
+            + QString( "<a href=\"%1\"><img src=\"qrc:///icons/playsound.svg\" border=\"0\" align=\"absmiddle\" alt=\"Play\"/></a>" ).arg( src );
+        } else {
+          newHtml += m.captured();
+        }
+        lastPos = m.capturedEnd();
       }
-      return m.captured();
-    } );
+      if ( lastPos > 0 ) {
+        newHtml += html.mid( lastPos );
+        html = newHtml;
+      }
+    }
 
     // 3. srcset fix
-    static QRegularExpression srcsetReg( "srcset=\"([^\"]+)\"" );
-    html.replace( srcsetReg, [ & ]( const QRegularExpressionMatch & m ) {
-      QString srcset = m.captured( 1 );
-      srcset.replace( "//", base.scheme() + "://" );
-      return QString( "srcset=\"%1\"" ).arg( srcset );
-    } );
+    {
+      static QRegularExpression srcsetReg( "srcset=\"([^\"]+)\"" );
+      QString newHtml;
+      int lastPos = 0;
+      auto it = srcsetReg.globalMatch( html );
+      while ( it.hasNext() ) {
+        auto m = it.next();
+        newHtml += html.mid( lastPos, m.capturedStart() - lastPos );
+        QString srcset = m.captured( 1 );
+        srcset.replace( "//", base.scheme() + "://" );
+        newHtml += QString( "srcset=\"%1\"" ).arg( srcset );
+        lastPos = m.capturedEnd();
+      }
+      if ( lastPos > 0 ) {
+        newHtml += html.mid( lastPos );
+        html = newHtml;
+      }
+    }
 
     // 4. Internal links and index.php fixes
     html.replace( QRegularExpression( R"(<a\shref="(/([\w]*/)*index.php\?))" ),
@@ -339,10 +362,22 @@ private:
 
     html.replace( "<a href=\"/wiki/", "<a href=\"" );
 
-    static QRegularExpression internalLinkValueReg( "<a\\s+href=\"([^/:\">#]+)" );
-    html.replace( internalLinkValueReg, []( const QRegularExpressionMatch & m ) {
-      return m.captured().replace( '_', ' ' );
-    } );
+    {
+      static QRegularExpression internalLinkValueReg( "<a\\s+href=\"([^/:\">#]+)" );
+      QString newHtml;
+      int lastPos = 0;
+      auto it = internalLinkValueReg.globalMatch( html );
+      while ( it.hasNext() ) {
+        auto m = it.next();
+        newHtml += html.mid( lastPos, m.capturedStart() - lastPos );
+        newHtml += m.captured().replace( '_', ' ' );
+        lastPos = m.capturedEnd();
+      }
+      if ( lastPos > 0 ) {
+        newHtml += html.mid( lastPos );
+        html = newHtml;
+      }
+    }
 
     // Special file: fix
     html.replace(
