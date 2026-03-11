@@ -28,6 +28,12 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
     if ( info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeMainFrame ) {
       return;
     }
+
+    // Allow same host content even if "disallowContentFromOtherSites" is enabled
+    if ( !url.host().isEmpty() && url.host() == info.firstPartyUrl().host() ) {
+      return;
+    }
+
     if ( GlobalBroadcaster::instance()->existedInHostWhitelist( Utils::Url::extractBaseDomain( url.host() ) )
          || GlobalBroadcaster::instance()->existedInRefererWhitelist(
            Utils::Url::extractBaseDomain( info.firstPartyUrl().host() ) ) ) {
@@ -56,6 +62,13 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
     if ( url.scheme() == "devtools" ) {
       return;
     }
+
+    // If the domain is the same as the current page, allow normal navigation
+    // This enables links in website dictionaries to work normally within the same site.
+    if ( !url.host().isEmpty() && url.host() == info.firstPartyUrl().host() ) {
+      return;
+    }
+
     emit linkClicked( url );
     qDebug() << "Blocked external link: " << url.toString();
     info.block( true );
