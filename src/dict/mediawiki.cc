@@ -205,22 +205,22 @@ void MediaWikiWordSearchRequest::downloadFinished()
 
   if ( netReply->error() == QNetworkReply::NoError ) {
     QByteArray responseData = netReply->readAll();
-    QJsonDocument jsonDoc = QJsonDocument::fromJson( responseData );
+    QJsonDocument jsonDoc   = QJsonDocument::fromJson( responseData );
 
     if ( jsonDoc.isNull() ) {
       setErrorString( tr( "JSON parse error" ) );
     }
     else {
-      QJsonObject rootObj = jsonDoc.object();
-      QJsonObject queryObj = rootObj.value( "query" ).toObject();
+      QJsonObject rootObj      = jsonDoc.object();
+      QJsonObject queryObj     = rootObj.value( "query" ).toObject();
       QJsonArray allpagesArray = queryObj.value( "allpages" ).toArray();
 
       QMutexLocker _( &dataMutex );
 
       qDebug() << "matches" << matches.size();
-      for ( const QJsonValue &value : allpagesArray ) {
+      for ( const QJsonValue & value : allpagesArray ) {
         QJsonObject pageObj = value.toObject();
-        QString title = pageObj.value( "title" ).toString();
+        QString title       = pageObj.value( "title" ).toString();
         matches.emplace_back( title.toStdU32String() );
       }
     }
@@ -282,7 +282,6 @@ private:
 };
 
 
-
 void MediaWikiSectionsParser::generateTableOfContents( const QJsonArray & sectionsArray )
 {
   // Use Wiktionary's ToC style, which had also been Wikipedia's ToC style until the UI redesign.
@@ -296,9 +295,9 @@ void MediaWikiSectionsParser::generateTableOfContents( const QJsonArray & sectio
     "<div id='toc' class='toc' role='navigation' aria-labelledby='mw-toc-heading'>"
     "<div class='toctitle'><h2 id='mw-toc-heading'>📑</h2></div>";
 
-  for ( const QJsonValue &value : sectionsArray ) {
+  for ( const QJsonValue & value : sectionsArray ) {
     QJsonObject sectionObj = value.toObject();
-    
+
     if ( !addListLevel( sectionObj.value( "toclevel" ).toString() ) ) {
       tableOfContents.clear();
       return;
@@ -490,13 +489,13 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
 
     if ( netReply->error() == QNetworkReply::NoError ) {
       QByteArray responseData = netReply->readAll();
-      QJsonDocument jsonDoc = QJsonDocument::fromJson( responseData );
+      QJsonDocument jsonDoc   = QJsonDocument::fromJson( responseData );
 
       if ( jsonDoc.isNull() ) {
         setErrorString( tr( "JSON parse error" ) );
       }
       else {
-        QJsonObject rootObj = jsonDoc.object();
+        QJsonObject rootObj  = jsonDoc.object();
         QJsonObject parseObj = rootObj.value( "parse" ).toObject();
 
         long long pageId = 0;
@@ -507,7 +506,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
         if ( pageId != 0 && !addedPageIds.contains( pageId ) ) {
           addedPageIds.insert( pageId );
 
-          QJsonObject textObj = parseObj.value( "text" ).toObject();
+          QJsonObject textObj   = parseObj.value( "text" ).toObject();
           QString articleString = textObj.value( "*" ).toString();
 
           if ( !articleString.isEmpty() ) {
