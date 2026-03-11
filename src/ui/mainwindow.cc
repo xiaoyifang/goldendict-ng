@@ -732,13 +732,18 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            this,
            [ this ]( auto audioUrl ) {
              auto view = getCurrentArticleView();
+             if ( view == nullptr ) {
+               return;
+             }
              view->setAudioLink( audioUrl );
              if ( !isActiveWindow() ) {
                return;
              }
-             if ( ( cfg.preferences.pronounceOnLoadMain ) && view != nullptr ) {
-
-               view->playAudio( QUrl::fromEncoded( audioUrl.toUtf8() ) );
+             if ( cfg.preferences.pronounceOnLoadMain ) {
+               // Use a small delay to avoid audio clipping on Windows during window activation/rendering
+               QTimer::singleShot( 150, view, [ view, audioUrl ]() {
+                 view->playAudio( QUrl::fromEncoded( audioUrl.toUtf8() ) );
+               } );
              }
            } );
   applyProxySettings();
