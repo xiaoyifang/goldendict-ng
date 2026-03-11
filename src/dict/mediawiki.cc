@@ -26,7 +26,6 @@ namespace MediaWiki {
 using namespace Dictionary;
 
 
-
 // Helper to fix URLs (protocol-relative or path-relative)
 QString fixWikiUrl( const QString & url, const QUrl & baseUrl )
 {
@@ -428,7 +427,6 @@ sptr< DataRequest > MediaWikiDictionary::getArticle( const std::u32string & word
     return std::make_shared< DataRequestInstant >( false );
   return std::make_shared< MediaWikiArticleRequest >( word, alts, url, lang, netMgr, this );
 }
-
 
 
 vector< sptr< Dictionary::Class > >
