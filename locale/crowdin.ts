@@ -2633,20 +2633,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
 </context>
 <context>
-    <name>MediaWiki::MediaWikiArticleRequest</name>
-    <message>
-        <source>XML parse error: %1 at %2,%3</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MediaWiki::MediaWikiWordSearchRequest</name>
-    <message>
-        <source>XML parse error: %1 at %2,%3</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>MediaWikisModel</name>
     <message>
         <source>Enabled</source>
