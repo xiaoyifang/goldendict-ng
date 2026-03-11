@@ -143,8 +143,9 @@ public:
 };
 
 // Word Search Request using JSON API
-class MediaWikiWordSearchRequest: public Dictionary::WordSearchRequest
+class MediaWikiWordSearchRequest : public Dictionary::WordSearchRequest
 {
+  Q_OBJECT
   sptr< QNetworkReply > netReply;
   bool isCancelling = false;
 
@@ -152,57 +153,71 @@ public:
   MediaWikiWordSearchRequest( const std::u32string & word,
                               const QString & apiUrl,
                               const QString & lang,
-                              QNetworkAccessManager & mgr )
-  {
-    QUrl url( apiUrl + "/api.php" );
-    QUrlQuery query;
-    query.addQueryItem( "action", "query" );
-    query.addQueryItem( "list", "allpages" );
-    query.addQueryItem( "aplimit", "40" );
-    query.addQueryItem( "format", "json" );
-    query.addQueryItem( "apprefix", QString::fromStdU32String( word ) );
-    if ( !lang.isEmpty() )
-      query.addQueryItem( "lang", lang );
-    url.setQuery( query );
+                              QNetworkAccessManager & mgr );
+  virtual ~MediaWikiWordSearchRequest();
 
-    GlobalBroadcaster::instance()->addHostWhitelist( url.host() );
-
-    QNetworkRequest req( url );
-    req.setTransferTimeout( 2000 );
-    netReply = std::shared_ptr< QNetworkReply >( mgr.get( req ) );
-
-    connect( netReply.get(), &QNetworkReply::finished, this, &MediaWikiWordSearchRequest::onFinished );
-  }
-
-  void cancel() override
-  {
-    isCancelling = true;
-    netReply.reset();
-    finish();
-  }
+  void cancel() override;
 
 private:
-  void onFinished()
-  {
-    if ( isCancelling || !netReply )
-      return;
-    if ( netReply->error() == QNetworkReply::NoError ) {
-      QJsonDocument doc = QJsonDocument::fromJson( netReply->readAll() );
-      QJsonArray pages  = doc.object()[ "query" ].toObject()[ "allpages" ].toArray();
-      QMutexLocker locker( &dataMutex );
-      for ( const QJsonValue & p : pages ) {
-        matches.emplace_back( p.toObject()[ "title" ].toString().toStdU32String() );
-      }
-    }
-    else {
-      setErrorString( netReply->errorString() );
-    }
-    finish();
-  }
+  void onFinished();
 };
 
+MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( const std::u32string & word,
+                                                        const QString & apiUrl,
+                                                        const QString & lang,
+                                                        QNetworkAccessManager & mgr )
+{
+  QUrl url( apiUrl + "/api.php" );
+  QUrlQuery query;
+  query.addQueryItem( "action", "query" );
+  query.addQueryItem( "list", "allpages" );
+  query.addQueryItem( "aplimit", "40" );
+  query.addQueryItem( "format", "json" );
+  query.addQueryItem( "apprefix", QString::fromStdU32String( word ) );
+  if ( !lang.isEmpty() )
+    query.addQueryItem( "lang", lang );
+  url.setQuery( query );
+
+  GlobalBroadcaster::instance()->addHostWhitelist( url.host() );
+
+  QNetworkRequest req( url );
+  req.setTransferTimeout( 2000 );
+  netReply = std::shared_ptr< QNetworkReply >( mgr.get( req ) );
+
+  connect( netReply.get(), &QNetworkReply::finished, this, &MediaWikiWordSearchRequest::onFinished );
+}
+
+MediaWikiWordSearchRequest::~MediaWikiWordSearchRequest()
+{
+}
+
+void MediaWikiWordSearchRequest::cancel()
+{
+  isCancelling = true;
+  netReply.reset();
+  finish();
+}
+
+void MediaWikiWordSearchRequest::onFinished()
+{
+  if ( isCancelling || !netReply )
+    return;
+  if ( netReply->error() == QNetworkReply::NoError ) {
+    QJsonDocument doc = QJsonDocument::fromJson( netReply->readAll() );
+    QJsonArray pages  = doc.object()[ "query" ].toObject()[ "allpages" ].toArray();
+    QMutexLocker locker( &dataMutex );
+    for ( const QJsonValue & p : pages ) {
+      matches.emplace_back( p.toObject()[ "title" ].toString().toStdU32String() );
+    }
+  }
+  else {
+    setErrorString( netReply->errorString() );
+  }
+  finish();
+}
+
 // Article Request using JSON API
-class MediaWikiArticleRequest: public Dictionary::DataRequest
+class MediaWikiArticleRequest : public Dictionary::DataRequest
 {
   Q_OBJECT
   struct ReplyHandle
@@ -222,85 +237,104 @@ public:
                            const QString & apiUrl_,
                            const QString & lang_,
                            QNetworkAccessManager & mgr,
-                           Class * dictPtr_ ):
-    apiUrl( apiUrl_ ),
-    lang( lang_ ),
-    dictPtr( dictPtr_ )
-  {
-    connect( &mgr,
-             &QNetworkAccessManager::finished,
-             this,
-             &MediaWikiArticleRequest::onReplyFinished,
-             Qt::QueuedConnection );
-    addQuery( mgr, word );
-    for ( const auto & alt : alts )
-      addQuery( mgr, alt );
-  }
+                           Class * dictPtr_ );
+  virtual ~MediaWikiArticleRequest();
 
-  void cancel() override
-  {
-    finish();
-  }
+  void cancel() override;
 
 private:
-  void addQuery( QNetworkAccessManager & mgr, const std::u32string & word )
-  {
-    QUrl url( apiUrl + "/api.php" );
-    QUrlQuery query;
-    query.addQueryItem( "action", "parse" );
-    query.addQueryItem( "prop", "text|revid|sections" );
-    query.addQueryItem( "format", "json" );
-    query.addQueryItem( "redirects", "1" );
-    query.addQueryItem( "page", QString::fromStdU32String( word ) );
-    if ( !lang.isEmpty() )
-      query.addQueryItem( "variant", lang );
-    url.setQuery( query );
+  void addQuery( QNetworkAccessManager & mgr, const std::u32string & word );
+  void onReplyFinished( QNetworkReply * r );
+  void processResponse( const QByteArray & data );
+};
 
-    QNetworkRequest req( url );
-    req.setTransferTimeout( 3000 );
-    replies.push_back( { mgr.get( req ), false } );
-  }
+MediaWikiArticleRequest::MediaWikiArticleRequest( const std::u32string & word,
+                                                  const vector< std::u32string > & alts,
+                                                  const QString & apiUrl_,
+                                                  const QString & lang_,
+                                                  QNetworkAccessManager & mgr,
+                                                  Class * dictPtr_ ) :
+  apiUrl( apiUrl_ ),
+  lang( lang_ ),
+  dictPtr( dictPtr_ )
+{
+  connect( &mgr,
+           &QNetworkAccessManager::finished,
+           this,
+           &MediaWikiArticleRequest::onReplyFinished,
+           Qt::QueuedConnection );
+  addQuery( mgr, word );
+  for ( const auto & alt : alts )
+    addQuery( mgr, alt );
+}
 
-  void onReplyFinished( QNetworkReply * r )
-  {
-    if ( isFinished() )
-      return;
-    auto it = std::find_if( replies.begin(), replies.end(), [ r ]( const ReplyHandle & h ) {
-      return h.reply == r;
-    } );
-    if ( it == replies.end() )
-      return;
-    it->finished = true;
+MediaWikiArticleRequest::~MediaWikiArticleRequest()
+{
+}
 
-    while ( !replies.empty() && replies.front().finished ) {
-      QNetworkReply * reply = replies.front().reply;
-      if ( reply->error() == QNetworkReply::NoError ) {
-        processResponse( reply->readAll() );
-      }
-      reply->deleteLater();
-      replies.pop_front();
+void MediaWikiArticleRequest::cancel()
+{
+  finish();
+}
+
+void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, const std::u32string & word )
+{
+  QUrl url( apiUrl + "/api.php" );
+  QUrlQuery query;
+  query.addQueryItem( "action", "parse" );
+  query.addQueryItem( "prop", "text|revid|sections" );
+  query.addQueryItem( "format", "json" );
+  query.addQueryItem( "redirects", "1" );
+  query.addQueryItem( "page", QString::fromStdU32String( word ) );
+  if ( !lang.isEmpty() )
+    query.addQueryItem( "variant", lang );
+  url.setQuery( query );
+
+  QNetworkRequest req( url );
+  req.setTransferTimeout( 3000 );
+  replies.push_back( { mgr.get( req ), false } );
+}
+
+void MediaWikiArticleRequest::onReplyFinished( QNetworkReply * r )
+{
+  if ( isFinished() )
+    return;
+  auto it = std::find_if( replies.begin(), replies.end(), [ r ]( const ReplyHandle & h ) {
+    return h.reply == r;
+  } );
+  if ( it == replies.end() )
+    return;
+  it->finished = true;
+
+  while ( !replies.empty() && replies.front().finished ) {
+    QNetworkReply * reply = replies.front().reply;
+    if ( reply->error() == QNetworkReply::NoError ) {
+      processResponse( reply->readAll() );
     }
-    if ( replies.empty() )
-      finish();
-    else
-      update();
+    reply->deleteLater();
+    replies.pop_front();
   }
+  if ( replies.empty() )
+    finish();
+  else
+    update();
+}
 
-  void processResponse( const QByteArray & data )
-  {
-    QJsonDocument doc = QJsonDocument::fromJson( data );
-    QJsonObject parse = doc.object()[ "parse" ].toObject();
-    long long pageId  = parse[ "pageid" ].toVariant().toLongLong();
+void MediaWikiArticleRequest::processResponse( const QByteArray & data )
+{
+  QJsonDocument doc = QJsonDocument::fromJson( data );
+  QJsonObject parse = doc.object()[ "parse" ].toObject();
+  long long pageId  = parse[ "pageid" ].toVariant().toLongLong();
 
-    if ( pageId == 0 || addedPageIds.contains( pageId ) )
-      return;
-    addedPageIds.insert( pageId );
+  if ( pageId == 0 || addedPageIds.contains( pageId ) )
+    return;
+  addedPageIds.insert( pageId );
 
-    QString html = parse[ "text" ].toObject()[ "*" ].toString();
-    if ( html.isEmpty() )
-      return;
+  QString html = parse[ "text" ].toObject()[ "*" ].toString();
+  if ( html.isEmpty() )
+    return;
 
-    QUrl base( apiUrl );
+  QUrl base( apiUrl );
 
     // 1. Fix resource and link paths
     html.replace( " src=\"//", " src=\"" + base.scheme() + "://" );
