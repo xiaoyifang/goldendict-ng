@@ -315,7 +315,7 @@ private:
       static QRegularExpression srcReg( "src=\"([^\"]+)\"" );
       QString newHtml;
       int lastPos = 0;
-      auto it = audioReg.globalMatch( html );
+      auto it     = audioReg.globalMatch( html );
       while ( it.hasNext() ) {
         auto m = it.next();
         newHtml += html.mid( lastPos, m.capturedStart() - lastPos );
@@ -324,8 +324,11 @@ private:
           QString src   = fixWikiUrl( srcMatch.captured( 1 ), base );
           string script = addAudioLink( src, dictPtr->getId() );
           newHtml += QString::fromStdString( script )
-            + QString( "<a href=\"%1\"><img src=\"qrc:///icons/playsound.svg\" border=\"0\" align=\"absmiddle\" alt=\"Play\"/></a>" ).arg( src );
-        } else {
+            + QString(
+                "<a href=\"%1\"><img src=\"qrc:///icons/playsound.svg\" border=\"0\" align=\"absmiddle\" alt=\"Play\"/></a>" )
+                .arg( src );
+        }
+        else {
           newHtml += m.captured();
         }
         lastPos = m.capturedEnd();
@@ -341,7 +344,7 @@ private:
       static QRegularExpression srcsetReg( "srcset=\"([^\"]+)\"" );
       QString newHtml;
       int lastPos = 0;
-      auto it = srcsetReg.globalMatch( html );
+      auto it     = srcsetReg.globalMatch( html );
       while ( it.hasNext() ) {
         auto m = it.next();
         newHtml += html.mid( lastPos, m.capturedStart() - lastPos );
@@ -366,7 +369,7 @@ private:
       static QRegularExpression internalLinkValueReg( "<a\\s+href=\"([^/:\">#]+)" );
       QString newHtml;
       int lastPos = 0;
-      auto it = internalLinkValueReg.globalMatch( html );
+      auto it     = internalLinkValueReg.globalMatch( html );
       while ( it.hasNext() ) {
         auto m = it.next();
         newHtml += html.mid( lastPos, m.capturedStart() - lastPos );
