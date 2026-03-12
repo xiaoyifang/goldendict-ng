@@ -1552,7 +1552,16 @@ in the bottom-right corner of the content area */
 .mwiki #toc .toctitle,
 .mwiki .toc .toctitle {
   text-align: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: -5px; /* Offset parent's padding */
+  padding: 5px 0;
+  margin-top: -5px; /* Offset parent's padding */
+  background-color: inherit;
+  z-index: 10;
+  border-bottom: 1px solid #ddd;
 }
+
 .mwiki #toc ul,
 .mwiki .toc ul {
   list-style-type: none;
