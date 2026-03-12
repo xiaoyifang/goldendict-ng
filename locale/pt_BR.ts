@@ -2654,15 +2654,15 @@ Para encontrar os símbolos &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Erro de análise sintática de XML: %1 em %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>Erro de análise JSON</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Erro de análise sintática de XML: %1 em %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>Erro de análise JSON</translation>
     </message>
   </context>
   <context>
