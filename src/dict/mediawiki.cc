@@ -410,7 +410,7 @@ private:
 void MediaWikiArticleRequest::cancel()
 {
   for ( auto & reply : netReplies ) {
-    if ( reply.first && !reply.second ) { // Only abort if NOT finished
+    if ( reply.first && !reply.second ) {    // Only abort if NOT finished
       disconnect( reply.first, 0, this, 0 ); // Stop any further signals to this object
       reply.first->abort();
       reply.first->deleteLater();
