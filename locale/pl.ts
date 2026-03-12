@@ -2654,15 +2654,15 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Błąd podczas analizy pliku XML: %1 w %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>Błąd parsowania JSON</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Błąd podczas analizy pliku XML: %1 w %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>Błąd parsowania JSON</translation>
     </message>
   </context>
   <context>
