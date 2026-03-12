@@ -255,7 +255,8 @@ public:
       return; // The ToC must be absent or nonempty => nothing to do.
     }
 
-    QJsonArray sectionsArray = parseObj.value( "sections" ).toArray();
+    QJsonObject tocdataObj = parseObj.value( "tocdata" ).toObject();
+    QJsonArray sectionsArray = tocdataObj.value( "sections" ).toArray();
     if ( sectionsArray.isEmpty() ) {
       qWarning( "MediaWiki: empty table of contents and missing sections element." );
       return;
@@ -298,18 +299,18 @@ void MediaWikiSectionsParser::generateTableOfContents( const QJsonArray & sectio
   for ( const QJsonValue & value : sectionsArray ) {
     QJsonObject sectionObj = value.toObject();
 
-    if ( !addListLevel( sectionObj.value( "toclevel" ).toString() ) ) {
-      tableOfContents.clear();
-      return;
-    }
+    if ( !addListLevel( sectionObj.value( "tocLevel" ).toString() ) ) {
+        tableOfContents.clear();
+        return;
+      }
 
-    // From https://gerrit.wikimedia.org/r/c/mediawiki/core/+/831147/
-    // The anchor property ... should be used if you want to (eg) look up an element by ID using
-    // document.getElementById(). The linkAnchor property ... contains additional escaping appropriate for
-    // use in a URL fragment, and should be used (eg) if you are creating the href attribute of an <a> tag.
-    tableOfContents += "<a href='#";
-    tableOfContents += sectionObj.value( "linkAnchor" ).toString();
-    tableOfContents += "'>";
+      // From https://gerrit.wikimedia.org/r/c/mediawiki/core/+/831147/
+      // The anchor property ... should be used if you want to (eg) look up an element by ID using
+      // document.getElementById(). The linkAnchor property ... contains additional escaping appropriate for
+      // use in a URL fragment, and should be used (eg) if you are creating the href attribute of an <a> tag.
+      tableOfContents += "<a href='#";
+      tableOfContents += sectionObj.value( "anchor" ).toString();
+      tableOfContents += "'>";
 
     // Omit <span class="tocnumber"> because it has no visible effect.
     tableOfContents += sectionObj.value( "number" ).toString();
@@ -437,7 +438,7 @@ void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, const std::
 {
   qDebug( "MediaWiki: requesting article %s", QString::fromStdU32String( str ).toUtf8().data() );
 
-  QUrl reqUrl( url + "/api.php?action=parse&prop=text|revid|sections&format=json&redirects" );
+  QUrl reqUrl( url + "/api.php?action=parse&prop=text|revid|tocdata&format=json&redirects" );
 
   Utils::Url::addQueryItem( reqUrl, "page", QString::fromStdU32String( str ).replace( '+', "%2B" ) );
   Utils::Url::addQueryItem( reqUrl, "variant", lang );
