@@ -1581,8 +1581,7 @@ in the bottom-right corner of the content area */
 
 /* Bypass toclimit wrapper to ensure sticky positioning works correctly */
 .mwiki div[class*="toclimit-"],
-.mwiki div.tocright
-{
+.mwiki div.tocright {
   display: contents;
 }
 
