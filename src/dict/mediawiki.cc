@@ -442,7 +442,9 @@ void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, const std::
   Utils::Url::addQueryItem( reqUrl, "page", QString::fromStdU32String( str ).replace( '+', "%2B" ) );
   Utils::Url::addQueryItem( reqUrl, "variant", lang );
 
-  qDebug( "MediaWiki: requesting article %s, url: %s", QString::fromStdU32String( str ).toUtf8().data(), reqUrl.toString().toUtf8().data() );
+  qDebug( "MediaWiki: requesting article %s, url: %s",
+          QString::fromStdU32String( str ).toUtf8().data(),
+          reqUrl.toString().toUtf8().data() );
 
   QNetworkRequest req( reqUrl );
   //millseconds.
