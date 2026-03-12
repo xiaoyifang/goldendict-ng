@@ -255,7 +255,7 @@ public:
       return; // The ToC must be absent or nonempty => nothing to do.
     }
 
-    QJsonObject tocdataObj = parseObj.value( "tocdata" ).toObject();
+    QJsonObject tocdataObj   = parseObj.value( "tocdata" ).toObject();
     QJsonArray sectionsArray = tocdataObj.value( "sections" ).toArray();
     if ( sectionsArray.isEmpty() ) {
       qWarning( "MediaWiki: empty table of contents and missing sections element." );
@@ -300,17 +300,17 @@ void MediaWikiSectionsParser::generateTableOfContents( const QJsonArray & sectio
     QJsonObject sectionObj = value.toObject();
 
     if ( !addListLevel( sectionObj.value( "tocLevel" ).toString() ) ) {
-        tableOfContents.clear();
-        return;
-      }
+      tableOfContents.clear();
+      return;
+    }
 
-      // From https://gerrit.wikimedia.org/r/c/mediawiki/core/+/831147/
-      // The anchor property ... should be used if you want to (eg) look up an element by ID using
-      // document.getElementById(). The linkAnchor property ... contains additional escaping appropriate for
-      // use in a URL fragment, and should be used (eg) if you are creating the href attribute of an <a> tag.
-      tableOfContents += "<a href='#";
-      tableOfContents += sectionObj.value( "anchor" ).toString();
-      tableOfContents += "'>";
+    // From https://gerrit.wikimedia.org/r/c/mediawiki/core/+/831147/
+    // The anchor property ... should be used if you want to (eg) look up an element by ID using
+    // document.getElementById(). The linkAnchor property ... contains additional escaping appropriate for
+    // use in a URL fragment, and should be used (eg) if you are creating the href attribute of an <a> tag.
+    tableOfContents += "<a href='#";
+    tableOfContents += sectionObj.value( "anchor" ).toString();
+    tableOfContents += "'>";
 
     // Omit <span class="tocnumber"> because it has no visible effect.
     tableOfContents += sectionObj.value( "number" ).toString();
