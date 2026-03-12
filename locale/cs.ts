@@ -2654,15 +2654,15 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Chyba při zpracování XML: %1 v %2, %3</translation>
+      <source>JSON parse error</source>
+      <translation>Chyba při parsování JSON</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Chyba při zpracování XML: %1 v %2, %3</translation>
+      <source>JSON parse error</source>
+      <translation>Chyba při parsování JSON</translation>
     </message>
   </context>
   <context>
