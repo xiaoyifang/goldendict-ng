@@ -2654,15 +2654,15 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML-tolkningsfel: %1 på %2, %3</translation>
+      <source>JSON parse error</source>
+      <translation>JSON parse error</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML-tolkningsfel: %1 på %2, %3</translation>
+      <source>JSON parse error</source>
+      <translation>JSON parse error</translation>
     </message>
   </context>
   <context>
