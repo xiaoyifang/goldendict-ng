@@ -409,6 +409,14 @@ private:
 
 void MediaWikiArticleRequest::cancel()
 {
+  for ( auto & reply : netReplies ) {
+    if ( reply.first && !reply.second ) { // Only abort if NOT finished
+      disconnect( reply.first, 0, this, 0 ); // Stop any further signals to this object
+      reply.first->abort();
+      reply.first->deleteLater();
+    }
+  }
+  netReplies.clear();
   finish();
 }
 
@@ -422,12 +430,6 @@ MediaWikiArticleRequest::MediaWikiArticleRequest( const std::u32string & str,
   lang( lang_ ),
   dictPtr( dictPtr_ )
 {
-  connect( &mgr,
-           SIGNAL( finished( QNetworkReply * ) ),
-           this,
-           SLOT( requestFinished( QNetworkReply * ) ),
-           Qt::QueuedConnection );
-
   addQuery( mgr, str );
 
   for ( const auto & alt : alts ) {
@@ -450,8 +452,14 @@ void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, const std::
   //millseconds.
   req.setTransferTimeout( 3000 );
   QNetworkReply * netReply = mgr.get( req );
+  connect( netReply, &QNetworkReply::finished, this, [ this, netReply ]() {
+    requestFinished( netReply );
+  } );
+  // Ensure the reply is ALWAYS deleted, even if this request object is destroyed
+  connect( netReply, &QNetworkReply::finished, netReply, &QObject::deleteLater );
+
   connect( netReply, &QNetworkReply::errorOccurred, this, [ = ]( QNetworkReply::NetworkError e ) {
-    qDebug() << "error:" << e;
+    qDebug() << "MediaWiki error:" << e;
   } );
 #ifndef QT_NO_SSL
 
@@ -470,21 +478,11 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
     return;
   }
 
-  // Find this reply
-
-  bool found = false;
-
   for ( auto & netReplie : netReplies ) {
     if ( netReplie.first == r ) {
       netReplie.second = true; // Mark as finished
-      found            = true;
       break;
     }
-  }
-
-  if ( !found ) {
-    // Well, that's not our reply, don't do anything
-    return;
   }
 
   bool updated = false;
