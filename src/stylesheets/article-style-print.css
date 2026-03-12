@@ -17,3 +17,24 @@ body,
 .collapse_expand_area {
   display: none;
 }
+
+/* Reset MediaWiki TOC for printing */
+.mwiki #toc,
+.mwiki .toc {
+  position: static !important;
+  max-height: none !important;
+  max-width: none !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  float: none !important;
+  margin: 1em 0 !important;
+  box-shadow: none !important;
+  border: 1px solid #aaa !important;
+}
+
+.mwiki #toc .toctitle,
+.mwiki .toc .toctitle {
+  position: static !important;
+  border-bottom: 1px solid #aaa !important;
+}
+
