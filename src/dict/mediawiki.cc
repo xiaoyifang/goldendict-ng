@@ -407,7 +407,7 @@ private:
 void MediaWikiArticleRequest::cancel()
 {
   for ( auto & [ reply, finished ] : netReplies ) {
-    if ( reply && !finished ) { // Only abort if NOT finished
+    if ( reply && !finished ) {                    // Only abort if NOT finished
       disconnect( reply, nullptr, this, nullptr ); // Stop any further signals to this object
       reply->abort();
       reply->deleteLater();
@@ -497,8 +497,8 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
     else {
       QJsonObject parseObj = jsonDoc.object().value( "parse" ).toObject();
       long long pageId     = ( !parseObj.isEmpty() && parseObj.value( "revid" ).toVariant().toLongLong() != 0 ) ?
-                           parseObj.value( "pageid" ).toVariant().toLongLong() :
-                           0;
+        parseObj.value( "pageid" ).toVariant().toLongLong() :
+        0;
 
       if ( pageId != 0 && !addedPageIds.contains( pageId ) ) {
         addedPageIds.insert( pageId );
@@ -592,7 +592,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
 
           // Add url scheme to image source urls
           articleString.replace( " src=\"//", " src=\"" + wikiUrl.scheme() + "://" );
-          //fix src="/foo/bar/Baz.png"
+          // fix src="/foo/bar/Baz.png"
           articleString.replace( "src=\"/", "src=\"" + wikiUrl.toString() );
 
           // Remove the /wiki/ prefix from links
@@ -610,7 +610,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
             }
           }
 
-          //fix file: url
+          // fix file: url
           articleString.replace(
             QRegularExpression( R"(<a\s+href="([^:/"]*file%3A[^/"]+"))", QRegularExpression::CaseInsensitiveOption ),
 
@@ -619,7 +619,8 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
           // Add url scheme to other urls like  "//xxx"
           articleString.replace( " href=\"//", " href=\"" + wikiUrl.scheme() + "://" );
 
-          // Add url scheme to other urls like    embed css background: url("//upload.wikimedia.org/wikipedia/commons/6/65/Lock-green.svg")right 0.1em center/9px no-repeat
+          // Add url scheme to other urls like    embed css background:
+          // url("//upload.wikimedia.org/wikipedia/commons/6/65/Lock-green.svg")right 0.1em center/9px no-repeat
           articleString.replace( "url(\"//", "url(\"" + wikiUrl.scheme() + "://" );
 
 
