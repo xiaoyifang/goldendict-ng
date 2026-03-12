@@ -505,8 +505,8 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
 
     QJsonObject parseObj = jsonDoc.object().value( "parse" ).toObject();
     long long pageId     = ( !parseObj.isEmpty() && parseObj.value( "revid" ).toVariant().toLongLong() != 0 ) ?
-        parseObj.value( "pageid" ).toVariant().toLongLong() :
-        0;
+      parseObj.value( "pageid" ).toVariant().toLongLong() :
+      0;
 
     if ( pageId == 0 || addedPageIds.contains( pageId ) ) {
       continue;
@@ -660,8 +660,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
     // Insert the ToC in the end to improve performance because no replacements are needed in the generated ToC.
     MediaWikiSectionsParser::generateTableOfContentsIfEmpty( parseObj, articleString );
 
-    articleString.prepend( dictPtr->isToLanguageRTL() ? R"(<div class="mwiki" dir="rtl">)" :
-                                                        "<div class=\"mwiki\">" );
+    articleString.prepend( dictPtr->isToLanguageRTL() ? R"(<div class="mwiki" dir="rtl">)" : "<div class=\"mwiki\">" );
     articleString.append( "</div>" );
 
     appendString( articleString.toStdString() );
