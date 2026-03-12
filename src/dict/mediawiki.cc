@@ -300,7 +300,7 @@ void MediaWikiSectionsParser::generateTableOfContents( const QJsonArray & sectio
   for ( const QJsonValue & value : sectionsArray ) {
     QJsonObject sectionObj = value.toObject();
 
-    if ( !addListLevel( sectionObj.value( "tocLevel" ).toString() ) ) {
+    if ( !addListLevel( sectionObj.value( "tocLevel" ).toVariant().toString() ) ) {
       tableOfContents.clear();
       return;
     }
@@ -504,8 +504,8 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
         QJsonObject parseObj = rootObj.value( "parse" ).toObject();
 
         long long pageId = 0;
-        if ( !parseObj.isEmpty() && parseObj.value( "revid" ).toString() != "0" ) {
-          pageId = parseObj.value( "pageid" ).toString().toLongLong();
+        if ( !parseObj.isEmpty() && parseObj.value( "revid" ).toVariant().toLongLong() != 0 ) {
+          pageId = parseObj.value( "pageid" ).toVariant().toLongLong();
         }
 
         if ( pageId != 0 && !addedPageIds.contains( pageId ) ) {
