@@ -2654,15 +2654,15 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML parseerfout: %1 op %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>JSON parse fout</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML parseerfout: %1 op %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>JSON parse fout</translation>
     </message>
   </context>
   <context>
