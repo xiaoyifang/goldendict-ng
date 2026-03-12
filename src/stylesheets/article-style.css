@@ -1570,6 +1570,31 @@ in the bottom-right corner of the content area */
   font-size: 94%;
 }
 
+/* Sticky and auto-expanding TOC on hover */
+.mwiki #toc,
+.mwiki .toc {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+  float: right;
+  z-index: 100;
+  max-height: 40px;
+  max-width: 50%;
+  overflow: hidden;
+  opacity: 0.6;
+  clear: right;
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.mwiki #toc:hover,
+.mwiki .toc:hover {
+  max-height: 85vh;
+  overflow-y: auto;
+  opacity: 1;
+}
+
+
 .mwiki .mw-warning {
   margin-left: 50px;
   margin-right: 50px;
