@@ -2655,15 +2655,15 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Errore di analisi XML: %1 al %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>Errore di analisi JSON</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Errore di analisi XML: %1 al %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>Errore di analisi JSON</translation>
     </message>
   </context>
   <context>
