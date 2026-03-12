@@ -1,10 +1,21 @@
 /* This stylesheet is used for printing only, overriding article-style.css */
 
+@page {
+  margin: 1.5cm;
+}
+
 html,
 body,
 .gdarticle {
-  background: white;
+  background: white !important;
+  color: black !important;
 }
+
+.gdarticle {
+  line-height: 1.6;
+  text-align: justify;
+}
+
 
 /* Hide audio icons */
 
