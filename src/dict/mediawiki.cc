@@ -406,8 +406,8 @@ private:
 
 void MediaWikiArticleRequest::cancel()
 {
-  for ( auto & [ reply, finished ] : netReplies ) {
-    if ( reply && !finished ) {                    // Only abort if NOT finished
+  for ( const auto & [ reply, finished ] : netReplies ) {
+    if ( reply && !finished ) { // Only abort if NOT finished
       disconnect( reply, nullptr, this, nullptr ); // Stop any further signals to this object
       reply->abort();
       reply->deleteLater();
