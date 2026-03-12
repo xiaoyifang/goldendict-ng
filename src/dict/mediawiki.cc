@@ -156,13 +156,14 @@ MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( const std::u32string & s
                                                         QNetworkAccessManager & mgr ):
   isCancelling( false )
 {
-  qDebug( "wiki request begin" );
   QUrl reqUrl( url + "/api.php?action=query&list=allpages&aplimit=40&format=json" );
 
   GlobalBroadcaster::instance()->addHostWhitelist( reqUrl.host() );
 
   Utils::Url::addQueryItem( reqUrl, "apprefix", QString::fromStdU32String( str ).replace( '+', "%2B" ) );
   Utils::Url::addQueryItem( reqUrl, "lang", lang );
+
+  qDebug( "wiki request begin, url: %s", reqUrl.toString().toUtf8().data() );
 
   QNetworkRequest req( reqUrl );
   //millseconds.
@@ -436,12 +437,13 @@ MediaWikiArticleRequest::MediaWikiArticleRequest( const std::u32string & str,
 
 void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, const std::u32string & str )
 {
-  qDebug( "MediaWiki: requesting article %s", QString::fromStdU32String( str ).toUtf8().data() );
-
   QUrl reqUrl( url + "/api.php?action=parse&prop=text|revid|tocdata&format=json&redirects" );
 
   Utils::Url::addQueryItem( reqUrl, "page", QString::fromStdU32String( str ).replace( '+', "%2B" ) );
   Utils::Url::addQueryItem( reqUrl, "variant", lang );
+
+  qDebug( "MediaWiki: requesting article %s, url: %s", QString::fromStdU32String( str ).toUtf8().data(), reqUrl.toString().toUtf8().data() );
+
   QNetworkRequest req( reqUrl );
   //millseconds.
   req.setTransferTimeout( 3000 );
