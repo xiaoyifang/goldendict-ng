@@ -43,7 +43,7 @@ public:
   };
 
   void setDictionaryIconSize( IconSize size );
-  void updateToGroup( const Instances::Group * grp, QSet< QString > * allGroupMutedDictionaries, Config::Class & cfg );
+  void updateToGroup( const Instances::Group * grp, QSet< QString > * allGroupMutedDictionaries, Config::Class & cfg, bool isPopup = false );
 
 signals:
 

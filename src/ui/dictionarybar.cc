@@ -84,7 +84,8 @@ void DictionaryBar::setDictionaries( const vector< sptr< Dictionary::Class > > &
 
 void DictionaryBar::updateToGroup( const Instances::Group * grp,
                                    QSet< QString > * allGroupMutedDictionaries,
-                                   Config::Class & cfg )
+                                   Config::Class & cfg,
+                                   bool isPopup )
 {
   Q_ASSERT( grp != nullptr ); // should never occur
   if ( !this->toggleViewAction()->isChecked() ) {
@@ -97,7 +98,9 @@ void DictionaryBar::updateToGroup( const Instances::Group * grp,
   }
   else {
     Config::Group * _grp = cfg.getGroup( grp->id );
-    setMutedDictionaries( _grp ? &_grp->mutedDictionaries : nullptr );
+    if ( _grp ) {
+      setMutedDictionaries( isPopup ? &_grp->popupMutedDictionaries : &_grp->mutedDictionaries );
+    }
   }
   setDictionaries( grp->dictionaries );
 }
