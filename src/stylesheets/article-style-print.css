@@ -49,13 +49,15 @@ body {
 .mwiki .toc {
   display: block !important;
   position: static !important;
-  width: auto !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
   height: auto !important;
   max-height: none !important;
   max-width: none !important;
   opacity: 1 !important;
   overflow: visible !important;
   float: none !important;
+  clear: both !important;
   margin: 1em 0 !important;
   box-shadow: none !important;
   border: 1px solid #aaa !important;
@@ -81,4 +83,7 @@ body {
 .mwiki div[class*="toclimit-"],
 .mwiki div.tocright {
   display: block !important;
+  float: none !important;
+  clear: both !important;
+  width: 100% !important;
 }
