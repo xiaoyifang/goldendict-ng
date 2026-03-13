@@ -251,8 +251,8 @@ QSet< QString > ArticleNetworkAccessManager::getMutedDicts( const QUrl & url, un
     return {};
   }
 
-  bool isPopup                    = Utils::Url::queryItemValue( url, "popup" ) == "1";
-  const Config::Group * grp       = cfg->getGroup( group );
+  bool isPopup                      = Utils::Url::queryItemValue( url, "popup" ) == "1";
+  const Config::Group * grp         = cfg->getGroup( group );
   const Config::DictionarySets * ms = nullptr;
 
   if ( group == GroupId::AllGroupId ) {
