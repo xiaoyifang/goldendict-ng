@@ -341,7 +341,7 @@ Group loadGroup( QDomElement grp )
   }
   else {
     g.name = grp.attribute( "name" );
-    g.id = qHash( g.name );
+    g.id   = qHash( g.name );
     // Ensure ID is not 0 (reserved for NoGroupId)
     if ( g.id == 0 ) {
       g.id = 1;

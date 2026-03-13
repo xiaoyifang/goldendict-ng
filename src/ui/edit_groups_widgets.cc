@@ -575,7 +575,6 @@ void DictGroupsWidget::populate( const Config::Groups & groups,
   }
 
 
-
   setCurrentIndex( 0 );
 }
 
@@ -656,13 +655,13 @@ int DictGroupsWidget::addNewGroup( const QString & name )
   Config::Group newGroup;
 
   newGroup.name = name;
-  newGroup.id = qHash( newGroup.name );
+  newGroup.id   = qHash( newGroup.name );
   // Ensure ID is not 0 (reserved for NoGroupId)
   if ( newGroup.id == 0 ) {
     newGroup.id = 1;
   }
   // Check for duplicate IDs
-  QSet<unsigned> existingIds;
+  QSet< unsigned > existingIds;
   for ( int x = 0; x < count(); ++x ) {
     const Config::Group existingGroup = dynamic_cast< DictGroupWidget & >( *widget( x ) ).makeGroup();
     existingIds.insert( existingGroup.id );
@@ -672,7 +671,8 @@ int DictGroupsWidget::addNewGroup( const QString & name )
     if ( newGroup.id == UINT_MAX ) {
       // Start from 1 when reaching maximum value
       newGroup.id = 1;
-    } else {
+    }
+    else {
       newGroup.id++;
     }
   }
