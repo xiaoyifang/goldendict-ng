@@ -342,8 +342,8 @@ Group loadGroup( QDomElement grp )
   else {
     // Generate a random ID using timestamp and random number
     qint64 timestamp = QDateTime::currentMSecsSinceEpoch();
-    quint64 random = QRandomGenerator::global()->generate();
-    g.id = (static_cast<quint64>(timestamp) << 24) | (random & 0xFFFFFF);
+    quint64 random   = QRandomGenerator::global()->generate();
+    g.id             = ( static_cast< quint64 >( timestamp ) << 24 ) | ( random & 0xFFFFFF );
   }
 
   g.name            = grp.attribute( "name" );
@@ -1337,7 +1337,6 @@ void save( const Class & c )
   {
     QDomElement groups = dd.createElement( "groups" );
     root.appendChild( groups );
-
 
 
     for ( const auto & i : c.groups ) {

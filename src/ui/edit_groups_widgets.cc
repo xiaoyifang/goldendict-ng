@@ -656,8 +656,8 @@ int DictGroupsWidget::addNewGroup( const QString & name )
 
   // Generate a random ID using timestamp and random number
   qint64 timestamp = QDateTime::currentMSecsSinceEpoch();
-  quint64 random = QRandomGenerator::global()->generate();
-  newGroup.id = (static_cast<quint64>(timestamp) << 24) | (random & 0xFFFFFF);
+  quint64 random   = QRandomGenerator::global()->generate();
+  newGroup.id      = ( static_cast< quint64 >( timestamp ) << 24 ) | ( random & 0xFFFFFF );
   newGroup.name = name;
 
   const auto gr = new DictGroupWidget( this, *allDicts, newGroup );
