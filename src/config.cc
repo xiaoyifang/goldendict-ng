@@ -563,20 +563,21 @@ Class load()
     }
 
     // Check for duplicate group IDs and regenerate if found
-    QSet<quint64> usedIds;
+    QSet< quint64 > usedIds;
     for ( int i = 0; i < c.groups.size(); ++i ) {
-      quint64 currentId = c.groups[i].id;
+      quint64 currentId = c.groups[ i ].id;
       if ( usedIds.contains( currentId ) ) {
         // Generate a new random ID
         quint64 newId;
         do {
           qint64 timestamp = QDateTime::currentMSecsSinceEpoch();
-          quint64 random = QRandomGenerator::global()->generate();
-          newId = (static_cast<quint64>(timestamp) << 24) | (random & 0xFFFFFF);
+          quint64 random   = QRandomGenerator::global()->generate();
+          newId            = ( static_cast< quint64 >( timestamp ) << 24 ) | ( random & 0xFFFFFF );
         } while ( usedIds.contains( newId ) );
-        c.groups[i].id = newId;
+        c.groups[ i ].id = newId;
         usedIds.insert( newId );
-      } else {
+      }
+      else {
         usedIds.insert( currentId );
       }
     }
