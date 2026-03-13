@@ -555,31 +555,26 @@ Class load()
 
   if ( !groups.isNull() ) {
     QDomNodeList nl = groups.toElement().elementsByTagName( "group" );
+    QSet<quint64> usedIds;
 
     for ( int x = 0; x < nl.length(); ++x ) {
       QDomElement grp = nl.item( x ).toElement();
+      Group g = loadGroup( grp );
 
-      c.groups.push_back( loadGroup( grp ) );
-    }
-
-    // Check for duplicate group IDs and regenerate if found
-    QSet< quint64 > usedIds;
-    for ( int i = 0; i < c.groups.size(); ++i ) {
-      quint64 currentId = c.groups[ i ].id;
-      if ( usedIds.contains( currentId ) ) {
+      // Check for duplicate group ID and regenerate if found
+      if ( usedIds.contains( g.id ) ) {
         // Generate a new random ID
         quint64 newId;
         do {
           qint64 timestamp = QDateTime::currentMSecsSinceEpoch();
-          quint64 random   = QRandomGenerator::global()->generate();
-          newId            = ( static_cast< quint64 >( timestamp ) << 24 ) | ( random & 0xFFFFFF );
+          quint64 random = QRandomGenerator::global()->generate();
+          newId = (static_cast<quint64>(timestamp) << 24) | (random & 0xFFFFFF);
         } while ( usedIds.contains( newId ) );
-        c.groups[ i ].id = newId;
-        usedIds.insert( newId );
+        g.id = newId;
       }
-      else {
-        usedIds.insert( currentId );
-      }
+
+      usedIds.insert( g.id );
+      c.groups.push_back( g );
     }
   }
 
