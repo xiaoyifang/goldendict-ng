@@ -445,7 +445,7 @@ void ScanPopup::refresh()
 
   groupListAction->setVisible( !cfg.groups.empty() );
 
-  dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg );
+  dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg, true );
   setDictionaryIconSize();
 
   definition->syncBackgroundColorWithCfgDarkReader();
@@ -693,7 +693,7 @@ void ScanPopup::currentGroupChanged( int )
     }
   }
 
-  dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg );
+  dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg, true );
 
   definition->setCurrentGroupId( cfg.lastPopupGroupId );
 
