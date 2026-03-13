@@ -213,7 +213,6 @@ private:
   /// Add source group to target group
   void combineGroups( int source, int target );
 
-  unsigned nextId;
   const std::vector< sptr< Dictionary::Class > > * allDicts;
   const std::vector< sptr< Dictionary::Class > > * activeDicts;
 
