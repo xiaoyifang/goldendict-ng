@@ -60,7 +60,7 @@ body {
   clear: both !important;
   margin: 1em 0 !important;
   box-shadow: none !important;
-  border: 1px solid #aaa !important;
+  border: none !important;
 }
 
 .mwiki #toc .toctitle,
@@ -71,7 +71,7 @@ body {
   display: block !important;
   width: auto !important;
   height: auto !important;
-  border-bottom: 1px solid #aaa !important;
+  border-bottom: none !important;
 }
 
 .mwiki #toc ul,
