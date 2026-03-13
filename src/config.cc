@@ -180,7 +180,7 @@ Romaji::Romaji():
 {
 }
 
-Group * Class::getGroup( unsigned id )
+Group * Class::getGroup( quint64 id )
 {
   for ( auto & group : groups ) {
     if ( group.id == id ) {
@@ -190,7 +190,7 @@ Group * Class::getGroup( unsigned id )
   return 0;
 }
 
-const Group * Class::getGroup( unsigned id ) const
+const Group * Class::getGroup( quint64 id ) const
 {
   for ( const auto & group : groups ) {
     if ( group.id == id ) {

@@ -868,8 +868,8 @@ struct Class
     maxHeadwordsToExpand( 0 )
   {
   }
-  Group * getGroup( unsigned id );
-  const Group * getGroup( unsigned id ) const;
+  Group * getGroup( quint64 id );
+  const Group * getGroup( quint64 id ) const;
   //disable tts dictionary. does not need to save to persistent file
   bool notts      = false;
   bool resetState = false;

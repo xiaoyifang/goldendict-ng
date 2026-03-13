@@ -2180,7 +2180,7 @@ void MainWindow::updatePronounceAvailability()
   }
 }
 
-void MainWindow::editDictionaries( unsigned editDictionaryGroup )
+void MainWindow::editDictionaries( quint64 editDictionaryGroup )
 {
   hotkeyWrapper.reset(); // No hotkeys while we're editing dictionaries
   closeHeadwordsDialog();
@@ -2211,7 +2211,7 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
       ftsIndexing.clearDictionaries();
       // Set muted dictionaries from old groups
       for ( auto & group : newCfg.groups ) {
-        unsigned id = group.id;
+        quint64 id = group.id;
         if ( id != GroupId::NoGroupId ) {
           const Config::Group * grp = cfg.getGroup( id );
           if ( grp ) {
@@ -2369,7 +2369,7 @@ void MainWindow::editPreferences()
 
 void MainWindow::currentGroupChanged( int )
 {
-  unsigned grg_id               = groupList->getCurrentGroup();
+  quint64 grg_id               = groupList->getCurrentGroup();
   cfg.lastMainGroupId           = grg_id;
   const Instances::Group * igrp = groupInstances.findGroup( grg_id );
   if ( grg_id == GroupId::AllGroupId ) {
@@ -2805,7 +2805,7 @@ void MainWindow::openLinkInNewTab( const QUrl & url,
 }
 
 void MainWindow::showDefinitionInNewTab( const QString & word,
-                                         unsigned group,
+                                         quint64 group,
                                          const QString & fromArticle,
                                          const Contexts & contexts )
 {
@@ -2920,7 +2920,7 @@ void MainWindow::showTranslationFor( const QString & word, unsigned inGroup, con
 
   navPronounce->setEnabled( false );
 
-  unsigned group = inGroup;
+  quint64 group = inGroup;
   if ( group == 0 ) {
     group = groupInstances.empty() ? 0 : groupInstances[ groupList->currentIndex() ].id;
   }
@@ -4226,7 +4226,7 @@ void MainWindow::showFullTextSearchDialog()
              Qt::QueuedConnection );
     connect( &configEvents, SIGNAL( mutedDictionariesChanged() ), ftsDlg, SLOT( updateDictionaries() ) );
 
-    unsigned group = groupInstances.empty() ? 0 : groupInstances[ groupList->currentIndex() ].id;
+    quint64 group = groupInstances.empty() ? 0 : groupInstances[ groupList->currentIndex() ].id;
     ftsDlg->setCurrentGroup( group );
   }
 

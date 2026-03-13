@@ -33,10 +33,10 @@ GroupComboBox::GroupComboBox( QWidget * parent ):
 
 void GroupComboBox::fill( const Instances::Groups & groups )
 {
-  unsigned prevId = 0;
+  quint64 prevId = 0;
 
   if ( count() ) {
-    prevId = itemData( currentIndex() ).toUInt();
+    prevId = itemData( currentIndex() ).toULongLong();
   }
 
   clear();
@@ -116,23 +116,23 @@ QList< QAction * > GroupComboBox::getExternActions()
   return list;
 }
 
-void GroupComboBox::setCurrentGroup( unsigned id )
+void GroupComboBox::setCurrentGroup( quint64 id )
 {
   for ( int x = 0; x < count(); ++x ) {
-    if ( itemData( x ).toUInt() == id ) {
+    if ( itemData( x ).toULongLong() == id ) {
       setCurrentIndex( x );
       break;
     }
   }
 }
 
-unsigned GroupComboBox::getCurrentGroup() const
+quint64 GroupComboBox::getCurrentGroup() const
 {
   if ( !count() ) {
     return 0;
   }
 
-  return itemData( currentIndex() ).toUInt();
+  return itemData( currentIndex() ).toULongLong();
 }
 
 void GroupComboBox::popupGroups()

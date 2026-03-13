@@ -128,16 +128,16 @@ public:
   /// The only values to pass here are ones obtained from showDefinitionInNewTab()
   /// signal or none at all.
   void showDefinition( const QString & word,
-                       unsigned group,
+                       quint64 group,
                        const QString & scrollTo  = QString(),
                        const Contexts & contexts = Contexts() );
 
   void showDefinition( const QString & word,
                        const QStringList & dictIDs,
                        const QRegularExpression & searchRegExp,
-                       unsigned group,
+                       quint64 group,
                        bool ignoreDiacritics );
-  void showDefinition( const QString & word, const QStringList & dictIDs, unsigned group, bool ignoreDiacritics );
+  void showDefinition( const QString & word, const QStringList & dictIDs, quint64 group, bool ignoreDiacritics );
 
   void sendToAnki( const QString & word, const QString & text, const QString & sentence );
   /// Clears the view and sets the application-global waiting cursor,
@@ -303,7 +303,7 @@ signals:
   void openLinkInNewTab( const QUrl &, const QUrl & referrer, const QString & fromArticle, const Contexts & contexts );
   /// Signals that the following definition was requested to be showed in new tab
   void showDefinitionInNewTab( const QString & word,
-                               unsigned group,
+                               quint64 group,
                                const QString & fromArticle,
                                const Contexts & contexts );
 

@@ -59,7 +59,7 @@ public:
 signals:
 
   /// Forwarded from the dictionary bar, so that main window could act on this.
-  void editGroupRequest( unsigned id );
+  void editGroupRequest( quint64 id );
   /// Send word to main window
   void sendPhraseToMainWindow( const QString & word );
   /// Close opened menus when window hide

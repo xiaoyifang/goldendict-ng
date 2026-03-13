@@ -330,7 +330,7 @@ private slots:
 
   /// If editDictionaryGroup is specified, the dialog positions on that group
   /// initially.
-  void editDictionaries( unsigned editDictionaryGroup = GroupId::NoGroupId );
+  void editDictionaries( quint64 editDictionaryGroup = GroupId::NoGroupId );
   /// Edits current group when triggered from the dictionary bar.
   void editCurrentGroup();
   void editPreferences();
@@ -364,7 +364,7 @@ private slots:
 
   void openLinkInNewTab( const QUrl &, const QUrl &, const QString &, const Contexts & contexts );
   void showDefinitionInNewTab( const QString & word,
-                               unsigned group,
+                               quint64 group,
                                const QString & fromArticle,
                                const Contexts & contexts );
   void typingEvent( const QString & );

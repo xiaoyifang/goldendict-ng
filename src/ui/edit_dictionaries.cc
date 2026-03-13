@@ -70,7 +70,7 @@ EditDictionaries::EditDictionaries( QWidget * parent,
   connect( ui.tabs, &QTabWidget::currentChanged, this, &EditDictionaries::currentChanged );
 }
 
-void EditDictionaries::editGroup( unsigned id )
+void EditDictionaries::editGroup( quint64 id )
 {
   ui.tabs->setTabVisible( 0, false );
 

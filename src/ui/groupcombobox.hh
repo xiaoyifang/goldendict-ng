@@ -22,11 +22,11 @@ public:
 
   /// Chooses the given group in the combobox. If there's no such group,
   /// does nothing.
-  void setCurrentGroup( unsigned id );
+  void setCurrentGroup( quint64 id );
 
 
   /// Returns current group.
-  unsigned getCurrentGroup() const;
+  quint64 getCurrentGroup() const;
 
   /// Return actions which should be accessible from FTS and Headwords dialogs
   QList< QAction * > getExternActions();

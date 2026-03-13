@@ -284,7 +284,7 @@ ArticleView::~ArticleView()
 }
 
 void ArticleView::showDefinition( const QString & word,
-                                  unsigned group,
+                                  quint64 group,
                                   const QString & scrollTo,
                                   const Contexts & contexts_ )
 {
@@ -359,7 +359,7 @@ void ArticleView::showDefinition( const QString & word,
 void ArticleView::showDefinition( const QString & word,
                                   const QStringList & dictIDs,
                                   const QRegularExpression & searchRegExp,
-                                  unsigned group,
+                                  quint64 group,
                                   bool ignoreDiacritics )
 {
   if ( dictIDs.isEmpty() ) {
@@ -414,7 +414,7 @@ void ArticleView::showDefinition( const QString & word,
 
 void ArticleView::showDefinition( const QString & word,
                                   const QStringList & dictIDs,
-                                  unsigned group,
+                                  quint64 group,
                                   bool ignoreDiacritics )
 {
   showDefinition( word, dictIDs, {}, group, ignoreDiacritics );
@@ -1293,7 +1293,7 @@ void ArticleView::updateMutedContents()
     return;
   }
 
-  unsigned group = getGroup( currentUrl );
+  quint64 group = getGroup( currentUrl );
 
   if ( !group ) {
     return; // No group in url -- do nothing
@@ -1885,7 +1885,7 @@ void ArticleView::pasteTriggered()
   QString word = cfg.preferences.sanitizeInputPhrase( QApplication::clipboard()->text() );
 
   if ( !word.isEmpty() ) {
-    unsigned groupId = getGroup( webview->url() ); // Try to get group from the current article URL
+    quint64 groupId = getGroup( webview->url() ); // Try to get group from the current article URL
 
     // If the group couldn't be determined from the URL (e.g., on internal or external pages),
     // fall back to the currently selected group in the UI.
