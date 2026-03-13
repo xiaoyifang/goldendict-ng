@@ -363,10 +363,8 @@ private slots:
   ArticleView * findArticleViewByDictId( const QString & dictId );
 
   void openLinkInNewTab( const QUrl &, const QUrl &, const QString &, const Contexts & contexts );
-  void showDefinitionInNewTab( const QString & word,
-                               quint64 group,
-                               const QString & fromArticle,
-                               const Contexts & contexts );
+  void
+  showDefinitionInNewTab( const QString & word, quint64 group, const QString & fromArticle, const Contexts & contexts );
   void typingEvent( const QString & );
 
   void activeArticleChanged( const ArticleView *, const QString & id );

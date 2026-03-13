@@ -302,10 +302,8 @@ signals:
   /// Signals that the following link was requested to be opened in new tab
   void openLinkInNewTab( const QUrl &, const QUrl & referrer, const QString & fromArticle, const Contexts & contexts );
   /// Signals that the following definition was requested to be showed in new tab
-  void showDefinitionInNewTab( const QString & word,
-                               quint64 group,
-                               const QString & fromArticle,
-                               const Contexts & contexts );
+  void
+  showDefinitionInNewTab( const QString & word, quint64 group, const QString & fromArticle, const Contexts & contexts );
 
   /// Put translated word into history
   void sendWordToHistory( const QString & word );

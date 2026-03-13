@@ -2369,7 +2369,7 @@ void MainWindow::editPreferences()
 
 void MainWindow::currentGroupChanged( int )
 {
-  quint64 grg_id               = groupList->getCurrentGroup();
+  quint64 grg_id                = groupList->getCurrentGroup();
   cfg.lastMainGroupId           = grg_id;
   const Instances::Group * igrp = groupInstances.findGroup( grg_id );
   if ( grg_id == GroupId::AllGroupId ) {
