@@ -68,7 +68,7 @@ void Groups::resetData( const vector< sptr< Dictionary::Class > > & dicts_,
   ui.dictionaries->populate( Instances::Group( order, dicts_, Config::Group() ).dictionaries, dicts_ );
 
   // Populate groups' widget
-  ui.groups->populate( groups_, 1, dicts_, ui.dictionaries->getCurrentDictionaries() );
+  ui.groups->populate( groups_, dicts_, ui.dictionaries->getCurrentDictionaries() );
 }
 
 void Groups::editGroup( quint64 id )
