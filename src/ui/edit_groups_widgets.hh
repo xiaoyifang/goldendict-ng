@@ -145,7 +145,7 @@ private slots:
 
 private:
   Ui::DictGroupWidget ui;
-  unsigned groupId;
+  quint64 groupId;
   QString groupName;
 
 signals:

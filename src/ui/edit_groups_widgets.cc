@@ -17,6 +17,7 @@
 #include <QMap>
 #include <QMenu>
 #include <QMessageBox>
+#include <QRandomGenerator>
 #include <QTimer>
 #include <QList>
 #include <QToolButton>
@@ -580,8 +581,6 @@ void DictGroupsWidget::populate( const Config::Groups & groups,
 Config::Groups DictGroupsWidget::makeGroups() const
 {
   Config::Groups result;
-
-  result.nextId = nextId;
 
   for ( int x = 0; x < count(); ++x ) {
     result.push_back( dynamic_cast< DictGroupWidget & >( *widget( x ) ).makeGroup() );

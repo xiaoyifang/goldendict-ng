@@ -21,7 +21,7 @@ public:
                   const Config::Groups & groups_,
                   const Config::Group & order );
   /// Instructs the dialog to position itself on editing the given group.
-  void editGroup( unsigned id );
+  void editGroup( quint64 id );
 
   /// Should be called when the dictionary order has changed to reflect on
   /// that changes. It would only do anything if the order has actually
