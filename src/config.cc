@@ -555,11 +555,11 @@ Class load()
 
   if ( !groups.isNull() ) {
     QDomNodeList nl = groups.toElement().elementsByTagName( "group" );
-    QSet<quint64> usedIds;
+    QSet< quint64 > usedIds;
 
     for ( int x = 0; x < nl.length(); ++x ) {
       QDomElement grp = nl.item( x ).toElement();
-      Group g = loadGroup( grp );
+      Group g         = loadGroup( grp );
 
       // Check for duplicate group ID and regenerate if found
       if ( usedIds.contains( g.id ) ) {
@@ -567,8 +567,8 @@ Class load()
         quint64 newId;
         do {
           qint64 timestamp = QDateTime::currentMSecsSinceEpoch();
-          quint64 random = QRandomGenerator::global()->generate();
-          newId = (static_cast<quint64>(timestamp) << 24) | (random & 0xFFFFFF);
+          quint64 random   = QRandomGenerator::global()->generate();
+          newId            = ( static_cast< quint64 >( timestamp ) << 24 ) | ( random & 0xFFFFFF );
         } while ( usedIds.contains( newId ) );
         g.id = newId;
       }
