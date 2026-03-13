@@ -51,9 +51,9 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( const QNetworkRequ
   }
 
   // File scheme handling
-  if ( QString fileName = url.toLocalFile(); url.scheme() == "file" && url.host().isEmpty()
-                                             && ArticleMaker::adjustFilePath( fileName ) ) {
-    QUrl newUrl      = QUrl::fromLocalFile( fileName );
+  if ( QString fileName = url.toLocalFile();
+       url.scheme() == "file" && url.host().isEmpty() && ArticleMaker::adjustFilePath( fileName ) ) {
+    QUrl newUrl = QUrl::fromLocalFile( fileName );
     newUrl.setHost( newUrl.host() ); // Ensure host is set if needed
     QNetworkRequest newReq( req );
     newReq.setUrl( newUrl );
@@ -180,7 +180,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::handleLookupScheme(
     return std::make_shared< Dictionary::DataRequestInstant >( false );
   }
 
-  contentType = "text/html";
+  contentType  = "text/html";
   QString word = Utils::Url::queryItemValue( url, "word" ).trimmed();
 
   bool groupIsValid = false;
@@ -200,8 +200,8 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::handleLookupScheme(
     bool isPopup              = Utils::Url::queryItemValue( url, "popup" ) == "1";
     const Config::Group * grp = cfg->getGroup( group );
     const auto * ms           = ( group == GroupId::AllGroupId ) ?
-                        ( isPopup ? &cfg->popupMutedDictionaries : &cfg->mutedDictionaries ) :
-                        ( grp ? ( isPopup ? &grp->popupMutedDictionaries : &grp->mutedDictionaries ) : nullptr );
+      ( isPopup ? &cfg->popupMutedDictionaries : &cfg->mutedDictionaries ) :
+      ( grp ? ( isPopup ? &grp->popupMutedDictionaries : &grp->mutedDictionaries ) : nullptr );
     if ( ms ) {
       mutedDicts = *ms;
     }
