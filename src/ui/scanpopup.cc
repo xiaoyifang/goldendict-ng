@@ -958,7 +958,7 @@ void ScanPopup::showEvent( QShowEvent * ev )
   }
 
   if ( dictionaryBar.isVisible() ) {
-    dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg );
+    dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg, true );
     setDictionaryIconSize();
   }
 }
@@ -1077,7 +1077,7 @@ void ScanPopup::stopAudio() const
 void ScanPopup::dictionaryBar_visibility_changed( bool visible )
 {
   if ( visible ) {
-    dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg );
+    dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg, true );
     setDictionaryIconSize();
     definition->updateMutedContents();
   }

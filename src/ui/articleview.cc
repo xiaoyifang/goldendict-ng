@@ -395,6 +395,10 @@ void ArticleView::showDefinition( const QString & word,
     reqQuery.addQueryItem( "ignore_diacritics", "1" );
   }
 
+  if ( popupView ) {
+    reqQuery.addQueryItem( "popup", "1" );
+  }
+
   req.setQuery( reqQuery );
 
   // Any search opened is probably irrelevant now
