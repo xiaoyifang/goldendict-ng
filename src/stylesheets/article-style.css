@@ -1552,7 +1552,16 @@ in the bottom-right corner of the content area */
 .mwiki #toc .toctitle,
 .mwiki .toc .toctitle {
   text-align: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: -5px; /* Offset parent's padding */
+  padding: 5px 0;
+  margin-top: -5px; /* Offset parent's padding */
+  background-color: inherit;
+  z-index: 10;
+  border-bottom: 1px solid #ddd;
 }
+
 .mwiki #toc ul,
 .mwiki .toc ul {
   list-style-type: none;
@@ -1568,6 +1577,76 @@ in the bottom-right corner of the content area */
 .mwiki #toc .toctoggle,
 .mwiki .toc .toctoggle {
   font-size: 94%;
+}
+
+/* Bypass toclimit wrapper to ensure sticky positioning works correctly */
+.mwiki div[class*="toclimit-"],
+.mwiki div.tocright {
+  display: contents;
+}
+
+/* Sticky and auto-expanding TOC on hover (Overlay mode) */
+.mwiki #toc,
+.mwiki .toc {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+  float: right;
+  z-index: 1000;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin: 0 0 1em 5px;
+  overflow: hidden;
+  opacity: 0.7;
+  background-color: #f8f9fa;
+  border: 1px solid #a2a9b1;
+  border-radius: 4px;
+  transition: opacity 0.3s ease-in-out;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.mwiki #toc:hover,
+.mwiki .toc:hover {
+  overflow: visible;
+  opacity: 1;
+}
+
+.mwiki #toc:hover .toctitle,
+.mwiki #toc:hover > ul {
+  display: block;
+  position: absolute;
+  right: 0;
+  width: 280px;
+  background-color: #ffffff;
+  border: 1px solid #a2a9b1;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.mwiki #toc:hover .toctitle {
+  top: 0;
+  z-index: 1001;
+  padding: 8px;
+  border-radius: 4px 4px 0 0;
+  text-align: center;
+}
+
+.mwiki #toc:hover > ul {
+  top: 35px;
+  margin: 0;
+  padding: 8px;
+  max-height: 75vh;
+  overflow-y: auto;
+  border-radius: 0 0 4px 4px;
+}
+
+.mwiki #toc ul li {
+  padding: 2px 0;
+  transition: background-color 0.2s;
+}
+
+.mwiki #toc ul li:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .mwiki .mw-warning {
