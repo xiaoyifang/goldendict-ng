@@ -199,9 +199,14 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::handleLookupScheme(
   else if ( const Config::Class * cfg = GlobalBroadcaster::instance()->getConfig() ) {
     bool isPopup              = Utils::Url::queryItemValue( url, "popup" ) == "1";
     const Config::Group * grp = cfg->getGroup( group );
-    const auto * ms           = ( group == GroupId::AllGroupId ) ?
-      ( isPopup ? &cfg->popupMutedDictionaries : &cfg->mutedDictionaries ) :
-      ( grp ? ( isPopup ? &grp->popupMutedDictionaries : &grp->mutedDictionaries ) : nullptr );
+    const QSet< QString > * ms = nullptr;
+    if ( group == GroupId::AllGroupId ) {
+      ms = isPopup ? &cfg->popupMutedDictionaries : &cfg->mutedDictionaries;
+    }
+    else if ( grp ) {
+      ms = isPopup ? &grp->popupMutedDictionaries : &grp->mutedDictionaries;
+    }
+
     if ( ms ) {
       mutedDicts = *ms;
     }
