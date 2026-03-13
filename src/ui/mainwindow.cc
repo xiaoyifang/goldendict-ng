@@ -2920,7 +2920,10 @@ void MainWindow::showTranslationFor( const QString & word, unsigned inGroup, con
 
   navPronounce->setEnabled( false );
 
-  unsigned group = inGroup ? inGroup : ( groupInstances.empty() ? 0 : groupInstances[ groupList->currentIndex() ].id );
+  unsigned group = inGroup;
+  if ( group == 0 ) {
+    group = groupInstances.empty() ? 0 : groupInstances[ groupList->currentIndex() ].id;
+  }
 
   view->showDefinition( word, group, scrollTo );
 
