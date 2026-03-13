@@ -2654,15 +2654,15 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML értelmezési hiba: %1, hely: %2, %3</translation>
+      <source>JSON parse error</source>
+      <translation type="unfinished">JSON parse error</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML értelmezési hiba: %1, hely: %2, %3</translation>
+      <source>JSON parse error</source>
+      <translation type="unfinished">JSON parse error</translation>
     </message>
   </context>
   <context>

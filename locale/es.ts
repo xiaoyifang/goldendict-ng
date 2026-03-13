@@ -2654,15 +2654,15 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Error de sintaxis XML: %1 en %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>Error de análisis JSON</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Error de sintaxis XML: %1 en %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>Error de análisis JSON</translation>
     </message>
   </context>
   <context>

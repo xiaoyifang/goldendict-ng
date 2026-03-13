@@ -2653,15 +2653,15 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML 解析失败：%1 于 %2, %3</translation>
+      <source>JSON parse error</source>
+      <translation>JSON 解析错误</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML 解析失败：%1 于 %2, %3</translation>
+      <source>JSON parse error</source>
+      <translation>JSON 解析错误</translation>
     </message>
   </context>
   <context>

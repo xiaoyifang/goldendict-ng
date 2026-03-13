@@ -2654,15 +2654,15 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Помилка аналізу XML: %1 в %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>Помилка розбору JSON</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Помилка аналізу XML: %1 в %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>Помилка розбору JSON</translation>
     </message>
   </context>
   <context>

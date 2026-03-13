@@ -2654,15 +2654,15 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML-jäsennysvirhe: %1 %2:lla,%3</translation>
+      <source>JSON parse error</source>
+      <translation>JSON jäsennysvirhe</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML-jäsennysvirhe: %1 %2:lla,%3</translation>
+      <source>JSON parse error</source>
+      <translation>JSON jäsennysvirhe</translation>
     </message>
   </context>
   <context>

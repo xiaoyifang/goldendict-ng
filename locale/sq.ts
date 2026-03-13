@@ -2653,15 +2653,15 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Gabim në analizimin e XML: %1 në %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation type="unfinished">JSON parse error</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Gabim në analizimin e XML: %1 në %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation type="unfinished">JSON parse error</translation>
     </message>
   </context>
   <context>
