@@ -332,15 +332,18 @@ void applyBoolOption( bool & option, const QDomNode & node )
   }
 }
 
-Group loadGroup( QDomElement grp, unsigned * nextId = 0 )
+Group loadGroup( QDomElement grp )
 {
   Group g;
 
   if ( grp.hasAttribute( "id" ) ) {
-    g.id = grp.attribute( "id" ).toUInt();
+    g.id = grp.attribute( "id" ).toULongLong();
   }
   else {
-    g.id = nextId ? ( *nextId )++ : 0;
+    // Generate a random ID using timestamp and random number
+    qint64 timestamp = QDateTime::currentMSecsSinceEpoch();
+    quint64 random = QRandomGenerator::global()->generate();
+    g.id = (static_cast<quint64>(timestamp) << 24) | (random & 0xFFFFFF);
   }
 
   g.name            = grp.attribute( "name" );
@@ -551,14 +554,12 @@ Class load()
   QDomNode groups = root.namedItem( "groups" );
 
   if ( !groups.isNull() ) {
-    c.groups.nextId = groups.toElement().attribute( "nextId", "1" ).toUInt();
-
     QDomNodeList nl = groups.toElement().elementsByTagName( "group" );
 
     for ( int x = 0; x < nl.length(); ++x ) {
       QDomElement grp = nl.item( x ).toElement();
 
-      c.groups.push_back( loadGroup( grp, &c.groups.nextId ) );
+      c.groups.push_back( loadGroup( grp ) );
     }
   }
 
@@ -1337,9 +1338,7 @@ void save( const Class & c )
     QDomElement groups = dd.createElement( "groups" );
     root.appendChild( groups );
 
-    QDomAttr nextId = dd.createAttribute( "nextId" );
-    nextId.setValue( QString::number( c.groups.nextId ) );
-    groups.setAttributeNode( nextId );
+
 
     for ( const auto & i : c.groups ) {
       QDomElement group = dd.createElement( "group" );

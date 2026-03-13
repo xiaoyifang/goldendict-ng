@@ -58,7 +58,7 @@ Group::Group():
 {
 }
 
-Group::Group( unsigned id_, QString name_ ):
+Group::Group( quint64 id_, QString name_ ):
   id( id_ ),
   name( std::move( name_ ) )
 {
@@ -112,7 +112,7 @@ void Group::checkMutedDictionaries( QSet< QString > * mutedDictionaries ) const
   *mutedDictionaries = temp;
 }
 
-const Group * Groups::findGroup( unsigned id ) const
+const Group * Groups::findGroup( quint64 id ) const
 {
   for ( unsigned x = 0; x < size(); ++x ) {
     if ( operator[]( x ).id == id ) {

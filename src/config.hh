@@ -112,7 +112,7 @@ struct DictionaryRef
 /// A dictionary group
 struct Group
 {
-  unsigned id;
+  quint64 id;
   QString name, icon;
   QByteArray iconData;
   QKeySequence shortcut;
@@ -141,15 +141,7 @@ struct Group
 };
 
 /// All the groups
-struct Groups: public QList< Group >
-{
-  unsigned nextId; // Id to use to create the group next time
-
-  Groups():
-    nextId( 1 )
-  {
-  }
-};
+typedef QList< Group > Groups;
 
 /// Proxy server configuration
 struct ProxyServer
@@ -828,8 +820,8 @@ struct Class
   VoiceEngines voiceEngines;
 #endif
 
-  unsigned lastMainGroupId;  // Last used group in main window
-  unsigned lastPopupGroupId; // Last used group in popup window
+  quint64 lastMainGroupId;  // Last used group in main window
+  quint64 lastPopupGroupId; // Last used group in popup window
 
   QByteArray popupWindowState;           // Binary state saved by QMainWindow
   QByteArray popupWindowGeometry;        // Geometry saved by QMainWindow

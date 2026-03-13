@@ -162,9 +162,9 @@ public:
   DictGroupsWidget( QWidget * parent );
 
   /// Creates all the tabs with the groups
-  void populate( const Config::Groups &,
-                 const std::vector< sptr< Dictionary::Class > > & allDicts,
-                 const std::vector< sptr< Dictionary::Class > > & activeDicts );
+  void populate( const Config::Groups & groups,
+                 const std::vector< sptr< Dictionary::Class > > & allDicts_,
+                 const std::vector< sptr< Dictionary::Class > > & activeDicts_ );
 
   /// Creates new empty group with the given name
   int addNewGroup( const QString & );
@@ -213,7 +213,7 @@ private:
   /// Add source group to target group
   void combineGroups( int source, int target );
 
-  unsigned nextId;
+
   const std::vector< sptr< Dictionary::Class > > * allDicts;
   const std::vector< sptr< Dictionary::Class > > * activeDicts;
 

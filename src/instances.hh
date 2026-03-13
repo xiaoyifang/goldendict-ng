@@ -18,7 +18,7 @@ using std::vector;
 
 struct Group
 {
-  unsigned id;
+  quint64 id;
   QString name, icon, favoritesFolder;
   QIcon iconData;
   QKeySequence shortcut;
@@ -33,7 +33,7 @@ struct Group
   /// Creates an empty group.
   explicit Group();
 
-  Group( unsigned id, QString name_ );
+  Group( quint64 id, QString name_ );
 
   /// Makes the configuration group from the current contents.
   Config::Group makeConfigGroup();
@@ -49,7 +49,7 @@ struct Groups: vector< Group >
 {
   /// Tries finding the given group by its id.
   /// @return The group found, or nullptr if there's no such group.
-  const Group * findGroup( unsigned id ) const;
+  const Group * findGroup( quint64 id ) const;
 };
 
 /// Adds any dictionaries not already present in the given group or in

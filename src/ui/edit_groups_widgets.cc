@@ -532,7 +532,6 @@ void DictListWidget::rowsAboutToBeRemoved( const QModelIndex & parent, int start
 
 DictGroupsWidget::DictGroupsWidget( QWidget * parent ):
   QTabWidget( parent ),
-  nextId( 1 ),
   allDicts( nullptr ),
   activeDicts( nullptr )
 {
@@ -573,8 +572,6 @@ void DictGroupsWidget::populate( const Config::Groups & groups,
     QString toolTipStr = tr( "Dictionaries: " ) + QString::number( getDictionaryCountAt( x ) );
     setTabToolTip( x, toolTipStr );
   }
-
-  nextId = groups.nextId;
 
   setCurrentIndex( 0 );
 }
@@ -657,7 +654,10 @@ int DictGroupsWidget::addNewGroup( const QString & name )
 
   Config::Group newGroup;
 
-  newGroup.id   = nextId++;
+  // Generate a random ID using timestamp and random number
+  qint64 timestamp = QDateTime::currentMSecsSinceEpoch();
+  quint64 random = QRandomGenerator::global()->generate();
+  newGroup.id = (static_cast<quint64>(timestamp) << 24) | (random & 0xFFFFFF);
   newGroup.name = name;
 
   const auto gr = new DictGroupWidget( this, *allDicts, newGroup );
