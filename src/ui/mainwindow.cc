@@ -1700,7 +1700,7 @@ const vector< sptr< Dictionary::Class > > & MainWindow::getActiveDicts()
     return dictionaries;
   }
 
-  const Config::DictionarySets * mutedDictionaries = dictionaryBar.getMutedDictionaries();
+  const QSet< QString > * mutedDictionaries = dictionaryBar.getMutedDictionaries();
   if ( !dictionaryBar.toggleViewAction()->isChecked() || mutedDictionaries == nullptr ) {
     return groupInstances[ current ].dictionaries;
   }

@@ -510,7 +510,7 @@ void FullTextSearchDialog::updateDictionaries()
   // Exclude muted dictionaries
 
   const Config::Group * grp = cfg.getGroup( group );
-  const Config::DictionarySets * mutedDicts;
+  const QSet< QString > * mutedDicts;
 
   if ( group == GroupId::AllGroupId ) {
     mutedDicts = &cfg.mutedDictionaries;

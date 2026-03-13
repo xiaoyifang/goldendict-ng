@@ -445,7 +445,10 @@ void ScanPopup::refresh()
 
   groupListAction->setVisible( !cfg.groups.empty() );
 
-  dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg );
+  dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ),
+                               &cfg.popupMutedDictionaries,
+                               cfg,
+                               true );
   setDictionaryIconSize();
 
   definition->syncBackgroundColorWithCfgDarkReader();
@@ -693,7 +696,10 @@ void ScanPopup::currentGroupChanged( int )
     }
   }
 
-  dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg );
+  dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ),
+                               &cfg.popupMutedDictionaries,
+                               cfg,
+                               true );
 
   definition->setCurrentGroupId( cfg.lastPopupGroupId );
 
@@ -756,7 +762,7 @@ const vector< sptr< Dictionary::Class > > & ScanPopup::getActiveDicts()
 
   Q_ASSERT( 0 <= current || current <= (qsizetype)groups.size() );
 
-  const Config::DictionarySets * mutedDictionaries = dictionaryBar.getMutedDictionaries();
+  const QSet< QString > * mutedDictionaries = dictionaryBar.getMutedDictionaries();
 
   if ( !dictionaryBar.toggleViewAction()->isChecked() || mutedDictionaries == nullptr ) {
     return groups[ current ].dictionaries;
@@ -952,7 +958,10 @@ void ScanPopup::showEvent( QShowEvent * ev )
   }
 
   if ( dictionaryBar.isVisible() ) {
-    dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg );
+    dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ),
+                                 &cfg.popupMutedDictionaries,
+                                 cfg,
+                                 true );
     setDictionaryIconSize();
   }
 }
@@ -1071,7 +1080,10 @@ void ScanPopup::stopAudio() const
 void ScanPopup::dictionaryBar_visibility_changed( bool visible )
 {
   if ( visible ) {
-    dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg );
+    dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ),
+                                 &cfg.popupMutedDictionaries,
+                                 cfg,
+                                 true );
     setDictionaryIconSize();
     definition->updateMutedContents();
   }
