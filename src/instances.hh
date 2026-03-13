@@ -42,7 +42,7 @@ struct Group
   QIcon makeIcon() const;
 
   /// Remove id's if not presented in group dictionaries
-  void checkMutedDictionaries( Config::DictionarySets * mutedDictionaries ) const;
+  void checkMutedDictionaries( QSet< QString > * mutedDictionaries ) const;
 };
 
 struct Groups: vector< Group >

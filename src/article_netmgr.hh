@@ -60,9 +60,6 @@ private:
   sptr< Dictionary::DataRequest > handleLookupScheme( const QUrl & url, QString & contentType );
 
   sptr< Dictionary::DataRequest > handleResourceScheme( const QUrl & url, QString & contentType );
-  QSet< QString > getMutedDicts( const QUrl & url, unsigned group );
-  bool shouldBlockRequest( const QNetworkRequest & req, const QUrl & url ) const;
-  QNetworkReply * handleFileScheme( const QNetworkRequest & req, QNetworkAccessManager::Operation op );
 };
 
 class ArticleResourceReply: public QNetworkReply

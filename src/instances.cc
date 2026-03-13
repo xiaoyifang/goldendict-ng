@@ -99,9 +99,9 @@ QIcon Group::makeIcon() const
   return i;
 }
 
-void Group::checkMutedDictionaries( Config::DictionarySets * mutedDictionaries ) const
+void Group::checkMutedDictionaries( QSet< QString > * mutedDictionaries ) const
 {
-  Config::DictionarySets temp;
+  QSet< QString > temp;
 
   for ( const auto & dict : dictionaries ) {
     auto dictId = QString::fromStdString( dict->getId() );

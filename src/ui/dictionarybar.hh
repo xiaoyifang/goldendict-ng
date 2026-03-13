@@ -27,11 +27,11 @@ public:
   /// Sets dictionaries to be displayed in the bar. Their statuses (enabled/
   /// disabled) are taken from the configuration data.
   void setDictionaries( const std::vector< sptr< Dictionary::Class > > & );
-  void setMutedDictionaries( Config::DictionarySets * mutedDictionaries_ )
+  void setMutedDictionaries( QSet< QString > * mutedDictionaries_ )
   {
     mutedDictionaries = mutedDictionaries_;
   }
-  const Config::DictionarySets * getMutedDictionaries() const
+  const QSet< QString > * getMutedDictionaries() const
   {
     return mutedDictionaries;
   }
@@ -44,7 +44,7 @@ public:
 
   void setDictionaryIconSize( IconSize size );
   void updateToGroup( const Instances::Group * grp,
-                      Config::DictionarySets * allGroupMutedDictionaries,
+                      QSet< QString > * allGroupMutedDictionaries,
                       Config::Class & cfg );
 
 signals:
@@ -70,10 +70,10 @@ signals:
 
 private:
 
-  Config::DictionarySets * mutedDictionaries;
+  QSet< QString > * mutedDictionaries;
 
   // In temporary selection, shift+click capture selections.
-  std::optional< Config::DictionarySets > tempSelectionCapturedMuted;
+  std::optional< QSet< QString > > tempSelectionCapturedMuted;
 
   Config::Events & configEvents;
 

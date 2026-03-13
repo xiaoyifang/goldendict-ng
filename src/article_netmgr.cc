@@ -22,7 +22,6 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( const QNetworkRequ
   QString contentType = mineType.name();
 
   if ( url.scheme() == "gdlookup" ) {
-    // This is for handling simple lookup URLs like "gdlookup://word"
     QString path = url.path();
     if ( path.size() > 1 ) {
       url.setPath( "" );
@@ -31,23 +30,37 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( const QNetworkRequ
     }
   }
 
-  auto dr = getResource( url, contentType );
-
-  if ( dr.get() ) {
+  if ( auto dr = getResource( url, contentType ); dr.get() ) {
     return new ArticleResourceReply( this, req, dr, contentType );
   }
 
-  if ( shouldBlockRequest( req, url ) ) {
+  // Blocking logic
+  if ( !Utils::isExternalLink( url ) ) {
+    qWarning( R"(Blocking element "%s" as built-in link )", url.toEncoded().data() );
     return new BlockedNetworkReply( this );
   }
 
-  if ( url.scheme() == "file" ) {
-    if ( auto * reply = handleFileScheme( req, op ) ) {
-      return reply;
+  if ( disallowContentFromOtherSites && req.hasRawHeader( "Referer" ) ) {
+    QUrl refererUrl = QUrl::fromEncoded( req.rawHeader( "Referer" ) );
+    if ( !url.host().endsWith( refererUrl.host() )
+         && Utils::Url::getHostBaseFromUrl( url ) != Utils::Url::getHostBaseFromUrl( refererUrl )
+         && !url.scheme().startsWith( "data" ) ) {
+      qWarning( R"(Blocking element "%s" due to not same domain)", url.toEncoded().data() );
+      return new BlockedNetworkReply( this );
     }
   }
 
-  // spoof User-Agent
+  // File scheme handling
+  if ( QString fileName = url.toLocalFile(); url.scheme() == "file" && url.host().isEmpty()
+                                             && ArticleMaker::adjustFilePath( fileName ) ) {
+    QUrl newUrl      = QUrl::fromLocalFile( fileName );
+    newUrl.setHost( newUrl.host() ); // Ensure host is set if needed
+    QNetworkRequest newReq( req );
+    newReq.setUrl( newUrl );
+    return QNetworkAccessManager::createRequest( op, newReq, nullptr );
+  }
+
+  // Default request with spoofed User-Agent
   QNetworkRequest newReq;
   newReq.setUrl( url );
   newReq.setAttribute( QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy );
@@ -61,46 +74,6 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( const QNetworkRequ
   }
 
   return reply;
-}
-
-bool ArticleNetworkAccessManager::shouldBlockRequest( const QNetworkRequest & req, const QUrl & url ) const
-{
-  if ( !Utils::isExternalLink( url ) ) {
-    qWarning( R"(Blocking element "%s" as built-in link )", url.toEncoded().data() );
-    return true;
-  }
-
-  if ( disallowContentFromOtherSites && req.hasRawHeader( "Referer" ) ) {
-    QByteArray referer = req.rawHeader( "Referer" );
-    QUrl refererUrl    = QUrl::fromEncoded( referer );
-
-    if ( !url.host().endsWith( refererUrl.host() )
-         && Utils::Url::getHostBaseFromUrl( url ) != Utils::Url::getHostBaseFromUrl( refererUrl )
-         && !url.scheme().startsWith( "data" ) ) {
-      qWarning( R"(Blocking element "%s" due to not same domain)", url.toEncoded().data() );
-      return true;
-    }
-  }
-  return false;
-}
-
-QNetworkReply * ArticleNetworkAccessManager::handleFileScheme( const QNetworkRequest & req,
-                                                               QNetworkAccessManager::Operation op )
-{
-  QString fileName = req.url().toLocalFile();
-  if ( req.url().host().isEmpty() && ArticleMaker::adjustFilePath( fileName ) ) {
-    QUrl newUrl( req.url() );
-    QUrl localUrl = QUrl::fromLocalFile( fileName );
-
-    newUrl.setHost( localUrl.host() );
-    newUrl.setPath( Utils::Url::ensureLeadingSlash( localUrl.path() ) );
-
-    QNetworkRequest newReq( req );
-    newReq.setUrl( newUrl );
-
-    return QNetworkAccessManager::createRequest( op, newReq, nullptr );
-  }
-  return nullptr;
 }
 
 string ArticleNetworkAccessManager::getHtml( ResourceType resourceType )
@@ -204,69 +177,44 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::handleLookupScheme(
                                                                                  QString & contentType )
 {
   if ( !url.host().isEmpty() && url.host() != "localhost" ) {
-    // Strange request - ignore it
     return std::make_shared< Dictionary::DataRequestInstant >( false );
   }
-  contentType = "text/html";
 
+  contentType = "text/html";
   QString word = Utils::Url::queryItemValue( url, "word" ).trimmed();
 
   bool groupIsValid = false;
   unsigned group    = Utils::Url::queryItemValue( url, "group" ).toUInt( &groupIsValid );
 
-  QString dictIDs = Utils::Url::queryItemValue( url, "dictionaries" );
-  if ( !dictIDs.isEmpty() ) {
-    // Individual dictionaries set from full-text search
-    QStringList dictIDList = dictIDs.split( "," );
-    return articleMaker.makeDefinitionFor( word, group, QMap< QString, QString >(), QSet< QString >(), dictIDList );
+  if ( QString dictIDs = Utils::Url::queryItemValue( url, "dictionaries" ); !dictIDs.isEmpty() ) {
+    return articleMaker.makeDefinitionFor( word, group, {}, {}, dictIDs.split( "," ) );
   }
 
-  QSet< QString > mutedDicts = getMutedDicts( url, group );
+  // Get muted dictionaries
+  QSet< QString > mutedDicts;
+  if ( QString muted = Utils::Url::queryItemValue( url, "muted" ); !muted.isEmpty() ) {
+    QStringList lists = muted.split( ',' );
+    mutedDicts        = QSet< QString >( lists.begin(), lists.end() );
+  }
+  else if ( const Config::Class * cfg = GlobalBroadcaster::instance()->getConfig() ) {
+    bool isPopup              = Utils::Url::queryItemValue( url, "popup" ) == "1";
+    const Config::Group * grp = cfg->getGroup( group );
+    const auto * ms           = ( group == GroupId::AllGroupId ) ?
+                        ( isPopup ? &cfg->popupMutedDictionaries : &cfg->mutedDictionaries ) :
+                        ( grp ? ( isPopup ? &grp->popupMutedDictionaries : &grp->mutedDictionaries ) : nullptr );
+    if ( ms ) {
+      mutedDicts = *ms;
+    }
+  }
 
-  // Unpack contexts
-  const QString contextsEncoded           = Utils::Url::queryItemValue( url, "contexts" );
-  const QMap< QString, QString > contexts = Utils::str2map( contextsEncoded );
+  QMap< QString, QString > contexts = Utils::str2map( Utils::Url::queryItemValue( url, "contexts" ) );
+  bool ignoreDiacritics             = Utils::Url::queryItemValue( url, "ignore_diacritics" ) == "1";
 
-  // See for ignore diacritics
-  bool ignoreDiacritics = Utils::Url::queryItemValue( url, "ignore_diacritics" ) == "1";
-
-  if ( groupIsValid && !word.isEmpty() ) { // Require group and phrase to be passed
-    return articleMaker.makeDefinitionFor( word, group, contexts, mutedDicts, QStringList(), ignoreDiacritics );
+  if ( groupIsValid && !word.isEmpty() ) {
+    return articleMaker.makeDefinitionFor( word, group, contexts, mutedDicts, {}, ignoreDiacritics );
   }
 
   return std::make_shared< Dictionary::DataRequestInstant >( false );
-}
-
-QSet< QString > ArticleNetworkAccessManager::getMutedDicts( const QUrl & url, unsigned group )
-{
-  QString mutedDictsEncoded = Utils::Url::queryItemValue( url, "muted" );
-  if ( !mutedDictsEncoded.isEmpty() ) {
-    QStringList lists = mutedDictsEncoded.split( ',' );
-    return QSet< QString >( lists.begin(), lists.end() );
-  }
-
-  // If muted is not provided in URL, we get it from config
-  const Config::Class * cfg = GlobalBroadcaster::instance()->getConfig();
-  if ( !cfg ) {
-    return {};
-  }
-
-  bool isPopup                      = Utils::Url::queryItemValue( url, "popup" ) == "1";
-  const Config::Group * grp         = cfg->getGroup( group );
-  const Config::DictionarySets * ms = nullptr;
-
-  if ( group == GroupId::AllGroupId ) {
-    ms = isPopup ? &cfg->popupMutedDictionaries : &cfg->mutedDictionaries;
-  }
-  else if ( grp ) {
-    ms = isPopup ? &grp->popupMutedDictionaries : &grp->mutedDictionaries;
-  }
-
-  if ( ms ) {
-    return ms->toSet();
-  }
-
-  return {};
 }
 
 sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::handleResourceScheme( const QUrl & url,
