@@ -536,7 +536,7 @@ void getSuggestionsForExpression( const std::u32string & expression,
   for ( const auto & word : words ) {
     // Since we now exit on punctuation, all words are real words
     // No need to check for punctuation or whitespace
-    QList< std::u32string > sugg = suggest(const_cast<std::u32string&>(word), hunspellMutex, hunspell );
+    QList< std::u32string > sugg = suggest( const_cast< std::u32string & >( word ), hunspellMutex, hunspell );
     int suggNum                  = sugg.size() + 1;
     if ( suggNum > 3 ) {
       suggNum = 3;
