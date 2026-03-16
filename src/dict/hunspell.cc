@@ -524,8 +524,22 @@ void getSuggestionsForExpression( const std::u32string & expression,
   }
 
   if ( words.size() > 21 ) {
-    // Too many words - no suggestions
+    // Too many tokens - no suggestions
     return;
+  }
+
+  // Also count real words (non-punctuation tokens) to avoid exponential blowup:
+  // results can grow as suggNum^wordCount (up to 3^N), so cap at 7 real words.
+  {
+    int realWordCount = 0;
+    for ( const auto & w : words ) {
+      if ( !w.empty() && !Folding::isPunct( w[ 0 ] ) && !Folding::isWhitespace( w[ 0 ] ) ) {
+        ++realWordCount;
+      }
+    }
+    if ( realWordCount > 7 ) {
+      return;
+    }
   }
 
   // Combine result strings from suggestions
@@ -561,8 +575,17 @@ void getSuggestionsForExpression( const std::u32string & expression,
               results[ j ].append( word );
             }
             else {
+              // Cap the results list to prevent exponential blowup:
+              // Each word can multiply results by up to suggNum (max 3),
+              // so a long phrase can reach 3^N entries causing OOM/SIGSEGV.
+              if ( results.size() >= 100 ) {
+                break;
+              }
               results.push_back( resultStr + sugg.at( k - 1 ) );
             }
+          }
+          if ( results.size() >= 100 ) {
+            break;
           }
         }
       }
