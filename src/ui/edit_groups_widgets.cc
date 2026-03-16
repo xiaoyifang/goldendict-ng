@@ -655,7 +655,7 @@ int DictGroupsWidget::addNewGroup( const QString & name )
   Config::Group newGroup;
 
   newGroup.name = name;
-  newGroup.id   = qHash( newGroup.name );
+  newGroup.id   = static_cast< unsigned >( qHash( newGroup.name ) );
   // Ensure ID is not 0 (reserved for NoGroupId)
   if ( newGroup.id == 0 ) {
     newGroup.id = 1;
