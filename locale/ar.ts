@@ -1121,6 +1121,14 @@ between classic and school orthography in cyrillic)</source>
       <source>&amp;Add group</source>
       <translation>أ&amp;ضف مجموعة</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>المجموعة موجودة مسبقاً</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>مجموعة تحمل الاسم &apos;%1&apos; موجودة بالفعل.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
