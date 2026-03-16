@@ -1122,6 +1122,14 @@ between classic and school orthography in cyrillic)</source>
       <source>&amp;Add group</source>
       <translation>Gruppe &amp;hinzufügen</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>Gruppe existiert bereits</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>Eine Gruppe mit dem Namen &apos;%1&apos; existiert bereits.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
