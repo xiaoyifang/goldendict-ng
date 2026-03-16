@@ -97,7 +97,7 @@ private:
 std::u32string decodeFromHunspell( Hunspell &, const char * );
 
 /// Generates suggestions via hunspell
-QList< std::u32string > suggest( std::u32string & word, QMutex & hunspellMutex, Hunspell & hunspell );
+QList< std::u32string > suggest( const std::u32string & word, QMutex & hunspellMutex, Hunspell & hunspell );
 
 /// Generates suggestions for compound expression
 void getSuggestionsForExpression( const std::u32string & expression,
@@ -351,7 +351,7 @@ void HunspellHeadwordsRequest::run()
   finish();
 }
 
-QList< std::u32string > suggest( std::u32string & word, QMutex & hunspellMutex, Hunspell & hunspell )
+QList< std::u32string > suggest( const std::u32string & word, QMutex & hunspellMutex, Hunspell & hunspell )
 {
   QList< std::u32string > result;
 
@@ -533,10 +533,10 @@ void getSuggestionsForExpression( const std::u32string & expression,
 
   QList< std::u32string > results;
 
-  for ( const auto & word : words ) {
+  for ( const auto & currentWord : words ) {
     // Since we now exit on punctuation, all words are real words
     // No need to check for punctuation or whitespace
-    QList< std::u32string > sugg = suggest( const_cast< std::u32string & >( word ), hunspellMutex, hunspell );
+    QList< std::u32string > sugg = suggest( currentWord, hunspellMutex, hunspell );
     int suggNum                  = sugg.size() + 1;
     if ( suggNum > 3 ) {
       suggNum = 3;
@@ -546,7 +546,7 @@ void getSuggestionsForExpression( const std::u32string & expression,
 
     if ( resNum == 0 ) {
       for ( int k = 0; k < suggNum; k++ ) {
-        results.push_back( k == 0 ? word : sugg.at( k - 1 ) );
+        results.push_back( k == 0 ? currentWord : sugg.at( k - 1 ) );
       }
     }
     else {
@@ -554,7 +554,7 @@ void getSuggestionsForExpression( const std::u32string & expression,
         resultStr = results.at( j );
         for ( int k = 0; k < suggNum; k++ ) {
           if ( k == 0 ) {
-            results[ j ].append( word );
+            results[ j ].append( currentWord );
           }
           else {
             results.push_back( resultStr + sugg.at( k - 1 ) );
