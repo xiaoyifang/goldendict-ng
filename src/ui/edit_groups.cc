@@ -118,6 +118,16 @@ void Groups::addNew()
                                         &ok );
 
   if ( ok ) {
+    // Check if group with the same name already exists
+    for ( int i = 0; i < ui.groups->count(); ++i ) {
+      auto * w = qobject_cast< DictGroupWidget * >( ui.groups->widget( i ) );
+      if ( w && w->name() == name ) {
+        QMessageBox::warning( this,
+                              tr( "Group already exists" ),
+                              tr( "A group with the name '%1' already exists." ).arg( name ) );
+        return;
+      }
+    }
     ui.groups->addNewGroup( name );
   }
 }
@@ -154,6 +164,18 @@ void Groups::renameCurrent()
                                         &ok );
 
   if ( ok ) {
+    // Check if group with the same name already exists (excluding the current group)
+    for ( int i = 0; i < ui.groups->count(); ++i ) {
+      if ( i != current ) {
+        auto * w = qobject_cast< DictGroupWidget * >( ui.groups->widget( i ) );
+        if ( w && w->name() == name ) {
+          QMessageBox::warning( this,
+                                tr( "Group already exists" ),
+                                tr( "A group with the name '%1' already exists." ).arg( name ) );
+          return;
+        }
+      }
+    }
     ui.groups->renameCurrentGroup( name );
   }
 }
