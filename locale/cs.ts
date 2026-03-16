@@ -1122,6 +1122,14 @@ a školní ortografií v cyrilici)</translation>
       <source>&amp;Add group</source>
       <translation>Přid&amp;at skupinu</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>Skupina již existuje</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>Skupina s názvem &apos;%1&apos; již existuje.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
