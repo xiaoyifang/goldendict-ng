@@ -1,6 +1,4 @@
 name: Release All
-permissions:
-  contents: write
 concurrency:
    group: ${{ github.workflow }}-${{ github.ref }}
    cancel-in-progress: true
@@ -21,6 +19,8 @@ on:
       - ".clang-format"
 jobs:
   build_macOS:
+    permissions:
+      contents: read
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -84,6 +84,8 @@ jobs:
           path: '*.dmg'
 
   build_Windows:
+    permissions:
+      contents: read
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -144,6 +146,8 @@ jobs:
             ./build_dir/*.pdb
 
   generate_other_staffs:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     outputs:
       newTag: ${{ steps.getNewTag.outputs.newTag }}
@@ -214,6 +218,8 @@ jobs:
 
   publish:
     needs: [build_macOS, build_Windows, generate_other_staffs]
+    permissions:
+      contents: write
     runs-on: ubuntu-24.04
     env:
         newTag: ${{ needs.generate_other_staffs.outputs.newTag }}

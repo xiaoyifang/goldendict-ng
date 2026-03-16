@@ -1,6 +1,4 @@
 name: Build Check
-permissions:
-  contents: read
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -15,6 +13,8 @@ on:
 jobs:
   job_ubuntu_build_check:
     name: ubuntu Build and analyze
+    permissions:
+      contents: read
     runs-on: ubuntu-24.04
     steps:
       - name: Install dependencies
@@ -51,6 +51,8 @@ jobs:
           ninja -k 0
   job_macos_build_check:
     name: macos Build and analyze
+    permissions:
+      contents: read
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
@@ -95,6 +97,8 @@ jobs:
 
   job_window_build_check:
     name: windows Build and analyze
+    permissions:
+      contents: read
     runs-on: windows-latest
     steps:
       - name: Install Qt
@@ -124,6 +128,8 @@ jobs:
 
   job_archlinux_build_check:
     name: archlinux Build and analyze
+    permissions:
+      contents: read
     runs-on: ubuntu-24.04
     container:
       image: ghcr.io/archlinux/archlinux:base-devel
