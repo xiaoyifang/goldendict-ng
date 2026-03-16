@@ -1,6 +1,4 @@
 name: Manual Build Action(for testing)
-permissions:
-  contents: read
 concurrency: 
    group: ${{ github.workflow }}-${{ github.ref }}
    cancel-in-progress: true
@@ -19,6 +17,8 @@ on:
 jobs:
   build_macOS:
     if: github.event.inputs.build_macOS == 'true'
+    permissions:
+      contents: read
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -80,6 +80,8 @@ jobs:
 
   build_Windows:
     if: github.event.inputs.build_Windows == 'true'
+    permissions:
+      contents: read
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:

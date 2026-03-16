@@ -273,7 +273,7 @@ code::selection {
 
 .dsl_s_wav a:after {
   display: inline-block;
-  font-family: "Webdings";
+  font-family: "Webdings", sans-serif;
   content: "X";
   width: 18px;
   height: 18px;
