@@ -6,10 +6,6 @@
 #include <QtXml>
 #include <QApplication>
 
-#ifdef Q_OS_WIN32
-  //this is a windows header file.
-  #include <Shlobj.h>
-#endif
 
 #include <stdint.h>
 
