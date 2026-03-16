@@ -500,92 +500,64 @@ void getSuggestionsForExpression( const std::u32string & expression,
   // Parse string to separate words
 
   for ( const char32_t * c = trimmedWord.c_str();; ++c ) {
-    if ( !*c || Folding::isPunct( *c ) || Folding::isWhitespace( *c ) ) {
+    if ( !*c ) {
+      if ( word.size() ) {
+        words.push_back( word );
+      }
+      break;
+    }
+    if ( Folding::isPunct( *c ) ) {
+      // Encountered punctuation, exit immediately
+      return;
+    }
+    if ( Folding::isWhitespace( *c ) ) {
       if ( word.size() ) {
         words.push_back( word );
         word.clear();
       }
-      if ( *c ) {
-        punct.push_back( *c );
-      }
+      // Continue processing after whitespace
+      continue;
     }
-    else {
-      if ( punct.size() ) {
-        words.push_back( punct );
-        punct.clear();
-      }
-      if ( *c ) {
-        word.push_back( *c );
-      }
-    }
-    if ( !*c ) {
-      break;
-    }
+    // Process regular characters
+    word.push_back( *c );
   }
 
-  if ( words.size() > 21 ) {
-    // Too many tokens - no suggestions
+  // Since we now exit on punctuation, all words are real words
+  // Limit to 4 words to avoid exponential blowup (3^4 = 81 suggestions)
+  if ( words.size() > 4 ) {
+    // Too many words - no suggestions
     return;
-  }
-
-  // Also count real words (non-punctuation tokens) to avoid exponential blowup:
-  // results can grow as suggNum^wordCount (up to 3^N), so cap at 7 real words.
-  {
-    int realWordCount = 0;
-    for ( const auto & w : words ) {
-      if ( !w.empty() && !Folding::isPunct( w[ 0 ] ) && !Folding::isWhitespace( w[ 0 ] ) ) {
-        ++realWordCount;
-      }
-    }
-    if ( realWordCount > 7 ) {
-      return;
-    }
   }
 
   // Combine result strings from suggestions
 
   QList< std::u32string > results;
 
-  for ( const auto & i : words ) {
-    word = i;
-    if ( Folding::isPunct( word[ 0 ] ) || Folding::isWhitespace( word[ 0 ] ) ) {
-      for ( auto & result : results ) {
-        result.append( word );
+  for ( const auto & word : words ) {
+    // Since we now exit on punctuation, all words are real words
+    // No need to check for punctuation or whitespace
+    QList< std::u32string > sugg = suggest(const_cast<std::u32string&>(word), hunspellMutex, hunspell );
+    int suggNum                  = sugg.size() + 1;
+    if ( suggNum > 3 ) {
+      suggNum = 3;
+    }
+    int resNum = results.size();
+    std::u32string resultStr;
+
+    if ( resNum == 0 ) {
+      for ( int k = 0; k < suggNum; k++ ) {
+        results.push_back( k == 0 ? word : sugg.at( k - 1 ) );
       }
     }
     else {
-      QList< std::u32string > sugg = suggest( word, hunspellMutex, hunspell );
-      int suggNum                  = sugg.size() + 1;
-      if ( suggNum > 3 ) {
-        suggNum = 3;
-      }
-      int resNum = results.size();
-      std::u32string resultStr;
-
-      if ( resNum == 0 ) {
+      for ( int j = 0; j < resNum; j++ ) {
+        resultStr = results.at( j );
         for ( int k = 0; k < suggNum; k++ ) {
-          results.push_back( k == 0 ? word : sugg.at( k - 1 ) );
-        }
-      }
-      else {
-        for ( int j = 0; j < resNum; j++ ) {
-          resultStr = results.at( j );
-          for ( int k = 0; k < suggNum; k++ ) {
-            if ( k == 0 ) {
-              results[ j ].append( word );
-            }
-            else {
-              // Cap the results list to prevent exponential blowup:
-              // Each word can multiply results by up to suggNum (max 3),
-              // so a long phrase can reach 3^N entries causing OOM/SIGSEGV.
-              if ( results.size() >= 100 ) {
-                break;
-              }
-              results.push_back( resultStr + sugg.at( k - 1 ) );
-            }
+          if ( k == 0 ) {
+            results[ j ].append( word );
           }
-          if ( results.size() >= 100 ) {
-            break;
+          else {
+            results.push_back( resultStr + sugg.at( k - 1 ) );
           }
         }
       }
