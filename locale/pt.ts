@@ -1122,6 +1122,14 @@ entre ortografia clássica e escolar em ciílico)</translation>
       <source>&amp;Add group</source>
       <translation>&amp;Adicionar grupo</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>Grupo já existe</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>Um grupo com o nome &apos;%1&apos; já existe.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
