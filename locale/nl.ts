@@ -1122,6 +1122,14 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <source>&amp;Add group</source>
       <translation>Groep &amp;toevoegen</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>Groep bestaat al</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>Een groep met de naam &apos;%1&apos; bestaat al.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>

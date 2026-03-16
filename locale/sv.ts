@@ -1122,6 +1122,14 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <source>&amp;Add group</source>
       <translation>&amp;Lägg till grupp</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>Gruppen finns redan</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>En grupp med namnet &apos;%1&apos; finns redan.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>

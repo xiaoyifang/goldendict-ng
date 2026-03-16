@@ -1122,6 +1122,14 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <source>&amp;Add group</source>
       <translation>&amp;Lisää ryhmä</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>Ryhmä on jo olemassa</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>Ryhmä jonka nimi on &apos;%1&apos; on jo olemassa.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>

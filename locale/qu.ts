@@ -1122,6 +1122,14 @@ chiqan kayninta sumaqyachin)</translation>
       <source>&amp;Add group</source>
       <translation>&amp;Juñuta yapay</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation type="unfinished">Group already exists</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation type="unfinished">A group with the name &apos;%1&apos; already exists.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>

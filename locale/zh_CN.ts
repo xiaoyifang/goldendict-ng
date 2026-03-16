@@ -1120,6 +1120,14 @@ between classic and school orthography in cyrillic)</source>
       <source>&amp;Add group</source>
       <translation>添加群组(&amp;A)</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>群组已存在</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>一个名为 &apos;%1&apos; 的组已经存在。</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
