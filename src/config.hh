@@ -141,15 +141,7 @@ struct Group
 };
 
 /// All the groups
-struct Groups: public QList< Group >
-{
-  unsigned nextId; // Id to use to create the group next time
-
-  Groups():
-    nextId( 1 )
-  {
-  }
-};
+using Groups = QList< Group >;
 
 /// Proxy server configuration
 struct ProxyServer

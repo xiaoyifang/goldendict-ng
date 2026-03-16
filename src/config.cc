@@ -332,7 +332,7 @@ void applyBoolOption( bool & option, const QDomNode & node )
   }
 }
 
-Group loadGroup( QDomElement grp, unsigned * nextId = 0 )
+Group loadGroup( QDomElement grp )
 {
   Group g;
 
@@ -340,7 +340,12 @@ Group loadGroup( QDomElement grp, unsigned * nextId = 0 )
     g.id = grp.attribute( "id" ).toUInt();
   }
   else {
-    g.id = nextId ? ( *nextId )++ : 0;
+    g.name = grp.attribute( "name" );
+    g.id   = static_cast< unsigned >( qHash( g.name ) );
+    // Ensure ID is not 0 (reserved for NoGroupId)
+    if ( g.id == 0 ) {
+      g.id = 1;
+    }
   }
 
   g.name            = grp.attribute( "name" );
@@ -551,14 +556,12 @@ Class load()
   QDomNode groups = root.namedItem( "groups" );
 
   if ( !groups.isNull() ) {
-    c.groups.nextId = groups.toElement().attribute( "nextId", "1" ).toUInt();
-
     QDomNodeList nl = groups.toElement().elementsByTagName( "group" );
 
     for ( int x = 0; x < nl.length(); ++x ) {
       QDomElement grp = nl.item( x ).toElement();
 
-      c.groups.push_back( loadGroup( grp, &c.groups.nextId ) );
+      c.groups.push_back( loadGroup( grp ) );
     }
   }
 
@@ -1336,10 +1339,6 @@ void save( const Class & c )
   {
     QDomElement groups = dd.createElement( "groups" );
     root.appendChild( groups );
-
-    QDomAttr nextId = dd.createAttribute( "nextId" );
-    nextId.setValue( QString::number( c.groups.nextId ) );
-    groups.setAttributeNode( nextId );
 
     for ( const auto & i : c.groups ) {
       QDomElement group = dd.createElement( "group" );
