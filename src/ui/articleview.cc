@@ -425,11 +425,6 @@ void ArticleView::sendToAnki( const QString & word, const QString & dict_definit
   ankiConnector->sendToAnki( word, dict_definition, sentence );
 }
 
-void ArticleView::showAnticipation()
-{
-  webview->setHtml( "" );
-  webview->setCursor( Qt::WaitCursor );
-}
 
 void ArticleView::inspectElement()
 {
