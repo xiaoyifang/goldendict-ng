@@ -13,11 +13,7 @@ namespace ChineseTranslit {
 
 class CharacterConversionDictionary: public Transliteration::BaseTransliterationDictionary
 {
-  // #ifdef Q_OS_MAC
   opencc_t converter;
-  // #else
-  //   opencc::SimpleConverter* converter;
-  // #endif
 
 public:
 
@@ -38,16 +34,12 @@ CharacterConversionDictionary::CharacterConversionDictionary( const std::string 
   converter( NULL )
 {
   try {
-    // #ifdef Q_OS_MAC
     converter = opencc_open( openccConfig.toLocal8Bit().constData() );
     if ( converter == reinterpret_cast< opencc_t >( -1 ) ) {
       qWarning( "CharacterConversionDictionary: failed to initialize OpenCC from config %s: %s",
                 openccConfig.toLocal8Bit().constData(),
                 opencc_error() );
     }
-    // #else
-    //     converter = new opencc::SimpleConverter( openccConfig.toLocal8Bit().constData() );
-    // #endif
   }
   catch ( std::runtime_error & e ) {
     qWarning( "CharacterConversionDictionary: failed to initialize OpenCC from config %s: %s",
@@ -58,14 +50,9 @@ CharacterConversionDictionary::CharacterConversionDictionary( const std::string 
 
 CharacterConversionDictionary::~CharacterConversionDictionary()
 {
-  // #ifdef Q_OS_MAC
   if ( converter != NULL && converter != reinterpret_cast< opencc_t >( -1 ) ) {
     opencc_close( converter );
   }
-  // #else
-  //   if ( converter != NULL )
-  //     delete converter;
-  // #endif
 }
 
 std::vector< std::u32string > CharacterConversionDictionary::getAlternateWritings( const std::u32string & str ) noexcept
@@ -79,7 +66,6 @@ std::vector< std::u32string > CharacterConversionDictionary::getAlternateWriting
     std::u32string result;
 
     try {
-      // #ifdef Q_OS_MAC
       if ( converter != NULL && converter != reinterpret_cast< opencc_t >( -1 ) ) {
         char * tmp = opencc_convert_utf8( converter, input.c_str(), input.length() );
         if ( tmp ) {
@@ -90,9 +76,6 @@ std::vector< std::u32string > CharacterConversionDictionary::getAlternateWriting
           qWarning( "OpenCC: conversion failed %s", opencc_error() );
         }
       }
-      // #else
-      //       output = converter->Convert( input );
-      // #endif
       result = Text::toUtf32( output );
     }
     catch ( std::exception & ex ) {
