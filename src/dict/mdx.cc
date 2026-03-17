@@ -195,7 +195,7 @@ class MdxDictionary: public BtreeIndexing::BtreeDictionary
 
   QAtomicInt deferredInitDone;
   QMutex deferredInitMutex;
-  bool deferredInitRunnableStarted;
+  bool deferredInitRunnableStarted = false;
 
   string initError;
   QString cacheDirName;
@@ -288,8 +288,7 @@ MdxDictionary::MdxDictionary( const string & id, const string & indexFile, const
   idx( indexFile, QIODevice::ReadOnly ),
   idxFileName( indexFile ),
   idxHeader( idx.read< IdxHeader >() ),
-  chunks( idx, idxHeader.chunksOffset ),
-  deferredInitRunnableStarted( false )
+  chunks( idx, idxHeader.chunksOffset )
 {
   // Read the dictionary's name
   idx.seek( sizeof( idxHeader ) );

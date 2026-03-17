@@ -132,7 +132,7 @@ void MediaWikiDictionary::loadIcon() noexcept
 class MediaWikiWordSearchRequest: public MediaWikiWordSearchRequestSlots
 {
   sptr< QNetworkReply > netReply;
-  bool isCancelling;
+  bool isCancelling = false;
 
 public:
 
@@ -153,8 +153,7 @@ private:
 MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( const std::u32string & str,
                                                         const QString & url,
                                                         const QString & lang,
-                                                        QNetworkAccessManager & mgr ):
-  isCancelling( false )
+                                                        QNetworkAccessManager & mgr )
 {
   QUrl reqUrl( url + "/api.php?action=query&list=allpages&aplimit=40&format=json" );
 
