@@ -1,58 +1,45 @@
-//document ready
-(function ($) {
-  $(function () {
-    $(document).on("click", "a", function (event) {
-      var link = $(this).attr("href");
-      if ("string" != typeof link) {
+// document ready
+(($) => {
+  $(() => {
+    $(document).on("click", "a", function () {
+      const link = $(this).attr("href");
+      if (typeof link !== "string") {
         return;
       }
 
-      if (link.indexOf("javascript:") >= 0 || link === "#") {
+      if (link.includes("javascript:") || link === "#") {
         return;
       }
 
-      //return if the link is like gdlookup:// or other valid url.bword:xxx is also valid url.
-      if (link.indexOf(":") >= 0) {
+      // return if the link is like gdlookup:// or other valid url. bword:xxx is also valid url.
+      if (link.includes(":")) {
         emitClickedEvent(link);
         return false;
       }
       emitClickedEvent("");
 
-      var newLink;
-      var href = window.location.href;
-      var index = -1;
-      if (link.startsWith("#")) {
-        //the href may contain # fragment already.remove them before append the new #fragment
-        index = href.indexOf("#");
-        if (index > -1) {
-          newLink = href.substring(0, index) + link;
-        } else {
-          newLink = href + link;
-        }
-      }
-      //if hashtag # is not in the start position,it must greater than 0
-      else if (link.indexOf("#") > 0) {
-        index = link.indexOf("#");
-        newLink =
-          "gdlookup://localhost/" +
-          link.substring(0, index) +
-          "?gdanchor=" +
-          link.substring(index + 1);
-      } else {
-        index = href.indexOf("?");
+      let newLink;
+      const { href } = window.location;
 
-        if (link.indexOf("?gdanchor") > -1) {
-          newLink = "gdlookup://localhost/" + link;
-        } else if (index > -1) {
-          newLink = href.substring(0, index) + "?word=" + link;
-        } else {
-          newLink = href + "?word=" + link;
-        }
+      if (link.startsWith("#")) {
+        // the href may contain # fragment already. remove them before append the new #fragment
+        const index = href.indexOf("#");
+        newLink = index > -1 ? href.substring(0, index) + link : href + link;
+      } else if (link.indexOf("#") > 0) {
+        // if hashtag # is not in the start position, it must be greater than 0
+        const index = link.indexOf("#");
+        newLink = `gdlookup://localhost/${link.substring(0, index)}?gdanchor=${link.substring(index + 1)}`;
+      } else if (link.includes("?gdanchor")) {
+        newLink = `gdlookup://localhost/${link}`;
+      } else {
+        const index = href.indexOf("?");
+        const basePath = index > -1 ? href.substring(0, index) : href;
+        newLink = `${basePath}?word=${link}`;
       }
       $(this).attr("href", newLink);
     });
 
-    //monitor iframe height.
+    // monitor iframe height.
     $("iframe").iFrameResize({
       checkOrigin: false,
       maxHeight: 800,
