@@ -29,6 +29,7 @@ Requires Windows 10 (1809 or later) with [MSVC runtime](https://learn.microsoft.
 * See the right side for available packages in various Linux distros.
 * In Debian 12 and Ubuntu 23.04, `goldendict-webengine` is available (For later versions it is `goldendict-ng`).
 * For ArchLinux, pre-built binary is available from [archlinuxcn's repo](https://github.com/archlinuxcn/repo/tree/master/archlinuxcn/goldendict-ng-git).
+* _Unofficial_ [AppImage](https://github.com/pkgforge-dev/GoldenDict-ng-AppImage/releases) maintained by Package Forge devs.
 
 Minimum supported "Linux" version is supposedly the current Ubuntu LTS and Debian's oldstable.
 
