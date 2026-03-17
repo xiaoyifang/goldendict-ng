@@ -454,7 +454,7 @@ void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, const std::
   // Ensure the reply is ALWAYS deleted, even if this request object is destroyed
   connect( netReply, &QNetworkReply::finished, netReply, &QObject::deleteLater );
 
-  connect( netReply, &QNetworkReply::errorOccurred, this, [ = ]( QNetworkReply::NetworkError e ) {
+  connect( netReply, &QNetworkReply::errorOccurred, this, []( QNetworkReply::NetworkError e ) {
     qDebug() << "MediaWiki error:" << e;
   } );
 #ifndef QT_NO_SSL
