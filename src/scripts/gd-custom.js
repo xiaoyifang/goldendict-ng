@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
         log: true,
         autoResize: false,
       },
-      "iframe"
+      "iframe",
     );
   }
 });
