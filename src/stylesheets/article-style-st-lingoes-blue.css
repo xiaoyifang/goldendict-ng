@@ -153,7 +153,9 @@ h3 {
 }
 
 .mwiki .toc,
-.mwiki .metadata mbox-small plainlinks {
+.mwiki .metadata,
+.mwiki .mbox-small,
+.mwiki .plainlinks {
   display: none;
 }
 
