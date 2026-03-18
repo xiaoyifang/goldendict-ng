@@ -9,7 +9,7 @@ option(WITH_TTS "enable QTexttoSpeech support" OFF)
 option(WITH_X11 "Experimental flag. Don't disable this. Disable means pure Wayland." ON)
 
 # options for linux packaging
-option(USE_SYSTEM_TOML "use system toml++ instead of bundled one" OFF)
+
 
 ## This should be avoided because of small regressions, as some scripts and icons themes assume the binary name and resources folder to be `goldendict`
 option(USE_ALTERNATIVE_NAME "For Linux, change the binary name and resource folder to goldendict-ng to parallel install with the original GD" OFF)
@@ -164,9 +164,7 @@ target_include_directories(${GOLDENDICT} PRIVATE
         ${PROJECT_SOURCE_DIR}/src/ui
 )
 
-if (NOT USE_SYSTEM_TOML)
-    target_include_directories(${GOLDENDICT} PRIVATE ${PROJECT_SOURCE_DIR}/thirdparty/tomlplusplus)
-endif ()
+
 
 
 #### Compile definitions

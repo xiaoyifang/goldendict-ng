@@ -13,7 +13,8 @@
     "xapian",
     "zlib",
     "openssl",
-    "fmt"
+    "fmt",
+    "tomlplusplus"
   ],
   "features": {
     "breakpad": {

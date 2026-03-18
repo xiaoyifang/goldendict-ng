@@ -45,6 +45,7 @@ jobs:
             ninja \
             opencc \
             fmt \
+            tomlplusplus \
             xapian || true
       - name: Install eb
         run: |
