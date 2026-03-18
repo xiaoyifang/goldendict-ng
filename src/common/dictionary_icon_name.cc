@@ -21,7 +21,7 @@ QString Icons::DictionaryIconName::getIconName( const QString & key, const QStri
   QString name = source.at( 0 ).toUpper();
   // Get the next index for this character (e.g., T1, T2, T3)
   // operator[] returns a reference and default-initializes to 0 if not exist.
-  int charCount = ++_iconDictionaryNames[name];
+  int charCount = ++_iconDictionaryNames[ name ];
 
   QString resultName = name + QString::number( charCount );
   _dictionaryIconNames.insert( key, resultName );
