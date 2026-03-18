@@ -76,7 +76,7 @@ bool GlobalBroadcaster::existedInRefererWhitelist( QString host ) const
 }
 
 
-QString GlobalBroadcaster::getAbbrName( const QString & text )
+QString GlobalBroadcaster::getAbbrName( const QString & text, const QString & key )
 {
   if ( text.isEmpty() ) {
     return {};
@@ -90,7 +90,8 @@ QString GlobalBroadcaster::getAbbrName( const QString & text )
     return {};
   }
 
-  return _icon_names.getIconName( simplified );
+  QString cacheKey = key.isEmpty() ? simplified : key;
+  return _icon_names.getIconName( cacheKey, simplified );
 }
 
 void GlobalBroadcaster::setAudioPlayer( const AudioPlayerPtr * _audioPlayer )

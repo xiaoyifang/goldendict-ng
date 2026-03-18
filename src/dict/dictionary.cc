@@ -302,7 +302,7 @@ bool Class::loadIconFromFilePath( const QString & filename )
 bool Class::loadIconFromText( const QString & iconUrl, const QString & text )
 {
   //select a single char.
-  auto abbrName = getAbbrName( text );
+  auto abbrName = getAbbrName( text, QString::fromStdString( getId() ) );
   if ( abbrName.isEmpty() ) {
     return false;
   }
@@ -314,28 +314,41 @@ bool Class::loadIconFromText( const QString & iconUrl, const QString & text )
     QImage result = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
 
     QPainter painter( &result );
+    const QRect rectangle = result.rect();
     painter.setRenderHints( QPainter::Antialiasing | QPainter::TextAntialiasing );
     painter.setCompositionMode( QPainter::CompositionMode_SourceAtop );
 
     QFont font = painter.font();
-    //the orderNum should be a little smaller than the icon
-    font.setPixelSize( iconSize * 0.8 );
+    // the main character size should be slightly smaller to avoid crowding
+    font.setPixelSize( iconSize * 0.75 );
     font.setWeight( QFont::Bold );
     painter.setFont( font );
 
-    const QRect rectangle = QRect( 0, 0, iconSize, iconSize );
+    const auto & id = getId();
+    // Use ID hash for more unique colors
+    unsigned int idHash = qHash( QString::fromStdString( id ) );
 
-    painter.setPen( intToFixedColor( qHash( abbrName ) ) );
+    // Draw first character with a shadow for better contrast and depth
+    painter.setPen( QColor( 0, 0, 0, 80 ) );
+    painter.drawText( rectangle.adjusted( 1, 1, 1, 1 ), Qt::AlignCenter, abbrName.at( 0 ) );
 
-    // Draw first character
+    // Draw first character with a primary color
+    painter.setPen( intToFixedColor( idHash ) );
     painter.drawText( rectangle, Qt::AlignCenter, abbrName.at( 0 ) );
 
-    //the orderNum should be a little smaller than the icon
+    // The orderNum should be a little smaller than the icon
     font.setPixelSize( iconSize * 0.4 );
     QFontMetrics fm1( font );
     const QString & orderNum = abbrName.mid( 1 );
 
     painter.setFont( font );
+
+    // Draw the order number with a shadow
+    painter.setPen( QColor( 0, 0, 0, 100 ) );
+    painter.drawText( rectangle.adjusted( 1, 1, 1, 1 ), Qt::AlignRight | Qt::AlignBottom, orderNum );
+
+    // Draw the order number with a slightly different color
+    painter.setPen( intToFixedColor( idHash + 5 ) );
     painter.drawText( rectangle, Qt::AlignRight | Qt::AlignBottom, orderNum );
 
     painter.end();
@@ -349,28 +362,32 @@ bool Class::loadIconFromText( const QString & iconUrl, const QString & text )
 
 QColor Class::intToFixedColor( int index )
 {
-  // Predefined list of colors
+  // Extended list of high-contrast colors for better variety
   static const std::array colors = {
-    QColor( 255, 0, 0, 200 ),     // Red
-    QColor( 4, 57, 108, 200 ),    //Custom
-    QColor( 0, 255, 0, 200 ),     // Green
-    QColor( 0, 0, 255, 200 ),     // Blue
-    QColor( 255, 255, 0, 200 ),   // Yellow
-    QColor( 0, 255, 255, 200 ),   // Cyan
-    QColor( 255, 0, 255, 200 ),   // Magenta
-    QColor( 192, 192, 192, 200 ), // Gray
-    QColor( 255, 165, 0, 200 ),   // Orange
-    QColor( 128, 0, 128, 200 ),   // Violet
-    QColor( 128, 128, 0, 200 )    // Olive
+    QColor( 255, 0, 0, 220 ),     // Red
+    QColor( 0, 0, 255, 220 ),     // Blue
+    QColor( 230, 200, 0, 220 ),   // Gold/Yellow
+    QColor( 100, 0, 200, 220 ),   // Purple
+    QColor( 255, 0, 255, 220 ),   // Magenta
+    QColor( 255, 120, 0, 220 ),   // Orange
+    QColor( 0, 150, 255, 220 ),   // Sky Blue
+    QColor( 128, 0, 0, 220 ),     // Maroon
+    QColor( 180, 0, 180, 220 ),   // Violet
+    QColor( 75, 0, 130, 220 ),    // Indigo
+    QColor( 210, 105, 30, 220 ),  // Chocolate
+    QColor( 255, 69, 0, 220 ),    // Red-Orange
+    QColor( 255, 20, 147, 220 ),  // Deep Pink
+    QColor( 105, 105, 105, 220 ), // Dim Gray
+    QColor( 70, 130, 180, 220 )   // Steel Blue
   };
 
   // Use modulo operation to ensure index is within the range of the color list
   return colors[ index % colors.size() ];
 }
 
-QString Class::getAbbrName( const QString & text )
+QString Class::getAbbrName( const QString & text, const QString & key )
 {
-  return GlobalBroadcaster::instance()->getAbbrName( text );
+  return GlobalBroadcaster::instance()->getAbbrName( text, key );
 }
 
 // Forward declaration
