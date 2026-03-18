@@ -357,24 +357,21 @@ QColor Class::intToFixedColor( int index )
 {
   // Extended list of high-contrast colors for better variety
   static const std::array colors = {
-    QColor( 255, 0, 0, 220 ),    // Red
-    QColor( 4, 108, 108, 220 ),  // Teal
-    QColor( 0, 180, 0, 220 ),    // Dark Green
-    QColor( 0, 0, 255, 220 ),    // Blue
-    QColor( 230, 200, 0, 220 ),  // Gold/Yellow
-    QColor( 100, 0, 200, 220 ),  // Purple
-    QColor( 255, 0, 255, 220 ),  // Magenta
-    QColor( 255, 120, 0, 220 ),  // Orange
-    QColor( 0, 150, 255, 220 ),  // Sky Blue
-    QColor( 128, 0, 0, 220 ),    // Maroon
-    QColor( 0, 128, 128, 220 ),  // Olive
-    QColor( 180, 0, 180, 220 ),  // Violet
-    QColor( 75, 0, 130, 220 ),   // Indigo
-    QColor( 0, 100, 0, 220 ),    // Forest Green
-    QColor( 210, 105, 30, 220 ), // Chocolate
-    QColor( 255, 20, 147, 220 ), // Deep Pink
-    QColor( 46, 139, 87, 220 ),  // Sea Green
-    QColor( 70, 130, 180, 220 )  // Steel Blue
+    QColor( 255, 0, 0, 220 ),     // Red
+    QColor( 0, 0, 255, 220 ),     // Blue
+    QColor( 230, 200, 0, 220 ),   // Gold/Yellow
+    QColor( 100, 0, 200, 220 ),   // Purple
+    QColor( 255, 0, 255, 220 ),   // Magenta
+    QColor( 255, 120, 0, 220 ),   // Orange
+    QColor( 0, 150, 255, 220 ),   // Sky Blue
+    QColor( 128, 0, 0, 220 ),     // Maroon
+    QColor( 180, 0, 180, 220 ),   // Violet
+    QColor( 75, 0, 130, 220 ),    // Indigo
+    QColor( 210, 105, 30, 220 ),   // Chocolate 
+    QColor( 255, 69, 0, 220 ),     // Red-Orange
+    QColor( 255, 20, 147, 220 ),  // Deep Pink
+    QColor( 105, 105, 105, 220 ),  // Dim Gray
+    QColor( 70, 130, 180, 220 )   // Steel Blue
   };
 
   // Use modulo operation to ensure index is within the range of the color list
