@@ -302,7 +302,7 @@ bool Class::loadIconFromFilePath( const QString & filename )
 bool Class::loadIconFromText( const QString & iconUrl, const QString & text )
 {
   //select a single char.
-  auto abbrName = getAbbrName( text );
+  auto abbrName = getAbbrName( text, QString::fromStdString( getId() ) );
   if ( abbrName.isEmpty() ) {
     return false;
   }
@@ -368,9 +368,9 @@ QColor Class::intToFixedColor( int index )
   return colors[ index % colors.size() ];
 }
 
-QString Class::getAbbrName( const QString & text )
+QString Class::getAbbrName( const QString & text, const QString & key )
 {
-  return GlobalBroadcaster::instance()->getAbbrName( text );
+  return GlobalBroadcaster::instance()->getAbbrName( text, key );
 }
 
 // Forward declaration

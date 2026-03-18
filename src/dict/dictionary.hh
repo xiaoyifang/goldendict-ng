@@ -316,7 +316,7 @@ protected:
   /// Generate icon based on a text
   bool loadIconFromText( const QString & iconUrl, const QString & text );
 
-  static QString getAbbrName( const QString & text );
+  static QString getAbbrName( const QString & text, const QString & key = {} );
   static QColor intToFixedColor( int index );
 
 public:

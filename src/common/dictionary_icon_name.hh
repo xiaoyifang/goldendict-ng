@@ -16,6 +16,6 @@ class DictionaryIconName
   QMutex _mutex;
 
 public:
-  QString getIconName( const QString & dictionaryName );
+  QString getIconName( const QString & key, const QString & nameText );
 };
 } // namespace Icons
