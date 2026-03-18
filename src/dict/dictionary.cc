@@ -319,8 +319,8 @@ bool Class::loadIconFromText( const QString & iconUrl, const QString & text )
     painter.setCompositionMode( QPainter::CompositionMode_SourceAtop );
 
     QFont font = painter.font();
-    //the orderNum should be a little smaller than the icon
-    font.setPixelSize( iconSize * 0.8 );
+    // the main character size should be slightly smaller to avoid crowding
+    font.setPixelSize( iconSize * 0.75 );
     font.setWeight( QFont::Bold );
     painter.setFont( font );
 
@@ -328,20 +328,27 @@ bool Class::loadIconFromText( const QString & iconUrl, const QString & text )
     // Use ID hash for more unique colors
     unsigned int idHash = qHash( QString::fromStdString( id ) );
 
+    // Draw first character with a shadow for better contrast and depth
+    painter.setPen( QColor( 0, 0, 0, 80 ) );
+    painter.drawText( rectangle.adjusted( 1, 1, 1, 1 ), Qt::AlignCenter, abbrName.at( 0 ) );
+
     // Draw first character with a primary color
     painter.setPen( intToFixedColor( idHash ) );
     painter.drawText( rectangle, Qt::AlignCenter, abbrName.at( 0 ) );
 
-    // Next, draw the order number with a slightly different color or palette index
-    // adding a constant to hash to shift the color index
-    painter.setPen( intToFixedColor( idHash + 5 ) );
-
-    //the orderNum should be a little smaller than the icon
+    // The orderNum should be a little smaller than the icon
     font.setPixelSize( iconSize * 0.4 );
     QFontMetrics fm1( font );
     const QString & orderNum = abbrName.mid( 1 );
 
     painter.setFont( font );
+
+    // Draw the order number with a shadow
+    painter.setPen( QColor( 0, 0, 0, 100 ) );
+    painter.drawText( rectangle.adjusted( 1, 1, 1, 1 ), Qt::AlignRight | Qt::AlignBottom, orderNum );
+
+    // Draw the order number with a slightly different color
+    painter.setPen( intToFixedColor( idHash + 5 ) );
     painter.drawText( rectangle, Qt::AlignRight | Qt::AlignBottom, orderNum );
 
     painter.end();
