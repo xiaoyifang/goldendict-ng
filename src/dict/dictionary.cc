@@ -367,10 +367,10 @@ QColor Class::intToFixedColor( int index )
     QColor( 128, 0, 0, 220 ),     // Maroon
     QColor( 180, 0, 180, 220 ),   // Violet
     QColor( 75, 0, 130, 220 ),    // Indigo
-    QColor( 210, 105, 30, 220 ),   // Chocolate 
-    QColor( 255, 69, 0, 220 ),     // Red-Orange
+    QColor( 210, 105, 30, 220 ),  // Chocolate
+    QColor( 255, 69, 0, 220 ),    // Red-Orange
     QColor( 255, 20, 147, 220 ),  // Deep Pink
-    QColor( 105, 105, 105, 220 ),  // Dim Gray
+    QColor( 105, 105, 105, 220 ), // Dim Gray
     QColor( 70, 130, 180, 220 )   // Steel Blue
   };
 
