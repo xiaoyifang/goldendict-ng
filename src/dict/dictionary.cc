@@ -314,6 +314,7 @@ bool Class::loadIconFromText( const QString & iconUrl, const QString & text )
     QImage result = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
 
     QPainter painter( &result );
+    const QRect rectangle = result.rect();
     painter.setRenderHints( QPainter::Antialiasing | QPainter::TextAntialiasing );
     painter.setCompositionMode( QPainter::CompositionMode_SourceAtop );
 
@@ -323,12 +324,17 @@ bool Class::loadIconFromText( const QString & iconUrl, const QString & text )
     font.setWeight( QFont::Bold );
     painter.setFont( font );
 
-    const QRect rectangle = QRect( 0, 0, iconSize, iconSize );
+    const auto & id = getId();
+    // Use ID hash for more unique colors
+    unsigned int idHash = qHash( QString::fromStdString( id ) );
 
-    painter.setPen( intToFixedColor( qHash( abbrName ) ) );
-
-    // Draw first character
+    // Draw first character with a primary color
+    painter.setPen( intToFixedColor( idHash ) );
     painter.drawText( rectangle, Qt::AlignCenter, abbrName.at( 0 ) );
+
+    // Next, draw the order number with a slightly different color or palette index
+    // adding a constant to hash to shift the color index
+    painter.setPen( intToFixedColor( idHash + 5 ) );
 
     //the orderNum should be a little smaller than the icon
     font.setPixelSize( iconSize * 0.4 );
@@ -349,19 +355,26 @@ bool Class::loadIconFromText( const QString & iconUrl, const QString & text )
 
 QColor Class::intToFixedColor( int index )
 {
-  // Predefined list of colors
+  // Extended list of high-contrast colors for better variety
   static const std::array colors = {
-    QColor( 255, 0, 0, 200 ),     // Red
-    QColor( 4, 57, 108, 200 ),    //Custom
-    QColor( 0, 255, 0, 200 ),     // Green
-    QColor( 0, 0, 255, 200 ),     // Blue
-    QColor( 255, 255, 0, 200 ),   // Yellow
-    QColor( 0, 255, 255, 200 ),   // Cyan
-    QColor( 255, 0, 255, 200 ),   // Magenta
-    QColor( 192, 192, 192, 200 ), // Gray
-    QColor( 255, 165, 0, 200 ),   // Orange
-    QColor( 128, 0, 128, 200 ),   // Violet
-    QColor( 128, 128, 0, 200 )    // Olive
+    QColor( 255, 0, 0, 220 ),     // Red
+    QColor( 4, 108, 108, 220 ),   // Teal
+    QColor( 0, 180, 0, 220 ),     // Dark Green
+    QColor( 0, 0, 255, 220 ),     // Blue
+    QColor( 230, 200, 0, 220 ),   // Gold/Yellow
+    QColor( 100, 0, 200, 220 ),   // Purple
+    QColor( 255, 0, 255, 220 ),   // Magenta
+    QColor( 255, 120, 0, 220 ),   // Orange
+    QColor( 0, 150, 255, 220 ),   // Sky Blue
+    QColor( 128, 0, 0, 220 ),     // Maroon
+    QColor( 0, 128, 128, 220 ),   // Olive
+    QColor( 180, 0, 180, 220 ),   // Violet
+    QColor( 75, 0, 130, 220 ),    // Indigo
+    QColor( 0, 100, 0, 220 ),     // Forest Green
+    QColor( 210, 105, 30, 220 ),  // Chocolate
+    QColor( 255, 20, 147, 220 ),  // Deep Pink
+    QColor( 46, 139, 87, 220 ),   // Sea Green
+    QColor( 70, 130, 180, 220 )   // Steel Blue
   };
 
   // Use modulo operation to ensure index is within the range of the color list
