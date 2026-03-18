@@ -15,11 +15,11 @@ on:
       - "howto/**"
       - "*.md"
       - "locale/**"
-permissions:
-  contents: read
 jobs:
   clang-format:
     name: clang format the code
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -37,6 +37,8 @@ jobs:
 
   css-js-html-format:
     name: format css/js/html
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -49,6 +51,8 @@ jobs:
 
   update-crowdin:
     name: update crowdin.ts file
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
