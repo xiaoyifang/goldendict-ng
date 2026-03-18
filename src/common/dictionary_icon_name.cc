@@ -19,17 +19,11 @@ QString Icons::DictionaryIconName::getIconName( const QString & key, const QStri
     return {};
   }
   QString name = source.at( 0 ).toUpper();
-  auto it1     = _iconDictionaryNames.contains( name );
-  if ( it1 ) {
-    auto vector = _iconDictionaryNames.value( name );
-    vector++;
-    _iconDictionaryNames.insert( name, vector );
-  }
-  else {
-    _iconDictionaryNames.insert( name, 1 );
-  }
+  // Get the next index for this character (e.g., T1, T2, T3)
+  // operator[] returns a reference and default-initializes to 0 if not exist.
+  int charCount = ++_iconDictionaryNames[name];
 
-  name = name + QString::number( _iconDictionaryNames.value( name ) );
-  _dictionaryIconNames.insert( key, name );
-  return name;
+  QString resultName = name + QString::number( charCount );
+  _dictionaryIconNames.insert( key, resultName );
+  return resultName;
 }
