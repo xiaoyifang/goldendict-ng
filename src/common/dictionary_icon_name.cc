@@ -19,7 +19,7 @@ QString Icons::DictionaryIconName::getIconName( const QString & key, const QStri
     return {};
   }
   QString name = source.at( 0 ).toUpper();
-  auto it1       = _iconDictionaryNames.contains( name );
+  auto it1     = _iconDictionaryNames.contains( name );
   if ( it1 ) {
     auto vector = _iconDictionaryNames.value( name );
     vector++;
