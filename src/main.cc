@@ -287,7 +287,7 @@ int main( int argc, char ** argv )
     QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
     webUiScheme.setSyntax( QWebEngineUrlScheme::Syntax::Host );
     webUiScheme.setFlags( QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled
-                          | QWebEngineUrlScheme::Secure );
+                          | QWebEngineUrlScheme::SecureScheme );
     QWebEngineUrlScheme::registerScheme( webUiScheme );
   }
 
