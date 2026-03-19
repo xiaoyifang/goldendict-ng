@@ -1,11 +1,10 @@
 #include "metadata.hh"
-#include "toml++/toml.hpp"
+#include <toml++/toml.hpp>
 #include <QDebug>
 #include <QSaveFile>
 #include <QFile>
-#ifdef Q_OS_FREEBSD
-  #include <sstream>
-#endif
+#include <sstream>
+
 
 std::optional< Metadata::result > Metadata::load( std::string_view filepath )
 {

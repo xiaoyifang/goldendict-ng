@@ -27,6 +27,7 @@ jobs:
           libavutil-dev libavformat-dev libeb16-dev \
           libzstd-dev libxkbcommon-dev \
           libxapian-dev libzim-dev libopencc-dev libfmt-dev \
+          libtomlplusplus-dev \
           qt6-5compat-dev \
           qt6-base-dev \
           qt6-multimedia-dev \

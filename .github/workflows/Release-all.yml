@@ -48,6 +48,7 @@ jobs:
             opencc \
             fmt \
             ffmpeg@6 \
+            tomlplusplus \
             xapian || true
       - name: Install eb
         run: |
