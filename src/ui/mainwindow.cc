@@ -206,8 +206,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   if ( userAgent.isEmpty() || !userAgent.contains( "Chrome" ) ) {
     // If the engine returns an empty or non-standard UA (too early initialization),
     // force a standard modern Chrome 118 UA string.
-    userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36";
-  } else {
+    userAgent =
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36";
+  }
+  else {
     // Remove QtWebEngine if present
     userAgent.remove( QRegularExpression( "QtWebEngine/[^ ]+\\s*" ) );
     // Force Windows NT version to 10.0 to match modern Client Hints
