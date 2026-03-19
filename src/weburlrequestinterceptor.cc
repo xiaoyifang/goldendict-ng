@@ -18,8 +18,16 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
        && Utils::isExternalLink( url ) ) {
     // For navigation to a main page, using the target URL's own host as Referer is safer
     // than revealing the local scheme.
-    info.setHttpHeader( "origin", Utils::Url::getSchemeAndHost( url ).toUtf8() );
+    if ( info.requestMethod() != "GET" ) {
+      info.setHttpHeader( "origin", Utils::Url::getSchemeAndHost( url ).toUtf8() );
+    }
     info.setHttpHeader( "referer", Utils::Url::getSchemeAndHost( url ).toUtf8() + "/" );
+
+    // Fail-safe: Forcefully inject the cleaned User-Agent for all external requests
+    QString userAgent = QWebEngineProfile::defaultProfile()->httpUserAgent();
+    if ( !userAgent.isEmpty() ) {
+      info.setHttpHeader( "user-agent", userAgent.toUtf8() );
+    }
   }
 
   if ( GlobalBroadcaster::instance()->getPreference()->disallowContentFromOtherSites && Utils::isExternalLink( url ) ) {
