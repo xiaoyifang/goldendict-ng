@@ -3,6 +3,9 @@
 #include "globalbroadcaster.hh"
 #include "config.hh"
 
+#include <QWebEngineProfile>
+#include <QDebug>
+
 WebUrlRequestInterceptor::WebUrlRequestInterceptor( QObject * p ):
   QWebEngineUrlRequestInterceptor( p )
 {
