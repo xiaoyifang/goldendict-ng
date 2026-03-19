@@ -480,9 +480,9 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
     QNetworkReply * netReply = netReplies.front().first;
     netReplies.pop_front();
 
-    // Disconnect and schedule deletion early so we can safely use 'continue'
-    disconnect( netReply, nullptr, nullptr, nullptr );
-    netReply->deleteLater();
+    if ( !netReply ) {
+      continue;
+    }
 
     if ( netReply->error() != QNetworkReply::NoError ) {
       setErrorString( netReply->errorString() );
