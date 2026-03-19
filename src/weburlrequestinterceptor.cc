@@ -25,12 +25,6 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
       info.setHttpHeader( "origin", Utils::Url::getSchemeAndHost( url ).toUtf8() );
     }
     info.setHttpHeader( "referer", Utils::Url::getSchemeAndHost( url ).toUtf8() + "/" );
-
-    // Fail-safe: Forcefully inject the cleaned User-Agent for all external requests
-    QString userAgent = QWebEngineProfile::defaultProfile()->httpUserAgent();
-    if ( !userAgent.isEmpty() ) {
-      info.setHttpHeader( "user-agent", userAgent.toUtf8() );
-    }
   }
 
   if ( GlobalBroadcaster::instance()->getPreference()->disallowContentFromOtherSites && Utils::isExternalLink( url ) ) {
