@@ -202,8 +202,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // Identify as GoldenDict, but avoid standard "QtWebEngine/..." identifier which some sites might block
   QString userAgent = QWebEngineProfile::defaultProfile()->httpUserAgent();
-  // Remove QtWebEngine and ensure the string looks like a standard browser
+  // Remove QtWebEngine
   userAgent.remove( QRegularExpression( "QtWebEngine/[^ ]+\\s*" ) );
+  // Force Windows NT version to 10.0 to match modern Client Hints and avoid 403 (Forbidden)
+  userAgent.replace( QRegularExpression( "Windows NT [0-9.]+" ), "Windows NT 10.0" );
   QWebEngineProfile::defaultProfile()->setHttpUserAgent( userAgent );
 #ifdef EPWING_SUPPORT
   Epwing::initialize();
