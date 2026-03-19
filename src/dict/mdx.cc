@@ -737,9 +737,11 @@ QByteArray MddResourceRequest::isolate_css()
     newCSS.clear();
   }
 
-  // Replace body selector with section[data-from-body="true"]
+  // Replace body/html/root selector with section[data-from-body/html="true"]
   css.replace( QRegularExpression( "\\bbody\\b", QRegularExpression::CaseInsensitiveOption ),
                "section[data-from-body=\"true\"]" );
+  css.replace( QRegularExpression( ":root|\\bhtml\\b", QRegularExpression::CaseInsensitiveOption ),
+               "section[data-from-html=\"true\"]" );
 
   dict.isolateCSS( css );
   auto bytes = css.toUtf8();
@@ -914,10 +916,18 @@ QString & MdxDictionary::filterResource( QString & article )
   QString id = QString::fromStdString( getId() );
   replaceLinks( id, article );
 
-  // Replace body with section[data-from-body="true"] to avoid hoisting by browser
+  // Replace html/body/head with section to avoid hoisting by browser
+  article.replace( QRegularExpression( "<html", QRegularExpression::CaseInsensitiveOption ),
+                   "<section data-from-html=\"true\"" );
+  article.replace( QRegularExpression( "</html>", QRegularExpression::CaseInsensitiveOption ), "</section>" );
+
   article.replace( QRegularExpression( "<body", QRegularExpression::CaseInsensitiveOption ),
                    "<section data-from-body=\"true\"" );
   article.replace( QRegularExpression( "</body>", QRegularExpression::CaseInsensitiveOption ), "</section>" );
+
+  article.replace( QRegularExpression( "<head", QRegularExpression::CaseInsensitiveOption ),
+                   "<section data-from-head=\"true\"" );
+  article.replace( QRegularExpression( "</head>", QRegularExpression::CaseInsensitiveOption ), "</section>" );
 
   replaceStyleInHtml( id, article );
   article = isolateStyleCssInHtml( article );
@@ -1132,9 +1142,11 @@ QString MdxDictionary::isolateStyleCssInHtml( const QString & description )
       QRegularExpressionMatch match = it.next();
       QString styleContent          = match.captured( 1 );
 
-      // Replace body selector with section[data-from-body="true"]
+      // Replace body/html/root selector with section[data-from-body/html="true"]
       styleContent.replace( QRegularExpression( "\\bbody\\b", QRegularExpression::CaseInsensitiveOption ),
                             "section[data-from-body=\"true\"]" );
+      styleContent.replace( QRegularExpression( ":root|\\bhtml\\b", QRegularExpression::CaseInsensitiveOption ),
+                            "section[data-from-html=\"true\"]" );
 
       // Call isolateCSS to process CSS content in <style> tags
       isolateCSS( styleContent, QString() );
