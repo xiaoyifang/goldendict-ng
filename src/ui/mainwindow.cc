@@ -204,16 +204,21 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   QString userAgent = QWebEngineProfile::defaultProfile()->httpUserAgent();
 
   if ( userAgent.isEmpty() || !userAgent.contains( "Chrome" ) ) {
-    // If the engine returns an empty or non-standard UA (too early initialization),
-    // force a standard modern Chrome 118 UA string.
-    userAgent =
-      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36";
-  }
-  else {
+    // If the engine returns an empty or non-standard UA, force a standard modern Chrome 118 UA string based on platform.
+#ifdef Q_OS_WIN
+    userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36";
+#elif defined( Q_OS_MACOS )
+    userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36";
+#else
+    userAgent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36";
+#endif
+  } else {
     // Remove QtWebEngine if present
     userAgent.remove( QRegularExpression( "QtWebEngine/[^ ]+\\s*" ) );
-    // Force Windows NT version to 10.0 to match modern Client Hints
+    // For Windows, force NT version 10.0 to match modern Client Hints
+#ifdef Q_OS_WIN
     userAgent.replace( QRegularExpression( "Windows NT [0-9.]+" ), "Windows NT 10.0" );
+#endif
   }
 
   QWebEngineProfile::defaultProfile()->setHttpUserAgent( userAgent );
