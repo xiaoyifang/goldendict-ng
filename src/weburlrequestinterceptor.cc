@@ -16,8 +16,8 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
 
   // If moving from a local GoldenDict page (gdlookup, etc.) to a remote URL,
   // we must normalize the Referer to avoid triggering anti-bot protection (like Cloudflare).
-  if ( QUrl firstPartyUrl = info.firstPartyUrl();
-       firstPartyUrl.isValid() && ( firstPartyUrl.scheme() == "gdlookup" || firstPartyUrl.scheme() == "gdinternal" )
+  if ( QUrl firstPartyUrl = info.firstPartyUrl(); firstPartyUrl.isValid()
+       && ( firstPartyUrl.scheme() == "gdlookup" || firstPartyUrl.scheme() == "gdinternal" )
        && Utils::isExternalLink( url ) ) {
     // For navigation to a main page, using the target URL's own host as Referer is safer
     // than revealing the local scheme.
