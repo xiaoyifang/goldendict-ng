@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     emitClickedEvent("");
 
     let newLink;
-    const { href } = window.location;
+    const { href } = globalThis.location;
 
     if (link.startsWith("#")) {
       // the href may contain # fragment already. remove them before append the new #fragment
@@ -45,8 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // monitor iframe height.
-  if (window.iFrameResize) {
-    window.iFrameResize(
+  if (globalThis.iFrameResize) {
+    globalThis.iFrameResize(
       {
         checkOrigin: false,
         maxHeight: 800,
