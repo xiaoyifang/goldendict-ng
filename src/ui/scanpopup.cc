@@ -758,9 +758,15 @@ void ScanPopup::showTranslationFor( const QString & word ) const
 
 const vector< sptr< Dictionary::Class > > & ScanPopup::getActiveDicts()
 {
+  if ( groups.empty() ) {
+    return allDictionaries;
+  }
+
   int current = groupList->currentIndex();
 
-  Q_ASSERT( 0 <= current || current <= (qsizetype)groups.size() );
+  if ( current < 0 || current >= (int)groups.size() ) {
+    return allDictionaries;
+  }
 
   const QSet< QString > * mutedDictionaries = dictionaryBar.getMutedDictionaries();
 
