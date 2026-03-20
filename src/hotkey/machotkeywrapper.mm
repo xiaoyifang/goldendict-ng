@@ -12,6 +12,7 @@
 
 #import <Appkit/Appkit.h>
 #import <ApplicationServices/ApplicationServices.h>
+#import <Carbon/Carbon.h>
 #include <QClipboard>
 #include <QGuiApplication>
 
@@ -107,7 +108,7 @@ static QString getSelectedTextViaAXAPI()
         return result;
 
     AXUIElementRef focusedElement = NULL;
-    AXError err = AXUIElementCopyAttributeValue(systemWide, kAXFocusedElementAttribute, (CFTypeRef*)&focusedElement);
+    AXError err = AXUIElementCopyAttributeValue(systemWide, kAXFocusedUIElementAttribute, (CFTypeRef*)&focusedElement);
     if (err == kAXErrorSuccess && focusedElement) {
         CFTypeRef selectedText = NULL;
         err = AXUIElementCopyAttributeValue(focusedElement, kAXSelectedTextAttribute, (CFTypeRef*)&selectedText);
