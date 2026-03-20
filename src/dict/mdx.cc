@@ -724,7 +724,11 @@ QByteArray MddResourceRequest::isolate_css()
     if ( url.indexOf( ":/" ) >= 0 || url.indexOf( "data:" ) >= 0 ) {
       // External link or base64-encoded data
       newCSS += match.captured();
+      continue;
+    }
 
+    if ( url.startsWith( "//" ) ) {
+      newCSS += "url(" + match.captured( 1 ) + "https:" + url + match.captured( 3 ) + ")";
       continue;
     }
 
@@ -914,6 +918,12 @@ void MdxDictionary::loadArticle( uint32_t offset, string & articleText, bool noF
 QString & MdxDictionary::filterResource( QString & article )
 {
   QString id = QString::fromStdString( getId() );
+
+  // Handle protocol-relative URLs (//) - Replace them with https://
+  // This must be done before replaceLinks so they are seen as absolute URLs
+  article.replace( QRegularExpression( R"(([\s"'](?:src|href|data)\s*=\s*["'])\/\/)" ), R"(\1https://)" );
+  article.replace( QRegularExpression( R"(([\s"'](?:src|href|data)\s*=\s*)(?!\s*["'])\/\/)" ), R"(\1https://)" );
+
   replaceLinks( id, article );
 
   // Replace html/body/head with section to avoid hoisting by browser
@@ -1220,8 +1230,11 @@ void MdxDictionary::replaceFontLinks( QString & id, QString & article )
     QString linkType = allLinksMatch.captured( 1 );
     QString newLink  = linkTxt;
 
-    //skip remote url
-    if ( !linkType.contains( ":" ) ) {
+    //skip remote url and handle protocol-relative urls
+    if ( linkType.startsWith( "//" ) ) {
+      newLink = QString( "url(\"https:%1\")" ).arg( linkType );
+    }
+    else if ( !linkType.contains( ":" ) ) {
       newLink = QString( "url(\"bres://%1/%2\")" ).arg( id, linkType );
     }
     articleNewText += newLink;
