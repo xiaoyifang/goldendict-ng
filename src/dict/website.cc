@@ -166,7 +166,7 @@ void WebSiteDictionary::loadIcon() noexcept
     }
   }
   if ( dictionaryIcon.isNull()
-       && !loadIconFromText( ":/icons/webdict.svg", QString::fromStdString( dictionaryName ) ) ) {
+       && !loadIconFromText( ":/icons/webdict-bg.svg", QString::fromStdString( dictionaryName ) ) ) {
     dictionaryIcon = QIcon( ":/icons/webdict.svg" );
   }
   dictionaryIconLoaded = true;

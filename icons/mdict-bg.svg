@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="31.735"
+   height="31.872"
+   version="1.1"
+   viewBox="0 0 31.735 31.872"
+   id="svg3"
+   sodipodi:docname="mdict-bg.svg"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview3"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="25.571034"
+     inkscape:cx="15.87734"
+     inkscape:cy="15.936"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3" />
+  <defs
+     id="defs2">
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect3"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,4.1022979,0,1 @ F,0,0,1,0,4.5559362,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <linearGradient
+       id="bg_grad"
+       x1="5.25"
+       x2="13.801"
+       y1="5.25"
+       y2="14.027"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#f8f9fa"
+         offset="0"
+         id="stop1" />
+      <stop
+         stop-color="#e9ecef"
+         offset="1"
+         id="stop2" />
+    </linearGradient>
+  </defs>
+  <path
+     d="m5.0643 0.203h21.606c2.6932 0 4.8613 2.1776 4.8613 4.8826v21.7c0 2.705-2.1682 4.8826-4.8613 4.8826h-21.606c-2.6932 0-4.8613-2.1776-4.8613-4.8826v-21.7c0-2.705 2.1682-4.8826 4.8613-4.8826z"
+     fill="url(#bg_grad)"
+     stroke="#ced4da"
+     stroke-width=".406"
+     id="path2" />
+  <path
+     id="rect3"
+     style="opacity:0.8;fill:#f75c33;fill-rule:evenodd;stroke-width:0.0940477;stroke-linejoin:bevel;paint-order:fill markers stroke"
+     d="M 4.5324721,0.27374724 H 26.729463 A 4.3369059,4.3369059 42.027945 0 1 31.285399,4.379956 H 0.43017423 v -0.00391 A 4.1022979,4.1022979 135 0 1 4.5324721,0.27374724 Z"
+     inkscape:path-effect="#path-effect3"
+     inkscape:original-d="M 0.43017423,0.27374724 H 31.285399 V 4.379956 H 0.43017423 Z"
+     transform="translate(0,-0.11732025)" />
+</svg>
