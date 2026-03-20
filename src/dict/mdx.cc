@@ -1230,7 +1230,7 @@ void MdxDictionary::replaceFontLinks( QString & id, QString & article )
     QString linkType = allLinksMatch.captured( 1 );
     QString newLink  = linkTxt;
 
-    //skip remote url and handle protocol-relative urls
+    // skip remote url and handle protocol-relative urls
     if ( linkType.startsWith( "//" ) ) {
       newLink = QString( "url(\"https:%1\")" ).arg( linkType );
     }
