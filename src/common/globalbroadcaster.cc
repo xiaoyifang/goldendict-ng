@@ -14,6 +14,10 @@
 
 Q_GLOBAL_STATIC( GlobalBroadcaster, bdcaster )
 
+static std::vector< sptr< Dictionary::Class > > emptyDicts;
+static Instances::Groups emptyGroups;
+static AudioPlayerPtr emptyAudioPlayer;
+
 GlobalBroadcaster::GlobalBroadcaster( QObject * parent ):
   QObject( parent )
 {
@@ -124,7 +128,7 @@ void GlobalBroadcaster::setAudioPlayer( const AudioPlayerPtr * _audioPlayer )
 
 const AudioPlayerPtr * GlobalBroadcaster::getAudioPlayer() const
 {
-  return audioPlayer;
+  return audioPlayer ? audioPlayer : &emptyAudioPlayer;
 }
 
 void GlobalBroadcaster::setAllDictionaries( std::vector< sptr< Dictionary::Class > > * _allDictionaries )
@@ -134,7 +138,7 @@ void GlobalBroadcaster::setAllDictionaries( std::vector< sptr< Dictionary::Class
 
 const std::vector< sptr< Dictionary::Class > > * GlobalBroadcaster::getAllDictionaries() const
 {
-  return allDictionaries;
+  return allDictionaries ? allDictionaries : &emptyDicts;
 }
 
 sptr< Dictionary::Class > GlobalBroadcaster::getDictionaryById( const QString & dictId )
@@ -156,7 +160,7 @@ void GlobalBroadcaster::setGroups( Instances::Groups * _groups )
 
 const Instances::Groups * GlobalBroadcaster::getGroups() const
 {
-  return groups;
+  return groups ? groups : &emptyGroups;
 }
 
 void GlobalBroadcaster::addLsaDictMapping( const QString & dictId, const QString & path )
