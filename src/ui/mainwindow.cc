@@ -3094,13 +3094,6 @@ void MainWindow::hotKeyActivated( int hk )
   }
 }
 
-void MainWindow::on_actionScanPopup_triggered()
-{
-  ensureScanPopup();
-  if ( scanPopup ) {
-    QTimer::singleShot( 10, scanPopup, &ScanPopup::translateWordFromPrimaryClipboard );
-  }
-}
 
 void MainWindow::checkNewRelease()
 {
