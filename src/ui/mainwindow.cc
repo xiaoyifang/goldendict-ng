@@ -926,8 +926,7 @@ void MainWindow::ensureScanPopup()
     return;
   }
 
-  if ( !GlobalBroadcaster::instance()->getAllDictionaries()
-       || !GlobalBroadcaster::instance()->getGroups() ) {
+  if ( !GlobalBroadcaster::instance()->getAllDictionaries() || !GlobalBroadcaster::instance()->getGroups() ) {
     return;
   }
 
