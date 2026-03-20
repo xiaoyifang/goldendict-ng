@@ -337,7 +337,7 @@ bool Class::loadIconFromText( const QString & iconUrl, const QString & text )
     painter.drawText( rectangle, Qt::AlignCenter, abbrName.at( 0 ) );
 
     // The orderNum should be a little smaller than the icon
-    font.setPixelSize( iconSize * 0.4 );
+    font.setPixelSize( iconSize * 0.5 );
     QFontMetrics fm1( font );
     const QString & orderNum = abbrName.mid( 1 );
 
@@ -345,11 +345,13 @@ bool Class::loadIconFromText( const QString & iconUrl, const QString & text )
 
     // Draw the order number with a shadow
     painter.setPen( QColor( 0, 0, 0, 100 ) );
-    painter.drawText( rectangle.adjusted( 1, 1, 1, 1 ), Qt::AlignRight | Qt::AlignBottom, orderNum );
+    QRect orderRect = rectangle;
+    orderRect.setLeft( rectangle.left() + rectangle.width() / 2 );
+    painter.drawText( orderRect.adjusted( 1, 1, 1, 1 ), Qt::AlignHCenter | Qt::AlignBottom, orderNum );
 
     // Draw the order number with a slightly different color
     painter.setPen( intToFixedColor( idHash + 5 ) );
-    painter.drawText( rectangle, Qt::AlignRight | Qt::AlignBottom, orderNum );
+    painter.drawText( orderRect, Qt::AlignHCenter | Qt::AlignBottom, orderNum );
 
     painter.end();
 
