@@ -7,6 +7,10 @@
 #include <QStyleHints>
 #include <Qt>
 #include "utils.hh"
+#include <QDir>
+#include <QDebug>
+#include <QFile>
+#include <QTextStream>
 
 Q_GLOBAL_STATIC( GlobalBroadcaster, bdcaster )
 
@@ -28,6 +32,7 @@ GlobalBroadcaster * GlobalBroadcaster::instance()
 void GlobalBroadcaster::setConfig( Config::Class * _config )
 {
   config = _config;
+  loadWhitelist();
 }
 
 Config::Class * GlobalBroadcaster::getConfig() const
@@ -92,6 +97,24 @@ QString GlobalBroadcaster::getAbbrName( const QString & text, const QString & ke
 
   QString cacheKey = key.isEmpty() ? simplified : key;
   return _icon_names.getIconName( cacheKey, simplified );
+}
+
+void GlobalBroadcaster::loadWhitelist()
+{
+  QString whitelistFile = Config::getConfigDir() + "whitelist";
+  QFile file( whitelistFile );
+  if ( !file.open( QIODevice::ReadOnly | QIODevice::Text ) ) {
+    return;
+  }
+
+  QTextStream in( &file );
+  while ( !in.atEnd() ) {
+    QString line = in.readLine().trimmed();
+    if ( !line.isEmpty() && !line.startsWith( "#" ) ) {
+      addHostWhitelist( line );
+      qDebug() << "Whitelisted host from config/whitelist:" << line;
+    }
+  }
 }
 
 void GlobalBroadcaster::setAudioPlayer( const AudioPlayerPtr * _audioPlayer )

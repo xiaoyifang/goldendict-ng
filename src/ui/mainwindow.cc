@@ -198,8 +198,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 
   QWebEngineProfile::defaultProfile()->setUrlRequestInterceptor( new WebUrlRequestInterceptor( this ) );
-
-
   // Identify as GoldenDict, but avoid standard "QtWebEngine/..." identifier which some sites might block
   QString userAgent = QWebEngineProfile::defaultProfile()->httpUserAgent();
   userAgent.replace( RX::qtWebEngineUserAgent, "" );

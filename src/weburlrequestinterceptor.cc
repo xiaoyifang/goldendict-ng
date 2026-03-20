@@ -3,6 +3,9 @@
 #include "globalbroadcaster.hh"
 #include "config.hh"
 
+#include <QWebEngineProfile>
+#include <QDebug>
+
 WebUrlRequestInterceptor::WebUrlRequestInterceptor( QObject * p ):
   QWebEngineUrlRequestInterceptor( p )
 {
@@ -11,11 +14,17 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
 {
   auto url = info.requestUrl();
 
-  // When content is loaded inside GoldenDict's article view, we might face CORS issues.
-  // Setting Origin and Referer headers can help bypass some CORS restrictions.
-  if ( !GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
-    info.setHttpHeader( "origin", Utils::Url::getSchemeAndHost( url ).toUtf8() );
-    info.setHttpHeader( "referer", url.url().toUtf8() );
+  // If moving from a local GoldenDict page (gdlookup, etc.) to a remote URL,
+  // we must normalize the Referer to avoid triggering anti-bot protection (like Cloudflare).
+  if ( QUrl firstPartyUrl = info.firstPartyUrl(); firstPartyUrl.isValid()
+       && ( firstPartyUrl.scheme() == "gdlookup" || firstPartyUrl.scheme() == "gdinternal" )
+       && Utils::isExternalLink( url ) ) {
+    // For navigation to a main page, using the target URL's own host as Referer is safer
+    // than revealing the local scheme.
+    if ( info.requestMethod() != "GET" ) {
+      info.setHttpHeader( "origin", Utils::Url::getSchemeAndHost( url ).toUtf8() );
+    }
+    info.setHttpHeader( "referer", Utils::Url::getSchemeAndHost( url ).toUtf8() + "/" );
   }
 
   if ( GlobalBroadcaster::instance()->getPreference()->disallowContentFromOtherSites && Utils::isExternalLink( url ) ) {

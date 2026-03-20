@@ -38,6 +38,7 @@ class GlobalBroadcaster: public QObject
   QMap< QString, QString > lsaIdToPathMap;
   QMap< QString, QString > lsaPathToIdMap;
   QMap< QString, sptr< Dictionary::Class > > dictMap;
+  void loadWhitelist();
 
 
 public:
