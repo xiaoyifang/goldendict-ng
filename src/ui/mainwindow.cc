@@ -2986,9 +2986,7 @@ void MainWindow::toggleMainWindow( bool ensureShow )
     // but click it won't bring it back, thus we can only minimize it.
 
 #ifdef Q_OS_MAC
-    if ( cfg.preferences.enableTrayIcon ) {
-      showMinimized();
-    }
+    showMinimized();
 #else
     if ( cfg.preferences.enableTrayIcon )
       hide();
