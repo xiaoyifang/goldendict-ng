@@ -11,6 +11,10 @@
 #include <vector>
 
 #import <Appkit/Appkit.h>
+#import <ApplicationServices/ApplicationServices.h>
+#import <Carbon/Carbon.h>
+#include <QClipboard>
+#include <QGuiApplication>
 
 ///
 /// Implementation of the Cmd+C+C trick:
@@ -96,6 +100,30 @@ quint32 qtKeyToNativeKey(UniChar key)
     return 0;
 }
 
+static QString getSelectedTextViaAXAPI()
+{
+    QString result;
+    AXUIElementRef systemWide = AXUIElementCreateSystemWide();
+    if (!systemWide)
+        return result;
+
+    AXUIElementRef focusedElement = NULL;
+    AXError err = AXUIElementCopyAttributeValue(systemWide, kAXFocusedUIElementAttribute, (CFTypeRef*)&focusedElement);
+    if (err == kAXErrorSuccess && focusedElement) {
+        CFTypeRef selectedText = NULL;
+        err = AXUIElementCopyAttributeValue(focusedElement, kAXSelectedTextAttribute, (CFTypeRef*)&selectedText);
+        if (err == kAXErrorSuccess && selectedText) {
+            if (CFGetTypeID(selectedText) == CFStringGetTypeID()) {
+                result = QString::fromCFString((CFStringRef)selectedText);
+            }
+            CFRelease(selectedText);
+        }
+        CFRelease(focusedElement);
+    }
+    CFRelease(systemWide);
+    return result;
+}
+
 } // namespace MacKeyMapping
 
 static pascal OSStatus hotKeyHandler(EventHandlerCallRef /* nextHandler */, EventRef theEvent, void* userData)
@@ -166,17 +194,20 @@ void HotkeyWrapper::activated(int hkId)
             if (hs.key == keyC && hs.modifier == cmdKey) {
                 checkAndRequestAccessibilityPermission();
 
-                // If that was a copy-to-clipboard shortcut, re-emit it back so it could
-                // reach its original destination so it could be acted upon.
-                UnregisterEventHotKey(hs.hkRef);
-
-                sendCmdC();
-
-                EventHotKeyID hotKeyID;
-                hotKeyID.signature = 'GDHK';
-                hotKeyID.id = hs.id;
-
-                RegisterEventHotKey(hs.key, hs.modifier, hotKeyID, GetApplicationEventTarget(), 0, &hs.hkRef);
+                // Strategy: Try AXAPI first for instant result and no clipboard pollution.
+                // If it fails, fallback to simulated Cmd+C.
+                QString text = MacKeyMapping::getSelectedTextViaAXAPI();
+                if (!text.isEmpty()) {
+                    QGuiApplication::clipboard()->setText(text);
+                } else {
+                    // If that was a copy-to-clipboard shortcut, re-emit it back so it could
+                    // reach its original destination so it could be acted upon.
+                    // We unregister all our hotkeys before emitting so they wouldn't be
+                    // triggered by the emitted event.
+                    suspendHotkeys();
+                    sendCmdC();
+                    resumeHotkeys();
+                }
             }
 
             if (hs.key2 == 0) {
@@ -193,6 +224,39 @@ void HotkeyWrapper::activated(int hkId)
 
     state2 = false;
     return;
+}
+
+void HotkeyWrapper::suspendHotkeys()
+{
+    for (int j = 0; j < hotkeys.count(); j++) {
+        HotkeyStruct& h = hotkeys[j];
+        if (h.hkRef) {
+            UnregisterEventHotKey(h.hkRef);
+            h.hkRef = nullptr;
+        }
+        if (h.hkRef2) {
+            UnregisterEventHotKey(h.hkRef2);
+            h.hkRef2 = nullptr;
+        }
+    }
+}
+
+void HotkeyWrapper::resumeHotkeys()
+{
+    for (int j = 0; j < hotkeys.count(); j++) {
+        HotkeyStruct& h = hotkeys[j];
+
+        EventHotKeyID hotKeyID;
+        hotKeyID.signature = 'GDHK';
+        hotKeyID.id = h.id;
+
+        RegisterEventHotKey(h.key, h.modifier, hotKeyID, GetApplicationEventTarget(), 0, &h.hkRef);
+
+        if (h.key2 && h.key2 != h.key) {
+            hotKeyID.id = h.id + 1;
+            RegisterEventHotKey(h.key2, h.modifier, hotKeyID, GetApplicationEventTarget(), 0, &h.hkRef2);
+        }
+    }
 }
 
 void HotkeyWrapper::unregister()
