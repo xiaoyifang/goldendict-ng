@@ -103,23 +103,23 @@ static QString getSelectedTextViaAXAPI()
 {
     QString result;
     AXUIElementRef systemWide = AXUIElementCreateSystemWide();
-    if ( !systemWide )
+    if (!systemWide)
         return result;
 
     AXUIElementRef focusedElement = NULL;
-    AXError err = AXUIElementCopyAttributeValue( systemWide, kAXFocusedElementAttribute, (CFTypeRef *)&focusedElement );
-    if ( err == kAXErrorSuccess && focusedElement ) {
+    AXError err = AXUIElementCopyAttributeValue(systemWide, kAXFocusedElementAttribute, (CFTypeRef*)&focusedElement);
+    if (err == kAXErrorSuccess && focusedElement) {
         CFTypeRef selectedText = NULL;
-        err = AXUIElementCopyAttributeValue( focusedElement, kAXSelectedTextAttribute, (CFTypeRef *)&selectedText );
-        if ( err == kAXErrorSuccess && selectedText ) {
-            if ( CFGetTypeID( selectedText ) == CFStringGetTypeID() ) {
-                result = QString::fromCFString( (CFStringRef)selectedText );
+        err = AXUIElementCopyAttributeValue(focusedElement, kAXSelectedTextAttribute, (CFTypeRef*)&selectedText);
+        if (err == kAXErrorSuccess && selectedText) {
+            if (CFGetTypeID(selectedText) == CFStringGetTypeID()) {
+                result = QString::fromCFString((CFStringRef)selectedText);
             }
-            CFRelease( selectedText );
+            CFRelease(selectedText);
         }
-        CFRelease( focusedElement );
+        CFRelease(focusedElement);
     }
-    CFRelease( systemWide );
+    CFRelease(systemWide);
     return result;
 }
 
@@ -196,8 +196,8 @@ void HotkeyWrapper::activated(int hkId)
                 // Strategy: Try AXAPI first for instant result and no clipboard pollution.
                 // If it fails, fallback to simulated Cmd+C.
                 QString text = MacKeyMapping::getSelectedTextViaAXAPI();
-                if ( !text.isEmpty() ) {
-                    QGuiApplication::clipboard()->setText( text );
+                if (!text.isEmpty()) {
+                    QGuiApplication::clipboard()->setText(text);
                 } else {
                     // If that was a copy-to-clipboard shortcut, re-emit it back so it could
                     // reach its original destination so it could be acted upon.
@@ -227,14 +227,14 @@ void HotkeyWrapper::activated(int hkId)
 
 void HotkeyWrapper::suspendHotkeys()
 {
-    for ( int j = 0; j < hotkeys.count(); j++ ) {
-        HotkeyStruct & h = hotkeys[j];
-        if ( h.hkRef ) {
-            UnregisterEventHotKey( h.hkRef );
+    for (int j = 0; j < hotkeys.count(); j++) {
+        HotkeyStruct& h = hotkeys[j];
+        if (h.hkRef) {
+            UnregisterEventHotKey(h.hkRef);
             h.hkRef = nullptr;
         }
-        if ( h.hkRef2 ) {
-            UnregisterEventHotKey( h.hkRef2 );
+        if (h.hkRef2) {
+            UnregisterEventHotKey(h.hkRef2);
             h.hkRef2 = nullptr;
         }
     }
@@ -242,18 +242,18 @@ void HotkeyWrapper::suspendHotkeys()
 
 void HotkeyWrapper::resumeHotkeys()
 {
-    for ( int j = 0; j < hotkeys.count(); j++ ) {
-        HotkeyStruct & h = hotkeys[j];
+    for (int j = 0; j < hotkeys.count(); j++) {
+        HotkeyStruct& h = hotkeys[j];
 
         EventHotKeyID hotKeyID;
         hotKeyID.signature = 'GDHK';
         hotKeyID.id = h.id;
 
-        RegisterEventHotKey( h.key, h.modifier, hotKeyID, GetApplicationEventTarget(), 0, &h.hkRef );
+        RegisterEventHotKey(h.key, h.modifier, hotKeyID, GetApplicationEventTarget(), 0, &h.hkRef);
 
-        if ( h.key2 && h.key2 != h.key ) {
+        if (h.key2 && h.key2 != h.key) {
             hotKeyID.id = h.id + 1;
-            RegisterEventHotKey( h.key2, h.modifier, hotKeyID, GetApplicationEventTarget(), 0, &h.hkRef2 );
+            RegisterEventHotKey(h.key2, h.modifier, hotKeyID, GetApplicationEventTarget(), 0, &h.hkRef2);
         }
     }
 }
