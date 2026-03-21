@@ -10,7 +10,7 @@
 
 For example, the model could have `Front` and `Back` fields.
 
-![Anki Setting](img/anki-1.png.png)
+![Anki Setting](img/anki-1.png)
 ## Configure the template
 The front template
 
