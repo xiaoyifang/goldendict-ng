@@ -43,11 +43,9 @@ void AnkiConnector::sendToAnki( const QString & word,
     fields.insert( cfg.preferences.ankiConnectServer.sentence, sentence_changed );
   }
 
-  QString fieldsStr = Utils::json2String( fields );
-
-  QString audioStr;
+  QJsonArray audioArray;
   if ( !audio.isEmpty() ) {
-    audioStr = QString( R"anki("audio": [ %1 ],)anki" ).arg( Utils::json2String( audio ) );
+    audioArray.append( audio );
   }
 
   QString postTemplate = R"anki({
@@ -58,7 +56,7 @@ void AnkiConnector::sendToAnki( const QString & word,
               "deckName": %1,
               "modelName": %2,
               "fields": %3,
-              %4
+              "audio": %4,
               "options": {
                   "allowDuplicate": true
               },
@@ -69,8 +67,8 @@ void AnkiConnector::sendToAnki( const QString & word,
 
   QString postData = postTemplate.arg( Utils::json2String( cfg.preferences.ankiConnectServer.deck ),
                                        Utils::json2String( cfg.preferences.ankiConnectServer.model ),
-                                       fieldsStr,
-                                       audioStr );
+                                       Utils::json2String( fields ),
+                                       Utils::json2String( audioArray ) );
 
   //  qDebug().noquote() << postData;
   postToAnki( postData );
