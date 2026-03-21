@@ -1,8 +1,9 @@
 # Anki Integration
 
 # Prerequisite
-1. Install Anki:
-2. Install ankiconnect:
+
+- Install Anki
+- Install ankiconnect
 
 # Configure Anki
 
