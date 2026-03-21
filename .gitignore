@@ -56,3 +56,7 @@ GoldenDict_resource.rc
 *.orig
 
 node_modules
+/.cmake
+/_deps
+/.qtc
+/qtcsettings.cmake

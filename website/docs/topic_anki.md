@@ -10,18 +10,18 @@
 
 For example, the model could have `Front` and `Back` fields.
 
-![Snipaste_2022-05-21_14-08-21](https://user-images.githubusercontent.com/105986/169638410-c6aa8038-df03-40de-8731-9f0b9f43bf59.png)
+![Anki Setting](img/anki-1.png.png)
 ## Configure the template
 The front template
 
-![image](https://user-images.githubusercontent.com/105986/169638457-2358d020-0132-469f-a6b4-0fb6d1590fa2.png)
+![Anki Front Template](img/anki-front.png)
 The back template
 
-![image](https://user-images.githubusercontent.com/105986/169638440-7191fcdd-c338-48a3-a899-7216a5c77425.png)
+![Anki Back Template](img/anki-back.png)
 
 # Configure Goldendict
 ## Through toolbar=>preference=>network
-![screenshot](https://user-images.githubusercontent.com/69171671/224496944-dbf31d6e-26be-42c9-98fc-257f70a8428e.png)
+![Anki Goldendict Configure](img/anki-gd.png)
 
 * Word - Vocabulary headword.
 * Text - Selected definition.
