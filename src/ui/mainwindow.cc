@@ -926,6 +926,10 @@ void MainWindow::ensureScanPopup()
     return;
   }
 
+  if ( !GlobalBroadcaster::instance()->getAllDictionaries() || !GlobalBroadcaster::instance()->getGroups() ) {
+    return;
+  }
+
   // Scanpopup related
   scanPopup = new ScanPopup( nullptr, cfg, articleNetMgr, history );
 
@@ -1029,6 +1033,10 @@ void MainWindow::refreshTranslateLine()
 void MainWindow::clipboardChange( QClipboard::Mode m )
 {
   ensureScanPopup();
+
+  if ( !scanPopup ) {
+    return;
+  }
 
 #if defined( WITH_X11 )
   if ( m == QClipboard::Clipboard ) {
@@ -3072,12 +3080,17 @@ void MainWindow::hotKeyActivated( int hk )
     // the clipboard empty, silently cancels the translation request, and users report
     // that Ctrl+C+C is broken in these apps. Slightly delay handling the clipboard
     // hotkey to give the active application more time and thus work around the issue.
-    QTimer::singleShot( 10, scanPopup, &ScanPopup::translateWordFromPrimaryClipboard );
+    if ( scanPopup ) {
+      QTimer::singleShot( 10, scanPopup, &ScanPopup::translateWordFromPrimaryClipboard );
+    }
 #else
-    scanPopup->translateWordFromPrimaryClipboard();
+    if ( scanPopup ) {
+      scanPopup->translateWordFromPrimaryClipboard();
+    }
 #endif
   }
 }
+
 
 void MainWindow::checkNewRelease()
 {
@@ -3154,7 +3167,9 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
       // Middle mouse click on Tray translates selection
       // it is functional like as stardict
       ensureScanPopup();
-      scanPopup->translateWordFromSelection();
+      if ( scanPopup ) {
+        scanPopup->translateWordFromSelection();
+      }
       break;
     default:
       break;
@@ -4389,7 +4404,9 @@ void MainWindow::setGroupByName( const QString & name, bool main_window )
   }
   else {
     ensureScanPopup();
-    emit setPopupGroupByName( name );
+    if ( scanPopup ) {
+      emit setPopupGroupByName( name );
+    }
   }
 }
 
