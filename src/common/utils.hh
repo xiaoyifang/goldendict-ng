@@ -164,6 +164,11 @@ inline QString json2String( const QJsonObject & json )
   return QString( QJsonDocument( json ).toJson( QJsonDocument::Compact ) );
 }
 
+inline QString json2String( const QString & str )
+{
+  return QString( QJsonDocument( QJsonArray { str } ).toJson( QJsonDocument::Compact ) ).mid( 1 ).chopped( 1 );
+}
+
 inline QStringList repeat( const QString str, const int times )
 {
   QStringList list;
