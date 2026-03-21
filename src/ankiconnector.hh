@@ -13,7 +13,8 @@ class AnkiConnector: public QObject
 public:
   explicit AnkiConnector( QObject * parent, const Config::Class & cfg );
 
-  void sendToAnki( const QString & word, QString text, const QString & sentence, const QJsonObject & audio = QJsonObject() );
+  void
+  sendToAnki( const QString & word, QString text, const QString & sentence, const QJsonObject & audio = QJsonObject() );
   void ankiSearch( const QString & word );
 
 private:

@@ -430,8 +430,11 @@ void ArticleView::showDefinition( const QString & word,
   showDefinition( word, dictIDs, {}, group, ignoreDiacritics );
 }
 
-void ArticleView::sendToAnki( const QString & word, const QString & dict_definition, const QString & sentence,
-                               const QByteArray & audioData, const QString & audioFileName )
+void ArticleView::sendToAnki( const QString & word,
+                              const QString & dict_definition,
+                              const QString & sentence,
+                              const QByteArray & audioData,
+                              const QString & audioFileName )
 {
   QJsonObject audioObj;
   QByteArray data = audioData;
@@ -455,10 +458,14 @@ void ArticleView::sendToAnki( const QString & word, const QString & dict_definit
           return;
         }
         else {
-          connect( req.get(), &Dictionary::Request::finished, this, [ this, word, dict_definition, sentence, req, audioUrl ]() {
-            const vector< char > & d = req->getFullData();
-            sendToAnki( word, dict_definition, sentence, QByteArray( d.data(), d.size() ), audioUrl.toString() );
-          } );
+          connect(
+            req.get(),
+            &Dictionary::Request::finished,
+            this,
+            [ this, word, dict_definition, sentence, req, audioUrl ]() {
+              const vector< char > & d = req->getFullData();
+              sendToAnki( word, dict_definition, sentence, QByteArray( d.data(), d.size() ), audioUrl.toString() );
+            } );
           return;
         }
       }
@@ -476,11 +483,9 @@ void ArticleView::sendToAnki( const QString & word, const QString & dict_definit
     else if ( url.contains( ".opus", Qt::CaseInsensitive ) )
       ext = "opus";
 
-    audioObj.insert( "filename",
-                     QString( "%1_%2.%3" )
-                       .arg( Utils::trimNonChar( word ) )
-                       .arg( QDateTime::currentMSecsSinceEpoch() )
-                       .arg( ext ) );
+    audioObj.insert(
+      "filename",
+      QString( "%1_%2.%3" ).arg( Utils::trimNonChar( word ) ).arg( QDateTime::currentMSecsSinceEpoch() ).arg( ext ) );
 
     QJsonArray fields;
     fields.append( cfg.preferences.ankiConnectServer.text );
@@ -488,10 +493,9 @@ void ArticleView::sendToAnki( const QString & word, const QString & dict_definit
   }
   else if ( Utils::Url::isWebAudioUrl( QUrl( audioLink_ ) ) ) {
     audioObj.insert( "url", audioLink_ );
-    audioObj.insert( "filename",
-                     QString( "%1_%2.mp3" )
-                       .arg( Utils::trimNonChar( word ) )
-                       .arg( QDateTime::currentMSecsSinceEpoch() ) );
+    audioObj.insert(
+      "filename",
+      QString( "%1_%2.mp3" ).arg( Utils::trimNonChar( word ) ).arg( QDateTime::currentMSecsSinceEpoch() ) );
     QJsonArray fields;
     fields.append( cfg.preferences.ankiConnectServer.text );
     audioObj.insert( "fields", fields );

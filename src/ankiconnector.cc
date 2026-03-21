@@ -18,7 +18,10 @@ AnkiConnector::AnkiConnector( QObject * parent, const Config::Class & _cfg ):
   connect( mgr, &QNetworkAccessManager::finished, this, &AnkiConnector::finishedSlot );
 }
 
-void AnkiConnector::sendToAnki( const QString & word, QString text, const QString & sentence, const QJsonObject & audio )
+void AnkiConnector::sendToAnki( const QString & word,
+                                QString text,
+                                const QString & sentence,
+                                const QJsonObject & audio )
 {
   if ( word.isEmpty() ) {
     emit this->errorText( tr( "Anki: can't create a card without a word" ) );
