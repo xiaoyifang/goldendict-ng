@@ -3,6 +3,7 @@
 #pragma once
 
 #include <QJsonObject>
+#include <QJsonArray>
 #include <QJsonDocument>
 #include <QKeyEvent>
 #include <QString>
