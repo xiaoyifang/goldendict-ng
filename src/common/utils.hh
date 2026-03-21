@@ -166,7 +166,7 @@ inline QString json2String( const QJsonObject & json )
 
 inline QString json2String( const QString & str )
 {
-  return QString( QJsonDocument( QJsonArray { str } ).toJson( QJsonDocument::Compact ) ).mid( 1 ).chopped( 1 );
+  return QString( QJsonDocument( QJsonArray{ str } ).toJson( QJsonDocument::Compact ) ).mid( 1 ).chopped( 1 );
 }
 
 inline QStringList repeat( const QString str, const int times )
