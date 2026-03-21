@@ -43,29 +43,34 @@ void AnkiConnector::sendToAnki( const QString & word,
     fields.insert( cfg.preferences.ankiConnectServer.sentence, sentence_changed );
   }
 
-  note.insert( "deckName", cfg.preferences.ankiConnectServer.deck );
-  note.insert( "modelName", cfg.preferences.ankiConnectServer.model );
-  note.insert( "fields", fields );
+  QString fieldsStr = Utils::json2String( fields );
 
-  QJsonObject options;
-  options.insert( "allowDuplicate", true );
-  note.insert( "options", options );
-  note.insert( "tags", QJsonArray() );
-
+  QString audioStr;
   if ( !audio.isEmpty() ) {
-    QJsonArray audioArray;
-    audioArray.append( audio );
-    note.insert( "audio", audioArray );
+    audioStr = QString( R"anki("audio": [ %1 ],)anki" ).arg( Utils::json2String( audio ) );
   }
 
-  params.insert( "note", note );
+  QString postTemplate = R"anki({
+      "action": "addNote",
+      "version": 6,
+      "params": {
+          "note": {
+              "deckName": %1,
+              "modelName": %2,
+              "fields": %3,
+              %4
+              "options": {
+                  "allowDuplicate": true
+              },
+              "tags": []
+          }
+      }
+  })anki";
 
-  QJsonObject root;
-  root.insert( "action", "addNote" );
-  root.insert( "version", 6 );
-  root.insert( "params", params );
-
-  QString postData = Utils::json2String( root );
+  QString postData = postTemplate.arg( Utils::json2String( cfg.preferences.ankiConnectServer.deck ),
+                                       Utils::json2String( cfg.preferences.ankiConnectServer.model ),
+                                       fieldsStr,
+                                       audioStr );
 
   //  qDebug().noquote() << postData;
   postToAnki( postData );

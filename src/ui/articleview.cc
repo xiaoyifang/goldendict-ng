@@ -372,6 +372,7 @@ void ArticleView::showDefinition( const QString & word,
                                   unsigned group,
                                   bool ignoreDiacritics )
 {
+  GlobalBroadcaster::instance()->pronounce_engine.reset();
   if ( dictIDs.isEmpty() ) {
     return;
   }
@@ -385,6 +386,8 @@ void ArticleView::showDefinition( const QString & word,
   // first, let's stop the player
   audioPlayer->stop();
   audioLink_.clear();
+  lastAudioData.clear();
+  lastAudioUrl.clear();
 
   QUrl req;
   QUrlQuery reqQuery;
