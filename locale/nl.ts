@@ -3281,10 +3281,6 @@ for all program&apos;s network requests.</source>
       <translation>Deck:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Model</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Woord</translation>
     </message>
@@ -3509,6 +3505,10 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Open het website-woordenboek in apart tabblad</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
     </message>
   </context>
   <context>
