@@ -1224,7 +1224,7 @@ download page.</string>
      <widget class="QWidget" name="tab_anki">
       <attribute name="icon">
        <iconset resource="../../resources.qrc">
-        <normaloff>:/icons/add-anki-icon.svg</normaloff>:/icons/add-anki-icon.svg</iconset>
+        <normaloff>:/icons/anki.svg</normaloff>:/icons/anki.svg</iconset>
       </attribute>
       <attribute name="title">
        <string>Anki</string>
