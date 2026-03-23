@@ -939,6 +939,16 @@ QString & MdxDictionary::filterResource( QString & article )
                    "<section data-from-head=\"true\"" );
   article.replace( QRegularExpression( "</head>", QRegularExpression::CaseInsensitiveOption ), "</section>" );
 
+  // Fix unclosed section tags: count opening and closing section tags
+  // and append missing closing tags at the end
+  int openCount  = article.count( QRegularExpression( "<section[^>]*>" ) );
+  int closeCount = article.count( QRegularExpression( "</section>" ) );
+
+  // Append missing closing tags
+  for ( int i = 0; i < openCount - closeCount; i++ ) {
+    article.append( "</section>" );
+  }
+
   replaceStyleInHtml( id, article );
   article = isolateStyleCssInHtml( article );
   return article;
