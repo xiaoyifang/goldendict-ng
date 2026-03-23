@@ -3279,10 +3279,6 @@ for all program&apos;s network requests.</source>
       <translation>Talia:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Typ notatki:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Słowo</translation>
     </message>
@@ -3510,6 +3506,10 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Otwórz słownik internetowy w osobnej karcie</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
     </message>
   </context>
   <context>
