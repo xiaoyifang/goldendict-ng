@@ -9,7 +9,7 @@
    stroke="#3276c3"
    version="1.1"
    id="svg1"
-   sodipodi:docname="add-anki-icon.svg"
+   sodipodi:docname="anki.svg"
    inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -19,7 +19,7 @@
   <defs
      id="defs1">
     <linearGradient
-       gradientTransform="matrix(1,0,0,-1,0,192)"
+       gradientTransform="matrix(1,0,0,-1,-3.1031067,197.60942)"
        y2="40.880001"
        x2="170.66859"
        y1="93.285301"
@@ -53,58 +53,26 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="9.0708542"
-     inkscape:cx="-22.820343"
-     inkscape:cy="16.701845"
+     inkscape:zoom="18.141708"
+     inkscape:cx="7.3862945"
+     inkscape:cy="12.485042"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg1" />
+  <rect
+     style="opacity:0.8;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#3276c3;stroke-width:0.776285;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+     id="rect3"
+     width="8.5251894"
+     height="6.0302486"
+     x="-0.90243196"
+     y="0.60858893"
+     rx="0.49677145"
+     ry="0.41342646" />
   <g
-     id="SVGRepo_iconCarrier"
-     clip-path="url(#clipPath98)"
-     transform="matrix(-0.51271947,0,0,-0.51271947,7.7540647,7.1088194)"
-     style="fill:#3174bf;fill-opacity:1">
-    <g
-       id="add-card-16px"
-       transform="translate(0.5,0.5)"
-       style="fill:#3174bf;fill-opacity:1">
-      <path
-         id="Subtração_7"
-         d="M 0.50003662,1.2207031e-4 A 0.5,0.5 0 0 0 1.2207031e-4,0.50003662 V 11.500024 A 0.5,0.5 0 0 0 0.50003662,11.999939 H 3.6495605 c 0.00481,-0.142019 0.0029,-0.145587 -0.00747,-0.511121 -0.00462,-0.162989 -0.00611,-0.325845 -0.012451,-0.488708 H 0.99995117 V 0.99995117 H 15.000049 V 4.000061 h 0.999829 V 0.50003662 A 0.5,0.5 0 0 0 15.499963,1.2207031e-4 Z M 3.9807617,11.00011 c 0.00582,0.158752 0.00778,0.317442 0.012451,0.476257 0.010597,0.360714 0.012629,0.375645 0.00809,0.523572 h 0.155017 C 4.1123499,11.635389 4.0736845,11.30483 4.0392822,11.00011 Z m 0.4121338,0 c 0.034329,0.302271 0.074086,0.633819 0.1182861,0.999829 H 8 V 11.00011 Z"
-         style="fill:#3174bf;fill-opacity:1" />
-      <path
-         id="Caminho_179"
-         data-name="Caminho 179"
-         d="M 38,12.5 A 0.5,0.5 0 0 1 37.5,13 H 35 v 2.5 a 0.5,0.5 0 0 1 -1,0 V 13 h -2.5 a 0.5,0.5 0 0 1 0,-1 H 34 V 9.5 a 0.5,0.5 0 0 1 1,0 V 12 h 2.5 a 0.5,0.5 0 0 1 0.5,0.5 z"
-         transform="translate(-22,-4)"
-         style="fill:#3174bf;fill-opacity:1" />
-      <path
-         id="Caminho_272"
-         data-name="Caminho 272"
-         d="m 976.148,357.487 h 2.005"
-         transform="translate(-970.156,-345.987)"
-         fill="none"
-         stroke="#3276c3"
-         stroke-linecap="round"
-         stroke-width="1"
-         style="fill:#3174bf;fill-opacity:1" />
-      <path
-         id="Caminho_273"
-         data-name="Caminho 273"
-         d="m 976.148,357.487 h 2.005"
-         transform="rotate(90,673.5675,-300.5805)"
-         fill="none"
-         stroke="#3276c3"
-         stroke-linecap="round"
-         stroke-width="1"
-         style="fill:#3174bf;fill-opacity:1" />
-    </g>
-  </g>
-  <g
-     transform="matrix(0.04529652,0,0,0.04385128,-0.57948003,-1.4683117)"
+     transform="matrix(0.04529652,0,0,0.04385128,-0.43891995,-1.7142918)"
      id="star">
     <image
        style="overflow:visible;opacity:0.19"
