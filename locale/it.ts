@@ -3282,10 +3282,6 @@ per ogni programma della rete che lo richieda.</translation>
       <translation>Mazzo:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Modello:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Parola</translation>
     </message>
@@ -3510,6 +3506,10 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Apri il dizionario del sito in una scheda separata</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
     </message>
   </context>
   <context>
