@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>icons/add-anki-icon.svg</file>
-        <file>icons/add.svg</file>
+        <file>icons/anki.svg</file>
         <file>icons/document.png</file>
         <file>icons/audio.png</file>
         <file>version.txt</file>
