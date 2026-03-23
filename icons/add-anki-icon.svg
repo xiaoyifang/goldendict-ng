@@ -1,130 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   width="32"
-   height="32"
-   fill="#3276c3"
-   stroke="#3276c3"
-   version="1.1"
-   viewBox="-1.7 -1.7 10.2 10.2"
-   id="svg3"
-   sodipodi:docname="add-anki-icon.svg"
-   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview3"
-     pagecolor="#ffffff"
-     bordercolor="#000000"
-     borderopacity="0.25"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="6.3671875"
-     inkscape:cx="-17.276074"
-     inkscape:cy="45.781595"
-     inkscape:window-width="1904"
-     inkscape:window-height="1001"
-     inkscape:window-x="384"
-     inkscape:window-y="85"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="svg3" />
-  <defs
-     id="defs2">
-    <linearGradient
-       id="gradient_inner"
-       x1="79.9"
-       x2="170.67"
-       y1="93.285"
-       y2="40.88"
-       gradientTransform="matrix(1 0 0 -1 -6.982 180.78)"
-       gradientUnits="userSpaceOnUse">
-      <stop
-         stop-color="#29B6F6"
-         offset="0"
-         id="stop1" />
-      <stop
-         stop-color="#0288D1"
-         offset="1"
-         id="stop2" />
-    </linearGradient>
-  </defs>
-  <path
-     d="m2.2003 0.26637 5.3208 6e-8c0.2459 0 0.44387 0.16267 0.44387 0.36474v5.7041c0 0.20206-0.19797 0.36474-0.44387 0.36474h-8.1813c-0.2459 0-0.44387-0.16267-0.44387-0.36474v-2.8698"
-     fill="none"
-     opacity=".8"
-     stroke-linecap="round"
-     stroke-linejoin="round"
-     stroke-width=".94414"
-     style="paint-order:fill markers stroke"
-     id="path2" />
-  <g
-     fill="#3276c3"
-     fill-rule="evenodd"
-     stroke="none"
-     id="g3">
-    <rect
-       x="-1.502"
-       y="1.1335"
-       width="3.76"
-       height=".94878"
-       rx=".44387"
-       ry=".51831"
-       opacity=".8"
-       style="paint-order:fill markers stroke"
-       id="rect2" />
-    <rect
-       transform="rotate(89.373)"
-       x="-.2681"
-       y="-.83474"
-       width="3.76"
-       height=".94878"
-       rx=".44387"
-       ry=".51831"
-       opacity=".8"
-       style="paint-order:fill markers stroke"
-       id="rect3" />
-  </g>
-  <g
-     id="g5"
-     transform="matrix(0.03671426,0,0,0.03554285,13.715399,-3.088101)">
-    <path
-       sodipodi:type="star"
-       style="opacity:0.8;fill:#29b6f6;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:21.1842;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke"
-       id="path3"
-       inkscape:flatsided="false"
-       sodipodi:sides="5"
-       sodipodi:cx="-210.14825"
-       sodipodi:cy="243.93491"
-       sodipodi:r1="68.434616"
-       sodipodi:r2="39.213036"
-       sodipodi:arg1="0.46113707"
-       sodipodi:arg2="1.0894556"
-       inkscape:rounded="0.24"
-       inkscape:randomized="0"
-       d="m -148.86183,274.38603 c -4.62906,9.31652 -33.91095,-0.51 -43.13204,4.30633 -9.2211,4.81633 -17.88559,34.46285 -28.17658,32.93931 -10.29099,-1.52353 -9.99402,-32.40882 -17.4241,-39.69028 -7.43007,-7.28146 -38.30306,-6.36059 -40.03418,-16.61871 -1.73113,-10.25811 27.7343,-19.51975 32.36335,-28.83627 4.62906,-9.31652 -5.78701,-38.39391 3.43409,-43.21024 9.2211,-4.81633 27.13476,20.34495 37.42575,21.86849 10.29099,1.52353 34.7265,-17.36815 42.15657,-10.08669 7.43008,7.28146 -10.96409,32.09363 -9.23297,42.35174 1.73113,10.25811 27.24917,27.6598 22.62011,36.97632 z"
-       inkscape:transform-center-x="0.13902928"
-       inkscape:transform-center-y="0.15292325"
-       transform="translate(-17.842882,-60.100908)" />
-    <path
-       sodipodi:type="star"
-       style="opacity:0.8;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#29b6f6;stroke-width:3.60674;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-       id="path5"
-       inkscape:flatsided="false"
-       sodipodi:sides="5"
-       sodipodi:cx="-210.14825"
-       sodipodi:cy="243.93491"
-       sodipodi:r1="68.434616"
-       sodipodi:r2="39.213036"
-       sodipodi:arg1="0.46113707"
-       sodipodi:arg2="1.0894556"
-       inkscape:rounded="0.24"
-       inkscape:randomized="0"
-       d="m -148.86183,274.38603 c -4.62906,9.31652 -33.91095,-0.51 -43.13204,4.30633 -9.2211,4.81633 -17.88559,34.46285 -28.17658,32.93931 -10.29099,-1.52353 -9.99402,-32.40882 -17.4241,-39.69028 -7.43007,-7.28146 -38.30306,-6.36059 -40.03418,-16.61871 -1.73113,-10.25811 27.7343,-19.51975 32.36335,-28.83627 4.62906,-9.31652 -5.78701,-38.39391 3.43409,-43.21024 9.2211,-4.81633 27.13476,20.34495 37.42575,21.86849 10.29099,1.52353 34.7265,-17.36815 42.15657,-10.08669 7.43008,7.28146 -10.96409,32.09363 -9.23297,42.35174 1.73113,10.25811 27.24917,27.6598 22.62011,36.97632 z"
-       inkscape:transform-center-x="0.16403419"
-       inkscape:transform-center-y="0.18042684"
-       transform="matrix(1.1798548,0,0,1.1798548,20.466503,-104.17284)" />
-  </g>
+<svg width="32" height="32" fill="#3276c3" stroke="#3276c3" version="1.1" viewBox="-1.7 -1.7 10.2 10.2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="linearGradient4" x1="-213.62" x2="-109.78" y1="241.19" y2="291.19" gradientTransform="matrix(.81881 0 0 .81881 -43.93 46.983)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#0883ba" offset="0"/>
+   <stop stop-color="#0791cc" stop-opacity="0" offset="1"/>
+  </linearGradient>
+ </defs>
+ <path d="m2.2003 0.26637 5.3208 6e-8c0.2459 0 0.44387 0.16267 0.44387 0.36474v5.7041c0 0.20206-0.19797 0.36474-0.44387 0.36474h-8.1813c-0.2459 0-0.44387-0.16267-0.44387-0.36474v-2.8698" fill="none" opacity=".8" stroke-linecap="round" stroke-linejoin="round" stroke-width=".94414" style="paint-order:fill markers stroke"/>
+ <g fill="#3276c3" fill-rule="evenodd" stroke="none">
+  <rect x="-1.502" y="1.1335" width="3.76" height=".94878" rx=".44387" ry=".51831" opacity=".8" style="paint-order:fill markers stroke"/>
+  <rect transform="rotate(89.373)" x="-.2681" y="-.83474" width="3.76" height=".94878" rx=".44387" ry=".51831" opacity=".8" style="paint-order:fill markers stroke"/>
+ </g>
+ <path transform="matrix(.044839 0 0 .043408 14.732 -7.1424)" d="m-148.86 274.39c-4.6291 9.3165-33.911-0.51-43.132 4.3063-9.2211 4.8163-17.886 34.463-28.177 32.939-10.291-1.5235-9.994-32.409-17.424-39.69-7.4301-7.2815-38.303-6.3606-40.034-16.619-1.7311-10.258 27.734-19.52 32.363-28.836 4.6291-9.3165-5.787-38.394 3.4341-43.21s27.135 20.345 37.426 21.868c10.291 1.5235 34.726-17.368 42.157-10.087 7.4301 7.2815-10.964 32.094-9.233 42.352 1.7311 10.258 27.249 27.66 22.62 36.976z" fill="url(#linearGradient4)" fill-rule="evenodd" opacity=".8" stroke="none" style="paint-order:fill markers stroke"/>
 </svg>
