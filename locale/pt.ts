@@ -3282,10 +3282,6 @@ para todas as solicitações de rede do programa&apos;.</translation>
       <translation>Baralho:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Modelo:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Palavra</translation>
     </message>
@@ -3512,6 +3508,10 @@ no Stardict, Babilônia e dicionários GLS</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Abrir dicionário do site em uma guia separada</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
     </message>
   </context>
   <context>
