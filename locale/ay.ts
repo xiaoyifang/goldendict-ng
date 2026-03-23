@@ -3372,10 +3372,6 @@ para todos los accesos a la red del programa.</translation>
       <translation>Imantata:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Murilu:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Aru</translation>
     </message>
@@ -3619,6 +3615,10 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation type="unfinished">Open website dictionary in separate tab</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation type="unfinished">Anki</translation>
     </message>
   </context>
   <context>
