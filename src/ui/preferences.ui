@@ -1179,6 +1179,57 @@ for all program's network requests.</string>
          </layout>
         </widget>
        </item>
+
+       <item>
+        <widget class="QCheckBox" name="disallowContentFromOtherSites">
+         <property name="toolTip">
+          <string>Enabling this would make GoldenDict block most advertisements
+by disallowing content (images, frames) not originating from the site
+you are browsing. If some site breaks because of this, try disabling this.</string>
+         </property>
+         <property name="text">
+          <string>Disallow loading content from other sites (hides most advertisements)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="checkForNewReleases">
+         <property name="toolTip">
+          <string>When this is enabled, the program periodically
+checks if a new, updated version of GoldenDict
+is available for download. If it is so, the program
+informs the user about it and prompts to open a
+download page.</string>
+         </property>
+         <property name="text">
+          <string>Check for new program releases periodically</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>39</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_anki">
+      <attribute name="icon">
+       <iconset resource="../../resources.qrc">
+        <normaloff>:/icons/add-anki-icon.svg</normaloff>:/icons/add-anki-icon.svg</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Anki</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_anki">
        <item>
         <widget class="QGroupBox" name="useAnkiConnect">
          <property name="enabled">
@@ -1204,14 +1255,24 @@ for all program's network requests.</string>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_24">
-              <property name="text">
-               <string>http://</string>
+             <layout class="QHBoxLayout" name="hostLayout">
+              <property name="spacing">
+               <number>0</number>
               </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="ankiHost"/>
+              <item>
+               <widget class="QLabel" name="label_24">
+                <property name="text">
+                 <string>http://</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignVCenter|Qt::AlignRight</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="ankiHost"/>
+              </item>
+             </layout>
             </item>
             <item>
              <widget class="QLabel" name="label_23">
@@ -1260,7 +1321,7 @@ for all program's network requests.</string>
             <item>
              <widget class="QLabel" name="label_25">
               <property name="text">
-               <string>Model:</string>
+               <string>Type:</string>
               </property>
              </widget>
             </item>
@@ -1332,40 +1393,14 @@ for all program's network requests.</string>
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="disallowContentFromOtherSites">
-         <property name="toolTip">
-          <string>Enabling this would make GoldenDict block most advertisements
-by disallowing content (images, frames) not originating from the site
-you are browsing. If some site breaks because of this, try disabling this.</string>
-         </property>
-         <property name="text">
-          <string>Disallow loading content from other sites (hides most advertisements)</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="checkForNewReleases">
-         <property name="toolTip">
-          <string>When this is enabled, the program periodically
-checks if a new, updated version of GoldenDict
-is available for download. If it is so, the program
-informs the user about it and prompts to open a
-download page.</string>
-         </property>
-         <property name="text">
-          <string>Check for new program releases periodically</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="verticalSpacer_3">
+        <spacer name="verticalSpacer_anki">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>39</height>
+           <height>40</height>
           </size>
          </property>
         </spacer>
