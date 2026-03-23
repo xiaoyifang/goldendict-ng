@@ -3279,10 +3279,6 @@ for all program&apos;s network requests.</source>
       <translation>デッキ:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>モデル:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>単語</translation>
     </message>
@@ -3508,6 +3504,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>ウェブサイト辞書を別タブで開く</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
     </message>
   </context>
   <context>
