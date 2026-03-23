@@ -941,11 +941,11 @@ QString & MdxDictionary::filterResource( QString & article )
 
   // Fix unclosed section tags: count opening and closing section tags
   // and append missing closing tags at the end
-  int openCount  = article.count( QRegularExpression( "<section[^>]*>" ) );
-  int closeCount = article.count( QRegularExpression( "</section>" ) );
+  qsizetype openCount  = article.count( QRegularExpression( "<section[^>]*>" ) );
+  qsizetype closeCount = article.count( QRegularExpression( "</section>" ) );
 
   // Append missing closing tags
-  for ( int i = 0; i < openCount - closeCount; i++ ) {
+  for ( qsizetype i = 0; i < openCount - closeCount; i++ ) {
     article.append( "</section>" );
   }
 
