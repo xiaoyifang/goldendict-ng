@@ -3280,10 +3280,6 @@ servidor proxy por todas las solicitudes de red del programa.</translation>
       <translation>Carpeta:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Qatina:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Rimay</translation>
     </message>
@@ -3508,6 +3504,10 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation type="unfinished">Open website dictionary in separate tab</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation type="unfinished">Anki</translation>
     </message>
   </context>
   <context>
