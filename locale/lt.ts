@@ -3282,10 +3282,6 @@ užklausoms naudoti įgaliotąjį serverį.</translation>
       <translation>Denis:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Modelis:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Žodis</translation>
     </message>
@@ -3509,6 +3505,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation type="unfinished">Open website dictionary in separate tab</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation type="unfinished">Anki</translation>
     </message>
   </context>
   <context>
