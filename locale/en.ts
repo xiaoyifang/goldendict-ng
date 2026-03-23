@@ -3282,10 +3282,6 @@ for all program&apos;s network requests.</translation>
       <translation type="unfinished">Deck:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation type="unfinished">Model:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation type="unfinished">Word</translation>
     </message>
@@ -3512,6 +3508,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation type="unfinished">Open website dictionary in separate tab</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation type="unfinished">Anki</translation>
     </message>
   </context>
   <context>
