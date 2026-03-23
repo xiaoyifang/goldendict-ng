@@ -829,7 +829,8 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
 
   if ( event->type() == QEvent::KeyPress && watched != translateBox->translateLine() ) {
 
-    if ( const auto key_event = dynamic_cast< QKeyEvent * >( event ); key_event->modifiers() == Qt::NoModifier ) {
+    if ( const auto key_event = dynamic_cast< QKeyEvent * >( event );
+         key_event->modifiers() == Qt::NoModifier || key_event->modifiers() == Qt::ShiftModifier ) {
       const QString text = key_event->text();
 
       if ( Utils::ignoreKeyEvent( key_event ) || key_event->key() == Qt::Key_Return
