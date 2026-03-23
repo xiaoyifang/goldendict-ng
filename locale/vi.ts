@@ -3278,10 +3278,6 @@ cho tất cả các yêu cầu mạng của chương trình.</translation>
       <translation>Deck:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Mô hình:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Từ</translation>
     </message>
@@ -3505,6 +3501,10 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation type="unfinished">Open website dictionary in separate tab</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation type="unfinished">Anki</translation>
     </message>
   </context>
   <context>
