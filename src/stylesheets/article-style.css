@@ -81,25 +81,38 @@ pre {
   background: #def;
   user-select: none;
 }
-
 /* The Anki plus button, which is shown if enabled. */
 .ankibutton {
-  float: right;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
+  float: none;
+  display: flex;
+  margin-left: auto;
+  margin-right: 0;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
   border-radius: 4px;
-  padding: 3px;
-  transition: background-color 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s, transform 0.2s;
 }
+
+.ankibutton:hover {
+  transform: scale(1.1);
+}
+
 .ankibutton:active {
   background-color: hsl(0deg 0% 70%);
+  transform: scale(0.95);
 }
 
 .ankibutton img {
-  width: 32px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
-
 .gddicttitle {
   user-select: none;
 }
