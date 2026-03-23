@@ -2731,7 +2731,8 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
 
   if ( ev->type() == QEvent::KeyPress && obj != translateLine ) {
 
-    if ( const auto key_event = dynamic_cast< QKeyEvent * >( ev ); key_event->modifiers() == Qt::NoModifier ) {
+    if ( const auto key_event = dynamic_cast< QKeyEvent * >( ev );
+         key_event->modifiers() == Qt::NoModifier || key_event->modifiers() == Qt::ShiftModifier ) {
       const QString text = key_event->text();
 
       if ( Utils::ignoreKeyEvent( key_event ) || key_event->key() == Qt::Key_Return
