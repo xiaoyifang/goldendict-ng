@@ -3286,10 +3286,6 @@ for all program&apos;s network requests.</source>
       <translation>Колода:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Модель:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Слово</translation>
     </message>
@@ -3518,6 +3514,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Открыть словарь сайта в отдельной вкладке</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
     </message>
   </context>
   <context>
