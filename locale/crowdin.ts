@@ -3248,10 +3248,6 @@ for all program&apos;s network requests.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Model:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Word</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3469,6 +3465,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Open website dictionary in separate tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Anki</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
