@@ -3281,10 +3281,6 @@ for all program&apos;s network requests.</source>
       <translation>ظهر السفينة:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>نموذج:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>كلمة</translation>
     </message>
@@ -3510,6 +3506,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>فتح قاموس الموقع في علامة تبويب منفصلة</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
     </message>
   </context>
   <context>
