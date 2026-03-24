@@ -1152,11 +1152,12 @@ QString MdxDictionary::isolateStyleCssInHtml( const QString & description )
       QRegularExpressionMatch match = it.next();
       QString styleContent          = match.captured( 1 );
 
-      // Replace body/html/root selector with section[data-from-body/html="true"]
+      // Replace body/html/root selector with #ID form
+      QString idSelector = QString( "#gdarticlefrom-" ) + QString::fromLatin1( getId().c_str() );
       styleContent.replace( QRegularExpression( "\\bbody\\b", QRegularExpression::CaseInsensitiveOption ),
-                            "section[data-from-body=\"true\"]" );
+                            idSelector );
       styleContent.replace( QRegularExpression( ":root|\\bhtml\\b", QRegularExpression::CaseInsensitiveOption ),
-                            "section[data-from-html=\"true\"]" );
+                            idSelector );
 
       // Call isolateCSS to process CSS content in <style> tags
       isolateCSS( styleContent, QString() );
