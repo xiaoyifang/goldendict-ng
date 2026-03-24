@@ -670,8 +670,7 @@ void ArticleRequest::bodyFinished()
 
         fmt::format_to(
           std::back_inserter( head ),
-          FMT_COMPILE(
-            R"(<section class="gdarticlebody gdlangfrom-{}" lang="{}" style="display:{}" id="gd-{}">)" ),
+          FMT_COMPILE( R"(<section class="gdarticlebody gdlangfrom-{}" lang="{}" style="display:{}" id="gd-{}">)" ),
           LangCoder::intToCode2( activeDict->getLangFrom() ).toStdString(),
           LangCoder::intToCode2( activeDict->getLangTo() ).toStdString(),
           collapse ? "none" : "block",
