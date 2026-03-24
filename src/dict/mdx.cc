@@ -1154,8 +1154,7 @@ QString MdxDictionary::isolateStyleCssInHtml( const QString & description )
 
       // Replace body/html/root selector with #ID form
       QString idSelector = QString( "#gdarticlefrom-" ) + QString::fromLatin1( getId().c_str() );
-      styleContent.replace( QRegularExpression( "\\bbody\\b", QRegularExpression::CaseInsensitiveOption ),
-                            idSelector );
+      styleContent.replace( QRegularExpression( "\\bbody\\b", QRegularExpression::CaseInsensitiveOption ), idSelector );
       styleContent.replace( QRegularExpression( ":root|\\bhtml\\b", QRegularExpression::CaseInsensitiveOption ),
                             idSelector );
 
