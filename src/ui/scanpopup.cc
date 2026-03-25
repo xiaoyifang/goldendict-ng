@@ -1295,7 +1295,10 @@ void ScanPopup::titleChanged( ArticleView * view, const QString & title ) const
   if ( view->isWebsite() ) {
     int index = tabWidget->indexOf( view );
     if ( index != -1 ) {
-      tabWidget->setTabText( index, title );
+      // Truncate long titles to make tab labels more readable
+      const int maxTabTitleLength = 30;
+      QString tabTitle = Utils::ellipsizeString( title, maxTabTitleLength );
+      tabWidget->setTabText( index, tabTitle );
       tabWidget->setTabToolTip( index, title );
     }
   }
