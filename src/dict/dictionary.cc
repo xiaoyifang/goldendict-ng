@@ -584,9 +584,9 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
 
       int ruleStartPos      = css.indexOf( selectorEndRegex, currentPos );
       QString remainingPart = css.mid( currentPos, ruleStartPos < 0 ? ruleStartPos : ruleStartPos - currentPos );
-      
+
       QString trimmedSelector = selectorPart.trimmed();
-      
+
       // Check if selector already contains the isolation prefix
       if ( trimmedSelector.startsWith( prefix ) ) {
         // Selector already has the prefix, no need to add it again
