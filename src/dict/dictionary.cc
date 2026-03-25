@@ -582,21 +582,28 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
         break;
       }
 
+      int ruleStartPos      = css.indexOf( selectorEndRegex, currentPos );
+      QString remainingPart = css.mid( currentPos, ruleStartPos < 0 ? ruleStartPos : ruleStartPos - currentPos );
+      
       QString trimmedSelector = selectorPart.trimmed();
-      if ( trimmedSelector.compare( "body", Qt::CaseInsensitive ) == 0
-           || trimmedSelector.compare( "html", Qt::CaseInsensitive ) == 0 ) {
+      
+      // Check if selector already contains the isolation prefix
+      if ( trimmedSelector.startsWith( prefix ) ) {
+        // Selector already has the prefix, no need to add it again
+        newCSS.append( remainingPart );
+      }
+      else if ( trimmedSelector.compare( "body", Qt::CaseInsensitive ) == 0
+                || trimmedSelector.compare( "html", Qt::CaseInsensitive ) == 0 ) {
         // Special handling for body and html selectors to maintain CSS specificity
         newCSS.append( selectorPart + " " + prefix + " " );
         currentPos += trimmedSelector.length();
+        newCSS.append( remainingPart.mid( trimmedSelector.length() ) );
       }
       else {
         // Add isolation prefix to normal selectors to scope them to this dictionary's content
         newCSS.append( prefix + " " );
+        newCSS.append( remainingPart );
       }
-
-      int ruleStartPos      = css.indexOf( selectorEndRegex, currentPos );
-      QString remainingPart = css.mid( currentPos, ruleStartPos < 0 ? ruleStartPos : ruleStartPos - currentPos );
-      newCSS.append( remainingPart );
 
       if ( ruleStartPos < 0 ) {
         break;
