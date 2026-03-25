@@ -494,4 +494,12 @@ QString escapeAmps( const QString & str );
 
 QString unescapeAmps( const QString & str );
 
+/**
+ * Ellipsize a string to a maximum length, adding ellipsis if necessary
+ * @param str The string to ellipsize
+ * @param maxLength The maximum length of the ellipsized string
+ * @return The ellipsized string
+ */
+QString ellipsizeString( const QString & str, int maxLength );
+
 } // namespace Utils

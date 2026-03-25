@@ -56,6 +56,23 @@ QString unescapeAmps( const QString & str )
   result.replace( "&&", "&" );
   return result;
 }
+
+QString ellipsizeString( const QString & str, int maxLength )
+{
+  if ( str.length() <= maxLength ) {
+    return str;
+  }
+
+  // Try to find a meaningful truncation point
+  int spacePos = str.lastIndexOf( ' ', maxLength );
+  if ( spacePos > 0 ) {
+    return str.left( spacePos ) + "...";
+  }
+  else {
+    // If no space found, just truncate
+    return str.left( maxLength ) + "...";
+  }
+}
 } // namespace Utils
 
 QString Utils::Path::combine( const QString & path1, const QString & path2 )
