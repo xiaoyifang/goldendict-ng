@@ -63,7 +63,7 @@ jobs:
             /usr/local/lib/libeb*
             /usr/local/include/eb
             /usr/local/bin/eb*
-          key: ${{ runner.os }}-eb-custom
+          key: ${{ runner.os }}-${{ runner.arch }}-eb-custom
       - name: Install EB
         if: steps.cache-eb.outputs.cache-hit != 'true'
         run: |
