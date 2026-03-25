@@ -1292,15 +1292,13 @@ void ScanPopup::titleChanged( ArticleView * view, const QString & title ) const
   // Set icon for "Add to Favorites" button
   ui.sendWordToFavoritesButton->setIcon( isWordPresentedInFavorites( title ) ? blueStarIcon : starIcon );
 
-  if ( view->isWebsite() ) {
-    int index = tabWidget->indexOf( view );
-    if ( index != -1 ) {
-      // Truncate long titles to make tab labels more readable
-      const int maxTabTitleLength = 30;
-      QString tabTitle            = Utils::ellipsizeString( title, maxTabTitleLength );
-      tabWidget->setTabText( index, tabTitle );
-      tabWidget->setTabToolTip( index, title );
-    }
+  int index = tabWidget->indexOf( view );
+  if ( index != -1 ) {
+    // Truncate long titles to make tab labels more readable
+    const int maxTabTitleLength = 30;
+    QString tabTitle = Utils::ellipsizeString( title, maxTabTitleLength );
+    tabWidget->setTabText( index, tabTitle );
+    tabWidget->setTabToolTip( index, title );
   }
 }
 
@@ -1343,7 +1341,10 @@ void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId, 
           view->setCurrentWord( word );
         }
         view->load( url, name );
-        tabWidget->setTabText( i, name );
+        // Truncate long website names for tab labels
+        const int maxTabTitleLength = 30;
+        QString truncatedName = Utils::ellipsizeString( name, maxTabTitleLength );
+        tabWidget->setTabText( i, truncatedName );
         return;
       }
     }
@@ -1376,7 +1377,11 @@ void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId, 
   connect( view, &ArticleView::titleChanged, this, &ScanPopup::titleChanged );
   connect( view, &ArticleView::sendWordToInputLine, this, &ScanPopup::translateWord );
 
-  int index = tabWidget->addTab( view, name );
+  // Truncate long website names for tab labels
+  const int maxTabTitleLength = 30;
+  QString truncatedName = Utils::ellipsizeString( name, maxTabTitleLength );
+
+  int index = tabWidget->addTab( view, truncatedName );
   tabWidget->setCurrentIndex( index );
 
   view->load( url, name );

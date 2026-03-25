@@ -4284,7 +4284,10 @@ void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId,
 
   auto view = findArticleViewByDictId( dictId );
   if ( view == nullptr ) {
-    view = createNewTab( false, name );
+    // Truncate long website names for tab labels
+    const int maxTabTitleLength = 30;
+    QString truncatedName = Utils::ellipsizeString( name, maxTabTitleLength );
+    view = createNewTab( false, truncatedName );
     view->setWebsite( true );
     // Set the dictId for the website view
     view->setActiveArticleId( dictId );
