@@ -1296,7 +1296,7 @@ void ScanPopup::titleChanged( ArticleView * view, const QString & title ) const
   if ( index != -1 ) {
     // Truncate long titles to make tab labels more readable
     const int maxTabTitleLength = 30;
-    QString tabTitle = Utils::ellipsizeString( title, maxTabTitleLength );
+    QString tabTitle            = Utils::ellipsizeString( title, maxTabTitleLength );
     tabWidget->setTabText( index, tabTitle );
     tabWidget->setTabToolTip( index, title );
   }
@@ -1343,7 +1343,7 @@ void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId, 
         view->load( url, name );
         // Truncate long website names for tab labels
         const int maxTabTitleLength = 30;
-        QString truncatedName = Utils::ellipsizeString( name, maxTabTitleLength );
+        QString truncatedName       = Utils::ellipsizeString( name, maxTabTitleLength );
         tabWidget->setTabText( i, truncatedName );
         return;
       }
@@ -1379,7 +1379,7 @@ void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId, 
 
   // Truncate long website names for tab labels
   const int maxTabTitleLength = 30;
-  QString truncatedName = Utils::ellipsizeString( name, maxTabTitleLength );
+  QString truncatedName       = Utils::ellipsizeString( name, maxTabTitleLength );
 
   int index = tabWidget->addTab( view, truncatedName );
   tabWidget->setCurrentIndex( index );
