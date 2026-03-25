@@ -3281,10 +3281,6 @@ para todos los accesos a la red del programa.</translation>
       <translation>Masco:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Modelo:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Palabra</translation>
     </message>
@@ -3510,6 +3506,10 @@ de diccionarios Stardict, Babylon y GLS</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Abrir diccionario del sitio web en una pestaña separada</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
     </message>
   </context>
   <context>

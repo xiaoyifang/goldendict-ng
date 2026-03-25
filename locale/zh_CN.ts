@@ -3271,10 +3271,6 @@ for all program&apos;s network requests.</source>
       <translation>牌组：</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>模板：</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>单词</translation>
     </message>
@@ -3498,6 +3494,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>在单独标签中打开网站词典</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
     </message>
   </context>
   <context>

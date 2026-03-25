@@ -1122,11 +1122,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Group already exists</source>
-      <translation type="unfinished">Group already exists</translation>
+      <translation>群組已存在</translation>
     </message>
     <message>
       <source>A group with the name &apos;%1&apos; already exists.</source>
-      <translation type="unfinished">A group with the name &apos;%1&apos; already exists.</translation>
+      <translation>名稱為 '%1' 的群組已經存在。</translation>
     </message>
   </context>
   <context>
@@ -3271,10 +3271,6 @@ for all program&apos;s network requests.</source>
       <translation>牌組：</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>模型：</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>單字</translation>
     </message>
@@ -3499,6 +3495,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>在新分頁中開啟網站字典</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation type="unfinished">Anki</translation>
     </message>
   </context>
   <context>

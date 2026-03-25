@@ -3279,10 +3279,6 @@ servidor proxy por todas las solicitudes de red del programa.</translation>
       <translation>Cubierta:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Modelo:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Palabra</translation>
     </message>
@@ -3507,6 +3503,10 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation type="unfinished">Open website dictionary in separate tab</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation type="unfinished">Anki</translation>
     </message>
   </context>
   <context>

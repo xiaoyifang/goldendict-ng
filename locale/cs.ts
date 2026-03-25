@@ -3281,10 +3281,6 @@ pro všechny síťové požadavky programu.</translation>
       <translation>Balíček:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Vzor:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Slovo</translation>
     </message>
@@ -3510,6 +3506,10 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Otevřít webový slovník v samostatné záložce</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
     </message>
   </context>
   <context>

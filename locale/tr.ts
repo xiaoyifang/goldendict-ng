@@ -3280,10 +3280,6 @@ proxy sunucusu kullanmak istiyorsanız etkinleştirin.</translation>
       <translation>Güverte:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>modeli:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Kelime</translation>
     </message>
@@ -3508,6 +3504,10 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation type="unfinished">Open website dictionary in separate tab</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation type="unfinished">Anki</translation>
     </message>
   </context>
   <context>

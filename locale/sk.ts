@@ -3277,10 +3277,6 @@ pre všetky sieťové požiadavky programu.</translation>
       <translation>Paluba:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Model:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Slovo</translation>
     </message>
@@ -3505,6 +3501,10 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation type="unfinished">Open website dictionary in separate tab</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation type="unfinished">Anki</translation>
     </message>
   </context>
   <context>

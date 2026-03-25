@@ -3282,10 +3282,6 @@ kaikille ohjelmille&apos;s verkkopyyntöille.</translation>
       <translation>Pakka:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Malli:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Sana</translation>
     </message>
@@ -3512,6 +3508,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Avaa verkkosivuston sanakirja erillisessä välilehdessä</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
     </message>
   </context>
   <context>

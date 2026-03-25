@@ -3282,10 +3282,6 @@ förfrågningar.</translation>
       <translation>Däck:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Modell:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Ord</translation>
     </message>
@@ -3513,6 +3509,10 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Öppna webbplatsordlista i separat flik</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
     </message>
   </context>
   <context>

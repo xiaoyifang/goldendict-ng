@@ -3280,10 +3280,6 @@ pour toutes les requêtes passant par le réseau.</translation>
       <translation>Deck :</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Modèle :</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Mot</translation>
     </message>
@@ -3509,6 +3505,10 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Ouvrir le dictionnaire du site web dans un onglet séparé</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
     </message>
   </context>
   <context>

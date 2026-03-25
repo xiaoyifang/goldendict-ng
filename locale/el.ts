@@ -3283,10 +3283,6 @@ for all program&apos;s network requests.</source>
       <translation>Τράπουλα:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Μοντέλο:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Λέξη</translation>
     </message>
@@ -3513,6 +3509,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Άνοιγμα λεξικού ιστοσελίδας σε ξεχωριστή καρτέλα</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
     </message>
   </context>
   <context>

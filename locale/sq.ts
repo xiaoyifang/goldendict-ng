@@ -3277,10 +3277,6 @@ për tërë kërkesat e programit për internet.</translation>
       <translation>Kuvertë:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Modeli:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>fjalë</translation>
     </message>
@@ -3505,6 +3501,10 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation type="unfinished">Open website dictionary in separate tab</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation type="unfinished">Anki</translation>
     </message>
   </context>
   <context>
