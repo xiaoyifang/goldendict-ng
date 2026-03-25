@@ -1139,7 +1139,7 @@ void ArticleView::linkClickedInHtml( const QUrl & url_ )
 
 void ArticleView::makeAnkiCardFromArticle( const QString & article_id )
 {
-  const auto js_code = QString( R"EOF(document.getElementById("gdarticlefrom-%1").innerText)EOF" ).arg( article_id );
+  const auto js_code = QString( R"EOF(document.getElementById("gd-%1").innerText)EOF" ).arg( article_id );
   webview->page()->runJavaScript( js_code, [ this ]( const QVariant & article_text ) {
     sendToAnki( getWord(), article_text.toString(), translateLine->text() );
   } );

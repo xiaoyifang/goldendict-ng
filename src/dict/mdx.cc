@@ -741,11 +741,12 @@ QByteArray MddResourceRequest::isolate_css()
     newCSS.clear();
   }
 
-  // Replace body/html/root selector with section[data-from-body/html="true"]
-  css.replace( QRegularExpression( "\\bbody\\b", QRegularExpression::CaseInsensitiveOption ),
-               "section[data-from-body=\"true\"]" );
-  css.replace( QRegularExpression( ":root|\\bhtml\\b", QRegularExpression::CaseInsensitiveOption ),
-               "section[data-from-html=\"true\"]" );
+  // Replace body/html/root selector with #ID,section[data-from-xxx="true"] form
+  QString idSelector   = QString( "#gd-" ) + id;
+  QString bodySelector = idSelector + ",section[data-from-body=\"true\"]";
+  QString htmlSelector = idSelector + ",section[data-from-html=\"true\"]";
+  css.replace( QRegularExpression( "\\bbody\\b", QRegularExpression::CaseInsensitiveOption ), bodySelector );
+  css.replace( QRegularExpression( ":root|\\bhtml\\b", QRegularExpression::CaseInsensitiveOption ), htmlSelector );
 
   dict.isolateCSS( css );
   auto bytes = css.toUtf8();
@@ -1152,11 +1153,14 @@ QString MdxDictionary::isolateStyleCssInHtml( const QString & description )
       QRegularExpressionMatch match = it.next();
       QString styleContent          = match.captured( 1 );
 
-      // Replace body/html/root selector with section[data-from-body/html="true"]
+      // Replace body/html/root selector with #ID,section[data-from-xxx="true"] form
+      QString idSelector   = QString( "#gd-" ) + QString::fromLatin1( getId().c_str() );
+      QString bodySelector = idSelector + ",section[data-from-body=\"true\"]";
+      QString htmlSelector = idSelector + ",section[data-from-html=\"true\"]";
       styleContent.replace( QRegularExpression( "\\bbody\\b", QRegularExpression::CaseInsensitiveOption ),
-                            "section[data-from-body=\"true\"]" );
+                            bodySelector );
       styleContent.replace( QRegularExpression( ":root|\\bhtml\\b", QRegularExpression::CaseInsensitiveOption ),
-                            "section[data-from-html=\"true\"]" );
+                            htmlSelector );
 
       // Call isolateCSS to process CSS content in <style> tags
       isolateCSS( styleContent, QString() );

@@ -89,7 +89,7 @@ function emitClickedEvent(link) {
 function gdExpandArticle(id) {
   emitClickedEvent();
 
-  const articleContent = document.getElementById("gdarticlefrom-" + id);
+  const articleContent = document.getElementById("gd-" + id);
   const expandIcon = document.getElementById("expandicon-" + id);
   const articleElement = document.getElementById("gdfrom-" + id);
   const dictNameElement = document.getElementById("gddictname-" + id);
