@@ -1992,7 +1992,7 @@ void MainWindow::titleChanged( ArticleView * view, const QString & title )
 
   // Truncate long titles to make tab labels more readable
   const int maxTabTitleLength = 30;
-  escaped = Utils::ellipsizeString( escaped, maxTabTitleLength );
+  escaped                     = Utils::ellipsizeString( escaped, maxTabTitleLength );
 
   int index = ui.tabWidget->indexOf( view );
   if ( !escaped.isEmpty() ) {

@@ -62,12 +62,13 @@ QString ellipsizeString( const QString & str, int maxLength )
   if ( str.length() <= maxLength ) {
     return str;
   }
-  
+
   // Try to find a meaningful truncation point
   int spacePos = str.lastIndexOf( ' ', maxLength );
   if ( spacePos > 0 ) {
     return str.left( spacePos ) + "...";
-  } else {
+  }
+  else {
     // If no space found, just truncate
     return str.left( maxLength ) + "...";
   }
