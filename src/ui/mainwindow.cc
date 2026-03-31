@@ -3583,20 +3583,25 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
   QString prefix = "window:";
   if ( message.left( prefix.size() ) == prefix ) {
     consoleWindowOnce = message.mid( prefix.size() );
+    return;
   }
 
   if ( message.left( 15 ) == "translateWord: " ) {
     auto word = message.mid( 15 );
     if ( consoleWindowOnce == "popup" ) {
       ensureScanPopup();
-      scanPopup->translateWord( word );
+      if ( scanPopup ) {
+        scanPopup->translateWord( word );
+      }
     }
     else if ( consoleWindowOnce == "main" ) {
       wordReceived( word );
     }
     else {
       ensureScanPopup();
-      scanPopup->translateWord( word );
+      if ( scanPopup ) {
+        scanPopup->translateWord( word );
+      }
     }
 
     consoleWindowOnce.clear();
