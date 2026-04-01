@@ -297,7 +297,7 @@ MdxDictionary::MdxDictionary( const string & id, const string & indexFile, const
   //fallback, use filename as dictionary name
   if ( dictionaryName.empty() ) {
     QFileInfo f( QString::fromUtf8( dictionaryFiles[ 0 ].c_str() ) );
-    dictionaryName = f.baseName().toStdString();
+    dictionaryName = f.completeBaseName().toStdString();
   }
 
   // then read the dictionary's encoding
