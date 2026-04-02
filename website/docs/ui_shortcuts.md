@@ -22,7 +22,7 @@
 | Ctrl+D                | Switch to dictionary headwords dialog (if it is open)                                                                            |
 | Ctrl+E                | Add current tab to Favorites                                                                                                     |
 | Ctrl+F4               | (Main window) minimize to system tray                                                                                            |
-| Ctrl+F5               | Rescan dictionaries                                                                                                              |
+| Ctrl+F5, F5           | Rescan dictionaries                                                                                                              |
 | Ctrl+F                | (In main and popup windows) search in page / (In dictionaries dialog) go to filter line                                          |
 | Ctrl+H                | Show/hide history pane                                                                                                           |
 | Ctrl+I                | Show/hide Favorites pane                                                                                                         |

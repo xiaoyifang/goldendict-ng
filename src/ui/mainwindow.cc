@@ -300,6 +300,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   navToolbar->widgetForAction( beforeOptionsSeparator )->setObjectName( "beforeOptionsSeparator" );
   beforeOptionsSeparator->setVisible( cfg.preferences.hideMenubar );
 
+  ui.rescanFiles->setShortcuts( QList< QKeySequence >() << QKeySequence( "Ctrl+F5" ) << QKeySequence( "F5" ) );
+
   QMenu * buttonMenu = new QMenu( this );
   buttonMenu->addAction( ui.dictionaries );
   buttonMenu->addAction( ui.preferences );
