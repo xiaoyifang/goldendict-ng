@@ -742,11 +742,8 @@ QByteArray MddResourceRequest::isolate_css()
   }
 
   // Replace body/html/root selector with #ID,section[data-from-xxx="true"] form
-  QString idSelector   = QString( "#gd-" ) + id;
-  QString bodySelector = idSelector + ",section[data-from-body=\"true\"]";
-  QString htmlSelector = idSelector + ",section[data-from-html=\"true\"]";
-  css.replace( QRegularExpression( "\\bbody\\b", QRegularExpression::CaseInsensitiveOption ), bodySelector );
-  css.replace( QRegularExpression( ":root|\\bhtml\\b", QRegularExpression::CaseInsensitiveOption ), htmlSelector );
+  QString idSelector = QString( "#gd-" ) + id;
+  replaceCssSelectors( css, idSelector );
 
   dict.isolateCSS( css );
   auto bytes = css.toUtf8();
@@ -1154,13 +1151,8 @@ QString MdxDictionary::isolateStyleCssInHtml( const QString & description )
       QString styleContent          = match.captured( 1 );
 
       // Replace body/html/root selector with #ID,section[data-from-xxx="true"] form
-      QString idSelector   = QString( "#gd-" ) + QString::fromLatin1( getId().c_str() );
-      QString bodySelector = idSelector + ",section[data-from-body=\"true\"]";
-      QString htmlSelector = idSelector + ",section[data-from-html=\"true\"]";
-      styleContent.replace( QRegularExpression( "\\bbody\\b", QRegularExpression::CaseInsensitiveOption ),
-                            bodySelector );
-      styleContent.replace( QRegularExpression( ":root|\\bhtml\\b", QRegularExpression::CaseInsensitiveOption ),
-                            htmlSelector );
+      QString idSelector = QString( "#gd-" ) + QString::fromLatin1( getId().c_str() );
+      replaceCssSelectors( styleContent, idSelector );
 
       // Call isolateCSS to process CSS content in <style> tags
       isolateCSS( styleContent, QString() );
@@ -1643,6 +1635,19 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
   }
 
   return dictionaries;
+}
+
+// Helper function to replace CSS selectors
+void replaceCssSelectors( QString &css, const QString &idSelector )
+{
+  // Replace body{} (with optional whitespace) with idSelector
+  css.replace( QRegularExpression( "\\bbody\\b\\s*{", QRegularExpression::CaseInsensitiveOption ), idSelector + "{" );
+  // Replace body with modifiers/descendants with section[data-from-body="true"]
+  css.replace( QRegularExpression( "\\bbody(?=[\\.#\\s])", QRegularExpression::CaseInsensitiveOption ), "section[data-from-body=\"true\"]" );
+  // Replace html{} or :root{} (with optional whitespace) with idSelector
+  css.replace( QRegularExpression( ":root\\s*{|\\bhtml\\b\\s*{", QRegularExpression::CaseInsensitiveOption ), idSelector + "{" );
+  // Replace html with modifiers/descendants with section[data-from-html="true"]
+  css.replace( QRegularExpression( "\\bhtml(?=[\\.#\\s])", QRegularExpression::CaseInsensitiveOption ), "section[data-from-html=\"true\"]" );
 }
 
 } // namespace Mdx
