@@ -1642,7 +1642,7 @@ void replaceCssSelectors( QString & css, const QString & idSelector )
 {
   // Replace body{} (with optional whitespace) with idSelector
   css.replace( QRegularExpression( "\\bbody\\b\\s*{", QRegularExpression::CaseInsensitiveOption ),
-               idSelector + ",section[data-from-html=\"true\"] {" );
+               idSelector + ",section[data-from-body=\"true\"] {" );
   // Replace body with modifiers/descendants with section[data-from-body="true"]
   css.replace( QRegularExpression( "\\bbody(?=[\\.#\\s])", QRegularExpression::CaseInsensitiveOption ),
                "section[data-from-body=\"true\"]" );
