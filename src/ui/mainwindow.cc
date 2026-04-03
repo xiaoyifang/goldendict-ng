@@ -3582,6 +3582,46 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
     return;
   }
 
+  // Parse structured message format
+  if ( message.startsWith( "action:" ) ) {
+    QMap< QString, QString > params;
+    QStringList parts = message.split( '|' );
+    for ( const QString & part : parts ) {
+      QStringList keyValue = part.split( ':' );
+      if ( keyValue.size() >= 2 ) {
+        params[ keyValue[ 0 ] ] = keyValue.mid( 1 ).join( ':' );
+      }
+    }
+
+    QString action = params.value( "action" );
+    if ( action == "translate" ) {
+      QString windowType = params.value( "window", "popup" );
+      QString word = params.value( "word" );
+      QString group = params.value( "group" );
+      QString popupGroup = params.value( "popupGroup" );
+
+      // Handle group settings if specified
+      if ( !group.isEmpty() ) {
+        setGroupByName( group, true );
+      }
+      if ( !popupGroup.isEmpty() ) {
+        setGroupByName( popupGroup, false );
+      }
+
+      // Show translation based on window type
+      if ( windowType == "popup" ) {
+        ensureScanPopup();
+        if ( scanPopup ) {
+          scanPopup->translateWord( word );
+        }
+      } else if ( windowType == "main" ) {
+        wordReceived( word );
+      }
+    }
+    return;
+  }
+
+  // Legacy message format support (backward compatibility)
   QString prefix = "window:";
   if ( message.left( prefix.size() ) == prefix ) {
     consoleWindowOnce = message.mid( prefix.size() );
