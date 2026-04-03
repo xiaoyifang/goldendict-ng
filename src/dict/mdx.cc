@@ -741,10 +741,6 @@ QByteArray MddResourceRequest::isolate_css()
     newCSS.clear();
   }
 
-  // Replace body/html/root selector with #ID,section[data-from-xxx="true"] form
-  QString idSelector = QString( "#gd-" ) + id;
-  replaceCssSelectors( css, idSelector );
-
   dict.isolateCSS( css );
   auto bytes = css.toUtf8();
 
