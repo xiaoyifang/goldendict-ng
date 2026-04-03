@@ -1641,17 +1641,21 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 void replaceCssSelectors( QString & css, const QString & idSelector )
 {
   // Replace body{} (with optional whitespace) with idSelector
-  css.replace( QRegularExpression( "\\bbody\\b\\s*{", QRegularExpression::CaseInsensitiveOption ),
+  // Ensure body is preceded only by whitespace or start of string
+  css.replace( QRegularExpression( "(?:^|\\s)body\\s*{", QRegularExpression::CaseInsensitiveOption ),
                idSelector + ",section[data-from-body=\"true\"] {" );
   // Replace body with modifiers/descendants with section[data-from-body="true"]
-  css.replace( QRegularExpression( "\\bbody(?=[\\.#\\s])", QRegularExpression::CaseInsensitiveOption ),
-               "section[data-from-body=\"true\"]" );
+  // Ensure body is preceded only by whitespace or start of string
+  css.replace( QRegularExpression( "(?:^|\\s)body(?=[\\.#\\s])", QRegularExpression::CaseInsensitiveOption ),
+               idSelector+" section[data-from-body=\"true\"]" );
   // Replace html{} or :root{} (with optional whitespace) with idSelector
-  css.replace( QRegularExpression( ":root\\s*{|\\bhtml\\b\\s*{", QRegularExpression::CaseInsensitiveOption ),
+  // Ensure html is preceded only by whitespace or start of string
+  css.replace( QRegularExpression( ":root\\s*{|(?:^|\\s)html\\s*{", QRegularExpression::CaseInsensitiveOption ),
                idSelector + ",section[data-from-html=\"true\"] {" );
   // Replace html with modifiers/descendants with section[data-from-html="true"]
-  css.replace( QRegularExpression( "\\bhtml(?=[\\.#\\s])", QRegularExpression::CaseInsensitiveOption ),
-               "section[data-from-html=\"true\"]" );
+  // Ensure html is preceded only by whitespace or start of string
+  css.replace( QRegularExpression( "(?:^|\\s)html(?=[\\.#\\s])", QRegularExpression::CaseInsensitiveOption ),
+               idSelector+" section[data-from-html=\"true\"]" );
 }
 
 } // namespace Mdx
