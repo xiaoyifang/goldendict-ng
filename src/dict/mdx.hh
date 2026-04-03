@@ -11,7 +11,7 @@ using std::vector;
 using std::string;
 
 // Forward declaration for CSS selector replacement helper
-void replaceCssSelectors( QString &css, const QString &idSelector );
+void replaceCssSelectors( QString & css, const QString & idSelector );
 
 vector< sptr< Dictionary::Class > >
 makeDictionaries( const vector< string > & fileNames, const string & indicesDir, Dictionary::Initializing & );
