@@ -412,17 +412,17 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
     prefix += " " + wrapperSelector;
   }
 
-  // Regular expressions for body/html/root tag replacements
-  // They use lookarounds to ensure we match the full tag name and not a substring of another identifier
-  static const QRegularExpression bodyRegex( R"((^|(?<=[ \t\r\n\>~\+]))body(?=[ \t\r\n\.\#\[\:\>~\+]|$))",
-                                             QRegularExpression::CaseInsensitiveOption );
-  static const QRegularExpression htmlRegex( R"((^|(?<=[ \t\r\n\>~\+]))html(?=[ \t\r\n\.\#\[\:\>~\+]|$))",
-                                             QRegularExpression::CaseInsensitiveOption );
-  static const QRegularExpression rootRegex( R"((^|(?<=[ \t\r\n\>~\+])):root(?=[ \t\r\n\.\#\[\:\>~\+]|$))",
-                                             QRegularExpression::CaseInsensitiveOption );
-
   // Helper for selector isolation
   auto isolateSelector = [ & ]( QString selectorsPart ) {
+    // Regular expressions for body/html/root tag replacements
+    // They use lookarounds to ensure we match the full tag name and not a substring of another identifier
+    static const QRegularExpression bodyRegex( R"((^|(?<=[ \t\r\n\>~\+]))body(?=[ \t\r\n\.\#\[\:\>~\+]|$))",
+                                               QRegularExpression::CaseInsensitiveOption );
+    static const QRegularExpression htmlRegex( R"((^|(?<=[ \t\r\n\>~\+]))html(?=[ \t\r\n\.\#\[\:\>~\+]|$))",
+                                               QRegularExpression::CaseInsensitiveOption );
+    static const QRegularExpression rootRegex( R"((^|(?<=[ \t\r\n\>~\+])):root(?=[ \t\r\n\.\#\[\:\>~\+]|$))",
+                                               QRegularExpression::CaseInsensitiveOption );
+
     QStringList selectors = selectorsPart.split( ',', Qt::SkipEmptyParts );
     QStringList isolated;
     for ( QString s : selectors ) {
