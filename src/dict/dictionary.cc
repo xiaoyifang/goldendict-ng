@@ -414,31 +414,40 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
 
   // Helper for selector isolation
   auto isolateSelector = [ & ]( QString selectorsPart ) {
-    // Regular expressions for body/html/root tag replacements
-    // They use lookarounds to ensure we match the full tag name and not a substring of another identifier
-    static const QRegularExpression bodyRegex( R"((^|(?<=[ \t\r\n\>~\+]))body(?=[ \t\r\n\.\#\[\:\>~\+]|$))",
-                                               QRegularExpression::CaseInsensitiveOption );
-    static const QRegularExpression htmlRegex( R"((^|(?<=[ \t\r\n\>~\+]))html(?=[ \t\r\n\.\#\[\:\>~\+]|$))",
-                                               QRegularExpression::CaseInsensitiveOption );
-    static const QRegularExpression rootRegex( R"((^|(?<=[ \t\r\n\>~\+])):root(?=[ \t\r\n\.\#\[\:\>~\+]|$))",
-                                               QRegularExpression::CaseInsensitiveOption );
+    static const QString separators = " \t\r\n.#[:>~+(),[]";
 
     QStringList selectors = selectorsPart.split( ',', Qt::SkipEmptyParts );
     QStringList isolated;
+
     for ( QString s : selectors ) {
       s = s.trimmed();
       if ( s.isEmpty() ) {
         continue;
       }
 
-      // Replace html, body, :root with sections
-      s.replace( bodyRegex, R"(section[data-from-body="true"])" );
-      s.replace( htmlRegex, R"(section[data-from-html="true"])" );
-      s.replace( rootRegex, R"(section[data-from-html="true"])" );
+      // 1. Replace tags (body, html, :root) carefully checking boundaries
+      auto replaceTag = [ & ]( const QString & tag, const QString & replacement ) {
+        int p = 0;
+        while ( ( p = s.indexOf( tag, p, Qt::CaseInsensitive ) ) != -1 ) {
+          bool leaderOk   = ( p == 0 || separators.contains( s[ p - 1 ] ) );
+          bool followerOk = ( p + tag.length() == s.length() || separators.contains( s[ p + tag.length() ] ) );
+          if ( leaderOk && followerOk ) {
+            s.replace( p, tag.length(), replacement );
+            p += replacement.length();
+          }
+          else {
+            p += tag.length();
+          }
+        }
+      };
 
-      // Prefix the selector if not already prefixed
+      replaceTag( "body", R"(section[data-from-body="true"])" );
+      replaceTag( "html", R"(section[data-from-html="true"])" );
+      replaceTag( ":root", R"(section[data-from-html="true"])" );
+
+      // 2. Prefix the selector if not already prefixed
       if ( !s.startsWith( idSelector ) ) {
-        // Apply styles to both the container and potentially nested parts for root-level elements
+        // Special case: if the selector matches the root tags, allow it to apply to the container itself
         if ( s == R"(section[data-from-body="true"])" || s == R"(section[data-from-html="true"])" ) {
           isolated << idSelector;
         }
