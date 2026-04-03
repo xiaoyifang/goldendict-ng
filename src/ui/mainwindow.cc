@@ -3596,8 +3596,8 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
     QString action = params.value( "action" );
     if ( action == "translate" ) {
       QString windowType = params.value( "window", "popup" );
-      QString word = params.value( "word" );
-      QString group = params.value( "group" );
+      QString word       = params.value( "word" );
+      QString group      = params.value( "group" );
       QString popupGroup = params.value( "popupGroup" );
 
       // Handle group settings if specified
@@ -3614,7 +3614,8 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
         if ( scanPopup ) {
           scanPopup->translateWord( word );
         }
-      } else if ( windowType == "main" ) {
+      }
+      else if ( windowType == "main" ) {
         wordReceived( word );
       }
     }
