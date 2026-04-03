@@ -393,7 +393,7 @@ QString Class::getAbbrName( const QString & text, const QString & key )
 }
 
 // Forward declaration
-int findMatchingBracket( const QString & css, int startPos );
+qsizetype findMatchingBracket( const QString & css, qsizetype startPos );
 
 void Class::isolateCSS( QString & css, const QString & wrapperSelector )
 {
@@ -427,7 +427,7 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
 
       // 1. Replace tags (body, html, :root) carefully checking boundaries
       auto replaceTag = [ & ]( const QString & tag, const QString & replacement ) {
-        int p = 0;
+        qsizetype p = 0;
         while ( ( p = s.indexOf( tag, p, Qt::CaseInsensitive ) ) != -1 ) {
           bool leaderOk   = ( p == 0 || separators.contains( s[ p - 1 ] ) );
           bool followerOk = ( p + tag.length() == s.length() || separators.contains( s[ p + tag.length() ] ) );
@@ -475,7 +475,7 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
 
       if ( brace != -1 && ( semicolon == -1 || brace < semicolon ) ) {
         // Block-based @rule (@media, @supports, etc.)
-        int matchingBrace = findMatchingBracket( css, brace );
+        qsizetype matchingBrace = findMatchingBracket( css, brace );
         if ( matchingBrace != -1 ) {
           QString header = css.mid( atRule, brace - atRule + 1 );
           result.append( header );
@@ -512,7 +512,7 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
       result.append( isolateSelector( selectors ) );
       result.append( " {" );
 
-      int matchingBrace = findMatchingBracket( css, openBrace );
+      qsizetype matchingBrace = findMatchingBracket( css, openBrace );
       if ( matchingBrace != -1 ) {
         result.append( css.mid( openBrace + 1, matchingBrace - openBrace ) );
         pos = matchingBrace + 1;
@@ -533,10 +533,10 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
 }
 
 // Helper function to find matching closing bracket considering nesting and escaped characters
-int findMatchingBracket( const QString & css, int startPos )
+qsizetype findMatchingBracket( const QString & css, qsizetype startPos )
 {
-  int depth = 1;
-  for ( int i = startPos + 1; i < css.length(); i++ ) {
+  qsizetype depth = 1;
+  for ( qsizetype i = startPos + 1; i < css.length(); i++ ) {
     QChar ch = css.at( i );
 
     // Skip escaped characters
