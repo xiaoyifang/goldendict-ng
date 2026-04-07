@@ -3476,7 +3476,11 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enable JavaScript clipboard access</source>
+        <source>Enable JavaScript clipboard access (need restart)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restart to apply the JavaScript clipboard access change.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

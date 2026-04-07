@@ -98,6 +98,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   prevWebFontFamily = p.customFonts;
   prevSysFont       = p.interfaceFont;
+  prevEnableJavaScriptClipboardAccess = p.enableJavaScriptClipboardAccess;
   prevFontSize      = ui.interfaceFontSize->value();
 
   if ( !p.customFonts.standard.isEmpty() ) {
@@ -624,11 +625,18 @@ void Preferences::on_buttonBox_accepted()
     promptText += tr( "Restart to apply the interface font change." );
   }
 
+  auto c = getPreferences();
+  if ( c.enableJavaScriptClipboardAccess != prevEnableJavaScriptClipboardAccess ) {
+    if ( !promptText.isEmpty() ) {
+      promptText += "\n";
+    }
+    promptText += tr( "Restart to apply the JavaScript clipboard access change." );
+  }
+
   if ( !promptText.isEmpty() ) {
     QMessageBox::information( this, tr( "Restart needed" ), promptText );
   }
 
-  auto c = getPreferences();
   if ( c.customFonts != prevWebFontFamily ) {
     QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::StandardFont,
                                                                     c.customFonts.standard );
