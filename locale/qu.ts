@@ -3509,6 +3509,14 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
       <source>Anki</source>
       <translation type="unfinished">Anki</translation>
     </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation type="unfinished">Allow JavaScript to access clipboard in the article view.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access</source>
+      <translation type="unfinished">Enable JavaScript clipboard access</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
