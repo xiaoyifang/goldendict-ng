@@ -7,6 +7,18 @@ ArticleWebPage::ArticleWebPage( QObject * parent, bool isPopup_ ):
   QWebEnginePage( parent ),
   isPopup( isPopup_ )
 {
+  connect( this, &QWebEnginePage::permissionRequested, this, &ArticleWebPage::onPermissionRequested );
+}
+
+void ArticleWebPage::onPermissionRequested( const QWebEnginePermission & permission )
+{
+  if ( permission.permissionType() == QWebEnginePermission::PermissionType::ClipboardReadWrite ) {
+    if ( GlobalBroadcaster::instance()->getPreference()->enableJavaScriptClipboardAccess ) {
+      permission.grant();
+    } else {
+      permission.deny();
+    }
+  }
 }
 bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationType type, bool isMainFrame )
 {

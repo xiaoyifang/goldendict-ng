@@ -21,6 +21,9 @@ public:
 signals:
   void linkClicked( const QUrl & url );
 
+private slots:
+  void onPermissionRequested( const QWebEnginePermission & permission );
+
 protected:
   bool acceptNavigationRequest( const QUrl & url, NavigationType type, bool isMainFrame ) override;
   void javaScriptAlert( const QUrl & securityOrigin, const QString & msg ) override;
