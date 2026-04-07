@@ -3511,6 +3511,14 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <source>Anki</source>
       <translation>Anki</translation>
     </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>Povolit JavaScript přístup ke schránce v zobrazení článku.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access</source>
+      <translation>Povolit přístup do schránky JavaScriptu</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
