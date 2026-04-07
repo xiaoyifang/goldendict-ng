@@ -3517,6 +3517,14 @@ dos dicionários Stardict, Babylon e GLS</translation>
       <source>Anki</source>
       <translation>Anki</translation>
     </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>Permitir que JavaScript acesse a área de transferência no modo de exibição de artigo.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access</source>
+      <translation>Habilitar acesso à área de transferência JavaScript</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
