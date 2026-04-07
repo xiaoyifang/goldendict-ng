@@ -3518,8 +3518,12 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <translation>Permitir que JavaScript acesse a área de transferência no modo de exibição de artigo.</translation>
     </message>
     <message>
-      <source>Enable JavaScript clipboard access</source>
-      <translation>Habilitar acesso à área de transferência JavaScript</translation>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Habilitar acesso à área de transferência JavaScript (requer reinicialização)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Reinicie para aplicar a alteração de acesso à área de transferência JavaScript.</translation>
     </message>
   </context>
   <context>
