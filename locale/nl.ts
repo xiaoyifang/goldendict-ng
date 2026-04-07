@@ -3510,6 +3510,14 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <source>Anki</source>
       <translation>Anki</translation>
     </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>Geef JavaScript toegang tot klembord in de artikelweergave.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access</source>
+      <translation>Inschakelen JavaScript klembord toegang</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
