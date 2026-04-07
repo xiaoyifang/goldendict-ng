@@ -3499,6 +3499,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Anki</source>
       <translation>Anki</translation>
     </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>允许JavaScript在文章视图中访问剪贴板。</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access</source>
+      <translation>启用 JavaScript 剪贴板访问</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
