@@ -18,6 +18,7 @@ class Preferences: public QDialog
   Config::CustomFonts prevWebFontFamily;
   QString prevSysFont;
   int prevFontSize;
+  bool prevEnableJavaScriptClipboardAccess;
 
   Config::Class & cfg;
   QAction helpAction;

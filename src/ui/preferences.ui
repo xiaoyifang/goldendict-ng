@@ -1939,7 +1939,7 @@ from Stardict, Babylon and GLS dictionaries</string>
              <string>Allow JavaScript to access clipboard in the article view.</string>
             </property>
             <property name="text">
-             <string>Enable JavaScript clipboard access</string>
+             <string>Enable JavaScript clipboard access (need restart)</string>
             </property>
            </widget>
           </item>
