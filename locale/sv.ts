@@ -3519,8 +3519,12 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation>Tillåt JavaScript att komma åt urklipp i artikelvyn.</translation>
     </message>
     <message>
-      <source>Enable JavaScript clipboard access</source>
-      <translation>Aktivera JavaScript-urklipp</translation>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Aktivera åtkomst till JavaScript-urklipp (behöver startas om)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Starta om för att tillämpa JavaScript-urklipp åtkomständring.</translation>
     </message>
   </context>
   <context>
