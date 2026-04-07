@@ -3516,8 +3516,12 @@ ze słowników Stardict, Babylon i GLS</translation>
       <translation>Zezwalaj JavaScript na dostęp do schowka w widoku artykułu.</translation>
     </message>
     <message>
-      <source>Enable JavaScript clipboard access</source>
-      <translation>Włącz dostęp do schowka JavaScript</translation>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Włącz dostęp do schowka JavaScript (wymaga ponownego uruchomienia)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Uruchom ponownie, aby zastosować zmianę dostępu do schowka JavaScript.</translation>
     </message>
   </context>
   <context>
