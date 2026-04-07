@@ -3516,8 +3516,12 @@ de diccionarios Stardict, Babylon y GLS</translation>
       <translation>Permitir que JavaScript acceda al portapapeles en la vista de artículos.</translation>
     </message>
     <message>
-      <source>Enable JavaScript clipboard access</source>
-      <translation>Activar acceso al portapapeles de JavaScript</translation>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Activar acceso al portapapeles JavaScript (es necesario reiniciar)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Reinicie para aplicar el cambio de acceso al portapapeles de JavaScript.</translation>
     </message>
   </context>
   <context>
