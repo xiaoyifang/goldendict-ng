@@ -3519,6 +3519,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Anki</source>
       <translation>Anki</translation>
     </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>Разрешить JavaScript доступ к буферу обмена при просмотре статьи.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access</source>
+      <translation>Разрешить доступ к буферу обмена JavaScript</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
