@@ -3514,6 +3514,14 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <source>Anki</source>
       <translation>Anki</translation>
     </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>Tillåt JavaScript att komma åt urklipp i artikelvyn.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access</source>
+      <translation>Aktivera JavaScript-urklipp</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
