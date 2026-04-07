@@ -3515,8 +3515,12 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Geef JavaScript toegang tot klembord in de artikelweergave.</translation>
     </message>
     <message>
-      <source>Enable JavaScript clipboard access</source>
-      <translation>Inschakelen JavaScript klembord toegang</translation>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Inschakelen JavaScript clipboard toegang (opnieuw opstarten vereist)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Herstart om de toegangswijziging voor JavaScript klembord toe te passen.</translation>
     </message>
   </context>
   <context>
