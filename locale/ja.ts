@@ -3509,6 +3509,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Anki</source>
       <translation>Anki</translation>
     </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>記事ビューでのクリップボードへのアクセスをJavaScriptに許可する。</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access</source>
+      <translation>JavaScript クリップボードへのアクセスを有効にする</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
