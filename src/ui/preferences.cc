@@ -637,7 +637,6 @@ void Preferences::on_buttonBox_accepted()
     QMessageBox::information( this, tr( "Restart needed" ), promptText );
   }
 
-  auto c = getPreferences();
   if ( c.customFonts != prevWebFontFamily ) {
     QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::StandardFont,
                                                                     c.customFonts.standard );
