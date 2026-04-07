@@ -15,7 +15,8 @@ void ArticleWebPage::onPermissionRequested( const QWebEnginePermission & permiss
   if ( permission.permissionType() == QWebEnginePermission::PermissionType::ClipboardReadWrite ) {
     if ( GlobalBroadcaster::instance()->getPreference()->enableJavaScriptClipboardAccess ) {
       permission.grant();
-    } else {
+    }
+    else {
       permission.deny();
     }
   }
