@@ -153,7 +153,8 @@ Preferences::Preferences():
   inputPhraseLengthLimit( 1000 ),
   maxDictionaryRefsInContextMenu( 20 ),
   synonymSearchEnabled( true ),
-  stripClipboard( false )
+  stripClipboard( false ),
+  enableJavaScriptClipboardAccess( false )
 #if !defined( Q_OS_WIN )
   ,
   interfaceStyle( "Default" )
@@ -964,6 +965,10 @@ Class load()
 
     if ( !preferences.namedItem( "suppressWebDialogs" ).isNull() ) {
       c.preferences.suppressWebDialogs = ( preferences.namedItem( "suppressWebDialogs" ).toElement().text() == "1" );
+    }
+
+    if ( !preferences.namedItem( "enableJavaScriptClipboardAccess" ).isNull() ) {
+      c.preferences.enableJavaScriptClipboardAccess = ( preferences.namedItem( "enableJavaScriptClipboardAccess" ).toElement().text() == "1" );
     }
 
     if ( !preferences.namedItem( "maxStringsInHistory" ).isNull() ) {
@@ -1979,6 +1984,10 @@ void save( const Class & c )
 
     opt = dd.createElement( "suppressWebDialogs" );
     opt.appendChild( dd.createTextNode( c.preferences.suppressWebDialogs ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "enableJavaScriptClipboardAccess" );
+    opt.appendChild( dd.createTextNode( c.preferences.enableJavaScriptClipboardAccess ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "maxStringsInHistory" );

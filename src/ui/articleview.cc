@@ -221,7 +221,7 @@ ArticleView::ArticleView( QWidget * parent,
   settings->setAttribute( QWebEngineSettings::ErrorPageEnabled, false );
   settings->setAttribute( QWebEngineSettings::LinksIncludedInFocusChain, false );
   settings->setAttribute( QWebEngineSettings::PlaybackRequiresUserGesture, false );
-  settings->setAttribute( QWebEngineSettings::JavascriptCanAccessClipboard, false );
+  settings->setAttribute( QWebEngineSettings::JavascriptCanAccessClipboard, cfg.preferences.enableJavaScriptClipboardAccess );
   settings->setAttribute( QWebEngineSettings::PrintElementBackgrounds, false );
 
   expandOptionalParts = cfg.preferences.alwaysExpandOptionalParts;

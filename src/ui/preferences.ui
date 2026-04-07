@@ -1933,6 +1933,16 @@ from Stardict, Babylon and GLS dictionaries</string>
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QCheckBox" name="enableJavaScriptClipboard">
+            <property name="toolTip">
+             <string>Allow JavaScript to access clipboard in the article view.</string>
+            </property>
+            <property name="text">
+             <string>Enable JavaScript clipboard access</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
