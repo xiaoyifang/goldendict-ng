@@ -7,18 +7,19 @@ ArticleWebPage::ArticleWebPage( QObject * parent, bool isPopup_ ):
   QWebEnginePage( parent ),
   isPopup( isPopup_ )
 {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+#if QT_VERSION >= QT_VERSION_CHECK( 6, 8, 0 )
   connect( this, &QWebEnginePage::permissionRequested, this, &ArticleWebPage::onPermissionRequested );
 #endif
 }
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+#if QT_VERSION >= QT_VERSION_CHECK( 6, 8, 0 )
 void ArticleWebPage::onPermissionRequested( const QWebEnginePermission & permission )
 {
   if ( permission.permissionType() == QWebEnginePermission::PermissionType::ClipboardReadWrite ) {
     if ( GlobalBroadcaster::instance()->getPreference()->enableJavaScriptClipboardAccess ) {
       permission.grant();
-    } else {
+    }
+    else {
       permission.deny();
     }
   }
