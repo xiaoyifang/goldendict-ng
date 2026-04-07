@@ -414,7 +414,8 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
 
   // Helper for selector isolation
   auto isolateSelector = [ & ]( QString selectorsPart ) {
-    static const QString separators = " \t\r\n.#[:>~+(),[]";
+    static const QString leaderSeparators   = " \t\r\n,>~+(";
+    static const QString followerSeparators = " \t\r\n.#[:>~+,)";
 
     QStringList selectors = selectorsPart.split( ',', Qt::SkipEmptyParts );
     QStringList isolated;
@@ -429,8 +430,8 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
       auto replaceTag = [ & ]( const QString & tag, const QString & replacement ) {
         qsizetype p = 0;
         while ( ( p = s.indexOf( tag, p, Qt::CaseInsensitive ) ) != -1 ) {
-          bool leaderOk   = ( p == 0 || separators.contains( s[ p - 1 ] ) );
-          bool followerOk = ( p + tag.length() == s.length() || separators.contains( s[ p + tag.length() ] ) );
+          bool leaderOk   = ( p == 0 || leaderSeparators.contains( s[ p - 1 ] ) );
+          bool followerOk = ( p + tag.length() == s.length() || followerSeparators.contains( s[ p + tag.length() ] ) );
           if ( leaderOk && followerOk ) {
             s.replace( p, tag.length(), replacement );
             p += replacement.length();
