@@ -3511,6 +3511,14 @@ de diccionarios Stardict, Babylon y GLS</translation>
       <source>Anki</source>
       <translation>Anki</translation>
     </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>Permitir que JavaScript acceda al portapapeles en la vista de artículos.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access</source>
+      <translation>Activar acceso al portapapeles de JavaScript</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
