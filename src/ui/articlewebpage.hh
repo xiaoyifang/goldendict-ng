@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QWebEnginePage>
+#include <QWebEnginePermission>
 
 struct LastReqInfo
 {
