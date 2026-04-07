@@ -3516,8 +3516,12 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Povolit JavaScript přístup ke schránce v zobrazení článku.</translation>
     </message>
     <message>
-      <source>Enable JavaScript clipboard access</source>
-      <translation>Povolit přístup do schránky JavaScriptu</translation>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Povolit přístup do schránky JavaScriptu (vyžaduje restart)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Restartujte pro aplikaci změny přístupu do schránky JavaScriptu.</translation>
     </message>
   </context>
   <context>
