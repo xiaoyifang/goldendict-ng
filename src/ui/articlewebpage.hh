@@ -1,7 +1,10 @@
 #pragma once
 
 #include <QWebEnginePage>
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
 #include <QWebEnginePermission>
+#endif
 
 struct LastReqInfo
 {
@@ -23,7 +26,9 @@ signals:
   void linkClicked( const QUrl & url );
 
 private slots:
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
   void onPermissionRequested( const QWebEnginePermission & permission );
+#endif
 
 protected:
   bool acceptNavigationRequest( const QUrl & url, NavigationType type, bool isMainFrame ) override;
