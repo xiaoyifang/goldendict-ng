@@ -3516,8 +3516,12 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>السماح لجافا سكريبت بالوصول إلى الحافظة في عرض المقالة.</translation>
     </message>
     <message>
-      <source>Enable JavaScript clipboard access</source>
-      <translation>تمكين الوصول إلى حافظة جافا سكريبت</translation>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>تمكين الوصول إلى حافظة جافا سكريبت (تحتاج إلى إعادة التشغيل)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>أعد التشغيل لتطبيق تغيير الوصول إلى حافظة جافا سكريبت.</translation>
     </message>
   </context>
   <context>
