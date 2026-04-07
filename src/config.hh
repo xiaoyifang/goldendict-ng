@@ -343,6 +343,7 @@ struct Preferences
 #endif
   bool openWebsiteInNewTab = false;
   bool suppressWebDialogs  = false;
+  bool enableJavaScriptClipboardAccess = false;
 
   qreal zoomFactor;
   qreal helpZoomFactor;

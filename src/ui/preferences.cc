@@ -366,6 +366,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.enableApplicationLog->setChecked( p.enableApplicationLog );
   ui.openWebsiteInNewTab->setChecked( p.openWebsiteInNewTab );
   ui.suppressWebDialogs->setChecked( p.suppressWebDialogs );
+  ui.enableJavaScriptClipboard->setChecked( p.enableJavaScriptClipboardAccess );
 
   //initialize add-on styles
   QString stylesDir = Config::getStylesDir();
@@ -552,8 +553,9 @@ Config::Preferences Preferences::getPreferences()
 
   p.removeInvalidIndexOnExit = ui.removeInvalidIndexOnExit->isChecked();
   p.enableApplicationLog     = ui.enableApplicationLog->isChecked();
-  p.openWebsiteInNewTab      = ui.openWebsiteInNewTab->isChecked();
+  p.openWebsiteInNewTab             = ui.openWebsiteInNewTab->isChecked();
   p.suppressWebDialogs       = ui.suppressWebDialogs->isChecked();
+  p.enableJavaScriptClipboardAccess = ui.enableJavaScriptClipboard->isChecked();
 
   p.addonStyle = ui.addonStyles->currentText();
 
