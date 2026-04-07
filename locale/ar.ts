@@ -3511,6 +3511,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Anki</source>
       <translation>Anki</translation>
     </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>السماح لجافا سكريبت بالوصول إلى الحافظة في عرض المقالة.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access</source>
+      <translation>تمكين الوصول إلى حافظة جافا سكريبت</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
