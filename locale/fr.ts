@@ -3515,8 +3515,12 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <translation>Autoriser JavaScript à accéder au presse-papiers dans la vue article.</translation>
     </message>
     <message>
-      <source>Enable JavaScript clipboard access</source>
-      <translation>Activer l'accès au presse-papier JavaScript</translation>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Activer l'accès au presse-papier JavaScript (redémarrage nécessaire)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Redémarrez pour appliquer le changement d'accès au presse-papiers JavaScript.</translation>
     </message>
   </context>
   <context>
