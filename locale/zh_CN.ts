@@ -3504,8 +3504,12 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>允许JavaScript在文章视图中访问剪贴板。</translation>
     </message>
     <message>
-      <source>Enable JavaScript clipboard access</source>
-      <translation>启用 JavaScript 剪贴板访问</translation>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>启用 JavaScript 剪贴板访问(需要重启)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>重新启动以应用 JavaScript 剪贴板访问更改。</translation>
     </message>
   </context>
   <context>
