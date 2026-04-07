@@ -3471,6 +3471,14 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>Anki</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Allow JavaScript to access clipboard in the article view.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable JavaScript clipboard access</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProgramTypeEditor</name>
