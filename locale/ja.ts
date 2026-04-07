@@ -3514,8 +3514,12 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>記事ビューでのクリップボードへのアクセスをJavaScriptに許可する。</translation>
     </message>
     <message>
-      <source>Enable JavaScript clipboard access</source>
-      <translation>JavaScript クリップボードへのアクセスを有効にする</translation>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>JavaScriptのクリップボードアクセスを有効にする (再起動が必要)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>再起動してJavaScriptクリップボードのアクセス権の変更を適用します。</translation>
     </message>
   </context>
   <context>
