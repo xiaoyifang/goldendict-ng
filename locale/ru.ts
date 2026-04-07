@@ -3524,8 +3524,12 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Разрешить JavaScript доступ к буферу обмена при просмотре статьи.</translation>
     </message>
     <message>
-      <source>Enable JavaScript clipboard access</source>
-      <translation>Разрешить доступ к буферу обмена JavaScript</translation>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Разрешить доступ к буферу обмена JavaScript (требуется перезапуск)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Перезапустите, чтобы применить изменение доступа к буферу обмена JavaScript.</translation>
     </message>
   </context>
   <context>
