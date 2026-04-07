@@ -3510,6 +3510,14 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <source>Anki</source>
       <translation>Anki</translation>
     </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>Autoriser JavaScript à accéder au presse-papiers dans la vue article.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access</source>
+      <translation>Activer l'accès au presse-papier JavaScript</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
