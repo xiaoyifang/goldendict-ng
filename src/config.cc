@@ -968,7 +968,8 @@ Class load()
     }
 
     if ( !preferences.namedItem( "enableJavaScriptClipboardAccess" ).isNull() ) {
-      c.preferences.enableJavaScriptClipboardAccess = ( preferences.namedItem( "enableJavaScriptClipboardAccess" ).toElement().text() == "1" );
+      c.preferences.enableJavaScriptClipboardAccess =
+        ( preferences.namedItem( "enableJavaScriptClipboardAccess" ).toElement().text() == "1" );
     }
 
     if ( !preferences.namedItem( "maxStringsInHistory" ).isNull() ) {
