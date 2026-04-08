@@ -4179,68 +4179,74 @@ void MainWindow::openDictionaryFolder( const QString & id )
   }
 }
 
+template<typename Func>
+void MainWindow::withScanPopupSignalBlocked(Func func)
+{
+  if (scanPopup) {
+    scanPopup->blockSignals(true);
+  }
+  func();
+  if (scanPopup) {
+    scanPopup->blockSignals(false);
+  }
+}
+
 void MainWindow::foundDictsContextMenuRequested( const QPoint & pos )
 {
   QListWidgetItem * item = ui.dictsList->itemAt( pos );
-  if ( item ) {
-    QString id                = item->data( Qt::UserRole ).toString();
-    Dictionary::Class * pDict = nullptr;
+  if ( !item ) {
+    return;
+  }
 
-    for ( unsigned i = 0; i < dictionaries.size(); i++ ) {
-      if ( id.compare( dictionaries[ i ]->getId().c_str() ) == 0 ) {
-        pDict = dictionaries[ i ].get();
-        break;
-      }
+  QString id                = item->data( Qt::UserRole ).toString();
+  Dictionary::Class * pDict = nullptr;
+
+  for ( unsigned i = 0; i < dictionaries.size(); i++ ) {
+    if ( id.compare( dictionaries[ i ]->getId().c_str() ) == 0 ) {
+      pDict = dictionaries[ i ].get();
+      break;
     }
+  }
 
-    if ( pDict == nullptr ) {
-      return;
-    }
+  if ( pDict == nullptr ) {
+    return;
+  }
 
-    if ( !pDict->isLocalDictionary() ) {
-      if ( scanPopup ) {
-        scanPopup->blockSignals( true );
-      }
+  if ( !pDict->isLocalDictionary() ) {
+    withScanPopupSignalBlocked([&]() {
       showDictionaryInfo( id );
-      if ( scanPopup ) {
-        scanPopup->blockSignals( false );
-      }
-    }
-    else {
-      QMenu menu( ui.dictsList );
-      QAction * infoAction = menu.addAction( tr( "Dictionary info" ) );
+    });
+    return;
+  }
 
-      QAction * headwordsAction = nullptr;
-      if ( pDict->getWordCount() > 0 ) {
-        headwordsAction = menu.addAction( tr( "Dictionary headwords" ) );
-      }
+  QMenu menu( ui.dictsList );
+  QAction * infoAction = menu.addAction( tr( "Dictionary info" ) );
 
-      QAction * openDictFolderAction = menu.addAction( tr( "Open dictionary folder" ) );
+  QAction * headwordsAction = nullptr;
+  if ( pDict->getWordCount() > 0 ) {
+    headwordsAction = menu.addAction( tr( "Dictionary headwords" ) );
+  }
 
-      QAction * result = menu.exec( ui.dictsList->mapToGlobal( pos ) );
+  QAction * openDictFolderAction = menu.addAction( tr( "Open dictionary folder" ) );
 
-      if ( result && result == infoAction ) {
-        if ( scanPopup ) {
-          scanPopup->blockSignals( true );
-        }
-        showDictionaryInfo( id );
-        if ( scanPopup ) {
-          scanPopup->blockSignals( false );
-        }
-      }
-      else if ( result && result == headwordsAction ) {
-        if ( scanPopup ) {
-          scanPopup->blockSignals( true );
-        }
-        showDictionaryHeadwords( pDict );
-        if ( scanPopup ) {
-          scanPopup->blockSignals( false );
-        }
-      }
-      else if ( result && result == openDictFolderAction ) {
-        openDictionaryFolder( id );
-      }
-    }
+  QAction * result = menu.exec( ui.dictsList->mapToGlobal( pos ) );
+
+  if ( !result ) {
+    return;
+  }
+
+  if ( result == infoAction ) {
+    withScanPopupSignalBlocked([&]() {
+      showDictionaryInfo( id );
+    });
+  }
+  else if ( result == headwordsAction ) {
+    withScanPopupSignalBlocked([&]() {
+      showDictionaryHeadwords( pDict );
+    });
+  }
+  else if ( result == openDictFolderAction ) {
+    openDictionaryFolder( id );
   }
 }
 
