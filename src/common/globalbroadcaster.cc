@@ -5,7 +5,6 @@
 #include <QGlobalStatic>
 #include <QGuiApplication>
 #include <QStyleHints>
-#include <Qt>
 #include "utils.hh"
 #include <QDir>
 #include <QDebug>
