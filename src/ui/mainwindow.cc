@@ -3618,32 +3618,7 @@ bool MainWindow::handleStructuredMessage( const QString & message )
   return true;
 }
 
-bool MainWindow::handleLegacyMessage( const QString & message )
-{
-  // Legacy message format support (backward compatibility)
-  QString prefix = "window:";
-  if ( message.left( prefix.size() ) == prefix ) {
-    consoleWindowOnce = message.mid( prefix.size() );
-    return true;
-  }
 
-  if ( message.left( 15 ) == "translateWord: " ) {
-    auto word = message.mid( 15 );
-    showTranslation( word, consoleWindowOnce );
-    consoleWindowOnce.clear();
-    return true;
-  }
-  else if ( message.left( 10 ) == "setGroup: " ) {
-    setGroupByName( message.mid( 10 ), true );
-    return true;
-  }
-  else if ( message.left( 15 ) == "setPopupGroup: " ) {
-    setGroupByName( message.mid( 15 ), false );
-    return true;
-  }
-
-  return false;
-}
 
 void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
 {
@@ -3659,11 +3634,6 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
 
   // Handle structured message format
   if ( handleStructuredMessage( message ) ) {
-    return;
-  }
-
-  // Handle legacy message format
-  if ( handleLegacyMessage( message ) ) {
     return;
   }
 

@@ -81,7 +81,6 @@ private:
   }
 
   bool handleStructuredMessage( const QString & message );
-  bool handleLegacyMessage( const QString & message );
   void showTranslation( const QString & word, const QString & windowType );
 
 
