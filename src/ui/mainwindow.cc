@@ -4192,7 +4192,6 @@ void MainWindow::openDictionaryFolder( const QString & id )
 }
 
 
-
 void MainWindow::foundDictsContextMenuRequested( const QPoint & pos )
 {
   QListWidgetItem * item = ui.dictsList->itemAt( pos );
