@@ -565,7 +565,8 @@ int main( int argc, char ** argv )
   if ( gdcl.needTranslateWord() ) {
     if ( gdcl.window == "popup" ) {
       m.showTranslation( gdcl.wordToTranslate(), "popup" );
-    } else {
+    }
+    else {
       m.wordReceived( gdcl.wordToTranslate() );
     }
   }
