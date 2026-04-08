@@ -3570,6 +3570,82 @@ void MainWindow::scaleArticlesByCurrentZoomFactor()
   }
 }
 
+void MainWindow::showTranslation(const QString &word, const QString &windowType)
+{
+  if (windowType == "main") {
+    wordReceived(word);
+  }
+  else {
+    ensureScanPopup();
+    if (scanPopup) {
+      scanPopup->translateWord(word);
+    }
+  }
+}
+
+bool MainWindow::handleStructuredMessage(const QString &message)
+{
+  if (!message.startsWith("action:")) {
+    return false;
+  }
+
+  QMap< QString, QString > params;
+  QStringList parts = message.split('|');
+  for (const QString &part : parts) {
+    QStringList keyValue = part.split(':');
+    if (keyValue.size() >= 2) {
+      params[keyValue[0]] = keyValue.mid(1).join(':');
+    }
+  }
+
+  if (QString action = params.value("action"); action == "translate") {
+    QString windowType = params.value("window", "popup");
+    QString word       = params.value("word");
+    QString group      = params.value("group");
+    QString popupGroup = params.value("popupGroup");
+
+    // Handle group settings if specified
+    if (!group.isEmpty()) {
+      setGroupByName(group, true);
+    }
+    if (!popupGroup.isEmpty()) {
+      setGroupByName(popupGroup, false);
+    }
+
+    // Show translation based on window type
+    showTranslation(word, windowType);
+  }
+
+  return true;
+}
+
+bool MainWindow::handleLegacyMessage(const QString &message)
+{
+  // Legacy message format support (backward compatibility)
+  QString prefix = "window:";
+  if (message.left(prefix.size()) == prefix) {
+    consoleWindowOnce = message.mid(prefix.size());
+    return true;
+  }
+
+  if (message.left(15) == "translateWord: ") {
+    auto word = message.mid(15);
+    showTranslation(word, consoleWindowOnce);
+    consoleWindowOnce.clear();
+    return true;
+  }
+  else if (message.left(10) == "setGroup: ") {
+    setGroupByName(message.mid(10), true);
+    return true;
+  }
+  else if (message.left(15) == "setPopupGroup: ") {
+    setGroupByName(message.mid(15), false);
+    return true;
+  }
+
+  return false;
+}
+
 void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
 {
   if ( message == "bringToFront" ) {
@@ -3582,82 +3658,18 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
     return;
   }
 
-  // Parse structured message format
-  if ( message.startsWith( "action:" ) ) {
-    QMap< QString, QString > params;
-    QStringList parts = message.split( '|' );
-    for ( const QString & part : parts ) {
-      QStringList keyValue = part.split( ':' );
-      if ( keyValue.size() >= 2 ) {
-        params[ keyValue[ 0 ] ] = keyValue.mid( 1 ).join( ':' );
-      }
-    }
-
-    QString action = params.value( "action" );
-    if ( action == "translate" ) {
-      QString windowType = params.value( "window", "popup" );
-      QString word       = params.value( "word" );
-      QString group      = params.value( "group" );
-      QString popupGroup = params.value( "popupGroup" );
-
-      // Handle group settings if specified
-      if ( !group.isEmpty() ) {
-        setGroupByName( group, true );
-      }
-      if ( !popupGroup.isEmpty() ) {
-        setGroupByName( popupGroup, false );
-      }
-
-      // Show translation based on window type
-      if ( windowType == "popup" ) {
-        ensureScanPopup();
-        if ( scanPopup ) {
-          scanPopup->translateWord( word );
-        }
-      }
-      else if ( windowType == "main" ) {
-        wordReceived( word );
-      }
-    }
+  // Handle structured message format
+  if (handleStructuredMessage(message)) {
     return;
   }
 
-  // Legacy message format support (backward compatibility)
-  QString prefix = "window:";
-  if ( message.left( prefix.size() ) == prefix ) {
-    consoleWindowOnce = message.mid( prefix.size() );
+  // Handle legacy message format
+  if (handleLegacyMessage(message)) {
     return;
   }
 
-  if ( message.left( 15 ) == "translateWord: " ) {
-    auto word = message.mid( 15 );
-    if ( consoleWindowOnce == "popup" ) {
-      ensureScanPopup();
-      if ( scanPopup ) {
-        scanPopup->translateWord( word );
-      }
-    }
-    else if ( consoleWindowOnce == "main" ) {
-      wordReceived( word );
-    }
-    else {
-      ensureScanPopup();
-      if ( scanPopup ) {
-        scanPopup->translateWord( word );
-      }
-    }
-
-    consoleWindowOnce.clear();
-  }
-  else if ( message.left( 10 ) == "setGroup: " ) {
-    setGroupByName( message.mid( 10 ), true );
-  }
-  else if ( message.left( 15 ) == "setPopupGroup: " ) {
-    setGroupByName( message.mid( 15 ), false );
-  }
-  else {
-    qWarning() << "Unknown message received from another instance: " << message;
-  }
+  // Unknown message
+  qWarning() << "Unknown message received from another instance: " << message;
 }
 
 ArticleView * MainWindow::getCurrentArticleView()
