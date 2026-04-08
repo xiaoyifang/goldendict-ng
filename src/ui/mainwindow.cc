@@ -1456,74 +1456,44 @@ void MainWindow::updateAppearances( const QString & addonStyle,
 
 void MainWindow::trayIconUpdateOrInit()
 {
+// Set dock menu for macOS
 #ifdef Q_OS_MACOS
   trayIconMenu.setAsDockMenu();
-
-  // Add system tray icon support for macOS
-  if ( cfg.preferences.enableTrayIcon ) {
-    // Update the icon to reflect the scanning mode
-    QIcon icon = enableScanningAction->isChecked() ?
-      QIcon::fromTheme( "goldendict-scan-tray", QIcon( ":/icons/programicon_scan.png" ) ) :
-      QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon_old.png" ) );
-
-    // Set icon as mask for macOS dark mode compatibility
-    icon.setIsMask( true );
-
-    if ( !trayIcon ) {
-      trayIcon = new QSystemTrayIcon( this );
-      trayIcon->setContextMenu( &trayIconMenu );
-      trayIcon->setToolTip( QApplication::applicationName() );
-      trayIcon->setIcon( icon );
-      connect( trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::trayIconActivated );
-      trayIcon->show();
-    }
-    else {
-      // Update existing tray icon
-      trayIcon->setIcon( icon );
-    }
-
-    // Show close to tray action when tray icon is enabled
-    ui.actionCloseToTray->setVisible( true );
-  }
-  else {
-    if ( trayIcon ) {
-      delete trayIcon;
-      trayIcon = nullptr;
-    }
-    ui.actionCloseToTray->setVisible( false );
-  }
-#else
-
-  if ( !cfg.preferences.enableTrayIcon ) {
-    if ( trayIcon ) {
-      delete trayIcon;
-      trayIcon = nullptr;
-    }
-  }
-  else {
-    // Update the icon to reflect the scanning mode
-    QIcon icon = enableScanningAction->isChecked() ?
-      QIcon::fromTheme( "goldendict-scan-tray", QIcon( ":/icons/programicon_scan.png" ) ) :
-      QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon_old.png" ) );
-
-    if ( !trayIcon ) {
-      trayIcon = new QSystemTrayIcon( this );
-      trayIcon->setContextMenu( &trayIconMenu );
-      trayIcon->setToolTip( QApplication::applicationName() );
-      trayIcon->setIcon( icon );
-      connect( trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::trayIconActivated );
-      trayIcon->show();
-    }
-    else {
-      // Update existing tray icon
-      trayIcon->setIcon( icon );
-    }
-  }
-
-  // The 'Close to tray' action is associated with the tray icon, so we hide
-  // or show it here.
-  ui.actionCloseToTray->setVisible( cfg.preferences.enableTrayIcon );
 #endif
+
+if ( !cfg.preferences.enableTrayIcon ) {
+  if ( trayIcon ) {
+    delete trayIcon;
+    trayIcon = nullptr;
+  }
+  ui.actionCloseToTray->setVisible( false );
+}
+else {
+  // Update the icon to reflect the scanning mode
+  QIcon icon = QIcon::fromTheme( "goldendict-scan-tray", QIcon( ":/icons/programicon.svg" ) );
+  
+#ifdef Q_OS_MACOS
+  // Use programicon.svg for macOS
+  // Set icon as mask for macOS dark mode compatibility
+  icon.setIsMask( true );
+#endif
+
+  if ( !trayIcon ) {
+    trayIcon = new QSystemTrayIcon( this );
+    trayIcon->setContextMenu( &trayIconMenu );
+    trayIcon->setToolTip( QApplication::applicationName() );
+    trayIcon->setIcon( icon );
+    connect( trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::trayIconActivated );
+    trayIcon->show();
+  }
+  else {
+    // Update existing tray icon
+    trayIcon->setIcon( icon );
+  }
+  
+  // Show close to tray action when tray icon is enabled
+  ui.actionCloseToTray->setVisible( true );
+}
 }
 
 void MainWindow::wheelEvent( QWheelEvent * ev )
