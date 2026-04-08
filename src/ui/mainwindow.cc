@@ -1458,14 +1458,14 @@ void MainWindow::trayIconUpdateOrInit()
 {
 #ifdef Q_OS_MACOS
   trayIconMenu.setAsDockMenu();
-  
+
   // Add system tray icon support for macOS
   if ( cfg.preferences.enableTrayIcon ) {
     // Update the icon to reflect the scanning mode
     QIcon icon = enableScanningAction->isChecked() ?
       QIcon::fromTheme( "goldendict-scan-tray", QIcon( ":/icons/programicon_scan.png" ) ) :
       QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon_old.png" ) );
-    
+
     // Set icon as mask for macOS dark mode compatibility
     icon.setIsMask( true );
 
@@ -1481,7 +1481,7 @@ void MainWindow::trayIconUpdateOrInit()
       // Update existing tray icon
       trayIcon->setIcon( icon );
     }
-    
+
     // Show close to tray action when tray icon is enabled
     ui.actionCloseToTray->setVisible( true );
   }
@@ -3200,11 +3200,11 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
     case QSystemTrayIcon::Trigger:
       // Left click toggles the visibility of main window
       toggleMainWindow( false );
-      
+
       // macOS specific focus handling
 #ifdef Q_OS_MACOS
       // Ensure the window gets focus, especially when there are fullscreen apps
-      if (isVisible()) {
+      if ( isVisible() ) {
         this->raise();
         this->activateWindow();
       }
