@@ -78,8 +78,10 @@ private:
   }
 
   bool handleStructuredMessage( const QString & message );
+
 public:
   void showTranslation( const QString & word, const QString & windowType );
+
 private:
 
 
