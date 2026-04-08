@@ -4214,7 +4214,7 @@ void MainWindow::foundDictsContextMenuRequested( const QPoint & pos )
   }
 
   if ( !pDict->isLocalDictionary() ) {
-    withScanPopupSignalBlocked( [ id ]() {
+    withScanPopupSignalBlocked([this, id]() {
       showDictionaryInfo( id );
     } );
     return;
@@ -4237,12 +4237,12 @@ void MainWindow::foundDictsContextMenuRequested( const QPoint & pos )
   }
 
   if ( result == infoAction ) {
-    withScanPopupSignalBlocked( [ id ]() {
+    withScanPopupSignalBlocked([this, id]() {
       showDictionaryInfo( id );
     } );
   }
   else if ( result == headwordsAction ) {
-    withScanPopupSignalBlocked( [ pDict ]() {
+    withScanPopupSignalBlocked([this, pDict]() {
       showDictionaryHeadwords( pDict );
     } );
   }
