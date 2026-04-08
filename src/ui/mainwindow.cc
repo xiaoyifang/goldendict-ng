@@ -4191,17 +4191,7 @@ void MainWindow::openDictionaryFolder( const QString & id )
   }
 }
 
-template< typename Func >
-void MainWindow::withScanPopupSignalBlocked( Func func )
-{
-  if ( scanPopup ) {
-    scanPopup->blockSignals( true );
-  }
-  func();
-  if ( scanPopup ) {
-    scanPopup->blockSignals( false );
-  }
-}
+
 
 void MainWindow::foundDictsContextMenuRequested( const QPoint & pos )
 {
