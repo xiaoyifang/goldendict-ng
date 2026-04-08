@@ -4,6 +4,7 @@
 #pragma once
 
 #include <QSystemTrayIcon>
+#include <QSignalBlocker>
 #include <functional>
 #include "ui_mainwindow.h"
 #include "config.hh"
@@ -71,13 +72,9 @@ private:
   template< typename Func >
   void withScanPopupSignalBlocked( Func func )
   {
-    if ( scanPopup ) {
-      scanPopup->blockSignals( true );
-    }
+    QSignalBlocker blocker( scanPopup );
+    Q_UNUSED( blocker ); // Avoid unused variable warning
     func();
-    if ( scanPopup ) {
-      scanPopup->blockSignals( false );
-    }
   }
 
   bool handleStructuredMessage( const QString & message );
