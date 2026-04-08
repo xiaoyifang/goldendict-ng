@@ -68,6 +68,21 @@ private:
   void addGroupComboBoxActionsToDialog( QDialog * dialog, GroupComboBox * pGroupComboBox );
   void removeGroupComboBoxActionsFromDialog( QDialog * dialog, GroupComboBox * pGroupComboBox );
 
+  template< typename Func >
+  void withScanPopupSignalBlocked( Func func )
+  {
+    if ( scanPopup ) {
+      scanPopup->blockSignals( true );
+    }
+    func();
+    if ( scanPopup ) {
+      scanPopup->blockSignals( false );
+    }
+  }
+
+  bool handleStructuredMessage( const QString & message );
+  void showTranslation( const QString & word, const QString & windowType );
+
 
   QSystemTrayIcon * trayIcon;
 

@@ -1,7 +1,6 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include <Qt>
 #ifdef EPWING_SUPPORT
   #include "dict/epwing_book.hh"
 #endif
@@ -3570,6 +3569,56 @@ void MainWindow::scaleArticlesByCurrentZoomFactor()
   }
 }
 
+void MainWindow::showTranslation( const QString & word, const QString & windowType )
+{
+  if ( windowType == "main" ) {
+    wordReceived( word );
+  }
+  else {
+    ensureScanPopup();
+    if ( scanPopup ) {
+      scanPopup->translateWord( word );
+    }
+  }
+}
+
+bool MainWindow::handleStructuredMessage( const QString & message )
+{
+  if ( !message.startsWith( "action:" ) ) {
+    return false;
+  }
+
+  QMap< QString, QString > params;
+  QStringList parts = message.split( '|' );
+  for ( const QString & part : parts ) {
+    QStringList keyValue = part.split( ':' );
+    if ( keyValue.size() >= 2 ) {
+      params[ keyValue[ 0 ] ] = keyValue.mid( 1 ).join( ':' );
+    }
+  }
+
+  if ( QString action = params.value( "action" ); action == "translate" ) {
+    QString windowType = params.value( "window", "popup" );
+    QString word       = params.value( "word" );
+    QString group      = params.value( "group" );
+    QString popupGroup = params.value( "popupGroup" );
+
+    // Handle group settings if specified
+    if ( !group.isEmpty() ) {
+      setGroupByName( group, true );
+    }
+    if ( !popupGroup.isEmpty() ) {
+      setGroupByName( popupGroup, false );
+    }
+
+    // Show translation based on window type
+    showTranslation( word, windowType );
+  }
+
+  return true;
+}
+
+
 void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
 {
   if ( message == "bringToFront" ) {
@@ -3582,41 +3631,13 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
     return;
   }
 
-  QString prefix = "window:";
-  if ( message.left( prefix.size() ) == prefix ) {
-    consoleWindowOnce = message.mid( prefix.size() );
+  // Handle structured message format
+  if ( handleStructuredMessage( message ) ) {
     return;
   }
 
-  if ( message.left( 15 ) == "translateWord: " ) {
-    auto word = message.mid( 15 );
-    if ( consoleWindowOnce == "popup" ) {
-      ensureScanPopup();
-      if ( scanPopup ) {
-        scanPopup->translateWord( word );
-      }
-    }
-    else if ( consoleWindowOnce == "main" ) {
-      wordReceived( word );
-    }
-    else {
-      ensureScanPopup();
-      if ( scanPopup ) {
-        scanPopup->translateWord( word );
-      }
-    }
-
-    consoleWindowOnce.clear();
-  }
-  else if ( message.left( 10 ) == "setGroup: " ) {
-    setGroupByName( message.mid( 10 ), true );
-  }
-  else if ( message.left( 15 ) == "setPopupGroup: " ) {
-    setGroupByName( message.mid( 15 ), false );
-  }
-  else {
-    qWarning() << "Unknown message received from another instance: " << message;
-  }
+  // Unknown message
+  qWarning() << "Unknown message received from another instance: " << message;
 }
 
 ArticleView * MainWindow::getCurrentArticleView()
@@ -4138,68 +4159,63 @@ void MainWindow::openDictionaryFolder( const QString & id )
   }
 }
 
+
 void MainWindow::foundDictsContextMenuRequested( const QPoint & pos )
 {
   QListWidgetItem * item = ui.dictsList->itemAt( pos );
-  if ( item ) {
-    QString id                = item->data( Qt::UserRole ).toString();
-    Dictionary::Class * pDict = nullptr;
+  if ( !item ) {
+    return;
+  }
 
-    for ( unsigned i = 0; i < dictionaries.size(); i++ ) {
-      if ( id.compare( dictionaries[ i ]->getId().c_str() ) == 0 ) {
-        pDict = dictionaries[ i ].get();
-        break;
-      }
+  QString id                = item->data( Qt::UserRole ).toString();
+  Dictionary::Class * pDict = nullptr;
+
+  for ( unsigned i = 0; i < dictionaries.size(); i++ ) {
+    if ( id.compare( dictionaries[ i ]->getId().c_str() ) == 0 ) {
+      pDict = dictionaries[ i ].get();
+      break;
     }
+  }
 
-    if ( pDict == nullptr ) {
-      return;
-    }
+  if ( pDict == nullptr ) {
+    return;
+  }
 
-    if ( !pDict->isLocalDictionary() ) {
-      if ( scanPopup ) {
-        scanPopup->blockSignals( true );
-      }
+  if ( !pDict->isLocalDictionary() ) {
+    withScanPopupSignalBlocked( [ this, id ]() {
       showDictionaryInfo( id );
-      if ( scanPopup ) {
-        scanPopup->blockSignals( false );
-      }
-    }
-    else {
-      QMenu menu( ui.dictsList );
-      QAction * infoAction = menu.addAction( tr( "Dictionary info" ) );
+    } );
+    return;
+  }
 
-      QAction * headwordsAction = nullptr;
-      if ( pDict->getWordCount() > 0 ) {
-        headwordsAction = menu.addAction( tr( "Dictionary headwords" ) );
-      }
+  QMenu menu( ui.dictsList );
+  QAction * infoAction = menu.addAction( tr( "Dictionary info" ) );
 
-      QAction * openDictFolderAction = menu.addAction( tr( "Open dictionary folder" ) );
+  QAction * headwordsAction = nullptr;
+  if ( pDict->getWordCount() > 0 ) {
+    headwordsAction = menu.addAction( tr( "Dictionary headwords" ) );
+  }
 
-      QAction * result = menu.exec( ui.dictsList->mapToGlobal( pos ) );
+  QAction * openDictFolderAction = menu.addAction( tr( "Open dictionary folder" ) );
 
-      if ( result && result == infoAction ) {
-        if ( scanPopup ) {
-          scanPopup->blockSignals( true );
-        }
-        showDictionaryInfo( id );
-        if ( scanPopup ) {
-          scanPopup->blockSignals( false );
-        }
-      }
-      else if ( result && result == headwordsAction ) {
-        if ( scanPopup ) {
-          scanPopup->blockSignals( true );
-        }
-        showDictionaryHeadwords( pDict );
-        if ( scanPopup ) {
-          scanPopup->blockSignals( false );
-        }
-      }
-      else if ( result && result == openDictFolderAction ) {
-        openDictionaryFolder( id );
-      }
-    }
+  QAction * result = menu.exec( ui.dictsList->mapToGlobal( pos ) );
+
+  if ( !result ) {
+    return;
+  }
+
+  if ( result == infoAction ) {
+    withScanPopupSignalBlocked( [ this, id ]() {
+      showDictionaryInfo( id );
+    } );
+  }
+  else if ( result == headwordsAction ) {
+    withScanPopupSignalBlocked( [ this, pDict ]() {
+      showDictionaryHeadwords( pDict );
+    } );
+  }
+  else if ( result == openDictFolderAction ) {
+    openDictionaryFolder( id );
   }
 }
 
