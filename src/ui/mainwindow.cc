@@ -3619,7 +3619,6 @@ bool MainWindow::handleStructuredMessage( const QString & message )
 }
 
 
-
 void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
 {
   if ( message == "bringToFront" ) {
