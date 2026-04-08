@@ -1461,39 +1461,39 @@ void MainWindow::trayIconUpdateOrInit()
   trayIconMenu.setAsDockMenu();
 #endif
 
-if ( !cfg.preferences.enableTrayIcon ) {
-  if ( trayIcon ) {
-    delete trayIcon;
-    trayIcon = nullptr;
-  }
-  ui.actionCloseToTray->setVisible( false );
-}
-else {
-  // Update the icon to reflect the scanning mode
-  QIcon icon = QIcon::fromTheme( "goldendict-scan-tray", QIcon( ":/icons/programicon.svg" ) );
-  
-#ifdef Q_OS_MACOS
-  // Use programicon.svg for macOS
-  // Set icon as mask for macOS dark mode compatibility
-  icon.setIsMask( true );
-#endif
-
-  if ( !trayIcon ) {
-    trayIcon = new QSystemTrayIcon( this );
-    trayIcon->setContextMenu( &trayIconMenu );
-    trayIcon->setToolTip( QApplication::applicationName() );
-    trayIcon->setIcon( icon );
-    connect( trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::trayIconActivated );
-    trayIcon->show();
+  if ( !cfg.preferences.enableTrayIcon ) {
+    if ( trayIcon ) {
+      delete trayIcon;
+      trayIcon = nullptr;
+    }
+    ui.actionCloseToTray->setVisible( false );
   }
   else {
-    // Update existing tray icon
-    trayIcon->setIcon( icon );
+    // Update the icon to reflect the scanning mode
+    QIcon icon = QIcon::fromTheme( "goldendict-scan-tray", QIcon( ":/icons/programicon.svg" ) );
+
+#ifdef Q_OS_MACOS
+    // Use programicon.svg for macOS
+    // Set icon as mask for macOS dark mode compatibility
+    icon.setIsMask( true );
+#endif
+
+    if ( !trayIcon ) {
+      trayIcon = new QSystemTrayIcon( this );
+      trayIcon->setContextMenu( &trayIconMenu );
+      trayIcon->setToolTip( QApplication::applicationName() );
+      trayIcon->setIcon( icon );
+      connect( trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::trayIconActivated );
+      trayIcon->show();
+    }
+    else {
+      // Update existing tray icon
+      trayIcon->setIcon( icon );
+    }
+
+    // Show close to tray action when tray icon is enabled
+    ui.actionCloseToTray->setVisible( true );
   }
-  
-  // Show close to tray action when tray icon is enabled
-  ui.actionCloseToTray->setVisible( true );
-}
 }
 
 void MainWindow::wheelEvent( QWheelEvent * ev )
