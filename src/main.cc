@@ -1,4 +1,4 @@
-﻿/* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
+/* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "config.hh"
@@ -563,7 +563,11 @@ int main( int argc, char ** argv )
   }
 
   if ( gdcl.needTranslateWord() ) {
-    m.wordReceived( gdcl.wordToTranslate() );
+    if ( gdcl.window == "popup" ) {
+      m.showTranslation( gdcl.wordToTranslate(), "popup" );
+    } else {
+      m.wordReceived( gdcl.wordToTranslate() );
+    }
   }
 
 #ifdef Q_OS_UNIX
