@@ -4214,9 +4214,9 @@ void MainWindow::foundDictsContextMenuRequested( const QPoint & pos )
   }
 
   if ( !pDict->isLocalDictionary() ) {
-    withScanPopupSignalBlocked([id]() {
+    withScanPopupSignalBlocked( [ id ]() {
       showDictionaryInfo( id );
-    });
+    } );
     return;
   }
 
@@ -4237,14 +4237,14 @@ void MainWindow::foundDictsContextMenuRequested( const QPoint & pos )
   }
 
   if ( result == infoAction ) {
-    withScanPopupSignalBlocked([id]() {
+    withScanPopupSignalBlocked( [ id ]() {
       showDictionaryInfo( id );
-    });
+    } );
   }
   else if ( result == headwordsAction ) {
-    withScanPopupSignalBlocked([pDict]() {
+    withScanPopupSignalBlocked( [ pDict ]() {
       showDictionaryHeadwords( pDict );
-    });
+    } );
   }
   else if ( result == openDictFolderAction ) {
     openDictionaryFolder( id );
