@@ -176,7 +176,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.mruTabOrder->setChecked( p.mruTabOrder );
   ui.enableTrayIcon->setChecked( p.enableTrayIcon );
 
-// Enable tray icon option for all platforms
+  // Enable tray icon option for all platforms
 
   ui.startToTray->setChecked( p.startToTray );
   ui.closeToTray->setChecked( p.closeToTray );
