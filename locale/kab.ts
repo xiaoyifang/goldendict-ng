@@ -3511,7 +3511,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Anki</source>
-      <translation type="unfinished">Anki</translation>
+      <translation>Anki</translation>
     </message>
     <message>
       <source>Allow JavaScript to access clipboard in the article view.</source>
