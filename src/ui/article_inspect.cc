@@ -32,10 +32,10 @@ void ArticleInspector::setInspectPage( QWebEnginePage * page )
   }
 
   // Connect to page destroyed signal
-  connect( page, &QObject::destroyed, this, [this]() {
+  connect( page, &QObject::destroyed, this, [ this ]() {
     qDebug() << "Inspected page destroyed, closing inspector";
     close();
-  });
+  } );
 
   raise();
   show();
