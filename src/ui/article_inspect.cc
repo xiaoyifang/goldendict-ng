@@ -18,12 +18,24 @@ ArticleInspector::ArticleInspector( QWidget * parent ):
 
 void ArticleInspector::setInspectPage( QWebEnginePage * page )
 {
+  // Disconnect previous connections
+  if ( currentPage ) {
+    disconnect( currentPage, nullptr, this, nullptr );
+  }
+
   viewContainer->page()->setInspectedPage( page );
+  currentPage = page;
 
   if ( !page ) {
     qDebug() << "reset inspector";
     return;
   }
+
+  // Connect to page destroyed signal
+  connect( page, &QObject::destroyed, this, [this]() {
+    qDebug() << "Inspected page destroyed, closing inspector";
+    close();
+  });
 
   raise();
   show();
@@ -42,5 +54,10 @@ void ArticleInspector::triggerAction( QWebEnginePage * page )
 
 void ArticleInspector::closeEvent( QCloseEvent * )
 {
+  // Disconnect from the page
+  if ( currentPage ) {
+    disconnect( currentPage, nullptr, this, nullptr );
+    currentPage = nullptr;
+  }
   viewContainer->page()->setInspectedPage( nullptr );
 }
