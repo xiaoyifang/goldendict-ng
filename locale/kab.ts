@@ -4245,7 +4245,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Script</source>
-      <translation type="unfinished">Script</translation>
+      <translation>Askript</translation>
     </message>
     <message>
       <source>Icon file name. Relative to the config directory.</source>
