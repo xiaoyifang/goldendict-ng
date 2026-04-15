@@ -3514,6 +3514,18 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Anki</source>
       <translation>Anki</translation>
     </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>Επιτρέψτε στην JavaScript να έχει πρόσβαση στο πρόχειρο στην προβολή άρθρου.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Ενεργοποίηση πρόσβασης στο πρόχειρο JavaScript (χρειάζεται επανεκκίνηση)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Επανεκκίνηση για να εφαρμόσετε την αλλαγή πρόσβασης στο πρόχειρο JavaScript.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

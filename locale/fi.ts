@@ -3513,6 +3513,18 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <source>Anki</source>
       <translation>Anki</translation>
     </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>Salli JavaScript käyttää leikepöytää artikkelin näkymässä.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Salli JavaScript-leikepöydälle pääsy (täytyy käynnistää uudelleen)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Käynnistä uudelleen, jos haluat ottaa käyttöön JavaScript-leikepöydälle pääsyn muutoksen.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

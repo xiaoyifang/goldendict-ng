@@ -3620,6 +3620,18 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <source>Anki</source>
       <translation type="unfinished">Anki</translation>
     </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation type="unfinished">Allow JavaScript to access clipboard in the article view.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation type="unfinished">Enable JavaScript clipboard access (need restart)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation type="unfinished">Restart to apply the JavaScript clipboard access change.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

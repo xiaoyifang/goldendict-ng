@@ -3511,6 +3511,18 @@ ze słowników Stardict, Babylon i GLS</translation>
       <source>Anki</source>
       <translation>Anki</translation>
     </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>Zezwalaj JavaScript na dostęp do schowka w widoku artykułu.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Włącz dostęp do schowka JavaScript (wymaga ponownego uruchomienia)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Uruchom ponownie, aby zastosować zmianę dostępu do schowka JavaScript.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

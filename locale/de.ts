@@ -3507,6 +3507,18 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Anki</source>
       <translation>Anki</translation>
     </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>JavaScript darf in der Artikelansicht auf die Zwischenablage zugreifen.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>JavaScript Zwischenablage Zugriff aktivieren (Neustart erforderlich)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Neustarten, um die Änderung der JavaScript-Zwischenablage zu übernehmen.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
