@@ -6,10 +6,6 @@
 #include <QtXml>
 #include <QApplication>
 
-#ifdef Q_OS_WIN32
-  //this is a windows header file.
-  #include <Shlobj.h>
-#endif
 
 #include <stdint.h>
 
@@ -332,7 +328,7 @@ void applyBoolOption( bool & option, const QDomNode & node )
   }
 }
 
-Group loadGroup( QDomElement grp, unsigned * nextId = 0 )
+Group loadGroup( QDomElement grp )
 {
   Group g;
 
@@ -340,7 +336,12 @@ Group loadGroup( QDomElement grp, unsigned * nextId = 0 )
     g.id = grp.attribute( "id" ).toUInt();
   }
   else {
-    g.id = nextId ? ( *nextId )++ : 0;
+    g.name = grp.attribute( "name" );
+    g.id   = static_cast< unsigned >( qHash( g.name ) );
+    // Ensure ID is not 0 (reserved for NoGroupId)
+    if ( g.id == 0 ) {
+      g.id = 1;
+    }
   }
 
   g.name            = grp.attribute( "name" );
@@ -376,9 +377,9 @@ Group loadGroup( QDomElement grp, unsigned * nextId = 0 )
   return g;
 }
 
-DictionarySets loadDictionaries( const QDomNode & mutedDictionaries, const QString & elementName = "mutedDictionary" )
+QSet< QString > loadDictionaries( const QDomNode & mutedDictionaries, const QString & elementName = "mutedDictionary" )
 {
-  DictionarySets result;
+  QSet< QString > result;
 
   if ( !mutedDictionaries.isNull() ) {
     QDomNodeList nl = mutedDictionaries.toElement().elementsByTagName( elementName );
@@ -393,7 +394,7 @@ DictionarySets loadDictionaries( const QDomNode & mutedDictionaries, const QStri
 
 void saveDictionaries( QDomDocument & dd,
                        QDomElement & muted,
-                       const DictionarySets & mutedDictionaries,
+                       const QSet< QString > & mutedDictionaries,
                        const QString & elementName = "mutedDictionary" )
 {
   for ( const auto & mutedDictionarie : mutedDictionaries ) {
@@ -551,14 +552,12 @@ Class load()
   QDomNode groups = root.namedItem( "groups" );
 
   if ( !groups.isNull() ) {
-    c.groups.nextId = groups.toElement().attribute( "nextId", "1" ).toUInt();
-
     QDomNodeList nl = groups.toElement().elementsByTagName( "group" );
 
     for ( int x = 0; x < nl.length(); ++x ) {
       QDomElement grp = nl.item( x ).toElement();
 
-      c.groups.push_back( loadGroup( grp, &c.groups.nextId ) );
+      c.groups.push_back( loadGroup( grp ) );
     }
   }
 
@@ -967,6 +966,11 @@ Class load()
       c.preferences.suppressWebDialogs = ( preferences.namedItem( "suppressWebDialogs" ).toElement().text() == "1" );
     }
 
+    if ( !preferences.namedItem( "enableJavaScriptClipboardAccess" ).isNull() ) {
+      c.preferences.enableJavaScriptClipboardAccess =
+        ( preferences.namedItem( "enableJavaScriptClipboardAccess" ).toElement().text() == "1" );
+    }
+
     if ( !preferences.namedItem( "maxStringsInHistory" ).isNull() ) {
       c.preferences.maxStringsInHistory = preferences.namedItem( "maxStringsInHistory" ).toElement().text().toUInt();
     }
@@ -1336,10 +1340,6 @@ void save( const Class & c )
   {
     QDomElement groups = dd.createElement( "groups" );
     root.appendChild( groups );
-
-    QDomAttr nextId = dd.createAttribute( "nextId" );
-    nextId.setValue( QString::number( c.groups.nextId ) );
-    groups.setAttributeNode( nextId );
 
     for ( const auto & i : c.groups ) {
       QDomElement group = dd.createElement( "group" );
@@ -1984,6 +1984,10 @@ void save( const Class & c )
 
     opt = dd.createElement( "suppressWebDialogs" );
     opt.appendChild( dd.createTextNode( c.preferences.suppressWebDialogs ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "enableJavaScriptClipboardAccess" );
+    opt.appendChild( dd.createTextNode( c.preferences.enableJavaScriptClipboardAccess ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "maxStringsInHistory" );

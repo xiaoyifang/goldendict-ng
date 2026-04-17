@@ -1124,6 +1124,14 @@ between classic and school orthography in cyrillic)</source>
       <source>&amp;Add group</source>
       <translation>&amp;Добавить</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>Группа уже существует</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>Группа с именем &apos;%1&apos; уже существует.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -2657,15 +2665,15 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Ошибка разбора XML: %1 на строке %2, столбце %3</translation>
+      <source>JSON parse error</source>
+      <translation>Ошибка разбора JSON</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Ошибка разбора XML: %1 на строке %2, столбце %3</translation>
+      <source>JSON parse error</source>
+      <translation>Ошибка разбора JSON</translation>
     </message>
   </context>
   <context>
@@ -3278,10 +3286,6 @@ for all program&apos;s network requests.</source>
       <translation>Колода:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Модель:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Слово</translation>
     </message>
@@ -3510,6 +3514,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Открыть словарь сайта в отдельной вкладке</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
+    </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>Разрешить JavaScript доступ к буферу обмена при просмотре статьи.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Разрешить доступ к буферу обмена JavaScript (требуется перезапуск)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Перезапустите, чтобы применить изменение доступа к буферу обмена JavaScript.</translation>
     </message>
   </context>
   <context>

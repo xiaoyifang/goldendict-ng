@@ -32,7 +32,7 @@
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: post na Anki udany</translation>
+      <translation>Anki: post do Anki udany</translation>
     </message>
   </context>
   <context>
@@ -83,18 +83,18 @@
     &lt;/div&gt;</source>
       <translation>
     &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Witamy na &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;h3&gt;Witamy w &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
         &lt;h4&gt;Aby rozpocząć:&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Przejdź do &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edytuj&lt;/span&gt;&lt;span&gt;Słowniki&lt;/span&gt;&lt;/span&gt; aby dodać swoje pliki słowników, skonfigurować źródła online, takie jak Wikipedia, i zorganizować je w grupy.&lt;/li&gt;
-          &lt;li&gt;Po skonfigurowaniu, możesz wyszukać słowa w tym oknie lub &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;z innych aplikacji za pomocą wyskakującego okienka&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;Aby dostosować program, zobacz ustawienia w &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edytuj&lt;/span&gt;&lt;span&gt;Preferencje&lt;/span&gt;&lt;/span&gt;. Wszystkie ustawienia mają podpowiedzi, więc upewnij się, że przeczytano je jeśli cokolwiek nie jest jasne.&lt;/li&gt;
+          &lt;li&gt;Przejdź do &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edycja&lt;/span&gt;&lt;span&gt;Słowniki&lt;/span&gt;&lt;/span&gt;, aby dodać pliki słowników, skonfigurować źródła online, takie jak Wikipedia, i zorganizować je w grupy.&lt;/li&gt;
+          &lt;li&gt;Po ich skonfigurowaniu możesz wyszukiwać słowa w tym oknie lub &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;z innych aplikacji z użyciem okienka wyskakującego skanowania&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;Aby dostosować program, przejdź do ustawień w oknie &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edycja&lt;/span&gt;&lt;span&gt;Preferencje&lt;/span&gt;&lt;/span&gt;. Do wszystkich ustawień są podpowiedzi, więc przeczytaj je, jeśli cokolwiek nie jest jasne.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;
-      &lt;p&gt;Jeśli potrzebujesz dalszej pomocy, masz jakiekolwiek pytania lub sugestie, jesteś witany w programie&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; i &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;strona&lt;/a&gt;.&lt;/p&gt;
+      &lt;p&gt;Jeśli potrzebujesz dalszej pomocy, masz pytania lub sugestie, możesz skorzystać z &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; i &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;strony internetowej&lt;/a&gt; programu.&lt;/p&gt;
       &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Na podstawie oryginalnego GoldenDict Konstantin Isakov, c) 2008-2013. Utrzymywane i rozwijane przez społeczność GoldenDict-NG. Licencjonowane na mocy GPLv3 lub nowszej.&lt;/small&gt;
+        &lt;small&gt;Na podstawie oryginalnego programu GoldenDict Konstantina Isakova (c) 2008-2013. Utrzymywany i rozwijany przez społeczność GoldenDict-NG. Na licencji GPLv3 lub nowszej.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</translation>
     </message>
@@ -362,11 +362,11 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
+      <translation>Wariant tajwański</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
-      <translation>Wariant Hongkongu</translation>
+      <translation>Wariant hongkoński</translation>
     </message>
     <message>
       <source>Mainland variant</source>
@@ -753,19 +753,19 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     </message>
     <message>
       <source>Cancel reindex</source>
-      <translation>Anuluj reindeks</translation>
+      <translation>Anuluj ponowne indeksowanie</translation>
     </message>
     <message>
       <source>Schedule for reindex</source>
-      <translation>Harmonogram przeindeksowania</translation>
+      <translation>Zaplanuj ponowne indeksowanie</translation>
     </message>
     <message>
       <source>Cancel schedule reindex</source>
-      <translation>Anuluj przeindeksowanie harmonogramu</translation>
+      <translation>Anuluj harmonogram ponownego indeksowania</translation>
     </message>
     <message>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
-      <translation>Słownik został zaplanowany do przeindeksowania. Indeks zostanie przebudowany po ponownym uruchomieniu aplikacji.</translation>
+      <translation>Zaplanowano ponowne indeksowanie słownika. Indeks zostanie przebudowany po ponownym uruchomieniu aplikacji.</translation>
     </message>
     <message>
       <source>Change display name</source>
@@ -1121,6 +1121,14 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <source>&amp;Add group</source>
       <translation>Dod&amp;aj grupę</translation>
+    </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>Grupa już istnieje</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>Grupa o nazwie &apos;%1&apos; już istnieje.</translation>
     </message>
   </context>
   <context>
@@ -2654,15 +2662,15 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Błąd podczas analizy pliku XML: %1 w %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>Błąd parsowania JSON</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Błąd podczas analizy pliku XML: %1 w %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>Błąd parsowania JSON</translation>
     </message>
   </context>
   <context>
@@ -2980,17 +2988,15 @@ prowadzi do jego ukrycia, a nie do zamknięcia aplikacji.</translation>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
                   opened.
                  </source>
-      <translation>Zaznacz tę opcję, jeśli nie jesteś&apos;t chcesz zobaczyć pasek karty głównej, gdy tylko jedna karta jest otwarta
-                  .
+      <translation>Zaznacz tę opcję, jeśli nie chcesz, aby wyświetlany był główny pasek kart, gdy otwarta jest tylko jedna
+                  karta.
                  </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise, they are added to
 be the last ones.</source>
-      <translation>Wraz z tym nowe karty są otwierane tuż po aktywnym
-. W przeciwnym razie są dodawane do
-jako ostatnie.</translation>
+      <translation>Gdy ta opcja jest włączona, nowe karty są otwierane tuż za aktywną. W przeciwnym razie są dodawane jako ostatnie.</translation>
     </message>
     <message>
       <source>&amp;Style</source>
@@ -3006,11 +3012,11 @@ jako ostatnie.</translation>
     </message>
     <message>
       <source>Font</source>
-      <translation>Font</translation>
+      <translation>Czcionka</translation>
     </message>
     <message>
       <source>Font Size</source>
-      <translation>Font Size</translation>
+      <translation>Rozmiar czcionki</translation>
     </message>
     <message>
       <source>Interface language</source>
@@ -3273,10 +3279,6 @@ for all program&apos;s network requests.</source>
       <translation>Talia:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Typ notatki:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Słowo</translation>
     </message>
@@ -3491,19 +3493,35 @@ ze słowników Stardict, Babylon i GLS</translation>
     </message>
     <message>
       <source>S&amp;can</source>
-      <translation>&amp;Skanuj</translation>
+      <translation>Ska&amp;nowanie</translation>
     </message>
     <message>
       <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
-      <translation>Wyłącz alerty JavaScript, potwierdza i pyta w widoku artykułu.</translation>
+      <translation>Blokuj alerty, potwierdzenia i podpowiedzi JavaScript w widoku artykułu.</translation>
     </message>
     <message>
       <source>Suppress JavaScript dialogs</source>
-      <translation>Wyłącz dialogi JavaScript</translation>
+      <translation>Blokuj okna dialogowe JavaScript</translation>
     </message>
     <message>
       <source>Open website dictionary in separate tab</source>
-      <translation>Otwórz słownik strony w osobnej karcie</translation>
+      <translation>Otwórz słownik internetowy w osobnej karcie</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
+    </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>Zezwalaj JavaScript na dostęp do schowka w widoku artykułu.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Włącz dostęp do schowka JavaScript (wymaga ponownego uruchomienia)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Uruchom ponownie, aby zastosować zmianę dostępu do schowka JavaScript.</translation>
     </message>
   </context>
   <context>
@@ -3639,11 +3657,11 @@ ze słowników Stardict, Babylon i GLS</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Zapisz wiadomości debugowania do gd_log.txt w folderze konfiguracyjnym.</translation>
+      <translation>Zapisuj komunikaty debugowania do pliku gd_log.txt w folderze konfiguracji.</translation>
     </message>
     <message>
       <source>Force the word to be translated in Popup.</source>
-      <translation>Wymuś tłumaczenie słowa w wyskakującym oknie.</translation>
+      <translation>Wymuś tłumaczenie słowa w okienku wyskakującym.</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
@@ -3651,19 +3669,19 @@ ze słowników Stardict, Babylon i GLS</translation>
     </message>
     <message>
       <source>Website Url:</source>
-      <translation>Adres strony internetowej:</translation>
+      <translation>Adres URL strony internetowej:</translation>
     </message>
     <message>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
-      <translation>W URL, &quot;%GDWORD%&quot; zostanie zastąpiony słowem wyszukiwanym.</translation>
+      <translation>Ciąg znaków „%GDWORD%” w adresie URL zostanie zastąpiony wyszukiwanym słowem.</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation>Complete Html (*.html *.htm)</translation>
+      <translation>Kompletny kod HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation>Pojedynczy Html (*.html *.htm)</translation>
+      <translation>Pojedyncza strona HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
@@ -3671,7 +3689,7 @@ ze słowników Stardict, Babylon i GLS</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation>Mime Html (*.mhtml)</translation>
+      <translation>Mime HTML (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -3687,7 +3705,7 @@ ze słowników Stardict, Babylon i GLS</translation>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation>Może&apos;t zapisać artykuł: %1</translation>
+      <translation>Nie można zapisać artykułu: %1</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
@@ -3758,7 +3776,7 @@ ze słowników Stardict, Babylon i GLS</translation>
     </message>
     <message>
       <source>Definition</source>
-      <translation>Definicje</translation>
+      <translation>Definicja</translation>
     </message>
   </context>
   <context>
@@ -4083,7 +4101,7 @@ Pełną listę dostępnych języków można znaleźć &lt;a href=&quot;https://l
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
-      <translation>Najczęściej używana metoda transkrypcji japońskiej oparta na angielskiej fonologii</translation>
+      <translation>Najczęściej używana metoda transkrypcji japońskiej oparta na fonologii angielskiej</translation>
     </message>
     <message>
       <source>Remove selected directories from the list?</source>
@@ -4091,19 +4109,19 @@ Pełną listę dostępnych języków można znaleźć &lt;a href=&quot;https://l
     </message>
     <message>
       <source>Remove %1 directories from the list?</source>
-      <translation>Usunąć katalogi %1 z listy?</translation>
+      <translation>Usunąć katalogi (%1) z listy?</translation>
     </message>
     <message>
       <source>Remove %1 sites from the list?</source>
-      <translation>Usunąć strony %1 z listy?</translation>
+      <translation>Usunąć witryny (%1) z listy?</translation>
     </message>
     <message>
       <source>Remove %1 servers from the list?</source>
-      <translation>Usunąć serwery %1 z listy?</translation>
+      <translation>Usunąć serwery (%1) z listy?</translation>
     </message>
     <message>
       <source>Remove %1 programs from the list?</source>
-      <translation>Usunąć programy %1 z listy?</translation>
+      <translation>Usunąć programy (%1) z listy?</translation>
     </message>
   </context>
   <context>
@@ -4203,7 +4221,7 @@ Pełną listę dostępnych języków można znaleźć &lt;a href=&quot;https://l
     <name>WebSite</name>
     <message>
       <source>This website dictionary is opened in a new tab</source>
-      <translation>Ten słownik strony jest otwarty w nowej karcie</translation>
+      <translation>Ten słownik internetowy jest otwarty w nowej karcie</translation>
     </message>
   </context>
   <context>
@@ -4230,15 +4248,15 @@ Pełną listę dostępnych języków można znaleźć &lt;a href=&quot;https://l
     </message>
     <message>
       <source>Icon file name. Relative to the config directory.</source>
-      <translation>Nazwa pliku ikony. W stosunku do katalogu konfiguracyjnego.</translation>
+      <translation>Nazwa pliku ikony. Względem katalogu konfiguracji.</translation>
     </message>
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
-      <translation>Dostępne tylko podczas otwierania stron internetowych w oddzielnych kartach. Może być ścieżką pliku (w stosunku do katalogu konfiguracyjnego lub bezwzględnego) lub bezpośrednią zawartością skryptu.</translation>
+      <translation>Dostępne tylko podczas otwierania stron internetowych w oddzielnych kartach. Może to być ścieżka pliku (względem katalogu konfiguracji lub bezwzględna) lub bezpośrednia zawartość skryptu.</translation>
     </message>
     <message>
       <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
-      <translation>Ta kolumna jest wyłączona, ponieważ opcja &quot;Otwórz słownik witryny w osobnej karcie&quot; nie jest włączona w Preferencjach.</translation>
+      <translation>Ta kolumna jest wyłączona, ponieważ opcja „Otwórz słownik internetowy w osobnej karcie” nie jest włączona w Preferencjach.</translation>
     </message>
   </context>
   <context>

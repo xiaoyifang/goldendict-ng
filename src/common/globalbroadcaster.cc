@@ -5,10 +5,17 @@
 #include <QGlobalStatic>
 #include <QGuiApplication>
 #include <QStyleHints>
-#include <Qt>
 #include "utils.hh"
+#include <QDir>
+#include <QDebug>
+#include <QFile>
+#include <QTextStream>
 
 Q_GLOBAL_STATIC( GlobalBroadcaster, bdcaster )
+
+static std::vector< sptr< Dictionary::Class > > emptyDicts;
+static Instances::Groups emptyGroups;
+static AudioPlayerPtr emptyAudioPlayer;
 
 GlobalBroadcaster::GlobalBroadcaster( QObject * parent ):
   QObject( parent )
@@ -28,6 +35,7 @@ GlobalBroadcaster * GlobalBroadcaster::instance()
 void GlobalBroadcaster::setConfig( Config::Class * _config )
 {
   config = _config;
+  loadWhitelist();
 }
 
 Config::Class * GlobalBroadcaster::getConfig() const
@@ -76,7 +84,7 @@ bool GlobalBroadcaster::existedInRefererWhitelist( QString host ) const
 }
 
 
-QString GlobalBroadcaster::getAbbrName( const QString & text )
+QString GlobalBroadcaster::getAbbrName( const QString & text, const QString & key )
 {
   if ( text.isEmpty() ) {
     return {};
@@ -90,7 +98,26 @@ QString GlobalBroadcaster::getAbbrName( const QString & text )
     return {};
   }
 
-  return _icon_names.getIconName( simplified );
+  QString cacheKey = key.isEmpty() ? simplified : key;
+  return _icon_names.getIconName( cacheKey, simplified );
+}
+
+void GlobalBroadcaster::loadWhitelist()
+{
+  QString whitelistFile = Config::getConfigDir() + "whitelist";
+  QFile file( whitelistFile );
+  if ( !file.open( QIODevice::ReadOnly | QIODevice::Text ) ) {
+    return;
+  }
+
+  QTextStream in( &file );
+  while ( !in.atEnd() ) {
+    QString line = in.readLine().trimmed();
+    if ( !line.isEmpty() && !line.startsWith( "#" ) ) {
+      addHostWhitelist( line );
+      qDebug() << "Whitelisted host from config/whitelist:" << line;
+    }
+  }
 }
 
 void GlobalBroadcaster::setAudioPlayer( const AudioPlayerPtr * _audioPlayer )
@@ -100,7 +127,7 @@ void GlobalBroadcaster::setAudioPlayer( const AudioPlayerPtr * _audioPlayer )
 
 const AudioPlayerPtr * GlobalBroadcaster::getAudioPlayer() const
 {
-  return audioPlayer;
+  return audioPlayer ? audioPlayer : &emptyAudioPlayer;
 }
 
 void GlobalBroadcaster::setAllDictionaries( std::vector< sptr< Dictionary::Class > > * _allDictionaries )
@@ -110,7 +137,7 @@ void GlobalBroadcaster::setAllDictionaries( std::vector< sptr< Dictionary::Class
 
 const std::vector< sptr< Dictionary::Class > > * GlobalBroadcaster::getAllDictionaries() const
 {
-  return allDictionaries;
+  return allDictionaries ? allDictionaries : &emptyDicts;
 }
 
 sptr< Dictionary::Class > GlobalBroadcaster::getDictionaryById( const QString & dictId )
@@ -132,7 +159,7 @@ void GlobalBroadcaster::setGroups( Instances::Groups * _groups )
 
 const Instances::Groups * GlobalBroadcaster::getGroups() const
 {
-  return groups;
+  return groups ? groups : &emptyGroups;
 }
 
 void GlobalBroadcaster::addLsaDictMapping( const QString & dictId, const QString & path )

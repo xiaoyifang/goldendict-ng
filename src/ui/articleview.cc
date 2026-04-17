@@ -27,6 +27,9 @@
 #include <QUuid>
 #include <QTimer>
 #include <QVariant>
+#include <QDateTime>
+#include <QJsonObject>
+#include <QJsonArray>
 #include <QWebChannel>
 #include <QWebEngineHistory>
 #include <QWebEngineScriptCollection>
@@ -212,13 +215,15 @@ ArticleView::ArticleView( QWidget * parent,
   QWebEngineSettings * settings = webview->settings();
   settings->setUnknownUrlSchemePolicy( QWebEngineSettings::UnknownUrlSchemePolicy::DisallowUnknownUrlSchemes );
 
+  settings->setAttribute( QWebEngineSettings::LocalContentCanAccessRemoteUrls, true );
   // More secure settings to prevent XSS attacks and filesystem access
-  settings->setAttribute( QWebEngineSettings::LocalContentCanAccessRemoteUrls, false );
   settings->setAttribute( QWebEngineSettings::LocalContentCanAccessFileUrls, false );
   settings->setAttribute( QWebEngineSettings::ErrorPageEnabled, false );
   settings->setAttribute( QWebEngineSettings::LinksIncludedInFocusChain, false );
   settings->setAttribute( QWebEngineSettings::PlaybackRequiresUserGesture, false );
-  settings->setAttribute( QWebEngineSettings::JavascriptCanAccessClipboard, false );
+  settings->setAttribute( QWebEngineSettings::JavascriptCanAccessClipboard,
+                          cfg.preferences.enableJavaScriptClipboardAccess );
+  settings->setAttribute( QWebEngineSettings::JavascriptCanPaste, cfg.preferences.enableJavaScriptClipboardAccess );
   settings->setAttribute( QWebEngineSettings::PrintElementBackgrounds, false );
 
   expandOptionalParts = cfg.preferences.alwaysExpandOptionalParts;
@@ -264,7 +269,11 @@ unsigned ArticleView::getCurrentGroupId()
 
 void ArticleView::setAudioLink( QString audioLink )
 {
-  audioLink_ = audioLink;
+  if ( audioLink_ != audioLink ) {
+    audioLink_ = audioLink;
+    lastAudioData.clear();
+    lastAudioUrl.clear();
+  }
 }
 
 QString ArticleView::getAudioLink() const
@@ -289,6 +298,9 @@ void ArticleView::showDefinition( const QString & word,
                                   const Contexts & contexts_ )
 {
   GlobalBroadcaster::instance()->pronounce_engine.reset();
+  audioLink_.clear();
+  lastAudioData.clear();
+  lastAudioUrl.clear();
   currentWord = word.trimmed();
   if ( currentWord.isEmpty() ) {
     return;
@@ -362,6 +374,7 @@ void ArticleView::showDefinition( const QString & word,
                                   unsigned group,
                                   bool ignoreDiacritics )
 {
+  GlobalBroadcaster::instance()->pronounce_engine.reset();
   if ( dictIDs.isEmpty() ) {
     return;
   }
@@ -375,6 +388,8 @@ void ArticleView::showDefinition( const QString & word,
   // first, let's stop the player
   audioPlayer->stop();
   audioLink_.clear();
+  lastAudioData.clear();
+  lastAudioUrl.clear();
 
   QUrl req;
   QUrlQuery reqQuery;
@@ -393,6 +408,10 @@ void ArticleView::showDefinition( const QString & word,
   reqQuery.addQueryItem( "group", QString::number( group ) );
   if ( ignoreDiacritics ) {
     reqQuery.addQueryItem( "ignore_diacritics", "1" );
+  }
+
+  if ( popupView ) {
+    reqQuery.addQueryItem( "popup", "1" );
   }
 
   req.setQuery( reqQuery );
@@ -416,16 +435,80 @@ void ArticleView::showDefinition( const QString & word,
   showDefinition( word, dictIDs, {}, group, ignoreDiacritics );
 }
 
-void ArticleView::sendToAnki( const QString & word, const QString & dict_definition, const QString & sentence )
+void ArticleView::sendToAnki( const QString & word,
+                              const QString & dict_definition,
+                              const QString & sentence,
+                              const QByteArray & audioData,
+                              const QString & audioFileName )
 {
-  ankiConnector->sendToAnki( word, dict_definition, sentence );
+  QJsonObject audioObj;
+  QByteArray data = audioData;
+  QString url     = audioFileName;
+
+  if ( data.isEmpty() && !lastAudioData.isEmpty() ) {
+    data = lastAudioData;
+    url  = lastAudioUrl;
+  }
+
+  // If no data yet, but we have a local sound link, try to fetch it first
+  if ( data.isEmpty() && !audioLink_.isEmpty() && !Utils::Url::isWebAudioUrl( QUrl( audioLink_ ) ) ) {
+    QUrl audioUrl( audioLink_ );
+    if ( audioUrl.scheme() == "gdau" ) {
+      sptr< Dictionary::Class > dict = dictionaryGroup->getDictionaryById( audioUrl.host().toStdString() );
+      if ( dict ) {
+        sptr< Dictionary::DataRequest > req = dict->getResource( audioUrl.path().mid( 1 ).toUtf8().data() );
+        if ( req->isFinished() ) {
+          const vector< char > & d = req->getFullData();
+          sendToAnki( word, dict_definition, sentence, QByteArray( d.data(), d.size() ), audioUrl.toString() );
+          return;
+        }
+        else {
+          connect(
+            req.get(),
+            &Dictionary::Request::finished,
+            this,
+            [ this, word, dict_definition, sentence, req, audioUrl ]() {
+              const vector< char > & d = req->getFullData();
+              sendToAnki( word, dict_definition, sentence, QByteArray( d.data(), d.size() ), audioUrl.toString() );
+            } );
+          return;
+        }
+      }
+    }
+  }
+
+  if ( !data.isEmpty() ) {
+    audioObj.insert( "data", QString::fromLatin1( data.toBase64() ) );
+
+    QString ext = "mp3";
+    if ( url.contains( ".wav", Qt::CaseInsensitive ) )
+      ext = "wav";
+    else if ( url.contains( ".ogg", Qt::CaseInsensitive ) )
+      ext = "ogg";
+    else if ( url.contains( ".opus", Qt::CaseInsensitive ) )
+      ext = "opus";
+
+    audioObj.insert(
+      "filename",
+      QString( "%1_%2.%3" ).arg( Utils::trimNonChar( word ) ).arg( QDateTime::currentMSecsSinceEpoch() ).arg( ext ) );
+
+    QJsonArray fields;
+    fields.append( cfg.preferences.ankiConnectServer.text );
+    audioObj.insert( "fields", fields );
+  }
+  else if ( Utils::Url::isWebAudioUrl( QUrl( audioLink_ ) ) ) {
+    audioObj.insert( "url", audioLink_ );
+    audioObj.insert(
+      "filename",
+      QString( "%1_%2.mp3" ).arg( Utils::trimNonChar( word ) ).arg( QDateTime::currentMSecsSinceEpoch() ) );
+    QJsonArray fields;
+    fields.append( cfg.preferences.ankiConnectServer.text );
+    audioObj.insert( "fields", fields );
+  }
+
+  ankiConnector->sendToAnki( word, dict_definition, sentence, audioObj );
 }
 
-void ArticleView::showAnticipation()
-{
-  webview->setHtml( "" );
-  webview->setCursor( Qt::WaitCursor );
-}
 
 void ArticleView::inspectElement()
 {
@@ -1058,9 +1141,9 @@ void ArticleView::linkClickedInHtml( const QUrl & url_ )
 
 void ArticleView::makeAnkiCardFromArticle( const QString & article_id )
 {
-  const auto js_code = QString( R"EOF(document.getElementById("gdarticlefrom-%1").innerText)EOF" ).arg( article_id );
+  const auto js_code = QString( R"EOF(document.getElementById("gd-%1").innerText)EOF" ).arg( article_id );
   webview->page()->runJavaScript( js_code, [ this ]( const QVariant & article_text ) {
-    sendToAnki( webview->title(), article_text.toString(), translateLine->text() );
+    sendToAnki( getWord(), article_text.toString(), translateLine->text() );
   } );
 }
 
@@ -1371,7 +1454,7 @@ void ArticleView::handleAnkiAction()
     makeAnkiCardFromArticle( getActiveArticleId() );
   }
   else {
-    sendToAnki( webview->title(), webview->selectedText(), translateLine->text() );
+    sendToAnki( getWord(), webview->selectedText(), translateLine->text() );
   }
 }
 
@@ -1814,6 +1897,9 @@ void ArticleView::resourceDownloadFinished( const sptr< Dictionary::DataRequest 
 
     if ( resourceDownloadUrl.scheme() == "gdau" || Utils::Url::isWebAudioUrl( resourceDownloadUrl ) ) {
       // Audio data
+      lastAudioData = QByteArray( data.data(), data.size() );
+      lastAudioUrl  = resourceDownloadUrl.toString();
+
       audioPlayer->stop();
       connect( audioPlayer.data(),
                &AudioPlayerInterface::error,
@@ -1856,6 +1942,8 @@ void ArticleView::audioDownloadFinished( const sptr< Dictionary::DataRequest > &
     // Ok, got one finished, all others are irrelevant now
     qDebug() << "audio download finished. Playing...";
     const vector< char > & data = req->getFullData();
+    lastAudioData               = QByteArray( data.data(), data.size() );
+    lastAudioUrl                = "internal";
 
     // Audio data
     audioPlayer->stop();

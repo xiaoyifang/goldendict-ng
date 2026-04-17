@@ -1,7 +1,6 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include <Qt>
 #ifdef EPWING_SUPPORT
   #include "dict/epwing_book.hh"
 #endif
@@ -198,8 +197,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 
   QWebEngineProfile::defaultProfile()->setUrlRequestInterceptor( new WebUrlRequestInterceptor( this ) );
-
-
   // Identify as GoldenDict, but avoid standard "QtWebEngine/..." identifier which some sites might block
   QString userAgent = QWebEngineProfile::defaultProfile()->httpUserAgent();
   userAgent.replace( RX::qtWebEngineUserAgent, "" );
@@ -301,6 +298,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   beforeOptionsSeparator = navToolbar->addSeparator();
   navToolbar->widgetForAction( beforeOptionsSeparator )->setObjectName( "beforeOptionsSeparator" );
   beforeOptionsSeparator->setVisible( cfg.preferences.hideMenubar );
+
+  ui.rescanFiles->setShortcuts( QList< QKeySequence >() << QKeySequence( "Ctrl+F5" ) << QKeySequence( "F5" ) );
 
   QMenu * buttonMenu = new QMenu( this );
   buttonMenu->addAction( ui.dictionaries );
@@ -732,13 +731,18 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            this,
            [ this ]( auto audioUrl ) {
              auto view = getCurrentArticleView();
+             if ( view == nullptr ) {
+               return;
+             }
              view->setAudioLink( audioUrl );
              if ( !isActiveWindow() ) {
                return;
              }
-             if ( ( cfg.preferences.pronounceOnLoadMain ) && view != nullptr ) {
-
-               view->playAudio( QUrl::fromEncoded( audioUrl.toUtf8() ) );
+             if ( cfg.preferences.pronounceOnLoadMain ) {
+               // Use a small delay to avoid audio clipping on Windows during window activation/rendering
+               QTimer::singleShot( 150, view, [ view, audioUrl ]() {
+                 view->playAudio( QUrl::fromEncoded( audioUrl.toUtf8() ) );
+               } );
              }
            } );
   applyProxySettings();
@@ -923,6 +927,10 @@ void MainWindow::ensureScanPopup()
     return;
   }
 
+  if ( !GlobalBroadcaster::instance()->getAllDictionaries() || !GlobalBroadcaster::instance()->getGroups() ) {
+    return;
+  }
+
   // Scanpopup related
   scanPopup = new ScanPopup( nullptr, cfg, articleNetMgr, history );
 
@@ -1026,6 +1034,10 @@ void MainWindow::refreshTranslateLine()
 void MainWindow::clipboardChange( QClipboard::Mode m )
 {
   ensureScanPopup();
+
+  if ( !scanPopup ) {
+    return;
+  }
 
 #if defined( WITH_X11 )
   if ( m == QClipboard::Clipboard ) {
@@ -1695,7 +1707,7 @@ const vector< sptr< Dictionary::Class > > & MainWindow::getActiveDicts()
     return dictionaries;
   }
 
-  const Config::DictionarySets * mutedDictionaries = dictionaryBar.getMutedDictionaries();
+  const QSet< QString > * mutedDictionaries = dictionaryBar.getMutedDictionaries();
   if ( !dictionaryBar.toggleViewAction()->isChecked() || mutedDictionaries == nullptr ) {
     return groupInstances[ current ].dictionaries;
   }
@@ -1978,6 +1990,10 @@ void MainWindow::titleChanged( ArticleView * view, const QString & title )
     escaped = title;
   }
   escaped = Utils::escapeAmps( escaped );
+
+  // Truncate long titles to make tab labels more readable
+  const int maxTabTitleLength = 30;
+  escaped                     = Utils::ellipsizeString( escaped, maxTabTitleLength );
 
   int index = ui.tabWidget->indexOf( view );
   if ( !escaped.isEmpty() ) {
@@ -2720,7 +2736,8 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
 
   if ( ev->type() == QEvent::KeyPress && obj != translateLine ) {
 
-    if ( const auto key_event = dynamic_cast< QKeyEvent * >( ev ); key_event->modifiers() == Qt::NoModifier ) {
+    if ( const auto key_event = dynamic_cast< QKeyEvent * >( ev );
+         key_event->modifiers() == Qt::NoModifier || key_event->modifiers() == Qt::ShiftModifier ) {
       const QString text = key_event->text();
 
       if ( Utils::ignoreKeyEvent( key_event ) || key_event->key() == Qt::Key_Return
@@ -2915,7 +2932,10 @@ void MainWindow::showTranslationFor( const QString & word, unsigned inGroup, con
 
   navPronounce->setEnabled( false );
 
-  unsigned group = inGroup ? inGroup : ( groupInstances.empty() ? 0 : groupInstances[ groupList->currentIndex() ].id );
+  unsigned group = inGroup;
+  if ( group == 0 ) {
+    group = groupInstances.empty() ? 0 : groupInstances[ groupList->currentIndex() ].id;
+  }
 
   view->showDefinition( word, group, scrollTo );
 
@@ -2980,9 +3000,7 @@ void MainWindow::toggleMainWindow( bool ensureShow )
     // but click it won't bring it back, thus we can only minimize it.
 
 #ifdef Q_OS_MAC
-    if ( cfg.preferences.enableTrayIcon ) {
-      showMinimized();
-    }
+    showMinimized();
 #else
     if ( cfg.preferences.enableTrayIcon )
       hide();
@@ -3068,12 +3086,17 @@ void MainWindow::hotKeyActivated( int hk )
     // the clipboard empty, silently cancels the translation request, and users report
     // that Ctrl+C+C is broken in these apps. Slightly delay handling the clipboard
     // hotkey to give the active application more time and thus work around the issue.
-    QTimer::singleShot( 10, scanPopup, &ScanPopup::translateWordFromPrimaryClipboard );
+    if ( scanPopup ) {
+      QTimer::singleShot( 10, scanPopup, &ScanPopup::translateWordFromPrimaryClipboard );
+    }
 #else
-    scanPopup->translateWordFromPrimaryClipboard();
+    if ( scanPopup ) {
+      scanPopup->translateWordFromPrimaryClipboard();
+    }
 #endif
   }
 }
+
 
 void MainWindow::checkNewRelease()
 {
@@ -3150,7 +3173,9 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
       // Middle mouse click on Tray translates selection
       // it is functional like as stardict
       ensureScanPopup();
-      scanPopup->translateWordFromSelection();
+      if ( scanPopup ) {
+        scanPopup->translateWordFromSelection();
+      }
       break;
     default:
       break;
@@ -3544,6 +3569,56 @@ void MainWindow::scaleArticlesByCurrentZoomFactor()
   }
 }
 
+void MainWindow::showTranslation( const QString & word, const QString & windowType )
+{
+  if ( windowType == "main" ) {
+    wordReceived( word );
+  }
+  else {
+    ensureScanPopup();
+    if ( scanPopup ) {
+      scanPopup->translateWord( word );
+    }
+  }
+}
+
+bool MainWindow::handleStructuredMessage( const QString & message )
+{
+  if ( !message.startsWith( "action:" ) ) {
+    return false;
+  }
+
+  QMap< QString, QString > params;
+  QStringList parts = message.split( '|' );
+  for ( const QString & part : parts ) {
+    QStringList keyValue = part.split( ':' );
+    if ( keyValue.size() >= 2 ) {
+      params[ keyValue[ 0 ] ] = keyValue.mid( 1 ).join( ':' );
+    }
+  }
+
+  if ( QString action = params.value( "action" ); action == "translate" ) {
+    QString windowType = params.value( "window", "popup" );
+    QString word       = params.value( "word" );
+    QString group      = params.value( "group" );
+    QString popupGroup = params.value( "popupGroup" );
+
+    // Handle group settings if specified
+    if ( !group.isEmpty() ) {
+      setGroupByName( group, true );
+    }
+    if ( !popupGroup.isEmpty() ) {
+      setGroupByName( popupGroup, false );
+    }
+
+    // Show translation based on window type
+    showTranslation( word, windowType );
+  }
+
+  return true;
+}
+
+
 void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
 {
   if ( message == "bringToFront" ) {
@@ -3556,41 +3631,13 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
     return;
   }
 
-  QString prefix = "window:";
-  if ( message.left( prefix.size() ) == prefix ) {
-    consoleWindowOnce = message.mid( prefix.size() );
+  // Handle structured message format
+  if ( handleStructuredMessage( message ) ) {
+    return;
   }
 
-  if ( message.left( 15 ) == "translateWord: " ) {
-    auto word = message.mid( 15 );
-    if ( consoleWindowOnce == "popup" ) {
-      ensureScanPopup();
-      scanPopup->translateWord( word );
-    }
-    else if ( consoleWindowOnce == "main" ) {
-      wordReceived( word );
-    }
-    else {
-      //default logic
-      if ( scanPopup ) {
-        scanPopup->translateWord( word );
-      }
-      else {
-        wordReceived( word );
-      }
-    }
-
-    consoleWindowOnce.clear();
-  }
-  else if ( message.left( 10 ) == "setGroup: " ) {
-    setGroupByName( message.mid( 10 ), true );
-  }
-  else if ( message.left( 15 ) == "setPopupGroup: " ) {
-    setGroupByName( message.mid( 15 ), false );
-  }
-  else {
-    qWarning() << "Unknown message received from another instance: " << message;
-  }
+  // Unknown message
+  qWarning() << "Unknown message received from another instance: " << message;
 }
 
 ArticleView * MainWindow::getCurrentArticleView()
@@ -4112,68 +4159,63 @@ void MainWindow::openDictionaryFolder( const QString & id )
   }
 }
 
+
 void MainWindow::foundDictsContextMenuRequested( const QPoint & pos )
 {
   QListWidgetItem * item = ui.dictsList->itemAt( pos );
-  if ( item ) {
-    QString id                = item->data( Qt::UserRole ).toString();
-    Dictionary::Class * pDict = nullptr;
+  if ( !item ) {
+    return;
+  }
 
-    for ( unsigned i = 0; i < dictionaries.size(); i++ ) {
-      if ( id.compare( dictionaries[ i ]->getId().c_str() ) == 0 ) {
-        pDict = dictionaries[ i ].get();
-        break;
-      }
+  QString id                = item->data( Qt::UserRole ).toString();
+  Dictionary::Class * pDict = nullptr;
+
+  for ( unsigned i = 0; i < dictionaries.size(); i++ ) {
+    if ( id.compare( dictionaries[ i ]->getId().c_str() ) == 0 ) {
+      pDict = dictionaries[ i ].get();
+      break;
     }
+  }
 
-    if ( pDict == nullptr ) {
-      return;
-    }
+  if ( pDict == nullptr ) {
+    return;
+  }
 
-    if ( !pDict->isLocalDictionary() ) {
-      if ( scanPopup ) {
-        scanPopup->blockSignals( true );
-      }
+  if ( !pDict->isLocalDictionary() ) {
+    withScanPopupSignalBlocked( [ this, id ]() {
       showDictionaryInfo( id );
-      if ( scanPopup ) {
-        scanPopup->blockSignals( false );
-      }
-    }
-    else {
-      QMenu menu( ui.dictsList );
-      QAction * infoAction = menu.addAction( tr( "Dictionary info" ) );
+    } );
+    return;
+  }
 
-      QAction * headwordsAction = nullptr;
-      if ( pDict->getWordCount() > 0 ) {
-        headwordsAction = menu.addAction( tr( "Dictionary headwords" ) );
-      }
+  QMenu menu( ui.dictsList );
+  QAction * infoAction = menu.addAction( tr( "Dictionary info" ) );
 
-      QAction * openDictFolderAction = menu.addAction( tr( "Open dictionary folder" ) );
+  QAction * headwordsAction = nullptr;
+  if ( pDict->getWordCount() > 0 ) {
+    headwordsAction = menu.addAction( tr( "Dictionary headwords" ) );
+  }
 
-      QAction * result = menu.exec( ui.dictsList->mapToGlobal( pos ) );
+  QAction * openDictFolderAction = menu.addAction( tr( "Open dictionary folder" ) );
 
-      if ( result && result == infoAction ) {
-        if ( scanPopup ) {
-          scanPopup->blockSignals( true );
-        }
-        showDictionaryInfo( id );
-        if ( scanPopup ) {
-          scanPopup->blockSignals( false );
-        }
-      }
-      else if ( result && result == headwordsAction ) {
-        if ( scanPopup ) {
-          scanPopup->blockSignals( true );
-        }
-        showDictionaryHeadwords( pDict );
-        if ( scanPopup ) {
-          scanPopup->blockSignals( false );
-        }
-      }
-      else if ( result && result == openDictFolderAction ) {
-        openDictionaryFolder( id );
-      }
-    }
+  QAction * result = menu.exec( ui.dictsList->mapToGlobal( pos ) );
+
+  if ( !result ) {
+    return;
+  }
+
+  if ( result == infoAction ) {
+    withScanPopupSignalBlocked( [ this, id ]() {
+      showDictionaryInfo( id );
+    } );
+  }
+  else if ( result == headwordsAction ) {
+    withScanPopupSignalBlocked( [ this, pDict ]() {
+      showDictionaryHeadwords( pDict );
+    } );
+  }
+  else if ( result == openDictFolderAction ) {
+    openDictionaryFolder( id );
   }
 }
 
@@ -4265,7 +4307,10 @@ void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId,
 
   auto view = findArticleViewByDictId( dictId );
   if ( view == nullptr ) {
-    view = createNewTab( false, name );
+    // Truncate long website names for tab labels
+    const int maxTabTitleLength = 30;
+    QString truncatedName       = Utils::ellipsizeString( name, maxTabTitleLength );
+    view                        = createNewTab( false, truncatedName );
     view->setWebsite( true );
     // Set the dictId for the website view
     view->setActiveArticleId( dictId );
@@ -4390,7 +4435,9 @@ void MainWindow::setGroupByName( const QString & name, bool main_window )
   }
   else {
     ensureScanPopup();
-    emit setPopupGroupByName( name );
+    if ( scanPopup ) {
+      emit setPopupGroupByName( name );
+    }
   }
 }
 

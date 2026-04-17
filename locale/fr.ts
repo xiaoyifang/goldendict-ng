@@ -1122,6 +1122,14 @@ between classic and school orthography in cyrillic)</source>
       <source>&amp;Add group</source>
       <translation>&amp;Ajouter groupe</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>Le groupe existe déjà</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>Un groupe avec le nom &apos;%1&apos; existe déjà.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -2654,15 +2662,15 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Erreur de lecture XML  : %1 à la position %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>Erreur d'analyse JSON</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Erreur de lecture XML : %1 à la position %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>Erreur d'analyse JSON</translation>
     </message>
   </context>
   <context>
@@ -3272,10 +3280,6 @@ pour toutes les requêtes passant par le réseau.</translation>
       <translation>Deck :</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Modèle :</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Mot</translation>
     </message>
@@ -3501,6 +3505,22 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Ouvrir le dictionnaire du site web dans un onglet séparé</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
+    </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>Autoriser JavaScript à accéder au presse-papiers dans la vue article.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Activer l'accès au presse-papier JavaScript (redémarrage nécessaire)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Redémarrez pour appliquer le changement d'accès au presse-papiers JavaScript.</translation>
     </message>
   </context>
   <context>

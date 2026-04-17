@@ -183,23 +183,24 @@ void LoadDictionaries::handlePath( const Config::Path & path )
     }
   }
 
-  addDicts( Bgl::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
-  addDicts( Stardict::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
-  addDicts( Lsa::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
-  addDicts( Dsl::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordSize ) );
-  addDicts( DictdFiles::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
-  addDicts( Xdxf::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
-  addDicts( Sdict::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
-  addDicts( Aard::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
-  addDicts( ZipSounds::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
-  addDicts( Mdx::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
-  addDicts( Gls::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
-  addDicts( Slob::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
+  auto indexDir = Config::getIndexDir().toStdString();
+  addDicts( Bgl::makeDictionaries( allFiles, indexDir, *this ) );
+  addDicts( Stardict::makeDictionaries( allFiles, indexDir, *this, maxHeadwordToExpand ) );
+  addDicts( Lsa::makeDictionaries( allFiles, indexDir, *this ) );
+  addDicts( Dsl::makeDictionaries( allFiles, indexDir, *this, maxHeadwordSize ) );
+  addDicts( DictdFiles::makeDictionaries( allFiles, indexDir, *this ) );
+  addDicts( Xdxf::makeDictionaries( allFiles, indexDir, *this ) );
+  addDicts( Sdict::makeDictionaries( allFiles, indexDir, *this ) );
+  addDicts( Aard::makeDictionaries( allFiles, indexDir, *this, maxHeadwordToExpand ) );
+  addDicts( ZipSounds::makeDictionaries( allFiles, indexDir, *this ) );
+  addDicts( Mdx::makeDictionaries( allFiles, indexDir, *this ) );
+  addDicts( Gls::makeDictionaries( allFiles, indexDir, *this ) );
+  addDicts( Slob::makeDictionaries( allFiles, indexDir, *this, maxHeadwordToExpand ) );
 #ifdef MAKE_ZIM_SUPPORT
-  addDicts( Zim::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
+  addDicts( Zim::makeDictionaries( allFiles, indexDir, *this, maxHeadwordToExpand ) );
 #endif
 #ifdef EPWING_SUPPORT
-  addDicts( Epwing::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
+  addDicts( Epwing::makeDictionaries( allFiles, indexDir, *this ) );
 #endif
 }
 

@@ -1,9 +1,6 @@
 find_package(PkgConfig REQUIRED)
 
 set(Optional_Pkgs "")
-if (USE_SYSTEM_TOML)
-    list(APPEND Optional_Pkgs "tomlplusplus")
-endif ()
 if (WITH_ZIM)
     list(APPEND Optional_Pkgs "libzim")
 endif ()
@@ -20,6 +17,7 @@ pkg_check_modules(DEPS REQUIRED IMPORTED_TARGET
         liblzma
         lzo2
         opencc
+        tomlplusplus
         vorbis # .ogg
         vorbisfile
         xapian-core

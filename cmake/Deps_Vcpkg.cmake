@@ -14,6 +14,7 @@ pkg_check_modules(PKGCONFIG_DEPS IMPORTED_TARGET
 )
 
 find_package(fmt CONFIG REQUIRED)
+find_package(tomlplusplus CONFIG REQUIRED)
 
 target_link_libraries(${GOLDENDICT}
         PRIVATE
@@ -25,6 +26,7 @@ target_link_libraries(${GOLDENDICT}
         Vorbis::vorbisfile
         ZLIB::ZLIB
         fmt::fmt
+        tomlplusplus::tomlplusplus
 )
 
 if (WITH_VCPKG_BREAKPAD)

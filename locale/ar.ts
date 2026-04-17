@@ -1121,6 +1121,14 @@ between classic and school orthography in cyrillic)</source>
       <source>&amp;Add group</source>
       <translation>أ&amp;ضف مجموعة</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>المجموعة موجودة مسبقاً</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>مجموعة تحمل الاسم &apos;%1&apos; موجودة بالفعل.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -2653,15 +2661,15 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>خطأ تحليل XML: %1 عند %2،%3</translation>
+      <source>JSON parse error</source>
+      <translation>خطأ في تحليل JSON</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>خطأ تحليل XML: %1 عند %2،%3</translation>
+      <source>JSON parse error</source>
+      <translation>خطأ في تحليل JSON</translation>
     </message>
   </context>
   <context>
@@ -3273,10 +3281,6 @@ for all program&apos;s network requests.</source>
       <translation>ظهر السفينة:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>نموذج:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>كلمة</translation>
     </message>
@@ -3502,6 +3506,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>فتح قاموس الموقع في علامة تبويب منفصلة</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
+    </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>السماح لجافا سكريبت بالوصول إلى الحافظة في عرض المقالة.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>تمكين الوصول إلى حافظة جافا سكريبت (تحتاج إلى إعادة التشغيل)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>أعد التشغيل لتطبيق تغيير الوصول إلى حافظة جافا سكريبت.</translation>
     </message>
   </context>
   <context>

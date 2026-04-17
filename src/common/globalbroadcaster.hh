@@ -38,6 +38,7 @@ class GlobalBroadcaster: public QObject
   QMap< QString, QString > lsaIdToPathMap;
   QMap< QString, QString > lsaPathToIdMap;
   QMap< QString, sptr< Dictionary::Class > > dictMap;
+  void loadWhitelist();
 
 
 public:
@@ -75,7 +76,7 @@ public:
   std::function< bool( const QString & ) > isWordPresentedInFavorites;
 
   PronounceEngine pronounce_engine;
-  QString getAbbrName( const QString & text );
+  QString getAbbrName( const QString & text, const QString & key = {} );
 
   /// Check if dark mode is enabled
   /// @return true if dark mode is enabled, false otherwise

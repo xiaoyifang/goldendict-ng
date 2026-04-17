@@ -98,6 +98,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   prevWebFontFamily = p.customFonts;
   prevSysFont       = p.interfaceFont;
+  prevEnableJavaScriptClipboardAccess = p.enableJavaScriptClipboardAccess;
   prevFontSize      = ui.interfaceFontSize->value();
 
   if ( !p.customFonts.standard.isEmpty() ) {
@@ -366,6 +367,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.enableApplicationLog->setChecked( p.enableApplicationLog );
   ui.openWebsiteInNewTab->setChecked( p.openWebsiteInNewTab );
   ui.suppressWebDialogs->setChecked( p.suppressWebDialogs );
+  ui.enableJavaScriptClipboard->setChecked( p.enableJavaScriptClipboardAccess );
 
   //initialize add-on styles
   QString stylesDir = Config::getStylesDir();
@@ -552,8 +554,9 @@ Config::Preferences Preferences::getPreferences()
 
   p.removeInvalidIndexOnExit = ui.removeInvalidIndexOnExit->isChecked();
   p.enableApplicationLog     = ui.enableApplicationLog->isChecked();
-  p.openWebsiteInNewTab      = ui.openWebsiteInNewTab->isChecked();
+  p.openWebsiteInNewTab             = ui.openWebsiteInNewTab->isChecked();
   p.suppressWebDialogs       = ui.suppressWebDialogs->isChecked();
+  p.enableJavaScriptClipboardAccess = ui.enableJavaScriptClipboard->isChecked();
 
   p.addonStyle = ui.addonStyles->currentText();
 
@@ -622,11 +625,18 @@ void Preferences::on_buttonBox_accepted()
     promptText += tr( "Restart to apply the interface font change." );
   }
 
+  auto c = getPreferences();
+  if ( c.enableJavaScriptClipboardAccess != prevEnableJavaScriptClipboardAccess ) {
+    if ( !promptText.isEmpty() ) {
+      promptText += "\n";
+    }
+    promptText += tr( "Restart to apply the JavaScript clipboard access change." );
+  }
+
   if ( !promptText.isEmpty() ) {
     QMessageBox::information( this, tr( "Restart needed" ), promptText );
   }
 
-  auto c = getPreferences();
   if ( c.customFonts != prevWebFontFamily ) {
     QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::StandardFont,
                                                                     c.customFonts.standard );

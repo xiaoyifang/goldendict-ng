@@ -1,4 +1,4 @@
-﻿/* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
+/* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "config.hh"
@@ -250,13 +250,11 @@ int main( int argc, char ** argv )
   // 4. By default, we let Qt decide (usually native Wayland on Wayland sessions).
   //    This improves HiDPI support but might affect some X11-specific features.
 
-  if ( qEnvironmentVariableIsEmpty( "QT_QPA_PLATFORM" ) ) {
-    if ( qEnvironmentVariableIsSet( "GOLDENDICT_FORCE_XCB" ) ) {
-      setenv( "QT_QPA_PLATFORM", "xcb", 1 );
-    }
-    else if ( qEnvironmentVariableIsSet( "GOLDENDICT_FORCE_WAYLAND" ) ) {
-      setenv( "QT_QPA_PLATFORM", "wayland", 1 );
-    }
+  if ( qEnvironmentVariableIsSet( "GOLDENDICT_FORCE_XCB" ) ) {
+    setenv( "QT_QPA_PLATFORM", "xcb", 1 );
+  }
+  else if ( qEnvironmentVariableIsSet( "GOLDENDICT_FORCE_WAYLAND" ) ) {
+    setenv( "QT_QPA_PLATFORM", "wayland", 1 );
   }
 #endif
 
@@ -288,7 +286,8 @@ int main( int argc, char ** argv )
   for ( const auto & localScheme : localSchemes ) {
     QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
     webUiScheme.setSyntax( QWebEngineUrlScheme::Syntax::Host );
-    webUiScheme.setFlags( QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled );
+    webUiScheme.setFlags( QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled
+                          | QWebEngineUrlScheme::SecureScheme );
     QWebEngineUrlScheme::registerScheme( webUiScheme );
   }
 
@@ -350,29 +349,36 @@ int main( int argc, char ** argv )
   if ( app.isRunning() ) {
     bool wasMessage = false;
 
-    //TODO .all the following messages can be combined into one.
-    if ( gdcl.needSetGroup() ) {
+    // Combine messages into a single structured message
+    if ( gdcl.needTranslateWord() ) {
+      QString message = "action:translate";
+      if ( !gdcl.window.isEmpty() ) {
+        message += "|window:" + gdcl.window;
+      }
+      if ( gdcl.needSetGroup() ) {
+        message += "|group:" + gdcl.getGroupName();
+      }
+      if ( gdcl.needSetPopupGroup() ) {
+        message += "|popupGroup:" + gdcl.getPopupGroupName();
+      }
+      message += "|word:" + gdcl.wordToTranslate();
+      app.sendMessage( message );
+      wasMessage = true;
+    }
+    else if ( gdcl.needSetGroup() ) {
       app.sendMessage( QString( "setGroup: " ) + gdcl.getGroupName() );
       wasMessage = true;
     }
-
-    if ( gdcl.needSetPopupGroup() ) {
+    else if ( gdcl.needSetPopupGroup() ) {
       app.sendMessage( QString( "setPopupGroup: " ) + gdcl.getPopupGroupName() );
       wasMessage = true;
     }
-
-    if ( !gdcl.window.isEmpty() ) {
-      app.sendMessage( QString( "window:" ) + gdcl.window );
-      wasMessage = true;
-    }
-
-    if ( gdcl.needTranslateWord() ) {
-      app.sendMessage( QString( "translateWord: " ) + gdcl.wordToTranslate() );
-      wasMessage = true;
-    }
-
-    if ( gdcl.needTogglePopup() ) {
+    else if ( gdcl.needTogglePopup() ) {
       app.sendMessage( QStringLiteral( "toggleScanPopup" ) );
+      wasMessage = true;
+    }
+    else if ( !gdcl.window.isEmpty() ) {
+      app.sendMessage( QString( "window:" ) + gdcl.window );
       wasMessage = true;
     }
 
@@ -557,7 +563,12 @@ int main( int argc, char ** argv )
   }
 
   if ( gdcl.needTranslateWord() ) {
-    m.wordReceived( gdcl.wordToTranslate() );
+    if ( gdcl.window == "popup" ) {
+      m.showTranslation( gdcl.wordToTranslate(), "popup" );
+    }
+    else {
+      m.wordReceived( gdcl.wordToTranslate() );
+    }
   }
 
 #ifdef Q_OS_UNIX

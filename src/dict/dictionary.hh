@@ -301,6 +301,7 @@ protected:
   QAtomicInt FTS_index_completed;
   bool synonymSearchEnabled;
   string dictionaryName;
+  string originalDictionaryName;
   std::optional< bool > metadata_enable_fts = std::nullopt;
   // Load user icon if it exist
   // By default set icon to empty
@@ -315,7 +316,7 @@ protected:
   /// Generate icon based on a text
   bool loadIconFromText( const QString & iconUrl, const QString & text );
 
-  static QString getAbbrName( const QString & text );
+  static QString getAbbrName( const QString & text, const QString & key = {} );
   static QColor intToFixedColor( int index );
 
 public:
@@ -359,6 +360,16 @@ public:
 
   virtual void setName( string _dictionaryName )
   {
+    if ( _dictionaryName.empty() ) {
+      if ( !originalDictionaryName.empty() ) {
+        dictionaryName = originalDictionaryName;
+      }
+      return;
+    }
+
+    if ( originalDictionaryName.empty() ) {
+      originalDictionaryName = dictionaryName;
+    }
     dictionaryName = _dictionaryName;
   }
 

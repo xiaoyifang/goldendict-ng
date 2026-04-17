@@ -1,6 +1,4 @@
 name: Release All
-permissions:
-  contents: write
 concurrency:
    group: ${{ github.workflow }}-${{ github.ref }}
    cancel-in-progress: true
@@ -21,6 +19,8 @@ on:
       - ".clang-format"
 jobs:
   build_macOS:
+    permissions:
+      contents: read
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -30,13 +30,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: true
-      - name: Update brew
-        run: |
-          brew update
       - name: Install dependencies
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: 1
+          HOMEBREW_NO_INSTALL_CLEANUP: 1
         run: |
           brew install --force --overwrite \
-            bzip2  \
+            bzip2 \
             create-dmg \
             hunspell \
             libiconv \
@@ -45,13 +45,29 @@ jobs:
             libzim \
             lzip \
             ninja \
+            ccache \
             opencc \
             fmt \
             ffmpeg@6 \
+            tomlplusplus \
             xapian || true
-      - name: Install eb
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          key: ${{ runner.os }}-${{ matrix.qt_ver }}
+      - name: Cache EB
+        id: cache-eb
+        uses: actions/cache@v4
+        with:
+          path: |
+            /usr/local/lib/libeb*
+            /usr/local/include/eb
+            /usr/local/bin/eb*
+          key: ${{ runner.os }}-${{ runner.arch }}-eb-custom
+      - name: Install EB
+        if: steps.cache-eb.outputs.cache-hit != 'true'
         run: |
-          git clone https://github.com/xiaoyifang/eb.git
+          git clone --depth 1 https://github.com/xiaoyifang/eb.git
           cd eb && ./configure && make -j 8 && sudo make install && cd ..
       - uses: jurplel/install-qt-action@v4.2.1
         with:
@@ -64,6 +80,8 @@ jobs:
           export PKG_CONFIG_PATH="`brew --prefix ffmpeg@6`/lib/pkgconfig:$PKG_CONFIG_PATH"
           cmake -S . -B build_dir \
             -G Ninja \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DWITH_FFMPEG_PLAYER=ON \
             -DWITH_QT_MULTIMEDIA=OFF \
             -DWITH_TTS=OFF \
@@ -84,6 +102,8 @@ jobs:
           path: '*.dmg'
 
   build_Windows:
+    permissions:
+      contents: read
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -144,6 +164,8 @@ jobs:
             ./build_dir/*.pdb
 
   generate_other_staffs:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     outputs:
       newTag: ${{ steps.getNewTag.outputs.newTag }}
@@ -214,6 +236,8 @@ jobs:
 
   publish:
     needs: [build_macOS, build_Windows, generate_other_staffs]
+    permissions:
+      contents: write
     runs-on: ubuntu-24.04
     env:
         newTag: ${{ needs.generate_other_staffs.outputs.newTag }}

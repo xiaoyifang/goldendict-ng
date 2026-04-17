@@ -1,9 +1,27 @@
 /* This stylesheet is used for printing only, overriding article-style.css */
 
+@page {
+  size: auto;
+  margin: 1.5cm;
+}
+
 html,
-body,
+body {
+  background: white !important;
+  color: black !important;
+  margin: 0; /* Let @page or browser handle margins */
+  padding: 0;
+}
+
+body {
+  /* Fallback margin for engines that ignore @page */
+  margin: 1.5cm;
+}
+
 .gdarticle {
-  background: white;
+  background: white !important;
+  color: black !important;
+  text-align: justify;
 }
 
 /* Hide audio icons */
@@ -16,4 +34,56 @@ body,
 
 .collapse_expand_area {
   display: none;
+}
+
+/* Hide edit links and other UI elements for printing */
+.mwiki .editsection,
+.mwiki .mw-editsection,
+.mwiki .toctoggle,
+.mwiki .magnify {
+  display: none !important;
+}
+
+/* Reset MediaWiki TOC for printing */
+.mwiki #toc,
+.mwiki .toc {
+  display: block !important;
+  position: static !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  height: auto !important;
+  max-height: none !important;
+  max-width: none !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  float: none !important;
+  clear: both !important;
+  margin: 1em 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.mwiki #toc .toctitle,
+.mwiki .toc .toctitle,
+.mwiki #toc ul,
+.mwiki .toc ul {
+  position: static !important;
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  border-bottom: none !important;
+}
+
+.mwiki #toc ul,
+.mwiki .toc ul {
+  border-bottom: none !important;
+}
+
+/* Reset wrappers that might be using display: contents */
+.mwiki div[class*="toclimit-"],
+.mwiki div.tocright {
+  display: block !important;
+  float: none !important;
+  clear: both !important;
+  width: 100% !important;
 }

@@ -30,7 +30,7 @@ function gdMakeArticleActive(newId, noEvent) {
 var overIframeId = null;
 
 function gdSelectArticle(id) {
-  var selection = window.getSelection();
+  var selection = globalThis.getSelection();
   var range = document.createRange();
   range.selectNodeContents(document.getElementById("gdfrom-" + id));
   selection.removeAllRanges();
@@ -54,9 +54,9 @@ function processIframeClick() {
 }
 
 function init() {
-  window.addEventListener("blur", processIframeClick, false);
+  globalThis.addEventListener("blur", processIframeClick, false);
 }
-window.addEventListener("load", init, false);
+globalThis.addEventListener("load", init, false);
 
 function gdExpandOptPart(expanderId, optionalId) {
   const d1 = document.getElementById(expanderId);
@@ -89,7 +89,7 @@ function emitClickedEvent(link) {
 function gdExpandArticle(id) {
   emitClickedEvent();
 
-  const articleContent = document.getElementById("gdarticlefrom-" + id);
+  const articleContent = document.getElementById("gd-" + id);
   const expandIcon = document.getElementById("expandicon-" + id);
   const articleElement = document.getElementById("gdfrom-" + id);
   const dictNameElement = document.getElementById("gddictname-" + id);

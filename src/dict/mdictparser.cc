@@ -371,7 +371,7 @@ bool MdictParser::readHeader( QDataStream & in )
   if ( title.isEmpty() || title == "Title (No HTML code allowed)" ) {
     // Use filename instead
     QFileInfo fi( filename_ );
-    title_ = fi.baseName();
+    title_ = fi.completeBaseName();
   }
   else {
     if ( title.contains( '<' ) || title.contains( '>' ) ) {

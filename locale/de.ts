@@ -1122,6 +1122,14 @@ between classic and school orthography in cyrillic)</source>
       <source>&amp;Add group</source>
       <translation>Gruppe &amp;hinzufügen</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>Gruppe existiert bereits</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>Eine Gruppe mit dem Namen &apos;%1&apos; existiert bereits.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -2654,15 +2662,15 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Fehler beim XML-parsen: %1 bei %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>JSON-Parse-Fehler</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Fehler beim XML-parsen: %1 bei %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>JSON-Parse-Fehler</translation>
     </message>
   </context>
   <context>
@@ -3270,10 +3278,6 @@ for all program&apos;s network requests.</source>
       <translation>Deck:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Modell:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Wort</translation>
     </message>
@@ -3498,6 +3502,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Website-Wörterbuch in separatem Tab öffnen</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
+    </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>JavaScript darf in der Artikelansicht auf die Zwischenablage zugreifen.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>JavaScript Zwischenablage Zugriff aktivieren (Neustart erforderlich)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Neustarten, um die Änderung der JavaScript-Zwischenablage zu übernehmen.</translation>
     </message>
   </context>
   <context>

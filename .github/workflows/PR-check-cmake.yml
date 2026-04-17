@@ -1,6 +1,4 @@
 name: Build Check
-permissions:
-  contents: read
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -15,13 +13,15 @@ on:
 jobs:
   job_ubuntu_build_check:
     name: ubuntu Build and analyze
+    permissions:
+      contents: read
     runs-on: ubuntu-24.04
     steps:
       - name: Install dependencies
         run: |
           sudo apt-get update
 
-          sudo apt-get install build-essential ninja-build \
+          sudo apt-get install build-essential ninja-build ccache \
           libvorbis-dev zlib1g-dev libhunspell-dev x11proto-record-dev \
           libxtst-dev liblzo2-dev libbz2-dev \
           libavutil-dev libavformat-dev libeb16-dev \
@@ -35,10 +35,15 @@ jobs:
           qt6-tools-dev \
           qt6-tools-dev-tools \
           qt6-webchannel-dev \
+          libtomlplusplus-dev \
           qt6-webengine-dev
       - uses: actions/checkout@v4
         with:
           submodules: false
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          key: ${{ runner.os }}-ubuntu
       - name: Run build
         run: |
           export CXXFLAGS="-Wall"
@@ -46,23 +51,28 @@ jobs:
           cmake -S . \
             -B ./build_dir \
             -DCMAKE_COMPILE_WARNING_AS_ERROR=ON \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -G Ninja
           cd ./build_dir
           ninja -k 0
   job_macos_build_check:
     name: macos Build and analyze
+    permissions:
+      contents: read
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: false
-      - name: Update brew
-        run: |
-          brew update
       - name: Install dependencies
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: 1
+          HOMEBREW_NO_INSTALL_CLEANUP: 1
         run: |
           brew install --force --overwrite \
           ninja \
+          ccache \
           opencc \
           ffmpeg@6 \
           libao \
@@ -74,8 +84,23 @@ jobs:
           xapian \
           fmt \
           libzim \
+          tomlplusplus \
           qt || true
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          key: ${{ runner.os }}-macos
+      - name: Cache EB
+        id: cache-eb
+        uses: actions/cache@v4
+        with:
+          path: |
+            /usr/local/lib/libeb*
+            /usr/local/include/eb
+            /usr/local/bin/eb*
+          key: ${{ runner.os }}-eb-v4.4.3
       - name: Install eb
+        if: steps.cache-eb.outputs.cache-hit != 'true'
         run: |
           wget https://github.com/mistydemeo/eb/releases/download/v4.4.3/eb-4.4.3.tar.bz2
           tar xvjf eb-4.4.3.tar.bz2
@@ -88,6 +113,8 @@ jobs:
           cmake -S . \
             -B ./build_dir \
             -G Ninja \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DWITH_FFMPEG_PLAYER=ON \
             -DCMAKE_COMPILE_WARNING_AS_ERROR=ON
           cd ./build_dir
@@ -95,6 +122,8 @@ jobs:
 
   job_window_build_check:
     name: windows Build and analyze
+    permissions:
+      contents: read
     runs-on: windows-latest
     steps:
       - name: Install Qt
@@ -124,6 +153,8 @@ jobs:
 
   job_archlinux_build_check:
     name: archlinux Build and analyze
+    permissions:
+      contents: read
     runs-on: ubuntu-24.04
     container:
       image: ghcr.io/archlinux/archlinux:base-devel
@@ -172,7 +203,6 @@ jobs:
             -DCMAKE_COMPILE_WARNING_AS_ERROR=ON \
             -DWITH_EPWING_SUPPORT=OFF \
             -DWITH_FFMPEG_PLAYER=ON \
-            -DWITH_TTS=ON \
-            -DUSE_SYSTEM_TOML=ON
+            -DWITH_TTS=ON
           cd "./build_dir"
           ninja -k 0

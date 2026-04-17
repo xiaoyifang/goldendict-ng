@@ -1,6 +1,4 @@
 name: Manual Build Action(for testing)
-permissions:
-  contents: read
 concurrency: 
    group: ${{ github.workflow }}-${{ github.ref }}
    cancel-in-progress: true
@@ -19,22 +17,24 @@ on:
 jobs:
   build_macOS:
     if: github.event.inputs.build_macOS == 'true'
+    permissions:
+      contents: read
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [macos-14]
-        qt_ver: [ 6.7.2 ]
+        qt_ver: [ 6.8.3 ]
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: true
-      - name: Update brew
-        run: |
-          brew update
       - name: Install dependencies
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: 1
+          HOMEBREW_NO_INSTALL_CLEANUP: 1
         run: |
           brew install --force --overwrite \
-            bzip2  \
+            bzip2 \
             create-dmg \
             hunspell \
             libiconv \
@@ -43,13 +43,29 @@ jobs:
             libzim \
             lzip \
             ninja \
+            ccache \
             opencc \
             fmt \
+            tomlplusplus \
             xapian || true
-      - name: Install eb
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          key: ${{ runner.os }}-${{ matrix.qt_ver }}
+      - name: Cache EB
+        id: cache-eb
+        uses: actions/cache@v4
+        with:
+          path: |
+            /usr/local/lib/libeb*
+            /usr/local/include/eb
+            /usr/local/bin/eb*
+          key: ${{ runner.os }}-eb-custom
+      - name: Install EB
+        if: steps.cache-eb.outputs.cache-hit != 'true'
         run: |
-          git clone https://github.com/xiaoyifang/eb.git
-          cd eb && ./configure && make -j 8 && sudo make install && cd ..         
+          git clone --depth 1 https://github.com/xiaoyifang/eb.git
+          cd eb && ./configure && make -j 8 && sudo make install && cd ..
       - uses: jurplel/install-qt-action@v4.2.1
         with:
           version: ${{ matrix.qt_ver }}
@@ -60,6 +76,8 @@ jobs:
           mkdir build_dir
           cmake -S . -B build_dir \
             -G Ninja \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DWITH_FFMPEG_PLAYER=OFF \
             -DWITH_TTS=OFF \
             -DCMAKE_BUILD_TYPE=RelWithDebInfo \
@@ -80,6 +98,8 @@ jobs:
 
   build_Windows:
     if: github.event.inputs.build_Windows == 'true'
+    permissions:
+      contents: read
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:

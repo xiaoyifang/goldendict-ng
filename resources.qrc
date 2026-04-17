@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>icons/add-anki-icon.svg</file>
+        <file>icons/anki.svg</file>
         <file>icons/document.png</file>
         <file>icons/audio.png</file>
         <file>version.txt</file>
@@ -85,6 +86,8 @@
         <file>icons/dictionary.svg</file>
         <file>icons/advanced.png</file>
         <file>icons/webdict.svg</file>
+        <file>icons/mdict-bg.svg</file>
+        <file>icons/webdict-bg.svg</file>
         <file>icons/transliteration.png</file>
         <file>icons/pushpin.svg</file>
         <file>icons/fulltext.svg</file>

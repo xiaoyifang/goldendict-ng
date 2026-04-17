@@ -1122,6 +1122,14 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <source>&amp;Add group</source>
       <translation>&amp;Lägg till grupp</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>Gruppen finns redan</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>En grupp med namnet &apos;%1&apos; finns redan.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -2654,15 +2662,15 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML-tolkningsfel: %1 på %2, %3</translation>
+      <source>JSON parse error</source>
+      <translation>JSON parse error</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML-tolkningsfel: %1 på %2, %3</translation>
+      <source>JSON parse error</source>
+      <translation>JSON parse error</translation>
     </message>
   </context>
   <context>
@@ -3274,10 +3282,6 @@ förfrågningar.</translation>
       <translation>Däck:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Modell:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Ord</translation>
     </message>
@@ -3505,6 +3509,22 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Öppna webbplatsordlista i separat flik</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
+    </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>Tillåt JavaScript att komma åt urklipp i artikelvyn.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Aktivera åtkomst till JavaScript-urklipp (behöver startas om)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Starta om för att tillämpa JavaScript-urklipp åtkomständring.</translation>
     </message>
   </context>
   <context>

@@ -1,6 +1,6 @@
 var start_time=new Date().getTime();
 
-var interval = setInterval(function () {
+var interval = globalThis.setInterval(function () {
     var end_time=new Date().getTime();
     //for 10 seconds.
     if(end_time-start_time>=10000){
@@ -13,7 +13,7 @@ var interval = setInterval(function () {
     const height = Math.max(body.scrollHeight, body.offsetHeight,
     html.clientHeight, html.scrollHeight, html.offsetHeight);
 
-    if ('parentIFrame' in window) {
+    if ('parentIFrame' in globalThis) {
         console.log("iframe set height to " + height);
         parentIFrame.size(height); 
     }

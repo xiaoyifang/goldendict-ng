@@ -143,7 +143,7 @@ a:hover {
 /* Headers */
 h3 {
   color: inherit;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
 }
 
 /* The first headword in a (possibly) multi-headword DSL article */
@@ -153,7 +153,9 @@ h3 {
 }
 
 .mwiki .toc,
-.mwiki .metadata mbox-small plainlinks {
+.mwiki .metadata,
+.mwiki .mbox-small,
+.mwiki .plainlinks {
   display: none;
 }
 
@@ -178,12 +180,12 @@ code::selection {
 /* DSL headwords */
 .dsl_headwords {
   color: inherit;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
 }
 
 /* Formatting */
 .dsl_b {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
 }
 
 .dsl_ex,
@@ -273,7 +275,7 @@ code::selection {
 
 .dsl_s_wav a:after {
   display: inline-block;
-  font-family: "Webdings";
+  font-family: "Webdings", sans-serif;
   content: "X";
   width: 18px;
   height: 18px;
@@ -292,7 +294,7 @@ code::selection {
 /******** Verbix Dictionaries ****************/
 
 .sdct_h .normal {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   font-size: 10pt;
   color: #000000;
   font-weight: normal;
@@ -300,7 +302,7 @@ code::selection {
 }
 
 .sdct_h .irregular {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   font-size: 10pt;
   color: #ff0000;
   font-weight: bold;
@@ -308,7 +310,7 @@ code::selection {
 }
 
 .sdct_h .orto {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   font-size: 10pt;
   color: #0000ff;
   font-weight: normal;
@@ -316,7 +318,7 @@ code::selection {
 }
 
 .sdct_h .archaic {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   font-size: 10pt;
   color: #800080;
   font-weight: normal;
@@ -324,7 +326,7 @@ code::selection {
 }
 
 .sdct_h .notused {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   font-size: 10pt;
   color: #808080;
   font-weight: normal;
@@ -332,7 +334,7 @@ code::selection {
 }
 
 .sdct_h .pronoun {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   font-size: 10pt;
   color: #008000;
   font-weight: normal;
