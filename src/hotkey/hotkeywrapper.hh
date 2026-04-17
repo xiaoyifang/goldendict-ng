@@ -115,6 +115,8 @@ private:
 
 public:
   void activated( int hkId );
+  void suspendHotkeys();
+  void resumeHotkeys();
 
 #endif
 

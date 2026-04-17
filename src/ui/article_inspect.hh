@@ -16,6 +16,7 @@ public:
   void triggerAction( QWebEnginePage * page );
 
 private:
+  QWebEnginePage * currentPage = nullptr;
 
   virtual void closeEvent( QCloseEvent * );
 };

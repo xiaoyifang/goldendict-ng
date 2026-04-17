@@ -1122,6 +1122,14 @@ a školní ortografií v cyrilici)</translation>
       <source>&amp;Add group</source>
       <translation>Přid&amp;at skupinu</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>Skupina již existuje</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>Skupina s názvem &apos;%1&apos; již existuje.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -2654,15 +2662,15 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Chyba při zpracování XML: %1 v %2, %3</translation>
+      <source>JSON parse error</source>
+      <translation>Chyba při parsování JSON</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Chyba při zpracování XML: %1 v %2, %3</translation>
+      <source>JSON parse error</source>
+      <translation>Chyba při parsování JSON</translation>
     </message>
   </context>
   <context>
@@ -3273,10 +3281,6 @@ pro všechny síťové požadavky programu.</translation>
       <translation>Balíček:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Vzor:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Slovo</translation>
     </message>
@@ -3502,6 +3506,22 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Otevřít webový slovník v samostatné záložce</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
+    </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>Povolit JavaScript přístup ke schránce v zobrazení článku.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Povolit přístup do schránky JavaScriptu (vyžaduje restart)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Restartujte pro aplikaci změny přístupu do schránky JavaScriptu.</translation>
     </message>
   </context>
   <context>

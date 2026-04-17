@@ -3,7 +3,6 @@
 
 #include "mainstatusbar.hh"
 
-#include <Qt>
 #include <QFrame>
 #include <QVBoxLayout>
 #include <QApplication>

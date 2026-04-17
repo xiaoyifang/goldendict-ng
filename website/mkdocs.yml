@@ -39,7 +39,7 @@ nav:
       - Shortcuts: ui_shortcuts.md
   - Advanced Usages:
       - External Programs as Dict: howto/how to add a program as dictionary.md
-      - Custom Stylesheet & JavaScript: topic_userstyle.md
+      - User Style Customization: topic_userstyle.md
       - Website Scripting: topic_website_scripting.md
       - Website Whitelist: topic_website_whitelist.md
       - Portable Mode: topic_portablemode.md

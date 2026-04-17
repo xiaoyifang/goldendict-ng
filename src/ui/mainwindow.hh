@@ -4,6 +4,7 @@
 #pragma once
 
 #include <QSystemTrayIcon>
+#include <QSignalBlocker>
 #include <functional>
 #include "ui_mainwindow.h"
 #include "config.hh"
@@ -67,6 +68,21 @@ private:
   void addGlobalActionsToDialog( QDialog * dialog );
   void addGroupComboBoxActionsToDialog( QDialog * dialog, GroupComboBox * pGroupComboBox );
   void removeGroupComboBoxActionsFromDialog( QDialog * dialog, GroupComboBox * pGroupComboBox );
+
+  template< typename Func >
+  void withScanPopupSignalBlocked( Func func )
+  {
+    QSignalBlocker blocker( scanPopup );
+    Q_UNUSED( blocker ); // Avoid unused variable warning
+    func();
+  }
+
+  bool handleStructuredMessage( const QString & message );
+
+public:
+  void showTranslation( const QString & word, const QString & windowType );
+
+private:
 
 
   QSystemTrayIcon * trayIcon;

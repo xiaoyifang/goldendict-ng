@@ -1122,6 +1122,14 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <source>&amp;Add group</source>
       <translation>&amp;Lisää ryhmä</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>Ryhmä on jo olemassa</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>Ryhmä jonka nimi on &apos;%1&apos; on jo olemassa.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -2654,15 +2662,15 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML-jäsennysvirhe: %1 %2:lla,%3</translation>
+      <source>JSON parse error</source>
+      <translation>JSON jäsennysvirhe</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML-jäsennysvirhe: %1 %2:lla,%3</translation>
+      <source>JSON parse error</source>
+      <translation>JSON jäsennysvirhe</translation>
     </message>
   </context>
   <context>
@@ -3274,10 +3282,6 @@ kaikille ohjelmille&apos;s verkkopyyntöille.</translation>
       <translation>Pakka:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Malli:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Sana</translation>
     </message>
@@ -3504,6 +3508,22 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Avaa verkkosivuston sanakirja erillisessä välilehdessä</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
+    </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>Salli JavaScript käyttää leikepöytää artikkelin näkymässä.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Salli JavaScript-leikepöydälle pääsy (täytyy käynnistää uudelleen)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Käynnistä uudelleen, jos haluat ottaa käyttöön JavaScript-leikepöydälle pääsyn muutoksen.</translation>
     </message>
   </context>
   <context>

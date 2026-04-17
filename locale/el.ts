@@ -1124,6 +1124,14 @@ between classic and school orthography in cyrillic)</source>
       <source>&amp;Add group</source>
       <translation>Προσ&amp;θήκη ομάδας</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>Η ομάδα υπάρχει ήδη</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>Μια ομάδα με το όνομα &apos;%1&apos; υπάρχει ήδη.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -2656,15 +2664,15 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Σφάλμα ανάλυσης XML: %1 στο %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>Σφάλμα ανάλυσης JSON</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Σφάλμα ανάλυσης XML: %1 στο %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>Σφάλμα ανάλυσης JSON</translation>
     </message>
   </context>
   <context>
@@ -3275,10 +3283,6 @@ for all program&apos;s network requests.</source>
       <translation>Τράπουλα:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Μοντέλο:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Λέξη</translation>
     </message>
@@ -3505,6 +3509,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Άνοιγμα λεξικού ιστοσελίδας σε ξεχωριστή καρτέλα</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
+    </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>Επιτρέψτε στην JavaScript να έχει πρόσβαση στο πρόχειρο στην προβολή άρθρου.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Ενεργοποίηση πρόσβασης στο πρόχειρο JavaScript (χρειάζεται επανεκκίνηση)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Επανεκκίνηση για να εφαρμόσετε την αλλαγή πρόσβασης στο πρόχειρο JavaScript.</translation>
     </message>
   </context>
   <context>

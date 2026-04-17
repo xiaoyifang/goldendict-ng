@@ -1121,6 +1121,14 @@ between classic and school orthography in cyrillic)</source>
       <source>&amp;Add group</source>
       <translation>グループの追加(&amp;A)</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>グループは既に存在します</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>A group with the name &apos;%1&apos; already exists.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -2653,15 +2661,15 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML 分析エラー: %1 at %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>JSONパースエラー</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML 分析エラー: %1 at %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>JSONパースエラー</translation>
     </message>
   </context>
   <context>
@@ -3271,10 +3279,6 @@ for all program&apos;s network requests.</source>
       <translation>デッキ:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>モデル:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>単語</translation>
     </message>
@@ -3500,6 +3504,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>ウェブサイト辞書を別タブで開く</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
+    </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>記事ビューでのクリップボードへのアクセスをJavaScriptに許可する。</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>JavaScriptのクリップボードアクセスを有効にする (再起動が必要)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>再起動してJavaScriptクリップボードのアクセス権の変更を適用します。</translation>
     </message>
   </context>
   <context>

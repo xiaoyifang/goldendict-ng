@@ -195,7 +195,7 @@ class MdxDictionary: public BtreeIndexing::BtreeDictionary
 
   QAtomicInt deferredInitDone;
   QMutex deferredInitMutex;
-  bool deferredInitRunnableStarted;
+  bool deferredInitRunnableStarted = false;
 
   string initError;
   QString cacheDirName;
@@ -288,8 +288,7 @@ MdxDictionary::MdxDictionary( const string & id, const string & indexFile, const
   idx( indexFile, QIODevice::ReadOnly ),
   idxFileName( indexFile ),
   idxHeader( idx.read< IdxHeader >() ),
-  chunks( idx, idxHeader.chunksOffset ),
-  deferredInitRunnableStarted( false )
+  chunks( idx, idxHeader.chunksOffset )
 {
   // Read the dictionary's name
   idx.seek( sizeof( idxHeader ) );
@@ -298,7 +297,7 @@ MdxDictionary::MdxDictionary( const string & id, const string & indexFile, const
   //fallback, use filename as dictionary name
   if ( dictionaryName.empty() ) {
     QFileInfo f( QString::fromUtf8( dictionaryFiles[ 0 ].c_str() ) );
-    dictionaryName = f.baseName().toStdString();
+    dictionaryName = f.completeBaseName().toStdString();
   }
 
   // then read the dictionary's encoding
@@ -725,7 +724,11 @@ QByteArray MddResourceRequest::isolate_css()
     if ( url.indexOf( ":/" ) >= 0 || url.indexOf( "data:" ) >= 0 ) {
       // External link or base64-encoded data
       newCSS += match.captured();
+      continue;
+    }
 
+    if ( url.startsWith( "//" ) ) {
+      newCSS += "url(" + match.captured( 1 ) + "https:" + url + match.captured( 3 ) + ")";
       continue;
     }
 
@@ -737,6 +740,7 @@ QByteArray MddResourceRequest::isolate_css()
     css = newCSS;
     newCSS.clear();
   }
+
   dict.isolateCSS( css );
   auto bytes = css.toUtf8();
 
@@ -859,7 +863,7 @@ void MdxDictionary::loadIcon() noexcept
 
   QString text = QString::fromStdString( dictionaryName );
 
-  if ( !loadIconFromFileName( fileName ) && !loadIconFromText( ":/icons/mdict-bg.png", text ) ) {
+  if ( !loadIconFromFileName( fileName ) && !loadIconFromText( ":/icons/mdict-bg.svg", text ) ) {
     // Use default icons
     dictionaryIcon = QIcon( ":/icons/mdict.png" );
   }
@@ -908,7 +912,27 @@ void MdxDictionary::loadArticle( uint32_t offset, string & articleText, bool noF
 QString & MdxDictionary::filterResource( QString & article )
 {
   QString id = QString::fromStdString( getId() );
+
+  // Handle protocol-relative URLs (//) - Replace them with https://
+  // This must be done before replaceLinks so they are seen as absolute URLs
+  article.replace( QRegularExpression( R"(([\s"'](?:src|href|data)\s*=\s*["'])\/\/)" ), R"(\1https://)" );
+  article.replace( QRegularExpression( R"(([\s"'](?:src|href|data)\s*=\s*)(?!\s*["'])\/\/)" ), R"(\1https://)" );
+
   replaceLinks( id, article );
+
+  // Replace html/body/head with section to avoid hoisting by browser
+  article.replace( QRegularExpression( "<html", QRegularExpression::CaseInsensitiveOption ),
+                   "<section data-from-html=\"true\"" );
+  article.replace( QRegularExpression( "</html>", QRegularExpression::CaseInsensitiveOption ), "</section>" );
+
+  article.replace( QRegularExpression( "<body", QRegularExpression::CaseInsensitiveOption ),
+                   "<section data-from-body=\"true\"" );
+  article.replace( QRegularExpression( "</body>", QRegularExpression::CaseInsensitiveOption ), "</section>" );
+
+  article.replace( QRegularExpression( "<head", QRegularExpression::CaseInsensitiveOption ),
+                   "<section data-from-head=\"true\"" );
+  article.replace( QRegularExpression( "</head>", QRegularExpression::CaseInsensitiveOption ), "</section>" );
+
   replaceStyleInHtml( id, article );
   article = isolateStyleCssInHtml( article );
   return article;
@@ -1024,30 +1048,50 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
       // convert <img src="bres://{id}/a.png" srcset="a-1x.png 1x, b-2x.png 2x, c.png">
       // into    <img src="bres://{id}/a.png" srcset="bres://{id}/a-1x.png 1x,bres://{id}/b-2x.png 2x,bres://{id}/c.png">
 
-      if ( linkType.compare( "img" ) == 0 ) {
-        match = RX::Mdx::srcset.match( newLink ); // have to use newLink since linkTxt may already be modified
+      if ( linkType.compare( "img" ) == 0 || linkType.compare( "source" ) == 0 ) {
+        match = RX::Mdx::srcset.match( newLink );
         if ( match.hasMatch() ) {
-          auto srcsetOriginalText   = match.captured( "text" );
+          auto srcsetOriginalText = match.captured( "text" );
+
           QStringList srcsetNewText = {};
+          // Split only when a comma is followed by whitespace, as per HTML Living Standard.
+          QStringList chunks = srcsetOriginalText.split( QRegularExpression( R"(,\s+)" ), Qt::SkipEmptyParts );
 
-          auto ImageList = srcsetOriginalText.split( u',', Qt::SkipEmptyParts );
+          for ( QString chunk : chunks ) {
+            chunk = chunk.trimmed();
+            if ( chunk.isEmpty() ) {
+              continue;
+            }
 
-          for ( auto & img : ImageList ) {
-            auto imgPair = img.split( RX::whiteSpace );
+            QString url, desc;
+            int firstSpace = chunk.indexOf( QRegularExpression( R"(\s)" ) );
+            if ( firstSpace != -1 ) {
+              url  = chunk.left( firstSpace );
+              desc = chunk.mid( firstSpace ).trimmed();
+            }
+            else {
+              url = chunk;
+            }
 
-            if ( !imgPair.empty() && !imgPair.at( 0 ).contains( "//" ) ) {
-              if ( imgPair.length() == 1 ) {
-                srcsetNewText.append( QString( R"(bres://%1/%2)" ).arg( id, imgPair.at( 0 ) ) );
+            if ( !url.isEmpty() ) {
+              if ( url.startsWith( "//" ) ) {
+                url = "https:" + url;
+                srcsetNewText.append( desc.isEmpty() ? url : url + " " + desc );
               }
-              else if ( imgPair.length() == 2 ) {
-                srcsetNewText.append( QString( R"(bres://%1/%2 %3)" ).arg( id, imgPair.at( 0 ), imgPair.at( 1 ) ) );
+              else if ( !url.contains( "//" ) && !url.contains( ":" ) ) {
+                QString converted = QString( R"(bres://%1/%2)" ).arg( id, url );
+                srcsetNewText.append( desc.isEmpty() ? converted : converted + " " + desc );
+              }
+              else {
+                srcsetNewText.append( desc.isEmpty() ? url : url + " " + desc );
               }
             }
           }
-
-          newLink.replace( match.capturedStart(),
-                           match.capturedLength(),
-                           match.captured( "before" ) % srcsetNewText.join( ',' ) % match.captured( "after" ) );
+          if ( !srcsetNewText.isEmpty() ) {
+            newLink.replace( match.capturedStart(),
+                             match.capturedLength(),
+                             match.captured( "before" ) % srcsetNewText.join( ',' ) % match.captured( "after" ) );
+          }
         }
       }
 
@@ -1056,8 +1100,12 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
         if ( match.hasMatch() ) {
           auto srcsetOriginalText = match.captured( "text" );
           QString srcsetNewText;
-          if ( !srcsetOriginalText.contains( "//" ) ) {
+          if ( !srcsetOriginalText.contains( "//" ) && !srcsetOriginalText.contains( ":" ) ) {
             srcsetNewText = QString( R"(bres://%1/%2)" ).arg( id, srcsetOriginalText );
+          }
+          else {
+            // Fix: Keep external URLs for object data
+            srcsetNewText = srcsetOriginalText;
           }
 
           newLink.replace( match.capturedStart(),
@@ -1097,6 +1145,7 @@ QString MdxDictionary::isolateStyleCssInHtml( const QString & description )
     while ( it.hasNext() ) {
       QRegularExpressionMatch match = it.next();
       QString styleContent          = match.captured( 1 );
+
 
       // Call isolateCSS to process CSS content in <style> tags
       isolateCSS( styleContent, QString() );
@@ -1170,8 +1219,11 @@ void MdxDictionary::replaceFontLinks( QString & id, QString & article )
     QString linkType = allLinksMatch.captured( 1 );
     QString newLink  = linkTxt;
 
-    //skip remote url
-    if ( !linkType.contains( ":" ) ) {
+    // skip remote url and handle protocol-relative urls
+    if ( linkType.startsWith( "//" ) ) {
+      newLink = QString( "url(\"https:%1\")" ).arg( linkType );
+    }
+    else if ( !linkType.contains( ":" ) ) {
       newLink = QString( "url(\"bres://%1/%2\")" ).arg( id, linkType );
     }
     articleNewText += newLink;

@@ -1122,6 +1122,14 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
       <source>&amp;Add group</source>
       <translation>&amp;Aggiungi gruppo</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>Il gruppo esiste già</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>Un gruppo con il nome &apos;%1&apos; esiste già.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -2655,15 +2663,15 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Errore di analisi XML: %1 al %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>Errore di analisi JSON</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Errore di analisi XML: %1 al %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>Errore di analisi JSON</translation>
     </message>
   </context>
   <context>
@@ -3274,10 +3282,6 @@ per ogni programma della rete che lo richieda.</translation>
       <translation>Mazzo:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Modello:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Parola</translation>
     </message>
@@ -3502,6 +3506,22 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Apri il dizionario del sito in una scheda separata</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
+    </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>Consenti a JavaScript di accedere agli appunti nella vista articoli.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Abilita l'accesso agli appunti JavaScript (necessario riavvio)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Riavvia per applicare la modifica di accesso agli appunti JavaScript.</translation>
     </message>
   </context>
   <context>

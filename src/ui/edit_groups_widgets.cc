@@ -9,6 +9,7 @@
 #include "language.hh"
 #include "metadata.hh"
 #include "utils.hh"
+#include <climits>
 
 #include <QFileDialog>
 #include <QFileInfo>
@@ -532,7 +533,6 @@ void DictListWidget::rowsAboutToBeRemoved( const QModelIndex & parent, int start
 
 DictGroupsWidget::DictGroupsWidget( QWidget * parent ):
   QTabWidget( parent ),
-  nextId( 1 ),
   allDicts( nullptr ),
   activeDicts( nullptr )
 {
@@ -574,7 +574,6 @@ void DictGroupsWidget::populate( const Config::Groups & groups,
     setTabToolTip( x, toolTipStr );
   }
 
-  nextId = groups.nextId;
 
   setCurrentIndex( 0 );
 }
@@ -583,8 +582,6 @@ void DictGroupsWidget::populate( const Config::Groups & groups,
 Config::Groups DictGroupsWidget::makeGroups() const
 {
   Config::Groups result;
-
-  result.nextId = nextId;
 
   for ( int x = 0; x < count(); ++x ) {
     result.push_back( dynamic_cast< DictGroupWidget & >( *widget( x ) ).makeGroup() );
@@ -657,8 +654,28 @@ int DictGroupsWidget::addNewGroup( const QString & name )
 
   Config::Group newGroup;
 
-  newGroup.id   = nextId++;
   newGroup.name = name;
+  newGroup.id   = static_cast< unsigned >( qHash( newGroup.name ) );
+  // Ensure ID is not 0 (reserved for NoGroupId)
+  if ( newGroup.id == 0 ) {
+    newGroup.id = 1;
+  }
+  // Check for duplicate IDs
+  QSet< unsigned > existingIds;
+  for ( int x = 0; x < count(); ++x ) {
+    const Config::Group existingGroup = dynamic_cast< DictGroupWidget & >( *widget( x ) ).makeGroup();
+    existingIds.insert( existingGroup.id );
+  }
+  // Handle potential overflow
+  while ( existingIds.contains( newGroup.id ) ) {
+    if ( newGroup.id == UINT_MAX ) {
+      // Start from 1 when reaching maximum value
+      newGroup.id = 1;
+    }
+    else {
+      newGroup.id++;
+    }
+  }
 
   const auto gr = new DictGroupWidget( this, *allDicts, newGroup );
   const int idx = insertTab( currentIndex() + 1, gr, Utils::escapeAmps( name ) );

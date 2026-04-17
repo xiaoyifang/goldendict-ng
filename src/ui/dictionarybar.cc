@@ -83,8 +83,9 @@ void DictionaryBar::setDictionaries( const vector< sptr< Dictionary::Class > > &
 }
 
 void DictionaryBar::updateToGroup( const Instances::Group * grp,
-                                   Config::DictionarySets * allGroupMutedDictionaries,
-                                   Config::Class & cfg )
+                                   QSet< QString > * allGroupMutedDictionaries,
+                                   Config::Class & cfg,
+                                   bool isPopup )
 {
   Q_ASSERT( grp != nullptr ); // should never occur
   if ( !this->toggleViewAction()->isChecked() ) {
@@ -97,7 +98,9 @@ void DictionaryBar::updateToGroup( const Instances::Group * grp,
   }
   else {
     Config::Group * _grp = cfg.getGroup( grp->id );
-    setMutedDictionaries( _grp ? &_grp->mutedDictionaries : nullptr );
+    if ( _grp ) {
+      setMutedDictionaries( isPopup ? &_grp->popupMutedDictionaries : &_grp->mutedDictionaries );
+    }
   }
   setDictionaries( grp->dictionaries );
 }
@@ -224,22 +227,25 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
   }
 
   if ( result && result == changeNameAction ) {
-    if ( !pDict ) {
+    if ( !pDict || pDict->getContainingFolder().isEmpty() ) {
       return;
     }
-    bool ok;
-    QString newName = QInputDialog::getText( this,
-                                             tr( "Change display name" ),
-                                             tr( "New display name:" ),
-                                             QLineEdit::Normal,
-                                             QString::fromUtf8( pDict->getName().c_str() ),
-                                             &ok );
-    if ( ok && !newName.isEmpty() && !pDict->getContainingFolder().isEmpty() ) {
+    QInputDialog dialog( this );
+    dialog.setWindowTitle( tr( "Change display name" ) );
+    dialog.setLabelText( tr( "New display name:" ) );
+    dialog.setTextValue( QString::fromUtf8( pDict->getName().c_str() ) );
+    if ( auto * lineEdit = dialog.findChild< QLineEdit * >() ) {
+      lineEdit->setClearButtonEnabled( true );
+    }
+
+    if ( dialog.exec() == QDialog::Accepted ) {
+      QString newName = dialog.textValue();
       Metadata::saveDisplayName( Utils::Path::combine( pDict->getContainingFolder(), "metadata.toml" ).toStdString(),
                                  newName.toStdString() );
       pDict->setName( newName.toStdString() );
-      dictAction->setText( elideDictName( newName ) );
-      dictAction->setToolTip( newName );
+      QString effectiveName = QString::fromUtf8( pDict->getName().c_str() );
+      dictAction->setText( elideDictName( effectiveName ) );
+      dictAction->setToolTip( effectiveName );
     }
   }
 

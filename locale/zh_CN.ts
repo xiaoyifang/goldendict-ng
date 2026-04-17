@@ -1120,6 +1120,14 @@ between classic and school orthography in cyrillic)</source>
       <source>&amp;Add group</source>
       <translation>添加群组(&amp;A)</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>群组已存在</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>一个名为 &apos;%1&apos; 的组已经存在。</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -2653,15 +2661,15 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML 解析失败：%1 于 %2, %3</translation>
+      <source>JSON parse error</source>
+      <translation>JSON 解析错误</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML 解析失败：%1 于 %2, %3</translation>
+      <source>JSON parse error</source>
+      <translation>JSON 解析错误</translation>
     </message>
   </context>
   <context>
@@ -3263,10 +3271,6 @@ for all program&apos;s network requests.</source>
       <translation>牌组：</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>模板：</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>单词</translation>
     </message>
@@ -3490,6 +3494,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>在单独标签中打开网站词典</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
+    </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>允许JavaScript在文章视图中访问剪贴板。</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>启用 JavaScript 剪贴板访问(需要重启)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>重新启动以应用 JavaScript 剪贴板访问更改。</translation>
     </message>
   </context>
   <context>

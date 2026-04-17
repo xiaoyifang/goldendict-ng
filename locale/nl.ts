@@ -1122,6 +1122,14 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <source>&amp;Add group</source>
       <translation>Groep &amp;toevoegen</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>Groep bestaat al</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>Een groep met de naam &apos;%1&apos; bestaat al.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -2654,15 +2662,15 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML parseerfout: %1 op %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>JSON parse fout</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>XML parseerfout: %1 op %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>JSON parse fout</translation>
     </message>
   </context>
   <context>
@@ -3273,10 +3281,6 @@ for all program&apos;s network requests.</source>
       <translation>Deck:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Model</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Woord</translation>
     </message>
@@ -3501,6 +3505,22 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Open het website-woordenboek in apart tabblad</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
+    </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>Geef JavaScript toegang tot klembord in de artikelweergave.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Inschakelen JavaScript clipboard toegang (opnieuw opstarten vereist)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Herstart om de toegangswijziging voor JavaScript klembord toe te passen.</translation>
     </message>
   </context>
   <context>

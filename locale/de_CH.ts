@@ -1119,6 +1119,14 @@ between classic and school orthography in cyrillic)</source>
       <source>&amp;Add group</source>
       <translation>Gruppe &amp;hinzufügen</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation type="unfinished">Group already exists</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation type="unfinished">A group with the name &apos;%1&apos; already exists.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -2651,15 +2659,15 @@ Um folgende Symbole zu finden &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Fehler beim XML-parsen: %1 bei %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation type="unfinished">JSON parse error</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Fehler beim XML-parsen: %1 bei %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation type="unfinished">JSON parse error</translation>
     </message>
   </context>
   <context>
@@ -3265,10 +3273,6 @@ for all program&apos;s network requests.</source>
       <translation>Sammlung (Deck):</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Modell:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Wort</translation>
     </message>
@@ -3492,6 +3496,22 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation type="unfinished">Open website dictionary in separate tab</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation type="unfinished">Anki</translation>
+    </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation type="unfinished">Allow JavaScript to access clipboard in the article view.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation type="unfinished">Enable JavaScript clipboard access (need restart)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation type="unfinished">Restart to apply the JavaScript clipboard access change.</translation>
     </message>
   </context>
   <context>

@@ -1,5 +1,7 @@
 #include "ankiconnector.hh"
 #include "utils.hh"
+#include <QJsonArray>
+#include <QJsonDocument>
 
 QString markTargetWord( const QString & sentence, const QString & word )
 {
@@ -16,7 +18,10 @@ AnkiConnector::AnkiConnector( QObject * parent, const Config::Class & _cfg ):
   connect( mgr, &QNetworkAccessManager::finished, this, &AnkiConnector::finishedSlot );
 }
 
-void AnkiConnector::sendToAnki( const QString & word, QString text, const QString & sentence )
+void AnkiConnector::sendToAnki( const QString & word,
+                                QString text,
+                                const QString & sentence,
+                                const QJsonObject & audio )
 {
   if ( word.isEmpty() ) {
     emit this->errorText( tr( "Anki: can't create a card without a word" ) );
@@ -26,14 +31,32 @@ void AnkiConnector::sendToAnki( const QString & word, QString text, const QStrin
   // Anki doesn't understand the newline character, so it should be escaped.
   text = text.replace( "\n", "<br>" );
 
-  const QString postTemplate = R"anki({
+  QJsonObject params;
+  QJsonObject note;
+  QJsonObject fields;
+
+  fields.insert( cfg.preferences.ankiConnectServer.word, word );
+  fields.insert( cfg.preferences.ankiConnectServer.text, text );
+
+  if ( !cfg.preferences.ankiConnectServer.sentence.isEmpty() ) {
+    QString sentence_changed = markTargetWord( sentence, word );
+    fields.insert( cfg.preferences.ankiConnectServer.sentence, sentence_changed );
+  }
+
+  QJsonArray audioArray;
+  if ( !audio.isEmpty() ) {
+    audioArray.append( audio );
+  }
+
+  QString postTemplate = R"anki({
       "action": "addNote",
       "version": 6,
       "params": {
           "note": {
-              "deckName": "%1",
-              "modelName": "%2",
+              "deckName": %1,
+              "modelName": %2,
               "fields": %3,
+              "audio": %4,
               "options": {
                   "allowDuplicate": true
               },
@@ -42,17 +65,10 @@ void AnkiConnector::sendToAnki( const QString & word, QString text, const QStrin
       }
   })anki";
 
-  QJsonObject fields;
-  fields.insert( cfg.preferences.ankiConnectServer.word, word );
-  fields.insert( cfg.preferences.ankiConnectServer.text, text );
-  if ( !cfg.preferences.ankiConnectServer.sentence.isEmpty() ) {
-    QString sentence_changed = markTargetWord( sentence, word );
-    fields.insert( cfg.preferences.ankiConnectServer.sentence, sentence_changed );
-  }
-
-  QString postData = postTemplate.arg( cfg.preferences.ankiConnectServer.deck,
-                                       cfg.preferences.ankiConnectServer.model,
-                                       Utils::json2String( fields ) );
+  QString postData = postTemplate.arg( Utils::json2String( cfg.preferences.ankiConnectServer.deck ),
+                                       Utils::json2String( cfg.preferences.ankiConnectServer.model ),
+                                       Utils::json2String( fields ),
+                                       Utils::json2String( audioArray ) );
 
   //  qDebug().noquote() << postData;
   postToAnki( postData );

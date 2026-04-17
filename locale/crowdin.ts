@@ -1104,6 +1104,14 @@ between classic and school orthography in cyrillic)</source>
         <source>&amp;Add group</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Group already exists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A group with the name &apos;%1&apos; already exists.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>HistoryPaneWidget</name>
@@ -2635,14 +2643,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
 <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-        <source>XML parse error: %1 at %2,%3</source>
+        <source>JSON parse error</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-        <source>XML parse error: %1 at %2,%3</source>
+        <source>JSON parse error</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3240,10 +3248,6 @@ for all program&apos;s network requests.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Model:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Word</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3461,6 +3465,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Open website dictionary in separate tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Anki</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow JavaScript to access clipboard in the article view.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable JavaScript clipboard access (need restart)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restart to apply the JavaScript clipboard access change.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

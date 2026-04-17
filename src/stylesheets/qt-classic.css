@@ -13,9 +13,11 @@
   image: none;
 }
 
+/* stylelint-disable-next-line selector-type-no-unknown */
 QTabBar::close-button {
   image: url(:/icons/closetab.svg);
 }
+/* stylelint-disable-next-line selector-type-no-unknown */
 QTabBar::close-button:hover {
   image: url(:/icons/closetab-hover.png);
 }

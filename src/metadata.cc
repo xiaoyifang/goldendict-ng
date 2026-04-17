@@ -1,11 +1,10 @@
 #include "metadata.hh"
-#include "toml++/toml.hpp"
+#include <toml++/toml.hpp>
 #include <QDebug>
 #include <QSaveFile>
 #include <QFile>
-#ifdef Q_OS_FREEBSD
-  #include <sstream>
-#endif
+#include <sstream>
+
 
 std::optional< Metadata::result > Metadata::load( std::string_view filepath )
 {
@@ -73,7 +72,12 @@ void Metadata::saveDisplayName( std::string_view filepath, std::string_view name
     tbl.emplace( "metadata", toml::table{} );
   }
 
-  tbl[ "metadata" ].as_table()->insert_or_assign( "name", name );
+  if ( name.empty() ) {
+    tbl[ "metadata" ].as_table()->erase( "name" );
+  }
+  else {
+    tbl[ "metadata" ].as_table()->insert_or_assign( "name", name );
+  }
 
   QSaveFile file( QString::fromStdString( std::string{ filepath } ) );
   if ( file.open( QIODevice::WriteOnly | QIODevice::Text ) ) {

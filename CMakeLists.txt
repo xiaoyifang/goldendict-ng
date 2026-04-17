@@ -9,7 +9,7 @@ option(WITH_TTS "enable QTexttoSpeech support" OFF)
 option(WITH_X11 "Experimental flag. Don't disable this. Disable means pure Wayland." ON)
 
 # options for linux packaging
-option(USE_SYSTEM_TOML "use system toml++ instead of bundled one" OFF)
+
 
 ## This should be avoided because of small regressions, as some scripts and icons themes assume the binary name and resources folder to be `goldendict`
 option(USE_ALTERNATIVE_NAME "For Linux, change the binary name and resource folder to goldendict-ng to parallel install with the original GD" OFF)
@@ -24,8 +24,8 @@ if (WIN32)
         include(FetchContent)
         FetchContent_Declare(
                 vcpkg-export
-                URL https://github.com/xiaoyifang/goldendict-ng/releases/download/vcpkg_251224_afef7d8e6ea636f8bb14159191eeb9ca97c97c0a/goldendict-ng-vcpkg-export.zip
-                URL_HASH SHA512=99E1843FC308938BDB4501C3C2456066F5755240A9BF006413510FE9FB7A196CBED62846D1955AF8EE7DF6855F0CC8E063FDF4187F0C19F6A986296919663A19
+                URL https://github.com/xiaoyifang/goldendict-ng/releases/download/vcpkg_260318_7de07c3862ae2154bd78b92044bb99af6c523917/goldendict-ng-vcpkg-export.zip
+                URL_HASH SHA512=0E1268CA82DB28C16373ACCA71797F9061ED88ACDBA983783F4AD501D4B767D129D6B4E24A0EE95D868350707BEC28B9A4654307343E314E459CBE2D0185DCD9
         )
         FetchContent_MakeAvailable(vcpkg-export)
         set(VCPKG_MANIFEST_MODE OFF CACHE BOOL "disable existing manifest mode caused by the existrance of vcpkg.json" FORCE)
@@ -164,9 +164,7 @@ target_include_directories(${GOLDENDICT} PRIVATE
         ${PROJECT_SOURCE_DIR}/src/ui
 )
 
-if (NOT USE_SYSTEM_TOML)
-    target_include_directories(${GOLDENDICT} PRIVATE ${PROJECT_SOURCE_DIR}/thirdparty/tomlplusplus)
-endif ()
+
 
 
 #### Compile definitions

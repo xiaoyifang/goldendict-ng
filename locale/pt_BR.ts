@@ -1122,6 +1122,14 @@ entre clássico e ortografia escolar em cirílico)</translation>
       <source>&amp;Add group</source>
       <translation>&amp;Adicionar</translation>
     </message>
+    <message>
+      <source>Group already exists</source>
+      <translation>Grupo já existe</translation>
+    </message>
+    <message>
+      <source>A group with the name &apos;%1&apos; already exists.</source>
+      <translation>Um grupo com o nome &apos;%1&apos; já existe.</translation>
+    </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
@@ -2654,15 +2662,15 @@ Para encontrar os símbolos &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Erro de análise sintática de XML: %1 em %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>Erro de análise JSON</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
-      <source>XML parse error: %1 at %2,%3</source>
-      <translation>Erro de análise sintática de XML: %1 em %2,%3</translation>
+      <source>JSON parse error</source>
+      <translation>Erro de análise JSON</translation>
     </message>
   </context>
   <context>
@@ -3279,10 +3287,6 @@ para todos os acessos à rede pelo programa.</translation>
       <translation>Baralho:</translation>
     </message>
     <message>
-      <source>Model:</source>
-      <translation>Modelo:</translation>
-    </message>
-    <message>
       <source>Word</source>
       <translation>Palavra</translation>
     </message>
@@ -3508,6 +3512,22 @@ dos dicionários Stardict, Babylon e GLS</translation>
     <message>
       <source>Open website dictionary in separate tab</source>
       <translation>Abrir dicionário do site em uma guia separada</translation>
+    </message>
+    <message>
+      <source>Anki</source>
+      <translation>Anki</translation>
+    </message>
+    <message>
+      <source>Allow JavaScript to access clipboard in the article view.</source>
+      <translation>Permitir que JavaScript acesse a área de transferência no modo de exibição de artigo.</translation>
+    </message>
+    <message>
+      <source>Enable JavaScript clipboard access (need restart)</source>
+      <translation>Habilitar acesso à área de transferência JavaScript (requer reinicialização)</translation>
+    </message>
+    <message>
+      <source>Restart to apply the JavaScript clipboard access change.</source>
+      <translation>Reinicie para aplicar a alteração de acesso à área de transferência JavaScript.</translation>
     </message>
   </context>
   <context>

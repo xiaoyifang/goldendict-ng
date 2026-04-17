@@ -224,7 +224,10 @@ ScanPopup::ScanPopup( QWidget * parent,
                return;
              }
              if ( cfg.preferences.pronounceOnLoadPopup ) {
-               definition->playAudio( QUrl::fromEncoded( audioUrl.toUtf8() ) );
+               // Use a small delay to avoid audio clipping on Windows during window activation/rendering
+               QTimer::singleShot( 150, definition, [ this, audioUrl ]() {
+                 definition->playAudio( QUrl::fromEncoded( audioUrl.toUtf8() ) );
+               } );
              }
            } );
   pinnedGeometry = cfg.popupWindowGeometry;
@@ -442,7 +445,10 @@ void ScanPopup::refresh()
 
   groupListAction->setVisible( !cfg.groups.empty() );
 
-  dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg );
+  dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ),
+                               &cfg.popupMutedDictionaries,
+                               cfg,
+                               true );
   setDictionaryIconSize();
 
   definition->syncBackgroundColorWithCfgDarkReader();
@@ -690,7 +696,10 @@ void ScanPopup::currentGroupChanged( int )
     }
   }
 
-  dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg );
+  dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ),
+                               &cfg.popupMutedDictionaries,
+                               cfg,
+                               true );
 
   definition->setCurrentGroupId( cfg.lastPopupGroupId );
 
@@ -749,11 +758,17 @@ void ScanPopup::showTranslationFor( const QString & word ) const
 
 const vector< sptr< Dictionary::Class > > & ScanPopup::getActiveDicts()
 {
+  if ( groups.empty() ) {
+    return allDictionaries;
+  }
+
   int current = groupList->currentIndex();
 
-  Q_ASSERT( 0 <= current || current <= (qsizetype)groups.size() );
+  if ( current < 0 || current >= (int)groups.size() ) {
+    return allDictionaries;
+  }
 
-  const Config::DictionarySets * mutedDictionaries = dictionaryBar.getMutedDictionaries();
+  const QSet< QString > * mutedDictionaries = dictionaryBar.getMutedDictionaries();
 
   if ( !dictionaryBar.toggleViewAction()->isChecked() || mutedDictionaries == nullptr ) {
     return groups[ current ].dictionaries;
@@ -814,7 +829,8 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
 
   if ( event->type() == QEvent::KeyPress && watched != translateBox->translateLine() ) {
 
-    if ( const auto key_event = dynamic_cast< QKeyEvent * >( event ); key_event->modifiers() == Qt::NoModifier ) {
+    if ( const auto key_event = dynamic_cast< QKeyEvent * >( event );
+         key_event->modifiers() == Qt::NoModifier || key_event->modifiers() == Qt::ShiftModifier ) {
       const QString text = key_event->text();
 
       if ( Utils::ignoreKeyEvent( key_event ) || key_event->key() == Qt::Key_Return
@@ -949,7 +965,10 @@ void ScanPopup::showEvent( QShowEvent * ev )
   }
 
   if ( dictionaryBar.isVisible() ) {
-    dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg );
+    dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ),
+                                 &cfg.popupMutedDictionaries,
+                                 cfg,
+                                 true );
     setDictionaryIconSize();
   }
 }
@@ -1068,7 +1087,10 @@ void ScanPopup::stopAudio() const
 void ScanPopup::dictionaryBar_visibility_changed( bool visible )
 {
   if ( visible ) {
-    dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg );
+    dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ),
+                                 &cfg.popupMutedDictionaries,
+                                 cfg,
+                                 true );
     setDictionaryIconSize();
     definition->updateMutedContents();
   }
@@ -1270,12 +1292,13 @@ void ScanPopup::titleChanged( ArticleView * view, const QString & title ) const
   // Set icon for "Add to Favorites" button
   ui.sendWordToFavoritesButton->setIcon( isWordPresentedInFavorites( title ) ? blueStarIcon : starIcon );
 
-  if ( view->isWebsite() ) {
-    int index = tabWidget->indexOf( view );
-    if ( index != -1 ) {
-      tabWidget->setTabText( index, title );
-      tabWidget->setTabToolTip( index, title );
-    }
+  int index = tabWidget->indexOf( view );
+  if ( index != -1 ) {
+    // Truncate long titles to make tab labels more readable
+    const int maxTabTitleLength = 30;
+    QString tabTitle            = Utils::ellipsizeString( title, maxTabTitleLength );
+    tabWidget->setTabText( index, tabTitle );
+    tabWidget->setTabToolTip( index, title );
   }
 }
 
@@ -1318,7 +1341,10 @@ void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId, 
           view->setCurrentWord( word );
         }
         view->load( url, name );
-        tabWidget->setTabText( i, name );
+        // Truncate long website names for tab labels
+        const int maxTabTitleLength = 30;
+        QString truncatedName       = Utils::ellipsizeString( name, maxTabTitleLength );
+        tabWidget->setTabText( i, truncatedName );
         return;
       }
     }
@@ -1351,7 +1377,11 @@ void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId, 
   connect( view, &ArticleView::titleChanged, this, &ScanPopup::titleChanged );
   connect( view, &ArticleView::sendWordToInputLine, this, &ScanPopup::translateWord );
 
-  int index = tabWidget->addTab( view, name );
+  // Truncate long website names for tab labels
+  const int maxTabTitleLength = 30;
+  QString truncatedName       = Utils::ellipsizeString( name, maxTabTitleLength );
+
+  int index = tabWidget->addTab( view, truncatedName );
   tabWidget->setCurrentIndex( index );
 
   view->load( url, name );
