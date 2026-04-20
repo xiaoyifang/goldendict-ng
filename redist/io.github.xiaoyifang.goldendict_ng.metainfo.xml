@@ -44,6 +44,7 @@
     <id>org.goldendict_ng.desktop</id>
   </provides>
   <releases>
+    <release version="26.5.1" date="2026-4-20"/>
     <release version="26.5.0" date="2026-4-17"/>
     <release version="26.3.0" date="2026-2-26"/>
     <release version="26.1.0" date="2026-1-4"/>
