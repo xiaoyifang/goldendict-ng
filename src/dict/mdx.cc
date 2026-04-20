@@ -921,15 +921,15 @@ QString & MdxDictionary::filterResource( QString & article )
   replaceLinks( id, article );
 
   // Replace html/body/head with section to avoid hoisting by browser
-  article.replace( QRegularExpression( "<html", QRegularExpression::CaseInsensitiveOption ),
+  article.replace( QRegularExpression( "<html\\b", QRegularExpression::CaseInsensitiveOption ),
                    "<section data-from-html=\"true\"" );
   article.replace( QRegularExpression( "</html>", QRegularExpression::CaseInsensitiveOption ), "</section>" );
 
-  article.replace( QRegularExpression( "<body", QRegularExpression::CaseInsensitiveOption ),
+  article.replace( QRegularExpression( "<body\\b", QRegularExpression::CaseInsensitiveOption ),
                    "<section data-from-body=\"true\"" );
   article.replace( QRegularExpression( "</body>", QRegularExpression::CaseInsensitiveOption ), "</section>" );
 
-  article.replace( QRegularExpression( "<head", QRegularExpression::CaseInsensitiveOption ),
+  article.replace( QRegularExpression( "<head\\b", QRegularExpression::CaseInsensitiveOption ),
                    "<section data-from-head=\"true\"" );
   article.replace( QRegularExpression( "</head>", QRegularExpression::CaseInsensitiveOption ), "</section>" );
 
