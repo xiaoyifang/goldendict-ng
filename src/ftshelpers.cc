@@ -68,7 +68,7 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
     Xapian::TermGenerator indexer;
     // FLAG_NGRAMS is thepreferred name and supports more languages beyond CJK
-    indexer.set_flags( Xapian::TermGenerator::FLAG_NGRAMS );
+    indexer.set_flags( Xapian::TermGenerator::FLAG_CJK_NGRAM );
 
     std::vector< std::string > stopwords = Stopwords::getStopwords();
 
