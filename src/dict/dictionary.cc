@@ -610,12 +610,8 @@ bool needToRebuildIndex( const vector< string > & dictionaryFiles, const string 
   if ( cfg && !cfg->dictionariesToReindex.isEmpty() ) {
     std::string dictId = makeDictionaryId( dictionaryFiles );
 
-    // If the dictionary ID is in the reindex list, return true and remove it
+    // If the dictionary ID is in the reindex list, return true
     if ( cfg->dictionariesToReindex.contains( QString::fromStdString( dictId ) ) ) {
-      // Remove immediately to ensure index is rebuilt only once
-      cfg->dictionariesToReindex.remove( QString::fromStdString( dictId ) );
-      // Set dirty flag to true, indicating configuration has been modified
-      cfg->dirty = true;
       return true;
     }
   }

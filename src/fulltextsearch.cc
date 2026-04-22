@@ -136,6 +136,14 @@ void FtsIndexing::onIndexingFinished()
     started = false;
   }
   setNowIndexedName( QString() );
+
+  // Unified clear reindex list
+  Config::Class * cfg = GlobalBroadcaster::instance()->getConfig();
+  if ( cfg && !cfg->dictionariesToReindex.isEmpty() ) {
+    cfg->dictionariesToReindex.clear();
+    cfg->dirty = true;
+    Config::save( *cfg );
+  }
 }
 
 void FtsIndexing::setNowIndexedName( const QString & name )
