@@ -114,7 +114,7 @@ GoldenDict-NG includes stopwords for multiple languages:
 **English**: Common words like "the", "is", "and", "or", "not", etc. (49 words)
 
 **CJK Languages** (Chinese, Japanese, Korean):
-- **Single-character stopwords**: Included, but effectiveness is uncertain
+- **Single-character stopwords**: Included
   - May work for isolated characters
   - Included for potential benefit in some contexts
   - Users can remove them if they cause issues (use `-的` syntax in custom config)
@@ -137,78 +137,25 @@ To see the complete list, check: `src/data/stopwords.txt` in the source code.
 ### CJK N-GRAM Indexing and Stopwords
 
 !!! warning "Important: CJK Stopwords Limitation"
-    GoldenDict uses Xapian's N-GRAM mode (FLAG_NGRAMS, or FLAG_CJK_NGRAM in older Xapian versions) for Chinese/Japanese/Korean text indexing, which splits CJK text into **2-character bigrams** before applying stopword filtering. This affects how stopwords work:
+    GoldenDict uses Xapian's N-GRAM mode for Chinese/Japanese/Korean text indexing, which splits CJK text into **2-character bigrams** before applying stopword filtering. This affects how stopwords work:
 
-**How It Works:**
-
-1. Text is split into 2-character bigrams (e.g., "因为所以" → "因为", "为所", "所以")
-2. Stopper checks each generated bigram against the stopword list
-3. Matching bigrams are filtered out
-
-**Important Note on Single Characters:**
-
-Xapian's N-GRAM mode (FLAG_NGRAMS) primarily generates **bigrams only**. Single CJK characters are typically NOT indexed as independent terms unless they appear isolated (without adjacent CJK characters). This behavior is similar to Lucene's CJK bigram filter with `output_unigrams=false`.
-
-!!! info "FLAG_NGRAMS vs FLAG_CJK_NGRAM"
-    Xapian 1.4.23+ uses FLAG_NGRAMS as the preferred flag name (added as an alias). The older FLAG_CJK_NGRAM is still supported for backward compatibility. GoldenDict automatically uses the appropriate flag based on your Xapian version.
-
-**For CJK Text:**
-
-- ✅ **2-character stopwords work correctly** (e.g., "一个", "这个", "那个", "因为", "所以")
-  - These exactly match the generated bigrams
-- ⚠️ **Single-character stopwords effectiveness is unclear**
-  - May only work for isolated characters (e.g., single punctuation marks)
-  - Most CJK single characters within text are NOT indexed independently
-  - Testing shows mixed results - depends on Xapian version and context
-- ❌ **Multi-character stopwords (>2) do NOT work** (e.g., "因为所以" with 4 characters)
-  - Split into multiple bigrams ("因为", "为所", "所以")
-  - The original 4-character term never exists as a single unit
-  - Stopper cannot match the complete phrase
+**Basic Principle:**
+- Text is split into 2-character bigrams (e.g., "因为所以" → "因为", "为所", "所以")
+- Stopword checker compares each bigram against the stopword list
+- Matching bigrams are filtered out
 
 **For Non-CJK Text:**
-
-- ✅ **English stopwords work normally** (tokenized by spaces/punctuation, not affected by N-GRAM)
+- ✅ **English stopwords work normally** (tokenized by spaces/punctuation)
 - ✅ **Punctuation stopwords work normally**
 
 **Best Practices:**
-
-For effective CJK stopword filtering:
-- ✅ Use 2-character word pairs that commonly appear in your dictionaries
-- ✅ Focus on frequently occurring 2-character combinations
-- ⚠️ Single characters: **Effectiveness uncertain** - may only work for isolated characters
-- ❌ Avoid phrases longer than 2 characters (will be split)
-
-**Example:**
-
-```text
-# ✅ Effective: 2-character Chinese stopwords (guaranteed to work)
-一个  # Will filter the bigram "一个"
-这个  # Will filter the bigram "这个"
-因为  # Will filter the bigram "因为"
-所以  # Will filter the bigram "所以"
-
-# ⚠️ Uncertain: Single characters (included in built-in list)
-的    # Effectiveness unclear - may work for isolated characters
-了    # May only work if appears as standalone character
-# Note: These are included in the built-in stopwords.txt
-# You can remove them with: -的  -了  (in your custom config)
-
-# ❌ Ineffective: Multi-character phrases
-因为所以  # Splits into "因为", "为所", "所以" - cannot match as a whole
-```
-
-**Technical Note:**
-
-If you want to filter "因为所以" as a phrase, you would need to add both component bigrams:
-```text
-因为
-所以
-```
-This will remove both bigrams individually, though "为所" would still be indexed.
+- Use common 2-character word pairs from your dictionaries
+- Focus on frequently occurring 2-character combinations
+- Avoid phrases longer than 2 characters
 
 ### Performance Impact
 
-- **Smaller index**: Removing common words reduces index size
+- **Smaller index**: Reduces index size by removing common words
 - **Faster indexing**: Fewer words to process
 - **Better relevance**: Search results focus on meaningful terms
 - **Language mixing**: Works well for multilingual dictionaries
