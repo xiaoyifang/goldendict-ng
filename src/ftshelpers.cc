@@ -227,8 +227,7 @@ void FTSResultsRequest::run()
       Xapian::SimpleStopper * stopper = Stopwords::getStopper();
       if ( stopper ) {
         qp.set_stopper( stopper );
-        qp.set_stopper_strategy( Xapian::QueryParser::STOP_ALL );
-        qDebug() << "FTS Query: Using cached stopper with STOP_ALL strategy";
+        qDebug() << "FTS Query: Using cached stopper";
       }
 
       int flag =
