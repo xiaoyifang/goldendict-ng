@@ -5,6 +5,7 @@
 #include <QSet>
 #include <QTextStream>
 #include <mutex>
+#include "xapian.h"
 
 namespace Stopwords {
 
