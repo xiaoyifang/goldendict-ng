@@ -1,3 +1,4 @@
+#include "xapian.h"
 #include "stopwords.hh"
 #include "config.hh"
 #include <QDebug>
@@ -5,7 +6,6 @@
 #include <QSet>
 #include <QTextStream>
 #include <mutex>
-#include "xapian.h"
 
 namespace Stopwords {
 
