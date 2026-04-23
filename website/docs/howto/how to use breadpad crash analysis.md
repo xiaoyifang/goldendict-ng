@@ -8,7 +8,7 @@ When a crash is encountered, a dump file is generated under the folder `crash`.T
 
 1. Open the `.dmp` file with VS:
 2. Click `Debug with Native Only`:
-3. Click `Locate goldendict.pdb manually` -> click to a path that contains the `.pdf` file (Require exact naming of `goldendict.pdb`):
+3. Click `Locate goldendict.pdb manually` -> click to a path that contains the `.pdb` file (Require exact naming of `goldendict.pdb`):
 
 Bottom tab --> `locals` --> watch stack.
 
