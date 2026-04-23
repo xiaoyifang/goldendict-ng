@@ -17,3 +17,9 @@ When you place mouse cursor over headword in results list, the tooltip with dict
 
 !!! note
     The dictionary will index for full-text search in background and started immediately after program start, name of the currently indexing dictionary is displayed in the status line. This process can take a long time and require many computing resources.You may turn off indexing for huge dictionaries like Wikipedias or Wiktionaries in preferences. To find dictionary which can't be indexed check GoldenDict with `--log-to-file` or check `stdout`.
+
+## Customizing Stopwords
+
+Stopwords are common words (like "the", "is", "at") that are automatically excluded from indexing to improve search quality. You can customize which words are treated as stopwords.
+
+See [Customizing Stopwords](topic_stopwords.md) for detailed information.

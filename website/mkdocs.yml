@@ -40,6 +40,7 @@ nav:
   - Advanced Usages:
       - External Programs as Dict: howto/how to add a program as dictionary.md
       - User Style Customization: topic_userstyle.md
+      - Customizing Stopwords: topic_stopwords.md
       - Website Scripting: topic_website_scripting.md
       - Website Whitelist: topic_website_whitelist.md
       - Portable Mode: topic_portablemode.md

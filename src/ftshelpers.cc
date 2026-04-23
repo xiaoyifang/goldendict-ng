@@ -8,6 +8,8 @@
 #include "ftshelpers.hh"
 #include "dictfile.hh"
 #include "utils.hh"
+#include "stopwords.hh"
+#include "config.hh"
 
 #include <vector>
 #include <string>
@@ -65,10 +67,29 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     Xapian::WritableDatabase db( encodedPath.toStdString(), Xapian::DB_CREATE_OR_OPEN );
 
     Xapian::TermGenerator indexer;
+    // Use FLAG_CJK_NGRAM for compatibility with older Xapian versions
+    // FLAG_NGRAMS is available in Xapian 1.4.23+ as an alias
+    indexer.set_flags( Xapian::TermGenerator::FLAG_CJK_NGRAM );
+
+    Xapian::SimpleStopper * stopper = Stopwords::getStopper();
+    if ( stopper ) {
+      // Print first few stopwords for verification
+      std::vector< std::string > stopwords = Stopwords::getStopwords();
+      qDebug() << "FTS Indexing: Using cached stopper with" << stopwords.size() << "stopwords";
+      if ( !stopwords.empty() ) {
+        qDebug() << "First few stopwords:";
+        for ( size_t i = 0; i < std::min( size_t( 10 ), stopwords.size() ); ++i ) {
+          qDebug() << "  -" << QString::fromStdString( stopwords[ i ] );
+        }
+      }
+      indexer.set_stopper( stopper );
+      // Set stopper strategy to STOP_ALL to apply stopwords even without stemming
+      indexer.set_stopper_strategy( Xapian::TermGenerator::STOP_ALL );
+      qDebug() << "FTS Indexing: Stopper configured with STOP_ALL strategy";
+    }
+
     //  Xapian::Stem stemmer("english");
     //  indexer.set_stemmer(stemmer);
-    //  indexer.set_stemming_strategy(indexer.STEM_SOME_FULL_POS);
-    indexer.set_flags( Xapian::TermGenerator::FLAG_CJK_NGRAM );
 
     BtreeIndexing::IndexedWords indexedWords;
 
@@ -194,11 +215,21 @@ void FTSResultsRequest::run()
       // them, so that simple queries don't have to be quoted at the shell
       // level.
       string query_string( Folding::applyForIndex( searchString ) );
+      qDebug() << "FTS Query: Original search string:" << searchString;
+      qDebug() << "FTS Query: Folded query string:" << QString::fromStdString( query_string );
 
       // Parse the query string to produce a Xapian::Query object.
       Xapian::QueryParser qp;
       qp.set_database( db );
       qp.set_default_op( Xapian::Query::op::OP_AND );
+
+      // Apply stopwords to search queries
+      Xapian::SimpleStopper * stopper = Stopwords::getStopper();
+      if ( stopper ) {
+        qp.set_stopper( stopper );
+        qDebug() << "FTS Query: Using cached stopper";
+      }
+
       int flag =
         Xapian::QueryParser::FLAG_DEFAULT | Xapian::QueryParser::FLAG_PURE_NOT | Xapian::QueryParser::FLAG_CJK_NGRAM;
       if ( searchMode == FTS::Wildcards ) {
