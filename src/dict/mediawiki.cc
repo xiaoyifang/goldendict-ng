@@ -167,7 +167,7 @@ MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( const std::u32string & s
   QNetworkRequest req( reqUrl );
   //millseconds.
   req.setTransferTimeout( 2000 );
-  netReply = std::shared_ptr< QNetworkReply >( mgr.get( req ) );
+  netReply = sptr< QNetworkReply >( mgr.get( req ), []( QNetworkReply * r ) { r->deleteLater(); } );
 
   connect( netReply.get(), SIGNAL( finished() ), this, SLOT( downloadFinished() ) );
 
@@ -375,7 +375,7 @@ void MediaWikiSectionsParser::closeListTags( int currentLevel )
 
 class MediaWikiArticleRequest: public MediaWikiDataRequestSlots
 {
-  using NetReplies = std::list< std::pair< QNetworkReply *, bool > >;
+  using NetReplies = std::list< std::pair< sptr< QNetworkReply >, bool > >;
   NetReplies netReplies;
   QString url;
   QString lang;
@@ -440,12 +440,11 @@ void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, const std::
   QNetworkRequest req( reqUrl );
   //millseconds.
   req.setTransferTimeout( 3000 );
-  QNetworkReply * netReply = mgr.get( req );
+  sptr< QNetworkReply > reply( mgr.get( req ), []( QNetworkReply * r ) { r->deleteLater(); } );
+  QNetworkReply * netReply = reply.get();
   connect( netReply, &QNetworkReply::finished, this, [ this, netReply ]() {
     requestFinished( netReply );
   } );
-  // Ensure the reply is ALWAYS deleted, even if this request object is destroyed
-  connect( netReply, &QNetworkReply::finished, netReply, &QObject::deleteLater );
 
   connect( netReply, &QNetworkReply::errorOccurred, this, []( QNetworkReply::NetworkError e ) {
     qDebug() << "MediaWiki error:" << e;
@@ -456,7 +455,7 @@ void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, const std::
 
 #endif
 
-  netReplies.push_back( std::make_pair( netReply, false ) );
+  netReplies.push_back( std::make_pair( std::move( reply ), false ) );
 }
 
 void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
@@ -477,7 +476,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
   bool updated = false;
 
   while ( !netReplies.empty() && netReplies.front().second ) {
-    QNetworkReply * netReply = netReplies.front().first;
+    sptr< QNetworkReply > netReply = std::move( netReplies.front().first );
     netReplies.pop_front();
 
     if ( !netReply ) {
