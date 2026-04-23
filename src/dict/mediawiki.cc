@@ -167,7 +167,9 @@ MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( const std::u32string & s
   QNetworkRequest req( reqUrl );
   //millseconds.
   req.setTransferTimeout( 2000 );
-  netReply = sptr< QNetworkReply >( mgr.get( req ), []( QNetworkReply * r ) { r->deleteLater(); } );
+  netReply = sptr< QNetworkReply >( mgr.get( req ), []( QNetworkReply * r ) {
+    r->deleteLater();
+  } );
 
   connect( netReply.get(), SIGNAL( finished() ), this, SLOT( downloadFinished() ) );
 
@@ -440,7 +442,9 @@ void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, const std::
   QNetworkRequest req( reqUrl );
   //millseconds.
   req.setTransferTimeout( 3000 );
-  sptr< QNetworkReply > reply( mgr.get( req ), []( QNetworkReply * r ) { r->deleteLater(); } );
+  sptr< QNetworkReply > reply( mgr.get( req ), []( QNetworkReply * r ) {
+    r->deleteLater();
+  } );
   QNetworkReply * netReply = reply.get();
   connect( netReply, &QNetworkReply::finished, this, [ this, netReply ]() {
     requestFinished( netReply );
