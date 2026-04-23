@@ -1395,11 +1395,15 @@ bool ScanPopup::isWordPresentedInFavorites( const QString & word ) const
 #ifdef WITH_X11
 void ScanPopup::showScanFlag()
 {
-  scanFlag->showScanFlag();
+  if ( scanFlag ) {
+    scanFlag->showScanFlag();
+  }
 }
 
 void ScanPopup::hideScanFlag()
 {
-  scanFlag->hideWindow();
+  if ( scanFlag ) {
+    scanFlag->hideWindow();
+  }
 }
 #endif
