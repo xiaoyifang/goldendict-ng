@@ -471,7 +471,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
   }
 
   for ( auto & [ netReply, finished ] : netReplies ) {
-    if ( netReply == r ) {
+    if ( netReply.get() == r ) {
       finished = true; // Mark as finished
       break;
     }
