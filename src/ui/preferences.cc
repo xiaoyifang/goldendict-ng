@@ -176,9 +176,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.mruTabOrder->setChecked( p.mruTabOrder );
   ui.enableTrayIcon->setChecked( p.enableTrayIcon );
 
-#ifdef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
-  ui.enableTrayIcon->hide();
-#endif
+  // Enable tray icon option for all platforms
 
   ui.startToTray->setChecked( p.startToTray );
   ui.closeToTray->setChecked( p.closeToTray );
