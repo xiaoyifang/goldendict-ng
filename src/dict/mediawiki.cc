@@ -459,7 +459,7 @@ void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, const std::
 
 #endif
 
-  netReplies.push_back( std::make_pair( std::move( reply ), false ) );
+  netReplies.emplace_back( std::move( reply ), false );
 }
 
 void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
