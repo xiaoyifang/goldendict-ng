@@ -25,7 +25,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-14,macos-15-intel]
-        qt_ver: [ 6.8.3, 6.11.0 ] # 6.8 is LTS which is relatively stable, don't dump it until next LTS.
+        qt_ver: [ 6.8.3, 6.10.3 ] # 6.8 is LTS which is relatively stable, don't dump it until next LTS.
     steps:
       - uses: actions/checkout@v4
         with:
@@ -108,7 +108,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-2022]
-        qt_ver: [ 6.8.3, 6.11.0 ]
+        qt_ver: [ 6.8.3, 6.10.3 ]
     steps:
       - uses: jurplel/install-qt-action@v4.2.1
         with:
