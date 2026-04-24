@@ -108,7 +108,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-2022]
-        qt_ver: [ 6.8.3, 6.11.0 ]
+        qt_ver: [ 6.8.3, 6.10.3 ]
         arch: [ win64_msvc2022_64, win64_msvc2022_arm64_cross_compiled ]
         include:
           - arch: win64_msvc2022_64
