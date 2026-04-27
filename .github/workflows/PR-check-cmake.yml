@@ -129,8 +129,8 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v4.2.1
         with:
-          version: 6.7.3
-          arch: win64_msvc2019_64
+          version: 6.10.3
+          arch: win64_msvc2022_64
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
           # setup-python: 'false'
       - uses: actions/checkout@v4
