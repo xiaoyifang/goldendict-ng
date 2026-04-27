@@ -105,12 +105,10 @@ jobs:
       matrix:
         os: [windows-2022]
         qt_ver: [ 6.10.3 ]
-        arch: [ win64_msvc2022_64, win64_msvc2022_arm64_cross_compiled ]
+        arch: [ win64_msvc2022_64 ]
         include:
           - arch: win64_msvc2022_64
             vs_arch: amd64
-          - arch: win64_msvc2022_arm64_cross_compiled
-            vs_arch: arm64
     steps:
       - uses: jurplel/install-qt-action@v4.2.1
         with:
