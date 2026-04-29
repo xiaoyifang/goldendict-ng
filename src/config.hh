@@ -207,7 +207,7 @@ struct FullTextSearch
 
   FullTextSearch():
     searchMode( 0 ),
-    enabled( true ),
+    enabled( false ),
     maxDictionarySize( 0 )
   {
   }
