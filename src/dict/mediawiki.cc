@@ -7,7 +7,7 @@
 #include <QUrl>
 #include <QSet>
 #include <algorithm>
-#include <list>
+#include <deque>
 #include "audiolink.hh"
 #include "langcoder.hh"
 #include "utils.hh"
@@ -377,7 +377,12 @@ void MediaWikiSectionsParser::closeListTags( int currentLevel )
 
 class MediaWikiArticleRequest: public MediaWikiDataRequestSlots
 {
-  using NetReplies = std::list< std::pair< sptr< QNetworkReply >, bool > >;
+  struct NetReplyContext
+  {
+    sptr< QNetworkReply > reply;
+    bool finished = false;
+  };
+  using NetReplies = std::deque< NetReplyContext >;
   NetReplies netReplies;
   QString url;
   QString lang;
@@ -459,7 +464,7 @@ void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, const std::
 
 #endif
 
-  netReplies.emplace_back( std::move( reply ), false );
+  netReplies.push_back( { std::move( reply ), false } );
 }
 
 void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
@@ -470,17 +475,17 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
     return;
   }
 
-  for ( auto & [ netReply, finished ] : netReplies ) {
-    if ( netReply.get() == r ) {
-      finished = true; // Mark as finished
+  for ( auto & context : netReplies ) {
+    if ( context.reply.get() == r ) {
+      context.finished = true; // Mark as finished
       break;
     }
   }
 
   bool updated = false;
 
-  while ( !netReplies.empty() && netReplies.front().second ) {
-    sptr< QNetworkReply > netReply = std::move( netReplies.front().first );
+  while ( !netReplies.empty() && netReplies.front().finished ) {
+    sptr< QNetworkReply > netReply = std::move( netReplies.front().reply );
     netReplies.pop_front();
 
     if ( !netReply ) {

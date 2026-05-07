@@ -22,8 +22,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-14]
-        qt_ver: [ 6.8.3 ]
+        os: [macos-15]
+        qt_ver: [ 6.10.3 ]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -104,12 +104,16 @@ jobs:
     strategy:
       matrix:
         os: [windows-2022]
-        qt_ver: [ 6.7.2 ]
+        qt_ver: [ 6.10.3 ]
+        arch: [ win64_msvc2022_64 ]
+        include:
+          - arch: win64_msvc2022_64
+            vs_arch: amd64
     steps:
       - uses: jurplel/install-qt-action@v4.2.1
         with:
           version: ${{ matrix.qt_ver }}
-          arch: win64_msvc2019_64
+          arch: ${{ matrix.arch }}
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
           # setup-python: 'false'
       - uses: actions/checkout@v4
@@ -120,7 +124,7 @@ jobs:
         run: |
           # Launch-VsDevShell also provides Ninja
           & 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\Launch-VsDevShell.ps1' `
-            -SkipAutomaticLocation -Arch amd64 -HostArch amd64
+            -SkipAutomaticLocation -Arch ${{ matrix.vs_arch }} -HostArch amd64
           New-Item -Path './build_dir' -ItemType Directory
           
           # RelWithDebInfo + msvc's = .pdb file beside program file.
@@ -151,7 +155,7 @@ jobs:
           ls -R
       - uses: actions/upload-artifact@v4
         with:
-          name: Windows-Qt${{ matrix.qt_ver }}
+          name: Windows-${{ matrix.arch }}-Qt${{ matrix.qt_ver }}
           if-no-files-found: error
           retention-days: 7
           path: |
@@ -161,7 +165,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: Windows-only-exe-Qt${{ matrix.qt_ver }}
+          name: Windows-only-exe-${{ matrix.arch }}-Qt${{ matrix.qt_ver }}
           if-no-files-found: error
           retention-days: 7
           path: |
