@@ -11,6 +11,12 @@ When you add the `whitelist` parameter to a website's URL template:
 1.  GoldenDict-ng adds the website's host to a **Referer Whitelist**.
 2.  Any request initiated by this website (where the `Referer` matches the whitelisted host) will be allowed by the internal WebEngine interceptor.
 
+## When to use it?
+
+If a website looks broken (missing icons, styles, or non-working buttons), you can diagnose it:
+1. Right-click on the website in GoldenDict-ng and select **Inspect (F12)**.
+2. Check the **Console** tab.
+3. If you see errors like `ERR_BLOCKED_BY_CLIENT` or `CORS policy` blocking resources from other domains, you need to enable the whitelist.
 
 ## How to enable
 
