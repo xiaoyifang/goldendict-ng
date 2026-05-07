@@ -34,6 +34,14 @@ Append `whitelist=1` (or any value) to your website URL template in the **Edit |
 | Google Translate| `https://translate.google.com/?sl=auto&tl=zh-CN&text=%GDWORD%&op=translate&whitelist=1` |
 | Wikipedia       | `https://en.wikipedia.org/wiki/%GDWORD%?whitelist=true`                      |
 
+### Global Whitelist File (Advanced)
+
+You can also define trusted hosts globally by creating a plain text file named `whitelist` in your configuration folder (the same directory where the `config` file is located).
+
+*   **Format**: One host per line (e.g., `gstatic.com`).
+*   **Negation (Blacklist)**: If a line starts with `-`, that specific host will be **blocked**, even if it matches a broader whitelist rule. 
+    *   Example: Adding `google.com` allows all Google subdomains, but adding `-doubleclick.net` will explicitly block that domain.
+
 ## Security Note
 
 Only use the `whitelist` parameter for websites you trust. Enabling it allows the website to load third-party scripts and resources that would otherwise be blocked by GoldenDict-ng's security policies.
