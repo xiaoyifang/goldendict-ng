@@ -406,7 +406,7 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
   css.remove( commentRegex );
 
   // 2. Prepare prefix
-  QString idSelector = "#gd-" + QString::fromStdString( getId() );
+  QString idSelector = "#gdfrom-" + QString::fromStdString( getId() );
   QString prefix     = idSelector;
   if ( !wrapperSelector.isEmpty() ) {
     prefix += " " + wrapperSelector;
