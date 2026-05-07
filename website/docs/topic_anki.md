@@ -36,21 +36,21 @@ For example, the model could have `Front` and `Back` fields.
 
 #### Example for adding Japanese sentences
 
-![screenshot](https://user-images.githubusercontent.com/69171671/224497112-ab027a16-89b2-48d8-8308-a3dbb5b9e1e4.png)
+![screenshot](img/anki-jp-example.png)
 
 ### Action
 
-![image](https://user-images.githubusercontent.com/105986/169638740-abecde84-d33b-45ce-932c-d465c6650334.png)
+![image](img/anki-action.png)
 
 ### Result
 
 #### Word and definition
 
-![image](https://user-images.githubusercontent.com/105986/169638761-f67c009d-27cd-440d-bafa-ebbdce9577e3.png)
+![image](img/anki-result-word.png)
 
 #### Sentence, word, and definition
 
-![screenshot](https://user-images.githubusercontent.com/69171671/224497528-889d6393-e04d-4af7-b1a7-816ba010f2b2.png)
+![screenshot](img/anki-result-sentence.png)
 
 ## Using URI schemes
 

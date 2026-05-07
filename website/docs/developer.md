@@ -56,7 +56,7 @@ Qt Creator usually can auto-detect your Qt installation. In case it doesn't, che
 
 By default, everything will be built but you can disable ffmpeg, epwing...
 
-![](https://github.com/xiaoyifang/goldendict-ng/assets/20123683/49f6a85e-50ec-4467-b0e4-cf088d218053)
+![](img/dev-qt-creator-kit.png)
 
 Then, hit the "Run" button at bottom-right corner should build and run GoldenDict.
 
@@ -70,13 +70,13 @@ VS2022 has CMake support. After opening the source code folder, VS will starts t
 
 You need to add Qt's path and other options to "CMake command arguments". Then, "save" the dialog with Ctrl+S or click one of the many "(re)configure cache" buttons.
 
-![](https://github.com/xiaoyifang/goldendict-ng/assets/20123683/33a52c52-2e8a-4b8c-bb05-4a753f95ff7e)
+![](img/dev-vs-config.png)
 
 Click run will build the project, but the `.exe` would not run, because the dependencies are not copied.
 
 Simply click "install", which is actually copying dependencies.
 
-![](https://github.com/xiaoyifang/goldendict-ng/assets/20123683/02e843b1-0842-445c-919c-75618346aaaf)
+![](img/dev-vs-install.png)
 
 ### Visual Studio Code
 
@@ -90,7 +90,7 @@ Then add Qt's path and various other options to configure arguments.
 -DCMAKE_PREFIX_PATH={Your Qt install path}\6.7.2\msvc2019_64
 ```
 
-![](https://github.com/xiaoyifang/goldendict-ng/assets/20123683/bd87155e-2e61-41d5-81e2-7bfb1f13c4c4)
+![](img/dev-vs-cmake.png)
 
 ### CLion
 ### XCode
