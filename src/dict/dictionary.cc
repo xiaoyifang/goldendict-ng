@@ -406,7 +406,7 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
   css.remove( commentRegex );
 
   // 2. Prepare prefix
-  QString idSelector = "#gdfrom-" + QString::fromStdString( getId() );
+  QString idSelector = "#gd-" + QString::fromStdString( getId() );
   QString prefix     = idSelector;
   if ( !wrapperSelector.isEmpty() ) {
     prefix += " " + wrapperSelector;
@@ -442,14 +442,14 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
         }
       };
 
-      replaceTag( "body", R"(section[data-from-body="true"])" );
-      replaceTag( "html", R"(section[data-from-html="true"])" );
-      replaceTag( ":root", R"(section[data-from-html="true"])" );
+      replaceTag( "body", "gd-section-body" );
+      replaceTag( "html", "gd-section-html" );
+      replaceTag( ":root", "gd-section-html" );
 
       // 2. Prefix the selector if not already prefixed
       if ( !s.startsWith( idSelector ) ) {
         // Special case: if the selector matches the root tags, allow it to apply to the container itself
-        if ( s == R"(section[data-from-body="true"])" || s == R"(section[data-from-html="true"])" ) {
+        if ( s == "gd-section-body" || s == "gd-section-html" ) {
           isolated << idSelector;
         }
         isolated << prefix + " " + s;

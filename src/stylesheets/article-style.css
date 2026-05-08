@@ -44,8 +44,20 @@ header,
 section,
 main,
 span,
-div {
+div,
+gd-section-html,
+gd-section-body,
+gd-section-head {
   unicode-bidi: plaintext;
+}
+
+gd-section-html,
+gd-section-body {
+  display: block;
+}
+
+gd-section-head {
+  display: none;
 }
 /* This stylesheet is used to highligh current selection when doing a search.
   It changes the default selection color (e.g. blue under Windows, orange under Ubuntu) */
