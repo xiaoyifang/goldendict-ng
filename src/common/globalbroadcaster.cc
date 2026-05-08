@@ -50,12 +50,24 @@ Config::Preferences * GlobalBroadcaster::getPreference() const
 
 void GlobalBroadcaster::addHostWhitelist( QString host )
 {
-  hostWhitelist.insert( host );
+  if ( host.isEmpty() ) {
+    return;
+  }
+  bool isNegated  = host.startsWith( '-' );
+  QString pattern = ( isNegated ? host.mid( 1 ).trimmed() : host.trimmed() ).toLower();
+  QString base    = Utils::Url::extractBaseDomain( pattern );
+  hostWhitelist.insert( isNegated ? "-" + base : base );
 }
 
 void GlobalBroadcaster::addRefererWhitelist( QString host )
 {
-  refererWhitelist.insert( host );
+  if ( host.isEmpty() ) {
+    return;
+  }
+  bool isNegated  = host.startsWith( '-' );
+  QString pattern = ( isNegated ? host.mid( 1 ).trimmed() : host.trimmed() ).toLower();
+  QString base    = Utils::Url::extractBaseDomain( pattern );
+  refererWhitelist.insert( isNegated ? "-" + base : base );
 }
 
 bool existedInWhitelistInternal( const QSet< QString > & whitelist, QString host )
@@ -66,6 +78,7 @@ bool existedInWhitelistInternal( const QSet< QString > & whitelist, QString host
 
   // Hostnames are case-insensitive
   QString lowerHost = host.toLower();
+  QString baseHost  = Utils::Url::extractBaseDomain( lowerHost );
   bool whitelisted  = false;
 
   for ( const QString & item : whitelist ) {
@@ -81,8 +94,8 @@ bool existedInWhitelistInternal( const QSet< QString > & whitelist, QString host
       pattern = pattern.mid( 1 );
     }
 
-    // Match exact host or any subdomain
-    if ( lowerHost == pattern || lowerHost.endsWith( "." + pattern ) ) {
+    // Match exact host, base domain, or any subdomain
+    if ( lowerHost == pattern || baseHost == pattern || lowerHost.endsWith( "." + pattern ) ) {
       if ( isNegated ) {
         return false; // Blacklisted/negated items have the highest priority, directly rejecting.
       }
