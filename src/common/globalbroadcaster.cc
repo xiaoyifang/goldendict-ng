@@ -60,17 +60,29 @@ void GlobalBroadcaster::addRefererWhitelist( QString host )
 
 bool existedInWhitelistInternal( const QSet< QString > & whitelist, QString host )
 {
+  if ( host.isEmpty() ) {
+    return false;
+  }
+
+  QString urlBaseDomain = Utils::Url::extractBaseDomain( host );
+  bool whitelisted      = false;
+
   for ( const QString & item : whitelist ) {
-    if ( host == item ) {
-      return true;
+    bool isNegated  = item.startsWith( '-' );
+    QString pattern = isNegated ? item.mid( 1 ).trimmed() : item;
+
+    if ( pattern.isEmpty() ) {
+      continue;
     }
-    QString urlBaseDomain  = Utils::Url::extractBaseDomain( host );
-    QString itemBaseDomain = Utils::Url::extractBaseDomain( item );
-    if ( urlBaseDomain == itemBaseDomain ) {
-      return true;
+
+    if ( host == pattern || urlBaseDomain == Utils::Url::extractBaseDomain( pattern ) ) {
+      if ( isNegated ) {
+        return false; // Blacklisted/negated items have the highest priority, directly rejecting.
+      }
+      whitelisted = true;
     }
   }
-  return false;
+  return whitelisted;
 }
 
 bool GlobalBroadcaster::existedInHostWhitelist( QString host ) const
@@ -115,7 +127,12 @@ void GlobalBroadcaster::loadWhitelist()
     QString line = in.readLine().trimmed();
     if ( !line.isEmpty() && !line.startsWith( "#" ) ) {
       addHostWhitelist( line );
-      qDebug() << "Whitelisted host from config/whitelist:" << line;
+      if ( line.startsWith( '-' ) ) {
+        qDebug() << "Blacklisted (negated) host from config/whitelist:" << line.mid( 1 );
+      }
+      else {
+        qDebug() << "Whitelisted host from config/whitelist:" << line;
+      }
     }
   }
 }

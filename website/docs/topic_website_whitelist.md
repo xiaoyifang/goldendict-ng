@@ -11,6 +11,12 @@ When you add the `whitelist` parameter to a website's URL template:
 1.  GoldenDict-ng adds the website's host to a **Referer Whitelist**.
 2.  Any request initiated by this website (where the `Referer` matches the whitelisted host) will be allowed by the internal WebEngine interceptor.
 
+## When to use it?
+
+If a website looks broken (missing icons, styles, or non-working buttons), you can diagnose it:
+1. Right-click on the website in GoldenDict-ng and select **Inspect (F12)**.
+2. Check the **Console** tab.
+3. If you see errors like `ERR_BLOCKED_BY_CLIENT` or `CORS policy` blocking resources from other domains, you need to enable the whitelist.
 
 ## How to enable
 
@@ -27,6 +33,14 @@ Append `whitelist=1` (or any value) to your website URL template in the **Edit |
 |-----------------|------------------------------------------------------------------------------|
 | Google Translate| `https://translate.google.com/?sl=auto&tl=zh-CN&text=%GDWORD%&op=translate&whitelist=1` |
 | Wikipedia       | `https://en.wikipedia.org/wiki/%GDWORD%?whitelist=true`                      |
+
+### Global Whitelist File (Advanced)
+
+You can also define trusted hosts globally by creating a plain text file named `whitelist` in your configuration folder (the same directory where the `config` file is located).
+
+*   **Format**: One host per line (e.g., `gstatic.com`).
+*   **Negation (Blacklist)**: If a line starts with `-`, that specific host will be **blocked**, even if it matches a broader whitelist rule. 
+    *   Example: Adding `google.com` allows all Google subdomains, but adding `-doubleclick.net` will explicitly block that domain.
 
 ## Security Note
 
