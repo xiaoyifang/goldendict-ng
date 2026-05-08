@@ -41,6 +41,7 @@ p,
 em,
 article,
 header,
+gddictname,
 section,
 main,
 span,
@@ -70,6 +71,7 @@ pre {
 }
 
 /* Dictionary's name heading */
+gddictname,
 .gddictname {
   display: flow-root;
   margin-top: 0.5em;

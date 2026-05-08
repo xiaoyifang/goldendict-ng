@@ -640,12 +640,12 @@ void ArticleRequest::bodyFinished()
 
         fmt::format_to( std::back_inserter( head ),
                         FMT_COMPILE(
-                          R"(<header class="gddictname" {1}  id="gddictname-{0}" title="{2}" role="button" aria-expanded="{7}">
+                          R"(<gddictname class="gddictname" {1}  id="gddictname-{0}" title="{2}" role="button" aria-expanded="{7}">
                       <span class="gddicticon"><img src="gico://{0}/dicticon.png" alt=""></span>
                       <span class="gdfromprefix">{3}</span>
                       <span class="gddicttitle">{4}</span>
                       <span class="collapse_expand_area"><img class="{5}" id="expandicon-{0}" title="{6}" alt="" ></span>
-                     </header>)" ),
+                     </gddictname>)" ),
                         dictId,
                         collapse ? R"(style="cursor:pointer;")" : "",
                         "",
