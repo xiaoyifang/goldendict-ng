@@ -638,22 +638,23 @@ void ArticleRequest::bodyFinished()
                         gdFrom,
                         jsVal );
 
-        fmt::format_to( std::back_inserter( head ),
-                        FMT_COMPILE(
-                          R"(<gd-dict-header class="gddictname" {1}  id="gddictname-{0}" title="{2}" role="button" aria-expanded="{7}">
+        fmt::format_to(
+          std::back_inserter( head ),
+          FMT_COMPILE(
+            R"(<gd-dict-header class="gddictname" {1}  id="gddictname-{0}" title="{2}" role="button" aria-expanded="{7}">
                       <span class="gddicticon"><img src="gico://{0}/dicticon.png" alt=""></span>
                       <span class="gdfromprefix">{3}</span>
                       <span class="gddicttitle">{4}</span>
                       <span class="collapse_expand_area"><img class="{5}" id="expandicon-{0}" title="{6}" alt="" ></span>
                      </gd-dict-header>)" ),
-                        dictId,
-                        collapse ? R"(style="cursor:pointer;")" : "",
-                        "",
-                        Html::escape( tr( "From " ).toStdString() ),
-                        Html::escape( activeDict->getName() ),
-                        collapse ? "gdexpandicon" : "gdcollapseicon",
-                        "",
-                        collapse ? "false" : "true" );
+          dictId,
+          collapse ? R"(style="cursor:pointer;")" : "",
+          "",
+          Html::escape( tr( "From " ).toStdString() ),
+          Html::escape( activeDict->getName() ),
+          collapse ? "gdexpandicon" : "gdcollapseicon",
+          "",
+          collapse ? "false" : "true" );
 
         head += R"(<div class="gddictnamebodyseparator"></div>)";
 
