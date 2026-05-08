@@ -921,16 +921,13 @@ QString & MdxDictionary::filterResource( QString & article )
   replaceLinks( id, article );
 
   // Replace html/body/head with custom tags to avoid hoisting by browser
-  article.replace( QRegularExpression( "<html\\b", QRegularExpression::CaseInsensitiveOption ),
-                   "<gd-section-html" );
+  article.replace( QRegularExpression( "<html\\b", QRegularExpression::CaseInsensitiveOption ), "<gd-section-html" );
   article.replace( QRegularExpression( "</html>", QRegularExpression::CaseInsensitiveOption ), "</gd-section-html>" );
 
-  article.replace( QRegularExpression( "<body\\b", QRegularExpression::CaseInsensitiveOption ),
-                   "<gd-section-body" );
+  article.replace( QRegularExpression( "<body\\b", QRegularExpression::CaseInsensitiveOption ), "<gd-section-body" );
   article.replace( QRegularExpression( "</body>", QRegularExpression::CaseInsensitiveOption ), "</gd-section-body>" );
 
-  article.replace( QRegularExpression( "<head\\b", QRegularExpression::CaseInsensitiveOption ),
-                   "<gd-section-head" );
+  article.replace( QRegularExpression( "<head\\b", QRegularExpression::CaseInsensitiveOption ), "<gd-section-head" );
   article.replace( QRegularExpression( "</head>", QRegularExpression::CaseInsensitiveOption ), "</gd-section-head>" );
 
   replaceStyleInHtml( id, article );
