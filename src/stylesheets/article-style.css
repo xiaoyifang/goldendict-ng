@@ -70,6 +70,7 @@ pre {
 }
 
 /* Dictionary's name heading */
+gd-dict-header,
 .gddictname {
   display: flow-root;
   margin-top: 0.5em;
