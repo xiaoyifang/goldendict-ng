@@ -920,18 +920,18 @@ QString & MdxDictionary::filterResource( QString & article )
 
   replaceLinks( id, article );
 
-  // Replace html/body/head with section to avoid hoisting by browser
+  // Replace html/body/head with custom tags to avoid hoisting by browser
   article.replace( QRegularExpression( "<html\\b", QRegularExpression::CaseInsensitiveOption ),
-                   "<section data-from-html=\"true\"" );
-  article.replace( QRegularExpression( "</html>", QRegularExpression::CaseInsensitiveOption ), "</section>" );
+                   "<gd-section-html" );
+  article.replace( QRegularExpression( "</html>", QRegularExpression::CaseInsensitiveOption ), "</gd-section-html>" );
 
   article.replace( QRegularExpression( "<body\\b", QRegularExpression::CaseInsensitiveOption ),
-                   "<section data-from-body=\"true\"" );
-  article.replace( QRegularExpression( "</body>", QRegularExpression::CaseInsensitiveOption ), "</section>" );
+                   "<gd-section-body" );
+  article.replace( QRegularExpression( "</body>", QRegularExpression::CaseInsensitiveOption ), "</gd-section-body>" );
 
   article.replace( QRegularExpression( "<head\\b", QRegularExpression::CaseInsensitiveOption ),
-                   "<section data-from-head=\"true\"" );
-  article.replace( QRegularExpression( "</head>", QRegularExpression::CaseInsensitiveOption ), "</section>" );
+                   "<gd-section-head" );
+  article.replace( QRegularExpression( "</head>", QRegularExpression::CaseInsensitiveOption ), "</gd-section-head>" );
 
   replaceStyleInHtml( id, article );
   article = isolateStyleCssInHtml( article );
