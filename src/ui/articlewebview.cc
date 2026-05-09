@@ -27,7 +27,8 @@ ArticleWebView::ArticleWebView( QWidget * parent ):
 
   QWebEngineScript script;
   script.setName( QStringLiteral( "GoldenDictInfo" ) );
-  script.setSourceCode( QStringLiteral( "window.__DICT__ = { name: 'GoldenDict', version: '%1' };" ).arg( Version::version() ) );
+  script.setSourceCode(
+    QStringLiteral( "window.__DICT__ = { name: 'GoldenDict', version: '%1' };" ).arg( Version::version() ) );
   script.setInjectionPoint( QWebEngineScript::DocumentCreation );
   script.setWorldId( QWebEngineScript::MainWorld );
   script.setRunsOnSubFrames( true );
