@@ -918,6 +918,12 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   if ( cfg.preferences.checkForNewReleases ) {
     QTimer::singleShot( 10000, this, &MainWindow::checkNewRelease );
   }
+
+#if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
+  if ( cfg.preferences.darkMode == Config::Dark::Auto ) {
+    connect( QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, &MainWindow::refreshAppearances );
+  }
+#endif
 }
 
 
@@ -1379,15 +1385,6 @@ void MainWindow::updateAppearances( const QString & addonStyle,
     qApp->setPalette( QPalette() );
   }
 
-  // Re-apply the user-configured font after resetting the palette
-  if ( cfg.preferences.enableInterfaceFont && !cfg.preferences.interfaceFont.isEmpty() ) {
-    QFont font = QApplication::font();
-    font.setFamily( cfg.preferences.interfaceFont );
-    if ( cfg.preferences.interfaceFontSize > 0 ) {
-      font.setPixelSize( cfg.preferences.interfaceFontSize );
-    }
-    QApplication::setFont( font );
-  }
 #endif
 
 #if !defined( Q_OS_WIN )
@@ -1400,6 +1397,16 @@ void MainWindow::updateAppearances( const QString & addonStyle,
     }
   }
 #endif
+
+  // Re-apply the user-configured font after resetting the palette or style
+  if ( cfg.preferences.enableInterfaceFont && !cfg.preferences.interfaceFont.isEmpty() ) {
+    QFont font = QApplication::font();
+    font.setFamily( cfg.preferences.interfaceFont );
+    if ( cfg.preferences.interfaceFontSize > 0 ) {
+      font.setPixelSize( cfg.preferences.interfaceFontSize );
+    }
+    QApplication::setFont( font );
+  }
 
 
   QByteArray css{};
@@ -1452,6 +1459,18 @@ void MainWindow::updateAppearances( const QString & addonStyle,
       scanPopup->setStyleSheet( css );
     }
   }
+}
+
+void MainWindow::refreshAppearances()
+{
+  updateAppearances( cfg.preferences.addonStyle,
+                     cfg.preferences.displayStyle,
+                     cfg.preferences.darkMode
+#if !defined( Q_OS_WIN )
+                     ,
+                     cfg.preferences.interfaceStyle
+#endif
+  );
 }
 
 void MainWindow::trayIconUpdateOrInit()
@@ -2331,13 +2350,22 @@ void MainWindow::editPreferences()
 
 #if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
       if ( cfg.preferences.darkReaderMode == Config::Dark::Auto ) {
-        connect( QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, &view, &ArticleView::reload );
+        connect( QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, &view, &ArticleView::reload, Qt::UniqueConnection );
       }
       else {
         disconnect( QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, &view, &ArticleView::reload );
       }
 #endif
     }
+
+#if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
+    if ( cfg.preferences.darkMode == Config::Dark::Auto ) {
+      connect( QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, &MainWindow::refreshAppearances, Qt::UniqueConnection );
+    }
+    else {
+      disconnect( QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, &MainWindow::refreshAppearances );
+    }
+#endif
 
     audioPlayerFactory.setPreferences( cfg.preferences.useInternalPlayer,
                                        cfg.preferences.internalPlayerBackend,
