@@ -1515,7 +1515,7 @@ Ifo::Ifo( const QString & fileName )
       const char * optionData = optionUtf8.constData();
 
       // Better parsing of key=value pairs, handling potential whitespace
-      auto parseValue = [&]( const char * key, string & target ) -> bool {
+      auto parseValue = [ & ]( const char * key, string & target ) -> bool {
         if ( const char * val = beginsWith( key, optionData ) ) {
           // Skip leading whitespace after '='
           while ( *val && ( *val == ' ' || *val == '\t' ) )
@@ -1526,7 +1526,7 @@ Ifo::Ifo( const QString & fileName )
         return false;
       };
 
-      auto parseUint32 = [&]( const char * key, uint32_t & target, bool validateOffset = false ) -> bool {
+      auto parseUint32 = [ & ]( const char * key, uint32_t & target, bool validateOffset = false ) -> bool {
         if ( const char * val = beginsWith( key, optionData ) ) {
           // Skip leading whitespace after '='
           while ( *val && ( *val == ' ' || *val == '\t' ) )
@@ -1540,8 +1540,7 @@ Ifo::Ifo( const QString & fileName )
         return false;
       };
 
-      if ( parseValue( "bookname=", bookname ) ) {
-      }
+      if ( parseValue( "bookname=", bookname ) ) {}
       else if ( parseUint32( "wordcount=", wordcount ) ) {
       }
       else if ( parseUint32( "synwordcount=", synwordcount ) ) {
