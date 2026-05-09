@@ -657,7 +657,6 @@ void ArticleRequest::bodyFinished()
           collapse ? "false" : "true" );
 
 
-
         // If the user has enabled Anki integration in settings,
         // Show a (+) button that lets the user add a new Anki card.
         if ( ankiConnectEnabled() ) {
