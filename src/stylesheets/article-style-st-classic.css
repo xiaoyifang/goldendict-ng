@@ -48,10 +48,6 @@ pre {
   user-select: none;
 }
 
-.gddictnamebodyseparator {
-  clear: both;
-}
-
 /* The 'From ' string which precedes dictionary name in the heading */
 .gdfromprefix {
   display: none;
