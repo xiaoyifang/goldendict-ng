@@ -640,7 +640,7 @@ bool needToRebuildIndex( const vector< string > & dictionaryFiles, const string 
       if ( !fileInfo.exists() ) {
         continue;
       }
-      ts = fileInfo.lastModified().toSecsSinceEpoch();
+      ts = fileInfo.lastModified().toMSecsSinceEpoch();
     }
 
     if ( ts > lastModified ) {
@@ -655,7 +655,7 @@ bool needToRebuildIndex( const vector< string > & dictionaryFiles, const string 
     return true;
   }
 
-  return fileInfo.lastModified().toSecsSinceEpoch() < lastModified;
+  return fileInfo.lastModified().toMSecsSinceEpoch() < lastModified;
 }
 
 string getFtsSuffix()
