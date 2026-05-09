@@ -907,7 +907,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Clear</source>
-      <translation type="unfinished">Clear</translation>
+      <translation>Sfeḍ</translation>
     </message>
     <message>
       <source>Clear Favorites</source>
@@ -3003,7 +3003,7 @@ be the last ones.</translation>
     </message>
     <message>
       <source>&amp;Style</source>
-      <translation type="unfinished">&amp;Style</translation>
+      <translation>Aɣa&amp;nib</translation>
     </message>
     <message>
       <source>Appearance</source>
