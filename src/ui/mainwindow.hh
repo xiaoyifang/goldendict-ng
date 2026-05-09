@@ -478,6 +478,7 @@ private slots:
   void prefixMatchFinished();
   void updateMatchResults( bool finished );
   void refreshTranslateLine();
+  void refreshAppearances();
 signals:
   /// Retranslate Ctrl(Shift) + Click on dictionary pane to dictionary toolbar
   void clickOnDictPane( const QString & id );
