@@ -132,11 +132,6 @@ gd-dict-header,
   user-select: none;
 }
 
-/* The separator is now redundant thanks to flow-root and clear:both on body */
-.gddictnamebodyseparator {
-  display: none;
-}
-
 .gdarticlebody {
   clear: both;
 }

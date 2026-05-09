@@ -656,7 +656,7 @@ void ArticleRequest::bodyFinished()
           "",
           collapse ? "false" : "true" );
 
-        head += R"(<div class="gddictnamebodyseparator"></div>)";
+
 
         // If the user has enabled Anki integration in settings,
         // Show a (+) button that lets the user add a new Anki card.

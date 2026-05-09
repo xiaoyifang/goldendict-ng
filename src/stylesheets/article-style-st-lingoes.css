@@ -88,8 +88,8 @@ body {
   content: url("qrc:///icons/collapse_article_hovered.svg");
 }
 
-.gddictnamebodyseparator {
+.gdarticlebody {
   clear: both;
   border-top: 1px solid #92b0dd;
-  margin-bottom: 1em;
+  margin-top: 1em;
 }
