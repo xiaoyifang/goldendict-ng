@@ -3,7 +3,10 @@
 
 #include "articlewebpage.hh"
 #include "articlewebview.hh"
+#include "version.hh"
 #include <QMouseEvent>
+#include <QWebEngineScript>
+#include <QWebEngineScriptCollection>
 #include <QWebEngineView>
 #include <QApplication>
 #include <QTimer>
@@ -21,6 +24,14 @@ ArticleWebView::ArticleWebView( QWidget * parent ):
   auto page = new ArticleWebPage( this );
   connect( page, &ArticleWebPage::linkClicked, this, &ArticleWebView::linkClicked );
   this->setPage( page );
+
+  QWebEngineScript script;
+  script.setName( QStringLiteral( "GoldenDictInfo" ) );
+  script.setSourceCode( QStringLiteral( "window.__DICT__ = { name: 'GoldenDict', version: '%1' };" ).arg( Version::version() ) );
+  script.setInjectionPoint( QWebEngineScript::DocumentCreation );
+  script.setWorldId( QWebEngineScript::MainWorld );
+  script.setRunsOnSubFrames( true );
+  page->scripts().insert( script );
 }
 
 void ArticleWebView::setUp( Config::Class * _cfg )
