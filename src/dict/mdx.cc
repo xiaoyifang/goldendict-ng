@@ -47,7 +47,7 @@ using namespace Mdict;
 
 enum {
   kSignature            = 0x4349444d, // MDIC
-  kCurrentFormatVersion = 11 + BtreeIndexing::FormatVersion + Folding::Version
+  kCurrentFormatVersion = 12 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
 DEF_EX( exCorruptDictionary, "dictionary file was tampered or corrupted", std::exception )
@@ -84,6 +84,7 @@ struct IdxHeader
 
   uint32_t mddIndexInfosOffset; // address of IndexInfos for resource files (.mdd)
   uint32_t mddIndexInfosCount;  // count of IndexInfos for resource files
+  uint64_t sourceLastModified;  // Maximum lastModified timestamp of dictionary files
 };
 static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
@@ -1408,9 +1409,25 @@ static bool indexIsOldOrBad( const vector< string > & dictFiles, const string & 
   File::Index idx( indexFile, QIODevice::ReadOnly );
   IdxHeader header;
 
-  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != kSignature
-    || header.formatVersion != kCurrentFormatVersion || header.parserVersion != MdictParser::kParserVersion
-    || header.foldingVersion != Folding::Version;
+  if ( idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != kSignature
+       || header.formatVersion != kCurrentFormatVersion || header.parserVersion != MdictParser::kParserVersion
+       || header.foldingVersion != Folding::Version ) {
+    return true;
+  }
+
+  // Check if any of the dictionary files were modified after the index was built
+  qint64 lastModified = 0;
+  for ( const auto & dictionaryFile : dictFiles ) {
+    QFileInfo fileInfo( QString::fromUtf8( dictionaryFile.c_str() ) );
+    if ( fileInfo.exists() ) {
+      qint64 ts = fileInfo.lastModified().toMSecsSinceEpoch();
+      if ( ts > lastModified ) {
+        lastModified = ts;
+      }
+    }
+  }
+
+  return header.sourceLastModified != (uint64_t)lastModified;
 }
 
 static void findResourceFiles( const string & mdx, vector< string > & dictFiles )
@@ -1616,6 +1633,19 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
       idxHeader.foldingVersion = Folding::Version;
       idxHeader.articleCount   = parser.wordCount();
       idxHeader.wordCount      = parser.wordCount();
+
+      // Compute and store the source last modified timestamp
+      qint64 lastModified = 0;
+      for ( const auto & dictionaryFile : dictFiles ) {
+        QFileInfo fileInfo( QString::fromUtf8( dictionaryFile.c_str() ) );
+        if ( fileInfo.exists() ) {
+          qint64 ts = fileInfo.lastModified().toMSecsSinceEpoch();
+          if ( ts > lastModified ) {
+            lastModified = ts;
+          }
+        }
+      }
+      idxHeader.sourceLastModified = (uint64_t)lastModified;
 
       idx.rewind();
       idx.write( &idxHeader, sizeof( idxHeader ) );

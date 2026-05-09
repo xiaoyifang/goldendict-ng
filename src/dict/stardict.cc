@@ -78,7 +78,7 @@ struct Ifo
 
 enum {
   Signature            = 0x58444953, // SIDX on little-endian, XDIS on big-endian
-  CurrentFormatVersion = 9 + BtreeIndexing::FormatVersion + Folding::Version + BtreeIndexing::ZipParseLogicVersion
+  CurrentFormatVersion = 10 + BtreeIndexing::FormatVersion + Folding::Version + BtreeIndexing::ZipParseLogicVersion
 };
 
 #pragma pack( push, 1 )
@@ -99,20 +99,37 @@ struct IdxHeader
   uint32_t zipIndexBtreeMaxElements; // Two fields from IndexInfo of the zip
                                      // resource index.
   uint32_t zipIndexRootOffset;
+  uint64_t sourceLastModified; // Maximum lastModified timestamp of dictionary files
 };
 static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
 
 ;
 
-bool indexIsOldOrBad( const string & indexFile )
+bool indexIsOldOrBad( const string & indexFile, const vector< string > & dictFiles )
 {
   File::Index idx( indexFile, QIODevice::ReadOnly );
 
   IdxHeader header;
 
-  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
-    || header.formatVersion != CurrentFormatVersion;
+  if ( idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
+       || header.formatVersion != CurrentFormatVersion ) {
+    return true;
+  }
+
+  // Check if any of the dictionary files were modified after the index was built
+  qint64 lastModified = 0;
+  for ( const auto & dictionaryFile : dictFiles ) {
+    QFileInfo fileInfo( QString::fromUtf8( dictionaryFile.c_str() ) );
+    if ( fileInfo.exists() ) {
+      qint64 ts = fileInfo.lastModified().toMSecsSinceEpoch();
+      if ( ts > lastModified ) {
+        lastModified = ts;
+      }
+    }
+  }
+
+  return header.sourceLastModified != (uint64_t)lastModified;
 }
 
 class StardictDictionary: public BtreeIndexing::BtreeDictionary
@@ -1497,56 +1514,56 @@ Ifo::Ifo( const QString & fileName )
       QByteArray optionUtf8   = option.toString().toUtf8();
       const char * optionData = optionUtf8.constData();
 
-      if ( const char * val = beginsWith( "bookname=", optionData ) ) {
-        bookname = val;
-      }
-      else if ( const char * val = beginsWith( "wordcount=", optionData ) ) {
-        auto [ ptr, ec ] = std::from_chars( val, val + strlen( val ), wordcount );
-        if ( ec != std::errc{} ) {
-          throw exBadFieldInIfo( optionData );
+      // Better parsing of key=value pairs, handling potential whitespace
+      auto parseValue = [ & ]( const char * key, string & target ) -> bool {
+        if ( const char * val = beginsWith( key, optionData ) ) {
+          // Skip leading whitespace after '='
+          while ( *val && ( *val == ' ' || *val == '\t' ) )
+            ++val;
+          target = val;
+          return true;
         }
-      }
-      else if ( const char * val = beginsWith( "synwordcount=", optionData ) ) {
-        auto [ ptr, ec ] = std::from_chars( val, val + strlen( val ), synwordcount );
-        if ( ec != std::errc{} ) {
-          throw exBadFieldInIfo( optionData );
+        return false;
+      };
+
+      auto parseUint32 = [ & ]( const char * key, uint32_t & target, bool validateOffset = false ) -> bool {
+        if ( const char * val = beginsWith( key, optionData ) ) {
+          // Skip leading whitespace after '='
+          while ( *val && ( *val == ' ' || *val == '\t' ) )
+            ++val;
+          auto [ ptr, ec ] = std::from_chars( val, val + strlen( val ), target );
+          if ( ec != std::errc{} || ( validateOffset && target != 32 && target != 64 ) ) {
+            throw exBadFieldInIfo( optionData );
+          }
+          return true;
         }
+        return false;
+      };
+
+      if ( parseValue( "bookname=", bookname ) ) {}
+      else if ( parseUint32( "wordcount=", wordcount ) ) {
       }
-      else if ( const char * val = beginsWith( "idxfilesize=", optionData ) ) {
-        auto [ ptr, ec ] = std::from_chars( val, val + strlen( val ), idxfilesize );
-        if ( ec != std::errc{} ) {
-          throw exBadFieldInIfo( optionData );
-        }
+      else if ( parseUint32( "synwordcount=", synwordcount ) ) {
       }
-      else if ( const char * val = beginsWith( "idxoffsetbits=", optionData ) ) {
-        auto [ ptr, ec ] = std::from_chars( val, val + strlen( val ), idxoffsetbits );
-        if ( ec != std::errc{} || ( idxoffsetbits != 32 && idxoffsetbits != 64 ) ) {
-          throw exBadFieldInIfo( optionData );
-        }
+      else if ( parseUint32( "idxfilesize=", idxfilesize ) ) {
       }
-      else if ( const char * val = beginsWith( "sametypesequence=", optionData ) ) {
-        sametypesequence = val;
+      else if ( parseUint32( "idxoffsetbits=", idxoffsetbits, true ) ) {
       }
-      else if ( const char * val = beginsWith( "dicttype=", optionData ) ) {
-        dicttype = val;
+      else if ( parseValue( "sametypesequence=", sametypesequence ) ) {
       }
-      else if ( const char * val = beginsWith( "description=", optionData ) ) {
-        description = val;
+      else if ( parseValue( "dicttype=", dicttype ) ) {
       }
-      else if ( const char * val = beginsWith( "copyright=", optionData ) ) {
-        copyright = val;
+      else if ( parseValue( "description=", description ) ) {
       }
-      else if ( const char * val = beginsWith( "author=", optionData ) ) {
-        author = val;
+      else if ( parseValue( "copyright=", copyright ) ) {
       }
-      else if ( const char * val = beginsWith( "email=", optionData ) ) {
-        email = val;
+      else if ( parseValue( "author=", author ) ) {
       }
-      else if ( const char * val = beginsWith( "website=", optionData ) ) {
-        website = val;
+      else if ( parseValue( "email=", email ) ) {
       }
-      else if ( const char * val = beginsWith( "date=", optionData ) ) {
-        date = val;
+      else if ( parseValue( "website=", website ) ) {
+      }
+      else if ( parseValue( "date=", date ) ) {
       }
     }
   }
@@ -1902,7 +1919,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
       string indexFile = indicesDir + dictId;
 
-      if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
+      if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile, dictFiles ) ) {
         // Building the index
 
         Ifo ifo( QString::fromStdString( fileName ) );
@@ -1946,6 +1963,19 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
         // will be rewritten with the right values.
 
         idx.write( idxHeader );
+
+        // Compute and store the source last modified timestamp
+        qint64 lastModified = 0;
+        for ( const auto & dictionaryFile : dictFiles ) {
+          QFileInfo fileInfo( QString::fromUtf8( dictionaryFile.c_str() ) );
+          if ( fileInfo.exists() ) {
+            qint64 ts = fileInfo.lastModified().toMSecsSinceEpoch();
+            if ( ts > lastModified ) {
+              lastModified = ts;
+            }
+          }
+        }
+        idxHeader.sourceLastModified = (uint64_t)lastModified;
 
         idx.write( ifo.bookname.data(), ifo.bookname.size() );
         idx.write( ifo.sametypesequence.data(), ifo.sametypesequence.size() );
