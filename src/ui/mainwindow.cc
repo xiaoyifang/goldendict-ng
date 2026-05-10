@@ -197,6 +197,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 
   QWebEngineProfile::defaultProfile()->setUrlRequestInterceptor( new WebUrlRequestInterceptor( this ) );
+  connect( QWebEngineProfile::defaultProfile(),
+           &QWebEngineProfile::downloadRequested,
+           this,
+           &MainWindow::handleDownloadRequested );
   // Identify as GoldenDict, but avoid standard "QtWebEngine/..." identifier which some sites might block
   QString userAgent = QWebEngineProfile::defaultProfile()->httpUserAgent();
   userAgent.replace( RX::qtWebEngineUserAgent, "" );
@@ -4513,4 +4517,33 @@ void MainWindow::headwordFromFavorites( const QString & headword, const QString 
   }
 
   showTranslationFor( words[ 0 ] );
+}
+
+void MainWindow::handleDownloadRequested( QWebEngineDownloadRequest * download )
+{
+  QString savePath;
+  if ( cfg.resourceSavePath.isEmpty() ) {
+    savePath = QDir::homePath();
+  }
+  else {
+    savePath = QDir::fromNativeSeparators( cfg.resourceSavePath );
+    if ( !QDir( savePath ).exists() ) {
+      savePath = QDir::homePath();
+    }
+  }
+
+  QString fileName = QFileDialog::getSaveFileName( this,
+                                                   tr( "Save File" ),
+                                                   savePath + "/" + download->downloadFileName() );
+
+  if ( fileName.isEmpty() ) {
+    return;
+  }
+
+  QFileInfo fileInfo( fileName );
+  cfg.resourceSavePath = QDir::toNativeSeparators( fileInfo.absoluteDir().absolutePath() );
+
+  download->setDownloadDirectory( fileInfo.absolutePath() );
+  download->setDownloadFileName( fileInfo.fileName() );
+  download->accept();
 }

@@ -5,6 +5,10 @@
 
 #include <QSystemTrayIcon>
 #include <QSignalBlocker>
+#include <QWebEngineProfile>
+#include <QWebEngineDownloadRequest>
+#include <QWebEngineSettings>
+#include <QFileDialog>
 #include <functional>
 #include "ui_mainwindow.h"
 #include "config.hh"
@@ -31,7 +35,6 @@
 #include "scanpopup.hh"
 #include "clipboard/clipboardlistener.hh"
 //must place the qactiongroup after fixx11h.h, None in QActionGroup conflict with X.h's macro None.
-#include <QActionGroup>
 
 using std::string;
 using std::vector;
@@ -479,6 +482,7 @@ private slots:
   void updateMatchResults( bool finished );
   void refreshTranslateLine();
   void refreshAppearances();
+  void handleDownloadRequested( QWebEngineDownloadRequest * download );
 signals:
   /// Retranslate Ctrl(Shift) + Click on dictionary pane to dictionary toolbar
   void clickOnDictPane( const QString & id );
