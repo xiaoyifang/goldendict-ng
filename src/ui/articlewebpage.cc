@@ -27,6 +27,9 @@ void ArticleWebPage::onPermissionRequested( const QWebEnginePermission & permiss
 #endif
 bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationType type, bool isMainFrame )
 {
+  if ( resUrl.scheme() == "devtools" ) {
+    return true;
+  }
   QUrl url = resUrl;
   QUrlQuery urlQuery{ url };
   if ( url.scheme() == "bword" || url.scheme() == "entry" ) {
