@@ -71,7 +71,7 @@ bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationTyp
   }
 
   if ( type == QWebEnginePage::NavigationTypeLinkClicked ) {
-    QString scheme = url.scheme();
+    QString scheme       = url.scheme();
     bool shouldIntercept = ( scheme == "gdlookup" || scheme == "bword" || scheme == "entry" || scheme == "gdinternal"
                              || scheme == "gdau" || scheme == "gdvideo" || scheme == "gdprg" || scheme == "gdtts"
                              || ( scheme == "bres" && !Utils::isHtmlResources( url ) ) );
@@ -79,7 +79,9 @@ bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationTyp
     if ( shouldIntercept ) {
       // Use singleShot to emit signal asynchronously. This prevents crashes if the
       // signal handler deletes this object or the containing tab.
-      QTimer::singleShot( 0, this, [ this, url ]() { emit linkClicked( url ); } );
+      QTimer::singleShot( 0, this, [ this, url ]() {
+        emit linkClicked( url );
+      } );
       return false;
     }
 

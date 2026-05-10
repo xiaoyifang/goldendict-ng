@@ -4532,9 +4532,8 @@ void MainWindow::handleDownloadRequested( QWebEngineDownloadRequest * download )
     }
   }
 
-  QString fileName = QFileDialog::getSaveFileName( this,
-                                                   tr( "Save File" ),
-                                                   savePath + "/" + download->downloadFileName() );
+  QString fileName =
+    QFileDialog::getSaveFileName( this, tr( "Save File" ), savePath + "/" + download->downloadFileName() );
 
   if ( fileName.isEmpty() ) {
     return;
