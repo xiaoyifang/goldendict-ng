@@ -306,6 +306,13 @@
     </message>
   </context>
   <context>
+    <name>ArticleWebView</name>
+    <message>
+      <source>GoldenDict Resource Viewer</source>
+      <translation>GoldenDict Resurssikatselin</translation>
+    </message>
+  </context>
+  <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
@@ -2646,6 +2653,10 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
     <message>
       <source>Are you sure you want to clear all history items?</source>
       <translation>Oletko varma, että haluat tyhjentää kaikki historian kohteet?</translation>
+    </message>
+    <message>
+      <source>Save File</source>
+      <translation>Tallenna Tiedosto</translation>
     </message>
   </context>
   <context>
