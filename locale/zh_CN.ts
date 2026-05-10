@@ -3109,8 +3109,8 @@ in the pressed state when the word selection changes.</source>
       <translation>启用后，屏幕取词窗口只有在按住特定按键时才会弹出。</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>仅当指定按钮被按时，文本取词</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation>仅当所有选中的键被按下时跟踪选择：</translation>
     </message>
     <message>
       <source>Alt key</source>
