@@ -55,6 +55,7 @@ QWebEngineView * ArticleWebView::createWindow( QWebEnginePage::WebWindowType typ
     auto dlg  = new QMainWindow( this );
     auto view = new QWebEngineView( dlg );
     dlg->setAttribute( Qt::WA_DeleteOnClose );
+    dlg->setObjectName( "ResourceViewer" );
     dlg->setCentralWidget( view );
     dlg->resize( 800, 600 );
     dlg->setWindowTitle( tr( "GoldenDict Resource Viewer" ) );

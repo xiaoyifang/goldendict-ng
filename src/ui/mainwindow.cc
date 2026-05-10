@@ -1572,6 +1572,11 @@ void MainWindow::quitApp()
   if ( inspector && inspector->isVisible() ) {
     inspector->close();
   }
+
+  for ( auto viewer : findChildren< QMainWindow * >( "ResourceViewer" ) ) {
+    viewer->close();
+  }
+
   commitData();
   qApp->quit();
 }
