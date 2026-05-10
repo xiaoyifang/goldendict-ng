@@ -3120,8 +3120,8 @@ in the pressed state when the word selection changes.</source>
 агар ҳангоми интихоби калима ҳамаи тугмаҳои интихобшуда зер карда шаванд.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Танҳо вақте ки ҳамаи тугмаҳои интихобшуда пахш карда мешаванд, интихоби такя:</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation type="unfinished">Only track selection when all selected keys are kept pressed:</translation>
     </message>
     <message>
       <source>Alt key</source>
