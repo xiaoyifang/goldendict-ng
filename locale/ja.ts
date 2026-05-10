@@ -3117,8 +3117,8 @@ in the pressed state when the word selection changes.</source>
 すべての選択されたキーが押されている状態でのみ表示されます。</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>選択したすべてのキーが押された場合のみタック選択:</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation>選択したすべてのキーが押されたときにのみトラック選択されます:</translation>
     </message>
     <message>
       <source>Alt key</source>
