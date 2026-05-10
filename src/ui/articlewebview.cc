@@ -50,11 +50,14 @@ void ArticleWebView::setPopup( bool isPopup )
 
 QWebEngineView * ArticleWebView::createWindow( QWebEnginePage::WebWindowType type )
 {
-  if ( type == QWebEnginePage::WebWindowType::WebDialog ) {
+  if ( type == QWebEnginePage::WebWindowType::WebDialog || type == QWebEnginePage::WebWindowType::WebBrowserTab
+       || type == QWebEnginePage::WebWindowType::WebBrowserWindow ) {
     auto dlg  = new QMainWindow( this );
     auto view = new QWebEngineView( dlg );
+    dlg->setAttribute( Qt::WA_DeleteOnClose );
     dlg->setCentralWidget( view );
-    dlg->resize( 400, 400 );
+    dlg->resize( 800, 600 );
+    dlg->setWindowTitle( tr( "GoldenDict Resource Viewer" ) );
     dlg->show();
 
     return view;
