@@ -306,6 +306,13 @@
     </message>
   </context>
   <context>
+    <name>ArticleWebView</name>
+    <message>
+      <source>GoldenDict Resource Viewer</source>
+      <translation>Przeglądarka zasobów GoldenDict</translation>
+    </message>
+  </context>
+  <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
@@ -2647,6 +2654,10 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
       <source>Are you sure you want to clear all history items?</source>
       <translation>Czy na pewno chcesz wyczyścić wszystkie elementy historii?</translation>
     </message>
+    <message>
+      <source>Save File</source>
+      <translation>Zapisz plik</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3118,7 +3129,7 @@ kiedy zaznaczenie słowa ulega zmianie przy naciśniętych wszystkich wybranych 
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation>Śledź zaznaczenie tylko wtedy, gdy wszystkie wybrane klawisze są naciśnięte:</translation>
+      <translation>Zaznaczenie śladu tylko wtedy, gdy wszystkie zaznaczone klucze są wciśnięte:</translation>
     </message>
     <message>
       <source>Alt key</source>
