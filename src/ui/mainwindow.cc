@@ -1573,10 +1573,8 @@ void MainWindow::quitApp()
     inspector->close();
   }
 
-  for ( QWidget * widget : QApplication::topLevelWidgets() ) {
-    if ( widget->objectName() == "ResourceViewer" ) {
-      widget->close();
-    }
+  for ( auto viewer : findChildren< QMainWindow * >( "ResourceViewer" ) ) {
+    viewer->close();
   }
 
   commitData();
