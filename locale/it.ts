@@ -306,6 +306,13 @@
     </message>
   </context>
   <context>
+    <name>ArticleWebView</name>
+    <message>
+      <source>GoldenDict Resource Viewer</source>
+      <translation>Visualizzatore Risorse GoldenDict</translation>
+    </message>
+  </context>
+  <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
@@ -2647,6 +2654,10 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
     <message>
       <source>Are you sure you want to clear all history items?</source>
       <translation>Sei sicuro di voler cancellare tutti gli elementi della cronologia?</translation>
+    </message>
+    <message>
+      <source>Save File</source>
+      <translation>Salva File</translation>
     </message>
   </context>
   <context>
