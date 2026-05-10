@@ -27,9 +27,15 @@ void ArticleWebPage::onPermissionRequested( const QWebEnginePermission & permiss
 #endif
 bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationType type, bool isMainFrame )
 {
-  if ( resUrl.scheme() == "devtools" ) {
+  if ( resUrl.scheme() == "devtools" || resUrl.scheme() == "qrc" || resUrl.scheme() == "qrcx" ) {
     return true;
   }
+
+  if ( ( resUrl.scheme() == "bres" || resUrl.scheme() == "gico" )
+       && type != QWebEnginePage::NavigationTypeLinkClicked ) {
+    return true;
+  }
+
   QUrl url = resUrl;
   QUrlQuery urlQuery{ url };
   if ( url.scheme() == "bword" || url.scheme() == "entry" ) {
