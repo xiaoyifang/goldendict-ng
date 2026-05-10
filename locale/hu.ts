@@ -3120,8 +3120,8 @@ in the pressed state when the word selection changes.</source>
 kijelölésekor, ha a kiválasztott billentyűk mindegyike le van nyomva.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>A kijelölés változását csak a billentyűk együttes lenyomásakor figyelje:</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation type="unfinished">Only track selection when all selected keys are kept pressed:</translation>
     </message>
     <message>
       <source>Alt key</source>
