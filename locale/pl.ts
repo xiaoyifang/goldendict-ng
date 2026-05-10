@@ -3117,8 +3117,8 @@ in the pressed state when the word selection changes.</source>
 kiedy zaznaczenie słowa ulega zmianie przy naciśniętych wszystkich wybranych klawiszach.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Śledź zaznaczenie tylko wtedy, gdy wszystkie wybrane klawisze są naciśnięte:</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation>Zaznaczenie śladu tylko wtedy, gdy wszystkie zaznaczone klucze są wciśnięte:</translation>
     </message>
     <message>
       <source>Alt key</source>
