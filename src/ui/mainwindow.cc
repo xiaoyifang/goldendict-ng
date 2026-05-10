@@ -1572,6 +1572,13 @@ void MainWindow::quitApp()
   if ( inspector && inspector->isVisible() ) {
     inspector->close();
   }
+
+  for ( QWidget * widget : QApplication::topLevelWidgets() ) {
+    if ( widget->objectName() == "ResourceViewer" ) {
+      widget->close();
+    }
+  }
+
   commitData();
   qApp->quit();
 }
