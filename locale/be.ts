@@ -3114,7 +3114,7 @@ in the pressed state when the word selection changes.</source>
       <translation>Калі параметр уключаны, выплыўное акно будзе паказвацца толькі тады, калі пры змене слова будуць націснутыя ўсе абраныя клавішы.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
+      <source>Only track selection when all selected keys are kept pressed:</source>
       <translation>Сачыць за абіраннем тэксту толькі націсканні ўсіх наступных клавіш:</translation>
     </message>
     <message>

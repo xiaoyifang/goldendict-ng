@@ -3115,7 +3115,7 @@ in the pressed state when the word selection changes.</source>
 janë në gjendjen e shtypur.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
+      <source>Only track selection when all selected keys are kept pressed:</source>
       <translation>Zgjedhja e ngjitjes vetëm kur të gjithë tastet e zgjedhur mbahen të shtypur:</translation>
     </message>
     <message>

@@ -3120,7 +3120,7 @@ in the pressed state when the word selection changes.</source>
 en la premita stato kiam la vortelekto ŝanĝiĝas.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
+      <source>Only track selection when all selected keys are kept pressed:</source>
       <translation>Selektado de klavoj nur kiam ĉiuj elektitaj klavoj estas tenitaj premitaj:</translation>
     </message>
     <message>

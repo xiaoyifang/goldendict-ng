@@ -3120,7 +3120,7 @@ in the pressed state when the word selection changes.</source>
 toetsen zijn ingedrukt wanneer de woordselectie verandert.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
+      <source>Only track selection when all selected keys are kept pressed:</source>
       <translation>Alleen tack selectie als alle geselecteerde toetsen worden ingedrukt:</translation>
     </message>
     <message>

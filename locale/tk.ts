@@ -3119,7 +3119,7 @@ in the pressed state when the word selection changes.</source>
 basylan ýagdaýynda görkeziler.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
+      <source>Only track selection when all selected keys are kept pressed:</source>
       <translation>Selectedhli saýlanan düwmeler basylanda diňe saýlamany çözüň:</translation>
     </message>
     <message>

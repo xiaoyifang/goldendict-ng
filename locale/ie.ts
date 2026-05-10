@@ -3120,8 +3120,8 @@ in the pressed state when the word selection changes.</source>
 in the pressed state when the word selection changes.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Only tack selection when all selected keys are kept pressed:</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation>Only track selection when all selected keys are kept pressed:</translation>
     </message>
     <message>
       <source>Alt key</source>

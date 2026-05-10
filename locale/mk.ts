@@ -3121,7 +3121,7 @@ in the pressed state when the word selection changes.</source>
 во притисната сосојба, кога избраните зборови не менуваат.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
+      <source>Only track selection when all selected keys are kept pressed:</source>
       <translation>Избор на так само кога сите избрани копчиња се држат притиснати:</translation>
     </message>
     <message>

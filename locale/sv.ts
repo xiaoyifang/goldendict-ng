@@ -3119,7 +3119,7 @@ in the pressed state when the word selection changes.</source>
 angivna tangenterna är nedtryckta när ordet markeras.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
+      <source>Only track selection when all selected keys are kept pressed:</source>
       <translation>Endast tack val när alla valda nycklar hålls tryckt:</translation>
     </message>
     <message>

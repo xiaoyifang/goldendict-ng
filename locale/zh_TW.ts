@@ -3109,7 +3109,7 @@ in the pressed state when the word selection changes.</source>
       <translation>啟用後，螢幕取詞視窗只有在按住特定按鍵時才會彈出。</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
+      <source>Only track selection when all selected keys are kept pressed:</source>
       <translation>僅在按住下列特定的按鍵時螢幕取詞才會啟動：</translation>
     </message>
     <message>

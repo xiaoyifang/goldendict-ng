@@ -3117,7 +3117,7 @@ in the pressed state when the word selection changes.</source>
 seleccionadas estén oprimidas cuando la selección de la palabra cambie.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
+      <source>Only track selection when all selected keys are kept pressed:</source>
       <translation>Sólo selección de virada cuando se mantienen presionadas todas las teclas seleccionadas:</translation>
     </message>
     <message>

@@ -3119,7 +3119,7 @@ in the pressed state when the word selection changes.</source>
 zvolené klávesy stisknuty při změně výběru.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
+      <source>Only track selection when all selected keys are kept pressed:</source>
       <translation>Výběr sady pouze, když jsou stisknuty všechny vybrané klávesy:</translation>
     </message>
     <message>
