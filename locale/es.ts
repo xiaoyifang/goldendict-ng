@@ -306,6 +306,13 @@
     </message>
   </context>
   <context>
+    <name>ArticleWebView</name>
+    <message>
+      <source>GoldenDict Resource Viewer</source>
+      <translation>Visor de recursos de GoldenDict</translation>
+    </message>
+  </context>
+  <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
@@ -2646,6 +2653,10 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <source>Are you sure you want to clear all history items?</source>
       <translation>¿Está seguro que desea borrar todos los elementos del historial?</translation>
+    </message>
+    <message>
+      <source>Save File</source>
+      <translation>Guardar archivo</translation>
     </message>
   </context>
   <context>
