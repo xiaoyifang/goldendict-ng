@@ -3120,8 +3120,8 @@ in the pressed state when the word selection changes.</source>
 избраните клавиши са натиснати, когато се промени избирането на дума.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Избиране на халки само когато всички избрани клавиши са натиснати:</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation type="unfinished">Only track selection when all selected keys are kept pressed:</translation>
     </message>
     <message>
       <source>Alt key</source>
