@@ -3119,8 +3119,8 @@ in the pressed state when the word selection changes.</source>
 basylan ýagdaýynda görkeziler.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Selectedhli saýlanan düwmeler basylanda diňe saýlamany çözüň:</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation type="unfinished">Only track selection when all selected keys are kept pressed:</translation>
     </message>
     <message>
       <source>Alt key</source>
