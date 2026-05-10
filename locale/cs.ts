@@ -306,6 +306,13 @@
     </message>
   </context>
   <context>
+    <name>ArticleWebView</name>
+    <message>
+      <source>GoldenDict Resource Viewer</source>
+      <translation>Zlatý prohlížeč zdrojů</translation>
+    </message>
+  </context>
+  <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
@@ -2646,6 +2653,10 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
     <message>
       <source>Are you sure you want to clear all history items?</source>
       <translation>Jste si jisti, že chcete vymazat všechny položky historie?</translation>
+    </message>
+    <message>
+      <source>Save File</source>
+      <translation>Uložit soubor</translation>
     </message>
   </context>
   <context>
