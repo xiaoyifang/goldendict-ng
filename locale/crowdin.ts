@@ -3087,7 +3087,7 @@ in the pressed state when the word selection changes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Only tack selection when all selected keys are kept pressed:</source>
+        <source>Only track selection when all selected keys are kept pressed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
