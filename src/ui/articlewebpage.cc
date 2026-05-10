@@ -27,16 +27,6 @@ void ArticleWebPage::onPermissionRequested( const QWebEnginePermission & permiss
 #endif
 bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationType type, bool isMainFrame )
 {
-  if ( resUrl.scheme() == "devtools" || resUrl.scheme() == "qrc" || resUrl.scheme() == "qrcx" ) {
-    return true;
-  }
-
-  if ( ( resUrl.scheme() == "bres" || resUrl.scheme() == "gico" ) ) {
-    if ( type != QWebEnginePage::NavigationTypeLinkClicked || Utils::isHtmlResources( resUrl ) ) {
-      return true;
-    }
-  }
-
   QUrl url = resUrl;
   QUrlQuery urlQuery{ url };
   if ( url.scheme() == "bword" || url.scheme() == "entry" ) {
@@ -71,26 +61,19 @@ bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationTyp
   }
 
   if ( type == QWebEnginePage::NavigationTypeLinkClicked ) {
-    QString scheme       = url.scheme();
-    bool shouldIntercept = ( scheme == "gdlookup" || scheme == "bword" || scheme == "entry" || scheme == "gdinternal"
-                             || scheme == "gdau" || scheme == "gdvideo" || scheme == "gdprg" || scheme == "gdtts"
-                             || ( scheme == "bres" && !Utils::isHtmlResources( url ) ) );
-
-    if ( shouldIntercept ) {
-      // Use singleShot to emit signal asynchronously. This prevents crashes if the
-      // signal handler deletes this object or the containing tab.
-      QTimer::singleShot( 0, this, [ this, url ]() {
-        emit linkClicked( url );
-      } );
-      return false;
-    }
-
-    // For other links (external http, devtools, bres images etc.)
+    // If configured to open website in new tab, trigger linkClicked signal normally
+    // Otherwise, for websiteview, we allow navigation request
     if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+      // Check if URL is external link, if so, allow navigation in current webview
       if ( Utils::isExternalLink( url ) ) {
         return true;
       }
     }
+
+    // Use singleShot to emit signal asynchronously. This prevents crashes if the
+    // signal handler deletes this object or the containing tab.
+    QTimer::singleShot( 0, this, [ this, url ]() { emit linkClicked( url ); } );
+    return false;
   }
 
   return QWebEnginePage::acceptNavigationRequest( url, type, isMainFrame );
