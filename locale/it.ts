@@ -3120,8 +3120,8 @@ delle parole puntate quando i tasti scelti vengono effettivamente premuti.
 Le parole tradotte verranno mostrate in una finestra di dialogo a comparsa.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Tack selezione solo quando tutti i tasti selezionati vengono mantenuti premuti:</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation>Traccia solo la selezione quando tutti i tasti selezionati vengono mantenuti premuti:</translation>
     </message>
     <message>
       <source>Alt key</source>
