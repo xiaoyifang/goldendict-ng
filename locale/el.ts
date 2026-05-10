@@ -3121,8 +3121,8 @@ in the pressed state when the word selection changes.</source>
 πατημένα όλα τα παρακάτω πλήκτρα όταν γίνεται η επιλογή της λέξης.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Επιλογή μόνο όταν όλα τα επιλεγμένα πλήκτρα διατηρούνται πατημένα:</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation>Μόνο επιλογή κομματιού όταν όλα τα επιλεγμένα πλήκτρα διατηρούνται πατημένα:</translation>
     </message>
     <message>
       <source>Alt key</source>
