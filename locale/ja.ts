@@ -305,6 +305,13 @@
     </message>
   </context>
   <context>
+    <name>ArticleWebView</name>
+    <message>
+      <source>GoldenDict Resource Viewer</source>
+      <translation>GoldenDict リソース ビューアー</translation>
+    </message>
+  </context>
+  <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
@@ -2646,6 +2653,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Are you sure you want to clear all history items?</source>
       <translation>すべての履歴アイテムを消去してもよろしいですか？</translation>
     </message>
+    <message>
+      <source>Save File</source>
+      <translation>ファイルを保存</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3118,7 +3129,7 @@ in the pressed state when the word selection changes.</source>
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation>選択したすべてのキーが押された場合のみタック選択:</translation>
+      <translation>選択したすべてのキーが押されたときにのみトラック選択されます:</translation>
     </message>
     <message>
       <source>Alt key</source>
