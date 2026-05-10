@@ -3124,8 +3124,8 @@ in the pressed state when the word selection changes.</source>
 находятся в зажатом состоянии в момент выделения слова.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Следить за выделенным текстом только когда все эти клавиши зажаты</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation>Выделение трека только при нажатии всех выбранных клавиш:</translation>
     </message>
     <message>
       <source>Alt key</source>
