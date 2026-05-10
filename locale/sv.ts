@@ -306,6 +306,13 @@
     </message>
   </context>
   <context>
+    <name>ArticleWebView</name>
+    <message>
+      <source>GoldenDict Resource Viewer</source>
+      <translation>GoldenDict Resource Viewer</translation>
+    </message>
+  </context>
+  <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
@@ -2647,6 +2654,10 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
       <source>Are you sure you want to clear all history items?</source>
       <translation>Är du säker på att du vill rensa alla historikobjekt?</translation>
     </message>
+    <message>
+      <source>Save File</source>
+      <translation>Spara fil</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3120,7 +3131,7 @@ angivna tangenterna är nedtryckta när ordet markeras.</translation>
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation>Endast tack val när alla valda nycklar hålls tryckt:</translation>
+      <translation>Endast spårval när alla valda nycklar hålls tryckt:</translation>
     </message>
     <message>
       <source>Alt key</source>
