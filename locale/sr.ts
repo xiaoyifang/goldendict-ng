@@ -3121,8 +3121,8 @@ in the pressed state when the word selection changes.</source>
 у притиснутом стању, када се избор речи промени.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Одабир хватања само када се сви изабрани тастери држе притиснути:</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation type="unfinished">Only track selection when all selected keys are kept pressed:</translation>
     </message>
     <message>
       <source>Alt key</source>
