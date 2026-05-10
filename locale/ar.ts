@@ -3119,8 +3119,8 @@ in the pressed state when the word selection changes.</source>
 المفاتيح مضغوطة عندما يتغيّر تحديد الكلمة.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>اختيار المسار فقط عندما يتم الضغط باستمرار على جميع المفاتيح المحددة:</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation>المسار المحدد فقط عندما يتم الضغط على جميع المفاتيح المحددة:</translation>
     </message>
     <message>
       <source>Alt key</source>
