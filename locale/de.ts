@@ -3117,8 +3117,8 @@ in the pressed state when the word selection changes.</source>
       <translation>Fallt aktiviert, wird das Popup bei Änderung der Wortauswahl nur angezeigt, wenn alle ausgewählten Tasten gedrückt sind.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Auswahl nur antippen, wenn alle ausgewählten Tasten gedrückt bleiben:</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation>Auswahl nur verfolgen, wenn alle ausgewählten Tasten gedrückt bleiben:</translation>
     </message>
     <message>
       <source>Alt key</source>
