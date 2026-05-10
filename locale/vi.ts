@@ -3116,8 +3116,8 @@ in the pressed state when the word selection changes.</source>
       <translation>Khi chọn từ cần tra nghĩa, nhấn phím tắt đã chọn để hiện popup.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Chỉ giải quyết lựa chọn khi tất cả các phím đã chọn được nhấn:</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation type="unfinished">Only track selection when all selected keys are kept pressed:</translation>
     </message>
     <message>
       <source>Alt key</source>
