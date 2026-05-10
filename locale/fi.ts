@@ -3120,7 +3120,7 @@ in the pressed state when the word selection changes.</source>
 painettuna tilassa, kun sana valinta muuttuu.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
+      <source>Only track selection when all selected keys are kept pressed:</source>
       <translation>Valitse vain kun kaikki valitut näppäimet pidetään painettuna:</translation>
     </message>
     <message>

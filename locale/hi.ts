@@ -3113,7 +3113,7 @@ in the pressed state when the word selection changes.</source>
       <translation>इसके सक्षम होने पर, जब शब्द चयन बदलता है तो पॉपअप केवल तभी दिखाई देगा जब सभी चुनी हुई कुंजियों की स्थिति दबी हुई हो।</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
+      <source>Only track selection when all selected keys are kept pressed:</source>
       <translation>केवल तभी चयन करें जब सभी चयनित कुंजियाँ दबाई जाएं:</translation>
     </message>
     <message>

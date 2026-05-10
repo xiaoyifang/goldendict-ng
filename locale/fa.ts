@@ -3119,7 +3119,7 @@ in the pressed state when the word selection changes.</source>
 هنگام تغییر گزینش واژه همه کلیدهای برگزیده فشار داده شوند.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
+      <source>Only track selection when all selected keys are kept pressed:</source>
       <translation>فقط زمانی که همه کلیدهای انتخاب شده فشار داده شده باشند، انتخاب تکه‌ها:</translation>
     </message>
     <message>

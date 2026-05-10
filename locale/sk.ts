@@ -3115,7 +3115,7 @@ in the pressed state when the word selection changes.</source>
       <translation>Pokiaľ toto povolíte, vyskakovacie okno sa zobrazí iba v prípade, keď budú stlačené zvolené klávesy počas výberu slova.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
+      <source>Only track selection when all selected keys are kept pressed:</source>
       <translation>Voľba prichytenia len vtedy, keď sú stlačené všetky zvolené klávesy:</translation>
     </message>
     <message>

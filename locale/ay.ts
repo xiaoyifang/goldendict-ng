@@ -3200,7 +3200,7 @@ Akamp naktayataxa, taqpach teclanak limt&apos;atakis ukjakiw
 uñstiri wintanaxa uñstaraki, ajllit aru mayjt&apos;i ukja.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
+      <source>Only track selection when all selected keys are kept pressed:</source>
       <translation>Tack ajlliwikiw kunapachatix taqi ajllit teclas ukanakax ch’amanchatäki ukhaxa:</translation>
     </message>
     <message>

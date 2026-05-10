@@ -3118,7 +3118,7 @@ in the pressed state when the word selection changes.</source>
 눌려진 상태에서만 팝업이 나타납니다.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
+      <source>Only track selection when all selected keys are kept pressed:</source>
       <translation>선택한 모든 키를 계속 누르고 있을 때만 압정 선택:</translation>
     </message>
     <message>

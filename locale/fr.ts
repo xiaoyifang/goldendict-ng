@@ -3118,7 +3118,7 @@ in the pressed state when the word selection changes.</source>
       <translation>La pop-up n&apos;apparâit que si toutes les touches sélectionnées sont enfoncées lorsque la sélection de mot change.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
+      <source>Only track selection when all selected keys are kept pressed:</source>
       <translation>N'appuyer sur la sélection que lorsque toutes les touches sélectionnées sont maintenues enfoncées :</translation>
     </message>
     <message>

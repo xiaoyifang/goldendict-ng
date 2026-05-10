@@ -3120,7 +3120,7 @@ in the pressed state when the word selection changes.</source>
 no estado pressionado quando a seleção de palavras mudar.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
+      <source>Only track selection when all selected keys are kept pressed:</source>
       <translation>Apenas seleção tack quando todas as chaves selecionadas forem pressionadas:</translation>
     </message>
     <message>

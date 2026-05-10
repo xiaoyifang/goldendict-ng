@@ -3117,7 +3117,7 @@ in the pressed state when the word selection changes.</source>
 всіх вибраних клавіш з виділеним словом.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
+      <source>Only track selection when all selected keys are kept pressed:</source>
       <translation>Вибір буде скинуто лише коли всі вибрані ключі будуть збережені:</translation>
     </message>
     <message>
