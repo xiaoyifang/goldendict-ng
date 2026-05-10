@@ -291,6 +291,13 @@
     </message>
 </context>
 <context>
+    <name>ArticleWebView</name>
+    <message>
+        <source>GoldenDict Resource Viewer</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BelarusianTranslit</name>
     <message>
         <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
