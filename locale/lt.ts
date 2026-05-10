@@ -3120,8 +3120,8 @@ in the pressed state when the word selection changes.</source>
 po to, kai pasikeis pažymėtas žodis.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Tack pasirinkimas tik tada, kai visi pasirinkti klavišai laikomi nuspausti:</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation type="unfinished">Only track selection when all selected keys are kept pressed:</translation>
     </message>
     <message>
       <source>Alt key</source>
