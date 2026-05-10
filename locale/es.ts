@@ -3119,8 +3119,8 @@ in the pressed state when the word selection changes.</source>
 las teclas elegidas cuando cambia la palabra seleccionada.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Sólo la selección de toques cuando todas las teclas seleccionadas se mantienen presionadas:</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation>Solo la selección de rastreo cuando todas las teclas seleccionadas se mantienen presionadas:</translation>
     </message>
     <message>
       <source>Alt key</source>
