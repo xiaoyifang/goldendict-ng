@@ -231,81 +231,18 @@ jobs:
           FILE="redist/io.github.xiaoyifang.goldendict_ng.metainfo.xml"
           REPO="${{ github.repository }}"
           
-          python3 - <<EOF
-          import sys, os, html
-          file_path = '$FILE'
-          version = '$VERSION'
-          date = '$DATE'
-          repo = '$REPO'
-          tag_name = os.environ.get('TAG_NAME', '')
-          
-          with open(file_path, 'r', encoding='utf-8') as f:
-              lines = f.readlines()
-          
-          if any(f'version="{version}"' in line for line in lines):
-              print(f"Version {version} already exists.")
-              sys.exit(0)
-          
-          # Build list-based description
-          desc_html = f"<p>Stable release {version}</p>"
-          if os.path.exists('changelog.txt'):
-              with open('changelog.txt', 'r') as f:
-                  cl_lines = [l.strip() for l in f.readlines() if l.strip() and not l.startswith('#') and 'Based on branch' not in l]
-                  if cl_lines:
-                      desc_html = "<ul>\n"
-                      for item in cl_lines[:20]:
-                          clean_item = item.lstrip('-* ').strip()
-                          desc_html += f"          <li>{html.escape(clean_item)}</li>\n"
-                      if len(cl_lines) > 20:
-                          desc_html += f"          <li>Check the <a href=\"https://github.com/{repo}/releases/tag/{tag_name}\">Full Release Notes</a> for more details.</li>\n"
-                      desc_html += "        </ul>"
-          
-          new_lines = []
-          added = False
-          for line in lines:
-              new_lines.append(line)
-              if '<releases>' in line and not added:
-                  new_lines.append(f'    <release version="{version}" date="{date}">\n')
-                  new_lines.append(f'      <description>\n')
-                  new_lines.append(f'        {desc_html}\n')
-                  new_lines.append(f'      </description>\n')
-                  new_lines.append(f'    </release>\n')
-                  added = True
-          
-          final_lines = []
-          release_count = 0
-          in_releases = False
-          skip_mode = False
-          for line in new_lines:
-              if '<releases>' in line:
-                  in_releases = True
-                  final_lines.append(line)
-                  continue
-              if '</releases>' in line:
-                  in_releases = False
-                  final_lines.append(line)
-                  continue
-              if in_releases:
-                  if '<release' in line:
-                      release_count += 1
-                      if release_count > 5:
-                          skip_mode = True
-                      else:
-                          skip_mode = False
-                  if not skip_mode:
-                      final_lines.append(line)
-              else:
-                  final_lines.append(line)
-          
-          with open(file_path, 'w', encoding='utf-8') as f:
-              f.writelines(final_lines)
-          EOF
+          python3 .github/workflows/scripts/update_metainfo.py "$FILE" "$VERSION" "$DATE" "$REPO" "$TAG_NAME"
           
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add "$FILE"
-          git commit -m "Update metainfo.xml for version $VERSION [skip ci]"
-          git push
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to metainfo.xml"
+          else
+            git commit -m "Update metainfo.xml for version $VERSION [skip ci]"
+            git push
+          fi
       - name: Get release title
         id: getReleaseTitle
         run: |
