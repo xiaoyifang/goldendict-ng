@@ -92,7 +92,5 @@ if __name__ == "__main__":
         sys.exit(1)
     
     # Arguments: file_path, version, date, repo, tag_name
-    updated = update_metainfo(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])
-    if not updated:
-        # We exit with 0 even if not updated (already exists) to not break the CI flow
-        sys.exit(0)
+    update_metainfo(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])
+    sys.exit(0)
