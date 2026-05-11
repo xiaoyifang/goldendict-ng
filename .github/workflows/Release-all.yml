@@ -213,8 +213,18 @@ jobs:
       - name: Print changelog.txt
         run: |
           cat changelog.txt
+      - name: Get git short SHA
+        id: shortSHA
+        run: |
+          echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+      - name: Get new tag
+        id: getNewTag
+        run: |
+          echo "newTag=v${{ env.version }}-${{ env.versionSuffix }}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
       - name: Update metainfo.xml
         if: env.prerelease == 'false'
+        env:
+          TAG_NAME: ${{ steps.getNewTag.outputs.newTag }}
         run: |
           VERSION="${{ env.version }}"
           DATE=$(date +%Y-%-m-%-d)
@@ -227,6 +237,7 @@ jobs:
           version = '$VERSION'
           date = '$DATE'
           repo = '$REPO'
+          tag_name = os.environ.get('TAG_NAME', '')
           
           with open(file_path, 'r', encoding='utf-8') as f:
               lines = f.readlines()
@@ -246,8 +257,7 @@ jobs:
                           clean_item = item.lstrip('-* ').strip()
                           desc_html += f"          <li>{html.escape(clean_item)}</li>\n"
                       if len(cl_lines) > 20:
-                          # Use a placeholder for the tag name which includes SHA
-                          desc_html += f"          <li>Check the <a href=\"https://github.com/{repo}/releases/tag/__TAG_NAME__\">Full Release Notes</a> for more details.</li>\n"
+                          desc_html += f"          <li>Check the <a href=\"https://github.com/{repo}/releases/tag/{tag_name}\">Full Release Notes</a> for more details.</li>\n"
                       desc_html += "        </ul>"
           
           new_lines = []
@@ -295,21 +305,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add "$FILE"
           git commit -m "Update metainfo.xml for version $VERSION [skip ci]"
-          
-          # Now we have the commit, we can get the real SHA and replace the placeholder
-          NEW_SHA=$(git rev-parse --short HEAD)
-          TAG_NAME="v$VERSION-Release.$NEW_SHA"
-          sed -i "s/__TAG_NAME__/$TAG_NAME/g" "$FILE"
-          git commit --amend --all --no-edit
           git push
-      - name: Get git short SHA
-        id: shortSHA
-        run: |
-          echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-      - name: Get new tag
-        id: getNewTag
-        run: |
-          echo "newTag=v${{ env.version }}-${{ env.versionSuffix }}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
       - name: Get release title
         id: getReleaseTitle
         run: |
