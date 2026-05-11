@@ -219,22 +219,37 @@ jobs:
           VERSION="${{ env.version }}"
           DATE=$(date +%Y-%-m-%-d)
           FILE="redist/io.github.xiaoyifang.goldendict_ng.metainfo.xml"
+          REPO="${{ github.repository }}"
+          
           python3 - <<EOF
           import sys, os, html
           file_path = '$FILE'
           version = '$VERSION'
           date = '$DATE'
+          repo = '$REPO'
+          
           with open(file_path, 'r', encoding='utf-8') as f:
               lines = f.readlines()
+          
           if any(f'version="{version}"' in line for line in lines):
               print(f"Version {version} already exists.")
               sys.exit(0)
-          desc_content = "Stable release " + version
+          
+          # Build list-based description
+          desc_html = f"<p>Stable release {version}</p>"
           if os.path.exists('changelog.txt'):
               with open('changelog.txt', 'r') as f:
                   cl_lines = [l.strip() for l in f.readlines() if l.strip() and not l.startswith('#') and 'Based on branch' not in l]
                   if cl_lines:
-                      desc_content = html.escape(cl_lines[0])
+                      desc_html = "<ul>\n"
+                      for item in cl_lines[:20]:
+                          clean_item = item.lstrip('-* ').strip()
+                          desc_html += f"          <li>{html.escape(clean_item)}</li>\n"
+                      if len(cl_lines) > 20:
+                          # Use a placeholder for the tag name which includes SHA
+                          desc_html += f"          <li>Check the <a href=\"https://github.com/{repo}/releases/tag/__TAG_NAME__\">Full Release Notes</a> for more details.</li>\n"
+                      desc_html += "        </ul>"
+          
           new_lines = []
           added = False
           for line in lines:
@@ -242,10 +257,11 @@ jobs:
               if '<releases>' in line and not added:
                   new_lines.append(f'    <release version="{version}" date="{date}">\n')
                   new_lines.append(f'      <description>\n')
-                  new_lines.append(f'        <p>{desc_content}</p>\n')
+                  new_lines.append(f'        {desc_html}\n')
                   new_lines.append(f'      </description>\n')
                   new_lines.append(f'    </release>\n')
                   added = True
+          
           final_lines = []
           release_count = 0
           in_releases = False
@@ -270,13 +286,21 @@ jobs:
                       final_lines.append(line)
               else:
                   final_lines.append(line)
+          
           with open(file_path, 'w', encoding='utf-8') as f:
               f.writelines(final_lines)
           EOF
+          
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add "$FILE"
           git commit -m "Update metainfo.xml for version $VERSION [skip ci]"
+          
+          # Now we have the commit, we can get the real SHA and replace the placeholder
+          NEW_SHA=$(git rev-parse --short HEAD)
+          TAG_NAME="v$VERSION-Release.$NEW_SHA"
+          sed -i "s/__TAG_NAME__/$TAG_NAME/g" "$FILE"
+          git commit --amend --all --no-edit
           git push
       - name: Get git short SHA
         id: shortSHA
