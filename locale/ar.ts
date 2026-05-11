@@ -306,6 +306,13 @@
     </message>
   </context>
   <context>
+    <name>ArticleWebView</name>
+    <message>
+      <source>GoldenDict Resource Viewer</source>
+      <translation>عارض الموارد الذهبية</translation>
+    </message>
+  </context>
+  <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
@@ -2646,6 +2653,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Are you sure you want to clear all history items?</source>
       <translation>هل أنت متأكد من أنك تريد مسح جميع عناصر التاريخ؟</translation>
     </message>
+    <message>
+      <source>Save File</source>
+      <translation>حفظ الملف</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3120,7 +3131,7 @@ in the pressed state when the word selection changes.</source>
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation>اختيار المسار فقط عندما يتم الضغط باستمرار على جميع المفاتيح المحددة:</translation>
+      <translation>المسار المحدد فقط عندما يتم الضغط على جميع المفاتيح المحددة:</translation>
     </message>
     <message>
       <source>Alt key</source>

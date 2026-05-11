@@ -306,6 +306,13 @@
     </message>
   </context>
   <context>
+    <name>ArticleWebView</name>
+    <message>
+      <source>GoldenDict Resource Viewer</source>
+      <translation>Visor de recursos de GoldenDict</translation>
+    </message>
+  </context>
+  <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
@@ -2647,6 +2654,10 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
       <source>Are you sure you want to clear all history items?</source>
       <translation>¿Está seguro que desea borrar todos los elementos del historial?</translation>
     </message>
+    <message>
+      <source>Save File</source>
+      <translation>Guardar archivo</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3120,7 +3131,7 @@ las teclas elegidas cuando cambia la palabra seleccionada.</translation>
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation>Sólo la selección de toques cuando todas las teclas seleccionadas se mantienen presionadas:</translation>
+      <translation>Solo la selección de rastreo cuando todas las teclas seleccionadas se mantienen presionadas:</translation>
     </message>
     <message>
       <source>Alt key</source>

@@ -307,6 +307,13 @@
     </message>
   </context>
   <context>
+    <name>ArticleWebView</name>
+    <message>
+      <source>GoldenDict Resource Viewer</source>
+      <translation>Golddiktt-Ressourcenbetrachter</translation>
+    </message>
+  </context>
+  <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
@@ -2647,6 +2654,10 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
       <source>Are you sure you want to clear all history items?</source>
       <translation>Sind Sie sicher, dass Sie alle Verlaufselemente löschen möchten?</translation>
     </message>
+    <message>
+      <source>Save File</source>
+      <translation>Datei speichern</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3118,7 +3129,7 @@ in the pressed state when the word selection changes.</source>
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation>Auswahl nur antippen, wenn alle ausgewählten Tasten gedrückt bleiben:</translation>
+      <translation>Auswahl nur verfolgen, wenn alle ausgewählten Tasten gedrückt bleiben:</translation>
     </message>
     <message>
       <source>Alt key</source>

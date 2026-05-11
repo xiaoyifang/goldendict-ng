@@ -306,6 +306,13 @@
     </message>
   </context>
   <context>
+    <name>ArticleWebView</name>
+    <message>
+      <source>GoldenDict Resource Viewer</source>
+      <translation>Προβολέας Πόρων GoldenDict</translation>
+    </message>
+  </context>
+  <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
@@ -2649,6 +2656,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Are you sure you want to clear all history items?</source>
       <translation>Είστε βέβαιοι ότι θέλετε να καθαρίσετε όλα τα στοιχεία ιστορικού?</translation>
     </message>
+    <message>
+      <source>Save File</source>
+      <translation>Αποθήκευση Αρχείου</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3122,7 +3133,7 @@ in the pressed state when the word selection changes.</source>
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation>Επιλογή μόνο όταν όλα τα επιλεγμένα πλήκτρα διατηρούνται πατημένα:</translation>
+      <translation>Μόνο επιλογή κομματιού όταν όλα τα επιλεγμένα πλήκτρα διατηρούνται πατημένα:</translation>
     </message>
     <message>
       <source>Alt key</source>

@@ -306,6 +306,13 @@
     </message>
   </context>
   <context>
+    <name>ArticleWebView</name>
+    <message>
+      <source>GoldenDict Resource Viewer</source>
+      <translation>Zlatý prohlížeč zdrojů</translation>
+    </message>
+  </context>
+  <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
@@ -2647,6 +2654,10 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <source>Are you sure you want to clear all history items?</source>
       <translation>Jste si jisti, že chcete vymazat všechny položky historie?</translation>
     </message>
+    <message>
+      <source>Save File</source>
+      <translation>Uložit soubor</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3120,7 +3131,7 @@ zvolené klávesy stisknuty při změně výběru.</translation>
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation>Výběr sady pouze, když jsou stisknuty všechny vybrané klávesy:</translation>
+      <translation>Výběr skladby pouze pokud jsou stisknuty všechny vybrané klávesy:</translation>
     </message>
     <message>
       <source>Alt key</source>
