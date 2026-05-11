@@ -220,7 +220,7 @@ jobs:
       - name: Get new tag
         id: getNewTag
         run: |
-          echo "newTag=v${{ env.version }}-${{ env.versionSuffix }}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
+          echo "newTag=v${{ env.version }}_${{ env.versionSuffix }}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
       - name: Update metainfo.xml
         if: env.prerelease == 'false'
         env:
