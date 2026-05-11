@@ -180,6 +180,39 @@ jobs:
           fetch-depth: 0 # need all tags to genearte changelog
       - name: Load version from VERSION file
         run: echo "version=$(xargs < VERSION)" >> $GITHUB_ENV
+      - name: Get previous tag
+        id: changelogTags
+        run: |
+          if [[ '${{env.prerelease}}' == 'true' ]]
+          then
+            echo "This is a pre-release"
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v -e "Release" -e "vcpkg" | head -n 1)
+          else
+            echo "This is not a pre-release"
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v -e "alpha" -e "vcpkg" | head -n 1)
+          fi
+
+          echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
+          echo "previousTag : $previousTag"
+      - name: Build Changelog
+        id: build_changelog
+        uses: orhun/git-cliff-action@v4
+        with:
+          config: cliff.toml
+          args: ${{ steps.changelogTags.outputs.prev_tag }}..HEAD
+        env:
+          OUTPUT: changelog.txt
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Get changelog.txt
+        run: |
+          # HEREDOC must be quoted to avoid Bash substitution
+          # append the branch name to the changelog
+          cat <<'HEREDOC' >> changelog.txt
+          Based on branch: ${{ github.ref_name }}
+          HEREDOC
+      - name: Print changelog.txt
+        run: |
+          cat changelog.txt
       - name: Update metainfo.xml
         if: env.prerelease == 'false'
         run: |
@@ -249,43 +282,10 @@ jobs:
         id: shortSHA
         run: |
           echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-      - name: Get previous tag
-        id: changelogTags
-        run: |
-          if [[ '${{env.prerelease}}' == 'true' ]]
-          then
-            echo "This is a pre-release"
-            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v -e "Release" -e "vcpkg" | head -n 1)
-          else
-            echo "This is not a pre-release"
-            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v -e "alpha" -e "vcpkg" | head -n 1)
-          fi
-
-          echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
-          echo "previousTag : $previousTag"
       - name: Get new tag
         id: getNewTag
         run: |
           echo "newTag=v${{ env.version }}-${{ env.versionSuffix }}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
-      - name: Build Changelog
-        id: build_changelog
-        uses: orhun/git-cliff-action@v4
-        with:
-          config: cliff.toml
-          args: ${{ steps.changelogTags.outputs.prev_tag }}..HEAD
-        env:
-          OUTPUT: changelog.txt
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Get changelog.txt
-        run: |
-          # HEREDOC must be quoted to avoid Bash substitution
-          # append the branch name to the changelog
-          cat <<'HEREDOC' >> changelog.txt
-          Based on branch: ${{ github.ref_name }}
-          HEREDOC
-      - name: Print changelog.txt
-        run: |
-          cat changelog.txt
       - name: Get release title
         id: getReleaseTitle
         run: |
