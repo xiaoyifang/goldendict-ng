@@ -169,7 +169,7 @@ jobs:
 
   generate_other_staffs:
     permissions:
-      contents: read
+      contents: write
     runs-on: ubuntu-latest
     outputs:
       newTag: ${{ steps.getNewTag.outputs.newTag }}
@@ -180,6 +180,71 @@ jobs:
           fetch-depth: 0 # need all tags to genearte changelog
       - name: Load version from VERSION file
         run: echo "version=$(xargs < VERSION)" >> $GITHUB_ENV
+      - name: Update metainfo.xml
+        if: env.prerelease == 'false'
+        run: |
+          VERSION="${{ env.version }}"
+          DATE=$(date +%Y-%-m-%-d)
+          FILE="redist/io.github.xiaoyifang.goldendict_ng.metainfo.xml"
+          python3 - <<EOF
+          import sys, os, html
+          file_path = '$FILE'
+          version = '$VERSION'
+          date = '$DATE'
+          with open(file_path, 'r', encoding='utf-8') as f:
+              lines = f.readlines()
+          if any(f'version="{version}"' in line for line in lines):
+              print(f"Version {version} already exists.")
+              sys.exit(0)
+          desc_content = "Stable release " + version
+          if os.path.exists('changelog.txt'):
+              with open('changelog.txt', 'r') as f:
+                  cl_lines = [l.strip() for l in f.readlines() if l.strip() and not l.startswith('#') and 'Based on branch' not in l]
+                  if cl_lines:
+                      desc_content = html.escape(cl_lines[0])
+          new_lines = []
+          added = False
+          for line in lines:
+              new_lines.append(line)
+              if '<releases>' in line and not added:
+                  new_lines.append(f'    <release version="{version}" date="{date}">\n')
+                  new_lines.append(f'      <description>\n')
+                  new_lines.append(f'        <p>{desc_content}</p>\n')
+                  new_lines.append(f'      </description>\n')
+                  new_lines.append(f'    </release>\n')
+                  added = True
+          final_lines = []
+          release_count = 0
+          in_releases = False
+          skip_mode = False
+          for line in new_lines:
+              if '<releases>' in line:
+                  in_releases = True
+                  final_lines.append(line)
+                  continue
+              if '</releases>' in line:
+                  in_releases = False
+                  final_lines.append(line)
+                  continue
+              if in_releases:
+                  if '<release' in line:
+                      release_count += 1
+                      if release_count > 5:
+                          skip_mode = True
+                      else:
+                          skip_mode = False
+                  if not skip_mode:
+                      final_lines.append(line)
+              else:
+                  final_lines.append(line)
+          with open(file_path, 'w', encoding='utf-8') as f:
+              f.writelines(final_lines)
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "$FILE"
+          git commit -m "Update metainfo.xml for version $VERSION [skip ci]"
+          git push
       - name: Get git short SHA
         id: shortSHA
         run: |
