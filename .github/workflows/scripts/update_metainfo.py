@@ -11,7 +11,7 @@ def update_metainfo(file_path, version, date, repo, tag_name):
         print(f"Error: File {file_path} not found.")
         sys.exit(1)
 
-    with open(file_path, 'r', encoding='utf-8') as f:
+    with open(file_path, 'r', encoding='utf-8-sig') as f:
         lines = f.readlines()
 
     # Check if this version already exists
@@ -22,7 +22,7 @@ def update_metainfo(file_path, version, date, repo, tag_name):
     # Build list-based description from changelog.txt
     desc_html = f"<p>Stable release {version}</p>"
     if os.path.exists('changelog.txt'):
-        with open('changelog.txt', 'r') as f:
+        with open('changelog.txt', 'r', encoding='utf-8-sig') as f:
             # Filter meaningful lines (exclude headers and branch info)
             cl_lines = [l.strip() for l in f.readlines() if l.strip() and not l.startswith('#') and 'Based on branch' not in l]
             if cl_lines:
