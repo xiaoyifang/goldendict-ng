@@ -169,7 +169,7 @@ jobs:
 
   generate_other_staffs:
     permissions:
-      contents: read
+      contents: write
     runs-on: ubuntu-latest
     outputs:
       newTag: ${{ steps.getNewTag.outputs.newTag }}
@@ -180,10 +180,6 @@ jobs:
           fetch-depth: 0 # need all tags to genearte changelog
       - name: Load version from VERSION file
         run: echo "version=$(xargs < VERSION)" >> $GITHUB_ENV
-      - name: Get git short SHA
-        id: shortSHA
-        run: |
-          echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       - name: Get previous tag
         id: changelogTags
         run: |
@@ -198,10 +194,6 @@ jobs:
 
           echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
           echo "previousTag : $previousTag"
-      - name: Get new tag
-        id: getNewTag
-        run: |
-          echo "newTag=v${{ env.version }}-${{ env.versionSuffix }}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
       - name: Build Changelog
         id: build_changelog
         uses: orhun/git-cliff-action@v4
@@ -221,6 +213,36 @@ jobs:
       - name: Print changelog.txt
         run: |
           cat changelog.txt
+      - name: Get git short SHA
+        id: shortSHA
+        run: |
+          echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+      - name: Get new tag
+        id: getNewTag
+        run: |
+          echo "newTag=v${{ env.version }}-${{ env.versionSuffix }}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
+      - name: Update metainfo.xml
+        if: env.prerelease == 'false'
+        env:
+          TAG_NAME: ${{ steps.getNewTag.outputs.newTag }}
+        run: |
+          VERSION="${{ env.version }}"
+          DATE=$(date +%Y-%-m-%-d)
+          FILE="redist/io.github.xiaoyifang.goldendict_ng.metainfo.xml"
+          REPO="${{ github.repository }}"
+          
+          python3 .github/workflows/scripts/update_metainfo.py "$FILE" "$VERSION" "$DATE" "$REPO" "$TAG_NAME"
+          
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "$FILE"
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to metainfo.xml"
+          else
+            git commit -m "Update metainfo.xml for version $VERSION [skip ci]"
+            git push
+          fi
       - name: Get release title
         id: getReleaseTitle
         run: |
