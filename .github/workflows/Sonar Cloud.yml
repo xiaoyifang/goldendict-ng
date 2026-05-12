@@ -37,7 +37,7 @@ jobs:
           qt6-tools-dev-tools \
           qt6-webchannel-dev \
           qt6-webengine-dev
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
           submodules: true    
