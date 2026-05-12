@@ -65,7 +65,7 @@ static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
 
 
-bool indexIsOldOrBad( string const & indexFile, const vector< string > & dictFiles )
+bool indexIsOldOrBad( const string & indexFile, const vector< string > & dictFiles )
 {
   return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile, dictFiles, Signature, CurrentFormatVersion );
 }

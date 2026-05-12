@@ -109,12 +109,16 @@ struct IdxHeader
 static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
 
-bool indexIsOldOrBad( string const & indexFile, const vector< string > & dictFiles )
+bool indexIsOldOrBad( const string & indexFile, const vector< string > & dictFiles )
 {
   auto extraCheck = []( const IdxHeader & h ) -> bool {
     return h.articleFormat != 0;
   };
-  return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile, dictFiles, Signature, CurrentFormatVersion, &extraCheck );
+  return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile,
+                                                      dictFiles,
+                                                      Signature,
+                                                      CurrentFormatVersion,
+                                                      &extraCheck );
 }
 
 

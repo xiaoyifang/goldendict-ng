@@ -1409,7 +1409,11 @@ static bool indexIsOldOrBad( const string & indexFile, const vector< string > & 
   auto extraCheck = []( const IdxHeader & h ) -> bool {
     return h.parserVersion == MdictParser::kParserVersion && h.foldingVersion == Folding::Version;
   };
-  return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile, dictFiles, kSignature, kCurrentFormatVersion, &extraCheck );
+  return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile,
+                                                      dictFiles,
+                                                      kSignature,
+                                                      kCurrentFormatVersion,
+                                                      &extraCheck );
 }
 
 static void findResourceFiles( const string & mdx, vector< string > & dictFiles )
