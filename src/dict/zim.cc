@@ -78,19 +78,15 @@ struct IdxHeader
   quint32 descriptionPtr;
   quint32 langFrom; // Source language
   quint32 langTo;   // Target language
+  uint64_t sourceLastModified;
 };
 static_assert( alignof( IdxHeader ) == 1 );
   #pragma pack( pop )
 
 // Some supporting functions
-bool indexIsOldOrBad( const string & indexFile )
+bool indexIsOldOrBad( const string & indexFile, const vector< string > & dictFiles )
 {
-  File::Index idx( indexFile, QIODevice::ReadOnly );
-
-  IdxHeader header;
-
-  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
-    || header.formatVersion != CurrentFormatVersion;
+  return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile, dictFiles, Signature, CurrentFormatVersion );
 }
 
 quint32 getArticleCluster( const ZimFile & file, quint32 articleNumber )
@@ -804,7 +800,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
     try {
       //only check zim file.
-      if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
+      if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile, dictFiles ) ) {
         qDebug( "Zim: Building the index for dictionary: %s", fileName.c_str() );
 
         unsigned articleCount = df.getArticleCount();
@@ -886,6 +882,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
         idxHeader.wordCount    = wordCount;
 
         idx.rewind();
+
+        idxHeader.sourceLastModified = BtreeIndexing::computeSourceLastModified( dictFiles );
 
         idx.write( &idxHeader, sizeof( idxHeader ) );
       }
