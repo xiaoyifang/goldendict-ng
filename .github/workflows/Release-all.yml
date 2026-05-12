@@ -27,7 +27,7 @@ jobs:
         os: [macos-14,macos-15-intel]
         qt_ver: [ 6.8.3, 6.10.3 ] # 6.8 is LTS which is relatively stable, don't dump it until next LTS.
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6.0.2
         with:
           submodules: true
       - name: Install dependencies
@@ -120,7 +120,7 @@ jobs:
           arch: ${{ matrix.arch }}
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
           # setup-python: 'false'
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6.0.2
         with:
           submodules: true
       - name: Build
@@ -175,7 +175,7 @@ jobs:
       newTag: ${{ steps.getNewTag.outputs.newTag }}
       releaseTitle: ${{steps.getReleaseTitle.outputs.releaseTitle}}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 0 # need all tags to genearte changelog
       - name: Load version from VERSION file
