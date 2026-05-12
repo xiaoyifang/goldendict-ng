@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Install dependencies
         run: |
-          sudo apt-get update
+          # sudo apt-get update
 
           sudo apt-get install build-essential ninja-build ccache \
           libvorbis-dev zlib1g-dev libhunspell-dev x11proto-record-dev \
