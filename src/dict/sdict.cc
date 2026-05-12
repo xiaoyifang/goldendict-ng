@@ -83,18 +83,14 @@ struct IdxHeader
   uint32_t compressionType; // Data compression in file. 0 - no compression, 1 - zip, 2 - bzip2
   uint32_t langFrom;        // Source language
   uint32_t langTo;          // Target language
+  uint64_t sourceLastModified;
 };
 static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
 
-bool indexIsOldOrBad( string const & indexFile )
+bool indexIsOldOrBad( string const & indexFile, const vector< string > & dictFiles )
 {
-  File::Index idx( indexFile, QIODevice::ReadOnly );
-
-  IdxHeader header;
-
-  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
-    || header.formatVersion != CurrentFormatVersion;
+  return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile, dictFiles, Signature, CurrentFormatVersion );
 }
 
 class SdictDictionary: public BtreeIndexing::BtreeDictionary
@@ -663,7 +659,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
     string indexFile = indicesDir + dictId;
 
-    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
+    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile, dictFiles ) ) {
       try {
         qDebug( "SDict: Building the index for dictionary: %s", fileName.c_str() );
 
@@ -767,6 +763,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
         idxHeader.langFrom        = LangCoder::code2toInt( dictHeader.inputLang );
         idxHeader.langTo          = LangCoder::code2toInt( dictHeader.outputLang );
         idxHeader.compressionType = compression;
+
+        idxHeader.sourceLastModified = BtreeIndexing::computeSourceLastModified( dictFiles );
 
         idx.rewind();
 

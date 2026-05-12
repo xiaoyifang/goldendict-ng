@@ -59,19 +59,15 @@ struct IdxHeader
   uint32_t indexRootOffset;
   uint32_t langFrom; // Source language
   uint32_t langTo;   // Target language
+  uint64_t sourceLastModified;
 };
 static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
 
 
-bool indexIsOldOrBad( string const & indexFile )
+bool indexIsOldOrBad( string const & indexFile, const vector< string > & dictFiles )
 {
-  File::Index idx( indexFile, QIODevice::ReadOnly );
-
-  IdxHeader header;
-
-  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
-    || header.formatVersion != CurrentFormatVersion;
+  return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile, dictFiles, Signature, CurrentFormatVersion );
 }
 
 class DictdDictionary: public BtreeIndexing::BtreeDictionary
@@ -576,7 +572,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
       string indexFile = indicesDir + dictId;
 
-      if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
+      if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile, dictFiles ) ) {
         // Building the index
         string dictionaryName = nameFromFileName( dictFiles[ 0 ] );
 
@@ -716,6 +712,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
         idxHeader.langFrom = langs.first;
         idxHeader.langTo   = langs.second;
+
+        idxHeader.sourceLastModified = BtreeIndexing::computeSourceLastModified( dictFiles );
 
         idx.rewind();
 

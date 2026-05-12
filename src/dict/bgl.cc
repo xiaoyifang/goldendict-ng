@@ -70,19 +70,17 @@ struct IdxHeader
   uint32_t iconSize;           // Size of the icon in the chunks' storage, 0 = no icon
   uint32_t descriptionAddress; // Address of the dictionary description in the chunks' storage
   uint32_t descriptionSize;    // Size of the description in the chunks' storage, 0 = no description
+  uint64_t sourceLastModified;
 };
 static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
 
-bool indexIsOldOrBad( string const & indexFile )
+bool indexIsOldOrBad( string const & indexFile, const vector< string > & dictFiles )
 {
-  File::Index idx( indexFile, QIODevice::ReadOnly );
-
-  IdxHeader header;
-
-  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
-    || header.formatVersion != CurrentFormatVersion || header.parserVersion != Babylon::ParserVersion
-    || header.foldingVersion != Folding::Version;
+  auto extraCheck = []( const IdxHeader & h ) -> bool {
+    return h.parserVersion == Babylon::ParserVersion && h.foldingVersion == Folding::Version;
+  };
+  return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile, dictFiles, Signature, CurrentFormatVersion, &extraCheck );
 }
 
 // Removes the $1$-like postfix
@@ -1040,7 +1038,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
     string indexFile = indicesDir + dictId;
 
-    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
+    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile, dictFiles ) ) {
       // Building the index
 
       qDebug( "Bgl: Building the index for dictionary: %s", fileName.c_str() );
@@ -1179,6 +1177,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
         idxHeader.langTo         = b.targetLang(); //LangCoder::findIdForLanguage( Utf8::decode( b.targetLang() ) );
 
         idx.rewind();
+
+        idxHeader.sourceLastModified = BtreeIndexing::computeSourceLastModified( dictFiles );
 
         idx.write( &idxHeader, sizeof( idxHeader ) );
       }

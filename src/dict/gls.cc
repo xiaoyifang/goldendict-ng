@@ -313,19 +313,23 @@ struct IdxHeader
                                      // resource index.
   uint32_t zipIndexRootOffset;
   char zipIndexSuffix[ 64 ];        // Suffix for the zip index LMDB file
+  uint64_t sourceLastModified;
 };
 static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
 
-bool indexIsOldOrBad( string const & indexFile, bool hasZipFile )
+bool indexIsOldOrBad( string const & indexFile, const vector< string > & dictFiles, bool hasZipFile )
 {
-  File::Index idx( indexFile, QIODevice::ReadOnly );
-
-  IdxHeader header;
-
-  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
-    || header.formatVersion != CurrentFormatVersion || (bool)header.hasZipFile != hasZipFile
-    || ( hasZipFile && header.zipSupportVersion != CurrentZipSupportVersion );
+  auto extraCheck = [ hasZipFile ]( const IdxHeader & h ) -> bool {
+    if ( (bool)h.hasZipFile != hasZipFile ) {
+      return false;
+    }
+    if ( hasZipFile && h.zipSupportVersion != CurrentZipSupportVersion ) {
+      return false;
+    }
+    return true;
+  };
+  return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile, dictFiles, Signature, CurrentFormatVersion, &extraCheck );
 }
 
 class GlsDictionary: public BtreeIndexing::BtreeDictionary
@@ -1223,7 +1227,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
       string indexFile = indicesDir + dictId;
 
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile )
-           || indexIsOldOrBad( indexFile, zipFileName.size() ) ) {
+           || indexIsOldOrBad( indexFile, dictFiles, zipFileName.size() ) ) {
         GlsScanner scanner( fileName );
 
         try { // Here we intercept any errors during the read to save line at
@@ -1393,6 +1397,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
           }
 
           idx.rewind();
+
+          idxHeader.sourceLastModified = BtreeIndexing::computeSourceLastModified( dictFiles );
 
           idx.write( &idxHeader, sizeof( idxHeader ) );
         } // In-place try for saving line count
