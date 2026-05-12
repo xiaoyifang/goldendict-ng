@@ -121,7 +121,11 @@ bool indexIsOldOrBad( const string & indexFile, const vector< string > & dictFil
     }
     return true;
   };
-  return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile, dictFiles, Signature, CurrentFormatVersion, &extraCheck );
+  return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile,
+                                                      dictFiles,
+                                                      Signature,
+                                                      CurrentFormatVersion,
+                                                      &extraCheck );
 }
 
 class DslDictionary: public BtreeIndexing::BtreeDictionary

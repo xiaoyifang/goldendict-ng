@@ -318,7 +318,7 @@ struct IdxHeader
 static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
 
-bool indexIsOldOrBad( string const & indexFile, const vector< string > & dictFiles, bool hasZipFile )
+bool indexIsOldOrBad( const string & indexFile, const vector< string > & dictFiles, bool hasZipFile )
 {
   auto extraCheck = [ hasZipFile ]( const IdxHeader & h ) -> bool {
     if ( (bool)h.hasZipFile != hasZipFile ) {
@@ -329,7 +329,11 @@ bool indexIsOldOrBad( string const & indexFile, const vector< string > & dictFil
     }
     return true;
   };
-  return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile, dictFiles, Signature, CurrentFormatVersion, &extraCheck );
+  return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile,
+                                                      dictFiles,
+                                                      Signature,
+                                                      CurrentFormatVersion,
+                                                      &extraCheck );
 }
 
 class GlsDictionary: public BtreeIndexing::BtreeDictionary
