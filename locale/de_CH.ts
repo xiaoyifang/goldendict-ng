@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: Kann keine Karte ohne Wort erstellen</translation>
+      <translation>Anki: can&apos;t create a card without a word</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -305,7 +305,7 @@
     <name>ArticleWebView</name>
     <message>
       <source>GoldenDict Resource Viewer</source>
-      <translation type="unfinished">GoldenDict Resource Viewer</translation>
+      <translation>GoldenDict Ressourcenbetrachter</translation>
     </message>
   </context>
   <context>
@@ -1124,11 +1124,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Group already exists</source>
-      <translation type="unfinished">Group already exists</translation>
+      <translation>Gruppe existiert bereits</translation>
     </message>
     <message>
       <source>A group with the name &apos;%1&apos; already exists.</source>
-      <translation type="unfinished">A group with the name &apos;%1&apos; already exists.</translation>
+      <translation>Eine Gruppe mit dem Namen &apos;%1&apos; existiert bereits.</translation>
     </message>
   </context>
   <context>
@@ -2649,7 +2649,7 @@ Um folgende Symbole zu finden &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos
     </message>
     <message>
       <source>Save File</source>
-      <translation type="unfinished">Save File</translation>
+      <translation>Datei speichern</translation>
     </message>
   </context>
   <context>
@@ -2667,14 +2667,14 @@ Um folgende Symbole zu finden &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
       <source>JSON parse error</source>
-      <translation type="unfinished">JSON parse error</translation>
+      <translation>JSON-Parser-Fehler</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
       <source>JSON parse error</source>
-      <translation type="unfinished">JSON parse error</translation>
+      <translation>JSON-Parser-Fehler</translation>
     </message>
   </context>
   <context>
@@ -3119,7 +3119,7 @@ in the pressed state when the word selection changes.</source>
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation type="unfinished">Only track selection when all selected keys are kept pressed:</translation>
+      <translation>Auswahl nur verfolgen, wenn alle ausgewählten Tasten gedrückt werden:</translation>
     </message>
     <message>
       <source>Alt key</source>
@@ -3509,15 +3509,15 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Allow JavaScript to access clipboard in the article view.</source>
-      <translation type="unfinished">Allow JavaScript to access clipboard in the article view.</translation>
+      <translation>JavaScript darf in der Artikelansicht auf die Zwischenablage zugreifen.</translation>
     </message>
     <message>
       <source>Enable JavaScript clipboard access (need restart)</source>
-      <translation type="unfinished">Enable JavaScript clipboard access (need restart)</translation>
+      <translation>JavaScript Zwischenablage Zugriff aktivieren (Neustart erforderlich)</translation>
     </message>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
-      <translation type="unfinished">Restart to apply the JavaScript clipboard access change.</translation>
+      <translation>Neustarten, um die Änderung der JavaScript-Zwischenablage zu übernehmen.</translation>
     </message>
   </context>
   <context>
