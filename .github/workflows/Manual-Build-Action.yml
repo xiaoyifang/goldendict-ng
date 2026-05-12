@@ -148,7 +148,6 @@ jobs:
           # note the name will ensure `installer` ranked higher after sorting
           cd ./build_dir
           mv "${namePrefix}.7z" "${namePrefix}-Windows-installer.7z"
-          mv "${namePrefix}.exe" "${namePrefix}-Windows-installer.exe"
           mv ./goldendict/goldendict.exe "./${namePrefix}-Windows-main-exe-file-only.exe" 
           mv ./goldendict/goldendict.pdb "./${namePrefix}-Windows-pdb-debug-file.pdb"
           cd ..
@@ -170,6 +169,7 @@ jobs:
           retention-days: 7
           path: |
             ./build_dir/*only.exe
+            ./build_dir/*.pdb
          
   
   
