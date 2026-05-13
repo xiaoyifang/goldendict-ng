@@ -194,7 +194,18 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Add chaos warning to changelog
         run: |
-          printf '%s\n' '## ⚠️ WARNING' '' '**⚠️ THIS BUILD CONTAINS BREAKING CHANGES AND IS NOT BACKWARDS COMPATIBLE!**' '' '- May cause all dictionaries to be reindexed' '- Data format may change significantly' '- No guarantee of data compatibility with previous versions' '- Backup dictionary data before upgrading' '' "Based on branch: ${GITHUB_REF_NAME}" > chaos_warning.txt
+          cat > chaos_warning.txt << 'EOF'
+          > [!CAUTION]
+          > ## ⚠️ THIS BUILD CONTAINS BREAKING CHANGES AND IS NOT BACKWARDS COMPATIBLE!
+          >
+          > - **May cause all dictionaries to be reindexed**
+          > - **Data format may change significantly**
+          > - **No guarantee of data compatibility with previous versions**
+          > - **Backup dictionary data before upgrading**
+          >
+          > Based on branch: ${{ github.ref_name }}
+          EOF
+
           cat chaos_warning.txt >> changelog.txt
       - name: Print changelog.txt
         run: |
