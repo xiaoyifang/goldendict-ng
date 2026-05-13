@@ -2908,7 +2908,7 @@ table#sv-hooks,
   width: 16px;
   height: 16px;
   vertical-align: text-bottom;
-  content: url("qrc:///icons/old-arrow.png");
+  content: url("qrc:///icons/old-arrow.svg");
 }
 
 .gdcollapseicon {
@@ -2916,7 +2916,7 @@ table#sv-hooks,
   width: 16px;
   height: 16px;
   vertical-align: text-bottom;
-  content: url("qrc:///icons/old-downarrow.png");
+  content: url("qrc:///icons/old-downarrow.svg");
 }
 
 /********** Slob dictionaries ***********/
