@@ -70,7 +70,7 @@ bool indexIsOldOrBad( const string & indexFile,
 
   // Run any extra validation (e.g. parserVersion, foldingVersion, hasZipFile, etc.)
   if constexpr ( !std::is_same_v< ExtraCheckFn, void * > ) {
-    if ( extraCheck && !extraCheck( header ) ) {
+    if ( extraCheck && !( *extraCheck )( header ) ) {
       return true;
     }
   }
