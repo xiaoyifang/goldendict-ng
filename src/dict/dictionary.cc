@@ -566,7 +566,7 @@ string makeDictionaryId( const vector< string > & dictionaryFiles ) noexcept
 
   for ( const auto & full : dictionaryFiles ) {
     QFileInfo fileInfo( QString::fromStdString( full ) );
-    QString dirName = fileInfo.dir().dirName();
+    QString dirName  = fileInfo.dir().dirName();
     QString baseName = fileInfo.fileName();
     sortedList.push_back( ( dirName + "/" + baseName ).toStdString() );
   }
