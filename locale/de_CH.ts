@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: can&apos;t create a card without a word</translation>
+      <translation>Anki: Kann keine Karte ohne Wort erstellen</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -81,18 +81,23 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation>&lt;h3 style=&quot;text-align: center;&quot;&gt;Willkommen zu &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;Das sind die ersten Schritte um mit dem Programm arbeiten zu k&amp;ouml;nnen.&lt;/p&gt;
-&lt;p&gt;Gehen Sie zun&amp;auml;chst auf &lt;strong&gt;(F3) Bearbeiten &amp;raquo; W&amp;ouml;rterb&amp;uuml;cher...&lt;/strong&gt; um die Pfade zu abgespeicherten W&amp;ouml;rterb&amp;uuml;chern hinzuzuf&amp;uuml;gen sowie um Wikipedia und andere Seiten einzurichten oder die W&amp;ouml;rterb&amp;uuml;cher anzuordnen bzw. in Gruppen zu unterteilen.&lt;/p&gt;
-&lt;p&gt;Nun sind Sie schon bereit das erste Wort nachzuschlagen. &lt;br /&gt;Dies k&amp;ouml;nnen Sie im Eingabe-Fenster machen oder &lt;button&gt;mit Popups arbeiten &lt;/button&gt; mittels der Popup-Funktion in anderen Applikationen.&lt;/p&gt;
-&lt;p&gt;Um das Programm anzupassen &amp;ouml;ffnen Sie &lt;strong&gt;(F4) Bearbeiten &amp;raquo; Einstellungen...&lt;/strong&gt;&lt;br /&gt;Viele Einstellungen sind auch mit Tipps versehen.&lt;/p&gt;
-&lt;p&gt;Hilfestellungen mit Fragen und Antworten zur &quot;urspr&amp;uuml;nglichen&quot; Version finden Sie immer noch im archivierten &lt;a href=&quot;http://goldendict.org/forum/&quot;&gt;Forum&lt;/a&gt;. Programm Updates finden sind auf der Webseite &lt;a href=&quot;https://sourceforge.net/projects/goldendict/&quot;&gt;GoldenDict&lt;/a&gt; und der weiterhin gepflegte Source auf &lt;a href=&quot;https://github.com/goldendict/goldendict/&quot;&gt;GoldenDict Source&lt;/a&gt;. &lt;br /&gt;(c) 2008-2013 Konstantin Isakov. Lizensiert unter der GPLv3 oder neuer.&lt;/p&gt;
-&lt;div&gt;&lt;hr /&gt;&lt;/div&gt;
-&lt;div&gt;
-&lt;h3&gt;&lt;strong&gt;GoldenDict-ng &lt;/strong&gt;(new generation)&lt;/h3&gt;
-&lt;p&gt;Seit 2021 existiert nun GoldenDict-ng, ein Fork von Xiao mit unter anderem einer &lt;strong&gt;OCR&lt;/strong&gt; Erkennung mittels dem externen Hilfsprogramm &lt;a href=&quot;https://sourceforge.net/projects/capture2text/&quot;&gt;Capture2Text&lt;/a&gt; und sehr vielen weiteren Optimierungen.&lt;/p&gt;
-&lt;p&gt;GoldenDict-ng finden Sie auf der &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/&quot;&gt;Webseite von Xiao&lt;/a&gt;.&lt;/p&gt;
-&lt;hr /&gt;&lt;/div&gt;</translation>
+      <translation>
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Willkommen bei &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        
+        &lt;h4&gt;Um zu starten:&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Gehe zu &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Bearbeite&lt;/span&gt;&lt;span&gt;Wörterbücher&lt;/span&gt;&lt;/span&gt; um deine Wörterbuchdateien hinzuzufügen. Online-Quellen wie Wikipedia einrichten und in Gruppen organisieren.&lt;/li&gt;
+          &lt;li&gt;Einmal eingerichtet Sie können Wörter in diesem Fenster nachschlagen oder &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;von anderen Anwendungen mit dem Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;Um das Programm anzupassen erkunden Sie die Einstellungen in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;Einstellungen&lt;/span&gt;&lt;/span&gt;. Alle Einstellungen haben Tooltipps, also sollten Sie diese unbedingt lesen, wenn irgendetwas unklar ist.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Sollten Sie weitere Hilfe benötigen, haben irgendwelche Fragen oder Anregungen, Sie sind willkommen im Programm&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;Forum&lt;/a&gt; und &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;Website&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Basierend auf dem Original GoldenDict von Konstantin Isakov (c) 2008-2013. Verwaltet und entwickelt von der GoldenDict-NG Community. lizenziert unter GPLv3 oder neuer.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</translation>
     </message>
   </context>
   <context>
