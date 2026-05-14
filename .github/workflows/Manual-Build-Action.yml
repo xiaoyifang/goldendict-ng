@@ -89,11 +89,12 @@ jobs:
       - name: Print package content
         run: |
           ls -Rl ./build_dir/redist
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: macOS-${{ matrix.os }}-Qt${{ matrix.qt_ver }}
           if-no-files-found: error
           retention-days: 7
+          archive: false
           path: '*.dmg'
 
   build_Windows:
@@ -152,27 +153,30 @@ jobs:
           mv ./goldendict/goldendict.pdb "./${namePrefix}-Windows-pdb.pdb"
           cd ..
           ls -R
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: Windows-${{ matrix.arch }}-Qt${{ matrix.qt_ver }}
           if-no-files-found: error
           retention-days: 7
+          archive: false
           path: |
             ./build_dir/*.7z
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: Windows-only-exe-${{ matrix.arch }}-Qt${{ matrix.qt_ver }}
           if-no-files-found: error
           retention-days: 7
+          archive: false
           path: |
             ./build_dir/*only.exe
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: Windows-pdb-${{ matrix.arch }}-Qt${{ matrix.qt_ver }}
           if-no-files-found: error
           retention-days: 7
+          archive: false
           path: |
             ./build_dir/*.pdb
          
