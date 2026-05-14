@@ -163,7 +163,6 @@ jobs:
           name: Windows-${{ matrix.arch }}-Qt${{ matrix.qt_ver }}
           if-no-files-found: error
           retention-days: 7
-          archive: false
           path: |
             ./build_dir/*.exe
             ./build_dir/*.7z
