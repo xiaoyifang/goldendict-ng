@@ -94,11 +94,12 @@ jobs:
       - name: Print package content
         run: |
           ls -Rl ./build_dir/redist
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: macOS-${{ matrix.os }}-Qt${{ matrix.qt_ver }}
           if-no-files-found: error
           retention-days: 7
+          archive: false
           path: '*.dmg'
 
   build_Windows:
@@ -153,11 +154,11 @@ jobs:
           cd ./build_dir
           mv "${namePrefix}.7z" "${namePrefix}-Windows-installer.7z"
           mv "${namePrefix}.exe" "${namePrefix}-Windows-installer.exe"
-          mv ./goldendict/goldendict.exe "./${namePrefix}-Windows-main-exe-file-only.exe"
-          mv ./goldendict/goldendict.pdb "./${namePrefix}-Windows-pdb-debug-file.pdb"
+          mv ./goldendict/goldendict.exe "./${namePrefix}-Windows-exe-only.exe"
+          mv ./goldendict/goldendict.pdb "./${namePrefix}-Windows-pdb.pdb"
           cd ..
           ls -R
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: Windows-${{ matrix.arch }}-Qt${{ matrix.qt_ver }}
           if-no-files-found: error
@@ -257,11 +258,12 @@ jobs:
             echo "releaseTitle=v${{ env.version }}-${{ env.versionSuffix }}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
           fi
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: changelog.txt
           if-no-files-found: error
           retention-days: 7
+          archive: false
           path: ./changelog.txt
 
   publish:
@@ -274,7 +276,7 @@ jobs:
         releaseTitle: ${{ needs.generate_other_staffs.outputs.releaseTitle }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           merge-multiple: true
       - name: List all files
