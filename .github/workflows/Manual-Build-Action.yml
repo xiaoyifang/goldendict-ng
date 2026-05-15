@@ -146,9 +146,8 @@ jobs:
         run: |
           namePrefix=$(basename "$(ls ./build_dir/*.7z)" .7z)
 
-          # note the name will ensure `installer` ranked higher after sorting
           cd ./build_dir
-          mv "${namePrefix}.7z" "${namePrefix}-Windows-installer.7z"
+          mv "${namePrefix}.7z" "${namePrefix}-Windows.7z"
           mv ./goldendict/goldendict.exe "./${namePrefix}-Windows-exe-only.exe" 
           mv ./goldendict/goldendict.pdb "./${namePrefix}-Windows-pdb.pdb"
           cd ..
