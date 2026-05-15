@@ -9,7 +9,7 @@
   #include "text.hh"
   #include "langcoder.hh"
   #include "filetype.hh"
-  #include "dictfile.hh"
+  #include "utils/dictfile.hh"
   #include "utils.hh"
   #include "tiff.hh"
   #include "ftshelpers.hh"

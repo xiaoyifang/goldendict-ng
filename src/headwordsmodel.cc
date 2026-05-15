@@ -5,7 +5,7 @@ HeadwordListModel::HeadwordListModel( QObject * parent ):
   filtering( false ),
   totalSize( 0 ),
   finished( false ),
-  index( 0 ),
+  lastWord( "" ),
   ptr( nullptr )
 {
 }
@@ -153,7 +153,7 @@ void HeadwordListModel::fetchMore( const QModelIndex & parent )
   QSet< QString > headword;
   QMutexLocker _( &lock );
 
-  _dict->findHeadWordsWithLenth( index, &headword, 1000 );
+  _dict->findHeadWordsWithLenth( lastWord, &headword, 1000 );
   if ( headword.isEmpty() ) {
     return;
   }
@@ -167,9 +167,9 @@ void HeadwordListModel::fetchMore( const QModelIndex & parent )
   emit numberPopulated( words.size() );
 }
 
-int HeadwordListModel::getCurrentIndex() const
+QString HeadwordListModel::getCurrentWord() const
 {
-  return index;
+  return lastWord;
 }
 
 bool HeadwordListModel::containWord( const QString & word )
@@ -182,7 +182,7 @@ void HeadwordListModel::setMaxFilterResults( int _maxFilterResults )
   this->maxFilterResults = _maxFilterResults;
 }
 
-QSet< QString > HeadwordListModel::getRemainRows( int & nodeIndex )
+QSet< QString > HeadwordListModel::getRemainRows( QString & nodeIndex )
 {
   QSet< QString > headword;
   QMutexLocker _( &lock );

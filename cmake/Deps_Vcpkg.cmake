@@ -15,10 +15,12 @@ pkg_check_modules(PKGCONFIG_DEPS IMPORTED_TARGET
 
 find_package(fmt CONFIG REQUIRED)
 find_package(tomlplusplus CONFIG REQUIRED)
+find_package(unofficial-lmdb CONFIG REQUIRED)
 
 target_link_libraries(${GOLDENDICT}
         PRIVATE
         PkgConfig::PKGCONFIG_DEPS
+        unofficial::lmdb::lmdb
         BZip2::BZip2
         Iconv::Iconv
         LibLZMA::LibLZMA

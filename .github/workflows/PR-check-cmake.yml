@@ -25,7 +25,7 @@ jobs:
           libvorbis-dev zlib1g-dev libhunspell-dev x11proto-record-dev \
           libxtst-dev liblzo2-dev libbz2-dev \
           libavutil-dev libavformat-dev libeb16-dev \
-          libzstd-dev libxkbcommon-dev \
+          libzstd-dev libxkbcommon-dev liblmdb-dev \
           libxapian-dev libzim-dev libopencc-dev libfmt-dev \
           qt6-5compat-dev \
           qt6-base-dev \
@@ -80,6 +80,7 @@ jobs:
           bzip2 \
           lzip \
           libvorbis \
+          lmdb \
           hunspell \
           xapian \
           fmt \
@@ -176,6 +177,7 @@ jobs:
           libvorbis \
           libxtst \
           libzim \
+          lmdb \
           lzo \
           ninja \
           opencc \

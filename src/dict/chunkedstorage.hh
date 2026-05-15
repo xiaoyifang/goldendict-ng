@@ -4,7 +4,7 @@
 #pragma once
 
 #include "ex.hh"
-#include "dictfile.hh"
+#include "utils/dictfile.hh"
 
 #include <vector>
 #include <stdint.h>

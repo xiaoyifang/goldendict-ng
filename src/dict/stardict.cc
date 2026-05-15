@@ -100,6 +100,7 @@ struct IdxHeader
                                      // resource index.
   uint32_t zipIndexRootOffset;
   uint64_t sourceLastModified; // Maximum lastModified timestamp of dictionary files
+  char zipIndexSuffix[ 64 ];   // Suffix for the zip index LMDB file
 };
 static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
@@ -252,7 +253,8 @@ StardictDictionary::StardictDictionary( const string & id,
   // Open a resource zip file, if there's one
 
   if ( idxHeader.hasZipFile && ( idxHeader.zipIndexBtreeMaxElements || idxHeader.zipIndexRootOffset ) ) {
-    resourceZip.openIndex( IndexInfo( idxHeader.zipIndexBtreeMaxElements, idxHeader.zipIndexRootOffset ),
+    resourceZip.openIndex( IndexInfo( idxHeader.zipIndexBtreeMaxElements, idxHeader.zipIndexRootOffset,
+                                     string( idxHeader.zipIndexSuffix ) ),
                            idx,
                            idxMutex );
 
@@ -2060,20 +2062,26 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
           if ( !zipFileNames.empty() ) {
             // Build the resulting zip file index
 
-            IndexInfo idxInfo = BtreeIndexing::buildIndex( zipFileNames, idx );
+            IndexInfo idxInfo = BtreeIndexing::buildIndex( zipFileNames, idx, "_zip" );
 
             idxHeader.zipIndexBtreeMaxElements = idxInfo.btreeMaxElements;
             idxHeader.zipIndexRootOffset       = idxInfo.rootOffset;
+            memset( idxHeader.zipIndexSuffix, 0, sizeof( idxHeader.zipIndexSuffix ) );
+            if ( !idxInfo.suffix.empty() ) {
+              strncpy( idxHeader.zipIndexSuffix, idxInfo.suffix.c_str(), sizeof( idxHeader.zipIndexSuffix ) - 1 );
+            }
           }
           else {
             // Bad zip file -- no index (though the mark that we have one
             // remains)
             idxHeader.zipIndexBtreeMaxElements = 0;
             idxHeader.zipIndexRootOffset       = 0;
+            memset( idxHeader.zipIndexSuffix, 0, sizeof( idxHeader.zipIndexSuffix ) );
           }
         }
         else {
           idxHeader.hasZipFile = 0;
+          memset( idxHeader.zipIndexSuffix, 0, sizeof( idxHeader.zipIndexSuffix ) );
         }
 
         // That concludes it. Update the header.

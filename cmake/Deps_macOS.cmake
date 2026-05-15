@@ -36,6 +36,7 @@ endif ()
 pkg_check_modules(DEPS REQUIRED IMPORTED_TARGET
         hunspell
         liblzma
+        lmdb
         lzo2
         opencc
         tomlplusplus
