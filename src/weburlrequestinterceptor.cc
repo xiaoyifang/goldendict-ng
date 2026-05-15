@@ -71,6 +71,11 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
       return;
     }
 
+    // Allow qrc:// protocol for Resource Viewer to display resources
+    if ( url.scheme() == "qrc" ) {
+      return;
+    }
+
     // If the domain is the same as the current page, allow normal navigation
     // This enables links in website dictionaries to work normally within the same site.
     if ( !url.host().isEmpty() && url.host() == info.firstPartyUrl().host() ) {

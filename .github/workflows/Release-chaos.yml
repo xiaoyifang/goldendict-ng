@@ -1,17 +1,15 @@
-name: Release All
+name: Release Chaos
 concurrency:
    group: ${{ github.workflow }}-${{ github.ref }}
    cancel-in-progress: true
 env:
-  prerelease: ${{ !contains(github.ref_name,'master') }}
-  versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
+  prerelease: true
+  versionSuffix: 'chaos'
 on:
   workflow_dispatch:
   push:
     branches:
-      - dev
-      - master
-      - experimental
+      - chaos
     paths-ignore:
       - 'docs/**'
       - "howto/**"
@@ -25,7 +23,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-14,macos-15-intel]
-        qt_ver: [ 6.8.3, 6.10.3 ] # 6.8 is LTS which is relatively stable, don't dump it until next LTS.
+        qt_ver: [ 6.8.3, 6.10.3 ]
     steps:
       - uses: actions/checkout@v6.0.2
         with:
@@ -43,6 +41,7 @@ jobs:
             libogg \
             libvorbis \
             libzim \
+            lmdb \
             lzip \
             ninja \
             ccache \
@@ -120,19 +119,16 @@ jobs:
           version: ${{ matrix.qt_ver }}
           arch: ${{ matrix.arch }}
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
-          # setup-python: 'false'
       - uses: actions/checkout@v6.0.2
         with:
           submodules: true
       - name: Build
         id: build
         run: |
-          # Launch-VsDevShell also provides Ninja
           & 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\Launch-VsDevShell.ps1' `
             -SkipAutomaticLocation -Arch ${{ matrix.vs_arch }} -HostArch amd64
           New-Item -Path './build_dir' -ItemType Directory
 
-          # RelWithDebInfo + msvc's = .pdb file beside program file.
           cmake -S . -B "./build_dir" `
             -G Ninja `
             -DCMAKE_C_COMPILER="cl.exe" -DCMAKE_CXX_COMPILER="cl.exe" `
@@ -150,10 +146,8 @@ jobs:
         run: |
           namePrefix=$(basename "$(ls ./build_dir/*.7z)" .7z)
 
-          # note the name will ensure `installer` ranked higher after sorting
           cd ./build_dir
-          mv "${namePrefix}.7z" "${namePrefix}-Windows-installer.7z"
-          mv "${namePrefix}.exe" "${namePrefix}-Windows-installer.exe"
+          mv "${namePrefix}.7z" "${namePrefix}-Windows.7z"
           mv ./goldendict/goldendict.exe "./${namePrefix}-Windows-exe-only.exe"
           mv ./goldendict/goldendict.pdb "./${namePrefix}-Windows-pdb.pdb"
           cd ..
@@ -178,21 +172,13 @@ jobs:
     steps:
       - uses: actions/checkout@v6.0.2
         with:
-          fetch-depth: 0 # need all tags to genearte changelog
+          fetch-depth: 0
       - name: Load version from VERSION file
         run: echo "version=$(xargs < VERSION)" >> $GITHUB_ENV
       - name: Get previous tag
         id: changelogTags
         run: |
-          if [[ '${{env.prerelease}}' == 'true' ]]
-          then
-            echo "This is a pre-release"
-            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v -e "Release" -e "vcpkg" | head -n 1)
-          else
-            echo "This is not a pre-release"
-            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v -e "alpha" -e "vcpkg" | head -n 1)
-          fi
-
+          previousTag=$(git tag --sort=-creatordate | grep "_chaos" | grep -v -e "vcpkg" | head -n 1)
           echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
           echo "previousTag : $previousTag"
       - name: Build Changelog
@@ -204,13 +190,21 @@ jobs:
         env:
           OUTPUT: changelog.txt
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Get changelog.txt
+      - name: Add chaos warning to changelog
         run: |
-          # HEREDOC must be quoted to avoid Bash substitution
-          # append the branch name to the changelog
-          cat <<'HEREDOC' >> changelog.txt
-          Based on branch: ${{ github.ref_name }}
-          HEREDOC
+          cat > chaos_warning.txt << 'EOF'
+          > [!CAUTION]
+          > ## ⚠️ THIS BUILD CONTAINS BREAKING CHANGES AND IS NOT BACKWARDS COMPATIBLE!
+          >
+          > - **May cause all dictionaries to be reindexed**
+          > - **Data format may change significantly**
+          > - **No guarantee of data compatibility with previous versions**
+          > - **Backup dictionary data before upgrading**
+          >
+          > Based on branch: ${{ github.ref_name }}
+          EOF
+
+          cat chaos_warning.txt >> changelog.txt
       - name: Print changelog.txt
         run: |
           cat changelog.txt
@@ -221,42 +215,11 @@ jobs:
       - name: Get new tag
         id: getNewTag
         run: |
-          if [[ '${{ env.prerelease }}' == 'false' ]]; then
-            echo "newTag=v${{ env.version }}" >> $GITHUB_OUTPUT
-          else
-            echo "newTag=v${{ env.version }}_${{ env.versionSuffix }}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
-          fi
-      - name: Update metainfo.xml
-        if: env.prerelease == 'false'
-        env:
-          TAG_NAME: ${{ steps.getNewTag.outputs.newTag }}
-        run: |
-          VERSION="${{ env.version }}"
-          DATE=$(date +%Y-%-m-%-d)
-          FILE="redist/io.github.xiaoyifang.goldendict_ng.metainfo.xml"
-          REPO="${{ github.repository }}"
-          
-          python3 .github/workflows/scripts/update_metainfo.py "$FILE" "$VERSION" "$DATE" "$REPO" "$TAG_NAME"
-          
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add "$FILE"
-          # Check if there are changes to commit
-          if git diff --staged --quiet; then
-            echo "No changes to metainfo.xml"
-          else
-            git commit -m "Update metainfo.xml for version $VERSION [skip ci]"
-            git push
-          fi
+          echo "newTag=v${{ env.version }}_${{ env.versionSuffix }}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
       - name: Get release title
         id: getReleaseTitle
         run: |
-          if [[ '${{ env.prerelease }}' == 'true' ]]
-          then
-            echo "releaseTitle=Daily build v${{env.version}}-${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
-          else
-            echo "releaseTitle=v${{ env.version }}-${{ env.versionSuffix }}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
-          fi
+          echo "releaseTitle=Chaos Build v${{env.version}}-${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
 
       - uses: actions/upload-artifact@v7
         with:
@@ -283,23 +246,13 @@ jobs:
         run: ls -R
       - name: Create new tag
         run: |
-          if [[ '${{ env.prerelease }}' == 'true' ]]
-          then
-            gh release create '${{ env.newTag }}' \
-              -t '${{ env.releaseTitle }}' \
-              --target '${{ github.ref_name }}' \
-              --notes-file=./changelog.txt \
-              --latest=false \
-              --prerelease \
-              --repo ${GITHUB_REPOSITORY}
-          else
-            gh release create '${{ env.newTag }}' \
-              -t '${{ env.releaseTitle }}' \
-              --target '${{ github.ref_name }}' \
-              --notes-file=./changelog.txt \
-              --latest=true \
-              --repo ${GITHUB_REPOSITORY}
-          fi
+          gh release create '${{ env.newTag }}' \
+            -t '${{ env.releaseTitle }}' \
+            --target '${{ github.ref_name }}' \
+            --notes-file=./changelog.txt \
+            --latest=false \
+            --prerelease \
+            --repo ${GITHUB_REPOSITORY}
       - name: Upload artifacts
         run: |
           gh release upload '${{ env.newTag }}' --repo ${GITHUB_REPOSITORY} --clobber \

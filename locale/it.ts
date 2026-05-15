@@ -306,6 +306,13 @@
     </message>
   </context>
   <context>
+    <name>ArticleWebView</name>
+    <message>
+      <source>GoldenDict Resource Viewer</source>
+      <translation>Visualizzatore Risorse GoldenDict</translation>
+    </message>
+  </context>
+  <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
@@ -2648,6 +2655,10 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
       <source>Are you sure you want to clear all history items?</source>
       <translation>Sei sicuro di voler cancellare tutti gli elementi della cronologia?</translation>
     </message>
+    <message>
+      <source>Save File</source>
+      <translation>Salva File</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3120,8 +3131,8 @@ delle parole puntate quando i tasti scelti vengono effettivamente premuti.
 Le parole tradotte verranno mostrate in una finestra di dialogo a comparsa.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Tack selezione solo quando tutti i tasti selezionati vengono mantenuti premuti:</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation>Traccia solo la selezione quando tutti i tasti selezionati vengono mantenuti premuti:</translation>
     </message>
     <message>
       <source>Alt key</source>

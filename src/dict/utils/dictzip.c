@@ -675,9 +675,9 @@ char * dict_data_read_(
         ++h->initialized;
       }
       firstChunk  = start / h->chunkLength;
-      firstOffset = start - firstChunk * h->chunkLength;
+      firstOffset = start % h->chunkLength;
       lastChunk   = end / h->chunkLength;
-      lastOffset  = end - lastChunk * h->chunkLength;
+      lastOffset  = end % h->chunkLength;
       PRINTF( DBG_UNZIP,
               ( "   start = %lu, end = %lu\n"
                 "firstChunk = %d, firstOffset = %d,"

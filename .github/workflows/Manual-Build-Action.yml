@@ -25,7 +25,7 @@ jobs:
         os: [macos-15]
         qt_ver: [ 6.10.3 ]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6.0.2
         with:
           submodules: true
       - name: Install dependencies
@@ -41,6 +41,7 @@ jobs:
             libogg \
             libvorbis \
             libzim \
+            lmdb \
             lzip \
             ninja \
             ccache \
@@ -89,11 +90,12 @@ jobs:
       - name: Print package content
         run: |
           ls -Rl ./build_dir/redist
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: macOS-${{ matrix.os }}-Qt${{ matrix.qt_ver }}
           if-no-files-found: error
           retention-days: 7
+          archive: false
           path: '*.dmg'
 
   build_Windows:
@@ -116,7 +118,7 @@ jobs:
           arch: ${{ matrix.arch }}
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
           # setup-python: 'false'
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6.0.2
         with:
           submodules: true
       - name: Build
@@ -145,31 +147,37 @@ jobs:
         run: |
           namePrefix=$(basename "$(ls ./build_dir/*.7z)" .7z)
 
-          # note the name will ensure `installer` ranked higher after sorting
           cd ./build_dir
-          mv "${namePrefix}.7z" "${namePrefix}-Windows-installer.7z"
-          mv "${namePrefix}.exe" "${namePrefix}-Windows-installer.exe"
-          mv ./goldendict/goldendict.exe "./${namePrefix}-Windows-main-exe-file-only.exe" 
-          mv ./goldendict/goldendict.pdb "./${namePrefix}-Windows-pdb-debug-file.pdb"
+          mv "${namePrefix}.7z" "${namePrefix}-Windows.7z"
+          mv ./goldendict/goldendict.exe "./${namePrefix}-Windows-exe-only.exe" 
+          mv ./goldendict/goldendict.pdb "./${namePrefix}-Windows-pdb.pdb"
           cd ..
           ls -R
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: Windows-${{ matrix.arch }}-Qt${{ matrix.qt_ver }}
           if-no-files-found: error
           retention-days: 7
+          archive: false
           path: |
-            ./build_dir/*.exe
             ./build_dir/*.7z
-            ./build_dir/*.pdb
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: Windows-only-exe-${{ matrix.arch }}-Qt${{ matrix.qt_ver }}
           if-no-files-found: error
           retention-days: 7
+          archive: false
           path: |
             ./build_dir/*only.exe
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: Windows-pdb-${{ matrix.arch }}-Qt${{ matrix.qt_ver }}
+          if-no-files-found: error
+          retention-days: 7
+          path: |
+            ./build_dir/*.pdb
          
   
   

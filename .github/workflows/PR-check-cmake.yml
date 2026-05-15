@@ -21,7 +21,7 @@ jobs:
         run: |
           sudo apt-get update
 
-          sudo apt-get install build-essential ninja-build ccache \
+          sudo apt-get install -y --fix-missing build-essential ninja-build ccache \
           libvorbis-dev zlib1g-dev libhunspell-dev x11proto-record-dev \
           libxtst-dev liblzo2-dev libbz2-dev \
           libavutil-dev libavformat-dev libeb16-dev \
@@ -37,7 +37,7 @@ jobs:
           qt6-webchannel-dev \
           libtomlplusplus-dev \
           qt6-webengine-dev
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6.0.2
         with:
           submodules: false
       - name: ccache
@@ -62,7 +62,7 @@ jobs:
       contents: read
     runs-on: macos-15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6.0.2
         with:
           submodules: false
       - name: Install dependencies
@@ -133,7 +133,7 @@ jobs:
           arch: win64_msvc2022_64
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
           # setup-python: 'false'
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6.0.2
         with:
           submodules: true
       - name: Run build
@@ -189,7 +189,7 @@ jobs:
           tomlplusplus \
           xapian-core
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6.0.2
         with:
           submodules: false
       - name: Run build

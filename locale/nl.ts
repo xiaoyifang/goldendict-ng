@@ -306,6 +306,13 @@
     </message>
   </context>
   <context>
+    <name>ArticleWebView</name>
+    <message>
+      <source>GoldenDict Resource Viewer</source>
+      <translation>GoldenDict Resource Viewer</translation>
+    </message>
+  </context>
+  <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
@@ -2647,6 +2654,10 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <source>Are you sure you want to clear all history items?</source>
       <translation>Weet u zeker dat u alle geschiedenis items wilt wissen?</translation>
     </message>
+    <message>
+      <source>Save File</source>
+      <translation>Bestand opslaan</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3120,8 +3131,8 @@ in the pressed state when the word selection changes.</source>
 toetsen zijn ingedrukt wanneer de woordselectie verandert.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Alleen tack selectie als alle geselecteerde toetsen worden ingedrukt:</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation>Volg selectie alleen als alle geselecteerde toetsen worden ingedrukt:</translation>
     </message>
     <message>
       <source>Alt key</source>

@@ -307,6 +307,13 @@
     </message>
   </context>
   <context>
+    <name>ArticleWebView</name>
+    <message>
+      <source>GoldenDict Resource Viewer</source>
+      <translation>Visionneuse de ressources GoldenDict</translation>
+    </message>
+  </context>
+  <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
@@ -2647,6 +2654,10 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <source>Are you sure you want to clear all history items?</source>
       <translation>Êtes-vous sûr de vouloir effacer tous les éléments de l'historique ?</translation>
     </message>
+    <message>
+      <source>Save File</source>
+      <translation>Enregistrer le fichier</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3118,8 +3129,8 @@ in the pressed state when the word selection changes.</source>
       <translation>La pop-up n&apos;apparâit que si toutes les touches sélectionnées sont enfoncées lorsque la sélection de mot change.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>N'appuyer sur la sélection que lorsque toutes les touches sélectionnées sont maintenues enfoncées :</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation>Seulement la sélection des pistes lorsque toutes les touches sélectionnées sont maintenues enfoncées :</translation>
     </message>
     <message>
       <source>Alt key</source>

@@ -306,6 +306,13 @@
     </message>
   </context>
   <context>
+    <name>ArticleWebView</name>
+    <message>
+      <source>GoldenDict Resource Viewer</source>
+      <translation type="unfinished">GoldenDict Resource Viewer</translation>
+    </message>
+  </context>
+  <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
@@ -2646,6 +2653,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Are you sure you want to clear all history items?</source>
       <translation type="unfinished">Are you sure you want to clear all history items?</translation>
     </message>
+    <message>
+      <source>Save File</source>
+      <translation type="unfinished">Save File</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3116,8 +3127,8 @@ in the pressed state when the word selection changes.</source>
       <translation>Khi chọn từ cần tra nghĩa, nhấn phím tắt đã chọn để hiện popup.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Chỉ giải quyết lựa chọn khi tất cả các phím đã chọn được nhấn:</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation type="unfinished">Only track selection when all selected keys are kept pressed:</translation>
     </message>
     <message>
       <source>Alt key</source>

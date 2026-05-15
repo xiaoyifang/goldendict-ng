@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="32"
+   height="32"
+   version="1.1"
+   viewBox="0 0 32 32"
+   id="svg2"
+   sodipodi:docname="old-arrow.svg"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview2"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="5.5067568"
+     inkscape:cx="-40.858896"
+     inkscape:cy="24.42454"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <defs
+     id="defs2">
+    <radialGradient
+       id="radialGradient2"
+       cx="9.5948"
+       cy="18.870001"
+       r="13.438"
+       gradientTransform="matrix(0.26876483,-1.4464688,1.7311025,0.22498861,-23.017325,29.616965)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#5ed79f"
+         offset="0"
+         id="stop1" />
+      <stop
+         stop-color="#2e715f"
+         offset="1"
+         id="stop2" />
+    </radialGradient>
+  </defs>
+  <path
+     d="m 8.655126,28.285144 1e-6,-24.570288 14.689747,12.285585 z"
+     fill="url(#radialGradient2)"
+     fill-rule="evenodd"
+     stroke-width="3.7795"
+     id="path2"
+     style="fill:url(#radialGradient2)" />
+</svg>

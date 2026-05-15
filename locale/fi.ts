@@ -306,6 +306,13 @@
     </message>
   </context>
   <context>
+    <name>ArticleWebView</name>
+    <message>
+      <source>GoldenDict Resource Viewer</source>
+      <translation>GoldenDict Resurssikatselin</translation>
+    </message>
+  </context>
+  <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
@@ -2647,6 +2654,10 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <source>Are you sure you want to clear all history items?</source>
       <translation>Oletko varma, että haluat tyhjentää kaikki historian kohteet?</translation>
     </message>
+    <message>
+      <source>Save File</source>
+      <translation>Tallenna Tiedosto</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3120,8 +3131,8 @@ in the pressed state when the word selection changes.</source>
 painettuna tilassa, kun sana valinta muuttuu.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Valitse vain kun kaikki valitut näppäimet pidetään painettuna:</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation>Vain raidan valinta kun kaikkia valittuja näppäimiä pidetään painettuna:</translation>
     </message>
     <message>
       <source>Alt key</source>

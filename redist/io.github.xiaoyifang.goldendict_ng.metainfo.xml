@@ -44,18 +44,14 @@
     <id>org.goldendict_ng.desktop</id>
   </provides>
   <releases>
+    <release version="26.5.4" date="2026-5-11">
+      <description>
+        <p>Stable release 26.5.4</p>
+      </description>
+    </release>
     <release version="26.5.3" date="2026-5-8"/>
     <release version="26.5.2" date="2026-4-23"/>
     <release version="26.5.1" date="2026-4-20"/>
     <release version="26.5.0" date="2026-4-17"/>
-    <release version="26.3.0" date="2026-2-26"/>
-    <release version="26.1.0" date="2026-1-4"/>
-    <release version="25.10.2" date="2025-10-8"/>
-    <release version="25.10.1" date="2025-10-3"/>
-    <release version="25.10.0" date="2025-10-1" />
-    <release version="25.06.0" date="2025-06-17" />
-    <release version="25.05.1" date="2025-05-19" />
-    <release version="25.05.0" date="2025-04-04" />
-    <release version="25.02.0" date="2025-01-24" />
   </releases>
 </component>

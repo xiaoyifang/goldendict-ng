@@ -306,6 +306,13 @@
     </message>
   </context>
   <context>
+    <name>ArticleWebView</name>
+    <message>
+      <source>GoldenDict Resource Viewer</source>
+      <translation>Просмотр ресурсов GoldenDict</translation>
+    </message>
+  </context>
+  <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
@@ -2650,6 +2657,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Are you sure you want to clear all history items?</source>
       <translation>Вы уверены, что хотите очистить все элементы истории?</translation>
     </message>
+    <message>
+      <source>Save File</source>
+      <translation>Сохранить файл</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3124,8 +3135,8 @@ in the pressed state when the word selection changes.</source>
 находятся в зажатом состоянии в момент выделения слова.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Следить за выделенным текстом только когда все эти клавиши зажаты</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation>Выделение трека только при нажатии всех выбранных клавиш:</translation>
     </message>
     <message>
       <source>Alt key</source>

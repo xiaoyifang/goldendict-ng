@@ -16,7 +16,7 @@ ffplay -autoexit -nodisp
 
 mpv:
 ```
-mpv --no-video --no-audio-display
+mpv --no-video --no-audio-display --no-config
 ```
 
 or other audio player.

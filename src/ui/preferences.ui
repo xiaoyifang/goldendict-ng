@@ -689,7 +689,7 @@ be the last ones.</string>
 in the pressed state when the word selection changes.</string>
             </property>
             <property name="text">
-             <string>Only tack selection when all selected keys are kept pressed:</string>
+             <string>Only track selection when all selected keys are kept pressed:</string>
             </property>
            </widget>
           </item>

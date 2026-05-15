@@ -305,6 +305,13 @@
     </message>
   </context>
   <context>
+    <name>ArticleWebView</name>
+    <message>
+      <source>GoldenDict Resource Viewer</source>
+      <translation>Переглядач золотих Dict</translation>
+    </message>
+  </context>
+  <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
@@ -2647,6 +2654,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Are you sure you want to clear all history items?</source>
       <translation>Ви впевнені, що хочете очистити всі елементи історії?</translation>
     </message>
+    <message>
+      <source>Save File</source>
+      <translation>Зберегти</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3117,8 +3128,8 @@ in the pressed state when the word selection changes.</source>
 всіх вибраних клавіш з виділеним словом.</translation>
     </message>
     <message>
-      <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Вибір буде скинуто лише коли всі вибрані ключі будуть збережені:</translation>
+      <source>Only track selection when all selected keys are kept pressed:</source>
+      <translation>Вибір треку лише при збереженні всіх вибраних кнопок:</translation>
     </message>
     <message>
       <source>Alt key</source>
