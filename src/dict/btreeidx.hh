@@ -4,13 +4,14 @@
 #pragma once
 
 #include "dict/dictionary.hh"
-#include "dictfile.hh"
+#include "dict/utils/dictfile.hh"
 #include <map>
 #include <stdint.h>
 #include <string>
 #include <vector>
 #include <QFuture>
 #include <QList>
+#include <lmdb.h>
 
 
 /// A base for the dictionary which creates a btree index to look up
@@ -25,7 +26,7 @@ enum {
   /// This is to be bumped up each time the internal format changes.
   /// The value isn't used here by itself, it is supposed to be added
   /// to each dictionary's internal format version.
-  FormatVersion = 4,
+  FormatVersion = 5,
   //the indexedzip parse logic version
   ZipParseLogicVersion = 1
 };
@@ -57,10 +58,12 @@ struct WordArticleLink
 struct IndexInfo
 {
   uint32_t btreeMaxElements, rootOffset;
+  string suffix;
 
-  IndexInfo( uint32_t btreeMaxElements_, uint32_t rootOffset_ ):
+  IndexInfo( uint32_t btreeMaxElements_, uint32_t rootOffset_, const string & suffix_ = "" ):
     btreeMaxElements( btreeMaxElements_ ),
-    rootOffset( rootOffset_ )
+    rootOffset( rootOffset_ ),
+    suffix( suffix_ )
   {
   }
 };
@@ -96,9 +99,7 @@ public:
                          QSet< QString > * headwords,
                          QAtomicInt * isCancelled = 0 );
 
-  void findHeadWords( QList< uint32_t > offsets, int & index, QSet< QString > * headwords, uint32_t length );
-  void findSingleNodeHeadwords( uint32_t offsets, QSet< QString > * headwords );
-  QList< uint32_t > findNodes();
+
 
   /// Retrieve headwords for presented article addresses
   void
@@ -106,48 +107,14 @@ public:
 
 protected:
 
-  /// Finds the offset in the btree leaf for the given word, either matching
-  /// by an exact match, or by finding the smallest entry that might match
-  /// by prefix. It can return zero if there isn't even a possible prefx
-  /// match. The input string must already be folded. The exactMatch is set
-  /// to true when an exact match is located, and to false otherwise.
-  /// The located leaf is loaded to 'leaf', and the pointer to the next
-  /// leaf is saved to 'nextLeaf'.
-  /// However, due to root node being permanently cached, the 'leaf' passed
-  /// might not get used at all if the root node was the terminal one. In that
-  /// case, the returned pointer wouldn't belong to 'leaf' at all. To that end,
-  /// the leafEnd pointer always holds the pointer to the first byte outside
-  /// the node data.
-  const char * findChainOffsetExactOrPrefix( const std::u32string & target,
-                                             bool & exactMatch,
-                                             vector< char > & leaf,
-                                             uint32_t & nextLeaf,
-                                             const char *& leafEnd );
-
-  /// Reads a node or leaf at the given offset. Just uncompresses its data
-  /// to the given vector and does nothing more.
-  void readNode( uint32_t offset, vector< char > & out );
-
-  /// Reads the word-article links' chain at the given offset. The pointer
-  /// is updated to point to the next chain, if there's any.
-  vector< WordArticleLink > readChain( const char *&, uint32_t maxMatchCount = -1 );
-
-  /// Drops any aliases which arose due to folding. Only case-folded aliases
-  /// are left.
-  void antialias( const std::u32string &, vector< WordArticleLink > &, bool ignoreDiactitics );
-
-protected:
-
   QMutex * idxFileMutex;
   File::Index * idxFile;
 
-private:
+  MDB_env * env;
+  MDB_dbi dbi;
 
-  uint32_t indexNodeSize;
-  uint32_t rootOffset;
-  bool rootNodeLoaded;
-  vector< char > rootNode; // We load root note here and keep it at all times,
-                           // since all searches always start with it.
+private:
+  void closeLmdb();
 };
 
 /// A base for the dictionary that utilizes a btree index build using
@@ -177,7 +144,7 @@ public:
   }
 
   virtual bool getHeadwords( QStringList & headwords );
-  virtual void findHeadWordsWithLenth( int &, QSet< QString > * headwords, uint32_t length );
+  virtual void findHeadWordsWithLenth( QString & lastWord, QSet< QString > * headwords, uint32_t length );
 
   virtual void getArticleText( uint32_t articleAddress, QString & headword, QString & text );
 
@@ -266,6 +233,7 @@ struct IndexedWords: public map< string, vector< WordArticleLink > >
 /// Builds the index, as a compressed btree. Returns IndexInfo.
 /// All the data is stored to the given file, beginning from its current
 /// position.
-IndexInfo buildIndex( const IndexedWords &, File::Index & file );
+/// @param suffix Optional suffix for the LMDB file name to support multiple indices
+IndexInfo buildIndex( const IndexedWords &, File::Index & file, const string & suffix = "" );
 
 } // namespace BtreeIndexing

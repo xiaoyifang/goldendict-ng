@@ -6,7 +6,7 @@
 #include "fulltextsearch.hh"
 #include "folding.hh"
 #include "ftshelpers.hh"
-#include "dictfile.hh"
+#include "dict/utils/dictfile.hh"
 #include "utils.hh"
 
 #include <vector>
@@ -62,6 +62,17 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     // Open the database for update, creating a new database if necessary.
     const std::string path       = dict->ftsIndexName() + "_temp";
     const QByteArray encodedPath = QFile::encodeName( QString::fromStdString( path ) );
+    
+    // Ensure the directory exists
+    QString tempDirPath = QString::fromStdString( path );
+    QDir tempDir( tempDirPath );
+    if ( !tempDir.exists() ) {
+      if ( !tempDir.mkpath( "." ) ) {
+        qWarning() << "Failed to create FTS temp directory:" << tempDirPath;
+        return;
+      }
+    }
+    
     Xapian::WritableDatabase db( encodedPath.toStdString(), Xapian::DB_CREATE_OR_OPEN );
 
     Xapian::TermGenerator indexer;

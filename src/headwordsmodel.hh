@@ -19,9 +19,9 @@ public:
   QString getRow( int row );
   void setFilter( const QRegularExpression & );
   void appendWord( const QString & word );
-  int getCurrentIndex() const;
+  QString getCurrentWord() const;
   bool containWord( const QString & word );
-  QSet< QString > getRemainRows( int & nodeIndex );
+  QSet< QString > getRemainRows( QString & lastWord );
   void setMaxFilterResults( int _maxFilterResults );
 signals:
   void numberPopulated( int number );
@@ -45,7 +45,7 @@ private:
   int maxFilterResults;
   bool finished;
   Dictionary::Class * _dict;
-  int index;
+  QString lastWord;
   char * ptr;
   QMutex lock;
 };

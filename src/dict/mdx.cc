@@ -5,7 +5,7 @@
 #include "btreeidx.hh"
 #include "folding.hh"
 #include "text.hh"
-#include "dictfile.hh"
+#include "utils/dictfile.hh"
 #include "chunkedstorage.hh"
 #include "langcoder.hh"
 #include "audiolink.hh"
@@ -397,8 +397,11 @@ void MdxDictionary::doDeferredInit()
         idx.read( &buf.front(), sz );
         uint32_t btreeMaxElements = idx.read< uint32_t >();
         uint32_t rootOffset       = idx.read< uint32_t >();
+        quint32 suffixSz          = idx.read< quint32 >();
+        vector< char > suffixBuf( suffixSz );
+        idx.read( &suffixBuf.front(), suffixSz );
         mddFileNames.emplace_back( &buf.front() );
-        mddIndexInfos.emplace_back( btreeMaxElements, rootOffset );
+        mddIndexInfos.emplace_back( btreeMaxElements, rootOffset, string( &suffixBuf.front() ) );
       }
 
       const vector< string > dictFiles = getDictionaryFilenames();
@@ -1609,8 +1612,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
       // Build index info for each mdd file
       vector< IndexInfo > mddIndexInfos;
-      for ( const auto & mddIndice : mddIndices ) {
-        const IndexInfo resourceIdxInfo = BtreeIndexing::buildIndex( *mddIndice, idx );
+      for ( size_t i = 0; i < mddIndices.size(); ++i ) {
+        const string suffix = "_mdd_" + std::to_string(i);
+        const IndexInfo resourceIdxInfo = BtreeIndexing::buildIndex( *mddIndices[i], idx, suffix );
         mddIndexInfos.push_back( resourceIdxInfo );
       }
 
@@ -1624,6 +1628,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
         idx.write( mddfile.c_str(), mddfile.size() + 1 );
         idx.write< uint32_t >( mddIndexInfos[ mi ].btreeMaxElements );
         idx.write< uint32_t >( mddIndexInfos[ mi ].rootOffset );
+        idx.write< quint32 >( (quint32)mddIndexInfos[ mi ].suffix.size() + 1 );
+        idx.write( mddIndexInfos[ mi ].suffix.c_str(), mddIndexInfos[ mi ].suffix.size() + 1 );
       }
 
       // That concludes it. Update the header.

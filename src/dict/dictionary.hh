@@ -519,7 +519,7 @@ public:
   {
     return false;
   }
-  virtual void findHeadWordsWithLenth( int &, QSet< QString > * /*headwords*/, uint32_t ) {}
+  virtual void findHeadWordsWithLenth( QString &, QSet< QString > * /*headwords*/, uint32_t ) {}
 
   /// Enable/disable search via synonyms
   void setSynonymSearchEnabled( bool enabled )

@@ -12,21 +12,47 @@
 #include "globalbroadcaster.hh"
 
 #include <QtConcurrentRun>
-#include <zlib.h>
+#include <QDir>
+#include <QFileInfo>
 
 namespace BtreeIndexing {
 
 using std::pair;
 
-enum {
-  BtreeMinElements = 64,
-  BtreeMaxElements = 8192
-};
+// Forward declarations
+static QByteArray serializeLinks(const vector<WordArticleLink>& links);
+static vector<WordArticleLink> deserializeLinks(const QByteArray& data);
+
+// Apply standard text folding for word matching
+static std::u32string applyStandardFolding( const std::u32string & word, bool ignoreDiacritics )
+{
+  std::u32string result = Folding::applySimpleCaseOnly( Text::normalize( word ) );
+  if ( ignoreDiacritics ) {
+    result = Folding::applyDiacriticsOnly( result );
+  }
+  if ( GlobalBroadcaster::instance()->getPreference()->ignorePunctuation ) {
+    result = Folding::trimWhitespaceOrPunct( result );
+  }
+  return result;
+}
 
 BtreeIndex::BtreeIndex():
   idxFile( nullptr ),
-  rootNodeLoaded( false )
+  env( nullptr ),
+  dbi( 0 )
 {
+}
+
+void BtreeIndex::closeLmdb()
+{
+  if (env) {
+    if (dbi) {
+      mdb_dbi_close(env, dbi);
+      dbi = 0;
+    }
+    mdb_env_close(env);
+    env = nullptr;
+  }
 }
 
 BtreeDictionary::BtreeDictionary( const string & id, const vector< string > & dictionaryFiles ):
@@ -37,99 +63,245 @@ BtreeDictionary::BtreeDictionary( const string & id, const vector< string > & di
 const string & BtreeDictionary::ensureInitDone()
 {
   static string empty;
-
   return empty;
 }
 
 void BtreeIndex::openIndex( const IndexInfo & indexInfo, File::Index & file, QMutex & mutex )
 {
-  indexNodeSize = indexInfo.btreeMaxElements;
-  rootOffset    = indexInfo.rootOffset;
-
   idxFile      = &file;
   idxFileMutex = &mutex;
+  
+  closeLmdb();
+  
+  mdb_env_create(&env);
+  if (!env) {
+      qWarning() << "LMDB env create failed";
+      return;
+  }
+  
+  string lmdbPath = file.file().fileName().toStdString() + indexInfo.suffix + ".lmdb";
+  qDebug() << "LMDB opening index at:" << QString::fromStdString(lmdbPath);
 
-  rootNodeLoaded = false;
-  rootNode.clear();
+  int rc = mdb_env_open( env, lmdbPath.c_str(), MDB_RDONLY | MDB_NOSUBDIR, 0664 );
+  if ( rc != MDB_SUCCESS ) {
+    qWarning() << "LMDB open failed for" << QString::fromStdString( lmdbPath ) << ": " << mdb_strerror( rc );
+    mdb_env_close( env );
+    env = nullptr;
+    return;
+  }
+
+  MDB_txn *txn;
+  rc = mdb_txn_begin(env, nullptr, MDB_RDONLY, &txn);
+  if (rc != MDB_SUCCESS) {
+      qWarning() << "LMDB txn begin failed: " << mdb_strerror(rc);
+      mdb_env_close(env);
+      env = nullptr;
+      return;
+  }
+  
+  rc = mdb_dbi_open(txn, nullptr, 0, &dbi);
+  if (rc != MDB_SUCCESS) {
+      qWarning() << "LMDB dbi open failed: " << mdb_strerror(rc);
+      mdb_txn_abort(txn);
+      mdb_env_close(env);
+      env = nullptr;
+      return;
+  }
+  
+  // Check if database is empty
+  MDB_stat stat;
+  mdb_stat(txn, dbi, &stat);
+  qDebug() << "LMDB database opened, entries:" << stat.ms_entries;
+  
+  mdb_txn_commit(txn);
 }
 
 vector< WordArticleLink >
 BtreeIndex::findArticles( const std::u32string & search_word, bool ignoreDiacritics, uint32_t maxMatchCount )
 {
-  //First trim ending zero
-  std::u32string word = Text::removeTrailingZero( search_word );
   vector< WordArticleLink > result;
-
-  try {
-    std::u32string folded = Folding::apply( word );
-    if ( folded.empty() ) {
-      folded = Folding::applyWhitespaceOnly( word );
-    }
-
-    bool exactMatch;
-
-    vector< char > leaf;
-    uint32_t nextLeaf;
-
-    const char * leafEnd;
-
-    const char * chainOffset = findChainOffsetExactOrPrefix( folded, exactMatch, leaf, nextLeaf, leafEnd );
-
-    if ( chainOffset && exactMatch ) {
-      result = readChain( chainOffset, maxMatchCount );
-
-      antialias( word, result, ignoreDiacritics );
-    }
+  if (!env || !dbi) return result;
+  
+  std::u32string word = Text::removeTrailingZero( search_word );
+  std::u32string folded = Folding::apply( word );
+  if ( folded.empty() ) {
+    folded = Folding::applyWhitespaceOnly( word );
   }
-  catch ( std::exception & e ) {
-    qWarning( "Articles searching failed, error: %s", e.what() );
-    result.clear();
+  
+  string key_str = Text::toUtf8(folded);
+  
+  MDB_txn *txn;
+  if (mdb_txn_begin(env, nullptr, MDB_RDONLY, &txn) != MDB_SUCCESS) return result;
+  
+  MDB_cursor *cursor;
+  mdb_cursor_open(txn, dbi, &cursor);
+  
+  MDB_val key, data;
+  key.mv_size = key_str.size();
+  key.mv_data = (void*)key_str.c_str();
+  
+  int rc = mdb_cursor_get(cursor, &key, &data, MDB_SET);
+  if (rc == MDB_SUCCESS) {
+      string current_key((char*)key.mv_data, key.mv_size);
+      if (current_key == key_str) {
+          QByteArray ba((const char*)data.mv_data, data.mv_size);
+          vector<WordArticleLink> links = deserializeLinks(ba);
+          
+          // Apply standard folding to search word
+          std::u32string caseFolded = applyStandardFolding( word, ignoreDiacritics );
+          
+          // Stop early once enough matches are found
+          uint32_t found = 0;
+          for ( auto & link : links ) {
+              // Apply standard folding to current entry
+              std::u32string entry = applyStandardFolding( Text::toUtf32( link.word ), ignoreDiacritics );
+              
+              if ( entry == caseFolded ) {
+                  result.push_back( std::move( link ) );
+                  if ( maxMatchCount != (uint32_t)-1 && ++found >= maxMatchCount ) {
+                      break;  // Exit early after finding enough matches
+                  }
+              }
+          }
+      }
   }
-  catch ( ... ) {
-    qWarning( "Articles searching failed" );
-    result.clear();
-  }
-
+  
+  mdb_cursor_close(cursor);
+  mdb_txn_commit(txn);
+  
   return result;
 }
 
+void BtreeIndex::findAllArticleLinks( QList< WordArticleLink > & articleLinks ) {
+  findArticleLinks(&articleLinks, nullptr, nullptr, nullptr);
+}
+void BtreeIndex::getAllHeadwords( QSet< QString > & headwords ) {
+  findArticleLinks(nullptr, nullptr, &headwords, nullptr);
+}
 
-BtreeWordSearchRequest::BtreeWordSearchRequest( BtreeDictionary & dict_,
-                                                const std::u32string & str_,
-                                                unsigned minLength_,
-                                                int maxSuffixVariation_,
-                                                bool allowMiddleMatches_,
-                                                unsigned long maxResults_,
-                                                bool startRunnable ):
-  dict( dict_ ),
-  str( str_ ),
-  maxResults( maxResults_ ),
-  minLength( minLength_ ),
-  maxSuffixVariation( maxSuffixVariation_ ),
-  allowMiddleMatches( allowMiddleMatches_ )
-{
-  if ( startRunnable ) {
-    f = QtConcurrent::run( [ this ]() {
-      this->run();
-    } );
+void BtreeDictionary::findHeadWordsWithLenth( QString & lastWord, QSet< QString > * headwords, uint32_t length ) {
+  if (!env || !dbi || !headwords) return;
+
+  MDB_txn *txn;
+  if (mdb_txn_begin(env, nullptr, MDB_RDONLY, &txn) != MDB_SUCCESS) return;
+  MDB_cursor *cursor;
+  mdb_cursor_open(txn, dbi, &cursor);
+
+  MDB_val key, data;
+  int rc;
+  
+  if (lastWord.isEmpty()) {
+    rc = mdb_cursor_get(cursor, &key, &data, MDB_FIRST);
+  } else {
+    string lastWordStr = lastWord.toStdString();
+    key.mv_size = lastWordStr.size();
+    key.mv_data = (void*)lastWordStr.c_str();
+    rc = mdb_cursor_get(cursor, &key, &data, MDB_SET_RANGE);
+    if (rc == MDB_SUCCESS) {
+      string current_key((char*)key.mv_data, key.mv_size);
+      if (current_key == lastWordStr) {
+        rc = mdb_cursor_get(cursor, &key, &data, MDB_NEXT);
+      }
+    }
   }
+
+  uint32_t count = 0;
+  while (rc == MDB_SUCCESS && count < length) {
+    QByteArray ba((const char*)data.mv_data, data.mv_size);
+    vector<WordArticleLink> links = deserializeLinks(ba);
+    for (auto & l : links) {
+      headwords->insert(QString::fromStdString(l.word));
+      
+      // Check if we have enough headwords
+      if (headwords->size() >= length) {
+        mdb_cursor_close(cursor);
+        mdb_txn_commit(txn);
+        return;
+      }
+    }
+    lastWord = QString::fromUtf8((char*)key.mv_data, key.mv_size);
+    count++;
+    rc = mdb_cursor_get(cursor, &key, &data, MDB_NEXT);
+  }
+
+  mdb_cursor_close(cursor);
+  mdb_txn_commit(txn);
+}
+
+void BtreeIndex::findArticleLinks( QList< WordArticleLink > * articleLinks, QSet< uint32_t > * offsets, QSet< QString > * headwords, QAtomicInt * isCancelled )
+{
+  if (!env || !dbi) return;
+  MDB_txn *txn;
+  if (mdb_txn_begin(env, nullptr, MDB_RDONLY, &txn) != MDB_SUCCESS) return;
+  MDB_cursor *cursor;
+  mdb_cursor_open(txn, dbi, &cursor);
+  
+  MDB_val key, data;
+  int rc = mdb_cursor_get(cursor, &key, &data, MDB_FIRST);
+  
+  while (rc == MDB_SUCCESS) {
+      if ( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) ) break;
+      
+      QByteArray ba((const char*)data.mv_data, data.mv_size);
+      vector<WordArticleLink> links = deserializeLinks(ba);
+      for (auto & l : links) {
+          if (articleLinks) articleLinks->append(l);
+          if (offsets) offsets->insert(l.articleOffset);
+          if (headwords) headwords->insert(QString::fromStdString(l.word));
+      }
+      rc = mdb_cursor_get(cursor, &key, &data, MDB_NEXT);
+  }
+  
+  mdb_cursor_close(cursor);
+  mdb_txn_commit(txn);
+}
+
+
+
+void BtreeIndex::getHeadwordsFromOffsets( QList< uint32_t > & offsets, QList< QString > & headwords, QAtomicInt * isCancelled )
+{
+  if (!env || !dbi) return;
+  MDB_txn *txn;
+  if (mdb_txn_begin(env, nullptr, MDB_RDONLY, &txn) != MDB_SUCCESS) return;
+  
+  MDB_cursor *cursor;
+  mdb_cursor_open(txn, dbi, &cursor);
+  
+  MDB_val key, data;
+  int rc = mdb_cursor_get(cursor, &key, &data, MDB_FIRST);
+  
+  QSet<uint32_t> targetOffsets(offsets.begin(), offsets.end());
+  
+  while (rc == MDB_SUCCESS && !targetOffsets.isEmpty()) {
+      if ( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) ) break;
+      
+      QByteArray ba((const char*)data.mv_data, data.mv_size);
+      vector<WordArticleLink> links = deserializeLinks(ba);
+      for (auto & l : links) {
+          if (targetOffsets.contains(l.articleOffset)) {
+              headwords.append(QString::fromStdString(l.word));
+          }
+      }
+      rc = mdb_cursor_get(cursor, &key, &data, MDB_NEXT);
+  }
+  
+  mdb_cursor_close(cursor);
+  mdb_txn_commit(txn);
+}
+
+BtreeWordSearchRequest::BtreeWordSearchRequest( BtreeDictionary & dict_, const std::u32string & str_, unsigned minLength_, int maxSuffixVariation_, bool allowMiddleMatches_, unsigned long maxResults_, bool startRunnable ):
+  dict( dict_ ), str( str_ ), maxResults( maxResults_ ), minLength( minLength_ ), maxSuffixVariation( maxSuffixVariation_ ), allowMiddleMatches( allowMiddleMatches_ )
+{
+  if ( startRunnable ) { f = QtConcurrent::run( [ this ]() { this->run(); } ); }
 }
 
 void BtreeWordSearchRequest::findMatches()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
-    finish();
-    return;
-  }
-
-  if ( dict.ensureInitDone().size() ) {
-    setErrorString( QString::fromUtf8( dict.ensureInitDone().c_str() ) );
-    finish();
-    return;
-  }
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) { finish(); return; }
+  if ( dict.ensureInitDone().size() ) { setErrorString( QString::fromUtf8( dict.ensureInitDone().c_str() ) ); finish(); return; }
+  if ( !dict.env || !dict.dbi ) { finish(); return; }
 
   QRegularExpression regexp;
-
   bool useWildcards = false;
   if ( allowMiddleMatches ) {
     useWildcards = ( str.find( '*' ) != std::u32string::npos || str.find( '?' ) != std::u32string::npos
@@ -137,7 +309,6 @@ void BtreeWordSearchRequest::findMatches()
   }
 
   std::u32string folded = Folding::apply( str );
-
   int minMatchLength = 0;
 
   if ( useWildcards ) {
@@ -150,207 +321,117 @@ void BtreeWordSearchRequest::findMatches()
 
     bool bNoLetters = folded.empty();
     std::u32string foldedWithWildcards;
-
-    if ( bNoLetters ) {
+    if (bNoLetters) {
       foldedWithWildcards = Folding::applyWhitespaceOnly( str );
-    }
-    else {
+    } else {
       foldedWithWildcards = Folding::apply( str, useWildcards );
     }
-
-    // Calculate minimum match length
 
     bool insideSet = false;
     bool escaped   = false;
     for ( char32_t ch : foldedWithWildcards ) {
-      if ( ch == L'\\' && !escaped ) {
-        escaped = true;
-        continue;
-      }
-
-      if ( ch == L']' && !escaped ) {
-        insideSet = false;
-        continue;
-      }
-
-      if ( insideSet ) {
-        escaped = false;
-        continue;
-      }
-
-      if ( ch == L'[' && !escaped ) {
-        minMatchLength += 1;
-        insideSet = true;
-        continue;
-      }
-
-      if ( ch == L'*' && !escaped ) {
-        continue;
-      }
-
+      if ( ch == L'\\' && !escaped ) { escaped = true; continue; }
+      if ( ch == L']' && !escaped ) { insideSet = false; continue; }
+      if ( insideSet ) { escaped = false; continue; }
+      if ( ch == L'[' && !escaped ) { minMatchLength += 1; insideSet = true; continue; }
+      if ( ch == L'*' && !escaped ) { continue; }
       escaped = false;
       minMatchLength += 1;
     }
-
-    // Fill first match chars
 
     folded.clear();
     folded.reserve( foldedWithWildcards.size() );
     escaped = false;
     for ( char32_t ch : foldedWithWildcards ) {
       if ( escaped ) {
-        if ( bNoLetters || ( ch != L'*' && ch != L'?' && ch != L'[' && ch != L']' ) ) {
-          folded.push_back( ch );
-        }
-        escaped = false;
-        continue;
+        if ( bNoLetters || ( ch != L'*' && ch != L'?' && ch != L'[' && ch != L']' ) ) { folded.push_back( ch ); }
+        escaped = false; continue;
       }
-
       if ( ch == L'\\' ) {
-        if ( bNoLetters || folded.empty() ) {
-          escaped = true;
-          continue;
-        }
-        else {
-          break;
-        }
+        if ( bNoLetters || folded.empty() ) { escaped = true; continue; } else { break; }
       }
-
-      if ( ch == '*' || ch == '?' || ch == '[' || ch == ']' ) {
-        break;
-      }
-
+      if ( ch == '*' || ch == '?' || ch == '[' || ch == ']' ) { break; }
       folded.push_back( ch );
     }
-  }
-  else {
-    if ( folded.empty() ) {
-      folded = Folding::applyWhitespaceOnly( str );
-    }
+  } else {
+    if ( folded.empty() ) { folded = Folding::applyWhitespaceOnly( str ); }
   }
 
   int initialFoldedSize = folded.size();
-
   int charsLeftToChop = 0;
-
   if ( maxSuffixVariation >= 0 ) {
     charsLeftToChop = initialFoldedSize - (int)minLength;
-
-    if ( charsLeftToChop < 0 ) {
-      charsLeftToChop = 0;
-    }
-    else if ( charsLeftToChop > maxSuffixVariation ) {
-      charsLeftToChop = maxSuffixVariation;
-    }
+    if ( charsLeftToChop < 0 ) { charsLeftToChop = 0; }
+    else if ( charsLeftToChop > maxSuffixVariation ) { charsLeftToChop = maxSuffixVariation; }
   }
 
   try {
     for ( ;; ) {
-      bool exactMatch;
-      vector< char > leaf;
-      uint32_t nextLeaf;
-      const char * leafEnd;
+      if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) break;
 
-      const char * chainOffset = dict.findChainOffsetExactOrPrefix( folded, exactMatch, leaf, nextLeaf, leafEnd );
+      string search_prefix = Text::toUtf8(folded);
 
-      if ( chainOffset ) {
-        for ( ;; ) {
-          if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
-            break;
-          }
+      MDB_txn *txn;
+      if (mdb_txn_begin(dict.env, nullptr, MDB_RDONLY, &txn) == MDB_SUCCESS) {
+        MDB_cursor *cursor;
+        mdb_cursor_open(txn, dict.dbi, &cursor);
 
-          //qDebug( "offset = %u, size = %u", chainOffset - &leaf.front(), leaf.size() );
+        MDB_val key, data;
+        key.mv_size = search_prefix.size();
+        key.mv_data = (void*)search_prefix.c_str();
 
-          vector< WordArticleLink > chain = dict.readChain( chainOffset );
+        int rc = mdb_cursor_get(cursor, &key, &data, MDB_SET_RANGE);
 
-          std::u32string chainHead = Text::toUtf32( chain[ 0 ].word );
+        while (rc == MDB_SUCCESS) {
+          if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) break;
 
-          std::u32string resultFolded = Folding::apply( chainHead );
-          if ( resultFolded.empty() ) {
-            resultFolded = Folding::applyWhitespaceOnly( chainHead );
-          }
+          string current_key((char*)key.mv_data, key.mv_size);
+          std::u32string resultFolded = Text::toUtf32(current_key);
 
           if ( ( useWildcards && folded.empty() )
                || ( resultFolded.size() >= folded.size() && !resultFolded.compare( 0, folded.size(), folded ) ) ) {
-            // Exact or prefix match
-
+            
+            QByteArray ba((const char*)data.mv_data, data.mv_size);
+            vector<WordArticleLink> chain = deserializeLinks(ba);
 
             for ( auto & x : chain ) {
-              if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
-                break;
-              }
+              if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) break;
               if ( useWildcards ) {
-                std::u32string word   = Text::toUtf32( x.prefix + x.word );
+                std::u32string word   = Text::toUtf32( x.word );
                 std::u32string result = Folding::applyDiacriticsOnly( word );
                 if ( result.size() >= (std::u32string::size_type)minMatchLength ) {
                   QRegularExpressionMatch match = regexp.match( QString::fromStdU32String( result ) );
-                  if ( match.hasMatch() && match.capturedStart() == 0 ) {
+                  if ( match.hasMatch() ) {
                     addMatch( word );
                   }
                 }
               }
               else {
-                // Skip middle matches, if requested. If suffix variation is specified,
-                // make sure the string isn't larger than requested.
                 if ( ( allowMiddleMatches || Folding::apply( Text::toUtf32( x.prefix ) ).empty() )
                      && ( maxSuffixVariation < 0
                           || (int)resultFolded.size() - initialFoldedSize <= maxSuffixVariation ) ) {
-                  addMatch( Text::toUtf32( x.prefix + x.word ) );
+                  addMatch( Text::toUtf32( x.word ) );
                 }
               }
-              if ( matches.size() >= maxResults ) {
-                break;
-              }
+              if ( matches.size() >= maxResults ) break;
             }
-
-            if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
-              break;
-            }
-
-            if ( matches.size() >= maxResults ) {
-              break;
-            }
+          } else {
+            break; 
           }
-          else {
-            // Neither exact nor a prefix match, end this
-            break;
-          }
-
-          // Fetch new leaf if we're out of chains here
-
-          if ( chainOffset >= leafEnd ) {
-            // We're past the current leaf, fetch the next one
-
-            //qDebug( "advancing" );
-
-            if ( nextLeaf ) {
-              QMutexLocker _( dict.idxFileMutex );
-
-              dict.readNode( nextLeaf, leaf );
-              leafEnd = &leaf.front() + leaf.size();
-
-              nextLeaf    = dict.idxFile->read< uint32_t >();
-              chainOffset = &leaf.front() + sizeof( uint32_t );
-
-              uint32_t leafEntries = *(uint32_t *)&leaf.front();
-
-              if ( leafEntries == 0xffffFFFF ) {
-                //qDebug( "bah!" );
-                exit( 1 );
-              }
-            }
-            else {
-              break; // That was the last leaf
-            }
-          }
+          if ( matches.size() >= maxResults ) break;
+          rc = mdb_cursor_get(cursor, &key, &data, MDB_NEXT);
         }
+
+        mdb_cursor_close(cursor);
+        mdb_txn_commit(txn);
       }
+
+      if ( matches.size() >= maxResults ) break;
 
       if ( charsLeftToChop && !Utils::AtomicInt::loadAcquire( isCancelled ) ) {
         --charsLeftToChop;
         folded.resize( folded.size() - 1 );
-      }
-      else {
+      } else {
         break;
       }
     }
@@ -362,7 +443,6 @@ void BtreeWordSearchRequest::findMatches()
     qWarning( "Index searching failed: \"%s\"", dict.getName().c_str() );
   }
 }
-
 void BtreeWordSearchRequest::run()
 {
   if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
@@ -380,640 +460,102 @@ void BtreeWordSearchRequest::run()
 
   finish();
 }
+BtreeWordSearchRequest::~BtreeWordSearchRequest() { isCancelled.ref(); f.waitForFinished(); }
 
-BtreeWordSearchRequest::~BtreeWordSearchRequest()
-{
-  isCancelled.ref();
-  f.waitForFinished();
-}
-
-sptr< Dictionary::WordSearchRequest > BtreeDictionary::prefixMatch( const std::u32string & str,
-                                                                    unsigned long maxResults )
-
+sptr< Dictionary::WordSearchRequest > BtreeDictionary::prefixMatch( const std::u32string & str, unsigned long maxResults )
 {
   return std::make_shared< BtreeWordSearchRequest >( *this, str, 0, -1, true, maxResults );
 }
 
-sptr< Dictionary::WordSearchRequest > BtreeDictionary::stemmedMatch( const std::u32string & str,
-                                                                     unsigned minLength,
-                                                                     unsigned maxSuffixVariation,
-                                                                     unsigned long maxResults )
-
+sptr< Dictionary::WordSearchRequest > BtreeDictionary::stemmedMatch( const std::u32string & str, unsigned minLength, unsigned maxSuffixVariation, unsigned long maxResults )
 {
-  return std::make_shared< BtreeWordSearchRequest >( *this,
-                                                     str,
-                                                     minLength,
-                                                     (int)maxSuffixVariation,
-                                                     false,
-                                                     maxResults );
+  return std::make_shared< BtreeWordSearchRequest >( *this, str, minLength, (int)maxSuffixVariation, false, maxResults );
 }
 
-void BtreeIndex::readNode( uint32_t offset, vector< char > & out )
+bool BtreeDictionary::getHeadwords( QStringList & headwords )
 {
-  idxFile->seek( offset );
-
-  uint32_t uncompressedSize = idxFile->read< uint32_t >();
-  uint32_t compressedSize   = idxFile->read< uint32_t >();
-
-  //qDebug( "%x,%x", uncompressedSize, compressedSize );
-
-  out.resize( uncompressedSize );
-
-  vector< unsigned char > compressedData( compressedSize );
-
-  idxFile->read( &compressedData.front(), compressedData.size() );
-
-  unsigned long decompressedLength = out.size();
-
-  if ( uncompress( (unsigned char *)&out.front(), &decompressedLength, &compressedData.front(), compressedData.size() )
-         != Z_OK
-       || decompressedLength != out.size() ) {
-    throw exFailedToDecompressNode();
-  }
+  QSet<QString> set;
+  getAllHeadwords(set);
+  headwords = set.values();
+  return true;
 }
 
-const char * BtreeIndex::findChainOffsetExactOrPrefix( const std::u32string & target,
-                                                       bool & exactMatch,
-                                                       vector< char > & extLeaf,
-                                                       uint32_t & nextLeaf,
-                                                       const char *& leafEnd )
-{
-  if ( !idxFile ) {
-    throw exIndexWasNotOpened();
-  }
-
-  QMutexLocker _( idxFileMutex );
-
-  // Lookup the index by traversing the index btree
-
-  // vector< wchar > wcharBuffer;
-  std::u32string w_word;
-  exactMatch = false;
-
-  // Read a node
-
-  uint32_t currentNodeOffset = rootOffset;
-
-  if ( !rootNodeLoaded ) {
-    // Time to load our root node. We do it only once, at the first request.
-    readNode( rootOffset, rootNode );
-    rootNodeLoaded = true;
-  }
-
-  const char * leaf = &rootNode.front();
-  leafEnd           = leaf + rootNode.size();
-
-  if ( target.empty() ) {
-    //For empty target string we return first chain in index
-    for ( ;; ) {
-      uint32_t leafEntries = *(uint32_t *)leaf;
-
-      if ( leafEntries == 0xffffFFFF ) {
-        // A node
-        currentNodeOffset = *( (uint32_t *)leaf + 1 );
-        readNode( currentNodeOffset, extLeaf );
-        leaf     = &extLeaf.front();
-        leafEnd  = leaf + extLeaf.size();
-        nextLeaf = idxFile->read< uint32_t >();
-      }
-      else {
-        // A leaf
-        if ( currentNodeOffset == rootOffset ) {
-          // Only one leaf in index, there's no next leaf
-          nextLeaf = 0;
-        }
-        if ( !leafEntries ) {
-          return nullptr;
-        }
-
-        return leaf + sizeof( uint32_t );
-      }
-    }
-  }
-
-  for ( ;; ) {
-    // Is it a leaf or a node?
-
-    uint32_t leafEntries = *(uint32_t *)leaf;
-
-    if ( leafEntries == 0xffffFFFF ) {
-      // A node
-
-      //qDebug( "=>a node" );
-
-      const uint32_t * offsets = (uint32_t *)leaf + 1;
-
-      const char * ptr = leaf + sizeof( uint32_t ) + ( indexNodeSize + 1 ) * sizeof( uint32_t );
-
-      // ptr now points to a span of zero-separated strings, up to leafEnd.
-      // We find our match using a binary search.
-
-      const char * closestString;
-
-      int compareResult;
-
-      const char * window = ptr;
-      unsigned windowSize = leafEnd - ptr;
-
-      for ( ;; ) {
-        // We boldly shoot in the middle of the whole mess, and then adjust
-        // to the beginning of the string that we've hit.
-        const char * testPoint = window + windowSize / 2;
-
-        closestString = testPoint;
-
-        while ( closestString > ptr && closestString[ -1 ] ) {
-          --closestString;
-        }
-
-        size_t wordSize = strlen( closestString );
-
-        w_word = Text::toUtf32( string( closestString, wordSize ) );
-
-        compareResult = target.compare( w_word );
-
-        if ( !compareResult ) {
-          // The target string matches the current one. Finish the search.
-          break;
-        }
-        if ( compareResult < 0 ) {
-          // The target string is smaller than the current one.
-          // Go to the left.
-          windowSize = closestString - window;
-
-          if ( !windowSize ) {
-            break;
-          }
-        }
-        else {
-          // The target string is larger than the current one.
-          // Go to the right.
-          windowSize -= ( closestString - window ) + wordSize + 1;
-          window = closestString + wordSize + 1;
-
-          if ( !windowSize ) {
-            break;
-          }
-        }
-      }
-
-
-      // Now, whatever the outcome (compareResult) is, we need to find
-      // entry number for the closestMatch string.
-
-      unsigned entry = 0;
-
-      for ( const char * next = ptr; next != closestString; next += strlen( next ) + 1, ++entry ) {
-        ;
-      }
-
-      // Ok, now check the outcome
-
-      if ( !compareResult ) {
-        // The target string matches the one found.
-        // Go to the right, since it's there where we store such results.
-        currentNodeOffset = offsets[ entry + 1 ];
-      }
-      if ( compareResult < 0 ) {
-        // The target string is smaller than the one found.
-        // Go to the left.
-        currentNodeOffset = offsets[ entry ];
-      }
-      else {
-        // The target string is larger than the one found.
-        // Go to the right.
-        currentNodeOffset = offsets[ entry + 1 ];
-      }
-
-      //qDebug( "reading node at %x", currentNodeOffset );
-      readNode( currentNodeOffset, extLeaf );
-      leaf    = &extLeaf.front();
-      leafEnd = leaf + extLeaf.size();
-    }
-    else {
-      //qDebug( "=>a leaf" );
-      // A leaf
-
-      // If this leaf is the root, there's no next leaf, it just can't be.
-      // We do this check because the file's position indicator just won't
-      // be in the right place for root node anyway, since we precache it.
-      nextLeaf = ( currentNodeOffset != rootOffset ? idxFile->read< uint32_t >() : 0 );
-
-      if ( !leafEntries ) {
-        // Empty leaf? This may only be possible for entirely empty trees only.
-        if ( currentNodeOffset != rootOffset ) {
-          throw exCorruptedChainData();
-        }
-        else {
-          return nullptr; // No match
-        }
-      }
-
-      // Build an array containing all chain pointers
-      const char * ptr = leaf + sizeof( uint32_t );
-
-      uint32_t chainSize;
-
-      vector< const char * > chainOffsets( leafEntries );
-
-      {
-        const char ** nextOffset = &chainOffsets.front();
-
-        while ( leafEntries-- ) {
-          *nextOffset++ = ptr;
-
-          memcpy( &chainSize, ptr, sizeof( uint32_t ) );
-
-          //qDebug( "%s + %s", ptr + sizeof( uint32_t ), ptr + sizeof( uint32_t ) + strlen( ptr + sizeof( uint32_t ) ) + 1 );
-
-          ptr += sizeof( uint32_t ) + chainSize;
-        }
-      }
-
-      // Now do a binary search in it, aiming to find where our target
-      // string lands.
-
-      const char ** window = &chainOffsets.front();
-      unsigned windowSize  = chainOffsets.size();
-
-      for ( ;; ) {
-        //qDebug( "window = %u, ws = %u", window - &chainOffsets.front(), windowSize );
-
-        const char ** chainToCheck = window + windowSize / 2;
-        ptr                        = *chainToCheck;
-
-        memcpy( &chainSize, ptr, sizeof( uint32_t ) );
-        ptr += sizeof( uint32_t );
-
-        size_t wordSize = strlen( ptr );
-
-        w_word = Text::toUtf32( string( ptr, wordSize ) );
-
-        std::u32string foldedWord = Folding::apply( w_word );
-        if ( foldedWord.empty() ) {
-          foldedWord = Folding::applyWhitespaceOnly( w_word );
-        }
-
-        int compareResult = target.compare( foldedWord );
-
-        if ( !compareResult ) {
-          // Exact match -- return and be done
-          exactMatch = true;
-
-          return ptr - sizeof( uint32_t );
-        }
-        else if ( compareResult < 0 ) {
-          // The target string is smaller than the current one.
-          // Go to the first half
-
-          windowSize /= 2;
-
-          if ( !windowSize ) {
-            // That finishes our search. Since our target string
-            // landed before the last tested chain, we return a possible
-            // prefix match against that chain.
-            return ptr - sizeof( uint32_t );
-          }
-        }
-        else {
-          // The target string is larger than the current one.
-          // Go to the second half
-
-          windowSize -= windowSize / 2 + 1;
-
-          if ( !windowSize ) {
-            // That finishes our search. Since our target string
-            // landed after the last tested chain, we return the next
-            // chain. If there's no next chain in this leaf, this
-            // would mean the first element in the next leaf.
-            if ( chainToCheck == &chainOffsets.back() ) {
-              if ( nextLeaf ) {
-                readNode( nextLeaf, extLeaf );
-
-                leafEnd = &extLeaf.front() + extLeaf.size();
-
-                nextLeaf = idxFile->read< uint32_t >();
-
-                return &extLeaf.front() + sizeof( uint32_t );
-              }
-              else {
-                return nullptr; // This was the last leaf
-              }
-            }
-            else {
-              return chainToCheck[ 1 ];
-            }
-          }
-
-          window = chainToCheck + 1;
-        }
-      }
-    }
-  }
-}
-
-vector< WordArticleLink > BtreeIndex::readChain( const char *& ptr, uint32_t maxMatchCount )
-{
-  uint32_t chainSize;
-
-  memcpy( &chainSize, ptr, sizeof( uint32_t ) );
-
-  ptr += sizeof( uint32_t );
-
-  vector< WordArticleLink > result;
-
-  while ( chainSize && ( maxMatchCount < 0 || result.size() < maxMatchCount ) ) {
-    string str = ptr;
-    ptr += str.size() + 1;
-
-    string prefix = ptr;
-    ptr += prefix.size() + 1;
-
-    uint32_t articleOffset;
-
-    memcpy( &articleOffset, ptr, sizeof( uint32_t ) );
-
-    ptr += sizeof( uint32_t );
-
-    result.emplace_back( str, articleOffset, prefix );
-
-    if ( chainSize < str.size() + 1 + prefix.size() + 1 + sizeof( uint32_t ) ) {
-      throw exCorruptedChainData();
-    }
-    else {
-      chainSize -= str.size() + 1 + prefix.size() + 1 + sizeof( uint32_t );
-    }
-  }
-
-  return result;
-}
-
-void BtreeIndex::antialias( const std::u32string & str, vector< WordArticleLink > & chain, bool ignoreDiacritics )
-{
-  std::u32string caseFolded = Folding::applySimpleCaseOnly( Text::normalize( str ) );
-  if ( ignoreDiacritics ) {
-    caseFolded = Folding::applyDiacriticsOnly( caseFolded );
-  }
-
-  if ( GlobalBroadcaster::instance()->getPreference()->ignorePunctuation ) {
-    caseFolded = Folding::trimWhitespaceOrPunct( caseFolded );
-  }
-
-  for ( unsigned x = chain.size(); x--; ) {
-    // If after applying case folding to each word they wouldn't match, we
-    // drop the entry.
-    std::u32string entry =
-      Folding::applySimpleCaseOnly( Text::normalize( Text::toUtf32( chain[ x ].prefix + chain[ x ].word ) ) );
-    if ( ignoreDiacritics ) {
-      entry = Folding::applyDiacriticsOnly( entry );
-    }
-
-    if ( GlobalBroadcaster::instance()->getPreference()->ignorePunctuation ) {
-      entry = Folding::trimWhitespaceOrPunct( entry );
-    }
-
-    if ( entry != caseFolded ) {
-      chain.erase( chain.begin() + x );
-    }
-    else if ( !chain[ x ].prefix.empty() ) // If there's a prefix, merge it with the word,
-                                           // since it's what dictionaries expect
-    {
-      chain[ x ].word.insert( 0, chain[ x ].prefix );
-      chain[ x ].prefix.clear();
-    }
-  }
-}
-
-
-/// A function which recursively creates btree node.
-/// The nextIndex iterator is being iterated over and increased when building
-/// leaf nodes.
-static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
-                                size_t indexSize,
-                                File::Index & file,
-                                size_t maxElements,
-                                uint32_t & lastLeafLinkOffset )
-{
-  // We compress all the node data. This buffer would hold it.
-  vector< unsigned char > uncompressedData;
-
-  bool isLeaf = indexSize <= maxElements;
-
-  if ( isLeaf ) {
-    // A leaf.
-
-    uint32_t totalChainsLength = 0;
-
-    auto nextWord = nextIndex;
-
-    for ( unsigned x = indexSize; x--; ++nextWord ) {
-      totalChainsLength += sizeof( uint32_t );
-
-      const vector< WordArticleLink > & chain = nextWord->second;
-
-      for ( const auto & y : chain ) {
-        totalChainsLength += y.word.size() + 1 + y.prefix.size() + 1 + sizeof( uint32_t );
-      }
-    }
-
-    uncompressedData.resize( sizeof( uint32_t ) + totalChainsLength );
-
-    // First uint32_t indicates that this is a leaf.
-    *(uint32_t *)&uncompressedData.front() = indexSize;
-
-    unsigned char * ptr = &uncompressedData.front() + sizeof( uint32_t );
-
-    for ( unsigned x = indexSize; x--; ++nextIndex ) {
-      const vector< WordArticleLink > & chain = nextIndex->second;
-
-      unsigned char * saveSizeHere = ptr;
-
-      ptr += sizeof( uint32_t );
-
-      uint32_t size = 0;
-
-      for ( const auto & y : chain ) {
-        memcpy( ptr, y.word.c_str(), y.word.size() + 1 );
-        ptr += y.word.size() + 1;
-
-        memcpy( ptr, y.prefix.c_str(), y.prefix.size() + 1 );
-        ptr += y.prefix.size() + 1;
-
-        memcpy( ptr, &( y.articleOffset ), sizeof( uint32_t ) );
-        ptr += sizeof( uint32_t );
-
-        size += y.word.size() + 1 + y.prefix.size() + 1 + sizeof( uint32_t );
-      }
-
-      memcpy( saveSizeHere, &size, sizeof( uint32_t ) );
-    }
-  }
-  else {
-    // A node which will have children.
-
-    uncompressedData.resize( sizeof( uint32_t ) + ( maxElements + 1 ) * sizeof( uint32_t ) );
-
-    // First uint32_t indicates that this is a node.
-    *(uint32_t *)&uncompressedData.front() = 0xffffFFFF;
-
-    unsigned prevEntry = 0;
-
-    for ( unsigned x = 0; x < maxElements; ++x ) {
-      unsigned curEntry = (uint64_t)indexSize * ( x + 1 ) / ( maxElements + 1 );
-
-      uint32_t offset = buildBtreeNode( nextIndex, curEntry - prevEntry, file, maxElements, lastLeafLinkOffset );
-
-      memcpy( &uncompressedData.front() + sizeof( uint32_t ) + x * sizeof( uint32_t ), &offset, sizeof( uint32_t ) );
-
-      size_t sz = nextIndex->first.size() + 1;
-
-      size_t prevSize = uncompressedData.size();
-      uncompressedData.resize( prevSize + sz );
-
-      memcpy( &uncompressedData.front() + prevSize, nextIndex->first.c_str(), sz );
-
-      prevEntry = curEntry;
-    }
-
-    // Rightmost child
-    uint32_t offset = buildBtreeNode( nextIndex, indexSize - prevEntry, file, maxElements, lastLeafLinkOffset );
-    memcpy( &uncompressedData.front() + sizeof( uint32_t ) + maxElements * sizeof( uint32_t ),
-            &offset,
-            sizeof( offset ) );
-  }
-
-  // Save the result.
-  vector< unsigned char > compressedData( compressBound( uncompressedData.size() ) );
-
-  unsigned long compressedSize = compressedData.size();
-
-  if ( compress( &compressedData.front(), &compressedSize, &uncompressedData.front(), uncompressedData.size() )
-       != Z_OK ) {
-    qFatal( "Failed to compress btree node." );
-    abort();
-  }
-
-  uint32_t offset = file.tell();
-
-  file.write< uint32_t >( uncompressedData.size() );
-  file.write< uint32_t >( compressedSize );
-  file.write( &compressedData.front(), compressedSize );
-
-  if ( isLeaf ) {
-    // A link to the next leef, which is zero and which will be updated
-    // should we happen to have another leaf.
-
-    file.write( (uint32_t)0 );
-
-    uint32_t here = file.tell();
-
-    if ( lastLeafLinkOffset ) {
-      // Update the previous leaf to have the offset of this one.
-      file.seek( lastLeafLinkOffset );
-      file.write( offset );
-      file.seek( here );
-    }
-
-    // Make sure next leaf knows where to write its offset for us.
-    lastLeafLinkOffset = here - sizeof( uint32_t );
-  }
-
-  return offset;
-}
+void BtreeDictionary::getArticleText( uint32_t articleAddress, QString & headword, QString & text ) {}
 
 void IndexedWords::addWord( const std::u32string & index_word, uint32_t articleOffset, unsigned int maxHeadwordSize )
 {
-  std::u32string word        = Text::removeTrailingZero( index_word );
-  string::size_type wordSize = word.size();
+  std::u32string word = Text::removeTrailingZero( index_word );
+  
+  if ( word.empty() )
+    return;
 
-  // Safeguard us against various bugs here. Don't attempt adding words
-  // which are freakishly huge.
-  if ( wordSize > maxHeadwordSize ) {
-    qWarning() << "Abbreviate the too long headword: " << QString::fromStdU32String( word.substr( 0, 30 ) )
-               << "size:" << wordSize;
-
-    //find the closest string to the maxHeadwordSize;
+  if ( word.size() > maxHeadwordSize ) {
     auto nonSpacePos = word.find_last_not_of( ' ', maxHeadwordSize );
-    if ( nonSpacePos > 0 ) {
+    if ( nonSpacePos != std::u32string::npos ) {
       word = word.substr( 0, nonSpacePos );
-    }
-    else {
+    } else {
       word = word.substr( 0, maxHeadwordSize );
     }
-
-    wordSize = word.size();
   }
+
+  size_t wordSize = word.size();
   const char32_t * wordBegin = word.c_str();
 
-  // Skip any leading whitespace
-  while ( *wordBegin && Folding::isWhitespace( *wordBegin ) ) {
-    ++wordBegin;
+  while ( wordSize > 0 && Folding::isWhitespace( wordBegin[ wordSize - 1 ] ) ) {
     --wordSize;
   }
 
-  // Skip any trailing whitespace
-  while ( wordSize && Folding::isWhitespace( wordBegin[ wordSize - 1 ] ) ) {
-    --wordSize;
+  std::u32string fullWord( wordBegin, wordSize );
+  std::u32string fullFolded = Folding::apply( fullWord );
+  if ( fullFolded.empty() ) {
+    fullFolded = Folding::applyWhitespaceOnly( fullWord );
+  }
+  if ( !fullFolded.empty() ) {
+    string foldedUtf8 = Text::toUtf8( fullFolded );
+    string wordUtf8 = Text::toUtf8( fullWord );
+    (*this)[ foldedUtf8 ].emplace_back( wordUtf8, articleOffset, "" );
   }
 
   const char32_t * nextChar = wordBegin;
+  int wordsAdded = 0;
 
-  vector< char > utfBuffer( wordSize * 4 );
-
-  int wordsAdded = 0; // Number of stored parts
-
-  for ( ;; ) {
-    // Skip any whitespace/punctuation
-    for ( ;; ++nextChar ) {
-      if ( !*nextChar ) // End of string ends everything
-      {
-        if ( wordsAdded == 0 ) {
-          std::u32string folded = Folding::applyWhitespaceOnly( std::u32string( wordBegin, wordSize ) );
-          if ( !folded.empty() ) {
-            auto i = insert( { Text::toUtf8( folded ), vector< WordArticleLink >() } ).first;
-
-            string utfWord = Text::toUtf8( std::u32string( wordBegin, wordSize ) );
-            string utfPrefix;
-            i->second.emplace_back( utfWord, articleOffset, utfPrefix );
-          }
-        }
-        return;
-      }
-
-      if ( !Folding::isWhitespace( *nextChar ) && !Folding::isPunct( *nextChar ) ) {
-        break;
-      }
+  while ( nextChar < wordBegin + wordSize ) {
+    while ( nextChar < wordBegin + wordSize && Folding::isWhitespace( *nextChar ) ) {
+      ++nextChar;
     }
 
-    // Insert this word
-    std::u32string folded = Folding::apply( nextChar );
-    auto name             = Text::toUtf8( folded );
+    if ( nextChar >= wordBegin + wordSize )
+      break;
 
-    auto i = insert( { std::move( name ), vector< WordArticleLink >() } ).first;
-
-    if ( ( i->second.size() < 1024 ) || ( nextChar == wordBegin ) ) // Don't overpopulate chains with middle matches
-    {
-      string utfWord   = Text::toUtf8( std::u32string( nextChar, wordSize - ( nextChar - wordBegin ) ) );
-      string utfPrefix = Text::toUtf8( std::u32string( wordBegin, nextChar - wordBegin ) );
-
-      i->second.emplace_back( std::move( utfWord ), articleOffset, std::move( utfPrefix ) );
-      // reduce the vector reallocation.
-      if ( i->second.size() * 1.0 / i->second.capacity() > 0.75 ) {
-        i->second.reserve( i->second.capacity() * 2 );
-      }
+    const char32_t * wordStart = nextChar;
+    while ( nextChar < wordBegin + wordSize && !Folding::isWhitespace( *nextChar ) ) {
+      ++nextChar;
     }
 
-    wordsAdded += 1;
+    std::u32string currentWord( wordStart, nextChar - wordStart );
+    std::u32string folded = Folding::apply( currentWord );
+    
+    if ( folded.empty() ) {
+      folded = Folding::applyWhitespaceOnly( currentWord );
+    }
 
-    // Skip all non-whitespace/punctuation
-    for ( ++nextChar;; ++nextChar ) {
-      if ( !*nextChar ) {
-        return; // End of string ends everything
-      }
+    if ( !folded.empty() ) {
+      string foldedUtf8 = Text::toUtf8( folded );
+      string wordUtf8 = Text::toUtf8( word );
+      string prefixUtf8 = Text::toUtf8( std::u32string( wordBegin, wordStart - wordBegin ) );
+      
+      auto & chain = (*this)[ foldedUtf8 ];
+      chain.emplace_back( wordUtf8, articleOffset, prefixUtf8 );
+      wordsAdded++;
+    }
+  }
 
-      if ( Folding::isWhitespace( *nextChar ) || Folding::isPunct( *nextChar ) ) {
-        break;
-      }
+  if ( wordsAdded == 0 ) {
+    std::u32string folded = Folding::applyWhitespaceOnly( word.substr( 0, wordSize ) );
+    if ( !folded.empty() ) {
+      string foldedUtf8 = Text::toUtf8( folded );
+      string wordUtf8 = Text::toUtf8( word.substr( 0, wordSize ) );
+      (*this)[ foldedUtf8 ].emplace_back( wordUtf8, articleOffset, "" );
     }
   }
 }
@@ -1028,406 +570,210 @@ void IndexedWords::addSingleWord( const std::u32string & index_word, uint32_t ar
   operator[]( Text::toUtf8( folded ) ).emplace_back( Text::toUtf8( word ), articleOffset );
 }
 
-IndexInfo buildIndex( const IndexedWords & indexedWords, File::Index & file )
-{
-  size_t indexSize = indexedWords.size();
-  auto nextIndex   = indexedWords.begin();
-
-  // Skip any empty words. No point in indexing those, and some dictionaries
-  // are known to have buggy empty-word entries (Stardict's jargon for instance).
-
-  while ( indexSize && nextIndex->first.empty() ) {
-    indexSize--;
-    ++nextIndex;
-  }
-
-  // We try to stick to two-level tree for most dictionaries. Try finding
-  // the right size for it.
-
-  size_t btreeMaxElements = ( (size_t)sqrt( (double)indexSize ) ) + 1;
-
-  if ( btreeMaxElements < BtreeMinElements ) {
-    btreeMaxElements = BtreeMinElements;
-  }
-  else if ( btreeMaxElements > BtreeMaxElements ) {
-    btreeMaxElements = BtreeMaxElements;
-  }
-
-  qDebug( "Building a tree of %u elements", (unsigned)btreeMaxElements );
-
-
-  uint32_t lastLeafOffset = 0;
-
-  uint32_t rootOffset = buildBtreeNode( nextIndex, indexSize, file, btreeMaxElements, lastLeafOffset );
-
-  return IndexInfo( btreeMaxElements, rootOffset );
+static QByteArray serializeLinks(const vector<WordArticleLink>& links) {
+    QByteArray data;
+    QDataStream out(&data, QIODevice::WriteOnly);
+    out.setVersion(QDataStream::Qt_6_0);
+    out << (quint32)links.size();
+    for (const auto& link : links) {
+        out << QString::fromStdString(link.word);
+        out << QString::fromStdString(link.prefix);
+        out << (quint32)link.articleOffset;
+    }
+    return data;
 }
 
-void BtreeIndex::getAllHeadwords( QSet< QString > & headwords )
-{
-  if ( !idxFile ) {
-    throw exIndexWasNotOpened();
-  }
-
-  findArticleLinks( nullptr, nullptr, &headwords );
+static vector<WordArticleLink> deserializeLinks(const QByteArray& data) {
+    vector<WordArticleLink> links;
+    QDataStream in(data);
+    in.setVersion(QDataStream::Qt_6_0);
+    quint32 size;
+    in >> size;
+    links.reserve(size);
+    for (quint32 i = 0; i < size; ++i) {
+        QString word, prefix;
+        quint32 offset;
+        in >> word >> prefix >> offset;
+        links.emplace_back(word.toStdString(), offset, prefix.toStdString());
+    }
+    return links;
 }
 
-void BtreeIndex::findAllArticleLinks( QList< WordArticleLink > & articleLinks )
+IndexInfo buildIndex( const IndexedWords & indexedWords, File::Index & file, const string & suffix )
 {
-  if ( !idxFile ) {
-    throw exIndexWasNotOpened();
-  }
-
-  QSet< uint32_t > offsets;
-
-  findArticleLinks( &articleLinks, &offsets, nullptr );
-}
-
-void BtreeIndex::findArticleLinks( QList< WordArticleLink > * articleLinks,
-                                   QSet< uint32_t > * offsets,
-                                   QSet< QString > * headwords,
-                                   QAtomicInt * isCancelled )
-{
-  uint32_t currentNodeOffset = rootOffset;
-  uint32_t nextLeaf          = 0;
-  uint32_t leafEntries;
-
-  QMutexLocker _( idxFileMutex );
-
-  if ( !rootNodeLoaded ) {
-    // Time to load our root node. We do it only once, at the first request.
-    readNode( rootOffset, rootNode );
-    rootNodeLoaded = true;
-  }
-
-  const char * leaf     = &rootNode.front();
-  const char * leafEnd  = leaf + rootNode.size();
-  const char * chainPtr = nullptr;
-
-  vector< char > extLeaf;
-
-  // Find first leaf
-
-  for ( ;; ) {
-    leafEntries = *(uint32_t *)leaf;
-
-    if ( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) ) {
-      return;
+    qDebug() << "LMDB buildIndex started, entries:" << indexedWords.size() << "suffix:" << QString::fromStdString(suffix);
+    
+    MDB_env *env = nullptr;
+    mdb_env_create(&env);
+    if (!env) {
+        qWarning() << "LMDB env create failed";
+        return IndexInfo(0, 0);
+    }
+    
+    size_t entryCount = indexedWords.size();
+    size_t estimatedSize = entryCount * 250;  // ~125 bytes per entry
+    
+    const size_t minSize = 1 * 1024 * 1024;    // Minimum 1MB
+    const size_t maxSize = 1000 * 1024 * 1024;  // Maximum 100MB
+    
+    if (estimatedSize < minSize) {
+        estimatedSize = minSize;
+    } else if (estimatedSize > maxSize) {
+        estimatedSize = maxSize;
+    }
+    
+    mdb_env_set_mapsize(env, estimatedSize);
+    
+    string lmdbPath = file.file().fileName().toStdString() + suffix + ".lmdb";
+    qDebug() << "LMDB building index at:" << QString::fromStdString(lmdbPath);
+    
+    int rc = mdb_env_open(env, lmdbPath.c_str(), MDB_NOSUBDIR, 0664);
+    if (rc != MDB_SUCCESS) {
+        qWarning() << "LMDB build open failed: " << mdb_strerror(rc);
+        mdb_env_close(env);
+        return IndexInfo(0, 0);
+    }
+    
+    MDB_txn *txn = nullptr;
+    rc = mdb_txn_begin(env, nullptr, 0, &txn);
+    if (rc != MDB_SUCCESS) {
+        qWarning() << "LMDB txn begin failed: " << mdb_strerror(rc);
+        mdb_env_close(env);
+        return IndexInfo(0, 0);
+    }
+    
+    MDB_dbi dbi = 0;
+    rc = mdb_dbi_open(txn, nullptr, MDB_CREATE, &dbi);
+    if (rc != MDB_SUCCESS) {
+        qWarning() << "LMDB dbi open failed: " << mdb_strerror(rc);
+        mdb_txn_abort(txn);
+        mdb_env_close(env);
+        return IndexInfo(0, 0);
     }
 
-    if ( leafEntries == 0xffffFFFF ) {
-      // A node
-      currentNodeOffset = *( (uint32_t *)leaf + 1 );
-      readNode( currentNodeOffset, extLeaf );
-      leaf     = &extLeaf.front();
-      leafEnd  = leaf + extLeaf.size();
-      nextLeaf = idxFile->read< uint32_t >();
-    }
-    else {
-      // A leaf
-      chainPtr = leaf + sizeof( uint32_t );
-      break;
-    }
-  }
+    qDebug() << "LMDB writing" << indexedWords.size() << "entries to index";
 
-  if ( !leafEntries ) {
-    // Empty leaf? This may only be possible for entirely empty trees only.
-    if ( currentNodeOffset != rootOffset ) {
-      throw exCorruptedChainData();
-    }
-    else {
-      return; // No match
-    }
-  }
-
-  // Read all chains
-
-  for ( ;; ) {
-    vector< WordArticleLink > result = readChain( chainPtr );
-
-    for ( auto & i : result ) {
-      if ( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) ) {
-        return;
-      }
-
-      if ( headwords ) {
-        headwords->insert( QString::fromUtf8( ( i.prefix + i.word ).c_str() ) );
-      }
-
-      if ( offsets && offsets->contains( i.articleOffset ) ) {
-        continue;
-      }
-
-      if ( offsets ) {
-        offsets->insert( i.articleOffset );
-      }
-
-      if ( articleLinks ) {
-        articleLinks->push_back( WordArticleLink( i.prefix + i.word, i.articleOffset ) );
-      }
-    }
-
-    if ( chainPtr >= leafEnd ) {
-      // We're past the current leaf, fetch the next one
-
-      if ( nextLeaf ) {
-        readNode( nextLeaf, extLeaf );
-        leaf    = &extLeaf.front();
-        leafEnd = leaf + extLeaf.size();
-
-        nextLeaf = idxFile->read< uint32_t >();
-        chainPtr = leaf + sizeof( uint32_t );
-
-        leafEntries = *(uint32_t *)leaf;
-
-        if ( leafEntries == 0xffffFFFF ) {
-          throw exCorruptedChainData();
+    const int maxRetry = 3;
+    bool writeSuccess = false;
+    int retryCount = 0;
+    
+    do {
+        writeSuccess = true;
+        
+        for (auto it = indexedWords.begin(); it != indexedWords.end() && writeSuccess; ++it) {
+            QByteArray data = serializeLinks(it->second);
+            MDB_val key, val;
+            key.mv_size = it->first.size();
+            key.mv_data = (void*)it->first.c_str();
+            val.mv_size = data.size();
+            val.mv_data = (void*)data.constData();
+            
+            int rcPut = mdb_put(txn, dbi, &key, &val, 0);
+            if (rcPut != MDB_SUCCESS) {
+                if (rcPut == MDB_MAP_FULL && retryCount < maxRetry) {
+                    qWarning() << "LMDB mdb_put failed: MDB_MAP_FULL, expanding mapsize and retrying";
+                    mdb_txn_abort(txn);
+                    mdb_env_close(env);
+                    
+                    estimatedSize *= 2;
+                    if (estimatedSize > maxSize) {
+                        estimatedSize = maxSize;
+                    }
+                    
+                    qDebug() << "LMDB expanding mapsize to" << estimatedSize;
+                    
+                    mdb_env_create(&env);
+                    mdb_env_set_mapsize(env, estimatedSize);
+                    
+                    rc = mdb_env_open(env, lmdbPath.c_str(), MDB_NOSUBDIR, 0664);
+                    if (rc != MDB_SUCCESS) {
+                        qWarning() << "LMDB re-open failed after expansion: " << mdb_strerror(rc);
+                        mdb_env_close(env);
+                        QFile::remove(QString::fromStdString(lmdbPath));
+                        return IndexInfo(0, 0, suffix);
+                    }
+                    
+                    rc = mdb_txn_begin(env, nullptr, 0, &txn);
+                    if (rc != MDB_SUCCESS) {
+                        qWarning() << "LMDB txn begin failed after expansion: " << mdb_strerror(rc);
+                        mdb_env_close(env);
+                        QFile::remove(QString::fromStdString(lmdbPath));
+                        return IndexInfo(0, 0, suffix);
+                    }
+                    
+                    rc = mdb_dbi_open(txn, nullptr, MDB_CREATE, &dbi);
+                    if (rc != MDB_SUCCESS) {
+                        qWarning() << "LMDB dbi open failed after expansion: " << mdb_strerror(rc);
+                        mdb_txn_abort(txn);
+                        mdb_env_close(env);
+                        QFile::remove(QString::fromStdString(lmdbPath));
+                        return IndexInfo(0, 0, suffix);
+                    }
+                    
+                    retryCount++;
+                    writeSuccess = false;
+                } else {
+                    qWarning() << "LMDB mdb_put failed: " << mdb_strerror(rcPut);
+                    mdb_txn_abort(txn);
+                    mdb_env_close(env);
+                    QFile::remove(QString::fromStdString(lmdbPath));
+                    return IndexInfo(0, 0, suffix);
+                }
+            }
         }
-      }
-      else {
-        break; // That was the last leaf
-      }
+    } while (!writeSuccess && retryCount <= maxRetry);
+
+    qDebug() << "LMDB preparing to commit transaction";
+    
+    int rcCommit = mdb_txn_commit(txn);
+    if (rcCommit != MDB_SUCCESS) {
+        qWarning() << "LMDB txn commit failed: " << mdb_strerror(rcCommit);
+        qWarning() << "LMDB error details:";
+        qWarning() << "  - entries:" << indexedWords.size();
+        qWarning() << "  - estimatedSize:" << estimatedSize;
+        qWarning() << "  - lmdbPath:" << QString::fromStdString(lmdbPath);
+        
+        mdb_env_close(env);
+        QFile::remove(QString::fromStdString(lmdbPath));
+        return IndexInfo(0, 0, suffix);
     }
-  }
-}
+    
+    qDebug() << "LMDB txn committed successfully";
+    
+    MDB_stat stat;
+    mdb_env_stat(env, &stat);
+    
+    mdb_env_close(env);
 
-void BtreeIndex::findHeadWords( QList< uint32_t > offsets, int & index, QSet< QString > * headwords, uint32_t length )
-{
-  for ( auto begin = offsets.begin() + index; begin != offsets.end(); begin++ ) {
-    findSingleNodeHeadwords( *begin, headwords );
-    index++;
-
-    if ( headwords->size() >= length ) {
-      break;
-    }
-  }
-}
-
-void BtreeIndex::findSingleNodeHeadwords( uint32_t offsets, QSet< QString > * headwords )
-{
-  uint32_t currentNodeOffset = offsets;
-
-  QMutexLocker _( idxFileMutex );
-
-  const char * leaf     = nullptr;
-  const char * leafEnd  = nullptr;
-  const char * chainPtr = nullptr;
-
-  vector< char > extLeaf;
-
-  // A node
-  readNode( currentNodeOffset, extLeaf );
-  leaf    = &extLeaf.front();
-  leafEnd = leaf + extLeaf.size();
-
-  // A leaf
-  chainPtr = leaf + sizeof( uint32_t );
-
-  for ( ;; ) {
-    vector< WordArticleLink > result = readChain( chainPtr );
-
-    if ( headwords ) {
-      for ( auto & i : result ) {
-        // Only add when prefix is empty
-        if ( i.prefix.empty() ) {
-          headwords->insert( QString::fromUtf8( ( i.prefix + i.word ).c_str() ) );
+    string tempPath = lmdbPath + "_compact";
+    qDebug() << "LMDB compacting from" << QString::fromStdString(lmdbPath) << "to" << QString::fromStdString(tempPath);
+    
+    MDB_env *envCopy = nullptr;
+    mdb_env_create(&envCopy);
+    
+    qDebug() << "LMDB compact - pagesize:" << stat.ms_psize 
+             << ", entries:" << stat.ms_entries;
+    
+    int rcCopy = mdb_env_open(envCopy, lmdbPath.c_str(), MDB_RDONLY | MDB_NOSUBDIR, 0664);
+    if (rcCopy == MDB_SUCCESS) {
+        QFile::remove(QString::fromStdString(tempPath));
+        
+        rcCopy = mdb_env_copy2(envCopy, tempPath.c_str(), MDB_CP_COMPACT);
+        mdb_env_close(envCopy);
+        
+        if (rcCopy == MDB_SUCCESS) {
+            QFile::remove(QString::fromStdString(lmdbPath));
+            QFile::rename(QString::fromStdString(tempPath), QString::fromStdString(lmdbPath));
+            qDebug() << "LMDB compact succeeded";
+        } else {
+            qWarning() << "LMDB compact failed: " << mdb_strerror(rcCopy);
         }
-      }
+    } else {
+        qWarning() << "LMDB open for compact failed: " << mdb_strerror(rcCopy);
+        mdb_env_close(envCopy);
     }
-
-    if ( chainPtr >= leafEnd ) {
-      break; // That was the last leaf
-    }
-  }
+    
+    return IndexInfo(0, 0, suffix);
 }
-
-//find the next chain ptr ,which is larger than this currentChainPtr
-QList< uint32_t > BtreeIndex::findNodes()
-{
-  QMutexLocker _( idxFileMutex );
-
-  if ( !rootNodeLoaded ) {
-    // Time to load our root node. We do it only once, at the first request.
-    readNode( rootOffset, rootNode );
-    rootNodeLoaded = true;
-  }
-
-  const char * leaf = &rootNode.front();
-  QList< uint32_t > leafOffset;
-
-  uint32_t leafEntries;
-  leafEntries = *(uint32_t *)leaf;
-  if ( leafEntries != 0xffffFFFF ) {
-    leafOffset.append( rootOffset );
-    return leafOffset;
-  }
-
-  // the current the btree's implementation has the  height = 2.
-
-  // A node offset
-  uint32_t * offsets = (uint32_t *)leaf + 1;
-  uint32_t i         = 0;
-
-  while ( i++ < ( indexNodeSize + 1 ) ) {
-    leafOffset.append( *( offsets++ ) );
-  }
-
-  return leafOffset;
-}
-
-void BtreeIndex::getHeadwordsFromOffsets( QList< uint32_t > & offsets,
-                                          QList< QString > & headwords,
-                                          QAtomicInt * isCancelled )
-{
-  uint32_t currentNodeOffset = rootOffset;
-  uint32_t nextLeaf          = 0;
-  uint32_t leafEntries;
-
-  std::sort( offsets.begin(), offsets.end() );
-
-  QMutexLocker _( idxFileMutex );
-
-  if ( !rootNodeLoaded ) {
-    // Time to load our root node. We do it only once, at the first request.
-    readNode( rootOffset, rootNode );
-    rootNodeLoaded = true;
-  }
-
-  const char * leaf     = &rootNode.front();
-  const char * leafEnd  = leaf + rootNode.size();
-  const char * chainPtr = nullptr;
-
-  vector< char > extLeaf;
-
-  // Find first leaf
-
-  for ( ;; ) {
-    leafEntries = *(uint32_t *)leaf;
-
-    if ( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) ) {
-      return;
-    }
-
-    if ( leafEntries == 0xffffFFFF ) {
-      // A node
-      currentNodeOffset = *( (uint32_t *)leaf + 1 );
-      readNode( currentNodeOffset, extLeaf );
-      leaf     = &extLeaf.front();
-      leafEnd  = leaf + extLeaf.size();
-      nextLeaf = idxFile->read< uint32_t >();
-    }
-    else {
-      // A leaf
-      chainPtr = leaf + sizeof( uint32_t );
-      break;
-    }
-  }
-
-  if ( !leafEntries ) {
-    // Empty leaf? This may only be possible for entirely empty trees only.
-    if ( currentNodeOffset != rootOffset ) {
-      throw exCorruptedChainData();
-    }
-    else {
-      return; // No match
-    }
-  }
-
-  // Read all chains
-
-  QList< uint32_t >::Iterator begOffsets = offsets.begin();
-  QList< uint32_t >::Iterator endOffsets = offsets.end();
-
-  for ( ;; ) {
-    vector< WordArticleLink > result = readChain( chainPtr );
-
-    for ( auto & i : result ) {
-      uint32_t articleOffset = i.articleOffset;
-
-      QList< uint32_t >::Iterator it = std::lower_bound( begOffsets, endOffsets, articleOffset );
-
-      if ( it != offsets.end() && *it == articleOffset ) {
-        if ( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) ) {
-          return;
-        }
-
-        auto word = QString::fromUtf8( ( i.prefix + i.word ).c_str() );
-
-        if ( headwords.indexOf( word ) == -1 ) {
-          headwords.append( word );
-        }
-        offsets.erase( it );
-        begOffsets = offsets.begin();
-        endOffsets = offsets.end();
-      }
-
-      if ( offsets.isEmpty() ) {
-        break;
-      }
-    }
-
-    if ( offsets.isEmpty() ) {
-      break;
-    }
-
-    if ( chainPtr >= leafEnd ) {
-      // We're past the current leaf, fetch the next one
-
-      if ( nextLeaf ) {
-        readNode( nextLeaf, extLeaf );
-        leaf    = &extLeaf.front();
-        leafEnd = leaf + extLeaf.size();
-
-        nextLeaf = idxFile->read< uint32_t >();
-        chainPtr = leaf + sizeof( uint32_t );
-
-        leafEntries = *(uint32_t *)leaf;
-
-        if ( leafEntries == 0xffffFFFF ) {
-          throw exCorruptedChainData();
-        }
-      }
-      else {
-        break; // That was the last leaf
-      }
-    }
-  }
-}
-
-bool BtreeDictionary::getHeadwords( QStringList & headwords )
-{
-  QSet< QString > setOfHeadwords;
-
-  headwords.clear();
-  setOfHeadwords.reserve( getWordCount() );
-
-  try {
-    getAllHeadwords( setOfHeadwords );
-
-    if ( setOfHeadwords.size() ) {
-      headwords.reserve( setOfHeadwords.size() );
-
-      QSet< QString >::const_iterator it  = setOfHeadwords.constBegin();
-      QSet< QString >::const_iterator end = setOfHeadwords.constEnd();
-
-      for ( ; it != end; ++it ) {
-        headwords.append( *it );
-      }
-    }
-  }
-  catch ( std::exception & ex ) {
-    qWarning( "Failed headwords retrieving for \"%s\", reason: %s", getName().c_str(), ex.what() );
-  }
-
-  return headwords.size() > 0;
-}
-
-void BtreeDictionary::findHeadWordsWithLenth( int & index, QSet< QString > * headwords, uint32_t length )
-{
-  auto leafNodeOffsets = findNodes();
-  findHeadWords( leafNodeOffsets, index, headwords, length );
-}
-
-void BtreeDictionary::getArticleText( uint32_t, QString &, QString & ) {}
 
 } // namespace BtreeIndexing

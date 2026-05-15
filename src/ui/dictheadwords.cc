@@ -307,8 +307,8 @@ void DictHeadwords::exportAllWords( QProgressDialog & progress, QTextStream & ou
 
   int totalCount = 0;
   // Continue to write the remaining headwords in batches
-  int nodeIndex  = 0;
-  auto headwords = model->getRemainRows( nodeIndex );
+  QString lastWord;
+  auto headwords = model->getRemainRows( lastWord );
   while ( !headwords.isEmpty() ) {
     if ( progress.wasCanceled() ) {
       break;
@@ -322,7 +322,7 @@ void DictHeadwords::exportAllWords( QProgressDialog & progress, QTextStream & ou
     }
 
 
-    headwords = model->getRemainRows( nodeIndex );
+    headwords = model->getRemainRows( lastWord );
   }
 }
 

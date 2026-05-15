@@ -1260,7 +1260,16 @@ void MainWindow::commitData()
     const QFileInfoList entries = dir.entryInfoList( QDir::Files | QDir::NoDotAndDotDot );
 
     for ( auto & file : entries ) {
-      const QString fileName = file.fileName();
+      QString fileName = file.fileName();
+
+      if (fileName.endsWith(".lmdb")) {
+        fileName.chop(5);
+      } else if (fileName.endsWith("-lock")) {
+        fileName.chop(5);
+        if (fileName.endsWith(".lmdb")) {
+          fileName.chop(5);
+        }
+      }
 
       if ( dictMap.contains( fileName.toStdString() ) ) {
         continue;
@@ -1270,12 +1279,16 @@ void MainWindow::commitData()
       qDebug() << "remove invalid index files & fts dirs";
 
       QFile::remove( filePath );
-      QDir d( filePath + "_FTS_x" );
+      
+      // Use normalized fileName for FTS cleanup
+      QString baseFilePath = file.absoluteDir().absoluteFilePath(fileName);
+      
+      QDir d( baseFilePath + "_FTS_x" );
       if ( d.exists() ) {
         d.removeRecursively();
       }
       //temp dir
-      QDir dtemp( filePath + "_FTS_x_temp" );
+      QDir dtemp( baseFilePath + "_FTS_x_temp" );
       if ( dtemp.exists() ) {
         dtemp.removeRecursively();
       }

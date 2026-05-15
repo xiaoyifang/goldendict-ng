@@ -14,7 +14,8 @@
     "zlib",
     "openssl",
     "fmt",
-    "tomlplusplus"
+    "tomlplusplus",
+    "lmdb"
   ],
   "features": {
     "breakpad": {

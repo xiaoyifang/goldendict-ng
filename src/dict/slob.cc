@@ -72,6 +72,7 @@ struct IdxHeader
   quint32 articleCount;
   quint32 langFrom; // Source language
   quint32 langTo;   // Target language
+  char resourceIndexSuffix[ 64 ]; // Suffix for the resource index LMDB file
 };
 static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
@@ -694,7 +695,12 @@ SlobDictionary::SlobDictionary( const string & id, const string & indexFile, con
 
   openIndex( IndexInfo( idxHeader.indexBtreeMaxElements, idxHeader.indexRootOffset ), idx, idxMutex );
 
-  resourceIndex.openIndex( IndexInfo( idxHeader.resourceIndexBtreeMaxElements, idxHeader.resourceIndexRootOffset ),
+  string resourceSuffix( idxHeader.resourceIndexSuffix );
+  if ( resourceSuffix.empty() ) {
+    resourceSuffix = "_resource";  // Backward compatibility for old indexes
+  }
+  resourceIndex.openIndex( IndexInfo( idxHeader.resourceIndexBtreeMaxElements, idxHeader.resourceIndexRootOffset,
+                                       resourceSuffix ),
                            idx,
                            idxResourceMutex );
 
@@ -1325,10 +1331,14 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
         }
 
         {
-          IndexInfo idxInfo = BtreeIndexing::buildIndex( indexedResources, idx );
+          IndexInfo idxInfo = BtreeIndexing::buildIndex( indexedResources, idx, "_resource" );
 
           idxHeader.resourceIndexBtreeMaxElements = idxInfo.btreeMaxElements;
           idxHeader.resourceIndexRootOffset       = idxInfo.rootOffset;
+          memset( idxHeader.resourceIndexSuffix, 0, sizeof( idxHeader.resourceIndexSuffix ) );
+          if ( !idxInfo.suffix.empty() ) {
+            strncpy( idxHeader.resourceIndexSuffix, idxInfo.suffix.c_str(), sizeof( idxHeader.resourceIndexSuffix ) - 1 );
+          }
 
           indexedResources.clear(); // Release memory -- no need for this data
         }
