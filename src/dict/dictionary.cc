@@ -562,28 +562,13 @@ qsizetype findMatchingBracket( const QString & css, qsizetype startPos )
 string makeDictionaryId( const vector< string > & dictionaryFiles ) noexcept
 {
   std::vector< string > sortedList;
+  sortedList.reserve( dictionaryFiles.size() );
 
-  if ( Config::isPortableVersion() ) {
-    // For portable version, we use relative paths
-    sortedList.reserve( dictionaryFiles.size() );
-
-    const QDir dictionariesDir( Config::getPortableVersionDictionaryDir() );
-
-    for ( const auto & full : dictionaryFiles ) {
-      QFileInfo fileInfo( QString::fromStdString( full ) );
-
-      if ( fileInfo.isAbsolute() ) {
-        sortedList.push_back( dictionariesDir.relativeFilePath( fileInfo.filePath() ).toStdString() );
-      }
-      else {
-        // Well, it's relative. We don't technically support those, but
-        // what the heck
-        sortedList.push_back( full );
-      }
-    }
-  }
-  else {
-    sortedList = dictionaryFiles;
+  for ( const auto & full : dictionaryFiles ) {
+    QFileInfo fileInfo( QString::fromStdString( full ) );
+    QString dirName  = fileInfo.dir().dirName();
+    QString baseName = fileInfo.fileName();
+    sortedList.push_back( ( dirName + "/" + baseName ).toStdString() );
   }
 
   std::sort( sortedList.begin(), sortedList.end() );
@@ -591,7 +576,6 @@ string makeDictionaryId( const vector< string > & dictionaryFiles ) noexcept
   QCryptographicHash hash( QCryptographicHash::Md5 );
 
   for ( const auto & i : sortedList ) {
-    // Note: a null byte at the end is a must
     hash.addData( { i.c_str(), static_cast< qsizetype >( i.size() + 1 ) } );
   }
 
