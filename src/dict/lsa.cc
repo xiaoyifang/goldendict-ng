@@ -54,18 +54,14 @@ struct IdxHeader
   uint32_t vorbisOffset;          // Offset of the vorbis file which contains all snds
   uint32_t indexBtreeMaxElements; // Two fields from IndexInfo
   uint32_t indexRootOffset;
+  uint64_t sourceLastModified;
 };
 static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
 
-bool indexIsOldOrBad( string const & indexFile )
+bool indexIsOldOrBad( const string & indexFile, const vector< string > & dictFiles )
 {
-  File::Index idx( indexFile, QIODevice::ReadOnly );
-
-  IdxHeader header;
-
-  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
-    || header.formatVersion != CurrentFormatVersion;
+  return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile, dictFiles, Signature, CurrentFormatVersion );
 }
 
 string stripExtension( const string & str )
@@ -533,7 +529,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
       string indexFile = indicesDir + dictId;
 
-      if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
+      if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile, dictFiles ) ) {
         // Building the index
 
         qDebug( "Lsa: Building the index for dictionary: %s", i->c_str() );
@@ -601,6 +597,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
         idxHeader.signature     = Signature;
         idxHeader.formatVersion = CurrentFormatVersion;
+
+        idxHeader.sourceLastModified = BtreeIndexing::computeSourceLastModified( dictFiles );
 
         idx.rewind();
 

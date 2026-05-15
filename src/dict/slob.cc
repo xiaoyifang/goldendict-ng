@@ -73,6 +73,7 @@ struct IdxHeader
   quint32 langFrom; // Source language
   quint32 langTo;   // Target language
   char resourceIndexSuffix[ 64 ]; // Suffix for the resource index LMDB file
+  uint64_t sourceLastModified;
 };
 static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
@@ -87,14 +88,9 @@ struct RefEntry
   QString fragment;
 };
 
-bool indexIsOldOrBad( const string & indexFile )
+bool indexIsOldOrBad( const string & indexFile, const vector< string > & dictFiles )
 {
-  File::Index idx( indexFile, QIODevice::ReadOnly );
-
-  IdxHeader header;
-
-  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
-    || header.formatVersion != CurrentFormatVersion;
+  return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile, dictFiles, Signature, CurrentFormatVersion );
 }
 
 
@@ -1260,7 +1256,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
     string indexFile = indicesDir + dictId;
 
     try {
-      if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
+      if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile, dictFiles ) ) {
         SlobFile sf;
 
         qDebug( "Slob: Building the index for dictionary: %s", fileName.c_str() );
@@ -1353,6 +1349,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
         idxHeader.langFrom = langs.first;
         idxHeader.langTo   = langs.second;
+
+        idxHeader.sourceLastModified = BtreeIndexing::computeSourceLastModified( dictFiles );
 
         idx.rewind();
 

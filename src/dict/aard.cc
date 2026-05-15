@@ -87,18 +87,14 @@ struct IdxHeader
   quint32 articleCount;
   quint32 langFrom; // Source language
   quint32 langTo;   // Target language
+  uint64_t sourceLastModified;
 };
 static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
 
-bool indexIsOldOrBad( string const & indexFile )
+bool indexIsOldOrBad( const string & indexFile, const vector< string > & dictFiles )
 {
-  File::Index idx( indexFile, QIODevice::ReadOnly );
-
-  IdxHeader header;
-
-  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
-    || header.formatVersion != CurrentFormatVersion;
+  return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile, dictFiles, Signature, CurrentFormatVersion );
 }
 
 void readJSONValue( const string & source, string & str, string::size_type & pos )
@@ -769,7 +765,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
     string indexFile = indicesDir + dictId;
 
-    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
+    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile, dictFiles ) ) {
       try {
 
         qDebug( "Aard: Building the index for dictionary: %s", fileName.c_str() );
@@ -963,6 +959,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
         }
 
         idx.rewind();
+
+        idxHeader.sourceLastModified = BtreeIndexing::computeSourceLastModified( dictFiles );
 
         idx.write( &idxHeader, sizeof( idxHeader ) );
       }

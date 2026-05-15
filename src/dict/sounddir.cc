@@ -45,18 +45,14 @@ struct IdxHeader
   uint32_t dirTimestampsOffset;   // Offset to directory timestamps map
   uint32_t indexBtreeMaxElements; // Two fields from IndexInfo
   uint32_t indexRootOffset;
+  uint64_t sourceLastModified;
 };
 static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
 
-bool indexIsOldOrBad( string const & indexFile )
+bool indexIsOldOrBad( const string & indexFile, const vector< string > & dictFiles )
 {
-  File::Index idx( indexFile, QIODevice::ReadOnly );
-
-  IdxHeader header;
-
-  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
-    || header.formatVersion != CurrentFormatVersion;
+  return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile, dictFiles, Signature, CurrentFormatVersion );
 }
 
 class SoundDirDictionary: public BtreeIndexing::BtreeDictionary
@@ -442,7 +438,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const Config::SoundDirs & 
 
     bool rebuildNeeded;
 
-    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
+    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile, dictFiles ) ) {
       rebuildNeeded = true;
     }
     else {
@@ -564,6 +560,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const Config::SoundDirs & 
 
       idxHeader.signature     = Signature;
       idxHeader.formatVersion = CurrentFormatVersion;
+
+      idxHeader.sourceLastModified = BtreeIndexing::computeSourceLastModified( dictFiles );
 
       idx.rewind();
 

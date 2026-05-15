@@ -109,28 +109,7 @@ static_assert( alignof( IdxHeader ) == 1 );
 
 bool indexIsOldOrBad( const string & indexFile, const vector< string > & dictFiles )
 {
-  File::Index idx( indexFile, QIODevice::ReadOnly );
-
-  IdxHeader header;
-
-  if ( idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
-       || header.formatVersion != CurrentFormatVersion ) {
-    return true;
-  }
-
-  // Check if any of the dictionary files were modified after the index was built
-  qint64 lastModified = 0;
-  for ( const auto & dictionaryFile : dictFiles ) {
-    QFileInfo fileInfo( QString::fromUtf8( dictionaryFile.c_str() ) );
-    if ( fileInfo.exists() ) {
-      qint64 ts = fileInfo.lastModified().toMSecsSinceEpoch();
-      if ( ts > lastModified ) {
-        lastModified = ts;
-      }
-    }
-  }
-
-  return header.sourceLastModified != (uint64_t)lastModified;
+  return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile, dictFiles, Signature, CurrentFormatVersion );
 }
 
 class StardictDictionary: public BtreeIndexing::BtreeDictionary
@@ -1966,18 +1945,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
         idx.write( idxHeader );
 
-        // Compute and store the source last modified timestamp
-        qint64 lastModified = 0;
-        for ( const auto & dictionaryFile : dictFiles ) {
-          QFileInfo fileInfo( QString::fromUtf8( dictionaryFile.c_str() ) );
-          if ( fileInfo.exists() ) {
-            qint64 ts = fileInfo.lastModified().toMSecsSinceEpoch();
-            if ( ts > lastModified ) {
-              lastModified = ts;
-            }
-          }
-        }
-        idxHeader.sourceLastModified = (uint64_t)lastModified;
+        idxHeader.sourceLastModified = BtreeIndexing::computeSourceLastModified( dictFiles );
 
         idx.write( ifo.bookname.data(), ifo.bookname.size() );
         idx.write( ifo.sametypesequence.data(), ifo.sametypesequence.size() );

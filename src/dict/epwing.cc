@@ -51,18 +51,14 @@ struct IdxHeader
   quint32 nameSize;
   quint32 langFrom; // Source language
   quint32 langTo;   // Target language
+  uint64_t sourceLastModified;
 };
 static_assert( alignof( IdxHeader ) == 1 );
   #pragma pack( pop )
 
-bool indexIsOldOrBad( string const & indexFile )
+bool indexIsOldOrBad( const string & indexFile, const vector< string > & dictFiles )
 {
-  File::Index idx( indexFile, QIODevice::ReadOnly );
-
-  IdxHeader header;
-
-  return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
-    || header.formatVersion != CurrentFormatVersion;
+  return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile, dictFiles, Signature, CurrentFormatVersion );
 }
 class EpwingHeadwordsRequest;
 
@@ -1159,7 +1155,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
         string indexFile = indicesDir + dictId;
 
-        if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
+        if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile, dictFiles ) ) {
           qDebug( "Epwing: Building the index for dictionary in directory %s", dir.toUtf8().data() );
 
           QString str         = dict.title();
@@ -1231,6 +1227,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
           idxHeader.articleCount = articleCount;
 
           idx.rewind();
+
+          idxHeader.sourceLastModified = BtreeIndexing::computeSourceLastModified( dictFiles );
 
           idx.write( &idxHeader, sizeof( idxHeader ) );
 

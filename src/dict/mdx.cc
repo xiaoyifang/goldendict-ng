@@ -1407,30 +1407,16 @@ private:
 };
 
 
-static bool indexIsOldOrBad( const vector< string > & dictFiles, const string & indexFile )
+static bool indexIsOldOrBad( const string & indexFile, const vector< string > & dictFiles )
 {
-  File::Index idx( indexFile, QIODevice::ReadOnly );
-  IdxHeader header;
-
-  if ( idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != kSignature
-       || header.formatVersion != kCurrentFormatVersion || header.parserVersion != MdictParser::kParserVersion
-       || header.foldingVersion != Folding::Version ) {
-    return true;
-  }
-
-  // Check if any of the dictionary files were modified after the index was built
-  qint64 lastModified = 0;
-  for ( const auto & dictionaryFile : dictFiles ) {
-    QFileInfo fileInfo( QString::fromUtf8( dictionaryFile.c_str() ) );
-    if ( fileInfo.exists() ) {
-      qint64 ts = fileInfo.lastModified().toMSecsSinceEpoch();
-      if ( ts > lastModified ) {
-        lastModified = ts;
-      }
-    }
-  }
-
-  return header.sourceLastModified != (uint64_t)lastModified;
+  auto extraCheck = []( const IdxHeader & h ) -> bool {
+    return h.parserVersion == MdictParser::kParserVersion && h.foldingVersion == Folding::Version;
+  };
+  return BtreeIndexing::indexIsOldOrBad< IdxHeader >( indexFile,
+                                                      dictFiles,
+                                                      kSignature,
+                                                      kCurrentFormatVersion,
+                                                      &extraCheck );
 }
 
 static void findResourceFiles( const string & mdx, vector< string > & dictFiles )
@@ -1477,7 +1463,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
     string dictId    = Dictionary::makeDictionaryId( dictFiles );
     string indexFile = indicesDir + dictId;
 
-    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( dictFiles, indexFile ) ) {
+    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile, dictFiles ) ) {
       // Building the index
 
       qDebug( "MDict: Building the index for dictionary: %s", fileName.c_str() );
@@ -1640,18 +1626,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
       idxHeader.articleCount   = parser.wordCount();
       idxHeader.wordCount      = parser.wordCount();
 
-      // Compute and store the source last modified timestamp
-      qint64 lastModified = 0;
-      for ( const auto & dictionaryFile : dictFiles ) {
-        QFileInfo fileInfo( QString::fromUtf8( dictionaryFile.c_str() ) );
-        if ( fileInfo.exists() ) {
-          qint64 ts = fileInfo.lastModified().toMSecsSinceEpoch();
-          if ( ts > lastModified ) {
-            lastModified = ts;
-          }
-        }
-      }
-      idxHeader.sourceLastModified = (uint64_t)lastModified;
+      idxHeader.sourceLastModified = BtreeIndexing::computeSourceLastModified( dictFiles );
 
       idx.rewind();
       idx.write( &idxHeader, sizeof( idxHeader ) );

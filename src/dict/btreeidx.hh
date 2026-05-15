@@ -12,6 +12,8 @@
 #include <QFuture>
 #include <QList>
 #include <lmdb.h>
+#include <QFileInfo>
+#include <type_traits>
 
 
 /// A base for the dictionary which creates a btree index to look up
@@ -36,6 +38,75 @@ enum {
 DEF_EX( exIndexWasNotOpened, "The index wasn't opened", Dictionary::Ex )
 DEF_EX( exFailedToDecompressNode, "Failed to decompress a btree's node", Dictionary::Ex )
 DEF_EX( exCorruptedChainData, "Corrupted chain data in the leaf of a btree encountered", Dictionary::Ex )
+
+/// Checks whether the index file's header is old or corrupted.
+/// Returns true if the index needs to be rebuilt.
+/// This reads the header from the index file and validates:
+///   1. The file can be read and header size matches
+///   2. The signature matches the expected value
+///   3. The formatVersion matches the expected value
+///   4. The sourceLastModified timestamp (at the end of the header) matches
+///      the current dictionary files' maximum modification time
+///   5. Any additional validation via the extraCheck callback
+///
+/// Template parameters:
+///   IdxHeader - the dictionary-specific header struct (must start with signature and formatVersion)
+///   ExtraCheckFn - optional callable for additional version checks (e.g. parserVersion, foldingVersion)
+///
+/// The IdxHeader struct's LAST field must be `uint64_t sourceLastModified`.
+template< typename IdxHeader, typename ExtraCheckFn = void * >
+bool indexIsOldOrBad( const string & indexFile,
+                      const vector< string > & dictFiles,
+                      uint32_t expectedSignature,
+                      uint32_t expectedFormatVersion,
+                      ExtraCheckFn * extraCheck = nullptr )
+{
+  File::Index idx( indexFile, QIODevice::ReadOnly );
+  IdxHeader header;
+
+  if ( idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != expectedSignature
+       || header.formatVersion != expectedFormatVersion ) {
+    return true;
+  }
+
+  // Run any extra validation (e.g. parserVersion, foldingVersion, hasZipFile, etc.)
+  if constexpr ( !std::is_same_v< ExtraCheckFn, void * > ) {
+    if ( extraCheck && !( *extraCheck )( header ) ) {
+      return true;
+    }
+  }
+
+  // Check if any of the dictionary files were modified after the index was built
+  qint64 lastModified = 0;
+  for ( const auto & dictionaryFile : dictFiles ) {
+    QFileInfo fileInfo( QString::fromUtf8( dictionaryFile.c_str() ) );
+    if ( fileInfo.exists() ) {
+      qint64 ts = fileInfo.lastModified().toMSecsSinceEpoch();
+      if ( ts > lastModified ) {
+        lastModified = ts;
+      }
+    }
+  }
+
+  return header.sourceLastModified != (uint64_t)lastModified;
+}
+
+/// Computes the maximum lastModified timestamp from the given dictionary files.
+/// This should be called when building the index and the result stored in IdxHeader::sourceLastModified.
+inline uint64_t computeSourceLastModified( const vector< string > & dictFiles )
+{
+  qint64 lastModified = 0;
+  for ( const auto & dictionaryFile : dictFiles ) {
+    QFileInfo fileInfo( QString::fromUtf8( dictionaryFile.c_str() ) );
+    if ( fileInfo.exists() ) {
+      qint64 ts = fileInfo.lastModified().toMSecsSinceEpoch();
+      if ( ts > lastModified ) {
+        lastModified = ts;
+      }
+    }
+  }
+  return (uint64_t)lastModified;
+}
 
 /// This structure describes a word linked to its translation. The
 /// translation is represented as an abstract 32-bit offset.
