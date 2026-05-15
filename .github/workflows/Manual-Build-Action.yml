@@ -41,6 +41,7 @@ jobs:
             libogg \
             libvorbis \
             libzim \
+            lmdb \
             lzip \
             ninja \
             ccache \

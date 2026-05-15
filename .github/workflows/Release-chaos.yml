@@ -41,6 +41,7 @@ jobs:
             libogg \
             libvorbis \
             libzim \
+            lmdb \
             lzip \
             ninja \
             ccache \
@@ -178,9 +179,6 @@ jobs:
         id: changelogTags
         run: |
           previousTag=$(git tag --sort=-creatordate | grep "_chaos" | grep -v -e "vcpkg" | head -n 1)
-          if [ -z "$previousTag" ]; then
-            previousTag=$(git tag --sort=-creatordate | grep "^v" | head -n 1)
-          fi
           echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
           echo "previousTag : $previousTag"
       - name: Build Changelog
