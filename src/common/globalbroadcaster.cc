@@ -189,6 +189,11 @@ sptr< Dictionary::Class > GlobalBroadcaster::getDictionaryById( const QString & 
   return dictMap.value( dictId );
 }
 
+void GlobalBroadcaster::clearDictMap()
+{
+  dictMap.clear();
+}
+
 void GlobalBroadcaster::setGroups( Instances::Groups * _groups )
 {
   groups = _groups;

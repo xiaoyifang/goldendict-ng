@@ -221,6 +221,7 @@ void loadDictionaries( QWidget * parent,
                        QNetworkAccessManager & dictNetMgr,
                        bool doDeferredInit_ )
 {
+  GlobalBroadcaster::instance()->clearDictMap();
   dictionaries.clear();
 
   bool showSplashWindow = !cfg.preferences.enableTrayIcon || !cfg.preferences.startToTray;
