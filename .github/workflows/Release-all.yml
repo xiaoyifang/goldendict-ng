@@ -152,7 +152,7 @@ jobs:
 
           # note the name will ensure `installer` ranked higher after sorting
           cd ./build_dir
-          mv "${namePrefix}.7z" "${namePrefix}-Windows-installer.7z"
+          mv "${namePrefix}.7z" "${namePrefix}-Windows.7z"
           mv "${namePrefix}.exe" "${namePrefix}-Windows-installer.exe"
           mv ./goldendict/goldendict.exe "./${namePrefix}-Windows-exe-only.exe"
           mv ./goldendict/goldendict.pdb "./${namePrefix}-Windows-pdb.pdb"
@@ -187,10 +187,10 @@ jobs:
           if [[ '${{env.prerelease}}' == 'true' ]]
           then
             echo "This is a pre-release"
-            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v -e "Release" -e "vcpkg" | head -n 1)
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v -e "Release" -e "vcpkg" -e "chaos" | head -n 1)
           else
             echo "This is not a pre-release"
-            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v -e "alpha" -e "vcpkg" | head -n 1)
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v -e "alpha" -e "vcpkg" -e "chaos" | head -n 1)
           fi
 
           echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
