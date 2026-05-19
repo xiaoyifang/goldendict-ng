@@ -51,6 +51,7 @@ public:
   void setAllDictionaries( std::vector< sptr< Dictionary::Class > > * _allDictionaries );
   const std::vector< sptr< Dictionary::Class > > * getAllDictionaries() const;
   sptr< Dictionary::Class > getDictionaryById( const QString & dictId );
+  void clearDictMap();
   void setGroups( Instances::Groups * _groups );
   const Instances::Groups * getGroups() const;
   void addLsaDictMapping( const QString & dictId, const QString & path );

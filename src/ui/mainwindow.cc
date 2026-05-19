@@ -2262,6 +2262,8 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
 
       cfg = newCfg;
 
+      dictMap = Dictionary::dictToMap( dictionaries );
+
       updateGroupList();
 
       Config::save( cfg );
