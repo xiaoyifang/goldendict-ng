@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -84,7 +84,7 @@
       <translation>&lt;div class=&quot;welcome-container&quot;&gt;
 &lt;h3&gt;Ласкаво просимо до &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
 &lt;section&gt;
-&lt;h4&gt;Щоб розпочати:&lt;/h4&gt;
+&lt;h4&gt;Щоб розпочати&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Перейдіть до розділу &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Редагувати&lt;/span&gt;&lt;span&gt;Словники&lt;/span&gt;&lt;/span&gt;, щоб додати файли словників, налаштувати онлайн-джерела, такі як Вікіпедія, та організувати їх у групи.&lt;/li&gt;
 &lt;li&gt;Після налаштування ви можете шукати слова в цьому вікні або &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;з інших програм за допомогою спливаючого вікна сканування&lt;/a&gt;.&lt;/li&gt;
