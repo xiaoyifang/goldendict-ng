@@ -85,9 +85,9 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Добро пожаловать в &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;Для начала&lt;/h4&gt;
+        &lt;h4&gt;Для начала работы с&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Перейти к &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; для добавления файлов словарей, настройте онлайн источники, такие как Википедия, и группируйте их в группы.&lt;/li&gt;
+          &lt;li&gt;Перейти к &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Редактировать&lt;/span&gt;&lt;span&gt;словари&lt;/span&gt;&lt;/span&gt; для добавления файлов словаря, настройте онлайн источники, такие как Википедия, и группируйте их в группы.&lt;/li&gt;
           &lt;li&gt;После установки, Слова можно найти в этом окне или &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;из других приложений, используя Scan Popup&lt;/a&gt;.&lt;/li&gt;
           &lt;li&gt;Для настройки программы, изучение настроек в &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Изменить&lt;/span&gt;&lt;span&gt;Настройки&lt;/span&gt;&lt;/span&gt;. Все настройки имеют подсказки, поэтому не забудьте прочитать их, если что-то не понятно.&lt;/li&gt;
         &lt;/ul&gt;
