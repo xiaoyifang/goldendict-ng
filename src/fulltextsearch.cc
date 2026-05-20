@@ -28,8 +28,11 @@ void Indexing::run()
 
       if ( dictionary->canFTS() && !dictionary->haveFTSIndex() ) {
         sem.acquire();
-        const QFuture< void > f = QtConcurrent::run( [ this, &sem, &dictionary ]() {
+        const QFuture< void > f = QtConcurrent::run( [ this, &sem, dictionary ]() {
           const QSemaphoreReleaser _( sem );
+          if ( !dictionary->canFTS() ) {
+            return;
+          }
           const QString & dictionaryName = QString::fromUtf8( dictionary->getName().c_str() );
           qDebug() << "[FULLTEXT] checking fts for the dictionary:" << dictionaryName;
           emit sendNowIndexingName( dictionaryName );

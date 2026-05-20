@@ -136,7 +136,7 @@ void LoadDictionaries::load()
         dict->setName( dictMetaData->name.value() );
       }
       if ( dictMetaData && dictMetaData->fullindex ) {
-        dict->setFtsEnable( dictMetaData->fullindex.value() );
+        dict->setFtsEnabled( dictMetaData->fullindex.value() );
       }
     }
 
