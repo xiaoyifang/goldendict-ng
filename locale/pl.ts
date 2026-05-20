@@ -83,18 +83,18 @@
     &lt;/div&gt;</source>
       <translation>
     &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Witamy w &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;h3&gt;Witamy na &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
         &lt;h4&gt;Aby rozpocząć&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Przejdź do &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edycja&lt;/span&gt;&lt;span&gt;Słowniki&lt;/span&gt;&lt;/span&gt;, aby dodać pliki słowników, skonfigurować źródła online, takie jak Wikipedia, i zorganizować je w grupy.&lt;/li&gt;
-          &lt;li&gt;Po ich skonfigurowaniu możesz wyszukiwać słowa w tym oknie lub &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;z innych aplikacji z użyciem okienka wyskakującego skanowania&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;Aby dostosować program, przejdź do ustawień w oknie &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edycja&lt;/span&gt;&lt;span&gt;Preferencje&lt;/span&gt;&lt;/span&gt;. Do wszystkich ustawień są podpowiedzi, więc przeczytaj je, jeśli cokolwiek nie jest jasne.&lt;/li&gt;
+          &lt;li&gt;Przejdź do &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edytuj&lt;/span&gt;&lt;span&gt;Słowniki&lt;/span&gt;&lt;/span&gt; aby dodać swoje pliki słowników, skonfigurować źródła online, takie jak Wikipedia, i zorganizować je w grupy.&lt;/li&gt;
+          &lt;li&gt;Po skonfigurowaniu, możesz wyszukać słowa w tym oknie lub &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;z innych aplikacji za pomocą wyskakującego okienka&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;Aby dostosować program, zobacz ustawienia w &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edytuj&lt;/span&gt;&lt;span&gt;Preferencje&lt;/span&gt;&lt;/span&gt;. Wszystkie ustawienia mają podpowiedzi, więc upewnij się, że przeczytano je jeśli cokolwiek nie jest jasne.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;
-      &lt;p&gt;Jeśli potrzebujesz dalszej pomocy, masz pytania lub sugestie, możesz skorzystać z &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; i &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;strony internetowej&lt;/a&gt; programu.&lt;/p&gt;
+      &lt;p&gt;Jeśli potrzebujesz dalszej pomocy, masz jakiekolwiek pytania lub sugestie, jesteś witany w programie&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; i &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;strona&lt;/a&gt;.&lt;/p&gt;
       &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Na podstawie oryginalnego programu GoldenDict Konstantina Isakova (c) 2008-2013. Utrzymywany i rozwijany przez społeczność GoldenDict-NG. Na licencji GPLv3 lub nowszej.&lt;/small&gt;
+        &lt;small&gt;Na podstawie oryginalnego GoldenDict Konstantin Isakov, c) 2008-2013. Utrzymywane i rozwijane przez społeczność GoldenDict-NG. Licencjonowane na mocy GPLv3 lub nowszej.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</translation>
     </message>
