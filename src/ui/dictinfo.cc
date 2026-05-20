@@ -25,13 +25,16 @@ void DictInfo::showInfo( sptr< Dictionary::Class > dict )
 
   ui.dictionaryId->setText( QString::fromStdString( dict->getId() ) );
   ui.enableFullindex->setText( dict->canFTS() ? tr( "Full-text search enabled" ) : tr( "Full-text search disabled" ) );
+  ui.enableFullindex->setVisible( dict->isLocalDictionary() );
   ui.ftsToggleButton->setText( dict->canFTS() ? tr( "Disable" ) : tr( "Enable" ) );
+  ui.ftsToggleButton->setVisible( dict->isLocalDictionary() );
   ui.dictionaryTotalArticles->setText( QString::number( dict->getArticleCount() ) );
   ui.dictionaryTotalWords->setText( QString::number( dict->getWordCount() ) );
   ui.dictionaryTranslatesFrom->setText( Language::localizedStringForId( dict->getLangFrom() ) );
   ui.dictionaryTranslatesTo->setText( Language::localizedStringForId( dict->getLangTo() ) );
 
   ui.openFolder->setVisible( dict->isLocalDictionary() );
+  ui.openIndexFolder->setVisible( dict->isLocalDictionary() );
 
   if ( dict->getWordCount() == 0 ) {
     ui.headwordsButton->setVisible( false );
@@ -50,6 +53,7 @@ void DictInfo::showInfo( sptr< Dictionary::Class > dict )
   }
 
   ui.dictionaryFileList->setPlainText( filenamesText );
+  ui.dictionaryFileList->setVisible( dict->isLocalDictionary() );
 
   if ( QString info = dict->getDescription(); !info.isEmpty() && info.compare( "NONE" ) != 0 ) {
     //qtbug QTBUG-112020
