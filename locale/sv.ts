@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started&lt;/h4&gt;
+        &lt;h4&gt;To get started:&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -81,20 +81,20 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation>
+      <translation type="unfinished">
     &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Välkommen till &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;För att komma igång&lt;/h4&gt;
+        &lt;h4&gt;To get started:&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Gå till &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Redigera&lt;/span&gt;&lt;span&gt;Ordböcker&lt;/span&gt;&lt;/span&gt; för att lägga till dina ordboksfiler, konfigurera onlinekällor som Wikipedia, och organisera dem i grupper.&lt;/li&gt;
-          &lt;li&gt;En gång i tiden du kan slå upp ord i detta fönster eller &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;från andra program med hjälp av Scan Popup&lt;/a&gt;.&lt;/li&gt;
-          &lt;li&gt;För att anpassa programmet, utforska inställningarna i &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Redigera&lt;/span&gt;&lt;span&gt;Inställningar&lt;/span&gt;&lt;/span&gt;. Alla inställningar har verktygstips, så se till att läsa dem om något är oklart.&lt;/li&gt;
+          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;
-      &lt;p&gt;Skulle du behöva ytterligare hjälp, har frågor eller förslag, du är välkommen till programmet&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; och &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;webbplats&lt;/a&gt;.&lt;/p&gt;
+      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
       &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Baserat på den ursprungliga GoldenDict av Konstantin Isakov (c) 2008-2013. Underhålls och utvecklas av GoldenDict-NG gemenskapen. Licensierad under GPLv3 eller senare.&lt;/small&gt;
+        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</translation>
     </message>
@@ -661,6 +661,14 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Fulltextsökning avaktiverad</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Inaktivera</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Aktivera</translation>
     </message>
   </context>
   <context>
