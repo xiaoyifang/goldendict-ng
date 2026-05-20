@@ -86,7 +86,7 @@
       &lt;h3&gt;Willkommen bei &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
         
-        &lt;h4&gt;Um zu starten&lt;/h4&gt;
+        &lt;h4&gt;Um anzufangen&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Gehe zu &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Bearbeite&lt;/span&gt;&lt;span&gt;Wörterbücher&lt;/span&gt;&lt;/span&gt; um deine Wörterbuchdateien hinzuzufügen. Online-Quellen wie Wikipedia einrichten und in Gruppen organisieren.&lt;/li&gt;
           &lt;li&gt;Einmal eingerichtet Sie können Wörter in diesem Fenster nachschlagen oder &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;von anderen Anwendungen mit dem Scan Popup&lt;/a&gt;.&lt;/li&gt;
