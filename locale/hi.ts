@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started&lt;/h4&gt;
+        &lt;h4&gt;To get started:&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -85,7 +85,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started&lt;/h4&gt;
+        &lt;h4&gt;To get started:&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -660,6 +660,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>पूर्ण-पाठ खोज अक्षम की गई</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>अक्षम करना</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>सक्षम</translation>
     </message>
   </context>
   <context>
