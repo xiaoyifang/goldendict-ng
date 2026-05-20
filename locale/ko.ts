@@ -81,21 +81,22 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation>&lt;div class=&quot;welcome-container&quot;&gt;
-&lt;h3&gt;GoldenDict-ng에 오신 것을 환영합니다!&lt;/h3&gt;
-&lt;section&gt;
-&lt;h4&gt;시작하기&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;사전 파일을 추가하고, 위키피디아와 같은 온라인 소스를 설정하고, 그룹으로 정리하려면 &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;사전 편집&lt;/span&gt;&lt;span&gt;사전&lt;/span&gt;&lt;/span&gt;으로 이동하세요.&lt;/li&gt;
-&lt;li&gt;설정이 완료되면 이 창이나 &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;스캔 팝업&lt;/a&gt;을 사용하여 다른 응용 프로그램에서 단어를 검색할 수 있습니다.&lt;/li&gt;
-&lt;li&gt;프로그램을 사용자 지정하려면 &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;환경 설정 편집&lt;/span&gt;&lt;span&gt;설정&lt;/span&gt;&lt;/span&gt;을 살펴보세요. 모든 설정에는 툴팁이 있으므로, 이해가 안 되는 부분이 있으면 툴팁을 꼭 읽어보세요.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/section&gt;
-&lt;p&gt;추가적인 도움이 필요하거나 질문, 또는 제안 사항이 있으시면 프로그램의 &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;포럼&lt;/a&gt;과 &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;웹사이트&lt;/a&gt;를 방문해 주세요.&lt;/p&gt;
-&lt;footer class=&quot;welcome-footer&quot;&gt;
-&lt;small&gt;Konstantin Isakov의 GoldenDict 원본(c) 2008-2013을 기반으로 합니다. GoldenDict-NG 커뮤니티에서 유지 관리 및 개발합니다. GPLv3 이상 라이선스가 적용됩니다.&lt;/small&gt;
-&lt;/footer&gt;
-&lt;/div&gt;</translation>
+      <translation type="unfinished">
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</translation>
     </message>
   </context>
   <context>
