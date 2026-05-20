@@ -81,20 +81,20 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation type="unfinished">
+      <translation>
     &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;h3&gt;Tervetuloa &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;Aloittaaksesi:&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
-          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
+          &lt;li&gt;Siirry &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Muokkaa&lt;/span&gt;&lt;span&gt;sanakirjoja&lt;/span&gt;&lt;/span&gt; lisätäksesi sanakirjatiedostojasi, perustaa online-lähteitä, kuten Wikipediaa, ja järjestää ne ryhmiin.&lt;/li&gt;
+          &lt;li&gt;Kun asetus on asetettu, voit etsiä sanoja tässä ikkunassa tai &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;muista sovelluksista käyttämällä Skannaa ponnahdusikkuna&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;mukauttaaksesi ohjelmaa, tutki asetuksia &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Muokkaa&lt;/span&gt;&lt;span&gt;Asetukset&lt;/span&gt;&lt;/span&gt;. Kaikissa asetuksissa on työkaluvihjeitä, joten muista lukea ne, jos jokin on epäselvä.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;
-      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;p&gt;Jos tarvitset lisäapua, sinulla on kysyttävää tai ehdotuksia, olet tervetullut ohjelmaan&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;foorumi&lt;/a&gt; ja &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;verkkosivuilla&lt;/a&gt;.&lt;/p&gt;
       &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
+        &lt;small&gt;Perustuu Konstantin Isakovin alkuperäiseen GoldenDictiin (c) 2008-2013. GoldenDict-NG yhteisön ylläpitämä ja kehittämä. Lisenssi GPLv3 tai uudempi.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</translation>
     </message>
