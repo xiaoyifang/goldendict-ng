@@ -233,7 +233,6 @@ private slots:
   void matchCount( int );
   void reject();
   void itemClicked( const QModelIndex & idx );
-  void updateDictionaries();
 
 signals:
   void showTranslationFor( const QString &,
@@ -241,6 +240,9 @@ signals:
                            const QRegularExpression & searchRegExp,
                            bool ignoreDiacritics );
   void closeDialog();
+
+public slots:
+  void updateDictionaries();
 };
 
 

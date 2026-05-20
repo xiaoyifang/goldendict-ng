@@ -2,7 +2,9 @@
 #include "language.hh"
 #include <QDesktopServices>
 #include "config.hh"
-
+#include "metadata.hh"
+#include "common/utils.hh"
+#include "common/globalbroadcaster.hh"
 #include <QString>
 
 DictInfo::DictInfo( Config::Class & cfg_, QWidget * parent ):
@@ -18,10 +20,12 @@ DictInfo::DictInfo( Config::Class & cfg_, QWidget * parent ):
 
 void DictInfo::showInfo( sptr< Dictionary::Class > dict )
 {
+  currentDict = dict;
   setWindowTitle( QString::fromUtf8( dict->getName().data(), dict->getName().size() ) );
 
   ui.dictionaryId->setText( QString::fromStdString( dict->getId() ) );
   ui.enableFullindex->setText( dict->canFTS() ? tr( "Full-text search enabled" ) : tr( "Full-text search disabled" ) );
+  ui.ftsToggleButton->setText( dict->canFTS() ? tr( "Disable" ) : tr( "Enable" ) );
   ui.dictionaryTotalArticles->setText( QString::number( dict->getArticleCount() ) );
   ui.dictionaryTotalWords->setText( QString::number( dict->getWordCount() ) );
   ui.dictionaryTranslatesFrom->setText( Language::localizedStringForId( dict->getLangFrom() ) );
@@ -82,4 +86,22 @@ void DictInfo::on_headwordsButton_clicked()
 void DictInfo::on_openIndexFolder_clicked()
 {
   QDesktopServices::openUrl( QUrl::fromLocalFile( Config::getIndexDir() ) );
+}
+
+void DictInfo::on_ftsToggleButton_clicked()
+{
+  if ( !currentDict )
+    return;
+
+  bool currentState = currentDict->canFTS();
+  bool newState     = !currentState;
+
+  QString metadataPath = Utils::Path::combine( currentDict->getContainingFolder(), "metadata.toml" );
+  Metadata::saveFullIndex( metadataPath.toStdString(), newState );
+
+  currentDict->setFtsEnabled( newState );
+  GlobalBroadcaster::instance()->ftsStateChanged();
+
+  ui.enableFullindex->setText( newState ? tr( "Full-text search enabled" ) : tr( "Full-text search disabled" ) );
+  ui.ftsToggleButton->setText( newState ? tr( "Disable" ) : tr( "Enable" ) );
 }

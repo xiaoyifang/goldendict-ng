@@ -373,11 +373,6 @@ public:
     dictionaryName = _dictionaryName;
   }
 
-  void setFtsEnable( bool _enable_FTS )
-  {
-    metadata_enable_fts = _enable_FTS;
-  }
-
   /// Returns the features the dictionary possess. See the Feature enum for
   /// their list.
   virtual Features getFeatures() const noexcept
@@ -502,6 +497,12 @@ public:
     return can_FTS;
   }
 
+  void setFtsEnabled( bool enable )
+  {
+    metadata_enable_fts = enable;
+    can_FTS             = enable;
+  }
+
   /// Dictionary have index for full-text search
   bool haveFTSIndex()
   {
@@ -510,6 +511,13 @@ public:
 
   /// Make index for full-text search
   virtual void makeFTSIndex( QAtomicInt & ) {}
+
+  /// Create a duplicate of this dictionary instance
+  /// This ensures the new instance inherits FTS state from the original
+  virtual sptr< Class > duplicate()
+  {
+    return nullptr;
+  }
 
   /// Set full-text search parameters
   virtual void setFTSParameters( const Config::FullTextSearch & ) {}
