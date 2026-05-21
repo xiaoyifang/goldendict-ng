@@ -81,20 +81,20 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation type="unfinished">
+      <translation>
     &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;h3&gt;Καλώς ήρθατε στο &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started&lt;/h4&gt;
+        &lt;h4&gt;Για να ξεκινήσετε&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
-          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
+          &lt;li&gt;Μεταβείτε στις &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Επεξεργασία&lt;/span&gt;&lt;span&gt;Λεξικά&lt;/span&gt;&lt;/span&gt; για να προσθέσετε τα αρχεία λεξικού σας, να ρυθμίσετε διαδικτυακές πηγές όπως η Wikipedia και να τα οργανώσετε σε ομάδες.&lt;/li&gt;
+          &lt;li&gt;Μόλις ολοκληρωθεί η ρύθμιση, μπορείτε να αναζητήσετε λέξεις σε αυτό το παράθυρο ή &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;από άλλες εφαρμογές χρησιμοποιώντας το Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;Για να προσαρμόσετε το πρόγραμμα, εξερευνήστε τις ρυθμίσεις στις &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Επεξεργασία&lt;/span&gt;&lt;span&gt;Προτιμήσεις&lt;/span&gt;&lt;/span&gt;. Όλες οι ρυθμίσεις έχουν επεξηγήσεις (tooltips), οπότε φροντίστε να τις διαβάσετε εάν κάτι δεν είναι σαφές.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;
-      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;p&gt;Εάν χρειάζεστε περαιτέρω βοήθεια, έχετε απορίες ή προτάσεις, είστε ευπρόσδεκτοι στο &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;φόρουμ&lt;/a&gt; και την &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;ιστοσελίδα&lt;/a&gt; του προγράμματος.&lt;/p&gt;
       &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
+        &lt;small&gt;Βασισμένο στο αρχικό GoldenDict του Konstantin Isakov (c) 2008-2013. Συντηρείται και αναπτύσσεται από την κοινότητα GoldenDict-NG. Αδειοδοτείται με την GPLv3 ή νεότερη έκδοση.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</translation>
     </message>
