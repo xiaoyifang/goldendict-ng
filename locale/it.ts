@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -85,7 +85,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Benvenuti su &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;Per iniziare:&lt;/h4&gt;
+        &lt;h4&gt;Per iniziare&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Vai a &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Modifica&lt;/span&gt;&lt;span&gt;Dizionari&lt;/span&gt;&lt;/span&gt; per aggiungere file dizionario, creare fonti online come Wikipedia e organizzarle in gruppi.&lt;/li&gt;
           &lt;li&gt;Una volta installato, è possibile cercare parole in questa finestra o &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;da altre applicazioni utilizzando il Popup di scansione&lt;/a&gt;.&lt;/li&gt;
