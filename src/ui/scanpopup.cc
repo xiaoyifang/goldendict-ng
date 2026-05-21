@@ -263,7 +263,7 @@ ScanPopup::ScanPopup( QWidget * parent,
 #endif
   }
 
-  connect( &configEvents, &Config::Events::mutedDictionariesChanged, this, &ScanPopup::mutedDictionariesChanged );
+  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::mutedDictionariesChanged, this, &ScanPopup::mutedDictionariesChanged );
 
   definition->focus();
 

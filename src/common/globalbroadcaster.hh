@@ -92,4 +92,6 @@ signals:
   void websiteDictionarySignal( QString, QString, QString, bool, QString );
 
   void ftsStateChanged();
+
+  void mutedDictionariesChanged();
 };

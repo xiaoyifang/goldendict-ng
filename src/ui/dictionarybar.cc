@@ -14,11 +14,9 @@
 using std::vector;
 
 DictionaryBar::DictionaryBar( QWidget * parent,
-                              Config::Events & events,
                               const unsigned short & maxDictionaryRefsInContextMenu_ ):
   QToolBar( tr( "&Dictionary Bar" ), parent ),
   mutedDictionaries( nullptr ),
-  configEvents( events ),
   maxDictionaryRefsInContextMenu( maxDictionaryRefsInContextMenu_ )
 {
   normalIconSize = { this->iconSize().height(), this->iconSize().height() };
@@ -28,7 +26,7 @@ DictionaryBar::DictionaryBar( QWidget * parent,
   maxDictionaryRefsAction =
     new QAction( QIcon( ":/icons/addtab.svg" ), tr( "Extended menu with all dictionaries..." ), this );
 
-  connect( &events, &Config::Events::mutedDictionariesChanged, this, &DictionaryBar::mutedDictionariesChanged );
+  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::mutedDictionariesChanged, this, &DictionaryBar::mutedDictionariesChanged );
 
   connect( this, &QToolBar::actionTriggered, this, &DictionaryBar::actionWasTriggered );
 }
@@ -308,7 +306,7 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
   if ( result && result == restoreSelectionAction ) {
     *mutedDictionaries = tempSelectionCapturedMuted.value();
     tempSelectionCapturedMuted.reset();
-    configEvents.signalMutedDictionariesChanged();
+    GlobalBroadcaster::instance()->signalMutedDictionariesChanged();
   }
 
   if ( result == editAction ) {
@@ -379,7 +377,7 @@ void DictionaryBar::actionWasTriggered( QAction * action )
       mutedDictionaries->insert( id );
     }
   }
-  configEvents.signalMutedDictionariesChanged();
+  GlobalBroadcaster::instance()->signalMutedDictionariesChanged();
 }
 
 void DictionaryBar::selectSingleDict( const QString & id )

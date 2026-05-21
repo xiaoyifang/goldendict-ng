@@ -155,7 +155,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   addTab( this ),
   cfg( cfg_ ),
   history( cfg_.preferences.maxStringsInHistory, cfg_.maxHeadwordSize ),
-  dictionaryBar( this, configEvents, cfg.preferences.maxDictionaryRefsInContextMenu ),
+  dictionaryBar( this, cfg.preferences.maxDictionaryRefsInContextMenu ),
   articleMaker( dictionaries, groupInstances, cfg.preferences ),
   articleNetMgr( this, dictionaries, articleMaker, cfg.preferences.disallowContentFromOtherSites ),
   dictNetMgr( this ),
@@ -697,7 +697,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // connect( ui.dictsList, &QListWidget::itemSelectionChanged, this, &MainWindow::dictsListSelectionChanged );
   // connect( ui.dictsList, &QListWidget::itemDoubleClicked, this, &MainWindow::dictsListItemActivated );
 
-  connect( &configEvents, &Config::Events::mutedDictionariesChanged, this, &MainWindow::mutedDictionariesChanged );
+  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::mutedDictionariesChanged, this, &MainWindow::mutedDictionariesChanged );
 
   this->installEventFilter( this );
 

@@ -876,30 +876,6 @@ struct Class
   bool resetState = false;
 };
 
-/// Configuration-specific events. Some parts of the program need to react
-/// to specific changes in configuration. The object of this class is used
-/// to emit signals when such events happen -- and the listeners connect to
-/// them to be notified of them.
-/// This class is separate from the main Class since QObjects can't be copied.
-class Events: public QObject
-{
-  Q_OBJECT
-
-public:
-
-  /// Signals that the value of the mutedDictionaries has changed.
-  /// This emits mutedDictionariesChanged() signal, so the subscribers will
-  /// be notified.
-  void signalMutedDictionariesChanged();
-
-signals:
-
-  /// THe value of the mutedDictionaries has changed.
-  void mutedDictionariesChanged();
-
-private:
-};
-
 DEF_EX( exError, "Error with the program's configuration", std::exception )
 DEF_EX( exCantUseDataDir, "Can't use XDG_DATA_HOME directory to store GoldenDict data", exError )
 DEF_EX( exCantUseHomeDir, "Can't use home directory to store GoldenDict preferences", exError )
