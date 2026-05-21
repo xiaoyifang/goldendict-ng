@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -82,19 +82,19 @@
       &lt;/footer&gt;
     &lt;/div&gt;</source>
       <translation>&lt;div class=&quot;welcome-container&quot;&gt;
-&lt;h3&gt;&lt;strong&gt;GoldenDict-ng&lt;/strong&gt; へようこそ！&lt;/h3&gt;
+&lt;h3&gt;&lt;strong&gt;GoldenDict-ng&lt;/strong&gt;へようこそ！&lt;/h3&gt;
 &lt;section&gt;
-&lt;h4&gt;始めるには:&lt;/h4&gt;
+&lt;h4&gt;使い始めるには&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;「&lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;編集&lt;/span&gt;&lt;span&gt;辞書&lt;/span&gt;&lt;/span&gt;」に移動して、辞書ファイルを追加し、Wikipedia などのオンラインソースを設定して、グループに整理します。&lt;/li&gt;
-&lt;li&gt;設定が完了すると、このウィンドウ、または &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;「スキャンポップアップ」を使用して他のアプリケーションから&lt;/a&gt;単語を検索できるようになります。&lt;/li&gt;
-&lt;li&gt;プログラムをカスタマイズするには、「&lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;編集&lt;/span&gt;&lt;span&gt;設定&lt;/span&gt;&lt;/span&gt;」の設定を確認してください。すべての設定にはツールチップが表示されますので、不明な点があれば必ずお読みください。&lt;/li&gt;
+&lt;li&gt;&lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;編集&lt;/span&gt; > &lt;span&gt;辞書&lt;/span&gt;&lt;/span&gt; に進み、辞書ファイルの追加、Wikipediaなどのオンラインソースの設定、およびグループへの整理を行ってください。&lt;/li&gt;
+&lt;li&gt;設定が完了すると、このウィンドウ内で単語を検索できるほか、&lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;「スキャンポップアップ」機能を使って他のアプリケーションから検索する&lt;/a&gt;ことも可能になります。&lt;/li&gt;
+&lt;li&gt;プログラムをカスタマイズするには、&lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;編集&lt;/span&gt; > &lt;span&gt;環境設定&lt;/span&gt;&lt;/span&gt; から各種設定項目をご確認ください。すべての設定にはツールチップによる説明が付いていますので、不明な点があればぜひご参照ください。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
-&lt;p&gt;さらにサポートが必要な場合、ご質問やご提案がございましたら、プログラムの&lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;フォーラム&lt;/a&gt;および&lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;ウェブサイト&lt;/a&gt;をご利用ください。&lt;/p&gt;
+&lt;p&gt;さらに詳しいヘルプが必要な場合や、ご質問・ご提案などがございましたら、本プログラムの&lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;フォーラム&lt;/a&gt;または&lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;公式サイト&lt;/a&gt;をご利用ください。&lt;/p&gt;
 &lt;footer class=&quot;welcome-footer&quot;&gt;
-&lt;small&gt;Konstantin Isakov氏によるオリジナルのGoldenDict (c) 2008-2013に基づいています。GoldenDict-NGコミュニティによって保守および開発されています。GPLv3以降のライセンスが適用されます。&lt;/small&gt;
-&lt;/footer&gt;
+&lt;small&gt;Konstantin Isakov氏によるオリジナル版GoldenDict (c) 2008-2013 をベースとしています。GoldenDict-NGコミュニティによって保守・開発が行われています。ライセンスはGPLv3以降に準拠します。&lt;/small&gt;
+&lt;13>
 &lt;/div&gt;</translation>
     </message>
   </context>
