@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -85,9 +85,9 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Bienvenue sur &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;Pour commencer:&lt;/h4&gt;
+        &lt;h4&gt;Pour commencer&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Aller à &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Modifier&lt;/span&gt;&lt;span&gt;Dictionnaires&lt;/span&gt;&lt;/span&gt; pour ajouter vos fichiers de dictionnaire, mettre en place des sources en ligne comme Wikipédia et les organiser en groupes.&lt;/li&gt;
+          &lt;li&gt;Allez à &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Editer&lt;/span&gt;&lt;span&gt;Dictionnaires&lt;/span&gt;&lt;/span&gt; pour ajouter vos fichiers de dictionnaire, mettre en place des sources en ligne comme Wikipédia et les organiser en groupes.&lt;/li&gt;
           &lt;li&gt;Une fois configuré, vous pouvez rechercher des mots dans cette fenêtre ou &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;à partir d'autres applications en utilisant le Popup de Scan&lt;/a&gt;.&lt;/li&gt;
           &lt;li&gt;Pour personnaliser le programme, Explorez les paramètres dans &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. Tous les paramètres ont des infobulles, alors assurez-vous de les lire si quelque chose n'est pas clair.&lt;/li&gt;
         &lt;/ul&gt;
