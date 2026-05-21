@@ -3012,9 +3012,7 @@ the application.</source>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
                   opened.
                  </source>
-      <translation>Выберите этот параметр, если don&apos;t хотите увидеть главную панель вкладок, когда открыта только одна вкладка
-                  .
-                 </translation>
+      <translation>Выберите этот параметр, если вы не хотите видеть основную панель вкладок, когда открыта только одна вкладка.</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
