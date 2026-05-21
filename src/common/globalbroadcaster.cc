@@ -245,8 +245,3 @@ bool GlobalBroadcaster::isDarkModeEnabled() const
 #endif
   return darkModeEnabled;
 }
-
-void GlobalBroadcaster::signalMutedDictionariesChanged()
-{
-  emit mutedDictionariesChanged();
-}

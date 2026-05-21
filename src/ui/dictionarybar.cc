@@ -308,7 +308,7 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
   if ( result && result == restoreSelectionAction ) {
     *mutedDictionaries = tempSelectionCapturedMuted.value();
     tempSelectionCapturedMuted.reset();
-    GlobalBroadcaster::instance()->signalMutedDictionariesChanged();
+    GlobalBroadcaster::instance()->mutedDictionariesChanged();
   }
 
   if ( result == editAction ) {
@@ -379,7 +379,7 @@ void DictionaryBar::actionWasTriggered( QAction * action )
       mutedDictionaries->insert( id );
     }
   }
-  GlobalBroadcaster::instance()->signalMutedDictionariesChanged();
+  GlobalBroadcaster::instance()->mutedDictionariesChanged();
 }
 
 void DictionaryBar::selectSingleDict( const QString & id )
