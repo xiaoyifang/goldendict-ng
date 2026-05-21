@@ -57,7 +57,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   stopAudioAction( this ),
   openSearchAction( this ),
   wordFinder( this ),
-  dictionaryBar( this, configEvents, cfg.preferences.maxDictionaryRefsInContextMenu ),
+  dictionaryBar( this, cfg.preferences.maxDictionaryRefsInContextMenu ),
   articleNetMgr( articleNetMgr ),
   hideTimer( this )
 {
