@@ -94,7 +94,7 @@
 &lt;p&gt;さらに詳しいヘルプが必要な場合や、ご質問・ご提案などがございましたら、本プログラムの&lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;フォーラム&lt;/a&gt;または&lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;公式サイト&lt;/a&gt;をご利用ください。&lt;/p&gt;
 &lt;footer class=&quot;welcome-footer&quot;&gt;
 &lt;small&gt;Konstantin Isakov氏によるオリジナル版GoldenDict (c) 2008-2013 をベースとしています。GoldenDict-NGコミュニティによって保守・開発が行われています。ライセンスはGPLv3以降に準拠します。&lt;/small&gt;
-&lt;13>
+&lt;/footer&gt;
 &lt;/div&gt;</translation>
     </message>
   </context>
