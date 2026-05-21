@@ -662,6 +662,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Full-text search disabled</source>
       <translation>Пребарувањето во цел текст е оневозможено</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation>Оневозможи</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Овозможи</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>

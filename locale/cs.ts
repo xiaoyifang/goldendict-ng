@@ -85,9 +85,9 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Vítejte v &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;Začínáte&lt;/h4&gt;
+        &lt;h4&gt;&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Přejděte na &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; a přidejte své slovníkové soubory, vytvořte online zdroje jako Wikipedie a organizujte je do skupin.&lt;/li&gt;
+          &lt;li&gt;Přejít na &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; pro přidání svých slovníkových souborů, vytvořte online zdroje jako Wikipedie a organizujte je do skupin.&lt;/li&gt;
           &lt;li&gt;Jakmile je nastaven, můžete hledat slova v tomto okně nebo &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;z jiných aplikací pomocí Scan Popup&lt;/a&gt;.&lt;/li&gt;
           &lt;li&gt;Pro přizpůsobení programu prozkoumá nastavení v &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Upravit&lt;/span&gt;&lt;span&gt;Nastavení&lt;/span&gt;&lt;/span&gt;. Všechna nastavení mají popisky nástrojů, takže si je nezapomeňte přečíst, pokud je něco nejasné.&lt;/li&gt;
         &lt;/ul&gt;
@@ -661,6 +661,14 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Fulltextové vyhledávání zakázáno</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Zakázat</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Umožnit</translation>
     </message>
   </context>
   <context>

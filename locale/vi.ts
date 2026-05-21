@@ -661,6 +661,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Full-text search disabled</source>
       <translation>Tìm kiếm toàn văn bị vô hiệu hóa</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation>Vô hiệu hóa</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Cho phép</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>

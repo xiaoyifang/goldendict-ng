@@ -662,6 +662,14 @@ chiqan kayninta sumaqyachin)</translation>
       <source>Full-text search disabled</source>
       <translation>Tukuy qillqasqa maskay mana llamk'achisqa</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation>Wañuchisqa</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Kawsarichisqa</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>

@@ -662,6 +662,14 @@ arasındaki farkı giderir)</translation>
       <source>Full-text search disabled</source>
       <translation>Tam metin arama devre dışı</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation>Devre dışı bırakmak</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Olanak vermek</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>

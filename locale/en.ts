@@ -662,6 +662,14 @@ between classic and school orthography in cyrillic)</translation>
       <source>Full-text search disabled</source>
       <translation type="unfinished">Full-text search disabled</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation type="unfinished">Disable</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation type="unfinished">Enable</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>

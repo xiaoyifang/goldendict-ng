@@ -87,7 +87,7 @@
       &lt;section&gt;
         &lt;h4&gt;Pour commencer&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Aller à &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Modifier&lt;/span&gt;&lt;span&gt;Dictionnaires&lt;/span&gt;&lt;/span&gt; pour ajouter vos fichiers de dictionnaire, mettre en place des sources en ligne comme Wikipédia et les organiser en groupes.&lt;/li&gt;
+          &lt;li&gt;Allez à &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Editer&lt;/span&gt;&lt;span&gt;Dictionnaires&lt;/span&gt;&lt;/span&gt; pour ajouter vos fichiers de dictionnaire, mettre en place des sources en ligne comme Wikipédia et les organiser en groupes.&lt;/li&gt;
           &lt;li&gt;Une fois configuré, vous pouvez rechercher des mots dans cette fenêtre ou &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;à partir d'autres applications en utilisant le Popup de Scan&lt;/a&gt;.&lt;/li&gt;
           &lt;li&gt;Pour personnaliser le programme, Explorez les paramètres dans &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. Tous les paramètres ont des infobulles, alors assurez-vous de les lire si quelque chose n'est pas clair.&lt;/li&gt;
         &lt;/ul&gt;
@@ -661,6 +661,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>Recherche plein texte désactivée</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Désactiver</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Activer</translation>
     </message>
   </context>
   <context>

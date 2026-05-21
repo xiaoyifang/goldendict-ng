@@ -662,6 +662,14 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <source>Full-text search disabled</source>
       <translation>Plenteksta serĉo malŝaltita</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation>Malebligu</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Ebligu</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>

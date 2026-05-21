@@ -662,6 +662,14 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <source>Full-text search disabled</source>
       <translation>Keresés a teljes szövegben letiltva</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation>Letiltás</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Engedélyezés</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>

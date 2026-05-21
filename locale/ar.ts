@@ -661,6 +661,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Full-text search disabled</source>
       <translation>تم تعطيل البحث عن النص الكامل</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation>Disable</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Enable</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>

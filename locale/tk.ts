@@ -661,6 +661,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Full-text search disabled</source>
       <translation>Doly tekst gözlegi ýapyldy</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation>Öçüriň</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Işlet</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>

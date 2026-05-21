@@ -662,6 +662,14 @@ entre la ortografía clásica y la escolar en cirílico)</translation>
       <source>Full-text search disabled</source>
       <translation>Búsqueda de texto completo deshabilitada</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation>Disable</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Enable</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>

@@ -662,6 +662,14 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <source>Full-text search disabled</source>
       <translation>Koko tekstihaku pois käytöstä</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation>Poista käytöstä</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Ota käyttöön</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>

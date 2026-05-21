@@ -661,6 +661,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Full-text search disabled</source>
       <translation>पूर्ण-पाठ खोज अक्षम की गई</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation>अक्षम करना</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>सक्षम</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>

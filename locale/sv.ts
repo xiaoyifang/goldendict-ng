@@ -662,6 +662,14 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <source>Full-text search disabled</source>
       <translation>Fulltextsökning avaktiverad</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation>Inaktivera</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Aktivera</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>

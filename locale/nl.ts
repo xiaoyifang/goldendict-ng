@@ -85,9 +85,9 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welkom bij &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;om te starten&lt;/h4&gt;
+        &lt;h4&gt;om te beginnen&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Ga naar &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Bewerken&lt;/span&gt;&lt;span&gt;Woordenboeken&lt;/span&gt;&lt;/span&gt; om je woordenboek toe te voegen, configureer online bronnen zoals Wikipedia en organiseer ze in groepen.&lt;/li&gt;
+          &lt;li&gt;Ga naar &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Bewerk&lt;/span&gt;&lt;span&gt;Woordenboeken&lt;/span&gt;&lt;/span&gt; om je woordenboek toe te voegen, configureer online bronnen zoals Wikipedia en organiseer ze in groepen.&lt;/li&gt;
           &lt;li&gt;Eenmaal ingesteld u kunt woorden opzoeken in dit venster of &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;van andere applicaties met behulp van de Scan Popup&lt;/a&gt;.&lt;/li&gt;
           &lt;li&gt;Om het programma aan te passen, verken de instellingen in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Bewerken&lt;/span&gt;&lt;span&gt;Voorkeuren&lt;/span&gt;&lt;/span&gt;. Alle instellingen hebben tooltips, dus ga ze lezen als er iets onduidelijk is.&lt;/li&gt;
         &lt;/ul&gt;
@@ -661,6 +661,14 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Zoeken in volledige tekst uitgeschakeld</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Uitzetten</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Inschakelen</translation>
     </message>
   </context>
   <context>

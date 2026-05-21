@@ -84,7 +84,7 @@
       <translation>&lt;div class=&quot;welcome-container&quot;&gt;
 &lt;h3&gt;欢迎使用 &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;！&lt;/h3&gt;
 &lt;section&gt;
-&lt;h4&gt;开始使用：&lt;/h4&gt;
+&lt;h4&gt;开始使用&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;前往&lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;编辑&lt;/span&gt;&lt;span&gt;词典&lt;/span&gt;&lt;/span&gt;添加您的词典文件，设置维基百科等在线资源，并将它们分组。&lt;/li&gt;
 &lt;li&gt;设置完成后，您可以在此窗口中查找单词，也可以&lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;使用扫描弹出窗口从其他应用程序中查找单词&lt;/a&gt;。&lt;/li&gt;
@@ -659,6 +659,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>全文搜索已禁用</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>禁用</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>启用</translation>
     </message>
   </context>
   <context>

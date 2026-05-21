@@ -665,6 +665,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Full-text search disabled</source>
       <translation>Phuqat qillqat thaqhañax ch’amanchatawa</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation>Suyt'ayaña</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Pirmitiña</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>

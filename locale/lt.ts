@@ -661,6 +661,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Full-text search disabled</source>
       <translation>Viso teksto paieška išjungta</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation>Išjungti</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Įgalinti</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>

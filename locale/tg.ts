@@ -662,6 +662,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Full-text search disabled</source>
       <translation>Ҷустуҷӯи пурраи матн ғайрифаъол аст</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation>Хомӯш кардан</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Фаъол кардан</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>

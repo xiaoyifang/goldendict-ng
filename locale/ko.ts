@@ -661,6 +661,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Full-text search disabled</source>
       <translation>전체 텍스트 검색이 비활성화됨</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation>장애를 입히다</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>할 수 있게 하다</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>

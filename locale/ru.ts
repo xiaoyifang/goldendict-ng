@@ -85,9 +85,9 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Добро пожаловать в &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;Для начала&lt;/h4&gt;
+        &lt;h4&gt;Для начала работы с&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Перейти к &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; для добавления файлов словарей, настройте онлайн источники, такие как Википедия, и группируйте их в группы.&lt;/li&gt;
+          &lt;li&gt;Перейти к &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Редактировать&lt;/span&gt;&lt;span&gt;словари&lt;/span&gt;&lt;/span&gt; для добавления файлов словаря, настройте онлайн источники, такие как Википедия, и группируйте их в группы.&lt;/li&gt;
           &lt;li&gt;После установки, Слова можно найти в этом окне или &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;из других приложений, используя Scan Popup&lt;/a&gt;.&lt;/li&gt;
           &lt;li&gt;Для настройки программы, изучение настроек в &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Изменить&lt;/span&gt;&lt;span&gt;Настройки&lt;/span&gt;&lt;/span&gt;. Все настройки имеют подсказки, поэтому не забудьте прочитать их, если что-то не понятно.&lt;/li&gt;
         &lt;/ul&gt;
@@ -663,6 +663,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>Полнотекстовый поиск отключен</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Запрещать</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Давать возможность</translation>
     </message>
   </context>
   <context>
@@ -3004,9 +3012,7 @@ the application.</source>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
                   opened.
                  </source>
-      <translation>Выберите этот параметр, если don&apos;t хотите увидеть главную панель вкладок, когда открыта только одна вкладка
-                  .
-                 </translation>
+      <translation>Выберите этот параметр, если вы не хотите видеть основную панель вкладок, когда открыта только одна вкладка.</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the

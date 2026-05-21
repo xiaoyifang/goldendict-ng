@@ -662,6 +662,14 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <source>Full-text search disabled</source>
       <translation>Fulltextové vyhľadávanie je zakázané</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation>Zakázať</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Povoliť</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>

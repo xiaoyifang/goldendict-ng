@@ -661,6 +661,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Full-text search disabled</source>
       <translation>Повнотекстовий пошук вимкнено</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation>Вимкнути</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Увімкнути</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>
@@ -1134,7 +1142,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>A group with the name &apos;%1&apos; already exists.</source>
-      <translation type="unfinished">A group with the name &apos;%1&apos; already exists.</translation>
+      <translation>Група з назвою &apos;%1&apos; вже існує.</translation>
     </message>
   </context>
   <context>
@@ -3005,9 +3013,9 @@ the application.</source>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise, they are added to
 be the last ones.</source>
-      <translation type="unfinished">With this on, new tabs are opened just after the
-current, active one. Otherwise, they are added to
-be the last ones.</translation>
+      <translation>Коли це ввімкнено, нові вкладки відкриватимуть 
+одразу за поточною. Інакше вони додаватимуться 
+до останніх.</translation>
     </message>
     <message>
       <source>&amp;Style</source>
