@@ -13,8 +13,7 @@
 
 using std::vector;
 
-DictionaryBar::DictionaryBar( QWidget * parent,
-                              const unsigned short & maxDictionaryRefsInContextMenu_ ):
+DictionaryBar::DictionaryBar( QWidget * parent, const unsigned short & maxDictionaryRefsInContextMenu_ ):
   QToolBar( tr( "&Dictionary Bar" ), parent ),
   mutedDictionaries( nullptr ),
   maxDictionaryRefsInContextMenu( maxDictionaryRefsInContextMenu_ )
@@ -26,7 +25,10 @@ DictionaryBar::DictionaryBar( QWidget * parent,
   maxDictionaryRefsAction =
     new QAction( QIcon( ":/icons/addtab.svg" ), tr( "Extended menu with all dictionaries..." ), this );
 
-  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::mutedDictionariesChanged, this, &DictionaryBar::mutedDictionariesChanged );
+  connect( GlobalBroadcaster::instance(),
+           &GlobalBroadcaster::mutedDictionariesChanged,
+           this,
+           &DictionaryBar::mutedDictionariesChanged );
 
   connect( this, &QToolBar::actionTriggered, this, &DictionaryBar::actionWasTriggered );
 }

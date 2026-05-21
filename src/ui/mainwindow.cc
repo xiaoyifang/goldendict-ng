@@ -697,7 +697,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // connect( ui.dictsList, &QListWidget::itemSelectionChanged, this, &MainWindow::dictsListSelectionChanged );
   // connect( ui.dictsList, &QListWidget::itemDoubleClicked, this, &MainWindow::dictsListItemActivated );
 
-  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::mutedDictionariesChanged, this, &MainWindow::mutedDictionariesChanged );
+  connect( GlobalBroadcaster::instance(),
+           &GlobalBroadcaster::mutedDictionariesChanged,
+           this,
+           &MainWindow::mutedDictionariesChanged );
 
   this->installEventFilter( this );
 
