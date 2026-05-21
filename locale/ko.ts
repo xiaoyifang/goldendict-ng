@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -84,7 +84,7 @@
       <translation>&lt;div class=&quot;welcome-container&quot;&gt;
 &lt;h3&gt;GoldenDict-ng에 오신 것을 환영합니다!&lt;/h3&gt;
 &lt;section&gt;
-&lt;h4&gt;시작하기:&lt;/h4&gt;
+&lt;h4&gt;시작하기&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;사전 파일을 추가하고, 위키피디아와 같은 온라인 소스를 설정하고, 그룹으로 정리하려면 &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;사전 편집&lt;/span&gt;&lt;span&gt;사전&lt;/span&gt;&lt;/span&gt;으로 이동하세요.&lt;/li&gt;
 &lt;li&gt;설정이 완료되면 이 창이나 &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;스캔 팝업&lt;/a&gt;을 사용하여 다른 응용 프로그램에서 단어를 검색할 수 있습니다.&lt;/li&gt;
