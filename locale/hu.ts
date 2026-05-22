@@ -2847,10 +2847,6 @@ a program átváltana rájuk.</translation>
       <translation>Egyetlen lap elrejtése</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>Időrend, a legutóbbi használat alapján.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>A Ctrl+Tab időrendi sorrendben navigál</translation>
     </message>
@@ -3003,14 +2999,6 @@ való kilépés helyett.</translation>
     <message>
       <source>None</source>
       <translation>Nincs</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Válaszd ki ezt az opciót, ha nem&apos;Nem akarom látni a fő tabsávot, ha csak egyetlen fül van
-                  kinyílt.
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3542,6 +3530,14 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Újraindítsd a JavaScript clipboard hozzáférési változását.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation type="unfinished">Hide tab bar when only one tab is open.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation type="unfinished">Most Recently Used (MRU) navigation order.</translation>
     </message>
   </context>
   <context>
