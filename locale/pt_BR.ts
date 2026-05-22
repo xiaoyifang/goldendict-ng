@@ -2848,10 +2848,6 @@ programa as exiba nas frente das outras automaticamente.</translation>
       <translation>Ocultar guia única</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>Ordem MRU: Ordem usada mais recentemente.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Usar Ctrl-Tab para navegar pelas guias de acordo com as mais recentes</translation>
     </message>
@@ -3007,14 +3003,6 @@ ser fechado.</translation>
     <message>
       <source>None</source>
       <translation>Nenhum</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Selecione esta opção se você don&apos;t quer ver a barra de abas principal quando apenas uma aba for
-                  aberta.
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3547,6 +3535,14 @@ dos dicionários Stardict, Babylon e GLS</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Reinicie para aplicar a alteração de acesso à área de transferência JavaScript.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Ocultar a barra de abas quando apenas uma aba estiver aberta.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>Mais recentemente usados (MRU) em ordem de navegação.</translation>
     </message>
   </context>
   <context>
