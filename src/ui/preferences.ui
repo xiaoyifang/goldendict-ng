@@ -250,9 +250,7 @@ switching to them.</string>
             <item row="0" column="1">
              <widget class="QCheckBox" name="hideSingleTab">
               <property name="toolTip">
-               <string>Select this option if you don't want to see the main tab bar when only a single tab is
-                  opened.
-                 </string>
+               <string>Hide tab bar when only one tab is open.</string>
               </property>
               <property name="text">
                <string>Hide single tab</string>
@@ -262,7 +260,7 @@ switching to them.</string>
             <item row="1" column="1">
              <widget class="QCheckBox" name="mruTabOrder">
               <property name="toolTip">
-               <string>MRU order: Most recently used order.</string>
+               <string>Most Recently Used (MRU) navigation order.</string>
               </property>
               <property name="text">
                <string>Ctrl-Tab navigates tabs in MRU order</string>
