@@ -3510,11 +3510,11 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
-      <translation type="unfinished">Hide tab bar when only one tab is open.</translation>
+      <translation>Ẩn thanh tab khi chỉ mở một tab.</translation>
     </message>
     <message>
       <source>Most Recently Used (MRU) navigation order.</source>
-      <translation type="unfinished">Most Recently Used (MRU) navigation order.</translation>
+      <translation>Thứ tự điều hướng được sử dụng gần đây nhất (MRU).</translation>
     </message>
   </context>
   <context>
