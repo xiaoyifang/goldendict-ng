@@ -2846,10 +2846,6 @@ Takto se budou nové karty otevírat bez přepnutí.</translation>
       <translation>Skrýt jednu kartu</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU objednávky: Naposledy použité objednávky.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-Tab přepíná na naposled použité karty</translation>
     </message>
@@ -3002,12 +2998,6 @@ ukončení aplikace.</translation>
     <message>
       <source>None</source>
       <translation>Žádná</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Vyberte tuto možnost, pokud nechcete vidět hlavní lištu karet, když je otevřena pouze jedna karta.</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3539,6 +3529,14 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Restartujte pro aplikaci změny přístupu do schránky JavaScriptu.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Skrýt panel záložek, pokud je otevřena pouze jedna záložka.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>Naposledy použité pořadí navigace (MRU).</translation>
     </message>
   </context>
   <context>
