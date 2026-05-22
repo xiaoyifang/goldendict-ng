@@ -3007,9 +3007,7 @@ ukončení aplikace.</translation>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
                   opened.
                  </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
+      <translation>Vyberte tuto možnost, pokud nechcete vidět hlavní lištu karet, když je otevřena pouze jedna karta.</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
