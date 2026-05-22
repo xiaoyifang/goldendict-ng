@@ -2847,10 +2847,6 @@ att växla till dem på en gång.</translation>
       <translation>Dölj fliken och flikfältet om endast en flik är öppen</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU beställning: Senast använda beställning.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl+Tabb bläddrar igenom flikarna i den ordning de senast användes</translation>
     </message>
@@ -3002,14 +2998,6 @@ minimera fönstret till meddelandefältet istället för att avsluta programmet.
     <message>
       <source>None</source>
       <translation>Ingen</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Välj det här alternativet om du don&apos;t vill se huvudfliksfältet när bara en enda flik är
-                  öppnad.
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3544,6 +3532,14 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Starta om för att tillämpa JavaScript-urklipp åtkomständring.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Dölj flikfältet när endast en flik är öppen.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>Senast använda (MRU) navigationsordning.</translation>
     </message>
   </context>
   <context>
