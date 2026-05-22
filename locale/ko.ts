@@ -3530,11 +3530,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
-      <translation type="unfinished">Hide tab bar when only one tab is open.</translation>
+      <translation>탭이 하나만 열려 있을 때는 탭 바를 숨기세요.</translation>
     </message>
     <message>
       <source>Most Recently Used (MRU) navigation order.</source>
-      <translation type="unfinished">Most Recently Used (MRU) navigation order.</translation>
+      <translation>최근에 사용된 (MRU) 항법 순서.</translation>
     </message>
   </context>
   <context>
