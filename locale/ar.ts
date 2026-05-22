@@ -2846,10 +2846,6 @@ switching to them.</source>
       <translation>أخفِ لسانًا واحدًا</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>ترتيب MRU: النظام المستخدم مؤخرًا.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-Tab يتنقّل بين الألسنة بترتيب MRU</translation>
     </message>
@@ -3002,14 +2998,6 @@ the application.</source>
     <message>
       <source>None</source>
       <translation>لا شيء</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>حدد هذا الخيار إذا كنت don&apos;وتريد أن ترى شريط التبويب الرئيسي عند فتح علامة تبويب واحدة فقط
-                  .
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3541,6 +3529,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>أعد التشغيل لتطبيق تغيير الوصول إلى حافظة جافا سكريبت.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>إخفاء شريط التبويب عند فتح علامة تبويب واحدة فقط.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>نظام الملاحة المستخدم مؤخرا (MRU)</translation>
     </message>
   </context>
   <context>
