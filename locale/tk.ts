@@ -3533,11 +3533,11 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     </message>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
-      <translation type="unfinished">Hide tab bar when only one tab is open.</translation>
+      <translation>Diňe bir täb açyk bolanda täb baryny gizle.</translation>
     </message>
     <message>
       <source>Most Recently Used (MRU) navigation order.</source>
-      <translation type="unfinished">Most Recently Used (MRU) navigation order.</translation>
+      <translation>Iň soňky ulanylan (MRU) navigasiýa tertibi.</translation>
     </message>
   </context>
   <context>
