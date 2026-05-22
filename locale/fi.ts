@@ -3008,8 +3008,8 @@ sovellus.</translation>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
                   opened.
                  </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
+      <translation>Valitse tämä vaihtoehto, jos et halua&apos;En halua nähdä päävälilehtipalkkia, kun on vain yksi välilehti
+                  avattu.
                  </translation>
     </message>
     <message>
@@ -3694,7 +3694,7 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     </message>
     <message>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
-      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
+      <translation>URL-osoitteessa, &quot;%GDWORD%&quot; korvataan haettavalla sanalla.</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
