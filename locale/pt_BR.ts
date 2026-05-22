@@ -3020,9 +3020,9 @@ ser fechado.</translation>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise, they are added to
 be the last ones.</source>
-      <translation type="unfinished">With this on, new tabs are opened just after the
-current, active one. Otherwise, they are added to
-be the last ones.</translation>
+      <translation>Se habilitada esta opção, as novas guias abertas
+serão posicionadas ao lado da guia ativa atual.
+Do contrário, elas serão adicionadas como as últimas.</translation>
     </message>
     <message>
       <source>&amp;Style</source>
