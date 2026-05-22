@@ -2845,10 +2845,6 @@ diese zu selektionieren.</translation>
       <translation>Einzelnen Tab ausblenden</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU-Order: Zuletzt verwendete Bestellung.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>CTRL+TAB wechselt zwischen den zuletzt verwendeten Reitern</translation>
     </message>
@@ -2997,14 +2993,6 @@ the application.</source>
     <message>
       <source>None</source>
       <translation>Keines</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Wählen Sie diese Option, wenn Sie den Haupt Reiter nicht sehen wollen, wenn nur ein Reiter geöffnet ist. 
-                  
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3531,6 +3519,14 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Neustarten, um die Änderung der JavaScript-Zwischenablage zu übernehmen.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation type="unfinished">Hide tab bar when only one tab is open.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation type="unfinished">Most Recently Used (MRU) navigation order.</translation>
     </message>
   </context>
   <context>
