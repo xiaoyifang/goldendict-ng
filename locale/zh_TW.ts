@@ -2845,10 +2845,6 @@ switching to them.</source>
       <translation>隱藏單一分頁</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU 順序：最近使用的順序。</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-Tab 依照 MRU 順序瀏覽分頁</translation>
     </message>
@@ -2997,12 +2993,6 @@ the application.</source>
     <message>
       <source>None</source>
       <translation>無</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>如果您不想在僅開啟一個標籤頁時看到主標籤頁欄，請選擇此選項。</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3530,6 +3520,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>重新啟動以應用 JavaScript 剪貼簿存取權限的變更。</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>當只開啟一個分頁時隱藏分頁列。</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>最近使用 (MRU) 導覽順序。</translation>
     </message>
   </context>
   <context>
