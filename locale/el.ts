@@ -3009,9 +3009,7 @@ the application.</source>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
                   opened.
                  </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
+      <translation>Επιλέξτε αυτή την επιλογή αν δεν θέλετε να βλέπετε την κύρια γραμμή καρτελών όταν είναι ανοιχτή μόνο μία καρτέλα.</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
