@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation type="unfinished">Anki: post to Anki failed</translation>
+      <translation>انکی: ارسال به انکی با شکست مواجه شد</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation type="unfinished">Anki: post to Anki success</translation>
+      <translation>انکی: ارسال به انکی با موفقیت انجام شد</translation>
     </message>
   </context>
   <context>
@@ -81,22 +81,22 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation type="unfinished">
-    &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
-      &lt;section&gt;
-        &lt;h4&gt;To get started&lt;/h4&gt;
-        &lt;ul&gt;
-          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
-          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/section&gt;
-      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
-      &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
-      &lt;/footer&gt;
-    &lt;/div&gt;</translation>
+      <translation>
+    &lt;div class="welcome-container">
+      &lt;h3>به &lt;strong>GoldenDict-ng&lt;/strong> خوش آمدید!&lt;/h3>
+      &lt;section>
+        &lt;h4>برای شروع&lt;/h4>
+        &lt;ul>
+          &lt;li>به &lt;span class="menu-path">&lt;span>ویرایش&lt;/span>&lt;span>واژه‌نامه‌ها&lt;/span>&lt;/span> بروید تا فایل‌های واژه‌نامه خود را اضافه کنید، منابع آنلاین مانند ویکی‌پدیا را تنظیم کنید و آنها را در گروه‌ها سازماندهی کنید.&lt;/li>
+          &lt;li>پس از تنظیم، می‌توانید کلمات را در این پنجره یا &lt;a href="https://xiaoyifang.github.io/goldendict-ng/ui_popup/">از سایر برنامه‌ها با استفاده از Scan Popup&lt;/a> جستجو کنید.&lt;/li>
+          &lt;li>برای سفارشی‌سازی برنامه، تنظیمات را در &lt;span class="menu-path">&lt;span>ویرایش&lt;/span>&lt;span>تنظیمات&lt;/span>&lt;/span> بررسی کنید. همه تنظیمات دارای راهنمای ابزار هستند، بنابراین اگر چیزی نامشخص است حتماً آنها را بخوانید.&lt;/li>
+        &lt;/ul>
+      &lt;/section>
+      &lt;p>در صورت نیاز به کمک بیشتر، داشتن هرگونه سوال یا پیشنهاد، به &lt;a href="https://github.com/xiaoyifang/goldendict-ng/discussions">انجمن&lt;/a> و &lt;a href="https://github.com/xiaoyifang/goldendict-ng">وب‌سایت&lt;/a> برنامه خوش آمدید.&lt;/p>
+      &lt;footer class="welcome-footer">
+        &lt;small>بر اساس GoldenDict اصلی توسط Konstantin Isakov (c) 2008-2013. نگهداری و توسعه یافته توسط جامعه GoldenDict-NG. تحت مجوز GPLv3 یا بالاتر.&lt;/small>
+      &lt;/footer>
+    &lt;/div></translation>
     </message>
   </context>
   <context>
@@ -286,30 +286,30 @@
     </message>
     <message>
       <source>&amp;Copy sound to clipboard</source>
-      <translation type="unfinished">&amp;Copy sound to clipboard</translation>
+      <translation>کپی &amp;صدا در کلیپ‌بورد</translation>
     </message>
     <message>
       <source>Failed to copy sound</source>
-      <translation type="unfinished">Failed to copy sound</translation>
+      <translation>کپی صدا با شکست مواجه شد</translation>
     </message>
     <message>
       <source>Failed to write complete audio data</source>
-      <translation type="unfinished">Failed to write complete audio data</translation>
+      <translation>نوشتن داده صوتی کامل با شکست مواجه شد</translation>
     </message>
     <message>
       <source>Sound copied to clipboard</source>
-      <translation type="unfinished">Sound copied to clipboard</translation>
+      <translation>صدا در کلیپ‌بورد کپی شد</translation>
     </message>
     <message>
       <source>Failed to download sound</source>
-      <translation type="unfinished">Failed to download sound</translation>
+      <translation>دانلود صدا با شکست مواجه شد</translation>
     </message>
   </context>
   <context>
     <name>ArticleWebView</name>
     <message>
       <source>GoldenDict Resource Viewer</source>
-      <translation type="unfinished">GoldenDict Resource Viewer</translation>
+      <translation>نمایشگر منابع GoldenDict</translation>
     </message>
   </context>
   <context>
@@ -369,15 +369,15 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation type="unfinished">Taiwan variant</translation>
+      <translation>نسخه تایوان</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
-      <translation type="unfinished">Hong Kong variant</translation>
+      <translation>نسخه هنگ کنگ</translation>
     </message>
     <message>
       <source>Mainland variant</source>
-      <translation type="unfinished">Mainland variant</translation>
+      <translation>نسخه سرزمین اصلی</translation>
     </message>
   </context>
   <context>
@@ -605,7 +605,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Regular Expression</source>
-      <translation type="unfinished">Regular Expression</translation>
+      <translation>عبارت باقاعده</translation>
     </message>
   </context>
   <context>
@@ -764,31 +764,31 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Restore selection</source>
-      <translation type="unfinished">Restore selection</translation>
+      <translation>بازگرداندن انتخاب</translation>
     </message>
     <message>
       <source>Cancel reindex</source>
-      <translation type="unfinished">Cancel reindex</translation>
+      <translation>لغو بازنمایه‌سازی</translation>
     </message>
     <message>
       <source>Schedule for reindex</source>
-      <translation type="unfinished">Schedule for reindex</translation>
+      <translation>زمان‌بندی برای بازنمایه‌سازی</translation>
     </message>
     <message>
       <source>Cancel schedule reindex</source>
-      <translation type="unfinished">Cancel schedule reindex</translation>
+      <translation>لغو زمان‌بندی بازنمایه‌سازی</translation>
     </message>
     <message>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
-      <translation type="unfinished">The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</translation>
+      <translation>واژه‌نامه برای بازنمایه‌سازی زمان‌بندی شده است. نمایه در راه‌اندازی مجدد بعدی برنامه بازسازی خواهد شد.</translation>
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>تغییر نام نمایشی</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>نام نمایشی جدید:</translation>
     </message>
   </context>
   <context>
@@ -922,11 +922,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Clear</source>
-      <translation type="unfinished">Clear</translation>
+      <translation>پاک کردن</translation>
     </message>
     <message>
       <source>Clear Favorites</source>
-      <translation type="unfinished">Clear Favorites</translation>
+      <translation>پاک کردن موارد دلخواه</translation>
     </message>
   </context>
   <context>
@@ -1131,7 +1131,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Add a new dictionary group</source>
-      <translation type="unfinished">Add a new dictionary group</translation>
+      <translation>افزودن یک گروه واژه‌نامه جدید</translation>
     </message>
     <message>
       <source>&amp;Add group</source>
@@ -1139,11 +1139,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Group already exists</source>
-      <translation type="unfinished">Group already exists</translation>
+      <translation>گروه از قبل موجود است</translation>
     </message>
     <message>
       <source>A group with the name &apos;%1&apos; already exists.</source>
-      <translation type="unfinished">A group with the name &apos;%1&apos; already exists.</translation>
+      <translation>گروهی با نام '%1' از قبل موجود است.</translation>
     </message>
   </context>
   <context>
@@ -2197,7 +2197,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Kabyle</source>
-      <translation type="unfinished">Kabyle</translation>
+      <translation>کابیل</translation>
     </message>
   </context>
   <context>
@@ -2652,19 +2652,19 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Lock Panels</source>
-      <translation type="unfinished">Lock Panels</translation>
+      <translation>قفل کردن پنل‌ها</translation>
     </message>
     <message>
       <source>Clear History</source>
-      <translation type="unfinished">Clear History</translation>
+      <translation>پاک کردن تاریخچه</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all history items?</source>
-      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
+      <translation>آیا مطمئن هستید که می‌خواهید همه موارد تاریخچه را پاک کنید؟</translation>
     </message>
     <message>
       <source>Save File</source>
-      <translation type="unfinished">Save File</translation>
+      <translation>ذخیره فایل</translation>
     </message>
   </context>
   <context>
@@ -2682,14 +2682,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
       <source>JSON parse error</source>
-      <translation type="unfinished">JSON parse error</translation>
+      <translation>خطای تجزیه JSON</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
       <source>JSON parse error</source>
-      <translation type="unfinished">JSON parse error</translation>
+      <translation>خطای تجزیه JSON</translation>
     </message>
   </context>
   <context>
@@ -2790,11 +2790,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>تغییر نام نمایشی</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>نام نمایشی جدید:</translation>
     </message>
   </context>
   <context>
@@ -3007,21 +3007,17 @@ the application.</source>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
                   opened.
                  </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
+      <translation>این گزینه را انتخاب کنید اگر نمی‌خواهید نوار برگه اصلی را زمانی که تنها یک برگه باز است، مشاهده کنید.</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise, they are added to
 be the last ones.</source>
-      <translation type="unfinished">With this on, new tabs are opened just after the
-current, active one. Otherwise, they are added to
-be the last ones.</translation>
+      <translation>با فعال بودن این گزینه، برگه‌های جدید بلافاصله پس از برگه فعلی و فعال باز می‌شوند. در غیر این صورت، آنها به عنوان آخرین برگه اضافه می‌شوند.</translation>
     </message>
     <message>
       <source>&amp;Style</source>
-      <translation type="unfinished">&amp;Style</translation>
+      <translation>&amp;سبک</translation>
     </message>
     <message>
       <source>Appearance</source>
@@ -3029,15 +3025,15 @@ be the last ones.</translation>
     </message>
     <message>
       <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
+      <translation>فعال‌سازی فونت رابط</translation>
     </message>
     <message>
       <source>Font</source>
-      <translation type="unfinished">Font</translation>
+      <translation>فونت</translation>
     </message>
     <message>
       <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
+      <translation>اندازه فونت</translation>
     </message>
     <message>
       <source>Interface language</source>
@@ -3077,7 +3073,7 @@ be the last ones.</translation>
     </message>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
+      <translation>GoldenDict-ng یک نرم‌افزار واژه‌نامه است.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3139,7 +3135,7 @@ in the pressed state when the word selection changes.</source>
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation type="unfinished">Only track selection when all selected keys are kept pressed:</translation>
+      <translation>فقط زمانی انتخاب را ردیابی کن که تمام کلیدهای انتخاب‌شده فشرده نگه داشته شده‌اند:</translation>
     </message>
     <message>
       <source>Alt key</source>
@@ -3512,19 +3508,19 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>S&amp;can</source>
-      <translation type="unfinished">S&amp;can</translation>
+      <translation>&amp;پویش</translation>
     </message>
     <message>
       <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
-      <translation type="unfinished">Suppress JavaScript alerts, confirms, and prompts in the article view.</translation>
+      <translation>سرکوب هشدارها، تاییدها و درخواست‌های جاوااسکریپت در نمای مقاله.</translation>
     </message>
     <message>
       <source>Suppress JavaScript dialogs</source>
-      <translation type="unfinished">Suppress JavaScript dialogs</translation>
+      <translation>سرکوب دیالوگ‌های جاوااسکریپت</translation>
     </message>
     <message>
       <source>Open website dictionary in separate tab</source>
-      <translation type="unfinished">Open website dictionary in separate tab</translation>
+      <translation>باز کردن واژه‌نامه وب‌سایت در برگه جداگانه</translation>
     </message>
     <message>
       <source>Anki</source>
@@ -3532,15 +3528,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Allow JavaScript to access clipboard in the article view.</source>
-      <translation type="unfinished">Allow JavaScript to access clipboard in the article view.</translation>
+      <translation>اجازه دسترسی جاوااسکریپت به کلیپ‌بورد در نمای مقاله.</translation>
     </message>
     <message>
       <source>Enable JavaScript clipboard access (need restart)</source>
-      <translation type="unfinished">Enable JavaScript clipboard access (need restart)</translation>
+      <translation>فعال‌سازی دسترسی جاوااسکریپت به کلیپ‌بورد (نیاز به راه‌اندازی مجدد)</translation>
     </message>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
-      <translation type="unfinished">Restart to apply the JavaScript clipboard access change.</translation>
+      <translation>برای اعمال تغییر دسترسی جاوااسکریپت به کلیپ‌بورد، راه‌اندازی مجدد کنید.</translation>
     </message>
   </context>
   <context>
@@ -3680,7 +3676,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Force the word to be translated in Popup.</source>
-      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+      <translation>اجبار کلمه برای ترجمه در پنجره بازشو.</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
@@ -3688,11 +3684,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Website Url:</source>
-      <translation type="unfinished">Website Url:</translation>
+      <translation>نشانی وب‌سایت:</translation>
     </message>
     <message>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
-      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
+      <translation>در نشانی، "%GDWORD%" با کلمه جستجو شده جایگزین خواهد شد.</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
@@ -3704,7 +3700,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+      <translation>سند PDF (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
@@ -3736,7 +3732,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
-      <translation type="unfinished">Saving article... (%1/%2)</translation>
+      <translation>در حال ذخیره مقاله... (%1/%2)</translation>
     </message>
   </context>
   <context>
@@ -3795,7 +3791,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Definition</source>
-      <translation type="unfinished">Definition</translation>
+      <translation>تعریف</translation>
     </message>
   </context>
   <context>
@@ -4119,27 +4115,27 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
-      <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
+      <translation>رایج‌ترین روش رونویسی ژاپنی، بر اساس واج‌شناسی انگلیسی</translation>
     </message>
     <message>
       <source>Remove selected directories from the list?</source>
-      <translation type="unfinished">Remove selected directories from the list?</translation>
+      <translation>دایرکتوری‌های انتخاب‌شده از لیست حذف شوند؟</translation>
     </message>
     <message>
       <source>Remove %1 directories from the list?</source>
-      <translation type="unfinished">Remove %1 directories from the list?</translation>
+      <translation>آیا %1 دایرکتوری از لیست حذف شوند؟</translation>
     </message>
     <message>
       <source>Remove %1 sites from the list?</source>
-      <translation type="unfinished">Remove %1 sites from the list?</translation>
+      <translation>آیا %1 سایت از لیست حذف شوند؟</translation>
     </message>
     <message>
       <source>Remove %1 servers from the list?</source>
-      <translation type="unfinished">Remove %1 servers from the list?</translation>
+      <translation>آیا %1 سرور از لیست حذف شوند؟</translation>
     </message>
     <message>
       <source>Remove %1 programs from the list?</source>
-      <translation type="unfinished">Remove %1 programs from the list?</translation>
+      <translation>آیا %1 برنامه از لیست حذف شوند؟</translation>
     </message>
   </context>
   <context>
@@ -4239,7 +4235,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <name>WebSite</name>
     <message>
       <source>This website dictionary is opened in a new tab</source>
-      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
+      <translation>این واژه‌نامه وب‌سایت در یک برگه جدید باز می‌شود</translation>
     </message>
   </context>
   <context>
@@ -4262,19 +4258,19 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Script</source>
-      <translation type="unfinished">Script</translation>
+      <translation>اسکریپت</translation>
     </message>
     <message>
       <source>Icon file name. Relative to the config directory.</source>
-      <translation type="unfinished">Icon file name. Relative to the config directory.</translation>
+      <translation>نام فایل آیکون. نسبت به دایرکتوری پیکربندی.</translation>
     </message>
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
-      <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
+      <translation>تنها زمانی که وب‌سایت‌ها در برگه‌های جداگانه باز می‌شوند در دسترس است. می‌تواند یک مسیر فایل (نسبت به دایرکتوری پیکربندی یا مطلق) یا محتوای اسکریپت مستقیم باشد.</translation>
     </message>
     <message>
       <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
-      <translation type="unfinished">This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</translation>
+      <translation>این ستون غیرفعال است زیرا گزینه "باز کردن واژه‌نامه وب‌سایت در برگه جداگانه" در تنظیمات فعال نیست.</translation>
     </message>
   </context>
   <context>

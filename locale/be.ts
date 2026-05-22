@@ -81,22 +81,7 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation type="unfinished">
-    &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
-      &lt;section&gt;
-        &lt;h4&gt;To get started&lt;/h4&gt;
-        &lt;ul&gt;
-          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
-          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/section&gt;
-      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
-      &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
-      &lt;/footer&gt;
-    &lt;/div&gt;</translation>
+      <translation>&lt;div class="welcome-container">&lt;h3>Сардэчна запрашаем у &lt;strong>GoldenDict-ng&lt;/strong>!&lt;/h3>&lt;section>&lt;h4>Каб пачаць&lt;/h4>&lt;ul>&lt;li>Перайдзіце ў &lt;span class="menu-path">&lt;span>Рэдагаваць&lt;/span>&lt;span>Слоўнікі&lt;/span>&lt;/span>, каб дадаць файлы слоўнікаў, наладзіць інтэрнэт-крыніцы, такія як Вікіпедыя, і арганізаваць іх у групы.&lt;/li>&lt;li>Пасля наладжвання вы можаце шукаць словы ў гэтым акне або &lt;a href="https://xiaoyifang.github.io/goldendict-ng/ui_popup/">з іншых праграм, выкарыстоўваючы Сканіруючае ўсплывальнае акно&lt;/a>.&lt;/li>&lt;li>Каб наладзіць праграму, вывучыце налады ў &lt;span class="menu-path">&lt;span>Рэдагаваць&lt;/span>&lt;span>Налады&lt;/span>&lt;/span>. Усе налады маюць падказкі, таму абавязкова прачытайце іх, калі што-небудзь незразумела.&lt;/li>&lt;/ul>&lt;/section>&lt;p>Калі вам патрэбна дадатковая дапамога, ёсць пытанні ці прапановы, запрашаем на &lt;a href="https://github.com/xiaoyifang/goldendict-ng/discussions">форум&lt;/a> і &lt;a href="https://github.com/xiaoyifang/goldendict-ng">сайт&lt;/a> праграмы.&lt;/p>&lt;footer class="welcome-footer">&lt;small>Заснавана на арыгінальным GoldenDict Канстанціна Ісакава (c) 2008-2013. Падтрымліваецца і распрацоўваецца супольнасцю GoldenDict-NG. Ліцэнзавана пад GPLv3 або пазнейшай версіяй.&lt;/small>&lt;/footer>&lt;/div></translation>
     </message>
   </context>
   <context>

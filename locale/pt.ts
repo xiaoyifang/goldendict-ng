@@ -3016,9 +3016,9 @@ a aplicação.</translation>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise, they are added to
 be the last ones.</source>
-      <translation type="unfinished">With this on, new tabs are opened just after the
-current, active one. Otherwise, they are added to
-be the last ones.</translation>
+      <translation>Com isso ligado, novas abas são abertas logo após a
+atual, ativa. Caso contrário, elas são adicionadas para
+serem as últimas.</translation>
     </message>
     <message>
       <source>&amp;Style</source>

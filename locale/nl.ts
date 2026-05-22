@@ -3008,9 +3008,7 @@ the application.</source>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
                   opened.
                  </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
+      <translation>Selecteer deze optie als u de hoofdtadbalk niet wilt zien wanneer slechts één tabblad is\n                  geopend.\n                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the

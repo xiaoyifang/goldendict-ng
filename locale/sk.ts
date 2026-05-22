@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation type="unfinished">Anki: post to Anki failed</translation>
+      <translation>Anki: odoslanie do Anki zlyhalo</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation type="unfinished">Anki: post to Anki success</translation>
+      <translation>Anki: odoslanie do Anki úspešné</translation>
     </message>
   </context>
   <context>
@@ -81,20 +81,20 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation type="unfinished">
+      <translation>
     &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;h3&gt;Vitajte v &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started&lt;/h4&gt;
+        &lt;h4&gt;Na začiatok&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
-          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
+          &lt;li&gt;Prejdite do &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Upraviť&lt;/span&gt;&lt;span&gt;Slovníky&lt;/span&gt;&lt;/span&gt;, aby ste pridali súbory slovníkov, nastavili online zdroje ako Wikipédia a usporiadali ich do skupín.&lt;/li&gt;
+          &lt;li&gt;Po nastavení môžete vyhľadávať slová v tomto okne alebo &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;z iných aplikácií pomocou vyskakovacieho okna Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;Ak chcete prispôsobiť program, preskúmajte nastavenia v &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Upraviť&lt;/span&gt;&lt;span&gt;Predvoľby&lt;/span&gt;&lt;/span&gt;. Všetky nastavenia majú popisky, takže si ich prečítajte, ak je niečo nejasné.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;
-      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;p&gt;Ak potrebujete ďalšiu pomoc, máte akékoľvek otázky alebo návrhy, ste vítaní na &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;fóre&lt;/a&gt; a &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;webovej stránke&lt;/a&gt; programu.&lt;/p&gt;
       &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
+        &lt;small&gt;Založené na pôvodnom GoldenDict od Konstantina Isakova (c) 2008-2013. Udržiavané a vyvíjané komunitou GoldenDict-NG. Licencované pod GPLv3 alebo novšou.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</translation>
     </message>
@@ -286,30 +286,30 @@
     </message>
     <message>
       <source>&amp;Copy sound to clipboard</source>
-      <translation type="unfinished">&amp;Copy sound to clipboard</translation>
+      <translation>&amp;Kopírovať zvuk do schránky</translation>
     </message>
     <message>
       <source>Failed to copy sound</source>
-      <translation type="unfinished">Failed to copy sound</translation>
+      <translation>Nepodarilo sa skopírovať zvuk</translation>
     </message>
     <message>
       <source>Failed to write complete audio data</source>
-      <translation type="unfinished">Failed to write complete audio data</translation>
+      <translation>Nepodarilo sa zapísať kompletné zvukové dáta</translation>
     </message>
     <message>
       <source>Sound copied to clipboard</source>
-      <translation type="unfinished">Sound copied to clipboard</translation>
+      <translation>Zvuk skopírovaný do schránky</translation>
     </message>
     <message>
       <source>Failed to download sound</source>
-      <translation type="unfinished">Failed to download sound</translation>
+      <translation>Nepodarilo sa stiahnuť zvuk</translation>
     </message>
   </context>
   <context>
     <name>ArticleWebView</name>
     <message>
       <source>GoldenDict Resource Viewer</source>
-      <translation type="unfinished">GoldenDict Resource Viewer</translation>
+      <translation>Prehliadač zdrojov GoldenDict</translation>
     </message>
   </context>
   <context>
@@ -369,15 +369,15 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation type="unfinished">Taiwan variant</translation>
+      <translation>Taiwanský variant</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
-      <translation type="unfinished">Hong Kong variant</translation>
+      <translation>Hongkonský variant</translation>
     </message>
     <message>
       <source>Mainland variant</source>
-      <translation type="unfinished">Mainland variant</translation>
+      <translation>Pevninský variant</translation>
     </message>
   </context>
   <context>
@@ -605,7 +605,7 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     </message>
     <message>
       <source>Regular Expression</source>
-      <translation type="unfinished">Regular Expression</translation>
+      <translation>Regulárny výraz</translation>
     </message>
   </context>
   <context>
@@ -764,31 +764,31 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     </message>
     <message>
       <source>Restore selection</source>
-      <translation type="unfinished">Restore selection</translation>
+      <translation>Obnoviť výber</translation>
     </message>
     <message>
       <source>Cancel reindex</source>
-      <translation type="unfinished">Cancel reindex</translation>
+      <translation>Zrušiť preindexovanie</translation>
     </message>
     <message>
       <source>Schedule for reindex</source>
-      <translation type="unfinished">Schedule for reindex</translation>
+      <translation>Naplánovať preindexovanie</translation>
     </message>
     <message>
       <source>Cancel schedule reindex</source>
-      <translation type="unfinished">Cancel schedule reindex</translation>
+      <translation>Zrušiť naplánované preindexovanie</translation>
     </message>
     <message>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
-      <translation type="unfinished">The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</translation>
+      <translation>Slovník bol naplánovaný na preindexovanie. Index bude prebudovaný pri ďalšom reštarte aplikácie.</translation>
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>Zmeniť zobrazované meno</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>Nové zobrazované meno:</translation>
     </message>
   </context>
   <context>
@@ -922,11 +922,11 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     </message>
     <message>
       <source>Clear</source>
-      <translation type="unfinished">Clear</translation>
+      <translation>Vymazať</translation>
     </message>
     <message>
       <source>Clear Favorites</source>
-      <translation type="unfinished">Clear Favorites</translation>
+      <translation>Vymazať obľúbené</translation>
     </message>
   </context>
   <context>
@@ -1131,7 +1131,7 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     </message>
     <message>
       <source>Add a new dictionary group</source>
-      <translation type="unfinished">Add a new dictionary group</translation>
+      <translation>Pridať novú skupinu slovníkov</translation>
     </message>
     <message>
       <source>&amp;Add group</source>
@@ -1139,11 +1139,11 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     </message>
     <message>
       <source>Group already exists</source>
-      <translation type="unfinished">Group already exists</translation>
+      <translation>Skupina už existuje</translation>
     </message>
     <message>
       <source>A group with the name &apos;%1&apos; already exists.</source>
-      <translation type="unfinished">A group with the name &apos;%1&apos; already exists.</translation>
+      <translation>Skupina s názvom '%1' už existuje.</translation>
     </message>
   </context>
   <context>
@@ -2197,7 +2197,7 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     </message>
     <message>
       <source>Kabyle</source>
-      <translation type="unfinished">Kabyle</translation>
+      <translation>Kabylo</translation>
     </message>
   </context>
   <context>
@@ -2653,19 +2653,19 @@ Pre vyhľadanie znakov &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos
     </message>
     <message>
       <source>Lock Panels</source>
-      <translation type="unfinished">Lock Panels</translation>
+      <translation>Uzamknúť panely</translation>
     </message>
     <message>
       <source>Clear History</source>
-      <translation type="unfinished">Clear History</translation>
+      <translation>Vymazať históriu</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all history items?</source>
-      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
+      <translation>Naozaj chcete vymazať všetky položky histórie?</translation>
     </message>
     <message>
       <source>Save File</source>
-      <translation type="unfinished">Save File</translation>
+      <translation>Uložiť súbor</translation>
     </message>
   </context>
   <context>
@@ -2683,14 +2683,14 @@ Pre vyhľadanie znakov &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
       <source>JSON parse error</source>
-      <translation type="unfinished">JSON parse error</translation>
+      <translation>Chyba pri analýze JSON</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
       <source>JSON parse error</source>
-      <translation type="unfinished">JSON parse error</translation>
+      <translation>Chyba pri analýze JSON</translation>
     </message>
   </context>
   <context>
@@ -2791,11 +2791,11 @@ Pre vyhľadanie znakov &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>Zmeniť zobrazované meno</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>Nové zobrazované meno:</translation>
     </message>
   </context>
   <context>
@@ -3004,21 +3004,17 @@ skryje program namiesto jeho ukončenia.</translation>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
                   opened.
                  </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
+      <translation>Vyberte túto možnosť, ak nechcete vidieť hlavný panel kariet, keď je otvorená iba jedna karta.</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise, they are added to
 be the last ones.</source>
-      <translation type="unfinished">With this on, new tabs are opened just after the
-current, active one. Otherwise, they are added to
-be the last ones.</translation>
+      <translation>Pri tejto voľbe sa nové karty otvárajú hneď za aktuálnou, aktívnou. Inak sa pridávajú ako posledné.</translation>
     </message>
     <message>
       <source>&amp;Style</source>
-      <translation type="unfinished">&amp;Style</translation>
+      <translation>&amp;Štýl</translation>
     </message>
     <message>
       <source>Appearance</source>
@@ -3026,15 +3022,15 @@ be the last ones.</translation>
     </message>
     <message>
       <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
+      <translation>Povoliť písmo rozhrania</translation>
     </message>
     <message>
       <source>Font</source>
-      <translation type="unfinished">Font</translation>
+      <translation>Písmo</translation>
     </message>
     <message>
       <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
+      <translation>Veľkosť písma</translation>
     </message>
     <message>
       <source>Interface language</source>
@@ -3074,7 +3070,7 @@ be the last ones.</translation>
     </message>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
+      <translation>GoldenDict-ng je slovníkový softvér.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3135,7 +3131,7 @@ in the pressed state when the word selection changes.</source>
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation type="unfinished">Only track selection when all selected keys are kept pressed:</translation>
+      <translation>Sledovať výber len vtedy, keď sú stlačené všetky vybrané klávesy:</translation>
     </message>
     <message>
       <source>Alt key</source>
@@ -3507,19 +3503,19 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     </message>
     <message>
       <source>S&amp;can</source>
-      <translation type="unfinished">S&amp;can</translation>
+      <translation>S&amp;kenovať</translation>
     </message>
     <message>
       <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
-      <translation type="unfinished">Suppress JavaScript alerts, confirms, and prompts in the article view.</translation>
+      <translation>Potlačiť upozornenia, potvrdenia a výzvy JavaScriptu v zobrazení článku.</translation>
     </message>
     <message>
       <source>Suppress JavaScript dialogs</source>
-      <translation type="unfinished">Suppress JavaScript dialogs</translation>
+      <translation>Potlačiť dialógové okná JavaScriptu</translation>
     </message>
     <message>
       <source>Open website dictionary in separate tab</source>
-      <translation type="unfinished">Open website dictionary in separate tab</translation>
+      <translation>Otvoriť webový slovník v samostatnej karte</translation>
     </message>
     <message>
       <source>Anki</source>
@@ -3527,15 +3523,15 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     </message>
     <message>
       <source>Allow JavaScript to access clipboard in the article view.</source>
-      <translation type="unfinished">Allow JavaScript to access clipboard in the article view.</translation>
+      <translation>Povoliť JavaScriptu prístup do schránky v zobrazení článku.</translation>
     </message>
     <message>
       <source>Enable JavaScript clipboard access (need restart)</source>
-      <translation type="unfinished">Enable JavaScript clipboard access (need restart)</translation>
+      <translation>Povoliť prístup JavaScriptu do schránky (vyžaduje reštart)</translation>
     </message>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
-      <translation type="unfinished">Restart to apply the JavaScript clipboard access change.</translation>
+      <translation>Reštartujte pre uplatnenie zmeny prístupu JavaScriptu do schránky.</translation>
     </message>
   </context>
   <context>
@@ -3675,7 +3671,7 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     </message>
     <message>
       <source>Force the word to be translated in Popup.</source>
-      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+      <translation>Vynútiť preklad slova vo vyskakovacom okne.</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
@@ -3683,11 +3679,11 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     </message>
     <message>
       <source>Website Url:</source>
-      <translation type="unfinished">Website Url:</translation>
+      <translation>Adresa webovej stránky:</translation>
     </message>
     <message>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
-      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
+      <translation>V URL adrese bude "%GDWORD%" nahradené hľadaným slovom.</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
@@ -3699,7 +3695,7 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+      <translation>Dokument PDF (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
@@ -3731,7 +3727,7 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
-      <translation type="unfinished">Saving article... (%1/%2)</translation>
+      <translation>Ukladá sa článok... (%1/%2)</translation>
     </message>
   </context>
   <context>
@@ -3790,7 +3786,7 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     </message>
     <message>
       <source>Definition</source>
-      <translation type="unfinished">Definition</translation>
+      <translation>Definícia</translation>
     </message>
   </context>
   <context>
@@ -4112,27 +4108,27 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
-      <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
+      <translation>Najpoužívanejšia metóda prepisu japončiny, založená na anglickej fonológii</translation>
     </message>
     <message>
       <source>Remove selected directories from the list?</source>
-      <translation type="unfinished">Remove selected directories from the list?</translation>
+      <translation>Odstrániť vybrané adresáre zo zoznamu?</translation>
     </message>
     <message>
       <source>Remove %1 directories from the list?</source>
-      <translation type="unfinished">Remove %1 directories from the list?</translation>
+      <translation>Odstrániť %1 adresárov zo zoznamu?</translation>
     </message>
     <message>
       <source>Remove %1 sites from the list?</source>
-      <translation type="unfinished">Remove %1 sites from the list?</translation>
+      <translation>Odstrániť %1 stránok zo zoznamu?</translation>
     </message>
     <message>
       <source>Remove %1 servers from the list?</source>
-      <translation type="unfinished">Remove %1 servers from the list?</translation>
+      <translation>Odstrániť %1 serverov zo zoznamu?</translation>
     </message>
     <message>
       <source>Remove %1 programs from the list?</source>
-      <translation type="unfinished">Remove %1 programs from the list?</translation>
+      <translation>Odstrániť %1 programov zo zoznamu?</translation>
     </message>
   </context>
   <context>
@@ -4232,7 +4228,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <name>WebSite</name>
     <message>
       <source>This website dictionary is opened in a new tab</source>
-      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
+      <translation>Tento webový slovník je otvorený v novej karte</translation>
     </message>
   </context>
   <context>
@@ -4255,19 +4251,19 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Script</source>
-      <translation type="unfinished">Script</translation>
+      <translation>Skript</translation>
     </message>
     <message>
       <source>Icon file name. Relative to the config directory.</source>
-      <translation type="unfinished">Icon file name. Relative to the config directory.</translation>
+      <translation>Názov súboru ikony. Vzťahuje sa k adresáru s konfiguráciou.</translation>
     </message>
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
-      <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
+      <translation>Dostupné len pri otváraní webových stránok v samostatných kartách. Môže byť cesta k súboru (relatívna k adresáru s konfiguráciou alebo absolútna) alebo priamy obsah skriptu.</translation>
     </message>
     <message>
       <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
-      <translation type="unfinished">This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</translation>
+      <translation>Tento stĺpec je zakázaný, pretože možnosť "Otvoriť webový slovník v samostatnej karte" nie je povolená v Nastaveniach.</translation>
     </message>
   </context>
   <context>

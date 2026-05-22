@@ -81,20 +81,20 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation type="unfinished">
+      <translation>
     &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;h3&gt;Üdvözlünk &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started&lt;/h4&gt;
+        &lt;h4&gt;Hogy elkezdjük&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
-          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
+          &lt;li&gt;Nézz ki &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Szerkesztés&lt;/span&gt;&lt;span&gt;Szótárak&lt;/span&gt;&lt;/span&gt; a szótárfájlok hozzáadásához állíts be online forrásokat, például a Wikipédia, és csoportosítsd őket.&lt;/li&gt;
+          &lt;li&gt;Miután beállítottad, megkeresheted a szavakat ebben az ablakban vagy &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;más alkalmazásokból a Scan Popup használatával&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;A program testreszabásához fedezd fel a beállításokat &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Szerkesztés&lt;/span&gt;&lt;span&gt;Preferenciák&lt;/span&gt;&lt;/span&gt;. Minden beállításnak vannak tippjei, szóval ha valami egyértelmű, mindenképp olvasd el őket.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;
-      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;p&gt;Ha további segítségre van szükséged, kérdésed vagy javaslatod van, szívesen látunk a programon&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;Fórum&lt;/a&gt; és &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;Weboldal&lt;/a&gt;.&lt;/p&gt;
       &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
+        &lt;small&gt;Konstantin Isakov (kb) eredeti GoldenDict-je alapján (kb) 2008-2013. A GoldenDict-NG közösség tartja és fejlesztette. GPLv3 vagy újabb licenc alatt van.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</translation>
     </message>
@@ -286,30 +286,30 @@
     </message>
     <message>
       <source>&amp;Copy sound to clipboard</source>
-      <translation type="unfinished">&amp;Copy sound to clipboard</translation>
+      <translation>&amp;Másolj hangot a clipboardra</translation>
     </message>
     <message>
       <source>Failed to copy sound</source>
-      <translation type="unfinished">Failed to copy sound</translation>
+      <translation>Nem sikerült hangot másolni</translation>
     </message>
     <message>
       <source>Failed to write complete audio data</source>
-      <translation type="unfinished">Failed to write complete audio data</translation>
+      <translation>Nem sikerült teljes hangadatot írni</translation>
     </message>
     <message>
       <source>Sound copied to clipboard</source>
-      <translation type="unfinished">Sound copied to clipboard</translation>
+      <translation>Hang másolva a clipboardra</translation>
     </message>
     <message>
       <source>Failed to download sound</source>
-      <translation type="unfinished">Failed to download sound</translation>
+      <translation>Nem sikerült letölteni a hangot</translation>
     </message>
   </context>
   <context>
     <name>ArticleWebView</name>
     <message>
       <source>GoldenDict Resource Viewer</source>
-      <translation type="unfinished">GoldenDict Resource Viewer</translation>
+      <translation>GoldenDict Resource Viewer</translation>
     </message>
   </context>
   <context>
@@ -768,27 +768,27 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     </message>
     <message>
       <source>Cancel reindex</source>
-      <translation type="unfinished">Cancel reindex</translation>
+      <translation>Visszavonás újraindexelése</translation>
     </message>
     <message>
       <source>Schedule for reindex</source>
-      <translation type="unfinished">Schedule for reindex</translation>
+      <translation>Újraindexezési ütemterv</translation>
     </message>
     <message>
       <source>Cancel schedule reindex</source>
-      <translation type="unfinished">Cancel schedule reindex</translation>
+      <translation>Ütemezés újraindexének törlése</translation>
     </message>
     <message>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
-      <translation type="unfinished">The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</translation>
+      <translation>A szótárt újraindexelni tervezték. Az indexet a következő alkalmazás újraindítása után építik újra.</translation>
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>Megjelenítési név módosítása</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>Új kijelzőnév:</translation>
     </message>
   </context>
   <context>
@@ -922,11 +922,11 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     </message>
     <message>
       <source>Clear</source>
-      <translation type="unfinished">Clear</translation>
+      <translation>Tiszta</translation>
     </message>
     <message>
       <source>Clear Favorites</source>
-      <translation type="unfinished">Clear Favorites</translation>
+      <translation>Egyértelmű kedvencek</translation>
     </message>
   </context>
   <context>
@@ -1131,7 +1131,7 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     </message>
     <message>
       <source>Add a new dictionary group</source>
-      <translation type="unfinished">Add a new dictionary group</translation>
+      <translation>Új szótárcsoport hozzáadása</translation>
     </message>
     <message>
       <source>&amp;Add group</source>
@@ -1139,11 +1139,11 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     </message>
     <message>
       <source>Group already exists</source>
-      <translation type="unfinished">Group already exists</translation>
+      <translation>A csoport már létezik</translation>
     </message>
     <message>
       <source>A group with the name &apos;%1&apos; already exists.</source>
-      <translation type="unfinished">A group with the name &apos;%1&apos; already exists.</translation>
+      <translation>Egy csoport a következő nevet viseli &apos;%1&apos; már létezik.</translation>
     </message>
   </context>
   <context>
@@ -2197,7 +2197,7 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     </message>
     <message>
       <source>Kabyle</source>
-      <translation type="unfinished">Kabyle</translation>
+      <translation>Kabülia</translation>
     </message>
   </context>
   <context>
@@ -2652,19 +2652,19 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
     </message>
     <message>
       <source>Lock Panels</source>
-      <translation type="unfinished">Lock Panels</translation>
+      <translation>Zárpanelek</translation>
     </message>
     <message>
       <source>Clear History</source>
-      <translation type="unfinished">Clear History</translation>
+      <translation>Tiszta történet</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all history items?</source>
-      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
+      <translation>Biztos vagy benne, hogy minden történelmi tárgyat törölni akarsz?</translation>
     </message>
     <message>
       <source>Save File</source>
-      <translation type="unfinished">Save File</translation>
+      <translation>Mentési fájl</translation>
     </message>
   </context>
   <context>
@@ -2682,14 +2682,14 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
       <source>JSON parse error</source>
-      <translation type="unfinished">JSON parse error</translation>
+      <translation>JSON parse error</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
       <source>JSON parse error</source>
-      <translation type="unfinished">JSON parse error</translation>
+      <translation>JSON parse error</translation>
     </message>
   </context>
   <context>
@@ -2790,11 +2790,11 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>Megjelenítési név módosítása</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>Új kijelzőnév:</translation>
     </message>
   </context>
   <context>
@@ -3008,21 +3008,21 @@ való kilépés helyett.</translation>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
                   opened.
                  </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
+      <translation>Válaszd ki ezt az opciót, ha nem&apos;Nem akarom látni a fő tabsávot, ha csak egyetlen fül van
+                  kinyílt.
                  </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise, they are added to
 be the last ones.</source>
-      <translation type="unfinished">With this on, new tabs are opened just after the
-current, active one. Otherwise, they are added to
-be the last ones.</translation>
+      <translation>Ezzel az új fülek nyílnak meg közvetlenül a
+Jelenlegi, aktív egy. Ellenkező esetben hozzáadják őket
+legyetek az utolsók.</translation>
     </message>
     <message>
       <source>&amp;Style</source>
-      <translation type="unfinished">&amp;Style</translation>
+      <translation>&amp; Stílus</translation>
     </message>
     <message>
       <source>Appearance</source>
@@ -3030,15 +3030,15 @@ be the last ones.</translation>
     </message>
     <message>
       <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
+      <translation>Kapcsold be az interfész betűtípust</translation>
     </message>
     <message>
       <source>Font</source>
-      <translation type="unfinished">Font</translation>
+      <translation>Betűtípus</translation>
     </message>
     <message>
       <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
+      <translation>Betűméret</translation>
     </message>
     <message>
       <source>Interface language</source>
@@ -3140,7 +3140,7 @@ kijelölésekor, ha a kiválasztott billentyűk mindegyike le van nyomva.</trans
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation type="unfinished">Only track selection when all selected keys are kept pressed:</translation>
+      <translation>Csak akkor követed a választást, ha az összes kiválasztott billentyűt lenyomva:</translation>
     </message>
     <message>
       <source>Alt key</source>
@@ -3513,19 +3513,19 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     </message>
     <message>
       <source>S&amp;can</source>
-      <translation type="unfinished">S&amp;can</translation>
+      <translation>S&amp;can</translation>
     </message>
     <message>
       <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
-      <translation type="unfinished">Suppress JavaScript alerts, confirms, and prompts in the article view.</translation>
+      <translation>Tiltsd el a JavaScript értesítéseket, megerősítéseket és promptokat a cikknézetben.</translation>
     </message>
     <message>
       <source>Suppress JavaScript dialogs</source>
-      <translation type="unfinished">Suppress JavaScript dialogs</translation>
+      <translation>JavaScript dialogok elnyomása</translation>
     </message>
     <message>
       <source>Open website dictionary in separate tab</source>
-      <translation type="unfinished">Open website dictionary in separate tab</translation>
+      <translation>Nyisd meg a weboldal szótárt külön fülön</translation>
     </message>
     <message>
       <source>Anki</source>
@@ -3533,15 +3533,15 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     </message>
     <message>
       <source>Allow JavaScript to access clipboard in the article view.</source>
-      <translation type="unfinished">Allow JavaScript to access clipboard in the article view.</translation>
+      <translation>Engedélyezd JavaScript számára, hogy hozzáférjen a vágólaphoz a cikknézetben.</translation>
     </message>
     <message>
       <source>Enable JavaScript clipboard access (need restart)</source>
-      <translation type="unfinished">Enable JavaScript clipboard access (need restart)</translation>
+      <translation>JavaScript clipboard hozzáférés engedélyezése (újraindítás szükséges)</translation>
     </message>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
-      <translation type="unfinished">Restart to apply the JavaScript clipboard access change.</translation>
+      <translation>Újraindítsd a JavaScript clipboard hozzáférési változását.</translation>
     </message>
   </context>
   <context>
@@ -3689,11 +3689,11 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     </message>
     <message>
       <source>Website Url:</source>
-      <translation type="unfinished">Website Url:</translation>
+      <translation>Weboldal URL:</translation>
     </message>
     <message>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
-      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
+      <translation>Az URL-ben, &quot;%GDWORD%&quot; helyette a keresett szó jelenik meg.</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
@@ -3705,7 +3705,7 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+      <translation>PDF dokumentum (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
@@ -3737,7 +3737,7 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
-      <translation type="unfinished">Saving article... (%1/%2)</translation>
+      <translation>Mentés cikk... (%1/%2)</translation>
     </message>
   </context>
   <context>
@@ -3796,7 +3796,7 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     </message>
     <message>
       <source>Definition</source>
-      <translation type="unfinished">Definition</translation>
+      <translation>Definíció</translation>
     </message>
   </context>
   <context>
@@ -4124,23 +4124,23 @@ Az elérhető nyelvek teljes listája megtalálható &lt;a href=&quot;https://li
     </message>
     <message>
       <source>Remove selected directories from the list?</source>
-      <translation type="unfinished">Remove selected directories from the list?</translation>
+      <translation>Eltávolítani a kiválasztott könyvtárakat a listáról?</translation>
     </message>
     <message>
       <source>Remove %1 directories from the list?</source>
-      <translation type="unfinished">Remove %1 directories from the list?</translation>
+      <translation>Távolítsd el %1 A listáról szóló könyvtárak?</translation>
     </message>
     <message>
       <source>Remove %1 sites from the list?</source>
-      <translation type="unfinished">Remove %1 sites from the list?</translation>
+      <translation>Távolítsd el %1 A listáról lévő oldalak?</translation>
     </message>
     <message>
       <source>Remove %1 servers from the list?</source>
-      <translation type="unfinished">Remove %1 servers from the list?</translation>
+      <translation>Távolítsd el %1 A listáról származó szerverek?</translation>
     </message>
     <message>
       <source>Remove %1 programs from the list?</source>
-      <translation type="unfinished">Remove %1 programs from the list?</translation>
+      <translation>Távolítsd el %1 A listáról származó programok?</translation>
     </message>
   </context>
   <context>
@@ -4240,7 +4240,7 @@ Az elérhető nyelvek teljes listája megtalálható &lt;a href=&quot;https://li
     <name>WebSite</name>
     <message>
       <source>This website dictionary is opened in a new tab</source>
-      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
+      <translation>Ez a weboldal szótár új fülben nyílik meg</translation>
     </message>
   </context>
   <context>
@@ -4263,19 +4263,19 @@ Az elérhető nyelvek teljes listája megtalálható &lt;a href=&quot;https://li
     </message>
     <message>
       <source>Script</source>
-      <translation type="unfinished">Script</translation>
+      <translation>Forgatókönyv</translation>
     </message>
     <message>
       <source>Icon file name. Relative to the config directory.</source>
-      <translation type="unfinished">Icon file name. Relative to the config directory.</translation>
+      <translation>Ikon fájlnév. A konfigurációs könyvtárhoz képest.</translation>
     </message>
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
-      <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
+      <translation>Csak akkor érhető el, amikor weboldalakat külön füleken nyitunk. Lehet fájlút (konfigurációs könyvtárhoz vagy abszolúthoz viszonyítva), vagy közvetlen szkripttartalom.</translation>
     </message>
     <message>
       <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
-      <translation type="unfinished">This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</translation>
+      <translation>Ez az oszlop le van tiltva, mert &quot;Nyisd meg a weboldal szótárt külön fülön&quot; a Beállítások beállításában nincs engedélyezve.</translation>
     </message>
   </context>
   <context>

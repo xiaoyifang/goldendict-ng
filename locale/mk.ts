@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation type="unfinished">Anki: post to Anki failed</translation>
+      <translation>Anki: објавувањето на Anki не успеа</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation type="unfinished">Anki: post to Anki success</translation>
+      <translation>Anki: објавувањето на Anki успешно</translation>
     </message>
   </context>
   <context>
@@ -81,22 +81,7 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation type="unfinished">
-    &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
-      &lt;section&gt;
-        &lt;h4&gt;To get started&lt;/h4&gt;
-        &lt;ul&gt;
-          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
-          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/section&gt;
-      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
-      &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
-      &lt;/footer&gt;
-    &lt;/div&gt;</translation>
+      <translation>&lt;div class=\"welcome-container\">\n  &lt;h3>Добредојдовте во &lt;strong>GoldenDict-ng&lt;/strong>!&lt;/h3>\n  &lt;section>\n    &lt;h4>За да започнете&lt;/h4>\n    &lt;ul>\n      &lt;li>Одете во &lt;span class=\"menu-path\">&lt;span>Уреди&lt;/span>&lt;span>Речници&lt;/span>&lt;/span> за да ги додадете вашите датотеки со речници, да поставите онлајн извори како Википедија и да ги организирате во групи.&lt;/li>\n      &lt;li>Откако ќе се постави, можете да пребарувате зборови во овој прозорец или &lt;a href=\"https://xiaoyifang.github.io/goldendict-ng/ui_popup/\">од други апликации користејќи го скокачкиот прозорец за скенирање&lt;/a>.&lt;/li>\n      &lt;li>За да ја прилагодите програмата, истражете ги поставките во &lt;span class=\"menu-path\">&lt;span>Уреди&lt;/span>&lt;span>Преференци&lt;/span>&lt;/span>. Сите поставки имаат описи, затоа задолжително прочитајте ги ако нешто е нејасно.&lt;/li>\n    &lt;/ul>\n  &lt;/section>\n  &lt;p>Доколку ви треба дополнителна помош, имате прашања или предлози, добредојдени сте на &lt;a href=\"https://github.com/xiaoyifang/goldendict-ng/discussions\">форумот&lt;/a> и &lt;a href=\"https://github.com/xiaoyifang/goldendict-ng\">веб-страницата&lt;/a> на програмата.&lt;/p>\n  &lt;footer class=\"welcome-footer\">\n    &lt;small>Врз основа на оригиналниот GoldenDict од Константин Исаков (c) 2008-2013. Одржуван и развиен од заедницата GoldenDict-NG. Лиценциран под GPLv3 или понова верзија.&lt;/small>\n  &lt;/footer>\n&lt;/div></translation>
     </message>
   </context>
   <context>
@@ -286,30 +271,30 @@
     </message>
     <message>
       <source>&amp;Copy sound to clipboard</source>
-      <translation type="unfinished">&amp;Copy sound to clipboard</translation>
+      <translation>Копирај го звукот во таблата со исечоци</translation>
     </message>
     <message>
       <source>Failed to copy sound</source>
-      <translation type="unfinished">Failed to copy sound</translation>
+      <translation>Не успеа да се копира звукот</translation>
     </message>
     <message>
       <source>Failed to write complete audio data</source>
-      <translation type="unfinished">Failed to write complete audio data</translation>
+      <translation>Не успеа да се запишат целосни аудио податоци</translation>
     </message>
     <message>
       <source>Sound copied to clipboard</source>
-      <translation type="unfinished">Sound copied to clipboard</translation>
+      <translation>Звукот е копиран во таблата со исечоци</translation>
     </message>
     <message>
       <source>Failed to download sound</source>
-      <translation type="unfinished">Failed to download sound</translation>
+      <translation>Не успеа да се преземе звукот</translation>
     </message>
   </context>
   <context>
     <name>ArticleWebView</name>
     <message>
       <source>GoldenDict Resource Viewer</source>
-      <translation type="unfinished">GoldenDict Resource Viewer</translation>
+      <translation>Прегледувач на ресурси на GoldenDict</translation>
     </message>
   </context>
   <context>
@@ -369,15 +354,15 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation type="unfinished">Taiwan variant</translation>
+      <translation>Тајванска варијанта</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
-      <translation type="unfinished">Hong Kong variant</translation>
+      <translation>Хонгконшка варијанта</translation>
     </message>
     <message>
       <source>Mainland variant</source>
-      <translation type="unfinished">Mainland variant</translation>
+      <translation>Варијанта од копното</translation>
     </message>
   </context>
   <context>
@@ -605,7 +590,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Regular Expression</source>
-      <translation type="unfinished">Regular Expression</translation>
+      <translation>Регуларен израз</translation>
     </message>
   </context>
   <context>
@@ -764,31 +749,31 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Restore selection</source>
-      <translation type="unfinished">Restore selection</translation>
+      <translation>Врати избор</translation>
     </message>
     <message>
       <source>Cancel reindex</source>
-      <translation type="unfinished">Cancel reindex</translation>
+      <translation>Откажи повторно индексирање</translation>
     </message>
     <message>
       <source>Schedule for reindex</source>
-      <translation type="unfinished">Schedule for reindex</translation>
+      <translation>Закажи за повторно индексирање</translation>
     </message>
     <message>
       <source>Cancel schedule reindex</source>
-      <translation type="unfinished">Cancel schedule reindex</translation>
+      <translation>Откажи закажано повторно индексирање</translation>
     </message>
     <message>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
-      <translation type="unfinished">The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</translation>
+      <translation>Речникот е закажан за повторно индексирање. Индексот ќе биде повторно изграден при следното рестартирање на апликацијата.</translation>
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>Промени го името за приказ</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>Ново име за приказ:</translation>
     </message>
   </context>
   <context>
@@ -922,11 +907,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Clear</source>
-      <translation type="unfinished">Clear</translation>
+      <translation>Исчисти</translation>
     </message>
     <message>
       <source>Clear Favorites</source>
-      <translation type="unfinished">Clear Favorites</translation>
+      <translation>Исчисти омилени</translation>
     </message>
   </context>
   <context>
@@ -1131,7 +1116,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Add a new dictionary group</source>
-      <translation type="unfinished">Add a new dictionary group</translation>
+      <translation>Додај нова група на речници</translation>
     </message>
     <message>
       <source>&amp;Add group</source>
@@ -1139,11 +1124,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Group already exists</source>
-      <translation type="unfinished">Group already exists</translation>
+      <translation>Групата веќе постои</translation>
     </message>
     <message>
       <source>A group with the name &apos;%1&apos; already exists.</source>
-      <translation type="unfinished">A group with the name &apos;%1&apos; already exists.</translation>
+      <translation>Група со име \'%1\' веќе постои.</translation>
     </message>
   </context>
   <context>
@@ -2197,7 +2182,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Kabyle</source>
-      <translation type="unfinished">Kabyle</translation>
+      <translation>Кабилски</translation>
     </message>
   </context>
   <context>
@@ -2653,19 +2638,19 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Lock Panels</source>
-      <translation type="unfinished">Lock Panels</translation>
+      <translation>Заклучи панели</translation>
     </message>
     <message>
       <source>Clear History</source>
-      <translation type="unfinished">Clear History</translation>
+      <translation>Исчисти историја</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all history items?</source>
-      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
+      <translation>Дали сте сигурни дека сакате да ги исчистите сите ставки од историјата?</translation>
     </message>
     <message>
       <source>Save File</source>
-      <translation type="unfinished">Save File</translation>
+      <translation>Зачувај датотека</translation>
     </message>
   </context>
   <context>
@@ -2683,14 +2668,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
       <source>JSON parse error</source>
-      <translation type="unfinished">JSON parse error</translation>
+      <translation>Грешка при парсирање JSON</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
       <source>JSON parse error</source>
-      <translation type="unfinished">JSON parse error</translation>
+      <translation>Грешка при парсирање JSON</translation>
     </message>
   </context>
   <context>
@@ -2791,11 +2776,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>Промени го името за приказ</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>Ново име за приказ:</translation>
     </message>
   </context>
   <context>
@@ -3009,21 +2994,17 @@ the application.</source>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
                   opened.
                  </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
+      <translation>Изберете ја оваа опција ако не сакате да ја гледате главната лента со јазичиња кога е отворено само едно јазиче.</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise, they are added to
 be the last ones.</source>
-      <translation type="unfinished">With this on, new tabs are opened just after the
-current, active one. Otherwise, they are added to
-be the last ones.</translation>
+      <translation>Со ова вклучено, новите јазичиња се отвораат веднаш по тековното, активно. Во спротивно, тие се додаваат како последни.</translation>
     </message>
     <message>
       <source>&amp;Style</source>
-      <translation type="unfinished">&amp;Style</translation>
+      <translation>&amp;Стил</translation>
     </message>
     <message>
       <source>Appearance</source>
@@ -3031,15 +3012,15 @@ be the last ones.</translation>
     </message>
     <message>
       <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
+      <translation>Овозможи фонт за интерфејс</translation>
     </message>
     <message>
       <source>Font</source>
-      <translation type="unfinished">Font</translation>
+      <translation>Фонт</translation>
     </message>
     <message>
       <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
+      <translation>Големина на фонт</translation>
     </message>
     <message>
       <source>Interface language</source>
@@ -3079,7 +3060,7 @@ be the last ones.</translation>
     </message>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
+      <translation>GoldenDict-ng е софтвер за речници.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3141,7 +3122,7 @@ in the pressed state when the word selection changes.</source>
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation type="unfinished">Only track selection when all selected keys are kept pressed:</translation>
+      <translation>Следи го изборот само кога сите избрани копчиња се држат притиснати:</translation>
     </message>
     <message>
       <source>Alt key</source>
@@ -3516,19 +3497,19 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>S&amp;can</source>
-      <translation type="unfinished">S&amp;can</translation>
+      <translation>Ск&amp;енирај</translation>
     </message>
     <message>
       <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
-      <translation type="unfinished">Suppress JavaScript alerts, confirms, and prompts in the article view.</translation>
+      <translation>Потисни ги предупредувањата, потврдите и барањата на JavaScript во прегледот на статијата.</translation>
     </message>
     <message>
       <source>Suppress JavaScript dialogs</source>
-      <translation type="unfinished">Suppress JavaScript dialogs</translation>
+      <translation>Потисни ги JavaScript дијалозите</translation>
     </message>
     <message>
       <source>Open website dictionary in separate tab</source>
-      <translation type="unfinished">Open website dictionary in separate tab</translation>
+      <translation>Отвори речник на веб-страница во посебно јазиче</translation>
     </message>
     <message>
       <source>Anki</source>
@@ -3536,15 +3517,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Allow JavaScript to access clipboard in the article view.</source>
-      <translation type="unfinished">Allow JavaScript to access clipboard in the article view.</translation>
+      <translation>Дозволи JavaScript да пристапува до таблата со исечоци во прегледот на статијата.</translation>
     </message>
     <message>
       <source>Enable JavaScript clipboard access (need restart)</source>
-      <translation type="unfinished">Enable JavaScript clipboard access (need restart)</translation>
+      <translation>Овозможи пристап до таблата со исечоци за JavaScript (потребно е рестартирање)</translation>
     </message>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
-      <translation type="unfinished">Restart to apply the JavaScript clipboard access change.</translation>
+      <translation>Рестартирај за да се примени промената за пристап до таблата со исечоци за JavaScript.</translation>
     </message>
   </context>
   <context>
@@ -3684,7 +3665,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Force the word to be translated in Popup.</source>
-      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+      <translation>Принуди го зборот да биде преведен во скокачки прозорец.</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
@@ -3692,11 +3673,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Website Url:</source>
-      <translation type="unfinished">Website Url:</translation>
+      <translation>URL на веб-страница:</translation>
     </message>
     <message>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
-      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
+      <translation>Во URL-то, \"%GDWORD%\" ќе биде заменето со зборот што се пребарува.</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
@@ -3708,7 +3689,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+      <translation>PDF документ (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
@@ -3740,7 +3721,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
-      <translation type="unfinished">Saving article... (%1/%2)</translation>
+      <translation>Зачувување статија... (%1/%2)</translation>
     </message>
   </context>
   <context>
@@ -3799,7 +3780,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Definition</source>
-      <translation type="unfinished">Definition</translation>
+      <translation>Дефиниција</translation>
     </message>
   </context>
   <context>
@@ -4125,27 +4106,27 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
-      <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
+      <translation>Најшироко користен метод за транскрипција на јапонски, врз основа на англиска фонологија</translation>
     </message>
     <message>
       <source>Remove selected directories from the list?</source>
-      <translation type="unfinished">Remove selected directories from the list?</translation>
+      <translation>Отстрани ги избраните папки од списокот?</translation>
     </message>
     <message>
       <source>Remove %1 directories from the list?</source>
-      <translation type="unfinished">Remove %1 directories from the list?</translation>
+      <translation>Отстрани %1 папки од списокот?</translation>
     </message>
     <message>
       <source>Remove %1 sites from the list?</source>
-      <translation type="unfinished">Remove %1 sites from the list?</translation>
+      <translation>Отстрани %1 локации од списокот?</translation>
     </message>
     <message>
       <source>Remove %1 servers from the list?</source>
-      <translation type="unfinished">Remove %1 servers from the list?</translation>
+      <translation>Отстрани %1 сервери од списокот?</translation>
     </message>
     <message>
       <source>Remove %1 programs from the list?</source>
-      <translation type="unfinished">Remove %1 programs from the list?</translation>
+      <translation>Отстрани %1 програми од списокот?</translation>
     </message>
   </context>
   <context>
@@ -4245,7 +4226,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <name>WebSite</name>
     <message>
       <source>This website dictionary is opened in a new tab</source>
-      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
+      <translation>Овој речник на веб-страница се отвора во ново јазиче</translation>
     </message>
   </context>
   <context>
@@ -4268,19 +4249,19 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Script</source>
-      <translation type="unfinished">Script</translation>
+      <translation>Скрипта</translation>
     </message>
     <message>
       <source>Icon file name. Relative to the config directory.</source>
-      <translation type="unfinished">Icon file name. Relative to the config directory.</translation>
+      <translation>Име на датотека со икона. Релативно на конфигурацискиот директориум.</translation>
     </message>
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
-      <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
+      <translation>Достапно само кога отворате веб-страници во одделни јазичиња. Може да биде патека до датотека (релативна на конфигурацискиот директориум или апсолутна) или директна содржина на скрипта.</translation>
     </message>
     <message>
       <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
-      <translation type="unfinished">This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</translation>
+      <translation>Оваа колона е оневозможена бидејќи опцијата \"Отвори речник на веб-страница во посебно јазиче\" не е овозможена во Преференци.</translation>
     </message>
   </context>
   <context>
