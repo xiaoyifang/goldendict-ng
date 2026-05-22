@@ -2846,10 +2846,6 @@ e geçmezden açylar.</translation>
       <translation>Ýeke wkladkany gizle</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU buýrugy: Iň soňky ulanylan sargyt.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-Tab arkaly wkladkalary MRU tertipde nawigasiýa edilýär</translation>
     </message>
@@ -3002,14 +2998,6 @@ programmany ýapmagyň ýerine ony gizlärdi.</translation>
     <message>
       <source>None</source>
       <translation>Hiç birisi</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Eger etmeseňiz bu seçgini saýlaň&apos;diňe bir täb bolanda esasy täb baryny görmek islemeýärin
-                  açyldy.
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3542,6 +3530,14 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>JavaScript clipboard access change ulanmak üçin täzeden başlatyň.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation type="unfinished">Hide tab bar when only one tab is open.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation type="unfinished">Most Recently Used (MRU) navigation order.</translation>
     </message>
   </context>
   <context>
