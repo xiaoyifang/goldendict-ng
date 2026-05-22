@@ -2846,10 +2846,6 @@ switching to them.</source>
       <translation>単一タブを隠す</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU注文: 最後に使用された注文。</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-Tab でMRUの順序でタブを移動</translation>
     </message>
@@ -3002,12 +2998,6 @@ the application.</source>
     <message>
       <source>None</source>
       <translation>なし</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>1 つのタブのみを開いているときにメインのタブ バーを表示したくない場合は、このオプションを選択します。</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3539,6 +3529,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>再起動してJavaScriptクリップボードのアクセス権の変更を適用します。</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>タブが開いているときはタブバーを非表示にします。</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>最近使用したナビゲーション(MRU)です。</translation>
     </message>
   </context>
   <context>
