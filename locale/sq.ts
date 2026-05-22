@@ -2845,10 +2845,6 @@ Por, kur e ndez këtë, fushat e reja hapen pa kaluar te to.</translation>
       <translation>Fsheh fushën e vetme</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>Urdhri MRU: Urdhri më i përdorur së fundmi.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Kaloj fushat me Ctrl+Tab sipas rendit MRU</translation>
     </message>
@@ -2998,12 +2994,6 @@ the application.</source>
     <message>
       <source>None</source>
       <translation>Asnjë</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Zgjedh këtë opsion nëse nuk dëshironi të shihni shiritin kryesor të skedave kur është hapur vetëm një skedë.</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3533,6 +3523,14 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Restartoni për të aplikuar ndryshimin e qasjes së JavaScript-it në clipboard.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Fshih shiritin e skedave kur është hapur vetëm një skedë.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>Renditja e navigimit sipas Përdorimit të Fundit (MRU).</translation>
     </message>
   </context>
   <context>

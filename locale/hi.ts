@@ -2844,10 +2844,6 @@ switching to them.</source>
       <translation>एकल टैब छिपाएँ</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>एमआरयू ऑर्डर: सबसे हाल ही में इस्तेमाल किया गया ऑर्डर।</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-Tab सबसे हाल ही में प्रयुक्त(एमआरयू) क्रम में टैब नौचालन करता है</translation>
     </message>
@@ -2997,14 +2993,6 @@ the application.</source>
     <message>
       <source>None</source>
       <translation>कोई नही</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>यदि आप नहीं करते हैं तो इस विकल्प का चयन करें&apos;t मुख्य टैब बार को तब देखना चाहते हैं जब केवल एक टैब हो
-                  खोला गया।
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3528,6 +3516,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>JavaScript क्लिपबोर्ड पहुँच परिवर्तन लागू करने के लिए पुनरारंभ करें.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>केवल एक टैब खुला होने पर टैब पट्टी छुपाएँ.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>सबसे हाल ही में उपयोग किया गया (MRU) नेविगेशन आदेश।</translation>
     </message>
   </context>
   <context>

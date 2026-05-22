@@ -2847,10 +2847,6 @@ sans basculer vers ceux-ci.</translation>
       <translation>Cacher l&apos;onglet</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>Ordre MRU : la commande la plus récente.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-Tab parcourt les onglets dans l&apos;ordre des éléments les plus récents</translation>
     </message>
@@ -3002,14 +2998,6 @@ the application.</source>
     <message>
       <source>None</source>
       <translation>Aucun</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Sélectionnez cette option si vous donnez&apos;ne voulez pas voir la barre d’onglets principale quand un seul onglet est
-                  ouvert.
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3540,6 +3528,14 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Redémarrez pour appliquer le changement d'accès au presse-papiers JavaScript.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Masquer la barre d'onglets quand un seul onglet est ouvert.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>Ordre de navigation le plus récemment utilisé (MRU).</translation>
     </message>
   </context>
   <context>

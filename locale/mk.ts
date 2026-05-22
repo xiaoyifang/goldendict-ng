@@ -2833,10 +2833,6 @@ switching to them.</source>
       <translation>Сокри сингл(една) картичка</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>Нарачка MRU: Нарачка неодамна користена.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-Tab навигација на картичка во MRU редослед</translation>
     </message>
@@ -2989,12 +2985,6 @@ the application.</source>
     <message>
       <source>None</source>
       <translation>Ништо</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Изберете ја оваа опција ако не сакате да ја гледате главната лента со јазичиња кога е отворено само едно јазиче.</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3526,6 +3516,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Рестартирај за да се примени промената за пристап до таблата со исечоци за JavaScript.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Скриј таб лента кога е отворен само еден таб.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>Најново користен (MRU) редослед на навигација.</translation>
     </message>
   </context>
   <context>

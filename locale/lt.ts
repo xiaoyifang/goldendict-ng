@@ -2847,10 +2847,6 @@ Pažymėjus šią parinktį, naujos kortelės nebus aktyvuojamos.
       <translation>Slėpti vienintelę kortelę</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU užsakymas: paskutinis naudotas užsakymas.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Vald-Tab naršymui kortelėse pagal MRU</translation>
     </message>
@@ -3003,14 +2999,6 @@ tiesiog paslepiama.</translation>
     <message>
       <source>None</source>
       <translation>Nieko</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Pasirinkite šią parinktį, jei&apos;t nori matyti pagrindinę skirtukų juostą, kai tik vienas skirtukas yra
-                  atidarytas.
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3540,6 +3528,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Paleiskite iš naujo, kad pritaikytumėte "JavaScript" mainų srities prieigos pakeitimą.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Slėpti skirtukų juostą, kai atidarytas tik vienas skirtukas.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>Vėliausiai naudota (MRU) naršymo tvarka.</translation>
     </message>
   </context>
   <context>

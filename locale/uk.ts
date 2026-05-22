@@ -2847,10 +2847,6 @@ switching to them.</source>
       <translation>Сховати єдину вкладку</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>Замовлення MRU: найдавніше використовуване замовлення.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-Tab керує вкладками у MRU порядку</translation>
     </message>
@@ -3002,12 +2998,6 @@ the application.</source>
     <message>
       <source>None</source>
       <translation>Нема</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Виберіть цей параметр, якщо ви не хочете бачити головну панель вкладок, коли відкрито лише одну вкладку.</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3541,6 +3531,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Перезавантажити для застосування зміни доступу до буфера обміну JavaScript.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Приховувати панель вкладок, коли відкрита лише одна вкладка.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>Найбільш використовуваний навігаційний порядок (MRU).</translation>
     </message>
   </context>
   <context>

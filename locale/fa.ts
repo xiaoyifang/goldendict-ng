@@ -2846,10 +2846,6 @@ switching to them.</source>
       <translation>پنهان کردن تک زبانه</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>سفارش MRU: سفارش اخیر استفاده شده.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>با مهار+Tab بین زبانه‌ها به ترتیب MRU جابه‌جا شوید</translation>
     </message>
@@ -3002,12 +2998,6 @@ the application.</source>
     <message>
       <source>None</source>
       <translation>هیج کدام</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>این گزینه را انتخاب کنید اگر نمی‌خواهید نوار برگه اصلی را زمانی که تنها یک برگه باز است، مشاهده کنید.</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3537,6 +3527,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>برای اعمال تغییر دسترسی جاوااسکریپت به کلیپ‌بورد، راه‌اندازی مجدد کنید.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>وقتی فقط یک تب باز است، نوار تب را مخفی کنید.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>جدیدترین ترتیب ناوبری استفاده شده (MRU).</translation>
     </message>
   </context>
   <context>

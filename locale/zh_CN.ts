@@ -2845,10 +2845,6 @@ switching to them.</source>
       <translation>隐藏单标签页</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>排序：最近使用优先</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>用 Ctrl-Tab 浏览标签页时，以“最近使用”为序</translation>
     </message>
@@ -2995,12 +2991,6 @@ the application.</source>
     <message>
       <source>None</source>
       <translation>无</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>如果您不想在仅打开一个标签页时看到主标签页栏，请选择此选项。</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3529,6 +3519,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>重新启动以应用 JavaScript 剪贴板访问更改。</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>仅打开一个标签时隐藏标签栏。</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>最近使用(MRU)导航顺序。</translation>
     </message>
   </context>
   <context>

@@ -2846,10 +2846,6 @@ Bu seçenekleyse, yeni sekmeler açıldığında hemen o sekmeye geçilmeyecek.<
       <translation>Tek sekmeyi gizle</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU sırası: En son kullanılan sıra.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-Tab sekmelerde MRU sırasına göre gezinir</translation>
     </message>
@@ -3001,14 +2997,6 @@ yerine onu gizler.</translation>
     <message>
       <source>None</source>
       <translation>Yok</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Eğer yoksa, bu seçeneği seçin&apos;Sadece tek bir sekme varken ana sekme çubuğunu görmek istemez
-                  açıldı.
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3539,6 +3527,14 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>JavaScript pano erişim değişikliğini uygulamak için yeniden başlatın.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Sadece bir sekme açıkken sekme çubuğunu gizle.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>En Son Kullanılan (MRU) navigasyon sırası.</translation>
     </message>
   </context>
   <context>

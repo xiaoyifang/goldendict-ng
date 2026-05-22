@@ -2894,10 +2894,6 @@ jichha phicchun qhiparasi.</translation>
       <translation>Mä phichhukisa ukjaxa imantaña</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU orden: Jichhax apnaqat orden.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl+Tab phichhut phichhut sari MRU siqichawjama</translation>
     </message>
@@ -3063,12 +3059,6 @@ Aka jakhu mayjacham jach&apos;a menus jithiqañataki.</translation>
     <message>
       <source>None</source>
       <translation>Ni maya</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Aka ajlliwix ajlliñawa janiw jach'a ficha barra uñjaña munapkta ukhaxa mä sapa ficha jist'aratäki ukhaxa.</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3631,6 +3621,14 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Mayamp qalltaña JavaScript clipboard mantaña mayjt'awix lurañataki.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Mä ficha ukakiw jist'arata ukjaxa, ficha barra imantaña.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>Jichhaki apnaqata (MRU) saraqañ thakhi.</translation>
     </message>
   </context>
   <context>

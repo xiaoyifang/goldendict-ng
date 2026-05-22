@@ -2831,10 +2831,6 @@ không cần chuyển ngay sang chúng.</translation>
       <translation>Ẩn thẻ đơn nhất</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>Thứ tự MRU: Thứ tự được sử dụng gần đây nhất.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-Tab điều hướng các thẻ theo trình tự MRU</translation>
     </message>
@@ -2985,12 +2981,6 @@ the application.</source>
     <message>
       <source>None</source>
       <translation>Không</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Chọn tùy chọn này nếu bạn không muốn thấy thanh tab chính khi chỉ có một tab được mở.</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3517,6 +3507,14 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Khởi động lại để áp dụng thay đổi truy cập khay nhớ tạm JavaScript.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Ẩn thanh tab khi chỉ mở một tab.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>Thứ tự điều hướng được sử dụng gần đây nhất (MRU).</translation>
     </message>
   </context>
   <context>

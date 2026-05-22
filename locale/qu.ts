@@ -2847,10 +2847,6 @@ abiertas sin trasladar a ellas.</translation>
       <translation>Sapalla tablata pakay</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU kamachiy: Aswan qhipa llamk'achisqa kamachiy.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-Tab MRU ordenpi tablakunata purichin</translation>
     </message>
@@ -3001,12 +2997,6 @@ cerrar la aplicación.</translation>
     <message>
       <source>None</source>
       <translation>Ni ima</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Kay akllanata akllay sichus mana&apos;t hatun patara barrata rikuyta munankichu huk pataralla kichasqa kaptinqa.</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3535,6 +3525,14 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Musuqmanta qallariy JavaScript k'aspipaq kaqman chayanapaq hukman churasqata llamk'achinapaq.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation type="unfinished">Hide tab bar when only one tab is open.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation type="unfinished">Most Recently Used (MRU) navigation order.</translation>
     </message>
   </context>
   <context>
