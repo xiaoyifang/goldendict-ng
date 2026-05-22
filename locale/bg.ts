@@ -2847,10 +2847,6 @@ switching to them.</source>
       <translation>Скрий подпрозорците</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU поръчка: Най-скоро използваната поръчка.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-Tab превключва подпрозорци в реда на използване</translation>
     </message>
@@ -3003,12 +2999,6 @@ the application.</source>
     <message>
       <source>None</source>
       <translation>Без</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Изберете тази опция, ако не искате да виждате главната лента с раздели, когато е отворен само един раздел.</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3538,6 +3528,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Рестартирайте, за да приложите промяната за достъп на JavaScript до клипборда.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Скриване на лентата с раздели, когато е отворен само един раздел.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>Ред на навигация „Най-скоро използвани“ (MRU).</translation>
     </message>
   </context>
   <context>
