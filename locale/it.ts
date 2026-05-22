@@ -2847,10 +2847,6 @@ Spuntando questa casella, le nuove schede vengono aperte senza che si passi ad e
       <translation>nascondi scheda singola</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>Ordine MRU: Ordine usato più di recente.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl+Tab naviga in ordine cronologico tra le schede aperte</translation>
     </message>
@@ -3002,14 +2998,6 @@ ne causerà soltanto l&apos;iconizzazione nella barra di notifica.</translation>
     <message>
       <source>None</source>
       <translation>Nessuno</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Selezionare questa opzione se si don&apos;t vuole vedere la barra delle schede principale quando è aperta solo una singola scheda
-                  .
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3541,6 +3529,14 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Riavvia per applicare la modifica di accesso agli appunti JavaScript.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Nascondi la barra delle schede quando è aperta solo una scheda.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>Uso più recente (MRU) ordine di navigazione.</translation>
     </message>
   </context>
   <context>
