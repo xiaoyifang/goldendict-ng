@@ -292,7 +292,7 @@ inline std::pair< bool, QString > getQueryWord( const QUrl & url )
   }
   if ( url.scheme().compare( "bword" ) == 0 || url.scheme().compare( "entry" ) == 0 ) {
     validScheme = true;
-    word = Url::getWordFromPathOrHost( url );
+    word        = Url::getWordFromPathOrHost( url );
   }
   return std::make_pair( validScheme, word );
 }
