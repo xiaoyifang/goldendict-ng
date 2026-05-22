@@ -3531,11 +3531,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
-      <translation type="unfinished">Hide tab bar when only one tab is open.</translation>
+      <translation>Slėpti skirtukų juostą, kai atidarytas tik vienas skirtukas.</translation>
     </message>
     <message>
       <source>Most Recently Used (MRU) navigation order.</source>
-      <translation type="unfinished">Most Recently Used (MRU) navigation order.</translation>
+      <translation>Vėliausiai naudota (MRU) naršymo tvarka.</translation>
     </message>
   </context>
   <context>
