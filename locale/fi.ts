@@ -2847,10 +2847,6 @@ vaihtamista niihin.</translation>
       <translation>Piilota yksi välilehti</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU-tilaus: Viimeksi käytetty tilaus.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-välilehti navigoi välilehdet MRU-järjestyksessä</translation>
     </message>
@@ -3003,14 +2999,6 @@ sovellus.</translation>
     <message>
       <source>None</source>
       <translation>Tyhjä</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Valitse tämä vaihtoehto, jos et halua&apos;En halua nähdä päävälilehtipalkkia, kun on vain yksi välilehti
-                  avattu.
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3543,6 +3531,14 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Käynnistä uudelleen, jos haluat ottaa käyttöön JavaScript-leikepöydälle pääsyn muutoksen.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Piilota välilehti kun vain yksi välilehti on auki.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>Viimeksi käytetty (MRU) navigointitilaus.</translation>
     </message>
   </context>
   <context>
