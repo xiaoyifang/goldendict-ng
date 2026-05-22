@@ -3530,11 +3530,11 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     </message>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
-      <translation type="unfinished">Hide tab bar when only one tab is open.</translation>
+      <translation>Sadece bir sekme açıkken sekme çubuğunu gizle.</translation>
     </message>
     <message>
       <source>Most Recently Used (MRU) navigation order.</source>
-      <translation type="unfinished">Most Recently Used (MRU) navigation order.</translation>
+      <translation>En Son Kullanılan (MRU) navigasyon sırası.</translation>
     </message>
   </context>
   <context>
