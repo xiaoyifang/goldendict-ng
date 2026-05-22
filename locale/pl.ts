@@ -2846,10 +2846,6 @@ Włączenie tej opcji powoduje, że nie następuje przejście do nowo otwartej k
       <translation>Ukryj pojedynczą kartę</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>Kolejność MRU: Ostatnio używana kolejność.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-Tab umożliwia nawigację po kartach w kolejności używania</translation>
     </message>
@@ -3002,14 +2998,6 @@ prowadzi do jego ukrycia, a nie do zamknięcia aplikacji.</translation>
     <message>
       <source>None</source>
       <translation>Brak</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Zaznacz tę opcję, jeśli nie chcesz, aby wyświetlany był główny pasek kart, gdy otwarta jest tylko jedna
-                  karta.
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3541,6 +3529,14 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Uruchom ponownie, aby zastosować zmianę dostępu do schowka JavaScript.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Ukryj pasek zakładek, gdy tylko jedna karta jest otwarta.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>Ostatnio używane (MRU) kolejność nawigacji.</translation>
     </message>
   </context>
   <context>
