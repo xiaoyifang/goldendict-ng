@@ -2846,10 +2846,6 @@ switching to them.</source>
       <translation>탭이 하나뿐이면 숨김</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU 순서: 가장 최근에 사용한 순서입니다.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Ctrl-Tab키로 탭 이동(최근사용기록순)</translation>
     </message>
@@ -3001,14 +2997,6 @@ the application.</source>
     <message>
       <source>None</source>
       <translation>없음</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>만약 그렇지 않다면 이 옵션을 선택하세요&apos;메인 탭 바를 보고 싶은데, 탭이 하나뿐인데
-                  열렸다.
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3539,6 +3527,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>JavaScript 클립보드 접근 변경 사항을 적용하려면 재시작하세요.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation type="unfinished">Hide tab bar when only one tab is open.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation type="unfinished">Most Recently Used (MRU) navigation order.</translation>
     </message>
   </context>
   <context>
