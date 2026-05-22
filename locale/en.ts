@@ -2832,10 +2832,6 @@ switching to them.</translation>
       <translation type="unfinished">Hide single tab</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation type="unfinished">MRU order: Most recently used order.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation type="unfinished">Ctrl-Tab navigates tabs in MRU order</translation>
     </message>
@@ -2988,14 +2984,6 @@ the application.</translation>
     <message>
       <source>None</source>
       <translation type="unfinished">None</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3528,6 +3516,14 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation type="unfinished">Restart to apply the JavaScript clipboard access change.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation type="unfinished">Hide tab bar when only one tab is open.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation type="unfinished">Most Recently Used (MRU) navigation order.</translation>
     </message>
   </context>
   <context>
