@@ -2847,10 +2847,6 @@ geopend zonder ze te selecteren.</translation>
       <translation>Enkel tabblad verbergen</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU order: meest recent gebruikte bestelling.</translation>
-    </message>
-    <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
       <translation>Met Ctrl-Tab navigeren door recent gebruikte tabbladen</translation>
     </message>
@@ -3003,12 +2999,6 @@ the application.</source>
     <message>
       <source>None</source>
       <translation>Geen</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Selecteer deze optie als u de hoofdtadbalk niet wilt zien wanneer slechts één tabblad is\n                  geopend.\n                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3538,6 +3528,14 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Herstart om de toegangswijziging voor JavaScript klembord toe te passen.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Tabbladbalk verbergen als slechts één tabblad is geopend.</translation>
+    </message>
+    <message>
+      <source>Most Recently Used (MRU) navigation order.</source>
+      <translation>Meest recent gebruikt (MRU) navigatievolgorde.</translation>
     </message>
   </context>
   <context>
