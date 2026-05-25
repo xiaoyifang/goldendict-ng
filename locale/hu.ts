@@ -2765,10 +2765,6 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
       <translation>Részletek:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>A szótárat alkotó fájlok:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Húzással átrendezheti a szótárak sorrendjét. Ejtse a szótárat az inaktív csoportba a kikapcsolásához.</translation>
     </message>
@@ -2795,6 +2791,10 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
     <message>
       <source>New display name:</source>
       <translation>Új kijelzőnév:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Szótár komponensek:</translation>
     </message>
   </context>
   <context>
@@ -3534,10 +3534,6 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Rejtsd el a tabsávot, ha csak egy fül van nyitva.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>Legutóbb használt (MRU) navigációs sorrend.</translation>
     </message>
   </context>
   <context>
