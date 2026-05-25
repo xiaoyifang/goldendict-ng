@@ -2765,10 +2765,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Willay:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Kay simi-pirwaqa chay archiwukunayoq:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Ajuste el orden, arrastrando y soltando los diccionarios con el ratón. Mueva diccionarios al grupo deshabilitado para desactivar su uso</translation>
     </message>
@@ -2795,6 +2791,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>New display name:</source>
       <translation>Musuq rikuchina sutin:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation type="unfinished">Dictionary components:</translation>
     </message>
   </context>
   <context>
@@ -3529,10 +3529,6 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation type="unfinished">Hide tab bar when only one tab is open.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation type="unfinished">Most Recently Used (MRU) navigation order.</translation>
     </message>
   </context>
   <context>
