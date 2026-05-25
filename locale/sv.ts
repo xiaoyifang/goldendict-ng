@@ -2765,10 +2765,6 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
       <translation>Beskrivning:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Filer som omfattas av ordlistan:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Ändra ordningen genom att dra och släppa objekten i listan. Släpp ordlistor i gruppen &quot;Inaktiverade ordlistor&quot; för att inaktivera dem.</translation>
     </message>
@@ -2795,6 +2791,10 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
     <message>
       <source>New display name:</source>
       <translation>Nytt visningsnamn:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Ordbokskomponenter:</translation>
     </message>
   </context>
   <context>
@@ -3536,10 +3536,6 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Dölj flikfältet när endast en flik är öppen.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>Senast använda (MRU) navigationsordning.</translation>
     </message>
   </context>
   <context>
