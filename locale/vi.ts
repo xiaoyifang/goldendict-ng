@@ -2749,10 +2749,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Mô tả:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Tệp chứa từ điển này:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Điều chỉnh thứ tự bằng cách kéo và thả các từ điển để di chuyển vị trí. Thả vào ô không hoạt động để vô hiệu hoá từ điển.</translation>
     </message>
@@ -2779,6 +2775,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>New display name:</source>
       <translation>Tên hiển thị mới:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Các thành phần từ điển:</translation>
     </message>
   </context>
   <context>
@@ -3511,10 +3511,6 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Ẩn thanh tab khi chỉ mở một tab.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>Thứ tự điều hướng được sử dụng gần đây nhất (MRU).</translation>
     </message>
   </context>
   <context>
