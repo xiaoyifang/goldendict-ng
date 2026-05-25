@@ -2765,10 +2765,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Açıklama:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Bu sözlüğü içeren dosyalar:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>İçindeki öğeleri sürükleyip bırakarak sırayı ayarlayın. Kullanımlarını devre dışı bırakmak için sözlükleri aktif olmayan gruba bırakın.</translation>
     </message>
@@ -2795,6 +2791,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>New display name:</source>
       <translation>Yeni gösterim adı:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Sözlük bileşenleri:</translation>
     </message>
   </context>
   <context>
@@ -3531,10 +3531,6 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Sadece bir sekme açıkken sekme çubuğunu gizle.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>En Son Kullanılan (MRU) navigasyon sırası.</translation>
     </message>
   </context>
   <context>
