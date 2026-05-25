@@ -2764,10 +2764,6 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <translation>विवरण:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>इस शब्दकोश में सम्मिलित फाइलें:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation> इसमें मदों को खींचकर और छोडकर क्रम समायोजित करें।शब्दकोशों के उपयोग को अक्षम करने के लिए उन्हें निष्क्रिय समूह में छोड़ दें।</translation>
     </message>
@@ -2794,6 +2790,10 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <source>New display name:</source>
       <translation>नया प्रदर्शन नाम:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>शब्दकोश घटक:</translation>
     </message>
   </context>
   <context>
@@ -3520,10 +3520,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>केवल एक टैब खुला होने पर टैब पट्टी छुपाएँ.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>सबसे हाल ही में उपयोग किया गया (MRU) नेविगेशन आदेश।</translation>
     </message>
   </context>
   <context>
