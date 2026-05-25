@@ -2765,10 +2765,6 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <translation>Description :</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Fichiers incluant ce dictionnaire :</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Définissez l&apos;ordre des éléments en les déplaçant (glisser-déposer). Déposez les dictionnaires dans le groupe &apos;inactif&apos; pour désactiver leur utilisation.</translation>
     </message>
@@ -2795,6 +2791,10 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <source>New display name:</source>
       <translation>Nouveau nom d'affichage :</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Composants du dictionnaire :</translation>
     </message>
   </context>
   <context>
@@ -3532,10 +3532,6 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Masquer la barre d'onglets quand un seul onglet est ouvert.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>Ordre de navigation le plus récemment utilisé (MRU).</translation>
     </message>
   </context>
   <context>
