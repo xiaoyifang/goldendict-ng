@@ -237,18 +237,21 @@ void OrderAndProps::describeDictionary( DictListWidget * lst, const QModelIndex 
     ui.dictionaryTranslatesFrom->setText( Language::localizedStringForId( dict->getLangFrom() ) );
     ui.dictionaryTranslatesTo->setText( Language::localizedStringForId( dict->getLangTo() ) );
 
-    const std::vector< std::string > & filenames = dict->getDictionaryFilenames();
-
-    QString filenamesText;
-
-    for ( unsigned x = 0; x < filenames.size(); x++ ) {
-      filenamesText += filenames[ x ].c_str();
-      filenamesText += '\n';
+    if ( dict->isLocalDictionary() ) {
+      const std::vector< std::string > & filenames = dict->getDictionaryFilenames();
+      QString filenamesText;
+      for ( unsigned x = 0; x < filenames.size(); x++ ) {
+        filenamesText += filenames[ x ].c_str();
+        filenamesText += '\n';
+      }
+      ui.dictionaryFileList->setPlainText( filenamesText );
+      ui.dictionaryFileList->setVisible( true );
+      ui.dictionaryComponentsLabel->setVisible( true );
     }
-
-    ui.dictionaryFileList->setPlainText( filenamesText );
-    ui.dictionaryFileList->setVisible( dict->isLocalDictionary() );
-    ui.dictionaryComponentsLabel->setVisible( dict->isLocalDictionary() );
+    else {
+      ui.dictionaryFileList->setVisible( false );
+      ui.dictionaryComponentsLabel->setVisible( false );
+    }
 
     QString descText = dict->getDescription();
     if ( !descText.isEmpty() && descText.compare( "NONE" ) != 0 ) {
