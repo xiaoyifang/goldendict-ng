@@ -2765,10 +2765,6 @@ Norėdami atverti parsisiuntimo puslapį, spauskite &lt;b&gt;Parsisiųsti&lt;/b&
       <translation>Aprašas:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Žodyną sudarantys failai:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Žodynų tvarką pakeisite tiesiog juos tempdami. Norėdami uždrausti žodyną, tiesiog nutempkite jį į neaktyviųjų grupę.</translation>
     </message>
@@ -2795,6 +2791,10 @@ Norėdami atverti parsisiuntimo puslapį, spauskite &lt;b&gt;Parsisiųsti&lt;/b&
     <message>
       <source>New display name:</source>
       <translation>Naujas rodomas vardas:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Žodyno komponentai:</translation>
     </message>
   </context>
   <context>
@@ -3532,10 +3532,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Slėpti skirtukų juostą, kai atidarytas tik vienas skirtukas.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>Vėliausiai naudota (MRU) naršymo tvarka.</translation>
     </message>
   </context>
   <context>
