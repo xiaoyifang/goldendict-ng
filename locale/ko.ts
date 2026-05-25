@@ -2764,10 +2764,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>설명:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>사전의 구성파일:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>마우스끌기로 순서를 조정하십시오. 사전을 사용하지 않으려면 비활성 그룹으로 옮기십시오.</translation>
     </message>
@@ -2794,6 +2790,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>New display name:</source>
       <translation>새로운 표시 이름:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>사전 구성 요소:</translation>
     </message>
   </context>
   <context>
@@ -3531,10 +3531,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>탭이 하나만 열려 있을 때는 탭 바를 숨기세요.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>최근에 사용된 (MRU) 항법 순서.</translation>
     </message>
   </context>
   <context>
