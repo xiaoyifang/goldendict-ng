@@ -2810,10 +2810,6 @@ Error de importación: datos incorrectos en el fichero.</translation>
       <translation>Qillqatax kunjamasa:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Aka aru-pirwan wayaqanaka:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Qatatiyam ukat aru-pirwanak uskuña, kunjams jumax siqi siqi sarayañ munta. Jiwt&apos;ayañatakixa, aru-pirwanak jiwt&apos;at qutunakan ukan uskuña.</translation>
     </message>
@@ -2840,6 +2836,10 @@ Error de importación: datos incorrectos en el fichero.</translation>
     <message>
       <source>New display name:</source>
       <translation>Machaq uñacht'awi suti:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Aru pirwanakana wakichäwinakapa:</translation>
     </message>
   </context>
   <context>
@@ -3625,10 +3625,6 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Mä ficha ukakiw jist'arata ukjaxa, ficha barra imantaña.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>Jichhaki apnaqata (MRU) saraqañ thakhi.</translation>
     </message>
   </context>
   <context>
