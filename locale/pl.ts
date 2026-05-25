@@ -2765,10 +2765,6 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
       <translation>Opis:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Pliki składające się na ten słownik:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Dostosuj kolejność, przeciągając i upuszczając elementy. Upuszczenie słownika w grupie nieaktywnych powoduje jego wyłączenie.</translation>
     </message>
@@ -2795,6 +2791,10 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
     <message>
       <source>New display name:</source>
       <translation>Nowa nazwa wyświetlania:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Składniki słownika:</translation>
     </message>
   </context>
   <context>
@@ -3533,10 +3533,6 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Ukryj pasek zakładek, gdy tylko jedna karta jest otwarta.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>Ostatnio używane (MRU) kolejność nawigacji.</translation>
     </message>
   </context>
   <context>
