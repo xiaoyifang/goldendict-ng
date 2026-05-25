@@ -2794,7 +2794,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Dictionary components:</source>
-      <translation type="unfinished">Dictionary components:</translation>
+      <translation>Tifuriyin n umawal:</translation>
     </message>
   </context>
   <context>

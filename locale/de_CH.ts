@@ -2792,7 +2792,7 @@ Um folgende Symbole zu finden &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos
     </message>
     <message>
       <source>Dictionary components:</source>
-      <translation type="unfinished">Dictionary components:</translation>
+      <translation>Wörterbuch-Komponenten:</translation>
     </message>
   </context>
   <context>
