@@ -206,6 +206,8 @@ void OrderAndProps::disableDictionaryDescription()
   ui.dictionaryTranslatesFrom->clear();
   ui.dictionaryTranslatesTo->clear();
   ui.dictionaryFileList->clear();
+  ui.dictionaryFileList->setVisible( false );
+  ui.dictionaryComponentsLabel->setVisible( false );
 
   ui.dictionaryDescription->clear();
   ui.dictionaryDescription->setVisible( false );
@@ -245,6 +247,8 @@ void OrderAndProps::describeDictionary( DictListWidget * lst, const QModelIndex 
     }
 
     ui.dictionaryFileList->setPlainText( filenamesText );
+    ui.dictionaryFileList->setVisible( dict->isLocalDictionary() );
+    ui.dictionaryComponentsLabel->setVisible( dict->isLocalDictionary() );
 
     QString descText = dict->getDescription();
     if ( !descText.isEmpty() && descText.compare( "NONE" ) != 0 ) {

@@ -203,9 +203,9 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="label_11">
+         <widget class="QLabel" name="dictionaryComponentsLabel">
           <property name="text">
-           <string>Files comprising this dictionary:</string>
+           <string>Dictionary components:</string>
           </property>
          </widget>
         </item>
