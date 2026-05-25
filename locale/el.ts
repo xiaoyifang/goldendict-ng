@@ -2767,10 +2767,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Περιγραφή:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Αρχεία λεξικού:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Μπορείτε να αλλάξετε τη σειρά εμφάνισης των λεξικών, σέρνοντάς τα με το ποντίκι. Σύρετε λεξικά στην ομάδα των ανενεργών για να τα απενεργοποιήσετε.</translation>
     </message>
@@ -2797,6 +2793,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>New display name:</source>
       <translation>Νέο όνομα προβολής:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Εξαρτήματα λεξικού:</translation>
     </message>
   </context>
   <context>
@@ -3536,10 +3536,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Απόκρυψη γραμμής καρτελών όταν μόνο μία καρτέλα είναι ανοιχτή.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>Πιο πρόσφατα χρησιμοποιημένος (MRU) διαταγή ναυσιπλοΐας.</translation>
     </message>
   </context>
   <context>
