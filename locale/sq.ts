@@ -2764,10 +2764,6 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
       <translation>Përshkrimi:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Skedat që përbëjnë fjalorin:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Ndreqeni radhën duke kapur e lëshuar elementet. Kalojini fjalorët te grupi joaktiv për t&apos;i çaktivizuar.</translation>
     </message>
@@ -2794,6 +2790,10 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
     <message>
       <source>New display name:</source>
       <translation>Emri i ri i shfaqjes:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Komponentët e fjalorit:</translation>
     </message>
   </context>
   <context>
@@ -3527,10 +3527,6 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Fshih shiritin e skedave kur është hapur vetëm një skedë.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>Renditja e navigimit sipas Përdorimit të Fundit (MRU).</translation>
     </message>
   </context>
   <context>

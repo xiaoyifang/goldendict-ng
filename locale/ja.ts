@@ -2764,10 +2764,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>説明:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>この辞書を含むファイル:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>アイテムをドラッグ アンド ドロップして順序を調整します。使用を無効にするには非アクティブなグループへ辞書をドロップします。</translation>
     </message>
@@ -2794,6 +2790,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>New display name:</source>
       <translation>新しい表示名:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>辞書コンポーネント:</translation>
     </message>
   </context>
   <context>
@@ -3533,10 +3533,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>タブが開いているときはタブバーを非表示にします。</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>最近使用したナビゲーション(MRU)です。</translation>
     </message>
   </context>
   <context>

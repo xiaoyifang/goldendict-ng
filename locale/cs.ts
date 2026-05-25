@@ -2765,10 +2765,6 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <translation>Popis:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Soubory obsažené v tomto slovníku:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Upravte pořadí uchopením a přesunutím na požadované místo. Pšesuňte slovníky do neaktivní skupiny pro zakázání jejich použití.</translation>
     </message>
@@ -2795,6 +2791,10 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
     <message>
       <source>New display name:</source>
       <translation>Nové zobrazovací jméno:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Slovníkové komponenty:</translation>
     </message>
   </context>
   <context>
@@ -3533,10 +3533,6 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Skrýt panel záložek, pokud je otevřena pouze jedna záložka.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>Naposledy použité pořadí navigace (MRU).</translation>
     </message>
   </context>
   <context>

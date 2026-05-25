@@ -2750,10 +2750,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Апісанне:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Файлы, з якіх складаецца слоўнік:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Упарадкуйце слоўнікі, перацягваючы іх мышшу. Каб адключыць слоўнік, перацягніце яго ў групу неактыўных слоўнікаў.</translation>
     </message>
@@ -2780,6 +2776,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>New display name:</source>
       <translation>Новая назва для адлюстравання:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Кампаненты слоўніка:</translation>
     </message>
   </context>
   <context>
@@ -3509,10 +3509,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Схаваць панэль укладак, калі адкрыта толькі адна ўкладка.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>Парадак навігацыі паводле найбольш часта выкарыстоўваемых (MRU).</translation>
     </message>
   </context>
   <context>

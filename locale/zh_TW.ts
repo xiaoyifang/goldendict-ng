@@ -2764,10 +2764,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>描述</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>此字典包含的檔案：</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>可以透過拖曳改變項目的排序。也可將字典放入未啟用的群組以停用。</translation>
     </message>
@@ -2794,6 +2790,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>New display name:</source>
       <translation>新的顯示名稱：</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>字典組成部分：</translation>
     </message>
   </context>
   <context>
@@ -3524,10 +3524,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>當只開啟一個分頁時隱藏分頁列。</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>最近使用 (MRU) 導覽順序。</translation>
     </message>
   </context>
   <context>

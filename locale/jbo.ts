@@ -2765,10 +2765,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>ve skicu</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>datnyvei fi pa vlacku</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</translation>
     </message>
@@ -2795,6 +2791,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>New display name:</source>
       <translation>cnino cusku cmene:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>srana fi lo'i vlacku:</translation>
     </message>
   </context>
   <context>
@@ -3533,10 +3533,6 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation type="unfinished">Hide tab bar when only one tab is open.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation type="unfinished">Most Recently Used (MRU) navigation order.</translation>
     </message>
   </context>
   <context>

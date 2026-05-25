@@ -2765,10 +2765,6 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
       <translation>Beschreibung:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Wörterbuch zusammengesetzt aus diesen Dateien:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Verändern Sie die Reihenfolge mit Drag und Drop.  Lassen sie ein Wörterbuch mittels Drag und Drop in der inaktiven Gruppe fallen, um es zu deaktivieren.</translation>
     </message>
@@ -2795,6 +2791,10 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
     <message>
       <source>New display name:</source>
       <translation>Neuer Anzeigename:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Wörterbuch-Komponenten:</translation>
     </message>
   </context>
   <context>
@@ -3529,10 +3529,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Tableiste ausblenden, wenn nur ein Tab geöffnet ist.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>Zuletzt verwendete (MRU) Navigationsanordnung.</translation>
     </message>
   </context>
   <context>

@@ -2764,10 +2764,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>الوصف:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>الملفات التي تتضمن القاموس:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>اضبط الترتيب بسحب العناصر إفلاتها في القائمة. أفلت القواميس في المجموعة غير النشطة لتعطيل استخدامها.</translation>
     </message>
@@ -2794,6 +2790,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>New display name:</source>
       <translation>اسم العرض الجديد:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>مكونات القاموس:</translation>
     </message>
   </context>
   <context>
@@ -3533,10 +3533,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>إخفاء شريط التبويب عند فتح علامة تبويب واحدة فقط.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>نظام الملاحة المستخدم مؤخرا (MRU)</translation>
     </message>
   </context>
   <context>

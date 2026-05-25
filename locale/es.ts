@@ -2765,10 +2765,6 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
       <translation>Descripción:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Ficheros que componen este diccionario:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Ajuste el orden arrastrando y soltando diccionarios. Arrastre diccionarios al grupo de no activos para deshabilitar su uso.</translation>
     </message>
@@ -2795,6 +2791,10 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <source>New display name:</source>
       <translation>Nuevo nombre de pantalla:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Componentes de diccionario:</translation>
     </message>
   </context>
   <context>
@@ -3533,10 +3533,6 @@ de diccionarios Stardict, Babylon y GLS</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Ocultar barra de pestañas cuando sólo una pestaña está abierta.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>Orden de navegación usado más recientemente (MRU).</translation>
     </message>
   </context>
   <context>

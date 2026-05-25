@@ -2765,10 +2765,6 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <translation>Beschrijving:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Woordenboek bestaat uit de volgende bestanden:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Verander de volgorde door items te slepen en verplaats woordenboeken naar de inactieve groep om ze uit te schakelen.</translation>
     </message>
@@ -2795,6 +2791,10 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
     <message>
       <source>New display name:</source>
       <translation>Nieuwe weergavenaam</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Woordenboek onderdelen:</translation>
     </message>
   </context>
   <context>
@@ -3532,10 +3532,6 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Tabbladbalk verbergen als slechts één tabblad is geopend.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>Meest recent gebruikt (MRU) navigatievolgorde.</translation>
     </message>
   </context>
   <context>

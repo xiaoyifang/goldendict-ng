@@ -2764,10 +2764,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Häsiýetnama:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Şu sözlügiň düzümine girýän faýlllar:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Içine zatlary süýräp we taşlap tertibini üýtgedip bolýar. Sözlükleri öçürmek üçin, olary aktiw däl toparyna taşlamaly.</translation>
     </message>
@@ -2794,6 +2790,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>New display name:</source>
       <translation>Täze displeý ady:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Sözlük komponentleri:</translation>
     </message>
   </context>
   <context>
@@ -3534,10 +3534,6 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Diňe bir täb açyk bolanda täb baryny gizle.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>Iň soňky ulanylan (MRU) navigasiýa tertibi.</translation>
     </message>
   </context>
   <context>

@@ -2765,10 +2765,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Описание:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Файлове, включващи се в речника:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Подредете последователността чрез влачене и пускане на елементи. Пускайте речници в неактивната група за да изключите от използване.</translation>
     </message>
@@ -2795,6 +2791,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>New display name:</source>
       <translation>Ново име за показване:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Компоненти на речника:</translation>
     </message>
   </context>
   <context>
@@ -3532,10 +3532,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Скриване на лентата с раздели, когато е отворен само един раздел.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>Ред на навигация „Най-скоро използвани“ (MRU).</translation>
     </message>
   </context>
   <context>

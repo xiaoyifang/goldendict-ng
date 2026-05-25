@@ -2765,10 +2765,6 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>Kuvaus:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Tämän sanakirjan sisältämät tiedostot:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Säädä tilausta vetämällä ja pudottamalla kohteita siihen. Pudota sanakirjoja passiiviseen ryhmään poistaaksesi käytöstä niiden käytön.</translation>
     </message>
@@ -2795,6 +2791,10 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
     <message>
       <source>New display name:</source>
       <translation>Uusi näytön nimi:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Sanakirjalliset komponentit:</translation>
     </message>
   </context>
   <context>
@@ -3535,10 +3535,6 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Piilota välilehti kun vain yksi välilehti on auki.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>Viimeksi käytetty (MRU) navigointitilaus.</translation>
     </message>
   </context>
   <context>

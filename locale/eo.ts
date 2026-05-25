@@ -2765,10 +2765,6 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
       <translation>Priskribo:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Dosieroj kun ĉi tiu vortaro:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Alĝustigu la ordon trenante kaj faligante erojn en ĝi. Faligi vortarojn al la neaktiva grupo por malebligi ilian uzon.</translation>
     </message>
@@ -2795,6 +2791,10 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
     <message>
       <source>New display name:</source>
       <translation type="unfinished">New display name:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Komponantoj de vortaro:</translation>
     </message>
   </context>
   <context>
@@ -3535,10 +3535,6 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Kaŝi langetan stangon kiam nur unu langeto estas malfermita.</translation>
-    </message>
-    <message>
-      <source>Most Recently Used (MRU) navigation order.</source>
-      <translation>Plej freŝe uzita (PFU) navigordo.</translation>
     </message>
   </context>
   <context>
