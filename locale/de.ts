@@ -3519,16 +3519,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Tableiste ausblenden, wenn nur ein Tab geöffnet ist.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Interner Spieler:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Verwenden Sie einen externen Audio-Player, um Audiodateien abzuspielen</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>Externer Spieler:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3537,6 +3529,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>Der Audiopfad wird als Kommandozeilenargument an den externen Player übergeben. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Interner Audioplayer:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Externer Audioplayer:</translation>
     </message>
   </context>
   <context>
