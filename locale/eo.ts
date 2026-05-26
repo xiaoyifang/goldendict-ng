@@ -369,7 +369,7 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation type="unfinished">Taiwan variant</translation>
+      <translation>Tajvana varianto</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
@@ -605,7 +605,7 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     </message>
     <message>
       <source>Regular Expression</source>
-      <translation type="unfinished">Regular Expression</translation>
+      <translation>Regula Esprimo</translation>
     </message>
   </context>
   <context>
@@ -764,7 +764,7 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     </message>
     <message>
       <source>Restore selection</source>
-      <translation type="unfinished">Restore selection</translation>
+      <translation>Restarigi elekton</translation>
     </message>
     <message>
       <source>Cancel reindex</source>
@@ -3525,24 +3525,24 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <translation>Kaŝi langetan stangon kiam nur unu langeto estas malfermita.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Interna Ludilo:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Uzu ajnan eksteran sonludilon por ludi sondosierojn</translation>
     </message>
     <message>
-      <source>External Player:</source>
-      <translation>Ekstera Ludilo:</translation>
-    </message>
-    <message>
       <source>View detailed configuration guide</source>
-      <translation type="unfinished">View detailed configuration guide</translation>
+      <translation>Vidi detalan agordan gvidilon</translation>
     </message>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
-      <translation type="unfinished">The audio path will be passed as a command-line argument to the external player. </translation>
+      <translation>La sona vojo estos transdonita kiel komandlinia argumento al la ekstera ludilo.</translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation type="unfinished">Internal Audio Player:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation type="unfinished">External Audio Player:</translation>
     </message>
   </context>
   <context>
