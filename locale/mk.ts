@@ -3510,16 +3510,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Скриј таб лента кога е отворен само еден таб.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Внатрешен играч:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Користете било кој надворешен аудио плеер за да репродуцирате аудио фајлови</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>Надворешен играч:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3528,6 +3520,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>Аудио патеката ќе се пренесе како аргумент во командната линија до надворешниот плеер. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Внатрешен аудио плеер:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Надворешен аудио плеер:</translation>
     </message>
   </context>
   <context>
