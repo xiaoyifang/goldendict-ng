@@ -3523,16 +3523,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>إخفاء شريط التبويب عند فتح علامة تبويب واحدة فقط.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>اللاعب الداخلي:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>استخدام أي مشغل صوت خارجي لتشغيل الملفات الصوتية</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>لاعب خارجي:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3541,6 +3533,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>سيتم تمرير مسار الصوت كحجة سطر الأوامر إلى المشغل الخارجي. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>مشغل الصوت الداخلي:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>مشغل صوت خارجي:</translation>
     </message>
   </context>
   <context>
