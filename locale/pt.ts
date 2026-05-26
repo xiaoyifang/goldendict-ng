@@ -3525,16 +3525,8 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <translation>Ocultar a barra de abas quando apenas uma aba estiver aberta.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Jogador interno:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Usar qualquer reprodutor de áudio externo para reproduzir arquivos de áudio</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>Jogador Externo:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3543,6 +3535,14 @@ no Stardict, Babilônia e dicionários GLS</translation>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>O caminho de áudio será passado como um argumento de linha de comando para o jogador externo. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Leitor de Áudio Interno:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Leitor de Áudio Externo:</translation>
     </message>
   </context>
   <context>
