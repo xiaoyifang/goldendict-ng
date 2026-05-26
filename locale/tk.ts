@@ -3524,16 +3524,8 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
       <translation>Diňe bir täb açyk bolanda täb baryny gizle.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Içki oýunçy:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Audio faýllary oýnamak üçin islendik daşky audio pleyeri ulanyň</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>Daşky oýunçy:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3542,6 +3534,14 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>Ses ýoly daşky pleýere buýruk satırynyň argumenti hökmünde geçiriler. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Içki audio pleyer:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Daşky audio pleyer:</translation>
     </message>
   </context>
   <context>
