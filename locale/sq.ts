@@ -3517,16 +3517,8 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <translation>Fshih shiritin e skedave kur është hapur vetëm një skedë.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Lojtari i brendshëm:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Përdorni çdo luajtës audio të jashtëm për të luajtur skedarë audio</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>Lojtar i jashtëm:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3535,6 +3527,14 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>Rruga audio do të kalojë si një argument i linjës së komandës tek luajtësi i jashtëm. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Luajtësi i brendshëm audio:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Luajtësi i jashtëm audio:</translation>
     </message>
   </context>
   <context>
