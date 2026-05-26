@@ -3615,24 +3615,24 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <translation>Mä ficha ukakiw jist'arata ukjaxa, ficha barra imantaña.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Manqha Phust'iri:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Aru qillqatanaka phust'ayañataki, mayjawjankiri phust'iriwa apnaqaña.</translation>
     </message>
     <message>
-      <source>External Player:</source>
-      <translation>Mayjawjankiri Phust'iri:</translation>
-    </message>
-    <message>
       <source>View detailed configuration guide</source>
-      <translation type="unfinished">View detailed configuration guide</translation>
+      <translation>Jach'a qhanañchäwi yatichäwi uñjaña</translation>
     </message>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
-      <translation type="unfinished">The audio path will be passed as a command-line argument to the external player. </translation>
+      <translation>Awdiyu thakhiw anqa pukllirir kamanda lini arxatawi ukham apatañani.</translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation type="unfinished">Internal Audio Player:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation type="unfinished">External Audio Player:</translation>
     </message>
   </context>
   <context>
