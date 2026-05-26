@@ -3209,20 +3209,8 @@ in the pressed state when the word selection changes.</source>
       <translation>내장 오디오 지원을 통해 오디오 파일 재생</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>내부 플레이어 사용:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>오디오 백엔드 선택</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>외부 프로그램을 통하여 음성을 재생합니다</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>외부 프로그램 사용:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3531,6 +3519,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>탭이 하나만 열려 있을 때는 탭 바를 숨기세요.</translation>
+    </message>
+    <message>
+      <source>Internal Player:</source>
+      <translation>내부 플레이어:</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>외부 오디오 플레이어를 사용해서 오디오 파일을 재생하세요</translation>
+    </message>
+    <message>
+      <source>External Player:</source>
+      <translation>외부 플레이어:</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>상세 구성 가이드 보기</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>오디오 경로는 명령줄 인수로 외부 플레이어에 전달됩니다. </translation>
     </message>
   </context>
   <context>
