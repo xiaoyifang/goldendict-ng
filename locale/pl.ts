@@ -3208,20 +3208,8 @@ kiedy zaznaczenie słowa ulega zmianie przy naciśniętych wszystkich wybranych 
       <translation>Odtwarzaj pliki audio za pomocą wbudowanego wsparcia audio</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Używaj wewnętrznego odtwarzacza:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Wybierz zaplecze dźwięku</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Używaj zewnętrznego programu do odtwarzania plików dźwiękowych</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Używaj programu zewnętrznego:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3533,6 +3521,26 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Ukryj pasek zakładek, gdy tylko jedna karta jest otwarta.</translation>
+    </message>
+    <message>
+      <source>Internal Player:</source>
+      <translation>Wewnętrzny gracz:</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Użyj dowolnego zewnętrznego odtwarzacza audio do odtwarzania plików audio</translation>
+    </message>
+    <message>
+      <source>External Player:</source>
+      <translation>Zewnętrzny gracz:</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Zobacz szczegółowy przewodnik konfiguracyjny</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Ścieżka audio zostanie przekazana jako argument wiersza poleceń do odtwarzacza zewnętrznego. </translation>
     </message>
   </context>
   <context>
