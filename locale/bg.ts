@@ -3522,16 +3522,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Скриване на лентата с раздели, когато е отворен само един раздел.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Вътрешен играч:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Използвайте който и да е външен аудио плейър, за да възпроизвеждате аудио файлове</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>Външен играч:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3540,6 +3532,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>Аудио пътят се предава като команден аргумент към външния плейър. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Вътрешен аудио плейър:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Външен аудио плейър:</translation>
     </message>
   </context>
   <context>
