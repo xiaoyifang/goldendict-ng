@@ -3281,20 +3281,8 @@ Sistema ist&apos;añataki ukampi, ist&apos;añataki wayaqanak arst&apos;ayaña.
 Reproducir archivos de audio con el audio por defecto del sistema.</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Manqhax ist&apos;awi apnaqaña:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Arst&apos;ayiri ist&apos;añataki ajllim</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Taxpach wakist&apos;awi arunakax apnakaskaniwa </translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Anqat programa apnaqaña:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3625,6 +3613,26 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Mä ficha ukakiw jist'arata ukjaxa, ficha barra imantaña.</translation>
+    </message>
+    <message>
+      <source>Internal Player:</source>
+      <translation>Manqha Phust'iri:</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Aru qillqatanaka phust'ayañataki, mayjawjankiri phust'iriwa apnaqaña.</translation>
+    </message>
+    <message>
+      <source>External Player:</source>
+      <translation>Mayjawjankiri Phust'iri:</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation type="unfinished">View detailed configuration guide</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation type="unfinished">The audio path will be passed as a command-line argument to the external player. </translation>
     </message>
   </context>
   <context>
