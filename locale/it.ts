@@ -3523,16 +3523,8 @@ dai dizionari di Stardict, Babylon e GLS</translation>
       <translation>Nascondi la barra delle schede quando è aperta solo una scheda.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Giocatore Interno:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Usa qualsiasi lettore audio esterno per riprodurre file audio</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>Giocatore Esterno:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3541,6 +3533,14 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>Il percorso audio verrà passato come argomento a riga di comando al lettore esterno. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Lettore audio interno:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Lettore audio esterno:</translation>
     </message>
   </context>
   <context>
