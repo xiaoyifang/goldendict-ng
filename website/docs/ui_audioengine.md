@@ -1,4 +1,4 @@
-To configure external audio player: Preference --> Audio --> `External Player`.
+To configure external audio player: Preference --> Audio --> `External Audio Player`.
 
 ![external audio program](img/external-audio.png)
 
