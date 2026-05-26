@@ -3526,16 +3526,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Απόκρυψη γραμμής καρτελών όταν μόνο μία καρτέλα είναι ανοιχτή.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Εσωτερικός Παίκτης:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Χρησιμοποιήστε οποιοδήποτε εξωτερικό πρόγραμμα αναπαραγωγής ήχου για την αναπαραγωγή αρχείων ήχου</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>Εξωτερικός Παίκτης:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3544,6 +3536,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>Η διαδρομή ήχου θα περάσει ως μια παράμετρο γραμμής εντολών στον εξωτερικό παίκτη. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Εσωτερική συσκευή αναπαραγωγής ήχου:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Εξωτερική συσκευή αναπαραγωγής ήχου:</translation>
     </message>
   </context>
   <context>
