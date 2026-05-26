@@ -22,7 +22,7 @@ class DictionaryBar: public QToolBar
 public:
 
   /// Constructs an empty dictionary bar
-  DictionaryBar( QWidget * parent, Config::Events &, const unsigned short & maxDictionaryRefsInContextMenu_ );
+  DictionaryBar( QWidget * parent, const unsigned short & maxDictionaryRefsInContextMenu_ );
 
   /// Sets dictionaries to be displayed in the bar. Their statuses (enabled/
   /// disabled) are taken from the configuration data.
@@ -75,8 +75,6 @@ private:
 
   // In temporary selection, shift+click capture selections.
   std::optional< QSet< QString > > tempSelectionCapturedMuted;
-
-  Config::Events & configEvents;
 
   void selectSingleDict( const QString & id );
 

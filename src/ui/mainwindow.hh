@@ -138,7 +138,6 @@ private:
   QList< QWidget * > mruList;
   QToolButton addTab, *tabListButton;
   Config::Class & cfg;
-  Config::Events configEvents;
   History history;
   DictionaryBar dictionaryBar;
   vector< sptr< Dictionary::Class > > dictionaries;

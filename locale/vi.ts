@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation type="unfinished">Anki: post to Anki failed</translation>
+      <translation>Anki: Đăng lên Anki thất bại</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation type="unfinished">Anki: post to Anki success</translation>
+      <translation>Anki: Đăng lên Anki thành công</translation>
     </message>
   </context>
   <context>
@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -81,22 +81,7 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation type="unfinished">
-    &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
-      &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
-        &lt;ul&gt;
-          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
-          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/section&gt;
-      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
-      &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
-      &lt;/footer&gt;
-    &lt;/div&gt;</translation>
+      <translation>    &lt;div class=&quot;welcome-container&quot;&gt;      &lt;h3&gt;Chào mừng bạn đến với &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;      &lt;section&gt;        &lt;h4&gt;Để bắt đầu&lt;/h4&gt;        &lt;ul&gt;          &lt;li&gt;Đi tới &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Sửa&lt;/span&gt;&lt;span&gt;Từ điển&lt;/span&gt;&lt;/span&gt; để thêm các tệp từ điển của bạn, thiết lập các nguồn trực tuyến như Wikipedia và sắp xếp chúng thành các nhóm.&lt;/li&gt;          &lt;li&gt;Sau khi thiết lập, bạn có thể tra cứu từ trong cửa sổ này hoặc &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;từ các ứng dụng khác bằng cách sử dụng Cửa sổ Quét bật lên&lt;/a&gt;.&lt;/li&gt;          &lt;li&gt;Để tùy chỉnh chương trình, hãy khám phá các cài đặt trong &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Sửa&lt;/span&gt;&lt;span&gt;Tùy chọn&lt;/span&gt;&lt;/span&gt;. Tất cả các cài đặt đều có chú giải công cụ, vì vậy hãy đọc kỹ chúng nếu có bất cứ điều gì không rõ ràng.&lt;/li&gt;        &lt;/ul&gt;      &lt;/section&gt;      &lt;p&gt;Nếu bạn cần trợ giúp thêm, có bất kỳ câu hỏi hoặc đề xuất nào, bạn luôn được chào đón tại &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;diễn đàn&lt;/a&gt; và &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;trang web&lt;/a&gt; của chương trình.&lt;/p&gt;      &lt;footer class=&quot;welcome-footer&quot;&gt;        &lt;small&gt;Dựa trên GoldenDict gốc của Konstantin Isakov (c) 2008-2013. Được duy trì và phát triển bởi Cộng đồng GoldenDict-NG. Được cấp phép theo GPLv3 trở lên.&lt;/small&gt;      &lt;/footer&gt;    &lt;/div&gt;</translation>
     </message>
   </context>
   <context>
@@ -286,30 +271,30 @@
     </message>
     <message>
       <source>&amp;Copy sound to clipboard</source>
-      <translation type="unfinished">&amp;Copy sound to clipboard</translation>
+      <translation>S&amp;ao chép âm thanh vào khay nhớ tạm</translation>
     </message>
     <message>
       <source>Failed to copy sound</source>
-      <translation type="unfinished">Failed to copy sound</translation>
+      <translation>Không thể sao chép âm thanh</translation>
     </message>
     <message>
       <source>Failed to write complete audio data</source>
-      <translation type="unfinished">Failed to write complete audio data</translation>
+      <translation>Không thể ghi dữ liệu âm thanh hoàn chỉnh</translation>
     </message>
     <message>
       <source>Sound copied to clipboard</source>
-      <translation type="unfinished">Sound copied to clipboard</translation>
+      <translation>Âm thanh đã được sao chép vào khay nhớ tạm</translation>
     </message>
     <message>
       <source>Failed to download sound</source>
-      <translation type="unfinished">Failed to download sound</translation>
+      <translation>Không thể tải xuống âm thanh</translation>
     </message>
   </context>
   <context>
     <name>ArticleWebView</name>
     <message>
       <source>GoldenDict Resource Viewer</source>
-      <translation type="unfinished">GoldenDict Resource Viewer</translation>
+      <translation>Trình xem tài nguyên GoldenDict</translation>
     </message>
   </context>
   <context>
@@ -368,15 +353,15 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation type="unfinished">Taiwan variant</translation>
+      <translation>Biến thể Đài Loan</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
-      <translation type="unfinished">Hong Kong variant</translation>
+      <translation>Biến thể Hồng Kông</translation>
     </message>
     <message>
       <source>Mainland variant</source>
-      <translation type="unfinished">Mainland variant</translation>
+      <translation>Biến thể Đại lục</translation>
     </message>
   </context>
   <context>
@@ -604,7 +589,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Regular Expression</source>
-      <translation type="unfinished">Regular Expression</translation>
+      <translation>Biểu thức chính quy</translation>
     </message>
   </context>
   <context>
@@ -660,6 +645,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>Tìm kiếm toàn văn bị vô hiệu hóa</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Vô hiệu hóa</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Cho phép</translation>
     </message>
   </context>
   <context>
@@ -755,31 +748,31 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Restore selection</source>
-      <translation type="unfinished">Restore selection</translation>
+      <translation>Khôi phục lựa chọn</translation>
     </message>
     <message>
       <source>Cancel reindex</source>
-      <translation type="unfinished">Cancel reindex</translation>
+      <translation>Hủy lập chỉ mục lại</translation>
     </message>
     <message>
       <source>Schedule for reindex</source>
-      <translation type="unfinished">Schedule for reindex</translation>
+      <translation>Lên lịch lập chỉ mục lại</translation>
     </message>
     <message>
       <source>Cancel schedule reindex</source>
-      <translation type="unfinished">Cancel schedule reindex</translation>
+      <translation>Hủy lịch lập chỉ mục lại</translation>
     </message>
     <message>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
-      <translation type="unfinished">The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</translation>
+      <translation>Từ điển đã được lên lịch để lập chỉ mục lại. Chỉ mục sẽ được xây dựng lại vào lần khởi động ứng dụng tiếp theo.</translation>
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>Thay đổi tên hiển thị</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>Tên hiển thị mới:</translation>
     </message>
   </context>
   <context>
@@ -913,11 +906,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Clear</source>
-      <translation type="unfinished">Clear</translation>
+      <translation>Xóa</translation>
     </message>
     <message>
       <source>Clear Favorites</source>
-      <translation type="unfinished">Clear Favorites</translation>
+      <translation>Xóa Mục yêu thích</translation>
     </message>
   </context>
   <context>
@@ -1122,7 +1115,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Add a new dictionary group</source>
-      <translation type="unfinished">Add a new dictionary group</translation>
+      <translation>Thêm nhóm từ điển mới</translation>
     </message>
     <message>
       <source>&amp;Add group</source>
@@ -1130,11 +1123,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Group already exists</source>
-      <translation type="unfinished">Group already exists</translation>
+      <translation>Nhóm đã tồn tại</translation>
     </message>
     <message>
       <source>A group with the name &apos;%1&apos; already exists.</source>
-      <translation type="unfinished">A group with the name &apos;%1&apos; already exists.</translation>
+      <translation>Một nhóm có tên '%1' đã tồn tại.</translation>
     </message>
   </context>
   <context>
@@ -2188,7 +2181,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Kabyle</source>
-      <translation type="unfinished">Kabyle</translation>
+      <translation>Kabyle</translation>
     </message>
   </context>
   <context>
@@ -2643,19 +2636,19 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Lock Panels</source>
-      <translation type="unfinished">Lock Panels</translation>
+      <translation>Khóa Bảng điều khiển</translation>
     </message>
     <message>
       <source>Clear History</source>
-      <translation type="unfinished">Clear History</translation>
+      <translation>Xóa Lịch sử</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all history items?</source>
-      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
+      <translation>Bạn có chắc chắn muốn xóa tất cả các mục lịch sử không?</translation>
     </message>
     <message>
       <source>Save File</source>
-      <translation type="unfinished">Save File</translation>
+      <translation>Lưu tệp</translation>
     </message>
   </context>
   <context>
@@ -2673,14 +2666,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
       <source>JSON parse error</source>
-      <translation type="unfinished">JSON parse error</translation>
+      <translation>Lỗi phân tích JSON</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
       <source>JSON parse error</source>
-      <translation type="unfinished">JSON parse error</translation>
+      <translation>Lỗi phân tích JSON</translation>
     </message>
   </context>
   <context>
@@ -2756,10 +2749,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Mô tả:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Tệp chứa từ điển này:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Điều chỉnh thứ tự bằng cách kéo và thả các từ điển để di chuyển vị trí. Thả vào ô không hoạt động để vô hiệu hoá từ điển.</translation>
     </message>
@@ -2781,11 +2770,15 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>Thay đổi tên hiển thị</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>Tên hiển thị mới:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Các thành phần từ điển:</translation>
     </message>
   </context>
   <context>
@@ -2836,10 +2829,6 @@ không cần chuyển ngay sang chúng.</translation>
     <message>
       <source>Hide single tab</source>
       <translation>Ẩn thẻ đơn nhất</translation>
-    </message>
-    <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>Thứ tự MRU: Thứ tự được sử dụng gần đây nhất.</translation>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
@@ -2994,24 +2983,14 @@ the application.</source>
       <translation>Không</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
-    </message>
-    <message>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise, they are added to
 be the last ones.</source>
-      <translation type="unfinished">With this on, new tabs are opened just after the
-current, active one. Otherwise, they are added to
-be the last ones.</translation>
+      <translation>Với tùy chọn này, các tab mới sẽ được mở ngay sau tab hiện tại, đang hoạt động. Nếu không, chúng sẽ được thêm vào cuối cùng.</translation>
     </message>
     <message>
       <source>&amp;Style</source>
-      <translation type="unfinished">&amp;Style</translation>
+      <translation>&amp;Kiểu</translation>
     </message>
     <message>
       <source>Appearance</source>
@@ -3019,15 +2998,15 @@ be the last ones.</translation>
     </message>
     <message>
       <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
+      <translation>Bật Phông chữ Giao diện</translation>
     </message>
     <message>
       <source>Font</source>
-      <translation type="unfinished">Font</translation>
+      <translation>Phông chữ</translation>
     </message>
     <message>
       <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
+      <translation>Cỡ chữ</translation>
     </message>
     <message>
       <source>Interface language</source>
@@ -3067,7 +3046,7 @@ be the last ones.</translation>
     </message>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
+      <translation>GoldenDict-ng là phần mềm từ điển.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3128,7 +3107,7 @@ in the pressed state when the word selection changes.</source>
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation type="unfinished">Only track selection when all selected keys are kept pressed:</translation>
+      <translation>Chỉ theo dõi lựa chọn khi tất cả các phím đã chọn được giữ nhấn:</translation>
     </message>
     <message>
       <source>Alt key</source>
@@ -3499,19 +3478,19 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>S&amp;can</source>
-      <translation type="unfinished">S&amp;can</translation>
+      <translation>Qué&amp;t</translation>
     </message>
     <message>
       <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
-      <translation type="unfinished">Suppress JavaScript alerts, confirms, and prompts in the article view.</translation>
+      <translation>Chặn các cảnh báo, xác nhận và lời nhắc JavaScript trong chế độ xem bài viết.</translation>
     </message>
     <message>
       <source>Suppress JavaScript dialogs</source>
-      <translation type="unfinished">Suppress JavaScript dialogs</translation>
+      <translation>Chặn hộp thoại JavaScript</translation>
     </message>
     <message>
       <source>Open website dictionary in separate tab</source>
-      <translation type="unfinished">Open website dictionary in separate tab</translation>
+      <translation>Mở từ điển trang web trong tab riêng biệt</translation>
     </message>
     <message>
       <source>Anki</source>
@@ -3519,15 +3498,19 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Allow JavaScript to access clipboard in the article view.</source>
-      <translation type="unfinished">Allow JavaScript to access clipboard in the article view.</translation>
+      <translation>Cho phép JavaScript truy cập khay nhớ tạm trong chế độ xem bài viết.</translation>
     </message>
     <message>
       <source>Enable JavaScript clipboard access (need restart)</source>
-      <translation type="unfinished">Enable JavaScript clipboard access (need restart)</translation>
+      <translation>Bật quyền truy cập khay nhớ tạm JavaScript (cần khởi động lại)</translation>
     </message>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
-      <translation type="unfinished">Restart to apply the JavaScript clipboard access change.</translation>
+      <translation>Khởi động lại để áp dụng thay đổi truy cập khay nhớ tạm JavaScript.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Ẩn thanh tab khi chỉ mở một tab.</translation>
     </message>
   </context>
   <context>
@@ -3667,7 +3650,7 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Force the word to be translated in Popup.</source>
-      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+      <translation>Buộc từ được dịch trong cửa sổ bật lên.</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
@@ -3675,11 +3658,11 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Website Url:</source>
-      <translation type="unfinished">Website Url:</translation>
+      <translation>URL trang web:</translation>
     </message>
     <message>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
-      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
+      <translation>Trong URL, "%GDWORD%" sẽ được thay thế bằng từ đang được tìm kiếm.</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
@@ -3691,7 +3674,7 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+      <translation>Tài liệu PDF (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
@@ -3723,7 +3706,7 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
-      <translation type="unfinished">Saving article... (%1/%2)</translation>
+      <translation>Đang lưu bài viết... (%1/%2)</translation>
     </message>
   </context>
   <context>
@@ -3782,7 +3765,7 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Definition</source>
-      <translation type="unfinished">Definition</translation>
+      <translation>Định nghĩa</translation>
     </message>
   </context>
   <context>
@@ -4105,27 +4088,27 @@ Có thể tìm thấy danh sách đầy đủ các ngôn ngữ khả dụng &lt;
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
-      <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
+      <translation>Phương pháp phiên âm tiếng Nhật phổ biến nhất, dựa trên ngữ âm tiếng Anh</translation>
     </message>
     <message>
       <source>Remove selected directories from the list?</source>
-      <translation type="unfinished">Remove selected directories from the list?</translation>
+      <translation>Xóa các thư mục đã chọn khỏi danh sách?</translation>
     </message>
     <message>
       <source>Remove %1 directories from the list?</source>
-      <translation type="unfinished">Remove %1 directories from the list?</translation>
+      <translation>Xóa %1 thư mục khỏi danh sách?</translation>
     </message>
     <message>
       <source>Remove %1 sites from the list?</source>
-      <translation type="unfinished">Remove %1 sites from the list?</translation>
+      <translation>Xóa %1 trang khỏi danh sách?</translation>
     </message>
     <message>
       <source>Remove %1 servers from the list?</source>
-      <translation type="unfinished">Remove %1 servers from the list?</translation>
+      <translation>Xóa %1 máy chủ khỏi danh sách?</translation>
     </message>
     <message>
       <source>Remove %1 programs from the list?</source>
-      <translation type="unfinished">Remove %1 programs from the list?</translation>
+      <translation>Xóa %1 chương trình khỏi danh sách?</translation>
     </message>
   </context>
   <context>
@@ -4225,7 +4208,7 @@ Có thể tìm thấy danh sách đầy đủ các ngôn ngữ khả dụng &lt;
     <name>WebSite</name>
     <message>
       <source>This website dictionary is opened in a new tab</source>
-      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
+      <translation>Từ điển trang web này được mở trong một tab mới</translation>
     </message>
   </context>
   <context>
@@ -4248,19 +4231,19 @@ Có thể tìm thấy danh sách đầy đủ các ngôn ngữ khả dụng &lt;
     </message>
     <message>
       <source>Script</source>
-      <translation type="unfinished">Script</translation>
+      <translation>Tập lệnh</translation>
     </message>
     <message>
       <source>Icon file name. Relative to the config directory.</source>
-      <translation type="unfinished">Icon file name. Relative to the config directory.</translation>
+      <translation>Tên tệp biểu tượng. Tương đối so với thư mục cấu hình.</translation>
     </message>
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
-      <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
+      <translation>Chỉ khả dụng khi mở trang web trong các tab riêng biệt. Có thể là đường dẫn tệp (tương đối với thư mục cấu hình hoặc tuyệt đối) hoặc nội dung tập lệnh trực tiếp.</translation>
     </message>
     <message>
       <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
-      <translation type="unfinished">This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</translation>
+      <translation>Cột này bị vô hiệu hóa vì tùy chọn "Mở từ điển trang web trong tab riêng biệt" không được bật trong Tùy chọn.</translation>
     </message>
   </context>
   <context>

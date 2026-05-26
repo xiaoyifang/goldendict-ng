@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -84,7 +84,7 @@
       <translation>&lt;div class=&quot;welcome-container&quot;&gt;
 &lt;h3&gt;歡迎使用 &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;！ &lt;/h3&gt;
 &lt;section&gt;
-&lt;h4&gt;開始使用：&lt;/h4&gt;
+&lt;h4&gt;開始使用&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;前往&lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;編輯&lt;/span&gt;&lt;span&gt;字典&lt;/span&gt;&lt;/span&gt;新增您的字典文件，設定維基百科等線上資源，並將它們分組。 &lt;/li&gt;
 &lt;li&gt;設定完成後，您可以在此視窗中尋找單字，也可以&lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;使用掃描彈出視窗從其他應用程式中尋找單字&lt;/a&gt;。 &lt;/li&gt;
@@ -659,6 +659,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>全文搜索已禁用</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>停用</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>啟用</translation>
     </message>
   </context>
   <context>
@@ -2756,10 +2764,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>描述</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>此字典包含的檔案：</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>可以透過拖曳改變項目的排序。也可將字典放入未啟用的群組以停用。</translation>
     </message>
@@ -2786,6 +2790,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>New display name:</source>
       <translation>新的顯示名稱：</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>字典組成部分：</translation>
     </message>
   </context>
   <context>
@@ -2835,10 +2843,6 @@ switching to them.</source>
     <message>
       <source>Hide single tab</source>
       <translation>隱藏單一分頁</translation>
-    </message>
-    <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU 順序：最近使用的順序。</translation>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
@@ -2989,12 +2993,6 @@ the application.</source>
     <message>
       <source>None</source>
       <translation>無</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>如果您不想在僅開啟一個標籤頁時看到主標籤頁欄，請選擇此選項。</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3522,6 +3520,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>重新啟動以應用 JavaScript 剪貼簿存取權限的變更。</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>當只開啟一個分頁時隱藏分頁列。</translation>
     </message>
   </context>
   <context>

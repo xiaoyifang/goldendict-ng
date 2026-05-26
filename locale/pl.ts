@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -83,18 +83,18 @@
     &lt;/div&gt;</source>
       <translation>
     &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Witamy w &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;h3&gt;Witamy na &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;Aby rozpocząć:&lt;/h4&gt;
+        &lt;h4&gt;Aby rozpocząć&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Przejdź do &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edycja&lt;/span&gt;&lt;span&gt;Słowniki&lt;/span&gt;&lt;/span&gt;, aby dodać pliki słowników, skonfigurować źródła online, takie jak Wikipedia, i zorganizować je w grupy.&lt;/li&gt;
-          &lt;li&gt;Po ich skonfigurowaniu możesz wyszukiwać słowa w tym oknie lub &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;z innych aplikacji z użyciem okienka wyskakującego skanowania&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;Aby dostosować program, przejdź do ustawień w oknie &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edycja&lt;/span&gt;&lt;span&gt;Preferencje&lt;/span&gt;&lt;/span&gt;. Do wszystkich ustawień są podpowiedzi, więc przeczytaj je, jeśli cokolwiek nie jest jasne.&lt;/li&gt;
+          &lt;li&gt;Przejdź do &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edytuj&lt;/span&gt;&lt;span&gt;Słowniki&lt;/span&gt;&lt;/span&gt; aby dodać swoje pliki słowników, skonfigurować źródła online, takie jak Wikipedia, i zorganizować je w grupy.&lt;/li&gt;
+          &lt;li&gt;Po skonfigurowaniu, możesz wyszukać słowa w tym oknie lub &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;z innych aplikacji za pomocą wyskakującego okienka&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;Aby dostosować program, zobacz ustawienia w &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edytuj&lt;/span&gt;&lt;span&gt;Preferencje&lt;/span&gt;&lt;/span&gt;. Wszystkie ustawienia mają podpowiedzi, więc upewnij się, że przeczytano je jeśli cokolwiek nie jest jasne.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;
-      &lt;p&gt;Jeśli potrzebujesz dalszej pomocy, masz pytania lub sugestie, możesz skorzystać z &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; i &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;strony internetowej&lt;/a&gt; programu.&lt;/p&gt;
+      &lt;p&gt;Jeśli potrzebujesz dalszej pomocy, masz jakiekolwiek pytania lub sugestie, jesteś witany w programie&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; i &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;strona&lt;/a&gt;.&lt;/p&gt;
       &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Na podstawie oryginalnego programu GoldenDict Konstantina Isakova (c) 2008-2013. Utrzymywany i rozwijany przez społeczność GoldenDict-NG. Na licencji GPLv3 lub nowszej.&lt;/small&gt;
+        &lt;small&gt;Na podstawie oryginalnego GoldenDict Konstantin Isakov, c) 2008-2013. Utrzymywane i rozwijane przez społeczność GoldenDict-NG. Licencjonowane na mocy GPLv3 lub nowszej.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</translation>
     </message>
@@ -661,6 +661,14 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Wyszukiwanie pełnotekstowe wyłączone</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Wyłączyć</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Włączać</translation>
     </message>
   </context>
   <context>
@@ -2757,10 +2765,6 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
       <translation>Opis:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Pliki składające się na ten słownik:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Dostosuj kolejność, przeciągając i upuszczając elementy. Upuszczenie słownika w grupie nieaktywnych powoduje jego wyłączenie.</translation>
     </message>
@@ -2787,6 +2791,10 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
     <message>
       <source>New display name:</source>
       <translation>Nowa nazwa wyświetlania:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Składniki słownika:</translation>
     </message>
   </context>
   <context>
@@ -2836,10 +2844,6 @@ Włączenie tej opcji powoduje, że nie następuje przejście do nowo otwartej k
     <message>
       <source>Hide single tab</source>
       <translation>Ukryj pojedynczą kartę</translation>
-    </message>
-    <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>Kolejność MRU: Ostatnio używana kolejność.</translation>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
@@ -2994,14 +2998,6 @@ prowadzi do jego ukrycia, a nie do zamknięcia aplikacji.</translation>
     <message>
       <source>None</source>
       <translation>Brak</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Zaznacz tę opcję, jeśli nie chcesz, aby wyświetlany był główny pasek kart, gdy otwarta jest tylko jedna
-                  karta.
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3533,6 +3529,10 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Uruchom ponownie, aby zastosować zmianę dostępu do schowka JavaScript.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Ukryj pasek zakładek, gdy tylko jedna karta jest otwarta.</translation>
     </message>
   </context>
   <context>

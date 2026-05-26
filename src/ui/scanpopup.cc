@@ -57,7 +57,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   stopAudioAction( this ),
   openSearchAction( this ),
   wordFinder( this ),
-  dictionaryBar( this, configEvents, cfg.preferences.maxDictionaryRefsInContextMenu ),
+  dictionaryBar( this, cfg.preferences.maxDictionaryRefsInContextMenu ),
   articleNetMgr( articleNetMgr ),
   hideTimer( this )
 {
@@ -263,7 +263,10 @@ ScanPopup::ScanPopup( QWidget * parent,
 #endif
   }
 
-  connect( &configEvents, &Config::Events::mutedDictionariesChanged, this, &ScanPopup::mutedDictionariesChanged );
+  connect( GlobalBroadcaster::instance(),
+           &GlobalBroadcaster::mutedDictionariesChanged,
+           this,
+           &ScanPopup::mutedDictionariesChanged );
 
   definition->focus();
 

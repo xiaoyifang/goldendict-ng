@@ -159,7 +159,7 @@ void ArticleWebView::sendCustomMouseEvent( QEvent::Type type )
                   Qt::MouseEventSynthesizedByApplication );
 
   auto childrens = this->children();
-  for ( auto child : childrens ) {
+  for ( auto * child : childrens ) {
     QApplication::sendEvent( child, &ev );
   }
 }
@@ -179,12 +179,12 @@ void ArticleWebView::wheelEvent( QWheelEvent * ev )
   // if system preferences is set to "scroll by page"
 
   if ( ev->modifiers() == Qt::NoModifier ) {
-    unsigned nLines;
+    unsigned nLines = 0;
     SystemParametersInfo( SPI_GETWHEELSCROLLLINES, 0, &nLines, 0 );
     if ( nLines == WHEEL_PAGESCROLL ) {
       QKeyEvent kev( QEvent::KeyPress, ev->angleDelta().y() > 0 ? Qt::Key_PageUp : Qt::Key_PageDown, Qt::NoModifier );
       auto childrens = this->children();
-      for ( auto child : childrens ) {
+      for ( auto * child : childrens ) {
         QApplication::sendEvent( child, &kev );
       }
 

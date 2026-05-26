@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -85,9 +85,9 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welkom bij &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;om te starten:&lt;/h4&gt;
+        &lt;h4&gt;om te beginnen&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Ga naar &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Bewerken&lt;/span&gt;&lt;span&gt;Woordenboeken&lt;/span&gt;&lt;/span&gt; om je woordenboek toe te voegen, configureer online bronnen zoals Wikipedia en organiseer ze in groepen.&lt;/li&gt;
+          &lt;li&gt;Ga naar &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Bewerk&lt;/span&gt;&lt;span&gt;Woordenboeken&lt;/span&gt;&lt;/span&gt; om je woordenboek toe te voegen, configureer online bronnen zoals Wikipedia en organiseer ze in groepen.&lt;/li&gt;
           &lt;li&gt;Eenmaal ingesteld u kunt woorden opzoeken in dit venster of &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;van andere applicaties met behulp van de Scan Popup&lt;/a&gt;.&lt;/li&gt;
           &lt;li&gt;Om het programma aan te passen, verken de instellingen in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Bewerken&lt;/span&gt;&lt;span&gt;Voorkeuren&lt;/span&gt;&lt;/span&gt;. Alle instellingen hebben tooltips, dus ga ze lezen als er iets onduidelijk is.&lt;/li&gt;
         &lt;/ul&gt;
@@ -661,6 +661,14 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Zoeken in volledige tekst uitgeschakeld</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Uitzetten</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Inschakelen</translation>
     </message>
   </context>
   <context>
@@ -2757,10 +2765,6 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <translation>Beschrijving:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Woordenboek bestaat uit de volgende bestanden:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Verander de volgorde door items te slepen en verplaats woordenboeken naar de inactieve groep om ze uit te schakelen.</translation>
     </message>
@@ -2787,6 +2791,10 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
     <message>
       <source>New display name:</source>
       <translation>Nieuwe weergavenaam</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Woordenboek onderdelen:</translation>
     </message>
   </context>
   <context>
@@ -2837,10 +2845,6 @@ geopend zonder ze te selecteren.</translation>
     <message>
       <source>Hide single tab</source>
       <translation>Enkel tabblad verbergen</translation>
-    </message>
-    <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU order: meest recent gebruikte bestelling.</translation>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
@@ -2995,14 +2999,6 @@ the application.</source>
     <message>
       <source>None</source>
       <translation>Geen</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3532,6 +3528,10 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Herstart om de toegangswijziging voor JavaScript klembord toe te passen.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Tabbladbalk verbergen als slechts één tabblad is geopend.</translation>
     </message>
   </context>
   <context>

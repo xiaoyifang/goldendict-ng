@@ -648,10 +648,12 @@ public:
 
   void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
+  sptr< Dictionary::Class > duplicate() override;
+
   void setFTSParameters( const Config::FullTextSearch & fts ) override
   {
     if ( metadata_enable_fts.has_value() ) {
-      can_FTS = fts.enabled && metadata_enable_fts.value();
+      can_FTS = metadata_enable_fts.value();
     }
     else {
       can_FTS = fts.enabled && !fts.disabledTypes.contains( "SLOB", Qt::CaseInsensitive )
@@ -928,7 +930,12 @@ void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled )
   qDebug( "Slob: Building the full-text index for dictionary: %s", getName().c_str() );
 
   try {
-    const auto slob_dic = std::make_unique< SlobDictionary >( getId(), idxFileName, getDictionaryFilenames() );
+    // Create a new instance for indexing to avoid locking the main dictionary instance
+    // which may be used for queries during indexing
+    auto slob_dic = std::static_pointer_cast< SlobDictionary >( duplicate() );
+    if ( !slob_dic ) {
+      return;
+    }
     FtsHelpers::makeFTSIndex( slob_dic.get(), isCancelled );
     FTS_index_completed.ref();
   }
@@ -936,6 +943,15 @@ void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     qWarning( "Slob: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
     QFile::remove( ftsIdxName.c_str() );
   }
+}
+
+sptr< Dictionary::Class > SlobDictionary::duplicate()
+{
+  auto instance = std::make_shared< SlobDictionary >( getId(), idxFileName, getDictionaryFilenames() );
+  // Inherit FTS state from original instance
+  instance->metadata_enable_fts = this->metadata_enable_fts;
+  instance->can_FTS             = this->can_FTS;
+  return instance;
 }
 
 void SlobDictionary::getArticleText( uint32_t articleAddress, QString & headword, QString & text )
