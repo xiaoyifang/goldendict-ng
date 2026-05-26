@@ -3211,20 +3211,8 @@ en la premita stato kiam la vortelekto ŝanĝiĝas.</translation>
       <translation>Ludu sondosierojn per enkonstruita sonsubteno</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Uzu internan ludilon:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Elektu sonan malantaŭan finon</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Uzu ajnan eksteran programon por ludi sondosierojn</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Uzu eksteran programon:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3535,6 +3523,26 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Kaŝi langetan stangon kiam nur unu langeto estas malfermita.</translation>
+    </message>
+    <message>
+      <source>Internal Player:</source>
+      <translation>Interna Ludilo:</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Uzu ajnan eksteran sonludilon por ludi sondosierojn</translation>
+    </message>
+    <message>
+      <source>External Player:</source>
+      <translation>Ekstera Ludilo:</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation type="unfinished">View detailed configuration guide</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation type="unfinished">The audio path will be passed as a command-line argument to the external player. </translation>
     </message>
   </context>
   <context>
