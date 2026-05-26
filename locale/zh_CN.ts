@@ -3513,16 +3513,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>仅打开一个标签时隐藏标签栏。</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>内部玩家：</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>使用任何外部音频播放器播放音频文件</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>外部玩家：</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3531,6 +3523,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>音频路径将作为命令行参数传递给外部播放器。 </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>内置音频播放器：</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>外接音频播放器：</translation>
     </message>
   </context>
   <context>
