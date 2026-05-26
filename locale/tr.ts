@@ -3521,16 +3521,8 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <translation>Sadece bir sekme açıkken sekme çubuğunu gizle.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>İç Oyuncu:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Ses dosyalarını oynatmak için herhangi bir harici ses oynatıcıyı kullanın</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>Dış Oyuncu:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3539,6 +3531,14 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>Ses yolu, harici oynatıcıya komut satırı argümanı olarak iletilir. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Dahili Ses Oynatıcı:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Dış Ses Oynatıcı:</translation>
     </message>
   </context>
   <context>
