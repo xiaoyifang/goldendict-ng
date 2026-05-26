@@ -3180,19 +3180,7 @@ in the pressed state when the word selection changes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Use internal player:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Choose audio back end</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use any external program to play audio files</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use external program:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3494,6 +3482,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Hide tab bar when only one tab is open.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Internal Player:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use any external audio player to play audio files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External Player:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View detailed configuration guide</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

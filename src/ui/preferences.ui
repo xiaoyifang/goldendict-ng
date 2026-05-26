@@ -1035,9 +1035,6 @@ in the pressed state when the word selection changes.</string>
           </item>
           <item row="2" column="0" colspan="2">
            <widget class="QLabel" name="externalPlayerHint">
-            <property name="text">
-             <string>The audio path will be passed as a command-line argument to the external player. <a href="https://xiaoyifang.github.io/goldendict-ng/ui_audioengine/">View detailed configuration guide</a></string>
-            </property>
             <property name="textFormat">
              <enum>Qt::RichText</enum>
             </property>
