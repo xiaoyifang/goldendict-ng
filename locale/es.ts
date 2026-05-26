@@ -3523,16 +3523,8 @@ de diccionarios Stardict, Babylon y GLS</translation>
       <translation>Ocultar barra de pestañas cuando sólo una pestaña está abierta.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Jugador interno:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Usa cualquier reproductor de audio externo para reproducir archivos de audio</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>Jugador Externo:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3541,6 +3533,14 @@ de diccionarios Stardict, Babylon y GLS</translation>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>La ruta de audio se pasará como argumento de línea de comandos al reproductor externo. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Reproductor de audio interno:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Reproductor de audio externo:</translation>
     </message>
   </context>
   <context>
