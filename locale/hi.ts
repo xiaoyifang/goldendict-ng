@@ -3510,16 +3510,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>केवल एक टैब खुला होने पर टैब पट्टी छुपाएँ.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>आंतरिक खिलाड़ी:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>ऑडियो फ़ाइलों को चलाने के लिए किसी भी बाहरी ऑडियो प्लेयर का उपयोग करें</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>बाहरी खिलाड़ी:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3528,6 +3520,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>ऑडियो पथ को बाहरी प्लेयर को कमांड-लाइन तर्क के रूप में पारित किया जाएगा। </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>आंतरिक ऑडियो प्लेयर:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>बाहरी ऑडियो प्लेयर:</translation>
     </message>
   </context>
   <context>
