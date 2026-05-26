@@ -3215,20 +3215,8 @@ in the pressed state when the word selection changes.</source>
       <translation>Воспроизводить аудио-файлы через встроенный плеер</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Использовать встроенный плеер</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Выбор плеера</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Использовать любую внешнюю программу для проигрывания аудио-файлов</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Воспроизведение через внешнее приложение:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3541,6 +3529,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Скрывать панель вкладок, когда открыта только одна вкладка.</translation>
+    </message>
+    <message>
+      <source>Internal Player:</source>
+      <translation>Внутренний игрок:</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Использовать любой внешний аудио проигрыватель для воспроизведения аудио файлов</translation>
+    </message>
+    <message>
+      <source>External Player:</source>
+      <translation>Внешний игрок:</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Подробное руководство по настройке</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Путь к аудио будет передан в качестве аргумента командной строки внешнему игроку. </translation>
     </message>
   </context>
   <context>
