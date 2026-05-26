@@ -3521,16 +3521,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>탭이 하나만 열려 있을 때는 탭 바를 숨기세요.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>내부 플레이어:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>외부 오디오 플레이어를 사용해서 오디오 파일을 재생하세요</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>외부 플레이어:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3539,6 +3531,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>오디오 경로는 명령줄 인수로 외부 플레이어에 전달됩니다. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>내장 오디오 플레이어:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>외부 오디오 플레이어:</translation>
     </message>
   </context>
   <context>
