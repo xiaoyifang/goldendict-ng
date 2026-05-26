@@ -45,7 +45,7 @@ def update_metainfo(file_path, version, date, repo, tag_name):
             if cl_lines:
                 has_changelog = True
                 ul = ET.SubElement(description, 'ul')
-                for item in cl_lines[:20]:
+                for item in cl_lines[3:20]:
                     clean_item = item.lstrip('-* ').strip()
                     li = ET.SubElement(ul, 'li')
                     li.text = clean_item
@@ -65,11 +65,15 @@ def update_metainfo(file_path, version, date, repo, tag_name):
     # Insert at the beginning of <releases>
     releases.insert(0, new_release)
 
-    # Prune to 5 records
+    # Prune to 5 records and ensure only the first one has a description
     all_releases = releases.findall('release')
-    if len(all_releases) > 5:
-        for old_rel in all_releases[5:]:
-            releases.remove(old_rel)
+    for i, rel in enumerate(all_releases):
+        if i > 0:
+            desc = rel.find('description')
+            if desc is not None:
+                rel.remove(desc)
+        if i >= 5:
+            releases.remove(rel)
 
     # Indent for pretty printing (Python 3.9+)
     if hasattr(ET, 'indent'):
