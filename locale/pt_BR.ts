@@ -3216,20 +3216,8 @@ em qualquer situação ou contexto, desde que o GoldenDict esteja em execução.
       <translation>Reproduzir arquivos de áudio via suporte de áudio embutido</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Usar player interno:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Escolha o back-end de áudio</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Usa um aplicativo externo para reproduzir arquivos de áudio</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Usar programa externo:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3539,6 +3527,26 @@ dos dicionários Stardict, Babylon e GLS</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Ocultar a barra de abas quando apenas uma aba estiver aberta.</translation>
+    </message>
+    <message>
+      <source>Internal Player:</source>
+      <translation>Jogador interno:</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Usar qualquer reprodutor de áudio externo para reproduzir arquivos de áudio</translation>
+    </message>
+    <message>
+      <source>External Player:</source>
+      <translation>Jogador Externo:</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Ver guia de configuração detalhado</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>O caminho de áudio será passado como um argumento de linha de comando para o jogador externo. </translation>
     </message>
   </context>
   <context>
