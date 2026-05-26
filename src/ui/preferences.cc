@@ -320,10 +320,9 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.audioPlaybackProgram->setText( p.audioPlaybackProgram );
 
   ui.externalPlayerHint->setText(
-    tr( "The audio path will be passed as a command-line argument to the external player. " ) +
-    R"(<a href="https://xiaoyifang.github.io/goldendict-ng/ui_audioengine/">)" +
-    tr( "View detailed configuration guide" ) +
-    "</a>" );
+    tr( "The audio path will be passed as a command-line argument to the external player. " )
+    + R"(<a href="https://xiaoyifang.github.io/goldendict-ng/ui_audioengine/">)"
+    + tr( "View detailed configuration guide" ) + "</a>" );
   ui.externalPlayerHint->setOpenExternalLinks( true );
   QFont hintFont = ui.externalPlayerHint->font();
   hintFont.setPointSize( hintFont.pointSize() - 1 );
