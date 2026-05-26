@@ -3211,20 +3211,8 @@ po to, kai pasikeis pažymėtas žodis.</translation>
       <translation>Groti garso kūrinius naudojant integruotą garso sistemą</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Nautoti integruotą grotuvę:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Pasirinkite garso sąsają</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Naudoti bet kokią išorinę programą garso failų grojimui</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Naudoti išorinę programą:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3532,6 +3520,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Slėpti skirtukų juostą, kai atidarytas tik vienas skirtukas.</translation>
+    </message>
+    <message>
+      <source>Internal Player:</source>
+      <translation>Vidinis grotuvas:</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Garso failams leisti naudokite bet kurį išorinį garso grotuvą</translation>
+    </message>
+    <message>
+      <source>External Player:</source>
+      <translation>Išorinis grotuvas:</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Peržiūrėkite išsamų konfigūracijos vadovą</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Garso kelias bus perduotas kaip komandų eilutės argumentas išoriniam leistuvui. </translation>
     </message>
   </context>
   <context>
