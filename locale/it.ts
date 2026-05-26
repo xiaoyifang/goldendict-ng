@@ -3211,20 +3211,8 @@ Le parole tradotte verranno mostrate in una finestra di dialogo a comparsa.</tra
       <translation>Riproduce i file audio mediante il supporto audio incorporato</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Utilizza lettore interno</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Scegli l&apos;applicazione per la riproduzione dell&apos;audio</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Usa un qualsiasi programma esterno per riprodurre i file audio</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Usa un programma esterno:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3533,6 +3521,26 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Nascondi la barra delle schede quando è aperta solo una scheda.</translation>
+    </message>
+    <message>
+      <source>Internal Player:</source>
+      <translation>Giocatore Interno:</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Usa qualsiasi lettore audio esterno per riprodurre file audio</translation>
+    </message>
+    <message>
+      <source>External Player:</source>
+      <translation>Giocatore Esterno:</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Visualizza la guida di configurazione dettagliata</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Il percorso audio verrà passato come argomento a riga di comando al lettore esterno. </translation>
     </message>
   </context>
   <context>
