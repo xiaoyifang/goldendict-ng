@@ -3524,16 +3524,8 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <translation>Rejtsd el a tabsávot, ha csak egy fül van nyitva.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Belső játékos:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Használj bármilyen külső hanglejátszót a hangfájlok lejátszásához</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>Külső játékos:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3542,6 +3534,14 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>A hangút parancssori argumentumként kerül át a külső lejátszónak. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Belső hanglejátszó:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Külső hanglejátszó:</translation>
     </message>
   </context>
   <context>
