@@ -3523,16 +3523,8 @@ ze słowników Stardict, Babylon i GLS</translation>
       <translation>Ukryj pasek zakładek, gdy tylko jedna karta jest otwarta.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Wewnętrzny gracz:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Użyj dowolnego zewnętrznego odtwarzacza audio do odtwarzania plików audio</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>Zewnętrzny gracz:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3541,6 +3533,14 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>Ścieżka audio zostanie przekazana jako argument wiersza poleceń do odtwarzacza zewnętrznego. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Wewnętrzny odtwarzacz audio:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Zewnętrzny odtwarzacz audio:</translation>
     </message>
   </context>
   <context>
