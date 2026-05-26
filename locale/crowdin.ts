@@ -3485,15 +3485,7 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Internal Player:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Use any external audio player to play audio files</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>External Player:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3502,6 +3494,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>The audio path will be passed as a command-line argument to the external player. </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Internal Audio Player:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External Audio Player:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
