@@ -3531,16 +3531,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Скрывать панель вкладок, когда открыта только одна вкладка.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Внутренний игрок:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Использовать любой внешний аудио проигрыватель для воспроизведения аудио файлов</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>Внешний игрок:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3549,6 +3541,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>Путь к аудио будет передан в качестве аргумента командной строки внешнему игроку. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Внутренний аудиоплеер:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Внешний аудиоплеер:</translation>
     </message>
   </context>
   <context>
