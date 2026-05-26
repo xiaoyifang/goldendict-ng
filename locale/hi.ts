@@ -3204,20 +3204,8 @@ in the pressed state when the word selection changes.</source>
       <translation>अंतर्निहित श्रव्य समर्थन के माध्यम से श्रव्य फ़ाइलें चलाएं</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>आन्तरिक वादक प्रयोग करे</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>श्रव्य पश्च भाग चुने</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>श्रव्य फ़ाइलों को चलाने के लिए किसी भी बाहरी प्रोग्राम का उपयोग करें</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>बाह्य प्रोग्रामों का उपयोग करें:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3520,6 +3508,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>केवल एक टैब खुला होने पर टैब पट्टी छुपाएँ.</translation>
+    </message>
+    <message>
+      <source>Internal Player:</source>
+      <translation>आंतरिक खिलाड़ी:</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>ऑडियो फ़ाइलों को चलाने के लिए किसी भी बाहरी ऑडियो प्लेयर का उपयोग करें</translation>
+    </message>
+    <message>
+      <source>External Player:</source>
+      <translation>बाहरी खिलाड़ी:</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>विस्तृत कॉन्फ़िगरेशन गाइड देखें</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>ऑडियो पथ को बाहरी प्लेयर को कमांड-लाइन तर्क के रूप में पारित किया जाएगा। </translation>
     </message>
   </context>
   <context>
