@@ -3210,20 +3210,8 @@ in the pressed state when the word selection changes.</source>
       <translation>تشغيل ملفات الصوت عبر دعم الصوت المدمج</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>استخدام المشغل الداخلي:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>اختر نهاية خلفية الصوت</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>استخدم أي برنامج خارجي لتشغيل ملفات الصوت</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>استخدم برنامجًا خارجيًا:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3533,6 +3521,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>إخفاء شريط التبويب عند فتح علامة تبويب واحدة فقط.</translation>
+    </message>
+    <message>
+      <source>Internal Player:</source>
+      <translation>اللاعب الداخلي:</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>استخدام أي مشغل صوت خارجي لتشغيل الملفات الصوتية</translation>
+    </message>
+    <message>
+      <source>External Player:</source>
+      <translation>لاعب خارجي:</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>عرض دليل التكوين المفصل</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>سيتم تمرير مسار الصوت كحجة سطر الأوامر إلى المشغل الخارجي. </translation>
     </message>
   </context>
   <context>
