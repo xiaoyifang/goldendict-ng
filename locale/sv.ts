@@ -3526,16 +3526,8 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation>Dölj flikfältet när endast en flik är öppen.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Intern spelare:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Använd någon extern ljudspelare för att spela upp ljudfiler</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>Extern spelare:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3544,6 +3536,14 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>Ljudsökvägen kommer att skickas som ett kommandoradsargument till den externa spelaren. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Intern ljudspelare:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Extern ljudspelare:</translation>
     </message>
   </context>
   <context>
