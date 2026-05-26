@@ -3499,24 +3499,24 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Схаваць панэль укладак, калі адкрыта толькі адна ўкладка.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation type="unfinished">Internal Player:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
-      <translation type="unfinished">Use any external audio player to play audio files</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation type="unfinished">External Player:</translation>
+      <translation>Выкарыстоўваць любы знешні аўдыяпрайгравальнік для прайгравання аўдыяфайлаў</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
-      <translation type="unfinished">View detailed configuration guide</translation>
+      <translation>Праглядзець падрабязны даведнік па канфігурацыі</translation>
     </message>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
-      <translation type="unfinished">The audio path will be passed as a command-line argument to the external player. </translation>
+      <translation>Шлях да аўдыё будзе перададзены як аргумент каманднага радка вонкаваму прайгравальніку. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation type="unfinished">Internal Audio Player:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation type="unfinished">External Audio Player:</translation>
     </message>
   </context>
   <context>
