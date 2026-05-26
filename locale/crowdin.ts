@@ -3500,6 +3500,10 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>View detailed configuration guide</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>The audio path will be passed as a command-line argument to the external player. </source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProgramTypeEditor</name>
