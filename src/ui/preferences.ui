@@ -1002,7 +1002,7 @@ in the pressed state when the word selection changes.</string>
              <string>Play audio files via built-in audio support</string>
             </property>
             <property name="text">
-             <string>Internal Player:</string>
+             <string>Internal Audio Player:</string>
             </property>
            </widget>
           </item>
@@ -1019,7 +1019,7 @@ in the pressed state when the word selection changes.</string>
              <string>Use any external audio player to play audio files</string>
             </property>
             <property name="text">
-             <string>External Player:</string>
+             <string>External Audio Player:</string>
             </property>
            </widget>
           </item>
