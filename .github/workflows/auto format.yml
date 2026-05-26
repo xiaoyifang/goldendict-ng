@@ -2,6 +2,8 @@ name: autofix.ci
 concurrency: 
    group: ${{ github.workflow }}-${{ github.ref }}
    cancel-in-progress: true
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 on:
   pull_request:
     branches:
@@ -58,7 +60,7 @@ jobs:
         with:
           fetch-depth: 2
       - name: Install Qt
-        uses: jurplel/install-qt-action@v4.2.1
+        uses: jurplel/install-qt-action@v4.3.1
         with:
           version: '6.7.2'
           target: 'desktop'

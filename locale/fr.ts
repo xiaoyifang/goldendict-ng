@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -85,9 +85,9 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Bienvenue sur &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;Pour commencer:&lt;/h4&gt;
+        &lt;h4&gt;Pour commencer&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Aller à &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Modifier&lt;/span&gt;&lt;span&gt;Dictionnaires&lt;/span&gt;&lt;/span&gt; pour ajouter vos fichiers de dictionnaire, mettre en place des sources en ligne comme Wikipédia et les organiser en groupes.&lt;/li&gt;
+          &lt;li&gt;Allez à &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Editer&lt;/span&gt;&lt;span&gt;Dictionnaires&lt;/span&gt;&lt;/span&gt; pour ajouter vos fichiers de dictionnaire, mettre en place des sources en ligne comme Wikipédia et les organiser en groupes.&lt;/li&gt;
           &lt;li&gt;Une fois configuré, vous pouvez rechercher des mots dans cette fenêtre ou &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;à partir d'autres applications en utilisant le Popup de Scan&lt;/a&gt;.&lt;/li&gt;
           &lt;li&gt;Pour personnaliser le programme, Explorez les paramètres dans &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. Tous les paramètres ont des infobulles, alors assurez-vous de les lire si quelque chose n'est pas clair.&lt;/li&gt;
         &lt;/ul&gt;
@@ -661,6 +661,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>Recherche plein texte désactivée</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Désactiver</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Activer</translation>
     </message>
   </context>
   <context>
@@ -2757,10 +2765,6 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <translation>Description :</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Fichiers incluant ce dictionnaire :</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Définissez l&apos;ordre des éléments en les déplaçant (glisser-déposer). Déposez les dictionnaires dans le groupe &apos;inactif&apos; pour désactiver leur utilisation.</translation>
     </message>
@@ -2787,6 +2791,10 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <source>New display name:</source>
       <translation>Nouveau nom d'affichage :</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Composants du dictionnaire :</translation>
     </message>
   </context>
   <context>
@@ -2837,10 +2845,6 @@ sans basculer vers ceux-ci.</translation>
     <message>
       <source>Hide single tab</source>
       <translation>Cacher l&apos;onglet</translation>
-    </message>
-    <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>Ordre MRU : la commande la plus récente.</translation>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
@@ -2994,14 +2998,6 @@ the application.</source>
     <message>
       <source>None</source>
       <translation>Aucun</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Sélectionnez cette option si vous donnez&apos;ne voulez pas voir la barre d’onglets principale quand un seul onglet est
-                  ouvert.
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3532,6 +3528,10 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Redémarrez pour appliquer le changement d'accès au presse-papiers JavaScript.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Masquer la barre d'onglets quand un seul onglet est ouvert.</translation>
     </message>
   </context>
   <context>

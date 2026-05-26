@@ -155,7 +155,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   addTab( this ),
   cfg( cfg_ ),
   history( cfg_.preferences.maxStringsInHistory, cfg_.maxHeadwordSize ),
-  dictionaryBar( this, configEvents, cfg.preferences.maxDictionaryRefsInContextMenu ),
+  dictionaryBar( this, cfg.preferences.maxDictionaryRefsInContextMenu ),
   articleMaker( dictionaries, groupInstances, cfg.preferences ),
   articleNetMgr( this, dictionaries, articleMaker, cfg.preferences.disallowContentFromOtherSites ),
   dictNetMgr( this ),
@@ -317,7 +317,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   buttonMenu->addMenu( ui.menuSearch );
   buttonMenu->addMenu( ui.menu_Help );
 
-  ui.fullTextSearchAction->setEnabled( cfg.preferences.fts.enabled );
+  ui.fullTextSearchAction->setEnabled( true );
 
   menuButton = new QToolButton( navToolbar );
   menuButton->setPopupMode( QToolButton::InstantPopup );
@@ -697,7 +697,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // connect( ui.dictsList, &QListWidget::itemSelectionChanged, this, &MainWindow::dictsListSelectionChanged );
   // connect( ui.dictsList, &QListWidget::itemDoubleClicked, this, &MainWindow::dictsListItemActivated );
 
-  connect( &configEvents, &Config::Events::mutedDictionariesChanged, this, &MainWindow::mutedDictionariesChanged );
+  connect( GlobalBroadcaster::instance(),
+           &GlobalBroadcaster::mutedDictionariesChanged,
+           this,
+           &MainWindow::mutedDictionariesChanged );
 
   this->installEventFilter( this );
 
@@ -725,6 +728,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            &GlobalBroadcaster::indexingDictionary,
            this,
            &MainWindow::showFTSIndexingName );
+  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::ftsStateChanged, this, [ this ]() {
+    ftsIndexing.stopIndexing();
+    ftsIndexing.doIndexing();
+  } );
   connect( GlobalBroadcaster::instance(),
            &GlobalBroadcaster::websiteDictionarySignal,
            this,
@@ -2262,6 +2269,8 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
 
       cfg = newCfg;
 
+      dictMap = Dictionary::dictToMap( dictionaries );
+
       updateGroupList();
 
       Config::save( cfg );
@@ -2406,8 +2415,6 @@ void MainWindow::editPreferences()
       dictionarie->setFTSParameters( cfg.preferences.fts );
       dictionarie->setSynonymSearchEnabled( cfg.preferences.synonymSearchEnabled );
     }
-
-    ui.fullTextSearchAction->setEnabled( cfg.preferences.fts.enabled );
 
     Logger::switchLoggingMethod( cfg.preferences.enableApplicationLog );
 
@@ -3646,7 +3653,7 @@ bool MainWindow::handleStructuredMessage( const QString & message )
   }
 
   if ( QString action = params.value( "action" ); action == "translate" ) {
-    QString windowType = params.value( "window", "popup" );
+    QString windowType = params.value( "window", "main" );
     QString word       = params.value( "word" );
     QString group      = params.value( "group" );
     QString popupGroup = params.value( "popupGroup" );
@@ -4311,11 +4318,14 @@ void MainWindow::showFullTextSearchDialog()
              this,
              &MainWindow::closeFullTextSearchDialog,
              Qt::QueuedConnection );
-    connect( &configEvents, SIGNAL( mutedDictionariesChanged() ), ftsDlg, SLOT( updateDictionaries() ) );
+    connect( GlobalBroadcaster::instance(),
+             &GlobalBroadcaster::ftsStateChanged,
+             ftsDlg,
+             &FTS::FullTextSearchDialog::updateDictionaries );
 
-    unsigned group = groupInstances.empty() ? 0 : groupInstances[ groupList->currentIndex() ].id;
-    ftsDlg->setCurrentGroup( group );
+    ftsDlg->setCurrentGroup( groupInstances.empty() ? 0 : groupInstances[ groupList->currentIndex() ].id );
   }
+  ftsDlg->updateDictionaries();
 
   if ( !ftsDlg->isVisible() ) {
     ftsDlg->show();

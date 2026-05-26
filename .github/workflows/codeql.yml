@@ -10,6 +10,8 @@
 # supported CodeQL languages.
 #
 name: "CodeQL Advanced"
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 on:
   push:

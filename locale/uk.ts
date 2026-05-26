@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -84,7 +84,7 @@
       <translation>&lt;div class=&quot;welcome-container&quot;&gt;
 &lt;h3&gt;Ласкаво просимо до &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
 &lt;section&gt;
-&lt;h4&gt;Щоб розпочати:&lt;/h4&gt;
+&lt;h4&gt;Щоб розпочати&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Перейдіть до розділу &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Редагувати&lt;/span&gt;&lt;span&gt;Словники&lt;/span&gt;&lt;/span&gt;, щоб додати файли словників, налаштувати онлайн-джерела, такі як Вікіпедія, та організувати їх у групи.&lt;/li&gt;
 &lt;li&gt;Після налаштування ви можете шукати слова в цьому вікні або &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;з інших програм за допомогою спливаючого вікна сканування&lt;/a&gt;.&lt;/li&gt;
@@ -661,6 +661,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Full-text search disabled</source>
       <translation>Повнотекстовий пошук вимкнено</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation>Вимкнути</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Увімкнути</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>
@@ -1134,7 +1142,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>A group with the name &apos;%1&apos; already exists.</source>
-      <translation type="unfinished">A group with the name &apos;%1&apos; already exists.</translation>
+      <translation>Група з назвою &apos;%1&apos; вже існує.</translation>
     </message>
   </context>
   <context>
@@ -2757,10 +2765,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Опис:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Файли, які охоплює словник:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Впорядковуйте словники, переміщуючи пункти словників. Вимикайте словники, переносячи їх у відповідну групу.</translation>
     </message>
@@ -2787,6 +2791,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>New display name:</source>
       <translation>Нове ім'я для відображення:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Компоненти словника:</translation>
     </message>
   </context>
   <context>
@@ -2837,10 +2845,6 @@ switching to them.</source>
     <message>
       <source>Hide single tab</source>
       <translation>Сховати єдину вкладку</translation>
-    </message>
-    <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>Замовлення MRU: найдавніше використовуване замовлення.</translation>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
@@ -2996,18 +3000,12 @@ the application.</source>
       <translation>Нема</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Виберіть цей параметр, якщо ви не хочете бачити головну панель вкладок, коли відкрито лише одну вкладку.</translation>
-    </message>
-    <message>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise, they are added to
 be the last ones.</source>
-      <translation type="unfinished">With this on, new tabs are opened just after the
-current, active one. Otherwise, they are added to
-be the last ones.</translation>
+      <translation>Коли це ввімкнено, нові вкладки відкриватимуть 
+одразу за поточною. Інакше вони додаватимуться 
+до останніх.</translation>
     </message>
     <message>
       <source>&amp;Style</source>
@@ -3533,6 +3531,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Перезавантажити для застосування зміни доступу до буфера обміну JavaScript.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Приховувати панель вкладок, коли відкрита лише одна вкладка.</translation>
     </message>
   </context>
   <context>

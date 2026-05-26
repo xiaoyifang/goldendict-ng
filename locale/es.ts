@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -85,7 +85,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;¡Bienvenido a &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;Para empezar:&lt;/h4&gt;
+        &lt;h4&gt;Para empezar&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Ir a &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Editar&lt;/span&gt;&lt;span&gt;diccionarios&lt;/span&gt;&lt;/span&gt; para añadir tus archivos de diccionario, establecer fuentes en línea como Wikipedia, y organizarlas en grupos.&lt;/li&gt;
           &lt;li&gt;Una vez configurado, puede buscar palabras en esta ventana o &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;de otras aplicaciones usando la ventana emergente de Escaneo&lt;/a&gt;.&lt;/li&gt;
@@ -661,6 +661,14 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Búsqueda de texto completo deshabilitada</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Desactivar</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Permitir</translation>
     </message>
   </context>
   <context>
@@ -2757,10 +2765,6 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
       <translation>Descripción:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Ficheros que componen este diccionario:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Ajuste el orden arrastrando y soltando diccionarios. Arrastre diccionarios al grupo de no activos para deshabilitar su uso.</translation>
     </message>
@@ -2787,6 +2791,10 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <source>New display name:</source>
       <translation>Nuevo nombre de pantalla:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Componentes de diccionario:</translation>
     </message>
   </context>
   <context>
@@ -2836,10 +2844,6 @@ Con esta opción activada, en cambio, las nuevas pestañas se abrirán sin que s
     <message>
       <source>Hide single tab</source>
       <translation>Ocultar una pesaña</translation>
-    </message>
-    <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>Orden MRU: Pedido más reciente usado.</translation>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
@@ -2994,14 +2998,6 @@ en lugar de cerrrarse.</translation>
     <message>
       <source>None</source>
       <translation>Ninguno</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Seleccione esta opción si no&apos;t desea ver la barra de pestañas principal cuando sólo una sola pestaña está
-                  abierta.
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3533,6 +3529,10 @@ de diccionarios Stardict, Babylon y GLS</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Reinicie para aplicar el cambio de acceso al portapapeles de JavaScript.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Ocultar barra de pestañas cuando sólo una pestaña está abierta.</translation>
     </message>
   </context>
   <context>

@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -85,7 +85,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Välkommen till &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;För att komma igång:&lt;/h4&gt;
+        &lt;h4&gt;För att komma igång&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Gå till &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Redigera&lt;/span&gt;&lt;span&gt;Ordböcker&lt;/span&gt;&lt;/span&gt; för att lägga till dina ordboksfiler, konfigurera onlinekällor som Wikipedia, och organisera dem i grupper.&lt;/li&gt;
           &lt;li&gt;En gång i tiden du kan slå upp ord i detta fönster eller &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;från andra program med hjälp av Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -661,6 +661,14 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Fulltextsökning avaktiverad</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Inaktivera</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Aktivera</translation>
     </message>
   </context>
   <context>
@@ -2757,10 +2765,6 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
       <translation>Beskrivning:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Filer som omfattas av ordlistan:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Ändra ordningen genom att dra och släppa objekten i listan. Släpp ordlistor i gruppen &quot;Inaktiverade ordlistor&quot; för att inaktivera dem.</translation>
     </message>
@@ -2787,6 +2791,10 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
     <message>
       <source>New display name:</source>
       <translation>Nytt visningsnamn:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Ordbokskomponenter:</translation>
     </message>
   </context>
   <context>
@@ -2837,10 +2845,6 @@ att växla till dem på en gång.</translation>
     <message>
       <source>Hide single tab</source>
       <translation>Dölj fliken och flikfältet om endast en flik är öppen</translation>
-    </message>
-    <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU beställning: Senast använda beställning.</translation>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
@@ -2994,14 +2998,6 @@ minimera fönstret till meddelandefältet istället för att avsluta programmet.
     <message>
       <source>None</source>
       <translation>Ingen</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Välj det här alternativet om du don&apos;t vill se huvudfliksfältet när bara en enda flik är
-                  öppnad.
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3536,6 +3532,10 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Starta om för att tillämpa JavaScript-urklipp åtkomständring.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Dölj flikfältet när endast en flik är öppen.</translation>
     </message>
   </context>
   <context>

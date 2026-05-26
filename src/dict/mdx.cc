@@ -242,13 +242,15 @@ public:
 
   void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
+  sptr< Dictionary::Class > duplicate() override;
+
   void setFTSParameters( const Config::FullTextSearch & fts ) override
   {
     if ( !ensureInitDone().empty() ) {
       return;
     }
     if ( metadata_enable_fts.has_value() ) {
-      can_FTS = fts.enabled && metadata_enable_fts.value();
+      can_FTS = metadata_enable_fts.value();
     }
     else {
       can_FTS = fts.enabled && !fts.disabledTypes.contains( "MDICT", Qt::CaseInsensitive )
@@ -445,8 +447,10 @@ void MdxDictionary::makeFTSIndex( QAtomicInt & isCancelled )
   qDebug( "MDict: Building the full-text index for dictionary: %s", getName().c_str() );
 
   try {
-    auto _dict = std::make_shared< MdxDictionary >( this->getId(), idxFileName, this->getDictionaryFilenames() );
-    if ( !_dict->ensureInitDone().empty() ) {
+    // Create a new instance for indexing to avoid locking the main dictionary instance
+    // which may be used for queries during indexing
+    auto _dict = std::static_pointer_cast< MdxDictionary >( duplicate() );
+    if ( !_dict || !_dict->ensureInitDone().empty() ) {
       return;
     }
     FtsHelpers::makeFTSIndex( _dict.get(), isCancelled );
@@ -456,6 +460,15 @@ void MdxDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     qWarning( "MDict: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
     QFile::remove( ftsIdxName.c_str() );
   }
+}
+
+sptr< Dictionary::Class > MdxDictionary::duplicate()
+{
+  auto instance = std::make_shared< MdxDictionary >( getId(), idxFileName, getDictionaryFilenames() );
+  // Inherit FTS state from original instance
+  instance->metadata_enable_fts = this->metadata_enable_fts;
+  instance->can_FTS             = this->can_FTS;
+  return instance;
 }
 
 void MdxDictionary::getArticleText( uint32_t articleAddress, QString & headword, QString & text )

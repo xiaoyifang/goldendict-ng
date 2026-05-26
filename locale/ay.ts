@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation type="unfinished">Anki: post to Anki failed</translation>
+      <translation>Anki: Anki-ru apayañax pantjasi</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation type="unfinished">Anki: post to Anki success</translation>
+      <translation>Anki: Anki-ru apayañax askiwa</translation>
     </message>
   </context>
   <context>
@@ -70,7 +70,7 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -82,22 +82,7 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation type="unfinished">
-    &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
-      &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
-        &lt;ul&gt;
-          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
-          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/section&gt;
-      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
-      &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
-      &lt;/footer&gt;
-    &lt;/div&gt;</translation>
+      <translation>&lt;div class=&quot;welcome-container&quot;&gt;&lt;h3&gt;¡&lt;strong&gt;GoldenDict-ng&lt;/strong&gt;-ar qamasa!&lt;/h3&gt;&lt;section&gt;&lt;h4&gt;Qalltañataki&lt;/h4&gt;&lt;ul&gt;&lt;li&gt;&lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Jichhakiptayaña&lt;/span&gt;&lt;span&gt;Aru-pirwanaka&lt;/span&gt;&lt;/span&gt;-ru saraña, juma pachpa aru-pirwa q'ipinaka yapxatañataki, Wikipedia ukham línea uñt'atanaka wakichañataki, ukat qutu-rakinakaru wakichaña.&lt;/li&gt;&lt;li&gt;Wakicht'ata ukhaxa, akax ventana ukan jan ukax &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;yaqha aplicaciónanakan Scan Popup ukamp thaqhañataki&lt;/a&gt; aru-nak thaqhañasa.&lt;/li&gt;&lt;li&gt;Programax juma pachpa wakicht'añataki, &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Jichhakiptayaña&lt;/span&gt;&lt;span&gt;Preferencias&lt;/span&gt;&lt;/span&gt; ukan wakichäwinaka uñjaña. Taqi wakichäwinakax tooltips ukanakawa, ukhamarakiw jiwaki janiw qhanäxchi ukaxa liyt'aña.&lt;/li&gt;&lt;/ul&gt;&lt;/section&gt;&lt;p&gt;Juk'amp yanapt'a munapkta, kuna jiskt'anaka jan ukax amtanaka utjapkta, programan &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;foro&lt;/a&gt; ukan jan ukax &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;web utjawi&lt;/a&gt; ukan qamasa.&lt;/p&gt;&lt;footer class=&quot;welcome-footer&quot;&gt;&lt;small&gt;Konstantin Isakov-an (c) 2008-2013 nayra GoldenDict ukar uñtata. GoldenDict-NG Jakhutapan apnaqata ukat luratata. GPLv3 jan ukax juk'amp nayrapamp licencia churatäxiwa.&lt;/small&gt;&lt;/footer&gt;&lt;/div&gt;</translation>
     </message>
   </context>
   <context>
@@ -287,30 +272,30 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>&amp;Copy sound to clipboard</source>
-      <translation type="unfinished">&amp;Copy sound to clipboard</translation>
+      <translation>&amp;Ist'awi clipboard-aru kutt'ayaña</translation>
     </message>
     <message>
       <source>Failed to copy sound</source>
-      <translation type="unfinished">Failed to copy sound</translation>
+      <translation>Ist'awi kutt'ayañax pantjasi</translation>
     </message>
     <message>
       <source>Failed to write complete audio data</source>
-      <translation type="unfinished">Failed to write complete audio data</translation>
+      <translation>Taqa ist'awi datonak qillqañax pantjasi</translation>
     </message>
     <message>
       <source>Sound copied to clipboard</source>
-      <translation type="unfinished">Sound copied to clipboard</translation>
+      <translation>Ist'awi clipboard-aru kutt'ayatäxiwa</translation>
     </message>
     <message>
       <source>Failed to download sound</source>
-      <translation type="unfinished">Failed to download sound</translation>
+      <translation>Ist'awi apkatasiñax pantjasi</translation>
     </message>
   </context>
   <context>
     <name>ArticleWebView</name>
     <message>
       <source>GoldenDict Resource Viewer</source>
-      <translation type="unfinished">GoldenDict Resource Viewer</translation>
+      <translation>GoldenDict Recursos Uñakipiri</translation>
     </message>
   </context>
   <context>
@@ -369,15 +354,15 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation type="unfinished">Taiwan variant</translation>
+      <translation>Taiwan uñacht'äwi</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
-      <translation type="unfinished">Hong Kong variant</translation>
+      <translation>Hong Kong uñacht'äwi</translation>
     </message>
     <message>
       <source>Mainland variant</source>
-      <translation type="unfinished">Mainland variant</translation>
+      <translation>Jach'a uraqi uñacht'äwi</translation>
     </message>
   </context>
   <context>
@@ -608,7 +593,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Regular Expression</source>
-      <translation type="unfinished">Regular Expression</translation>
+      <translation>Regular Uñakipawi</translation>
     </message>
   </context>
   <context>
@@ -664,6 +649,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>Phuqat qillqat thaqhañax ch’amanchatawa</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Suyt'ayaña</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Pirmitiña</translation>
     </message>
   </context>
   <context>
@@ -759,31 +752,31 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Restore selection</source>
-      <translation type="unfinished">Restore selection</translation>
+      <translation>Ajllita kutt'ayaña</translation>
     </message>
     <message>
       <source>Cancel reindex</source>
-      <translation type="unfinished">Cancel reindex</translation>
+      <translation>Reindexación jawsaña</translation>
     </message>
     <message>
       <source>Schedule for reindex</source>
-      <translation type="unfinished">Schedule for reindex</translation>
+      <translation>Reindexación lurayaña</translation>
     </message>
     <message>
       <source>Cancel schedule reindex</source>
-      <translation type="unfinished">Cancel schedule reindex</translation>
+      <translation>Reindexación lurayaña jawsaña</translation>
     </message>
     <message>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
-      <translation type="unfinished">The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</translation>
+      <translation>Aru-pirwax reindexación lurayañatakix churatäxiwa. Indexax juti aplicación qalltawixat mayamp lurataxäni.</translation>
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>Uñacht'awi suti mayjt'ayaña</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>Machaq uñacht'awi suti:</translation>
     </message>
   </context>
   <context>
@@ -923,11 +916,11 @@ Todos los items seleccionados serán borrados. ¿Quiere continuar?</translation>
     </message>
     <message>
       <source>Clear</source>
-      <translation type="unfinished">Clear</translation>
+      <translation>Q'umachaña</translation>
     </message>
     <message>
       <source>Clear Favorites</source>
-      <translation type="unfinished">Clear Favorites</translation>
+      <translation>Munatanaka Q'umachaña</translation>
     </message>
   </context>
   <context>
@@ -1150,7 +1143,7 @@ Abrir una lista de grupos</translation>
     </message>
     <message>
       <source>Add a new dictionary group</source>
-      <translation type="unfinished">Add a new dictionary group</translation>
+      <translation>Machaq aru-pirwa qutu yapxataña</translation>
     </message>
     <message>
       <source>&amp;Add group</source>
@@ -1158,11 +1151,11 @@ Abrir una lista de grupos</translation>
     </message>
     <message>
       <source>Group already exists</source>
-      <translation type="unfinished">Group already exists</translation>
+      <translation>Qutux waliwa</translation>
     </message>
     <message>
       <source>A group with the name &apos;%1&apos; already exists.</source>
-      <translation type="unfinished">A group with the name &apos;%1&apos; already exists.</translation>
+      <translation>Mä qutux '%1' sutimpix waliwa.</translation>
     </message>
   </context>
   <context>
@@ -2216,7 +2209,7 @@ Abrir una lista de grupos</translation>
     </message>
     <message>
       <source>Kabyle</source>
-      <translation type="unfinished">Kabyle</translation>
+      <translation>Kabyle</translation>
     </message>
   </context>
   <context>
@@ -2704,19 +2697,19 @@ Error de importación: datos incorrectos en el fichero.</translation>
     </message>
     <message>
       <source>Lock Panels</source>
-      <translation type="unfinished">Lock Panels</translation>
+      <translation>Panelanak Jisk'achaña</translation>
     </message>
     <message>
       <source>Clear History</source>
-      <translation type="unfinished">Clear History</translation>
+      <translation>Uñjat Q'umachaña</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all history items?</source>
-      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
+      <translation>¿Taqa uñjat yänak q'umachañ munasmati?</translation>
     </message>
     <message>
       <source>Save File</source>
-      <translation type="unfinished">Save File</translation>
+      <translation>Q'ipi Imaña</translation>
     </message>
   </context>
   <context>
@@ -2734,14 +2727,14 @@ Error de importación: datos incorrectos en el fichero.</translation>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
       <source>JSON parse error</source>
-      <translation type="unfinished">JSON parse error</translation>
+      <translation>JSON ullasiñ pantjasiwi</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
       <source>JSON parse error</source>
-      <translation type="unfinished">JSON parse error</translation>
+      <translation>JSON ullasiñ pantjasiwi</translation>
     </message>
   </context>
   <context>
@@ -2817,10 +2810,6 @@ Error de importación: datos incorrectos en el fichero.</translation>
       <translation>Qillqatax kunjamasa:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Aka aru-pirwan wayaqanaka:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Qatatiyam ukat aru-pirwanak uskuña, kunjams jumax siqi siqi sarayañ munta. Jiwt&apos;ayañatakixa, aru-pirwanak jiwt&apos;at qutunakan ukan uskuña.</translation>
     </message>
@@ -2842,11 +2831,15 @@ Error de importación: datos incorrectos en el fichero.</translation>
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>Uñacht'awi suti mayjt'ayaña</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>Machaq uñacht'awi suti:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Aru pirwanakana wakichäwinakapa:</translation>
     </message>
   </context>
   <context>
@@ -2899,10 +2892,6 @@ jichha phicchun qhiparasi.</translation>
     <message>
       <source>Hide single tab</source>
       <translation>Mä phichhukisa ukjaxa imantaña</translation>
-    </message>
-    <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU orden: Jichhax apnaqat orden.</translation>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
@@ -3072,24 +3061,14 @@ Aka jakhu mayjacham jach&apos;a menus jithiqañataki.</translation>
       <translation>Ni maya</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
-    </message>
-    <message>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise, they are added to
 be the last ones.</source>
-      <translation type="unfinished">With this on, new tabs are opened just after the
-current, active one. Otherwise, they are added to
-be the last ones.</translation>
+      <translation>Akampix, machaq ficha-nakax jichha, apnaqasa uka qhipat jist'aratäni. Jan ukhamäspax, tukuyar jawst'ayatäni.</translation>
     </message>
     <message>
       <source>&amp;Style</source>
-      <translation type="unfinished">&amp;Style</translation>
+      <translation>&amp;Uñt'awi</translation>
     </message>
     <message>
       <source>Appearance</source>
@@ -3097,15 +3076,15 @@ be the last ones.</translation>
     </message>
     <message>
       <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
+      <translation>Interfaz Qillqa churaña</translation>
     </message>
     <message>
       <source>Font</source>
-      <translation type="unfinished">Font</translation>
+      <translation>Qillqa</translation>
     </message>
     <message>
       <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
+      <translation>Qillqa jach'a</translation>
     </message>
     <message>
       <source>Interface language</source>
@@ -3145,7 +3124,7 @@ be the last ones.</translation>
     </message>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
+      <translation>GoldenDict-ng ukax mä aru-pirwa software ukawa.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3212,7 +3191,7 @@ uñstiri wintanaxa uñstaraki, ajllit aru mayjt&apos;i ukja.</translation>
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation type="unfinished">Only track selection when all selected keys are kept pressed:</translation>
+      <translation>Ajllita uñakipañax ajllita tecleanak ch'amanchata uñjatäki ukhakiw.</translation>
     </message>
     <message>
       <source>Alt key</source>
@@ -3613,19 +3592,19 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     </message>
     <message>
       <source>S&amp;can</source>
-      <translation type="unfinished">S&amp;can</translation>
+      <translation>S&amp;can</translation>
     </message>
     <message>
       <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
-      <translation type="unfinished">Suppress JavaScript alerts, confirms, and prompts in the article view.</translation>
+      <translation>JavaScript alertanak, confirmacionanak, ukat promptanak qillqata uñakipañan jark'aqaña.</translation>
     </message>
     <message>
       <source>Suppress JavaScript dialogs</source>
-      <translation type="unfinished">Suppress JavaScript dialogs</translation>
+      <translation>JavaScript dialogonak jark'aqaña</translation>
     </message>
     <message>
       <source>Open website dictionary in separate tab</source>
-      <translation type="unfinished">Open website dictionary in separate tab</translation>
+      <translation>Web aru-pirwax sapaqata ficha-n jist'araña</translation>
     </message>
     <message>
       <source>Anki</source>
@@ -3633,15 +3612,19 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     </message>
     <message>
       <source>Allow JavaScript to access clipboard in the article view.</source>
-      <translation type="unfinished">Allow JavaScript to access clipboard in the article view.</translation>
+      <translation>JavaScript-r qillqata uñakipañan clipboard ukar mantayaña saqtaña.</translation>
     </message>
     <message>
       <source>Enable JavaScript clipboard access (need restart)</source>
-      <translation type="unfinished">Enable JavaScript clipboard access (need restart)</translation>
+      <translation>JavaScript clipboard mantaña churaña (mayamp qalltaña wakisi)</translation>
     </message>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
-      <translation type="unfinished">Restart to apply the JavaScript clipboard access change.</translation>
+      <translation>Mayamp qalltaña JavaScript clipboard mantaña mayjt'awix lurañataki.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Mä ficha ukakiw jist'arata ukjaxa, ficha barra imantaña.</translation>
     </message>
   </context>
   <context>
@@ -3781,7 +3764,7 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     </message>
     <message>
       <source>Force the word to be translated in Popup.</source>
-      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+      <translation>Arux Popup-an jaqukipayañapawa.</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
@@ -3789,11 +3772,11 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     </message>
     <message>
       <source>Website Url:</source>
-      <translation type="unfinished">Website Url:</translation>
+      <translation>Web Url:</translation>
     </message>
     <message>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
-      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
+      <translation>Url ukanxa, &quot;%GDWORD%&quot; ukax thaqat aru tuqiw mayjt'ayatäni.</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
@@ -3805,7 +3788,7 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+      <translation>PDF qillqata (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
@@ -3837,7 +3820,7 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
-      <translation type="unfinished">Saving article... (%1/%2)</translation>
+      <translation>Qillqata imasiñana... (%1/%2)</translation>
     </message>
   </context>
   <context>
@@ -3896,7 +3879,7 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     </message>
     <message>
       <source>Definition</source>
-      <translation type="unfinished">Definition</translation>
+      <translation>Qhanañchaña</translation>
     </message>
   </context>
   <context>
@@ -4228,27 +4211,27 @@ Taqi lista utjki uka arunakax &lt;a href=&quot;https://lingualibre.org/wiki/Ling
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
-      <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
+      <translation>Japonés qillqañatakix juk'amp uñt'at lurawi, inglés arunakan ist'awi tuqita</translation>
     </message>
     <message>
       <source>Remove selected directories from the list?</source>
-      <translation type="unfinished">Remove selected directories from the list?</translation>
+      <translation>Ajllita q'ipinaka tantat apaqt'añ munasmati?</translation>
     </message>
     <message>
       <source>Remove %1 directories from the list?</source>
-      <translation type="unfinished">Remove %1 directories from the list?</translation>
+      <translation>%1 q'ipinaka tantat apaqt'añ munasmati?</translation>
     </message>
     <message>
       <source>Remove %1 sites from the list?</source>
-      <translation type="unfinished">Remove %1 sites from the list?</translation>
+      <translation>%1 utjawinaka tantat apaqt'añ munasmati?</translation>
     </message>
     <message>
       <source>Remove %1 servers from the list?</source>
-      <translation type="unfinished">Remove %1 servers from the list?</translation>
+      <translation>%1 servernaka tantat apaqt'añ munasmati?</translation>
     </message>
     <message>
       <source>Remove %1 programs from the list?</source>
-      <translation type="unfinished">Remove %1 programs from the list?</translation>
+      <translation>%1 programanaka tantat apaqt'añ munasmati?</translation>
     </message>
   </context>
   <context>
@@ -4349,7 +4332,7 @@ Taqi lista utjki uka arunakax &lt;a href=&quot;https://lingualibre.org/wiki/Ling
     <name>WebSite</name>
     <message>
       <source>This website dictionary is opened in a new tab</source>
-      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
+      <translation>Aka web aru-pirwax machaq ficha-n jist'aratäni</translation>
     </message>
   </context>
   <context>
@@ -4372,19 +4355,19 @@ Taqi lista utjki uka arunakax &lt;a href=&quot;https://lingualibre.org/wiki/Ling
     </message>
     <message>
       <source>Script</source>
-      <translation type="unfinished">Script</translation>
+      <translation>Script</translation>
     </message>
     <message>
       <source>Icon file name. Relative to the config directory.</source>
-      <translation type="unfinished">Icon file name. Relative to the config directory.</translation>
+      <translation>Icono q'ipi suti. Configuración q'ipi ukar jikxatañawa.</translation>
     </message>
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
-      <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
+      <translation>Sapaqata ficha-n web uñstatanak jist'arañatakikiw utji. Mä q'ipi thakhixa (configuración q'ipi tuqita jan ukax jach'a) jan ukax script uñnaqawa.</translation>
     </message>
     <message>
       <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
-      <translation type="unfinished">This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</translation>
+      <translation>Aka columna ukax jark'atäxiwa, &quot;Web aru-pirwax sapaqata ficha-n jist'araña&quot; ajlliwix Preferencias ukan janiw churatäkiti.</translation>
     </message>
   </context>
   <context>

@@ -23,10 +23,12 @@ public:
 private:
   Ui::DictInfo ui;
   Config::Class & cfg;
+  sptr< Dictionary::Class > currentDict;
 private slots:
   void savePos( int );
   void on_openFolder_clicked();
   void on_OKButton_clicked();
   void on_headwordsButton_clicked();
   void on_openIndexFolder_clicked();
+  void on_ftsToggleButton_clicked();
 };

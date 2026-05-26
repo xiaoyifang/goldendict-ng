@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation type="unfinished">Anki: post to Anki failed</translation>
+      <translation>Anki: Anki'ye gönderim başarısız oldu</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation type="unfinished">Anki: post to Anki success</translation>
+      <translation>Anki: Anki başarısına gönderi</translation>
     </message>
   </context>
   <context>
@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -81,20 +81,20 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation type="unfinished">
+      <translation>
     &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;h3&gt;Hoş geldiniz &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;Başlamak için&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
-          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
+          &lt;li&gt;Ziyaret edin &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Düzenleme&lt;/span&gt;&lt;span&gt;Sözlükler&lt;/span&gt;&lt;/span&gt; sözlük dosyalarınızı eklemek için, Wikipedia gibi çevrimiçi kaynaklar oluşturun ve gruplara ayırın.&lt;/li&gt;
+          &lt;li&gt;Kurulum yaptıktan sonra, bu pencerede kelimeleri arayabilir veya &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;Tarama açılır penceresi kullanan diğer uygulamalardan&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;Programı özelleştirmek için, aşağıdaki ayarları keşfedin. &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Düzenleme&lt;/span&gt;&lt;span&gt;Tercihler&lt;/span&gt;&lt;/span&gt;. Tüm ayarlarda araç ipuçları var, bu yüzden bir şey belirsizse mutlaka okuyun.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;
-      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;p&gt;Daha fazla yardıma ihtiyacınız olursa, herhangi bir soru veya öneriniz varsa, programa katılabilirsiniz&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;Forum&lt;/a&gt; ve &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;Web sitesi&lt;/a&gt;.&lt;/p&gt;
       &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
+        &lt;small&gt;Konstantin Isakov'un (c) 2008-2013 yılları arasında yazdığı orijinal GoldenDict'e dayanmaktadır. GoldenDict-NG Topluluğu tarafından korunmuş ve geliştirilmiştir. GPLv3 veya daha sonrası lisanslı.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</translation>
     </message>
@@ -286,30 +286,30 @@
     </message>
     <message>
       <source>&amp;Copy sound to clipboard</source>
-      <translation type="unfinished">&amp;Copy sound to clipboard</translation>
+      <translation>&amp; Sesi panoya kopyala</translation>
     </message>
     <message>
       <source>Failed to copy sound</source>
-      <translation type="unfinished">Failed to copy sound</translation>
+      <translation>Sesi kopyalayamadım</translation>
     </message>
     <message>
       <source>Failed to write complete audio data</source>
-      <translation type="unfinished">Failed to write complete audio data</translation>
+      <translation>Tam ses verisi yazamadı</translation>
     </message>
     <message>
       <source>Sound copied to clipboard</source>
-      <translation type="unfinished">Sound copied to clipboard</translation>
+      <translation>Ses panoya kopyalandı</translation>
     </message>
     <message>
       <source>Failed to download sound</source>
-      <translation type="unfinished">Failed to download sound</translation>
+      <translation>Ses indirilemedi</translation>
     </message>
   </context>
   <context>
     <name>ArticleWebView</name>
     <message>
       <source>GoldenDict Resource Viewer</source>
-      <translation type="unfinished">GoldenDict Resource Viewer</translation>
+      <translation>GoldenDict Resource Viewer</translation>
     </message>
   </context>
   <context>
@@ -369,15 +369,15 @@ arasındaki farkı giderir)</translation>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation type="unfinished">Taiwan variant</translation>
+      <translation>Tayvan varyantı</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
-      <translation type="unfinished">Hong Kong variant</translation>
+      <translation>Hong Kong varyantı</translation>
     </message>
     <message>
       <source>Mainland variant</source>
-      <translation type="unfinished">Mainland variant</translation>
+      <translation>Anakara varyantı</translation>
     </message>
   </context>
   <context>
@@ -605,7 +605,7 @@ arasındaki farkı giderir)</translation>
     </message>
     <message>
       <source>Regular Expression</source>
-      <translation type="unfinished">Regular Expression</translation>
+      <translation>Düzenli İfade</translation>
     </message>
   </context>
   <context>
@@ -661,6 +661,14 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Tam metin arama devre dışı</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Devre dışı bırakmak</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Olanak vermek</translation>
     </message>
   </context>
   <context>
@@ -756,31 +764,31 @@ arasındaki farkı giderir)</translation>
     </message>
     <message>
       <source>Restore selection</source>
-      <translation type="unfinished">Restore selection</translation>
+      <translation>Restore seçimi</translation>
     </message>
     <message>
       <source>Cancel reindex</source>
-      <translation type="unfinished">Cancel reindex</translation>
+      <translation>Yeniden indeksleme iptal et</translation>
     </message>
     <message>
       <source>Schedule for reindex</source>
-      <translation type="unfinished">Schedule for reindex</translation>
+      <translation>Yeniden indeksleme takvimi</translation>
     </message>
     <message>
       <source>Cancel schedule reindex</source>
-      <translation type="unfinished">Cancel schedule reindex</translation>
+      <translation>Program yeniden indeksini iptal et</translation>
     </message>
     <message>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
-      <translation type="unfinished">The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</translation>
+      <translation>Sözlük yeniden indekslenmek üzere planlandı. Indeks, bir sonraki uygulama yeniden başlatmasında yeniden oluşturulacaktır.</translation>
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>Gösterim adını değiştir</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>Yeni gösterim adı:</translation>
     </message>
   </context>
   <context>
@@ -914,11 +922,11 @@ arasındaki farkı giderir)</translation>
     </message>
     <message>
       <source>Clear</source>
-      <translation type="unfinished">Clear</translation>
+      <translation>Temiz</translation>
     </message>
     <message>
       <source>Clear Favorites</source>
-      <translation type="unfinished">Clear Favorites</translation>
+      <translation>Açık Favoriler</translation>
     </message>
   </context>
   <context>
@@ -1123,7 +1131,7 @@ arasındaki farkı giderir)</translation>
     </message>
     <message>
       <source>Add a new dictionary group</source>
-      <translation type="unfinished">Add a new dictionary group</translation>
+      <translation>Yeni bir sözlük grubu ekle</translation>
     </message>
     <message>
       <source>&amp;Add group</source>
@@ -1131,11 +1139,11 @@ arasındaki farkı giderir)</translation>
     </message>
     <message>
       <source>Group already exists</source>
-      <translation type="unfinished">Group already exists</translation>
+      <translation>Grup zaten var</translation>
     </message>
     <message>
       <source>A group with the name &apos;%1&apos; already exists.</source>
-      <translation type="unfinished">A group with the name &apos;%1&apos; already exists.</translation>
+      <translation>Isimli bir grup &apos;%1&apos; zaten var.</translation>
     </message>
   </context>
   <context>
@@ -2189,7 +2197,7 @@ arasındaki farkı giderir)</translation>
     </message>
     <message>
       <source>Kabyle</source>
-      <translation type="unfinished">Kabyle</translation>
+      <translation>Kabyle</translation>
     </message>
   </context>
   <context>
@@ -2644,19 +2652,19 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Lock Panels</source>
-      <translation type="unfinished">Lock Panels</translation>
+      <translation>Kilit Panelleri</translation>
     </message>
     <message>
       <source>Clear History</source>
-      <translation type="unfinished">Clear History</translation>
+      <translation>Clear History</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all history items?</source>
-      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
+      <translation>Tüm tarih öğelerini temizlemek istediğinizden emin misiniz?</translation>
     </message>
     <message>
       <source>Save File</source>
-      <translation type="unfinished">Save File</translation>
+      <translation>Kayıt Dosyası</translation>
     </message>
   </context>
   <context>
@@ -2674,14 +2682,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
       <source>JSON parse error</source>
-      <translation type="unfinished">JSON parse error</translation>
+      <translation>JSON ayrıştırma hatası</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
       <source>JSON parse error</source>
-      <translation type="unfinished">JSON parse error</translation>
+      <translation>JSON ayrıştırma hatası</translation>
     </message>
   </context>
   <context>
@@ -2757,10 +2765,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Açıklama:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Bu sözlüğü içeren dosyalar:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>İçindeki öğeleri sürükleyip bırakarak sırayı ayarlayın. Kullanımlarını devre dışı bırakmak için sözlükleri aktif olmayan gruba bırakın.</translation>
     </message>
@@ -2782,11 +2786,15 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>Gösterim adını değiştir</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>Yeni gösterim adı:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Sözlük bileşenleri:</translation>
     </message>
   </context>
   <context>
@@ -2836,10 +2844,6 @@ Bu seçenekleyse, yeni sekmeler açıldığında hemen o sekmeye geçilmeyecek.<
     <message>
       <source>Hide single tab</source>
       <translation>Tek sekmeyi gizle</translation>
-    </message>
-    <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU sırası: En son kullanılan sıra.</translation>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
@@ -2995,24 +2999,16 @@ yerine onu gizler.</translation>
       <translation>Yok</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
-    </message>
-    <message>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise, they are added to
 be the last ones.</source>
-      <translation type="unfinished">With this on, new tabs are opened just after the
-current, active one. Otherwise, they are added to
-be the last ones.</translation>
+      <translation>Bu açıkken, yeni sekmeler hemen ardından açılır
+akım, aktif olan. Aksi takdirde,
+Son olanlar ol.</translation>
     </message>
     <message>
       <source>&amp;Style</source>
-      <translation type="unfinished">&amp;Style</translation>
+      <translation>&amp; Stil</translation>
     </message>
     <message>
       <source>Appearance</source>
@@ -3020,15 +3016,15 @@ be the last ones.</translation>
     </message>
     <message>
       <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
+      <translation>Arayüz Fontunu Etkinleştir</translation>
     </message>
     <message>
       <source>Font</source>
-      <translation type="unfinished">Font</translation>
+      <translation>Font</translation>
     </message>
     <message>
       <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
+      <translation>Font Boyutu</translation>
     </message>
     <message>
       <source>Interface language</source>
@@ -3068,7 +3064,7 @@ be the last ones.</translation>
     </message>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
+      <translation>GoldenDict-ng bir sözlük yazılımıdır.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3130,7 +3126,7 @@ Aksi halde fare, sözcüğün üzerine geldiğinde çeviri yapılır.</translati
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation type="unfinished">Only track selection when all selected keys are kept pressed:</translation>
+      <translation>Seçimi yalnızca tüm seçilmiş tuşlar basılı tutulduğunda takip eder:</translation>
     </message>
     <message>
       <source>Alt key</source>
@@ -3502,19 +3498,19 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     </message>
     <message>
       <source>S&amp;can</source>
-      <translation type="unfinished">S&amp;can</translation>
+      <translation>S&amp;can</translation>
     </message>
     <message>
       <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
-      <translation type="unfinished">Suppress JavaScript alerts, confirms, and prompts in the article view.</translation>
+      <translation>Makale görünümünde JavaScript uyarılarını, onaylarını ve isteklerini gizleyin.</translation>
     </message>
     <message>
       <source>Suppress JavaScript dialogs</source>
-      <translation type="unfinished">Suppress JavaScript dialogs</translation>
+      <translation>JavaScript dialoglarını bastır</translation>
     </message>
     <message>
       <source>Open website dictionary in separate tab</source>
-      <translation type="unfinished">Open website dictionary in separate tab</translation>
+      <translation>Web sitesi sözlüğünü ayrı sekmede aç</translation>
     </message>
     <message>
       <source>Anki</source>
@@ -3522,15 +3518,19 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     </message>
     <message>
       <source>Allow JavaScript to access clipboard in the article view.</source>
-      <translation type="unfinished">Allow JavaScript to access clipboard in the article view.</translation>
+      <translation>JavaScript'in makale görünümünde panoya erişmesine izin verin.</translation>
     </message>
     <message>
       <source>Enable JavaScript clipboard access (need restart)</source>
-      <translation type="unfinished">Enable JavaScript clipboard access (need restart)</translation>
+      <translation>JavaScript pano erişimini etkinleştir (yeniden başlatma gerekiyor)</translation>
     </message>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
-      <translation type="unfinished">Restart to apply the JavaScript clipboard access change.</translation>
+      <translation>JavaScript pano erişim değişikliğini uygulamak için yeniden başlatın.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Sadece bir sekme açıkken sekme çubuğunu gizle.</translation>
     </message>
   </context>
   <context>
@@ -3670,7 +3670,7 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     </message>
     <message>
       <source>Force the word to be translated in Popup.</source>
-      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+      <translation>Kelimenin Popup'ta çevrilmesini zorla.</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
@@ -3678,11 +3678,11 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     </message>
     <message>
       <source>Website Url:</source>
-      <translation type="unfinished">Website Url:</translation>
+      <translation>Web sitesi URL'si:</translation>
     </message>
     <message>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
-      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
+      <translation>URL'de, &quot;%GDWORD%&quot; aranan kelime ile değiştirilecek.</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
@@ -3694,7 +3694,7 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+      <translation>PDF belgesi (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
@@ -3726,7 +3726,7 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
-      <translation type="unfinished">Saving article... (%1/%2)</translation>
+      <translation>Maddeyi kaydediyorum... (%1/%2)</translation>
     </message>
   </context>
   <context>
@@ -3785,7 +3785,7 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     </message>
     <message>
       <source>Definition</source>
-      <translation type="unfinished">Definition</translation>
+      <translation>Tanım</translation>
     </message>
   </context>
   <context>
@@ -4108,27 +4108,27 @@ Mevcut dillerin tam listesi burada bulunabilir &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
-      <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
+      <translation>İngilizce fonolojiye dayanan Japonca transkripsiyonunun en yaygın yöntemi</translation>
     </message>
     <message>
       <source>Remove selected directories from the list?</source>
-      <translation type="unfinished">Remove selected directories from the list?</translation>
+      <translation>Seçilmiş dizinleri listeden çıkaralım mı?</translation>
     </message>
     <message>
       <source>Remove %1 directories from the list?</source>
-      <translation type="unfinished">Remove %1 directories from the list?</translation>
+      <translation>Kaldır %1 Listeden dizinler?</translation>
     </message>
     <message>
       <source>Remove %1 sites from the list?</source>
-      <translation type="unfinished">Remove %1 sites from the list?</translation>
+      <translation>Kaldır %1 Listedeki siteler mi?</translation>
     </message>
     <message>
       <source>Remove %1 servers from the list?</source>
-      <translation type="unfinished">Remove %1 servers from the list?</translation>
+      <translation>Kaldır %1 Listedeki sunucular mı?</translation>
     </message>
     <message>
       <source>Remove %1 programs from the list?</source>
-      <translation type="unfinished">Remove %1 programs from the list?</translation>
+      <translation>Kaldır %1 Listedeki programlar mı?</translation>
     </message>
   </context>
   <context>
@@ -4228,7 +4228,7 @@ Mevcut dillerin tam listesi burada bulunabilir &lt;a href=&quot;https://linguali
     <name>WebSite</name>
     <message>
       <source>This website dictionary is opened in a new tab</source>
-      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
+      <translation>Bu web sitesi sözlüğü yeni bir sekmede açılıyor</translation>
     </message>
   </context>
   <context>
@@ -4251,19 +4251,19 @@ Mevcut dillerin tam listesi burada bulunabilir &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Script</source>
-      <translation type="unfinished">Script</translation>
+      <translation>Senaryo</translation>
     </message>
     <message>
       <source>Icon file name. Relative to the config directory.</source>
-      <translation type="unfinished">Icon file name. Relative to the config directory.</translation>
+      <translation>Simge dosya adı. Yapılandırma dizinine göre.</translation>
     </message>
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
-      <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
+      <translation>Sadece web sitelerini ayrı sekmelerde açıldığında kullanılabilir. Dosya yolu (yapılandırma dizinine veya mutlak olarak göreli) veya doğrudan script içeriği olabilir.</translation>
     </message>
     <message>
       <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
-      <translation type="unfinished">This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</translation>
+      <translation>Bu sütun devre dışı bırakıldı çünkü &quot;Web sitesi sözlüğünü ayrı sekmede aç&quot; seçeneği Tercihler'de etkinleştirilmemiştir.</translation>
     </message>
   </context>
   <context>

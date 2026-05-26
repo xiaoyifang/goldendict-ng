@@ -4,6 +4,7 @@ on:
 
 env:
   outputName: goldendict-ng-vcpkg-export
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   create_new_cache:

@@ -2,6 +2,8 @@ name: Build Check
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 on:
   workflow_dispatch:
   pull_request:
@@ -127,7 +129,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Install Qt
-        uses: jurplel/install-qt-action@v4.2.1
+        uses: jurplel/install-qt-action@v4.3.1
         with:
           version: 6.10.3
           arch: win64_msvc2022_64

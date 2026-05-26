@@ -25,9 +25,12 @@ bool ftsIndexIsOldOrBad( BtreeIndexing::BtreeDictionary * dict )
 {
   try {
     const QByteArray encodedPath = QFile::encodeName( QString::fromStdString( dict->ftsIndexName() ) );
-    const Xapian::WritableDatabase db( encodedPath.toStdString() );
+    const Xapian::Database db( encodedPath.toStdString() );
 
-    auto docid    = db.get_lastdocid();
+    auto docid = db.get_lastdocid();
+    if ( docid == 0 ) {
+      return true; // No documents in database
+    }
     auto document = db.get_document( docid );
 
     const string lastDoc = document.get_data();
@@ -37,7 +40,7 @@ bool ftsIndexIsOldOrBad( BtreeIndexing::BtreeDictionary * dict )
   catch ( Xapian::Error & e ) {
     qWarning() << e.get_description().c_str();
     //the file is corrupted,remove it.
-    QFile::remove( QString::fromStdString( dict->ftsIndexName() ) );
+    Utils::Fs::removeDirectory( dict->ftsIndexName() );
     return true;
   }
   catch ( ... ) {
@@ -51,11 +54,13 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
   //check the index again.
   if ( dict->haveFTSIndex() ) {
+    qDebug() << "fts index already exists";
     return;
   }
 
   try {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+      qDebug() << "user abort the fts index creation";
       throw exUserAbort();
     }
 
@@ -127,8 +132,9 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
       const auto & address = *it;
       indexedDoc++;
 
-      if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
-        return;
+      if ( Utils::AtomicInt::loadAcquire( isCancelled ) || !dict->canFTS() ) {
+        qDebug() << "user abort the fts index creation" << isCancelled << "canFTS:" << dict->canFTS();
+        throw exUserAbort();
       }
 
       QString headword, articleStr;
@@ -167,7 +173,14 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     Utils::Fs::removeDirectory( dict->ftsIndexName() + "_temp" );
   }
   catch ( Xapian::Error & e ) {
-    qWarning() << "create xapian index:" << QString::fromStdString( e.get_description() );
+    qWarning() << "create xapian index failed:" << QString::fromStdString( e.get_description() );
+    Utils::Fs::removeDirectory( dict->ftsIndexName() );
+    Utils::Fs::removeDirectory( dict->ftsIndexName() + "_temp" );
+    throw;
+  }
+  catch ( ... ) {
+    Utils::Fs::removeDirectory( dict->ftsIndexName() + "_temp" );
+    throw;
   }
 }
 

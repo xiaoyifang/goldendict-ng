@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -85,7 +85,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Benvenuti su &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;Per iniziare:&lt;/h4&gt;
+        &lt;h4&gt;Per iniziare&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Vai a &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Modifica&lt;/span&gt;&lt;span&gt;Dizionari&lt;/span&gt;&lt;/span&gt; per aggiungere file dizionario, creare fonti online come Wikipedia e organizzarle in gruppi.&lt;/li&gt;
           &lt;li&gt;Una volta installato, è possibile cercare parole in questa finestra o &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;da altre applicazioni utilizzando il Popup di scansione&lt;/a&gt;.&lt;/li&gt;
@@ -661,6 +661,14 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Ricerca full-text disattivata</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Disabilitare</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Abilitare</translation>
     </message>
   </context>
   <context>
@@ -2758,10 +2766,6 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
       <translation>Descrizione:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>File relativi a questo dizionario:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Modifica l&apos;ordine trascinando col mouse i nomi dei vari dizionari. Sposta quelli non utilizzati nel gruppo dei dizionari inattivi, per bloccarne la consultazione.</translation>
     </message>
@@ -2788,6 +2792,10 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
     <message>
       <source>New display name:</source>
       <translation>Nuovo nome del display:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Componenti del dizionario:</translation>
     </message>
   </context>
   <context>
@@ -2837,10 +2845,6 @@ Spuntando questa casella, le nuove schede vengono aperte senza che si passi ad e
     <message>
       <source>Hide single tab</source>
       <translation>nascondi scheda singola</translation>
-    </message>
-    <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>Ordine MRU: Ordine usato più di recente.</translation>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
@@ -2994,14 +2998,6 @@ ne causerà soltanto l&apos;iconizzazione nella barra di notifica.</translation>
     <message>
       <source>None</source>
       <translation>Nessuno</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Selezionare questa opzione se si don&apos;t vuole vedere la barra delle schede principale quando è aperta solo una singola scheda
-                  .
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3533,6 +3529,10 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Riavvia per applicare la modifica di accesso agli appunti JavaScript.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Nascondi la barra delle schede quando è aperta solo una scheda.</translation>
     </message>
   </context>
   <context>

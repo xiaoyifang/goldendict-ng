@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -85,9 +85,9 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Vítejte v &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;Začínáte:&lt;/h4&gt;
+        &lt;h4&gt;&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Přejděte na &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; a přidejte své slovníkové soubory, vytvořte online zdroje jako Wikipedie a organizujte je do skupin.&lt;/li&gt;
+          &lt;li&gt;Přejít na &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; pro přidání svých slovníkových souborů, vytvořte online zdroje jako Wikipedie a organizujte je do skupin.&lt;/li&gt;
           &lt;li&gt;Jakmile je nastaven, můžete hledat slova v tomto okně nebo &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;z jiných aplikací pomocí Scan Popup&lt;/a&gt;.&lt;/li&gt;
           &lt;li&gt;Pro přizpůsobení programu prozkoumá nastavení v &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Upravit&lt;/span&gt;&lt;span&gt;Nastavení&lt;/span&gt;&lt;/span&gt;. Všechna nastavení mají popisky nástrojů, takže si je nezapomeňte přečíst, pokud je něco nejasné.&lt;/li&gt;
         &lt;/ul&gt;
@@ -661,6 +661,14 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Fulltextové vyhledávání zakázáno</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Zakázat</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Umožnit</translation>
     </message>
   </context>
   <context>
@@ -2757,10 +2765,6 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <translation>Popis:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Soubory obsažené v tomto slovníku:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Upravte pořadí uchopením a přesunutím na požadované místo. Pšesuňte slovníky do neaktivní skupiny pro zakázání jejich použití.</translation>
     </message>
@@ -2787,6 +2791,10 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
     <message>
       <source>New display name:</source>
       <translation>Nové zobrazovací jméno:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Slovníkové komponenty:</translation>
     </message>
   </context>
   <context>
@@ -2836,10 +2844,6 @@ Takto se budou nové karty otevírat bez přepnutí.</translation>
     <message>
       <source>Hide single tab</source>
       <translation>Skrýt jednu kartu</translation>
-    </message>
-    <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU objednávky: Naposledy použité objednávky.</translation>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
@@ -2994,14 +2998,6 @@ ukončení aplikace.</translation>
     <message>
       <source>None</source>
       <translation>Žádná</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3533,6 +3529,10 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation>Restartujte pro aplikaci změny přístupu do schránky JavaScriptu.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Skrýt panel záložek, pokud je otevřena pouze jedna záložka.</translation>
     </message>
   </context>
   <context>

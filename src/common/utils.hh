@@ -236,6 +236,16 @@ inline void addQueryItem( QUrl & url, const QString & key, const QString & value
   url.setQuery( urlQuery );
 }
 
+inline QString getWordFromPathOrHost( const QUrl & url )
+{
+  auto path = url.path();
+  if ( !path.isEmpty() ) {
+    return path.startsWith( "/" ) ? path.mid( 1 ) : path;
+  }
+  auto host = url.host();
+  return host != "localhost" ? host : QString();
+}
+
 inline void removeQueryItem( QUrl & url, const QString & key )
 {
   QUrlQuery urlQuery( url );
@@ -277,62 +287,28 @@ inline std::pair< bool, QString > getQueryWord( const QUrl & url )
       word = queryItemValue( url, "word" );
     }
     else {
-      word = url.path().mid( 1 );
+      word = Url::getWordFromPathOrHost( url );
     }
   }
   if ( url.scheme().compare( "bword" ) == 0 || url.scheme().compare( "entry" ) == 0 ) {
     validScheme = true;
-
-    auto path = url.path();
-    // url like this , bword:word  or bword://localhost/word
-    if ( !path.isEmpty() ) {
-      //url,bword://localhost/word
-      if ( path.startsWith( "/" ) )
-        word = path.mid( 1 );
-      else
-        word = path;
-    }
-    else {
-      // url looks like this, bword://word,or bword://localhost
-      auto host = url.host();
-      if ( host != "localhost" ) {
-        word = host;
-      }
-    }
+    word        = Url::getWordFromPathOrHost( url );
   }
   return std::make_pair( validScheme, word );
 }
 
 inline QString getParams( const QUrl & url, const QString & key )
 {
-  QString word;
   if ( url.scheme().compare( "gdlookup" ) == 0 ) {
     if ( hasQueryItem( url, key ) ) {
-      word = queryItemValue( url, key );
+      return queryItemValue( url, key );
     }
-    else {
-      word = url.path().mid( 1 );
-    }
+    return Url::getWordFromPathOrHost( url );
   }
   if ( url.scheme().compare( "bword" ) == 0 || url.scheme().compare( "entry" ) == 0 ) {
-    auto path = url.path();
-    // url like this , bword:word  or bword://localhost/word
-    if ( !path.isEmpty() ) {
-      //url,bword://localhost/word
-      if ( path.startsWith( "/" ) )
-        word = path.mid( 1 );
-      else
-        word = path;
-    }
-    else {
-      // url looks like this, bword://word,or bword://localhost
-      auto host = url.host();
-      if ( host != "localhost" ) {
-        word = host;
-      }
-    }
+    return Url::getWordFromPathOrHost( url );
   }
-  return word;
+  return QString();
 }
 
 inline bool isAudioUrl( const QUrl & url )

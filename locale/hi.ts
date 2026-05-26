@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation type="unfinished">Anki: post to Anki failed</translation>
+      <translation>अंकी: अंकी को पोस्ट विफल</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation type="unfinished">Anki: post to Anki success</translation>
+      <translation>Anki: Anki की सफलता के लिए पोस्ट</translation>
     </message>
   </context>
   <context>
@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -81,20 +81,20 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation type="unfinished">
+      <translation>
     &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;h3&gt;में आपका स्वागत है &lt;strong&gt;गोल्डनडिक्ट-एनजी&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;शुरू करने के लिए&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
-          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
+          &lt;li&gt;यहाँ जाओ &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;संपादित करें&lt;/span&gt;&lt;span&gt;शब्दकोश&lt;/span&gt;&lt;/span&gt; अपनी शब्दकोश फ़ाइलों को जोड़ने के लिए, विकिपीडिया जैसे ऑनलाइन स्रोत सेट करें, और उन्हें समूहों में व्यवस्थित करें।&lt;/li&gt;
+          &lt;li&gt;एक बार सेट हो जाने के बाद, आप इस विंडो में शब्दों को देख सकते हैं या &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;स्कैन पॉपअप का उपयोग करने वाले अन्य अनुप्रयोगों से&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;प्रोग्राम को अनुकूलित करने के लिए, सेटिंग्स का अन्वेषण करें &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;संपादित करें&lt;/span&gt;&lt;span&gt;प्राथमिकताएं&lt;/span&gt;&lt;/span&gt;. सभी सेटिंग्स में टूलटिप्स हैं, इसलिए यदि कुछ भी अस्पष्ट है तो उन्हें पढ़ना सुनिश्चित करें।&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;
-      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;p&gt;यदि आपको और सहायता की आवश्यकता है, कोई प्रश्न या सुझाव है, तो कार्यक्रम में आपका स्वागत है&apos;दक्षिणी &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;फ़ोरम&lt;/a&gt; तथा &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;वेबसाइट&lt;/a&gt;.&lt;/p&gt;
       &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
+        &lt;small&gt;कॉन्स्टेंटिन इसाकोव (सी) 2008-2013 द्वारा मूल गोल्डनडिक्ट पर आधारित। GoldenDict-NG समुदाय द्वारा बनाए रखा और विकसित। GPLv3 या बाद के संस्करण के तहत लाइसेंस प्राप्त।&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</translation>
     </message>
@@ -286,30 +286,30 @@
     </message>
     <message>
       <source>&amp;Copy sound to clipboard</source>
-      <translation type="unfinished">&amp;Copy sound to clipboard</translation>
+      <translation>&amp;क्लिपबोर्ड पर ध्वनि कॉपी करें</translation>
     </message>
     <message>
       <source>Failed to copy sound</source>
-      <translation type="unfinished">Failed to copy sound</translation>
+      <translation>ध्वनि की प्रतिलिपि बनाने में विफल</translation>
     </message>
     <message>
       <source>Failed to write complete audio data</source>
-      <translation type="unfinished">Failed to write complete audio data</translation>
+      <translation>पूर्ण ऑडियो डेटा लिखने में विफल रहा</translation>
     </message>
     <message>
       <source>Sound copied to clipboard</source>
-      <translation type="unfinished">Sound copied to clipboard</translation>
+      <translation>ध्वनि को क्लिपबोर्ड पर कॉपी किया गया</translation>
     </message>
     <message>
       <source>Failed to download sound</source>
-      <translation type="unfinished">Failed to download sound</translation>
+      <translation>ध्वनि डाउनलोड करने में विफल रहा</translation>
     </message>
   </context>
   <context>
     <name>ArticleWebView</name>
     <message>
       <source>GoldenDict Resource Viewer</source>
-      <translation type="unfinished">GoldenDict Resource Viewer</translation>
+      <translation>गोल्डनडिक्ट रिसोर्स व्यूअर</translation>
     </message>
   </context>
   <context>
@@ -368,15 +368,15 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation type="unfinished">Taiwan variant</translation>
+      <translation>ताइवान संस्करण</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
-      <translation type="unfinished">Hong Kong variant</translation>
+      <translation>हांगकांग संस्करण</translation>
     </message>
     <message>
       <source>Mainland variant</source>
-      <translation type="unfinished">Mainland variant</translation>
+      <translation>मुख्यभूमि संस्करण</translation>
     </message>
   </context>
   <context>
@@ -604,7 +604,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Regular Expression</source>
-      <translation type="unfinished">Regular Expression</translation>
+      <translation>नियमित अभिव्यक्ति</translation>
     </message>
   </context>
   <context>
@@ -660,6 +660,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>पूर्ण-पाठ खोज अक्षम की गई</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>अक्षम करना</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>सक्षम</translation>
     </message>
   </context>
   <context>
@@ -755,31 +763,31 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Restore selection</source>
-      <translation type="unfinished">Restore selection</translation>
+      <translation>चयन पुनर्स्थापित करें</translation>
     </message>
     <message>
       <source>Cancel reindex</source>
-      <translation type="unfinished">Cancel reindex</translation>
+      <translation>पुन: अनुक्रमणिका रद्द करें</translation>
     </message>
     <message>
       <source>Schedule for reindex</source>
-      <translation type="unfinished">Schedule for reindex</translation>
+      <translation>पुन: अनुक्रमणिका के लिए अनुसूची</translation>
     </message>
     <message>
       <source>Cancel schedule reindex</source>
-      <translation type="unfinished">Cancel schedule reindex</translation>
+      <translation>शेड्यूल रीइंडेक्स रद्द करें</translation>
     </message>
     <message>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
-      <translation type="unfinished">The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</translation>
+      <translation>शब्दकोश को पुन: अनुक्रमण के लिए निर्धारित किया गया है। अगले एप्लिकेशन पुनरारंभ होने पर इंडेक्स को फिर से बनाया जाएगा।</translation>
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>प्रदर्शन नाम बदलें</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>नया प्रदर्शन नाम:</translation>
     </message>
   </context>
   <context>
@@ -913,11 +921,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Clear</source>
-      <translation type="unfinished">Clear</translation>
+      <translation>साफ़ करें</translation>
     </message>
     <message>
       <source>Clear Favorites</source>
-      <translation type="unfinished">Clear Favorites</translation>
+      <translation>पसंदीदा साफ़ करें</translation>
     </message>
   </context>
   <context>
@@ -1122,7 +1130,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Add a new dictionary group</source>
-      <translation type="unfinished">Add a new dictionary group</translation>
+      <translation>कोई नया शब्दकोश समूह जोड़ना</translation>
     </message>
     <message>
       <source>&amp;Add group</source>
@@ -1130,11 +1138,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Group already exists</source>
-      <translation type="unfinished">Group already exists</translation>
+      <translation>समूह पहले से मौजूद है</translation>
     </message>
     <message>
       <source>A group with the name &apos;%1&apos; already exists.</source>
-      <translation type="unfinished">A group with the name &apos;%1&apos; already exists.</translation>
+      <translation>नाम वाला समूह &apos;%1&apos; पहले से मौजूद है।</translation>
     </message>
   </context>
   <context>
@@ -2188,7 +2196,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Kabyle</source>
-      <translation type="unfinished">Kabyle</translation>
+      <translation>काबाइल</translation>
     </message>
   </context>
   <context>
@@ -2643,19 +2651,19 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     </message>
     <message>
       <source>Lock Panels</source>
-      <translation type="unfinished">Lock Panels</translation>
+      <translation>लॉक पैनल</translation>
     </message>
     <message>
       <source>Clear History</source>
-      <translation type="unfinished">Clear History</translation>
+      <translation>इतिहास साफ़ करें</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all history items?</source>
-      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
+      <translation>क्या आप वाकई इतिहास के सभी आइटम साफ़ करना चाहते हैं?</translation>
     </message>
     <message>
       <source>Save File</source>
-      <translation type="unfinished">Save File</translation>
+      <translation>फ़ाइल सहेजें</translation>
     </message>
   </context>
   <context>
@@ -2673,14 +2681,14 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
       <source>JSON parse error</source>
-      <translation type="unfinished">JSON parse error</translation>
+      <translation>JSON पार्स त्रुटि</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
       <source>JSON parse error</source>
-      <translation type="unfinished">JSON parse error</translation>
+      <translation>JSON पार्स त्रुटि</translation>
     </message>
   </context>
   <context>
@@ -2756,10 +2764,6 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <translation>विवरण:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>इस शब्दकोश में सम्मिलित फाइलें:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation> इसमें मदों को खींचकर और छोडकर क्रम समायोजित करें।शब्दकोशों के उपयोग को अक्षम करने के लिए उन्हें निष्क्रिय समूह में छोड़ दें।</translation>
     </message>
@@ -2781,11 +2785,15 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>प्रदर्शन नाम बदलें</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>नया प्रदर्शन नाम:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>शब्दकोश घटक:</translation>
     </message>
   </context>
   <context>
@@ -2834,10 +2842,6 @@ switching to them.</source>
     <message>
       <source>Hide single tab</source>
       <translation>एकल टैब छिपाएँ</translation>
-    </message>
-    <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>एमआरयू ऑर्डर: सबसे हाल ही में इस्तेमाल किया गया ऑर्डर।</translation>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
@@ -2991,24 +2995,16 @@ the application.</source>
       <translation>कोई नही</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
-    </message>
-    <message>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise, they are added to
 be the last ones.</source>
-      <translation type="unfinished">With this on, new tabs are opened just after the
-current, active one. Otherwise, they are added to
-be the last ones.</translation>
+      <translation>इसके साथ, नए टैब खुलते हैं
+वर्तमान, सक्रिय। अन्यथा, उन्हें इसमें जोड़ा जाता है
+अंतिम बनो।</translation>
     </message>
     <message>
       <source>&amp;Style</source>
-      <translation type="unfinished">&amp;Style</translation>
+      <translation>&amp;शैली</translation>
     </message>
     <message>
       <source>Appearance</source>
@@ -3016,15 +3012,15 @@ be the last ones.</translation>
     </message>
     <message>
       <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
+      <translation>इंटरफ़ेस फ़ॉन्ट सक्षम करें</translation>
     </message>
     <message>
       <source>Font</source>
-      <translation type="unfinished">Font</translation>
+      <translation>फ़ांट</translation>
     </message>
     <message>
       <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
+      <translation>फ़ॉन्ट आकार</translation>
     </message>
     <message>
       <source>Interface language</source>
@@ -3064,7 +3060,7 @@ be the last ones.</translation>
     </message>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
+      <translation>गोल्डनडिक्ट-एनजी एक शब्दकोश सॉफ्टवेयर है।</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3125,7 +3121,7 @@ in the pressed state when the word selection changes.</source>
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation type="unfinished">Only track selection when all selected keys are kept pressed:</translation>
+      <translation>चयन को केवल तभी ट्रैक करें जब सभी चयनित कुंजियों को दबाया जाता है:</translation>
     </message>
     <message>
       <source>Alt key</source>
@@ -3491,19 +3487,19 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>S&amp;can</source>
-      <translation type="unfinished">S&amp;can</translation>
+      <translation>एस एंड कैन</translation>
     </message>
     <message>
       <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
-      <translation type="unfinished">Suppress JavaScript alerts, confirms, and prompts in the article view.</translation>
+      <translation>लेख दृश्य में JavaScript चेतावनियों, पुष्टि करता है और संकेत देता है, दबाएँ.</translation>
     </message>
     <message>
       <source>Suppress JavaScript dialogs</source>
-      <translation type="unfinished">Suppress JavaScript dialogs</translation>
+      <translation>JavaScript संवादों को दबाना</translation>
     </message>
     <message>
       <source>Open website dictionary in separate tab</source>
-      <translation type="unfinished">Open website dictionary in separate tab</translation>
+      <translation>वेबसाइट शब्दकोश को अलग टैब में खोलें</translation>
     </message>
     <message>
       <source>Anki</source>
@@ -3511,15 +3507,19 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Allow JavaScript to access clipboard in the article view.</source>
-      <translation type="unfinished">Allow JavaScript to access clipboard in the article view.</translation>
+      <translation>जावास्क्रिप्ट को आलेख दृश्य में क्लिपबोर्ड तक पहुंचने की अनुमति दें।</translation>
     </message>
     <message>
       <source>Enable JavaScript clipboard access (need restart)</source>
-      <translation type="unfinished">Enable JavaScript clipboard access (need restart)</translation>
+      <translation>जावास्क्रिप्ट क्लिपबोर्ड एक्सेस सक्षम करें (पुनरारंभ करने की आवश्यकता है)</translation>
     </message>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
-      <translation type="unfinished">Restart to apply the JavaScript clipboard access change.</translation>
+      <translation>JavaScript क्लिपबोर्ड पहुँच परिवर्तन लागू करने के लिए पुनरारंभ करें.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>केवल एक टैब खुला होने पर टैब पट्टी छुपाएँ.</translation>
     </message>
   </context>
   <context>
@@ -3659,19 +3659,19 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Force the word to be translated in Popup.</source>
-      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+      <translation>पॉपअप में अनुवाद किए जाने वाले शब्द को मजबूर करें।</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
-      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
+      <translation>शब्द को mainwindow में अनुवाद करने के लिए बाध्य करें।</translation>
     </message>
     <message>
       <source>Website Url:</source>
-      <translation type="unfinished">Website Url:</translation>
+      <translation>वेबसाइट यूआरएल:</translation>
     </message>
     <message>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
-      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
+      <translation>यूआरएल में, &quot;%GDWORD%&quot; खोजे जा रहे शब्द से बदल दिया जाएगा।</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
@@ -3683,7 +3683,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+      <translation>पीडीएफ दस्तावेज़ (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
@@ -3715,7 +3715,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
-      <translation type="unfinished">Saving article... (%1/%2)</translation>
+      <translation>लेख सहेज रहा है... (%1/%2)</translation>
     </message>
   </context>
   <context>
@@ -3774,7 +3774,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Definition</source>
-      <translation type="unfinished">Definition</translation>
+      <translation>परिभाषा</translation>
     </message>
   </context>
   <context>
@@ -4093,27 +4093,27 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
-      <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
+      <translation>अंग्रेजी स्वर विज्ञान के आधार पर जापानी के प्रतिलेखन की सबसे व्यापक रूप से इस्तेमाल की जाने वाली विधि</translation>
     </message>
     <message>
       <source>Remove selected directories from the list?</source>
-      <translation type="unfinished">Remove selected directories from the list?</translation>
+      <translation>चयनित निर्देशिकाओं को सूची से निकालें?</translation>
     </message>
     <message>
       <source>Remove %1 directories from the list?</source>
-      <translation type="unfinished">Remove %1 directories from the list?</translation>
+      <translation>हटाना %1 निर्देशिकाओं सूची से?</translation>
     </message>
     <message>
       <source>Remove %1 sites from the list?</source>
-      <translation type="unfinished">Remove %1 sites from the list?</translation>
+      <translation>हटाना %1 सूची से साइटें?</translation>
     </message>
     <message>
       <source>Remove %1 servers from the list?</source>
-      <translation type="unfinished">Remove %1 servers from the list?</translation>
+      <translation>हटाना %1 सूची से सर्वर?</translation>
     </message>
     <message>
       <source>Remove %1 programs from the list?</source>
-      <translation type="unfinished">Remove %1 programs from the list?</translation>
+      <translation>हटाना %1 सूची से कार्यक्रम?</translation>
     </message>
   </context>
   <context>
@@ -4213,7 +4213,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <name>WebSite</name>
     <message>
       <source>This website dictionary is opened in a new tab</source>
-      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
+      <translation>यह वेबसाइट शब्दकोश एक नए टैब में खोला गया है</translation>
     </message>
   </context>
   <context>
@@ -4236,19 +4236,19 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Script</source>
-      <translation type="unfinished">Script</translation>
+      <translation>लिपि</translation>
     </message>
     <message>
       <source>Icon file name. Relative to the config directory.</source>
-      <translation type="unfinished">Icon file name. Relative to the config directory.</translation>
+      <translation>आइकन फ़ाइल का नाम। कॉन्फ़िगरेशन निर्देशिका के सापेक्ष।</translation>
     </message>
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
-      <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
+      <translation>केवल अलग-अलग टैब में वेबसाइट खोलते समय उपलब्ध है। एक फ़ाइल पथ (कॉन्फ़िगरेशन निर्देशिका या निरपेक्ष के सापेक्ष) या प्रत्यक्ष स्क्रिप्ट सामग्री हो सकती है।</translation>
     </message>
     <message>
       <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
-      <translation type="unfinished">This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</translation>
+      <translation>यह स्तंभ अक्षम किया गया है क्योंकि &quot;वेबसाइट शब्दकोश को अलग टैब में खोलें&quot; प्राथमिकताएँ में विकल्प सक्षम नहीं है।</translation>
     </message>
   </context>
   <context>

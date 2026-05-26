@@ -135,7 +135,6 @@ private:
   QAction openSearchAction;
   QString pendingWord; // Word that is going to be translated
   WordFinder wordFinder;
-  Config::Events configEvents;
   DictionaryBar dictionaryBar;
   QToolBar * foundBar;
   QActionGroup * actionGroup = nullptr;

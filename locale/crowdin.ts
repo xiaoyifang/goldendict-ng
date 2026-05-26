@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -644,6 +644,14 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <source>Full-text search disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2738,10 +2746,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Files comprising this dictionary:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2767,6 +2771,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
         <source>New display name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dictionary components:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2815,10 +2823,6 @@ switching to them.</source>
     </message>
     <message>
         <source>Hide single tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>MRU order: Most recently used order.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2966,12 +2970,6 @@ the application.</source>
     </message>
     <message>
         <source>None</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3492,6 +3490,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Restart to apply the JavaScript clipboard access change.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hide tab bar when only one tab is open.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

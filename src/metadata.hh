@@ -18,5 +18,6 @@ struct result
 
 [[nodiscard]] std::optional< Metadata::result > load( std::string_view filepath );
 void saveDisplayName( std::string_view filepath, std::string_view name );
+void saveFullIndex( std::string_view filepath, bool enabled );
 
 } // namespace Metadata

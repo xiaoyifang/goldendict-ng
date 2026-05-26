@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -84,7 +84,7 @@
       <translation>&lt;div class=&quot;welcome-container&quot;&gt;
 &lt;h3&gt;GoldenDict-ng에 오신 것을 환영합니다!&lt;/h3&gt;
 &lt;section&gt;
-&lt;h4&gt;시작하기:&lt;/h4&gt;
+&lt;h4&gt;시작하기&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;사전 파일을 추가하고, 위키피디아와 같은 온라인 소스를 설정하고, 그룹으로 정리하려면 &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;사전 편집&lt;/span&gt;&lt;span&gt;사전&lt;/span&gt;&lt;/span&gt;으로 이동하세요.&lt;/li&gt;
 &lt;li&gt;설정이 완료되면 이 창이나 &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;스캔 팝업&lt;/a&gt;을 사용하여 다른 응용 프로그램에서 단어를 검색할 수 있습니다.&lt;/li&gt;
@@ -297,18 +297,18 @@
     </message>
     <message>
       <source>Sound copied to clipboard</source>
-      <translation type="unfinished">Sound copied to clipboard</translation>
+      <translation>사운드는 클립보드에 복사됨</translation>
     </message>
     <message>
       <source>Failed to download sound</source>
-      <translation type="unfinished">Failed to download sound</translation>
+      <translation>사운드 다운로드 실패</translation>
     </message>
   </context>
   <context>
     <name>ArticleWebView</name>
     <message>
       <source>GoldenDict Resource Viewer</source>
-      <translation type="unfinished">GoldenDict Resource Viewer</translation>
+      <translation>골든딕트 리소스 뷰어</translation>
     </message>
   </context>
   <context>
@@ -661,6 +661,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Full-text search disabled</source>
       <translation>전체 텍스트 검색이 비활성화됨</translation>
     </message>
+    <message>
+      <source>Disable</source>
+      <translation>장애를 입히다</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>할 수 있게 하다</translation>
+    </message>
   </context>
   <context>
     <name>DictListModel</name>
@@ -759,7 +767,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Cancel reindex</source>
-      <translation type="unfinished">Cancel reindex</translation>
+      <translation>취소 리인덱스</translation>
     </message>
     <message>
       <source>Schedule for reindex</source>
@@ -767,7 +775,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Cancel schedule reindex</source>
-      <translation type="unfinished">Cancel schedule reindex</translation>
+      <translation>일정 재인수 취소</translation>
     </message>
     <message>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
@@ -913,11 +921,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Clear</source>
-      <translation type="unfinished">Clear</translation>
+      <translation>비켜</translation>
     </message>
     <message>
       <source>Clear Favorites</source>
-      <translation type="unfinished">Clear Favorites</translation>
+      <translation>명백한 페이버릿</translation>
     </message>
   </context>
   <context>
@@ -1122,7 +1130,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Add a new dictionary group</source>
-      <translation type="unfinished">Add a new dictionary group</translation>
+      <translation>새로운 사전 그룹 추가</translation>
     </message>
     <message>
       <source>&amp;Add group</source>
@@ -1130,11 +1138,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Group already exists</source>
-      <translation type="unfinished">Group already exists</translation>
+      <translation>이미 존재하는 군</translation>
     </message>
     <message>
       <source>A group with the name &apos;%1&apos; already exists.</source>
-      <translation type="unfinished">A group with the name &apos;%1&apos; already exists.</translation>
+      <translation>이름을 가진 그룹 &apos;%1&apos; 이미 존재한다.</translation>
     </message>
   </context>
   <context>
@@ -2188,7 +2196,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Kabyle</source>
-      <translation type="unfinished">Kabyle</translation>
+      <translation>카빌레</translation>
     </message>
   </context>
   <context>
@@ -2643,19 +2651,19 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Lock Panels</source>
-      <translation type="unfinished">Lock Panels</translation>
+      <translation>잠금 패널</translation>
     </message>
     <message>
       <source>Clear History</source>
-      <translation type="unfinished">Clear History</translation>
+      <translation>명확한 역사</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all history items?</source>
-      <translation type="unfinished">Are you sure you want to clear all history items?</translation>
+      <translation>모든 역사 아이템을 모두 클리어할 게 확실한가요?</translation>
     </message>
     <message>
       <source>Save File</source>
-      <translation type="unfinished">Save File</translation>
+      <translation>저장 파일</translation>
     </message>
   </context>
   <context>
@@ -2673,14 +2681,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
       <source>JSON parse error</source>
-      <translation type="unfinished">JSON parse error</translation>
+      <translation>JSON 파르se 오류</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
       <source>JSON parse error</source>
-      <translation type="unfinished">JSON parse error</translation>
+      <translation>JSON 파르se 오류</translation>
     </message>
   </context>
   <context>
@@ -2756,10 +2764,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>설명:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>사전의 구성파일:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>마우스끌기로 순서를 조정하십시오. 사전을 사용하지 않으려면 비활성 그룹으로 옮기십시오.</translation>
     </message>
@@ -2786,6 +2790,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>New display name:</source>
       <translation>새로운 표시 이름:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>사전 구성 요소:</translation>
     </message>
   </context>
   <context>
@@ -2836,10 +2844,6 @@ switching to them.</source>
     <message>
       <source>Hide single tab</source>
       <translation>탭이 하나뿐이면 숨김</translation>
-    </message>
-    <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU 순서: 가장 최근에 사용한 순서입니다.</translation>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
@@ -2995,24 +2999,16 @@ the application.</source>
       <translation>없음</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
-    </message>
-    <message>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise, they are added to
 be the last ones.</source>
-      <translation type="unfinished">With this on, new tabs are opened just after the
-current, active one. Otherwise, they are added to
-be the last ones.</translation>
+      <translation>이 기능을 사용하면 새 탭이 열리면서
+현재 활성 상태입니다. 그렇지 않으면 더해집니다.
+마지막이 되어.</translation>
     </message>
     <message>
       <source>&amp;Style</source>
-      <translation type="unfinished">&amp;Style</translation>
+      <translation>&amp; 스타일</translation>
     </message>
     <message>
       <source>Appearance</source>
@@ -3020,15 +3016,15 @@ be the last ones.</translation>
     </message>
     <message>
       <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
+      <translation>인터페이스 폰트 활성화</translation>
     </message>
     <message>
       <source>Font</source>
-      <translation type="unfinished">Font</translation>
+      <translation>세례대</translation>
     </message>
     <message>
       <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
+      <translation>글꼴 크기</translation>
     </message>
     <message>
       <source>Interface language</source>
@@ -3130,7 +3126,7 @@ in the pressed state when the word selection changes.</source>
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation type="unfinished">Only track selection when all selected keys are kept pressed:</translation>
+      <translation>선택된 모든 키를 계속 눌렀을 때만 선택을 트랙할 수 있습니다:</translation>
     </message>
     <message>
       <source>Alt key</source>
@@ -3502,19 +3498,19 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>S&amp;can</source>
-      <translation type="unfinished">S&amp;can</translation>
+      <translation>S&amp;can</translation>
     </message>
     <message>
       <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
-      <translation type="unfinished">Suppress JavaScript alerts, confirms, and prompts in the article view.</translation>
+      <translation>기사 보기에서 자바스크립트 알림, 확인, 프롬프트를 억제하세요.</translation>
     </message>
     <message>
       <source>Suppress JavaScript dialogs</source>
-      <translation type="unfinished">Suppress JavaScript dialogs</translation>
+      <translation>자바스크립트 대화 메시지 억제</translation>
     </message>
     <message>
       <source>Open website dictionary in separate tab</source>
-      <translation type="unfinished">Open website dictionary in separate tab</translation>
+      <translation>별도의 탭에서 웹사이트 사전을 엽니다</translation>
     </message>
     <message>
       <source>Anki</source>
@@ -3522,15 +3518,19 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Allow JavaScript to access clipboard in the article view.</source>
-      <translation type="unfinished">Allow JavaScript to access clipboard in the article view.</translation>
+      <translation>자바스크립트가 기사 뷰에서 클립보드에 접근할 수 있도록 허용하세요.</translation>
     </message>
     <message>
       <source>Enable JavaScript clipboard access (need restart)</source>
-      <translation type="unfinished">Enable JavaScript clipboard access (need restart)</translation>
+      <translation>JavaScript 클립보드 접근 활성화 (재시작 필요)</translation>
     </message>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
-      <translation type="unfinished">Restart to apply the JavaScript clipboard access change.</translation>
+      <translation>JavaScript 클립보드 접근 변경 사항을 적용하려면 재시작하세요.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>탭이 하나만 열려 있을 때는 탭 바를 숨기세요.</translation>
     </message>
   </context>
   <context>
@@ -3678,7 +3678,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Website Url:</source>
-      <translation type="unfinished">Website Url:</translation>
+      <translation>웹사이트 URL:</translation>
     </message>
     <message>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
@@ -3694,7 +3694,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+      <translation>PDF 문서 (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
@@ -3726,7 +3726,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
-      <translation type="unfinished">Saving article... (%1/%2)</translation>
+      <translation>구원할 만한 기사... (%1/%2)</translation>
     </message>
   </context>
   <context>
@@ -3785,7 +3785,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Definition</source>
-      <translation type="unfinished">Definition</translation>
+      <translation>정의</translation>
     </message>
   </context>
   <context>
@@ -4117,23 +4117,23 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Remove selected directories from the list?</source>
-      <translation type="unfinished">Remove selected directories from the list?</translation>
+      <translation>목록에서 선택한 디렉터리를 제거하나요?</translation>
     </message>
     <message>
       <source>Remove %1 directories from the list?</source>
-      <translation type="unfinished">Remove %1 directories from the list?</translation>
+      <translation>제거 %1 목록에 있는 디렉터리들?</translation>
     </message>
     <message>
       <source>Remove %1 sites from the list?</source>
-      <translation type="unfinished">Remove %1 sites from the list?</translation>
+      <translation>제거 %1 목록에 있는 장소들인가요?</translation>
     </message>
     <message>
       <source>Remove %1 servers from the list?</source>
-      <translation type="unfinished">Remove %1 servers from the list?</translation>
+      <translation>제거 %1 목록에 있는 서버들?</translation>
     </message>
     <message>
       <source>Remove %1 programs from the list?</source>
-      <translation type="unfinished">Remove %1 programs from the list?</translation>
+      <translation>제거 %1 목록에 있는 프로그램인가요?</translation>
     </message>
   </context>
   <context>
@@ -4233,7 +4233,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <name>WebSite</name>
     <message>
       <source>This website dictionary is opened in a new tab</source>
-      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
+      <translation>이 웹사이트 사전은 새 탭에서 열립니다</translation>
     </message>
   </context>
   <context>
@@ -4256,11 +4256,11 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Script</source>
-      <translation type="unfinished">Script</translation>
+      <translation>스크립트</translation>
     </message>
     <message>
       <source>Icon file name. Relative to the config directory.</source>
-      <translation type="unfinished">Icon file name. Relative to the config directory.</translation>
+      <translation>아이콘 파일 이름. 설정 디렉터리에 대해 비교해서요.</translation>
     </message>
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
@@ -4268,7 +4268,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
-      <translation type="unfinished">This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</translation>
+      <translation>이 열은 비활성화된 이유는 &quot;별도의 탭에서 웹사이트 사전을 엽니다&quot; 환경설정에서 옵션이 활성화되어 있지 않습니다.</translation>
     </message>
   </context>
   <context>

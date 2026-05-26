@@ -69,7 +69,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -85,7 +85,7 @@
     &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
           &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
@@ -661,6 +661,14 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Plenteksta serĉo malŝaltita</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Malebligu</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Ebligu</translation>
     </message>
   </context>
   <context>
@@ -2757,10 +2765,6 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
       <translation>Priskribo:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Dosieroj kun ĉi tiu vortaro:</translation>
-    </message>
-    <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
       <translation>Alĝustigu la ordon trenante kaj faligante erojn en ĝi. Faligi vortarojn al la neaktiva grupo por malebligi ilian uzon.</translation>
     </message>
@@ -2787,6 +2791,10 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
     <message>
       <source>New display name:</source>
       <translation type="unfinished">New display name:</translation>
+    </message>
+    <message>
+      <source>Dictionary components:</source>
+      <translation>Komponantoj de vortaro:</translation>
     </message>
   </context>
   <context>
@@ -2837,10 +2845,6 @@ Kun ĉi tio ŝaltita tamen, novaj langetoj estos malfermitaj sen
     <message>
       <source>Hide single tab</source>
       <translation>Kaŝi ununuran langeton</translation>
-    </message>
-    <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU-ordo: Plej lastatempe uzata mendo.</translation>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
@@ -2995,14 +2999,6 @@ la aplikaĵon.</translation>
     <message>
       <source>None</source>
       <translation>Nenio</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -3535,6 +3531,10 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
       <translation type="unfinished">Restart to apply the JavaScript clipboard access change.</translation>
+    </message>
+    <message>
+      <source>Hide tab bar when only one tab is open.</source>
+      <translation>Kaŝi langetan stangon kiam nur unu langeto estas malfermita.</translation>
     </message>
   </context>
   <context>
