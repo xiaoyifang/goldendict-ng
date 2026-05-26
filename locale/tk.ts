@@ -3210,20 +3210,8 @@ basylan ýagdaýynda görkeziler.</translation>
       <translation>Içindäki ses goldawy arkaly ses faýllaryny oýnaň</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Içerki pleýeri ulanyň:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Sesiň arka tarapyny saýlaň</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Audio faýllary oýnatmak üçin islendik özge programmany ulan</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Daşky programmany ulan:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3534,6 +3522,26 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Diňe bir täb açyk bolanda täb baryny gizle.</translation>
+    </message>
+    <message>
+      <source>Internal Player:</source>
+      <translation>Içki oýunçy:</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Audio faýllary oýnamak üçin islendik daşky audio pleyeri ulanyň</translation>
+    </message>
+    <message>
+      <source>External Player:</source>
+      <translation>Daşky oýunçy:</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Konfigurasiýa görkezmesini görüň</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Ses ýoly daşky pleýere buýruk satırynyň argumenti hökmünde geçiriler. </translation>
     </message>
   </context>
   <context>
