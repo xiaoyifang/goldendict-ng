@@ -3522,16 +3522,8 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <translation>Masquer la barre d'onglets quand un seul onglet est ouvert.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Lecteur Interne :</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Utiliser n'importe quel lecteur audio externe pour lire des fichiers audio</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>Lecteur externe:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3540,6 +3532,14 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>Le chemin audio sera passé comme argument en ligne de commande au lecteur externe. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Lecteur audio interne :</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Lecteur audio externe :</translation>
     </message>
   </context>
   <context>
