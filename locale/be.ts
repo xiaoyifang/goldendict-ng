@@ -3188,20 +3188,8 @@ in the pressed state when the word selection changes.</source>
       <translation>Прайграваць аўдыяфайлы з дапамогай убудаваных сродкаў</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Выкарыстоўваць унутраны прайгравальнік:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Абраць гукавы рухавіх</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Выкарыстоўваць вонкавую праграму для прайгравання аўдыяфайлаў</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Прайграваць у вонкавай праграме:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3509,6 +3497,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Схаваць панэль укладак, калі адкрыта толькі адна ўкладка.</translation>
+    </message>
+    <message>
+      <source>Internal Player:</source>
+      <translation type="unfinished">Internal Player:</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation type="unfinished">Use any external audio player to play audio files</translation>
+    </message>
+    <message>
+      <source>External Player:</source>
+      <translation type="unfinished">External Player:</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation type="unfinished">View detailed configuration guide</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation type="unfinished">The audio path will be passed as a command-line argument to the external player. </translation>
     </message>
   </context>
   <context>
