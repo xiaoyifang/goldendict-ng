@@ -3523,16 +3523,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>タブが開いているときはタブバーを非表示にします。</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>内部プレイヤー:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>外部オーディオプレーヤーを使用してオーディオファイルを再生する</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>外部プレイヤー:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3541,6 +3533,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>オーディオパスはコマンドライン引数として外部プレーヤーに渡されます。 </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>内蔵オーディオプレーヤー:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>外部オーディオプレーヤー:</translation>
     </message>
   </context>
   <context>
