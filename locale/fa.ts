@@ -3521,16 +3521,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>وقتی فقط یک تب باز است، نوار تب را مخفی کنید.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>بازیکن داخلی:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>از هر پخش کننده صدای خارجی برای پخش فایل های صوتی استفاده کنید</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>بازیکن خارجی:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3539,6 +3531,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>مسیر صوتی به صورت آرگومان خط فرمان به پخش کننده خارجی منتقل می شود. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>پخش کننده صدای داخلی:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>پخش کننده صوتی خارجی:</translation>
     </message>
   </context>
   <context>
