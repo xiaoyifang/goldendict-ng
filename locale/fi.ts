@@ -3525,16 +3525,8 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Piilota välilehti kun vain yksi välilehti on auki.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Sisäinen Pelaaja:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Käytä mitä tahansa ulkoista äänisaajaa toistaaksesi äänitiedostoja</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>Ulkoinen Pelaaja:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3543,6 +3535,14 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>Äänipolku siirtyy ulkoiselle pelaajalle komentorivin argumentina. Tämä on komentorivinen parametri. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Sisäinen äänisoitin:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Ulkoinen äänisoitin:</translation>
     </message>
   </context>
   <context>
