@@ -3525,16 +3525,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Сакриј траку са језичцима када је отворена само једна картица.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Интерни играч:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Користите било који екстерни аудио плејер за репродукцију аудио фајлова</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>Спољни играч:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3543,6 +3535,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>Аудио путања ће бити прослеђена као аргумент командне линије спољном плејеру. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Интерни аудио плејер:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Екстерни аудио плејер:</translation>
     </message>
   </context>
   <context>
