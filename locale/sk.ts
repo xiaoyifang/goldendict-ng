@@ -3516,16 +3516,8 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
       <translation>Skryj panel záložiek, keď je otvorená len jedna záložka.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Interný hráč:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Použite akýkoľvek externý prehrávač zvuku na prehrávanie audio súborov</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>Externý hráč:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3534,6 +3526,14 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>Zvuková cesta bude odovzdaná ako argument príkazového riadku externému prehrávaču. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Interný prehrávač zvuku:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Externý prehrávač zvuku:</translation>
     </message>
   </context>
   <context>
