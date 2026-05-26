@@ -3211,20 +3211,8 @@ toetsen zijn ingedrukt wanneer de woordselectie verandert.</translation>
       <translation>Audiobestanden afspelen via ingebouwde audioondersteuning</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Gebruik interne speler:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Kies audio terug einde</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Een extern programma gebruiken voor het afspelen van geluidsbestanden</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Extern programma gebruiken:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3532,6 +3520,26 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Tabbladbalk verbergen als slechts één tabblad is geopend.</translation>
+    </message>
+    <message>
+      <source>Internal Player:</source>
+      <translation>Interne Speler:</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Gebruik een externe audiospeler om audiobestanden af te spelen</translation>
+    </message>
+    <message>
+      <source>External Player:</source>
+      <translation>Externe Speler:</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Bekijk gedetailleerde configuratiehandleiding</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Het audiopad wordt doorgegeven als opdrachtregel argument naar de externe speler. </translation>
     </message>
   </context>
   <context>
