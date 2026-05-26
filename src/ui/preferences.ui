@@ -1002,7 +1002,7 @@ in the pressed state when the word selection changes.</string>
              <string>Play audio files via built-in audio support</string>
             </property>
             <property name="text">
-             <string>Use internal player:</string>
+             <string>Internal Player:</string>
             </property>
            </widget>
           </item>
@@ -1016,10 +1016,10 @@ in the pressed state when the word selection changes.</string>
           <item row="1" column="0">
            <widget class="QRadioButton" name="useExternalPlayer">
             <property name="toolTip">
-             <string>Use any external program to play audio files</string>
+             <string>Use any external audio player to play audio files</string>
             </property>
             <property name="text">
-             <string>Use external program:</string>
+             <string>External Player:</string>
             </property>
            </widget>
           </item>
@@ -1030,6 +1030,19 @@ in the pressed state when the word selection changes.</string>
             </property>
             <property name="toolTip">
              <string>Enter audio player command line</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" colspan="2">
+           <widget class="QLabel" name="externalPlayerHint">
+            <property name="text">
+             <string>The audio path will be passed as a command-line argument to the external player. <a href="https://xiaoyifang.github.io/goldendict-ng/ui_audioengine/">View detailed configuration guide</a></string>
+            </property>
+            <property name="textFormat">
+             <enum>Qt::RichText</enum>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>

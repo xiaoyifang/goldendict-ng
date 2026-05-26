@@ -319,6 +319,13 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   ui.audioPlaybackProgram->setText( p.audioPlaybackProgram );
 
+  ui.externalPlayerHint->setOpenExternalLinks( true );
+  QFont hintFont = ui.externalPlayerHint->font();
+  hintFont.setPointSize( hintFont.pointSize() - 1 );
+  ui.externalPlayerHint->setFont( hintFont );
+  QColor hintColor = palette().color( QPalette::Disabled, QPalette::Text );
+  ui.externalPlayerHint->setStyleSheet( QString( "color: %1;" ).arg( hintColor.name() ) );
+
   // Proxy server
 
   ui.useProxyServer->setChecked( p.proxyServer.enabled );
