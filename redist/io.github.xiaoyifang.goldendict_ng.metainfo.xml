@@ -43,23 +43,31 @@
     <id>org.goldendict_ng.desktop</id>
   </provides>
   <releases>
-    <release version="26.5.5" date="2026-5-15">
+    <release version="26.5.6" date="2026-5-26">
       <description>
         <ul>
-          <li>[Install instructions for Windows, macOS and Linux](https://xiaoyifang.github.io/goldendict-ng/install/).</li>
-          <li>Filename pattern: GoldenDict-ng-[version]-[Qt version]-[system name]...</li>
-          <li>For Linux, the released version is on Flathub → [io.github.xiaoyifang.goldendict_ng](https://flathub.org/apps/io.github.xiaoyifang.goldendict_ng).</li>
-          <li>Only search for _chaos tags and simplify artifact names (#2865) - ([deb113b](https://github.com/xiaoyifang/goldendict-ng/commit/deb113b3537e40d9d0ad9065ffed45fc306d265f))</li>
+          <li>Update metainfo.xml after skip first 3 lines in changelog (#2897) - ([6cfb52f](https://github.com/xiaoyifang/goldendict-ng/commit/6cfb52fcf114f82f56e6c6aad32fa0af200fc0e3))</li>
+          <li>Improve tooltip phrasing (#2887) - ([a8b0344](https://github.com/xiaoyifang/goldendict-ng/commit/a8b0344b21355cd0a8c54992b97ffe7495d11b00))</li>
+          <li>Use mainwindow as goldendict:// translation place (#2893) - ([1c6f00a](https://github.com/xiaoyifang/goldendict-ng/commit/1c6f00a83eb3e8e87cd7024d9983c7fa5aa3107d))</li>
+          <li>(ui)* Improve UI controls visibility and naming (#2892) - ([2c150b3](https://github.com/xiaoyifang/goldendict-ng/commit/2c150b3956a5e88cc288cc52c2cf4df124518cb6))</li>
+          <li>(utils)* Support gdlookup://word format (#2885) - ([a995891](https://github.com/xiaoyifang/goldendict-ng/commit/a9958911fc8db62abbe542909b557fc94c8ffd60))</li>
+          <li>(dictinfo)* Add button to toggle full-text search index (#2860) - ([c3e6e23](https://github.com/xiaoyifang/goldendict-ng/commit/c3e6e23b199ff50b42223732078d0f5f3731e1c9))</li>
+          <li>Change translate source (#2882) - ([2cb86e1](https://github.com/xiaoyifang/goldendict-ng/commit/2cb86e133df4dce9cd8493ed6f87a8fbe27e52fd))</li>
+          <li>Integrate Config::Events into GlobalBroadcaster (#2883) - ([8066a8c](https://github.com/xiaoyifang/goldendict-ng/commit/8066a8c0e6aa3335ed0d28025fe835f6d2fa4940))</li>
+          <li>Update crowdin.ts (#2877) - ([596873b](https://github.com/xiaoyifang/goldendict-ng/commit/596873b374d3cf3d0d1616347da06d41410fe2fb))</li>
+          <li>Refactor .gddictname in st-lingoes theme to use flex layout (#2875) - ([0497159](https://github.com/xiaoyifang/goldendict-ng/commit/0497159a4957a7a510ef5c3540da7651caa7c35f))</li>
+          <li>Resolve Node.js 20 deprecation warnings and upgrade actions to Node.js 24 (#2874) - ([e33c22e](https://github.com/xiaoyifang/goldendict-ng/commit/e33c22ed81eaf29b5e50e59fa17f77308dc09efb))</li>
+          <li>Prevent dictionary file locking when modifying settings or reloading dictionaries (#2871) - ([f7664b2](https://github.com/xiaoyifang/goldendict-ng/commit/f7664b2927d3bfa85742ba797d82bd2ffbbdddb0))</li>
+          <li>Update welcome tag format in translation files (#2872) - ([aa17ee0](https://github.com/xiaoyifang/goldendict-ng/commit/aa17ee001f6abe0a7e1d3af151928d1e493ded9a))</li>
+          <li>(workflows)* Exclude chaos version tags in release (#2867) - ([1df4d78](https://github.com/xiaoyifang/goldendict-ng/commit/1df4d789e078b06aab8211be7355e6f2bd9279a0))</li>
         </ul>
       </description>
     </release>
+    <release version="26.5.5" date="2026-5-15">
+      </release>
     <release version="26.5.4" date="2026-5-11">
-      <description>
-        <p>Stable release 26.5.4</p>
-      </description>
-    </release>
+      </release>
     <release version="26.5.3" date="2026-5-8" />
     <release version="26.5.2" date="2026-4-23" />
-    <release version="26.5.1" date="2026-4-20" />
   </releases>
 </component>
