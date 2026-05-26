@@ -3514,16 +3514,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>當只開啟一個分頁時隱藏分頁列。</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>內部玩家：</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>使用任何外接音訊播放器來播放音訊檔案</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>外部球員：</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3532,6 +3524,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>音訊路徑會以命令列參數的形式傳遞給外部播放器。 </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>內建音訊播放器：</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>外接音訊播放器：</translation>
     </message>
   </context>
   <context>
