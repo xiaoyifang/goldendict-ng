@@ -3501,16 +3501,8 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <translation>Ẩn thanh tab khi chỉ mở một tab.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Trình phát nội bộ:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Sử dụng bất kỳ trình phát âm thanh bên ngoài nào để phát các tệp âm thanh</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>Trình phát bên ngoài:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3519,6 +3511,14 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>Đường dẫn âm thanh sẽ được chuyển dưới dạng đối số dòng lệnh đến trình phát bên ngoài. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Trình phát âm thanh bên trong:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Trình phát âm thanh bên ngoài:</translation>
     </message>
   </context>
   <context>
