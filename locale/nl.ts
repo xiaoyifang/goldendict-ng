@@ -3522,16 +3522,8 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Tabbladbalk verbergen als slechts één tabblad is geopend.</translation>
     </message>
     <message>
-      <source>Internal Player:</source>
-      <translation>Interne Speler:</translation>
-    </message>
-    <message>
       <source>Use any external audio player to play audio files</source>
       <translation>Gebruik een externe audiospeler om audiobestanden af te spelen</translation>
-    </message>
-    <message>
-      <source>External Player:</source>
-      <translation>Externe Speler:</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3540,6 +3532,14 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
       <translation>Het audiopad wordt doorgegeven als opdrachtregel argument naar de externe speler. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Interne audiospeler:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Externe audioplayer:</translation>
     </message>
   </context>
   <context>
