@@ -3532,6 +3532,10 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
       <source>External Audio Player:</source>
       <translation type="unfinished">External Audio Player:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>Dem System-Dunkelmodus folgen</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
