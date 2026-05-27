@@ -3545,6 +3545,10 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <source>External Audio Player:</source>
       <translation>Extern ljudspelare:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>Följ systemets mörka läge.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
