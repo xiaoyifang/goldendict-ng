@@ -3543,6 +3543,10 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
       <source>External Audio Player:</source>
       <translation>Daşky audio pleyer:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>Sistemanyň garaňky mod sazlamasyna eýeriň.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
