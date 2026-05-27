@@ -807,7 +807,7 @@ QVariant WebSitesModel::getScriptColumnBackground() const
 {
   // Check if dark mode is enabled using GlobalBroadcaster configuration
   // This ensures compatibility across all platforms and Qt versions
-  bool isDarkMode = GlobalBroadcaster::instance()->isDarkModeEnabled();
+  bool isDarkMode = GlobalBroadcaster::instance()->isDarkReaderModeEnabled();
 
   // Return appropriate background color based on dark mode
   if ( isDarkMode ) {

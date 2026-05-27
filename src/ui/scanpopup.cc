@@ -432,6 +432,15 @@ void ScanPopup::updateFoundInDictsList()
   foundBar->setUpdatesEnabled( true );
 }
 
+void ScanPopup::reloadAllTabs()
+{
+  for ( int i = 0; i < tabWidget->count(); ++i ) {
+    if ( auto view = qobject_cast< ArticleView * >( tabWidget->widget( i ) ) ) {
+      view->reload();
+    }
+  }
+}
+
 void ScanPopup::refresh()
 {
   // currentIndexChanged() signal is very trigger-happy. To avoid triggering

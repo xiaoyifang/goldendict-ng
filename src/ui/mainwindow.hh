@@ -185,13 +185,17 @@ private:
 
   BaseClipboardListener * clipboardListener;
 
-#if !defined( Q_OS_WIN )
   // On Linux, this will be the style before getting overriden by custom styles
   // On macOS, this will be just Fusion.
+  // On Windows, this will be the original style (e.g., "WindowsVista") saved at startup
   QString defaultInterfaceStyle;
-#endif
   /// Ensures the scan popup is created and connected
   void ensureScanPopup();
+
+#if defined( Q_OS_WIN )
+  /// Sets window title bar to dark/light mode (Windows only)
+  void setWindowTitleBarDark( bool dark );
+#endif
 
   /// Applies Qt stylesheets, use Windows dark palette etc....
   void updateAppearances( const QString & addonStyle,
@@ -226,6 +230,11 @@ private:
   void applyMutedDictionariesState();
 
   virtual bool eventFilter( QObject *, QEvent * );
+
+#if defined( Q_OS_WIN )
+  /// Handle theme change events as fallback when colorSchemeChanged signal is not available
+  bool event( QEvent * event ) override;
+#endif
 
   /// Returns the reference to dictionaries stored in the currently active
   /// group, or to all dictionaries if there are no groups.

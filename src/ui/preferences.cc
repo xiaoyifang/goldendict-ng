@@ -188,6 +188,8 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.autoScrollToTargetArticle->setChecked( p.autoScrollToTargetArticle );
   ui.escKeyHidesMainWindow->setChecked( p.escKeyHidesMainWindow );
 
+  ui.darkMode->addItem( tr( "Automatic" ), QVariant::fromValue( Config::Dark::Auto ) );
+  ui.darkMode->setItemData( 0, tr( "Follow system dark mode setting." ), Qt::ToolTipRole );
   ui.darkMode->addItem( tr( "Enable" ), QVariant::fromValue( Config::Dark::On ) );
   ui.darkMode->addItem( tr( "Disable" ), QVariant::fromValue( Config::Dark::Off ) );
 
@@ -264,7 +266,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   // Different platforms have different keys available
 
-#ifdef Q_OS_WIN32
+#if defined( Q_OS_WIN )
   ui.winKey->hide();
 #else
   #ifdef Q_OS_MAC
