@@ -3529,6 +3529,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>External Audio Player:</source>
       <translation>Надворешен аудио плеер:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>Следете го системскиот темен режим.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
