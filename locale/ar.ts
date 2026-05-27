@@ -3542,6 +3542,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>External Audio Player:</source>
       <translation>مشغل صوت خارجي:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>اتبع إعداد وضع الظلام للنظام.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
