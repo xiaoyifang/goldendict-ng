@@ -3529,6 +3529,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>External Audio Player:</source>
       <translation>बाहरी ऑडियो प्लेयर:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>सिस्टम डार्क मोड सेटिंग का पालन करें।</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
