@@ -3518,6 +3518,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>External Audio Player:</source>
       <translation type="unfinished">External Audio Player:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>Прытрымлівацца налад сістэмнага цёмнага рэжыму.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
