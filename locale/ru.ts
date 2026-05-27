@@ -3550,6 +3550,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>External Audio Player:</source>
       <translation>Внешний аудиоплеер:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>Следуйте настройкам тёмного режима системы.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
