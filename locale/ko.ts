@@ -3540,6 +3540,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>External Audio Player:</source>
       <translation>외부 오디오 플레이어:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>시스템 다크 모드 설정을 따르세요.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
