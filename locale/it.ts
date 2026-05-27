@@ -3542,6 +3542,10 @@ dai dizionari di Stardict, Babylon e GLS</translation>
       <source>External Audio Player:</source>
       <translation>Lettore audio esterno:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>Segui l'impostazione della modalità scura del sistema.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
