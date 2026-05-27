@@ -3541,6 +3541,10 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <source>External Audio Player:</source>
       <translation>Externe audioplayer:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>Volg de donkere modus van het systeem.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
