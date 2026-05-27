@@ -3543,6 +3543,10 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <source>External Audio Player:</source>
       <translation>Külső hanglejátszó:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>Kövesd a rendszer sötét mód beállítását.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
