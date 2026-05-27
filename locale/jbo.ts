@@ -3542,6 +3542,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <source>External Audio Player:</source>
       <translation type="unfinished">External Audio Player:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>tupni le galtu xekri moda seltu'i</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
