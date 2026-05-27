@@ -3532,6 +3532,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>External Audio Player:</source>
       <translation>外接音频播放器：</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>按照系统暗模式设置操作。</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
