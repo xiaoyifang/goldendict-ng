@@ -3504,6 +3504,10 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>External Audio Player:</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Follow system dark mode setting.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProgramTypeEditor</name>
