@@ -59,11 +59,16 @@
   #include "macos/macmouseover.hh"
 #endif
 
-#ifdef Q_OS_WIN32
+#if defined( Q_OS_WIN )
   #include <windows.h>
+  #include <dwmapi.h>
+  #ifndef DWMWA_USE_IMMERSIVE_DARK_MODE
+    #define DWMWA_USE_IMMERSIVE_DARK_MODE 20
+  #endif
 #endif
 
 #include <QGuiApplication>
+#include <QWindow>
 #include <QWebEngineSettings>
 #include <QProxyStyle>
 
@@ -638,7 +643,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   ui.tabWidget->setMovable( true );
 
-#ifndef Q_OS_WIN32
+#if !defined( Q_OS_WIN )
   ui.tabWidget->setDocumentMode( true );
 #endif
 
@@ -778,11 +783,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // Create tab list menu
   createTabList();
 
-
-#if defined( Q_OS_LINUX )
-  defaultInterfaceStyle = QApplication::style()->name();
-#elif defined( Q_OS_MAC )
+#if defined( Q_OS_MAC )
   defaultInterfaceStyle = "Fusion";
+#else
+  defaultInterfaceStyle = QApplication::style()->name();
 #endif
 
   updateAppearances( cfg.preferences.addonStyle,
@@ -931,8 +935,13 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 
 #if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
+  // Always connect for Auto mode with UniqueConnection to avoid duplicates
   if ( cfg.preferences.darkMode == Config::Dark::Auto ) {
-    connect( QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, &MainWindow::refreshAppearances );
+    connect( QGuiApplication::styleHints(),
+             &QStyleHints::colorSchemeChanged,
+             this,
+             &MainWindow::refreshAppearances,
+             Qt::UniqueConnection );
   }
 #endif
 }
@@ -1361,41 +1370,82 @@ void MainWindow::updateAppearances( const QString & addonStyle,
 #endif
 )
 {
-#ifdef Q_OS_WIN32
-  if ( darkMode == Config::Dark::On ) {
-    //https://forum.qt.io/topic/101391/windows-10-dark-theme
+#if defined( Q_OS_WIN )
+  // https://forum.qt.io/topic/101391/windows-10-dark-theme
 
-    QPalette darkPalette;
-    QColor darkColor     = QColor( 45, 45, 45 );
-    QColor disabledColor = QColor( 127, 127, 127 );
-    darkPalette.setColor( QPalette::Window, darkColor );
-    darkPalette.setColor( QPalette::WindowText, Qt::white );
-    darkPalette.setColor( QPalette::Base, QColor( 18, 18, 18 ) );
-    darkPalette.setColor( QPalette::AlternateBase, darkColor );
-    darkPalette.setColor( QPalette::ToolTipBase, Qt::white );
-    darkPalette.setColor( QPalette::ToolTipText, Qt::white );
-    darkPalette.setColor( QPalette::Text, Qt::white );
-    darkPalette.setColor( QPalette::Disabled, QPalette::Text, disabledColor );
-    darkPalette.setColor( QPalette::Button, darkColor );
-    darkPalette.setColor( QPalette::ButtonText, Qt::white );
-    darkPalette.setColor( QPalette::Dark, QColor( 35, 35, 35 ) );
-    darkPalette.setColor( QPalette::Shadow, QColor( 20, 20, 20 ) );
-    darkPalette.setColor( QPalette::Disabled, QPalette::ButtonText, disabledColor );
-    darkPalette.setColor( QPalette::BrightText, Qt::red );
-    darkPalette.setColor( QPalette::Link, QColor( 42, 130, 218 ) );
+  auto isDarkModeEnabled = [ darkMode ]() -> bool {
+    if ( darkMode == Config::Dark::On )
+      return true;
+    if ( darkMode == Config::Dark::Off )
+      return false;
+    // Auto mode: Use unified system theme detection
+    return GlobalBroadcaster::isSystemDarkTheme();
+  };
 
-    darkPalette.setColor( QPalette::Highlight, QColor( 42, 130, 218 ) );
-    darkPalette.setColor( QPalette::HighlightedText, Qt::black );
-    darkPalette.setColor( QPalette::Disabled, QPalette::HighlightedText, disabledColor );
+  bool isDark = isDarkModeEnabled();
 
-    qApp->setPalette( darkPalette );
-    qApp->setStyle( "Fusion" );
+  // Check if this is Windows 11 or later (build 22000+)
+  bool isWindows11OrLater =
+    QOperatingSystemVersion::current() >= QOperatingSystemVersion( QOperatingSystemVersion::Windows, 10, 0, 22000 );
+
+  if ( isDark ) {
+    auto createDarkPalette = []() -> QPalette {
+      QPalette darkPalette;
+      QColor darkColor     = QColor( 45, 45, 45 );
+      QColor disabledColor = QColor( 127, 127, 127 );
+      darkPalette.setColor( QPalette::Window, darkColor );
+      darkPalette.setColor( QPalette::WindowText, Qt::white );
+      darkPalette.setColor( QPalette::Base, QColor( 18, 18, 18 ) );
+      darkPalette.setColor( QPalette::AlternateBase, darkColor );
+      darkPalette.setColor( QPalette::ToolTipBase, Qt::white );
+      darkPalette.setColor( QPalette::ToolTipText, Qt::white );
+      darkPalette.setColor( QPalette::Text, Qt::white );
+      darkPalette.setColor( QPalette::Disabled, QPalette::Text, disabledColor );
+      darkPalette.setColor( QPalette::Button, darkColor );
+      darkPalette.setColor( QPalette::ButtonText, Qt::white );
+      darkPalette.setColor( QPalette::Dark, QColor( 35, 35, 35 ) );
+      darkPalette.setColor( QPalette::Shadow, QColor( 20, 20, 20 ) );
+      darkPalette.setColor( QPalette::Disabled, QPalette::ButtonText, disabledColor );
+      darkPalette.setColor( QPalette::BrightText, Qt::red );
+      darkPalette.setColor( QPalette::Link, QColor( 42, 130, 218 ) );
+      darkPalette.setColor( QPalette::Highlight, QColor( 42, 130, 218 ) );
+      darkPalette.setColor( QPalette::HighlightedText, Qt::black );
+      darkPalette.setColor( QPalette::Disabled, QPalette::HighlightedText, disabledColor );
+      return darkPalette;
+    };
+
+    if ( isWindows11OrLater ) {
+  #if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
+      bool useSystemDarkPalette =
+        ( darkMode == Config::Dark::Auto && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark );
+  #else
+      bool useSystemDarkPalette = false;
+  #endif
+
+      if ( useSystemDarkPalette ) {
+        qApp->setStyle( "windows11" );
+        qApp->setPalette( qApp->style()->standardPalette() );
+      }
+      else {
+        qApp->setStyle( "Fusion" );
+        qApp->setPalette( createDarkPalette() );
+      }
+    }
+    else {
+      qApp->setStyle( "Fusion" );
+      qApp->setPalette( createDarkPalette() );
+    }
+
+    // Use DWM API for title bar theming (Windows 10 1809+)
+    setWindowTitleBarDark( true );
   }
   else {
-    qApp->setStyle( "WindowsVista" );
+    qApp->setStyle( QStyleFactory::create( defaultInterfaceStyle ) );
     qApp->setPalette( QPalette() );
-  }
 
+    // Use DWM API for title bar theming
+    setWindowTitleBarDark( false );
+  }
 #endif
 
 #if !defined( Q_OS_WIN )
@@ -1429,8 +1479,9 @@ void MainWindow::updateAppearances( const QString & addonStyle,
 
 #if defined( Q_OS_WIN )
   QFile winCssFile( ":qt-style-win.css" );
-  winCssFile.open( QFile::ReadOnly );
-  css += winCssFile.readAll();
+  if ( winCssFile.open( QFile::ReadOnly ) ) {
+    css += winCssFile.readAll();
+  }
 
   // Load an additional stylesheet
   // Dark Mode doesn't work nice with custom qt style sheets,
@@ -1458,7 +1509,7 @@ void MainWindow::updateAppearances( const QString & addonStyle,
     }
   }
 
-#ifdef Q_OS_WIN32
+#if defined( Q_OS_WIN )
   if ( darkMode == Config::Dark::On ) {
     css += "QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }";
   }
@@ -1897,7 +1948,7 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, const QString & name )
 
   view->setZoomFactor( cfg.preferences.zoomFactor );
 
-#ifdef Q_OS_WIN32
+#if defined( Q_OS_WIN )
   view->installEventFilter( this );
 #endif
   return view;
@@ -2810,6 +2861,33 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
   return QMainWindow::eventFilter( obj, ev );
 }
 
+#if defined( Q_OS_WIN )
+bool MainWindow::event( QEvent * event )
+{
+  // Handle theme change events on Windows
+  if ( event->type() == QEvent::ThemeChange || event->type() == QEvent::ApplicationPaletteChange ) {
+    // Update UI appearance
+    if ( cfg.preferences.darkMode == Config::Dark::Auto ) {
+      refreshAppearances();
+    }
+
+    // Reload all ArticleViews to update their content
+    if ( cfg.preferences.darkReaderMode == Config::Dark::Auto ) {
+      for ( int i = 0; i < ui.tabWidget->count(); ++i ) {
+        if ( auto view = qobject_cast< ArticleView * >( ui.tabWidget->widget( i ) ) ) {
+          view->reload();
+        }
+      }
+      // Also reload scan popup if it exists
+      if ( scanPopup ) {
+        scanPopup->reloadAllTabs();
+      }
+    }
+  }
+  return QMainWindow::event( event );
+}
+#endif
+
 void MainWindow::wordListItemActivated( QListWidgetItem * item )
 {
   if ( wordListSelChanged ) {
@@ -3392,7 +3470,7 @@ void MainWindow::on_newTab_triggered()
 
 void MainWindow::setAutostart( bool autostart )
 {
-#if defined Q_OS_WIN32
+#if defined( Q_OS_WIN )
   QSettings reg( R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)", QSettings::NativeFormat );
   if ( autostart ) {
     QString app_fname = QString( R"("%1")" ).arg( QCoreApplication::applicationFilePath() );
@@ -4561,3 +4639,19 @@ void MainWindow::handleDownloadRequested( QWebEngineDownloadRequest * download )
   download->setDownloadFileName( fileInfo.fileName() );
   download->accept();
 }
+
+#if defined( Q_OS_WIN )
+void MainWindow::setWindowTitleBarDark( bool dark )
+{
+  HWND hwnd    = HWND( winId() );
+  BOOL useDark = dark ? TRUE : FALSE;
+  DwmSetWindowAttribute( hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, &useDark, sizeof( useDark ) );
+
+  if ( scanPopup ) {
+    HWND popupHwnd = HWND( scanPopup->winId() );
+    DwmSetWindowAttribute( popupHwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, &useDark, sizeof( useDark ) );
+  }
+
+  RedrawWindow( hwnd, nullptr, nullptr, RDW_FRAME | RDW_INVALIDATE );
+}
+#endif

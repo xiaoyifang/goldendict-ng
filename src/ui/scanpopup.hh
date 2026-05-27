@@ -101,6 +101,7 @@ public slots:
 #endif
   void openSearch();
 
+  void reloadAllTabs();
 
 private:
 

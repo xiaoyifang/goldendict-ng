@@ -10,6 +10,8 @@
 #include <QDebug>
 #include <QFile>
 #include <QTextStream>
+#include <QOperatingSystemVersion>
+#include <QSettings>
 
 Q_GLOBAL_STATIC( GlobalBroadcaster, bdcaster )
 
@@ -222,7 +224,7 @@ QString GlobalBroadcaster::getLsaIdFromPath( const QString & path ) const
   return lsaPathToIdMap.value( nativePath );
 }
 
-bool GlobalBroadcaster::isDarkModeEnabled() const
+bool GlobalBroadcaster::isDarkReaderModeEnabled() const
 {
   if ( !config ) {
     return false;
@@ -230,18 +232,34 @@ bool GlobalBroadcaster::isDarkModeEnabled() const
 
   bool darkModeEnabled = ( config->preferences.darkReaderMode == Config::Dark::On );
 
-#if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
-  if ( config->preferences.darkReaderMode == Config::Dark::Auto
-  #if !defined( Q_OS_WINDOWS )
-       // For macOS & Linux, uses "System's style hint". There is no darkMode setting in GD for them.
-       && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark
-  #else
-       // For Windows, uses the setting in GD
-       && config->preferences.darkMode == Config::Dark::On
-  #endif
-  ) {
-    darkModeEnabled = true;
+  if ( config->preferences.darkReaderMode == Config::Dark::Auto ) {
+    darkModeEnabled = isSystemDarkTheme();
   }
-#endif
+
   return darkModeEnabled;
+}
+
+bool GlobalBroadcaster::isSystemDarkTheme()
+{
+#if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
+  #if defined( Q_OS_WINDOWS )
+  bool isWin11OrLater =
+    QOperatingSystemVersion::current() >= QOperatingSystemVersion( QOperatingSystemVersion::Windows, 10, 0, 22000 );
+  if ( isWin11OrLater ) {
+    // Windows 11+: Use Qt's colorScheme()
+    return QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark;
+  }
+  else {
+    // Windows 10: Use registry check
+    QSettings settings( "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+                        QSettings::NativeFormat );
+    return settings.contains( "AppsUseLightTheme" ) && settings.value( "AppsUseLightTheme" ).toInt() == 0;
+  }
+  #else
+  // Other platforms: Use Qt's colorScheme
+  return QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark;
+  #endif
+#else
+  return false;
+#endif
 }

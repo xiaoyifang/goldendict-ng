@@ -870,11 +870,11 @@ void ArticleView::injectWebsiteConfigScript()
   webview->page()->runJavaScript( finalScriptContent );
 }
 
-// This method has been moved to GlobalBroadcaster::isDarkModeEnabled()
-// To check dark mode status, use GlobalBroadcaster::instance()->isDarkModeEnabled() instead
+// This method has been moved to GlobalBroadcaster::isDarkReaderModeEnabled()
+// To check dark reader mode status, use GlobalBroadcaster::instance()->isDarkReaderModeEnabled() instead
 bool ArticleView::isDarkModeEnabled() const
 {
-  return GlobalBroadcaster::instance()->isDarkModeEnabled();
+  return GlobalBroadcaster::instance()->isDarkReaderModeEnabled();
 }
 
 

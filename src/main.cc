@@ -512,7 +512,7 @@ int main( int argc, char ** argv )
       }
     }
     else {
-      qDebug() << "GD_TS not loaded.";
+      qDebug() << "Goldendict translations not loaded.";
     }
   }
 
