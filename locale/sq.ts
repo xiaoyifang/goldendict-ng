@@ -3536,6 +3536,10 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <source>External Audio Player:</source>
       <translation>Luajtësi i jashtëm audio:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>Ndiqni cilësimin e modalitetit të errët të sistemit.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
