@@ -3634,6 +3634,10 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <source>External Audio Player:</source>
       <translation type="unfinished">External Audio Player:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>Sistema ch'amak uñjawi uñakipt'aña.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
