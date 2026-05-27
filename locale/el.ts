@@ -3545,6 +3545,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>External Audio Player:</source>
       <translation>Εξωτερική συσκευή αναπαραγωγής ήχου:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>Ακολουθήστε τη ρύθμιση σκοτεινής λειτουργίας συστήματος.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
