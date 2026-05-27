@@ -3520,6 +3520,10 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <source>External Audio Player:</source>
       <translation>Trình phát âm thanh bên ngoài:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>Thực hiện theo cài đặt chế độ tối của hệ thống.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
