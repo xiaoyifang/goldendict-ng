@@ -6,6 +6,7 @@
 #endif
 
 #include "mainwindow.hh"
+#include "keyboardstate.hh"
 #include "logger.hh"
 #include <QWebEngineProfile>
 #include "edit_dictionaries.hh"

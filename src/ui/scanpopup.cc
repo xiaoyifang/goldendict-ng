@@ -10,7 +10,14 @@
 #include <QMouseEvent>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QGraphicsDropShadowEffect>
+#include <QVBoxLayout>
 #include "gestures.hh"
+
+#ifdef Q_OS_WIN
+  #include <windows.h>
+  #include <dwmapi.h>
+#endif
 
 using std::set;
 using std::map;
@@ -22,25 +29,9 @@ using std::pair;
   #define MouseOver MacMouseOver
 #endif
 
-static const Qt::WindowFlags defaultUnpinnedWindowFlags =
+static const Qt::WindowFlags defaultUnpinnedWindowFlags = Qt::Tool | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint;
 
-#if defined( Q_OS_WIN )
-  Qt::Tool | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint
-#else
-  Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint
-#endif
-  ;
-
-static const Qt::WindowFlags pinnedWindowFlags =
-#if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
-  /// With the Qt::Dialog flag, popup is always on top of the main window
-  /// on Linux/X11 with Qt 4, Qt 5 since version 5.12.1 (QTBUG-74309).
-  /// Qt::Window allows to use the popup and the main window independently.
-  Qt::Window
-#else
-  Qt::Dialog
-#endif
-  ;
+static const Qt::WindowFlags pinnedWindowFlags = Qt::Window;
 
 ScanPopup::ScanPopup( QWidget * parent,
                       Config::Class & cfg_,
@@ -61,29 +52,53 @@ ScanPopup::ScanPopup( QWidget * parent,
   articleNetMgr( articleNetMgr ),
   hideTimer( this )
 {
-  // Init UI
-  QWidget * toolBarWidget = new QWidget( this );
-  ui.setupUi( toolBarWidget );
+  setAttribute( Qt::WA_TranslucentBackground );
 
-  QToolBar * toolBar = new QToolBar( "Tool bar", this );
+  QWidget * container = new QWidget( this );
+  container->setObjectName( "ScanPopupContainer" );
+  setCentralWidget( container );
+
+  QVBoxLayout * containerLayout = new QVBoxLayout( container );
+  containerLayout->setContentsMargins( 15, 15, 15, 15 );
+  containerLayout->setSpacing( 0 );
+
+  QGraphicsDropShadowEffect * shadowEffect = new QGraphicsDropShadowEffect( this );
+  shadowEffect->setBlurRadius( 20 );
+  shadowEffect->setXOffset( 0 );
+  shadowEffect->setYOffset( 4 );
+  updateShadowColor( shadowEffect );
+  container->setGraphicsEffect( shadowEffect );
+
+  QWidget * innerWidget = new QWidget( container );
+  containerLayout->addWidget( innerWidget );
+
+  QVBoxLayout * innerLayout = new QVBoxLayout( innerWidget );
+  innerLayout->setContentsMargins( 0, 0, 0, 0 );
+  innerLayout->setSpacing( 0 );
+
+  QMainWindow * contentWindow = new QMainWindow( innerWidget, Qt::Widget );
+  innerLayout->addWidget( contentWindow );
+
+  QToolBar * toolBar = new QToolBar( "Tool bar", contentWindow );
   toolBar->setObjectName( "popupToolBar" );
+
+  QWidget * toolBarWidget = new QWidget( contentWindow );
+  ui.setupUi( toolBarWidget );
   toolBar->addWidget( toolBarWidget );
 
-  groupList    = new GroupComboBox( this );
-  translateBox = new TranslateBox( this );
+  groupList    = new GroupComboBox( contentWindow );
+  translateBox = new TranslateBox( contentWindow );
 
-  QToolBar * searchBar = new QToolBar( "Search bar", this );
+  QToolBar * searchBar = new QToolBar( "Search bar", contentWindow );
   searchBar->setObjectName( "popupSearchBar" );
   groupListAction = searchBar->addWidget( groupList );
   searchBar->addWidget( translateBox );
   searchBar->toggleViewAction()->setEnabled( false );
 
-  foundBar = new QToolBar( "Navgiation bar", this );
+  foundBar = new QToolBar( "Navgiation bar", contentWindow );
   foundBar->setObjectName( "popupNavgiationBar" );
-  // to match the articleView's vertial scrolling
   foundBar->setAllowedAreas( Qt::LeftToolBarArea | Qt::RightToolBarArea );
 
-  // UI style
   searchBar->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::Maximum );
   searchBar->setMovable( false );
   toolBar->setFloatable( false );
@@ -93,12 +108,11 @@ ScanPopup::ScanPopup( QWidget * parent,
   searchBar->setContentsMargins( 0, 0, 2, 0 );
   toolBar->setContentsMargins( 0, 0, 0, 0 );
 
-  // Add Bars
-  addToolBar( Qt::TopToolBarArea, searchBar );
-  addToolBar( Qt::TopToolBarArea, toolBar );
-  addToolBarBreak();
-  addToolBar( Qt::TopToolBarArea, &dictionaryBar );
-  addToolBar( Qt::RightToolBarArea, foundBar );
+  contentWindow->addToolBar( Qt::TopToolBarArea, searchBar );
+  contentWindow->addToolBar( Qt::TopToolBarArea, toolBar );
+  contentWindow->addToolBarBreak();
+  contentWindow->addToolBar( Qt::TopToolBarArea, &dictionaryBar );
+  contentWindow->addToolBar( Qt::RightToolBarArea, foundBar );
 
   if ( layoutDirection() == Qt::RightToLeft ) {
     // Adjust button icons for Right-To-Left layout
@@ -106,9 +120,9 @@ ScanPopup::ScanPopup( QWidget * parent,
     ui.goForwardButton->setIcon( QIcon( ":/icons/previous.svg" ) );
   }
 
-  mainStatusBar = new MainStatusBar( this );
+  mainStatusBar = new MainStatusBar( contentWindow );
 
-  tabWidget = new MainTabWidget( this );
+  tabWidget = new MainTabWidget( contentWindow );
   tabWidget->setTabsClosable( true );
   tabWidget->setHideSingleTab( true );
   tabWidget->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::Expanding );
@@ -132,12 +146,13 @@ ScanPopup::ScanPopup( QWidget * parent,
   tabWidget->tabBar()->setTabButton( 0, QTabBar::RightSide, nullptr );
   tabWidget->tabBar()->setTabButton( 0, QTabBar::LeftSide, nullptr );
 
+  contentWindow->setCentralWidget( tabWidget );
+
   resize( 247, 400 );
 
-  // Set maximum width based on screen size
   QScreen * screen = QGuiApplication::primaryScreen();
   if ( screen ) {
-    int maxWidth = screen->availableGeometry().width() * 0.8; // 80% of screen width
+    int maxWidth = screen->availableGeometry().width() * 0.8;
     setMaximumWidth( maxWidth );
   }
 
@@ -167,8 +182,6 @@ ScanPopup::ScanPopup( QWidget * parent,
   wordListDefaultFont      = translateBox->completerWidget()->font();
   translateLineDefaultFont = translateBox->font();
   groupListDefaultFont     = groupList->font();
-
-  setCentralWidget( tabWidget );
 
   translateBox->translateLine()->installEventFilter( this );
   definition->installEventFilter( this );
@@ -362,7 +375,6 @@ ScanPopup::ScanPopup( QWidget * parent,
     connect( &selectionDelayTimer, &QTimer::timeout, this, &ScanPopup::translateWordFromSelection );
   }
 #endif
-
   applyZoomFactor();
 }
 
@@ -1402,6 +1414,17 @@ void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId, 
 bool ScanPopup::isWordPresentedInFavorites( const QString & word ) const
 {
   return GlobalBroadcaster::instance()->isWordPresentedInFavorites( word );
+}
+
+void ScanPopup::updateShadowColor( QGraphicsDropShadowEffect * shadowEffect ) const
+{
+  bool isDarkMode = GlobalBroadcaster::isSystemDarkTheme();
+  if ( isDarkMode ) {
+    shadowEffect->setColor( QColor( 0, 0, 0, 180 ) );
+  }
+  else {
+    shadowEffect->setColor( QColor( 0, 0, 0, 120 ) );
+  }
 }
 
 #ifdef WITH_X11
