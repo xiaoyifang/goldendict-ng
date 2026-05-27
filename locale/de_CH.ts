@@ -3203,20 +3203,8 @@ in the pressed state when the word selection changes.</source>
       <translation>Wähle Audio Hintergrund Applikation aus.</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Internen Abspieler verwenden:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Wähle Audio Hintergrund Applikation aus.</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Ein externes Programm zum Abspielen der Audiodaten benutzen.</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Externes Programm benutzen:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3523,6 +3511,26 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation type="unfinished">Hide tab bar when only one tab is open.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Einen externen Audioplayer verwenden, um Audiodateien abzuspielen</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Detaillierte Konfigurationsanleitung anzeigen</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Der Audiopfad wird als Befehlszeilenargument an den externen Player übergeben.</translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation type="unfinished">Internal Audio Player:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation type="unfinished">External Audio Player:</translation>
     </message>
   </context>
   <context>

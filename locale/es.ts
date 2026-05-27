@@ -3210,20 +3210,8 @@ las teclas elegidas cuando cambia la palabra seleccionada.</translation>
       <translation>Reproducir archivos de audio mediante el soporte de audio integrado</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Usar reproductor interno:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Elegir reverso de audio</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Utilizar cualquier programa externo para reproducir ficheros de audio</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Utilizar un programa externo:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3533,6 +3521,26 @@ de diccionarios Stardict, Babylon y GLS</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Ocultar barra de pestañas cuando sólo una pestaña está abierta.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Usa cualquier reproductor de audio externo para reproducir archivos de audio</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Ver guía de configuración detallada</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>La ruta de audio se pasará como argumento de línea de comandos al reproductor externo. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Reproductor de audio interno:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Reproductor de audio externo:</translation>
     </message>
   </context>
   <context>

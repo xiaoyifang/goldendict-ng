@@ -3209,20 +3209,8 @@ in the pressed state when the word selection changes.</source>
       <translation>Воспроизводить аудио-файлы через встроенный плеер</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Използвай встроен  плеер:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Избор на плеер</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Използване на външна програма за възпроизвеждане на аудио файловете</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Използване на външна програма:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3532,6 +3520,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Скриване на лентата с раздели, когато е отворен само един раздел.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Използвайте който и да е външен аудио плейър, за да възпроизвеждате аудио файлове</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Вижте подробен наръчник за конфигурация</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Аудио пътят се предава като команден аргумент към външния плейър. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Вътрешен аудио плейър:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Външен аудио плейър:</translation>
     </message>
   </context>
   <context>

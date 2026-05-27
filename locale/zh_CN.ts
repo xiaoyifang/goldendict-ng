@@ -3202,20 +3202,8 @@ in the pressed state when the word selection changes.</source>
       <translation>使用内建音频支持播放音频文件</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>使用内部播放器：</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>选择音频后端</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>使用外部程序播放音频文件</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>使用外部程序播放：</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3523,6 +3511,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>仅打开一个标签时隐藏标签栏。</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>使用任何外部音频播放器播放音频文件</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>查看详细配置指南</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>音频路径将作为命令行参数传递给外部播放器。 </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>内置音频播放器：</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>外接音频播放器：</translation>
     </message>
   </context>
   <context>

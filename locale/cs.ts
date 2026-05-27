@@ -3210,20 +3210,8 @@ zvolené klávesy stisknuty při změně výběru.</translation>
       <translation>Přehrávat zvukové soubory pomocí podpory vestavěného zvuku</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Použít interní přehrávač:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Vybrat konec zvuku</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Pro přehrání audio souborů použít externí program</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Použít externí program:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3533,6 +3521,26 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Skrýt panel záložek, pokud je otevřena pouze jedna záložka.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Použít jakýkoli externí zvukový přehrávač k přehrávání zvukových souborů</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Zobrazit detailní konfigurační příručku</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Zvuková cesta bude předána externímu přehrávači jako argument příkazové řádky. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Interní audio přehrávač:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Externí audio přehrávač:</translation>
     </message>
   </context>
   <context>

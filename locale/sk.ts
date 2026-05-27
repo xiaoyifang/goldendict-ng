@@ -3204,20 +3204,8 @@ in the pressed state when the word selection changes.</source>
       <translation>Prehrávať zvukové súbory pomocou vstavanej podpory zvuku</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Použiť interný prehrávač:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Vyberte program na prehratie zvuku</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Použiť pre prehrávanie audio súborov externý program</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Použiť externý program:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3526,6 +3514,26 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Skryj panel záložiek, keď je otvorená len jedna záložka.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Použite akýkoľvek externý prehrávač zvuku na prehrávanie audio súborov</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Pozrite si podrobný konfiguračný sprievodca</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Zvuková cesta bude odovzdaná ako argument príkazového riadku externému prehrávaču. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Interný prehrávač zvuku:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Externý prehrávač zvuku:</translation>
     </message>
   </context>
   <context>
