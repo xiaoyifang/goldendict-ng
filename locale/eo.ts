@@ -3544,6 +3544,10 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <source>External Audio Player:</source>
       <translation type="unfinished">External Audio Player:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>Sekvu la sisteman agordon de malluma reĝimo.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
