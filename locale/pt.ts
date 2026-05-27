@@ -3544,6 +3544,10 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <source>External Audio Player:</source>
       <translation>Leitor de Áudio Externo:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>Siga a definição do modo escuro do sistema.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
