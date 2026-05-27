@@ -3540,6 +3540,10 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <source>External Audio Player:</source>
       <translation>Dış Ses Oynatıcı:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>Sistem karanlık mod ayarlarını takip et.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
