@@ -3542,6 +3542,10 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <source>External Audio Player:</source>
       <translation>Externí audio přehrávač:</translation>
     </message>
+    <message>
+      <source>Follow system dark mode setting.</source>
+      <translation>Postupujte podle systému nastavení tmavého režimu.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
