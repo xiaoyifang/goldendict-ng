@@ -2965,10 +2965,6 @@ the application.</source>
       <translation>Lingoes-Син</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto не прави нищо на някои системи.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Рестартирайте програмата, за да се приложи смяната на езика.</translation>
     </message>
@@ -3542,8 +3538,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Външен аудио плейър:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Следвай настройката на системата в тъмен режим.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Автоматично превключва според системната тема.</translation>
     </message>
   </context>
   <context>
