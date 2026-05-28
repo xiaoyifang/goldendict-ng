@@ -2963,10 +2963,6 @@ the application.</source>
       <translation>Lingoes-Blau</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auf manchen Systemen passiert bei Auto gar nichts.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Starten Sie das Programm neu, um den Sprachwechsel abzuschließen.</translation>
     </message>
@@ -3539,8 +3535,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Externer Audioplayer:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Folgen Sie der System-Dunkelmodus-Einstellung.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Wechselt automatisch je nach Systemthema.</translation>
     </message>
   </context>
   <context>
