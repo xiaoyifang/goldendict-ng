@@ -22,8 +22,6 @@
 #endif
 
 
-class QGraphicsDropShadowEffect;
-
 /// This is a popup dialog to show translations when clipboard scanning mode
 /// is enabled.
 class ScanPopup: public QMainWindow
@@ -35,8 +33,6 @@ public:
   ScanPopup( QWidget * parent, Config::Class & cfg, ArticleNetworkAccessManager &, History & );
 
   ~ScanPopup();
-
-  void updateShadowColor( QGraphicsDropShadowEffect * shadowEffect ) const;
 
   // update dictionary bar, group data and possibly other data
   void refresh();

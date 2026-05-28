@@ -10,14 +10,7 @@
 #include <QMouseEvent>
 #include <QFileDialog>
 #include <QMessageBox>
-#include <QGraphicsDropShadowEffect>
-#include <QVBoxLayout>
 #include "gestures.hh"
-
-#ifdef Q_OS_WIN
-  #include <windows.h>
-  #include <dwmapi.h>
-#endif
 
 using std::set;
 using std::map;
@@ -52,51 +45,24 @@ ScanPopup::ScanPopup( QWidget * parent,
   articleNetMgr( articleNetMgr ),
   hideTimer( this )
 {
-  setAttribute( Qt::WA_TranslucentBackground );
-
-  QWidget * container = new QWidget( this );
-  container->setObjectName( "ScanPopupContainer" );
-  setCentralWidget( container );
-
-  QVBoxLayout * containerLayout = new QVBoxLayout( container );
-  containerLayout->setContentsMargins( 15, 15, 15, 15 );
-  containerLayout->setSpacing( 0 );
-
-  QGraphicsDropShadowEffect * shadowEffect = new QGraphicsDropShadowEffect( this );
-  shadowEffect->setBlurRadius( 20 );
-  shadowEffect->setXOffset( 0 );
-  shadowEffect->setYOffset( 4 );
-  updateShadowColor( shadowEffect );
-  container->setGraphicsEffect( shadowEffect );
-
-  QWidget * innerWidget = new QWidget( container );
-  containerLayout->addWidget( innerWidget );
-
-  QVBoxLayout * innerLayout = new QVBoxLayout( innerWidget );
-  innerLayout->setContentsMargins( 0, 0, 0, 0 );
-  innerLayout->setSpacing( 0 );
-
-  QMainWindow * contentWindow = new QMainWindow( innerWidget, Qt::Widget );
-  innerLayout->addWidget( contentWindow );
-
-  QToolBar * toolBar = new QToolBar( "Tool bar", contentWindow );
-  toolBar->setObjectName( "popupToolBar" );
-
-  QWidget * toolBarWidget = new QWidget( contentWindow );
+  QWidget * toolBarWidget = new QWidget( this );
   ui.setupUi( toolBarWidget );
+
+  QToolBar * toolBar = new QToolBar( "Tool bar", this );
+  toolBar->setObjectName( "popupToolBar" );
   toolBar->addWidget( toolBarWidget );
 
-  groupList    = new GroupComboBox( contentWindow );
-  translateBox = new TranslateBox( contentWindow );
+  groupList    = new GroupComboBox( this );
+  translateBox = new TranslateBox( this );
 
-  QToolBar * searchBar = new QToolBar( "Search bar", contentWindow );
+  QToolBar * searchBar = new QToolBar( "Search bar", this );
   searchBar->setObjectName( "popupSearchBar" );
   groupListAction = searchBar->addWidget( groupList );
   searchBar->addWidget( translateBox );
   searchBar->toggleViewAction()->setEnabled( false );
 
-  foundBar = new QToolBar( "Navgiation bar", contentWindow );
-  foundBar->setObjectName( "popupNavgiationBar" );
+  foundBar = new QToolBar( "Navigation bar", this );
+  foundBar->setObjectName( "popupNavigationBar" );
   foundBar->setAllowedAreas( Qt::LeftToolBarArea | Qt::RightToolBarArea );
 
   searchBar->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::Maximum );
@@ -108,21 +74,20 @@ ScanPopup::ScanPopup( QWidget * parent,
   searchBar->setContentsMargins( 0, 0, 2, 0 );
   toolBar->setContentsMargins( 0, 0, 0, 0 );
 
-  contentWindow->addToolBar( Qt::TopToolBarArea, searchBar );
-  contentWindow->addToolBar( Qt::TopToolBarArea, toolBar );
-  contentWindow->addToolBarBreak();
-  contentWindow->addToolBar( Qt::TopToolBarArea, &dictionaryBar );
-  contentWindow->addToolBar( Qt::RightToolBarArea, foundBar );
+  addToolBar( Qt::TopToolBarArea, searchBar );
+  addToolBar( Qt::TopToolBarArea, toolBar );
+  addToolBarBreak();
+  addToolBar( Qt::TopToolBarArea, &dictionaryBar );
+  addToolBar( Qt::RightToolBarArea, foundBar );
 
   if ( layoutDirection() == Qt::RightToLeft ) {
-    // Adjust button icons for Right-To-Left layout
     ui.goBackButton->setIcon( QIcon( ":/icons/next.svg" ) );
     ui.goForwardButton->setIcon( QIcon( ":/icons/previous.svg" ) );
   }
 
-  mainStatusBar = new MainStatusBar( contentWindow );
+  mainStatusBar = new MainStatusBar( this );
 
-  tabWidget = new MainTabWidget( contentWindow );
+  tabWidget = new MainTabWidget( this );
   tabWidget->setTabsClosable( true );
   tabWidget->setHideSingleTab( true );
   tabWidget->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::Expanding );
@@ -146,7 +111,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   tabWidget->tabBar()->setTabButton( 0, QTabBar::RightSide, nullptr );
   tabWidget->tabBar()->setTabButton( 0, QTabBar::LeftSide, nullptr );
 
-  contentWindow->setCentralWidget( tabWidget );
+  setCentralWidget( tabWidget );
 
   resize( 247, 400 );
 
@@ -1414,17 +1379,6 @@ void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId, 
 bool ScanPopup::isWordPresentedInFavorites( const QString & word ) const
 {
   return GlobalBroadcaster::instance()->isWordPresentedInFavorites( word );
-}
-
-void ScanPopup::updateShadowColor( QGraphicsDropShadowEffect * shadowEffect ) const
-{
-  bool isDarkMode = GlobalBroadcaster::isSystemDarkTheme();
-  if ( isDarkMode ) {
-    shadowEffect->setColor( QColor( 0, 0, 0, 180 ) );
-  }
-  else {
-    shadowEffect->setColor( QColor( 0, 0, 0, 120 ) );
-  }
 }
 
 #ifdef WITH_X11
