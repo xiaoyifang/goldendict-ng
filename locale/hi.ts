@@ -2959,10 +2959,6 @@ the application.</source>
       <translation>लिंगोज-नीला</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>कुछ प्रणालियों पर ऑटो कुछ भी नहीं करता।</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>भाषा परिवर्तन लागू करने के लिए प्रोग्राम को पुनरारंभ करें।</translation>
     </message>
@@ -3530,8 +3526,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>बाहरी ऑडियो प्लेयर:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>सिस्टम डार्क मोड सेटिंग का पालन करें।</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>सिस्टम थीम के आधार पर स्वचालित रूप से स्विच करता है।</translation>
     </message>
   </context>
   <context>
