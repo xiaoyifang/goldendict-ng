@@ -2964,10 +2964,6 @@ minimera fönstret till meddelandefältet istället för att avsluta programmet.
       <translation>Lingoes (blå)</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto gör ingenting på vissa system.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Starta om programmet för att verkställa bytet av språk.</translation>
     </message>
@@ -3546,8 +3542,8 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation>Extern ljudspelare:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Följ systemets mörka läge.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Byter automatiskt baserat på systemtema.</translation>
     </message>
   </context>
   <context>
