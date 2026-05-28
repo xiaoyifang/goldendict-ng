@@ -623,10 +623,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Dịch sang:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Tệp chứa từ điển này:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Mô tả:</translation>
     </message>
@@ -653,6 +649,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Cho phép</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Thành phần từ điển:</translation>
     </message>
   </context>
   <context>
