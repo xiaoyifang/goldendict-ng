@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>翻訳先:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>この辞書を含むファイル:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>説明:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>有効にする</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>辞書の構成要素:</translation>
     </message>
   </context>
   <context>
@@ -2964,10 +2964,6 @@ the application.</source>
       <translation>ランゴー・ブルー</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>一部のシステムでは自動では何も実行されません。</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>言語の変更を適用するにはプログラムを再起動します。</translation>
     </message>
@@ -3541,6 +3537,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>External Audio Player:</source>
       <translation>外部オーディオプレーヤー:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>システムテーマに応じて自動的に切り替わります。</translation>
     </message>
   </context>
   <context>

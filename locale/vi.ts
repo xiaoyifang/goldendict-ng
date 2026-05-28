@@ -623,10 +623,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Dịch sang:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Tệp chứa từ điển này:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Mô tả:</translation>
     </message>
@@ -653,6 +649,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Cho phép</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Thành phần từ điển:</translation>
     </message>
   </context>
   <context>
@@ -2947,10 +2947,6 @@ the application.</source>
       <translation>Lingoes-Blue</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Chế độ tự động không có tác dụng gì trên một số hệ thống.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Khởi động lại chương trình để áp dụng thay đổi ngôn ngữ.</translation>
     </message>
@@ -3519,6 +3515,10 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>External Audio Player:</source>
       <translation>Trình phát âm thanh bên ngoài:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Tự động chuyển đổi dựa trên chủ đề hệ thống.</translation>
     </message>
   </context>
   <context>

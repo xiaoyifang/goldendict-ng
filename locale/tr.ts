@@ -639,10 +639,6 @@ arasındaki farkı giderir)</translation>
       <translation>Bu dile:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Bu sözlüğü oluşturan dosyalar:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Açıklama:</translation>
     </message>
@@ -669,6 +665,10 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Enable</source>
       <translation>Olanak vermek</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Sözlük Bileşenleri:</translation>
     </message>
   </context>
   <context>
@@ -2963,10 +2963,6 @@ yerine onu gizler.</translation>
       <translation>Lingoes-Mavi</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Bazı sistemlerde Auto hiçbir şey yapmaz.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Dil değişikliğini tamamlamak için programı yeniden başlatın.</translation>
     </message>
@@ -3539,6 +3535,10 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <message>
       <source>External Audio Player:</source>
       <translation>Dış Ses Oynatıcı:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Sistem temasına göre otomatik olarak değişir.</translation>
     </message>
   </context>
   <context>

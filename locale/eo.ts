@@ -639,10 +639,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Traduki en:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Dosieroj kun ĉi tiu vortaro:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Priskribo:</translation>
     </message>
@@ -669,6 +665,10 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Enable</source>
       <translation>Ebligu</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Komponantoj de vortaro:</translation>
     </message>
   </context>
   <context>
@@ -2965,10 +2965,6 @@ la aplikaĵon.</translation>
       <translation>Lingvoes-Blua</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Aŭtomo faras nenion en iuj sistemoj.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Rekomencu la programon por apliki la lingvoŝanĝon.</translation>
     </message>
@@ -3543,6 +3539,10 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     <message>
       <source>External Audio Player:</source>
       <translation type="unfinished">External Audio Player:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Aŭtomate ŝanĝas laŭ la sistema temo.</translation>
     </message>
   </context>
   <context>

@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>ترجم إلى:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>الملفات التي تتضمن القاموس:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>الوصف:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Enable</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>مكونات القاموس:</translation>
     </message>
   </context>
   <context>
@@ -2964,10 +2964,6 @@ the application.</source>
       <translation>لِنْغوز-بلو</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto does nothing on some systems.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>أعد تشغيل البرنامج لتطبيق تغيير اللغة.</translation>
     </message>
@@ -3541,6 +3537,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>External Audio Player:</source>
       <translation>مشغل صوت خارجي:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>يتم التبديل تلقائيا بناء على موضوع النظام.</translation>
     </message>
   </context>
   <context>

@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>जिस भाषा में अनुवाद करता हैः</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>इस शब्दकोश में सम्मिलित फाइलें:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>विवरण:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>सक्षम</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>शब्दकोश घटक:</translation>
     </message>
   </context>
   <context>
@@ -2959,10 +2959,6 @@ the application.</source>
       <translation>लिंगोज-नीला</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>कुछ प्रणालियों पर ऑटो कुछ भी नहीं करता।</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>भाषा परिवर्तन लागू करने के लिए प्रोग्राम को पुनरारंभ करें।</translation>
     </message>
@@ -3528,6 +3524,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>External Audio Player:</source>
       <translation>बाहरी ऑडियो प्लेयर:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>सिस्टम थीम के आधार पर स्वचालित रूप से स्विच करता है।</translation>
     </message>
   </context>
   <context>

@@ -639,10 +639,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Traduit vers :</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Fichiers incluant ce dictionnaire :</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Description :</translation>
     </message>
@@ -669,6 +665,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Activer</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Composants du dictionnaire :</translation>
     </message>
   </context>
   <context>
@@ -2964,10 +2964,6 @@ the application.</source>
       <translation>Lingoes-Bleu</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto ne fait rien sur certains systèmes.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Redémarrez le programme pour appliquer le changement de langue.</translation>
     </message>
@@ -3540,6 +3536,10 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>External Audio Player:</source>
       <translation>Lecteur audio externe :</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Ça change automatiquement selon le thème du système.</translation>
     </message>
   </context>
   <context>

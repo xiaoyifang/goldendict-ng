@@ -641,10 +641,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Целевой язык:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Файлы, из которых состоит словарь:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Описание:</translation>
     </message>
@@ -671,6 +667,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Давать возможность</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Компоненты словаря:</translation>
     </message>
   </context>
   <context>
@@ -2969,10 +2969,6 @@ the application.</source>
       <translation>Лингос-синий</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>В некоторых системах функция Auto не выполняет никаких действий.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Перезапустите программу, чтобы изменение языка вошло в силу.</translation>
     </message>
@@ -3549,6 +3545,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>External Audio Player:</source>
       <translation>Внешний аудиоплеер:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Автоматически переключается в зависимости от темы системы.</translation>
     </message>
   </context>
   <context>

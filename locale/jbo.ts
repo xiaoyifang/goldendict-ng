@@ -639,10 +639,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation>te fanva</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>datnyvei fi pa vlacku</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>ve skicu</translation>
     </message>
@@ -669,6 +665,10 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Enable</source>
       <translation>Enable</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>lo vlacku se nilce:</translation>
     </message>
   </context>
   <context>
@@ -2965,10 +2965,6 @@ the application.</translation>
       <translation>la blanu .lingos.</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto does nothing on some systems.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>.i pa nu do za&apos;u re&apos;u katcygau lo samtci cu rinka pa nu mo&apos;u basti fi lo ka bangu</translation>
     </message>
@@ -3541,6 +3537,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>External Audio Player:</source>
       <translation type="unfinished">External Audio Player:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation type="unfinished">Automatically switches based on system theme.</translation>
     </message>
   </context>
   <context>

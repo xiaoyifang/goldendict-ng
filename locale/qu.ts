@@ -639,10 +639,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Simiman:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Kay simi-pirwaqa chay archiwukunayoq:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Willay:</translation>
     </message>
@@ -669,6 +665,10 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Enable</source>
       <translation>Kawsarichisqa</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation type="unfinished">Dictionary Components:</translation>
     </message>
   </context>
   <context>
@@ -2963,10 +2963,6 @@ cerrar la aplicación.</translation>
       <translation>Lingoes-Azul</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Autoqa wakin sistemakunapiqa manam imatapas ruwanchu.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Musuq simita jap&apos;ikunanpaq hukmanta programata qallarichiy.</translation>
     </message>
@@ -3537,6 +3533,10 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     <message>
       <source>External Audio Player:</source>
       <translation type="unfinished">External Audio Player:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation type="unfinished">Automatically switches based on system theme.</translation>
     </message>
   </context>
   <context>

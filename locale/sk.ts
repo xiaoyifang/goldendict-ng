@@ -639,10 +639,6 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <translation>Prekladá do:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Súbory obsiahnuté v slovníku:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Popis:</translation>
     </message>
@@ -669,6 +665,10 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     <message>
       <source>Enable</source>
       <translation>Povoliť</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Komponenty slovníka:</translation>
     </message>
   </context>
   <context>
@@ -2961,10 +2961,6 @@ skryje program namiesto jeho ukončenia.</translation>
       <translation>Lingoes-Blue</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto na niektorých systémoch nerobí nič.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Reštartovať program pre aplikovanie zmeny jazyka.</translation>
     </message>
@@ -3534,6 +3530,10 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     <message>
       <source>External Audio Player:</source>
       <translation>Externý prehrávač zvuku:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Automaticky prepína podľa systémovej témy.</translation>
     </message>
   </context>
   <context>

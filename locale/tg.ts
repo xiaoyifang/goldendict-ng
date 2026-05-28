@@ -639,10 +639,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Тарҷума ба забони:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Файлҳои ин луғат:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Тавсиф:</translation>
     </message>
@@ -669,6 +665,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Фаъол кардан</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation type="unfinished">Dictionary Components:</translation>
     </message>
   </context>
   <context>
@@ -2965,10 +2965,6 @@ the application.</source>
       <translation>Lingoes-кабуд</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Автомат дар баъзе системаҳо ҳеҷ кор намекунад.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Барои татбиқ кардани забони интихобшуда барномаро аз нав оғоз кунед.</translation>
     </message>
@@ -3542,6 +3538,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>External Audio Player:</source>
       <translation type="unfinished">External Audio Player:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation type="unfinished">Automatically switches based on system theme.</translation>
     </message>
   </context>
   <context>

@@ -639,10 +639,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation>Tisuqilin ɣer:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Files comprising this dictionary:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Aglam:</translation>
     </message>
@@ -669,6 +665,10 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Enable</source>
       <translation>Enable</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Timsilɣin n umawal:</translation>
     </message>
   </context>
   <context>
@@ -2965,10 +2965,6 @@ the application.</translation>
       <translation>Lingoes-Blue</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto does nothing on some systems.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Restart the program to apply the language change.</translation>
     </message>
@@ -3543,6 +3539,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>External Audio Player:</source>
       <translation type="unfinished">External Audio Player:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Yettbeddil s yiman-is ɣef leḥsab n usentel n unagraw.</translation>
     </message>
   </context>
   <context>

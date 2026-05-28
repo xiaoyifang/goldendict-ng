@@ -627,10 +627,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Jaqukipaña akar:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Apkata wayaqanaka, aka aru-pirwana:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Qillqatax kunjamasa:</translation>
     </message>
@@ -657,6 +653,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Pirmitiña</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Arupirwan jisk'anaka:</translation>
     </message>
   </context>
   <context>
@@ -3025,10 +3025,6 @@ Aka jakhu mayjacham jach&apos;a menus jithiqañataki.</translation>
       <translation>Lingoes-Larama</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto ukax janiw kuns yaqhip sistemas ukan lurkiti.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Mayat programa aktayan sun apñaqañataki.</translation>
     </message>
@@ -3633,6 +3629,10 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     <message>
       <source>External Audio Player:</source>
       <translation type="unfinished">External Audio Player:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Sistema tuqin kunjama uñtata ukhamarjama mayjt'asi.</translation>
     </message>
   </context>
   <context>

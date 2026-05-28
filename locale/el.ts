@@ -641,10 +641,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Μεταφράζει σε:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Αρχεία λεξικού:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Περιγραφή:</translation>
     </message>
@@ -671,6 +667,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Καθιστώ ικανό</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Στοιχεία λεξικού:</translation>
     </message>
   </context>
   <context>
@@ -2966,10 +2966,6 @@ the application.</source>
       <translation>Μπίνγκο-μπλε</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Το Auto δεν κάνει τίποτα σε ορισμένα συστήματα.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Απαιτείται επανεκκίνηση του προγράμματος για να εφαρμοστεί η αλλαγή γλώσσας.</translation>
     </message>
@@ -3544,6 +3540,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>External Audio Player:</source>
       <translation>Εξωτερική συσκευή αναπαραγωγής ήχου:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Αλλάζει αυτόματα με βάση το θέμα του συστήματος.</translation>
     </message>
   </context>
   <context>

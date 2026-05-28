@@ -639,10 +639,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Vertaalt naar:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Woordenboek bestaat uit de volgende bestanden:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Beschrijving:</translation>
     </message>
@@ -669,6 +665,10 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Enable</source>
       <translation>Inschakelen</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Woordenboekcomponenten:</translation>
     </message>
   </context>
   <context>
@@ -2965,10 +2965,6 @@ the application.</source>
       <translation>Lingoes-Blauw</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto doet niets op sommige systemen.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Start het programma opnieuw om de toepassingstaal te wijzigen.</translation>
     </message>
@@ -3540,6 +3536,10 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>External Audio Player:</source>
       <translation>Externe audioplayer:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Schakelt automatisch op basis van het systeemthema.</translation>
     </message>
   </context>
   <context>

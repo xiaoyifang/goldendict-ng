@@ -639,10 +639,6 @@ entre la ortografía clásica y la escolar en cirílico)</translation>
       <translation>Traduce a:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Este diccionario consiste de los archivos:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Descripción:</translation>
     </message>
@@ -669,6 +665,10 @@ entre la ortografía clásica y la escolar en cirílico)</translation>
     <message>
       <source>Enable</source>
       <translation>Enable</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation type="unfinished">Dictionary Components:</translation>
     </message>
   </context>
   <context>
@@ -2962,10 +2962,6 @@ the application.</source>
       <translation>Lingoes-Azul</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto does nothing on some systems.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Reinicie el programa para utilizar la lengua nueva del programa.</translation>
     </message>
@@ -3538,6 +3534,10 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
     <message>
       <source>External Audio Player:</source>
       <translation type="unfinished">External Audio Player:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation type="unfinished">Automatically switches based on system theme.</translation>
     </message>
   </context>
   <context>

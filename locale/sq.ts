@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Përkthen në:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Skedat që përbëjnë fjalorin:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Përshkrimi:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Aktivizo</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Komponentët e fjalorit:</translation>
     </message>
   </context>
   <context>
@@ -2960,10 +2960,6 @@ the application.</source>
       <translation>Lingoes Blu</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto nuk bën asgjë në disa sisteme.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Riniseni programin për të zbatuar ndryshimin e gjuhës.</translation>
     </message>
@@ -3535,6 +3531,10 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>External Audio Player:</source>
       <translation>Luajtësi i jashtëm audio:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Ndërrohet automatikisht bazuar në temën e sistemit.</translation>
     </message>
   </context>
   <context>

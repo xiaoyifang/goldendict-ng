@@ -639,10 +639,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Циљни језик:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Датотеке које чине речник:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Опис:</translation>
     </message>
@@ -669,6 +665,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Омогући</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Компоненте речника:</translation>
     </message>
   </context>
   <context>
@@ -2966,10 +2966,6 @@ the application.</source>
       <translation>Лингоес-Блуе</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Ауто не ради ништа на неким системима.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Поново покрените програм за промену језика.</translation>
     </message>
@@ -3543,6 +3539,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>External Audio Player:</source>
       <translation>Екстерни аудио плејер:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Аутоматски се пребацује на основу теме система.</translation>
     </message>
   </context>
   <context>

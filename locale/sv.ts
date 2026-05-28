@@ -639,10 +639,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Målspråk:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Filer som omfattas av ordlistan:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Beskrivning:</translation>
     </message>
@@ -669,6 +665,10 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Enable</source>
       <translation>Aktivera</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Ordbokskomponenter:</translation>
     </message>
   </context>
   <context>
@@ -2964,10 +2964,6 @@ minimera fönstret till meddelandefältet istället för att avsluta programmet.
       <translation>Lingoes (blå)</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto gör ingenting på vissa system.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Starta om programmet för att verkställa bytet av språk.</translation>
     </message>
@@ -3544,6 +3540,10 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>External Audio Player:</source>
       <translation>Extern ljudspelare:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Byter automatiskt baserat på systemtema.</translation>
     </message>
   </context>
   <context>

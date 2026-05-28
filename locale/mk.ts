@@ -624,10 +624,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Преведи на:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Датотеки кои го сочинуваат речникот:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Опис:</translation>
     </message>
@@ -654,6 +650,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Овозможи</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Компоненти на речникот:</translation>
     </message>
   </context>
   <context>
@@ -2951,10 +2951,6 @@ the application.</source>
       <translation>Lingoes-Blue</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Автоматското не прави ништо на некои системи.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Поново покрените програм за промену језика.</translation>
     </message>
@@ -3528,6 +3524,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>External Audio Player:</source>
       <translation>Надворешен аудио плеер:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Автоматски се менува според темата на системот.</translation>
     </message>
   </context>
   <context>

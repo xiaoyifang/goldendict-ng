@@ -637,10 +637,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>释义语言：</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>此词典包含的文件：</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>描述：</translation>
     </message>
@@ -667,6 +663,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>启用</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>词典组成部分：</translation>
     </message>
   </context>
   <context>
@@ -2957,10 +2957,6 @@ the application.</source>
       <translation>灵格斯-蓝色调</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>在某些系统上，自动不执行任何操作。</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>变更界面语言需要重新启动程序才能生效。</translation>
     </message>
@@ -3531,6 +3527,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>External Audio Player:</source>
       <translation>外接音频播放器：</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>根据系统主题自动切换。</translation>
     </message>
   </context>
   <context>

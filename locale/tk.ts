@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Terjime edýär şu dile:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Şu sözlügiň düzümine girýän faýlllar:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Häsiýetnama:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Işlet</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Sözlük komponentleri:</translation>
     </message>
   </context>
   <context>
@@ -2964,10 +2964,6 @@ programmany ýapmagyň ýerine ony gizlärdi.</translation>
       <translation>Lingoes-Gök</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Awto käbir ulgamlarda hiç zat edenok.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Diliň çalşmagyny işe girizmek üçin programmany täzeden işlet.</translation>
     </message>
@@ -3542,6 +3538,10 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>External Audio Player:</source>
       <translation>Daşky audio pleyer:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Sistemanyň temasyna görä otomatik geçýär.</translation>
     </message>
   </context>
   <context>

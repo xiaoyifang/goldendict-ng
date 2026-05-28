@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Verčia į:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Žodyną sudarantys failai:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Aprašas:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Įgalinti</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Žodyno komponentai:</translation>
     </message>
   </context>
   <context>
@@ -2965,10 +2965,6 @@ tiesiog paslepiama.</translation>
       <translation>Lingoes mėlynas</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Automatinis kai kuriose sistemose nieko nedaro.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Naująją kalbą programa naudos po to, kai ją atversite iš naujo.</translation>
     </message>
@@ -3540,6 +3536,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>External Audio Player:</source>
       <translation>Išorinis garso grotuvas:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Automatiškai persijungia pagal sistemos temą.</translation>
     </message>
   </context>
   <context>

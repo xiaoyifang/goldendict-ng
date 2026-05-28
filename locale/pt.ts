@@ -639,10 +639,6 @@ entre ortografia clássica e escolar em ciílico)</translation>
       <translation>Traduz para:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Arquivos que incluem este dicionário:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Descrição:</translation>
     </message>
@@ -669,6 +665,10 @@ entre ortografia clássica e escolar em ciílico)</translation>
     <message>
       <source>Enable</source>
       <translation>Habilitar</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Componentes do Dicionário:</translation>
     </message>
   </context>
   <context>
@@ -2965,10 +2965,6 @@ a aplicação.</translation>
       <translation>Lais-Cola</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>O Auto não faz nada em alguns sistemas.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Reinicie o programa para aplicar a mudança de idioma.</translation>
     </message>
@@ -3543,6 +3539,10 @@ no Stardict, Babilônia e dicionários GLS</translation>
     <message>
       <source>External Audio Player:</source>
       <translation>Leitor de Áudio Externo:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Muda automaticamente consoante o tema do sistema.</translation>
     </message>
   </context>
   <context>

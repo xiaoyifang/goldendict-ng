@@ -639,10 +639,6 @@ a školní ortografií v cyrilici)</translation>
       <translation>Překládá do:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Soubory obsažené v tomto slovníku:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Popis:</translation>
     </message>
@@ -669,6 +665,10 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <source>Enable</source>
       <translation>Umožnit</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Složky slovníku:</translation>
     </message>
   </context>
   <context>
@@ -2964,10 +2964,6 @@ ukončení aplikace.</translation>
       <translation>Lingoes modrá</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto na některých systémech nedělá nic.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Restartujte program aby se provedla změna jazyka.</translation>
     </message>
@@ -3541,6 +3537,10 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>External Audio Player:</source>
       <translation>Externí audio přehrávač:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Automaticky se přepne podle systémového tématu.</translation>
     </message>
   </context>
   <context>

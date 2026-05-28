@@ -624,10 +624,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation type="unfinished">Translates to:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation type="unfinished">Files comprising this dictionary:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation type="unfinished">Description:</translation>
     </message>
@@ -654,6 +650,10 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Enable</source>
       <translation type="unfinished">Enable</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation type="unfinished">Dictionary Components:</translation>
     </message>
   </context>
   <context>
@@ -2950,10 +2950,6 @@ the application.</translation>
       <translation type="unfinished">Lingoes-Blue</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation type="unfinished">Auto does nothing on some systems.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation type="unfinished">Restart the program to apply the language change.</translation>
     </message>
@@ -3528,6 +3524,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>External Audio Player:</source>
       <translation type="unfinished">External Audio Player:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation type="unfinished">Automatically switches based on system theme.</translation>
     </message>
   </context>
   <context>

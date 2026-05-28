@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Перекладає на:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Файли,що містяться в цьому словнику:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Опис:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Увімкнути</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Компоненти словника:</translation>
     </message>
   </context>
   <context>
@@ -2964,10 +2964,6 @@ the application.</source>
       <translation>Лінго-Блю</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto нічого не робить у деяких системах.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Перезапустіть програму, щоб змінити мову.</translation>
     </message>
@@ -3543,6 +3539,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>External Audio Player:</source>
       <translation>Зовнішній аудіоплеєр:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Автоматично перемикається залежно від теми системи.</translation>
     </message>
   </context>
   <context>

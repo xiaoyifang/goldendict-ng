@@ -639,10 +639,6 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>Tłumaczenia na:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Pliki składające się na ten słownik:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Opis:</translation>
     </message>
@@ -669,6 +665,10 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <source>Enable</source>
       <translation>Włączać</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Składniki słownika:</translation>
     </message>
   </context>
   <context>
@@ -2964,10 +2964,6 @@ prowadzi do jego ukrycia, a nie do zamknięcia aplikacji.</translation>
       <translation>Lingoes niebieski</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>W niektórych systemach funkcja Auto nie wykonuje żadnej operacji.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Uruchom ponownie program, aby zastosować zmianę języka.</translation>
     </message>
@@ -3541,6 +3537,10 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>External Audio Player:</source>
       <translation>Zewnętrzny odtwarzacz audio:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Automatycznie przełącza się w zależności od motywu systemu.</translation>
     </message>
   </context>
   <context>

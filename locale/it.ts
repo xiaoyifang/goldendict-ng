@@ -639,10 +639,6 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
       <translation>Traduzione in:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>File relativi a questo dizionario:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Descrizione:</translation>
     </message>
@@ -669,6 +665,10 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
     <message>
       <source>Enable</source>
       <translation>Abilitare</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Componenti del dizionario:</translation>
     </message>
   </context>
   <context>
@@ -2964,10 +2964,6 @@ ne causerà soltanto l&apos;iconizzazione nella barra di notifica.</translation>
       <translation>Lingoes-Blue</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Su alcuni sistemi la funzione Auto non fa nulla.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>La modifica della lingua avrà effetto al riavvio del programma.</translation>
     </message>
@@ -3541,6 +3537,10 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <source>External Audio Player:</source>
       <translation>Lettore audio esterno:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Cambia automaticamente in base al tema di sistema.</translation>
     </message>
   </context>
   <context>

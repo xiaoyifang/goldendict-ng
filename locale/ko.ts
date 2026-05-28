@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>번역언어:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>사전의 구성파일:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>설명:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>할 수 있게 하다</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>사전 구성 요소:</translation>
     </message>
   </context>
   <context>
@@ -2963,10 +2963,6 @@ the application.</source>
       <translation>링고-블루</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>일부 시스템에서는 자동이 아무 작업도 수행하지 않습니다.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>언어변경을 적용하려면 프로그램을 다시 시작하십시오.</translation>
     </message>
@@ -3539,6 +3535,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>External Audio Player:</source>
       <translation>외부 오디오 플레이어:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>시스템 테마에 따라 자동으로 전환됩니다.</translation>
     </message>
   </context>
   <context>
