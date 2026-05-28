@@ -639,10 +639,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Simiman:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Kay simi-pirwaqa chay archiwukunayoq:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Willay:</translation>
     </message>
@@ -669,6 +665,10 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Enable</source>
       <translation>Kawsarichisqa</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation type="unfinished">Dictionary Components:</translation>
     </message>
   </context>
   <context>
