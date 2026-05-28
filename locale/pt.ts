@@ -639,10 +639,6 @@ entre ortografia clássica e escolar em ciílico)</translation>
       <translation>Traduz para:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Arquivos que incluem este dicionário:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Descrição:</translation>
     </message>
@@ -669,6 +665,10 @@ entre ortografia clássica e escolar em ciílico)</translation>
     <message>
       <source>Enable</source>
       <translation>Habilitar</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Componentes do Dicionário:</translation>
     </message>
   </context>
   <context>
