@@ -623,10 +623,6 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Files comprising this dictionary:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Description:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -652,6 +648,10 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <source>Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dictionary Components:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
