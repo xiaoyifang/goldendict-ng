@@ -639,10 +639,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>ترجمه به:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>پرونده‌های دربرگیرنده این واژه‌نامه:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>شرح:</translation>
     </message>
@@ -669,6 +665,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>فعال کردن</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>اجزای فرهنگ لغت:</translation>
     </message>
   </context>
   <context>
