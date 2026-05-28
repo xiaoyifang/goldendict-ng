@@ -2965,10 +2965,6 @@ való kilépés helyett.</translation>
       <translation>Lingoes kék</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Az Auto nem csinál semmit egyes rendszereken.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Indítsa újra a programot a kiválasztott nyelv alkalmazásához.</translation>
     </message>
@@ -3544,8 +3540,8 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <translation>Külső hanglejátszó:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Kövesd a rendszer sötét mód beállítását.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Automatikusan vált a rendszer témájától.</translation>
     </message>
   </context>
   <context>
