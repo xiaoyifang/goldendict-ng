@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Traduce a:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Archivos que componen este diccionario:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Descripción:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Enable</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation type="unfinished">Dictionary Components:</translation>
     </message>
   </context>
   <context>
