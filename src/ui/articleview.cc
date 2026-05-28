@@ -2289,12 +2289,23 @@ void ArticleView::highlightFTSResults()
     return;
   }
 
+  // Detect if the search string contains characters without clear word boundaries
+  // Languages like Chinese, Japanese, Korean, Thai, etc. don't use spaces between words
+  // For these languages, we use "partially" mode for better phrase matching
   QString accuracy = "exactly";
 
-  if ( std::any_of( regString.begin(), regString.end(), []( QChar & a ) {
-         return a.script() == QChar::Script_Han;
-       } ) ) {
-    accuracy = "partially";
+  for ( const QChar & ch : regString ) {
+    auto script = ch.script();
+
+    // Check for scripts without clear word boundaries (no spaces between words)
+    // CJK scripts: Han (Chinese/Japanese/Korean characters), Hiragana, Katakana, Hangul
+    // Southeast Asian scripts: Thai, Lao, Khmer, Myanmar
+    if ( script == QChar::Script_Han || script == QChar::Script_Hiragana || script == QChar::Script_Katakana
+         || script == QChar::Script_Hangul || script == QChar::Script_Thai || script == QChar::Script_Lao
+         || script == QChar::Script_Khmer || script == QChar::Script_Myanmar ) {
+      accuracy = "partially";
+      break; // Early exit on first non-space-separated character found
+    }
   }
 
   QString script = QString::fromUtf8( R"JS(
