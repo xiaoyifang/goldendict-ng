@@ -384,11 +384,10 @@ struct Preferences
   QString addonStyle;
   QString displayStyle; // Article Display style (Which also affect interface style on windows)
 
-#if !defined( Q_OS_WIN )
   // QApplication style https://doc.qt.io/qt-6/qapplication.html#setStyle
   // In addition to Qt's styles, "Default" is added as default.
+  // On Windows, this is always empty as Windows uses its own styling system.
   QString interfaceStyle;
-#endif
 
   Preferences();
 };
