@@ -2964,10 +2964,6 @@ en lugar de cerrrarse.</translation>
       <translation>Lingoes-Azul</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>En algunos sistemas, el modo automático no hace nada.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Vuelva a ejecutar el programa para hacer efectivo el cambio de idioma.</translation>
     </message>
@@ -3543,8 +3539,8 @@ de diccionarios Stardict, Babylon y GLS</translation>
       <translation>Reproductor de audio externo:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Sigue la configuración de modo oscuro del sistema.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Cambia automáticamente según el tema del sistema.</translation>
     </message>
   </context>
   <context>
