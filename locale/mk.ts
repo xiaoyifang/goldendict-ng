@@ -624,10 +624,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Преведи на:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Датотеки кои го сочинуваат речникот:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Опис:</translation>
     </message>
@@ -654,6 +650,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Овозможи</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Компоненти на речникот:</translation>
     </message>
   </context>
   <context>
