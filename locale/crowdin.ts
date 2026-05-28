@@ -2937,10 +2937,6 @@ the application.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Auto does nothing on some systems.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Restart the program to apply the language change.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3505,7 +3501,7 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Follow system dark mode setting.</source>
+        <source>Automatically switches based on system theme.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

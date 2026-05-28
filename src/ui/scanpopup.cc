@@ -22,25 +22,9 @@ using std::pair;
   #define MouseOver MacMouseOver
 #endif
 
-static const Qt::WindowFlags defaultUnpinnedWindowFlags =
+static const Qt::WindowFlags defaultUnpinnedWindowFlags = Qt::Tool | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint;
 
-#if defined( Q_OS_WIN )
-  Qt::Tool | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint
-#else
-  Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint
-#endif
-  ;
-
-static const Qt::WindowFlags pinnedWindowFlags =
-#if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
-  /// With the Qt::Dialog flag, popup is always on top of the main window
-  /// on Linux/X11 with Qt 4, Qt 5 since version 5.12.1 (QTBUG-74309).
-  /// Qt::Window allows to use the popup and the main window independently.
-  Qt::Window
-#else
-  Qt::Dialog
-#endif
-  ;
+static const Qt::WindowFlags pinnedWindowFlags = Qt::Window;
 
 ScanPopup::ScanPopup( QWidget * parent,
                       Config::Class & cfg_,
@@ -61,7 +45,6 @@ ScanPopup::ScanPopup( QWidget * parent,
   articleNetMgr( articleNetMgr ),
   hideTimer( this )
 {
-  // Init UI
   QWidget * toolBarWidget = new QWidget( this );
   ui.setupUi( toolBarWidget );
 
@@ -72,19 +55,20 @@ ScanPopup::ScanPopup( QWidget * parent,
   groupList    = new GroupComboBox( this );
   translateBox = new TranslateBox( this );
 
+  groupList->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::Expanding );
+  translateBox->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
+
   QToolBar * searchBar = new QToolBar( "Search bar", this );
   searchBar->setObjectName( "popupSearchBar" );
   groupListAction = searchBar->addWidget( groupList );
   searchBar->addWidget( translateBox );
   searchBar->toggleViewAction()->setEnabled( false );
 
-  foundBar = new QToolBar( "Navgiation bar", this );
-  foundBar->setObjectName( "popupNavgiationBar" );
-  // to match the articleView's vertial scrolling
+  foundBar = new QToolBar( "Navigation bar", this );
+  foundBar->setObjectName( "popupNavigationBar" );
   foundBar->setAllowedAreas( Qt::LeftToolBarArea | Qt::RightToolBarArea );
 
-  // UI style
-  searchBar->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::Maximum );
+  searchBar->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::Expanding );
   searchBar->setMovable( false );
   toolBar->setFloatable( false );
   dictionaryBar.setFloatable( false );
@@ -93,7 +77,6 @@ ScanPopup::ScanPopup( QWidget * parent,
   searchBar->setContentsMargins( 0, 0, 2, 0 );
   toolBar->setContentsMargins( 0, 0, 0, 0 );
 
-  // Add Bars
   addToolBar( Qt::TopToolBarArea, searchBar );
   addToolBar( Qt::TopToolBarArea, toolBar );
   addToolBarBreak();
@@ -101,7 +84,6 @@ ScanPopup::ScanPopup( QWidget * parent,
   addToolBar( Qt::RightToolBarArea, foundBar );
 
   if ( layoutDirection() == Qt::RightToLeft ) {
-    // Adjust button icons for Right-To-Left layout
     ui.goBackButton->setIcon( QIcon( ":/icons/next.svg" ) );
     ui.goForwardButton->setIcon( QIcon( ":/icons/previous.svg" ) );
   }
@@ -132,12 +114,13 @@ ScanPopup::ScanPopup( QWidget * parent,
   tabWidget->tabBar()->setTabButton( 0, QTabBar::RightSide, nullptr );
   tabWidget->tabBar()->setTabButton( 0, QTabBar::LeftSide, nullptr );
 
+  setCentralWidget( tabWidget );
+
   resize( 247, 400 );
 
-  // Set maximum width based on screen size
   QScreen * screen = QGuiApplication::primaryScreen();
   if ( screen ) {
-    int maxWidth = screen->availableGeometry().width() * 0.8; // 80% of screen width
+    int maxWidth = screen->availableGeometry().width() * 0.8;
     setMaximumWidth( maxWidth );
   }
 
@@ -167,8 +150,6 @@ ScanPopup::ScanPopup( QWidget * parent,
   wordListDefaultFont      = translateBox->completerWidget()->font();
   translateLineDefaultFont = translateBox->font();
   groupListDefaultFont     = groupList->font();
-
-  setCentralWidget( tabWidget );
 
   translateBox->translateLine()->installEventFilter( this );
   definition->installEventFilter( this );
@@ -362,7 +343,6 @@ ScanPopup::ScanPopup( QWidget * parent,
     connect( &selectionDelayTimer, &QTimer::timeout, this, &ScanPopup::translateWordFromSelection );
   }
 #endif
-
   applyZoomFactor();
 }
 
@@ -1260,6 +1240,27 @@ void ScanPopup::setDictionaryIconSize()
   else if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Large ) {
     dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Large );
   }
+
+  QSize iconSize = dictionaryBar.iconSize();
+
+  ui.goBackButton->setIconSize( iconSize );
+  ui.goForwardButton->setIconSize( iconSize );
+  ui.pronounceButton->setIconSize( iconSize );
+  ui.sendWordButton->setIconSize( iconSize );
+  ui.saveArticleButton->setIconSize( iconSize );
+  ui.sendWordToFavoritesButton->setIconSize( iconSize );
+  ui.onTopButton->setIconSize( iconSize );
+  ui.pinButton->setIconSize( iconSize );
+
+  int buttonSize = iconSize.width() + 8;
+  ui.goBackButton->setFixedSize( buttonSize, buttonSize );
+  ui.goForwardButton->setFixedSize( buttonSize, buttonSize );
+  ui.pronounceButton->setFixedSize( buttonSize, buttonSize );
+  ui.sendWordButton->setFixedSize( buttonSize, buttonSize );
+  ui.saveArticleButton->setFixedSize( buttonSize, buttonSize );
+  ui.sendWordToFavoritesButton->setFixedSize( buttonSize, buttonSize );
+  ui.onTopButton->setFixedSize( buttonSize, buttonSize );
+  ui.pinButton->setFixedSize( buttonSize, buttonSize );
 }
 
 

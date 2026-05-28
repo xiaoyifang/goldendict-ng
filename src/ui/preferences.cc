@@ -189,7 +189,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.escKeyHidesMainWindow->setChecked( p.escKeyHidesMainWindow );
 
   ui.darkMode->addItem( tr( "Automatic" ), QVariant::fromValue( Config::Dark::Auto ) );
-  ui.darkMode->setItemData( 0, tr( "Follow system dark mode setting." ), Qt::ToolTipRole );
+  ui.darkMode->setItemData( 0, tr( "Automatically switches based on system theme." ), Qt::ToolTipRole );
   ui.darkMode->addItem( tr( "Enable" ), QVariant::fromValue( Config::Dark::On ) );
   ui.darkMode->addItem( tr( "Disable" ), QVariant::fromValue( Config::Dark::Off ) );
 
@@ -198,7 +198,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   }
 
   ui.darkReaderMode->addItem( tr( "Automatic" ), QVariant::fromValue( Config::Dark::Auto ) );
-  ui.darkReaderMode->setItemData( 0, tr( "Auto does nothing on some systems." ), Qt::ToolTipRole );
+  ui.darkReaderMode->setItemData( 0, tr( "Automatically switches based on system theme." ), Qt::ToolTipRole );
   ui.darkReaderMode->addItem( tr( "Enable" ), QVariant::fromValue( Config::Dark::On ) );
   ui.darkReaderMode->addItem( tr( "Disable" ), QVariant::fromValue( Config::Dark::Off ) );
 

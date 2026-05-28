@@ -6,7 +6,6 @@
 #include "article_netmgr.hh"
 #include "ui/articleview.hh"
 #include "wordfinder.hh"
-#include "keyboardstate.hh"
 #include "config.hh"
 #include "ui_scanpopup_toolbar.h"
 #include <QClipboard>
@@ -25,7 +24,7 @@
 
 /// This is a popup dialog to show translations when clipboard scanning mode
 /// is enabled.
-class ScanPopup: public QMainWindow, KeyboardState
+class ScanPopup: public QMainWindow
 {
   Q_OBJECT
 
