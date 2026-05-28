@@ -52,42 +52,42 @@ QWidget#ScanPopupContainer QStatusBar {
   border-top: 1px solid palette(mid);
 }
 
-QToolBar#popupToolBar {
+QWidget#ScanPopupContainer QToolBar#popupToolBar {
   qproperty-iconSize: 20px;
   qproperty-toolButtonStyle: ToolButtonIconOnly;
   padding: 2px;
 }
-QToolButton#goBackButton,
-QToolButton#goForwardButton,
-QToolButton#pronounceButton,
-QToolButton#sendWordButton,
-QToolButton#saveArticleButton,
-QToolButton#sendWordToFavoritesButton,
-QToolButton#onTopButton,
-QToolButton#pinButton {
+QWidget#ScanPopupContainer QToolButton#goBackButton,
+QWidget#ScanPopupContainer QToolButton#goForwardButton,
+QWidget#ScanPopupContainer QToolButton#pronounceButton,
+QWidget#ScanPopupContainer QToolButton#sendWordButton,
+QWidget#ScanPopupContainer QToolButton#saveArticleButton,
+QWidget#ScanPopupContainer QToolButton#sendWordToFavoritesButton,
+QWidget#ScanPopupContainer QToolButton#onTopButton,
+QWidget#ScanPopupContainer QToolButton#pinButton {
   qproperty-iconSize: 20px;
   min-width: 24px;
   min-height: 24px;
   padding: 2px;
   border-radius: 4px;
 }
-QToolButton#goBackButton:hover,
-QToolButton#goForwardButton:hover,
-QToolButton#pronounceButton:hover,
-QToolButton#sendWordButton:hover,
-QToolButton#saveArticleButton:hover,
-QToolButton#sendWordToFavoritesButton:hover,
-QToolButton#onTopButton:hover,
-QToolButton#pinButton:hover {
+QWidget#ScanPopupContainer QToolButton#goBackButton:hover,
+QWidget#ScanPopupContainer QToolButton#goForwardButton:hover,
+QWidget#ScanPopupContainer QToolButton#pronounceButton:hover,
+QWidget#ScanPopupContainer QToolButton#sendWordButton:hover,
+QWidget#ScanPopupContainer QToolButton#saveArticleButton:hover,
+QWidget#ScanPopupContainer QToolButton#sendWordToFavoritesButton:hover,
+QWidget#ScanPopupContainer QToolButton#onTopButton:hover,
+QWidget#ScanPopupContainer QToolButton#pinButton:hover {
   background-color: palette(light);
 }
-QToolButton#goBackButton:pressed,
-QToolButton#goForwardButton:pressed,
-QToolButton#pronounceButton:pressed,
-QToolButton#sendWordButton:pressed,
-QToolButton#saveArticleButton:pressed,
-QToolButton#sendWordToFavoritesButton:pressed,
-QToolButton#onTopButton:pressed,
-QToolButton#pinButton:pressed {
+QWidget#ScanPopupContainer QToolButton#goBackButton:pressed,
+QWidget#ScanPopupContainer QToolButton#goForwardButton:pressed,
+QWidget#ScanPopupContainer QToolButton#pronounceButton:pressed,
+QWidget#ScanPopupContainer QToolButton#sendWordButton:pressed,
+QWidget#ScanPopupContainer QToolButton#saveArticleButton:pressed,
+QWidget#ScanPopupContainer QToolButton#sendWordToFavoritesButton:pressed,
+QWidget#ScanPopupContainer QToolButton#onTopButton:pressed,
+QWidget#ScanPopupContainer QToolButton#pinButton:pressed {
   background-color: palette(mid);
 }
