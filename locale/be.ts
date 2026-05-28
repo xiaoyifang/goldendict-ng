@@ -624,10 +624,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Мэтавая мова:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Файлы, з якіх складаецца слоўнік:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Апісанне:</translation>
     </message>
@@ -654,6 +650,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Уключыць</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Складнікі слоўніка:</translation>
     </message>
   </context>
   <context>
