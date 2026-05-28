@@ -2965,10 +2965,6 @@ sovellus.</translation>
       <translation>Lingo-sininen</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto ei tee mitään joissain järjestelmissä.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Ohjelma pitää käynnistää uudelleen jotta kieli voidaan vaihtaa.</translation>
     </message>
@@ -3545,8 +3541,8 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Ulkoinen äänisoitin:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Seuraa järjestelmän pimeän tilan asetusta.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Vaihtaa automaattisesti järjestelmän teeman mukaan.</translation>
     </message>
   </context>
   <context>
