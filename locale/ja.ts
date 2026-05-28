@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>翻訳先:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>この辞書を含むファイル:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>説明:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>有効にする</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>辞書の構成要素:</translation>
     </message>
   </context>
   <context>
