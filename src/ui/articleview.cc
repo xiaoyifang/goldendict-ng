@@ -2297,10 +2297,17 @@ void ArticleView::highlightFTSResults()
     accuracy = "partially";
   }
 
-  QString script = QString(
-                     "var context = document.querySelector(\"body\");\n"
-                     "var instance = new Mark(context);\n instance.unmark();\n"
-                     "instance.mark(\"%1\",{\"accuracy\": \"%2\"});" )
+  QString script = QString::fromUtf8( R"JS(
+    var context = document.querySelector("body");
+    var instance = new Mark(context);
+    instance.unmark();
+    instance.mark("%1", {
+      "accuracy": "%2",
+      "separateWordSearch": false,
+      "acrossElements": true,
+      "caseSensitive": false
+    });
+  )JS" )
                      .arg( regString, accuracy );
 
   webview->page()->runJavaScript( script );
