@@ -639,10 +639,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation>te fanva</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>datnyvei fi pa vlacku</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>ve skicu</translation>
     </message>
@@ -669,6 +665,10 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Enable</source>
       <translation>Enable</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>lo vlacku se nilce:</translation>
     </message>
   </context>
   <context>
