@@ -14,10 +14,32 @@ void MacUrlHandler::processURL( const QUrl & url )
       word = url.path().remove( 0, 1 );
     }
 
+    // Remove trailing slash if present
+    if ( word.endsWith( "/" ) ) {
+      word.chop( 1 );
+    }
+
     word = Utils::Url::decodeUrlEncodedWord( word );
 
     if ( !word.isEmpty() ) {
-      emit wordReceived( QStringLiteral( "action:translate|word:" ) + word );
+      // Parse query parameters to determine target window
+      QString query   = url.query();
+      QString message = QStringLiteral( "action:translate" );
+
+      if ( !query.isEmpty() ) {
+        QUrlQuery urlQuery( query );
+        QString targetParam = urlQuery.queryItemValue( "target" );
+
+        if ( targetParam == "popup" ) {
+          message += "|window:popup";
+        }
+        else if ( targetParam == "main" ) {
+          message += "|window:main";
+        }
+      }
+
+      message += "|word:" + word;
+      emit wordReceived( message );
     }
   }
 }
