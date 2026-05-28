@@ -2945,10 +2945,6 @@ the application.</source>
       <translation>Lingoes-Blue</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto нічога не робіць у некаторых сістэмах.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Каб ужыць новую мову, перазапусціце праграму.</translation>
     </message>
@@ -3519,8 +3515,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation type="unfinished">External Audio Player:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Прытрымлівацца налад сістэмнага цёмнага рэжыму.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Аўтаматычна пераключаецца ў залежнасці ад сістэмнай тэмы.</translation>
     </message>
   </context>
   <context>
