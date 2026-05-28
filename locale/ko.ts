@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>번역언어:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>사전의 구성파일:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>설명:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>할 수 있게 하다</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>사전 구성 요소:</translation>
     </message>
   </context>
   <context>
