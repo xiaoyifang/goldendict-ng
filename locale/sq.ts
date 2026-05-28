@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Përkthen në:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Skedat që përbëjnë fjalorin:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Përshkrimi:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Aktivizo</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Komponentët e fjalorit:</translation>
     </message>
   </context>
   <context>
