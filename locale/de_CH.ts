@@ -2959,10 +2959,6 @@ the application.</source>
       <translation>Lingoes-Blau</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto does nothing on some systems.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Starten Sie das Programm neu um die neue Sprache zu aktivieren.</translation>
     </message>
@@ -3533,8 +3529,8 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
       <translation type="unfinished">External Audio Player:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Dem System-Dunkelmodus folgen</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation type="unfinished">Automatically switches based on system theme.</translation>
     </message>
   </context>
   <context>
