@@ -1231,15 +1231,38 @@ void ScanPopup::goForwardButton_clicked() const
 
 void ScanPopup::setDictionaryIconSize()
 {
+  QSize iconSize( 24, 24 );
   if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Small ) {
     dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Small );
+    iconSize = QSize( 20, 20 );
   }
   else if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Normal ) {
     dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Normal );
+    iconSize = QSize( 24, 24 );
   }
   else if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Large ) {
     dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Large );
+    iconSize = QSize( 28, 28 );
   }
+
+  ui.goBackButton->setIconSize( iconSize );
+  ui.goForwardButton->setIconSize( iconSize );
+  ui.pronounceButton->setIconSize( iconSize );
+  ui.sendWordButton->setIconSize( iconSize );
+  ui.saveArticleButton->setIconSize( iconSize );
+  ui.sendWordToFavoritesButton->setIconSize( iconSize );
+  ui.onTopButton->setIconSize( iconSize );
+  ui.pinButton->setIconSize( iconSize );
+
+  int buttonSize = iconSize.width() + 8;
+  ui.goBackButton->setFixedSize( buttonSize, buttonSize );
+  ui.goForwardButton->setFixedSize( buttonSize, buttonSize );
+  ui.pronounceButton->setFixedSize( buttonSize, buttonSize );
+  ui.sendWordButton->setFixedSize( buttonSize, buttonSize );
+  ui.saveArticleButton->setFixedSize( buttonSize, buttonSize );
+  ui.sendWordToFavoritesButton->setFixedSize( buttonSize, buttonSize );
+  ui.onTopButton->setFixedSize( buttonSize, buttonSize );
+  ui.pinButton->setFixedSize( buttonSize, buttonSize );
 }
 
 
