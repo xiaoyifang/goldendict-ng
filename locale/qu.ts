@@ -2963,10 +2963,6 @@ cerrar la aplicación.</translation>
       <translation>Lingoes-Azul</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Autoqa wakin sistemakunapiqa manam imatapas ruwanchu.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Musuq simita jap&apos;ikunanpaq hukmanta programata qallarichiy.</translation>
     </message>
@@ -3539,8 +3535,8 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
       <translation type="unfinished">External Audio Player:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation type="unfinished">Follow system dark mode setting.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation type="unfinished">Automatically switches based on system theme.</translation>
     </message>
   </context>
   <context>
