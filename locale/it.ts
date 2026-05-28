@@ -639,10 +639,6 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
       <translation>Traduzione in:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>File relativi a questo dizionario:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Descrizione:</translation>
     </message>
@@ -669,6 +665,10 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
     <message>
       <source>Enable</source>
       <translation>Abilitare</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Componenti del dizionario:</translation>
     </message>
   </context>
   <context>
