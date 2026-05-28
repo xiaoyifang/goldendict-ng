@@ -2965,10 +2965,6 @@ the application.</source>
       <translation>Lingoes-Blauw</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto doet niets op sommige systemen.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Start het programma opnieuw om de toepassingstaal te wijzigen.</translation>
     </message>
@@ -3542,8 +3538,8 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Externe audioplayer:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Volg de donkere modus van het systeem.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Schakelt automatisch op basis van het systeemthema.</translation>
     </message>
   </context>
   <context>
