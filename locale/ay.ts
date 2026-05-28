@@ -627,10 +627,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Jaqukipaña akar:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Apkata wayaqanaka, aka aru-pirwana:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Qillqatax kunjamasa:</translation>
     </message>
@@ -657,6 +653,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Pirmitiña</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Arupirwan jisk'anaka:</translation>
     </message>
   </context>
   <context>
