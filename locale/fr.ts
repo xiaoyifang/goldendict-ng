@@ -2964,10 +2964,6 @@ the application.</source>
       <translation>Lingoes-Bleu</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto ne fait rien sur certains systèmes.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Redémarrez le programme pour appliquer le changement de langue.</translation>
     </message>
@@ -3542,8 +3538,8 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <translation>Lecteur audio externe :</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Suivez le réglage du mode sombre du système.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Ça change automatiquement selon le thème du système.</translation>
     </message>
   </context>
   <context>
