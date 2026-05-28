@@ -2965,10 +2965,6 @@ a aplicação.</translation>
       <translation>Lais-Cola</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>O Auto não faz nada em alguns sistemas.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Reinicie o programa para aplicar a mudança de idioma.</translation>
     </message>
@@ -3545,8 +3541,8 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <translation>Leitor de Áudio Externo:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Siga a definição do modo escuro do sistema.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Muda automaticamente consoante o tema do sistema.</translation>
     </message>
   </context>
   <context>
