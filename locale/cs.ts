@@ -2964,10 +2964,6 @@ ukončení aplikace.</translation>
       <translation>Lingoes modrá</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto na některých systémech nedělá nic.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Restartujte program aby se provedla změna jazyka.</translation>
     </message>
@@ -3543,8 +3539,8 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Externí audio přehrávač:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Postupujte podle systému nastavení tmavého režimu.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Automaticky se přepne podle systémového tématu.</translation>
     </message>
   </context>
   <context>
