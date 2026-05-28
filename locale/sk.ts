@@ -2961,10 +2961,6 @@ skryje program namiesto jeho ukončenia.</translation>
       <translation>Lingoes-Blue</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto na niektorých systémoch nerobí nič.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Reštartovať program pre aplikovanie zmeny jazyka.</translation>
     </message>
@@ -3536,8 +3532,8 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
       <translation>Externý prehrávač zvuku:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Dodržujte systémové nastavenie tmavého režimu.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Automaticky prepína podľa systémovej témy.</translation>
     </message>
   </context>
   <context>
