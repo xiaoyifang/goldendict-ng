@@ -51,6 +51,8 @@ ScanPopup::ScanPopup( QWidget * parent,
   QToolBar * toolBar = new QToolBar( "Tool bar", this );
   toolBar->setObjectName( "popupToolBar" );
   toolBar->addWidget( toolBarWidget );
+  toolBar->setIconSize( QSize( 20, 20 ) );
+  toolBar->setToolButtonStyle( Qt::ToolButtonIconOnly );
 
   groupList    = new GroupComboBox( this );
   translateBox = new TranslateBox( this );
@@ -72,7 +74,34 @@ ScanPopup::ScanPopup( QWidget * parent,
   foundBar->setFloatable( false );
 
   searchBar->setContentsMargins( 0, 0, 2, 0 );
-  toolBar->setContentsMargins( 0, 0, 0, 0 );
+  toolBar->setContentsMargins( 4, 2, 4, 2 );
+
+  ui.goBackButton->setIconSize( QSize( 20, 20 ) );
+  ui.goForwardButton->setIconSize( QSize( 20, 20 ) );
+  ui.pronounceButton->setIconSize( QSize( 20, 20 ) );
+  ui.sendWordButton->setIconSize( QSize( 20, 20 ) );
+  ui.saveArticleButton->setIconSize( QSize( 20, 20 ) );
+  ui.sendWordToFavoritesButton->setIconSize( QSize( 20, 20 ) );
+  ui.onTopButton->setIconSize( QSize( 20, 20 ) );
+  ui.pinButton->setIconSize( QSize( 20, 20 ) );
+
+  ui.goBackButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+  ui.goForwardButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+  ui.pronounceButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+  ui.sendWordButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+  ui.saveArticleButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+  ui.sendWordToFavoritesButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+  ui.onTopButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+  ui.pinButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+
+  ui.goBackButton->setFixedSize( 28, 28 );
+  ui.goForwardButton->setFixedSize( 28, 28 );
+  ui.pronounceButton->setFixedSize( 28, 28 );
+  ui.sendWordButton->setFixedSize( 28, 28 );
+  ui.saveArticleButton->setFixedSize( 28, 28 );
+  ui.sendWordToFavoritesButton->setFixedSize( 28, 28 );
+  ui.onTopButton->setFixedSize( 28, 28 );
+  ui.pinButton->setFixedSize( 28, 28 );
 
   addToolBar( Qt::TopToolBarArea, searchBar );
   addToolBar( Qt::TopToolBarArea, toolBar );
