@@ -201,8 +201,7 @@ private:
   void updateAppearances( const QString & addonStyle,
                           const QString & displayStyle,
                           Config::Dark darkMode,
-                          const QString & interfaceStyle = QString()
-                        );
+                          const QString & interfaceStyle = QString() );
 
   /// Creates, destroys or otherwise updates tray icon, according to the
   /// current configuration and situation.

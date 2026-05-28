@@ -792,8 +792,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   updateAppearances( cfg.preferences.addonStyle,
                      cfg.preferences.displayStyle,
                      cfg.preferences.darkMode,
-                     cfg.preferences.interfaceStyle
-  );
+                     cfg.preferences.interfaceStyle );
 
   // Create and show the initial welcome tab
   history.enableAdd( false );
@@ -1523,8 +1522,7 @@ void MainWindow::refreshAppearances()
   updateAppearances( cfg.preferences.addonStyle,
                      cfg.preferences.displayStyle,
                      cfg.preferences.darkMode,
-                     cfg.preferences.interfaceStyle
-  );
+                     cfg.preferences.interfaceStyle );
 }
 
 void MainWindow::trayIconUpdateOrInit()
@@ -2374,11 +2372,7 @@ void MainWindow::editPreferences()
          || cfg.preferences.interfaceStyle != p.interfaceStyle
 #endif
     ) {
-      updateAppearances( p.addonStyle,
-                         p.displayStyle,
-                         p.darkMode,
-                         p.interfaceStyle
-      );
+      updateAppearances( p.addonStyle, p.displayStyle, p.darkMode, p.interfaceStyle );
     }
 
     if ( cfg.preferences.favoritesStoreInterval != p.favoritesStoreInterval ) {
