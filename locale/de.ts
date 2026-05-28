@@ -639,10 +639,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Übersetzt nach:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Wörterbuch zusammengesetzt aus diesen Dateien:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Beschreibung:</translation>
     </message>
@@ -669,6 +665,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Aktivieren</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Wörterbuchkomponenten:</translation>
     </message>
   </context>
   <context>
