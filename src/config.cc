@@ -153,11 +153,8 @@ Preferences::Preferences():
   inputPhraseLengthLimit( 1000 ),
   maxDictionaryRefsInContextMenu( 20 ),
   synonymSearchEnabled( true ),
-  stripClipboard( false )
-#if !defined( Q_OS_WIN )
-  ,
+  stripClipboard( false ),
   interfaceStyle( "Default" )
-#endif
 {
 }
 
@@ -784,9 +781,7 @@ Class load()
       c.preferences.enableInterfaceFont = enableInterfaceFont.toElement().text() == "1";
     }
 
-#if !defined( Q_OS_WIN )
     c.preferences.interfaceStyle = preferences.namedItem( "interfaceStyle" ).toElement().text();
-#endif
     c.preferences.newTabsOpenAfterCurrentOne =
       ( preferences.namedItem( "newTabsOpenAfterCurrentOne" ).toElement().text() == "1" );
     c.preferences.newTabsOpenInBackground =
@@ -1704,11 +1699,9 @@ void save( const Class & c )
     opt.appendChild( dd.createTextNode( c.preferences.displayStyle ) );
     preferences.appendChild( opt );
 
-#if !defined( Q_OS_WIN )
     opt = dd.createElement( "interfaceStyle" );
     opt.appendChild( dd.createTextNode( c.preferences.interfaceStyle ) );
     preferences.appendChild( opt );
-#endif
 
     opt = dd.createElement( "newTabsOpenAfterCurrentOne" );
     opt.appendChild( dd.createTextNode( c.preferences.newTabsOpenAfterCurrentOne ? "1" : "0" ) );

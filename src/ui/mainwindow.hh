@@ -200,12 +200,8 @@ private:
   /// Applies Qt stylesheets, use Windows dark palette etc....
   void updateAppearances( const QString & addonStyle,
                           const QString & displayStyle,
-                          Config::Dark darkMode
-#if !defined( Q_OS_WIN )
-                          ,
-                          const QString & interfaceStyle
-#endif
-  );
+                          Config::Dark darkMode,
+                          const QString & interfaceStyle = QString() );
 
   /// Creates, destroys or otherwise updates tray icon, according to the
   /// current configuration and situation.

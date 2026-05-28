@@ -792,12 +792,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   updateAppearances( cfg.preferences.addonStyle,
                      cfg.preferences.displayStyle,
-                     cfg.preferences.darkMode
-#if !defined( Q_OS_WIN )
-                     ,
-                     cfg.preferences.interfaceStyle
-#endif
-  );
+                     cfg.preferences.darkMode,
+                     cfg.preferences.interfaceStyle );
 
   // Create and show the initial welcome tab
   history.enableAdd( false );
@@ -1364,14 +1360,10 @@ QPrinter & MainWindow::getPrinter()
 
 void MainWindow::updateAppearances( const QString & addonStyle,
                                     const QString & displayStyle,
-                                    Config::Dark darkMode
-#if !defined( Q_OS_WIN )
-                                    ,
-                                    const QString & interfaceStyle
-#endif
-)
+                                    Config::Dark darkMode,
+                                    const QString & interfaceStyle )
 {
-#if defined( Q_OS_WIN )
+#ifdef Q_OS_WIN
   // https://forum.qt.io/topic/101391/windows-10-dark-theme
 
   auto isDarkModeEnabled = [ darkMode ]() -> bool {
@@ -1450,12 +1442,14 @@ void MainWindow::updateAppearances( const QString & addonStyle,
 #endif
 
 #if !defined( Q_OS_WIN )
-  if ( interfaceStyle == "Default" ) {
-    QApplication::setStyle( QStyleFactory::create( defaultInterfaceStyle ) );
-  }
-  else {
-    if ( QStyleFactory::keys().contains( interfaceStyle ) ) {
-      QApplication::setStyle( QStyleFactory::create( interfaceStyle ) );
+  if ( !interfaceStyle.isEmpty() ) {
+    if ( interfaceStyle == "Default" ) {
+      QApplication::setStyle( QStyleFactory::create( defaultInterfaceStyle ) );
+    }
+    else {
+      if ( QStyleFactory::keys().contains( interfaceStyle ) ) {
+        QApplication::setStyle( QStyleFactory::create( interfaceStyle ) );
+      }
     }
   }
 #endif
@@ -1528,12 +1522,8 @@ void MainWindow::refreshAppearances()
 {
   updateAppearances( cfg.preferences.addonStyle,
                      cfg.preferences.displayStyle,
-                     cfg.preferences.darkMode
-#if !defined( Q_OS_WIN )
-                     ,
-                     cfg.preferences.interfaceStyle
-#endif
-  );
+                     cfg.preferences.darkMode,
+                     cfg.preferences.interfaceStyle );
 }
 
 void MainWindow::trayIconUpdateOrInit()
@@ -2383,14 +2373,7 @@ void MainWindow::editPreferences()
          || cfg.preferences.interfaceStyle != p.interfaceStyle
 #endif
     ) {
-      updateAppearances( p.addonStyle,
-                         p.displayStyle,
-                         p.darkMode
-#if !defined( Q_OS_WIN )
-                         ,
-                         p.interfaceStyle
-#endif
-      );
+      updateAppearances( p.addonStyle, p.displayStyle, p.darkMode, p.interfaceStyle );
     }
 
     if ( cfg.preferences.favoritesStoreInterval != p.favoritesStoreInterval ) {
