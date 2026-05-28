@@ -2307,7 +2307,8 @@ void ArticleView::highlightFTSResults()
       "acrossElements": true,
       "caseSensitive": false
     });
-  )JS" ).arg( regString, accuracy );
+  )JS" )
+                     .arg( regString, accuracy );
 
   webview->page()->runJavaScript( script );
   auto parts = regString.split( " ", Qt::SkipEmptyParts );
