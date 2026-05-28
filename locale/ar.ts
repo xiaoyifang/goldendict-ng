@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>ترجم إلى:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>الملفات التي تتضمن القاموس:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>الوصف:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Enable</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>مكونات القاموس:</translation>
     </message>
   </context>
   <context>
