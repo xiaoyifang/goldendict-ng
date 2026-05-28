@@ -214,21 +214,49 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
 
   const QStringList posArgs = qcmd.positionalArguments();
   if ( !posArgs.empty() ) {
-    result->word = posArgs.at( 0 );
+    QString originalArg = posArgs.at( 0 );
 
 #if defined( Q_OS_LINUX ) || defined( Q_OS_WIN )
     // handle url scheme like "goldendict://" or "dict://" on windows/linux
-    auto schemePos = result->word.indexOf( "://" );
+    auto schemePos = originalArg.indexOf( "://" );
     if ( schemePos != -1 ) {
-      result->word.remove( 0, schemePos + 3 );
+      // Parse the full URL to extract query parameters
+      QUrl url( originalArg );
+      QString query = url.query();
+      
+      // Extract word from URL (remove scheme and parse path/host)
+      result->word = url.authority();
+      if ( result->word.isEmpty() && !url.path().isEmpty() ) {
+        result->word = url.path().remove( 0, 1 );
+      }
+      
       // In microsoft Words, the / will be automatically appended
       if ( result->word.endsWith( "/" ) ) {
         result->word.chop( 1 );
       }
+      
+      // Parse query parameters: target=popup or target=main
+      if ( !query.isEmpty() ) {
+        QUrlQuery urlQuery( query );
+        QString targetParam = urlQuery.queryItemValue( "target" );
+        
+        if ( targetParam == "popup" ) {
+          result->window = "popup";
+        }
+        else if ( targetParam == "main" ) {
+          result->window = "main";
+        }
+      }
+    }
+    else {
+      // Not a URL scheme, treat as plain word
+      result->word = originalArg;
     }
 
     // Handle cases where we get encoded URL
     result->word = Utils::Url::decodeUrlEncodedWord( result->word );
+#else
+    result->word = originalArg;
 #endif
   }
 }
@@ -554,7 +582,8 @@ int main( int argc, char ** argv )
       m.showTranslation( gdcl.wordToTranslate(), "popup" );
     }
     else {
-      m.wordReceived( gdcl.wordToTranslate() );
+      // Default to main window when target parameter is not specified or set to "main"
+      m.showTranslation( gdcl.wordToTranslate(), "main" );
     }
   }
 
