@@ -2964,10 +2964,6 @@ prowadzi do jego ukrycia, a nie do zamknięcia aplikacji.</translation>
       <translation>Lingoes niebieski</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>W niektórych systemach funkcja Auto nie wykonuje żadnej operacji.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Uruchom ponownie program, aby zastosować zmianę języka.</translation>
     </message>
@@ -3543,8 +3539,8 @@ ze słowników Stardict, Babylon i GLS</translation>
       <translation>Zewnętrzny odtwarzacz audio:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Stosuj się do ustawień systemowego trybu ciemnego.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Automatycznie przełącza się w zależności od motywu systemu.</translation>
     </message>
   </context>
   <context>
