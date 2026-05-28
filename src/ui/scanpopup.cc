@@ -55,6 +55,9 @@ ScanPopup::ScanPopup( QWidget * parent,
   groupList    = new GroupComboBox( this );
   translateBox = new TranslateBox( this );
 
+  groupList->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::Expanding );
+  translateBox->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
+
   QToolBar * searchBar = new QToolBar( "Search bar", this );
   searchBar->setObjectName( "popupSearchBar" );
   groupListAction = searchBar->addWidget( groupList );
@@ -65,7 +68,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   foundBar->setObjectName( "popupNavigationBar" );
   foundBar->setAllowedAreas( Qt::LeftToolBarArea | Qt::RightToolBarArea );
 
-  searchBar->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::Maximum );
+  searchBar->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::Expanding );
   searchBar->setMovable( false );
   toolBar->setFloatable( false );
   dictionaryBar.setFloatable( false );
