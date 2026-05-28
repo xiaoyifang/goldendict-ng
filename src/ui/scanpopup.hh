@@ -34,8 +34,6 @@ public:
 
   ~ScanPopup();
 
-  void applyToolbarStyle();
-
   // update dictionary bar, group data and possibly other data
   void refresh();
 

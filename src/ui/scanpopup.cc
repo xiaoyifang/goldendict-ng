@@ -80,8 +80,6 @@ ScanPopup::ScanPopup( QWidget * parent,
   addToolBar( Qt::TopToolBarArea, &dictionaryBar );
   addToolBar( Qt::RightToolBarArea, foundBar );
 
-  applyToolbarStyle();
-
   if ( layoutDirection() == Qt::RightToLeft ) {
     ui.goBackButton->setIcon( QIcon( ":/icons/next.svg" ) );
     ui.goForwardButton->setIcon( QIcon( ":/icons/previous.svg" ) );
@@ -1381,40 +1379,6 @@ void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId, 
 bool ScanPopup::isWordPresentedInFavorites( const QString & word ) const
 {
   return GlobalBroadcaster::instance()->isWordPresentedInFavorites( word );
-}
-
-void ScanPopup::applyToolbarStyle()
-{
-  QString toolbarStyle = R"(
-    QToolBar#popupToolBar {
-      qproperty-iconSize: 20px;
-      qproperty-toolButtonStyle: ToolButtonIconOnly;
-      padding: 4px 2px;
-    }
-    QToolButton#goBackButton,
-    QToolButton#goForwardButton,
-    QToolButton#pronounceButton,
-    QToolButton#sendWordButton,
-    QToolButton#saveArticleButton,
-    QToolButton#sendWordToFavoritesButton,
-    QToolButton#onTopButton,
-    QToolButton#pinButton {
-      qproperty-iconSize: 20px;
-      min-width: 28px;
-      min-height: 28px;
-      max-width: 28px;
-      max-height: 28px;
-      padding: 4px;
-      border-radius: 4px;
-    }
-    QToolButton:hover {
-      background-color: palette(light);
-    }
-    QToolButton:pressed {
-      background-color: palette(mid);
-    }
-  )";
-  setStyleSheet( toolbarStyle );
 }
 
 #ifdef WITH_X11

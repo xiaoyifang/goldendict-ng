@@ -51,3 +51,45 @@ QWidget#ScanPopupContainer QStatusBar {
   background-color: palette(window);
   border-top: 1px solid palette(mid);
 }
+
+QToolBar#popupToolBar {
+  qproperty-iconSize: 20px;
+  qproperty-toolButtonStyle: ToolButtonIconOnly;
+  padding: 4px 2px;
+}
+QToolButton#goBackButton,
+QToolButton#goForwardButton,
+QToolButton#pronounceButton,
+QToolButton#sendWordButton,
+QToolButton#saveArticleButton,
+QToolButton#sendWordToFavoritesButton,
+QToolButton#onTopButton,
+QToolButton#pinButton {
+  qproperty-iconSize: 20px;
+  min-width: 28px;
+  min-height: 28px;
+  max-width: 28px;
+  max-height: 28px;
+  padding: 4px;
+  border-radius: 4px;
+}
+QToolButton#goBackButton:hover,
+QToolButton#goForwardButton:hover,
+QToolButton#pronounceButton:hover,
+QToolButton#sendWordButton:hover,
+QToolButton#saveArticleButton:hover,
+QToolButton#sendWordToFavoritesButton:hover,
+QToolButton#onTopButton:hover,
+QToolButton#pinButton:hover {
+  background-color: palette(light);
+}
+QToolButton#goBackButton:pressed,
+QToolButton#goForwardButton:pressed,
+QToolButton#pronounceButton:pressed,
+QToolButton#sendWordButton:pressed,
+QToolButton#saveArticleButton:pressed,
+QToolButton#sendWordToFavoritesButton:pressed,
+QToolButton#onTopButton:pressed,
+QToolButton#pinButton:pressed {
+  background-color: palette(mid);
+}
