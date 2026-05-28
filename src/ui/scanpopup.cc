@@ -1231,19 +1231,17 @@ void ScanPopup::goForwardButton_clicked() const
 
 void ScanPopup::setDictionaryIconSize()
 {
-  QSize iconSize( 24, 24 );
   if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Small ) {
     dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Small );
-    iconSize = QSize( 20, 20 );
   }
   else if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Normal ) {
     dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Normal );
-    iconSize = QSize( 24, 24 );
   }
   else if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Large ) {
     dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Large );
-    iconSize = QSize( 28, 28 );
   }
+
+  QSize iconSize = dictionaryBar.iconSize();
 
   ui.goBackButton->setIconSize( iconSize );
   ui.goForwardButton->setIconSize( iconSize );
