@@ -2964,10 +2964,6 @@ ne causerà soltanto l&apos;iconizzazione nella barra di notifica.</translation>
       <translation>Lingoes-Blue</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Su alcuni sistemi la funzione Auto non fa nulla.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>La modifica della lingua avrà effetto al riavvio del programma.</translation>
     </message>
@@ -3543,8 +3539,8 @@ dai dizionari di Stardict, Babylon e GLS</translation>
       <translation>Lettore audio esterno:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Segui l'impostazione della modalità scura del sistema.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Cambia automaticamente in base al tema di sistema.</translation>
     </message>
   </context>
   <context>
