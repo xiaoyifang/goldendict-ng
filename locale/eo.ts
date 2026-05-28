@@ -639,10 +639,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Traduki en:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Dosieroj kun ĉi tiu vortaro:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Priskribo:</translation>
     </message>
@@ -669,6 +665,10 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Enable</source>
       <translation>Ebligu</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Komponantoj de vortaro:</translation>
     </message>
   </context>
   <context>
