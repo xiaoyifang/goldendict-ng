@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Verčia į:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Žodyną sudarantys failai:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Aprašas:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Įgalinti</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Žodyno komponentai:</translation>
     </message>
   </context>
   <context>
