@@ -639,10 +639,6 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <translation>Prekladá do:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Súbory obsiahnuté v slovníku:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Popis:</translation>
     </message>
@@ -669,6 +665,10 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     <message>
       <source>Enable</source>
       <translation>Povoliť</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Komponenty slovníka:</translation>
     </message>
   </context>
   <context>
