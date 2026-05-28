@@ -639,10 +639,6 @@ entre ortografía clásica y escolar en cirílico)</translation>
       <translation>Idioma destino:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Ficheros que componen este diccionario:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Descripción:</translation>
     </message>
@@ -669,6 +665,10 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <source>Enable</source>
       <translation>Permitir</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Componentes del diccionario:</translation>
     </message>
   </context>
   <context>
