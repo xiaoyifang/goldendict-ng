@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Terjime edýär şu dile:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Şu sözlügiň düzümine girýän faýlllar:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Häsiýetnama:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Işlet</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Sözlük komponentleri:</translation>
     </message>
   </context>
   <context>
