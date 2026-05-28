@@ -36,31 +36,12 @@ def update_metainfo(file_path, version, date, repo, tag_name):
     new_release = ET.Element('release', version=version, date=date)
     description = ET.SubElement(new_release, 'description')
     
-    # Build description content from changelog.txt
-    has_changelog = False
-    if os.path.exists('changelog.txt'):
-        with open('changelog.txt', 'r', encoding='utf-8-sig') as f:
-            cl_lines = [l.strip() for l in f.readlines() if l.strip() and not l.startswith('#') and 'Based on branch' not in l]
-            
-            if cl_lines:
-                has_changelog = True
-                ul = ET.SubElement(description, 'ul')
-                for item in cl_lines[3:20]:
-                    clean_item = item.lstrip('-* ').strip()
-                    li = ET.SubElement(ul, 'li')
-                    li.text = clean_item
-                
-                if len(cl_lines) > 20:
-                    li_more = ET.SubElement(ul, 'li')
-                    li_more.text = 'Check the '
-                    a = ET.SubElement(li_more, 'a')
-                    a.set('href', f'https://github.com/{repo}/releases/tag/{tag_name}')
-                    a.text = 'Full Release Notes'
-                    a.tail = ' for more details.'
-
-    if not has_changelog:
-        p = ET.SubElement(description, 'p')
-        p.text = f"Stable release {version}"
+    li_more = ET.SubElement(description, 'li')
+    li_more.text = 'Check the '
+    a = ET.SubElement(li_more, 'a')
+    a.set('href', f'https://github.com/{repo}/releases/tag/{tag_name}')
+    a.text = 'Full Release Notes'
+    a.tail = ' for more details.'
 
     # Insert at the beginning of <releases>
     releases.insert(0, new_release)
