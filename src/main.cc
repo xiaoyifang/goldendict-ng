@@ -228,14 +228,7 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
     }
 
     // Handle cases where we get encoded URL
-    if ( result->word.startsWith( QStringLiteral( "xn--" ) ) ) {
-      // For `kde-open` or `gio` or others, URL are encoded into ACE or Punycode
-      result->word = QUrl::fromAce( result->word.toLatin1(), QUrl::IgnoreIDNWhitelist );
-    }
-    else if ( result->word.startsWith( QStringLiteral( "%" ) ) ) {
-      // For Firefox or other browsers where URL are percent encoded
-      result->word = QUrl::fromPercentEncoding( result->word.toLatin1() );
-    }
+    result->word = Utils::Url::decodeUrlEncodedWord( result->word );
 #endif
   }
 }
