@@ -639,10 +639,6 @@ a školní ortografií v cyrilici)</translation>
       <translation>Překládá do:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Soubory obsažené v tomto slovníku:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Popis:</translation>
     </message>
@@ -669,6 +665,10 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <source>Enable</source>
       <translation>Umožnit</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Složky slovníku:</translation>
     </message>
   </context>
   <context>
