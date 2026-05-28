@@ -639,10 +639,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Тарҷума ба забони:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Файлҳои ин луғат:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Тавсиф:</translation>
     </message>
@@ -669,6 +665,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Фаъол кардан</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation type="unfinished">Dictionary Components:</translation>
     </message>
   </context>
   <context>
