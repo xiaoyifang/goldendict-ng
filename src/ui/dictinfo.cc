@@ -52,6 +52,7 @@ void DictInfo::showInfo( sptr< Dictionary::Class > dict )
     filenamesText += '\n';
   }
 
+  ui.dictionaryFileLabel->setVisible( dict->isLocalDictionary() );
   ui.dictionaryFileList->setPlainText( filenamesText );
   ui.dictionaryFileList->setVisible( dict->isLocalDictionary() );
 
