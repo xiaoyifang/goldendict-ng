@@ -2964,10 +2964,6 @@ the application.</source>
       <translation>لِنْغوز-بلو</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto does nothing on some systems.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>أعد تشغيل البرنامج لتطبيق تغيير اللغة.</translation>
     </message>
@@ -3543,8 +3539,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>مشغل صوت خارجي:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>اتبع إعداد وضع الظلام للنظام.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>يتم التبديل تلقائيا بناء على موضوع النظام.</translation>
     </message>
   </context>
   <context>
