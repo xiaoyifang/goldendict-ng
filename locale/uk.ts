@@ -2964,10 +2964,6 @@ the application.</source>
       <translation>Лінго-Блю</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto нічого не робить у деяких системах.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Перезапустіть програму, щоб змінити мову.</translation>
     </message>
@@ -3545,8 +3541,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Зовнішній аудіоплеєр:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Дотримуйтесь режиму темного режиму системи.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Автоматично перемикається залежно від теми системи.</translation>
     </message>
   </context>
   <context>
