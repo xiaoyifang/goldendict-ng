@@ -639,10 +639,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation>Traducte a:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Files includet in ti-ci dictionarium:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Descrition:</translation>
     </message>
@@ -669,6 +665,10 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Enable</source>
       <translation>Enable</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation type="unfinished">Dictionary Components:</translation>
     </message>
   </context>
   <context>
