@@ -2959,10 +2959,6 @@ the application.</source>
       <translation>靈格斯-藍</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto 在某些系統上不會執行任何操作。</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>變更介面語言需要重新啟動程式才能生效。</translation>
     </message>
@@ -3534,8 +3530,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>外接音訊播放器：</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>請依照系統的暗黑模式設定操作。</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>會根據系統主題自動切換。</translation>
     </message>
   </context>
   <context>
