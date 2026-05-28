@@ -2966,10 +2966,6 @@ the application.</source>
       <translation>Μπίνγκο-μπλε</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Το Auto δεν κάνει τίποτα σε ορισμένα συστήματα.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Απαιτείται επανεκκίνηση του προγράμματος για να εφαρμοστεί η αλλαγή γλώσσας.</translation>
     </message>
@@ -3546,8 +3542,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Εξωτερική συσκευή αναπαραγωγής ήχου:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Ακολουθήστε τη ρύθμιση σκοτεινής λειτουργίας συστήματος.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Αλλάζει αυτόματα με βάση το θέμα του συστήματος.</translation>
     </message>
   </context>
   <context>
