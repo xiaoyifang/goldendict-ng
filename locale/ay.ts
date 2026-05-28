@@ -3025,10 +3025,6 @@ Aka jakhu mayjacham jach&apos;a menus jithiqañataki.</translation>
       <translation>Lingoes-Larama</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto ukax janiw kuns yaqhip sistemas ukan lurkiti.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Mayat programa aktayan sun apñaqañataki.</translation>
     </message>
@@ -3635,8 +3631,8 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <translation type="unfinished">External Audio Player:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Sistema ch'amak uñjawi uñakipt'aña.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Sistema tuqin kunjama uñtata ukhamarjama mayjt'asi.</translation>
     </message>
   </context>
   <context>
