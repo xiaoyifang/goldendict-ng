@@ -2947,10 +2947,6 @@ the application.</source>
       <translation>Lingoes-Blue</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Chế độ tự động không có tác dụng gì trên một số hệ thống.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Khởi động lại chương trình để áp dụng thay đổi ngôn ngữ.</translation>
     </message>
@@ -3521,8 +3517,8 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <translation>Trình phát âm thanh bên ngoài:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Thực hiện theo cài đặt chế độ tối của hệ thống.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Tự động chuyển đổi dựa trên chủ đề hệ thống.</translation>
     </message>
   </context>
   <context>
