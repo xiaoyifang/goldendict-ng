@@ -2969,10 +2969,6 @@ ser fechado.</translation>
       <translation>Lais-Cola</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>O Auto não faz nada em alguns sistemas.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Reinicie o programa para aplicar a mudança de idioma.</translation>
     </message>
@@ -3549,8 +3545,8 @@ dos dicionários Stardict, Babylon e GLS</translation>
       <translation>Tocador de Áudio Externo:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Siga a configuração do modo escuro do sistema.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Muda automaticamente de acordo com o tema do sistema.</translation>
     </message>
   </context>
   <context>
