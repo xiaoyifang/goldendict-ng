@@ -641,10 +641,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Μεταφράζει σε:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Αρχεία λεξικού:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Περιγραφή:</translation>
     </message>
@@ -671,6 +667,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Καθιστώ ικανό</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Στοιχεία λεξικού:</translation>
     </message>
   </context>
   <context>
