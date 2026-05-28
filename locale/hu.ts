@@ -639,10 +639,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <translation>Fordítás erre:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>A szótárat alkotó fájlok:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Részletek:</translation>
     </message>
@@ -669,6 +665,10 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     <message>
       <source>Enable</source>
       <translation>Engedélyezés</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Szótár komponensek:</translation>
     </message>
   </context>
   <context>
