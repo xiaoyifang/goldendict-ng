@@ -337,7 +337,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.useProxyServer->setChecked( p.proxyServer.enabled );
 
   ui.proxyType->addItem( "SOCKS5" );
-  ui.proxyType->addItem( "HTTP Transp." );
+  ui.proxyType->addItem( "HTTP Connect" );
   ui.proxyType->addItem( "HTTP Caching" );
 
   ui.proxyType->setCurrentIndex( p.proxyServer.type );

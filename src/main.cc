@@ -301,12 +301,6 @@ int main( int argc, char ** argv )
   GD_QApplication::setWindowIcon( QIcon( ":/icons/programicon.png" ) );
 #endif
 
-#ifdef Q_OS_WIN
-  // TODO: Force fusion because Qt6.7's "ModernStyle"'s dark theme have problems, need to test / reconsider in future
-  GD_QApplication::setStyle( QStyleFactory::create( "WindowsVista" ) );
-#endif
-
-
 #if defined( USE_BREAKPAD )
   QString appDirPath = Config::getConfigDir() + "crash";
 
