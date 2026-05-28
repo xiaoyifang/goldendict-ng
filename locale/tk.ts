@@ -2964,10 +2964,6 @@ programmany ýapmagyň ýerine ony gizlärdi.</translation>
       <translation>Lingoes-Gök</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Awto käbir ulgamlarda hiç zat edenok.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Diliň çalşmagyny işe girizmek üçin programmany täzeden işlet.</translation>
     </message>
@@ -3544,8 +3540,8 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
       <translation>Daşky audio pleyer:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Sistemanyň garaňky mod sazlamasyna eýeriň.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Sistemanyň temasyna görä otomatik geçýär.</translation>
     </message>
   </context>
   <context>
