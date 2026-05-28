@@ -639,10 +639,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Målspråk:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Filer som omfattas av ordlistan:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Beskrivning:</translation>
     </message>
@@ -669,6 +665,10 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Enable</source>
       <translation>Aktivera</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Ordbokskomponenter:</translation>
     </message>
   </context>
   <context>
