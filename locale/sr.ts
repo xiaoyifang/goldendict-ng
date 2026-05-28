@@ -2966,10 +2966,6 @@ the application.</source>
       <translation>Лингоес-Блуе</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Ауто не ради ништа на неким системима.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Поново покрените програм за промену језика.</translation>
     </message>
@@ -3545,8 +3541,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Екстерни аудио плејер:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Пратите подешавање тамног режима система.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Аутоматски се пребацује на основу теме система.</translation>
     </message>
   </context>
   <context>
