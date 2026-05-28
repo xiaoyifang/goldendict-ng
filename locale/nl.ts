@@ -639,10 +639,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Vertaalt naar:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Woordenboek bestaat uit de volgende bestanden:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Beschrijving:</translation>
     </message>
@@ -669,6 +665,10 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Enable</source>
       <translation>Inschakelen</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Woordenboekcomponenten:</translation>
     </message>
   </context>
   <context>
