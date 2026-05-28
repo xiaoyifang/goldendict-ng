@@ -639,10 +639,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Käännös:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Tämän sanakirjan sisältämät tiedostot:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Kuvaus:</translation>
     </message>
@@ -669,6 +665,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Enable</source>
       <translation>Ota käyttöön</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Sanakirjakomponentit:</translation>
     </message>
   </context>
   <context>
