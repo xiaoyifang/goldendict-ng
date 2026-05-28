@@ -639,10 +639,6 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>Tłumaczenia na:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Pliki składające się na ten słownik:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Opis:</translation>
     </message>
@@ -669,6 +665,10 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <source>Enable</source>
       <translation>Włączać</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Składniki słownika:</translation>
     </message>
   </context>
   <context>
