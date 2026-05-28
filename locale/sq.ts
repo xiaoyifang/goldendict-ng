@@ -2960,10 +2960,6 @@ the application.</source>
       <translation>Lingoes Blu</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto nuk bën asgjë në disa sisteme.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Riniseni programin për të zbatuar ndryshimin e gjuhës.</translation>
     </message>
@@ -3537,8 +3533,8 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <translation>Luajtësi i jashtëm audio:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Ndiqni cilësimin e modalitetit të errët të sistemit.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Ndërrohet automatikisht bazuar në temën e sistemit.</translation>
     </message>
   </context>
   <context>
