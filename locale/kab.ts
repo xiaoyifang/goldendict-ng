@@ -639,10 +639,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation>Tisuqilin ɣer:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Files comprising this dictionary:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Aglam:</translation>
     </message>
@@ -669,6 +665,10 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Enable</source>
       <translation>Enable</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Timsilɣin n umawal:</translation>
     </message>
   </context>
   <context>
@@ -3542,7 +3542,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Automatically switches based on system theme.</source>
-      <translation type="unfinished">Automatically switches based on system theme.</translation>
+      <translation>Yettbeddil s yiman-is ɣef leḥsab n usentel n unagraw.</translation>
     </message>
   </context>
   <context>
