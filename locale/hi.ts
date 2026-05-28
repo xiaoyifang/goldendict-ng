@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>जिस भाषा में अनुवाद करता हैः</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>इस शब्दकोश में सम्मिलित फाइलें:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>विवरण:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>सक्षम</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>शब्दकोश घटक:</translation>
     </message>
   </context>
   <context>
