@@ -8,7 +8,7 @@ To configure external audio player: Preference --> Audio --> `External Audio Pla
 
 vlc:
 ```
-vlc --intf dummy --play-and-exit
+vlc --intf dummy --play-and-exit --no-video
 ```
 
 ffplay:
@@ -25,7 +25,7 @@ mpv --no-video --no-audio-display --no-config
 
 vlc:
 ```
-"C:\Program Files\VideoLAN\VLC\vlc.exe" --intf dummy --play-and-exit
+"C:\Program Files\VideoLAN\VLC\vlc.exe" --intf dummy --play-and-exit --no-video
 ```
 
 ffplay:
