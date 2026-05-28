@@ -639,10 +639,6 @@ arasındaki farkı giderir)</translation>
       <translation>Bu dile:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Bu sözlüğü oluşturan dosyalar:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Açıklama:</translation>
     </message>
@@ -669,6 +665,10 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Enable</source>
       <translation>Olanak vermek</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Sözlük Bileşenleri:</translation>
     </message>
   </context>
   <context>
