@@ -637,10 +637,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>释义语言：</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>此词典包含的文件：</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>描述：</translation>
     </message>
@@ -667,6 +663,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>启用</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>词典组成部分：</translation>
     </message>
   </context>
   <context>
