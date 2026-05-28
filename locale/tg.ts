@@ -2965,10 +2965,6 @@ the application.</source>
       <translation>Lingoes-кабуд</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Автомат дар баъзе системаҳо ҳеҷ кор намекунад.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Барои татбиқ кардани забони интихобшуда барномаро аз нав оғоз кунед.</translation>
     </message>
@@ -3544,8 +3540,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation type="unfinished">External Audio Player:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation type="unfinished">Follow system dark mode setting.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation type="unfinished">Automatically switches based on system theme.</translation>
     </message>
   </context>
   <context>
