@@ -2969,10 +2969,6 @@ the application.</source>
       <translation>Лингос-синий</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>В некоторых системах функция Auto не выполняет никаких действий.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Перезапустите программу, чтобы изменение языка вошло в силу.</translation>
     </message>
@@ -3551,8 +3547,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Внешний аудиоплеер:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Следуйте настройкам тёмного режима системы.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Автоматически переключается в зависимости от темы системы.</translation>
     </message>
   </context>
   <context>
