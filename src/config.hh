@@ -386,7 +386,7 @@ struct Preferences
 
   // QApplication style https://doc.qt.io/qt-6/qapplication.html#setStyle
   // In addition to Qt's styles, "Default" is added as default.
-  // On Windows, this is always empty as Windows uses its own styling system.
+  // On Windows, this field exists but is not used (Windows uses its own styling system).
   QString interfaceStyle;
 
   Preferences();
