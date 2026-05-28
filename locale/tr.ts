@@ -2963,10 +2963,6 @@ yerine onu gizler.</translation>
       <translation>Lingoes-Mavi</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Bazı sistemlerde Auto hiçbir şey yapmaz.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Dil değişikliğini tamamlamak için programı yeniden başlatın.</translation>
     </message>
@@ -3541,8 +3537,8 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <translation>Dış Ses Oynatıcı:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>Sistem karanlık mod ayarlarını takip et.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Sistem temasına göre otomatik olarak değişir.</translation>
     </message>
   </context>
   <context>
