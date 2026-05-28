@@ -55,7 +55,7 @@ QWidget#ScanPopupContainer QStatusBar {
 QToolBar#popupToolBar {
   qproperty-iconSize: 20px;
   qproperty-toolButtonStyle: ToolButtonIconOnly;
-  padding: 4px 2px;
+  padding: 2px;
 }
 QToolButton#goBackButton,
 QToolButton#goForwardButton,
@@ -66,11 +66,9 @@ QToolButton#sendWordToFavoritesButton,
 QToolButton#onTopButton,
 QToolButton#pinButton {
   qproperty-iconSize: 20px;
-  min-width: 28px;
-  min-height: 28px;
-  max-width: 28px;
-  max-height: 28px;
-  padding: 4px;
+  min-width: 24px;
+  min-height: 24px;
+  padding: 2px;
   border-radius: 4px;
 }
 QToolButton#goBackButton:hover,
