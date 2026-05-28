@@ -23,7 +23,7 @@ void MacUrlHandler::processURL( const QUrl & url )
 
     if ( !word.isEmpty() ) {
       // Parse query parameters to determine target window
-      QString query = url.query();
+      QString query   = url.query();
       QString message = QStringLiteral( "action:translate" );
 
       if ( !query.isEmpty() ) {

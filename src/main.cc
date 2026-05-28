@@ -223,23 +223,23 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
       // Parse the full URL to extract query parameters
       QUrl url( originalArg );
       QString query = url.query();
-      
+
       // Extract word from URL (remove scheme and parse path/host)
       result->word = url.authority();
       if ( result->word.isEmpty() && !url.path().isEmpty() ) {
         result->word = url.path().remove( 0, 1 );
       }
-      
+
       // In microsoft Words, the / will be automatically appended
       if ( result->word.endsWith( "/" ) ) {
         result->word.chop( 1 );
       }
-      
+
       // Parse query parameters: target=popup or target=main
       if ( !query.isEmpty() ) {
         QUrlQuery urlQuery( query );
         QString targetParam = urlQuery.queryItemValue( "target" );
-        
+
         if ( targetParam == "popup" ) {
           result->window = "popup";
         }
