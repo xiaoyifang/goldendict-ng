@@ -2963,10 +2963,6 @@ the application.</source>
       <translation>링고-블루</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>일부 시스템에서는 자동이 아무 작업도 수행하지 않습니다.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>언어변경을 적용하려면 프로그램을 다시 시작하십시오.</translation>
     </message>
@@ -3541,8 +3537,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>외부 오디오 플레이어:</translation>
     </message>
     <message>
-      <source>Follow system dark mode setting.</source>
-      <translation>시스템 다크 모드 설정을 따르세요.</translation>
+      <source>Automatically switches based on system theme.</source>
+      <translation>시스템 테마에 따라 자동으로 전환됩니다.</translation>
     </message>
   </context>
   <context>
