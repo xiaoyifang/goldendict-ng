@@ -374,20 +374,21 @@ int main( int argc, char ** argv )
 
     // Combine messages into a single structured message
     if ( gdcl.needTranslateWord() ) {
-      QString message = "action:translate";
-      if ( !gdcl.window.isEmpty() ) {
-        message += "|window:" + gdcl.window;
+        QString message = "action:translate";
+        if ( !gdcl.window.isEmpty() ) {
+          message += "|window:" + gdcl.window;
+        }
+        if ( gdcl.needSetGroup() ) {
+          message += "|group:" + gdcl.getGroupName();
+        }
+        if ( gdcl.needSetPopupGroup() ) {
+          message += "|popupGroup:" + gdcl.getPopupGroupName();
+        }
+        QString encodedWord = QUrl::toPercentEncoding( gdcl.wordToTranslate() );
+        message += "|word:" + encodedWord;
+        app.sendMessage( message );
+        wasMessage = true;
       }
-      if ( gdcl.needSetGroup() ) {
-        message += "|group:" + gdcl.getGroupName();
-      }
-      if ( gdcl.needSetPopupGroup() ) {
-        message += "|popupGroup:" + gdcl.getPopupGroupName();
-      }
-      message += "|word:" + gdcl.wordToTranslate();
-      app.sendMessage( message );
-      wasMessage = true;
-    }
     else if ( gdcl.needSetGroup() ) {
       app.sendMessage( QString( "setGroup: " ) + gdcl.getGroupName() );
       wasMessage = true;
