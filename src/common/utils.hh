@@ -417,19 +417,23 @@ inline QString extractWordFromUrl( const QString & urlStr )
     }
   }
 
+  if ( word.endsWith( "/" ) ) {
+    word.chop( 1 );
+  }
+
   if ( word.isEmpty() ) {
     auto schemePos = urlStr.indexOf( "://" );
     if ( schemePos != -1 ) {
-      word = urlStr.mid( schemePos + 3 );
+      int startPos = schemePos + 3;
+      int endPos = urlStr.indexOf( "/", startPos );
       
-      if ( word.startsWith( "/" ) ) {
-        word = word.mid( 1 );
+      if ( endPos == -1 ) {
+        word = urlStr.mid( startPos );
+      }
+      else {
+        word = urlStr.mid( startPos, endPos - startPos );
       }
     }
-  }
-
-  if ( word.endsWith( "/" ) ) {
-    word.chop( 1 );
   }
 
   return decodeUrlEncodedWord( word );
