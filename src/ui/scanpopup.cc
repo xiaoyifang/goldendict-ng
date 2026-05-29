@@ -88,6 +88,8 @@ ScanPopup::ScanPopup( QWidget * parent,
     ui.goForwardButton->setIcon( QIcon( ":/icons/previous.svg" ) );
   }
 
+  setStatusBar( nullptr );
+
   mainStatusBar = new MainStatusBar( this );
 
   tabWidget = new MainTabWidget( this );
@@ -343,7 +345,6 @@ ScanPopup::ScanPopup( QWidget * parent,
     connect( &selectionDelayTimer, &QTimer::timeout, this, &ScanPopup::translateWordFromSelection );
   }
 #endif
-  setStatusBar( nullptr );
   applyZoomFactor();
 }
 
