@@ -51,7 +51,9 @@ void MainStatusBar::updatePosition()
 {
   if ( parentWidget() ) {
     raise();
-    move( 0, parentWidget()->height() - height() );
+    int offsetX = 2; 
+    int offsetY = 2; 
+    move( offsetX, parentWidget()->height() - height() - offsetY );
   }
 }
 
