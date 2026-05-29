@@ -343,6 +343,7 @@ ScanPopup::ScanPopup( QWidget * parent,
     connect( &selectionDelayTimer, &QTimer::timeout, this, &ScanPopup::translateWordFromSelection );
   }
 #endif
+  setStatusBar( nullptr );
   applyZoomFactor();
 }
 

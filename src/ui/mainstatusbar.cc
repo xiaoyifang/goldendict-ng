@@ -40,6 +40,8 @@ MainStatusBar::MainStatusBar( QWidget * parent ):
   connect( timer, &QTimer::timeout, this, &MainStatusBar::clearMessage );
 
   setAutoFillBackground( true );
+
+  hide();
 }
 
 void MainStatusBar::clearMessage()
@@ -98,9 +100,10 @@ bool MainStatusBar::eventFilter( QObject *, QEvent * e )
 {
   switch ( e->type() ) {
     case QEvent::Resize:
-      raise();
-
-      move( QPoint( 0, parentWidget()->height() - height() ) );
+      if ( isVisible() ) {
+        raise();
+        move( QPoint( 0, parentWidget()->height() - height() ) );
+      }
       break;
     default:
       break;
