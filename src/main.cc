@@ -220,22 +220,13 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
     // handle url scheme like "goldendict://" or "dict://" on windows/linux
     auto schemePos = originalArg.indexOf( "://" );
     if ( schemePos != -1 ) {
-      // Parse the full URL to extract query parameters
       QUrl url( originalArg );
       QString query = url.query();
 
-      // Extract word from URL (remove scheme and parse path/host)
-      result->word = url.authority();
-      if ( result->word.isEmpty() && !url.path().isEmpty() ) {
-        result->word = url.path().remove( 0, 1 );
-      }
+      QString word = Utils::Url::extractWordFromUrl( originalArg );
 
-      // In microsoft Words, the / will be automatically appended
-      if ( result->word.endsWith( "/" ) ) {
-        result->word.chop( 1 );
-      }
+      result->word = word;
 
-      // Parse query parameters: target=popup or target=main
       if ( !query.isEmpty() ) {
         QUrlQuery urlQuery( query );
         QString targetParam = urlQuery.queryItemValue( "target" );
@@ -249,12 +240,8 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
       }
     }
     else {
-      // Not a URL scheme, treat as plain word
       result->word = originalArg;
     }
-
-    // Handle cases where we get encoded URL
-    result->word = Utils::Url::decodeUrlEncodedWord( result->word );
 #else
     result->word = originalArg;
 #endif
@@ -376,7 +363,8 @@ int main( int argc, char ** argv )
       if ( gdcl.needSetPopupGroup() ) {
         message += "|popupGroup:" + gdcl.getPopupGroupName();
       }
-      message += "|word:" + gdcl.wordToTranslate();
+      QString encodedWord = QUrl::toPercentEncoding( gdcl.wordToTranslate() );
+      message += "|word:" + encodedWord;
       app.sendMessage( message );
       wasMessage = true;
     }

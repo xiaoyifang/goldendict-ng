@@ -3716,7 +3716,7 @@ bool MainWindow::handleStructuredMessage( const QString & message )
 
   if ( QString action = params.value( "action" ); action == "translate" ) {
     QString windowType = params.value( "window", "main" );
-    QString word       = params.value( "word" );
+    QString word       = QUrl::fromPercentEncoding( params.value( "word" ).toLatin1() );
     QString group      = params.value( "group" );
     QString popupGroup = params.value( "popupGroup" );
 
