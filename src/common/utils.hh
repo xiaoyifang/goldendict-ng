@@ -396,7 +396,7 @@ inline QString decodeUrlEncodedWord( QString word )
   if ( word.startsWith( QStringLiteral( "xn--" ) ) ) {
     word = QUrl::fromAce( word.toLatin1(), QUrl::IgnoreIDNWhitelist );
   }
-  else if ( word.startsWith( QStringLiteral( "%" ) ) ) {
+  else if ( word.contains( QStringLiteral( "%" ) ) ) {
     word = QUrl::fromPercentEncoding( word.toLatin1() );
   }
   return word;

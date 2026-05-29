@@ -219,6 +219,7 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
 #if defined( Q_OS_LINUX ) || defined( Q_OS_WIN )
     // handle url scheme like "goldendict://" or "dict://" on windows/linux
     auto schemePos = originalArg.indexOf( "://" );
+    qDebug() << "originalArg:" << originalArg;
     if ( schemePos != -1 ) {
       // Parse the full URL to extract query parameters
       QUrl url( originalArg );
@@ -226,8 +227,15 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
 
       // Extract word from URL (remove scheme and parse path/host)
       result->word = url.authority();
+      qDebug() << "url.authority():" << url.authority();
+      qDebug() << "url.path():" << url.path();
       if ( result->word.isEmpty() && !url.path().isEmpty() ) {
-        result->word = url.path().remove( 0, 1 );
+        if ( url.path().startsWith( "/" ) ) {
+          result->word = url.path().mid( 1 );
+        }
+        else {
+          result->word = url.path();
+        }
       }
 
       // In microsoft Words, the / will be automatically appended
