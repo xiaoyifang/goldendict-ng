@@ -407,38 +407,28 @@ inline QString extractWordFromUrl( const QUrl & url )
   QString word = url.authority();
   
   if ( word.isEmpty() && !url.path().isEmpty() ) {
-    if ( url.path().startsWith( "/" ) ) {
-      word = url.path().mid( 1 );
-    }
-    else {
-      word = url.path();
-    }
+    word = url.path().startsWith( "/" ) ? url.path().mid( 1 ) : url.path();
   }
-
+  
   if ( word.endsWith( "/" ) ) {
     word.chop( 1 );
   }
-
+  
   return word;
 }
 
 inline QString extractWordFromUrl( const QString & urlStr )
 {
-  QUrl url( urlStr );
-  QString word = extractWordFromUrl( url );
-
+  QString word = extractWordFromUrl( QUrl( urlStr ) );
+  
   if ( word.isEmpty() ) {
     auto schemePos = urlStr.indexOf( "://" );
     if ( schemePos != -1 ) {
       int startPos = schemePos + 3;
       int endPos = urlStr.indexOf( "/", startPos );
       
-      if ( endPos == -1 ) {
-        word = urlStr.mid( startPos );
-      }
-      else {
-        word = urlStr.mid( startPos, endPos - startPos );
-      }
+      word = ( endPos == -1 ) ? urlStr.mid( startPos ) 
+                              : urlStr.mid( startPos, endPos - startPos );
     }
   }
 
