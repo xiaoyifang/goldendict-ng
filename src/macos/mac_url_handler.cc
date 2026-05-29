@@ -11,7 +11,12 @@ void MacUrlHandler::processURL( const QUrl & url )
     QString word = url.authority();
 
     if ( word.isEmpty() && !url.path().isEmpty() ) {
-      word = url.path().remove( 0, 1 );
+      if ( url.path().startsWith( "/" ) ) {
+        word = url.path().mid( 1 );
+      }
+      else {
+        word = url.path();
+      }
     }
 
     // Remove trailing slash if present
