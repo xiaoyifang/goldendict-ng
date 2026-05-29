@@ -405,30 +405,29 @@ inline QString decodeUrlEncodedWord( QString word )
 inline QString extractWordFromUrl( const QUrl & url )
 {
   QString word = url.authority();
-  
+
   if ( word.isEmpty() && !url.path().isEmpty() ) {
     word = url.path().startsWith( "/" ) ? url.path().mid( 1 ) : url.path();
   }
-  
+
   if ( word.endsWith( "/" ) ) {
     word.chop( 1 );
   }
-  
+
   return word;
 }
 
 inline QString extractWordFromUrl( const QString & urlStr )
 {
   QString word = extractWordFromUrl( QUrl( urlStr ) );
-  
+
   if ( word.isEmpty() ) {
     auto schemePos = urlStr.indexOf( "://" );
     if ( schemePos != -1 ) {
       int startPos = schemePos + 3;
-      int endPos = urlStr.indexOf( "/", startPos );
-      
-      word = ( endPos == -1 ) ? urlStr.mid( startPos ) 
-                              : urlStr.mid( startPos, endPos - startPos );
+      int endPos   = urlStr.indexOf( "/", startPos );
+
+      word = ( endPos == -1 ) ? urlStr.mid( startPos ) : urlStr.mid( startPos, endPos - startPos );
     }
   }
 
