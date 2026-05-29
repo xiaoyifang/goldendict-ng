@@ -16,7 +16,6 @@ MainStatusBar::MainStatusBar( QWidget * parent ):
   textWidget->setObjectName( "text" );
   textWidget->setFont( QApplication::font( "QStatusBar" ) );
   textWidget->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  textWidget->setForegroundRole( QPalette::ToolTipText );
 
   picWidget = new QLabel( QString(), this );
   picWidget->setObjectName( "icon" );
@@ -43,7 +42,6 @@ MainStatusBar::MainStatusBar( QWidget * parent ):
 
   connect( timer, &QTimer::timeout, this, &MainStatusBar::clearMessage );
 
-  setBackgroundRole( QPalette::ToolTipBase );
   setAutoFillBackground( true );
 
   hide();
