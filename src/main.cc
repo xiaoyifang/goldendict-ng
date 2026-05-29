@@ -219,31 +219,12 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
 #if defined( Q_OS_LINUX ) || defined( Q_OS_WIN )
     // handle url scheme like "goldendict://" or "dict://" on windows/linux
     auto schemePos = originalArg.indexOf( "://" );
-    qDebug() << "originalArg:" << originalArg;
     if ( schemePos != -1 ) {
-      // Parse the full URL to extract query parameters
       QUrl url( originalArg );
       QString query = url.query();
 
-      // Extract word from URL (remove scheme and parse path/host)
-      result->word = url.authority();
-      qDebug() << "url.authority():" << url.authority();
-      qDebug() << "url.path():" << url.path();
-      if ( result->word.isEmpty() && !url.path().isEmpty() ) {
-        if ( url.path().startsWith( "/" ) ) {
-          result->word = url.path().mid( 1 );
-        }
-        else {
-          result->word = url.path();
-        }
-      }
+      result->word = Utils::Url::extractWordFromUrl( url );
 
-      // In microsoft Words, the / will be automatically appended
-      if ( result->word.endsWith( "/" ) ) {
-        result->word.chop( 1 );
-      }
-
-      // Parse query parameters: target=popup or target=main
       if ( !query.isEmpty() ) {
         QUrlQuery urlQuery( query );
         QString targetParam = urlQuery.queryItemValue( "target" );
@@ -257,12 +238,8 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
       }
     }
     else {
-      // Not a URL scheme, treat as plain word
       result->word = originalArg;
     }
-
-    // Handle cases where we get encoded URL
-    result->word = Utils::Url::decodeUrlEncodedWord( result->word );
 #else
     result->word = originalArg;
 #endif

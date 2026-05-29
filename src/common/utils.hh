@@ -402,6 +402,26 @@ inline QString decodeUrlEncodedWord( QString word )
   return word;
 }
 
+inline QString extractWordFromUrl( const QUrl & url )
+{
+  QString word = url.authority();
+  
+  if ( word.isEmpty() && !url.path().isEmpty() ) {
+    if ( url.path().startsWith( "/" ) ) {
+      word = url.path().mid( 1 );
+    }
+    else {
+      word = url.path();
+    }
+  }
+
+  if ( word.endsWith( "/" ) ) {
+    word.chop( 1 );
+  }
+
+  return decodeUrlEncodedWord( word );
+}
+
 } // namespace Url
 
 namespace Path {
