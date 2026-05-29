@@ -38,7 +38,8 @@ void MacUrlHandler::processURL( const QUrl & url )
         }
       }
 
-      message += "|word:" + word;
+      QString encodedWord = QUrl::toPercentEncoding( word );
+      message += "|word:" + encodedWord;
       emit wordReceived( message );
     }
   }
