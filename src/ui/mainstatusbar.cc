@@ -6,6 +6,7 @@
 #include <QFrame>
 #include <QVBoxLayout>
 #include <QApplication>
+#include <QShowEvent>
 
 MainStatusBar::MainStatusBar( QWidget * parent ):
   QWidget( parent ),
@@ -15,6 +16,7 @@ MainStatusBar::MainStatusBar( QWidget * parent ):
   textWidget->setObjectName( "text" );
   textWidget->setFont( QApplication::font( "QStatusBar" ) );
   textWidget->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+  textWidget->setForegroundRole( QPalette::ToolTipText );
 
   picWidget = new QLabel( QString(), this );
   picWidget->setObjectName( "icon" );
@@ -27,7 +29,7 @@ MainStatusBar::MainStatusBar( QWidget * parent ):
 
   // layout
   const auto layout = new QHBoxLayout;
-  layout->setSpacing( 0 );
+  layout->setSpacing( 4 );
   layout->setSizeConstraint( QLayout::SetFixedSize );
   layout->setAlignment( Qt::AlignLeft | Qt::AlignVCenter );
   layout->setContentsMargins( 5, 5, 5, 5 );
@@ -35,13 +37,30 @@ MainStatusBar::MainStatusBar( QWidget * parent ):
   layout->addWidget( textWidget );
   setLayout( layout );
 
-  parentWidget()->installEventFilter( this );
+  if ( parentWidget() ) {
+    parentWidget()->installEventFilter( this );
+  }
 
   connect( timer, &QTimer::timeout, this, &MainStatusBar::clearMessage );
 
+  setBackgroundRole( QPalette::ToolTipBase );
   setAutoFillBackground( true );
 
   hide();
+}
+
+void MainStatusBar::updatePosition()
+{
+  if ( parentWidget() ) {
+    raise();
+    move( 0, parentWidget()->height() - height() );
+  }
+}
+
+void MainStatusBar::showEvent( QShowEvent * event )
+{
+  QWidget::showEvent( event );
+  updatePosition();
 }
 
 void MainStatusBar::clearMessage()
@@ -74,7 +93,8 @@ void MainStatusBar::showMessage( const QString & str, int timeout, const QPixmap
   picWidget->setPixmap( pixmap );
 
   if ( !picWidget->pixmap().isNull() ) {
-    picWidget->setFixedSize( textWidget->height(), textWidget->height() );
+    int iconSize = fontMetrics().height() - 2;
+    picWidget->setFixedSize( iconSize, iconSize );
   }
   else {
     picWidget->setFixedSize( 0, 0 );
@@ -84,11 +104,7 @@ void MainStatusBar::showMessage( const QString & str, int timeout, const QPixmap
     timer->start( timeout );
   }
 
-  if ( parentWidget() ) {
-    raise();
-
-    move( 0, parentWidget()->height() - height() );
-  }
+  updatePosition();
 }
 
 void MainStatusBar::mousePressEvent( QMouseEvent * )
@@ -101,8 +117,7 @@ bool MainStatusBar::eventFilter( QObject *, QEvent * e )
   switch ( e->type() ) {
     case QEvent::Resize:
       if ( isVisible() ) {
-        raise();
-        move( QPoint( 0, parentWidget()->height() - height() ) );
+        updatePosition();
       }
       break;
     default:
