@@ -83,7 +83,7 @@ void MainStatusBar::setBackgroundMessage( const QString & bkg_message )
   if ( message.isEmpty() ) {
     textWidget->setText( backgroundMessage );
   }
-  
+
   // Only show if there's actual content to display
   if ( !backgroundMessage.isEmpty() && !isVisible() ) {
     show();
