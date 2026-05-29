@@ -224,7 +224,7 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
       QString query = url.query();
 
       QString word = Utils::Url::extractWordFromUrl( originalArg );
-      
+
       result->word = word;
 
       if ( !query.isEmpty() ) {
