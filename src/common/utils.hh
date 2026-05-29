@@ -402,10 +402,8 @@ inline QString decodeUrlEncodedWord( QString word )
   return word;
 }
 
-inline QString extractWordFromUrl( const QString & urlStr )
+inline QString extractWordFromUrl( const QUrl & url )
 {
-  QUrl url( urlStr );
-  
   QString word = url.authority();
   
   if ( word.isEmpty() && !url.path().isEmpty() ) {
@@ -420,6 +418,14 @@ inline QString extractWordFromUrl( const QString & urlStr )
   if ( word.endsWith( "/" ) ) {
     word.chop( 1 );
   }
+
+  return word;
+}
+
+inline QString extractWordFromUrl( const QString & urlStr )
+{
+  QUrl url( urlStr );
+  QString word = extractWordFromUrl( url );
 
   if ( word.isEmpty() ) {
     auto schemePos = urlStr.indexOf( "://" );

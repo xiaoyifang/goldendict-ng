@@ -10,6 +10,10 @@ void MacUrlHandler::processURL( const QUrl & url )
   if ( url.scheme() == "goldendict" ) {
     QString word = Utils::Url::extractWordFromUrl( url );
 
+    if ( word.isEmpty() ) {
+      word = Utils::Url::extractWordFromUrl( url.toString() );
+    }
+
     if ( !word.isEmpty() ) {
       QString query   = url.query();
       QString message = QStringLiteral( "action:translate" );
