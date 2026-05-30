@@ -95,7 +95,6 @@ void MainStatusBar::setBackgroundMessage( const QString & bkg_message )
 
 void MainStatusBar::showMessage( const QString & str, int timeout, const QPixmap & pixmap )
 {
-  show();
   textWidget->setText( message = str );
   picWidget->setPixmap( pixmap );
 
@@ -111,7 +110,12 @@ void MainStatusBar::showMessage( const QString & str, int timeout, const QPixmap
     timer->start( timeout );
   }
 
-  updatePosition();
+  if ( str.isEmpty() && pixmap.isNull() ) {
+    hide();
+  } else {
+    show();
+    updatePosition();
+  }
 }
 
 void MainStatusBar::mousePressEvent( QMouseEvent * )
