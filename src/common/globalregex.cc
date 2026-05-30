@@ -108,7 +108,7 @@ QString RX::Ftx::processSearchStringForHighlight( const QString & searchString )
       result += "\\b" + QRegularExpression::escape( phrase ) + "\\b";
       pos = match.capturedEnd();
     }
-    else if ( remaining[pos].isSpace() ) {
+    else if ( remaining[ pos ].isSpace() ) {
       if ( !result.isEmpty() && !result.endsWith( ' ' ) ) {
         result += ' ';
       }
@@ -116,8 +116,9 @@ QString RX::Ftx::processSearchStringForHighlight( const QString & searchString )
     }
     else {
       QString token;
-      while ( pos < remaining.length() && !remaining[pos].isSpace() && remaining[pos] != '"' && remaining[pos] != '\'' ) {
-        token += remaining[pos];
+      while ( pos < remaining.length() && !remaining[ pos ].isSpace() && remaining[ pos ] != '"'
+              && remaining[ pos ] != '\'' ) {
+        token += remaining[ pos ];
         ++pos;
       }
 
