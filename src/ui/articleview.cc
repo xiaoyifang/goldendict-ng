@@ -2314,7 +2314,16 @@ void ArticleView::highlightFTSResults()
       "accuracy": "%2",
       "separateWordSearch": false,
       "acrossElements": true,
-      "caseSensitive": false
+      "caseSensitive": false,
+      "done": function(count) {
+        window.gdMarkedElements = Array.from(document.querySelectorAll('mark[data-markjs]'));
+        window.gdCurrentMarkIndex = -1;
+        if (count > 0) {
+          window.gdCurrentMarkIndex = 0;
+          window.gdMarkedElements[0].classList.add('gd-active-mark');
+          window.gdMarkedElements[0].scrollIntoView({behavior: 'smooth', block: 'center'});
+        }
+      }
     });
   )JS" )
                      .arg( jsonKeywords, accuracy );
@@ -2368,44 +2377,48 @@ void ArticleView::performFtsFindOperation( bool backwards )
     return;
   }
 
-  if ( firstAvailableText.isEmpty() ) {
-    ftsSearchPanel->statusLabel->setText( searchStatusMessageNoMatches() );
-    ftsSearchPanel->next->setEnabled( false );
-    ftsSearchPanel->previous->setEnabled( false );
-    return;
-  }
-
-  QWebEnginePage::FindFlags flags( 0 );
-
-  if ( backwards ) {
-    webview->findText( firstAvailableText,
-                       flags | QWebEnginePage::FindBackward,
-                       [ this ]( const QWebEngineFindTextResult & result ) {
-                         if ( result.numberOfMatches() == 0 ) {
-                           return;
-                         }
-                         ftsSearchPanel->previous->setEnabled( true );
-                         if ( !ftsSearchPanel->next->isEnabled() ) {
-                           ftsSearchPanel->next->setEnabled( true );
-                         }
-
-                         ftsSearchPanel->statusLabel->setText(
-                           searchStatusMessage( result.activeMatch(), result.numberOfMatches() ) );
-                       } );
-  }
-  else {
-    webview->findText( firstAvailableText, flags, [ this ]( const QWebEngineFindTextResult & result ) {
-      if ( result.numberOfMatches() == 0 ) {
-        return;
+  QString direction = backwards ? "-1" : "1";
+  
+  QString script = QString::fromUtf8( R"JS(
+    (function() {
+      if (!window.gdMarkedElements || window.gdMarkedElements.length === 0) {
+        return { current: 0, total: 0 };
       }
-      ftsSearchPanel->next->setEnabled( true );
-      if ( !ftsSearchPanel->previous->isEnabled() ) {
-        ftsSearchPanel->previous->setEnabled( true );
+      
+      // Remove active class from current element
+      if (window.gdCurrentMarkIndex >= 0 && window.gdCurrentMarkIndex < window.gdMarkedElements.length) {
+        window.gdMarkedElements[window.gdCurrentMarkIndex].classList.remove('gd-active-mark');
       }
+      
+      // Calculate new index with wrap around using modulo
+      var direction = %1;
+      window.gdCurrentMarkIndex = (window.gdCurrentMarkIndex + direction + window.gdMarkedElements.length) % window.gdMarkedElements.length;
+      
+      // Add active class to new element and scroll to it
+      var activeElement = window.gdMarkedElements[window.gdCurrentMarkIndex];
+      activeElement.classList.add('gd-active-mark');
+      activeElement.scrollIntoView({behavior: 'smooth', block: 'center'});
+      
+      return { current: window.gdCurrentMarkIndex + 1, total: window.gdMarkedElements.length };
+    })();
+  )JS" ).arg( direction );
 
-      ftsSearchPanel->statusLabel->setText( searchStatusMessage( result.activeMatch(), result.numberOfMatches() ) );
-    } );
-  }
+  webview->page()->runJavaScript( script, [ this ]( const QVariant & result ) {
+    QVariantMap map = result.toMap();
+    int current = map.value( "current" ).toInt();
+    int total = map.value( "total" ).toInt();
+
+    if ( total == 0 ) {
+      ftsSearchPanel->statusLabel->setText( searchStatusMessageNoMatches() );
+      ftsSearchPanel->next->setEnabled( false );
+      ftsSearchPanel->previous->setEnabled( false );
+      return;
+    }
+
+    ftsSearchPanel->next->setEnabled( true );
+    ftsSearchPanel->previous->setEnabled( true );
+    ftsSearchPanel->statusLabel->setText( searchStatusMessage( current, total ) );
+  } );
 }
 
 void ArticleView::on_ftsSearchPrevious_clicked()
