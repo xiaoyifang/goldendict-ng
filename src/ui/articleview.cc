@@ -2280,9 +2280,9 @@ void ArticleView::highlightFTSResults()
     return;
   }
 
-  auto result = RX::Ftx::processSearchStringForHighlight( regString );
+  auto result                   = RX::Ftx::processSearchStringForHighlight( regString );
   QStringList highlightKeywords = result.first;
-  QStringList findTextKeywords = result.second;
+  QStringList findTextKeywords  = result.second;
 
   if ( highlightKeywords.isEmpty() ) {
     return;

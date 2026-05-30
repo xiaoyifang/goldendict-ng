@@ -83,16 +83,16 @@ bool Html::containHtmlEntity( const std::string & text )
   return QString::fromStdString( text ).contains( htmlEntity );
 }
 
-QPair<QStringList, QStringList> RX::Ftx::processSearchStringForHighlight( const QString & searchString )
+QPair< QStringList, QStringList > RX::Ftx::processSearchStringForHighlight( const QString & searchString )
 {
-  QStringList highlightKeywords;  // for mark.js with \b wrapping
-  QStringList findTextKeywords;   // for webview->findText, raw text
+  QStringList highlightKeywords; // for mark.js with \b wrapping
+  QStringList findTextKeywords;  // for webview->findText, raw text
 
   if ( searchString.isEmpty() ) {
     return qMakePair( highlightKeywords, findTextKeywords );
   }
 
-  int pos = 0;
+  int pos    = 0;
   int length = searchString.length();
   QRegularExpression quotedPhraseRx( R"("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')" );
   QRegularExpression xapianOpsRx( R"(\bAND\b|\bOR\b|[\+\-\*])" );
@@ -102,11 +102,11 @@ QPair<QStringList, QStringList> RX::Ftx::processSearchStringForHighlight( const 
 
     if ( match.hasMatch() && match.capturedStart() == pos ) {
       QString phrase = match.capturedRef();
-      phrase = phrase.mid( 1, phrase.length() - 2 );
+      phrase         = phrase.mid( 1, phrase.length() - 2 );
 
       QString phrasePattern = "\\b" + QRegularExpression::escape( phrase ) + "\\b";
       highlightKeywords.append( phrasePattern );
-      findTextKeywords.append( phrase );  // raw text for findText
+      findTextKeywords.append( phrase ); // raw text for findText
       pos = match.capturedEnd();
     }
     else if ( searchString[ pos ].isSpace() ) {

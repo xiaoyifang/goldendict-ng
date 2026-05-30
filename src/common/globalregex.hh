@@ -22,7 +22,7 @@ public:
   static QRegularExpression token;
 
   // Returns pair: (highlightKeywords, findTextKeywords)
-  static QPair<QStringList, QStringList> processSearchStringForHighlight( const QString & searchString );
+  static QPair< QStringList, QStringList > processSearchStringForHighlight( const QString & searchString );
   static QString serializeKeywordsToJson( const QStringList & keywords );
 };
 
