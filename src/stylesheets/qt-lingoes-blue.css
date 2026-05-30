@@ -60,9 +60,6 @@ MainWindow #centralWidget QTabBar::tab:selected {
   border-bottom-style: none;
 }
 
-ArticleView #searchFrame QMenu {
-  background-color: none;
-}
 ArticleView QMenu {
   background-color: none;
 }
@@ -79,10 +76,6 @@ QMainWindow::separator {
 /* Colored header for the History Pane */
 #historyPaneTitleBar {
   margin: 2px;
-}
-
-ScanPopup #outerFrame {
-  background-color: #ceddef;
 }
 
 ScanPopup #dictionaryBar {

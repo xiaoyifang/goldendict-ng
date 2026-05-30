@@ -6,6 +6,7 @@
 #include <QFrame>
 #include <QVBoxLayout>
 #include <QApplication>
+#include <QShowEvent>
 
 MainStatusBar::MainStatusBar( QWidget * parent ):
   QWidget( parent ),
@@ -27,7 +28,7 @@ MainStatusBar::MainStatusBar( QWidget * parent ):
 
   // layout
   const auto layout = new QHBoxLayout;
-  layout->setSpacing( 0 );
+  layout->setSpacing( 4 );
   layout->setSizeConstraint( QLayout::SetFixedSize );
   layout->setAlignment( Qt::AlignLeft | Qt::AlignVCenter );
   layout->setContentsMargins( 5, 5, 5, 5 );
@@ -35,13 +36,31 @@ MainStatusBar::MainStatusBar( QWidget * parent ):
   layout->addWidget( textWidget );
   setLayout( layout );
 
-  parentWidget()->installEventFilter( this );
+  if ( parentWidget() ) {
+    parentWidget()->installEventFilter( this );
+  }
 
   connect( timer, &QTimer::timeout, this, &MainStatusBar::clearMessage );
 
   setAutoFillBackground( true );
 
   hide();
+}
+
+void MainStatusBar::updatePosition()
+{
+  if ( parentWidget() ) {
+    raise();
+    int offsetX = 2;
+    int offsetY = 2;
+    move( offsetX, parentWidget()->height() - height() - offsetY );
+  }
+}
+
+void MainStatusBar::showEvent( QShowEvent * event )
+{
+  QWidget::showEvent( event );
+  updatePosition();
 }
 
 void MainStatusBar::clearMessage()
@@ -60,21 +79,28 @@ QString MainStatusBar::currentMessage() const
 
 void MainStatusBar::setBackgroundMessage( const QString & bkg_message )
 {
-  show();
   backgroundMessage = bkg_message;
   if ( message.isEmpty() ) {
     textWidget->setText( backgroundMessage );
+  }
+
+  // Only show if there's actual content to display
+  if ( !backgroundMessage.isEmpty() && !isVisible() ) {
+    show();
+  }
+  else if ( backgroundMessage.isEmpty() && isVisible() ) {
+    hide();
   }
 }
 
 void MainStatusBar::showMessage( const QString & str, int timeout, const QPixmap & pixmap )
 {
-  show();
   textWidget->setText( message = str );
   picWidget->setPixmap( pixmap );
 
   if ( !picWidget->pixmap().isNull() ) {
-    picWidget->setFixedSize( textWidget->height(), textWidget->height() );
+    int iconSize = fontMetrics().height() - 2;
+    picWidget->setFixedSize( iconSize, iconSize );
   }
   else {
     picWidget->setFixedSize( 0, 0 );
@@ -84,10 +110,12 @@ void MainStatusBar::showMessage( const QString & str, int timeout, const QPixmap
     timer->start( timeout );
   }
 
-  if ( parentWidget() ) {
-    raise();
-
-    move( 0, parentWidget()->height() - height() );
+  if ( str.isEmpty() && pixmap.isNull() ) {
+    hide();
+  }
+  else {
+    show();
+    updatePosition();
   }
 }
 
@@ -101,8 +129,7 @@ bool MainStatusBar::eventFilter( QObject *, QEvent * e )
   switch ( e->type() ) {
     case QEvent::Resize:
       if ( isVisible() ) {
-        raise();
-        move( QPoint( 0, parentWidget()->height() - height() ) );
+        updatePosition();
       }
       break;
     default:
