@@ -80,3 +80,59 @@ bool Html::containHtmlEntity( const std::string & text )
 {
   return QString::fromStdString( text ).contains( htmlEntity );
 }
+
+QString RX::Ftx::processSearchStringForHighlight( const QString & searchString )
+{
+  if ( searchString.isEmpty() ) {
+    return QString();
+  }
+
+  QString result;
+  QString remaining = searchString;
+  QRegularExpression quotedPhraseRx( R"("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')" );
+
+  QRegularExpression xapianOpsRx( R"(\bAND\b|\bOR\b|[\+\-\*])" );
+
+  int pos = 0;
+  while ( pos < remaining.length() ) {
+    QRegularExpressionMatch match = quotedPhraseRx.match( remaining, pos );
+
+    if ( match.hasMatch() && match.capturedStart() == pos ) {
+      QString phrase = match.capturedRef();
+
+      phrase = phrase.mid( 1, phrase.length() - 2 );
+
+      if ( !result.isEmpty() && !result.endsWith( ' ' ) ) {
+        result += ' ';
+      }
+      result += "\\b" + QRegularExpression::escape( phrase ) + "\\b";
+      pos = match.capturedEnd();
+    }
+    else if ( remaining[pos].isSpace() ) {
+      if ( !result.isEmpty() && !result.endsWith( ' ' ) ) {
+        result += ' ';
+      }
+      ++pos;
+    }
+    else {
+      QString token;
+      while ( pos < remaining.length() && !remaining[pos].isSpace() && remaining[pos] != '"' && remaining[pos] != '\'' ) {
+        token += remaining[pos];
+        ++pos;
+      }
+
+      if ( !token.isEmpty() ) {
+        token.replace( xapianOpsRx, " " );
+
+        if ( !result.isEmpty() && !result.endsWith( ' ' ) ) {
+          result += ' ';
+        }
+        result += token;
+      }
+    }
+  }
+
+  result = result.simplified();
+
+  return result;
+}

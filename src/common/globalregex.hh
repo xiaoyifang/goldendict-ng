@@ -18,6 +18,8 @@ public:
   static QRegularExpression tokenBoundary;
 
   static QRegularExpression token;
+
+  static QString processSearchStringForHighlight( const QString & searchString );
 };
 
 

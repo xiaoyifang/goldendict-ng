@@ -489,7 +489,8 @@ void FullTextSearchDialog::itemClicked( const QModelIndex & idx )
     QString headword = results[ idx.row() ].headword;
     QRegularExpression reg;
     auto searchText = ui.searchLine->text();
-    searchText.replace( RX::Ftx::tokenBoundary, " " );
+
+    searchText = RX::Ftx::processSearchStringForHighlight( searchText );
 
     if ( !searchText.isEmpty() ) {
       reg = QRegularExpression( searchText, QRegularExpression::CaseInsensitiveOption );
