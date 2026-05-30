@@ -112,7 +112,8 @@ void MainStatusBar::showMessage( const QString & str, int timeout, const QPixmap
 
   if ( str.isEmpty() && pixmap.isNull() ) {
     hide();
-  } else {
+  }
+  else {
     show();
     updatePosition();
   }
