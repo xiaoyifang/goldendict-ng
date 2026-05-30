@@ -1,5 +1,20 @@
 /******** Global, non-dictionary-specific classes ***********/
 
+/* Mark.js highlighted search results */
+mark[data-markjs] {
+  background-color: #fff59d;
+  color: #222;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+mark.gd-active-mark {
+  background-color: #ff9800;
+  color: #000;
+  font-weight: bold;
+  box-shadow: 0 0 4px rgba(255, 152, 0, 0.8);
+}
+
 html {
   height: 100%;
   scrollbar-gutter: stable;

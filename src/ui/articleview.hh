@@ -76,7 +76,7 @@ class ArticleView: public QWidget
   QString lastAudioUrl;
 
   /// Search in results of full-text search
-  QString firstAvailableText;
+
   QStringList uniqueMatches;
 
   QString delayedHighlightText;

@@ -1,5 +1,7 @@
 #include "globalregex.hh"
 #include "fulltextsearch.hh"
+#include <QJsonArray>
+#include <QJsonDocument>
 
 using namespace RX;
 
@@ -79,4 +81,63 @@ const QRegularExpression RX::qtWebEngineUserAgent( R"(QtWebEngine\/[\d.]+\s*)" )
 bool Html::containHtmlEntity( const std::string & text )
 {
   return QString::fromStdString( text ).contains( htmlEntity );
+}
+
+QStringList RX::Ftx::processSearchStringForHighlight( const QString & searchString )
+{
+  QStringList highlightKeywords;
+
+  if ( searchString.isEmpty() ) {
+    return highlightKeywords;
+  }
+
+  int pos    = 0;
+  int length = searchString.length();
+  QRegularExpression quotedPhraseRx( R"("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')" );
+  QRegularExpression xapianOpsRx( R"(\bAND\b|\bOR\b|[\+\-\*])" );
+
+  while ( pos < length ) {
+    QRegularExpressionMatch match = quotedPhraseRx.match( searchString, pos );
+
+    if ( match.hasMatch() && match.capturedStart() == pos ) {
+      QString phrase = match.captured();
+      phrase         = phrase.mid( 1, phrase.length() - 2 );
+
+      QString phrasePattern = "\\b" + QRegularExpression::escape( phrase ) + "\\b";
+      highlightKeywords.append( phrasePattern );
+      pos = match.capturedEnd();
+    }
+    else if ( searchString[ pos ].isSpace() ) {
+      ++pos;
+    }
+    else {
+      QString token;
+      while ( pos < length && !searchString[ pos ].isSpace() && searchString[ pos ] != '"'
+              && searchString[ pos ] != '\'' ) {
+        token += searchString[ pos ];
+        ++pos;
+      }
+
+      if ( !token.isEmpty() ) {
+        token.replace( xapianOpsRx, " " );
+        token = token.simplified();
+
+        if ( !token.isEmpty() ) {
+          highlightKeywords.append( token );
+        }
+      }
+    }
+  }
+
+  return highlightKeywords;
+}
+
+QString RX::Ftx::serializeKeywordsToJson( const QStringList & keywords )
+{
+  QJsonArray jsonArray;
+  for ( const QString & keyword : keywords ) {
+    jsonArray.append( keyword );
+  }
+  QJsonDocument jsonDoc( jsonArray );
+  return QString::fromUtf8( jsonDoc.toJson( QJsonDocument::Compact ) );
 }
