@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QRegularExpression>
+#include <QStringList>
+#include <QPair>
 
 namespace RX {
 class Ftx
@@ -19,7 +21,9 @@ public:
 
   static QRegularExpression token;
 
-  static QString processSearchStringForHighlight( const QString & searchString );
+  // Returns pair: (highlightKeywords, findTextKeywords)
+  static QPair<QStringList, QStringList> processSearchStringForHighlight( const QString & searchString );
+  static QString serializeKeywordsToJson( const QStringList & keywords );
 };
 
 

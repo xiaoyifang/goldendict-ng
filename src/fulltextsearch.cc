@@ -490,11 +490,9 @@ void FullTextSearchDialog::itemClicked( const QModelIndex & idx )
     QRegularExpression reg;
     auto searchText = ui.searchLine->text();
 
-    searchText = RX::Ftx::processSearchStringForHighlight( searchText );
-
-    if ( !searchText.isEmpty() ) {
-      reg = QRegularExpression( searchText, QRegularExpression::CaseInsensitiveOption );
-    }
+    // Pass raw searchText as regexp pattern
+    // articleview.cc will handle the highlighting logic
+    reg = QRegularExpression( searchText, QRegularExpression::CaseInsensitiveOption );
 
     emit showTranslationFor( headword, results[ idx.row() ].dictIDs, reg, false );
   }

@@ -1,5 +1,7 @@
 #include "globalregex.hh"
 #include "fulltextsearch.hh"
+#include <QJsonArray>
+#include <QJsonDocument>
 
 using namespace RX;
 
@@ -81,59 +83,64 @@ bool Html::containHtmlEntity( const std::string & text )
   return QString::fromStdString( text ).contains( htmlEntity );
 }
 
-QString RX::Ftx::processSearchStringForHighlight( const QString & searchString )
+QPair<QStringList, QStringList> RX::Ftx::processSearchStringForHighlight( const QString & searchString )
 {
+  QStringList highlightKeywords;  // for mark.js with \b wrapping
+  QStringList findTextKeywords;   // for webview->findText, raw text
+
   if ( searchString.isEmpty() ) {
-    return QString();
+    return qMakePair( highlightKeywords, findTextKeywords );
   }
 
-  QString result;
-  QString remaining = searchString;
+  int pos = 0;
+  int length = searchString.length();
   QRegularExpression quotedPhraseRx( R"("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')" );
-
   QRegularExpression xapianOpsRx( R"(\bAND\b|\bOR\b|[\+\-\*])" );
 
-  int pos = 0;
-  while ( pos < remaining.length() ) {
-    QRegularExpressionMatch match = quotedPhraseRx.match( remaining, pos );
+  while ( pos < length ) {
+    QRegularExpressionMatch match = quotedPhraseRx.match( searchString, pos );
 
     if ( match.hasMatch() && match.capturedStart() == pos ) {
       QString phrase = match.capturedRef();
-
       phrase = phrase.mid( 1, phrase.length() - 2 );
 
-      if ( !result.isEmpty() && !result.endsWith( ' ' ) ) {
-        result += ' ';
-      }
-      result += "\\b" + QRegularExpression::escape( phrase ) + "\\b";
+      QString phrasePattern = "\\b" + QRegularExpression::escape( phrase ) + "\\b";
+      highlightKeywords.append( phrasePattern );
+      findTextKeywords.append( phrase );  // raw text for findText
       pos = match.capturedEnd();
     }
-    else if ( remaining[ pos ].isSpace() ) {
-      if ( !result.isEmpty() && !result.endsWith( ' ' ) ) {
-        result += ' ';
-      }
+    else if ( searchString[ pos ].isSpace() ) {
       ++pos;
     }
     else {
       QString token;
-      while ( pos < remaining.length() && !remaining[ pos ].isSpace() && remaining[ pos ] != '"'
-              && remaining[ pos ] != '\'' ) {
-        token += remaining[ pos ];
+      while ( pos < length && !searchString[ pos ].isSpace() && searchString[ pos ] != '"'
+              && searchString[ pos ] != '\'' ) {
+        token += searchString[ pos ];
         ++pos;
       }
 
       if ( !token.isEmpty() ) {
         token.replace( xapianOpsRx, " " );
+        token = token.simplified();
 
-        if ( !result.isEmpty() && !result.endsWith( ' ' ) ) {
-          result += ' ';
+        if ( !token.isEmpty() ) {
+          highlightKeywords.append( token );
+          findTextKeywords.append( token );
         }
-        result += token;
       }
     }
   }
 
-  result = result.simplified();
+  return qMakePair( highlightKeywords, findTextKeywords );
+}
 
-  return result;
+QString RX::Ftx::serializeKeywordsToJson( const QStringList & keywords )
+{
+  QJsonArray jsonArray;
+  for ( const QString & keyword : keywords ) {
+    jsonArray.append( keyword );
+  }
+  QJsonDocument jsonDoc( jsonArray );
+  return QString::fromUtf8( jsonDoc.toJson( QJsonDocument::Compact ) );
 }
