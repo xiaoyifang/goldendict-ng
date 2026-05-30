@@ -83,13 +83,12 @@ bool Html::containHtmlEntity( const std::string & text )
   return QString::fromStdString( text ).contains( htmlEntity );
 }
 
-QPair< QStringList, QStringList > RX::Ftx::processSearchStringForHighlight( const QString & searchString )
+QStringList RX::Ftx::processSearchStringForHighlight( const QString & searchString )
 {
-  QStringList highlightKeywords; // for mark.js with \b wrapping
-  QStringList findTextKeywords;  // for webview->findText, raw text
+  QStringList highlightKeywords;
 
   if ( searchString.isEmpty() ) {
-    return qMakePair( highlightKeywords, findTextKeywords );
+    return highlightKeywords;
   }
 
   int pos    = 0;
@@ -101,12 +100,11 @@ QPair< QStringList, QStringList > RX::Ftx::processSearchStringForHighlight( cons
     QRegularExpressionMatch match = quotedPhraseRx.match( searchString, pos );
 
     if ( match.hasMatch() && match.capturedStart() == pos ) {
-      QString phrase = match.capturedRef();
+      QString phrase = match.captured();
       phrase         = phrase.mid( 1, phrase.length() - 2 );
 
       QString phrasePattern = "\\b" + QRegularExpression::escape( phrase ) + "\\b";
       highlightKeywords.append( phrasePattern );
-      findTextKeywords.append( phrase ); // raw text for findText
       pos = match.capturedEnd();
     }
     else if ( searchString[ pos ].isSpace() ) {
@@ -126,13 +124,12 @@ QPair< QStringList, QStringList > RX::Ftx::processSearchStringForHighlight( cons
 
         if ( !token.isEmpty() ) {
           highlightKeywords.append( token );
-          findTextKeywords.append( token );
         }
       }
     }
   }
 
-  return qMakePair( highlightKeywords, findTextKeywords );
+  return highlightKeywords;
 }
 
 QString RX::Ftx::serializeKeywordsToJson( const QStringList & keywords )

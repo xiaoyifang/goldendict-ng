@@ -6,6 +6,7 @@
 #include "folding.hh"
 #include "gestures.hh"
 #include "globalbroadcaster.hh"
+#include "globalregex.hh"
 #include "speechclient.hh"
 #include "utils.hh"
 #include "webmultimediadownload.hh"
@@ -2174,7 +2175,6 @@ bool ArticleView::closeSearch()
     return true;
   }
   if ( ftsSearchPanel->isVisible() ) {
-    firstAvailableText.clear();
     uniqueMatches.clear();
 
     ftsSearchPanel->hide();
@@ -2280,9 +2280,7 @@ void ArticleView::highlightFTSResults()
     return;
   }
 
-  auto result                   = RX::Ftx::processSearchStringForHighlight( regString );
-  QStringList highlightKeywords = result.first;
-  QStringList findTextKeywords  = result.second;
+  QStringList highlightKeywords = RX::Ftx::processSearchStringForHighlight( regString );
 
   if ( highlightKeywords.isEmpty() ) {
     return;
@@ -2329,15 +2327,6 @@ void ArticleView::highlightFTSResults()
                      .arg( jsonKeywords, accuracy );
 
   webview->page()->runJavaScript( script );
-
-  // Find longest keyword for findText (use raw text without \b wrapping)
-  QString longestWord;
-  for ( const QString & keyword : findTextKeywords ) {
-    if ( keyword.size() > longestWord.size() ) {
-      longestWord = keyword;
-    }
-  }
-  firstAvailableText = longestWord;
 
   ftsSearchPanel->show();
   performFtsFindOperation( true );
