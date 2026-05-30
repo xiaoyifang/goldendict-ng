@@ -2378,7 +2378,7 @@ void ArticleView::performFtsFindOperation( bool backwards )
   }
 
   QString direction = backwards ? "-1" : "1";
-  
+
   QString script = QString::fromUtf8( R"JS(
     (function() {
       if (!window.gdMarkedElements || window.gdMarkedElements.length === 0) {
@@ -2401,12 +2401,13 @@ void ArticleView::performFtsFindOperation( bool backwards )
       
       return { current: window.gdCurrentMarkIndex + 1, total: window.gdMarkedElements.length };
     })();
-  )JS" ).arg( direction );
+  )JS" )
+                     .arg( direction );
 
   webview->page()->runJavaScript( script, [ this ]( const QVariant & result ) {
     QVariantMap map = result.toMap();
-    int current = map.value( "current" ).toInt();
-    int total = map.value( "total" ).toInt();
+    int current     = map.value( "current" ).toInt();
+    int total       = map.value( "total" ).toInt();
 
     if ( total == 0 ) {
       ftsSearchPanel->statusLabel->setText( searchStatusMessageNoMatches() );
