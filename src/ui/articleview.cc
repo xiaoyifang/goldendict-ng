@@ -2320,14 +2320,7 @@ void ArticleView::highlightFTSResults()
 
   webview->page()->runJavaScript( script );
 
-  // Find the longest keyword
-  QString longestWord;
-  for ( const QString & keyword : highlightKeywords ) {
-    if ( keyword.size() > longestWord.size() ) {
-      longestWord = keyword;
-    }
-  }
-  firstAvailableText = longestWord;
+  firstAvailableText = highlightKeywords.first();
 
   ftsSearchPanel->show();
   performFtsFindOperation( true );
