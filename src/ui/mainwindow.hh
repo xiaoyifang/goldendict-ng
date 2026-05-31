@@ -175,6 +175,9 @@ private:
   DictHeadwords * headwordsDlg;
 
   FTS::FtsIndexing ftsIndexing;
+  
+  QTimer ftsRestartTimer; // Timer to delay FTS indexing restart after state change
+  bool ftsStateChanged = false; // Track if FTS state was changed in DictInfo
 
   FTS::FullTextSearchDialog * ftsDlg;
 

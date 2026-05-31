@@ -96,6 +96,10 @@ signals:
   void websiteDictionarySignal( QString, QString, QString, bool, QString );
 
   void ftsStateChanged();
+  
+  // New signals for controlling FTS indexing
+  void stopFtsIndexing();
+  void startFtsIndexing();
 
   void mutedDictionariesChanged();
 };

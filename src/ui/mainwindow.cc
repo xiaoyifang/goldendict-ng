@@ -172,6 +172,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   wasMaximized( false ),
   headwordsDlg( nullptr ),
   ftsIndexing( dictionaries ),
+  ftsRestartTimer( this ), // Initialize timer with MainWindow as parent
+  ftsStateChanged( false ),
   ftsDlg( nullptr ),
   starIcon( ":/icons/star.svg" ),
   blueStarIcon( ":/icons/star_blue.svg" )
@@ -188,6 +190,17 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   GlobalBroadcaster::instance()->setAudioPlayer( &audioPlayerFactory.player() );
   GlobalBroadcaster::instance()->setAllDictionaries( &dictionaries );
   GlobalBroadcaster::instance()->setGroups( &groupInstances );
+  
+  // Setup FTS restart timer - 3 seconds delay after DictInfo closes
+  ftsRestartTimer.setSingleShot( true );
+  ftsRestartTimer.setInterval( 3000 ); // 3 seconds delay
+  connect( &ftsRestartTimer, &QTimer::timeout, this, [ this ]() {
+    if ( ftsStateChanged ) {
+      qDebug() << "Restarting FTS indexing after DictInfo closed";
+      ftsIndexing.doIndexing();
+      ftsStateChanged = false;
+    }
+  });
 
   localSchemeHandler     = new LocalSchemeHandler( articleNetMgr, this );
   QStringList htmlScheme = { "gdlookup", "bword", "entry", "gdinternal" };
@@ -734,10 +747,23 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            &GlobalBroadcaster::indexingDictionary,
            this,
            &MainWindow::showFTSIndexingName );
-  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::ftsStateChanged, this, [ this ]() {
+  
+  // When FTS state changes (from DictInfo), stop indexing and schedule restart
+  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::stopFtsIndexing, this, [ this ]() {
+    qDebug() << "FTS state changed, stopping indexing and scheduling restart";
     ftsIndexing.stopIndexing();
+    ftsStateChanged = true;
+    ftsRestartTimer.start(); // Will restart after 3 seconds
+  } );
+  
+  // Direct start signal (bypasses delay)
+  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::startFtsIndexing, this, [ this ]() {
+    qDebug() << "Direct FTS indexing start requested";
+    ftsStateChanged = false; // Cancel any pending restart
+    ftsRestartTimer.stop();
     ftsIndexing.doIndexing();
   } );
+  
   connect( GlobalBroadcaster::instance(),
            &GlobalBroadcaster::websiteDictionarySignal,
            this,
