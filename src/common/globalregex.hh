@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QRegularExpression>
+#include <QStringList>
+#include <QPair>
 
 namespace RX {
 class Ftx
@@ -18,6 +20,9 @@ public:
   static QRegularExpression tokenBoundary;
 
   static QRegularExpression token;
+
+  static QStringList processSearchStringForHighlight( const QString & searchString );
+  static QString serializeKeywordsToJson( const QStringList & keywords );
 };
 
 

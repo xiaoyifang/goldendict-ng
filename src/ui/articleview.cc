@@ -6,6 +6,7 @@
 #include "folding.hh"
 #include "gestures.hh"
 #include "globalbroadcaster.hh"
+#include "globalregex.hh"
 #include "speechclient.hh"
 #include "utils.hh"
 #include "webmultimediadownload.hh"
@@ -2280,59 +2281,46 @@ void ArticleView::highlightFTSResults()
     return;
   }
 
+  QStringList highlightKeywords = RX::Ftx::processSearchStringForHighlight( regString );
 
-  //replace any unicode Number ,Symbol ,Punctuation ,Mark character to whitespace
-  regString.replace( QRegularExpression( R"([\p{N}\p{S}\p{P}\p{M}])", QRegularExpression::UseUnicodePropertiesOption ),
-                     " " );
-
-  if ( regString.trimmed().isEmpty() ) {
+  if ( highlightKeywords.isEmpty() ) {
     return;
   }
 
-  // Detect if the search string contains characters without clear word boundaries
-  // Languages like Chinese, Japanese, Korean, Thai, etc. don't use spaces between words
-  // For these languages, we use "partially" mode for better phrase matching
   QString accuracy = "exactly";
-
-  for ( const QChar & ch : regString ) {
-    auto script = ch.script();
-
-    // Check for scripts without clear word boundaries (no spaces between words)
-    // CJK scripts: Han (Chinese/Japanese/Korean characters), Hiragana, Katakana, Hangul
-    // Southeast Asian scripts: Thai, Lao, Khmer, Myanmar
-    if ( script == QChar::Script_Han || script == QChar::Script_Hiragana || script == QChar::Script_Katakana
-         || script == QChar::Script_Hangul || script == QChar::Script_Thai || script == QChar::Script_Lao
-         || script == QChar::Script_Khmer || script == QChar::Script_Myanmar ) {
-      accuracy = "partially";
-      break; // Early exit on first non-space-separated character found
+  for ( const QString & keyword : highlightKeywords ) {
+    for ( const QChar & ch : keyword ) {
+      auto script = ch.script();
+      if ( script == QChar::Script_Han || script == QChar::Script_Hiragana || script == QChar::Script_Katakana
+           || script == QChar::Script_Hangul || script == QChar::Script_Thai || script == QChar::Script_Lao
+           || script == QChar::Script_Khmer || script == QChar::Script_Myanmar ) {
+        accuracy = "partially";
+        break;
+      }
+    }
+    if ( accuracy == "partially" ) {
+      break;
     }
   }
+
+  QString jsonKeywords = RX::Ftx::serializeKeywordsToJson( highlightKeywords );
 
   QString script = QString::fromUtf8( R"JS(
     var context = document.querySelector("body");
     var instance = new Mark(context);
     instance.unmark();
-    instance.mark("%1", {
+    instance.mark(%1, {
       "accuracy": "%2",
       "separateWordSearch": false,
       "acrossElements": true,
       "caseSensitive": false
     });
   )JS" )
-                     .arg( regString, accuracy );
+                     .arg( jsonKeywords, accuracy );
 
   webview->page()->runJavaScript( script );
-  auto parts = regString.split( " ", Qt::SkipEmptyParts );
-  if ( parts.isEmpty() ) {
-    return;
-  }
 
-  //hold the longest word
-  for ( auto & p : parts ) {
-    if ( p.size() > firstAvailableText.size() ) {
-      firstAvailableText = p;
-    }
-  }
+  firstAvailableText = highlightKeywords.first();
 
   ftsSearchPanel->show();
   performFtsFindOperation( true );
