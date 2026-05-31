@@ -2361,11 +2361,11 @@ void ArticleView::performFtsFindOperation( bool backwards )
   }
 
   if ( firstAvailableText.isEmpty() ) {
-      ftsSearchPanel->statusLabel->setText( searchStatusMessageNoMatches() );
-      ftsSearchPanel->next->setEnabled( false );
-      ftsSearchPanel->previous->setEnabled( false );
-      return;
-    }
+    ftsSearchPanel->statusLabel->setText( searchStatusMessageNoMatches() );
+    ftsSearchPanel->next->setEnabled( false );
+    ftsSearchPanel->previous->setEnabled( false );
+    return;
+  }
 
   QWebEnginePage::FindFlags flags( 0 );
 
@@ -2378,7 +2378,7 @@ void ArticleView::performFtsFindOperation( bool backwards )
                          }
                          ftsSearchPanel->previous->setEnabled( true );
                          if ( !ftsSearchPanel->next->isEnabled() ) {
-    ftsSearchPanel->next->setEnabled( true );
+                           ftsSearchPanel->next->setEnabled( true );
                          }
 
                          ftsSearchPanel->statusLabel->setText(
@@ -2392,11 +2392,11 @@ void ArticleView::performFtsFindOperation( bool backwards )
       }
       ftsSearchPanel->next->setEnabled( true );
       if ( !ftsSearchPanel->previous->isEnabled() ) {
-    ftsSearchPanel->previous->setEnabled( true );
+        ftsSearchPanel->previous->setEnabled( true );
       }
 
       ftsSearchPanel->statusLabel->setText( searchStatusMessage( result.activeMatch(), result.numberOfMatches() ) );
-  } );
+    } );
   }
 }
 
