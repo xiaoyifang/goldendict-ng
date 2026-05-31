@@ -2313,35 +2313,18 @@ void ArticleView::highlightFTSResults()
       "accuracy": "%2",
       "separateWordSearch": false,
       "acrossElements": true,
-      "caseSensitive": false,
-      "done": function(count) {
-        window.gdMarkedElements = Array.from(document.querySelectorAll('mark[data-markjs]'));
-        window.gdCurrentMarkIndex = -1;
-        if (count > 0) {
-          window.gdCurrentMarkIndex = 0;
-          window.gdMarkedElements[0].classList.add('gd-active-mark');
-          window.gdMarkedElements[0].scrollIntoView({behavior: 'smooth', block: 'center'});
-        }
-      }
+      "caseSensitive": false
     });
   )JS" )
                      .arg( jsonKeywords, accuracy );
 
   webview->page()->runJavaScript( script );
 
-  // Find the longest keyword (clean \b wrapping first)
+  // Find the longest keyword
   QString longestWord;
   for ( const QString & keyword : highlightKeywords ) {
-    QString cleanKeyword = keyword;
-    // Remove \b prefix and suffix if present
-    if ( cleanKeyword.startsWith( "\\b" ) ) {
-      cleanKeyword = cleanKeyword.mid( 2 );
-    }
-    if ( cleanKeyword.endsWith( "\\b" ) ) {
-      cleanKeyword = cleanKeyword.chopped( 2 );
-    }
-    if ( cleanKeyword.size() > longestWord.size() ) {
-      longestWord = cleanKeyword;
+    if ( keyword.size() > longestWord.size() ) {
+      longestWord = keyword;
     }
   }
   firstAvailableText = longestWord;
