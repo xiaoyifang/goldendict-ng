@@ -105,7 +105,9 @@ void DictInfo::on_ftsToggleButton_clicked()
   Metadata::saveFullIndex( metadataPath.toStdString(), newState );
 
   currentDict->setFtsEnabled( newState );
-  GlobalBroadcaster::instance()->ftsStateChanged();
+
+  // Only stop indexing, MainWindow will handle delayed restart
+  GlobalBroadcaster::instance()->stopFtsIndexing();
 
   ui.enableFullindex->setText( newState ? tr( "Full-text search enabled" ) : tr( "Full-text search disabled" ) );
   ui.ftsToggleButton->setText( newState ? tr( "Disable" ) : tr( "Enable" ) );
