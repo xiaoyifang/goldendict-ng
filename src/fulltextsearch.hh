@@ -237,7 +237,7 @@ private slots:
 signals:
   void showTranslationFor( const QString &,
                            const QStringList & dictIDs,
-                           const QRegularExpression & searchRegExp,
+                           const QString & searchRegExp,
                            bool ignoreDiacritics );
   void closeDialog();
 

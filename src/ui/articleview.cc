@@ -371,7 +371,7 @@ void ArticleView::showDefinition( const QString & word,
 
 void ArticleView::showDefinition( const QString & word,
                                   const QStringList & dictIDs,
-                                  const QRegularExpression & searchRegExp,
+                                  const QString & searchRegExp,
                                   unsigned group,
                                   bool ignoreDiacritics )
 {
@@ -400,12 +400,7 @@ void ArticleView::showDefinition( const QString & word,
 
   reqQuery.addQueryItem( "word", word );
   reqQuery.addQueryItem( "dictionaries", dictIDs.join( "," ) );
-  reqQuery.addQueryItem( "regexp", searchRegExp.pattern() );
-  if ( !searchRegExp.patternOptions().testFlag( QRegularExpression::CaseInsensitiveOption ) ) {
-    reqQuery.addQueryItem( "matchcase", "1" );
-  }
-  //  if ( searchRegExp.patternSyntax() == QRegExp::WildcardUnix )
-  //    Utils::Url::addQueryItem( req, "wildcards", "1" );
+  reqQuery.addQueryItem( "regexp", searchRegExp );
   reqQuery.addQueryItem( "group", QString::number( group ) );
   if ( ignoreDiacritics ) {
     reqQuery.addQueryItem( "ignore_diacritics", "1" );

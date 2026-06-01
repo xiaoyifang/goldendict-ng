@@ -3087,7 +3087,7 @@ void MainWindow::showTranslationFor( const QString & word, unsigned inGroup, con
 
 void MainWindow::showTranslationForDicts( const QString & inWord,
                                           const QStringList & dictIDs,
-                                          const QRegularExpression & searchRegExp,
+                                          const QString & searchRegExp,
                                           bool ignoreDiacritics )
 {
   ArticleView * view = getFirstNonWebSiteArticleView();
