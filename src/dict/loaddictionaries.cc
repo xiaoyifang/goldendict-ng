@@ -226,7 +226,7 @@ void loadDictionaries( QWidget * parent,
 
   bool showSplashWindow = !cfg.preferences.enableTrayIcon || !cfg.preferences.startToTray;
   // Start a thread to load all the dictionaries
-  ::Initializing init( parent, showSplashWindow );
+  ::Initializing init( nullptr, showSplashWindow );
 
   LoadDictionaries loadDicts( cfg );
 
