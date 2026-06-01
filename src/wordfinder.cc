@@ -203,19 +203,19 @@ void WordFinder::requestFinished()
 namespace {
 
 enum Score {
-  ScoreExactMatch            = 100,
-  ScoreExactNoFullCaseMatch  = 95,
-  ScoreExactNoDiaMatch       = 90,
-  ScoreExactNoPunctMatch     = 85,
-  ScoreExactNoWsMatch        = 80,
-  ScoreExactInsideMatch      = 75,
-  ScoreExactNoDiaInsideMatch = 70,
+  ScoreExactMatch              = 100,
+  ScoreExactNoFullCaseMatch    = 95,
+  ScoreExactNoDiaMatch         = 90,
+  ScoreExactNoPunctMatch       = 85,
+  ScoreExactNoWsMatch          = 80,
+  ScoreExactInsideMatch        = 75,
+  ScoreExactNoDiaInsideMatch   = 70,
   ScoreExactNoPunctInsideMatch = 65,
-  ScorePrefixMatch           = 60,
-  ScorePrefixNoDiaMatch      = 55,
-  ScorePrefixNoPunctMatch    = 50,
-  ScorePrefixNoWsMatch       = 45,
-  ScoreWorstMatch            = 0
+  ScorePrefixMatch             = 60,
+  ScorePrefixNoDiaMatch        = 55,
+  ScorePrefixNoPunctMatch      = 50,
+  ScorePrefixNoWsMatch         = 45,
+  ScoreWorstMatch              = 0
 };
 
 unsigned saturated( unsigned x )
@@ -401,10 +401,10 @@ void WordFinder::updateResults()
       else {
         resultsArray.emplace_back();
 
-        resultsArray.back().word          = match;
-        resultsArray.back().rank          = INT_MAX;
-        resultsArray.back().wasSuggested  = ( weight != 0 );
-        resultsArray.back().rankFeatures  = RankFeatures( 0, INT_MAX );
+        resultsArray.back().word         = match;
+        resultsArray.back().rank         = INT_MAX;
+        resultsArray.back().wasSuggested = ( weight != 0 );
+        resultsArray.back().rankFeatures = RankFeatures( 0, INT_MAX );
 
         insertResult.first->second = --resultsArray.end();
       }
@@ -422,8 +422,8 @@ void WordFinder::updateResults()
                                   const std::u32string & targetNoWs,
                                   const ResultFoldings & rf ) -> RankFeatures {
       std::u32string::size_type matchPos = 0;
-      int score = computeMatchScore( result, target, targetNoFullCase,
-                                     targetNoDia, targetNoPunct, targetNoWs, matchPos, rf );
+      int score =
+        computeMatchScore( result, target, targetNoFullCase, targetNoDia, targetNoPunct, targetNoWs, matchPos, rf );
       int lengthDelta = std::abs( static_cast< int >( target.size() ) - static_cast< int >( result.size() ) );
       return RankFeatures( score, lengthDelta );
     };
@@ -455,13 +455,17 @@ void WordFinder::updateResults()
         std::u32string targetNoWs       = Folding::applyWhitespaceOnly( targetNoPunct );
 
         for ( const auto & i : resultsIndex ) {
-          RankFeatures rf = computePrefixScore( i.first, target, targetNoFullCase,
-                                                targetNoDia, targetNoPunct, targetNoWs,
+          RankFeatures rf = computePrefixScore( i.first,
+                                                target,
+                                                targetNoFullCase,
+                                                targetNoDia,
+                                                targetNoPunct,
+                                                targetNoWs,
                                                 resultFoldingsCache[ i.first ] );
 
           RankFeatures & destRf = i.second->rankFeatures;
-          if ( rf.baseScore > destRf.baseScore || 
-              ( rf.baseScore == destRf.baseScore && rf.lengthDelta < destRf.lengthDelta ) ) {
+          if ( rf.baseScore > destRf.baseScore
+               || ( rf.baseScore == destRf.baseScore && rf.lengthDelta < destRf.lengthDelta ) ) {
             destRf = rf;
           }
         }
@@ -474,8 +478,8 @@ void WordFinder::updateResults()
           RankFeatures rf = computeStemmedScore( i.first, allWordWriting );
 
           RankFeatures & destRf = i.second->rankFeatures;
-          if ( rf.baseScore > destRf.baseScore || 
-              ( rf.baseScore == destRf.baseScore && rf.lengthDelta < destRf.lengthDelta ) ) {
+          if ( rf.baseScore > destRf.baseScore
+               || ( rf.baseScore == destRf.baseScore && rf.lengthDelta < destRf.lengthDelta ) ) {
             destRf = rf;
           }
         }

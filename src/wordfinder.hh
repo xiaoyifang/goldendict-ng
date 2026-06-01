@@ -54,8 +54,16 @@ private:
     int baseScore;
     int lengthDelta;
 
-    RankFeatures() : baseScore( 0 ), lengthDelta( INT_MAX ) {}
-    RankFeatures( int score, int delta ) : baseScore( score ), lengthDelta( delta ) {}
+    RankFeatures():
+      baseScore( 0 ),
+      lengthDelta( INT_MAX )
+    {
+    }
+    RankFeatures( int score, int delta ):
+      baseScore( score ),
+      lengthDelta( delta )
+    {
+    }
   };
 
   struct OneResult
@@ -192,4 +200,3 @@ private:
     }
   };
 };
-
