@@ -38,12 +38,13 @@ void switchLoggingMethod( bool logToFile )
         return;
       };
     }
-    qSetMessagePattern( "%{if-debug}[DEBUG ] %{endif}"
-                        "%{if-info}[INFO ] %{endif}"
-                        "%{if-warning}[WARNING ] %{endif}"
-                        "%{if-critical}[CRITICAL] %{endif}"
-                        "%{if-fatal}[FATAL ] %{endif}"
-                        "%{time MM-dd hh:mm:ss} %{message}" );
+    qSetMessagePattern(
+      "%{if-debug}[DEBUG ] %{endif}"
+      "%{if-info}[INFO ] %{endif}"
+      "%{if-warning}[WARNING ] %{endif}"
+      "%{if-critical}[CRITICAL] %{endif}"
+      "%{if-fatal}[FATAL ] %{endif}"
+      "%{time MM-dd hh:mm:ss} %{message}" );
     qInstallMessageHandler( logToFileMessageHander );
   }
   else {
