@@ -202,6 +202,21 @@ void WordFinder::requestFinished()
 
 namespace {
 
+enum Score {
+  ScoreExactMatch            = 100,
+  ScoreExactNoFullCaseMatch  = 95,
+  ScoreExactNoDiaMatch       = 90,
+  ScoreExactNoPunctMatch     = 85,
+  ScoreExactNoWsMatch        = 80,
+  ScoreExactInsideMatch      = 75,
+  ScoreExactNoDiaInsideMatch = 70,
+  ScoreExactNoPunctInsideMatch = 65,
+  ScorePrefixMatch           = 60,
+  ScorePrefixNoDiaMatch      = 55,
+  ScorePrefixNoPunctMatch    = 50,
+  ScorePrefixNoWsMatch       = 45,
+  ScoreWorstMatch            = 0
+};
 
 unsigned saturated( unsigned x )
 {
@@ -217,24 +232,88 @@ bool hasSurroundedWithWs( const std::u32string & haystack,
                           std::u32string::size_type & pos )
 {
   if ( haystack.size() < needle.size() ) {
-    return false; // Needle won't even fit into a haystack
+    return false;
   }
 
   for ( pos = 0;; ++pos ) {
     pos = haystack.find( needle, pos );
-
     if ( pos == std::u32string::npos ) {
-      return false; // Not found
+      return false;
     }
 
     if ( ( !pos || Folding::isWhitespace( haystack[ pos - 1 ] ) || Folding::isPunct( haystack[ pos - 1 ] ) )
          && ( ( pos + needle.size() == haystack.size() ) || Folding::isWhitespace( haystack[ pos + needle.size() ] )
               || Folding::isPunct( haystack[ pos + needle.size() ] ) ) ) {
       pos = saturated( pos );
-
       return true;
     }
   }
+}
+
+struct ResultFoldings
+{
+  std::u32string noFullCase;
+  std::u32string noDia;
+  std::u32string noPunct;
+  std::u32string noWs;
+};
+
+ResultFoldings computeFoldings( const std::u32string & str )
+{
+  ResultFoldings f;
+  f.noFullCase = Folding::applyFullCaseOnly( str );
+  f.noDia      = Folding::applyDiacriticsOnly( f.noFullCase );
+  f.noPunct    = Folding::applyPunctOnly( f.noDia );
+  f.noWs       = Folding::applyWhitespaceOnly( f.noPunct );
+  return f;
+}
+
+int computeMatchScore( const std::u32string & result,
+                       const std::u32string & target,
+                       const std::u32string & targetNoFullCase,
+                       const std::u32string & targetNoDia,
+                       const std::u32string & targetNoPunct,
+                       const std::u32string & targetNoWs,
+                       std::u32string::size_type & matchPos,
+                       const ResultFoldings & rf )
+{
+  if ( result == target ) {
+    return ScoreExactMatch;
+  }
+  if ( rf.noFullCase == targetNoFullCase ) {
+    return ScoreExactNoFullCaseMatch;
+  }
+  if ( rf.noDia == targetNoDia ) {
+    return ScoreExactNoDiaMatch;
+  }
+  if ( rf.noPunct == targetNoPunct ) {
+    return ScoreExactNoPunctMatch;
+  }
+  if ( rf.noWs == targetNoWs ) {
+    return ScoreExactNoWsMatch;
+  }
+  if ( hasSurroundedWithWs( result, target, matchPos ) ) {
+    return ScoreExactInsideMatch;
+  }
+  if ( hasSurroundedWithWs( rf.noDia, targetNoDia, matchPos ) ) {
+    return ScoreExactNoDiaInsideMatch;
+  }
+  if ( hasSurroundedWithWs( rf.noPunct, targetNoPunct, matchPos ) ) {
+    return ScoreExactNoPunctInsideMatch;
+  }
+  if ( result.size() > target.size() && result.compare( 0, target.size(), target ) == 0 ) {
+    return ScorePrefixMatch;
+  }
+  if ( rf.noDia.size() > targetNoDia.size() && rf.noDia.compare( 0, targetNoDia.size(), targetNoDia ) == 0 ) {
+    return ScorePrefixNoDiaMatch;
+  }
+  if ( rf.noPunct.size() > targetNoPunct.size() && rf.noPunct.compare( 0, targetNoPunct.size(), targetNoPunct ) == 0 ) {
+    return ScorePrefixNoPunctMatch;
+  }
+  if ( rf.noWs.size() > targetNoWs.size() && rf.noWs.compare( 0, targetNoWs.size(), targetNoWs ) == 0 ) {
+    return ScorePrefixNoWsMatch;
+  }
+  return ScoreWorstMatch;
 }
 
 } // namespace
@@ -322,9 +401,10 @@ void WordFinder::updateResults()
       else {
         resultsArray.emplace_back();
 
-        resultsArray.back().word         = match;
-        resultsArray.back().rank         = INT_MAX;
-        resultsArray.back().wasSuggested = ( weight != 0 );
+        resultsArray.back().word          = match;
+        resultsArray.back().rank          = INT_MAX;
+        resultsArray.back().wasSuggested  = ( weight != 0 );
+        resultsArray.back().rankFeatures  = RankFeatures( 0, INT_MAX );
 
         insertResult.first->second = --resultsArray.end();
       }
@@ -334,25 +414,38 @@ void WordFinder::updateResults()
   size_t maxSearchResults = 500;
 
   if ( !resultsArray.empty() ) {
-    if ( searchType == PrefixMatch ) {
-      /// Assign each result a category, storing it in the rank's field
+    auto computePrefixScore = []( const std::u32string & result,
+                                  const std::u32string & target,
+                                  const std::u32string & targetNoFullCase,
+                                  const std::u32string & targetNoDia,
+                                  const std::u32string & targetNoPunct,
+                                  const std::u32string & targetNoWs,
+                                  const ResultFoldings & rf ) -> RankFeatures {
+      std::u32string::size_type matchPos = 0;
+      int score = computeMatchScore( result, target, targetNoFullCase,
+                                     targetNoDia, targetNoPunct, targetNoWs, matchPos, rf );
+      int lengthDelta = std::abs( static_cast< int >( target.size() ) - static_cast< int >( result.size() ) );
+      return RankFeatures( score, lengthDelta );
+    };
 
-      enum Category {
-        ExactMatch,
-        ExactNoFullCaseMatch,
-        ExactNoDiaMatch,
-        ExactNoPunctMatch,
-        ExactNoWsMatch,
-        ExactInsideMatch,
-        ExactNoDiaInsideMatch,
-        ExactNoPunctInsideMatch,
-        PrefixMatch,
-        PrefixNoDiaMatch,
-        PrefixNoPunctMatch,
-        PrefixNoWsMatch,
-        WorstMatch,
-        Multiplier = 256 // Categories should be multiplied by Multiplier
-      };
+    auto computeStemmedScore = []( const std::u32string & result, const std::u32string & target ) -> RankFeatures {
+      std::u32string resultFolded = Folding::apply( result );
+      std::u32string targetFolded = Folding::apply( target );
+
+      int charsInCommon = 0;
+      for ( const char32_t *t = targetFolded.c_str(), *r = resultFolded.c_str(); *t && *t == *r;
+            ++t, ++r, ++charsInCommon ) {
+        ;
+      }
+      int lengthDelta = std::abs( static_cast< int >( target.size() ) - static_cast< int >( result.size() ) );
+      return RankFeatures( charsInCommon, lengthDelta );
+    };
+
+    if ( searchType == PrefixMatch ) {
+      std::map< std::u32string, ResultFoldings > resultFoldingsCache;
+      for ( const auto & i : resultsIndex ) {
+        resultFoldingsCache[ i.first ] = computeFoldings( i.first );
+      }
 
       for ( const auto & allWordWriting : allWordWritings ) {
         std::u32string target           = Folding::applySimpleCaseOnly( allWordWriting );
@@ -361,96 +454,33 @@ void WordFinder::updateResults()
         std::u32string targetNoPunct    = Folding::applyPunctOnly( targetNoDia );
         std::u32string targetNoWs       = Folding::applyWhitespaceOnly( targetNoPunct );
 
-        std::u32string::size_type matchPos = 0;
-
         for ( const auto & i : resultsIndex ) {
-          std::u32string resultNoFullCase, resultNoDia, resultNoPunct, resultNoWs;
+          RankFeatures rf = computePrefixScore( i.first, target, targetNoFullCase,
+                                                targetNoDia, targetNoPunct, targetNoWs,
+                                                resultFoldingsCache[ i.first ] );
 
-          int rank;
-
-          if ( i.first == target ) {
-            rank = ExactMatch * Multiplier;
-          }
-          else if ( ( resultNoFullCase = Folding::applyFullCaseOnly( i.first ) ) == targetNoFullCase ) {
-            rank = ExactNoFullCaseMatch * Multiplier;
-          }
-          else if ( ( resultNoDia = Folding::applyDiacriticsOnly( resultNoFullCase ) ) == targetNoDia ) {
-            rank = ExactNoDiaMatch * Multiplier;
-          }
-          else if ( ( resultNoPunct = Folding::applyPunctOnly( resultNoDia ) ) == targetNoPunct ) {
-            rank = ExactNoPunctMatch * Multiplier;
-          }
-          else if ( ( resultNoWs = Folding::applyWhitespaceOnly( resultNoPunct ) ) == targetNoWs ) {
-            rank = ExactNoWsMatch * Multiplier;
-          }
-          else if ( hasSurroundedWithWs( i.first, target, matchPos ) ) {
-            rank = ExactInsideMatch * Multiplier + matchPos;
-          }
-          else if ( hasSurroundedWithWs( resultNoDia, targetNoDia, matchPos ) ) {
-            rank = ExactNoDiaInsideMatch * Multiplier + matchPos;
-          }
-          else if ( hasSurroundedWithWs( resultNoPunct, targetNoPunct, matchPos ) ) {
-            rank = ExactNoPunctInsideMatch * Multiplier + matchPos;
-          }
-          else if ( i.first.size() > target.size() && i.first.compare( 0, target.size(), target ) == 0 ) {
-            rank = PrefixMatch * Multiplier + saturated( i.first.size() );
-          }
-          else if ( resultNoDia.size() > targetNoDia.size()
-                    && resultNoDia.compare( 0, targetNoDia.size(), targetNoDia ) == 0 ) {
-            rank = PrefixNoDiaMatch * Multiplier + saturated( i.first.size() );
-          }
-          else if ( resultNoPunct.size() > targetNoPunct.size()
-                    && resultNoPunct.compare( 0, targetNoPunct.size(), targetNoPunct ) == 0 ) {
-            rank = PrefixNoPunctMatch * Multiplier + saturated( i.first.size() );
-          }
-          else if ( resultNoWs.size() > targetNoWs.size()
-                    && resultNoWs.compare( 0, targetNoWs.size(), targetNoWs ) == 0 ) {
-            rank = PrefixNoWsMatch * Multiplier + saturated( i.first.size() );
-          }
-          else {
-            rank = WorstMatch * Multiplier;
-          }
-
-          if ( i.second->rank > rank ) {
-            i.second->rank = rank; // We store the best rank of any writing
+          RankFeatures & destRf = i.second->rankFeatures;
+          if ( rf.baseScore > destRf.baseScore || 
+              ( rf.baseScore == destRf.baseScore && rf.lengthDelta < destRf.lengthDelta ) ) {
+            destRf = rf;
           }
         }
       }
-
-      resultsArray.sort( SortByRank() );
+      resultsArray.sort( SortByRankFeatures() );
     }
     else if ( searchType == StemmedMatch ) {
-      // Handling stemmed matches
-
-      // We use two factors -- first is the number of characters strings share
-      // in their beginnings, and second, the length of the strings. Here we assign
-      // only the first one, storing it in rank. Then we sort the results using
-      // SortByRankAndLength.
       for ( const auto & allWordWriting : allWordWritings ) {
-        std::u32string target = Folding::apply( allWordWriting );
-
         for ( const auto & i : resultsIndex ) {
-          std::u32string resultFolded = Folding::apply( i.first );
+          RankFeatures rf = computeStemmedScore( i.first, allWordWriting );
 
-          int charsInCommon = 0;
-
-          for ( const char32_t *t = target.c_str(), *r = resultFolded.c_str(); *t && *t == *r;
-                ++t, ++r, ++charsInCommon ) {
-            ;
-          }
-
-          int rank = -charsInCommon; // Negated so the lesser-than
-                                     // comparison would yield right
-                                     // results.
-
-          if ( i.second->rank > rank ) {
-            i.second->rank = rank; // We store the best rank of any writing
+          RankFeatures & destRf = i.second->rankFeatures;
+          if ( rf.baseScore > destRf.baseScore || 
+              ( rf.baseScore == destRf.baseScore && rf.lengthDelta < destRf.lengthDelta ) ) {
+            destRf = rf;
           }
         }
       }
-
-      resultsArray.sort( SortByRankAndLength() );
-
+      resultsArray.sort( SortByRankFeatures() );
       maxSearchResults = 15;
     }
   }
