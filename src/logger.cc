@@ -9,34 +9,15 @@ QMutex logFileMutex; // Logging could happen in any threads!
 
 void logToFileMessageHander( QtMsgType type, const QMessageLogContext & context, const QString & mess )
 {
-  QString strTime = QDateTime::currentDateTime().toString( "MM-dd hh:mm:ss" );
-  QString message = QString( "%1 %2\r\n" ).arg( strTime, mess );
+  QString message = qFormatLogMessage( type, context, mess ) + "\r\n";
   QMutexLocker _( &logFileMutex );
 
   if ( logFile.isOpen() ) {
-    switch ( type ) {
-      case QtDebugMsg:
-        message.prepend( "Debug: " );
-        break;
-      case QtWarningMsg:
-        message.prepend( "Warning: " );
-        break;
-      case QtCriticalMsg:
-        message.prepend( "Critical: " );
-        break;
-      case QtFatalMsg:
-        message.prepend( "Fatal: " );
-        logFile.write( message.toUtf8() );
-        logFile.flush();
-        abort();
-      case QtInfoMsg:
-        message.insert( 0, "Info: " );
-        break;
-    }
-
     logFile.write( message.toUtf8() );
     logFile.flush();
-
+    if ( type == QtFatalMsg ) {
+      abort();
+    }
     return;
   }
   else {
@@ -57,6 +38,12 @@ void switchLoggingMethod( bool logToFile )
         return;
       };
     }
+    qSetMessagePattern( "%{if-debug}[DEBUG ] %{endif}"
+                        "%{if-info}[INFO ] %{endif}"
+                        "%{if-warning}[WARNING ] %{endif}"
+                        "%{if-critical}[CRITICAL] %{endif}"
+                        "%{if-fatal}[FATAL ] %{endif}"
+                        "%{time MM-dd hh:mm:ss} %{message}" );
     qInstallMessageHandler( logToFileMessageHander );
   }
   else {
