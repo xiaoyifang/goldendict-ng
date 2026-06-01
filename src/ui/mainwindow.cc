@@ -1639,6 +1639,14 @@ void MainWindow::closeEvent( QCloseEvent * ev )
 #else
   // On Windows and macOS (manual close), ignore the event and hide the window.
   // This ensures global hotkey hooks remain valid on Windows.
+  if ( trayIcon ) {
+    trayIcon->showMessage(
+      QApplication::applicationName(),
+      tr( "Application is still running in the background. Click the tray icon to show the window." ),
+      QSystemTrayIcon::Information,
+      3000
+    );
+  }
   ev->ignore();
   hide();
 #endif
@@ -3518,7 +3526,9 @@ void MainWindow::setAutostart( bool autostart )
 
 void MainWindow::on_actionCloseToTray_triggered()
 {
-  toggleMainWindow( !cfg.preferences.enableTrayIcon );
+  if ( cfg.preferences.enableTrayIcon && isVisible() ) {
+    hide();
+  }
 }
 
 void MainWindow::on_pageSetup_triggered()
