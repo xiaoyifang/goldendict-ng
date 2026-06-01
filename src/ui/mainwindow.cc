@@ -1571,7 +1571,7 @@ void MainWindow::trayIconUpdateOrInit()
   }
   else {
     // Update the icon to reflect the scanning mode
-	QIcon icon = QIcon( ":/icons/programicon.png" );
+    QIcon icon( ":/icons/programicon.png" );
 
 #ifdef Q_OS_MACOS
     // Set icon as mask for macOS dark mode compatibility
