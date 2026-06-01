@@ -170,6 +170,8 @@ private:
 
   bool wasMaximized; // Window state before minimization
 
+  bool isQuitting = false;
+
   QPrinter & getPrinter(); // Creates a printer if it's not there and returns it
 
   DictHeadwords * headwordsDlg;

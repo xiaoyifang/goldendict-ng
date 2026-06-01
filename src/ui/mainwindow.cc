@@ -170,6 +170,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   wordFinder( this ),
   wordListSelChanged( false ),
   wasMaximized( false ),
+  isQuitting( false ),
   headwordsDlg( nullptr ),
   ftsIndexing( dictionaries ),
   ftsRestartTimer( this ), // Initialize timer with MainWindow as parent
@@ -1292,6 +1293,8 @@ void MainWindow::removeGroupComboBoxActionsFromDialog( QDialog * dialog, GroupCo
 
 void MainWindow::commitData()
 {
+  isQuitting = true;
+
   //if the dictionaries is empty ,large chance that the config has corrupt.
   if ( cfg.preferences.removeInvalidIndexOnExit && !dictMap.isEmpty() ) {
     const QDir dir( Config::getIndexDir() );
@@ -1611,6 +1614,11 @@ void MainWindow::wheelEvent( QWheelEvent * ev )
 
 void MainWindow::closeEvent( QCloseEvent * ev )
 {
+  if ( isQuitting ) {
+    ev->accept();
+    return;
+  }
+
   // If tray icon is disabled or closing to tray is not enabled, quit the application
   if ( !cfg.preferences.enableTrayIcon || !cfg.preferences.closeToTray ) {
     ev->accept();
@@ -1653,6 +1661,8 @@ void MainWindow::closeEvent( QCloseEvent * ev )
 
 void MainWindow::quitApp()
 {
+  isQuitting = true;
+
   if ( inspector && inspector->isVisible() ) {
     inspector->close();
   }
