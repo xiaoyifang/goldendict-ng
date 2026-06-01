@@ -279,15 +279,9 @@ struct Preferences
   bool hideMenubar;
   bool panelsLocked = false;
 
-#ifdef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
-  bool closeToTray    = false;
-  bool enableTrayIcon = false;
-  bool startToTray    = false;
-#else
   bool enableTrayIcon = true;
   bool closeToTray    = true;
   bool startToTray    = false;
-#endif
 
   bool autoStart;
   bool doubleClickTranslates;
