@@ -1644,8 +1644,7 @@ void MainWindow::closeEvent( QCloseEvent * ev )
       QApplication::applicationName(),
       tr( "Application is still running in the background. Click the tray icon to show the window." ),
       QSystemTrayIcon::Information,
-      3000
-    );
+      3000 );
   }
   ev->ignore();
   hide();
