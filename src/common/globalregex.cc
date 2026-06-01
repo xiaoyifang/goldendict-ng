@@ -93,8 +93,8 @@ QStringList RX::Ftx::processSearchStringForHighlight( const QString & searchStri
 
   int pos    = 0;
   int length = searchString.length();
-  QRegularExpression quotedPhraseRx( R"("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')" );
-  QRegularExpression xapianOpsRx( R"(\bAND\b|\bOR\b|[\+\-\*])" );
+  static QRegularExpression quotedPhraseRx( R"("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')" );
+  static QRegularExpression xapianOpsRx( R"(\bAND\b|\bOR\b|[\+\-\*])" );
 
   while ( pos < length ) {
     QRegularExpressionMatch match = quotedPhraseRx.match( searchString, pos );
@@ -103,7 +103,7 @@ QStringList RX::Ftx::processSearchStringForHighlight( const QString & searchStri
       QString phrase = match.captured();
       phrase         = phrase.mid( 1, phrase.length() - 2 );
 
-      // Don't add \b word boundaries for phrases - let mark.js handle exact matching with accuracy option
+      // let mark.js handle exact matching with accuracy option
       highlightKeywords.append( phrase );
       pos = match.capturedEnd();
     }
@@ -118,7 +118,7 @@ QStringList RX::Ftx::processSearchStringForHighlight( const QString & searchStri
         ++pos;
       }
 
-      if ( !token.isEmpty() ) {
+      if ( !token.isEmpty() && !token.startsWith( '-' ) ) {
         token.replace( xapianOpsRx, " " );
         token = token.simplified();
 
