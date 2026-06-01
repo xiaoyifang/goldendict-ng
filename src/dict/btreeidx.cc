@@ -1000,7 +1000,8 @@ void IndexedWords::addWord( const std::u32string & index_word, uint32_t articleO
       // to ensure exact matches are found first
       if ( utfPrefix.empty() ) {
         i->second.emplace( i->second.begin(), std::move( utfWord ), articleOffset, std::move( utfPrefix ) );
-      } else {
+      }
+      else {
         i->second.emplace_back( std::move( utfWord ), articleOffset, std::move( utfPrefix ) );
       }
       // reduce the vector reallocation.
