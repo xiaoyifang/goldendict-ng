@@ -136,7 +136,7 @@ public:
 
   void showDefinition( const QString & word,
                        const QStringList & dictIDs,
-                       const QRegularExpression & searchRegExp,
+                       const QString & searchRegExp,
                        unsigned group,
                        bool ignoreDiacritics );
   void showDefinition( const QString & word, const QStringList & dictIDs, unsigned group, bool ignoreDiacritics );

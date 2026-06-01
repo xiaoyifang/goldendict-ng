@@ -403,7 +403,7 @@ private slots:
 
   void showTranslationForDicts( const QString &,
                                 const QStringList & dictIDs,
-                                const QRegularExpression & searchRegExp,
+                                const QString & searchRegExp,
                                 bool ignoreDiacritics );
 
   void showHistoryItem( const QString & );
