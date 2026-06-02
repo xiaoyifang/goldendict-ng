@@ -294,6 +294,11 @@ private:
 private slots:
   void updateFavIconSlot();
 
+#ifdef Q_OS_MACOS
+  /// Handle macOS Dock icon click when application becomes active
+  void handleApplicationStateChanged( Qt::ApplicationState state );
+#endif
+
   /// Try check new release, popup a dialog, and update the check time & skippedRelease version
   void checkNewRelease();
 

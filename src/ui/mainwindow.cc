@@ -978,6 +978,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
              Qt::UniqueConnection );
   }
 #endif
+
+#ifdef Q_OS_MACOS
+  // Handle Dock icon click on macOS: restore minimized window when application becomes active
+  connect( qApp, &QApplication::applicationStateChanged, this, &MainWindow::handleApplicationStateChanged );
+#endif
 }
 
 
@@ -3351,6 +3356,13 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
 #endif
       break;
 
+#ifdef Q_OS_MACOS
+    case QSystemTrayIcon::DoubleClick:
+      // On macOS, double click on tray icon also restores the window
+      toggleMainWindow( true );
+      break;
+#endif
+
     case QSystemTrayIcon::MiddleClick:
       // Middle mouse click on Tray translates selection
       // it is functional like as stardict
@@ -3364,6 +3376,17 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
   }
 }
 
+
+#ifdef Q_OS_MACOS
+void MainWindow::handleApplicationStateChanged( Qt::ApplicationState state )
+{
+  // When the application becomes active (e.g., user clicks on Dock icon)
+  // and the main window is minimized, restore it
+  if ( state == Qt::ApplicationActive && isMinimized() ) {
+    toggleMainWindow( true );
+  }
+}
+#endif
 
 void MainWindow::visitHomepage()
 {
