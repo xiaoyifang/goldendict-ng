@@ -422,6 +422,16 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   trayIconMenu.addSeparator();
   connect( trayIconMenu.addAction( tr( "&Quit" ) ), &QAction::triggered, this, &MainWindow::quitApp );
 
+#ifdef Q_OS_MACOS
+  // Also add the same actions to the Dock menu on macOS
+  connect( dockMenu.addAction( tr( "Show &Main Window" ) ), &QAction::triggered, this, [ this ] {
+    this->toggleMainWindow( true );
+  } );
+  dockMenu.addAction( enableScanningAction );
+  dockMenu.addSeparator();
+  connect( dockMenu.addAction( tr( "&Quit" ) ), &QAction::triggered, this, &MainWindow::quitApp );
+#endif
+
   addGlobalAction( &escAction, [ this ]() {
     handleEsc();
   } );
@@ -1559,7 +1569,7 @@ void MainWindow::trayIconUpdateOrInit()
 {
 // Set dock menu for macOS
 #ifdef Q_OS_MACOS
-  trayIconMenu.setAsDockMenu();
+  dockMenu.setAsDockMenu();  // Use separate dockMenu for Dock, not trayIconMenu
 #endif
 
   if ( !cfg.preferences.enableTrayIcon ) {
@@ -1580,6 +1590,7 @@ void MainWindow::trayIconUpdateOrInit()
 
     if ( !trayIcon ) {
       trayIcon = new QSystemTrayIcon( this );
+      // Set context menu for tray icon on all platforms
       trayIcon->setContextMenu( &trayIconMenu );
       trayIcon->setToolTip( QApplication::applicationName() );
       trayIcon->setIcon( icon );
