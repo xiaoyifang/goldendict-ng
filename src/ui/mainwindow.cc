@@ -3398,8 +3398,8 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
 void MainWindow::handleApplicationStateChanged( Qt::ApplicationState state )
 {
   // When the application becomes active (e.g., user clicks on Dock icon)
-  // and the main window is minimized, restore it
-  if ( state == Qt::ApplicationActive && isMinimized() ) {
+  // and the main window is minimized or hidden, restore it
+  if ( state == Qt::ApplicationActive && ( isMinimized() || !isVisible() ) ) {
     toggleMainWindow( true );
   }
 }
