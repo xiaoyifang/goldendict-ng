@@ -192,6 +192,24 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   GlobalBroadcaster::instance()->setAllDictionaries( &dictionaries );
   GlobalBroadcaster::instance()->setGroups( &groupInstances );
 
+  // Connect aboutToQuit to ensure we save data even if macOS dock menu Quit is triggered
+  connect( qApp, &QApplication::aboutToQuit, this, [ this ]() {
+    if ( !isQuitting ) {
+      isQuitting = true;
+      
+      // Perform full cleanup, same as quitApp() but without calling quit again
+      if ( inspector && inspector->isVisible() ) {
+        inspector->close();
+      }
+
+      for ( auto viewer : findChildren< QMainWindow * >( "ResourceViewer" ) ) {
+        viewer->close();
+      }
+
+      commitData();
+    }
+  } );
+
   // Setup FTS restart timer - 3 seconds delay after DictInfo closes
   ftsRestartTimer.setSingleShot( true );
   ftsRestartTimer.setInterval( 3000 ); // 3 seconds delay
@@ -428,8 +446,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     this->toggleMainWindow( true );
   } );
   dockMenu.addAction( enableScanningAction );
-  dockMenu.addSeparator();
-  connect( dockMenu.addAction( tr( "&Quit" ) ), &QAction::triggered, this, &MainWindow::quitApp );
+  // Don't add Quit here - macOS will automatically add a Quit item to the Dock menu
 #endif
 
   addGlobalAction( &escAction, [ this ]() {
