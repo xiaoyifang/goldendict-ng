@@ -81,7 +81,22 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation>&lt;div class=\"welcome-container\">\n  &lt;h3>Добредојдовте во &lt;strong>GoldenDict-ng&lt;/strong>!&lt;/h3>\n  &lt;section>\n    &lt;h4>За да започнете&lt;/h4>\n    &lt;ul>\n      &lt;li>Одете во &lt;span class=\"menu-path\">&lt;span>Уреди&lt;/span>&lt;span>Речници&lt;/span>&lt;/span> за да ги додадете вашите датотеки со речници, да поставите онлајн извори како Википедија и да ги организирате во групи.&lt;/li>\n      &lt;li>Откако ќе се постави, можете да пребарувате зборови во овој прозорец или &lt;a href=\"https://xiaoyifang.github.io/goldendict-ng/ui_popup/\">од други апликации користејќи го скокачкиот прозорец за скенирање&lt;/a>.&lt;/li>\n      &lt;li>За да ја прилагодите програмата, истражете ги поставките во &lt;span class=\"menu-path\">&lt;span>Уреди&lt;/span>&lt;span>Преференци&lt;/span>&lt;/span>. Сите поставки имаат описи, затоа задолжително прочитајте ги ако нешто е нејасно.&lt;/li>\n    &lt;/ul>\n  &lt;/section>\n  &lt;p>Доколку ви треба дополнителна помош, имате прашања или предлози, добредојдени сте на &lt;a href=\"https://github.com/xiaoyifang/goldendict-ng/discussions\">форумот&lt;/a> и &lt;a href=\"https://github.com/xiaoyifang/goldendict-ng\">веб-страницата&lt;/a> на програмата.&lt;/p>\n  &lt;footer class=\"welcome-footer\">\n    &lt;small>Врз основа на оригиналниот GoldenDict од Константин Исаков (c) 2008-2013. Одржуван и развиен од заедницата GoldenDict-NG. Лиценциран под GPLv3 или понова верзија.&lt;/small>\n  &lt;/footer>\n&lt;/div></translation>
+      <translation>
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Добредојдовте во &lt;strong&gt;ГолденДикт-нг&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;За почеток&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Оди &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Уредување&lt;/span&gt;&lt;span&gt;Речници&lt;/span&gt;&lt;/span&gt; да ги додадете вашите речнички датотеки, да поставите онлајн извори како Википедија и да ги организирате во групи.&lt;/li&gt;
+          &lt;li&gt;Откако ќе ги поставите, можете да ги пребарувате зборовите во овој прозорец или &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;од други апликации кои користат Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;За да ја прилагодите програмата, истражете ги поставките во &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Уредување&lt;/span&gt;&lt;span&gt;Преференции&lt;/span&gt;&lt;/span&gt;. Сите поставки имаат алатки, па задолжително прочитајте ги ако нешто не е јасно.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Ако ви треба дополнителна помош, имате прашања или предлози, добредојдени сте во програмата&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;форум&lt;/a&gt; и &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;Веб-страница&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Врз основа на оригиналниот GoldenDict од Константин Исаков (c) 2008-2013. Одржуван и развиен од заедницата GoldenDict-NG. Лиценциран под GPLv3 или понатаму.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</translation>
     </message>
   </context>
   <context>
