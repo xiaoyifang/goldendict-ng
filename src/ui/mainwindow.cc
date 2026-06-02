@@ -1567,9 +1567,7 @@ void MainWindow::trayIconUpdateOrInit()
   }
   else {
     // Update the icon to reflect the scanning mode
-    QIcon icon = enableScanningAction->isChecked() ?
-      QIcon::fromTheme( "goldendict-scan-tray", QIcon( ":/icons/programicon.png" ) ) :
-      QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon.png" ) );
+    QIcon icon = QIcon( ":/icons/programicon.png" );
 
     if ( !trayIcon ) {
       trayIcon = new QSystemTrayIcon( this );
