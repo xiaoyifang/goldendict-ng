@@ -1584,8 +1584,8 @@ void MainWindow::trayIconUpdateOrInit()
     QIcon icon( ":/icons/programicon.png" );
 
 #ifdef Q_OS_MACOS
-    // Set icon as mask for macOS dark mode compatibility
-    icon.setIsMask( true );
+    // On macOS, use the icon directly without mask for proper color display
+    // setIsMask(true) would convert it to black silhouette which is not desired
 #endif
 
     if ( !trayIcon ) {
