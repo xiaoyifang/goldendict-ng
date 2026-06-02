@@ -131,7 +131,7 @@ private:
   QAction *addToFavorites, *beforeAddToFavoritesSeparator;
   QMenu trayIconMenu;
 #ifdef Q_OS_MACOS
-  QMenu dockMenu;  // Separate menu for macOS Dock
+  QMenu dockMenu; // Separate menu for macOS Dock
 #endif
   QMenu * tabMenu;
   QAction * menuButtonAction;

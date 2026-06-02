@@ -1569,7 +1569,7 @@ void MainWindow::trayIconUpdateOrInit()
 {
 // Set dock menu for macOS
 #ifdef Q_OS_MACOS
-  dockMenu.setAsDockMenu();  // Use separate dockMenu for Dock, not trayIconMenu
+  dockMenu.setAsDockMenu(); // Use separate dockMenu for Dock, not trayIconMenu
 #endif
 
   if ( !cfg.preferences.enableTrayIcon ) {
