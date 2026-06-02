@@ -196,7 +196,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( qApp, &QApplication::aboutToQuit, this, [ this ]() {
     if ( !isQuitting ) {
       isQuitting = true;
-      
+
       // Perform full cleanup, same as quitApp() but without calling quit again
       if ( inspector && inspector->isVisible() ) {
         inspector->close();
