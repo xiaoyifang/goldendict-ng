@@ -195,18 +195,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // Connect aboutToQuit to ensure we save data even if macOS dock menu Quit is triggered
   connect( qApp, &QApplication::aboutToQuit, this, [ this ]() {
     if ( !isQuitting ) {
-      isQuitting = true;
-
-      // Perform full cleanup, same as quitApp() but without calling quit again
-      if ( inspector && inspector->isVisible() ) {
-        inspector->close();
-      }
-
-      for ( auto viewer : findChildren< QMainWindow * >( "ResourceViewer" ) ) {
-        viewer->close();
-      }
-
-      commitData();
+      performCleanup();
     }
   } );
 
@@ -1408,6 +1397,21 @@ void MainWindow::commitData()
   }
 }
 
+void MainWindow::performCleanup()
+{
+  isQuitting = true;
+
+  if ( inspector && inspector->isVisible() ) {
+    inspector->close();
+  }
+
+  for ( auto viewer : findChildren< QMainWindow * >( "ResourceViewer" ) ) {
+    viewer->close();
+  }
+
+  commitData();
+}
+
 QPrinter & MainWindow::getPrinter()
 {
   if ( printer.get() ) {
@@ -1694,17 +1698,7 @@ void MainWindow::closeEvent( QCloseEvent * ev )
 
 void MainWindow::quitApp()
 {
-  isQuitting = true;
-
-  if ( inspector && inspector->isVisible() ) {
-    inspector->close();
-  }
-
-  for ( auto viewer : findChildren< QMainWindow * >( "ResourceViewer" ) ) {
-    viewer->close();
-  }
-
-  commitData();
+  performCleanup();
   qApp->quit();
 }
 

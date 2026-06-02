@@ -64,6 +64,7 @@ public slots:
   void headwordFromFavorites( const QString & word, const QString & favFolderFullPath );
   /// Save config and states...
   void commitData();
+  void performCleanup();
   void quitApp();
 
 private:
