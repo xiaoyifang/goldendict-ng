@@ -24,7 +24,7 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
         with:
 
           fetch-depth: 2
@@ -34,7 +34,7 @@ jobs:
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           brew install clang-format
           (/home/linuxbrew/.linuxbrew/opt/clang-format/bin/git-clang-format --binary=/home/linuxbrew/.linuxbrew/opt/clang-format/bin/clang-format --style=file HEAD^) || true
-      - uses: autofix-ci/action@ff86a557419858bb967097bfc916833f5647fa8c
+      - uses: autofix-ci/action@v1
 
 
   css-js-html-format:
@@ -43,12 +43,12 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 2
       - name: format css/js/html
         run: npx prettier@3.8.3 . --write
-      - uses: autofix-ci/action@ff86a557419858bb967097bfc916833f5647fa8c
+      - uses: autofix-ci/action@v1
 
   update-crowdin:
     name: update crowdin.ts file
@@ -56,11 +56,11 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 2
       - name: Install Qt
-        uses: jurplel/install-qt-action@v4.3.1
+        uses: jurplel/install-qt-action@v4.3.2
         with:
           version: '6.7.2'
           target: 'desktop'
@@ -68,4 +68,4 @@ jobs:
       - name: update crowdin.ts
         run: |
           lupdate -no-obsolete -no-ui-lines -locations none src -ts locale/crowdin.ts
-      - uses: autofix-ci/action@ff86a557419858bb967097bfc916833f5647fa8c
+      - uses: autofix-ci/action@v1

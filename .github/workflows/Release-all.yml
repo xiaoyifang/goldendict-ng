@@ -28,7 +28,7 @@ jobs:
         os: [macos-14,macos-15-intel]
         qt_ver: [ 6.8.3, 6.10.3 ] # 6.8 is LTS which is relatively stable, don't dump it until next LTS.
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
         with:
           submodules: true
       - name: Install dependencies
@@ -70,7 +70,7 @@ jobs:
         run: |
           git clone --depth 1 https://github.com/xiaoyifang/eb.git
           cd eb && ./configure && make -j 8 && sudo make install && cd ..
-      - uses: jurplel/install-qt-action@v4.3.1
+      - uses: jurplel/install-qt-action@v4.3.2
         with:
           version: ${{ matrix.qt_ver }}
           arch: clang_64
@@ -116,13 +116,13 @@ jobs:
           - arch: win64_msvc2022_64
             vs_arch: amd64
     steps:
-      - uses: jurplel/install-qt-action@v4.3.1
+      - uses: jurplel/install-qt-action@v4.3.2
         with:
           version: ${{ matrix.qt_ver }}
           arch: ${{ matrix.arch }}
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
           # setup-python: 'false'
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
         with:
           submodules: true
       - name: Build
@@ -177,7 +177,7 @@ jobs:
       newTag: ${{ steps.getNewTag.outputs.newTag }}
       releaseTitle: ${{steps.getReleaseTitle.outputs.releaseTitle}}
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0 # need all tags to genearte changelog
       - name: Load version from VERSION file
@@ -198,7 +198,7 @@ jobs:
           echo "previousTag : $previousTag"
       - name: Build Changelog
         id: build_changelog
-        uses: orhun/git-cliff-action@v4
+        uses: orhun/git-cliff-action@v4.3.0
         with:
           config: cliff.toml
           args: ${{ steps.changelogTags.outputs.prev_tag }}..HEAD
