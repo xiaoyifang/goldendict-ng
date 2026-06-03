@@ -3220,20 +3220,18 @@ void MainWindow::hotKeyActivated( int hk )
   else {
     ensureScanPopup();
     GlobalBroadcaster::instance()->is_popup = true;
+
+    if ( !scanPopup ) {
+      return;
+    }
+
 #if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
-    // When the user requests translation with the Ctrl+C+C hotkey in certain apps
-    // on some GNU/Linux systems, GoldenDict appears to handle Ctrl+C+C before the
-    // active application finishes handling Ctrl+C. As a result, GoldenDict finds
-    // the clipboard empty, silently cancels the translation request, and users report
-    // that Ctrl+C+C is broken in these apps. Slightly delay handling the clipboard
-    // hotkey to give the active application more time and thus work around the issue.
-    if ( scanPopup ) {
-      QTimer::singleShot( 10, scanPopup, &ScanPopup::translateWordFromPrimaryClipboard );
-    }
+    // Delay clipboard handling on Linux to let active app finish handling Ctrl+C
+    // Workaround for Ctrl+C+C hotkey issue where clipboard may be empty
+    static constexpr int clipboardDelayMs = 10;
+    QTimer::singleShot( clipboardDelayMs, scanPopup, &ScanPopup::translateWordFromPrimaryClipboard );
 #else
-    if ( scanPopup ) {
-      scanPopup->translateWordFromPrimaryClipboard();
-    }
+    scanPopup->translateWordFromPrimaryClipboard();
 #endif
   }
 }
