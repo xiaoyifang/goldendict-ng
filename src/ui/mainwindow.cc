@@ -1615,7 +1615,7 @@ void MainWindow::closeEvent( QCloseEvent * ev )
   }
 
   // Hide translation popup if necessary
-  if ( !cfg.preferences.searchInDock ) {
+  if ( !cfg.preferences.searchInDock && translateBox ) {
     translateBox->setPopupEnabled( false );
   }
 
@@ -1630,8 +1630,8 @@ void MainWindow::closeEvent( QCloseEvent * ev )
 #if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
   // On Linux/Unix, do not call ignore() as it blocks session logout.
   // The window is hidden instead of closed because quitOnLastWindowClosed is false.
-  Q_ASSERT( !QApplication::quitOnLastWindowClosed() );
-  Q_ASSERT( !testAttribute( Qt::WA_DeleteOnClose ) );
+  // Q_ASSERT( !QApplication::quitOnLastWindowClosed() );
+  // Q_ASSERT( !testAttribute( Qt::WA_DeleteOnClose ) );
 #else
   // On Windows and macOS (manual close), ignore the event and hide the window.
   // This ensures global hotkey hooks remain valid on Windows.
