@@ -3220,7 +3220,7 @@ void MainWindow::hotKeyActivated( int hk )
   else {
     ensureScanPopup();
     GlobalBroadcaster::instance()->is_popup = true;
-    
+
     if ( !scanPopup ) {
       return;
     }
