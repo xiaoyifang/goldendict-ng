@@ -26,7 +26,7 @@ jobs:
         os: [macos-14,macos-15-intel]
         qt_ver: [ 6.8.3, 6.10.3 ]
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
         with:
           submodules: true
       - name: Install dependencies
@@ -120,7 +120,7 @@ jobs:
           version: ${{ matrix.qt_ver }}
           arch: ${{ matrix.arch }}
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
         with:
           submodules: true
       - name: Build
@@ -171,7 +171,7 @@ jobs:
       newTag: ${{ steps.getNewTag.outputs.newTag }}
       releaseTitle: ${{steps.getReleaseTitle.outputs.releaseTitle}}
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Load version from VERSION file
@@ -184,7 +184,7 @@ jobs:
           echo "previousTag : $previousTag"
       - name: Build Changelog
         id: build_changelog
-        uses: orhun/git-cliff-action@v4
+        uses: orhun/git-cliff-action@v4.3.0
         with:
           config: cliff.toml
           args: ${{ steps.changelogTags.outputs.prev_tag }}..HEAD
