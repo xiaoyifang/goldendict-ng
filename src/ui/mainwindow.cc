@@ -170,6 +170,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   wordFinder( this ),
   wordListSelChanged( false ),
   wasMaximized( false ),
+  isQuitting( false ),
   headwordsDlg( nullptr ),
   ftsIndexing( dictionaries ),
   ftsRestartTimer( this ), // Initialize timer with MainWindow as parent
@@ -190,6 +191,13 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   GlobalBroadcaster::instance()->setAudioPlayer( &audioPlayerFactory.player() );
   GlobalBroadcaster::instance()->setAllDictionaries( &dictionaries );
   GlobalBroadcaster::instance()->setGroups( &groupInstances );
+
+  // Connect aboutToQuit to ensure we save data even if macOS dock menu Quit is triggered
+  connect( qApp, &QApplication::aboutToQuit, this, [ this ]() {
+    if ( !isQuitting ) {
+      performCleanup();
+    }
+  } );
 
   // Setup FTS restart timer - 3 seconds delay after DictInfo closes
   ftsRestartTimer.setSingleShot( true );
@@ -408,17 +416,26 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   ui.menuZoom->addSeparator();
 
-// tray icon
-#ifndef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
+  // tray icon
+  // Add "Show &Main Window" action for all platforms
   connect( trayIconMenu.addAction( tr( "Show &Main Window" ) ), &QAction::triggered, this, [ this ] {
     this->toggleMainWindow( true );
   } );
-#endif
+
+  // Add scanning action for all platforms
   trayIconMenu.addAction( enableScanningAction );
 
-#ifndef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
+  // Add separator and quit action for all platforms
   trayIconMenu.addSeparator();
   connect( trayIconMenu.addAction( tr( "&Quit" ) ), &QAction::triggered, this, &MainWindow::quitApp );
+
+#ifdef Q_OS_MACOS
+  // Also add the same actions to the Dock menu on macOS
+  connect( dockMenu.addAction( tr( "Show &Main Window" ) ), &QAction::triggered, this, [ this ] {
+    this->toggleMainWindow( true );
+  } );
+  dockMenu.addAction( enableScanningAction );
+  // Don't add Quit here - macOS will automatically add a Quit item to the Dock menu
 #endif
 
   addGlobalAction( &escAction, [ this ]() {
@@ -967,6 +984,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
              Qt::UniqueConnection );
   }
 #endif
+
+#ifdef Q_OS_MACOS
+  // Handle Dock icon click on macOS: restore minimized window when application becomes active
+  connect( qApp, &QApplication::applicationStateChanged, this, &MainWindow::handleApplicationStateChanged );
+#endif
 }
 
 
@@ -1292,6 +1314,8 @@ void MainWindow::removeGroupComboBoxActionsFromDialog( QDialog * dialog, GroupCo
 
 void MainWindow::commitData()
 {
+  isQuitting = true;
+
   //if the dictionaries is empty ,large chance that the config has corrupt.
   if ( cfg.preferences.removeInvalidIndexOnExit && !dictMap.isEmpty() ) {
     const QDir dir( Config::getIndexDir() );
@@ -1371,6 +1395,21 @@ void MainWindow::commitData()
   catch ( std::exception & e ) {
     qWarning( "Commit data failed, error: %s", e.what() );
   }
+}
+
+void MainWindow::performCleanup()
+{
+  isQuitting = true;
+
+  if ( inspector && inspector->isVisible() ) {
+    inspector->close();
+  }
+
+  for ( auto viewer : findChildren< QMainWindow * >( "ResourceViewer" ) ) {
+    viewer->close();
+  }
+
+  commitData();
 }
 
 QPrinter & MainWindow::getPrinter()
@@ -1554,23 +1593,30 @@ void MainWindow::refreshAppearances()
 
 void MainWindow::trayIconUpdateOrInit()
 {
+// Set dock menu for macOS
 #ifdef Q_OS_MACOS
-  trayIconMenu.setAsDockMenu();
-  ui.actionCloseToTray->setVisible( false );
-#else
+  dockMenu.setAsDockMenu(); // Use separate dockMenu for Dock, not trayIconMenu
+#endif
 
   if ( !cfg.preferences.enableTrayIcon ) {
     if ( trayIcon ) {
       delete trayIcon;
       trayIcon = nullptr;
     }
+    ui.actionCloseToTray->setVisible( false );
   }
   else {
     // Update the icon to reflect the scanning mode
-    QIcon icon = QIcon( ":/icons/programicon.png" );
+    QIcon icon( ":/icons/programicon.png" );
+
+#ifdef Q_OS_MACOS
+    // On macOS, use the icon directly without mask for proper color display
+    // setIsMask(true) would convert it to black silhouette which is not desired
+#endif
 
     if ( !trayIcon ) {
       trayIcon = new QSystemTrayIcon( this );
+      // Set context menu for tray icon on all platforms
       trayIcon->setContextMenu( &trayIconMenu );
       trayIcon->setToolTip( QApplication::applicationName() );
       trayIcon->setIcon( icon );
@@ -1581,12 +1627,10 @@ void MainWindow::trayIconUpdateOrInit()
       // Update existing tray icon
       trayIcon->setIcon( icon );
     }
-  }
 
-  // The 'Close to tray' action is associated with the tray icon, so we hide
-  // or show it here.
-  ui.actionCloseToTray->setVisible( cfg.preferences.enableTrayIcon );
-#endif
+    // Show close to tray action when tray icon is enabled
+    ui.actionCloseToTray->setVisible( true );
+  }
 }
 
 void MainWindow::wheelEvent( QWheelEvent * ev )
@@ -1607,6 +1651,11 @@ void MainWindow::wheelEvent( QWheelEvent * ev )
 
 void MainWindow::closeEvent( QCloseEvent * ev )
 {
+  if ( isQuitting ) {
+    ev->accept();
+    return;
+  }
+
   // If tray icon is disabled or closing to tray is not enabled, quit the application
   if ( !cfg.preferences.enableTrayIcon || !cfg.preferences.closeToTray ) {
     ev->accept();
@@ -1635,6 +1684,13 @@ void MainWindow::closeEvent( QCloseEvent * ev )
 #else
   // On Windows and macOS (manual close), ignore the event and hide the window.
   // This ensures global hotkey hooks remain valid on Windows.
+  if ( trayIcon ) {
+    trayIcon->showMessage(
+      QApplication::applicationName(),
+      tr( "Application is still running in the background. Click the tray icon to show the window." ),
+      QSystemTrayIcon::Information,
+      3000 );
+  }
   ev->ignore();
   hide();
 #endif
@@ -1642,15 +1698,7 @@ void MainWindow::closeEvent( QCloseEvent * ev )
 
 void MainWindow::quitApp()
 {
-  if ( inspector && inspector->isVisible() ) {
-    inspector->close();
-  }
-
-  for ( auto viewer : findChildren< QMainWindow * >( "ResourceViewer" ) ) {
-    viewer->close();
-  }
-
-  commitData();
+  performCleanup();
   qApp->quit();
 }
 
@@ -3306,7 +3354,23 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
     case QSystemTrayIcon::Trigger:
       // Left click toggles the visibility of main window
       toggleMainWindow( false );
+
+      // macOS specific focus handling
+#ifdef Q_OS_MACOS
+      // Ensure the window gets focus, especially when there are fullscreen apps
+      if ( isVisible() ) {
+        this->raise();
+        this->activateWindow();
+      }
+#endif
       break;
+
+#ifdef Q_OS_MACOS
+    case QSystemTrayIcon::DoubleClick:
+      // On macOS, double click on tray icon also restores the window
+      toggleMainWindow( true );
+      break;
+#endif
 
     case QSystemTrayIcon::MiddleClick:
       // Middle mouse click on Tray translates selection
@@ -3321,6 +3385,17 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
   }
 }
 
+
+#ifdef Q_OS_MACOS
+void MainWindow::handleApplicationStateChanged( Qt::ApplicationState state )
+{
+  // When the application becomes active (e.g., user clicks on Dock icon)
+  // and the main window is minimized or hidden, restore it
+  if ( state == Qt::ApplicationActive && ( isMinimized() || !isVisible() ) ) {
+    toggleMainWindow( true );
+  }
+}
+#endif
 
 void MainWindow::visitHomepage()
 {
@@ -3503,7 +3578,9 @@ void MainWindow::setAutostart( bool autostart )
 
 void MainWindow::on_actionCloseToTray_triggered()
 {
-  toggleMainWindow( !cfg.preferences.enableTrayIcon );
+  if ( cfg.preferences.enableTrayIcon && isVisible() ) {
+    hide();
+  }
 }
 
 void MainWindow::on_pageSetup_triggered()

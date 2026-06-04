@@ -64,6 +64,7 @@ public slots:
   void headwordFromFavorites( const QString & word, const QString & favFolderFullPath );
   /// Save config and states...
   void commitData();
+  void performCleanup();
   void quitApp();
 
 private:
@@ -130,6 +131,9 @@ private:
   QAction *zoomIn, *zoomOut, *zoomBase;
   QAction *addToFavorites, *beforeAddToFavoritesSeparator;
   QMenu trayIconMenu;
+#ifdef Q_OS_MACOS
+  QMenu dockMenu; // Separate menu for macOS Dock
+#endif
   QMenu * tabMenu;
   QAction * menuButtonAction;
   QToolButton * menuButton;
@@ -169,6 +173,8 @@ private:
   bool wordListSelChanged;
 
   bool wasMaximized; // Window state before minimization
+
+  bool isQuitting = false;
 
   QPrinter & getPrinter(); // Creates a printer if it's not there and returns it
 
@@ -288,6 +294,11 @@ private:
 
 private slots:
   void updateFavIconSlot();
+
+#ifdef Q_OS_MACOS
+  /// Handle macOS Dock icon click when application becomes active
+  void handleApplicationStateChanged( Qt::ApplicationState state );
+#endif
 
   /// Try check new release, popup a dialog, and update the check time & skippedRelease version
   void checkNewRelease();
