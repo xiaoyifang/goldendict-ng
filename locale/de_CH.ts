@@ -2666,7 +2666,7 @@ Um folgende Symbole zu finden &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos
     </message>
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
-      <translation type="unfinished">Application is still running in the background. Click the tray icon to show the window.</translation>
+      <translation>Die Anwendung läuft weiterhin im Hintergrund. Klicken Sie auf das Taskleistensymbol, um das Fenster anzuzeigen.</translation>
     </message>
   </context>
   <context>
