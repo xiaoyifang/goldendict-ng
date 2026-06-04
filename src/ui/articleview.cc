@@ -6,6 +6,7 @@
 #include "folding.hh"
 #include "gestures.hh"
 #include "globalbroadcaster.hh"
+#include "globalregex.hh"
 #include "speechclient.hh"
 #include "utils.hh"
 #include "webmultimediadownload.hh"
@@ -370,7 +371,7 @@ void ArticleView::showDefinition( const QString & word,
 
 void ArticleView::showDefinition( const QString & word,
                                   const QStringList & dictIDs,
-                                  const QRegularExpression & searchRegExp,
+                                  const QString & searchRegExp,
                                   unsigned group,
                                   bool ignoreDiacritics )
 {
@@ -399,12 +400,7 @@ void ArticleView::showDefinition( const QString & word,
 
   reqQuery.addQueryItem( "word", word );
   reqQuery.addQueryItem( "dictionaries", dictIDs.join( "," ) );
-  reqQuery.addQueryItem( "regexp", searchRegExp.pattern() );
-  if ( !searchRegExp.patternOptions().testFlag( QRegularExpression::CaseInsensitiveOption ) ) {
-    reqQuery.addQueryItem( "matchcase", "1" );
-  }
-  //  if ( searchRegExp.patternSyntax() == QRegExp::WildcardUnix )
-  //    Utils::Url::addQueryItem( req, "wildcards", "1" );
+  reqQuery.addQueryItem( "regexp", searchRegExp );
   reqQuery.addQueryItem( "group", QString::number( group ) );
   if ( ignoreDiacritics ) {
     reqQuery.addQueryItem( "ignore_diacritics", "1" );
@@ -870,11 +866,11 @@ void ArticleView::injectWebsiteConfigScript()
   webview->page()->runJavaScript( finalScriptContent );
 }
 
-// This method has been moved to GlobalBroadcaster::isDarkModeEnabled()
-// To check dark mode status, use GlobalBroadcaster::instance()->isDarkModeEnabled() instead
+// This method has been moved to GlobalBroadcaster::isDarkReaderModeEnabled()
+// To check dark reader mode status, use GlobalBroadcaster::instance()->isDarkReaderModeEnabled() instead
 bool ArticleView::isDarkModeEnabled() const
 {
-  return GlobalBroadcaster::instance()->isDarkModeEnabled();
+  return GlobalBroadcaster::instance()->isDarkReaderModeEnabled();
 }
 
 
@@ -2280,41 +2276,46 @@ void ArticleView::highlightFTSResults()
     return;
   }
 
+  QStringList highlightKeywords = RX::Ftx::processSearchStringForHighlight( regString );
 
-  //replace any unicode Number ,Symbol ,Punctuation ,Mark character to whitespace
-  regString.replace( QRegularExpression( R"([\p{N}\p{S}\p{P}\p{M}])", QRegularExpression::UseUnicodePropertiesOption ),
-                     " " );
-
-  if ( regString.trimmed().isEmpty() ) {
+  if ( highlightKeywords.isEmpty() ) {
     return;
   }
 
   QString accuracy = "exactly";
-
-  if ( std::any_of( regString.begin(), regString.end(), []( QChar & a ) {
-         return a.script() == QChar::Script_Han;
-       } ) ) {
-    accuracy = "partially";
-  }
-
-  QString script = QString(
-                     "var context = document.querySelector(\"body\");\n"
-                     "var instance = new Mark(context);\n instance.unmark();\n"
-                     "instance.mark(\"%1\",{\"accuracy\": \"%2\"});" )
-                     .arg( regString, accuracy );
-
-  webview->page()->runJavaScript( script );
-  auto parts = regString.split( " ", Qt::SkipEmptyParts );
-  if ( parts.isEmpty() ) {
-    return;
-  }
-
-  //hold the longest word
-  for ( auto & p : parts ) {
-    if ( p.size() > firstAvailableText.size() ) {
-      firstAvailableText = p;
+  for ( const QString & keyword : highlightKeywords ) {
+    for ( const QChar & ch : keyword ) {
+      auto script = ch.script();
+      if ( script == QChar::Script_Han || script == QChar::Script_Hiragana || script == QChar::Script_Katakana
+           || script == QChar::Script_Hangul || script == QChar::Script_Thai || script == QChar::Script_Lao
+           || script == QChar::Script_Khmer || script == QChar::Script_Myanmar ) {
+        accuracy = "partially";
+        break;
+      }
+    }
+    if ( accuracy == "partially" ) {
+      break;
     }
   }
+
+  QString jsonKeywords = RX::Ftx::serializeKeywordsToJson( highlightKeywords );
+
+  QString script = QString::fromUtf8( R"JS(
+    var context = document.querySelector("body");
+    var instance = new Mark(context);
+    instance.unmark();
+    instance.mark(%1, {
+      "accuracy": "%2",
+      "separateWordSearch": false,
+      "acrossElements": true,
+      "caseSensitive": false
+    });
+  )JS" )
+                     .arg( jsonKeywords, accuracy );
+
+  webview->page()->runJavaScript( script );
+
+  firstAvailableText = highlightKeywords.first();
 
   ftsSearchPanel->show();
   performFtsFindOperation( true );

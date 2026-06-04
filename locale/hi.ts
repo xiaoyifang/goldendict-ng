@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>जिस भाषा में अनुवाद करता हैः</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>इस शब्दकोश में सम्मिलित फाइलें:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>विवरण:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>सक्षम</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>शब्दकोश घटक:</translation>
     </message>
   </context>
   <context>
@@ -2665,6 +2665,10 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <source>Save File</source>
       <translation>फ़ाइल सहेजें</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>अनुप्रयोग अभी भी पृष्ठभूमि में चल रहा है। विंडो दिखाने के लिए ट्रे आइकन पर क्लिक करें।</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2959,10 +2963,6 @@ the application.</source>
       <translation>लिंगोज-नीला</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>कुछ प्रणालियों पर ऑटो कुछ भी नहीं करता।</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>भाषा परिवर्तन लागू करने के लिए प्रोग्राम को पुनरारंभ करें।</translation>
     </message>
@@ -3204,20 +3204,8 @@ in the pressed state when the word selection changes.</source>
       <translation>अंतर्निहित श्रव्य समर्थन के माध्यम से श्रव्य फ़ाइलें चलाएं</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>आन्तरिक वादक प्रयोग करे</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>श्रव्य पश्च भाग चुने</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>श्रव्य फ़ाइलों को चलाने के लिए किसी भी बाहरी प्रोग्राम का उपयोग करें</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>बाह्य प्रोग्रामों का उपयोग करें:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3520,6 +3508,30 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>केवल एक टैब खुला होने पर टैब पट्टी छुपाएँ.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>ऑडियो फ़ाइलों को चलाने के लिए किसी भी बाहरी ऑडियो प्लेयर का उपयोग करें</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>विस्तृत कॉन्फ़िगरेशन गाइड देखें</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>ऑडियो पथ को बाहरी प्लेयर को कमांड-लाइन तर्क के रूप में पारित किया जाएगा। </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>आंतरिक ऑडियो प्लेयर:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>बाहरी ऑडियो प्लेयर:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>सिस्टम थीम के आधार पर स्वचालित रूप से स्विच करता है।</translation>
     </message>
   </context>
   <context>

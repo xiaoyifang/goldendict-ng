@@ -639,10 +639,6 @@ a školní ortografií v cyrilici)</translation>
       <translation>Překládá do:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Soubory obsažené v tomto slovníku:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Popis:</translation>
     </message>
@@ -669,6 +665,10 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <source>Enable</source>
       <translation>Umožnit</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Složky slovníku:</translation>
     </message>
   </context>
   <context>
@@ -2666,6 +2666,10 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <source>Save File</source>
       <translation>Uložit soubor</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Aplikace stále běží na pozadí. Klikněte na ikonu v lize pro zobrazení okna.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2964,10 +2968,6 @@ ukončení aplikace.</translation>
       <translation>Lingoes modrá</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto na některých systémech nedělá nic.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Restartujte program aby se provedla změna jazyka.</translation>
     </message>
@@ -3210,20 +3210,8 @@ zvolené klávesy stisknuty při změně výběru.</translation>
       <translation>Přehrávat zvukové soubory pomocí podpory vestavěného zvuku</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Použít interní přehrávač:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Vybrat konec zvuku</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Pro přehrání audio souborů použít externí program</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Použít externí program:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3533,6 +3521,30 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Skrýt panel záložek, pokud je otevřena pouze jedna záložka.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Použít jakýkoli externí zvukový přehrávač k přehrávání zvukových souborů</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Zobrazit detailní konfigurační příručku</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Zvuková cesta bude předána externímu přehrávači jako argument příkazové řádky. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Interní audio přehrávač:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Externí audio přehrávač:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Automaticky se přepne podle systémového tématu.</translation>
     </message>
   </context>
   <context>

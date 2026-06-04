@@ -153,6 +153,7 @@ target_link_libraries(${GOLDENDICT} PRIVATE
         Qt6::Widgets
         Qt6::Svg
         $<$<BOOL:${WITH_TTS}>:Qt6::TextToSpeech>
+        $<$<PLATFORM_ID:Windows>:dwmapi>
 )
 
 target_include_directories(${GOLDENDICT} PRIVATE

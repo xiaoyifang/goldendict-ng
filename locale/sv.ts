@@ -639,10 +639,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Målspråk:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Filer som omfattas av ordlistan:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Beskrivning:</translation>
     </message>
@@ -669,6 +665,10 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Enable</source>
       <translation>Aktivera</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Ordbokskomponenter:</translation>
     </message>
   </context>
   <context>
@@ -2666,6 +2666,10 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
       <source>Save File</source>
       <translation>Spara fil</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Applikationen körs fortfarande i bakgrunden. Klicka på brickikonen för att visa fönstret.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2964,10 +2968,6 @@ minimera fönstret till meddelandefältet istället för att avsluta programmet.
       <translation>Lingoes (blå)</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto gör ingenting på vissa system.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Starta om programmet för att verkställa bytet av språk.</translation>
     </message>
@@ -3210,20 +3210,8 @@ angivna tangenterna är nedtryckta när ordet markeras.</translation>
       <translation>Spela upp ljudfiler via inbyggt ljudstöd</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Använd intern spelare:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Välj ljud-backend</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Använd ett externt program för att spela upp ljudfiler.</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Använd externt program:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3536,6 +3524,30 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Dölj flikfältet när endast en flik är öppen.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Använd någon extern ljudspelare för att spela upp ljudfiler</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Visa detaljerad konfigurationsguide</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Ljudsökvägen kommer att skickas som ett kommandoradsargument till den externa spelaren. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Intern ljudspelare:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Extern ljudspelare:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Byter automatiskt baserat på systemtema.</translation>
     </message>
   </context>
   <context>

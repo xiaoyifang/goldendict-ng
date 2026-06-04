@@ -639,10 +639,6 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>Tłumaczenia na:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Pliki składające się na ten słownik:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Opis:</translation>
     </message>
@@ -669,6 +665,10 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <source>Enable</source>
       <translation>Włączać</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Składniki słownika:</translation>
     </message>
   </context>
   <context>
@@ -2666,6 +2666,10 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
       <source>Save File</source>
       <translation>Zapisz plik</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Aplikacja nadal działa w tle. Kliknij ikonę w tacce, aby wyświetlić okno.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2964,10 +2968,6 @@ prowadzi do jego ukrycia, a nie do zamknięcia aplikacji.</translation>
       <translation>Lingoes niebieski</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>W niektórych systemach funkcja Auto nie wykonuje żadnej operacji.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Uruchom ponownie program, aby zastosować zmianę języka.</translation>
     </message>
@@ -3208,20 +3208,8 @@ kiedy zaznaczenie słowa ulega zmianie przy naciśniętych wszystkich wybranych 
       <translation>Odtwarzaj pliki audio za pomocą wbudowanego wsparcia audio</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Używaj wewnętrznego odtwarzacza:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Wybierz zaplecze dźwięku</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Używaj zewnętrznego programu do odtwarzania plików dźwiękowych</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Używaj programu zewnętrznego:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3533,6 +3521,30 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Ukryj pasek zakładek, gdy tylko jedna karta jest otwarta.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Użyj dowolnego zewnętrznego odtwarzacza audio do odtwarzania plików audio</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Zobacz szczegółowy przewodnik konfiguracyjny</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Ścieżka audio zostanie przekazana jako argument wiersza poleceń do odtwarzacza zewnętrznego. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Wewnętrzny odtwarzacz audio:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Zewnętrzny odtwarzacz audio:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Automatycznie przełącza się w zależności od motywu systemu.</translation>
     </message>
   </context>
   <context>

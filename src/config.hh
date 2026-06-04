@@ -279,15 +279,9 @@ struct Preferences
   bool hideMenubar;
   bool panelsLocked = false;
 
-#ifdef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
-  bool closeToTray    = false;
-  bool enableTrayIcon = false;
-  bool startToTray    = false;
-#else
   bool enableTrayIcon = true;
   bool closeToTray    = true;
   bool startToTray    = false;
-#endif
 
   bool autoStart;
   bool doubleClickTranslates;
@@ -384,11 +378,10 @@ struct Preferences
   QString addonStyle;
   QString displayStyle; // Article Display style (Which also affect interface style on windows)
 
-#if !defined( Q_OS_WIN )
   // QApplication style https://doc.qt.io/qt-6/qapplication.html#setStyle
   // In addition to Qt's styles, "Default" is added as default.
+  // On Windows, this field exists but is not used (Windows uses its own styling system).
   QString interfaceStyle;
-#endif
 
   Preferences();
 };
@@ -784,7 +777,7 @@ struct HeadwordsDialog
   }
 };
 
-// TODO: arbitrary sizing
+// arbitrary sizing
 enum class ToolbarsIconSize : std::uint8_t {
   Small  = 0,
   Normal = 1,
@@ -864,6 +857,7 @@ struct Class
     lastMainGroupId( 0 ),
     lastPopupGroupId( 0 ),
     pinPopupWindow( false ),
+    timeForNewReleaseCheck( QDateTime() ),
     showingDictBarNames( false ),
     maxHeadwordSize( 256U ),
     maxHeadwordsToExpand( 0 )

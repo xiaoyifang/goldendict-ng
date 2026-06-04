@@ -623,10 +623,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Dịch sang:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Tệp chứa từ điển này:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Mô tả:</translation>
     </message>
@@ -653,6 +649,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Cho phép</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Thành phần từ điển:</translation>
     </message>
   </context>
   <context>
@@ -2650,6 +2650,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Save File</source>
       <translation>Lưu tệp</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Ứng dụng vẫn đang chạy trong nền. Nhấp vào biểu tượng khay để hiển thị cửa sổ.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2947,10 +2951,6 @@ the application.</source>
       <translation>Lingoes-Blue</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Chế độ tự động không có tác dụng gì trên một số hệ thống.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Khởi động lại chương trình để áp dụng thay đổi ngôn ngữ.</translation>
     </message>
@@ -3190,20 +3190,8 @@ in the pressed state when the word selection changes.</source>
       <translation>Phát các tệp âm thanh thông qua hỗ trợ âm thanh tích hợp</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Sử dụng trình phát nội bộ:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Chọn đầu cuối âm thanh</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Sử dụng bất cứ chương trình ngoài nào để phát tệp âm thanh</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Sử dụng chương trình ngoài:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3511,6 +3499,30 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Ẩn thanh tab khi chỉ mở một tab.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Sử dụng bất kỳ trình phát âm thanh bên ngoài nào để phát các tệp âm thanh</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Xem hướng dẫn cấu hình chi tiết</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Đường dẫn âm thanh sẽ được chuyển dưới dạng đối số dòng lệnh đến trình phát bên ngoài. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Trình phát âm thanh bên trong:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Trình phát âm thanh bên ngoài:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Tự động chuyển đổi dựa trên chủ đề hệ thống.</translation>
     </message>
   </context>
   <context>

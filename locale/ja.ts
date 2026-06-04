@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>翻訳先:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>この辞書を含むファイル:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>説明:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>有効にする</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>辞書の構成要素:</translation>
     </message>
   </context>
   <context>
@@ -2665,6 +2665,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Save File</source>
       <translation>ファイルを保存</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>アプリケーションはまだバックグラウンドで実行されています。トレイのアイコンをクリックするとウィンドウが表示されます。</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2964,10 +2968,6 @@ the application.</source>
       <translation>ランゴー・ブルー</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>一部のシステムでは自動では何も実行されません。</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>言語の変更を適用するにはプログラムを再起動します。</translation>
     </message>
@@ -3210,20 +3210,8 @@ in the pressed state when the word selection changes.</source>
       <translation>内蔵のオーディオサポートを介してオーディオファイルを再生する</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>内部プレイヤーを使用:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>オーディオバックエンドを選択</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>オーディオ ファイルの再生に外部プログラムを使用します</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>外部プログラムを使用する:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3533,6 +3521,30 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>タブが開いているときはタブバーを非表示にします。</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>外部オーディオプレーヤーを使用してオーディオファイルを再生する</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>詳細設定ガイドを表示</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>オーディオパスはコマンドライン引数として外部プレーヤーに渡されます。 </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>内蔵オーディオプレーヤー:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>外部オーディオプレーヤー:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>システムテーマに応じて自動的に切り替わります。</translation>
     </message>
   </context>
   <context>

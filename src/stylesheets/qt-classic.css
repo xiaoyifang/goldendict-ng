@@ -57,20 +57,3 @@ ScanPopup GroupComboBox::down-arrow {
   image: url(:/icons/1downarrow.svg);
   max-height: 100%;
 }
-
-.ScanPopup #outerFrame {
-  border: 1px solid palette(dark);
-}
-
-.ScanPopup MainStatusBar #text {
-  border-bottom: 1px solid palette(dark);
-}
-
-.ScanPopup MainStatusBar[hasImage="false"] #text {
-  border-left: 1px solid palette(dark);
-}
-
-.ScanPopup MainStatusBar #icon {
-  border-left: 1px solid palette(dark);
-  border-bottom: 1px solid palette(dark);
-}

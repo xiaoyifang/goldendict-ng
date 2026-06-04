@@ -639,10 +639,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Käännös:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Tämän sanakirjan sisältämät tiedostot:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Kuvaus:</translation>
     </message>
@@ -669,6 +665,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Enable</source>
       <translation>Ota käyttöön</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Sanakirjakomponentit:</translation>
     </message>
   </context>
   <context>
@@ -2666,6 +2666,10 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <source>Save File</source>
       <translation>Tallenna Tiedosto</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Sovellus pyörii edelleen taustalla. Klikkaa tarjottimen kuvaketta näyttääksesi ikkunan.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2965,10 +2969,6 @@ sovellus.</translation>
       <translation>Lingo-sininen</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto ei tee mitään joissain järjestelmissä.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Ohjelma pitää käynnistää uudelleen jotta kieli voidaan vaihtaa.</translation>
     </message>
@@ -3211,20 +3211,8 @@ painettuna tilassa, kun sana valinta muuttuu.</translation>
       <translation>Toista äänitiedostoja sisäänrakennetun äänituen kautta</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Käytä sisäistä pelaajaa:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Valitse audio back end</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Käytä mitä tahansa ulkoista ohjelmaa äänitiedostojen toistamiseen</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Käytä ulkoista ohjelmaa:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3535,6 +3523,30 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Piilota välilehti kun vain yksi välilehti on auki.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Käytä mitä tahansa ulkoista äänisaajaa toistaaksesi äänitiedostoja</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Näytä yksityiskohtaiset asetusohjeet</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Äänipolku siirtyy ulkoiselle pelaajalle komentorivin argumentina. Tämä on komentorivinen parametri. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Sisäinen äänisoitin:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Ulkoinen äänisoitin:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Vaihtaa automaattisesti järjestelmän teeman mukaan.</translation>
     </message>
   </context>
   <context>

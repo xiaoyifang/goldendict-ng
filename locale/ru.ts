@@ -641,10 +641,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Целевой язык:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Файлы, из которых состоит словарь:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Описание:</translation>
     </message>
@@ -671,6 +667,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Давать возможность</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Компоненты словаря:</translation>
     </message>
   </context>
   <context>
@@ -2669,6 +2669,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Save File</source>
       <translation>Сохранить файл</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Приложение всё ещё работает в фоне. Нажмите на иконку лотка, чтобы показать окно.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2969,10 +2973,6 @@ the application.</source>
       <translation>Лингос-синий</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>В некоторых системах функция Auto не выполняет никаких действий.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Перезапустите программу, чтобы изменение языка вошло в силу.</translation>
     </message>
@@ -3215,20 +3215,8 @@ in the pressed state when the word selection changes.</source>
       <translation>Воспроизводить аудио-файлы через встроенный плеер</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Использовать встроенный плеер</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Выбор плеера</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Использовать любую внешнюю программу для проигрывания аудио-файлов</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Воспроизведение через внешнее приложение:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3541,6 +3529,30 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Скрывать панель вкладок, когда открыта только одна вкладка.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Использовать любой внешний аудио проигрыватель для воспроизведения аудио файлов</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Подробное руководство по настройке</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Путь к аудио будет передан в качестве аргумента командной строки внешнему игроку. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Внутренний аудиоплеер:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Внешний аудиоплеер:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Автоматически переключается в зависимости от темы системы.</translation>
     </message>
   </context>
   <context>

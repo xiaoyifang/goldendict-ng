@@ -138,7 +138,7 @@ std::string ArticleMaker::makeHtmlHeader( const QString & word, const QString & 
   result += R"(<script src="qrc:///scripts/mark.min.js"></script>)";
 
   /// Handling Dark reader mode.
-  bool darkReaderModeEnabled = GlobalBroadcaster::instance()->isDarkModeEnabled();
+  bool darkReaderModeEnabled = GlobalBroadcaster::instance()->isDarkReaderModeEnabled();
 
   if ( darkReaderModeEnabled ) {
     //only enable this darkmode on modern style.

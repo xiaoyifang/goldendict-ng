@@ -6,6 +6,7 @@
 #include <QLabel>
 #include <QString>
 #include <QTimer>
+#include <QShowEvent>
 
 class MainStatusBar: public QWidget
 {
@@ -24,8 +25,11 @@ public slots:
 
 protected:
   void mousePressEvent( QMouseEvent * event ) override;
+  void showEvent( QShowEvent * event ) override;
 
 private:
+  void updatePosition();
+
   // component to display a small picture
   QLabel * picWidget;
 

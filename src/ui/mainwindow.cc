@@ -6,6 +6,7 @@
 #endif
 
 #include "mainwindow.hh"
+#include "keyboardstate.hh"
 #include "logger.hh"
 #include <QWebEngineProfile>
 #include "edit_dictionaries.hh"
@@ -59,11 +60,16 @@
   #include "macos/macmouseover.hh"
 #endif
 
-#ifdef Q_OS_WIN32
+#if defined( Q_OS_WIN )
   #include <windows.h>
+  #include <dwmapi.h>
+  #ifndef DWMWA_USE_IMMERSIVE_DARK_MODE
+    #define DWMWA_USE_IMMERSIVE_DARK_MODE 20
+  #endif
 #endif
 
 #include <QGuiApplication>
+#include <QWindow>
 #include <QWebEngineSettings>
 #include <QProxyStyle>
 
@@ -164,8 +170,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   wordFinder( this ),
   wordListSelChanged( false ),
   wasMaximized( false ),
+  isQuitting( false ),
   headwordsDlg( nullptr ),
   ftsIndexing( dictionaries ),
+  ftsRestartTimer( this ), // Initialize timer with MainWindow as parent
+  ftsStateChanged( false ),
   ftsDlg( nullptr ),
   starIcon( ":/icons/star.svg" ),
   blueStarIcon( ":/icons/star_blue.svg" )
@@ -182,6 +191,24 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   GlobalBroadcaster::instance()->setAudioPlayer( &audioPlayerFactory.player() );
   GlobalBroadcaster::instance()->setAllDictionaries( &dictionaries );
   GlobalBroadcaster::instance()->setGroups( &groupInstances );
+
+  // Connect aboutToQuit to ensure we save data even if macOS dock menu Quit is triggered
+  connect( qApp, &QApplication::aboutToQuit, this, [ this ]() {
+    if ( !isQuitting ) {
+      performCleanup();
+    }
+  } );
+
+  // Setup FTS restart timer - 3 seconds delay after DictInfo closes
+  ftsRestartTimer.setSingleShot( true );
+  ftsRestartTimer.setInterval( 3000 ); // 3 seconds delay
+  connect( &ftsRestartTimer, &QTimer::timeout, this, [ this ]() {
+    if ( ftsStateChanged ) {
+      qDebug() << "Restarting FTS indexing after DictInfo closed";
+      ftsIndexing.doIndexing();
+      ftsStateChanged = false;
+    }
+  } );
 
   localSchemeHandler     = new LocalSchemeHandler( articleNetMgr, this );
   QStringList htmlScheme = { "gdlookup", "bword", "entry", "gdinternal" };
@@ -389,17 +416,26 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   ui.menuZoom->addSeparator();
 
-// tray icon
-#ifndef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
+  // tray icon
+  // Add "Show &Main Window" action for all platforms
   connect( trayIconMenu.addAction( tr( "Show &Main Window" ) ), &QAction::triggered, this, [ this ] {
     this->toggleMainWindow( true );
   } );
-#endif
+
+  // Add scanning action for all platforms
   trayIconMenu.addAction( enableScanningAction );
 
-#ifndef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
+  // Add separator and quit action for all platforms
   trayIconMenu.addSeparator();
   connect( trayIconMenu.addAction( tr( "&Quit" ) ), &QAction::triggered, this, &MainWindow::quitApp );
+
+#ifdef Q_OS_MACOS
+  // Also add the same actions to the Dock menu on macOS
+  connect( dockMenu.addAction( tr( "Show &Main Window" ) ), &QAction::triggered, this, [ this ] {
+    this->toggleMainWindow( true );
+  } );
+  dockMenu.addAction( enableScanningAction );
+  // Don't add Quit here - macOS will automatically add a Quit item to the Dock menu
 #endif
 
   addGlobalAction( &escAction, [ this ]() {
@@ -638,7 +674,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   ui.tabWidget->setMovable( true );
 
-#ifndef Q_OS_WIN32
+#if !defined( Q_OS_WIN )
   ui.tabWidget->setDocumentMode( true );
 #endif
 
@@ -728,10 +764,23 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            &GlobalBroadcaster::indexingDictionary,
            this,
            &MainWindow::showFTSIndexingName );
-  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::ftsStateChanged, this, [ this ]() {
+
+  // When FTS state changes (from DictInfo), stop indexing and schedule restart
+  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::stopFtsIndexing, this, [ this ]() {
+    qDebug() << "FTS state changed, stopping indexing and scheduling restart";
     ftsIndexing.stopIndexing();
+    ftsStateChanged = true;
+    ftsRestartTimer.start(); // Will restart after 3 seconds
+  } );
+
+  // Direct start signal (bypasses delay)
+  connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::startFtsIndexing, this, [ this ]() {
+    qDebug() << "Direct FTS indexing start requested";
+    ftsStateChanged = false; // Cancel any pending restart
+    ftsRestartTimer.stop();
     ftsIndexing.doIndexing();
   } );
+
   connect( GlobalBroadcaster::instance(),
            &GlobalBroadcaster::websiteDictionarySignal,
            this,
@@ -778,21 +827,16 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // Create tab list menu
   createTabList();
 
-
-#if defined( Q_OS_LINUX )
-  defaultInterfaceStyle = QApplication::style()->name();
-#elif defined( Q_OS_MAC )
+#if defined( Q_OS_MAC )
   defaultInterfaceStyle = "Fusion";
+#else
+  defaultInterfaceStyle = QApplication::style()->name();
 #endif
 
   updateAppearances( cfg.preferences.addonStyle,
                      cfg.preferences.displayStyle,
-                     cfg.preferences.darkMode
-#if !defined( Q_OS_WIN )
-                     ,
-                     cfg.preferences.interfaceStyle
-#endif
-  );
+                     cfg.preferences.darkMode,
+                     cfg.preferences.interfaceStyle );
 
   // Create and show the initial welcome tab
   history.enableAdd( false );
@@ -931,9 +975,19 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 
 #if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
+  // Always connect for Auto mode with UniqueConnection to avoid duplicates
   if ( cfg.preferences.darkMode == Config::Dark::Auto ) {
-    connect( QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, &MainWindow::refreshAppearances );
+    connect( QGuiApplication::styleHints(),
+             &QStyleHints::colorSchemeChanged,
+             this,
+             &MainWindow::refreshAppearances,
+             Qt::UniqueConnection );
   }
+#endif
+
+#ifdef Q_OS_MACOS
+  // Handle Dock icon click on macOS: restore minimized window when application becomes active
+  connect( qApp, &QApplication::applicationStateChanged, this, &MainWindow::handleApplicationStateChanged );
 #endif
 }
 
@@ -1260,6 +1314,8 @@ void MainWindow::removeGroupComboBoxActionsFromDialog( QDialog * dialog, GroupCo
 
 void MainWindow::commitData()
 {
+  isQuitting = true;
+
   //if the dictionaries is empty ,large chance that the config has corrupt.
   if ( cfg.preferences.removeInvalidIndexOnExit && !dictMap.isEmpty() ) {
     const QDir dir( Config::getIndexDir() );
@@ -1341,6 +1397,21 @@ void MainWindow::commitData()
   }
 }
 
+void MainWindow::performCleanup()
+{
+  isQuitting = true;
+
+  if ( inspector && inspector->isVisible() ) {
+    inspector->close();
+  }
+
+  for ( auto viewer : findChildren< QMainWindow * >( "ResourceViewer" ) ) {
+    viewer->close();
+  }
+
+  commitData();
+}
+
 QPrinter & MainWindow::getPrinter()
 {
   if ( printer.get() ) {
@@ -1354,57 +1425,96 @@ QPrinter & MainWindow::getPrinter()
 
 void MainWindow::updateAppearances( const QString & addonStyle,
                                     const QString & displayStyle,
-                                    Config::Dark darkMode
-#if !defined( Q_OS_WIN )
-                                    ,
-                                    const QString & interfaceStyle
-#endif
-)
+                                    Config::Dark darkMode,
+                                    const QString & interfaceStyle )
 {
-#ifdef Q_OS_WIN32
-  if ( darkMode == Config::Dark::On ) {
-    //https://forum.qt.io/topic/101391/windows-10-dark-theme
+#ifdef Q_OS_WIN
+  // https://forum.qt.io/topic/101391/windows-10-dark-theme
 
-    QPalette darkPalette;
-    QColor darkColor     = QColor( 45, 45, 45 );
-    QColor disabledColor = QColor( 127, 127, 127 );
-    darkPalette.setColor( QPalette::Window, darkColor );
-    darkPalette.setColor( QPalette::WindowText, Qt::white );
-    darkPalette.setColor( QPalette::Base, QColor( 18, 18, 18 ) );
-    darkPalette.setColor( QPalette::AlternateBase, darkColor );
-    darkPalette.setColor( QPalette::ToolTipBase, Qt::white );
-    darkPalette.setColor( QPalette::ToolTipText, Qt::white );
-    darkPalette.setColor( QPalette::Text, Qt::white );
-    darkPalette.setColor( QPalette::Disabled, QPalette::Text, disabledColor );
-    darkPalette.setColor( QPalette::Button, darkColor );
-    darkPalette.setColor( QPalette::ButtonText, Qt::white );
-    darkPalette.setColor( QPalette::Dark, QColor( 35, 35, 35 ) );
-    darkPalette.setColor( QPalette::Shadow, QColor( 20, 20, 20 ) );
-    darkPalette.setColor( QPalette::Disabled, QPalette::ButtonText, disabledColor );
-    darkPalette.setColor( QPalette::BrightText, Qt::red );
-    darkPalette.setColor( QPalette::Link, QColor( 42, 130, 218 ) );
+  auto isDarkModeEnabled = [ darkMode ]() -> bool {
+    if ( darkMode == Config::Dark::On )
+      return true;
+    if ( darkMode == Config::Dark::Off )
+      return false;
+    // Auto mode: Use unified system theme detection
+    return GlobalBroadcaster::isSystemDarkTheme();
+  };
 
-    darkPalette.setColor( QPalette::Highlight, QColor( 42, 130, 218 ) );
-    darkPalette.setColor( QPalette::HighlightedText, Qt::black );
-    darkPalette.setColor( QPalette::Disabled, QPalette::HighlightedText, disabledColor );
+  bool isDark = isDarkModeEnabled();
 
-    qApp->setPalette( darkPalette );
-    qApp->setStyle( "Fusion" );
+  // Check if this is Windows 11 or later (build 22000+)
+  bool isWindows11OrLater =
+    QOperatingSystemVersion::current() >= QOperatingSystemVersion( QOperatingSystemVersion::Windows, 10, 0, 22000 );
+
+  if ( isDark ) {
+    auto createDarkPalette = []() -> QPalette {
+      QPalette darkPalette;
+      QColor darkColor     = QColor( 45, 45, 45 );
+      QColor disabledColor = QColor( 127, 127, 127 );
+      darkPalette.setColor( QPalette::Window, darkColor );
+      darkPalette.setColor( QPalette::WindowText, Qt::white );
+      darkPalette.setColor( QPalette::Base, QColor( 18, 18, 18 ) );
+      darkPalette.setColor( QPalette::AlternateBase, darkColor );
+      darkPalette.setColor( QPalette::ToolTipBase, Qt::white );
+      darkPalette.setColor( QPalette::ToolTipText, Qt::white );
+      darkPalette.setColor( QPalette::Text, Qt::white );
+      darkPalette.setColor( QPalette::Disabled, QPalette::Text, disabledColor );
+      darkPalette.setColor( QPalette::Button, darkColor );
+      darkPalette.setColor( QPalette::ButtonText, Qt::white );
+      darkPalette.setColor( QPalette::Dark, QColor( 35, 35, 35 ) );
+      darkPalette.setColor( QPalette::Shadow, QColor( 20, 20, 20 ) );
+      darkPalette.setColor( QPalette::Disabled, QPalette::ButtonText, disabledColor );
+      darkPalette.setColor( QPalette::BrightText, Qt::red );
+      darkPalette.setColor( QPalette::Link, QColor( 42, 130, 218 ) );
+      darkPalette.setColor( QPalette::Highlight, QColor( 42, 130, 218 ) );
+      darkPalette.setColor( QPalette::HighlightedText, Qt::black );
+      darkPalette.setColor( QPalette::Disabled, QPalette::HighlightedText, disabledColor );
+      return darkPalette;
+    };
+
+    if ( isWindows11OrLater ) {
+  #if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
+      bool useSystemDarkPalette =
+        ( darkMode == Config::Dark::Auto && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark );
+  #else
+      bool useSystemDarkPalette = false;
+  #endif
+
+      if ( useSystemDarkPalette ) {
+        qApp->setStyle( "windows11" );
+        qApp->setPalette( qApp->style()->standardPalette() );
+      }
+      else {
+        qApp->setStyle( "Fusion" );
+        qApp->setPalette( createDarkPalette() );
+      }
+    }
+    else {
+      qApp->setStyle( "Fusion" );
+      qApp->setPalette( createDarkPalette() );
+    }
+
+    // Use DWM API for title bar theming (Windows 10 1809+)
+    setWindowTitleBarDark( true );
   }
   else {
-    qApp->setStyle( "WindowsVista" );
+    qApp->setStyle( QStyleFactory::create( defaultInterfaceStyle ) );
     qApp->setPalette( QPalette() );
-  }
 
+    // Use DWM API for title bar theming
+    setWindowTitleBarDark( false );
+  }
 #endif
 
 #if !defined( Q_OS_WIN )
-  if ( interfaceStyle == "Default" ) {
-    QApplication::setStyle( QStyleFactory::create( defaultInterfaceStyle ) );
-  }
-  else {
-    if ( QStyleFactory::keys().contains( interfaceStyle ) ) {
-      QApplication::setStyle( QStyleFactory::create( interfaceStyle ) );
+  if ( !interfaceStyle.isEmpty() ) {
+    if ( interfaceStyle == "Default" ) {
+      QApplication::setStyle( QStyleFactory::create( defaultInterfaceStyle ) );
+    }
+    else {
+      if ( QStyleFactory::keys().contains( interfaceStyle ) ) {
+        QApplication::setStyle( QStyleFactory::create( interfaceStyle ) );
+      }
     }
   }
 #endif
@@ -1429,8 +1539,9 @@ void MainWindow::updateAppearances( const QString & addonStyle,
 
 #if defined( Q_OS_WIN )
   QFile winCssFile( ":qt-style-win.css" );
-  winCssFile.open( QFile::ReadOnly );
-  css += winCssFile.readAll();
+  if ( winCssFile.open( QFile::ReadOnly ) ) {
+    css += winCssFile.readAll();
+  }
 
   // Load an additional stylesheet
   // Dark Mode doesn't work nice with custom qt style sheets,
@@ -1458,7 +1569,7 @@ void MainWindow::updateAppearances( const QString & addonStyle,
     }
   }
 
-#ifdef Q_OS_WIN32
+#if defined( Q_OS_WIN )
   if ( darkMode == Config::Dark::On ) {
     css += "QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }";
   }
@@ -1476,35 +1587,36 @@ void MainWindow::refreshAppearances()
 {
   updateAppearances( cfg.preferences.addonStyle,
                      cfg.preferences.displayStyle,
-                     cfg.preferences.darkMode
-#if !defined( Q_OS_WIN )
-                     ,
-                     cfg.preferences.interfaceStyle
-#endif
-  );
+                     cfg.preferences.darkMode,
+                     cfg.preferences.interfaceStyle );
 }
 
 void MainWindow::trayIconUpdateOrInit()
 {
+// Set dock menu for macOS
 #ifdef Q_OS_MACOS
-  trayIconMenu.setAsDockMenu();
-  ui.actionCloseToTray->setVisible( false );
-#else
+  dockMenu.setAsDockMenu(); // Use separate dockMenu for Dock, not trayIconMenu
+#endif
 
   if ( !cfg.preferences.enableTrayIcon ) {
     if ( trayIcon ) {
       delete trayIcon;
       trayIcon = nullptr;
     }
+    ui.actionCloseToTray->setVisible( false );
   }
   else {
     // Update the icon to reflect the scanning mode
-    QIcon icon = enableScanningAction->isChecked() ?
-      QIcon::fromTheme( "goldendict-scan-tray", QIcon( ":/icons/programicon_scan.png" ) ) :
-      QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon_old.png" ) );
+    QIcon icon( ":/icons/programicon.png" );
+
+#ifdef Q_OS_MACOS
+    // On macOS, use the icon directly without mask for proper color display
+    // setIsMask(true) would convert it to black silhouette which is not desired
+#endif
 
     if ( !trayIcon ) {
       trayIcon = new QSystemTrayIcon( this );
+      // Set context menu for tray icon on all platforms
       trayIcon->setContextMenu( &trayIconMenu );
       trayIcon->setToolTip( QApplication::applicationName() );
       trayIcon->setIcon( icon );
@@ -1515,12 +1627,10 @@ void MainWindow::trayIconUpdateOrInit()
       // Update existing tray icon
       trayIcon->setIcon( icon );
     }
-  }
 
-  // The 'Close to tray' action is associated with the tray icon, so we hide
-  // or show it here.
-  ui.actionCloseToTray->setVisible( cfg.preferences.enableTrayIcon );
-#endif
+    // Show close to tray action when tray icon is enabled
+    ui.actionCloseToTray->setVisible( true );
+  }
 }
 
 void MainWindow::wheelEvent( QWheelEvent * ev )
@@ -1541,6 +1651,11 @@ void MainWindow::wheelEvent( QWheelEvent * ev )
 
 void MainWindow::closeEvent( QCloseEvent * ev )
 {
+  if ( isQuitting ) {
+    ev->accept();
+    return;
+  }
+
   // If tray icon is disabled or closing to tray is not enabled, quit the application
   if ( !cfg.preferences.enableTrayIcon || !cfg.preferences.closeToTray ) {
     ev->accept();
@@ -1549,7 +1664,7 @@ void MainWindow::closeEvent( QCloseEvent * ev )
   }
 
   // Hide translation popup if necessary
-  if ( !cfg.preferences.searchInDock ) {
+  if ( !cfg.preferences.searchInDock && translateBox ) {
     translateBox->setPopupEnabled( false );
   }
 
@@ -1564,11 +1679,18 @@ void MainWindow::closeEvent( QCloseEvent * ev )
 #if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
   // On Linux/Unix, do not call ignore() as it blocks session logout.
   // The window is hidden instead of closed because quitOnLastWindowClosed is false.
-  Q_ASSERT( !QApplication::quitOnLastWindowClosed() );
-  Q_ASSERT( !testAttribute( Qt::WA_DeleteOnClose ) );
+  // Q_ASSERT( !QApplication::quitOnLastWindowClosed() );
+  // Q_ASSERT( !testAttribute( Qt::WA_DeleteOnClose ) );
 #else
   // On Windows and macOS (manual close), ignore the event and hide the window.
   // This ensures global hotkey hooks remain valid on Windows.
+  if ( trayIcon ) {
+    trayIcon->showMessage(
+      QApplication::applicationName(),
+      tr( "Application is still running in the background. Click the tray icon to show the window." ),
+      QSystemTrayIcon::Information,
+      3000 );
+  }
   ev->ignore();
   hide();
 #endif
@@ -1576,15 +1698,7 @@ void MainWindow::closeEvent( QCloseEvent * ev )
 
 void MainWindow::quitApp()
 {
-  if ( inspector && inspector->isVisible() ) {
-    inspector->close();
-  }
-
-  for ( auto viewer : findChildren< QMainWindow * >( "ResourceViewer" ) ) {
-    viewer->close();
-  }
-
-  commitData();
+  performCleanup();
   qApp->quit();
 }
 
@@ -1897,7 +2011,7 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, const QString & name )
 
   view->setZoomFactor( cfg.preferences.zoomFactor );
 
-#ifdef Q_OS_WIN32
+#if defined( Q_OS_WIN )
   view->installEventFilter( this );
 #endif
   return view;
@@ -2331,14 +2445,7 @@ void MainWindow::editPreferences()
          || cfg.preferences.interfaceStyle != p.interfaceStyle
 #endif
     ) {
-      updateAppearances( p.addonStyle,
-                         p.displayStyle,
-                         p.darkMode
-#if !defined( Q_OS_WIN )
-                         ,
-                         p.interfaceStyle
-#endif
-      );
+      updateAppearances( p.addonStyle, p.displayStyle, p.darkMode, p.interfaceStyle );
     }
 
     if ( cfg.preferences.favoritesStoreInterval != p.favoritesStoreInterval ) {
@@ -2810,6 +2917,33 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
   return QMainWindow::eventFilter( obj, ev );
 }
 
+#if defined( Q_OS_WIN )
+bool MainWindow::event( QEvent * event )
+{
+  // Handle theme change events on Windows
+  if ( event->type() == QEvent::ThemeChange || event->type() == QEvent::ApplicationPaletteChange ) {
+    // Update UI appearance
+    if ( cfg.preferences.darkMode == Config::Dark::Auto ) {
+      refreshAppearances();
+    }
+
+    // Reload all ArticleViews to update their content
+    if ( cfg.preferences.darkReaderMode == Config::Dark::Auto ) {
+      for ( int i = 0; i < ui.tabWidget->count(); ++i ) {
+        if ( auto view = qobject_cast< ArticleView * >( ui.tabWidget->widget( i ) ) ) {
+          view->reload();
+        }
+      }
+      // Also reload scan popup if it exists
+      if ( scanPopup ) {
+        scanPopup->reloadAllTabs();
+      }
+    }
+  }
+  return QMainWindow::event( event );
+}
+#endif
+
 void MainWindow::wordListItemActivated( QListWidgetItem * item )
 {
   if ( wordListSelChanged ) {
@@ -2999,7 +3133,7 @@ void MainWindow::showTranslationFor( const QString & word, unsigned inGroup, con
 
 void MainWindow::showTranslationForDicts( const QString & inWord,
                                           const QStringList & dictIDs,
-                                          const QRegularExpression & searchRegExp,
+                                          const QString & searchRegExp,
                                           bool ignoreDiacritics )
 {
   ArticleView * view = getFirstNonWebSiteArticleView();
@@ -3134,29 +3268,45 @@ void MainWindow::hotKeyActivated( int hk )
   else {
     ensureScanPopup();
     GlobalBroadcaster::instance()->is_popup = true;
+
+    if ( !scanPopup ) {
+      return;
+    }
+
 #if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
-    // When the user requests translation with the Ctrl+C+C hotkey in certain apps
-    // on some GNU/Linux systems, GoldenDict appears to handle Ctrl+C+C before the
-    // active application finishes handling Ctrl+C. As a result, GoldenDict finds
-    // the clipboard empty, silently cancels the translation request, and users report
-    // that Ctrl+C+C is broken in these apps. Slightly delay handling the clipboard
-    // hotkey to give the active application more time and thus work around the issue.
-    if ( scanPopup ) {
-      QTimer::singleShot( 10, scanPopup, &ScanPopup::translateWordFromPrimaryClipboard );
-    }
+    // Delay clipboard handling on Linux to let active app finish handling Ctrl+C
+    // Workaround for Ctrl+C+C hotkey issue where clipboard may be empty
+    static constexpr int clipboardDelayMs = 10;
+    QTimer::singleShot( clipboardDelayMs, scanPopup, &ScanPopup::translateWordFromPrimaryClipboard );
 #else
-    if ( scanPopup ) {
-      scanPopup->translateWordFromPrimaryClipboard();
-    }
+    scanPopup->translateWordFromPrimaryClipboard();
 #endif
   }
 }
 
 
+static bool versionGreaterThan( const QString & v1, const QString & v2 )
+{
+  QStringList parts1 = v1.split( '.' );
+  QStringList parts2 = v2.split( '.' );
+
+  int maxLen = qMin( 3, qMax( parts1.size(), parts2.size() ) );
+  for ( int i = 0; i < maxLen; ++i ) {
+    int num1 = ( i < parts1.size() ) ? parts1[ i ].toInt() : 0;
+    int num2 = ( i < parts2.size() ) ? parts2[ i ].toInt() : 0;
+    if ( num1 > num2 )
+      return true;
+    if ( num1 < num2 )
+      return false;
+  }
+  return false;
+}
+
 void MainWindow::checkNewRelease()
 {
   // Limit release check to 1 per day.
-  if ( cfg.timeForNewReleaseCheck < QDateTime::currentDateTime().addDays( 1 ) ) {
+  if ( cfg.timeForNewReleaseCheck.isValid()
+       && cfg.timeForNewReleaseCheck.addDays( 1 ) > QDateTime::currentDateTime() ) {
     return;
   }
 
@@ -3179,10 +3329,10 @@ void MainWindow::checkNewRelease()
         const QJsonValue html_url = latest_release[ "html_url" ];
 
         if ( tag_name.isString() && html_url.isString() ) {
-          QString latestVersion = tag_name.toString().mid( 1, 8 );
+          QString latestVersion = tag_name.toString().mid( 1 ); // remove leading 'v'
           QString downloadUrl   = html_url.toString();
 
-          if ( latestVersion > PROGRAM_VERSION && latestVersion != cfg.skippedRelease ) {
+          if ( versionGreaterThan( latestVersion, PROGRAM_VERSION ) && latestVersion != cfg.skippedRelease ) {
             QMessageBox msg( QMessageBox::Information,
                              tr( "New Release Available" ),
                              tr( "Version <b>%1</b> of GoldenDict is now available for download.<br>"
@@ -3222,7 +3372,23 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
     case QSystemTrayIcon::Trigger:
       // Left click toggles the visibility of main window
       toggleMainWindow( false );
+
+      // macOS specific focus handling
+#ifdef Q_OS_MACOS
+      // Ensure the window gets focus, especially when there are fullscreen apps
+      if ( isVisible() ) {
+        this->raise();
+        this->activateWindow();
+      }
+#endif
       break;
+
+#ifdef Q_OS_MACOS
+    case QSystemTrayIcon::DoubleClick:
+      // On macOS, double click on tray icon also restores the window
+      toggleMainWindow( true );
+      break;
+#endif
 
     case QSystemTrayIcon::MiddleClick:
       // Middle mouse click on Tray translates selection
@@ -3237,6 +3403,17 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
   }
 }
 
+
+#ifdef Q_OS_MACOS
+void MainWindow::handleApplicationStateChanged( Qt::ApplicationState state )
+{
+  // When the application becomes active (e.g., user clicks on Dock icon)
+  // and the main window is minimized or hidden, restore it
+  if ( state == Qt::ApplicationActive && ( isMinimized() || !isVisible() ) ) {
+    toggleMainWindow( true );
+  }
+}
+#endif
 
 void MainWindow::visitHomepage()
 {
@@ -3392,7 +3569,7 @@ void MainWindow::on_newTab_triggered()
 
 void MainWindow::setAutostart( bool autostart )
 {
-#if defined Q_OS_WIN32
+#if defined( Q_OS_WIN )
   QSettings reg( R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)", QSettings::NativeFormat );
   if ( autostart ) {
     QString app_fname = QString( R"("%1")" ).arg( QCoreApplication::applicationFilePath() );
@@ -3419,7 +3596,9 @@ void MainWindow::setAutostart( bool autostart )
 
 void MainWindow::on_actionCloseToTray_triggered()
 {
-  toggleMainWindow( !cfg.preferences.enableTrayIcon );
+  if ( cfg.preferences.enableTrayIcon && isVisible() ) {
+    hide();
+  }
 }
 
 void MainWindow::on_pageSetup_triggered()
@@ -3654,7 +3833,7 @@ bool MainWindow::handleStructuredMessage( const QString & message )
 
   if ( QString action = params.value( "action" ); action == "translate" ) {
     QString windowType = params.value( "window", "main" );
-    QString word       = params.value( "word" );
+    QString word       = QUrl::fromPercentEncoding( params.value( "word" ).toLatin1() );
     QString group      = params.value( "group" );
     QString popupGroup = params.value( "popupGroup" );
 
@@ -4561,3 +4740,19 @@ void MainWindow::handleDownloadRequested( QWebEngineDownloadRequest * download )
   download->setDownloadFileName( fileInfo.fileName() );
   download->accept();
 }
+
+#if defined( Q_OS_WIN )
+void MainWindow::setWindowTitleBarDark( bool dark )
+{
+  HWND hwnd    = HWND( winId() );
+  BOOL useDark = dark ? TRUE : FALSE;
+  DwmSetWindowAttribute( hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, &useDark, sizeof( useDark ) );
+
+  if ( scanPopup ) {
+    HWND popupHwnd = HWND( scanPopup->winId() );
+    DwmSetWindowAttribute( popupHwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, &useDark, sizeof( useDark ) );
+  }
+
+  RedrawWindow( hwnd, nullptr, nullptr, RDW_FRAME | RDW_INVALIDATE );
+}
+#endif

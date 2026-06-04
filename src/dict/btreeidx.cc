@@ -996,7 +996,14 @@ void IndexedWords::addWord( const std::u32string & index_word, uint32_t articleO
       string utfWord   = Text::toUtf8( std::u32string( nextChar, wordSize - ( nextChar - wordBegin ) ) );
       string utfPrefix = Text::toUtf8( std::u32string( wordBegin, nextChar - wordBegin ) );
 
-      i->second.emplace_back( std::move( utfWord ), articleOffset, std::move( utfPrefix ) );
+      // If this is an exact match (prefix is empty), insert at the beginning of the chain
+      // to ensure exact matches are found first
+      if ( utfPrefix.empty() ) {
+        i->second.emplace( i->second.begin(), std::move( utfWord ), articleOffset, std::move( utfPrefix ) );
+      }
+      else {
+        i->second.emplace_back( std::move( utfWord ), articleOffset, std::move( utfPrefix ) );
+      }
       // reduce the vector reallocation.
       if ( i->second.size() * 1.0 / i->second.capacity() > 0.75 ) {
         i->second.reserve( i->second.capacity() * 2 );
