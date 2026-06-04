@@ -777,7 +777,7 @@ struct HeadwordsDialog
   }
 };
 
-// TODO: arbitrary sizing
+// arbitrary sizing
 enum class ToolbarsIconSize : std::uint8_t {
   Small  = 0,
   Normal = 1,
