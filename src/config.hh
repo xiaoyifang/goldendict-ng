@@ -857,6 +857,7 @@ struct Class
     lastMainGroupId( 0 ),
     lastPopupGroupId( 0 ),
     pinPopupWindow( false ),
+    timeForNewReleaseCheck( QDateTime() ),
     showingDictBarNames( false ),
     maxHeadwordSize( 256U ),
     maxHeadwordsToExpand( 0 )

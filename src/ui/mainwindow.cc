@@ -3285,10 +3285,28 @@ void MainWindow::hotKeyActivated( int hk )
 }
 
 
+static bool versionGreaterThan( const QString & v1, const QString & v2 )
+{
+  QStringList parts1 = v1.split( '.' );
+  QStringList parts2 = v2.split( '.' );
+
+  int maxLen = qMin( 3, qMax( parts1.size(), parts2.size() ) );
+  for ( int i = 0; i < maxLen; ++i ) {
+    int num1 = ( i < parts1.size() ) ? parts1[ i ].toInt() : 0;
+    int num2 = ( i < parts2.size() ) ? parts2[ i ].toInt() : 0;
+    if ( num1 > num2 )
+      return true;
+    if ( num1 < num2 )
+      return false;
+  }
+  return false;
+}
+
 void MainWindow::checkNewRelease()
 {
   // Limit release check to 1 per day.
-  if ( cfg.timeForNewReleaseCheck < QDateTime::currentDateTime().addDays( 1 ) ) {
+  if ( cfg.timeForNewReleaseCheck.isValid()
+       && cfg.timeForNewReleaseCheck.addDays( 1 ) > QDateTime::currentDateTime() ) {
     return;
   }
 
@@ -3311,10 +3329,10 @@ void MainWindow::checkNewRelease()
         const QJsonValue html_url = latest_release[ "html_url" ];
 
         if ( tag_name.isString() && html_url.isString() ) {
-          QString latestVersion = tag_name.toString().mid( 1, 8 );
+          QString latestVersion = tag_name.toString().mid( 1 ); // remove leading 'v'
           QString downloadUrl   = html_url.toString();
 
-          if ( latestVersion > PROGRAM_VERSION && latestVersion != cfg.skippedRelease ) {
+          if ( versionGreaterThan( latestVersion, PROGRAM_VERSION ) && latestVersion != cfg.skippedRelease ) {
             QMessageBox msg( QMessageBox::Information,
                              tr( "New Release Available" ),
                              tr( "Version <b>%1</b> of GoldenDict is now available for download.<br>"
