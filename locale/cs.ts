@@ -2666,6 +2666,10 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <source>Save File</source>
       <translation>Uložit soubor</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Aplikace stále běží na pozadí. Klikněte na ikonu v lize pro zobrazení okna.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

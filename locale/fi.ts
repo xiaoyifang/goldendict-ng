@@ -2666,6 +2666,10 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <source>Save File</source>
       <translation>Tallenna Tiedosto</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Sovellus pyörii edelleen taustalla. Klikkaa tarjottimen kuvaketta näyttääksesi ikkunan.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

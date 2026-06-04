@@ -81,7 +81,8 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation type="unfinished">&lt;div class=&quot;welcome-container&quot;&gt;
+      <translation type="unfinished">
+    &lt;div class=&quot;welcome-container&quot;&gt;
       &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
       &lt;section&gt;
         &lt;h4&gt;To get started&lt;/h4&gt;
@@ -308,7 +309,7 @@
     <name>ArticleWebView</name>
     <message>
       <source>GoldenDict Resource Viewer</source>
-      <translation>GoldenDict Resource Viewer</translation>
+      <translation type="unfinished">GoldenDict Resource Viewer</translation>
     </message>
   </context>
   <context>
@@ -2663,7 +2664,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Save File</source>
-      <translation>Save File</translation>
+      <translation type="unfinished">Save File</translation>
+    </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation type="unfinished">Application is still running in the background. Click the tray icon to show the window.</translation>
     </message>
   </context>
   <context>
@@ -3123,7 +3128,7 @@ in the pressed state when the word selection changes.</translation>
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation>Only track selection when all selected keys are kept pressed:</translation>
+      <translation type="unfinished">Only track selection when all selected keys are kept pressed:</translation>
     </message>
     <message>
       <source>Alt key</source>

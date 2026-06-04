@@ -2665,6 +2665,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Save File</source>
       <translation>저장 파일</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>애플리케이션은 여전히 백그라운드에서 실행 중입니다. 트레이 아이콘을 클릭하면 창이 표시됩니다.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

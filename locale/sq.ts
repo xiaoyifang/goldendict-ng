@@ -2665,6 +2665,10 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
       <source>Save File</source>
       <translation>Ruaj skedarin</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Aplikacioni është ende duke funksionuar në sfond. Klikoni ikonën e tabakës për të shfaqur dritaren.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

@@ -2666,6 +2666,10 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <source>Save File</source>
       <translation>Enregistrer le fichier</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>L’application tourne toujours en arrière-plan. Cliquez sur l’icône du plateau pour afficher la fenêtre.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

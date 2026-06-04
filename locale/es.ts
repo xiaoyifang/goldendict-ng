@@ -2666,6 +2666,10 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
       <source>Save File</source>
       <translation>Guardar archivo</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>La aplicación sigue ejecutándose en segundo plano. Haz clic en el icono de la bandeja para mostrar la ventana.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

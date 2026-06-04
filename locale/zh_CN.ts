@@ -2665,6 +2665,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Save File</source>
       <translation>保存文件</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>应用程序仍在后台运行。点击托盘图标显示窗口。</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

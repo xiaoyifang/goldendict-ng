@@ -2666,6 +2666,10 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
       <source>Save File</source>
       <translation type="unfinished">Save File</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Aplikaĵo ankoraŭ funkcias en la fono. Alklaku la pleton-ikonon por montri la fenestron.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

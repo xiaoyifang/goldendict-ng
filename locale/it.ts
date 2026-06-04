@@ -2667,6 +2667,10 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
       <source>Save File</source>
       <translation>Salva File</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>L'applicazione è ancora in esecuzione in background. Clicca sull'icona del vassoio per mostrare la finestra.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

@@ -2666,6 +2666,10 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
       <source>Save File</source>
       <translation>Zapisz plik</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Aplikacja nadal działa w tle. Kliknij ikonę w tacce, aby wyświetlić okno.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

@@ -2666,6 +2666,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Save File</source>
       <translation>Зберегти</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Додаток досі працює у фоновому режимі. Натисніть на іконку трека, щоб показати вікно.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

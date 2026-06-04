@@ -2666,6 +2666,10 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <source>Save File</source>
       <translation>Bestand opslaan</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>De applicatie draait nog steeds op de achtergrond. Klik op het tray-icoon om het venster te tonen.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

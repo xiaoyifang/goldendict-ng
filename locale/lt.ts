@@ -2666,6 +2666,10 @@ Norėdami atverti parsisiuntimo puslapį, spauskite &lt;b&gt;Parsisiųsti&lt;/b&
       <source>Save File</source>
       <translation>Įrašyti failą</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Programa vis dar veikia fone. Spustelėkite dėklo piktogramą, kad būtų rodomas langas.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

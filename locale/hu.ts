@@ -2666,6 +2666,10 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
       <source>Save File</source>
       <translation>Mentési fájl</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Az alkalmazás még mindig a háttérben fut. Kattints a tálca ikonra, hogy megmutasd az ablakot.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

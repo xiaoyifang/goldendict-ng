@@ -62,7 +62,7 @@
     </message>
     <message>
       <source>(picture)</source>
-      <translation>(picture)</translation>
+      <translation>(tugna)</translation>
     </message>
     <message>
       <source>
@@ -190,7 +190,7 @@
     </message>
     <message>
       <source>Op&amp;en Link</source>
-      <translation>Op&amp;en Link</translation>
+      <translation>&amp;Ldi aseɣwen</translation>
     </message>
     <message>
       <source>Open Link in New &amp;Tab</source>
@@ -333,7 +333,7 @@ between classic and school orthography in cyrillic)</translation>
     <name>ChineseConversion</name>
     <message>
       <source>Chinese Conversion</source>
-      <translation>Chinese Conversion</translation>
+      <translation>Adiwenni s tcinwat</translation>
     </message>
     <message>
       <source>Enable conversion between simplified and traditional Chinese characters</source>
@@ -509,7 +509,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Apply</source>
-      <translation>Apply</translation>
+      <translation>Snes</translation>
     </message>
     <message>
       <source>Filter string (fixed string, wildcards or regular expression)</source>
@@ -2665,6 +2665,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Save File</source>
       <translation>Sekles afaylu</translation>
+    </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Tunigt mazal tettruḥu deg deffir. Ssenqed ikun n ttray iwakken ad tban ttaqet.</translation>
     </message>
   </context>
   <context>

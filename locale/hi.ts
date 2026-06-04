@@ -2665,6 +2665,10 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <source>Save File</source>
       <translation>फ़ाइल सहेजें</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>अनुप्रयोग अभी भी पृष्ठभूमि में चल रहा है। विंडो दिखाने के लिए ट्रे आइकन पर क्लिक करें।</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
