@@ -2666,6 +2666,10 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
       <source>Save File</source>
       <translation>Spara fil</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Applikationen körs fortfarande i bakgrunden. Klicka på brickikonen för att visa fönstret.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
