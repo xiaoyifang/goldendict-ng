@@ -2711,6 +2711,10 @@ Error de importación: datos incorrectos en el fichero.</translation>
       <source>Save File</source>
       <translation>Q'ipi Imaña</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Aplicación ukax qhipatakiw llamkt'askakiwa. Ventana uñacht'ayañatakiw bandeja icono ukar ch'iqt'añama.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
