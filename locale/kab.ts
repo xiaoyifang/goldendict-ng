@@ -2668,7 +2668,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
-      <translation type="unfinished">Application is still running in the background. Click the tray icon to show the window.</translation>
+      <translation>Tunigt mazal tettruḥu deg deffir. Ssenqed ikun n ttray iwakken ad tban ttaqet.</translation>
     </message>
   </context>
   <context>
