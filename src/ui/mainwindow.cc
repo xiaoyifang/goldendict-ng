@@ -39,6 +39,7 @@
 #include <QStyleFactory>
 #include <QStyleHints>
 #include <QNetworkProxyFactory>
+#include <QVersionNumber>
 
 #include "weburlrequestinterceptor.hh"
 #include "folding.hh"
@@ -3285,21 +3286,9 @@ void MainWindow::hotKeyActivated( int hk )
 }
 
 
-static bool versionGreaterThan( const QString & v1, const QString & v2 )
+static bool isNewerVersion( const QString& candidate, const QString& reference )
 {
-  QStringList parts1 = v1.split( '.' );
-  QStringList parts2 = v2.split( '.' );
-
-  int maxLen = qMin( 3, qMax( parts1.size(), parts2.size() ) );
-  for ( int i = 0; i < maxLen; ++i ) {
-    int num1 = ( i < parts1.size() ) ? parts1[ i ].toInt() : 0;
-    int num2 = ( i < parts2.size() ) ? parts2[ i ].toInt() : 0;
-    if ( num1 > num2 )
-      return true;
-    if ( num1 < num2 )
-      return false;
-  }
-  return false;
+  return QVersionNumber::fromString( candidate ) > QVersionNumber::fromString( reference );
 }
 
 void MainWindow::checkNewRelease()
@@ -3332,7 +3321,7 @@ void MainWindow::checkNewRelease()
           QString latestVersion = tag_name.toString().mid( 1 ); // remove leading 'v'
           QString downloadUrl   = html_url.toString();
 
-          if ( versionGreaterThan( latestVersion, PROGRAM_VERSION ) && latestVersion != cfg.skippedRelease ) {
+          if ( isNewerVersion( latestVersion, PROGRAM_VERSION ) && latestVersion != cfg.skippedRelease ) {
             QMessageBox msg( QMessageBox::Information,
                              tr( "New Release Available" ),
                              tr( "Version <b>%1</b> of GoldenDict is now available for download.<br>"
