@@ -2666,6 +2666,10 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
       <source>Save File</source>
       <translation>Datei speichern</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Die Anwendung läuft noch im Hintergrund. Klicken Sie auf das Tray-Symbol, um das Fenster anzuzeigen.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
