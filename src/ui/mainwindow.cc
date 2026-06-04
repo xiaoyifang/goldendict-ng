@@ -3286,7 +3286,7 @@ void MainWindow::hotKeyActivated( int hk )
 }
 
 
-static bool isNewerVersion( const QString& candidate, const QString& reference )
+static bool isNewerVersion( const QString & candidate, const QString & reference )
 {
   return QVersionNumber::fromString( candidate ) > QVersionNumber::fromString( reference );
 }
