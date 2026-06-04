@@ -1915,7 +1915,7 @@ in bg url to hide it from iemac */
   z-index: 3;
 }
 
-/* TODO: #t-iscite is only used by the Cite extension, come up with some
+/* #t-iscite is only used by the Cite extension, come up with some
  * system which allows extensions to add to this file on the fly
  */
 .mwiki #t-ispermalink,

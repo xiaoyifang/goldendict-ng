@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>ترجم إلى:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>الملفات التي تتضمن القاموس:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>الوصف:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Enable</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>مكونات القاموس:</translation>
     </message>
   </context>
   <context>
@@ -2665,6 +2665,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Save File</source>
       <translation>حفظ الملف</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>التطبيق لا يزال يعمل في الخلفية. انقر على أيقونة الدرج لعرض النافذة.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2964,10 +2968,6 @@ the application.</source>
       <translation>لِنْغوز-بلو</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto does nothing on some systems.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>أعد تشغيل البرنامج لتطبيق تغيير اللغة.</translation>
     </message>
@@ -3210,20 +3210,8 @@ in the pressed state when the word selection changes.</source>
       <translation>تشغيل ملفات الصوت عبر دعم الصوت المدمج</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>استخدام المشغل الداخلي:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>اختر نهاية خلفية الصوت</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>استخدم أي برنامج خارجي لتشغيل ملفات الصوت</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>استخدم برنامجًا خارجيًا:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3533,6 +3521,30 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>إخفاء شريط التبويب عند فتح علامة تبويب واحدة فقط.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>استخدام أي مشغل صوت خارجي لتشغيل الملفات الصوتية</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>عرض دليل التكوين المفصل</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>سيتم تمرير مسار الصوت كحجة سطر الأوامر إلى المشغل الخارجي. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>مشغل الصوت الداخلي:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>مشغل صوت خارجي:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>يتم التبديل تلقائيا بناء على موضوع النظام.</translation>
     </message>
   </context>
   <context>

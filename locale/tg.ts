@@ -639,10 +639,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Тарҷума ба забони:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Файлҳои ин луғат:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Тавсиф:</translation>
     </message>
@@ -669,6 +665,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Фаъол кардан</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation type="unfinished">Dictionary Components:</translation>
     </message>
   </context>
   <context>
@@ -2666,6 +2666,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Save File</source>
       <translation>Захира кардани файл</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation type="unfinished">Application is still running in the background. Click the tray icon to show the window.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2965,10 +2969,6 @@ the application.</source>
       <translation>Lingoes-кабуд</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Автомат дар баъзе системаҳо ҳеҷ кор намекунад.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Барои татбиқ кардани забони интихобшуда барномаро аз нав оғоз кунед.</translation>
     </message>
@@ -3210,20 +3210,8 @@ in the pressed state when the word selection changes.</source>
       <translation>Файлҳои аудиоиро тавассути дастгирии аудиои дарунсохт бозӣ кунед</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Плеери дохилиро истифода баред:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Охири аудиоро интихоб кунед</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Ягон барномаи беруниро барои иҷрои файлҳои аудиоӣ истифода баред</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Ба воситаи барномаи дигар иҷро кунед:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3534,6 +3522,30 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation type="unfinished">Hide tab bar when only one tab is open.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation type="unfinished">Use any external audio player to play audio files</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation type="unfinished">View detailed configuration guide</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation type="unfinished">The audio path will be passed as a command-line argument to the external player. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation type="unfinished">Internal Audio Player:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation type="unfinished">External Audio Player:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation type="unfinished">Automatically switches based on system theme.</translation>
     </message>
   </context>
   <context>

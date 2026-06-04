@@ -639,10 +639,6 @@ arasındaki farkı giderir)</translation>
       <translation>Bu dile:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Bu sözlüğü oluşturan dosyalar:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Açıklama:</translation>
     </message>
@@ -669,6 +665,10 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Enable</source>
       <translation>Olanak vermek</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Sözlük Bileşenleri:</translation>
     </message>
   </context>
   <context>
@@ -2666,6 +2666,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Save File</source>
       <translation>Kayıt Dosyası</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Uygulama hâlâ arka planda çalışıyor. Pencereyi göstermek için tepsi simgesine tıklayın.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2963,10 +2967,6 @@ yerine onu gizler.</translation>
       <translation>Lingoes-Mavi</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Bazı sistemlerde Auto hiçbir şey yapmaz.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Dil değişikliğini tamamlamak için programı yeniden başlatın.</translation>
     </message>
@@ -3209,20 +3209,8 @@ Aksi halde fare, sözcüğün üzerine geldiğinde çeviri yapılır.</translati
       <translation>Yerleşik ses desteği aracılığıyla ses dosyalarını oynatın</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Dahili oynatıcı kullan:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Ses arka ucunu seçin</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Ses dosyalarını oynatmak için harici bir program kullan</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Harici program kullanın:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3531,6 +3519,30 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Sadece bir sekme açıkken sekme çubuğunu gizle.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Ses dosyalarını oynatmak için herhangi bir harici ses oynatıcıyı kullanın</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Detaylı yapılandırma rehberini görüntüleyin</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Ses yolu, harici oynatıcıya komut satırı argümanı olarak iletilir. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Dahili Ses Oynatıcı:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Dış Ses Oynatıcı:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Sistem temasına göre otomatik olarak değişir.</translation>
     </message>
   </context>
   <context>

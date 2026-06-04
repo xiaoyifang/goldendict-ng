@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Verčia į:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Žodyną sudarantys failai:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Aprašas:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Įgalinti</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Žodyno komponentai:</translation>
     </message>
   </context>
   <context>
@@ -2666,6 +2666,10 @@ Norėdami atverti parsisiuntimo puslapį, spauskite &lt;b&gt;Parsisiųsti&lt;/b&
       <source>Save File</source>
       <translation>Įrašyti failą</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Programa vis dar veikia fone. Spustelėkite dėklo piktogramą, kad būtų rodomas langas.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2965,10 +2969,6 @@ tiesiog paslepiama.</translation>
       <translation>Lingoes mėlynas</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Automatinis kai kuriose sistemose nieko nedaro.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Naująją kalbą programa naudos po to, kai ją atversite iš naujo.</translation>
     </message>
@@ -3211,20 +3211,8 @@ po to, kai pasikeis pažymėtas žodis.</translation>
       <translation>Groti garso kūrinius naudojant integruotą garso sistemą</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Nautoti integruotą grotuvę:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Pasirinkite garso sąsają</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Naudoti bet kokią išorinę programą garso failų grojimui</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Naudoti išorinę programą:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3532,6 +3520,30 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Slėpti skirtukų juostą, kai atidarytas tik vienas skirtukas.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Garso failams leisti naudokite bet kurį išorinį garso grotuvą</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Peržiūrėkite išsamų konfigūracijos vadovą</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Garso kelias bus perduotas kaip komandų eilutės argumentas išoriniam leistuvui. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Vidinis garso grotuvas:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Išorinis garso grotuvas:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Automatiškai persijungia pagal sistemos temą.</translation>
     </message>
   </context>
   <context>

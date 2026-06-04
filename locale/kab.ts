@@ -62,7 +62,7 @@
     </message>
     <message>
       <source>(picture)</source>
-      <translation>(picture)</translation>
+      <translation>(tugna)</translation>
     </message>
     <message>
       <source>
@@ -190,7 +190,7 @@
     </message>
     <message>
       <source>Op&amp;en Link</source>
-      <translation>Op&amp;en Link</translation>
+      <translation>&amp;Ldi aseɣwen</translation>
     </message>
     <message>
       <source>Open Link in New &amp;Tab</source>
@@ -333,7 +333,7 @@ between classic and school orthography in cyrillic)</translation>
     <name>ChineseConversion</name>
     <message>
       <source>Chinese Conversion</source>
-      <translation>Chinese Conversion</translation>
+      <translation>Adiwenni s tcinwat</translation>
     </message>
     <message>
       <source>Enable conversion between simplified and traditional Chinese characters</source>
@@ -509,7 +509,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Apply</source>
-      <translation>Apply</translation>
+      <translation>Snes</translation>
     </message>
     <message>
       <source>Filter string (fixed string, wildcards or regular expression)</source>
@@ -639,10 +639,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation>Tisuqilin ɣer:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Files comprising this dictionary:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Aglam:</translation>
     </message>
@@ -669,6 +665,10 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Enable</source>
       <translation>Enable</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Timsilɣin n umawal:</translation>
     </message>
   </context>
   <context>
@@ -2666,6 +2666,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Save File</source>
       <translation>Sekles afaylu</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Tunigt mazal tettruḥu deg deffir. Ssenqed ikun n ttray iwakken ad tban ttaqet.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2965,10 +2969,6 @@ the application.</translation>
       <translation>Lingoes-Blue</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto does nothing on some systems.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Restart the program to apply the language change.</translation>
     </message>
@@ -3211,20 +3211,8 @@ in the pressed state when the word selection changes.</translation>
       <translation>Play audio files via built-in audio support</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Use internal player:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Choose audio back end</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Use any external program to play audio files</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Use external program:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3535,6 +3523,30 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation type="unfinished">Hide tab bar when only one tab is open.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Seqdec yal amezruy n ṣṣut n beṛṛa i wakken ad tizedreḍ ifuyla n ṣṣut</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Wali agbur n usetɣer imfarasen</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Abrid n umaẓrag ad yettuseggem d amekkin n uḍris n yiqeddicen i umurar n berra.</translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation type="unfinished">Internal Audio Player:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation type="unfinished">External Audio Player:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Yettbeddil s yiman-is ɣef leḥsab n usentel n unagraw.</translation>
     </message>
   </context>
   <context>

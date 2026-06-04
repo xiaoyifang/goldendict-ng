@@ -639,10 +639,6 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
       <translation>Traduzione in:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>File relativi a questo dizionario:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Descrizione:</translation>
     </message>
@@ -669,6 +665,10 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
     <message>
       <source>Enable</source>
       <translation>Abilitare</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Componenti del dizionario:</translation>
     </message>
   </context>
   <context>
@@ -2667,6 +2667,10 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
       <source>Save File</source>
       <translation>Salva File</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>L'applicazione è ancora in esecuzione in background. Clicca sull'icona del vassoio per mostrare la finestra.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2964,10 +2968,6 @@ ne causerà soltanto l&apos;iconizzazione nella barra di notifica.</translation>
       <translation>Lingoes-Blue</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Su alcuni sistemi la funzione Auto non fa nulla.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>La modifica della lingua avrà effetto al riavvio del programma.</translation>
     </message>
@@ -3211,20 +3211,8 @@ Le parole tradotte verranno mostrate in una finestra di dialogo a comparsa.</tra
       <translation>Riproduce i file audio mediante il supporto audio incorporato</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Utilizza lettore interno</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Scegli l&apos;applicazione per la riproduzione dell&apos;audio</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Usa un qualsiasi programma esterno per riprodurre i file audio</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Usa un programma esterno:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3533,6 +3521,30 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Nascondi la barra delle schede quando è aperta solo una scheda.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Usa qualsiasi lettore audio esterno per riprodurre file audio</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Visualizza la guida di configurazione dettagliata</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Il percorso audio verrà passato come argomento a riga di comando al lettore esterno. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Lettore audio interno:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Lettore audio esterno:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Cambia automaticamente in base al tema di sistema.</translation>
     </message>
   </context>
   <context>

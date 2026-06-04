@@ -627,10 +627,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Jaqukipaña akar:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Apkata wayaqanaka, aka aru-pirwana:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Qillqatax kunjamasa:</translation>
     </message>
@@ -657,6 +653,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Pirmitiña</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Arupirwan jisk'anaka:</translation>
     </message>
   </context>
   <context>
@@ -2711,6 +2711,10 @@ Error de importación: datos incorrectos en el fichero.</translation>
       <source>Save File</source>
       <translation>Q'ipi Imaña</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Aplicación ukax qhipatakiw llamkt'askakiwa. Ventana uñacht'ayañatakiw bandeja icono ukar ch'iqt'añama.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3025,10 +3029,6 @@ Aka jakhu mayjacham jach&apos;a menus jithiqañataki.</translation>
       <translation>Lingoes-Larama</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto ukax janiw kuns yaqhip sistemas ukan lurkiti.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Mayat programa aktayan sun apñaqañataki.</translation>
     </message>
@@ -3281,20 +3281,8 @@ Sistema ist&apos;añataki ukampi, ist&apos;añataki wayaqanak arst&apos;ayaña.
 Reproducir archivos de audio con el audio por defecto del sistema.</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Manqhax ist&apos;awi apnaqaña:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Arst&apos;ayiri ist&apos;añataki ajllim</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Taxpach wakist&apos;awi arunakax apnakaskaniwa </translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Anqat programa apnaqaña:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3625,6 +3613,30 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Mä ficha ukakiw jist'arata ukjaxa, ficha barra imantaña.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Aru qillqatanaka phust'ayañataki, mayjawjankiri phust'iriwa apnaqaña.</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Jach'a qhanañchäwi yatichäwi uñjaña</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Awdiyu thakhiw anqa pukllirir kamanda lini arxatawi ukham apatañani.</translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation type="unfinished">Internal Audio Player:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation type="unfinished">External Audio Player:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Sistema tuqin kunjama uñtata ukhamarjama mayjt'asi.</translation>
     </message>
   </context>
   <context>

@@ -641,10 +641,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Μεταφράζει σε:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Αρχεία λεξικού:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Περιγραφή:</translation>
     </message>
@@ -671,6 +667,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Καθιστώ ικανό</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Στοιχεία λεξικού:</translation>
     </message>
   </context>
   <context>
@@ -2668,6 +2668,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Save File</source>
       <translation>Αποθήκευση Αρχείου</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Η εφαρμογή εξακολουθεί να εκτελείται στο παρασκήνιο. Κάντε κλικ στο εικονίδιο του δίσκου για να εμφανιστεί το παράθυρο.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2966,10 +2970,6 @@ the application.</source>
       <translation>Μπίνγκο-μπλε</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Το Auto δεν κάνει τίποτα σε ορισμένα συστήματα.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Απαιτείται επανεκκίνηση του προγράμματος για να εφαρμοστεί η αλλαγή γλώσσας.</translation>
     </message>
@@ -3212,20 +3212,8 @@ in the pressed state when the word selection changes.</source>
       <translation>Αναπαραγωγή αρχείων ήχου μέσω ενσωματωμένης υποστήριξης ήχου</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Χρήση εσωτερικού παίκτη:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Επιλέξτε πίσω τέλος ήχου</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Χρήση οποιουδήποτε εξωτερικού προγράμματος για την αναπαραγωγή αρχείων ήχου</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Χρήση εξωτερικού προγράμματος:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3536,6 +3524,30 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Απόκρυψη γραμμής καρτελών όταν μόνο μία καρτέλα είναι ανοιχτή.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Χρησιμοποιήστε οποιοδήποτε εξωτερικό πρόγραμμα αναπαραγωγής ήχου για την αναπαραγωγή αρχείων ήχου</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Προβολή λεπτομερούς οδηγού ρύθμισης παραμέτρων</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Η διαδρομή ήχου θα περάσει ως μια παράμετρο γραμμής εντολών στον εξωτερικό παίκτη. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Εσωτερική συσκευή αναπαραγωγής ήχου:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Εξωτερική συσκευή αναπαραγωγής ήχου:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Αλλάζει αυτόματα με βάση το θέμα του συστήματος.</translation>
     </message>
   </context>
   <context>

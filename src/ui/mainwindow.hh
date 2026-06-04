@@ -64,6 +64,7 @@ public slots:
   void headwordFromFavorites( const QString & word, const QString & favFolderFullPath );
   /// Save config and states...
   void commitData();
+  void performCleanup();
   void quitApp();
 
 private:
@@ -130,6 +131,9 @@ private:
   QAction *zoomIn, *zoomOut, *zoomBase;
   QAction *addToFavorites, *beforeAddToFavoritesSeparator;
   QMenu trayIconMenu;
+#ifdef Q_OS_MACOS
+  QMenu dockMenu; // Separate menu for macOS Dock
+#endif
   QMenu * tabMenu;
   QAction * menuButtonAction;
   QToolButton * menuButton;
@@ -170,11 +174,16 @@ private:
 
   bool wasMaximized; // Window state before minimization
 
+  bool isQuitting = false;
+
   QPrinter & getPrinter(); // Creates a printer if it's not there and returns it
 
   DictHeadwords * headwordsDlg;
 
   FTS::FtsIndexing ftsIndexing;
+
+  QTimer ftsRestartTimer;       // Timer to delay FTS indexing restart after state change
+  bool ftsStateChanged = false; // Track if FTS state was changed in DictInfo
 
   FTS::FullTextSearchDialog * ftsDlg;
 
@@ -185,23 +194,23 @@ private:
 
   BaseClipboardListener * clipboardListener;
 
-#if !defined( Q_OS_WIN )
   // On Linux, this will be the style before getting overriden by custom styles
   // On macOS, this will be just Fusion.
+  // On Windows, this will be the original style (e.g., "WindowsVista") saved at startup
   QString defaultInterfaceStyle;
-#endif
   /// Ensures the scan popup is created and connected
   void ensureScanPopup();
+
+#if defined( Q_OS_WIN )
+  /// Sets window title bar to dark/light mode (Windows only)
+  void setWindowTitleBarDark( bool dark );
+#endif
 
   /// Applies Qt stylesheets, use Windows dark palette etc....
   void updateAppearances( const QString & addonStyle,
                           const QString & displayStyle,
-                          Config::Dark darkMode
-#if !defined( Q_OS_WIN )
-                          ,
-                          const QString & interfaceStyle
-#endif
-  );
+                          Config::Dark darkMode,
+                          const QString & interfaceStyle = QString() );
 
   /// Creates, destroys or otherwise updates tray icon, according to the
   /// current configuration and situation.
@@ -226,6 +235,11 @@ private:
   void applyMutedDictionariesState();
 
   virtual bool eventFilter( QObject *, QEvent * );
+
+#if defined( Q_OS_WIN )
+  /// Handle theme change events as fallback when colorSchemeChanged signal is not available
+  bool event( QEvent * event ) override;
+#endif
 
   /// Returns the reference to dictionaries stored in the currently active
   /// group, or to all dictionaries if there are no groups.
@@ -280,6 +294,11 @@ private:
 
 private slots:
   void updateFavIconSlot();
+
+#ifdef Q_OS_MACOS
+  /// Handle macOS Dock icon click when application becomes active
+  void handleApplicationStateChanged( Qt::ApplicationState state );
+#endif
 
   /// Try check new release, popup a dialog, and update the check time & skippedRelease version
   void checkNewRelease();
@@ -395,7 +414,7 @@ private slots:
 
   void showTranslationForDicts( const QString &,
                                 const QStringList & dictIDs,
-                                const QRegularExpression & searchRegExp,
+                                const QString & searchRegExp,
                                 bool ignoreDiacritics );
 
   void showHistoryItem( const QString & );

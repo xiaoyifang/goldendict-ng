@@ -639,10 +639,6 @@ entre clássico e ortografia escolar em cirílico)</translation>
       <translation>Traduz para:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Arquivos pertencentes a este dicionário:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Descrição:</translation>
     </message>
@@ -669,6 +665,10 @@ entre clássico e ortografia escolar em cirílico)</translation>
     <message>
       <source>Enable</source>
       <translation>Habilitar</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Componentes do Dicionário:</translation>
     </message>
   </context>
   <context>
@@ -2666,6 +2666,10 @@ Para encontrar os símbolos &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]
       <source>Save File</source>
       <translation>Salvar Arquivo</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>A aplicação ainda está rodando em segundo plano. Clique no ícone da bandeja para mostrar a janela.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2969,10 +2973,6 @@ ser fechado.</translation>
       <translation>Lais-Cola</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>O Auto não faz nada em alguns sistemas.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Reinicie o programa para aplicar a mudança de idioma.</translation>
     </message>
@@ -3216,20 +3216,8 @@ em qualquer situação ou contexto, desde que o GoldenDict esteja em execução.
       <translation>Reproduzir arquivos de áudio via suporte de áudio embutido</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Usar player interno:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Escolha o back-end de áudio</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Usa um aplicativo externo para reproduzir arquivos de áudio</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Usar programa externo:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3539,6 +3527,30 @@ dos dicionários Stardict, Babylon e GLS</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Ocultar a barra de abas quando apenas uma aba estiver aberta.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Usar qualquer reprodutor de áudio externo para reproduzir arquivos de áudio</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Ver guia de configuração detalhado</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>O caminho de áudio será passado como um argumento de linha de comando para o jogador externo. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Tocador de Áudio Interno:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Tocador de Áudio Externo:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Muda automaticamente de acordo com o tema do sistema.</translation>
     </message>
   </context>
   <context>

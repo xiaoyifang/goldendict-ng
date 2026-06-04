@@ -214,28 +214,36 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
 
   const QStringList posArgs = qcmd.positionalArguments();
   if ( !posArgs.empty() ) {
-    result->word = posArgs.at( 0 );
+    QString originalArg = posArgs.at( 0 );
 
 #if defined( Q_OS_LINUX ) || defined( Q_OS_WIN )
     // handle url scheme like "goldendict://" or "dict://" on windows/linux
-    auto schemePos = result->word.indexOf( "://" );
+    auto schemePos = originalArg.indexOf( "://" );
     if ( schemePos != -1 ) {
-      result->word.remove( 0, schemePos + 3 );
-      // In microsoft Words, the / will be automatically appended
-      if ( result->word.endsWith( "/" ) ) {
-        result->word.chop( 1 );
+      QUrl url( originalArg );
+      QString query = url.query();
+
+      QString word = Utils::Url::extractWordFromUrl( originalArg );
+
+      result->word = word;
+
+      if ( !query.isEmpty() ) {
+        QUrlQuery urlQuery( query );
+        QString targetParam = urlQuery.queryItemValue( "target" );
+
+        if ( targetParam == "popup" ) {
+          result->window = "popup";
+        }
+        else if ( targetParam == "main" ) {
+          result->window = "main";
+        }
       }
     }
-
-    // Handle cases where we get encoded URL
-    if ( result->word.startsWith( QStringLiteral( "xn--" ) ) ) {
-      // For `kde-open` or `gio` or others, URL are encoded into ACE or Punycode
-      result->word = QUrl::fromAce( result->word.toLatin1(), QUrl::IgnoreIDNWhitelist );
+    else {
+      result->word = originalArg;
     }
-    else if ( result->word.startsWith( QStringLiteral( "%" ) ) ) {
-      // For Firefox or other browsers where URL are percent encoded
-      result->word = QUrl::fromPercentEncoding( result->word.toLatin1() );
-    }
+#else
+    result->word = originalArg;
 #endif
   }
 }
@@ -301,12 +309,6 @@ int main( int argc, char ** argv )
   GD_QApplication::setWindowIcon( QIcon( ":/icons/programicon.png" ) );
 #endif
 
-#ifdef Q_OS_WIN
-  // TODO: Force fusion because Qt6.7's "ModernStyle"'s dark theme have problems, need to test / reconsider in future
-  GD_QApplication::setStyle( QStyleFactory::create( "WindowsVista" ) );
-#endif
-
-
 #if defined( USE_BREAKPAD )
   QString appDirPath = Config::getConfigDir() + "crash";
 
@@ -361,7 +363,8 @@ int main( int argc, char ** argv )
       if ( gdcl.needSetPopupGroup() ) {
         message += "|popupGroup:" + gdcl.getPopupGroupName();
       }
-      message += "|word:" + gdcl.wordToTranslate();
+      QString encodedWord = QUrl::toPercentEncoding( gdcl.wordToTranslate() );
+      message += "|word:" + encodedWord;
       app.sendMessage( message );
       wasMessage = true;
     }
@@ -512,7 +515,7 @@ int main( int argc, char ** argv )
       }
     }
     else {
-      qDebug() << "GD_TS not loaded.";
+      qDebug() << "Goldendict translations not loaded.";
     }
   }
 
@@ -567,7 +570,8 @@ int main( int argc, char ** argv )
       m.showTranslation( gdcl.wordToTranslate(), "popup" );
     }
     else {
-      m.wordReceived( gdcl.wordToTranslate() );
+      // Default to main window when target parameter is not specified or set to "main"
+      m.showTranslation( gdcl.wordToTranslate(), "main" );
     }
   }
 

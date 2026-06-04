@@ -39,7 +39,7 @@ jobs:
           qt6-tools-dev-tools \
           qt6-webchannel-dev \
           qt6-webengine-dev
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
           submodules: true    
@@ -48,7 +48,7 @@ jobs:
           mkdir build_dir
           cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -S . -B build_dir -G Ninja
       - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v6.0.0
+        uses: SonarSource/sonarqube-scan-action@v8.1.0
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:

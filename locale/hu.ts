@@ -639,10 +639,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <translation>Fordítás erre:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>A szótárat alkotó fájlok:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Részletek:</translation>
     </message>
@@ -669,6 +665,10 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     <message>
       <source>Enable</source>
       <translation>Engedélyezés</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Szótár komponensek:</translation>
     </message>
   </context>
   <context>
@@ -2666,6 +2666,10 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
       <source>Save File</source>
       <translation>Mentési fájl</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Az alkalmazás még mindig a háttérben fut. Kattints a tálca ikonra, hogy megmutasd az ablakot.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2965,10 +2969,6 @@ való kilépés helyett.</translation>
       <translation>Lingoes kék</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Az Auto nem csinál semmit egyes rendszereken.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Indítsa újra a programot a kiválasztott nyelv alkalmazásához.</translation>
     </message>
@@ -3211,20 +3211,8 @@ kijelölésekor, ha a kiválasztott billentyűk mindegyike le van nyomva.</trans
       <translation>Hangfájlok lejátszása a beépített rendszerrel</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Belső lejátszó használata:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Válassza ki a használni kívánt hangrendszert</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Külső program használata a hangfájlok lejátszásához</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Külső program használata:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3534,6 +3522,30 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Rejtsd el a tabsávot, ha csak egy fül van nyitva.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Használj bármilyen külső hanglejátszót a hangfájlok lejátszásához</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Részletes konfigurációs útmutató megtekintése</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>A hangút parancssori argumentumként kerül át a külső lejátszónak. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Belső hanglejátszó:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Külső hanglejátszó:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Automatikusan vált a rendszer témájától.</translation>
     </message>
   </context>
   <context>

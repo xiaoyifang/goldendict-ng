@@ -639,10 +639,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Übersetzt nach:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Wörterbuch zusammengesetzt aus diesen Dateien:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Beschreibung:</translation>
     </message>
@@ -669,6 +665,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Aktivieren</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Wörterbuchkomponenten:</translation>
     </message>
   </context>
   <context>
@@ -2666,6 +2666,10 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
       <source>Save File</source>
       <translation>Datei speichern</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Die Anwendung läuft noch im Hintergrund. Klicken Sie auf das Tray-Symbol, um das Fenster anzuzeigen.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2963,10 +2967,6 @@ the application.</source>
       <translation>Lingoes-Blau</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auf manchen Systemen passiert bei Auto gar nichts.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Starten Sie das Programm neu, um den Sprachwechsel abzuschließen.</translation>
     </message>
@@ -3208,20 +3208,8 @@ in the pressed state when the word selection changes.</source>
       <translation>Audiodateien über integrierte Audio-Unterstützung wiedergeben</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Internen Spieler verwenden:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Audio-Backend auswählen</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Ein externes Program zum Abspielen der Audiodaten benutzen</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Externes Programm benutzen:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3529,6 +3517,30 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Tableiste ausblenden, wenn nur ein Tab geöffnet ist.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Verwenden Sie einen externen Audio-Player, um Audiodateien abzuspielen</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Detaillierte Konfigurationsanleitung anzeigen</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Der Audiopfad wird als Kommandozeilenargument an den externen Player übergeben. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Interner Audioplayer:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Externer Audioplayer:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Wechselt automatisch je nach Systemthema.</translation>
     </message>
   </context>
   <context>

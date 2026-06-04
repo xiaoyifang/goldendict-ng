@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Terjime edýär şu dile:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Şu sözlügiň düzümine girýän faýlllar:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Häsiýetnama:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Işlet</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Sözlük komponentleri:</translation>
     </message>
   </context>
   <context>
@@ -2665,6 +2665,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Save File</source>
       <translation>Faýly gaýd et</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Programma henizem arka planda işleýär. Äpişgäni görkezmek üçin tabak belgisine basyň.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2964,10 +2968,6 @@ programmany ýapmagyň ýerine ony gizlärdi.</translation>
       <translation>Lingoes-Gök</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Awto käbir ulgamlarda hiç zat edenok.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Diliň çalşmagyny işe girizmek üçin programmany täzeden işlet.</translation>
     </message>
@@ -3210,20 +3210,8 @@ basylan ýagdaýynda görkeziler.</translation>
       <translation>Içindäki ses goldawy arkaly ses faýllaryny oýnaň</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Içerki pleýeri ulanyň:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Sesiň arka tarapyny saýlaň</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Audio faýllary oýnatmak üçin islendik özge programmany ulan</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Daşky programmany ulan:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3534,6 +3522,30 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Diňe bir täb açyk bolanda täb baryny gizle.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Audio faýllary oýnamak üçin islendik daşky audio pleyeri ulanyň</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Konfigurasiýa görkezmesini görüň</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Ses ýoly daşky pleýere buýruk satırynyň argumenti hökmünde geçiriler. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Içki audio pleyer:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Daşky audio pleyer:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Sistemanyň temasyna görä otomatik geçýär.</translation>
     </message>
   </context>
   <context>

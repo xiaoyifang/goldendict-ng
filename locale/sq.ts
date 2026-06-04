@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Përkthen në:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Skedat që përbëjnë fjalorin:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Përshkrimi:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Aktivizo</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Komponentët e fjalorit:</translation>
     </message>
   </context>
   <context>
@@ -2665,6 +2665,10 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
       <source>Save File</source>
       <translation>Ruaj skedarin</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Aplikacioni është ende duke funksionuar në sfond. Klikoni ikonën e tabakës për të shfaqur dritaren.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2960,10 +2964,6 @@ the application.</source>
       <translation>Lingoes Blu</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto nuk bën asgjë në disa sisteme.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Riniseni programin për të zbatuar ndryshimin e gjuhës.</translation>
     </message>
@@ -3205,20 +3205,8 @@ janë në gjendjen e shtypur.</translation>
       <translation>Luaj skedarë audio përmes mbështetjes së integruar audio</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Përdorni luajtësin e brendshëm:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Zgjidhni fundin e pasëm audio</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Riprodhon skedat zanore me një program tjetër</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Përdor programin e jashtëm:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3527,6 +3515,30 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Fshih shiritin e skedave kur është hapur vetëm një skedë.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Përdorni çdo luajtës audio të jashtëm për të luajtur skedarë audio</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Shikoni udhëzuesin e detajuar të konfigurimit</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Rruga audio do të kalojë si një argument i linjës së komandës tek luajtësi i jashtëm. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Luajtësi i brendshëm audio:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Luajtësi i jashtëm audio:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Ndërrohet automatikisht bazuar në temën e sistemit.</translation>
     </message>
   </context>
   <context>

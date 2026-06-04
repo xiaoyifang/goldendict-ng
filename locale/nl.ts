@@ -639,10 +639,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Vertaalt naar:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Woordenboek bestaat uit de volgende bestanden:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Beschrijving:</translation>
     </message>
@@ -669,6 +665,10 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Enable</source>
       <translation>Inschakelen</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Woordenboekcomponenten:</translation>
     </message>
   </context>
   <context>
@@ -2666,6 +2666,10 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <source>Save File</source>
       <translation>Bestand opslaan</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>De applicatie draait nog steeds op de achtergrond. Klik op het tray-icoon om het venster te tonen.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2965,10 +2969,6 @@ the application.</source>
       <translation>Lingoes-Blauw</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto doet niets op sommige systemen.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Start het programma opnieuw om de toepassingstaal te wijzigen.</translation>
     </message>
@@ -3211,20 +3211,8 @@ toetsen zijn ingedrukt wanneer de woordselectie verandert.</translation>
       <translation>Audiobestanden afspelen via ingebouwde audioondersteuning</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Gebruik interne speler:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Kies audio terug einde</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Een extern programma gebruiken voor het afspelen van geluidsbestanden</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Extern programma gebruiken:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3532,6 +3520,30 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Tabbladbalk verbergen als slechts één tabblad is geopend.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Gebruik een externe audiospeler om audiobestanden af te spelen</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Bekijk gedetailleerde configuratiehandleiding</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Het audiopad wordt doorgegeven als opdrachtregel argument naar de externe speler. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Interne audiospeler:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Externe audioplayer:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Schakelt automatisch op basis van het systeemthema.</translation>
     </message>
   </context>
   <context>

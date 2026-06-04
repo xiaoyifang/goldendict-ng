@@ -27,4 +27,3 @@ The exact data in `chunk` is decided and interpreted by dictionary implementatio
 
 After typing a word into the search box and press enter, the embedded browser will load `gdlookup://localhost?word=<wantted word>`. This url will be handled by Qt webengine's Url Scheme handler. The returned html page will be composed in the ArticleMaker which will initiate some DataRequest on dictionary formats. Resource files will be requested via `bres://` or `qrc://` which will went through a similar process.
 
-TODO: other subsystems.

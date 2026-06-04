@@ -81,7 +81,22 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation>&lt;div class=\"welcome-container\">\n  &lt;h3>Добредојдовте во &lt;strong>GoldenDict-ng&lt;/strong>!&lt;/h3>\n  &lt;section>\n    &lt;h4>За да започнете&lt;/h4>\n    &lt;ul>\n      &lt;li>Одете во &lt;span class=\"menu-path\">&lt;span>Уреди&lt;/span>&lt;span>Речници&lt;/span>&lt;/span> за да ги додадете вашите датотеки со речници, да поставите онлајн извори како Википедија и да ги организирате во групи.&lt;/li>\n      &lt;li>Откако ќе се постави, можете да пребарувате зборови во овој прозорец или &lt;a href=\"https://xiaoyifang.github.io/goldendict-ng/ui_popup/\">од други апликации користејќи го скокачкиот прозорец за скенирање&lt;/a>.&lt;/li>\n      &lt;li>За да ја прилагодите програмата, истражете ги поставките во &lt;span class=\"menu-path\">&lt;span>Уреди&lt;/span>&lt;span>Преференци&lt;/span>&lt;/span>. Сите поставки имаат описи, затоа задолжително прочитајте ги ако нешто е нејасно.&lt;/li>\n    &lt;/ul>\n  &lt;/section>\n  &lt;p>Доколку ви треба дополнителна помош, имате прашања или предлози, добредојдени сте на &lt;a href=\"https://github.com/xiaoyifang/goldendict-ng/discussions\">форумот&lt;/a> и &lt;a href=\"https://github.com/xiaoyifang/goldendict-ng\">веб-страницата&lt;/a> на програмата.&lt;/p>\n  &lt;footer class=\"welcome-footer\">\n    &lt;small>Врз основа на оригиналниот GoldenDict од Константин Исаков (c) 2008-2013. Одржуван и развиен од заедницата GoldenDict-NG. Лиценциран под GPLv3 или понова верзија.&lt;/small>\n  &lt;/footer>\n&lt;/div></translation>
+      <translation>
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Добредојдовте во &lt;strong&gt;ГолденДикт-нг&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;За почеток&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Оди &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Уредување&lt;/span&gt;&lt;span&gt;Речници&lt;/span&gt;&lt;/span&gt; да ги додадете вашите речнички датотеки, да поставите онлајн извори како Википедија и да ги организирате во групи.&lt;/li&gt;
+          &lt;li&gt;Откако ќе ги поставите, можете да ги пребарувате зборовите во овој прозорец или &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;од други апликации кои користат Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;За да ја прилагодите програмата, истражете ги поставките во &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Уредување&lt;/span&gt;&lt;span&gt;Преференции&lt;/span&gt;&lt;/span&gt;. Сите поставки имаат алатки, па задолжително прочитајте ги ако нешто не е јасно.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Ако ви треба дополнителна помош, имате прашања или предлози, добредојдени сте во програмата&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;форум&lt;/a&gt; и &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;Веб-страница&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Врз основа на оригиналниот GoldenDict од Константин Исаков (c) 2008-2013. Одржуван и развиен од заедницата GoldenDict-NG. Лиценциран под GPLv3 или понатаму.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</translation>
     </message>
   </context>
   <context>
@@ -624,10 +639,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Преведи на:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Датотеки кои го сочинуваат речникот:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Опис:</translation>
     </message>
@@ -654,6 +665,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Овозможи</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Компоненти на речникот:</translation>
     </message>
   </context>
   <context>
@@ -2652,6 +2667,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Save File</source>
       <translation>Зачувај датотека</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Апликацијата сè уште работи во позадина. Кликнете на иконата на tray за да го покажете прозорецот.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2951,10 +2970,6 @@ the application.</source>
       <translation>Lingoes-Blue</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Автоматското не прави ништо на некои системи.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Поново покрените програм за промену језика.</translation>
     </message>
@@ -3195,20 +3210,8 @@ in the pressed state when the word selection changes.</source>
       <translation>Репродуцирајте аудио датотеки преку вградена аудио поддршка</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Користете внатрешен плеер:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Изберете аудио заден крај</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Користи некоја надворешна апликација за репродукција на аудио датотеки</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Користи надворешен програм:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3520,6 +3523,30 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Скриј таб лента кога е отворен само еден таб.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Користете било кој надворешен аудио плеер за да репродуцирате аудио фајлови</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Погледнете детален водич за конфигурација</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Аудио патеката ќе се пренесе како аргумент во командната линија до надворешниот плеер. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Внатрешен аудио плеер:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Надворешен аудио плеер:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Автоматски се менува според темата на системот.</translation>
     </message>
   </context>
   <context>

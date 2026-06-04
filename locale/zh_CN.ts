@@ -637,10 +637,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>释义语言：</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>此词典包含的文件：</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>描述：</translation>
     </message>
@@ -667,6 +663,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>启用</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>词典组成部分：</translation>
     </message>
   </context>
   <context>
@@ -2665,6 +2665,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Save File</source>
       <translation>保存文件</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>应用程序仍在后台运行。点击托盘图标显示窗口。</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2957,10 +2961,6 @@ the application.</source>
       <translation>灵格斯-蓝色调</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>在某些系统上，自动不执行任何操作。</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>变更界面语言需要重新启动程序才能生效。</translation>
     </message>
@@ -3202,20 +3202,8 @@ in the pressed state when the word selection changes.</source>
       <translation>使用内建音频支持播放音频文件</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>使用内部播放器：</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>选择音频后端</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>使用外部程序播放音频文件</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>使用外部程序播放：</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3523,6 +3511,30 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>仅打开一个标签时隐藏标签栏。</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>使用任何外部音频播放器播放音频文件</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>查看详细配置指南</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>音频路径将作为命令行参数传递给外部播放器。 </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>内置音频播放器：</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>外接音频播放器：</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>根据系统主题自动切换。</translation>
     </message>
   </context>
   <context>

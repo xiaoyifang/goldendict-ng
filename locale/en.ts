@@ -81,7 +81,22 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation>\n    &lt;div class=&quot;welcome-container&quot;&gt;\n      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;\n      &lt;section&gt;\n        &lt;h4&gt;To get started&lt;/h4&gt;\n        &lt;ul&gt;\n          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;\n          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;\n          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;\n        &lt;/ul&gt;\n      &lt;/section&gt;\n      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;\n      &lt;footer class=&quot;welcome-footer&quot;&gt;\n        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;\n      &lt;/footer&gt;\n    &lt;/div&gt;</translation>
+      <translation type="unfinished">
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;To get started&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</translation>
     </message>
   </context>
   <context>
@@ -294,7 +309,7 @@
     <name>ArticleWebView</name>
     <message>
       <source>GoldenDict Resource Viewer</source>
-      <translation>GoldenDict Resource Viewer</translation>
+      <translation type="unfinished">GoldenDict Resource Viewer</translation>
     </message>
   </context>
   <context>
@@ -624,10 +639,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation type="unfinished">Translates to:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation type="unfinished">Files comprising this dictionary:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation type="unfinished">Description:</translation>
     </message>
@@ -654,6 +665,10 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Enable</source>
       <translation type="unfinished">Enable</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation type="unfinished">Dictionary Components:</translation>
     </message>
   </context>
   <context>
@@ -2649,7 +2664,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Save File</source>
-      <translation>Save File</translation>
+      <translation type="unfinished">Save File</translation>
+    </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation type="unfinished">Application is still running in the background. Click the tray icon to show the window.</translation>
     </message>
   </context>
   <context>
@@ -2950,10 +2969,6 @@ the application.</translation>
       <translation type="unfinished">Lingoes-Blue</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation type="unfinished">Auto does nothing on some systems.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation type="unfinished">Restart the program to apply the language change.</translation>
     </message>
@@ -3113,7 +3128,7 @@ in the pressed state when the word selection changes.</translation>
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation>Only track selection when all selected keys are kept pressed:</translation>
+      <translation type="unfinished">Only track selection when all selected keys are kept pressed:</translation>
     </message>
     <message>
       <source>Alt key</source>
@@ -3196,20 +3211,8 @@ in the pressed state when the word selection changes.</translation>
       <translation type="unfinished">Play audio files via built-in audio support</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation type="unfinished">Use internal player:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation type="unfinished">Choose audio back end</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation type="unfinished">Use any external program to play audio files</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation type="unfinished">Use external program:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3520,6 +3523,30 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation type="unfinished">Hide tab bar when only one tab is open.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation type="unfinished">Use any external audio player to play audio files</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation type="unfinished">View detailed configuration guide</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation type="unfinished">The audio path will be passed as a command-line argument to the external player. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation type="unfinished">Internal Audio Player:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation type="unfinished">External Audio Player:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation type="unfinished">Automatically switches based on system theme.</translation>
     </message>
   </context>
   <context>

@@ -639,10 +639,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Циљни језик:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Датотеке које чине речник:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Опис:</translation>
     </message>
@@ -669,6 +665,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>Омогући</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Компоненте речника:</translation>
     </message>
   </context>
   <context>
@@ -2667,6 +2667,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Save File</source>
       <translation>Сачувај датотеку</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Апликација и даље ради у позадини. Кликните на икону треја да бисте приказали прозор.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2966,10 +2970,6 @@ the application.</source>
       <translation>Лингоес-Блуе</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Ауто не ради ништа на неким системима.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Поново покрените програм за промену језика.</translation>
     </message>
@@ -3210,20 +3210,8 @@ in the pressed state when the word selection changes.</source>
       <translation>Пустите аудио датотеке преко уграђене аудио подршке</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Користите интерни плејер:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Изаберите позадину звука</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Користите неку спољну апликацију за репродукцију аудио датотека</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Користи спољни програм:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3535,6 +3523,30 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Сакриј траку са језичцима када је отворена само једна картица.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Користите било који екстерни аудио плејер за репродукцију аудио фајлова</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Погледајте детаљан водич за конфигурацију</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>Аудио путања ће бити прослеђена као аргумент командне линије спољном плејеру. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>Интерни аудио плејер:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>Екстерни аудио плејер:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Аутоматски се пребацује на основу теме система.</translation>
     </message>
   </context>
   <context>

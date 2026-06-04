@@ -639,10 +639,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>ترجمه به:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>پرونده‌های دربرگیرنده این واژه‌نامه:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>شرح:</translation>
     </message>
@@ -669,6 +665,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>فعال کردن</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>اجزای فرهنگ لغت:</translation>
     </message>
   </context>
   <context>
@@ -2666,6 +2666,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Save File</source>
       <translation>ذخیره فایل</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>برنامه هنوز در پس زمینه اجرا می شود. روی آیکون سینی کلیک کنید تا پنجره نمایش داده شود.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2964,10 +2968,6 @@ the application.</source>
       <translation>لینگوز-آبی</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>خودکار در برخی از سیستم ها هیچ کاری نمی کند.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>برای به‌کار برده شدن تغییر زبان برنامه را دوباره راه‌اندازی کنید.</translation>
     </message>
@@ -3208,20 +3208,8 @@ in the pressed state when the word selection changes.</source>
       <translation>پخش فایل های صوتی از طریق پشتیبانی صوتی داخلی</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>از پخش کننده داخلی استفاده کنید:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>پایان صوتی را انتخاب کنید</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>به‌کار بردن هر برنامه بیرونی برای پخش پرونده‌های شنیداری</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>به‌کار بردن برنامه بیرونی:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3531,6 +3519,30 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>وقتی فقط یک تب باز است، نوار تب را مخفی کنید.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>از هر پخش کننده صدای خارجی برای پخش فایل های صوتی استفاده کنید</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>راهنمای پیکربندی دقیق را مشاهده کنید</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>مسیر صوتی به صورت آرگومان خط فرمان به پخش کننده خارجی منتقل می شود. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>پخش کننده صدای داخلی:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>پخش کننده صوتی خارجی:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>به طور خودکار بر اساس تم سیستم سوئیچ می کند.</translation>
     </message>
   </context>
   <context>

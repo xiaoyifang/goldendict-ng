@@ -133,8 +133,8 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
       QWebEngineProfile::defaultProfile()->settings()->fontFamily( QWebEngineSettings::FixedFont ) );
   }
 
-  ui.displayStyle->addItem( QIcon( ":/icons/programicon_old.png" ), tr( "Default" ), QString() );
-  ui.displayStyle->addItem( QIcon( ":/icons/programicon.png" ), tr( "Classic" ), QString( "classic" ) );
+  ui.displayStyle->addItem( QIcon( ":/icons/programicon.png" ), tr( "Default" ), QString() );
+  ui.displayStyle->addItem( QIcon( ":/icons/programicon_old.png" ), tr( "Classic" ), QString( "classic" ) );
   ui.displayStyle->addItem( QIcon( ":/icons/programicon.png" ), tr( "Modern" ), QString( "modern" ) );
   ui.displayStyle->addItem( QIcon( ":/icons/icon32_dsl.png" ), tr( "Lingvo" ), QString( "lingvo" ) );
   ui.displayStyle->addItem( QIcon( ":/icons/icon32_bgl.png" ), tr( "Babylon" ), QString( "babylon" ) );
@@ -176,9 +176,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.mruTabOrder->setChecked( p.mruTabOrder );
   ui.enableTrayIcon->setChecked( p.enableTrayIcon );
 
-#ifdef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
-  ui.enableTrayIcon->hide();
-#endif
+  // Enable tray icon option for all platforms
 
   ui.startToTray->setChecked( p.startToTray );
   ui.closeToTray->setChecked( p.closeToTray );
@@ -188,6 +186,8 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.autoScrollToTargetArticle->setChecked( p.autoScrollToTargetArticle );
   ui.escKeyHidesMainWindow->setChecked( p.escKeyHidesMainWindow );
 
+  ui.darkMode->addItem( tr( "Automatic" ), QVariant::fromValue( Config::Dark::Auto ) );
+  ui.darkMode->setItemData( 0, tr( "Automatically switches based on system theme." ), Qt::ToolTipRole );
   ui.darkMode->addItem( tr( "Enable" ), QVariant::fromValue( Config::Dark::On ) );
   ui.darkMode->addItem( tr( "Disable" ), QVariant::fromValue( Config::Dark::Off ) );
 
@@ -196,7 +196,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   }
 
   ui.darkReaderMode->addItem( tr( "Automatic" ), QVariant::fromValue( Config::Dark::Auto ) );
-  ui.darkReaderMode->setItemData( 0, tr( "Auto does nothing on some systems." ), Qt::ToolTipRole );
+  ui.darkReaderMode->setItemData( 0, tr( "Automatically switches based on system theme." ), Qt::ToolTipRole );
   ui.darkReaderMode->addItem( tr( "Enable" ), QVariant::fromValue( Config::Dark::On ) );
   ui.darkReaderMode->addItem( tr( "Disable" ), QVariant::fromValue( Config::Dark::Off ) );
 
@@ -264,7 +264,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   // Different platforms have different keys available
 
-#ifdef Q_OS_WIN32
+#if defined( Q_OS_WIN )
   ui.winKey->hide();
 #else
   #ifdef Q_OS_MAC
@@ -319,12 +319,23 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   ui.audioPlaybackProgram->setText( p.audioPlaybackProgram );
 
+  ui.externalPlayerHint->setText(
+    tr( "The audio path will be passed as a command-line argument to the external player. " )
+    + R"(<a href="https://xiaoyifang.github.io/goldendict-ng/ui_audioengine/">)"
+    + tr( "View detailed configuration guide" ) + "</a>" );
+  ui.externalPlayerHint->setOpenExternalLinks( true );
+  QFont hintFont = ui.externalPlayerHint->font();
+  hintFont.setPointSize( hintFont.pointSize() - 1 );
+  ui.externalPlayerHint->setFont( hintFont );
+  QColor hintColor = palette().color( QPalette::Disabled, QPalette::Text );
+  ui.externalPlayerHint->setStyleSheet( QString( "color: %1;" ).arg( hintColor.name() ) );
+
   // Proxy server
 
   ui.useProxyServer->setChecked( p.proxyServer.enabled );
 
   ui.proxyType->addItem( "SOCKS5" );
-  ui.proxyType->addItem( "HTTP Transp." );
+  ui.proxyType->addItem( "HTTP Connect" );
   ui.proxyType->addItem( "HTTP Caching" );
 
   ui.proxyType->setCurrentIndex( p.proxyServer.type );
@@ -458,9 +469,9 @@ Config::Preferences Preferences::getPreferences()
 
 
   p.displayStyle = ui.displayStyle->itemData( ui.displayStyle->currentIndex() ).toString();
-#if !defined( Q_OS_WIN )
-  p.interfaceStyle = ui.InterfaceStyle->itemData( ui.InterfaceStyle->currentIndex() ).toString();
-#endif
+  if ( ui.InterfaceStyle->isVisible() ) {
+    p.interfaceStyle = ui.InterfaceStyle->itemData( ui.InterfaceStyle->currentIndex() ).toString();
+  }
 
   p.newTabsOpenAfterCurrentOne = ui.newTabsOpenAfterCurrentOne->isChecked();
   p.newTabsOpenInBackground    = ui.newTabsOpenInBackground->isChecked();

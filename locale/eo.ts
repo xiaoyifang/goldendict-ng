@@ -369,7 +369,7 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation type="unfinished">Taiwan variant</translation>
+      <translation>Tajvana varianto</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
@@ -605,7 +605,7 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     </message>
     <message>
       <source>Regular Expression</source>
-      <translation type="unfinished">Regular Expression</translation>
+      <translation>Regula Esprimo</translation>
     </message>
   </context>
   <context>
@@ -639,10 +639,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Traduki en:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>Dosieroj kun ĉi tiu vortaro:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>Priskribo:</translation>
     </message>
@@ -669,6 +665,10 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Enable</source>
       <translation>Ebligu</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>Komponantoj de vortaro:</translation>
     </message>
   </context>
   <context>
@@ -764,7 +764,7 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     </message>
     <message>
       <source>Restore selection</source>
-      <translation type="unfinished">Restore selection</translation>
+      <translation>Restarigi elekton</translation>
     </message>
     <message>
       <source>Cancel reindex</source>
@@ -2666,6 +2666,10 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
       <source>Save File</source>
       <translation type="unfinished">Save File</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Aplikaĵo ankoraŭ funkcias en la fono. Alklaku la pleton-ikonon por montri la fenestron.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2965,10 +2969,6 @@ la aplikaĵon.</translation>
       <translation>Lingvoes-Blua</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Aŭtomo faras nenion en iuj sistemoj.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Rekomencu la programon por apliki la lingvoŝanĝon.</translation>
     </message>
@@ -3211,20 +3211,8 @@ en la premita stato kiam la vortelekto ŝanĝiĝas.</translation>
       <translation>Ludu sondosierojn per enkonstruita sonsubteno</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>Uzu internan ludilon:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>Elektu sonan malantaŭan finon</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Uzu ajnan eksteran programon por ludi sondosierojn</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Uzu eksteran programon:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3535,6 +3523,30 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>Kaŝi langetan stangon kiam nur unu langeto estas malfermita.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>Uzu ajnan eksteran sonludilon por ludi sondosierojn</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>Vidi detalan agordan gvidilon</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>La sona vojo estos transdonita kiel komandlinia argumento al la ekstera ludilo.</translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation type="unfinished">Internal Audio Player:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation type="unfinished">External Audio Player:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>Aŭtomate ŝanĝas laŭ la sistema temo.</translation>
     </message>
   </context>
   <context>

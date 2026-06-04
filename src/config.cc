@@ -153,11 +153,8 @@ Preferences::Preferences():
   inputPhraseLengthLimit( 1000 ),
   maxDictionaryRefsInContextMenu( 20 ),
   synonymSearchEnabled( true ),
-  stripClipboard( false )
-#if !defined( Q_OS_WIN )
-  ,
+  stripClipboard( false ),
   interfaceStyle( "Default" )
-#endif
 {
 }
 
@@ -784,17 +781,14 @@ Class load()
       c.preferences.enableInterfaceFont = enableInterfaceFont.toElement().text() == "1";
     }
 
-#if !defined( Q_OS_WIN )
     c.preferences.interfaceStyle = preferences.namedItem( "interfaceStyle" ).toElement().text();
-#endif
     c.preferences.newTabsOpenAfterCurrentOne =
       ( preferences.namedItem( "newTabsOpenAfterCurrentOne" ).toElement().text() == "1" );
     c.preferences.newTabsOpenInBackground =
       ( preferences.namedItem( "newTabsOpenInBackground" ).toElement().text() == "1" );
     c.preferences.hideSingleTab = ( preferences.namedItem( "hideSingleTab" ).toElement().text() == "1" );
     c.preferences.mruTabOrder   = ( preferences.namedItem( "mruTabOrder" ).toElement().text() == "1" );
-    c.preferences.hideMenubar   = ( preferences.namedItem( "hideMenubar" ).toElement().text() == "1" );
-#ifndef Q_OS_MACOS // // macOS uses the dock menu instead of the tray icon
+    c.preferences.hideMenubar    = ( preferences.namedItem( "hideMenubar" ).toElement().text() == "1" );
     c.preferences.enableTrayIcon = ( preferences.namedItem( "enableTrayIcon" ).toElement().text() == "1" );
 
     if ( !preferences.namedItem( "panelsLocked" ).isNull() ) {
@@ -802,7 +796,6 @@ Class load()
     }
     c.preferences.startToTray    = ( preferences.namedItem( "startToTray" ).toElement().text() == "1" );
     c.preferences.closeToTray    = ( preferences.namedItem( "closeToTray" ).toElement().text() == "1" );
-#endif
     c.preferences.autoStart    = ( preferences.namedItem( "autoStart" ).toElement().text() == "1" );
     c.preferences.alwaysOnTop  = ( preferences.namedItem( "alwaysOnTop" ).toElement().text() == "1" );
     c.preferences.searchInDock = ( preferences.namedItem( "searchInDock" ).toElement().text() == "1" );
@@ -1704,11 +1697,9 @@ void save( const Class & c )
     opt.appendChild( dd.createTextNode( c.preferences.displayStyle ) );
     preferences.appendChild( opt );
 
-#if !defined( Q_OS_WIN )
     opt = dd.createElement( "interfaceStyle" );
     opt.appendChild( dd.createTextNode( c.preferences.interfaceStyle ) );
     preferences.appendChild( opt );
-#endif
 
     opt = dd.createElement( "newTabsOpenAfterCurrentOne" );
     opt.appendChild( dd.createTextNode( c.preferences.newTabsOpenAfterCurrentOne ? "1" : "0" ) );

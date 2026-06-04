@@ -638,10 +638,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>번역언어:</translation>
     </message>
     <message>
-      <source>Files comprising this dictionary:</source>
-      <translation>사전의 구성파일:</translation>
-    </message>
-    <message>
       <source>Description:</source>
       <translation>설명:</translation>
     </message>
@@ -668,6 +664,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable</source>
       <translation>할 수 있게 하다</translation>
+    </message>
+    <message>
+      <source>Dictionary Components:</source>
+      <translation>사전 구성 요소:</translation>
     </message>
   </context>
   <context>
@@ -2665,6 +2665,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Save File</source>
       <translation>저장 파일</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>애플리케이션은 여전히 백그라운드에서 실행 중입니다. 트레이 아이콘을 클릭하면 창이 표시됩니다.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2963,10 +2967,6 @@ the application.</source>
       <translation>링고-블루</translation>
     </message>
     <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>일부 시스템에서는 자동이 아무 작업도 수행하지 않습니다.</translation>
-    </message>
-    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>언어변경을 적용하려면 프로그램을 다시 시작하십시오.</translation>
     </message>
@@ -3209,20 +3209,8 @@ in the pressed state when the word selection changes.</source>
       <translation>내장 오디오 지원을 통해 오디오 파일 재생</translation>
     </message>
     <message>
-      <source>Use internal player:</source>
-      <translation>내부 플레이어 사용:</translation>
-    </message>
-    <message>
       <source>Choose audio back end</source>
       <translation>오디오 백엔드 선택</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>외부 프로그램을 통하여 음성을 재생합니다</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>외부 프로그램 사용:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
@@ -3531,6 +3519,30 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
       <translation>탭이 하나만 열려 있을 때는 탭 바를 숨기세요.</translation>
+    </message>
+    <message>
+      <source>Use any external audio player to play audio files</source>
+      <translation>외부 오디오 플레이어를 사용해서 오디오 파일을 재생하세요</translation>
+    </message>
+    <message>
+      <source>View detailed configuration guide</source>
+      <translation>상세 구성 가이드 보기</translation>
+    </message>
+    <message>
+      <source>The audio path will be passed as a command-line argument to the external player. </source>
+      <translation>오디오 경로는 명령줄 인수로 외부 플레이어에 전달됩니다. </translation>
+    </message>
+    <message>
+      <source>Internal Audio Player:</source>
+      <translation>내장 오디오 플레이어:</translation>
+    </message>
+    <message>
+      <source>External Audio Player:</source>
+      <translation>외부 오디오 플레이어:</translation>
+    </message>
+    <message>
+      <source>Automatically switches based on system theme.</source>
+      <translation>시스템 테마에 따라 자동으로 전환됩니다.</translation>
     </message>
   </context>
   <context>

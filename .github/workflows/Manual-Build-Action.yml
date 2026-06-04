@@ -27,7 +27,7 @@ jobs:
         os: [macos-15]
         qt_ver: [ 6.10.3 ]
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
         with:
           submodules: true
       - name: Install dependencies
@@ -120,7 +120,7 @@ jobs:
           arch: ${{ matrix.arch }}
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
           # setup-python: 'false'
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
         with:
           submodules: true
       - name: Build
