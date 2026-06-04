@@ -865,7 +865,8 @@ struct Class
     pinPopupWindow( false ),
     showingDictBarNames( false ),
     maxHeadwordSize( 256U ),
-    maxHeadwordsToExpand( 0 )
+    maxHeadwordsToExpand( 0 ),
+    timeForNewReleaseCheck( QDateTime() )
   {
   }
   Group * getGroup( unsigned id );
