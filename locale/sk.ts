@@ -2667,6 +2667,10 @@ Pre vyhľadanie znakov &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos
       <source>Save File</source>
       <translation>Uložiť súbor</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Aplikácia stále beží na pozadí. Kliknite na ikonu v zásobníku, aby ste zobrazili okno.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
