@@ -3242,8 +3242,8 @@ void MainWindow::hotKeyActivated( int hk )
 void MainWindow::checkNewRelease()
 {
   // Limit release check to 1 per day.
-  if ( cfg.timeForNewReleaseCheck.isValid() &&
-       cfg.timeForNewReleaseCheck.addDays( 1 ) > QDateTime::currentDateTime() ) {
+  if ( cfg.timeForNewReleaseCheck.isValid()
+       && cfg.timeForNewReleaseCheck.addDays( 1 ) > QDateTime::currentDateTime() ) {
     return;
   }
 
