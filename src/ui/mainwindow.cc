@@ -3245,8 +3245,7 @@ static bool versionGreaterThan( const QString & v1, const QString & v2 )
   QStringList parts2 = v2.split( '.' );
 
   int maxLen = qMax( parts1.size(), parts2.size() );
-  for ( int i = 0; i < maxLen; ++i )
-  {
+  for ( int i = 0; i < maxLen; ++i ) {
     int num1 = ( i < parts1.size() ) ? parts1[ i ].toInt() : 0;
     int num2 = ( i < parts2.size() ) ? parts2[ i ].toInt() : 0;
     if ( num1 > num2 )
