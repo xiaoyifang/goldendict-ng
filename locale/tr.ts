@@ -2666,6 +2666,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Save File</source>
       <translation>Kayıt Dosyası</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>Uygulama hâlâ arka planda çalışıyor. Pencereyi göstermek için tepsi simgesine tıklayın.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
