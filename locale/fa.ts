@@ -2666,6 +2666,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Save File</source>
       <translation>ذخیره فایل</translation>
     </message>
+    <message>
+      <source>Application is still running in the background. Click the tray icon to show the window.</source>
+      <translation>برنامه هنوز در پس زمینه اجرا می شود. روی آیکون سینی کلیک کنید تا پنجره نمایش داده شود.</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
