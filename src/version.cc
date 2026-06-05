@@ -17,27 +17,13 @@ QString version()
 
 QString everything()
 {
-  QString osName = QSysInfo::productType();
-  osName.replace( QStringLiteral( R"(windows)" ), QStringLiteral( R"(Windows)" ) );
-  osName.replace( QStringLiteral( R"(macos)" ), QStringLiteral( R"(macOS)" ) );
-  osName.replace( QStringLiteral( R"(linux)" ), QStringLiteral( R"(Linux)" ) );
-  
-  QString abi = QSysInfo::buildAbi();
-  if ( abi.contains( QStringLiteral( R"(x86_64)" ) ) ) {
-    abi = QStringLiteral( R"(x86_64)" );
-  } else if ( abi.contains( QStringLiteral( R"(arm64)" ) ) ) {
-    abi = QStringLiteral( R"(arm64)" );
-  } else if ( abi.contains( QStringLiteral( R"(arm)" ) ) ) {
-    abi = QStringLiteral( R"(arm)" );
-  }
-  
   return QStringLiteral( R"(Version: %1
-Qt: %2 (%3)
-OS: %4 %5 (%6)
-Flags: %7)" )
+Qt %2 %3
+%4 %5 %6 %7
+Flags: %8)" )
     .arg( Version::version() )
     .arg( QLatin1String( qVersion() ), Version::compiler )
-    .arg( osName, QSysInfo::kernelVersion(), abi )
+    .arg( QSysInfo::productType(), QSysInfo::kernelType(), QSysInfo::kernelVersion(), QSysInfo::buildAbi() )
     .arg( flags );
 }
 
