@@ -157,6 +157,19 @@
         </widget>
        </item>
        <item>
+        <widget class="QLabel" name="changelogLink">
+         <property name="text">
+          <string notr="true"/>
+         </property>
+         <property name="openExternalLinks">
+          <bool>true</bool>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::TextBrowserInteraction</set>
+         </property>
+        </widget>
+       </item>
+       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <property name="sizeConstraint">
           <enum>QLayout::SetDefaultConstraint</enum>

@@ -80,7 +80,7 @@ block() # generate version.txt
     find_package(Git)
     if (EXISTS "${CMAKE_SOURCE_DIR}/.git" AND GIT_FOUND)
         execute_process(
-                COMMAND ${GIT_EXECUTABLE} -C "${CMAKE_SOURCE_DIR}" rev-parse --short HEAD
+                COMMAND ${GIT_EXECUTABLE} -C "${CMAKE_SOURCE_DIR}" rev-parse --short=10 HEAD
                 OUTPUT_STRIP_TRAILING_WHITESPACE
                 OUTPUT_VARIABLE GIT_HASH)
         file(WRITE "${CMAKE_SOURCE_DIR}/version.txt" "${PROJECT_VERSION}.${GIT_HASH} at ${build_time}")
