@@ -1,8 +1,8 @@
 ## Current Situation
 
-GoldenDict offered a functionality to translate the word under cursor on Windows in the past, but the technique used there is old and does not work crossplatformly.
+GoldenDict previously featured word-under-cursor translation on Windows, but that legacy technique is outdated and not cross-platform compatible.
 
-However, any OCR program that allows you to set "after capturing action" can be easily used in conjunction with GoldenDict.
+However, any OCR program supporting "post-capture actions" can integrate seamlessly with GoldenDict.
 
 A few examples are provided below(but there are many options out there).
 
