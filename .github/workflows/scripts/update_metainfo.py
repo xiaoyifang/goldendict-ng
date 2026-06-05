@@ -35,13 +35,14 @@ def update_metainfo(file_path, version, date, repo, tag_name):
     # Create new <release> element
     new_release = ET.Element('release', version=version, date=date)
     description = ET.SubElement(new_release, 'description')
+    ul = ET.SubElement(description, 'ul')
     
-    li_more = ET.SubElement(description, 'li')
-    li_more.text = 'Check the '
-    a = ET.SubElement(li_more, 'a')
-    a.set('href', f'https://github.com/{repo}/releases/tag/{tag_name}')
-    a.text = 'Full Release Notes'
-    a.tail = ' for more details.'
+    li_more = ET.SubElement(ul, 'li')
+    li_more.text = 'Check the full release notes for more details.'
+    
+    url = ET.SubElement(new_release, 'url')
+    url.set('type', 'details')
+    url.text = f'https://github.com/{repo}/releases/tag/{tag_name}'
 
     # Insert at the beginning of <releases>
     releases.insert(0, new_release)

@@ -45,8 +45,11 @@
   <releases>
     <release version="26.5.7" date="2026-6-4">
       <description>
-        <li>Check the <a href="https://github.com/xiaoyifang/goldendict-ng/releases/tag/v26.5.7">Full Release Notes</a> for more details.</li>
+        <ul>
+          <li>Check the full release notes for more details.</li>
+        </ul>
       </description>
+      <url type="details">https://github.com/xiaoyifang/goldendict-ng/releases/tag/v26.5.7</url>
     </release>
     <release version="26.5.6" date="2026-5-26">
       </release>
