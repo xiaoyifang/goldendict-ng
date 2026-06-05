@@ -88,7 +88,6 @@ rm /tmp/tmp.just_random_name.txt
 Depending on your system, you need to install the following tools:
 
 - **OCR Engine**: tesseract and its language packs.
-- **Dictionary Software**: goldendict.
 - **Screenshot Tool**: Choose according to your desktop environment:
   - KDE (Plasma): Install spectacle.
   - Sway (Wayland): Install grim and slurp.
@@ -98,7 +97,7 @@ Example installation for Ubuntu/Debian:
 
 ```bash
 sudo apt update
-sudo apt install tesseract-ocr tesseract-ocr-eng tesseract-ocr-chi-sim goldendict spectacle
+sudo apt install tesseract-ocr tesseract-ocr-eng tesseract-ocr-chi-sim  spectacle
 ```
 
 > Note: `chi-sim` is the Chinese language pack. The script example only uses English `eng`, but it's recommended to include Chinese as well.
