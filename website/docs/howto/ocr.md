@@ -81,9 +81,9 @@ rm /tmp/tmp.just_random_name.png
 rm /tmp/tmp.just_random_name.txt
 ```
 
-## Usage Steps
+### Usage Steps
 
-### Step 1: Install Required Software (Dependencies)
+#### Step 1: Install Required Software (Dependencies)
 
 Depending on your system, you need to install the following tools:
 
@@ -102,7 +102,7 @@ sudo apt install tesseract-ocr tesseract-ocr-eng tesseract-ocr-chi-sim  spectacl
 
 > Note: `chi-sim` is the Chinese language pack. The script example only uses English `eng`, but it's recommended to include Chinese as well.
 
-### Step 2: Create the Script File
+#### Step 2: Create the Script File
 
 Create a new file in your home directory, for example `ocr_translate.sh`:
 
@@ -114,7 +114,7 @@ Copy the code above into it (or type it manually).
 
 Save and exit (In Nano, press `Ctrl+O`, then Enter, then `Ctrl+X`).
 
-### Step 3: Make It Executable
+#### Step 3: Make It Executable
 
 Run the following command in terminal to make the script executable:
 
@@ -122,7 +122,7 @@ Run the following command in terminal to make the script executable:
 chmod +x ~/ocr_translate.sh
 ```
 
-### Step 4: Use the Script
+#### Step 4: Use the Script
 
 1. Start GoldenDict first (let it run in the background).
 2. Execute the script:
@@ -136,19 +136,19 @@ chmod +x ~/ocr_translate.sh
 If you're using KDE, your mouse will turn into a crosshair. Drag to select the text region you want to translate.
 The script will automatically recognize the text, and GoldenDict will display the word's definition in a popup window.
 
-## 💡 Advanced Optimization Tips
+### 💡 Advanced Optimization Tips
 
-### Set Up a Keyboard Shortcut
+#### Set Up a Keyboard Shortcut
 
 This is the most recommended way to use it. In your system settings -> Shortcuts, add a global shortcut (such as `Ctrl + Alt + G`) pointing to the absolute path of this script (e.g., `/home/your_username/ocr_translate.sh`). This way, whenever you see an unknown word, just press the shortcut to capture it.
 
-### Support Chinese Recognition
+#### Support Chinese Recognition
 
 If you need to recognize Chinese, modify the `tesseract` line in the script:
 
 Change `-l eng` to `-l eng+chi_sim` (requires the Chinese language pack to be installed).
 
-### For GNOME Users
+#### For GNOME Users
 
 If you're using GNOME desktop, the `case` in the script won't match. You can add a GNOME screenshot command, or use the more generic:
 
