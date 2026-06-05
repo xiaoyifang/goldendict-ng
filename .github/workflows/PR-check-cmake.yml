@@ -73,7 +73,6 @@ jobs:
           HOMEBREW_NO_INSTALL_CLEANUP: 1
         run: |
           brew install --force --overwrite \
-          ninja \
           ccache \
           opencc \
           ffmpeg@6 \
@@ -100,7 +99,7 @@ jobs:
             /usr/local/lib/libeb*
             /usr/local/include/eb
             /usr/local/bin/eb*
-          key: ${{ runner.os }}-eb-v4.4.3
+          key: ${{ runner.os }}-${{ runner.arch }}-eb-v4.4.3
       - name: Install eb
         if: steps.cache-eb.outputs.cache-hit != 'true'
         run: |

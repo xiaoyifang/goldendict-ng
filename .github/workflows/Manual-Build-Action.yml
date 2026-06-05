@@ -45,7 +45,6 @@ jobs:
             libzim \
             lmdb \
             lzip \
-            ninja \
             ccache \
             opencc \
             fmt \
@@ -54,7 +53,7 @@ jobs:
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2
         with:
-          key: ${{ runner.os }}-${{ matrix.qt_ver }}
+          key: ${{ runner.os }}-${{ runner.arch }}-${{ matrix.qt_ver }}
       - name: Cache EB
         id: cache-eb
         uses: actions/cache@v4
@@ -63,7 +62,7 @@ jobs:
             /usr/local/lib/libeb*
             /usr/local/include/eb
             /usr/local/bin/eb*
-          key: ${{ runner.os }}-eb-custom
+          key: ${{ runner.os }}-${{ runner.arch }}-eb-custom
       - name: Install EB
         if: steps.cache-eb.outputs.cache-hit != 'true'
         run: |
