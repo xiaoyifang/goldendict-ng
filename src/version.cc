@@ -18,20 +18,23 @@ QString version()
 QString everything()
 {
   QString osName = QSysInfo::productType();
-  osName.replace( QStringLiteral( "windows" ), QStringLiteral( "Windows" ) );
-  osName.replace( QStringLiteral( "macos" ), QStringLiteral( "macOS" ) );
-  osName.replace( QStringLiteral( "linux" ), QStringLiteral( "Linux" ) );
+  osName.replace( QStringLiteral( R"(windows)" ), QStringLiteral( R"(Windows)" ) );
+  osName.replace( QStringLiteral( R"(macos)" ), QStringLiteral( R"(macOS)" ) );
+  osName.replace( QStringLiteral( R"(linux)" ), QStringLiteral( R"(Linux)" ) );
   
   QString abi = QSysInfo::buildAbi();
-  if ( abi.contains( QStringLiteral( "x86_64" ) ) ) {
-    abi = QStringLiteral( "x86_64" );
-  } else if ( abi.contains( QStringLiteral( "arm64" ) ) ) {
-    abi = QStringLiteral( "arm64" );
-  } else if ( abi.contains( QStringLiteral( "arm" ) ) ) {
-    abi = QStringLiteral( "arm" );
+  if ( abi.contains( QStringLiteral( R"(x86_64)" ) ) ) {
+    abi = QStringLiteral( R"(x86_64)" );
+  } else if ( abi.contains( QStringLiteral( R"(arm64)" ) ) ) {
+    abi = QStringLiteral( R"(arm64)" );
+  } else if ( abi.contains( QStringLiteral( R"(arm)" ) ) ) {
+    abi = QStringLiteral( R"(arm)" );
   }
   
-  return QStringLiteral( "Version: %1\nQt: %2 (%3)\nOS: %4 %5 (%6)\nFlags: %7" )
+  return QStringLiteral( R"(Version: %1
+Qt: %2 (%3)
+OS: %4 %5 (%6)
+Flags: %7)" )
     .arg( Version::version() )
     .arg( QLatin1String( qVersion() ), Version::compiler )
     .arg( osName, QSysInfo::kernelVersion(), abi )
