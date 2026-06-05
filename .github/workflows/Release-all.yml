@@ -218,7 +218,7 @@ jobs:
       - name: Get git short SHA
         id: shortSHA
         run: |
-          echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          echo "sha_short=$(git rev-parse --short=10 HEAD)" >> $GITHUB_OUTPUT
       - name: Get new tag
         id: getNewTag
         run: |
