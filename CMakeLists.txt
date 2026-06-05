@@ -78,13 +78,21 @@ set(CMAKE_AUTORCC ON) # not included in the qt_standard_project_setup
 block() # generate version.txt
     string(TIMESTAMP build_time UTC)
     find_package(Git)
+    set(GIT_HASH "")
     if (EXISTS "${CMAKE_SOURCE_DIR}/.git" AND GIT_FOUND)
         execute_process(
                 COMMAND ${GIT_EXECUTABLE} -C "${CMAKE_SOURCE_DIR}" rev-parse --short=10 HEAD
                 OUTPUT_STRIP_TRAILING_WHITESPACE
                 OUTPUT_VARIABLE GIT_HASH)
-        file(WRITE "${CMAKE_SOURCE_DIR}/version.txt" "${PROJECT_VERSION}.${GIT_HASH} at ${build_time}")
-    else () # not built in a git repo
+        execute_process(
+                COMMAND ${GIT_EXECUTABLE} -C "${CMAKE_SOURCE_DIR}" rev-parse --abbrev-ref HEAD
+                OUTPUT_STRIP_TRAILING_WHITESPACE
+                OUTPUT_VARIABLE GIT_BRANCH)
+    endif ()
+    
+    if (GIT_HASH)
+        file(WRITE "${CMAKE_SOURCE_DIR}/version.txt" "${PROJECT_VERSION}-${GIT_HASH} (${GIT_BRANCH}) at ${build_time}")
+    else ()
         file(WRITE "${CMAKE_SOURCE_DIR}/version.txt" "${PROJECT_VERSION} at ${build_time}")
     endif ()
 endblock()
