@@ -35,10 +35,9 @@ def update_metainfo(file_path, version, date, repo, tag_name):
     # Create new <release> element
     new_release = ET.Element('release', version=version, date=date)
     description = ET.SubElement(new_release, 'description')
-    ul = ET.SubElement(description, 'ul')
     
-    li_more = ET.SubElement(ul, 'li')
-    li_more.text = 'Check the full release notes for more details.'
+    p = ET.SubElement(description, 'p')
+    p.text = 'Check the full release notes for more details.'
     
     url = ET.SubElement(new_release, 'url')
     url.set('type', 'details')
