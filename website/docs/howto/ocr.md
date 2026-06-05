@@ -18,34 +18,34 @@ For example, change the Output action `Call Executable` to `path_to_the_GD_execu
 
 Then press <kbd>Win+Q</kbd> and select a region. After capturing a word, Capture2Text will forward the word to GoldenDict. If GoldenDict's Popup is enabled, it will show up.
 
-![image](https://user-images.githubusercontent.com/105986/151507994-97ab732d-686a-47b1-b950-3b2db076ef4c.png)
+![image](img/capture2text-popup.png)
 
 The hotkeys can be configured:
 
-![image](https://user-images.githubusercontent.com/105986/151481239-16cbb733-746c-425d-bc6c-2bb5e5a158c5.png)
+![image](img/capture2text-hotkeys.png)
 
 Capture2Text can also obtain word near the cursor without selecting a region via the "Forward Text Line Capture" by pressing <kdb> Win+W </kbd>
 
 you may want to enable "First word only" so that only a single word would be captured
 
-![image](https://user-images.githubusercontent.com/105986/151481312-4e9bc457-6667-4e80-95bd-6f2ad58c37e1.png)
+![image](img/capture2text-firstword.png)
 
 ### Use Capture2Text on Linux
 
 Capture2Text does not have a Linux version, but I have ported it to Linux <https://github.com/xiaoyifang/Capture2Text> thanks to [Capture2Text Linux Port](https://github.com/GSam/Capture2Text ) and
 [sikmir](https://github.com/goldendict/goldendict/issues/1445#issuecomment-1022972220).
 
-![](https://user-images.githubusercontent.com/105986/151691526-f28cc053-f6e0-4099-b677-f7a4657aa9fc.png)
+![](img/capture2text-linux.png)
 
 ## Shortcuts.app & Apple's OCR
 
 Enable the Clipboard monitoring of GoldenDict, then create a "Shortcut" that will interactively take a screenshot and change the clipboard.
 
-![image](https://github.com/xiaoyifang/goldendict-ng/assets/20123683/3933141b-9f06-4829-8135-c69514111971)
+![image](img/shortcuts-ocr.png)
 
 You may also add additional capabilities like only getting the first word
 
-![image](https://github.com/xiaoyifang/goldendict-ng/assets/20123683/d8eab075-1c4b-4e82-9515-eafd9df75489)
+![image](img/shortcuts-firstword.png)
 
 ## Tesseract via command line
 
