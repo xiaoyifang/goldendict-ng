@@ -4,7 +4,7 @@ GoldenDict previously featured word-under-cursor translation on Windows, but tha
 
 However, any OCR program supporting "post-capture actions" can integrate seamlessly with GoldenDict.
 
-A few examples are provided below(but there are many options out there).
+A few examples are provided below, though many similar tools are available.
 
 ## Capture2Text
 
