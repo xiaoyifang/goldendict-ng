@@ -1474,21 +1474,9 @@ void MainWindow::updateAppearances( const QString & addonStyle,
     };
 
     if ( isWindows11OrLater ) {
-  #if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
-      bool useSystemDarkPalette =
-        ( darkMode == Config::Dark::Auto && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark );
-  #else
-      bool useSystemDarkPalette = false;
-  #endif
-
-      if ( useSystemDarkPalette ) {
-        qApp->setStyle( "windows11" );
-        qApp->setPalette( qApp->style()->standardPalette() );
-      }
-      else {
-        qApp->setStyle( "Fusion" );
-        qApp->setPalette( createDarkPalette() );
-      }
+      // For Windows 11, use native windows11 style for better visual integration
+      qApp->setStyle( "windows11" );
+      qApp->setPalette( createDarkPalette() );
     }
     else {
       qApp->setStyle( "Fusion" );
