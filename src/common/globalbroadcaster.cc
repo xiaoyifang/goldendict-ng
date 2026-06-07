@@ -247,18 +247,18 @@ bool GlobalBroadcaster::isSystemDarkTheme()
   // than Qt's colorScheme() which may not work consistently on Windows 11
   QSettings settings( "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
                       QSettings::NativeFormat );
-  
+
   // AppsUseLightTheme: 0 = Dark mode, 1 = Light mode
   // If the key doesn't exist, default to light mode (return false)
   if ( settings.contains( "AppsUseLightTheme" ) ) {
     return settings.value( "AppsUseLightTheme" ).toInt() == 0;
   }
-  
+
   // Fallback: Also check SystemUsesLightTheme for system-wide theme
   if ( settings.contains( "SystemUsesLightTheme" ) ) {
     return settings.value( "SystemUsesLightTheme" ).toInt() == 0;
   }
-  
+
   // Default to light mode if no registry keys found
   return false;
   #else
