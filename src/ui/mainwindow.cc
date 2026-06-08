@@ -1448,42 +1448,34 @@ void MainWindow::updateAppearances( const QString & addonStyle,
     QOperatingSystemVersion::current() >= QOperatingSystemVersion( QOperatingSystemVersion::Windows, 10, 0, 22000 );
 
   if ( isDark ) {
-    if ( isWindows11OrLater && darkMode == Config::Dark::Auto ) {
-      // For Windows 11 with Auto mode, use native windows11 style with system color scheme
-      // Qt's windows11 style automatically adapts to system theme in Qt 6.5+
-      qApp->setStyle( "windows11" );
-      // Use native system palette for better integration with Windows 11 theme
-      qApp->setPalette( QPalette() );
-    }
-    else {
-      // For Windows 10 and earlier, use Fusion style with custom dark palette
-      auto createDarkPalette = []() -> QPalette {
-        QPalette darkPalette;
-        QColor darkColor     = QColor( 45, 45, 45 );
-        QColor disabledColor = QColor( 127, 127, 127 );
-        darkPalette.setColor( QPalette::Window, darkColor );
-        darkPalette.setColor( QPalette::WindowText, Qt::white );
-        darkPalette.setColor( QPalette::Base, QColor( 18, 18, 18 ) );
-        darkPalette.setColor( QPalette::AlternateBase, darkColor );
-        darkPalette.setColor( QPalette::ToolTipBase, Qt::white );
-        darkPalette.setColor( QPalette::ToolTipText, Qt::white );
-        darkPalette.setColor( QPalette::Text, Qt::white );
-        darkPalette.setColor( QPalette::Disabled, QPalette::Text, disabledColor );
-        darkPalette.setColor( QPalette::Button, darkColor );
-        darkPalette.setColor( QPalette::ButtonText, Qt::white );
-        darkPalette.setColor( QPalette::Dark, QColor( 35, 35, 35 ) );
-        darkPalette.setColor( QPalette::Shadow, QColor( 20, 20, 20 ) );
-        darkPalette.setColor( QPalette::Disabled, QPalette::ButtonText, disabledColor );
-        darkPalette.setColor( QPalette::BrightText, Qt::red );
-        darkPalette.setColor( QPalette::Link, QColor( 42, 130, 218 ) );
-        darkPalette.setColor( QPalette::Highlight, QColor( 42, 130, 218 ) );
-        darkPalette.setColor( QPalette::HighlightedText, Qt::black );
-        darkPalette.setColor( QPalette::Disabled, QPalette::HighlightedText, disabledColor );
-        return darkPalette;
-      };
-      qApp->setStyle( "Fusion" );
-      qApp->setPalette( createDarkPalette() );
-    }
+    // Use Fusion style with custom dark palette for all Windows versions when dark mode is enabled
+    // This ensures consistent dark mode appearance regardless of Windows version or Auto/Manual mode
+    auto createDarkPalette = []() -> QPalette {
+      QPalette darkPalette;
+      QColor darkColor     = QColor( 45, 45, 45 );
+      QColor disabledColor = QColor( 127, 127, 127 );
+      darkPalette.setColor( QPalette::Window, darkColor );
+      darkPalette.setColor( QPalette::WindowText, Qt::white );
+      darkPalette.setColor( QPalette::Base, QColor( 18, 18, 18 ) );
+      darkPalette.setColor( QPalette::AlternateBase, darkColor );
+      darkPalette.setColor( QPalette::ToolTipBase, Qt::white );
+      darkPalette.setColor( QPalette::ToolTipText, Qt::white );
+      darkPalette.setColor( QPalette::Text, Qt::white );
+      darkPalette.setColor( QPalette::Disabled, QPalette::Text, disabledColor );
+      darkPalette.setColor( QPalette::Button, darkColor );
+      darkPalette.setColor( QPalette::ButtonText, Qt::white );
+      darkPalette.setColor( QPalette::Dark, QColor( 35, 35, 35 ) );
+      darkPalette.setColor( QPalette::Shadow, QColor( 20, 20, 20 ) );
+      darkPalette.setColor( QPalette::Disabled, QPalette::ButtonText, disabledColor );
+      darkPalette.setColor( QPalette::BrightText, Qt::red );
+      darkPalette.setColor( QPalette::Link, QColor( 42, 130, 218 ) );
+      darkPalette.setColor( QPalette::Highlight, QColor( 42, 130, 218 ) );
+      darkPalette.setColor( QPalette::HighlightedText, Qt::black );
+      darkPalette.setColor( QPalette::Disabled, QPalette::HighlightedText, disabledColor );
+      return darkPalette;
+    };
+    qApp->setStyle( "Fusion" );
+    qApp->setPalette( createDarkPalette() );
 
     // Use DWM API for title bar theming (Windows 10 1809+)
     setWindowTitleBarDark( true );
