@@ -1448,11 +1448,11 @@ void MainWindow::updateAppearances( const QString & addonStyle,
     QOperatingSystemVersion::current() >= QOperatingSystemVersion( QOperatingSystemVersion::Windows, 10, 0, 22000 );
 
   if ( isDark ) {
-    if ( isWindows11OrLater ) {
-      // For Windows 11, use native windows11 style with system color scheme
+    if ( isWindows11OrLater && darkMode == Config::Dark::Auto ) {
+      // For Windows 11 with Auto mode, use native windows11 style with system color scheme
       // Qt's windows11 style automatically adapts to system theme in Qt 6.5+
       qApp->setStyle( "windows11" );
-      // Use native system palette for better integration with Windows 11 dark theme
+      // Use native system palette for better integration with Windows 11 theme
       qApp->setPalette( QPalette() );
     }
     else {
