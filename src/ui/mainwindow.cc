@@ -1570,7 +1570,6 @@ void MainWindow::updateAppearances( const QString & addonStyle,
   }
 
 
-
   if ( !css.isEmpty() ) {
     setStyleSheet( css );
     if ( scanPopup ) {
