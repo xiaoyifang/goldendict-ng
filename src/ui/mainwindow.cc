@@ -1448,37 +1448,39 @@ void MainWindow::updateAppearances( const QString & addonStyle,
     QOperatingSystemVersion::current() >= QOperatingSystemVersion( QOperatingSystemVersion::Windows, 10, 0, 22000 );
 
   if ( isDark ) {
-    auto createDarkPalette = []() -> QPalette {
-      QPalette darkPalette;
-      QColor darkColor     = QColor( 45, 45, 45 );
-      QColor disabledColor = QColor( 127, 127, 127 );
-      darkPalette.setColor( QPalette::Window, darkColor );
-      darkPalette.setColor( QPalette::WindowText, Qt::white );
-      darkPalette.setColor( QPalette::Base, QColor( 18, 18, 18 ) );
-      darkPalette.setColor( QPalette::AlternateBase, darkColor );
-      darkPalette.setColor( QPalette::ToolTipBase, Qt::white );
-      darkPalette.setColor( QPalette::ToolTipText, Qt::white );
-      darkPalette.setColor( QPalette::Text, Qt::white );
-      darkPalette.setColor( QPalette::Disabled, QPalette::Text, disabledColor );
-      darkPalette.setColor( QPalette::Button, darkColor );
-      darkPalette.setColor( QPalette::ButtonText, Qt::white );
-      darkPalette.setColor( QPalette::Dark, QColor( 35, 35, 35 ) );
-      darkPalette.setColor( QPalette::Shadow, QColor( 20, 20, 20 ) );
-      darkPalette.setColor( QPalette::Disabled, QPalette::ButtonText, disabledColor );
-      darkPalette.setColor( QPalette::BrightText, Qt::red );
-      darkPalette.setColor( QPalette::Link, QColor( 42, 130, 218 ) );
-      darkPalette.setColor( QPalette::Highlight, QColor( 42, 130, 218 ) );
-      darkPalette.setColor( QPalette::HighlightedText, Qt::black );
-      darkPalette.setColor( QPalette::Disabled, QPalette::HighlightedText, disabledColor );
-      return darkPalette;
-    };
-
     if ( isWindows11OrLater ) {
-      // For Windows 11, use native windows11 style for better visual integration
+      // For Windows 11, use native windows11 style with system color scheme
+      // Qt's windows11 style automatically adapts to system theme in Qt 6.5+
       qApp->setStyle( "windows11" );
-      qApp->setPalette( createDarkPalette() );
+      // Use native system palette for better integration with Windows 11 dark theme
+      qApp->setPalette( QPalette() );
     }
     else {
+      // For Windows 10 and earlier, use Fusion style with custom dark palette
+      auto createDarkPalette = []() -> QPalette {
+        QPalette darkPalette;
+        QColor darkColor     = QColor( 45, 45, 45 );
+        QColor disabledColor = QColor( 127, 127, 127 );
+        darkPalette.setColor( QPalette::Window, darkColor );
+        darkPalette.setColor( QPalette::WindowText, Qt::white );
+        darkPalette.setColor( QPalette::Base, QColor( 18, 18, 18 ) );
+        darkPalette.setColor( QPalette::AlternateBase, darkColor );
+        darkPalette.setColor( QPalette::ToolTipBase, Qt::white );
+        darkPalette.setColor( QPalette::ToolTipText, Qt::white );
+        darkPalette.setColor( QPalette::Text, Qt::white );
+        darkPalette.setColor( QPalette::Disabled, QPalette::Text, disabledColor );
+        darkPalette.setColor( QPalette::Button, darkColor );
+        darkPalette.setColor( QPalette::ButtonText, Qt::white );
+        darkPalette.setColor( QPalette::Dark, QColor( 35, 35, 35 ) );
+        darkPalette.setColor( QPalette::Shadow, QColor( 20, 20, 20 ) );
+        darkPalette.setColor( QPalette::Disabled, QPalette::ButtonText, disabledColor );
+        darkPalette.setColor( QPalette::BrightText, Qt::red );
+        darkPalette.setColor( QPalette::Link, QColor( 42, 130, 218 ) );
+        darkPalette.setColor( QPalette::Highlight, QColor( 42, 130, 218 ) );
+        darkPalette.setColor( QPalette::HighlightedText, Qt::black );
+        darkPalette.setColor( QPalette::Disabled, QPalette::HighlightedText, disabledColor );
+        return darkPalette;
+      };
       qApp->setStyle( "Fusion" );
       qApp->setPalette( createDarkPalette() );
     }
@@ -1487,8 +1489,17 @@ void MainWindow::updateAppearances( const QString & addonStyle,
     setWindowTitleBarDark( true );
   }
   else {
-    qApp->setStyle( QStyleFactory::create( defaultInterfaceStyle ) );
-    qApp->setPalette( QPalette() );
+    if ( isWindows11OrLater ) {
+      // For Windows 11, use native windows11 style with system color scheme
+      qApp->setStyle( "windows11" );
+      // Use native system palette for better integration with Windows 11 light theme
+      qApp->setPalette( QPalette() );
+    }
+    else {
+      // For Windows 10 and earlier, use default style
+      qApp->setStyle( QStyleFactory::create( defaultInterfaceStyle ) );
+      qApp->setPalette( QPalette() );
+    }
 
     // Use DWM API for title bar theming
     setWindowTitleBarDark( false );
@@ -1534,7 +1545,7 @@ void MainWindow::updateAppearances( const QString & addonStyle,
 
   // Load an additional stylesheet
   // Dark Mode doesn't work nice with custom qt style sheets,
-  if ( darkMode == Config::Dark::Off ) {
+  if ( !isDark ) {
     QFile additionalStyle( QString( ":qt-%1.css" ).arg( displayStyle ) );
     if ( additionalStyle.open( QFile::ReadOnly ) ) {
       css += additionalStyle.readAll();
@@ -1558,11 +1569,7 @@ void MainWindow::updateAppearances( const QString & addonStyle,
     }
   }
 
-#if defined( Q_OS_WIN )
-  if ( darkMode == Config::Dark::On ) {
-    css += "QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }";
-  }
-#endif
+
 
   if ( !css.isEmpty() ) {
     setStyleSheet( css );
