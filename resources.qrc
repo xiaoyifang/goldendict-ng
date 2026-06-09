@@ -7,11 +7,10 @@
         <file>version.txt</file>
         <file>icons/arrow.png</file>
         <file>icons/arrow.svg</file>
-        <file>icons/prefix.png</file>
-        <file>icons/playsound.png</file>
         <file>icons/playsound.svg</file>
         <file>icons/programicon.png</file>
         <file>icons/warning.png</file>
+        <file>icons/warning.svg</file>
         <file>icons/icon32_dsl.png</file>
         <file>icons/icon32_stardict.png</file>
         <file>icons/icon32_xdxf.png</file>
@@ -22,7 +21,6 @@
         <file>icons/wiktionary.svg</file>
         <file>icons/forvo.png</file>
         <file>icons/lingualibre.svg</file>
-        <file>icons/highlighter.png</file>
         <file>icons/icon32_sdict.png</file>
         <file>icons/icon32_aard.png</file>
         <file>icons/expand_opt.svg</file>
@@ -37,9 +35,10 @@
         <file>icons/collapse_article_hovered.svg</file>
         <file>icons/collapse_article.svg</file>
         <file>icons/video.png</file>
+        <file>icons/video.svg</file>
         <file>icons/programicon_old.png</file>
         <file>icons/playsound_full.png</file>
-        <file>icons/icon32_zim.png</file>
+        <file>icons/icon32_zim.svg</file>
         <file>icons/icon32_epwing.png</file>
         <file>icons/icon32_slob.png</file>
         <file>icons/icon32_gls.png</file>
