@@ -67,6 +67,15 @@
   #ifndef DWMWA_USE_IMMERSIVE_DARK_MODE
     #define DWMWA_USE_IMMERSIVE_DARK_MODE 20
   #endif
+  #ifndef DWMWA_SYSTEMBACKDROP_TYPE
+    #define DWMWA_SYSTEMBACKDROP_TYPE 38
+  #endif
+  #ifndef DWMSBT_MAINWINDOW
+    #define DWMSBT_MAINWINDOW 2
+  #endif
+  #ifndef DWMSBT_NONE
+    #define DWMSBT_NONE 1
+  #endif
 #endif
 
 #include <QGuiApplication>
@@ -4723,9 +4732,22 @@ void MainWindow::setWindowTitleBarDark( bool dark )
   BOOL useDark = dark ? TRUE : FALSE;
   DwmSetWindowAttribute( hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, &useDark, sizeof( useDark ) );
 
+  // Windows 11+: Set Mica backdrop for better title bar
+  // This applies a better visual integration with Windows 11 theme
+  BOOL isWindows11 = QOperatingSystemVersion::current()
+    >= QOperatingSystemVersion( QOperatingSystemVersion::Windows, 10, 0, 22000 );
+  if ( isWindows11 ) {
+    DWORD backdropType = dark ? DWMSBT_MAINWINDOW : DWMSBT_NONE;
+    DwmSetWindowAttribute( hwnd, DWMWA_SYSTEMBACKDROP_TYPE, &backdropType, sizeof( backdropType ) );
+  }
+
   if ( scanPopup ) {
     HWND popupHwnd = HWND( scanPopup->winId() );
     DwmSetWindowAttribute( popupHwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, &useDark, sizeof( useDark ) );
+    if ( isWindows11 ) {
+      DWORD backdropTypePopup = dark ? DWMSBT_MAINWINDOW : DWMSBT_NONE;
+      DwmSetWindowAttribute( popupHwnd, DWMWA_SYSTEMBACKDROP_TYPE, &backdropTypePopup, sizeof( backdropTypePopup ) );
+    }
   }
 
   RedrawWindow( hwnd, nullptr, nullptr, RDW_FRAME | RDW_INVALIDATE );
