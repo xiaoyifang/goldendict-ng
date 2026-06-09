@@ -77,6 +77,7 @@ QRegularExpression Mdx::styleElement( R"((<style[^>]*>)([\w\W]*?)(<\/style>))",
 QRegularExpression Epwing::refWord( R"([r|p](\d+)at(\d+))", QRegularExpression::CaseInsensitiveOption );
 
 const QRegularExpression RX::qtWebEngineUserAgent( R"(QtWebEngine\/[\d.]+\s*)" );
+const QRegularExpression RX::windowsNtVersion( R"(Windows NT [\d.]+)" );
 
 bool Html::containHtmlEntity( const std::string & text )
 {
