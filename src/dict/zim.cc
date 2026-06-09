@@ -265,7 +265,7 @@ void ZimDictionary::loadIcon() noexcept
 
     if ( img.isNull() ) {
       // Fallback to default icon
-      dictionaryIcon = QIcon( ":/icons/icon32_zim.png" );
+      dictionaryIcon = QIcon( ":/icons/icon32_zim.svg" );
     }
     else {
       dictionaryIcon = QIcon( QPixmap::fromImage( img ) );

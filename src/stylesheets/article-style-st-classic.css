@@ -83,7 +83,7 @@ pre {
 /* Dictionary query error description string */
 .gderrordesc {
   font-style: italic;
-  background: url("qrc:///icons/warning.png") center left no-repeat !important;
+  background: url("qrc:///icons/warning.svg") center left no-repeat !important;
   padding-left: 22px !important;
   margin: 1em;
 }
@@ -436,7 +436,7 @@ div.xdxf {
 
 .dsl_video .img {
   display: inline-block;
-  background: url("qrc:///icons/video.png");
+  background: url("qrc:///icons/video.svg");
   background-repeat: no-repeat;
   vertical-align: middle;
   width: 22px;
@@ -1580,7 +1580,7 @@ in the bottom-right corner of the content area */
 .mwiki #bodyContent a.external[href$=".mpg"],
 .mwiki #bodyContent a.external[href$=".MPG"],
 .mwiki .link-video {
-  background: url("qrc:///icons/video.png") center right no-repeat;
+  background: url("qrc:///icons/video.svg") center right no-repeat;
   padding-right: 1em;
 }
 .mwiki #bodyContent a.external[href$=".pdf"],

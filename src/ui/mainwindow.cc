@@ -3500,7 +3500,7 @@ void MainWindow::toggleMenuBarTriggered( bool announce )
                                     .arg( QString( "<b>%1</b>" ) )
                                     .arg( QT_TR_NOOP( "Ctrl+M" ) ),
                                   10000,
-                                  QPixmap( ":/icons/warning.png" ) );
+                                  QPixmap( ":/icons/warning.svg" ) );
     }
     else {
       mainStatusBar->clearMessage();
@@ -3700,7 +3700,7 @@ void MainWindow::on_alwaysOnTop_triggered( bool checked )
     setWindowFlags( flags | Qt::CustomizeWindowHint | Qt::WindowStaysOnTopHint );
     mainStatusBar->showMessage( tr( "The main window is set to be always on top." ),
                                 10000,
-                                QPixmap( ":/icons/warning.png" ) );
+                                QPixmap( ":/icons/warning.svg" ) );
   }
   else {
     setWindowFlags( flags ^ ( Qt::CustomizeWindowHint | Qt::WindowStaysOnTopHint ) );
