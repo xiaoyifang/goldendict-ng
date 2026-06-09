@@ -83,5 +83,6 @@ const static QRegularExpression markSpace( R"([\p{M}\p{Z}])", QRegularExpression
 const static QRegularExpression whiteSpace( "\\s+" );
 
 extern const QRegularExpression qtWebEngineUserAgent;
+extern const QRegularExpression windowsNtVersion;
 
 } // namespace RX
