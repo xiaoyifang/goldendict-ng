@@ -4734,8 +4734,8 @@ void MainWindow::setWindowTitleBarDark( bool dark )
 
   // Windows 11+: Set Mica backdrop for better title bar
   // This applies a better visual integration with Windows 11 theme
-  BOOL isWindows11 = QOperatingSystemVersion::current()
-    >= QOperatingSystemVersion( QOperatingSystemVersion::Windows, 10, 0, 22000 );
+  BOOL isWindows11 =
+    QOperatingSystemVersion::current() >= QOperatingSystemVersion( QOperatingSystemVersion::Windows, 10, 0, 22000 );
   if ( isWindows11 ) {
     DWORD backdropType = dark ? DWMSBT_MAINWINDOW : DWMSBT_NONE;
     DwmSetWindowAttribute( hwnd, DWMWA_SYSTEMBACKDROP_TYPE, &backdropType, sizeof( backdropType ) );
