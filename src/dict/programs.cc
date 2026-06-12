@@ -140,7 +140,10 @@ RunInstance::RunInstance():
   connect( &process, &QProcess::errorOccurred, this, &RunInstance::processFinished );
 }
 
-bool RunInstance::start( const Config::Program & prg, const QString & word, const QString & searchBarText, QString & error )
+bool RunInstance::start( const Config::Program & prg,
+                         const QString & word,
+                         const QString & searchBarText,
+                         QString & error )
 {
   QStringList args = QProcess::splitCommand( prg.commandLine );
 
