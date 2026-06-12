@@ -140,7 +140,10 @@ RunInstance::RunInstance():
   connect( &process, &QProcess::errorOccurred, this, &RunInstance::processFinished );
 }
 
-bool RunInstance::start( const Config::Program & prg, const QString & word, QString & error )
+bool RunInstance::start( const Config::Program & prg,
+                         const QString & word,
+                         const QString & searchBarText,
+                         QString & error )
 {
   QStringList args = QProcess::splitCommand( prg.commandLine );
 
@@ -148,17 +151,16 @@ bool RunInstance::start( const Config::Program & prg, const QString & word, QStr
     QString programName = args.first();
     args.pop_front();
 
-    bool writeToStdInput       = true;
-    const auto & search_string = GlobalBroadcaster::instance()->translateLineText;
+    bool writeToStdInput = true;
 
     for ( auto & arg : args ) {
       if ( arg.indexOf( "%GDWORD%" ) >= 0 ) {
-        writeToStdInput = false;
+        writeToStdInput = false; // If %GDWORD% is used, it's not writing to stdin
         arg.replace( "%GDWORD%", word );
       }
       if ( arg.indexOf( "%GDSEARCH%" ) >= 0 ) {
-        writeToStdInput = false;
-        arg.replace( "%GDSEARCH%", search_string );
+        writeToStdInput = false; // If %GDSEARCH% is used, it's not writing to stdin
+        arg.replace( "%GDSEARCH%", searchBarText );
       }
     }
 
@@ -210,7 +212,7 @@ ProgramDataRequest::ProgramDataRequest( const QString & word, const Config::Prog
   connect( &instance, &RunInstance::finished, this, &ProgramDataRequest::instanceFinished );
 
   QString error;
-  if ( !instance.start( prg, word, error ) ) {
+  if ( !instance.start( prg, word, GlobalBroadcaster::instance()->translateLineText, error ) ) {
     setErrorString( error );
     finish();
   }
@@ -317,7 +319,7 @@ ProgramWordSearchRequest::ProgramWordSearchRequest( const QString & word, const 
   connect( &instance, &RunInstance::finished, this, &ProgramWordSearchRequest::instanceFinished );
 
   QString error;
-  if ( !instance.start( prg, word, error ) ) {
+  if ( !instance.start( prg, word, GlobalBroadcaster::instance()->translateLineText, error ) ) {
     setErrorString( error );
     finish();
   }
