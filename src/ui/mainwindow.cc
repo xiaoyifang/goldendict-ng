@@ -39,6 +39,7 @@
 #include <QStyleFactory>
 #include <QStyleHints>
 #include <QNetworkProxyFactory>
+#include <QVersionNumber>
 
 #include "weburlrequestinterceptor.hh"
 #include "folding.hh"
@@ -65,6 +66,15 @@
   #include <dwmapi.h>
   #ifndef DWMWA_USE_IMMERSIVE_DARK_MODE
     #define DWMWA_USE_IMMERSIVE_DARK_MODE 20
+  #endif
+  #ifndef DWMWA_SYSTEMBACKDROP_TYPE
+    #define DWMWA_SYSTEMBACKDROP_TYPE 38
+  #endif
+  #ifndef DWMSBT_MAINWINDOW
+    #define DWMSBT_MAINWINDOW 2
+  #endif
+  #ifndef DWMSBT_NONE
+    #define DWMSBT_NONE 1
   #endif
 #endif
 
@@ -231,6 +241,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // Identify as GoldenDict, but avoid standard "QtWebEngine/..." identifier which some sites might block
   QString userAgent = QWebEngineProfile::defaultProfile()->httpUserAgent();
   userAgent.replace( RX::qtWebEngineUserAgent, "" );
+  userAgent.replace( RX::windowsNtVersion, "Windows NT 10.0" );
   QWebEngineProfile::defaultProfile()->setHttpUserAgent( userAgent );
 #ifdef EPWING_SUPPORT
   Epwing::initialize();
@@ -1447,6 +1458,8 @@ void MainWindow::updateAppearances( const QString & addonStyle,
     QOperatingSystemVersion::current() >= QOperatingSystemVersion( QOperatingSystemVersion::Windows, 10, 0, 22000 );
 
   if ( isDark ) {
+    // Use Fusion style with custom dark palette for all Windows versions when dark mode is enabled
+    // This ensures consistent dark mode appearance regardless of Windows version or Auto/Manual mode
     auto createDarkPalette = []() -> QPalette {
       QPalette darkPalette;
       QColor darkColor     = QColor( 45, 45, 45 );
@@ -1471,35 +1484,24 @@ void MainWindow::updateAppearances( const QString & addonStyle,
       darkPalette.setColor( QPalette::Disabled, QPalette::HighlightedText, disabledColor );
       return darkPalette;
     };
-
-    if ( isWindows11OrLater ) {
-  #if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
-      bool useSystemDarkPalette =
-        ( darkMode == Config::Dark::Auto && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark );
-  #else
-      bool useSystemDarkPalette = false;
-  #endif
-
-      if ( useSystemDarkPalette ) {
-        qApp->setStyle( "windows11" );
-        qApp->setPalette( qApp->style()->standardPalette() );
-      }
-      else {
-        qApp->setStyle( "Fusion" );
-        qApp->setPalette( createDarkPalette() );
-      }
-    }
-    else {
-      qApp->setStyle( "Fusion" );
-      qApp->setPalette( createDarkPalette() );
-    }
+    qApp->setStyle( "Fusion" );
+    qApp->setPalette( createDarkPalette() );
 
     // Use DWM API for title bar theming (Windows 10 1809+)
     setWindowTitleBarDark( true );
   }
   else {
-    qApp->setStyle( QStyleFactory::create( defaultInterfaceStyle ) );
-    qApp->setPalette( QPalette() );
+    if ( isWindows11OrLater ) {
+      // For Windows 11, use native windows11 style with system color scheme
+      qApp->setStyle( "windows11" );
+      // Use native system palette for better integration with Windows 11 light theme
+      qApp->setPalette( QPalette() );
+    }
+    else {
+      // For Windows 10 and earlier, use default style
+      qApp->setStyle( QStyleFactory::create( defaultInterfaceStyle ) );
+      qApp->setPalette( QPalette() );
+    }
 
     // Use DWM API for title bar theming
     setWindowTitleBarDark( false );
@@ -1545,7 +1547,7 @@ void MainWindow::updateAppearances( const QString & addonStyle,
 
   // Load an additional stylesheet
   // Dark Mode doesn't work nice with custom qt style sheets,
-  if ( darkMode == Config::Dark::Off ) {
+  if ( !isDark ) {
     QFile additionalStyle( QString( ":qt-%1.css" ).arg( displayStyle ) );
     if ( additionalStyle.open( QFile::ReadOnly ) ) {
       css += additionalStyle.readAll();
@@ -1569,11 +1571,6 @@ void MainWindow::updateAppearances( const QString & addonStyle,
     }
   }
 
-#if defined( Q_OS_WIN )
-  if ( darkMode == Config::Dark::On ) {
-    css += "QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }";
-  }
-#endif
 
   if ( !css.isEmpty() ) {
     setStyleSheet( css );
@@ -3285,21 +3282,9 @@ void MainWindow::hotKeyActivated( int hk )
 }
 
 
-static bool versionGreaterThan( const QString & v1, const QString & v2 )
+static bool isNewerVersion( const QString & candidate, const QString & reference )
 {
-  QStringList parts1 = v1.split( '.' );
-  QStringList parts2 = v2.split( '.' );
-
-  int maxLen = qMin( 3, qMax( parts1.size(), parts2.size() ) );
-  for ( int i = 0; i < maxLen; ++i ) {
-    int num1 = ( i < parts1.size() ) ? parts1[ i ].toInt() : 0;
-    int num2 = ( i < parts2.size() ) ? parts2[ i ].toInt() : 0;
-    if ( num1 > num2 )
-      return true;
-    if ( num1 < num2 )
-      return false;
-  }
-  return false;
+  return QVersionNumber::fromString( candidate ) > QVersionNumber::fromString( reference );
 }
 
 void MainWindow::checkNewRelease()
@@ -3332,7 +3317,7 @@ void MainWindow::checkNewRelease()
           QString latestVersion = tag_name.toString().mid( 1 ); // remove leading 'v'
           QString downloadUrl   = html_url.toString();
 
-          if ( versionGreaterThan( latestVersion, PROGRAM_VERSION ) && latestVersion != cfg.skippedRelease ) {
+          if ( isNewerVersion( latestVersion, PROGRAM_VERSION ) && latestVersion != cfg.skippedRelease ) {
             QMessageBox msg( QMessageBox::Information,
                              tr( "New Release Available" ),
                              tr( "Version <b>%1</b> of GoldenDict is now available for download.<br>"
@@ -3510,7 +3495,7 @@ void MainWindow::toggleMenuBarTriggered( bool announce )
                                     .arg( QString( "<b>%1</b>" ) )
                                     .arg( QT_TR_NOOP( "Ctrl+M" ) ),
                                   10000,
-                                  QPixmap( ":/icons/warning.png" ) );
+                                  QPixmap( ":/icons/warning.svg" ) );
     }
     else {
       mainStatusBar->clearMessage();
@@ -3710,7 +3695,7 @@ void MainWindow::on_alwaysOnTop_triggered( bool checked )
     setWindowFlags( flags | Qt::CustomizeWindowHint | Qt::WindowStaysOnTopHint );
     mainStatusBar->showMessage( tr( "The main window is set to be always on top." ),
                                 10000,
-                                QPixmap( ":/icons/warning.png" ) );
+                                QPixmap( ":/icons/warning.svg" ) );
   }
   else {
     setWindowFlags( flags ^ ( Qt::CustomizeWindowHint | Qt::WindowStaysOnTopHint ) );
@@ -4748,9 +4733,22 @@ void MainWindow::setWindowTitleBarDark( bool dark )
   BOOL useDark = dark ? TRUE : FALSE;
   DwmSetWindowAttribute( hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, &useDark, sizeof( useDark ) );
 
+  // Windows 11+: Set Mica backdrop for better title bar
+  // This applies a better visual integration with Windows 11 theme
+  BOOL isWindows11 =
+    QOperatingSystemVersion::current() >= QOperatingSystemVersion( QOperatingSystemVersion::Windows, 10, 0, 22000 );
+  if ( isWindows11 ) {
+    DWORD backdropType = dark ? DWMSBT_MAINWINDOW : DWMSBT_NONE;
+    DwmSetWindowAttribute( hwnd, DWMWA_SYSTEMBACKDROP_TYPE, &backdropType, sizeof( backdropType ) );
+  }
+
   if ( scanPopup ) {
     HWND popupHwnd = HWND( scanPopup->winId() );
     DwmSetWindowAttribute( popupHwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, &useDark, sizeof( useDark ) );
+    if ( isWindows11 ) {
+      DWORD backdropTypePopup = dark ? DWMSBT_MAINWINDOW : DWMSBT_NONE;
+      DwmSetWindowAttribute( popupHwnd, DWMWA_SYSTEMBACKDROP_TYPE, &backdropTypePopup, sizeof( backdropTypePopup ) );
+    }
   }
 
   RedrawWindow( hwnd, nullptr, nullptr, RDW_FRAME | RDW_INVALIDATE );

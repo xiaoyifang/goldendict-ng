@@ -39,4 +39,10 @@ QString version();
 /// Full report of version & various information
 QString everything();
 
+/// Get the version tag for GitHub release URL
+QString getVersionTag();
+
+/// Get the GitHub release URL
+QString getReleaseUrl();
+
 } // namespace Version

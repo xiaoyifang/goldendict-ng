@@ -1,0 +1,13 @@
+<svg width="32" height="32" fill="none" version="1.1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient id="bookGrad" x1="3.254" x2="21.693" y1="1.8439" y2="20.283" gradientTransform="scale(.92195 1.0847)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#FF5F6D" offset="0"/>
+   <stop stop-color="#FFC371" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g stroke-width="1.4748">
+  <path d="m8.0906 1.3337h20.647v29.495h-20.647a4.4243 4.4243 0 0 1-4.4243-4.4243v-20.647a4.4243 4.4243 0 0 1 4.4243-4.4243z" fill="url(#bookGrad)"/>
+  <rect x="5.1411" y="10.182" width="23.596" height="11.798" rx="2.2121" fill="#fff"/>
+  <path d="m8.8806 17.267h1.5662v1.469h-1.5662zm2.2159-3.8093h4.6158v1.0549l-2.9596 3.0892h3.0676v1.1342h-5.0083v-1.0945l2.9272-3.0568h-2.6428zm5.3231 0h1.6346v5.2783h-1.6346zm2.5868 0h2.1459l0.82811 3.2116 0.82451-3.2116h2.1387v5.2783h-1.3322v-4.0253l-1.0333 4.0253h-1.2062l-1.0297-4.0253v4.0253h-1.3358z" fill="#ff5f6d" aria-label=".ZIM"/>
+ </g>
+</svg>

@@ -53,7 +53,6 @@ lists:
 
 
 these two icons from sertoli @  https://forum.freemdict.com/u/sertoli/summary
-playsound.png
 playsound_full.png
 
 

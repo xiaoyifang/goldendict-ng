@@ -14,6 +14,8 @@ About::About( QWidget * parent ):
 
   ui.versionInfo->setText( Version::everything() );
 
+  ui.changelogLink->setText( QStringLiteral( "<a href=\"%1\">Changelog</a>" ).arg( Version::getReleaseUrl() ) );
+
   connect( ui.copyInfoBtn, &QPushButton::clicked, this, [] {
     QGuiApplication::clipboard()->setText( Version::everything() );
   } );

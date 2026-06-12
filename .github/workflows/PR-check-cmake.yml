@@ -73,7 +73,6 @@ jobs:
           HOMEBREW_NO_INSTALL_CLEANUP: 1
         run: |
           brew install --force --overwrite \
-          ninja \
           ccache \
           opencc \
           ffmpeg@6 \
@@ -100,7 +99,7 @@ jobs:
             /usr/local/lib/libeb*
             /usr/local/include/eb
             /usr/local/bin/eb*
-          key: ${{ runner.os }}-eb-v4.4.3
+          key: ${{ runner.os }}-${{ runner.arch }}-eb-v4.4.3
       - name: Install eb
         if: steps.cache-eb.outputs.cache-hit != 'true'
         run: |
@@ -138,12 +137,12 @@ jobs:
       - uses: actions/checkout@v6
         with:
           submodules: true
+      - name: Setup MSVC environment
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
       - name: Run build
         run: |
-          # Launch-VsDevShell also provides Ninja
-          & 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\Launch-VsDevShell.ps1' `
-            -SkipAutomaticLocation -Arch amd64 -HostArch amd64
-
           New-Item -Path './build_dir' -ItemType Directory
           cmake -S . -B "./build_dir" `
             -G Ninja `

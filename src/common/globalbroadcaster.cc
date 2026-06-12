@@ -243,18 +243,24 @@ bool GlobalBroadcaster::isSystemDarkTheme()
 {
 #if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
   #if defined( Q_OS_WINDOWS )
-  bool isWin11OrLater =
-    QOperatingSystemVersion::current() >= QOperatingSystemVersion( QOperatingSystemVersion::Windows, 10, 0, 22000 );
-  if ( isWin11OrLater ) {
-    // Windows 11+: Use Qt's colorScheme()
-    return QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark;
+  // For all Windows versions (10 and 11), use registry check as it's more reliable
+  // than Qt's colorScheme() which may not work consistently on Windows 11
+  QSettings settings( "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+                      QSettings::NativeFormat );
+
+  // AppsUseLightTheme: 0 = Dark mode, 1 = Light mode
+  // If the key doesn't exist, default to light mode (return false)
+  if ( settings.contains( "AppsUseLightTheme" ) ) {
+    return settings.value( "AppsUseLightTheme" ).toInt() == 0;
   }
-  else {
-    // Windows 10: Use registry check
-    QSettings settings( "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
-                        QSettings::NativeFormat );
-    return settings.contains( "AppsUseLightTheme" ) && settings.value( "AppsUseLightTheme" ).toInt() == 0;
+
+  // Fallback: Also check SystemUsesLightTheme for system-wide theme
+  if ( settings.contains( "SystemUsesLightTheme" ) ) {
+    return settings.value( "SystemUsesLightTheme" ).toInt() == 0;
   }
+
+  // Default to light mode if no registry keys found
+  return false;
   #else
   // Other platforms: Use Qt's colorScheme
   return QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark;

@@ -1,0 +1,10 @@
+<svg fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient id="videoGrad" y2="100%">
+   <stop stop-color="#FF5F6D" offset="0"/>
+   <stop stop-color="#FFC371" offset="1"/>
+  </linearGradient>
+ </defs>
+ <rect x="2" y="5" width="20" height="14" rx="2" ry="2" fill="url(#videoGrad)" stroke="none"/>
+ <polygon points="10 9 15 12 10 15" fill="#fff"/>
+</svg>

@@ -22,8 +22,10 @@ install(SCRIPT ${deploy_script})
 install(DIRECTORY "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/share/opencc" DESTINATION .)
 # Note: This is runtime dependency that aren't copied automatically
 # See Qt's network -> SSDL documentation https://doc.qt.io/qt-6/ssl.html#considerations-while-packaging-your-application
-install(FILES "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/bin/libssl-3-x64.dll" DESTINATION .)
-install(FILES "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/bin/libcrypto-3-x64.dll" DESTINATION .)
+file(GLOB SSL_DLL "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/bin/libssl-*-x64.dll")
+file(GLOB CRYPTO_DLL "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/bin/libcrypto-*-x64.dll")
+install(FILES ${SSL_DLL} DESTINATION .)
+install(FILES ${CRYPTO_DLL} DESTINATION .)
 
 # trick CPack to make the output folder as NSIS installer
 install(DIRECTORY "${GD_WIN_OUTPUT_DIR}/"
