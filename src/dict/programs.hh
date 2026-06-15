@@ -27,7 +27,7 @@ public:
   // Starts the process. Should only be used once. The finished() signal will
   // be emitted once it finishes. If there's an error, returns false and the
   // description is saved to 'error'.
-  bool start( const Config::Program &, const QString & word, QString & error );
+  bool start( const Config::Program &, const QString & word, const QString & searchBarText, QString & error );
 
 signals:
   // Connect to this signal to get run results
