@@ -465,8 +465,7 @@ void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, const std::
   } );
 
   connect( netReply, &QNetworkReply::errorOccurred, this, [ netReply ]( QNetworkReply::NetworkError e ) {
-    qDebug() << "MediaWiki errorOccurred:" << e
-             << "URL:" << netReply->url().toString()
+    qDebug() << "MediaWiki errorOccurred:" << e << "URL:" << netReply->url().toString()
              << "HTTP status:" << netReply->attribute( QNetworkRequest::HttpStatusCodeAttribute ).toInt()
              << "Content-Type:" << netReply->header( QNetworkRequest::ContentTypeHeader ).toString()
              << "Error string:" << netReply->errorString();
