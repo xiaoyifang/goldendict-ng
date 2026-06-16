@@ -226,6 +226,15 @@ void MediaWikiWordSearchRequest::downloadFinished()
     qDebug( "done." );
   }
   else {
+    qDebug() << "MediaWiki word search error:"
+             << "URL:" << netReply->url().toString()
+             << "HTTP status:" << netReply->attribute( QNetworkRequest::HttpStatusCodeAttribute ).toInt()
+             << "Content-Type:" << netReply->header( QNetworkRequest::ContentTypeHeader ).toString()
+             << "Error:" << netReply->errorString();
+    QByteArray data = netReply->readAll();
+    if ( !data.isEmpty() ) {
+      qDebug() << "MediaWiki response body:" << data.left( 1024 );
+    }
     setErrorString( netReply->errorString() );
   }
 
@@ -455,8 +464,12 @@ void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, const std::
     requestFinished( netReply );
   } );
 
-  connect( netReply, &QNetworkReply::errorOccurred, this, []( QNetworkReply::NetworkError e ) {
-    qDebug() << "MediaWiki error:" << e;
+  connect( netReply, &QNetworkReply::errorOccurred, this, [ netReply ]( QNetworkReply::NetworkError e ) {
+    qDebug() << "MediaWiki errorOccurred:" << e
+             << "URL:" << netReply->url().toString()
+             << "HTTP status:" << netReply->attribute( QNetworkRequest::HttpStatusCodeAttribute ).toInt()
+             << "Content-Type:" << netReply->header( QNetworkRequest::ContentTypeHeader ).toString()
+             << "Error string:" << netReply->errorString();
   } );
 #ifndef QT_NO_SSL
 
@@ -493,6 +506,15 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
     }
 
     if ( netReply->error() != QNetworkReply::NoError ) {
+      qDebug() << "MediaWiki requestFinished error:"
+               << "URL:" << netReply->url().toString()
+               << "HTTP status:" << netReply->attribute( QNetworkRequest::HttpStatusCodeAttribute ).toInt()
+               << "Content-Type:" << netReply->header( QNetworkRequest::ContentTypeHeader ).toString()
+               << "Error:" << netReply->errorString();
+      QByteArray data = netReply->readAll();
+      if ( !data.isEmpty() ) {
+        qDebug() << "MediaWiki response body:" << data.left( 1024 );
+      }
       setErrorString( netReply->errorString() );
       continue;
     }
