@@ -996,10 +996,18 @@ void IndexedWords::addWord( const std::u32string & index_word, uint32_t articleO
       string utfWord   = Text::toUtf8( std::u32string( nextChar, wordSize - ( nextChar - wordBegin ) ) );
       string utfPrefix = Text::toUtf8( std::u32string( wordBegin, nextChar - wordBegin ) );
 
-      // If this is an exact match (prefix is empty), insert at the beginning of the chain
-      // to ensure exact matches are found first
+      // If this is an exact match (prefix is empty), insert it before any
+      // non-exact-match entries, but after any existing exact-match entries
+      // to preserve the articleOffset order.
       if ( utfPrefix.empty() ) {
-        i->second.emplace( i->second.begin(), std::move( utfWord ), articleOffset, std::move( utfPrefix ) );
+        // Find the first entry with a non-empty prefix (if any). Insert before it
+        // so that all exact matches come before prefix matches, while exact
+        // matches themselves keep their insertion order.
+        auto it = std::find_if( i->second.begin(), i->second.end(),
+                                []( const WordArticleLink & link ) {
+                                  return !link.prefix.empty();
+                                } );
+        i->second.emplace( it, std::move( utfWord ), articleOffset, std::move( utfPrefix ) );
       }
       else {
         i->second.emplace_back( std::move( utfWord ), articleOffset, std::move( utfPrefix ) );
