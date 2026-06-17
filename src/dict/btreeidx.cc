@@ -1003,10 +1003,9 @@ void IndexedWords::addWord( const std::u32string & index_word, uint32_t articleO
         // Find the first entry with a non-empty prefix (if any). Insert before it
         // so that all exact matches come before prefix matches, while exact
         // matches themselves keep their insertion order.
-        auto it = std::find_if( i->second.begin(), i->second.end(),
-                                []( const WordArticleLink & link ) {
-                                  return !link.prefix.empty();
-                                } );
+        auto it = std::find_if( i->second.begin(), i->second.end(), []( const WordArticleLink & link ) {
+          return !link.prefix.empty();
+        } );
         i->second.emplace( it, std::move( utfWord ), articleOffset, std::move( utfPrefix ) );
       }
       else {
