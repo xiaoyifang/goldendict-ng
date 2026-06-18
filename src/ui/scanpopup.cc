@@ -526,7 +526,7 @@ void ScanPopup::translateWordFromClipboard( QClipboard::Mode m )
   }
 
   QString subtype = QStringLiteral( "plain" );
-  QString str = clipboard->text( subtype, m );
+  QString str     = clipboard->text( subtype, m );
   if ( str.isEmpty() ) {
     return;
   }
