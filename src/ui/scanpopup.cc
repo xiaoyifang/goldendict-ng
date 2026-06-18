@@ -519,15 +519,18 @@ void ScanPopup::translateWordFromClipboard( QClipboard::Mode m )
     return;
   }
 
-  QString subtype = QStringLiteral( "plain" );
-  QString str;
-  try {
-    str = QApplication::clipboard()->text( subtype, m );
-  }
-  catch ( ... ) {
-    qWarning( "Failed to read clipboard on Wayland" );
+  QClipboard * clipboard = QApplication::clipboard();
+  if ( !clipboard ) {
+    qWarning( "Clipboard is not available" );
     return;
   }
+
+  QString subtype = QStringLiteral( "plain" );
+  QString str = clipboard->text( subtype, m );
+  if ( str.isEmpty() ) {
+    return;
+  }
+
   qDebug( "Translate from clipboard %d -> %s", qToUnderlying( m ), str.toStdString().c_str() );
   translateWord( str );
 }
