@@ -1251,7 +1251,8 @@ void MainWindow::mousePressEvent( QMouseEvent * event )
   QString str;
   if ( Utils::isWayland() ) {
     str = QApplication::clipboard()->text( subtype, QClipboard::Clipboard );
-  } else {
+  }
+  else {
     str = QApplication::clipboard()->text( subtype, QClipboard::Selection );
   }
   setInputLineText( str, WildcardPolicy::EscapeWildcards, NoPopupChange );

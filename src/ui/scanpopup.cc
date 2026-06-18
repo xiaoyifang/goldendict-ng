@@ -523,7 +523,8 @@ void ScanPopup::translateWordFromClipboard( QClipboard::Mode m )
   QString str;
   try {
     str = QApplication::clipboard()->text( subtype, m );
-  } catch ( ... ) {
+  }
+  catch ( ... ) {
     qWarning( "Failed to read clipboard on Wayland" );
     return;
   }
