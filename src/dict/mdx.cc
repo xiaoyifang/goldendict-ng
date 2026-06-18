@@ -22,7 +22,6 @@
 #include "tiff.hh"
 #include "utils.hh"
 #include <QAtomicInt>
-#include <QCryptographicHash>
 #include <QDir>
 #include <QRegularExpression>
 #include <QString>
@@ -565,9 +564,6 @@ void MdxArticleRequest::run()
   // Some synonims make it that the articles appear several times. We combat this
   // by only allowing them to appear once.
   set< uint32_t > articlesIncluded;
-  // Sometimes the articles are physically duplicated. We store hashes of
-  // the bodies to account for this.
-  set< QByteArray > articleBodiesIncluded;
   string articleText;
 
   for ( unsigned x = 0; x < chain.size(); ++x ) {
@@ -604,15 +600,7 @@ void MdxArticleRequest::run()
       return;
     }
 
-    if ( articlesIncluded.find( chain[ x ].articleOffset ) != articlesIncluded.end() ) {
-      continue; // We already have this article in the body.
-    }
-
-    QCryptographicHash hash( QCryptographicHash::Md5 );
-    hash.addData( { articleBody.data(), static_cast< qsizetype >( articleBody.length() ) } );
-    if ( !articleBodiesIncluded.insert( hash.result() ).second ) {
-      continue; // Already had this body
-    }
+    articlesIncluded.insert( chain[ x ].articleOffset );
 
     // Handle internal redirects
     if ( strncmp( articleBody.c_str(), "@@@LINK=", 8 ) == 0 ) {
