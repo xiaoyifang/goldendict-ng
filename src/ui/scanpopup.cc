@@ -4,6 +4,7 @@
 #include "scanpopup.hh"
 #include "folding.hh"
 #include "articlesaver.hh"
+#include "utils.hh"
 #include <QCursor>
 #include <QPixmap>
 #include <QMenu>
@@ -513,8 +514,23 @@ void ScanPopup::editGroupRequested()
 void ScanPopup::translateWordFromClipboard( QClipboard::Mode m )
 {
   GlobalBroadcaster::instance()->is_popup = true;
+
+  if ( m == QClipboard::Selection && Utils::isWayland() ) {
+    return;
+  }
+
+  QClipboard * clipboard = QApplication::clipboard();
+  if ( !clipboard ) {
+    qWarning( "Clipboard is not available" );
+    return;
+  }
+
   QString subtype = QStringLiteral( "plain" );
-  QString str     = QApplication::clipboard()->text( subtype, m );
+  QString str     = clipboard->text( subtype, m );
+  if ( str.isEmpty() ) {
+    return;
+  }
+
   qDebug( "Translate from clipboard %d -> %s", qToUnderlying( m ), str.toStdString().c_str() );
   translateWord( str );
 }
