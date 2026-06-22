@@ -179,8 +179,6 @@ protected:
 
   // Subclasses should be filling up the 'matches' array, locking the mutex when
   // whey work with it.
-  QMutex dataMutex;
-
   vector< WordMatch > matches;
   bool uncertain;
 };
