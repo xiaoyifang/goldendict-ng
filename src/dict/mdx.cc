@@ -917,20 +917,20 @@ QString & MdxDictionary::filterResource( QString & article )
 
   // Handle protocol-relative URLs (//) - Replace them with https://
   // This must be done before replaceLinks so they are seen as absolute URLs
-  article.replace( QRegularExpression( R"(([\s"'](?:src|href|data)\s*=\s*["'])\/\/)" ), R"(\1https://)" );
-  article.replace( QRegularExpression( R"(([\s"'](?:src|href|data)\s*=\s*)(?!\s*["'])\/\/)" ), R"(\1https://)" );
+  article.replace( RX::Mdx::protocolRelativeUrlQuoted, R"(\1https://)" );
+  article.replace( RX::Mdx::protocolRelativeUrlUnquoted, R"(\1https://)" );
 
   replaceLinks( id, article );
 
   // Replace html/body/head with custom tags to avoid hoisting by browser
-  article.replace( QRegularExpression( "<html\\b", QRegularExpression::CaseInsensitiveOption ), "<gd-section-html" );
-  article.replace( QRegularExpression( "</html>", QRegularExpression::CaseInsensitiveOption ), "</gd-section-html>" );
+  article.replace( RX::Mdx::htmlTagStart, "<gd-section-html" );
+  article.replace( RX::Mdx::htmlTagEnd, "</gd-section-html>" );
 
-  article.replace( QRegularExpression( "<body\\b", QRegularExpression::CaseInsensitiveOption ), "<gd-section-body" );
-  article.replace( QRegularExpression( "</body>", QRegularExpression::CaseInsensitiveOption ), "</gd-section-body>" );
+  article.replace( RX::Mdx::bodyTagStart, "<gd-section-body" );
+  article.replace( RX::Mdx::bodyTagEnd, "</gd-section-body>" );
 
-  article.replace( QRegularExpression( "<head\\b", QRegularExpression::CaseInsensitiveOption ), "<gd-section-head" );
-  article.replace( QRegularExpression( "</head>", QRegularExpression::CaseInsensitiveOption ), "</gd-section-head>" );
+  article.replace( RX::Mdx::headTagStart, "<gd-section-head" );
+  article.replace( RX::Mdx::headTagEnd, "</gd-section-head>" );
 
   replaceStyleInHtml( id, article );
   article = isolateStyleCssInHtml( article );
