@@ -551,7 +551,7 @@ div.xdxf {
 .dsl_opt,
 .dsl_opt .dsl_ex,
 .dsl_opt .dsl_ex :not(a),
-.dsl_opt .dsl_ex font[color] /* DSL Feature: Enforce the optional zone color even if the children tags say otherwise */ {
+.dsl_opt .dsl_ex [color] /* DSL Feature: Enforce the optional zone color even if the children tags say otherwise */ {
   color: gray;
 }
 
@@ -639,7 +639,7 @@ div.xdxf {
   margin: 12px;
 
   box-sizing: border-box;
-  word-break: break-word;
+  overflow-wrap: break-word;
   line-height: 1.5;
 }
 
@@ -1397,7 +1397,6 @@ div.xdxf {
   vertical-align: top;
 }
 .mwiki abbr,
-.mwiki acronym,
 .mwiki .explain {
   border-bottom: 1px dotted black;
   color: black;
