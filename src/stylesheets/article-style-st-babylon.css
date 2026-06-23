@@ -57,11 +57,8 @@ h3 {
 .gdexpandicon:hover,
 .gdcollapseicon,
 .gdcollapseicon:hover {
-  width: auto; /* Maintain aspect ratio */
-  height: 100%; /* Set height to 100% of the container */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain; /* Ensure the image scales proportionally */
+  width: auto;
+  height: 100%;
   vertical-align: text-bottom;
 }
 
