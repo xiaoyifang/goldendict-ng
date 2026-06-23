@@ -37,6 +37,31 @@ body {
   vertical-align: text-top;
 }
 
+.gdexpandicon,
+.gdexpandicon:hover,
+.gdcollapseicon,
+.gdcollapseicon:hover {
+  width: auto;
+  height: 100%;
+  vertical-align: text-bottom;
+}
+
+.gdexpandicon {
+  content: url("qrc:///icons/expand_article.svg");
+}
+
+.gdexpandicon:hover {
+  content: url("qrc:///icons/expand_article_hovered.svg");
+}
+
+.gdcollapseicon {
+  content: url("qrc:///icons/collapse_article.svg");
+}
+
+.gdcollapseicon:hover {
+  content: url("qrc:///icons/collapse_article_hovered.svg");
+}
+
 .gdfromprefix {
   display: none;
 }
@@ -60,34 +85,6 @@ body {
 .collapse_expand_area {
   position: absolute;
   right: 0px;
-}
-
-.gdexpandicon,
-.gdexpandicon:hover,
-.gdcollapseicon,
-.gdcollapseicon:hover {
-  width: auto; /* Maintain aspect ratio */
-  height: 100%; /* Set height to 100% of the container */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain; /* Ensure the image scales proportionally */
-  vertical-align: text-bottom;
-}
-
-.gdexpandicon {
-  content: url("qrc:///icons/expand_article.svg");
-}
-
-.gdexpandicon:hover {
-  content: url("qrc:///icons/expand_article_hovered.svg");
-}
-
-.gdcollapseicon {
-  content: url("qrc:///icons/collapse_article.svg");
-}
-
-.gdcollapseicon:hover {
-  content: url("qrc:///icons/collapse_article_hovered.svg");
 }
 
 .gdarticlebody {

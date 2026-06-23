@@ -37,10 +37,10 @@ a:hover {
 }
 
 .gddictname {
-  display: flex; /* needed to be able to reorder elements, e.g. icon, dictionary name, collapse icon */
+  display: flex;
+  justify-content: flex-end;
   font-size: 12px;
   font-weight: normal;
-  float: right;
   border: 0px;
   border-top: 1px solid #c7d4dc;
   border-right: 1px solid #c7d4dc;
@@ -75,8 +75,8 @@ a:hover {
 
 /* Nice diagonal pattern for the collapsed article */
 .gdcollapsedarticle {
-  background-image: -webkit-linear-gradient(
-    left top,
+  background-image: linear-gradient(
+    to bottom right,
     #ccc 0%,
     #ccc 25%,
     #bbb 25%,
@@ -106,11 +106,8 @@ a:hover {
 .gdexpandicon:hover,
 .gdcollapseicon,
 .gdcollapseicon:hover {
-  width: auto; /* Maintain aspect ratio */
-  height: 100%; /* Set height to 100% of the container */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain; /* Ensure the image scales proportionally */
+  width: auto;
+  height: 100%;
   vertical-align: text-bottom;
 }
 
@@ -230,45 +227,41 @@ code::selection {
   display: inline-block;
   width: 18px;
   height: 18px;
-  -webkit-border-radius: 100px;
+  border-radius: 100px;
   text-align: center;
   vertical-align: text-bottom;
   color: #fff;
   border: 1px solid #798415;
-  -webkit-box-shadow:
+  box-shadow:
     1px 1px #ccc,
     inset -1px -1px #4e7500;
 
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right bottom,
-    color-stop(0%, rgba(191, 210, 85, 1)),
-    color-stop(50%, rgba(142, 185, 42, 1)),
-    color-stop(51%, rgba(114, 170, 0, 1)),
-    color-stop(100%, rgba(158, 203, 45, 1))
+  background: linear-gradient(
+    to bottom right,
+    rgba(191, 210, 85, 1) 0%,
+    rgba(142, 185, 42, 1) 50%,
+    rgba(114, 170, 0, 1) 51%,
+    rgba(158, 203, 45, 1) 100%
   );
 }
 
 .dsl_s_wav a:hover {
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right bottom,
-    color-stop(0%, #e6f0a3),
-    color-stop(50%, #d2e638),
-    color-stop(51%, #c3d825),
-    color-stop(100%, #dbf043)
+  background: linear-gradient(
+    to bottom right,
+    #e6f0a3 0%,
+    #d2e638 50%,
+    #c3d825 51%,
+    #dbf043 100%
   );
 
   border: 1px solid #a2b01c;
-  -webkit-box-shadow:
+  box-shadow:
     1px 1px #ccc,
     inset -1px -1px #8a991a;
 }
 
 .dsl_s_wav a:active {
-  -webkit-box-shadow:
+  box-shadow:
     1px 1px #ccc,
     inset 1px 1px #b1c421;
 }
@@ -282,7 +275,7 @@ code::selection {
   font-size: 16px;
   text-align: center;
   vertical-align: center;
-  -webkit-background-clip: text;
+  background-clip: text;
   color: #e6ef8f;
   -webkit-text-stroke: 1px #51580e;
 }

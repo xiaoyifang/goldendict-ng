@@ -47,9 +47,9 @@ a:hover {
 
 .gddictname {
   display: flex;
+  justify-content: flex-end;
   font-size: 12px;
   font-weight: normal;
-  float: right;
   border: 0;
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
@@ -74,8 +74,6 @@ a:hover {
   margin: -6px;
   margin-bottom: 5px;
   margin-left: 2px;
-
-  float: right;
   border: 1px solid #3399ff;
   color: #0066cc;
   background: #deecf8;
@@ -87,8 +85,8 @@ a:hover {
 
 /* Nice diagonal pattern for the collapsed article */
 .gdcollapsedarticle {
-  background-image: -webkit-linear-gradient(
-    left top,
+  background-image: linear-gradient(
+    to bottom right,
     #ccc 0%,
     #ccc 25%,
     #bbb 25%,
@@ -122,11 +120,8 @@ a:hover {
 .gdexpandicon:hover,
 .gdcollapseicon,
 .gdcollapseicon:hover {
-  width: auto; /* Maintain aspect ratio */
-  height: 100%; /* Set height to 100% of the container */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain; /* Ensure the image scales proportionally */
+  width: auto;
+  height: 100%;
   vertical-align: text-bottom;
 }
 
