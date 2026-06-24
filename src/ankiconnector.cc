@@ -7,8 +7,7 @@ QString markTargetWord( const QString & sentence, const QString & word )
 {
   QString escapedWord = QRegularExpression::escape( word );
   QRegularExpression re( QString( R"((?<!\w)%1(?!\w))" ).arg( escapedWord ),
-                         QRegularExpression::CaseInsensitiveOption
-                           | QRegularExpression::UseUnicodePropertiesOption );
+                         QRegularExpression::CaseInsensitiveOption | QRegularExpression::UseUnicodePropertiesOption );
   QString result = sentence;
   return result.replace( re, "<b>\\0</b>" );
 }
