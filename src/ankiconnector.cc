@@ -5,9 +5,12 @@
 
 QString markTargetWord( const QString & sentence, const QString & word )
 {
-  // TODO properly handle inflected words.
+  QString escapedWord = QRegularExpression::escape( word );
+  QRegularExpression re( QString( R"((?<!\w)%1(?!\w))" ).arg( escapedWord ),
+                         QRegularExpression::CaseInsensitiveOption
+                           | QRegularExpression::UseUnicodePropertiesOption );
   QString result = sentence;
-  return result.replace( word, "<b>" + word + "</b>", Qt::CaseInsensitive );
+  return result.replace( re, "<b>\\0</b>" );
 }
 
 AnkiConnector::AnkiConnector( QObject * parent, const Config::Class & _cfg ):
