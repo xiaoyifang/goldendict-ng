@@ -69,9 +69,9 @@ body {
 .gddictname {
   display: flex;
   align-items: center;
-  width: fit-content;
-  /* border: 1px solid #92b0dd; */
-  padding: 0.2em 0.5em;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5em 0.5em;
   margin-top: 1em;
   margin-bottom: 0;
   background: #cfddf0;
