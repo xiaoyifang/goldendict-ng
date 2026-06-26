@@ -75,7 +75,7 @@ Call `cmake --install {the cmake output folder}` will copy all necessary depende
 
 TODO: (untested) you can also `${Qt's install path}\Qt\6.5.2\msvc2019_64\bin` and vcpkg's bin paths to your PATH environment variable
 
-Note that using `-G Ninja` in CMake is assumed to be used. TODO: MSBuild has minor bugs for being "Multi-Config".
+Note that using `-G Ninja` in CMake is assumed to be used.
 
 #### Vcpkg
 

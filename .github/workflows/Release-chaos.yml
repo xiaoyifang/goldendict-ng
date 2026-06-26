@@ -150,8 +150,10 @@ jobs:
 
           cd ./build_dir
           mv "${namePrefix}.7z" "${namePrefix}-Windows.7z"
-          mv ./goldendict/goldendict.exe "./${namePrefix}-Windows-exe-only.exe"
-          mv ./goldendict/goldendict.pdb "./${namePrefix}-Windows-pdb.pdb"
+          EXE_PATH=$(find . -name "goldendict.exe" | head -n 1)
+          PDB_PATH=$(find . -name "goldendict.pdb" | head -n 1)
+          mv "$EXE_PATH" "./${namePrefix}-Windows-exe-only.exe"
+          mv "$PDB_PATH" "./${namePrefix}-Windows-pdb.pdb"
           cd ..
           ls -R
       - uses: actions/upload-artifact@v7
