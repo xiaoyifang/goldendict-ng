@@ -13,7 +13,7 @@ GroupComboBox::GroupComboBox( QWidget * parent ):
   selectNextAction( this ),
   selectPreviousAction( this )
 {
-  setIconSize( QSize( 16, 16 ) );
+  setIconSize( QSize( fontMetrics().height(), fontMetrics().height() ) );
   setSizeAdjustPolicy( AdjustToContents );
   setToolTip( tr( "Choose a Group (Alt+G)" ) );
 
