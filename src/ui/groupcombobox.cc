@@ -115,6 +115,7 @@ void GroupComboBox::paintEvent( QPaintEvent * )
   initStyleOption( &opt );
 
   QPainter painter( this );
+  painter.setRenderHint( QPainter::Antialiasing );
 
   // Draw frame, focus rect, drop-down button
   style()->drawComplexControl( QStyle::CC_ComboBox, &opt, &painter, this );
