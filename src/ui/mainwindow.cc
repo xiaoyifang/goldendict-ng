@@ -1610,7 +1610,7 @@ void MainWindow::trayIconUpdateOrInit()
   }
   else {
     // Update the icon to reflect the scanning mode
-    QIcon icon( ":/icons/programicon.png" );
+    QIcon icon = QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon.png" ) );
 
 #ifdef Q_OS_MACOS
     // On macOS, use the icon directly without mask for proper color display
