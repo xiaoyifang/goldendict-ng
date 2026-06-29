@@ -5,11 +5,9 @@
         <file>icons/document.png</file>
         <file>icons/audio.png</file>
         <file>version.txt</file>
-        <file>icons/arrow.png</file>
         <file>icons/arrow.svg</file>
         <file>icons/playsound.svg</file>
         <file>icons/programicon.png</file>
-        <file>icons/warning.png</file>
         <file>icons/warning.svg</file>
         <file>icons/icon32_dsl.png</file>
         <file>icons/icon32_stardict.png</file>
@@ -34,7 +32,6 @@
         <file>icons/expand_article.svg</file>
         <file>icons/collapse_article_hovered.svg</file>
         <file>icons/collapse_article.svg</file>
-        <file>icons/video.png</file>
         <file>icons/video.svg</file>
         <file>icons/programicon_old.png</file>
         <file>icons/playsound_full.png</file>
@@ -51,13 +48,10 @@
         <file>icons/closetab.svg</file>
         <file>icons/configure.svg</file>
         <file>icons/error.svg</file>
-        <file>icons/fileopen.svg</file>
         <file>icons/folder-sound.svg</file>
         <file>icons/filesave.png</file>
         <file>icons/folder.svg</file>
-        <file>icons/folder_active.svg</file>
         <file>icons/folders.svg</file>
-        <file>icons/home.svg</file>
         <file>icons/hotkeys.svg</file>
         <file>icons/icon.svg</file>
         <file>icons/icon32_zoombase.png</file>
@@ -93,7 +87,6 @@
         <file>icons/closetab-hover.png</file>
         <file>icons/1downarrow.svg</file>
         <file>icons/wizard-selected.svg</file>
-        <file>icons/mdict-bg.png</file>
         <file>icons/old-arrow.svg</file>
         <file>icons/old-downarrow.svg</file>
         <file>icons/custom_trans.svg</file>

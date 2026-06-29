@@ -1248,7 +1248,13 @@ void MainWindow::mousePressEvent( QMouseEvent * event )
   // middle clicked
   QString subtype = "plain";
 
-  QString str = QApplication::clipboard()->text( subtype, QClipboard::Selection );
+  QString str;
+  if ( Utils::isWayland() ) {
+    str = QApplication::clipboard()->text( subtype, QClipboard::Clipboard );
+  }
+  else {
+    str = QApplication::clipboard()->text( subtype, QClipboard::Selection );
+  }
   setInputLineText( str, WildcardPolicy::EscapeWildcards, NoPopupChange );
 
   QKeyEvent ev( QEvent::KeyPress, Qt::Key_Enter, Qt::NoModifier );
@@ -1604,7 +1610,7 @@ void MainWindow::trayIconUpdateOrInit()
   }
   else {
     // Update the icon to reflect the scanning mode
-    QIcon icon( ":/icons/programicon.png" );
+    QIcon icon = QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon.png" ) );
 
 #ifdef Q_OS_MACOS
     // On macOS, use the icon directly without mask for proper color display

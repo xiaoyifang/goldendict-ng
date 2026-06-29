@@ -22,7 +22,6 @@
 #include "tiff.hh"
 #include "utils.hh"
 #include <QAtomicInt>
-#include <QCryptographicHash>
 #include <QDir>
 #include <QRegularExpression>
 #include <QString>
@@ -565,9 +564,6 @@ void MdxArticleRequest::run()
   // Some synonims make it that the articles appear several times. We combat this
   // by only allowing them to appear once.
   set< uint32_t > articlesIncluded;
-  // Sometimes the articles are physically duplicated. We store hashes of
-  // the bodies to account for this.
-  set< QByteArray > articleBodiesIncluded;
   string articleText;
 
   for ( unsigned x = 0; x < chain.size(); ++x ) {
@@ -604,15 +600,7 @@ void MdxArticleRequest::run()
       return;
     }
 
-    if ( articlesIncluded.find( chain[ x ].articleOffset ) != articlesIncluded.end() ) {
-      continue; // We already have this article in the body.
-    }
-
-    QCryptographicHash hash( QCryptographicHash::Md5 );
-    hash.addData( { articleBody.data(), static_cast< qsizetype >( articleBody.length() ) } );
-    if ( !articleBodiesIncluded.insert( hash.result() ).second ) {
-      continue; // Already had this body
-    }
+    articlesIncluded.insert( chain[ x ].articleOffset );
 
     // Handle internal redirects
     if ( strncmp( articleBody.c_str(), "@@@LINK=", 8 ) == 0 ) {
@@ -929,20 +917,20 @@ QString & MdxDictionary::filterResource( QString & article )
 
   // Handle protocol-relative URLs (//) - Replace them with https://
   // This must be done before replaceLinks so they are seen as absolute URLs
-  article.replace( QRegularExpression( R"(([\s"'](?:src|href|data)\s*=\s*["'])\/\/)" ), R"(\1https://)" );
-  article.replace( QRegularExpression( R"(([\s"'](?:src|href|data)\s*=\s*)(?!\s*["'])\/\/)" ), R"(\1https://)" );
+  article.replace( RX::Mdx::protocolRelativeUrlQuoted, R"(\1https://)" );
+  article.replace( RX::Mdx::protocolRelativeUrlUnquoted, R"(\1https://)" );
 
   replaceLinks( id, article );
 
   // Replace html/body/head with custom tags to avoid hoisting by browser
-  article.replace( QRegularExpression( "<html\\b", QRegularExpression::CaseInsensitiveOption ), "<gd-section-html" );
-  article.replace( QRegularExpression( "</html>", QRegularExpression::CaseInsensitiveOption ), "</gd-section-html>" );
+  article.replace( RX::Mdx::htmlTagStart, "<gd-section-html" );
+  article.replace( RX::Mdx::htmlTagEnd, "</gd-section-html>" );
 
-  article.replace( QRegularExpression( "<body\\b", QRegularExpression::CaseInsensitiveOption ), "<gd-section-body" );
-  article.replace( QRegularExpression( "</body>", QRegularExpression::CaseInsensitiveOption ), "</gd-section-body>" );
+  article.replace( RX::Mdx::bodyTagStart, "<gd-section-body" );
+  article.replace( RX::Mdx::bodyTagEnd, "</gd-section-body>" );
 
-  article.replace( QRegularExpression( "<head\\b", QRegularExpression::CaseInsensitiveOption ), "<gd-section-head" );
-  article.replace( QRegularExpression( "</head>", QRegularExpression::CaseInsensitiveOption ), "</gd-section-head>" );
+  article.replace( RX::Mdx::headTagStart, "<gd-section-head" );
+  article.replace( RX::Mdx::headTagEnd, "</gd-section-head>" );
 
   replaceStyleInHtml( id, article );
   article = isolateStyleCssInHtml( article );

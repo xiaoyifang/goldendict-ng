@@ -5,18 +5,31 @@ set_target_properties(${GOLDENDICT}
         LIBRARY_OUTPUT_DIRECTORY "${GD_WIN_OUTPUT_DIR}"
 )
 
-# TODO: this breaks "Multi-Config" build systems like VisualStudio.
-set(CMAKE_INSTALL_PREFIX "${GD_WIN_OUTPUT_DIR}" CACHE PATH "If you see this message, don't change this unless you want look into CMake build script. If you are an expert, yes, this is wrong. Help welcomed." FORCE)
+set(CMAKE_INSTALL_PREFIX "${GD_WIN_OUTPUT_DIR}" CACHE PATH "Windows packaging install prefix")
+
+# For multi-config generators (VS/Xcode), CMake automatically appends the
+# configuration name (Release/Debug) to RUNTIME_OUTPUT_DIRECTORY. For
+# single-config generators (Ninja), the exe goes directly into the output dir.
+# Adjust deployment and install paths accordingly.
+get_property(GD_MULTI_CONFIG GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
+if(GD_MULTI_CONFIG)
+    # Multi-config: exe at ${GD_WIN_OUTPUT_DIR}/\${CMAKE_INSTALL_CONFIG_NAME}/goldendict.exe
+    set(GD_DEPLOY_EXE "${GD_WIN_OUTPUT_DIR}/\${CMAKE_INSTALL_CONFIG_NAME}/goldendict.exe")
+else()
+    # Single-config: exe at ${GD_WIN_OUTPUT_DIR}/goldendict.exe
+    set(GD_DEPLOY_EXE "${GD_WIN_OUTPUT_DIR}/goldendict.exe")
+endif()
 
 qt_generate_deploy_script(
         TARGET ${GOLDENDICT}
         OUTPUT_SCRIPT deploy_script
-        CONTENT "qt_deploy_runtime_dependencies(
-                EXECUTABLE \"${CMAKE_INSTALL_PREFIX}/goldendict.exe\"
-                BIN_DIR .
-                LIB_DIR .
-        )"
-)
+        CONTENT "
+    qt_deploy_runtime_dependencies(
+        EXECUTABLE \"${GD_DEPLOY_EXE}\"
+        BIN_DIR .
+        LIB_DIR .
+    )
+")
 
 install(SCRIPT ${deploy_script})
 install(DIRECTORY "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/share/opencc" DESTINATION .)
@@ -27,13 +40,32 @@ file(GLOB CRYPTO_DLL "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/bin/libcryp
 install(FILES ${SSL_DLL} DESTINATION .)
 install(FILES ${CRYPTO_DLL} DESTINATION .)
 
-# trick CPack to make the output folder as NSIS installer
+# Copy root-level config-independent files (locale, etc.)
+# For single-config: also copies goldendict.exe and deployed DLLs
+# For multi-config: excludes config subdirectories (handled separately below)
 install(DIRECTORY "${GD_WIN_OUTPUT_DIR}/"
         DESTINATION .
         FILES_MATCHING
         PATTERN "*"
+        PATTERN "Release/*" EXCLUDE
+        PATTERN "Debug/*" EXCLUDE
+        PATTERN "RelWithDebInfo/*" EXCLUDE
+        PATTERN "MinSizeRel/*" EXCLUDE
         PATTERN "*.pdb" EXCLUDE
         PATTERN "*.ilk" EXCLUDE)
+
+# For multi-config generators: copy artifacts from the config-specific subdirectory
+if(GD_MULTI_CONFIG)
+    install(CODE "
+        file(COPY \"${GD_WIN_OUTPUT_DIR}/\${CMAKE_INSTALL_CONFIG_NAME}/\"
+             DESTINATION \"\${CMAKE_INSTALL_PREFIX}/\"
+             FILES_MATCHING
+             PATTERN \"*\"
+             PATTERN \"*.pdb\" EXCLUDE
+             PATTERN \"*.ilk\" EXCLUDE
+        )
+    ")
+endif()
 
 
 set(CPACK_PACKAGE_FILE_NAME "GoldenDict-ng-${PROJECT_VERSION}-Qt${Qt6Widgets_VERSION}")
