@@ -3,7 +3,9 @@
 
 #include "groupcombobox.hh"
 #include <QEvent>
+#include <QPainter>
 #include <QShortcutEvent>
+#include <QStyleOptionComboBox>
 
 GroupComboBox::GroupComboBox( QWidget * parent ):
   QComboBox( parent ),
@@ -81,8 +83,8 @@ QSize GroupComboBox::sizeHint() const
       iconW += 6; // Icon plus some margin
     }
 
-    // 35 pixels for the arrow and internal padding
-    int estimated = iconW + maxW + 35;
+    // 41 pixels for the arrow and internal padding (35 + 6 for left padding)
+    int estimated = iconW + maxW + 41;
     if ( s.width() < estimated ) {
       s.setWidth( estimated );
     }
@@ -105,6 +107,23 @@ bool GroupComboBox::event( QEvent * event )
   }
 
   return QComboBox::event( event );
+}
+
+void GroupComboBox::paintEvent( QPaintEvent * )
+{
+  QStyleOptionComboBox opt;
+  initStyleOption( &opt );
+
+  QPainter painter( this );
+
+  // Draw frame, focus rect, drop-down button
+  style()->drawComplexControl( QStyle::CC_ComboBox, &opt, &painter, this );
+
+  // Add left padding so the icon/text isn't flush against the left edge
+  opt.rect.adjust( 6, 0, 0, 0 );
+
+  // Draw the label (icon + text) with the adjusted content area
+  style()->drawControl( QStyle::CE_ComboBoxLabel, &opt, &painter, this );
 }
 
 QList< QAction * > GroupComboBox::getExternActions()
