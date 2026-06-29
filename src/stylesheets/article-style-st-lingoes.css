@@ -37,40 +37,12 @@ body {
   vertical-align: text-top;
 }
 
-.gdfromprefix {
-  display: none;
-}
-
-.gddictname {
-  display: flex;
-  align-items: center;
-  width: fit-content;
-  /* border: 1px solid #92b0dd; */
-  padding: 0.2em 0.5em;
-  margin-top: 1em;
-  margin-bottom: 0;
-  background: #cfddf0;
-  color: #000080;
-  font-weight: normal;
-  font-size: 12px;
-  cursor: pointer;
-  user-select: none;
-}
-
-.collapse_expand_area {
-  position: absolute;
-  right: 0px;
-}
-
 .gdexpandicon,
 .gdexpandicon:hover,
 .gdcollapseicon,
 .gdcollapseicon:hover {
-  width: auto; /* Maintain aspect ratio */
-  height: 100%; /* Set height to 100% of the container */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain; /* Ensure the image scales proportionally */
+  width: auto;
+  height: 100%;
   vertical-align: text-bottom;
 }
 
@@ -88,6 +60,31 @@ body {
 
 .gdcollapseicon:hover {
   content: url("qrc:///icons/collapse_article_hovered.svg");
+}
+
+.gdfromprefix {
+  display: none;
+}
+
+.gddictname {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5em 0.5em;
+  margin-top: 1em;
+  margin-bottom: 0;
+  background: #cfddf0;
+  color: #000080;
+  font-weight: normal;
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.collapse_expand_area {
+  position: absolute;
+  right: 0px;
 }
 
 .gdarticlebody {

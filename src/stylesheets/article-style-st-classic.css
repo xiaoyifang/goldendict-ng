@@ -412,7 +412,7 @@ div.xdxf {
 .dsl_opt,
 .dsl_opt .dsl_ex,
 .dsl_opt .dsl_ex :not(a),
-.dsl_opt .dsl_ex font[color] /* DSL Feature: Enforce the optional zone color even if the children tags say otherwise */ {
+.dsl_opt .dsl_ex [color] /* DSL Feature: Enforce the optional zone color even if the children tags say otherwise */ {
   color: gray;
 }
 
@@ -1218,7 +1218,6 @@ div.xdxf {
   vertical-align: top;
 }
 .mwiki abbr,
-.mwiki acronym,
 .mwiki .explain {
   border-bottom: 1px dotted black;
   color: black;
@@ -2569,14 +2568,8 @@ table#sv-hooks,
   font-size: 90%;
 }
 
-/* VALIDATOR NOTICE: the following is correct, but the W3C validator doesn't accept it */
-/* -moz-* is a vendor-specific extension (CSS 2.1 4.1.2.1) */
-/* column-count is from the CSS3 module "CSS Multi-column Layout" */
-/* Please ignore any validator errors caused by these two lines */
 .mwiki .references-2column {
   font-size: 90%;
-  -moz-column-count: 2;
-  -webkit-column-count: 2;
   column-count: 2;
 }
 

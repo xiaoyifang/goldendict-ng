@@ -73,6 +73,14 @@ QRegularExpression Mdx::fontFace( R"((?:url\s*\(\s*\"(.*?)\"\s*)\))",
 QRegularExpression Mdx::styleElement( R"((<style[^>]*>)([\w\W]*?)(<\/style>))",
                                       QRegularExpression::CaseInsensitiveOption );
 
+QRegularExpression Mdx::protocolRelativeUrlQuoted( R"(([\s"'](?:src|href|data)\s*=\s*["'])\/\/)" );
+QRegularExpression Mdx::protocolRelativeUrlUnquoted( R"(([\s"'](?:src|href|data)\s*=\s*)(?!\s*["'])\/\/)" );
+QRegularExpression Mdx::htmlTagStart( "<html\\b", QRegularExpression::CaseInsensitiveOption );
+QRegularExpression Mdx::htmlTagEnd( "</html>", QRegularExpression::CaseInsensitiveOption );
+QRegularExpression Mdx::bodyTagStart( "<body\\b", QRegularExpression::CaseInsensitiveOption );
+QRegularExpression Mdx::bodyTagEnd( "</body>", QRegularExpression::CaseInsensitiveOption );
+QRegularExpression Mdx::headTagStart( "<head\\b", QRegularExpression::CaseInsensitiveOption );
+QRegularExpression Mdx::headTagEnd( "</head>", QRegularExpression::CaseInsensitiveOption );
 
 QRegularExpression Epwing::refWord( R"([r|p](\d+)at(\d+))", QRegularExpression::CaseInsensitiveOption );
 

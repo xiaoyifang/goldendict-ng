@@ -10,6 +10,10 @@ body {
   --secondary-text-color: #555;
   --link-color: #005a9c;
   --container-bg: #f9f9f9;
+  --border-color: #e3e3e3;
+  --accent-color: #c00;
+  --selection-bg: #c00;
+  --selection-text: #fff;
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu,
     Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji",
@@ -65,8 +69,8 @@ gd-section-head {
 /* highlight/select color in Windows when a widget is inactive is nearly impossible to read (light gray).
  * then change it to green to use with the find option. */
 ::selection {
-  background: #c00;
-  color: #fff;
+  background: var(--selection-bg);
+  color: var(--selection-text);
 }
 
 /* Don't allow to select [] */
@@ -78,7 +82,7 @@ gd-section-head {
 /* Plaintext dictionaries are usually 80-column formatted and take a lot
  * of space. We try to use smaller fonts for them therefore. */
 pre {
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 /* Dictionary's name heading */
@@ -120,6 +124,11 @@ gd-dict-header,
 .ankibutton:active {
   background-color: hsl(0deg 0% 70%);
   transform: scale(0.95);
+}
+
+.ankibutton:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
 }
 
 .ankibutton img {
@@ -542,7 +551,7 @@ div.xdxf {
 .dsl_opt,
 .dsl_opt .dsl_ex,
 .dsl_opt .dsl_ex :not(a),
-.dsl_opt .dsl_ex font[color] /* DSL Feature: Enforce the optional zone color even if the children tags say otherwise */ {
+.dsl_opt .dsl_ex [color] /* DSL Feature: Enforce the optional zone color even if the children tags say otherwise */ {
   color: gray;
 }
 
@@ -630,7 +639,7 @@ div.xdxf {
   margin: 12px;
 
   box-sizing: border-box;
-  word-break: break-word;
+  overflow-wrap: break-word;
   line-height: 1.5;
 }
 
@@ -1388,7 +1397,6 @@ div.xdxf {
   vertical-align: top;
 }
 .mwiki abbr,
-.mwiki acronym,
 .mwiki .explain {
   border-bottom: 1px dotted black;
   color: black;
@@ -2816,14 +2824,8 @@ table#sv-hooks,
   font-size: 90%;
 }
 
-/* VALIDATOR NOTICE: the following is correct, but the W3C validator doesn't accept it */
-/* -moz-* is a vendor-specific extension (CSS 2.1 4.1.2.1) */
-/* column-count is from the CSS3 module "CSS Multi-column Layout" */
-/* Please ignore any validator errors caused by these two lines */
 .mwiki .references-2column {
   font-size: 90%;
-  -moz-column-count: 2;
-  -webkit-column-count: 2;
   column-count: 2;
 }
 
@@ -3159,7 +3161,6 @@ table#sv-hooks,
   width: 1rem;
   height: 1rem;
   vertical-align: text-bottom;
-  background-size: contain;
   content: url("qrc:///icons/arrow.svg");
 }
 
@@ -3168,8 +3169,13 @@ table#sv-hooks,
   width: 1rem;
   height: 1rem;
   vertical-align: text-bottom;
-  background-size: contain;
   content: url("qrc:///icons/downarrow.svg");
+}
+
+.gdexpandicon:focus,
+.gdcollapseicon:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
 }
 
 /********** Slob dictionaries ***********/

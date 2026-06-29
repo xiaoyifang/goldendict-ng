@@ -48,6 +48,15 @@ public:
   static QRegularExpression links;
   static QRegularExpression fontFace;
   static QRegularExpression styleElement;
+
+  static QRegularExpression protocolRelativeUrlQuoted;
+  static QRegularExpression protocolRelativeUrlUnquoted;
+  static QRegularExpression htmlTagStart;
+  static QRegularExpression htmlTagEnd;
+  static QRegularExpression bodyTagStart;
+  static QRegularExpression bodyTagEnd;
+  static QRegularExpression headTagStart;
+  static QRegularExpression headTagEnd;
 };
 
 namespace Zim {

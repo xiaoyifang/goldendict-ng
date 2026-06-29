@@ -1286,7 +1286,7 @@ void ArticleView::playAudio( const QUrl & url )
           QString error;
 
           // Delete the request if it fails to start
-          if ( !req->start( program, url.path().mid( 1 ), error ) ) {
+          if ( !req->start( program, url.path().mid( 1 ), GlobalBroadcaster::instance()->translateLineText, error ) ) {
             delete req;
 
             QMessageBox::critical( this, "GoldenDict", error );
