@@ -3074,10 +3074,6 @@ be the last ones.</source>
       <translation>Αυτές οι γραμματοσειρές θα εφαρμοστούν όταν δεν βρεθούν οι γραμματοσειρές που καθορίζονται από ένα λεξικό.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Εναλλακτικές γραμματοσειρές</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Τυπική γραμματοσειρά</translation>
     </message>
@@ -3548,6 +3544,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Αλλάζει αυτόματα με βάση το θέμα του συστήματος.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Προσαρμογή γραμματοσειρών</translation>
     </message>
   </context>
   <context>
