@@ -650,7 +650,13 @@ void Preferences::on_buttonBox_accepted()
     QMessageBox::information( this, tr( "Restart needed" ), promptText );
   }
 
-  if ( c.customFonts != prevWebFontFamily && c.useFallbackFonts ) {
+  if ( !c.useFallbackFonts ) {
+    QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::StandardFont );
+    QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::SerifFont );
+    QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::SansSerifFont );
+    QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::FixedFont );
+  }
+  else if ( c.customFonts != prevWebFontFamily ) {
     QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::StandardFont,
                                                                     c.customFonts.standard );
     QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::SerifFont,
