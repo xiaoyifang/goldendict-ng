@@ -532,7 +532,7 @@ be the last ones.</string>
             <string>These fonts will be applied when the fonts specified by a dictionary are not found.</string>
            </property>
            <property name="title">
-            <string>Fallback Fonts</string>
+            <string>Customize Fonts</string>
            </property>
            <property name="checkable">
             <bool>true</bool>
