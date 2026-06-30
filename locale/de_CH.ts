@@ -3066,10 +3066,6 @@ dem aktiven. Ansonsten werden sie zum letzten hinzugefügt.</translation>
       <translation>Diese Schriftarten werden angewendet, wenn die in einem Wörterbuch angegebenen Schriftarten nicht gefunden werden.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Fallback-Schriftarten</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Standardschriftart</translation>
     </message>
@@ -3535,6 +3531,10 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Wechselt automatisch basierend auf dem Systemthema.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Schriftarten anpassen</translation>
     </message>
   </context>
   <context>
