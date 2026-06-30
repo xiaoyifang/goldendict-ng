@@ -3069,10 +3069,6 @@ be the last ones.</source>
       <translation>Kay qillqakunaqa churakunqa huk simi pirwapa nisqa qillqakuna mana tarisqa kaptin.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Fallback nisqa qillqakuna</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Fuente Estándar nisqa</translation>
     </message>
@@ -3541,6 +3537,10 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation type="unfinished">Automatically switches based on system theme.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation type="unfinished">Customize Fonts</translation>
     </message>
   </context>
   <context>

@@ -3072,10 +3072,6 @@ jako poslední.</translation>
       <translation>Tato písma budou použita, pokud nebudou nalezena písma určená slovníkem.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Záložní písma</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Standardní písmo</translation>
     </message>
@@ -3545,6 +3541,10 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Automaticky se přepne podle systémového tématu.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Přizpůsobit písma</translation>
     </message>
   </context>
   <context>

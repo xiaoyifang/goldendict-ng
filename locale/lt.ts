@@ -3073,10 +3073,6 @@ būkite paskutiniai.</translation>
       <translation>Šie šriftai bus taikomi, kai žodyne nurodyti šriftai nebus rasti.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Atsarginiai šriftai</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Standartinis šriftas</translation>
     </message>
@@ -3544,6 +3540,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Automatiškai persijungia pagal sistemos temą.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Tinkinti šriftus</translation>
     </message>
   </context>
   <context>

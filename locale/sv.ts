@@ -3072,10 +3072,6 @@ vara de sista.</translation>
       <translation>Dessa typsnitt kommer att tillämpas när de typsnitt som anges i en ordbok inte hittas.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Reservteckensnitt</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Standard teckensnitt</translation>
     </message>
@@ -3548,6 +3544,10 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Byter automatiskt baserat på systemtema.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Anpassa typsnitt</translation>
     </message>
   </context>
   <context>

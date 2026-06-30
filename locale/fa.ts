@@ -3070,10 +3070,6 @@ be the last ones.</source>
       <translation>این فونت ها زمانی اعمال می شوند که فونت های مشخص شده توسط یک فرهنگ لغت پیدا نشوند.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>فونت های بازگشتی</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>فونت استاندارد</translation>
     </message>
@@ -3543,6 +3539,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>به طور خودکار بر اساس تم سیستم سوئیچ می کند.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>فونت های سفارشی سازی</translation>
     </message>
   </context>
   <context>

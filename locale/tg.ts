@@ -3072,10 +3072,6 @@ be the last ones.</source>
       <translation>Ин ҳуруфҳо вақте истифода мешаванд, ки ҳуруфҳои аз ҷониби луғат муайяншуда ёфт нашуданд.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Шрифтҳои бозгашт</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Шрифти стандартӣ</translation>
     </message>
@@ -3546,6 +3542,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation type="unfinished">Automatically switches based on system theme.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation type="unfinished">Customize Fonts</translation>
     </message>
   </context>
   <context>

@@ -3051,10 +3051,6 @@ be the last ones.</source>
       <translation>Гэтыя шрыфты будуць ужывацца, калі не ўдасца знайсці шрыфты, пазначаныя ў слоўніку.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Запасныя шрыфты</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Стандартны шрыфт</translation>
     </message>
@@ -3521,6 +3517,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Аўтаматычна пераключаецца ў залежнасці ад сістэмнай тэмы.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Наладзіць шрыфты</translation>
     </message>
   </context>
   <context>

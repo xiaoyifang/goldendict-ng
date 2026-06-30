@@ -3071,10 +3071,6 @@ be the last ones.</source>
       <translation>Тези шрифтове ще бъдат приложени, когато шрифтовете, зададени от речник, не бъдат намерени.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Резервни шрифтове</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Стандартен шрифт</translation>
     </message>
@@ -3544,6 +3540,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Автоматично превключва според системната тема.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Персонализиране на шрифтовете</translation>
     </message>
   </context>
   <context>

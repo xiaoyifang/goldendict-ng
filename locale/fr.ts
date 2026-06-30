@@ -3072,10 +3072,6 @@ courant, actif. Sinon, ils sont ajoutés à
       <translation>Ces polices seront appliquées lorsque les polices spécifiées par un dictionnaire ne seront pas trouvées.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Polices de secours</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Police standard</translation>
     </message>
@@ -3544,6 +3540,10 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Ça change automatiquement selon le thème du système.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Personnaliser les polices</translation>
     </message>
   </context>
   <context>

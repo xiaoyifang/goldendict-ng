@@ -3073,10 +3073,6 @@ de laatste.</translation>
       <translation>Deze lettertypen worden toegepast wanneer de lettertypen die door een woordenboek zijn opgegeven, niet worden gevonden.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Fallback-lettertypen</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Standaard lettertype</translation>
     </message>
@@ -3544,6 +3540,10 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Schakelt automatisch op basis van het systeemthema.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Lettertypen aanpassen</translation>
     </message>
   </context>
   <context>
