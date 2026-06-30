@@ -3067,10 +3067,6 @@ be the last ones.</source>
       <translation>ये फ़ॉन्ट तब लागू किए जाएंगे जब शब्दकोश द्वारा निर्दिष्ट फ़ॉन्ट नहीं मिलेंगे।</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>फ़ॉलबैक फ़ॉन्ट्स</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>मानक फ़ॉन्ट</translation>
     </message>
@@ -3532,6 +3528,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>सिस्टम थीम के आधार पर स्वचालित रूप से स्विच करता है।</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>फ़ॉन्ट्स अनुकूलित करें</translation>
     </message>
   </context>
   <context>
