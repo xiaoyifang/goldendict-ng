@@ -133,6 +133,8 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
       QWebEngineProfile::defaultProfile()->settings()->fontFamily( QWebEngineSettings::FixedFont ) );
   }
 
+  ui.fallbackFontsGroupBox->setChecked( p.useFallbackFonts );
+
   ui.displayStyle->addItem( QIcon( ":/icons/programicon.png" ), tr( "Default" ), QString() );
   ui.displayStyle->addItem( QIcon( ":/icons/programicon_old.png" ), tr( "Classic" ), QString( "classic" ) );
   ui.displayStyle->addItem( QIcon( ":/icons/programicon.png" ), tr( "Modern" ), QString( "modern" ) );
@@ -466,7 +468,7 @@ Config::Preferences Preferences::getPreferences()
   c.sansSerif   = ui.font_sans->currentText();
   c.monospace   = ui.font_monospace->currentText();
   p.customFonts = c;
-
+  p.useFallbackFonts = ui.fallbackFontsGroupBox->isChecked();
 
   p.displayStyle = ui.displayStyle->itemData( ui.displayStyle->currentIndex() ).toString();
   if ( ui.InterfaceStyle->isVisible() ) {
@@ -648,7 +650,7 @@ void Preferences::on_buttonBox_accepted()
     QMessageBox::information( this, tr( "Restart needed" ), promptText );
   }
 
-  if ( c.customFonts != prevWebFontFamily ) {
+  if ( c.customFonts != prevWebFontFamily && c.useFallbackFonts ) {
     QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::StandardFont,
                                                                     c.customFonts.standard );
     QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::SerifFont,

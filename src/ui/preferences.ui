@@ -527,12 +527,15 @@ be the last ones.</string>
           </widget>
          </item>
          <item>
-          <widget class="QGroupBox" name="groupBox_10">
+          <widget class="QGroupBox" name="fallbackFontsGroupBox">
            <property name="toolTip">
             <string>These fonts will be applied when the fonts specified by a dictionary are not found.</string>
            </property>
            <property name="title">
             <string>Fallback Fonts</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_24">
             <item>

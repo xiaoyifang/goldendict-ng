@@ -113,6 +113,14 @@ QString ApplicationSettingName = "GoldenDict";
 
 void MainWindow::changeWebEngineViewFont() const
 {
+  if ( !cfg.preferences.useFallbackFonts ) {
+    QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::StandardFont );
+    QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::SerifFont );
+    QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::SansSerifFont );
+    QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::FixedFont );
+    return;
+  }
+
   if ( cfg.preferences.customFonts.standard.isEmpty() ) {
     QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::StandardFont );
   }
