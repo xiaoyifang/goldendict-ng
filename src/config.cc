@@ -805,6 +805,10 @@ Class load()
       c.preferences.customFonts = fonts;
     }
 
+    if ( !preferences.namedItem( "useFallbackFonts" ).isNull() ) {
+      c.preferences.useFallbackFonts = preferences.namedItem( "useFallbackFonts" ).toElement().text() == "1";
+    }
+
     if ( !preferences.namedItem( "doubleClickTranslates" ).isNull() ) {
       c.preferences.doubleClickTranslates =
         ( preferences.namedItem( "doubleClickTranslates" ).toElement().text() == "1" );
@@ -1692,6 +1696,10 @@ void save( const Class & c )
     opt             = dd.createElement( "customFonts" );
     auto customFont = c.preferences.customFonts.toElement( dd );
     preferences.appendChild( customFont );
+
+    opt = dd.createElement( "useFallbackFonts" );
+    opt.appendChild( dd.createTextNode( c.preferences.useFallbackFonts ? "1" : "0" ) );
+    preferences.appendChild( opt );
 
     opt = dd.createElement( "displayStyle" );
     opt.appendChild( dd.createTextNode( c.preferences.displayStyle ) );

@@ -3043,10 +3043,6 @@ be the last ones.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Fallback Fonts</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Standard Font</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3506,6 +3502,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Automatically switches based on system theme.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Customize Fonts</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
