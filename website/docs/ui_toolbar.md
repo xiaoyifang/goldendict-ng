@@ -36,6 +36,7 @@ Click the icons to select/unselect them.
 ++ctrl+"Click"++ will focus on a single dictionary.
 
 If a dictionary is the only one selected, clicking it with ++ctrl++ will reselect all dictionaries.
+
 ### Temporary Selection
 
 Temporarily capture the selection and restore it later.

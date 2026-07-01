@@ -118,8 +118,8 @@ Depending on your system, you need to install the following tools:
 
 - **OCR Engine**: tesseract and its language packs.
 - **Screenshot Tool**: Choose according to your desktop environment:
-  - KDE (Plasma): Install spectacle.
-  - Sway (Wayland): Install grim and slurp.
+    - KDE (Plasma): Install spectacle.
+    - Sway (Wayland): Install grim and slurp.
 - **Other**: bash environment.
 
 Example installation for Ubuntu/Debian:
