@@ -84,7 +84,8 @@ pre {
 .gderrordesc {
   font-style: italic;
   background: url("qrc:///icons/warning.svg") center left no-repeat !important;
-  padding-left: 22px !important;
+  background-size: auto min(100%, 24px);
+  padding-left: 2em !important;
   margin: 1em;
 }
 
