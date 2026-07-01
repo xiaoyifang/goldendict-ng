@@ -3072,10 +3072,6 @@ iň soňkusy bol.</translation>
       <translation>Bu şriftler sözlükde görkezilen şriftler tapylmasa ulanylar.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Yza gaýdýan şriftler</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Adaty şrift</translation>
     </message>
@@ -3546,6 +3542,10 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Sistemanyň temasyna görä otomatik geçýär.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Kalamlary Üýtget</translation>
     </message>
   </context>
   <context>

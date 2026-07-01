@@ -3073,10 +3073,6 @@ be the last ones.</translation>
       <translation>These fonts will be applied when the fonts specified by a dictionary are not found.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Fallback Fonts</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Standard Font</translation>
     </message>
@@ -3547,6 +3543,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Yettbeddil s yiman-is ɣef leḥsab n usentel n unagraw.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Ssemyif Tiṭṭawin</translation>
     </message>
   </context>
   <context>
