@@ -8,4 +8,13 @@ module.exports = {
   htmlWhitespaceSensitivity: "ignore",
   endOfLine: "lf",
   embeddedLanguageFormatting: "auto",
+  overrides: [
+    {
+      files: ["*.md", "**/*.md"],
+      options: {
+        tabWidth: 4,
+        proseWrap: "preserve",
+      },
+    },
+  ],
 };

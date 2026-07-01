@@ -12,10 +12,7 @@ on:
       - staged
       - experimental
     paths-ignore:
-      - "docs/**"
       # - ".github/**"
-      - "howto/**"
-      - "*.md"
       - "locale/**"
 jobs:
   clang-format:
@@ -34,11 +31,11 @@ jobs:
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           brew install clang-format
           (/home/linuxbrew/.linuxbrew/opt/clang-format/bin/git-clang-format --binary=/home/linuxbrew/.linuxbrew/opt/clang-format/bin/clang-format --style=file HEAD^) || true
-      - uses: autofix-ci/action@v1
+      - uses: autofix-ci/action@c5b2d67aa2274e7b5a18224e8171550871fc7e4a
 
 
   css-js-html-format:
-    name: format css/js/html
+    name: format css/js/html/md
     permissions:
       contents: read
     runs-on: ubuntu-latest
@@ -46,9 +43,24 @@ jobs:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 2
-      - name: format css/js/html
+      - name: format css/js/html/md
         run: npx prettier@3.8.3 . --write
-      - uses: autofix-ci/action@v1
+      - uses: autofix-ci/action@c5b2d67aa2274e7b5a18224e8171550871fc7e4a
+
+  markdownlint:
+    name: lint and fix markdown files
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
+      - name: install markdownlint-cli
+        run: npm install -g markdownlint-cli
+      - name: fix markdown files
+        run: markdownlint "**/*.md" --config .markdownlint.json --fix
+      - uses: autofix-ci/action@c5b2d67aa2274e7b5a18224e8171550871fc7e4a
 
   update-crowdin:
     name: update crowdin.ts file
@@ -68,4 +80,4 @@ jobs:
       - name: update crowdin.ts
         run: |
           lupdate -no-obsolete -no-ui-lines -locations none src -ts locale/crowdin.ts
-      - uses: autofix-ci/action@v1
+      - uses: autofix-ci/action@c5b2d67aa2274e7b5a18224e8171550871fc7e4a
