@@ -1,0 +1,32 @@
+{
+  "default": true,
+  "MD007": {
+    "indent": 4
+  },
+  "MD022": {
+    "lines_above": 1,
+    "lines_below": 1
+  },
+  "MD009": {
+    "br_spaces": 2,
+    "list_item_empty_lines": true
+  },
+  "MD010": {
+    "code_blocks": true
+  },
+  "MD013": {
+    "line_length": 120,
+    "code_blocks": "fenced",
+    "tables": false
+  },
+  "MD024": {
+    "siblings_only": true
+  },
+  "MD029": {
+    "style": "ordered"
+  },
+  "MD033": false,
+  "MD034": false,
+  "MD036": false,
+  "MD041": false
+}
