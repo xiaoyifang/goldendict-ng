@@ -6,6 +6,32 @@ However, any OCR program supporting "post-capture actions" can integrate seamles
 
 A few examples are provided below, though many similar tools are available.
 
+## Clipboard Monitoring Mode
+
+This is a universal method that works with any OCR program that supports copying recognition results to the clipboard.
+
+### Setup Steps
+
+1. **Enable Clipboard Monitoring in GoldenDict-ng**:
+   - **Via Toolbar**: Click the 📋 button on the toolbar to toggle clipboard monitoring on/off
+   - **Via Settings**: Open `Edit` → `Preferences`, go to the **Scan Popup** section, enable **Track Clipboard change**, and optionally enable **Start with clipboard monitoring turned on** to auto-enable at startup
+
+2. **Configure Your OCR Program**:
+   - Use any OCR software (e.g., Capture2Text, OCRSpace, ScreenTranslate, etc.)
+   - Configure the OCR program to copy the recognized text to the system clipboard after recognition
+
+3. **Usage**:
+   - Keep GoldenDict-ng running in the background with clipboard monitoring enabled
+   - Use your OCR program to capture and recognize text
+   - After the OCR program copies the text to clipboard, GoldenDict-ng will automatically detect the change and show the translation popup
+
+### Benefits
+
+- Works with any OCR tool that supports clipboard output
+- Cross-platform compatible (Windows, macOS, Linux)
+- No need to configure command-line arguments or executable paths
+- Simple and flexible integration
+
 ## Capture2Text
 
 Capture2Text can call executable after capturing, and you can set the executable to GoldenDict.
@@ -39,7 +65,7 @@ Capture2Text does not have a Linux version, but I have ported it to Linux <https
 
 ## Shortcuts.app & Apple's OCR
 
-Enable the Clipboard monitoring of GoldenDict, then create a "Shortcut" that will interactively take a screenshot and change the clipboard.
+This is a macOS-specific implementation of the [Clipboard Monitoring Mode](#clipboard-monitoring-mode). Enable clipboard monitoring in GoldenDict-ng (see above), then create a "Shortcut" that will interactively take a screenshot and change the clipboard.
 
 ![image](img/shortcuts-ocr.png)
 
