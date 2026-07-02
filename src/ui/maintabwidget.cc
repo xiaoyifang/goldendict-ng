@@ -3,6 +3,8 @@
 
 #include "maintabwidget.hh"
 #include <QMouseEvent>
+#include <QMenu>
+#include <QContextMenuEvent>
 
 MainTabWidget::MainTabWidget( QWidget * parent ):
   QTabWidget( parent )
@@ -34,6 +36,25 @@ void MainTabWidget::tabRemoved( int index )
 
   // Avoid bug in Qt 4.8.0
   setUsesScrollButtons( count() > 10 );
+}
+
+void MainTabWidget::contextMenuEvent( QContextMenuEvent * event )
+{
+  int tabIdx = tabBar()->tabAt( event->pos() );
+  if ( tabIdx < 0 )
+    return;
+
+  QMenu menu( this );
+  QAction * moveAction = menu.addAction( tr( "Move to Panel" ) );
+  QAction * closeAction = menu.addAction( tr( "Close Tab" ) );
+
+  QAction * chosen = menu.exec( event->globalPos() );
+  if ( chosen == moveAction ) {
+    emit moveTabToPanelRequested( tabIdx );
+  }
+  else if ( chosen == closeAction ) {
+    emit tabCloseRequested( tabIdx );
+  }
 }
 
 void MainTabWidget::updateTabBarVisibility()

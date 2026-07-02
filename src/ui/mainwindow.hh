@@ -52,6 +52,16 @@ public:
   /// Set group for main/popup window
   void setGroupByName( const QString & name, bool main_window );
 
+  // Side-by-side panels
+  void addPanel( ArticleView * av );
+  void removePanel( ArticleView * av );
+  void closePanelTab();
+  void togglePanel();
+  void togglePanelOrientation();
+  int totalTabCount() const;
+int panelCount() const;
+  void distributePanelSizes();
+
   enum class WildcardPolicy {
     EscapeWildcards,
     WildcardsAreAlreadyEscaped
@@ -117,7 +127,8 @@ private:
 
   QAction escAction, focusTranslateLineAction, addTabAction, closeCurrentTabAction, closeAllTabAction,
     closeRestTabAction, switchToNextTabAction, switchToPrevTabAction, showDictBarNamesAction, toggleMenuBarAction,
-    lockPanelsAction, focusHeadwordsDlgAction, focusArticleViewAction, addAllTabToFavoritesAction;
+    lockPanelsAction, focusHeadwordsDlgAction, focusArticleViewAction, addAllTabToFavoritesAction,
+    togglePanelAction, togglePanelOrientationAction, closePanelAction;
 
   QAction useSmallIconsInToolbarsAction, useLargeIconsInToolbarsAction, useNormalIconsInToolbarsAction;
 

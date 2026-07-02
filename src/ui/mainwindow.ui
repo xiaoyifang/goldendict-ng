@@ -14,7 +14,7 @@
    <string notr="true">GoldenDict-ng</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <layout class="QHBoxLayout" name="centralLayout">
     <property name="leftMargin">
      <number>1</number>
     </property>
@@ -40,6 +40,13 @@
       </property>
       <property name="elideMode">
        <enum>Qt::ElideRight</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QSplitter" name="panelSplitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
      </widget>
     </item>

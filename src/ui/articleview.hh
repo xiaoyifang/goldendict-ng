@@ -217,6 +217,12 @@ public:
   /// Reloads the view
   void reload();
 
+  /// Navigates to the previous article relative to the active one.
+  void moveOneArticleUp();
+
+  /// Navigates to the next article relative to the active one.
+  void moveOneArticleDown();
+
   void stopSound();
 
   /// Returns true if there's an audio reference on the page, false otherwise.
@@ -392,12 +398,6 @@ private slots:
   void pasteTriggered();
 
   unsigned getCurrentGroup();
-
-  /// Nagivates to the previous article relative to the active one.
-  void moveOneArticleUp();
-
-  /// Nagivates to the next article relative to the active one.
-  void moveOneArticleDown();
 
   void on_searchText_textEdited();
   void on_searchText_returnPressed();
