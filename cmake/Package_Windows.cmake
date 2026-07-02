@@ -70,6 +70,7 @@ endif()
 
 set(CPACK_PACKAGE_FILE_NAME "GoldenDict-ng-${PROJECT_VERSION}-Qt${Qt6Widgets_VERSION}")
 set(CPACK_GENERATOR "7Z;NSIS64")
+set(CPACK_PACKAGE_VENDOR "GoldenDict-ng")
 
 # override the default install path, which is $PROGRAMFILES64\${project-name} ${project-version} in NSIS
 set(CPACK_PACKAGE_INSTALL_DIRECTORY "GoldenDict-ng")
