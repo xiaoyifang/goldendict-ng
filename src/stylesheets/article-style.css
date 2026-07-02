@@ -3279,3 +3279,9 @@ table#sv-hooks,
 .gls_wav img {
   vertical-align: middle;
 }
+
+/* Dict panel height limit */
+.gdarticlebody {
+  max-height: var(--gd-panel-height);
+  overflow-y: auto;
+}

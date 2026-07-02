@@ -256,6 +256,22 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.ignorePunctuation->setChecked( p.ignorePunctuation );
   ui.sessionCollapse->setChecked( p.sessionCollapse );
 
+  ui.dictPanelEnabled->setChecked( p.dictPanelEnabled );
+  ui.dictPanelMaxHeight->setValue( p.dictPanelMaxHeight );
+  int unitIdx = ui.dictPanelHeightUnit->findText( p.dictPanelHeightUnit );
+  if ( unitIdx >= 0 )
+    ui.dictPanelHeightUnit->setCurrentIndex( unitIdx );
+  ui.dictPanelScrollZone->setValue( p.dictPanelScrollZone );
+
+// Gray out height/spin controls when limit is unchecked
+auto updateDictPanelWidgets = [ this ]() {
+  bool on = ui.dictPanelEnabled->isChecked();
+  ui.dictPanelMaxHeight->setEnabled( on );
+  ui.dictPanelHeightUnit->setEnabled( on );
+};
+connect( ui.dictPanelEnabled, &QCheckBox::toggled, this, updateDictPanelWidgets );
+updateDictPanelWidgets();
+
   ui.synonymSearchEnabled->setChecked( p.synonymSearchEnabled );
 
   ui.stripClipboard->setChecked( p.stripClipboard );
@@ -527,6 +543,12 @@ Config::Preferences Preferences::getPreferences()
   p.ignoreDiacritics       = ui.ignoreDiacritics->isChecked();
   p.ignorePunctuation      = ui.ignorePunctuation->isChecked();
   p.sessionCollapse        = ui.sessionCollapse->isChecked();
+
+  p.dictPanelEnabled    = ui.dictPanelEnabled->isChecked();
+  p.dictPanelMaxHeight  = ui.dictPanelMaxHeight->value();
+  p.dictPanelHeightUnit = ui.dictPanelHeightUnit->currentText();
+  p.dictPanelScrollZone = ui.dictPanelScrollZone->value();
+
   p.stripClipboard         = ui.stripClipboard->isChecked();
   p.raiseWindowOnSearch    = ui.raiseWindowOnSearch->isChecked();
 

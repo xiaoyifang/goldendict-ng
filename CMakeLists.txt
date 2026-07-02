@@ -233,4 +233,9 @@ else ()
     include(cmake/Package_macOS.cmake)
 endif ()
 
+# Default to Release for local builds (overridable)
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release CACHE STRING "" FORCE)
+endif()
+
 feature_summary(WHAT ALL DESCRIPTION "Build configuration:")
