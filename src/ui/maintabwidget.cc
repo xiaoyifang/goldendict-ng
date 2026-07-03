@@ -45,7 +45,7 @@ void MainTabWidget::contextMenuEvent( QContextMenuEvent * event )
     return;
 
   QMenu menu( this );
-  QAction * moveAction = menu.addAction( tr( "Move to Panel" ) );
+  QAction * moveAction  = menu.addAction( tr( "Move to Panel" ) );
   QAction * closeAction = menu.addAction( tr( "Close Tab" ) );
 
   QAction * chosen = menu.exec( event->globalPos() );
