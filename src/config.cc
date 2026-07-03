@@ -1031,7 +1031,7 @@ Class load()
       c.preferences.raiseWindowOnSearch = ( preferences.namedItem( "raiseWindowOnSearch" ).toElement().text() == "1" );
     }
 
-    c.preferences.dictPanelEnabled = ( preferences.namedItem( "dictPanelEnabled" ).toElement().text() == "1" );
+    c.preferences.dictPanelEnabled   = ( preferences.namedItem( "dictPanelEnabled" ).toElement().text() == "1" );
     c.preferences.dictPanelMaxHeight = preferences.namedItem( "dictPanelMaxHeight" ).toElement().text().toInt();
     if ( !preferences.namedItem( "dictPanelHeightUnit" ).isNull() )
       c.preferences.dictPanelHeightUnit = preferences.namedItem( "dictPanelHeightUnit" ).toElement().text();
@@ -1039,7 +1039,8 @@ Class load()
       c.preferences.dictPanelScrollZone = preferences.namedItem( "dictPanelScrollZone" ).toElement().text().toInt();
 
     if ( !preferences.namedItem( "sideBySideDefaultSplit" ).isNull() )
-      c.preferences.sideBySideDefaultSplit = preferences.namedItem( "sideBySideDefaultSplit" ).toElement().text().toInt();
+      c.preferences.sideBySideDefaultSplit =
+        preferences.namedItem( "sideBySideDefaultSplit" ).toElement().text().toInt();
 
     QDomNode fts = preferences.namedItem( "fullTextSearch" );
 

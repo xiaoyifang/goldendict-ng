@@ -263,14 +263,14 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     ui.dictPanelHeightUnit->setCurrentIndex( unitIdx );
   ui.dictPanelScrollZone->setValue( p.dictPanelScrollZone );
 
-// Gray out height/spin controls when limit is unchecked
-auto updateDictPanelWidgets = [ this ]() {
-  bool on = ui.dictPanelEnabled->isChecked();
-  ui.dictPanelMaxHeight->setEnabled( on );
-  ui.dictPanelHeightUnit->setEnabled( on );
-};
-connect( ui.dictPanelEnabled, &QCheckBox::toggled, this, updateDictPanelWidgets );
-updateDictPanelWidgets();
+  // Gray out height/spin controls when limit is unchecked
+  auto updateDictPanelWidgets = [ this ]() {
+    bool on = ui.dictPanelEnabled->isChecked();
+    ui.dictPanelMaxHeight->setEnabled( on );
+    ui.dictPanelHeightUnit->setEnabled( on );
+  };
+  connect( ui.dictPanelEnabled, &QCheckBox::toggled, this, updateDictPanelWidgets );
+  updateDictPanelWidgets();
 
   ui.synonymSearchEnabled->setChecked( p.synonymSearchEnabled );
 
