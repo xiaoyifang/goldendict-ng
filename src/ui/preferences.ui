@@ -1880,6 +1880,79 @@ from mouse-over, selection, clipboard or command line</string>
         </widget>
        </item>
        <item>
+        <widget class="QGroupBox" name="dictPanelGroup">
+         <property name="title">
+          <string>Articles Extra</string>
+         </property>
+         <layout class="QFormLayout" name="formLayout_dictPanel">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="dictPanelEnabled">
+            <property name="text">
+             <string>Limit dictionary article height</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_dictPanel">
+            <item>
+             <widget class="QLabel" name="dictPanelHeightLabel">
+              <property name="text">
+               <string>Max height:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="dictPanelMaxHeight">
+              <property name="minimum">
+               <number>50</number>
+              </property>
+              <property name="maximum">
+               <number>2000</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="dictPanelHeightUnit">
+              <item>
+               <property name="text">
+                <string>px</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="2" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_dictPanelScroll">
+            <item>
+             <widget class="QLabel" name="dictPanelZoneLabel">
+              <property name="text">
+               <string>Scroll zone split:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="dictPanelScrollZone">
+              <property name="toolTip">
+               <string>Width of the middle scroll zone as percentage. Moving the mouse wheel in this zone scrolls the article. Moving in the outer zones scrolls the page.</string>
+              </property>
+              <property name="suffix">
+               <string>%</string>
+              </property>
+              <property name="minimum">
+               <number>0</number>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
         <widget class="QCheckBox" name="synonymSearchEnabled">
          <property name="toolTip">
           <string>Turn this option on to enable extra articles search via synonym lists

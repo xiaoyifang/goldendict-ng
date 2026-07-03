@@ -198,6 +198,15 @@ std::string ArticleMaker::makeHtmlHeader( const QString & word, const QString & 
     result += fmt::format( FMT_COMPILE( R"(<script src="bres://user/{}" defer></script>)" ), userJsFile.value() );
   }
 
+  // Add overflow-y for scroll zones (always) and max-height if limit enabled
+  result += QString( R"(<style>.gdarticlebody{overflow-y:auto;})" ).toStdString();
+  if ( cfg.dictPanelEnabled ) {
+    result += QString( R"(:root{--gd-panel-height:%1%2;}.gdarticlebody{max-height:var(--gd-panel-height);})" )
+                .arg( QString::number( cfg.dictPanelMaxHeight ), cfg.dictPanelHeightUnit )
+                .toStdString();
+  }
+  result += "</style>";
+
   result += "</head><body>";
 
   return result;

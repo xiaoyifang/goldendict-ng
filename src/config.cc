@@ -154,7 +154,12 @@ Preferences::Preferences():
   maxDictionaryRefsInContextMenu( 20 ),
   synonymSearchEnabled( true ),
   stripClipboard( false ),
-  interfaceStyle( "Default" )
+  interfaceStyle( "Default" ),
+  dictPanelEnabled( true ),
+  dictPanelMaxHeight( 300 ),
+  dictPanelHeightUnit( "px" ),
+  dictPanelScrollZone( 50 ),
+  sideBySideDefaultSplit( 50 )
 {
 }
 
@@ -1025,6 +1030,17 @@ Class load()
     if ( !preferences.namedItem( "raiseWindowOnSearch" ).isNull() ) {
       c.preferences.raiseWindowOnSearch = ( preferences.namedItem( "raiseWindowOnSearch" ).toElement().text() == "1" );
     }
+
+    c.preferences.dictPanelEnabled   = ( preferences.namedItem( "dictPanelEnabled" ).toElement().text() == "1" );
+    c.preferences.dictPanelMaxHeight = preferences.namedItem( "dictPanelMaxHeight" ).toElement().text().toInt();
+    if ( !preferences.namedItem( "dictPanelHeightUnit" ).isNull() )
+      c.preferences.dictPanelHeightUnit = preferences.namedItem( "dictPanelHeightUnit" ).toElement().text();
+    if ( !preferences.namedItem( "dictPanelScrollZone" ).isNull() )
+      c.preferences.dictPanelScrollZone = preferences.namedItem( "dictPanelScrollZone" ).toElement().text().toInt();
+
+    if ( !preferences.namedItem( "sideBySideDefaultSplit" ).isNull() )
+      c.preferences.sideBySideDefaultSplit =
+        preferences.namedItem( "sideBySideDefaultSplit" ).toElement().text().toInt();
 
     QDomNode fts = preferences.namedItem( "fullTextSearch" );
 
@@ -2030,6 +2046,22 @@ void save( const Class & c )
 
     opt = dd.createElement( "raiseWindowOnSearch" );
     opt.appendChild( dd.createTextNode( c.preferences.raiseWindowOnSearch ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "dictPanelEnabled" );
+    opt.appendChild( dd.createTextNode( c.preferences.dictPanelEnabled ? "1" : "0" ) );
+    preferences.appendChild( opt );
+    opt = dd.createElement( "dictPanelMaxHeight" );
+    opt.appendChild( dd.createTextNode( QString::number( c.preferences.dictPanelMaxHeight ) ) );
+    preferences.appendChild( opt );
+    opt = dd.createElement( "dictPanelHeightUnit" );
+    opt.appendChild( dd.createTextNode( c.preferences.dictPanelHeightUnit ) );
+    preferences.appendChild( opt );
+    opt = dd.createElement( "dictPanelScrollZone" );
+    opt.appendChild( dd.createTextNode( QString::number( c.preferences.dictPanelScrollZone ) ) );
+    preferences.appendChild( opt );
+    opt = dd.createElement( "sideBySideDefaultSplit" );
+    opt.appendChild( dd.createTextNode( QString::number( c.preferences.sideBySideDefaultSplit ) ) );
     preferences.appendChild( opt );
 
     {
