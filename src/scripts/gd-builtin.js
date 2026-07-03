@@ -210,7 +210,7 @@ if (
 
   function setupScrollZones() {
     document.addEventListener('wheel', function(e) {
-      var article = e.target.closest('.gdarticlebody');
+      var article = (document.elementFromPoint(e.clientX, e.clientY) || e.target).closest('.gdarticlebody');
       if (!article) return;
 
       var rect = article.getBoundingClientRect();
