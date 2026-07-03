@@ -75,7 +75,7 @@ QString Iconv::convert( const void *& inBuf, size_t & inBytesLeft )
   void * outBufPtr = &outBuf.front();
 
   size_t outBufLeft = outBuf.size();
-  size_t result;
+  size_t result = (size_t)( -1 );
   while ( inBytesLeft > 0 ) {
     result = iconv( state, (char **)&inBuf, &inBytesLeft, (char **)&outBufPtr, &outBufLeft );
     if ( result == (size_t)-1 ) {
