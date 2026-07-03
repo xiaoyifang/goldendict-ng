@@ -2197,6 +2197,17 @@ between classic and school orthography in cyrillic)</source>
     </message>
 </context>
 <context>
+    <name>MainTabWidget</name>
+    <message>
+        <source>Move to Panel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close Tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <source>&amp;File</source>
@@ -2447,30 +2458,6 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Close current tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Close all tabs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Close all tabs except current</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add all tabs to Favorites</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>New Tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Accessibility API is not enabled</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>WARNING: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2649,6 +2636,18 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
         <source>Application is still running in the background. Click the tray icon to show the window.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toggle Panel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toggle Panel Orientation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close Panel Tab</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3506,6 +3505,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Customize Fonts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open websites in panels</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
