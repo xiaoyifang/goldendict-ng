@@ -350,6 +350,8 @@ private slots:
 
   // Executed in response to a user click on an 'add tab' tool button
   void addNewTab();
+  // Creates a new tab in a specific panel
+  void addNewTabToPanel( QTabWidget * panel );
   // Executed in response to a user click on an 'close' button on a tab
   void tabCloseRequested( int );
   // Closes current tab.

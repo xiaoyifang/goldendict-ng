@@ -743,7 +743,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( &addTab, &QAbstractButton::clicked, this, &MainWindow::addNewTab );
 
-  connect( ui.tabWidget, &MainTabWidget::tabBarDoubleClicked, this, [ this ]( const int index ) {
+  connect( ui.tabWidget->tabBar(), &QTabBar::tabBarDoubleClicked, this, [ this ]( const int index ) {
     if ( -1 == index ) { // empty space at tabbar clicked.
       this->addNewTab();
     }
@@ -1442,6 +1442,39 @@ QTabWidget * MainWindow::createNewSidePanel()
   panel->setUsesScrollButtons( true );
   panel->setDocumentMode( true );
   panel->tabBar()->installEventFilter( this );
+
+  // Double-click empty tab bar space → new untitled tab in this panel
+  connect( panel->tabBar(), &QTabBar::tabBarDoubleClicked, this, [ this, panel ]( int index ) {
+    if ( index == -1 ) {
+      addNewTabToPanel( panel );
+    }
+  } );
+
+  // Tab list dropdown button
+  auto * tabListBtn = new QToolButton( panel );
+  tabListBtn->setAutoRaise( true );
+  tabListBtn->setIcon( QIcon( ":/icons/windows-list.svg" ) );
+  tabListBtn->setToolTip( tr( "Open Tabs List" ) );
+  tabListBtn->setPopupMode( QToolButton::InstantPopup );
+  tabListBtn->setFocusPolicy( Qt::NoFocus );
+
+  auto * panelTabMenu = new QMenu( tr( "Opened tabs" ), panel );
+  tabListBtn->setMenu( panelTabMenu );
+  connect( panelTabMenu, &QMenu::aboutToShow, this, [ this, panel, panelTabMenu ]() {
+    panelTabMenu->clear();
+    for ( int i = 0; i < panel->count(); i++ ) {
+      QAction * act = panelTabMenu->addAction( panel->tabIcon( i ), panel->tabText( i ) );
+      act->setData( i );
+      if ( i == panel->currentIndex() )
+        panelTabMenu->setDefaultAction( act );
+    }
+  } );
+  connect( panelTabMenu, &QMenu::triggered, this, [ panel ]( QAction * act ) {
+    int idx = act->data().toInt();
+    panel->setCurrentIndex( idx );
+  } );
+
+  panel->setCornerWidget( tabListBtn );
 
   // Transfer focus to webview when side panel tab changes (group list syncs via focusChanged)
   connect( panel, &QTabWidget::currentChanged, this, [ this, panel ]( int index ) {
@@ -2362,6 +2395,46 @@ void MainWindow::switchToWindow( QAction * act )
 void MainWindow::addNewTab()
 {
   createNewTab( true, tr( "(untitled)" ) )->load( QUrl( "gdinternal://untitle-page" ) );
+}
+
+void MainWindow::addNewTabToPanel( QTabWidget * panel )
+{
+  ArticleView * view = new ArticleView( this,
+                                        articleNetMgr,
+                                        false,
+                                        cfg,
+                                        translateLine,
+                                        dictionaryBar.toggleViewAction(),
+                                        groupList->getCurrentGroup() );
+
+  connect( view, &ArticleView::inspectSignal, this, &MainWindow::inspectElement );
+  connect( view, &ArticleView::titleChanged, this, &MainWindow::titleChanged );
+  connect( view, &ArticleView::pageLoaded, this, &MainWindow::pageLoaded );
+  connect( view, &ArticleView::updateFoundInDictsList, this, &MainWindow::updateFoundInDictsList );
+  connect( view, &ArticleView::openLinkInNewTab, this, &MainWindow::openLinkInNewTab );
+  connect( view, &ArticleView::showDefinitionInNewTab, this, &MainWindow::showDefinitionInNewTab );
+  connect( view, &ArticleView::typingEvent, this, &MainWindow::typingEvent );
+  connect( view, &ArticleView::activeArticleChanged, this, &MainWindow::activeArticleChanged );
+  connect( view, &ArticleView::statusBarMessage, this, &MainWindow::showStatusBarMessage );
+  connect( view, &ArticleView::showDictsPane, this, &MainWindow::showDictsPane );
+  connect( view, &ArticleView::forceAddWordToHistory, this, &MainWindow::forceAddWordToHistory );
+  connect( view, &ArticleView::sendWordToHistory, this, &MainWindow::addWordToHistory );
+  connect( view, &ArticleView::sendWordToInputLine, this, &MainWindow::sendWordToInputLine );
+  connect( view, &ArticleView::storeResourceSavePath, this, &MainWindow::storeResourceSavePath );
+  connect( view, &ArticleView::wordLookedUp, this, &MainWindow::forwardToAlwaysQueryTabs );
+  connect( view, &ArticleView::zoomIn, this, &MainWindow::zoomin );
+  connect( view, &ArticleView::zoomOut, this, &MainWindow::zoomout );
+  connect( view, &ArticleView::saveBookmarkSignal, this, &MainWindow::addBookmarkToFavorite );
+  connect( view, &ArticleView::translateSelectedText, this, &MainWindow::handleTranslateSelectedText );
+
+  view->setSelectionBySingleClick( cfg.preferences.selectWordBySingleClick );
+  view->setZoomFactor( cfg.preferences.zoomFactor );
+
+  int index = panel->addTab( view, tr( "(untitled)" ) );
+  panel->setCurrentIndex( index );
+  mruList.append( dynamic_cast< QWidget * >( view ) );
+
+  view->load( QUrl( "gdinternal://untitle-page" ) );
 }
 
 ArticleView * MainWindow::createNewTab( bool switchToIt, const QString & name )
