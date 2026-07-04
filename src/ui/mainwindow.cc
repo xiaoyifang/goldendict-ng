@@ -1066,6 +1066,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
       groupList->blockSignals( true );
       groupList->setCurrentGroup( av->getCurrentGroupId() );
       groupList->blockSignals( false );
+      // Update dictionary bar to reflect the newly focused tab's group
+      unsigned grp_id = av->getCurrentGroupId();
+      cfg.lastMainGroupId = grp_id;
+      dictionaryBar.updateToGroup( groupInstances.findGroup( grp_id ), &cfg.mutedDictionaries, cfg );
     }
   } );
 }
