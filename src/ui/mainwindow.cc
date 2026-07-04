@@ -565,10 +565,35 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( &addAllTabToFavoritesAction, &QAction::triggered, this, &MainWindow::addAllTabsToFavorites );
 
   tabMenu = new QMenu( this );
-  tabMenu->addAction( &closeCurrentTabAction );
-  tabMenu->addAction( &closeRestTabAction );
+
+  // Close actions scoped to the main panel (tabMenuTabIndex is set in tabMenuRequested)
+  QAction * tabMenuCloseAction = tabMenu->addAction( tr( "Close current tab" ) );
+  connect( tabMenuCloseAction, &QAction::triggered, this, [ this ]() {
+    if ( tabMenuTabIndex >= 0 )
+      emit ui.tabWidget->tabCloseRequested( tabMenuTabIndex );
+  } );
+
+  QAction * tabMenuCloseRestAction = tabMenu->addAction( tr( "Close all tabs except current" ) );
+  connect( tabMenuCloseRestAction, &QAction::triggered, this, [ this ]() {
+    QWidget * keepWidget = ( tabMenuTabIndex >= 0 ) ? ui.tabWidget->widget( tabMenuTabIndex ) : nullptr;
+    for ( int i = ui.tabWidget->count() - 1; i >= 0; i-- ) {
+      if ( ui.tabWidget->widget( i ) != keepWidget )
+        tabCloseRequested( i );
+    }
+    if ( keepWidget )
+      ui.tabWidget->setCurrentWidget( keepWidget );
+  } );
+
   tabMenu->addSeparator();
-  tabMenu->addAction( &closeAllTabAction );
+
+  QAction * tabMenuCloseAllAction = tabMenu->addAction( tr( "Close all tabs" ) );
+  connect( tabMenuCloseAllAction, &QAction::triggered, this, [ this ]() {
+    while ( ui.tabWidget->count() > 1 )
+      tabCloseRequested( ui.tabWidget->currentIndex() );
+    if ( ui.tabWidget->count() > 0 )
+      tabCloseRequested( ui.tabWidget->currentIndex() );
+  } );
+
   tabMenu->addSeparator();
 
   // Move-to submenu is rebuilt dynamically in tabMenuRequested
