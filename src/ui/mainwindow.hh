@@ -22,7 +22,6 @@
 #include "dictionarybar.hh"
 #include "history.hh"
 #include "mainstatusbar.hh"
-#include "mruqmenu.hh"
 #include "translatebox.hh"
 #include "dictheadwords.hh"
 #include "fulltextsearch.hh"
@@ -61,9 +60,9 @@ public:
   QTabWidget * panelForView( ArticleView * av );
   QTabWidget * activePanel();
   void closeTabInPanel( QTabWidget * panel, int tabIndex );
+  QTabWidget * createPanel();
   QTabWidget * findOrCreateSidePanel();
   QTabWidget * createNewSidePanel();
-  void setupTabWidgetCommon( QTabWidget * panel );
   void togglePanel();
   void togglePanelOrientation();
   int totalTabCount() const;
@@ -156,10 +155,9 @@ private:
 #endif
   QAction * menuButtonAction;
   QToolButton * menuButton;
-  MRUQMenu * tabListMenu;
+  QToolButton * tabListButton = nullptr; // main panel's tab list button (for Ctrl+Tab)
   //List that contains indexes of tabs arranged in a most-recently-used order
   QList< QWidget * > mruList;
-  QToolButton addTab, *tabListButton;
   Config::Class & cfg;
   History history;
   DictionaryBar dictionaryBar;
@@ -360,10 +358,7 @@ private slots:
   void switchToNextTab();
   void switchToPrevTab();
 
-  // Handling of active tab list
-  void createTabList();
   void fillWindowsMenu();
-  void switchToWindow( QAction * act );
 
   /// Triggered by the actions in the nav toolbar
   void backClicked();

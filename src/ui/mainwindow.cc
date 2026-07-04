@@ -14,7 +14,6 @@
 #include "preferences.hh"
 #include "globalregex.hh"
 #include "about.hh"
-#include "mruqmenu.hh"
 #include "gestures.hh"
 #include "dictheadwords.hh"
 #include <QTextStream>
@@ -178,7 +177,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   useNormalIconsInToolbarsAction( tr( "Show &Normal Icons in Toolbars" ), this ),
   stopAudioAction( this ),
   trayIconMenu( this ),
-  addTab( this ),
   cfg( cfg_ ),
   history( cfg_.preferences.maxStringsInHistory, cfg_.maxHeadwordSize ),
   dictionaryBar( this, cfg.preferences.maxDictionaryRefsInContextMenu ),
@@ -500,11 +498,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   addTabAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
   addTabAction.setShortcut( QKeySequence( "Ctrl+T" ) );
 
-  // Tab management
-  tabListMenu = new MRUQMenu( tr( "Opened tabs" ), ui.tabWidget );
-
-  connect( tabListMenu, &MRUQMenu::requestTabChange, ui.tabWidget, &MainTabWidget::setCurrentIndex );
-
   connect( &addTabAction, &QAction::triggered, this, &MainWindow::addNewTab );
 
   addAction( &addTabAction );
@@ -698,29 +691,50 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( navBack, &QAction::triggered, this, &MainWindow::backClicked );
   connect( navForward, &QAction::triggered, this, &MainWindow::forwardClicked );
 
-  addTab.setAutoRaise( true );
-  addTab.setToolTip( tr( "New Tab" ) );
-  addTab.setFocusPolicy( Qt::NoFocus );
-  addTab.setIcon( QIcon( ":/icons/addtab.svg" ) );
-
   ui.tabWidget->setHideSingleTab( cfg.preferences.hideSingleTab );
   ui.tabWidget->clear();
 
+  // Main panel setup (equivalent to createPanel but on existing ui.tabWidget)
+  ui.tabWidget->setMovable( true );
+  ui.tabWidget->setDocumentMode( true );
+  ui.tabWidget->setTabsClosable( true );
   ui.tabWidget->setContextMenuPolicy( Qt::CustomContextMenu );
 
-  ui.tabWidget->setCornerWidget( &addTab, Qt::TopLeftCorner );
-  // ui.tabWidget->setCornerWidget( &closeTab, Qt::TopRightCorner );
-
-  setupTabWidgetCommon( ui.tabWidget );
-
-  connect( &addTab, &QAbstractButton::clicked, this, [ this ]() {
+  // "+" button
+  auto * addBtn = new QToolButton( ui.tabWidget );
+  addBtn->setAutoRaise( true );
+  addBtn->setIcon( QIcon( ":/icons/addtab.svg" ) );
+  addBtn->setToolTip( tr( "New Tab" ) );
+  addBtn->setFocusPolicy( Qt::NoFocus );
+  ui.tabWidget->setCornerWidget( addBtn, Qt::TopLeftCorner );
+  connect( addBtn, &QAbstractButton::clicked, this, [ this ]() {
     createNewTab( true, tr( "(untitled)" ) )->load( QUrl( "gdinternal://untitle-page" ) );
   } );
 
-  connect( ui.tabWidget, &QTabWidget::tabCloseRequested, this, &MainWindow::tabCloseRequested );
+  // Tab list dropdown
+  auto * tlBtn = new QToolButton( ui.tabWidget );
+  tlBtn->setAutoRaise( true );
+  tlBtn->setIcon( QIcon( ":/icons/windows-list.svg" ) );
+  tlBtn->setToolTip( tr( "Open Tabs List" ) );
+  tlBtn->setPopupMode( QToolButton::InstantPopup );
+  tlBtn->setFocusPolicy( Qt::NoFocus );
+  ui.tabWidget->setCornerWidget( tlBtn, Qt::TopRightCorner );
+  tabListButton = tlBtn;
 
-  connect( ui.tabWidget, &QTabWidget::currentChanged, this, &MainWindow::tabSwitched );
+  auto * tlMenu = new QMenu( tr( "Opened tabs" ), ui.tabWidget );
+  tlBtn->setMenu( tlMenu );
+  connect( tlMenu, &QMenu::aboutToShow, this, &MainWindow::fillWindowsMenu );
+  connect( tlMenu, &QMenu::triggered, this, [ this ]( QAction * act ) {
+    ui.tabWidget->setCurrentIndex( act->data().toInt() );
+  } );
 
+  // Double-click empty tab bar
+  connect( ui.tabWidget->tabBar(), &QTabBar::tabBarDoubleClicked, this, [ this ]( int index ) {
+    if ( index == -1 )
+      createNewTab( true, tr( "(untitled)" ) )->load( QUrl( "gdinternal://untitle-page" ) );
+  } );
+
+  // Right-click context menu
   connect( ui.tabWidget, &QWidget::customContextMenuRequested, this, [ this ]( const QPoint & pos ) {
     int tabIdx = ui.tabWidget->tabBar()->tabAt( pos );
     if ( tabIdx >= 0 ) {
@@ -731,7 +745,13 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     }
   } );
 
-  ui.tabWidget->setTabsClosable( true );
+  // Tab close
+  connect( ui.tabWidget, &QTabWidget::tabCloseRequested, this, [ this ]( int tabIndex ) {
+    closeTabInPanel( ui.tabWidget, tabIndex );
+  } );
+
+  // currentChanged keeps tabSwitched for group/UI syncing
+  connect( ui.tabWidget, &QTabWidget::currentChanged, this, &MainWindow::tabSwitched );
 
   connect( ui.quit, &QAction::triggered, this, &MainWindow::quitApp );
 
@@ -861,8 +881,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   setWindowTitle( "GoldenDict-ng" );
 
-  // Create tab list menu
-  createTabList();
 
 #if defined( Q_OS_MAC )
   defaultInterfaceStyle = "Fusion";
@@ -1216,8 +1234,8 @@ void MainWindow::clipboardChange( QClipboard::Mode m )
 
 void MainWindow::ctrlTabPressed()
 {
-  emit fillWindowsMenu();
-  tabListButton->click();
+  if ( tabListButton )
+    tabListButton->click();
 }
 
 void MainWindow::updateSearchPaneAndBar( bool searchInDock )
@@ -1461,60 +1479,67 @@ void MainWindow::closeTabInPanel( QTabWidget * panel, int tabIndex )
   }
 }
 
-void MainWindow::setupTabWidgetCommon( QTabWidget * panel )
+QTabWidget * MainWindow::createPanel()
 {
+  auto * panel = new QTabWidget();
   panel->setMovable( true );
   panel->setDocumentMode( true );
+  panel->setTabsClosable( true );
+  panel->setUsesScrollButtons( true );
+  panel->setContextMenuPolicy( Qt::CustomContextMenu );
+  panel->tabBar()->installEventFilter( this );
 
-  // Double-click empty tab bar space → new untitled tab
+  // "+" button — every panel gets one
+  auto * addBtn = new QToolButton( panel );
+  addBtn->setAutoRaise( true );
+  addBtn->setIcon( QIcon( ":/icons/addtab.svg" ) );
+  addBtn->setToolTip( tr( "New Tab" ) );
+  addBtn->setFocusPolicy( Qt::NoFocus );
+  panel->setCornerWidget( addBtn, Qt::TopLeftCorner );
+  connect( addBtn, &QAbstractButton::clicked, this, [ this, panel ]() {
+    addNewTabToPanel( panel );
+  } );
+
+  // Tab list dropdown
+  auto * tabListBtn = new QToolButton( panel );
+  tabListBtn->setAutoRaise( true );
+  tabListBtn->setIcon( QIcon( ":/icons/windows-list.svg" ) );
+  tabListBtn->setToolTip( tr( "Open Tabs List" ) );
+  tabListBtn->setPopupMode( QToolButton::InstantPopup );
+  tabListBtn->setFocusPolicy( Qt::NoFocus );
+  panel->setCornerWidget( tabListBtn, Qt::TopRightCorner );
+
+  auto * panelTabMenu = new QMenu( tr( "Opened tabs" ), panel );
+  tabListBtn->setMenu( panelTabMenu );
+  connect( panelTabMenu, &QMenu::aboutToShow, this, [ panel, panelTabMenu ]() {
+    panelTabMenu->clear();
+    for ( int i = 0; i < panel->count(); i++ ) {
+      QAction * act = panelTabMenu->addAction( panel->tabIcon( i ), panel->tabText( i ) );
+      act->setData( i );
+    }
+  } );
+  connect( panelTabMenu, &QMenu::triggered, this, [ panel ]( QAction * act ) {
+    panel->setCurrentIndex( act->data().toInt() );
+  } );
+
+  // Double-click empty tab bar → new tab in this panel
   connect( panel->tabBar(), &QTabBar::tabBarDoubleClicked, this, [ this, panel ]( int index ) {
-    if ( index == -1 ) {
-      if ( panel == ui.tabWidget )
-        createNewTab( true, tr( "(untitled)" ) )->load( QUrl( "gdinternal://untitle-page" ) );
-      else
-        addNewTabToPanel( panel );
+    if ( index == -1 )
+      addNewTabToPanel( panel );
+  } );
+
+  // Right-click context menu
+  connect( panel, &QWidget::customContextMenuRequested, this, [ this, panel ]( const QPoint & pos ) {
+    int tabIdx = panel->tabBar()->tabAt( pos );
+    if ( tabIdx >= 0 ) {
+      auto * av = qobject_cast< ArticleView * >( panel->widget( tabIdx ) );
+      if ( av )
+        lastFocusedArticleView = av;
+      showTabContextMenu( panel, tabIdx, panel->mapToGlobal( pos ) );
     }
   } );
 
-  // Tab list dropdown button (main panel has its own via createTabList)
-  if ( panel != ui.tabWidget ) {
-    auto * tabListBtn = new QToolButton( panel );
-    tabListBtn->setAutoRaise( true );
-    tabListBtn->setIcon( QIcon( ":/icons/windows-list.svg" ) );
-    tabListBtn->setToolTip( tr( "Open Tabs List" ) );
-    tabListBtn->setPopupMode( QToolButton::InstantPopup );
-    tabListBtn->setFocusPolicy( Qt::NoFocus );
-
-    auto * panelTabMenu = new QMenu( tr( "Opened tabs" ), panel );
-    tabListBtn->setMenu( panelTabMenu );
-    connect( panelTabMenu, &QMenu::aboutToShow, this, [ panel, panelTabMenu ]() {
-      panelTabMenu->clear();
-      for ( int i = 0; i < panel->count(); i++ ) {
-        QAction * act = panelTabMenu->addAction( panel->tabIcon( i ), panel->tabText( i ) );
-        act->setData( i );
-        if ( i == panel->currentIndex() )
-          panelTabMenu->setDefaultAction( act );
-      }
-    } );
-    connect( panelTabMenu, &QMenu::triggered, this, [ panel ]( QAction * act ) {
-      int idx = act->data().toInt();
-      panel->setCurrentIndex( idx );
-    } );
-
-    panel->setCornerWidget( tabListBtn );
-  }
-}
-
-QTabWidget * MainWindow::createNewSidePanel()
-{
-  QTabWidget * panel = new QTabWidget();
-  panel->setTabsClosable( true );
-  panel->setUsesScrollButtons( true );
-  panel->tabBar()->installEventFilter( this );
-
-  setupTabWidgetCommon( panel );
-
-  // Transfer focus to webview when side panel tab changes (group list syncs via focusChanged)
+  // Tab change → focus tracking
   connect( panel, &QTabWidget::currentChanged, this, [ this, panel ]( int index ) {
     if ( index >= 0 ) {
       auto * view = qobject_cast< ArticleView * >( panel->widget( index ) );
@@ -1525,10 +1550,17 @@ QTabWidget * MainWindow::createNewSidePanel()
     }
   } );
 
+  // Tab close
   connect( panel, &QTabWidget::tabCloseRequested, this, [ this, panel ]( int tabIndex ) {
     closeTabInPanel( panel, tabIndex );
   } );
 
+  return panel;
+}
+
+QTabWidget * MainWindow::createNewSidePanel()
+{
+  QTabWidget * panel = createPanel();
   ui.panelSplitter->addWidget( panel );
   return panel;
 }
@@ -2383,47 +2415,30 @@ const vector< sptr< Dictionary::Class > > & MainWindow::getActiveDicts()
   }
 }
 
-void MainWindow::createTabList()
-{
-  tabListMenu->setIcon( QIcon( ":/icons/windows-list.svg" ) );
-  connect( tabListMenu, &QMenu::aboutToShow, this, &MainWindow::fillWindowsMenu );
-  connect( tabListMenu, &QMenu::triggered, this, &MainWindow::switchToWindow );
-
-  tabListButton = new QToolButton( ui.tabWidget );
-  tabListButton->setAutoRaise( true );
-  tabListButton->setIcon( tabListMenu->icon() );
-  tabListButton->setMenu( tabListMenu );
-  tabListButton->setToolTip( tr( "Open Tabs List" ) );
-  tabListButton->setPopupMode( QToolButton::InstantPopup );
-  ui.tabWidget->setCornerWidget( tabListButton );
-  tabListButton->setFocusPolicy( Qt::NoFocus );
-}
-
 void MainWindow::fillWindowsMenu()
 {
-  tabListMenu->clear();
+  auto * menu = qobject_cast< QMenu * >( sender() );
+  if ( !menu )
+    return;
+  menu->clear();
 
   if ( cfg.preferences.mruTabOrder ) {
     for ( int i = 0; i < mruList.count(); i++ ) {
-      QAction * act = tabListMenu->addAction( ui.tabWidget->tabIcon( ui.tabWidget->indexOf( mruList.at( i ) ) ),
-                                              ui.tabWidget->tabText( ui.tabWidget->indexOf( mruList.at( i ) ) ) );
-
-      // remember the index of the Tab to be later used in ctrlReleased()
-      act->setData( ui.tabWidget->indexOf( mruList.at( i ) ) );
-
-      if ( ui.tabWidget->currentIndex() == ui.tabWidget->indexOf( mruList.at( i ) ) ) {
+      int idx = ui.tabWidget->indexOf( mruList.at( i ) );
+      if ( idx < 0 )
+        continue;
+      QAction * act = menu->addAction( ui.tabWidget->tabIcon( idx ), ui.tabWidget->tabText( idx ) );
+      act->setData( idx );
+      if ( ui.tabWidget->currentIndex() == idx ) {
         QFont f( act->font() );
         f.setBold( true );
         act->setFont( f );
       }
     }
-    if ( tabListMenu->actions().size() > 1 ) {
-      tabListMenu->setActiveAction( tabListMenu->actions().at( 1 ) );
-    }
   }
   else {
     for ( int i = 0; i < ui.tabWidget->count(); i++ ) {
-      QAction * act = tabListMenu->addAction( ui.tabWidget->tabIcon( i ), ui.tabWidget->tabText( i ) );
+      QAction * act = menu->addAction( ui.tabWidget->tabIcon( i ), ui.tabWidget->tabText( i ) );
       act->setData( i );
       if ( ui.tabWidget->currentIndex() == i ) {
         QFont f( act->font() );
@@ -2432,12 +2447,6 @@ void MainWindow::fillWindowsMenu()
       }
     }
   }
-}
-
-void MainWindow::switchToWindow( QAction * act )
-{
-  int idx = act->data().toInt();
-  ui.tabWidget->setCurrentIndex( idx );
 }
 
 void MainWindow::addNewTab()
