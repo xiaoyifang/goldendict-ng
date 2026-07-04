@@ -142,10 +142,7 @@ private:
   QActionGroup * smallLargeIconGroup = new QActionGroup( this );
 
   QAction stopAudioAction;
-  int tabMenuTabIndex = -1; // tab index where context menu was opened
   QPointer< ArticleView > lastFocusedArticleView; // last ArticleView that had keyboard focus
-  QMenu * moveToMenu          = nullptr;
-  QAction * newPanelAction    = nullptr;
   QToolBar * navToolbar;
   MainStatusBar * mainStatusBar;
   QAction *navBack, *navForward, *navPronounce, *enableScanningAction;
@@ -156,7 +153,6 @@ private:
 #ifdef Q_OS_MACOS
   QMenu dockMenu; // Separate menu for macOS Dock
 #endif
-  QMenu * tabMenu;
   QAction * menuButtonAction;
   QToolButton * menuButton;
   MRUQMenu * tabListMenu;
@@ -379,7 +375,6 @@ private slots:
 
   void pageLoaded( ArticleView * );
   void tabSwitched( int );
-  void tabMenuRequested( QPoint pos );
 
   void dictionaryBarToggled( bool checked );
 

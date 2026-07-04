@@ -1182,8 +1182,6 @@ void ArticleView::openLink( const QUrl & url, const QUrl & ref, const QString & 
     else {
       showDefinition( word, getGroup( ref ), scrollTo, contexts );
     }
-
-    // Notify MainWindow for Always Query forwarding
   }
   else if ( url.scheme() == "gdlookup" ) // Plain html links inherit gdlookup scheme
   {

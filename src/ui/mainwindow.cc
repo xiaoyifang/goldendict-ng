@@ -349,7 +349,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   navToolbar->widgetForAction( navToolbar->addSeparator() )->setObjectName( "separatorBeforeAddToFavorites" );
 
-  addToFavorites = navToolbar->addAction( starIcon, tr( "Add current tab to Favorites" ) );
+  addToFavorites = navToolbar->addAction( starIcon, tr( "Add to Favorites" ) );
   navToolbar->widgetForAction( addToFavorites )->setObjectName( "addToFavoritesButton" );
 
   connect( addToFavorites, &QAction::triggered, this, &MainWindow::handleAddToFavoritesButton );
@@ -564,55 +564,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( &addAllTabToFavoritesAction, &QAction::triggered, this, &MainWindow::addAllTabsToFavorites );
 
-  tabMenu = new QMenu( this );
-
-  // Close actions scoped to the main panel (tabMenuTabIndex is set in tabMenuRequested)
-  QAction * tabMenuCloseAction = tabMenu->addAction( tr( "Close current tab" ) );
-  connect( tabMenuCloseAction, &QAction::triggered, this, [ this ]() {
-    if ( tabMenuTabIndex >= 0 )
-      emit ui.tabWidget->tabCloseRequested( tabMenuTabIndex );
-  } );
-
-  QAction * tabMenuCloseRestAction = tabMenu->addAction( tr( "Close all tabs except current" ) );
-  connect( tabMenuCloseRestAction, &QAction::triggered, this, [ this ]() {
-    QWidget * keepWidget = ( tabMenuTabIndex >= 0 ) ? ui.tabWidget->widget( tabMenuTabIndex ) : nullptr;
-    for ( int i = ui.tabWidget->count() - 1; i >= 0; i-- ) {
-      if ( ui.tabWidget->widget( i ) != keepWidget )
-        tabCloseRequested( i );
-    }
-    if ( keepWidget )
-      ui.tabWidget->setCurrentWidget( keepWidget );
-  } );
-
-  tabMenu->addSeparator();
-
-  QAction * tabMenuCloseAllAction = tabMenu->addAction( tr( "Close all tabs" ) );
-  connect( tabMenuCloseAllAction, &QAction::triggered, this, [ this ]() {
-    while ( ui.tabWidget->count() > 1 )
-      tabCloseRequested( ui.tabWidget->currentIndex() );
-    if ( ui.tabWidget->count() > 0 )
-      tabCloseRequested( ui.tabWidget->currentIndex() );
-  } );
-
-  tabMenu->addSeparator();
-
-  // Move-to submenu is rebuilt dynamically in tabMenuRequested
-  moveToMenu = tabMenu->addMenu( tr( "Move to Panel" ) );
-
-  // Flat New Panel action — shown when no side panels exist (submenu hidden)
-  newPanelAction = tabMenu->addAction( tr( "Move to New Panel" ) );
-  connect( newPanelAction, &QAction::triggered, this, [ this ]() {
-    if ( tabMenuTabIndex >= 0 ) {
-      auto * av = qobject_cast< ArticleView * >( ui.tabWidget->widget( tabMenuTabIndex ) );
-      if ( av )
-        addPanel( av, -1 );
-    }
-  } );
-  tabMenu->addSeparator();
-
-  tabMenu->addAction( addToFavorites );
-  tabMenu->addAction( &addAllTabToFavoritesAction );
-
   // Dictionary bar names
   showDictBarNamesAction.setCheckable( true );
   showDictBarNamesAction.setChecked( cfg.showingDictBarNames );
@@ -768,7 +719,15 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( ui.tabWidget, &QTabWidget::currentChanged, this, &MainWindow::tabSwitched );
 
-  connect( ui.tabWidget, &QWidget::customContextMenuRequested, this, &MainWindow::tabMenuRequested );
+  connect( ui.tabWidget, &QWidget::customContextMenuRequested, this, [ this ]( const QPoint & pos ) {
+    int tabIdx = ui.tabWidget->tabBar()->tabAt( pos );
+    if ( tabIdx >= 0 ) {
+      auto * av = qobject_cast< ArticleView * >( ui.tabWidget->widget( tabIdx ) );
+      if ( av )
+        lastFocusedArticleView = av;
+      showTabContextMenu( ui.tabWidget, tabIdx, ui.tabWidget->mapToGlobal( pos ) );
+    }
+  } );
 
   ui.tabWidget->setTabsClosable( true );
 
@@ -1412,7 +1371,7 @@ void MainWindow::addPanel( ArticleView * av, int targetPanelIdx )
 
   // Auto-create empty tab if main panel just became empty
   if ( currentPanel == ui.tabWidget && ui.tabWidget->count() == 0 ) {
-    createNewTab( true, tr( "(empty)" ) );
+    createNewTab( true, tr( "(untitled)" ) );
   }
 
   // Determine target panel
@@ -1587,6 +1546,8 @@ void MainWindow::showTabContextMenu( QTabWidget * panel, int tabIdx, QPoint glob
 
   // Close Tab
   QAction * closeAction = menu.addAction( tr( "Close current tab" ) );
+  closeAction->setShortcut( QKeySequence( "Ctrl+W" ) );
+  closeAction->setShortcutVisibleInContextMenu( true );
   connect( closeAction, &QAction::triggered, this, [ panel, tabIdx ]() {
     emit panel->tabCloseRequested( tabIdx );
   } );
@@ -1609,11 +1570,25 @@ void MainWindow::showTabContextMenu( QTabWidget * panel, int tabIdx, QPoint glob
   menu.addSeparator();
 
   // Close all tabs (panel-scoped)
-  QAction * closeAllAction    = menu.addAction( tr( "Close all tabs" ) );
+  QAction * closeAllAction        = menu.addAction( tr( "Close all tabs" ) );
+  closeAllAction->setShortcut( QKeySequence( "Ctrl+Shift+W" ) );
+  closeAllAction->setShortcutVisibleInContextMenu( true );
   QPointer< QTabWidget > panelPtr = panel;
   connect( closeAllAction, &QAction::triggered, this, [ this, panelPtr ]() {
-    while ( panelPtr && panelPtr->count() > 0 )
-      emit panelPtr->tabCloseRequested( panelPtr->count() - 1 );
+    if ( !panelPtr )
+      return;
+    if ( panelPtr == ui.tabWidget ) {
+      // Main panel: close all but one, then close last — triggers addNewTab()
+      while ( ui.tabWidget->count() > 1 )
+        tabCloseRequested( ui.tabWidget->currentIndex() );
+      if ( ui.tabWidget->count() > 0 )
+        tabCloseRequested( ui.tabWidget->currentIndex() );
+    }
+    else {
+      // Side panel: close every tab — panel self-deletes via closeTabInPanel
+      while ( panelPtr && panelPtr->count() > 0 )
+        closeTabInPanel( panelPtr, panelPtr->count() - 1 );
+    }
   } );
 
   menu.addSeparator();
@@ -1649,16 +1624,19 @@ void MainWindow::showTabContextMenu( QTabWidget * panel, int tabIdx, QPoint glob
   auto * av = qobject_cast< ArticleView * >( panel->widget( tabIdx ) );
   if ( av ) {
 
-    // Add to Favorites
-    QAction * favAction = menu.addAction( tr( "Add to Favorites" ) );
+    // Add to Favorites (blue star if already favorited)
+    QString headword          = av->getCurrentWord();
+    bool alreadyFav            = !headword.isEmpty() && ui.favoritesPaneWidget->isWordPresentInActiveFolder( headword );
+    QIcon favIcon              = alreadyFav ? blueStarIcon : starIcon;
+    QAction * favAction        = menu.addAction( favIcon, tr( "Add to Favorites" ) );
     connect( favAction, &QAction::triggered, this, [ this, av ]() {
-      QString headword = av->getCurrentWord();
-      if ( !headword.isEmpty() )
-        ui.favoritesPaneWidget->addWordToActiveFav( headword );
+      QString word = av->getCurrentWord();
+      if ( !word.isEmpty() )
+        ui.favoritesPaneWidget->addWordToActiveFav( word );
     } );
 
     // Add all tabs to Favorites (panel-scoped)
-    QAction * favAllAction = menu.addAction( tr( "Add all tabs to Favorites" ) );
+    QAction * favAllAction = menu.addAction( starIcon, tr( "Add all tabs to Favorites" ) );
     connect( favAllAction, &QAction::triggered, this, [ this, panel ]() {
       for ( int i = 0; i < panel->count(); i++ ) {
         auto * av2 = qobject_cast< ArticleView * >( panel->widget( i ) );
@@ -2834,43 +2812,6 @@ void MainWindow::tabSwitched( int )
     groupList->setCurrentGroup( view->getCurrentGroupId() );
     groupList->blockSignals( false );
   }
-}
-
-void MainWindow::tabMenuRequested( QPoint pos )
-{
-  tabMenuTabIndex = ui.tabWidget->tabBar()->tabAt( pos );
-
-  bool hasSidePanels = ( ui.panelSplitter->count() > 1 );
-  if ( moveToMenu ) {
-    moveToMenu->menuAction()->setVisible( hasSidePanels );
-    if ( hasSidePanels && tabMenuTabIndex >= 0 ) {
-      moveToMenu->clear();
-      for ( int i = 0; i < ui.panelSplitter->count(); i++ ) {
-        auto * p = qobject_cast< QTabWidget * >( ui.panelSplitter->widget( i ) );
-        if ( !p )
-          continue;
-        // Skip self
-        if ( p == ui.tabWidget && ui.tabWidget->indexOf( ui.tabWidget->widget( tabMenuTabIndex ) ) >= 0 )
-          continue;
-        if ( p->indexOf( ui.tabWidget->widget( tabMenuTabIndex ) ) >= 0 )
-          continue;
-
-        QString label        = ( i == 0 ) ? tr( "Main Panel" ) : tr( "Panel %1" ).arg( i );
-        QAction * moveAction = moveToMenu->addAction( label );
-        int targetIdx        = i;
-        connect( moveAction, &QAction::triggered, this, [ this, targetIdx ]() {
-          if ( tabMenuTabIndex >= 0 ) {
-            auto * av = qobject_cast< ArticleView * >( ui.tabWidget->widget( tabMenuTabIndex ) );
-            if ( av )
-              addPanel( av, targetIdx );
-          }
-        } );
-      }
-    }
-  }
-
-  // Hide Always Query for website tabs, sync checked state to right-clicked tab
-  tabMenu->popup( ui.tabWidget->mapToGlobal( pos ) );
 }
 
 void MainWindow::dictionaryBarToggled( bool )

@@ -40,7 +40,6 @@
 | Ctrl+Tab              | (In main window) switch to next tab (can be changed in preferences)                                                              |
 | Ctrl+Shift+A          | Select current article only                                                                                                      |
 | Ctrl+Shift+C          | Copy selected as text                                                                                                            |
-| Ctrl+Shift+E          | Toggle Always Query on current tab                                                                                               |
 | Ctrl+Shift+F          | Open/switch to full-text search dialog                                                                                           |
 | Ctrl+Shift+H          | Toggle panel orientation (horizontal/vertical)                                                                                 |
 | Ctrl+Shift+P          | Toggle panel — move current tab between main view and side panel                                                               |
