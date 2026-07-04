@@ -735,19 +735,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   ui.tabWidget->setCornerWidget( &addTab, Qt::TopLeftCorner );
   // ui.tabWidget->setCornerWidget( &closeTab, Qt::TopRightCorner );
 
-  ui.tabWidget->setMovable( true );
-
-#if !defined( Q_OS_WIN )
-  ui.tabWidget->setDocumentMode( true );
-#endif
+  setupTabWidgetCommon( ui.tabWidget );
 
   connect( &addTab, &QAbstractButton::clicked, this, &MainWindow::addNewTab );
-
-  connect( ui.tabWidget->tabBar(), &QTabBar::tabBarDoubleClicked, this, [ this ]( const int index ) {
-    if ( -1 == index ) { // empty space at tabbar clicked.
-      this->addNewTab();
-    }
-  } );
 
   connect( ui.tabWidget, &QTabWidget::tabCloseRequested, this, &MainWindow::tabCloseRequested );
 
@@ -1438,47 +1428,58 @@ QTabWidget * MainWindow::panelForView( ArticleView * av )
   return nullptr;
 }
 
+void MainWindow::setupTabWidgetCommon( QTabWidget * panel )
+{
+  panel->setMovable( true );
+  panel->setDocumentMode( true );
+
+  // Double-click empty tab bar space → new untitled tab
+  connect( panel->tabBar(), &QTabBar::tabBarDoubleClicked, this, [ this, panel ]( int index ) {
+    if ( index == -1 ) {
+      if ( panel == ui.tabWidget )
+        addNewTab();
+      else
+        addNewTabToPanel( panel );
+    }
+  } );
+
+  // Tab list dropdown button (main panel has its own via createTabList)
+  if ( panel != ui.tabWidget ) {
+    auto * tabListBtn = new QToolButton( panel );
+    tabListBtn->setAutoRaise( true );
+    tabListBtn->setIcon( QIcon( ":/icons/windows-list.svg" ) );
+    tabListBtn->setToolTip( tr( "Open Tabs List" ) );
+    tabListBtn->setPopupMode( QToolButton::InstantPopup );
+    tabListBtn->setFocusPolicy( Qt::NoFocus );
+
+    auto * panelTabMenu = new QMenu( tr( "Opened tabs" ), panel );
+    tabListBtn->setMenu( panelTabMenu );
+    connect( panelTabMenu, &QMenu::aboutToShow, this, [ panel, panelTabMenu ]() {
+      panelTabMenu->clear();
+      for ( int i = 0; i < panel->count(); i++ ) {
+        QAction * act = panelTabMenu->addAction( panel->tabIcon( i ), panel->tabText( i ) );
+        act->setData( i );
+        if ( i == panel->currentIndex() )
+          panelTabMenu->setDefaultAction( act );
+      }
+    } );
+    connect( panelTabMenu, &QMenu::triggered, this, [ panel ]( QAction * act ) {
+      int idx = act->data().toInt();
+      panel->setCurrentIndex( idx );
+    } );
+
+    panel->setCornerWidget( tabListBtn );
+  }
+}
+
 QTabWidget * MainWindow::createNewSidePanel()
 {
   QTabWidget * panel = new QTabWidget();
   panel->setTabsClosable( true );
-  panel->setMovable( true );
   panel->setUsesScrollButtons( true );
-  panel->setDocumentMode( true );
   panel->tabBar()->installEventFilter( this );
 
-  // Double-click empty tab bar space → new untitled tab in this panel
-  connect( panel->tabBar(), &QTabBar::tabBarDoubleClicked, this, [ this, panel ]( int index ) {
-    if ( index == -1 ) {
-      addNewTabToPanel( panel );
-    }
-  } );
-
-  // Tab list dropdown button
-  auto * tabListBtn = new QToolButton( panel );
-  tabListBtn->setAutoRaise( true );
-  tabListBtn->setIcon( QIcon( ":/icons/windows-list.svg" ) );
-  tabListBtn->setToolTip( tr( "Open Tabs List" ) );
-  tabListBtn->setPopupMode( QToolButton::InstantPopup );
-  tabListBtn->setFocusPolicy( Qt::NoFocus );
-
-  auto * panelTabMenu = new QMenu( tr( "Opened tabs" ), panel );
-  tabListBtn->setMenu( panelTabMenu );
-  connect( panelTabMenu, &QMenu::aboutToShow, this, [ this, panel, panelTabMenu ]() {
-    panelTabMenu->clear();
-    for ( int i = 0; i < panel->count(); i++ ) {
-      QAction * act = panelTabMenu->addAction( panel->tabIcon( i ), panel->tabText( i ) );
-      act->setData( i );
-      if ( i == panel->currentIndex() )
-        panelTabMenu->setDefaultAction( act );
-    }
-  } );
-  connect( panelTabMenu, &QMenu::triggered, this, [ panel ]( QAction * act ) {
-    int idx = act->data().toInt();
-    panel->setCurrentIndex( idx );
-  } );
-
-  panel->setCornerWidget( tabListBtn );
+  setupTabWidgetCommon( panel );
 
   // Transfer focus to webview when side panel tab changes (group list syncs via focusChanged)
   connect( panel, &QTabWidget::currentChanged, this, [ this, panel ]( int index ) {

@@ -61,6 +61,7 @@ public:
   QTabWidget * panelForView( ArticleView * av );
   QTabWidget * findOrCreateSidePanel();
   QTabWidget * createNewSidePanel();
+  void setupTabWidgetCommon( QTabWidget * panel );
   void togglePanel();
   void togglePanelOrientation();
   int totalTabCount() const;
