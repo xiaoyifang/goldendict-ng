@@ -1788,7 +1788,6 @@ void MainWindow::removeGroupComboBoxActionsFromDialog( QDialog * dialog, GroupCo
 void MainWindow::commitData()
 {
   isQuitting = true;
-  saveSession();
 
   // if the dictionaries is empty ,large chance that the config has corrupt.
   if ( cfg.preferences.removeInvalidIndexOnExit && !dictMap.isEmpty() ) {
@@ -2119,7 +2118,6 @@ void MainWindow::closeEvent( QCloseEvent * ev )
   // If tray icon is disabled or closing to tray is not enabled, quit the application
   if ( !cfg.preferences.enableTrayIcon || !cfg.preferences.closeToTray ) {
     ev->accept();
-    saveSession();
     quitApp();
     return;
   }
@@ -2426,7 +2424,6 @@ void MainWindow::addNewTabToPanel( QTabWidget * panel )
   connect( view, &ArticleView::sendWordToHistory, this, &MainWindow::addWordToHistory );
   connect( view, &ArticleView::sendWordToInputLine, this, &MainWindow::sendWordToInputLine );
   connect( view, &ArticleView::storeResourceSavePath, this, &MainWindow::storeResourceSavePath );
-  connect( view, &ArticleView::wordLookedUp, this, &MainWindow::forwardToAlwaysQueryTabs );
   connect( view, &ArticleView::zoomIn, this, &MainWindow::zoomin );
   connect( view, &ArticleView::zoomOut, this, &MainWindow::zoomout );
   connect( view, &ArticleView::saveBookmarkSignal, this, &MainWindow::addBookmarkToFavorite );
@@ -2743,10 +2740,10 @@ void MainWindow::tabMenuRequested( QPoint pos )
   tabMenuTabIndex = ui.tabWidget->tabBar()->tabAt( pos );
 
   bool hasSidePanels = ( ui.panelSplitter->count() > 1 );
-  if ( m_moveToMenu ) {
-    m_moveToMenu->menuAction()->setVisible( hasSidePanels );
+  if ( moveToMenu ) {
+    moveToMenu->menuAction()->setVisible( hasSidePanels );
     if ( hasSidePanels && tabMenuTabIndex >= 0 ) {
-      m_moveToMenu->clear();
+      moveToMenu->clear();
       for ( int i = 0; i < ui.panelSplitter->count(); i++ ) {
         auto * p = qobject_cast< QTabWidget * >( ui.panelSplitter->widget( i ) );
         if ( !p )
@@ -2758,7 +2755,7 @@ void MainWindow::tabMenuRequested( QPoint pos )
           continue;
 
         QString label        = ( i == 0 ) ? tr( "Main Panel" ) : tr( "Panel %1" ).arg( i );
-        QAction * moveAction = m_moveToMenu->addAction( label );
+        QAction * moveAction = moveToMenu->addAction( label );
         int targetIdx        = i;
         connect( moveAction, &QAction::triggered, this, [ this, targetIdx ]() {
           if ( tabMenuTabIndex >= 0 ) {
