@@ -60,6 +60,7 @@ public:
   void updateTabTitleMarker( ArticleView * av );
   QTabWidget * panelForView( ArticleView * av );
   QTabWidget * activePanel();
+  void closeTabInPanel( QTabWidget * panel, int tabIndex );
   QTabWidget * findOrCreateSidePanel();
   QTabWidget * createNewSidePanel();
   void setupTabWidgetCommon( QTabWidget * panel );
@@ -412,6 +413,9 @@ private slots:
 
   void showDictsPane();
   void dictsPaneVisibilityChanged( bool );
+
+  /// Shared ArticleView construction + signal wiring for createNewTab / addNewTabToPanel
+  ArticleView * createArticleView();
 
   /// Creates a new tab, which is to be populated then with some content.
   ArticleView * createNewTab( bool switchToIt, const QString & name );
