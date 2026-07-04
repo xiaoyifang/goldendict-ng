@@ -1493,19 +1493,19 @@ QTabWidget * MainWindow::createNewSidePanel()
   } );
 
   connect( panel, &QTabWidget::tabCloseRequested, this, [ this, panel ]( int tabIndex ) {
-    auto * w       = panel->widget( tabIndex );
-    auto * avClose = qobject_cast< ArticleView * >( w );
-    if ( !avClose )
+    QWidget * w = panel->widget( tabIndex );
+    if ( !w )
       return;
-    QString tabTitle = panel->tabText( tabIndex );
+    mruList.removeOne( w );
     panel->removeTab( tabIndex );
-    int newIdx = ui.tabWidget->addTab( avClose, tabTitle );
-    ui.tabWidget->setCurrentIndex( newIdx );
-    updateTabTitleMarker( avClose );
+    delete w;
     if ( panel->count() == 0 ) {
       delete panel;
       distributePanelSizes();
     }
+    // Make sure at least one tab exists somewhere
+    if ( totalTabCount() == 0 )
+      addNewTab();
   } );
 
   ui.panelSplitter->addWidget( panel );
