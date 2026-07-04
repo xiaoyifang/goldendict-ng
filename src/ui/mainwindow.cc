@@ -1428,6 +1428,17 @@ QTabWidget * MainWindow::panelForView( ArticleView * av )
   return nullptr;
 }
 
+QTabWidget * MainWindow::activePanel()
+{
+  auto * av = getCurrentArticleView();
+  if ( av ) {
+    auto * panel = panelForView( av );
+    if ( panel )
+      return panel;
+  }
+  return ui.tabWidget;
+}
+
 void MainWindow::setupTabWidgetCommon( QTabWidget * panel )
 {
   panel->setMovable( true );
@@ -1558,10 +1569,14 @@ void MainWindow::showTabContextMenu( QTabWidget * panel, int tabIdx, QPoint glob
   // Close all tabs except current (panel-scoped)
   if ( panel->count() > 1 ) {
     QAction * closeRestAction = menu.addAction( tr( "Close all tabs except current" ) );
-    connect( closeRestAction, &QAction::triggered, this, [ panel, tabIdx ]() {
-      for ( int i = panel->count() - 1; i >= 0; i-- ) {
-        if ( i != tabIdx )
-          emit panel->tabCloseRequested( i );
+    QPointer< QTabWidget > panelPtr = panel;
+    QWidget * keepWidget            = panel->widget( tabIdx );
+    connect( closeRestAction, &QAction::triggered, this, [ this, panelPtr, keepWidget ]() {
+      if ( !panelPtr )
+        return;
+      for ( int i = panelPtr->count() - 1; i >= 0; i-- ) {
+        if ( panelPtr->widget( i ) != keepWidget )
+          emit panelPtr->tabCloseRequested( i );
       }
     } );
   }
@@ -1569,10 +1584,11 @@ void MainWindow::showTabContextMenu( QTabWidget * panel, int tabIdx, QPoint glob
   menu.addSeparator();
 
   // Close all tabs (panel-scoped)
-  QAction * closeAllAction = menu.addAction( tr( "Close all tabs" ) );
-  connect( closeAllAction, &QAction::triggered, this, [ panel ]() {
-    while ( panel->count() > 0 )
-      emit panel->tabCloseRequested( panel->count() - 1 );
+  QAction * closeAllAction    = menu.addAction( tr( "Close all tabs" ) );
+  QPointer< QTabWidget > panelPtr = panel;
+  connect( closeAllAction, &QAction::triggered, this, [ this, panelPtr ]() {
+    while ( panelPtr && panelPtr->count() > 0 )
+      emit panelPtr->tabCloseRequested( panelPtr->count() - 1 );
   } );
 
   menu.addSeparator();
@@ -2397,7 +2413,11 @@ void MainWindow::switchToWindow( QAction * act )
 
 void MainWindow::addNewTab()
 {
-  createNewTab( true, tr( "(untitled)" ) )->load( QUrl( "gdinternal://untitle-page" ) );
+  QTabWidget * panel = activePanel();
+  if ( panel == ui.tabWidget )
+    createNewTab( true, tr( "(untitled)" ) )->load( QUrl( "gdinternal://untitle-page" ) );
+  else
+    addNewTabToPanel( panel );
 }
 
 void MainWindow::addNewTabToPanel( QTabWidget * panel )
@@ -2555,59 +2575,115 @@ void MainWindow::tabCloseRequested( int x )
 
 void MainWindow::closeCurrentTab()
 {
-  tabCloseRequested( ui.tabWidget->currentIndex() );
+  QTabWidget * panel = activePanel();
+  int idx             = panel->currentIndex();
+  if ( idx < 0 )
+    return;
+
+  if ( panel == ui.tabWidget ) {
+    tabCloseRequested( idx );
+  }
+  else {
+    // Duplicate side-panel close logic inline (cf. createNewSidePanel lambda)
+    QWidget * w = panel->widget( idx );
+    if ( !w )
+      return;
+    mruList.removeOne( w );
+    panel->removeTab( idx );
+    delete w;
+    if ( panel->count() == 0 ) {
+      delete panel;
+      distributePanelSizes();
+    }
+    if ( totalTabCount() == 0 )
+      addNewTab();
+  }
 }
 
 void MainWindow::closeAllTabs()
 {
-  while ( ui.tabWidget->count() > 1 ) {
-    closeCurrentTab();
-  }
+  QTabWidget * panel = activePanel();
 
-  // close last tab
-  closeCurrentTab();
+  if ( panel == ui.tabWidget ) {
+    // Close all but one, then close the last — triggers addNewTab()
+    // which replaces it with a fresh untitled tab.
+    while ( ui.tabWidget->count() > 1 )
+      tabCloseRequested( ui.tabWidget->currentIndex() );
+    if ( ui.tabWidget->count() > 0 )
+      tabCloseRequested( ui.tabWidget->currentIndex() );
+  }
+  else {
+    // Side panel: close every tab, then delete the panel.
+    while ( panel->count() > 0 ) {
+      int idx = panel->currentIndex();
+      if ( idx < 0 )
+        break;
+      QWidget * w = panel->widget( idx );
+      if ( !w )
+        break;
+      mruList.removeOne( w );
+      panel->removeTab( idx );
+      delete w;
+    }
+    delete panel;
+    distributePanelSizes();
+    if ( totalTabCount() == 0 )
+      addNewTab();
+  }
 }
 
 void MainWindow::closeRestTabs()
 {
-  if ( ui.tabWidget->count() < 2 ) {
+  QTabWidget * panel = activePanel();
+  if ( panel->count() < 2 )
     return;
+
+  if ( panel == ui.tabWidget ) {
+    // Track keep tab by widget pointer to handle index drift
+    QWidget * keepWidget = ui.tabWidget->currentWidget();
+
+    // Close from highest index down to avoid index drift
+    for ( int i = ui.tabWidget->count() - 1; i >= 0; i-- ) {
+      if ( ui.tabWidget->widget( i ) == keepWidget )
+        continue;
+      tabCloseRequested( i );
+    }
+    ui.tabWidget->setCurrentWidget( keepWidget );
   }
+  else {
+    QWidget * keepWidget = panel->currentWidget();
 
-  int idx = ui.tabWidget->currentIndex();
-
-  for ( int i = 0; i < idx; i++ ) {
-    tabCloseRequested( 0 );
-  }
-
-  ui.tabWidget->setCurrentIndex( 0 );
-
-  while ( ui.tabWidget->count() > 1 ) {
-    tabCloseRequested( 1 );
+    for ( int i = panel->count() - 1; i >= 0; i-- ) {
+      if ( panel->widget( i ) == keepWidget )
+        continue;
+      QWidget * w = panel->widget( i );
+      if ( !w )
+        continue;
+      mruList.removeOne( w );
+      panel->removeTab( i );
+      delete w;
+    }
+    panel->setCurrentWidget( keepWidget );
   }
 }
 
 void MainWindow::switchToNextTab()
 {
-  if ( ui.tabWidget->count() < 2 ) {
+  QTabWidget * panel = activePanel();
+  if ( panel->count() < 2 )
     return;
-  }
-
-  ui.tabWidget->setCurrentIndex( ( ui.tabWidget->currentIndex() + 1 ) % ui.tabWidget->count() );
+  panel->setCurrentIndex( ( panel->currentIndex() + 1 ) % panel->count() );
 }
 
 void MainWindow::switchToPrevTab()
 {
-  if ( ui.tabWidget->count() < 2 ) {
+  QTabWidget * panel = activePanel();
+  if ( panel->count() < 2 )
     return;
-  }
-
-  if ( !ui.tabWidget->currentIndex() ) {
-    ui.tabWidget->setCurrentIndex( ui.tabWidget->count() - 1 );
-  }
-  else {
-    ui.tabWidget->setCurrentIndex( ui.tabWidget->currentIndex() - 1 );
-  }
+  if ( !panel->currentIndex() )
+    panel->setCurrentIndex( panel->count() - 1 );
+  else
+    panel->setCurrentIndex( panel->currentIndex() - 1 );
 }
 
 void MainWindow::backClicked()
@@ -3706,7 +3782,7 @@ void MainWindow::showTranslationFor( const QString & word, unsigned inGroup, con
   GlobalBroadcaster::instance()->is_popup = false;
 
   ArticleView * view = getCurrentArticleView();
-  if ( !view )
+  if ( !view || view->isWebsite() )
     view = getFirstNonWebSiteArticleView();
 
   navPronounce->setEnabled( false );

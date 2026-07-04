@@ -59,6 +59,7 @@ public:
   QString formatTabTitle( ArticleView * av, const QString & baseTitle );
   void updateTabTitleMarker( ArticleView * av );
   QTabWidget * panelForView( ArticleView * av );
+  QTabWidget * activePanel();
   QTabWidget * findOrCreateSidePanel();
   QTabWidget * createNewSidePanel();
   void setupTabWidgetCommon( QTabWidget * panel );
@@ -142,7 +143,7 @@ private:
 
   QAction stopAudioAction;
   int tabMenuTabIndex = -1; // tab index where context menu was opened
-  ArticleView * lastFocusedArticleView = nullptr; // last ArticleView that had keyboard focus
+  QPointer< ArticleView > lastFocusedArticleView; // last ArticleView that had keyboard focus
   QMenu * moveToMenu          = nullptr;
   QAction * newPanelAction    = nullptr;
   QToolBar * navToolbar;
