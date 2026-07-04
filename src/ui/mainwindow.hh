@@ -52,6 +52,21 @@ public:
   /// Set group for main/popup window
   void setGroupByName( const QString & name, bool main_window );
 
+  // Side-by-side panels
+  void addPanel( ArticleView * av, int targetPanelIdx = -1 );
+  void removePanel( ArticleView * av );
+  void showTabContextMenu( QTabWidget * panel, int tabIdx, QPoint globalPos );
+  QString formatTabTitle( ArticleView * av, const QString & baseTitle );
+  void updateTabTitleMarker( ArticleView * av );
+  QTabWidget * panelForView( ArticleView * av );
+  QTabWidget * findOrCreateSidePanel();
+  QTabWidget * createNewSidePanel();
+  void togglePanel();
+  void togglePanelOrientation();
+  int totalTabCount() const;
+  int panelCount() const;
+  void distributePanelSizes();
+
   enum class WildcardPolicy {
     EscapeWildcards,
     WildcardsAreAlreadyEscaped
@@ -117,13 +132,18 @@ private:
 
   QAction escAction, focusTranslateLineAction, addTabAction, closeCurrentTabAction, closeAllTabAction,
     closeRestTabAction, switchToNextTabAction, switchToPrevTabAction, showDictBarNamesAction, toggleMenuBarAction,
-    lockPanelsAction, focusHeadwordsDlgAction, focusArticleViewAction, addAllTabToFavoritesAction;
+    lockPanelsAction, focusHeadwordsDlgAction, focusArticleViewAction, addAllTabToFavoritesAction, togglePanelAction,
+    togglePanelOrientationAction;
 
   QAction useSmallIconsInToolbarsAction, useLargeIconsInToolbarsAction, useNormalIconsInToolbarsAction;
 
   QActionGroup * smallLargeIconGroup = new QActionGroup( this );
 
   QAction stopAudioAction;
+  int tabMenuTabIndex = -1; // tab index where context menu was opened
+  ArticleView * lastFocusedArticleView = nullptr; // last ArticleView that had keyboard focus
+  QMenu * moveToMenu          = nullptr;
+  QAction * newPanelAction    = nullptr;
   QToolBar * navToolbar;
   MainStatusBar * mainStatusBar;
   QAction *navBack, *navForward, *navPronounce, *enableScanningAction;

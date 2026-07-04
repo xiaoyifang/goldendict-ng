@@ -379,6 +379,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.removeInvalidIndexOnExit->setChecked( p.removeInvalidIndexOnExit );
   ui.enableApplicationLog->setChecked( p.enableApplicationLog );
   ui.openWebsiteInNewTab->setChecked( p.openWebsiteInNewTab );
+  ui.openWebsitesInPanel->setChecked( p.openWebsitesInPanel );
   ui.suppressWebDialogs->setChecked( p.suppressWebDialogs );
   ui.enableJavaScriptClipboard->setChecked( p.enableJavaScriptClipboardAccess );
 
@@ -527,6 +528,7 @@ Config::Preferences Preferences::getPreferences()
   p.ignoreDiacritics       = ui.ignoreDiacritics->isChecked();
   p.ignorePunctuation      = ui.ignorePunctuation->isChecked();
   p.sessionCollapse        = ui.sessionCollapse->isChecked();
+
   p.stripClipboard         = ui.stripClipboard->isChecked();
   p.raiseWindowOnSearch    = ui.raiseWindowOnSearch->isChecked();
 
@@ -568,6 +570,7 @@ Config::Preferences Preferences::getPreferences()
   p.removeInvalidIndexOnExit = ui.removeInvalidIndexOnExit->isChecked();
   p.enableApplicationLog     = ui.enableApplicationLog->isChecked();
   p.openWebsiteInNewTab             = ui.openWebsiteInNewTab->isChecked();
+p.openWebsitesInPanel            = ui.openWebsitesInPanel->isChecked();
   p.suppressWebDialogs       = ui.suppressWebDialogs->isChecked();
   p.enableJavaScriptClipboardAccess = ui.enableJavaScriptClipboard->isChecked();
 

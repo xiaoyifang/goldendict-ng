@@ -1932,6 +1932,13 @@ from Stardict, Babylon and GLS dictionaries</string>
            </widget>
           </item>
           <item>
+           <widget class="QCheckBox" name="openWebsitesInPanel">
+            <property name="text">
+             <string>Open websites in panels</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QCheckBox" name="suppressWebDialogs">
             <property name="toolTip">
              <string>Suppress JavaScript alerts, confirms, and prompts in the article view.</string>

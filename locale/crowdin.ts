@@ -2651,6 +2651,46 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <source>Application is still running in the background. Click the tray icon to show the window.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Toggle Panel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toggle Panel Orientation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move to Panel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toggle Always Query</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move to New Panel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Always Query This Tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Main Panel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Panel %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>(empty)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add to Favorites</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3506,6 +3546,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Customize Fonts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open websites in panels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restore session on startup (tabs, panels, layout)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

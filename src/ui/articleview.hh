@@ -68,7 +68,7 @@ class ArticleView: public QWidget
 
   bool historyMode = false;
 
-  //current active dictionary id;
+  // current active dictionary id;
   QString activeDictId;
 
   QString audioLink_;
@@ -231,7 +231,7 @@ public:
     if ( !qFuzzyCompare( existedFactor, factor ) ) {
       qDebug() << "zoom factor ,existed:" << existedFactor << "set:" << factor;
       webview->setZoomFactor( factor );
-      //webview->page()->setZoomFactor(factor);
+      // webview->page()->setZoomFactor(factor);
     }
   }
 
@@ -368,9 +368,10 @@ public slots:
 
   /// Selects an entire text of the current article
   void selectCurrentArticle();
-  //receive signal from weburlinterceptor.
+  // receive signal from weburlinterceptor.
   void linkClicked( const QUrl & );
-  //aim to receive signal from html. the fragment url click to  navigation through page wil not be intecepted by weburlinteceptor
+  // aim to receive signal from html. the fragment url click to  navigation through page wil not be intecepted by
+  // weburlinteceptor
   Q_INVOKABLE void linkClickedInHtml( const QUrl & );
 private slots:
   void inspectElement();
@@ -393,10 +394,10 @@ private slots:
 
   unsigned getCurrentGroup();
 
-  /// Nagivates to the previous article relative to the active one.
+  /// Navigates to the previous article relative to the active one.
   void moveOneArticleUp();
 
-  /// Nagivates to the next article relative to the active one.
+  /// Navigates to the next article relative to the active one.
   void moveOneArticleDown();
 
   void on_searchText_textEdited();
