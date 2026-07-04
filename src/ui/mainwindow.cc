@@ -713,7 +713,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   setupTabWidgetCommon( ui.tabWidget );
 
-  connect( &addTab, &QAbstractButton::clicked, this, &MainWindow::addNewTab );
+  connect( &addTab, &QAbstractButton::clicked, this, [ this ]() {
+    createNewTab( true, tr( "(untitled)" ) )->load( QUrl( "gdinternal://untitle-page" ) );
+  } );
 
   connect( ui.tabWidget, &QTabWidget::tabCloseRequested, this, &MainWindow::tabCloseRequested );
 
@@ -1468,7 +1470,7 @@ void MainWindow::setupTabWidgetCommon( QTabWidget * panel )
   connect( panel->tabBar(), &QTabBar::tabBarDoubleClicked, this, [ this, panel ]( int index ) {
     if ( index == -1 ) {
       if ( panel == ui.tabWidget )
-        addNewTab();
+        createNewTab( true, tr( "(untitled)" ) )->load( QUrl( "gdinternal://untitle-page" ) );
       else
         addNewTabToPanel( panel );
     }
