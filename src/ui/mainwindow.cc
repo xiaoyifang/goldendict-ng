@@ -3312,8 +3312,9 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
       }
     }
 
-    // workaround to fix #660
-    if ( obj == this && ev->type() == QEvent::KeyPress
+    // workaround to fix #660 — only for bare keys (no modifier)
+    // Let Alt+Up/Down through so articleUp/articleDown shortcuts fire.
+    if ( obj == this && ev->type() == QEvent::KeyPress && ke->modifiers() == Qt::NoModifier
          && ( key == Qt::Key_Up || key == Qt::Key_Down || key == Qt::Key_Space || key == Qt::Key_PageUp
               || key == Qt::Key_PageDown ) ) {
       ArticleView * view = getCurrentArticleView();
