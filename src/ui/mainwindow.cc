@@ -728,7 +728,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     ui.tabWidget->setCurrentIndex( act->data().toInt() );
   } );
 
-  // Double-click empty tab bar
+  // Double-click blank space in tab widget
   connect( ui.tabWidget->tabBar(), &QTabBar::tabBarDoubleClicked, this, [ this ]( int index ) {
     if ( index == -1 )
       createNewTab( true, tr( "(untitled)" ) )->load( QUrl( "gdinternal://untitle-page" ) );
@@ -1522,7 +1522,7 @@ QTabWidget * MainWindow::createPanel()
     panel->setCurrentIndex( act->data().toInt() );
   } );
 
-  // Double-click empty tab bar → new tab in this panel
+  // Double-click blank space in tab widget → new tab in this panel
   connect( panel->tabBar(), &QTabBar::tabBarDoubleClicked, this, [ this, panel ]( int index ) {
     if ( index == -1 )
       addNewTabToPanel( panel );
