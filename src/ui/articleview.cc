@@ -185,10 +185,12 @@ ArticleView::ArticleView( QWidget * parent,
   connect( &pasteAction, &QAction::triggered, this, &ArticleView::pasteTriggered );
 
   articleUpAction.setShortcut( QKeySequence( "Alt+Up" ) );
+  articleUpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
   webview->addAction( &articleUpAction );
   connect( &articleUpAction, &QAction::triggered, this, &ArticleView::moveOneArticleUp );
 
   articleDownAction.setShortcut( QKeySequence( "Alt+Down" ) );
+  articleDownAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
   webview->addAction( &articleDownAction );
   connect( &articleDownAction, &QAction::triggered, this, &ArticleView::moveOneArticleDown );
 

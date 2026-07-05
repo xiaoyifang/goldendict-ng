@@ -353,6 +353,18 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( addToFavorites, &QAction::triggered, this, &MainWindow::handleAddToFavoritesButton );
   connect( ui.actionAddToFavorites, &QAction::triggered, this, &MainWindow::addCurrentTabToFavorites );
 
+  // Ctrl+F: open search bar in the currently focused article view
+  connect( ui.searchInPageAction, &QAction::triggered, this, [ this ]() {
+#ifdef Q_OS_MACOS
+    if ( scanPopup && scanPopup->isActiveWindow() ) {
+      scanPopup->openSearch();
+      return;
+    }
+#endif
+    if ( auto * view = getCurrentArticleView() )
+      view->openSearch();
+  } );
+
   beforeOptionsSeparator = navToolbar->addSeparator();
   navToolbar->widgetForAction( beforeOptionsSeparator )->setObjectName( "beforeOptionsSeparator" );
   beforeOptionsSeparator->setVisible( cfg.preferences.hideMenubar );
@@ -2507,16 +2519,6 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, const QString & name )
 {
   ArticleView * view = createArticleView();
 
-  connect( ui.searchInPageAction, &QAction::triggered, view, [ this, view ]() {
-#ifdef Q_OS_MACOS
-    if ( scanPopup && scanPopup->isActiveWindow() ) {
-      scanPopup->openSearch();
-      return;
-    }
-#endif
-    view->openSearch();
-  } );
-
   int index          = cfg.preferences.newTabsOpenAfterCurrentOne ? ui.tabWidget->currentIndex() + 1 : ui.tabWidget->count();
   QString escaped    = Utils::escapeAmps( name );
 
@@ -3303,8 +3305,9 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
 {
   if ( ev->type() == QEvent::ShortcutOverride || ev->type() == QEvent::KeyPress ) {
     auto * ke = dynamic_cast< QKeyEvent * >( ev );
-    // Handle F3/Shift+F3 shortcuts
     const int key = ke->key();
+
+    // Handle F3/Shift+F3 shortcuts
     if ( key == Qt::Key_F3 ) {
       ArticleView * view = getCurrentArticleView();
       if ( view && view->handleF3( obj, ev ) ) {
