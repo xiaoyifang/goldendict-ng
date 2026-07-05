@@ -1489,7 +1489,7 @@ QTabWidget * MainWindow::createPanel()
   panel->setContextMenuPolicy( Qt::CustomContextMenu );
   panel->tabBar()->installEventFilter( this );
 
-  // "+" button — every panel gets one
+  // "+" button for creating new tabs in this panel
   auto * addBtn = new QToolButton( panel );
   addBtn->setAutoRaise( true );
   addBtn->setIcon( QIcon( ":/icons/addtab.svg" ) );
@@ -1643,7 +1643,7 @@ void MainWindow::showTabContextMenu( QTabWidget * panel, int tabIdx, QPoint glob
         tabCloseRequested( ui.tabWidget->currentIndex() );
     }
     else {
-      // Side panel: close every tab — panel self-deletes via closeTabInPanel
+      // Side panel: close every tab; panel is deleted when empty
       while ( panelPtr && panelPtr->count() > 0 )
         closeTabInPanel( panelPtr, panelPtr->count() - 1 );
     }
@@ -3312,8 +3312,10 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
       }
     }
 
-    // workaround to fix #660 — only for bare keys (no modifier)
-    // Let Alt+Up/Down through so articleUp/articleDown shortcuts fire.
+    // When no child widget has focus, a bare key press (without modifiers)
+    // reaches the main window. Redirect it to the article view so scrolling
+    // works. Modified key presses (Alt-Up etc.) belong to the shortcut system
+    // and must not be consumed here.
     if ( obj == this && ev->type() == QEvent::KeyPress && ke->modifiers() == Qt::NoModifier
          && ( key == Qt::Key_Up || key == Qt::Key_Down || key == Qt::Key_Space || key == Qt::Key_PageUp
               || key == Qt::Key_PageDown ) ) {
