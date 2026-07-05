@@ -1741,7 +1741,8 @@ void MainWindow::applyProxySettings()
 
   QNetworkProxy proxy( type );
 
-  if ( cfg.preferences.proxyServer.enabled ) {
+ if ( cfg.preferences.proxyServer.enabled && !cfg.preferences.proxyServer.host.isEmpty() && cfg.preferences.proxyServer.port != 0) {
+
     proxy.setHostName( cfg.preferences.proxyServer.host );
     proxy.setPort( cfg.preferences.proxyServer.port );
 
@@ -1752,6 +1753,9 @@ void MainWindow::applyProxySettings()
     if ( cfg.preferences.proxyServer.password.size() ) {
       proxy.setPassword( cfg.preferences.proxyServer.password );
     }
+  }
+  else{
+    proxy.setType(QNetworkProxy::NoProxy);
   }
 
   QNetworkProxy::setApplicationProxy( proxy );
