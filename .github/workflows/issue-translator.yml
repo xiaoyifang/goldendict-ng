@@ -6,20 +6,163 @@ on:
     types: [created]
   issues: 
     types: [opened]
+  workflow_dispatch:
+    inputs:
+      test_issue_number:
+        description: 'Issue number to test (for manual testing)'
+        required: false
+        type: number
 
 jobs:
-  build:
+  translate:
     runs-on: ubuntu-latest
     permissions:
       issues: write
       contents: read
+      models: read
     steps:
-      - uses: a631807682/issues-translator@v1.2.2
+      - name: Extract issue content from event
+        id: issue
+        if: github.event_name != 'workflow_dispatch'
+        uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          match-languages: cmn,rus
-          min-match-percent: 0.08
-          modify-title: true
-          modify-body: true
-          modify-comment: true
-          comment-note: Bot detected the issue body's language is not English, translate it automatically.
+          script: |
+            const payload = context.payload;
+            if (payload.issue) {
+              core.setOutput('title', payload.issue.title || '');
+              core.setOutput('body', payload.issue.body || '');
+              core.setOutput('type', 'issue');
+              core.setOutput('number', payload.issue.number);
+            } else if (payload.comment) {
+              core.setOutput('body', payload.comment.body || '');
+              core.setOutput('type', 'comment');
+              core.setOutput('number', payload.issue.number);
+            }
+
+      - name: Extract issue content for manual test
+        id: issue-manual
+        if: github.event_name == 'workflow_dispatch' && inputs.test_issue_number != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const github = require('@actions/github');
+            const octokit = github.getOctokit('${{ secrets.GITHUB_TOKEN }}');
+            const repo = context.repo;
+            const issueNumber = ${{ inputs.test_issue_number }};
+            
+            const response = await octokit.rest.issues.get({
+              owner: repo.owner,
+              repo: repo.repo,
+              issue_number: issueNumber
+            });
+            
+            const issue = response.data;
+            core.setOutput('title', issue.title || '');
+            core.setOutput('body', issue.body || '');
+            core.setOutput('type', 'issue');
+            core.setOutput('number', issueNumber);
+
+      - name: Set issue outputs
+        id: issue-final
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.test_issue_number }}" != "" ]; then
+            echo "title=${{ steps.issue-manual.outputs.title }}" >> $GITHUB_OUTPUT
+            echo "body=${{ steps.issue-manual.outputs.body }}" >> $GITHUB_OUTPUT
+            echo "type=${{ steps.issue-manual.outputs.type }}" >> $GITHUB_OUTPUT
+            echo "number=${{ steps.issue-manual.outputs.number }}" >> $GITHUB_OUTPUT
+          else
+            echo "title=${{ steps.issue.outputs.title }}" >> $GITHUB_OUTPUT
+            echo "body=${{ steps.issue.outputs.body }}" >> $GITHUB_OUTPUT
+            echo "type=${{ steps.issue.outputs.type }}" >> $GITHUB_OUTPUT
+            echo "number=${{ steps.issue.outputs.number }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Save issue content to environment
+        run: |
+          echo "ISSUE_TITLE<<'EOF'" >> $GITHUB_ENV
+          echo "${{ steps.issue-final.outputs.title }}" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+          echo "ISSUE_BODY<<'EOF'" >> $GITHUB_ENV
+          echo "${{ steps.issue-final.outputs.body }}" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Detect language and translate
+        id: ai
+        uses: actions/ai-inference@v1
+        with:
+          model: openai/gpt-4.1-mini
+          system-prompt: |
+            You are a professional technical translator.
+            Your task is to detect the language of the input text and translate it to English if it's not already in English.
+            Return ONLY a valid JSON object with these fields:
+            - "needs_translation": boolean (true if text is not English, false if already English)
+            - "source_language": string (detected language name, e.g., "Chinese", "Russian", "English")
+            - "translated_title": string (translated title, keep original if no title or already English)
+            - "translated_body": string (translated body content, keep original if already English)
+            Do NOT include any other text or explanation.
+          user-prompt: |
+            Title: ${{ env.ISSUE_TITLE }}
+            Body: ${{ env.ISSUE_BODY }}
+
+      - name: Save AI result to file
+        run: |
+          echo '${{ steps.ai.outputs.result }}' > /tmp/ai_result.json
+
+      - name: Update issue with translation
+        if: steps.issue-final.outputs.type == 'issue'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const result = JSON.parse(fs.readFileSync('/tmp/ai_result.json', 'utf8'));
+            const { needs_translation, source_language, translated_title, translated_body } = result;
+            
+            if (!needs_translation) {
+              console.log('Issue is already in English, skipping translation');
+              return;
+            }
+            
+            const github = require('@actions/github');
+            const octokit = github.getOctokit('${{ secrets.GITHUB_TOKEN }}');
+            const repo = context.repo;
+            
+            const originalTitle = process.env.ISSUE_TITLE;
+            const originalBody = process.env.ISSUE_BODY;
+            
+            const newTitle = translated_title || originalTitle;
+            const newBody = `**${source_language} Original:**\n\n${originalBody}\n\n---\n\n**English Translation:**\n\n${translated_body}\n\n---\n\n*Bot detected the issue body's language is ${source_language}, translated it automatically.*`;
+            
+            await octokit.rest.issues.update({
+              owner: repo.owner,
+              repo: repo.repo,
+              issue_number: ${{ steps.issue-final.outputs.number }},
+              title: newTitle,
+              body: newBody
+            });
+
+      - name: Add translation comment for issue comment
+        if: steps.issue-final.outputs.type == 'comment'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const result = JSON.parse(fs.readFileSync('/tmp/ai_result.json', 'utf8'));
+            const { needs_translation, source_language, translated_body } = result;
+            
+            if (!needs_translation) {
+              console.log('Comment is already in English, skipping translation');
+              return;
+            }
+            
+            const github = require('@actions/github');
+            const octokit = github.getOctokit('${{ secrets.GITHUB_TOKEN }}');
+            const repo = context.repo;
+            
+            const commentBody = `**${source_language} to English translation:**\n\n${translated_body}\n\n---\n\n*Bot detected the comment language is ${source_language}, translated it automatically.*`;
+            
+            await octokit.rest.issues.createComment({
+              owner: repo.owner,
+              repo: repo.repo,
+              issue_number: ${{ steps.issue-final.outputs.number }},
+              body: commentBody
+            });
