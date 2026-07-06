@@ -1197,7 +1197,7 @@ void ArticleView::openLink( const QUrl & url, const QUrl & ref, const QString & 
         QStringList dictsList = Utils::Url::queryItemValue( url, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
 
         showDefinition( word, dictsList, getGroup( url ), false );
-            return;
+        return;
       }
 
       QString newScrollTo( scrollTo );
@@ -1215,8 +1215,7 @@ void ArticleView::openLink( const QUrl & url, const QUrl & ref, const QString & 
       }
 
       showDefinition( word, getGroup( ref ), newScrollTo, contexts );
-
-      }
+    }
   }
   else if ( url.scheme() == "bres" || url.scheme() == "gdau" || url.scheme() == "gdvideo"
             || Utils::Url::isAudioUrl( url ) ) {

@@ -156,7 +156,7 @@ private:
   QAction * menuButtonAction;
   QToolButton * menuButton;
   QToolButton * tabListButton = nullptr; // main panel's tab list button (for Ctrl+Tab)
-  //List that contains indexes of tabs arranged in a most-recently-used order
+  // List that contains indexes of tabs arranged in a most-recently-used order
   QList< QWidget * > mruList;
   Config::Class & cfg;
   History history;

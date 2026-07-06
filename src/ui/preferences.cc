@@ -570,7 +570,7 @@ Config::Preferences Preferences::getPreferences()
   p.removeInvalidIndexOnExit = ui.removeInvalidIndexOnExit->isChecked();
   p.enableApplicationLog     = ui.enableApplicationLog->isChecked();
   p.openWebsiteInNewTab             = ui.openWebsiteInNewTab->isChecked();
-p.openWebsitesInPanel            = ui.openWebsitesInPanel->isChecked();
+  p.openWebsitesInPanel             = ui.openWebsitesInPanel->isChecked();
   p.suppressWebDialogs       = ui.suppressWebDialogs->isChecked();
   p.enableJavaScriptClipboardAccess = ui.enableJavaScriptClipboard->isChecked();
 
