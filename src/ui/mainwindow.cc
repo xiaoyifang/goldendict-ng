@@ -2733,7 +2733,7 @@ void MainWindow::tabSwitched( int )
   }
 
   // Set icon for "Add to Favorites" action
-  auto view = getCurrentArticleView();
+  auto view = qobject_cast< ArticleView * >( ui.tabWidget->currentWidget() );
   QString headword;
   if ( view ) {
     headword = view->getCurrentWord();
