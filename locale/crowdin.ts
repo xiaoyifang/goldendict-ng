@@ -2664,15 +2664,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Toggle Always Query</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Move to New Panel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Always Query This Tab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2681,10 +2673,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
         <source>Panel %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>(empty)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3550,10 +3538,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Open websites in panels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Restore session on startup (tabs, panels, layout)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
