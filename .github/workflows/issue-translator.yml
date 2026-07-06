@@ -1,25 +1,171 @@
 name: 'issue-translator'
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+# Manual Execution:
+# - Go to GitHub Actions → issue-translator → Run workflow
+# - Enter test_issue_number (required): Issue number to test translation
+# - Enter test_comment_id (optional): Comment ID for comment translation testing
+# - Supports both issue and comment translation via workflow_dispatch
 on: 
   issue_comment: 
     types: [created]
   issues: 
     types: [opened]
+  workflow_dispatch:
+    inputs:
+      test_issue_number:
+        description: 'Issue number to test translation (leave empty to skip)'
+        required: false
+        type: number
+      test_comment_id:
+        description: 'Comment ID to test translation (optional, for comment testing)'
+        required: false
+        type: number
 
 jobs:
-  build:
+  translate:
     runs-on: ubuntu-latest
     permissions:
       issues: write
       contents: read
+      pull-requests: write
+      models: read
     steps:
-      - uses: a631807682/issues-translator@v1.2.2
+      - name: Extract issue content
+        id: extract
+        uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          match-languages: cmn,rus
-          min-match-percent: 0.08
-          modify-title: true
-          modify-body: true
-          modify-comment: true
-          comment-note: Bot detected the issue body's language is not English, translate it automatically.
+          script: |
+            let number, title = '', body = '', type = '';
+            
+            if (context.eventName === 'workflow_dispatch') {
+              const issueNumber = parseInt(context.payload.inputs.test_issue_number);
+              const commentId = parseInt(context.payload.inputs.test_comment_id);
+              
+              if (isNaN(issueNumber)) {
+                core.setFailed('test_issue_number is required for workflow_dispatch');
+                return;
+              }
+              
+              number = issueNumber;
+              
+              if (!isNaN(commentId)) {
+                const { data: comment } = await octokit.rest.issues.getComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  comment_id: commentId
+                });
+                body = comment.body || '';
+                type = 'comment';
+              } else {
+                const { data: issue } = await octokit.rest.issues.get({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: number
+                });
+                title = issue.title || '';
+                body = issue.body || '';
+                type = 'issue';
+              }
+            } else if (context.payload.comment) {
+              number = context.payload.issue.number;
+              body = context.payload.comment.body || '';
+              type = 'comment';
+            } else {
+              number = context.payload.issue.number;
+              title = context.payload.issue.title || '';
+              body = context.payload.issue.body || '';
+              type = 'issue';
+            }
+            
+            core.setOutput('number', number);
+            core.setOutput('type', type);
+            core.setOutput('title', title);
+            core.setOutput('body', body);
+            core.setOutput('prompt', `Title: ${title}\n\nBody:\n${body}`);
+
+      - name: Detect language and translate
+        id: ai
+        uses: actions/ai-inference@v1
+        with:
+          model: openai/gpt-4o-mini
+          system-prompt: |
+            You are a professional technical translator.
+            Return ONLY a valid JSON:
+            {
+              "needs_translation": boolean,
+              "source_language": "string",
+              "translated_title": "string",
+              "translated_body": "string"
+            }
+          # Use the prompt string generated from the previous step
+          prompt: ${{ steps.extract.outputs.prompt }}
+
+      - name: Update Issue or Comment
+        uses: actions/github-script@v7
+        env:
+          AI_RESPONSE: ${{ steps.ai.outputs.response }}
+          ORIGINAL_TITLE: ${{ steps.extract.outputs.title }}
+          ORIGINAL_BODY: ${{ steps.extract.outputs.body }}
+          ISSUE_TYPE: ${{ steps.extract.outputs.type }}
+          ISSUE_NUMBER: ${{ steps.extract.outputs.number }}
+        with:
+          script: |
+            const { AI_RESPONSE, ORIGINAL_TITLE, ORIGINAL_BODY, ISSUE_TYPE, ISSUE_NUMBER } = process.env;
+            
+            console.log('=== Debug Info ===');
+            console.log('ISSUE_TYPE:', ISSUE_TYPE);
+            console.log('ISSUE_NUMBER:', ISSUE_NUMBER);
+            console.log('ORIGINAL_TITLE:', ORIGINAL_TITLE.substring(0, 100));
+            console.log('ORIGINAL_BODY (first 200 chars):', ORIGINAL_BODY.substring(0, 200));
+            console.log('AI_RESPONSE:', AI_RESPONSE);
+            
+            let result;
+            try {
+              const jsonStr = AI_RESPONSE.replace(/```json\n?|```/g, '').trim();
+              result = JSON.parse(jsonStr);
+            } catch (e) {
+              console.error('JSON Parse Error:', e.message);
+              return;
+            }
+            
+            console.log('Parsed result:', JSON.stringify(result));
+            
+            if (!result.needs_translation) {
+              console.log('Skipping: needs_translation is false');
+              return;
+            }
+
+            if (ORIGINAL_BODY.includes('Translated automatically')) {
+              console.log('Skipping: content already contains translation marker');
+              return;
+            }
+
+            const repo = context.repo;
+            const issue_number = parseInt(ISSUE_NUMBER);
+
+            if (ISSUE_TYPE === 'issue') {
+              if (result.translated_title) {
+                console.log('Updating issue title');
+                await octokit.rest.issues.update({
+                  ...repo,
+                  issue_number,
+                  title: result.translated_title
+                });
+              }
+              const commentBody = `**${result.source_language} Original:**\n\n${ORIGINAL_BODY}\n\n---\n\n**English Translation:**\n\n${result.translated_body}\n\n---\n\n*Bot detected: ${result.source_language}. Translated automatically.*`;
+              console.log('Creating translation comment for issue');
+              await octokit.rest.issues.createComment({
+                ...repo,
+                issue_number,
+                body: commentBody
+              });
+            } else {
+              const commentBody = `**${result.source_language} to English translation:**\n\n${result.translated_body}\n\n---\n\n*Bot detected: ${result.source_language}. Translated automatically.*`;
+              console.log('Creating translation comment for comment');
+              await octokit.rest.issues.createComment({
+                ...repo,
+                issue_number,
+                body: commentBody
+              });
+            }
