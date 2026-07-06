@@ -91,6 +91,8 @@ jobs:
           model: openai/gpt-4o-mini
           system-prompt: |
             You are a professional technical translator.
+            Preserve the original markdown formatting in translated_body, including blockquotes (>), code blocks, bold, italic, lists, and other markdown elements.
+            Example: If original is "> quoted text", output must be "> translated quoted text".
             Return ONLY a valid JSON:
             {
               "needs_translation": boolean,
