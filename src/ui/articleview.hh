@@ -354,6 +354,7 @@ signals:
   void translateSelectedText( const QString & word, const QUrl & url, const QString & currentArticle );
 
   void openLinkInSlaveScreen( const QString & word );
+  void openUrlInSlaveScreen( const QUrl & url, const QUrl & referrer, const QString & fromArticle, const Contexts & contexts );
 
 public slots:
 

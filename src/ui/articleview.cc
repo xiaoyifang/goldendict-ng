@@ -1128,6 +1128,9 @@ void ArticleView::linkClicked( const QUrl & url_ )
     }
     openLink( url, webview->url(), getCurrentArticle(), contexts );
   }
+  else if ( kmod & Qt::ControlModifier ) {
+    emit openUrlInSlaveScreen( url, webview->url(), getCurrentArticle(), contexts );
+  }
   else {
     openLink( url, webview->url(), getCurrentArticle(), contexts );
   }

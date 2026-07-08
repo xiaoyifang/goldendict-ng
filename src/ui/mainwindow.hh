@@ -139,6 +139,7 @@ private:
   QMenu dockMenu; // Separate menu for macOS Dock
 #endif
   QMenu * tabMenu;
+  QAction * moveToOtherPaneAction;
   QAction * menuButtonAction;
   QToolButton * menuButton;
   MRUQMenu * tabListMenu;
@@ -365,6 +366,7 @@ private slots:
   void pageLoaded( ArticleView * );
   void tabSwitched( int );
   void tabMenuRequested( QPoint pos );
+  void moveTabToOtherPane();
 
   void dictionaryBarToggled( bool checked );
 
@@ -415,6 +417,7 @@ private slots:
                                unsigned group,
                                const QString & fromArticle,
                                const Contexts & contexts );
+  void openLinkInSlaveScreen( const QUrl & url, const QUrl & referrer, const QString & fromArticle, const Contexts & contexts );
   void typingEvent( const QString & );
 
   void activeArticleChanged( const ArticleView *, const QString & id );

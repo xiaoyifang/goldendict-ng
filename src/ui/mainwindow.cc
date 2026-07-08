@@ -557,8 +557,14 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   tabMenu->addSeparator();
   tabMenu->addAction( &closeAllTabAction );
   tabMenu->addSeparator();
+  moveToOtherPaneAction = new QAction( tr( "Move tab to other pane" ), this );
+  tabMenu->addAction( moveToOtherPaneAction );
+  tabMenu->addSeparator();
   tabMenu->addAction( addToFavorites );
   tabMenu->addAction( &addAllTabToFavoritesAction );
+
+  connect( moveToOtherPaneAction, &QAction::triggered, this, &MainWindow::moveTabToOtherPane );
+  connect( ui.slaveTabWidget, &QWidget::customContextMenuRequested, this, &MainWindow::tabMenuRequested );
 
   // Dictionary bar names
   showDictBarNamesAction.setCheckable( true );
@@ -1523,7 +1529,7 @@ void MainWindow::updatePaneFocusStyle()
     return;
   }
 
-  bool masterHasFocus = ui.tabWidget->hasFocus();
+  bool masterHasFocus = ui.tabWidget->hasFocus() || ui.translateLine->hasFocus();
   bool slaveHasFocus = ui.slaveTabWidget->hasFocus();
 
   QString activeStyle = "QTabWidget::pane { border: 2px solid #6495ed; }";
@@ -1532,21 +1538,12 @@ void MainWindow::updatePaneFocusStyle()
   if ( masterHasFocus ) {
     ui.tabWidget->setStyleSheet( activeStyle );
     ui.slaveTabWidget->setStyleSheet( inactiveStyle );
-    if ( groupList->getCurrentGroup() != masterGroupId ) {
-      groupList->setCurrentGroup( masterGroupId );
-    }
   } else if ( slaveHasFocus ) {
     ui.tabWidget->setStyleSheet( inactiveStyle );
     ui.slaveTabWidget->setStyleSheet( activeStyle );
-    if ( groupList->getCurrentGroup() != slaveGroupId ) {
-      groupList->setCurrentGroup( slaveGroupId );
-    }
   } else {
     ui.tabWidget->setStyleSheet( activeStyle );
     ui.slaveTabWidget->setStyleSheet( inactiveStyle );
-    if ( groupList->getCurrentGroup() != masterGroupId ) {
-      groupList->setCurrentGroup( masterGroupId );
-    }
   }
 }
 
@@ -1556,13 +1553,21 @@ void MainWindow::queryInSlaveScreen( const QString & word )
     return;
   }
 
-  QTabWidget * activePane = ui.tabWidget->hasFocus() ? ui.tabWidget : ui.slaveTabWidget;
-  QTabWidget * targetPane = ( activePane == ui.tabWidget ) ? ui.slaveTabWidget : ui.tabWidget;
-
-  ArticleView * targetView = qobject_cast< ArticleView * >( targetPane->currentWidget() );
+  ArticleView * targetView = qobject_cast< ArticleView * >( ui.slaveTabWidget->currentWidget() );
   if ( targetView ) {
-    unsigned groupId = ( targetPane == ui.slaveTabWidget ) ? slaveGroupId : masterGroupId;
-    targetView->showDefinition( word, groupId );
+    targetView->showDefinition( word, groupList->getCurrentGroup() );
+  }
+}
+
+void MainWindow::openLinkInSlaveScreen( const QUrl & url, const QUrl & referrer, const QString & fromArticle, const Contexts & contexts )
+{
+  if ( !ui.slaveTabWidget->isVisible() ) {
+    return;
+  }
+
+  ArticleView * targetView = qobject_cast< ArticleView * >( ui.slaveTabWidget->currentWidget() );
+  if ( targetView ) {
+    targetView->openLink( url, referrer, fromArticle, contexts );
   }
 }
 
@@ -2145,6 +2150,7 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, const QString & name, Q
   connect( view, &ArticleView::saveBookmarkSignal, this, &MainWindow::addBookmarkToFavorite );
   connect( view, &ArticleView::translateSelectedText, this, &MainWindow::handleTranslateSelectedText );
   connect( view, &ArticleView::openLinkInSlaveScreen, this, &MainWindow::queryInSlaveScreen );
+  connect( view, &ArticleView::openUrlInSlaveScreen, this, &MainWindow::openLinkInSlaveScreen );
 
   connect( ui.searchInPageAction, &QAction::triggered, view, [ this, view ]() {
 #ifdef Q_OS_MACOS
@@ -2161,9 +2167,6 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, const QString & name, Q
 
   if ( targetPane == nullptr ) {
     targetPane = ui.tabWidget;
-    if ( isSplitScreenActive() && ui.slaveTabWidget->hasFocus() ) {
-      targetPane = ui.slaveTabWidget;
-    }
   }
 
   int index = cfg.preferences.newTabsOpenAfterCurrentOne ? targetPane->currentIndex() + 1 : targetPane->count();
@@ -2417,11 +2420,36 @@ void MainWindow::tabSwitched( int )
 
 void MainWindow::tabMenuRequested( QPoint pos )
 {
-  //  // do not show this menu for single tab
-  //  if ( ui.tabWidget->count() < 2 )
-  //    return;
+  moveToOtherPaneAction->setEnabled( isSplitScreenActive() );
+  tabMenu->popup( QCursor::pos() );
+}
 
-  tabMenu->popup( ui.tabWidget->mapToGlobal( pos ) );
+void MainWindow::moveTabToOtherPane()
+{
+  if ( !isSplitScreenActive() ) {
+    return;
+  }
+
+  QTabWidget * sourcePane = ui.tabWidget;
+  QTabWidget * targetPane = ui.slaveTabWidget;
+
+  if ( ui.slaveTabWidget->hasFocus() ) {
+    sourcePane = ui.slaveTabWidget;
+    targetPane = ui.tabWidget;
+  }
+
+  int currentIndex = sourcePane->currentIndex();
+  if ( currentIndex < 0 ) {
+    return;
+  }
+
+  QWidget * tab = sourcePane->widget( currentIndex );
+  QString title = sourcePane->tabText( currentIndex );
+  sourcePane->removeTab( currentIndex );
+
+  int targetIndex = targetPane->count();
+  targetPane->insertTab( targetIndex, tab, title );
+  targetPane->setCurrentIndex( targetIndex );
 }
 
 void MainWindow::dictionaryBarToggled( bool )
@@ -3231,39 +3259,49 @@ void MainWindow::showDefinitionInNewTab( const QString & word,
 void MainWindow::handleTranslateSelectedText( const QString & word, const QUrl & url, const QString & currentArticle )
 {
   Qt::KeyboardModifiers kmod = QApplication::keyboardModifiers();
-  if ( isSplitScreenActive() && !( kmod & Qt::ShiftModifier ) ) {
-    QTabWidget * activePane = ui.tabWidget->hasFocus() ? ui.tabWidget : ui.slaveTabWidget;
-    QTabWidget * targetPane = ( activePane == ui.tabWidget ) ? ui.slaveTabWidget : ui.tabWidget;
 
-    ArticleView * targetView = qobject_cast< ArticleView * >( targetPane->currentWidget() );
+  if ( isSplitScreenActive() && !( kmod & Qt::ShiftModifier ) ) {
+    ArticleView * targetView = qobject_cast< ArticleView * >( ui.slaveTabWidget->currentWidget() );
     if ( targetView ) {
-      unsigned groupId = ( targetPane == ui.slaveTabWidget ) ? slaveGroupId : masterGroupId;
-      targetView->showDefinition( word, groupId, currentArticle );
+      auto groupId = targetView->getGroup( url );
+      if ( groupId == GroupId::NoGroupId ) {
+        groupId = groupList->getCurrentGroup();
+      }
+
+      if ( Utils::Url::hasQueryItem( url, "dictionaries" ) ) {
+        QStringList dictsList = Utils::Url::queryItemValue( url, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
+        targetView->showDefinition( word, dictsList, groupId, false );
+      }
+      else {
+        targetView->showDefinition( word, groupId, currentArticle );
+      }
     }
+    return;
   }
-  else if ( kmod & ( Qt::ControlModifier | Qt::ShiftModifier ) ) {
+
+  if ( kmod & ( Qt::ControlModifier | Qt::ShiftModifier ) ) {
     ArticleView * newView = createNewTab( !cfg.preferences.newTabsOpenInBackground, word );
     auto groupId          = newView->getGroup( url );
     if ( groupId == GroupId::NoGroupId ) {
       groupId = groupList->getCurrentGroup();
     }
     newView->showDefinition( word, groupId, currentArticle, Contexts() );
+    return;
   }
-  else {
-    ArticleView * currentView = getFirstNonWebSiteArticleView();
-    if ( currentView ) {
-      auto groupId = currentView->getGroup( url );
-      if ( groupId == GroupId::NoGroupId || currentView->isInternalPage() ) {
-        groupId = groupList->getCurrentGroup();
-      }
 
-      if ( Utils::Url::hasQueryItem( url, "dictionaries" ) ) {
-        QStringList dictsList = Utils::Url::queryItemValue( url, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
-        currentView->showDefinition( word, dictsList, groupId, false );
-      }
-      else {
-        currentView->showDefinition( word, groupId, currentArticle );
-      }
+  ArticleView * currentView = getFirstNonWebSiteArticleView();
+  if ( currentView ) {
+    auto groupId = currentView->getGroup( url );
+    if ( groupId == GroupId::NoGroupId || currentView->isInternalPage() ) {
+      groupId = groupList->getCurrentGroup();
+    }
+
+    if ( Utils::Url::hasQueryItem( url, "dictionaries" ) ) {
+      QStringList dictsList = Utils::Url::queryItemValue( url, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
+      currentView->showDefinition( word, dictsList, groupId, false );
+    }
+    else {
+      currentView->showDefinition( word, groupId, currentArticle );
     }
   }
 }
@@ -4003,6 +4041,13 @@ void MainWindow::scaleArticlesByCurrentZoomFactor()
   for ( int i = 0; i < ui.tabWidget->count(); i++ ) {
     auto & view = dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( i ) ) );
     view.setZoomFactor( cfg.preferences.zoomFactor );
+  }
+
+  if ( isSplitScreenActive() ) {
+    for ( int i = 0; i < ui.slaveTabWidget->count(); i++ ) {
+      auto & view = dynamic_cast< ArticleView & >( *( ui.slaveTabWidget->widget( i ) ) );
+      view.setZoomFactor( cfg.preferences.zoomFactor );
+    }
   }
 
   if ( scanPopup ) {
@@ -4767,11 +4812,7 @@ void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId,
   if ( view == nullptr ) {
     const int maxTabTitleLength = 30;
     QString truncatedName       = Utils::ellipsizeString( name, maxTabTitleLength );
-    QTabWidget * targetPane = ui.tabWidget;
-    if ( isSplitScreenActive() && ui.slaveTabWidget->hasFocus() ) {
-      targetPane = ui.slaveTabWidget;
-    }
-    view                        = createNewTab( false, truncatedName, targetPane );
+    view                        = createNewTab( false, truncatedName, ui.tabWidget );
     view->setWebsite( true );
     view->setActiveArticleId( dictId );
   }
