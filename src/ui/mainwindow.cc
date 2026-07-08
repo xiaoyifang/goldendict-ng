@@ -767,6 +767,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( groupListInToolbar, &GroupComboBox::currentIndexChanged, this, &MainWindow::currentGroupChanged );
 
+  connect( qApp, &QApplication::focusChanged, this, &MainWindow::updatePaneFocusStyle );
+
   connect( ui.translateLine, &QLineEdit::textChanged, this, &MainWindow::translateInputChanged );
 
   connect( translateBox->translateLine(), &QLineEdit::textEdited, this, &MainWindow::translateInputChanged );
@@ -1496,6 +1498,7 @@ void MainWindow::toggleSplitScreen( Qt::Orientation orientation, bool enable )
       QString escaped = Utils::escapeAmps( tr( "(untitled)" ) );
       ui.slaveTabWidget->addTab( view, escaped );
     }
+    updatePaneFocusStyle();
   } else {
     while ( ui.slaveTabWidget->count() > 0 ) {
       QWidget * tab = ui.slaveTabWidget->widget( 0 );
@@ -1505,6 +1508,33 @@ void MainWindow::toggleSplitScreen( Qt::Orientation orientation, bool enable )
       ui.tabWidget->insertTab( index, tab, title );
     }
     ui.slaveTabWidget->hide();
+    updatePaneFocusStyle();
+  }
+}
+
+void MainWindow::updatePaneFocusStyle()
+{
+  if ( !isSplitScreenActive() ) {
+    ui.tabWidget->setStyleSheet( QString() );
+    ui.slaveTabWidget->setStyleSheet( QString() );
+    return;
+  }
+
+  bool masterHasFocus = ui.tabWidget->hasFocus();
+  bool slaveHasFocus = ui.slaveTabWidget->hasFocus();
+
+  QString activeStyle = "QTabWidget::pane { border: 2px solid #4a90d9; }";
+  QString inactiveStyle = "QTabWidget::pane { border: 1px solid #ccc; }";
+
+  if ( masterHasFocus ) {
+    ui.tabWidget->setStyleSheet( activeStyle );
+    ui.slaveTabWidget->setStyleSheet( inactiveStyle );
+  } else if ( slaveHasFocus ) {
+    ui.tabWidget->setStyleSheet( inactiveStyle );
+    ui.slaveTabWidget->setStyleSheet( activeStyle );
+  } else {
+    ui.tabWidget->setStyleSheet( activeStyle );
+    ui.slaveTabWidget->setStyleSheet( inactiveStyle );
   }
 }
 

@@ -382,6 +382,8 @@ private slots:
   void translateInputChanged( const QString & );
   void translateInputFinished( bool checkModifiers );
 
+  void updatePaneFocusStyle();
+
   /// Closes any opened search in the article view, and focuses the translateLine/close main window to tray.
   void handleEsc();
 
