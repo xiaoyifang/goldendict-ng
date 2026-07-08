@@ -4120,22 +4120,10 @@ ArticleView * MainWindow::getFirstNonWebSiteArticleView()
     return currentView;
   }
 
-  // If current view is not suitable, look for the first non-website tab
   for ( int i = 0; i < activePane->count(); i++ ) {
     auto * view = qobject_cast< ArticleView * >( activePane->widget( i ) );
     if ( view && !view->isWebsite() ) {
       return view;
-    }
-  }
-
-  // Also search in the other pane if split screen is active
-  if ( isSplitScreenActive() ) {
-    QTabWidget * otherPane = ( activePane == ui.tabWidget ) ? ui.slaveTabWidget : ui.tabWidget;
-    for ( int i = 0; i < otherPane->count(); i++ ) {
-      auto * view = qobject_cast< ArticleView * >( otherPane->widget( i ) );
-      if ( view && !view->isWebsite() ) {
-        return view;
-      }
     }
   }
 
