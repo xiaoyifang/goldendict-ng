@@ -757,10 +757,12 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( ui.tabWidget, &QTabWidget::tabCloseRequested, this, &MainWindow::tabCloseRequested );
 
   connect( ui.tabWidget, &QTabWidget::currentChanged, this, &MainWindow::tabSwitched );
+  connect( ui.slaveTabWidget, &QTabWidget::currentChanged, this, &MainWindow::tabSwitched );
 
   connect( ui.tabWidget, &QWidget::customContextMenuRequested, this, &MainWindow::tabMenuRequested );
 
   ui.tabWidget->setTabsClosable( true );
+  ui.slaveTabWidget->setTabsClosable( true );
 
   connect( ui.quit, &QAction::triggered, this, &MainWindow::quitApp );
 
@@ -2165,88 +2167,106 @@ void MainWindow::inspectElement( QWebEnginePage * page )
 
 void MainWindow::tabCloseRequested( int x )
 {
-  QWidget * w = ui.tabWidget->widget( x );
+  QTabWidget * senderTabWidget = qobject_cast< QTabWidget * >( sender() );
+  if ( !senderTabWidget ) {
+    senderTabWidget = ui.tabWidget;
+  }
+
+  QWidget * w = senderTabWidget->widget( x );
 
   mruList.removeOne( w );
 
-  // In MRU case: First, we switch to the appropriate tab
-  // and only then remove the old one.
-
-  //activate a tab in accordance with MRU
   if ( cfg.preferences.mruTabOrder && !mruList.empty() ) {
-    ui.tabWidget->setCurrentWidget( mruList.at( 0 ) );
+    senderTabWidget->setCurrentWidget( mruList.at( 0 ) );
   }
-  else if ( ui.tabWidget->count() > 1 ) {
-    //activate neighboring tab
-    int n = x >= ui.tabWidget->count() - 1 ? x - 1 : x + 1;
+  else if ( senderTabWidget->count() > 1 ) {
+    int n = x >= senderTabWidget->count() - 1 ? x - 1 : x + 1;
     if ( n >= 0 ) {
-      ui.tabWidget->setCurrentIndex( n );
+      senderTabWidget->setCurrentIndex( n );
     }
   }
 
-  ui.tabWidget->removeTab( x );
+  senderTabWidget->removeTab( x );
   delete w;
 
-  // if everything is closed, add a new tab
-  if ( ui.tabWidget->count() == 0 ) {
+  if ( senderTabWidget->count() == 0 ) {
     addNewTab();
   }
 }
 
 void MainWindow::closeCurrentTab()
 {
-  tabCloseRequested( ui.tabWidget->currentIndex() );
+  QTabWidget * activePane = ui.tabWidget;
+  if ( isSplitScreenActive() ) {
+    activePane = ui.tabWidget->hasFocus() ? ui.tabWidget : ui.slaveTabWidget;
+  }
+  tabCloseRequested( activePane->currentIndex() );
 }
 
 void MainWindow::closeAllTabs()
 {
-  while ( ui.tabWidget->count() > 1 ) {
-    closeCurrentTab();
+  QTabWidget * activePane = ui.tabWidget;
+  if ( isSplitScreenActive() ) {
+    activePane = ui.tabWidget->hasFocus() ? ui.tabWidget : ui.slaveTabWidget;
   }
-
-  // close last tab
-  closeCurrentTab();
+  while ( activePane->count() > 1 ) {
+    tabCloseRequested( activePane->currentIndex() );
+  }
+  tabCloseRequested( activePane->currentIndex() );
 }
 
 void MainWindow::closeRestTabs()
 {
-  if ( ui.tabWidget->count() < 2 ) {
+  QTabWidget * activePane = ui.tabWidget;
+  if ( isSplitScreenActive() ) {
+    activePane = ui.tabWidget->hasFocus() ? ui.tabWidget : ui.slaveTabWidget;
+  }
+
+  if ( activePane->count() < 2 ) {
     return;
   }
 
-  int idx = ui.tabWidget->currentIndex();
+  int idx = activePane->currentIndex();
 
   for ( int i = 0; i < idx; i++ ) {
     tabCloseRequested( 0 );
   }
 
-  ui.tabWidget->setCurrentIndex( 0 );
+  activePane->setCurrentIndex( 0 );
 
-  while ( ui.tabWidget->count() > 1 ) {
+  while ( activePane->count() > 1 ) {
     tabCloseRequested( 1 );
   }
 }
 
 void MainWindow::switchToNextTab()
 {
-  if ( ui.tabWidget->count() < 2 ) {
+  QTabWidget * activePane = ui.tabWidget;
+  if ( isSplitScreenActive() ) {
+    activePane = ui.tabWidget->hasFocus() ? ui.tabWidget : ui.slaveTabWidget;
+  }
+  if ( activePane->count() < 2 ) {
     return;
   }
 
-  ui.tabWidget->setCurrentIndex( ( ui.tabWidget->currentIndex() + 1 ) % ui.tabWidget->count() );
+  activePane->setCurrentIndex( ( activePane->currentIndex() + 1 ) % activePane->count() );
 }
 
 void MainWindow::switchToPrevTab()
 {
-  if ( ui.tabWidget->count() < 2 ) {
+  QTabWidget * activePane = ui.tabWidget;
+  if ( isSplitScreenActive() ) {
+    activePane = ui.tabWidget->hasFocus() ? ui.tabWidget : ui.slaveTabWidget;
+  }
+  if ( activePane->count() < 2 ) {
     return;
   }
 
-  if ( !ui.tabWidget->currentIndex() ) {
-    ui.tabWidget->setCurrentIndex( ui.tabWidget->count() - 1 );
+  if ( !activePane->currentIndex() ) {
+    activePane->setCurrentIndex( activePane->count() - 1 );
   }
   else {
-    ui.tabWidget->setCurrentIndex( ui.tabWidget->currentIndex() - 1 );
+    activePane->setCurrentIndex( activePane->currentIndex() - 1 );
   }
 }
 
@@ -2282,14 +2302,18 @@ void MainWindow::titleChanged( ArticleView * view, const QString & title )
   const int maxTabTitleLength = 30;
   escaped                     = Utils::ellipsizeString( escaped, maxTabTitleLength );
 
-  int index = ui.tabWidget->indexOf( view );
-  if ( !escaped.isEmpty() ) {
-    ui.tabWidget->setTabText( index, escaped );
+  int masterIndex = ui.tabWidget->indexOf( view );
+  int slaveIndex = ui.slaveTabWidget->indexOf( view );
+
+  if ( masterIndex >= 0 && !escaped.isEmpty() ) {
+    ui.tabWidget->setTabText( masterIndex, escaped );
+  }
+  if ( slaveIndex >= 0 && !escaped.isEmpty() ) {
+    ui.slaveTabWidget->setTabText( slaveIndex, escaped );
   }
 
-  if ( index == ui.tabWidget->currentIndex() ) {
+  if ( masterIndex == ui.tabWidget->currentIndex() ) {
     updateFavIcon( title );
-
     updateWindowTitle();
   }
 }
@@ -2297,6 +2321,7 @@ void MainWindow::titleChanged( ArticleView * view, const QString & title )
 void MainWindow::iconChanged( ArticleView * view, const QIcon & icon )
 {
   ui.tabWidget->setTabIcon( ui.tabWidget->indexOf( view ), groupInstances.size() > 1 ? icon : QIcon() );
+  ui.slaveTabWidget->setTabIcon( ui.slaveTabWidget->indexOf( view ), groupInstances.size() > 1 ? icon : QIcon() );
 }
 
 void MainWindow::updateWindowTitle()
@@ -2338,7 +2363,11 @@ void MainWindow::tabSwitched( int )
   updateFoundInDictsList();
   updateWindowTitle();
   if ( mruList.size() > 1 ) {
-    int from = mruList.indexOf( ui.tabWidget->widget( ui.tabWidget->currentIndex() ) );
+    QTabWidget * activePane = ui.tabWidget;
+    if ( isSplitScreenActive() ) {
+      activePane = ui.tabWidget->hasFocus() ? ui.tabWidget : ui.slaveTabWidget;
+    }
+    int from = mruList.indexOf( activePane->widget( activePane->currentIndex() ) );
     if ( from > 0 ) {
       mruList.move( from, 0 );
     }
@@ -4012,7 +4041,11 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
 
 ArticleView * MainWindow::getCurrentArticleView()
 {
-  QWidget * currentWidget   = ui.tabWidget->currentWidget();
+  QTabWidget * activePane = ui.tabWidget;
+  if ( isSplitScreenActive() ) {
+    activePane = ui.tabWidget->hasFocus() ? ui.tabWidget : ui.slaveTabWidget;
+  }
+  QWidget * currentWidget   = activePane->currentWidget();
   ArticleView * currentView = qobject_cast< ArticleView * >( currentWidget );
 
   if ( currentView ) {
@@ -4024,7 +4057,11 @@ ArticleView * MainWindow::getCurrentArticleView()
 
 ArticleView * MainWindow::getFirstNonWebSiteArticleView()
 {
-  QWidget * currentWidget   = ui.tabWidget->currentWidget();
+  QTabWidget * activePane = ui.tabWidget;
+  if ( isSplitScreenActive() ) {
+    activePane = ui.tabWidget->hasFocus() ? ui.tabWidget : ui.slaveTabWidget;
+  }
+  QWidget * currentWidget   = activePane->currentWidget();
   ArticleView * currentView = qobject_cast< ArticleView * >( currentWidget );
 
   // First check if "openWebsiteInNewTab" is disabled
