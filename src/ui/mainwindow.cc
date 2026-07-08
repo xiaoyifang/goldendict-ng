@@ -1518,21 +1518,32 @@ void MainWindow::toggleSplitScreen( Qt::Orientation orientation, bool enable )
 void MainWindow::updatePaneFocusStyle()
 {
   if ( !isSplitScreenActive() ) {
+    ui.tabWidget->setStyleSheet( QString() );
+    ui.slaveTabWidget->setStyleSheet( QString() );
     return;
   }
 
   bool masterHasFocus = ui.tabWidget->hasFocus();
   bool slaveHasFocus = ui.slaveTabWidget->hasFocus();
 
+  QString activeStyle = "QTabWidget::pane { border: 2px solid #6495ed; }";
+  QString inactiveStyle = "QTabWidget::pane { border: 1px solid transparent; }";
+
   if ( masterHasFocus ) {
+    ui.tabWidget->setStyleSheet( activeStyle );
+    ui.slaveTabWidget->setStyleSheet( inactiveStyle );
     if ( groupList->getCurrentGroup() != masterGroupId ) {
       groupList->setCurrentGroup( masterGroupId );
     }
   } else if ( slaveHasFocus ) {
+    ui.tabWidget->setStyleSheet( inactiveStyle );
+    ui.slaveTabWidget->setStyleSheet( activeStyle );
     if ( groupList->getCurrentGroup() != slaveGroupId ) {
       groupList->setCurrentGroup( slaveGroupId );
     }
   } else {
+    ui.tabWidget->setStyleSheet( activeStyle );
+    ui.slaveTabWidget->setStyleSheet( inactiveStyle );
     if ( groupList->getCurrentGroup() != masterGroupId ) {
       groupList->setCurrentGroup( masterGroupId );
     }
