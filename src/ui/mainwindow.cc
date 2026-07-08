@@ -418,6 +418,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   translateLineDefaultFont = translateLine->font();
   groupListDefaultFont     = groupList->font();
 
+  masterGroupId = groupList->getCurrentGroup();
+  slaveGroupId = groupList->getCurrentGroup();
+
   // Make the dictionaries pane's titlebar
   foundInDictsLabel.setText( tr( "Found in Dictionaries:" ) );
   dictsPaneTitleBarLayout.addWidget( &foundInDictsLabel );
@@ -1529,12 +1532,21 @@ void MainWindow::updatePaneFocusStyle()
   if ( masterHasFocus ) {
     ui.tabWidget->setStyleSheet( activeStyle );
     ui.slaveTabWidget->setStyleSheet( inactiveStyle );
+    if ( groupList->getCurrentGroup() != masterGroupId ) {
+      groupList->setCurrentGroup( masterGroupId );
+    }
   } else if ( slaveHasFocus ) {
     ui.tabWidget->setStyleSheet( inactiveStyle );
     ui.slaveTabWidget->setStyleSheet( activeStyle );
+    if ( groupList->getCurrentGroup() != slaveGroupId ) {
+      groupList->setCurrentGroup( slaveGroupId );
+    }
   } else {
     ui.tabWidget->setStyleSheet( activeStyle );
     ui.slaveTabWidget->setStyleSheet( inactiveStyle );
+    if ( groupList->getCurrentGroup() != masterGroupId ) {
+      groupList->setCurrentGroup( masterGroupId );
+    }
   }
 }
 
@@ -1549,7 +1561,7 @@ void MainWindow::queryInSlaveScreen( const QString & word )
 
   ArticleView * targetView = qobject_cast< ArticleView * >( targetPane->currentWidget() );
   if ( targetView ) {
-    unsigned groupId = groupList->getCurrentGroup();
+    unsigned groupId = ( targetPane == ui.slaveTabWidget ) ? slaveGroupId : masterGroupId;
     targetView->showDefinition( word, groupId );
   }
 }
@@ -2720,6 +2732,19 @@ void MainWindow::currentGroupChanged( int )
 {
   unsigned grg_id               = groupList->getCurrentGroup();
   cfg.lastMainGroupId           = grg_id;
+
+  if ( isSplitScreenActive() ) {
+    if ( ui.tabWidget->hasFocus() ) {
+      masterGroupId = grg_id;
+    } else if ( ui.slaveTabWidget->hasFocus() ) {
+      slaveGroupId = grg_id;
+    } else {
+      masterGroupId = grg_id;
+    }
+  } else {
+    masterGroupId = grg_id;
+    slaveGroupId = grg_id;
+  }
   const Instances::Group * igrp = groupInstances.findGroup( grg_id );
   if ( grg_id == GroupId::AllGroupId ) {
     if ( igrp ) {
@@ -3208,7 +3233,7 @@ void MainWindow::handleTranslateSelectedText( const QString & word, const QUrl &
 
     ArticleView * targetView = qobject_cast< ArticleView * >( targetPane->currentWidget() );
     if ( targetView ) {
-      unsigned groupId = groupList->getCurrentGroup();
+      unsigned groupId = ( targetPane == ui.slaveTabWidget ) ? slaveGroupId : masterGroupId;
       targetView->showDefinition( word, groupId, currentArticle );
     }
   }

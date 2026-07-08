@@ -112,6 +112,9 @@ private:
 
   TranslateBox * translateBox;
 
+  unsigned masterGroupId = GroupId::AllGroupId;
+  unsigned slaveGroupId = GroupId::AllGroupId;
+
   /// Fonts saved before words zooming is in effect, so it could be reset back.
   QFont wordListDefaultFont, translateLineDefaultFont, groupListDefaultFont;
 
