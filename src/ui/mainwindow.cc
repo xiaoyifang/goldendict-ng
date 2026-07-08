@@ -257,21 +257,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   ui.setupUi( this );
 
-  slaveToolbar = new QToolBar( tr( "Slave Toolbar" ), this );
-  slaveToolbar->setObjectName( "slaveToolbar" );
-  slaveToolbar->setFloatable( false );
-  slaveToolbar->setMovable( false );
-
-  slaveGroupComboBox = new GroupComboBox( slaveToolbar );
-  slaveGroupComboBox->setObjectName( "slaveGroupComboBox" );
-  slaveGroupComboBox->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::MinimumExpanding );
-  slaveGroupComboBox->setSizeAdjustPolicy( QComboBox::AdjustToContents );
-  slaveToolbar->addWidget( slaveGroupComboBox );
-
-  addToolBarBreak( Qt::TopToolBarArea );
-  addToolBar( Qt::TopToolBarArea, slaveToolbar );
-  slaveToolbar->hide();
-
   // Set own gesture recognizers
 #ifndef Q_OS_MAC
   Gestures::registerRecognizers();
@@ -1498,10 +1483,6 @@ void MainWindow::toggleSplitScreen( Qt::Orientation orientation, bool enable )
   if ( enable ) {
     ui.splitter->setOrientation( orientation );
     ui.slaveTabWidget->show();
-    slaveToolbar->show();
-
-    slaveGroupComboBox->fill( groupInstances );
-    slaveGroupComboBox->setCurrentGroup( groupList->getCurrentGroup() );
 
     if ( ui.slaveTabWidget->count() == 0 ) {
       ArticleView * view = new ArticleView( this,
@@ -1510,7 +1491,7 @@ void MainWindow::toggleSplitScreen( Qt::Orientation orientation, bool enable )
                                             cfg,
                                             translateLine,
                                             dictionaryBar.toggleViewAction(),
-                                            slaveGroupComboBox->getCurrentGroup() );
+                                            groupList->getCurrentGroup() );
       view->load( QUrl( "gdinternal://untitle-page" ) );
       QString escaped = Utils::escapeAmps( tr( "(untitled)" ) );
       ui.slaveTabWidget->addTab( view, escaped );
@@ -1524,8 +1505,6 @@ void MainWindow::toggleSplitScreen( Qt::Orientation orientation, bool enable )
       ui.tabWidget->insertTab( index, tab, title );
     }
     ui.slaveTabWidget->hide();
-    slaveToolbar->hide();
-    
   }
 }
 
@@ -1540,7 +1519,7 @@ void MainWindow::queryInSlaveScreen( const QString & word )
 
   ArticleView * targetView = qobject_cast< ArticleView * >( targetPane->currentWidget() );
   if ( targetView ) {
-    unsigned groupId = ( targetPane == ui.slaveTabWidget ) ? slaveGroupComboBox->getCurrentGroup() : groupList->getCurrentGroup();
+    unsigned groupId = groupList->getCurrentGroup();
     targetView->showDefinition( word, groupId );
   }
 }
@@ -3199,7 +3178,7 @@ void MainWindow::handleTranslateSelectedText( const QString & word, const QUrl &
 
     ArticleView * targetView = qobject_cast< ArticleView * >( targetPane->currentWidget() );
     if ( targetView ) {
-      unsigned groupId = ( targetPane == ui.slaveTabWidget ) ? slaveGroupComboBox->getCurrentGroup() : groupList->getCurrentGroup();
+      unsigned groupId = groupList->getCurrentGroup();
       targetView->showDefinition( word, groupId, currentArticle );
     }
   }

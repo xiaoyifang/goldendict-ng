@@ -112,9 +112,6 @@ private:
 
   TranslateBox * translateBox;
 
-  QToolBar * slaveToolbar;
-  GroupComboBox * slaveGroupComboBox;
-
   /// Fonts saved before words zooming is in effect, so it could be reset back.
   QFont wordListDefaultFont, translateLineDefaultFont, groupListDefaultFont;
 
