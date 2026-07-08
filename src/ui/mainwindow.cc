@@ -2101,7 +2101,7 @@ void MainWindow::addNewTab()
   createNewTab( true, tr( "(untitled)" ) )->load( QUrl( "gdinternal://untitle-page" ) );
 }
 
-ArticleView * MainWindow::createNewTab( bool switchToIt, const QString & name )
+ArticleView * MainWindow::createNewTab( bool switchToIt, const QString & name, QTabWidget * targetPane )
 {
   ArticleView * view = new ArticleView( this,
                                         articleNetMgr,
@@ -2159,15 +2159,22 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, const QString & name )
 
   view->setSelectionBySingleClick( cfg.preferences.selectWordBySingleClick );
 
-  int index = cfg.preferences.newTabsOpenAfterCurrentOne ? ui.tabWidget->currentIndex() + 1 : ui.tabWidget->count();
+  if ( targetPane == nullptr ) {
+    targetPane = ui.tabWidget;
+    if ( isSplitScreenActive() && ui.slaveTabWidget->hasFocus() ) {
+      targetPane = ui.slaveTabWidget;
+    }
+  }
+
+  int index = cfg.preferences.newTabsOpenAfterCurrentOne ? targetPane->currentIndex() + 1 : targetPane->count();
 
   QString escaped = Utils::escapeAmps( name );
 
-  ui.tabWidget->insertTab( index, view, escaped );
+  targetPane->insertTab( index, view, escaped );
   mruList.append( dynamic_cast< QWidget * >( view ) );
 
   if ( switchToIt ) {
-    ui.tabWidget->setCurrentIndex( index );
+    targetPane->setCurrentIndex( index );
   }
 
   view->setZoomFactor( cfg.preferences.zoomFactor );
@@ -3182,18 +3189,25 @@ void MainWindow::jumpToDictionary( QListWidgetItem * item, bool force )
 {
   auto dictId = item->data( Qt::UserRole ).toString();
 
-  // If openWebsiteInNewTab is configured, try to find existing tab first
   if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
     if ( ArticleView * view = findArticleViewByDictId( dictId ) ) {
-      // Switch to the found tab
-      ui.tabWidget->setCurrentWidget( view );
+      // Switch to the found tab in the correct pane
+      if ( ui.tabWidget->indexOf( view ) != -1 ) {
+        ui.tabWidget->setCurrentWidget( view );
+      } else if ( ui.slaveTabWidget->indexOf( view ) != -1 ) {
+        ui.slaveTabWidget->setCurrentWidget( view );
+      }
       return;
     }
   }
 
   if ( ArticleView * view = getFirstNonWebSiteArticleView() ) {
-    // Switch to the found tab
-    ui.tabWidget->setCurrentWidget( view );
+    // Switch to the found tab in the correct pane
+    if ( ui.tabWidget->indexOf( view ) != -1 ) {
+      ui.tabWidget->setCurrentWidget( view );
+    } else if ( ui.slaveTabWidget->indexOf( view ) != -1 ) {
+      ui.slaveTabWidget->setCurrentWidget( view );
+    }
     view->jumpToDictionary( dictId, force );
   }
 }
@@ -4107,14 +4121,24 @@ ArticleView * MainWindow::getFirstNonWebSiteArticleView()
   }
 
   // If current view is not suitable, look for the first non-website tab
-  for ( int i = 0; i < ui.tabWidget->count(); i++ ) {
-    auto * view = qobject_cast< ArticleView * >( ui.tabWidget->widget( i ) );
+  for ( int i = 0; i < activePane->count(); i++ ) {
+    auto * view = qobject_cast< ArticleView * >( activePane->widget( i ) );
     if ( view && !view->isWebsite() ) {
       return view;
     }
   }
 
-  // If no non-website tab found, fall back to current view (if exists)
+  // Also search in the other pane if split screen is active
+  if ( isSplitScreenActive() ) {
+    QTabWidget * otherPane = ( activePane == ui.tabWidget ) ? ui.slaveTabWidget : ui.tabWidget;
+    for ( int i = 0; i < otherPane->count(); i++ ) {
+      auto * view = qobject_cast< ArticleView * >( otherPane->widget( i ) );
+      if ( view && !view->isWebsite() ) {
+        return view;
+      }
+    }
+  }
+
   if ( currentView ) {
     currentView->setWebsite( false );
     return currentView;
@@ -4125,22 +4149,30 @@ ArticleView * MainWindow::getFirstNonWebSiteArticleView()
 
 ArticleView * MainWindow::findArticleViewByDictId( const QString & dictId )
 {
-  // First check if openWebsiteInNewTab configuration is enabled
   if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
-    // Iterate through all tabs
     for ( int i = 0; i < ui.tabWidget->count(); i++ ) {
       auto * view = qobject_cast< ArticleView * >( ui.tabWidget->widget( i ) );
       if ( view && view->isWebsite() ) {
-        // Check if current ArticleView's activeDictIds list contains the specified dictId
         QString dictIdActive = view->getActiveArticleId();
         if ( dictIdActive == dictId ) {
           return view;
         }
       }
     }
+
+    if ( isSplitScreenActive() ) {
+      for ( int i = 0; i < ui.slaveTabWidget->count(); i++ ) {
+        auto * view = qobject_cast< ArticleView * >( ui.slaveTabWidget->widget( i ) );
+        if ( view && view->isWebsite() ) {
+          QString dictIdActive = view->getActiveArticleId();
+          if ( dictIdActive == dictId ) {
+            return view;
+          }
+        }
+      }
+    }
   }
   qDebug() << "findArticleViewByDictId() return nullptr with dictId:" << dictId;
-  // If configuration is not enabled or no matching ArticleView found, return nullptr
   return nullptr;
 }
 
@@ -4745,12 +4777,14 @@ void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId,
 
   auto view = findArticleViewByDictId( dictId );
   if ( view == nullptr ) {
-    // Truncate long website names for tab labels
     const int maxTabTitleLength = 30;
     QString truncatedName       = Utils::ellipsizeString( name, maxTabTitleLength );
-    view                        = createNewTab( false, truncatedName );
+    QTabWidget * targetPane = ui.tabWidget;
+    if ( isSplitScreenActive() && ui.slaveTabWidget->hasFocus() ) {
+      targetPane = ui.slaveTabWidget;
+    }
+    view                        = createNewTab( false, truncatedName, targetPane );
     view->setWebsite( true );
-    // Set the dictId for the website view
     view->setActiveArticleId( dictId );
   }
 

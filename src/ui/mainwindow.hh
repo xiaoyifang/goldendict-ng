@@ -406,7 +406,7 @@ private slots:
   void dictsPaneVisibilityChanged( bool );
 
   /// Creates a new tab, which is to be populated then with some content.
-  ArticleView * createNewTab( bool switchToIt, const QString & name );
+  ArticleView * createNewTab( bool switchToIt, const QString & name, QTabWidget * targetPane = nullptr );
 
   ArticleView * findArticleViewByDictId( const QString & dictId );
 
