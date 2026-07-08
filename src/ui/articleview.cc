@@ -1115,7 +1115,7 @@ void ArticleView::linkClicked( const QUrl & url_ )
 
   tryMangleWebsiteClickedUrl( url, contexts );
 
-  if ( !popupView && ( webview->isMidButtonPressed() || ( kmod & ( Qt::ControlModifier | Qt::ShiftModifier ) ) )
+  if ( !popupView && ( webview->isMidButtonPressed() || ( kmod & Qt::ShiftModifier ) )
        && !isAudioLink( url ) ) {
     webview->resetMidButtonPressed();
     emit openLinkInNewTab( url, webview->url(), getCurrentArticle(), contexts );
