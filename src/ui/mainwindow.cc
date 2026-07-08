@@ -257,6 +257,21 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   ui.setupUi( this );
 
+  slaveToolbar = new QToolBar( tr( "Slave Toolbar" ), this );
+  slaveToolbar->setObjectName( "slaveToolbar" );
+  slaveToolbar->setFloatable( false );
+  slaveToolbar->setMovable( false );
+
+  slaveGroupComboBox = new GroupComboBox( slaveToolbar );
+  slaveGroupComboBox->setObjectName( "slaveGroupComboBox" );
+  slaveGroupComboBox->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::MinimumExpanding );
+  slaveGroupComboBox->setSizeAdjustPolicy( QComboBox::AdjustToContents );
+  slaveToolbar->addWidget( slaveGroupComboBox );
+
+  addToolBarBreak( Qt::TopToolBarArea );
+  addToolBar( Qt::TopToolBarArea, slaveToolbar );
+  slaveToolbar->hide();
+
   // Set own gesture recognizers
 #ifndef Q_OS_MAC
   Gestures::registerRecognizers();
@@ -602,6 +617,24 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( &lockPanelsAction, &QAction::toggled, this, &MainWindow::onLockPanelsToggled );
   ui.menuView->addAction( &lockPanelsAction );
   ui.menuView->addAction( ui.alwaysOnTop );
+
+  QAction * actionToggleHorizontalSplit = new QAction( this );
+  actionToggleHorizontalSplit->setShortcut( QKeySequence( Qt::CTRL | Qt::Key_Backslash ) );
+  actionToggleHorizontalSplit->setText( tr( "Toggle Horizontal Split" ) );
+  connect( actionToggleHorizontalSplit, &QAction::triggered, this, [ this ]() {
+    bool isCurrentlyActive = ui.slaveTabWidget->isVisible() && ui.splitter->orientation() == Qt::Horizontal;
+    toggleSplitScreen( Qt::Horizontal, !isCurrentlyActive );
+  } );
+  addAction( actionToggleHorizontalSplit );
+
+  QAction * actionToggleVerticalSplit = new QAction( this );
+  actionToggleVerticalSplit->setShortcut( QKeySequence( Qt::CTRL | Qt::ALT | Qt::Key_Backslash ) );
+  actionToggleVerticalSplit->setText( tr( "Toggle Vertical Split" ) );
+  connect( actionToggleVerticalSplit, &QAction::triggered, this, [ this ]() {
+    bool isCurrentlyActive = ui.slaveTabWidget->isVisible() && ui.splitter->orientation() == Qt::Vertical;
+    toggleSplitScreen( Qt::Vertical, !isCurrentlyActive );
+  } );
+  addAction( actionToggleVerticalSplit );
 
   // Dictionary bar
 
@@ -1422,6 +1455,80 @@ void MainWindow::commitData()
   }
 }
 
+bool MainWindow::isSplitScreenActive() const
+{
+  return ui.slaveTabWidget->isVisible();
+}
+
+bool MainWindow::isMasterPane( QTabWidget * tabWidget ) const
+{
+  if ( !isSplitScreenActive() ) {
+    return true;
+  }
+
+  if ( ui.tabWidget->hasFocus() ) {
+    return tabWidget == ui.tabWidget;
+  }
+
+  if ( ui.slaveTabWidget->hasFocus() ) {
+    return tabWidget == ui.slaveTabWidget;
+  }
+
+  return tabWidget == ui.tabWidget;
+}
+
+void MainWindow::toggleSplitScreen( Qt::Orientation orientation, bool enable )
+{
+  if ( enable ) {
+    ui.splitter->setOrientation( orientation );
+    ui.slaveTabWidget->show();
+    slaveToolbar->show();
+
+    slaveGroupComboBox->fill( groupInstances );
+    slaveGroupComboBox->setCurrentGroup( groupList->getCurrentGroup() );
+
+    if ( ui.slaveTabWidget->count() == 0 ) {
+      ArticleView * view = new ArticleView( this,
+                                            articleNetMgr,
+                                            false,
+                                            cfg,
+                                            translateLine,
+                                            dictionaryBar.toggleViewAction(),
+                                            slaveGroupComboBox->getCurrentGroup() );
+      view->load( QUrl( "gdinternal://untitle-page" ) );
+      QString escaped = Utils::escapeAmps( tr( "(untitled)" ) );
+      ui.slaveTabWidget->addTab( view, escaped );
+    }
+  } else {
+    while ( ui.slaveTabWidget->count() > 0 ) {
+      QWidget * tab = ui.slaveTabWidget->widget( 0 );
+      QString title = ui.slaveTabWidget->tabText( 0 );
+      ui.slaveTabWidget->removeTab( 0 );
+      int index = cfg.preferences.newTabsOpenAfterCurrentOne ? ui.tabWidget->currentIndex() + 1 : ui.tabWidget->count();
+      ui.tabWidget->insertTab( index, tab, title );
+    }
+    ui.slaveTabWidget->hide();
+    slaveToolbar->hide();
+    
+  }
+}
+
+void MainWindow::queryInSlaveScreen( const QString & word )
+{
+  if ( !ui.slaveTabWidget->isVisible() ) {
+    return;
+  }
+
+  QTabWidget * activePane = ui.tabWidget->hasFocus() ? ui.tabWidget : ui.slaveTabWidget;
+  QTabWidget * targetPane = ( activePane == ui.tabWidget ) ? ui.slaveTabWidget : ui.tabWidget;
+
+  ArticleView * targetView = qobject_cast< ArticleView * >( targetPane->currentWidget() );
+  if ( targetView ) {
+    unsigned groupId = ( targetPane == ui.slaveTabWidget ) ? slaveGroupComboBox->getCurrentGroup() : groupList->getCurrentGroup();
+    targetView->showDefinition( word, groupId );
+  }
+}
+
 void MainWindow::performCleanup()
 {
   isQuitting = true;
@@ -2000,6 +2107,7 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, const QString & name )
   connect( view, &ArticleView::zoomOut, this, &MainWindow::zoomout );
   connect( view, &ArticleView::saveBookmarkSignal, this, &MainWindow::addBookmarkToFavorite );
   connect( view, &ArticleView::translateSelectedText, this, &MainWindow::handleTranslateSelectedText );
+  connect( view, &ArticleView::openLinkInSlaveScreen, this, &MainWindow::queryInSlaveScreen );
 
   connect( ui.searchInPageAction, &QAction::triggered, view, [ this, view ]() {
 #ifdef Q_OS_MACOS
@@ -3041,6 +3149,16 @@ void MainWindow::handleTranslateSelectedText( const QString & word, const QUrl &
       groupId = groupList->getCurrentGroup();
     }
     newView->showDefinition( word, groupId, currentArticle, Contexts() );
+  }
+  else if ( isSplitScreenActive() ) {
+    QTabWidget * activePane = ui.tabWidget->hasFocus() ? ui.tabWidget : ui.slaveTabWidget;
+    QTabWidget * targetPane = ( activePane == ui.tabWidget ) ? ui.slaveTabWidget : ui.tabWidget;
+
+    ArticleView * targetView = qobject_cast< ArticleView * >( targetPane->currentWidget() );
+    if ( targetView ) {
+      unsigned groupId = ( targetPane == ui.slaveTabWidget ) ? slaveGroupComboBox->getCurrentGroup() : groupList->getCurrentGroup();
+      targetView->showDefinition( word, groupId, currentArticle );
+    }
   }
   else {
     // Get the current active ArticleView

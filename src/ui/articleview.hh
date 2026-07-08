@@ -353,6 +353,8 @@ signals:
   /// Signal that the user has double-clicked a word and wants to translate it
   void translateSelectedText( const QString & word, const QUrl & url, const QString & currentArticle );
 
+  void openLinkInSlaveScreen( const QString & word );
+
 public slots:
 
   /// Opens the search (Ctrl+F)

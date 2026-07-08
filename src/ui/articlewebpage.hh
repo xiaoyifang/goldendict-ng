@@ -22,7 +22,8 @@ public:
   {
     isPopup = popup;
   }
-signals:
+
+  signals:
   void linkClicked( const QUrl & url );
 
 private slots:

@@ -112,6 +112,9 @@ private:
 
   TranslateBox * translateBox;
 
+  QToolBar * slaveToolbar;
+  GroupComboBox * slaveGroupComboBox;
+
   /// Fonts saved before words zooming is in effect, so it could be reset back.
   QFont wordListDefaultFont, translateLineDefaultFont, groupListDefaultFont;
 
@@ -247,6 +250,11 @@ private:
 
   /// @param ensureShow only ensure the window will be shown and no "toggling"
   void toggleMainWindow( bool ensureShow );
+
+  bool isSplitScreenActive() const;
+  void toggleSplitScreen( Qt::Orientation orientation, bool enable );
+  void queryInSlaveScreen( const QString & word );
+  bool isMasterPane( QTabWidget * tabWidget ) const;
 
   /// Creates hotkeyWrapper and hooks the currently set keys for it
   void installHotKeys();

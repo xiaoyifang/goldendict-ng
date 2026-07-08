@@ -1106,7 +1106,6 @@ void ArticleView::linkClicked( const QUrl & url_ )
 {
   Qt::KeyboardModifiers kmod = QApplication::keyboardModifiers();
 
-  // Lock jump on links while Alt key is pressed
   if ( kmod & Qt::AltModifier ) {
     return;
   }
@@ -1118,9 +1117,16 @@ void ArticleView::linkClicked( const QUrl & url_ )
 
   if ( !popupView && ( webview->isMidButtonPressed() || ( kmod & ( Qt::ControlModifier | Qt::ShiftModifier ) ) )
        && !isAudioLink( url ) ) {
-    // Mid button or Control/Shift is currently pressed - open the link in new tab
     webview->resetMidButtonPressed();
     emit openLinkInNewTab( url, webview->url(), getCurrentArticle(), contexts );
+  }
+  else if ( url.scheme() == "gdlookup" ) {
+    auto [ valid, word ] = Utils::Url::getQueryWord( url );
+    if ( valid ) {
+      emit openLinkInSlaveScreen( word );
+      return;
+    }
+    openLink( url, webview->url(), getCurrentArticle(), contexts );
   }
   else {
     openLink( url, webview->url(), getCurrentArticle(), contexts );
