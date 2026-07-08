@@ -105,5 +105,7 @@
         <file>icons/by-trans-classic.svg</file>
         <file>icons/by-trans-school.svg</file>
         <file>icons/by-trans-cyrillic.svg</file>
+        <file>icons/splitter-h.svg</file>
+        <file>icons/splitter-v.svg</file>
     </qresource>
 </RCC>

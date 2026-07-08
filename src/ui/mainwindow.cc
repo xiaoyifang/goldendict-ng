@@ -352,6 +352,14 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   navToolbar->addAction( ui.print );
   navToolbar->widgetForAction( ui.print )->setObjectName( "printButton" );
 
+  navToolbar->widgetForAction( navToolbar->addSeparator() )->setObjectName( "separatorBeforeSplitScreen" );
+
+  navToolbar->addAction( &toggleHorizontalSplitAction );
+  navToolbar->widgetForAction( &toggleHorizontalSplitAction )->setObjectName( "toggleHorizontalSplitButton" );
+
+  navToolbar->addAction( &toggleVerticalSplitAction );
+  navToolbar->widgetForAction( &toggleVerticalSplitAction )->setObjectName( "toggleVerticalSplitButton" );
+
   navToolbar->widgetForAction( navToolbar->addSeparator() )->setObjectName( "separatorBeforeAddToFavorites" );
 
   addToFavorites = navToolbar->addAction( starIcon, tr( "Add current tab to Favorites" ) );
@@ -618,23 +626,29 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   ui.menuView->addAction( &lockPanelsAction );
   ui.menuView->addAction( ui.alwaysOnTop );
 
-  QAction * actionToggleHorizontalSplit = new QAction( this );
-  actionToggleHorizontalSplit->setShortcut( QKeySequence( Qt::CTRL | Qt::Key_Backslash ) );
-  actionToggleHorizontalSplit->setText( tr( "Toggle Horizontal Split" ) );
-  connect( actionToggleHorizontalSplit, &QAction::triggered, this, [ this ]() {
+  toggleHorizontalSplitAction.setIcon( QIcon( ":/icons/splitter-h.svg" ) );
+  toggleHorizontalSplitAction.setShortcut( QKeySequence( Qt::CTRL | Qt::Key_Backslash ) );
+  toggleHorizontalSplitAction.setText( tr( "Toggle Horizontal Split" ) );
+  toggleHorizontalSplitAction.setCheckable( true );
+  connect( &toggleHorizontalSplitAction, &QAction::triggered, this, [ this ]() {
     bool isCurrentlyActive = ui.slaveTabWidget->isVisible() && ui.splitter->orientation() == Qt::Horizontal;
     toggleSplitScreen( Qt::Horizontal, !isCurrentlyActive );
+    toggleHorizontalSplitAction.setChecked( ui.slaveTabWidget->isVisible() && ui.splitter->orientation() == Qt::Horizontal );
+    toggleVerticalSplitAction.setChecked( false );
   } );
-  addAction( actionToggleHorizontalSplit );
+  addAction( &toggleHorizontalSplitAction );
 
-  QAction * actionToggleVerticalSplit = new QAction( this );
-  actionToggleVerticalSplit->setShortcut( QKeySequence( Qt::CTRL | Qt::ALT | Qt::Key_Backslash ) );
-  actionToggleVerticalSplit->setText( tr( "Toggle Vertical Split" ) );
-  connect( actionToggleVerticalSplit, &QAction::triggered, this, [ this ]() {
+  toggleVerticalSplitAction.setIcon( QIcon( ":/icons/splitter-v.svg" ) );
+  toggleVerticalSplitAction.setShortcut( QKeySequence( Qt::CTRL | Qt::ALT | Qt::Key_Backslash ) );
+  toggleVerticalSplitAction.setText( tr( "Toggle Vertical Split" ) );
+  toggleVerticalSplitAction.setCheckable( true );
+  connect( &toggleVerticalSplitAction, &QAction::triggered, this, [ this ]() {
     bool isCurrentlyActive = ui.slaveTabWidget->isVisible() && ui.splitter->orientation() == Qt::Vertical;
     toggleSplitScreen( Qt::Vertical, !isCurrentlyActive );
+    toggleVerticalSplitAction.setChecked( ui.slaveTabWidget->isVisible() && ui.splitter->orientation() == Qt::Vertical );
+    toggleHorizontalSplitAction.setChecked( false );
   } );
-  addAction( actionToggleVerticalSplit );
+  addAction( &toggleVerticalSplitAction );
 
   // Dictionary bar
 
