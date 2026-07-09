@@ -749,6 +749,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   } );
 
   connect( ui.tabWidget, &QTabWidget::tabCloseRequested, this, &MainWindow::tabCloseRequested );
+  connect( ui.slaveTabWidget, &QTabWidget::tabCloseRequested, this, &MainWindow::tabCloseRequested );
 
   connect( ui.tabWidget, &QTabWidget::currentChanged, this, &MainWindow::tabSwitched );
   connect( ui.slaveTabWidget, &QTabWidget::currentChanged, this, &MainWindow::tabSwitched );
@@ -775,8 +776,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( groupListInDock, &GroupComboBox::currentIndexChanged, this, &MainWindow::currentGroupChanged );
 
   connect( groupListInToolbar, &GroupComboBox::currentIndexChanged, this, &MainWindow::currentGroupChanged );
-
-  connect( qApp, &QApplication::focusChanged, this, &MainWindow::updatePaneFocusStyle );
 
   connect( ui.translateLine, &QLineEdit::textChanged, this, &MainWindow::translateInputChanged );
 
@@ -1494,20 +1493,6 @@ void MainWindow::toggleSplitScreen( Qt::Orientation orientation, bool enable )
   if ( enable ) {
     ui.splitter->setOrientation( orientation );
     ui.slaveTabWidget->show();
-
-    if ( ui.slaveTabWidget->count() == 0 ) {
-      ArticleView * view = new ArticleView( this,
-                                            articleNetMgr,
-                                            false,
-                                            cfg,
-                                            translateLine,
-                                            dictionaryBar.toggleViewAction(),
-                                            groupList->getCurrentGroup() );
-      view->load( QUrl( "gdinternal://untitle-page" ) );
-      QString escaped = Utils::escapeAmps( tr( "(untitled)" ) );
-      ui.slaveTabWidget->addTab( view, escaped );
-    }
-    updatePaneFocusStyle();
   } else {
     while ( ui.slaveTabWidget->count() > 0 ) {
       QWidget * tab = ui.slaveTabWidget->widget( 0 );
@@ -1517,33 +1502,6 @@ void MainWindow::toggleSplitScreen( Qt::Orientation orientation, bool enable )
       ui.tabWidget->insertTab( index, tab, title );
     }
     ui.slaveTabWidget->hide();
-    updatePaneFocusStyle();
-  }
-}
-
-void MainWindow::updatePaneFocusStyle()
-{
-  if ( !isSplitScreenActive() ) {
-    ui.tabWidget->setStyleSheet( QString() );
-    ui.slaveTabWidget->setStyleSheet( QString() );
-    return;
-  }
-
-  bool masterHasFocus = ui.tabWidget->hasFocus() || ui.translateLine->hasFocus();
-  bool slaveHasFocus = ui.slaveTabWidget->hasFocus();
-
-  QString activeStyle = "QTabWidget::pane { border: 2px solid #6495ed; }";
-  QString inactiveStyle = "QTabWidget::pane { border: 1px solid transparent; }";
-
-  if ( masterHasFocus ) {
-    ui.tabWidget->setStyleSheet( activeStyle );
-    ui.slaveTabWidget->setStyleSheet( inactiveStyle );
-  } else if ( slaveHasFocus ) {
-    ui.tabWidget->setStyleSheet( inactiveStyle );
-    ui.slaveTabWidget->setStyleSheet( activeStyle );
-  } else {
-    ui.tabWidget->setStyleSheet( activeStyle );
-    ui.slaveTabWidget->setStyleSheet( inactiveStyle );
   }
 }
 
@@ -1554,9 +1512,10 @@ void MainWindow::queryInSlaveScreen( const QString & word )
   }
 
   ArticleView * targetView = qobject_cast< ArticleView * >( ui.slaveTabWidget->currentWidget() );
-  if ( targetView ) {
-    targetView->showDefinition( word, groupList->getCurrentGroup() );
+  if ( !targetView ) {
+    targetView = createNewTab( true, word, ui.slaveTabWidget );
   }
+  targetView->showDefinition( word, groupList->getCurrentGroup() );
 }
 
 void MainWindow::openLinkInSlaveScreen( const QUrl & url, const QUrl & referrer, const QString & fromArticle, const Contexts & contexts )
@@ -1566,9 +1525,10 @@ void MainWindow::openLinkInSlaveScreen( const QUrl & url, const QUrl & referrer,
   }
 
   ArticleView * targetView = qobject_cast< ArticleView * >( ui.slaveTabWidget->currentWidget() );
-  if ( targetView ) {
-    targetView->openLink( url, referrer, fromArticle, contexts );
+  if ( !targetView ) {
+    targetView = createNewTab( true, "", ui.slaveTabWidget );
   }
+  targetView->openLink( url, referrer, fromArticle, contexts );
 }
 
 void MainWindow::performCleanup()
@@ -2221,7 +2181,7 @@ void MainWindow::tabCloseRequested( int x )
   delete w;
 
   if ( senderTabWidget->count() == 0 ) {
-    addNewTab();
+    createNewTab( true, tr( "(untitled)" ), senderTabWidget )->load( QUrl( "gdinternal://untitle-page" ) );
   }
 }
 
@@ -2229,7 +2189,7 @@ void MainWindow::closeCurrentTab()
 {
   QTabWidget * activePane = ui.tabWidget;
   if ( isSplitScreenActive() ) {
-    activePane = ui.tabWidget->hasFocus() ? ui.tabWidget : ui.slaveTabWidget;
+    activePane = ui.slaveTabWidget->hasFocus() ? ui.slaveTabWidget : ui.tabWidget;
   }
   tabCloseRequested( activePane->currentIndex() );
 }
@@ -2238,7 +2198,7 @@ void MainWindow::closeAllTabs()
 {
   QTabWidget * activePane = ui.tabWidget;
   if ( isSplitScreenActive() ) {
-    activePane = ui.tabWidget->hasFocus() ? ui.tabWidget : ui.slaveTabWidget;
+    activePane = ui.slaveTabWidget->hasFocus() ? ui.slaveTabWidget : ui.tabWidget;
   }
   while ( activePane->count() > 1 ) {
     tabCloseRequested( activePane->currentIndex() );
@@ -2250,7 +2210,7 @@ void MainWindow::closeRestTabs()
 {
   QTabWidget * activePane = ui.tabWidget;
   if ( isSplitScreenActive() ) {
-    activePane = ui.tabWidget->hasFocus() ? ui.tabWidget : ui.slaveTabWidget;
+    activePane = ui.slaveTabWidget->hasFocus() ? ui.slaveTabWidget : ui.tabWidget;
   }
 
   if ( activePane->count() < 2 ) {
@@ -2274,7 +2234,7 @@ void MainWindow::switchToNextTab()
 {
   QTabWidget * activePane = ui.tabWidget;
   if ( isSplitScreenActive() ) {
-    activePane = ui.tabWidget->hasFocus() ? ui.tabWidget : ui.slaveTabWidget;
+    activePane = ui.slaveTabWidget->hasFocus() ? ui.slaveTabWidget : ui.tabWidget;
   }
   if ( activePane->count() < 2 ) {
     return;
@@ -2287,7 +2247,7 @@ void MainWindow::switchToPrevTab()
 {
   QTabWidget * activePane = ui.tabWidget;
   if ( isSplitScreenActive() ) {
-    activePane = ui.tabWidget->hasFocus() ? ui.tabWidget : ui.slaveTabWidget;
+    activePane = ui.slaveTabWidget->hasFocus() ? ui.slaveTabWidget : ui.tabWidget;
   }
   if ( activePane->count() < 2 ) {
     return;
@@ -2396,7 +2356,7 @@ void MainWindow::tabSwitched( int )
   if ( mruList.size() > 1 ) {
     QTabWidget * activePane = ui.tabWidget;
     if ( isSplitScreenActive() ) {
-      activePane = ui.tabWidget->hasFocus() ? ui.tabWidget : ui.slaveTabWidget;
+      activePane = ui.slaveTabWidget->hasFocus() ? ui.slaveTabWidget : ui.tabWidget;
     }
     int from = mruList.indexOf( activePane->widget( activePane->currentIndex() ) );
     if ( from > 0 ) {
@@ -2420,7 +2380,14 @@ void MainWindow::tabSwitched( int )
 
 void MainWindow::tabMenuRequested( QPoint pos )
 {
-  moveToOtherPaneAction->setEnabled( isSplitScreenActive() );
+  QTabWidget * senderTabWidget = qobject_cast< QTabWidget * >( sender() );
+  if ( !senderTabWidget ) {
+    senderTabWidget = ui.tabWidget;
+  }
+  contextMenuTabWidget = senderTabWidget;
+  contextMenuTabIndex = senderTabWidget->tabBar()->tabAt( pos );
+
+  moveToOtherPaneAction->setEnabled( isSplitScreenActive() && contextMenuTabIndex >= 0 );
   tabMenu->popup( QCursor::pos() );
 }
 
@@ -2430,26 +2397,34 @@ void MainWindow::moveTabToOtherPane()
     return;
   }
 
-  QTabWidget * sourcePane = ui.tabWidget;
-  QTabWidget * targetPane = ui.slaveTabWidget;
+  QTabWidget * sourcePane = contextMenuTabWidget;
+  int tabIndex = contextMenuTabIndex;
 
-  if ( ui.slaveTabWidget->hasFocus() ) {
-    sourcePane = ui.slaveTabWidget;
-    targetPane = ui.tabWidget;
+  // Fallback to current tab if no context menu tab was recorded
+  if ( !sourcePane || tabIndex < 0 ) {
+    sourcePane = ui.tabWidget;
+    if ( ui.slaveTabWidget->hasFocus() ) {
+      sourcePane = ui.slaveTabWidget;
+    }
+    tabIndex = sourcePane->currentIndex();
   }
 
-  int currentIndex = sourcePane->currentIndex();
-  if ( currentIndex < 0 ) {
+  if ( tabIndex < 0 ) {
     return;
   }
 
-  QWidget * tab = sourcePane->widget( currentIndex );
-  QString title = sourcePane->tabText( currentIndex );
-  sourcePane->removeTab( currentIndex );
+  QTabWidget * targetPane = ( sourcePane == ui.tabWidget ) ? ui.slaveTabWidget : ui.tabWidget;
+
+  QWidget * tab = sourcePane->widget( tabIndex );
+  QString title = sourcePane->tabText( tabIndex );
+  sourcePane->removeTab( tabIndex );
 
   int targetIndex = targetPane->count();
   targetPane->insertTab( targetIndex, tab, title );
   targetPane->setCurrentIndex( targetIndex );
+
+  contextMenuTabIndex = -1;
+  contextMenuTabWidget = nullptr;
 }
 
 void MainWindow::dictionaryBarToggled( bool )
@@ -3262,19 +3237,20 @@ void MainWindow::handleTranslateSelectedText( const QString & word, const QUrl &
 
   if ( isSplitScreenActive() && !( kmod & Qt::ShiftModifier ) ) {
     ArticleView * targetView = qobject_cast< ArticleView * >( ui.slaveTabWidget->currentWidget() );
-    if ( targetView ) {
-      auto groupId = targetView->getGroup( url );
-      if ( groupId == GroupId::NoGroupId ) {
-        groupId = groupList->getCurrentGroup();
-      }
+    if ( !targetView ) {
+      targetView = createNewTab( true, word, ui.slaveTabWidget );
+    }
+    auto groupId = targetView->getGroup( url );
+    if ( groupId == GroupId::NoGroupId ) {
+      groupId = groupList->getCurrentGroup();
+    }
 
-      if ( Utils::Url::hasQueryItem( url, "dictionaries" ) ) {
-        QStringList dictsList = Utils::Url::queryItemValue( url, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
-        targetView->showDefinition( word, dictsList, groupId, false );
-      }
-      else {
-        targetView->showDefinition( word, groupId, currentArticle );
-      }
+    if ( Utils::Url::hasQueryItem( url, "dictionaries" ) ) {
+      QStringList dictsList = Utils::Url::queryItemValue( url, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
+      targetView->showDefinition( word, dictsList, groupId, false );
+    }
+    else {
+      targetView->showDefinition( word, groupId, currentArticle );
     }
     return;
   }
@@ -4130,7 +4106,7 @@ ArticleView * MainWindow::getCurrentArticleView()
 {
   QTabWidget * activePane = ui.tabWidget;
   if ( isSplitScreenActive() ) {
-    activePane = ui.tabWidget->hasFocus() ? ui.tabWidget : ui.slaveTabWidget;
+    activePane = ui.slaveTabWidget->hasFocus() ? ui.slaveTabWidget : ui.tabWidget;
   }
   QWidget * currentWidget   = activePane->currentWidget();
   ArticleView * currentView = qobject_cast< ArticleView * >( currentWidget );
@@ -4146,7 +4122,7 @@ ArticleView * MainWindow::getFirstNonWebSiteArticleView()
 {
   QTabWidget * activePane = ui.tabWidget;
   if ( isSplitScreenActive() ) {
-    activePane = ui.tabWidget->hasFocus() ? ui.tabWidget : ui.slaveTabWidget;
+    activePane = ui.slaveTabWidget->hasFocus() ? ui.slaveTabWidget : ui.tabWidget;
   }
   QWidget * currentWidget   = activePane->currentWidget();
   ArticleView * currentView = qobject_cast< ArticleView * >( currentWidget );
