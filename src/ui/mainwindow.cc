@@ -3235,26 +3235,6 @@ void MainWindow::handleTranslateSelectedText( const QString & word, const QUrl &
 {
   Qt::KeyboardModifiers kmod = QApplication::keyboardModifiers();
 
-  if ( isSplitScreenActive() && !( kmod & Qt::ShiftModifier ) ) {
-    ArticleView * targetView = qobject_cast< ArticleView * >( ui.slaveTabWidget->currentWidget() );
-    if ( !targetView ) {
-      targetView = createNewTab( true, word, ui.slaveTabWidget );
-    }
-    auto groupId = targetView->getGroup( url );
-    if ( groupId == GroupId::NoGroupId ) {
-      groupId = groupList->getCurrentGroup();
-    }
-
-    if ( Utils::Url::hasQueryItem( url, "dictionaries" ) ) {
-      QStringList dictsList = Utils::Url::queryItemValue( url, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
-      targetView->showDefinition( word, dictsList, groupId, false );
-    }
-    else {
-      targetView->showDefinition( word, groupId, currentArticle );
-    }
-    return;
-  }
-
   if ( kmod & ( Qt::ControlModifier | Qt::ShiftModifier ) ) {
     ArticleView * newView = createNewTab( !cfg.preferences.newTabsOpenInBackground, word );
     auto groupId          = newView->getGroup( url );
@@ -3982,20 +3962,9 @@ void MainWindow::unzoom()
 
 void MainWindow::applyZoomFactor()
 {
-  // Always call this function synchronously to potentially disable a zoom action,
-  // which is being repeatedly triggered. When the action is disabled, its
-  // triggered() signal is no longer emitted, which in turn improves performance.
   adjustCurrentZoomFactor();
 
-  // Scaling article views asynchronously dramatically improves performance when
-  // a zoom action is triggered repeatedly while many or large articles are open
-  // in the main window or in popup.
-  // Multiple zoom action signals are processed before (often slow) article view
-  // scaling is requested. Multiple scaling requests then ask for the same zoom factor,
-  // so all of them except for the first one don't change anything and run very fast.
-  // In effect, some intermediate zoom factors are skipped when scaling is slow.
-  // The slower the scaling, the more steps are skipped.
-  QTimer::singleShot( 0, this, &MainWindow::scaleArticlesByCurrentZoomFactor );
+  scaleArticlesByCurrentZoomFactor();
 }
 
 void MainWindow::adjustCurrentZoomFactor()

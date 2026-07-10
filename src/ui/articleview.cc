@@ -1123,13 +1123,13 @@ void ArticleView::linkClicked( const QUrl & url_ )
   else if ( url.scheme() == "gdlookup" ) {
     auto [ valid, word ] = Utils::Url::getQueryWord( url );
     if ( valid ) {
-      emit openLinkInSlaveScreen( word );
+      emit openLinkInNewTab( url, webview->url(), getCurrentArticle(), contexts );
       return;
     }
     openLink( url, webview->url(), getCurrentArticle(), contexts );
   }
   else if ( kmod & Qt::ControlModifier ) {
-    emit openUrlInSlaveScreen( url, webview->url(), getCurrentArticle(), contexts );
+    emit openLinkInNewTab( url, webview->url(), getCurrentArticle(), contexts );
   }
   else {
     openLink( url, webview->url(), getCurrentArticle(), contexts );
