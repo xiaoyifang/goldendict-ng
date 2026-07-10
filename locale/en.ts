@@ -3073,10 +3073,6 @@ be the last ones.</translation>
       <translation type="unfinished">These fonts will be applied when the fonts specified by a dictionary are not found.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation type="unfinished">Fallback Fonts</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation type="unfinished">Standard Font</translation>
     </message>
@@ -3547,6 +3543,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation type="unfinished">Automatically switches based on system theme.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation type="unfinished">Customize Fonts</translation>
     </message>
   </context>
   <context>

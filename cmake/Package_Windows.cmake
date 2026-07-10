@@ -70,6 +70,7 @@ endif()
 
 set(CPACK_PACKAGE_FILE_NAME "GoldenDict-ng-${PROJECT_VERSION}-Qt${Qt6Widgets_VERSION}")
 set(CPACK_GENERATOR "7Z;NSIS64")
+set(CPACK_PACKAGE_VENDOR "GoldenDict-ng")
 
 # override the default install path, which is $PROGRAMFILES64\${project-name} ${project-version} in NSIS
 set(CPACK_PACKAGE_INSTALL_DIRECTORY "GoldenDict-ng")
@@ -77,13 +78,15 @@ set(CPACK_PACKAGE_INSTALL_DIRECTORY "GoldenDict-ng")
 # NSIS specificS
 set(CPACK_NSIS_MANIFEST_DPI_AWARE ON)
 set(CPACK_NSIS_MUI_ICON "${CMAKE_SOURCE_DIR}/icons/programicon.ico")
+set(CPACK_NSIS_MUI_UNIICON "${CMAKE_SOURCE_DIR}/icons/programicon.ico")
 set(CPACK_NSIS_PACKAGE_NAME "${CMAKE_PROJECT_NAME}")
 set(CPACK_NSIS_DISPLAY_NAME "${CMAKE_PROJECT_NAME}")
+set(CPACK_NSIS_INSTALLED_ICON_NAME "${GOLDENDICT}.exe")
 
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.txt")
 
 # Copied from https://crascit.com/2015/08/07/cmake_cpack_nsis_shortcuts_with_parameters/
-set(CPACK_NSIS_CREATE_ICONS_EXTRA "CreateShortCut '$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\GoldenDict-ng.lnk' '$INSTDIR\\\\${GOLDENDICT}.exe'")
-set(CPACK_NSIS_DELETE_ICONS_EXTRA "Delete '$SMPROGRAMS\\\\$START_MENU\\\\GoldenDict-ng.lnk'")
+set(CPACK_NSIS_CREATE_ICONS_EXTRA "CreateShortCut '$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\GoldenDict-ng.lnk' '$INSTDIR\\\\${GOLDENDICT}.exe' '' '$INSTDIR\\\\${GOLDENDICT}.exe' 0")
+set(CPACK_NSIS_DELETE_ICONS_EXTRA "Delete '$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\GoldenDict-ng.lnk'")
 
 include(CPack)

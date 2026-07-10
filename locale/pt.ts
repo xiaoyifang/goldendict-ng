@@ -3073,10 +3073,6 @@ serem as últimas.</translation>
       <translation>Essas fontes serão aplicadas quando as fontes especificadas por um dicionário não forem encontradas.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Fontes Alternativas</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Fonte padrão</translation>
     </message>
@@ -3547,6 +3543,10 @@ no Stardict, Babilônia e dicionários GLS</translation>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Muda automaticamente consoante o tema do sistema.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Personalizar Fontes</translation>
     </message>
   </context>
   <context>

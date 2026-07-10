@@ -285,7 +285,7 @@ void StardictDictionary::loadIcon() noexcept
 
   if ( !loadIconFromFileName( fileName ) ) {
     // Load failed -- use default icons
-    dictionaryIcon = QIcon( ":/icons/icon32_stardict.png" );
+    dictionaryIcon = QIcon( ":/icons/icon32_stardict.svg" );
   }
 
   dictionaryIconLoaded = true;

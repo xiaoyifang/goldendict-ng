@@ -3067,10 +3067,6 @@ aktive. Përndryshe, ato shtohen si të fundit.</translation>
       <translation>Këto fonte do të aplikohen kur fontet e specifikuara nga një fjalor nuk gjenden.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Fontet e kthimit</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Fonti standard</translation>
     </message>
@@ -3539,6 +3535,10 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Ndërrohet automatikisht bazuar në temën e sistemit.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Personalizoni fontet</translation>
     </message>
   </context>
   <context>

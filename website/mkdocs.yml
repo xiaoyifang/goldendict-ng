@@ -26,6 +26,7 @@ markdown_extensions:
 nav:
   - Getting started: index.md
   - Download & Install: install.md
+  - Command Line: cli.md
   - Dictionary Formats: dictformats.md
   - Manage Dictionaries:
       - Sources: manage_sources.md

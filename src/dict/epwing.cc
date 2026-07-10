@@ -621,7 +621,8 @@ void EpwingArticleRequest::run()
     // Now grab that article
 
     string headword, articleText;
-    int articlePage, articleOffset;
+    int articlePage   = 0;
+    int articleOffset = 0;
 
     try {
       dict.loadArticle( x.articleOffset, headword, articleText, articlePage, articleOffset );

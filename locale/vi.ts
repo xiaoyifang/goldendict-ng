@@ -3053,10 +3053,6 @@ be the last ones.</source>
       <translation>Các phông chữ này sẽ được áp dụng khi không tìm thấy phông chữ được chỉ định bởi từ điển.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Phông chữ dự phòng</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Phông chữ chuẩn</translation>
     </message>
@@ -3523,6 +3519,10 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Tự động chuyển đổi dựa trên chủ đề hệ thống.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Tùy chỉnh phông chữ</translation>
     </message>
   </context>
   <context>

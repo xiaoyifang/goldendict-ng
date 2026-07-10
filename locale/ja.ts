@@ -3072,10 +3072,6 @@ be the last ones.</source>
       <translation>これらのフォントは、辞書で指定されたフォントが見つからない場合に適用されます。</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>フォールバックフォント</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>標準フォント</translation>
     </message>
@@ -3545,6 +3541,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>システムテーマに応じて自動的に切り替わります。</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>フォントのカスタマイズ</translation>
     </message>
   </context>
   <context>

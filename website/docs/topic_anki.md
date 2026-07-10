@@ -30,6 +30,7 @@ For example, the model could have `Front` and `Back` fields.
 ![Anki Goldendict Configure](img/anki-gd.png)
 
 #### Field mappings
+
 - **Word**: Vocabulary headword
 - **Text**: Selected definition
 - **Sentence**: Search string (can be left blank)

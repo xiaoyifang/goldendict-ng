@@ -3073,10 +3073,6 @@ ovat viimeisiä.</translation>
       <translation>Näitä fontteja käytetään, kun sanakirjan määrittämiä fontteja ei löydy.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Varafontit</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Vakiofontti</translation>
     </message>
@@ -3547,6 +3543,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Vaihtaa automaattisesti järjestelmän teeman mukaan.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Fonttien räätälöinti</translation>
     </message>
   </context>
   <context>

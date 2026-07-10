@@ -16,18 +16,21 @@ The display mode is determined by environment variables at startup. You can spec
 ### How to Switch
 
 #### 1. Native Wayland (Default)
+
 By default, the app will try to run as a native Wayland client. If you want to force it explicitly:
 ```bash
 env GOLDENDICT_FORCE_WAYLAND=1 goldendict
 ```
 
 #### 2. XWayland / X11 Mode (Recommended for Hotkeys)
+
 If you need global hotkeys (`Ctrl+C+C` etc.) or the "Scan Flag" feature to work across windows, run the app in X11 mode:
 ```bash
 env GOLDENDICT_FORCE_XCB=1 goldendict
 ```
 
 ### Flatpak Configuration
+
 If you are using the Flatpak version, you can use **Flatseal** or the command line to set these variables:
 ```bash
 # Force X11 mode for Flatpak

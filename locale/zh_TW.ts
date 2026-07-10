@@ -3065,10 +3065,6 @@ be the last ones.</source>
       <translation>當未找到字典指定的字體時，將應用這些字體。</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>後備字體</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>標準字體</translation>
     </message>
@@ -3536,6 +3532,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>會根據系統主題自動切換。</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>自訂字型</translation>
     </message>
   </context>
   <context>

@@ -3073,10 +3073,6 @@ be the last ones.</translation>
       <translation>Ĉi tiuj tiparoj estos aplikataj kiam la tiparoj specifitaj de vortaro ne estas trovitaj.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Rezervaj Tiparoj</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Norma Tiparo</translation>
     </message>
@@ -3547,6 +3543,10 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Aŭtomate ŝanĝas laŭ la sistema temo.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Agordi Tiparojn</translation>
     </message>
   </context>
   <context>

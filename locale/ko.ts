@@ -3071,10 +3071,6 @@ be the last ones.</source>
       <translation>이러한 글꼴은 사전에서 지정한 글꼴을 찾을 수 없을 때 적용됩니다.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>대체 글꼴</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>표준 글꼴</translation>
     </message>
@@ -3543,6 +3539,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>시스템 테마에 따라 자동으로 전환됩니다.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>글꼴 커스터마이즈</translation>
     </message>
   </context>
   <context>

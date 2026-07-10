@@ -11,20 +11,20 @@ To install Qt on macOS or Windows, use the [Qt Online Installer](https://doc.qt.
 Those Qt components are needed:
 
 + Qt
-  + 6.7.2 (Or another version)
-    + MSVC 2019 (or MSVC 2022)
-    + Qt5 Compatible Module
-    + Additional Libraries
-      + Qt Image formats
-      + Qt MultiMedia
-      + Qt Positioning
-      + Qt SerialPort (? super weird here, but it is needed.)
-      + Qt Speech
-      + Qt Webchannel
-      + Qt Webengine
-  + Qt Creator (optional)
-    + CMake
-    + Ninja
+    + 6.7.2 (Or another version)
+        + MSVC 2019 (or MSVC 2022)
+        + Qt5 Compatible Module
+        + Additional Libraries
+            + Qt Image formats
+            + Qt MultiMedia
+            + Qt Positioning
+            + Qt SerialPort (? super weird here, but it is needed.)
+            + Qt Speech
+            + Qt Webchannel
+            + Qt Webengine
+    + Qt Creator (optional)
+        + CMake
+        + Ninja
 
 Note that MinGW is not supported.
 
@@ -61,11 +61,13 @@ By default, everything will be built but you can disable ffmpeg, epwing...
 Then, hit the "Run" button at bottom-right corner should build and run GoldenDict.
 
 ### Command Line only
+
 See [how to build from source](howto/build_from_source.md).
 
 [Qt's doc: Building projects on the command line](https://doc.qt.io/qt-6/cmake-build-on-cmdline.html)
 
 ### Visual Studio
+
 VS2022 has CMake support. After opening the source code folder, VS will starts to configure CMake but likely won't succeed.
 
 You need to add Qt's path and other options to "CMake command arguments". Then, "save" the dialog with Ctrl+S or click one of the many "(re)configure cache" buttons.
@@ -93,8 +95,11 @@ Then add Qt's path and various other options to configure arguments.
 ![](img/dev-vs-cmake.png)
 
 ### CLion
+
 ### XCode
+
 ### CMake GUI
+
 ### LSP + Editor?
 
 ## Related Things
