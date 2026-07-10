@@ -1493,6 +1493,15 @@ void MainWindow::toggleSplitScreen( Qt::Orientation orientation, bool enable )
   if ( enable ) {
     ui.splitter->setOrientation( orientation );
     ui.slaveTabWidget->show();
+    if ( ui.slaveTabWidget->count() == 0 ) {
+      QList< int > sizes = ui.splitter->sizes();
+      if ( sizes.size() >= 2 ) {
+        int totalSize = sizes[ 0 ] + sizes[ 1 ];
+        sizes[ 0 ] = totalSize / 2;
+        sizes[ 1 ] = totalSize / 2;
+        ui.splitter->setSizes( sizes );
+      }
+    }
   } else {
     while ( ui.slaveTabWidget->count() > 0 ) {
       QWidget * tab = ui.slaveTabWidget->widget( 0 );
