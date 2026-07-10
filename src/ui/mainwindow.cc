@@ -2190,7 +2190,11 @@ void MainWindow::tabCloseRequested( int x )
   delete w;
 
   if ( senderTabWidget->count() == 0 ) {
-    createNewTab( true, tr( "(untitled)" ), senderTabWidget )->load( QUrl( "gdinternal://untitle-page" ) );
+    if ( senderTabWidget == ui.slaveTabWidget && isSplitScreenActive() ) {
+      toggleSplitScreen( ui.splitter->orientation(), false );
+    } else {
+      createNewTab( true, tr( "(untitled)" ), senderTabWidget )->load( QUrl( "gdinternal://untitle-page" ) );
+    }
   }
 }
 
