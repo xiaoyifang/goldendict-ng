@@ -113,6 +113,14 @@ QString ApplicationSettingName = "GoldenDict";
 
 void MainWindow::changeWebEngineViewFont() const
 {
+  if ( !cfg.preferences.useFallbackFonts ) {
+    QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::StandardFont );
+    QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::SerifFont );
+    QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::SansSerifFont );
+    QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::FixedFont );
+    return;
+  }
+
   if ( cfg.preferences.customFonts.standard.isEmpty() ) {
     QWebEngineProfile::defaultProfile()->settings()->resetFontFamily( QWebEngineSettings::StandardFont );
   }
@@ -1733,7 +1741,9 @@ void MainWindow::applyProxySettings()
 
   QNetworkProxy proxy( type );
 
-  if ( cfg.preferences.proxyServer.enabled ) {
+  if ( cfg.preferences.proxyServer.enabled && !cfg.preferences.proxyServer.host.isEmpty()
+       && cfg.preferences.proxyServer.port != 0 ) {
+
     proxy.setHostName( cfg.preferences.proxyServer.host );
     proxy.setPort( cfg.preferences.proxyServer.port );
 
@@ -1744,6 +1754,9 @@ void MainWindow::applyProxySettings()
     if ( cfg.preferences.proxyServer.password.size() ) {
       proxy.setPassword( cfg.preferences.proxyServer.password );
     }
+  }
+  else {
+    proxy.setType( QNetworkProxy::NoProxy );
   }
 
   QNetworkProxy::setApplicationProxy( proxy );

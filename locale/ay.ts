@@ -3131,10 +3131,6 @@ be the last ones.</source>
       <translation>Aka qillqatanakax kunapachatix mä aru pirwan uñt’ayat qillqatanakax jan jikxataskan ukhax apnaqatäniwa.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Fallback ukax mä juk’a pachanakanwa</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Fuente Estándar ukax mä juk’a pachanakanwa</translation>
     </message>
@@ -3637,6 +3633,10 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Sistema tuqin kunjama uñtata ukhamarjama mayjt'asi.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Qillqanak kunjams munta</translation>
     </message>
   </context>
   <context>

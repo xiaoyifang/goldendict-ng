@@ -3072,10 +3072,6 @@ be the last ones.</source>
       <translation>Ови фонтови ће се применити када фонтови наведени у речнику не буду пронађени.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Резервни фонтови</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Стандардни фонт</translation>
     </message>
@@ -3547,6 +3543,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Аутоматски се пребацује на основу теме система.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Прилагодите фонтове</translation>
     </message>
   </context>
   <context>

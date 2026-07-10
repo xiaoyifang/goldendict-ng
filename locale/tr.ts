@@ -3071,10 +3071,6 @@ Son olanlar ol.</translation>
       <translation>Bu yazı tipleri, bir sözlük tarafından belirtilen yazı tipleri bulunamadığında uygulanacaktır.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Yedek Yazı Tipleri</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Standart Yazı Tipi</translation>
     </message>
@@ -3543,6 +3539,10 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Sistem temasına göre otomatik olarak değişir.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Fontları Özelleştirin</translation>
     </message>
   </context>
   <context>

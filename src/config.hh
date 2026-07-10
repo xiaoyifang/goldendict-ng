@@ -272,6 +272,7 @@ struct Preferences
   int interfaceFontSize;
 
   CustomFonts customFonts;
+  bool useFallbackFonts = true;
   bool newTabsOpenAfterCurrentOne;
   bool newTabsOpenInBackground;
   bool hideSingleTab;

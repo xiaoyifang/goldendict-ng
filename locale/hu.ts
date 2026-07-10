@@ -3073,10 +3073,6 @@ legyetek az utolsók.</translation>
       <translation>Ezek a betűkészletek akkor kerülnek felhasználásra, ha a szótár átlal megadott nem található.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Helyettesítő betűkészletek</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Általános betűkészlet</translation>
     </message>
@@ -3546,6 +3542,10 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Automatikusan vált a rendszer témájától.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Betűtípusok testreszabása</translation>
     </message>
   </context>
   <context>

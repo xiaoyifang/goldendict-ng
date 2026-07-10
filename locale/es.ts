@@ -3072,10 +3072,6 @@ ser las últimas.</translation>
       <translation>Estas fuentes se aplicarán cuando no se encuentren las fuentes especificadas por un diccionario.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Fuentes alternativas</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Fuente estándar</translation>
     </message>
@@ -3545,6 +3541,10 @@ de diccionarios Stardict, Babylon y GLS</translation>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Cambia automáticamente según el tema del sistema.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Personalizar fuentes</translation>
     </message>
   </context>
   <context>

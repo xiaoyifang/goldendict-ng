@@ -3070,10 +3070,6 @@ be the last ones.</source>
       <translation>Te czcionki zostaną zastosowane, gdy czcionki określone przez słownik nie zostaną znalezione.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Czcionki zastępcze</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Czcionka standardowa</translation>
     </message>
@@ -3545,6 +3541,10 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Automatycznie przełącza się w zależności od motywu systemu.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Dostosowanie czcionek</translation>
     </message>
   </context>
   <context>

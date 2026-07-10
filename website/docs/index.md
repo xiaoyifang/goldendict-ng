@@ -15,6 +15,7 @@ GoldenDict-ng is an advanced dictionary lookup program.
     * ...
 
 ## Screenshots
+
 On Windows 11 with default theme:
 
 ![Windows Theme](img/windows_white.webp){ width="450" }

@@ -3072,10 +3072,6 @@ be the last ones.</source>
       <translation>سيتم تطبيق هذه الخطوط عند عدم العثور على الخطوط المحددة بواسطة القاموس.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>الخطوط الاحتياطية</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>الخط القياسي</translation>
     </message>
@@ -3545,6 +3541,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>يتم التبديل تلقائيا بناء على موضوع النظام.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>تخصيص الخطوط</translation>
     </message>
   </context>
   <context>

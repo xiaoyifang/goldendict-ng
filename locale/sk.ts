@@ -3067,10 +3067,6 @@ be the last ones.</source>
       <translation>Tieto fonty sa použijú, keď sa nenájdu fonty špecifikované v slovníku.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Záložné písma</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Štandardné písmo</translation>
     </message>
@@ -3538,6 +3534,10 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Automaticky prepína podľa systémovej témy.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Prispôsobenie fontov</translation>
     </message>
   </context>
   <context>

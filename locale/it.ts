@@ -3072,10 +3072,6 @@ essere le ultime.</translation>
       <translation>Questi caratteri verranno applicati quando non vengono trovati i caratteri specificati da un dizionario.</translation>
     </message>
     <message>
-      <source>Fallback Fonts</source>
-      <translation>Font di riserva</translation>
-    </message>
-    <message>
       <source>Standard Font</source>
       <translation>Tipo di carattere standard</translation>
     </message>
@@ -3545,6 +3541,10 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <source>Automatically switches based on system theme.</source>
       <translation>Cambia automaticamente in base al tema di sistema.</translation>
+    </message>
+    <message>
+      <source>Customize Fonts</source>
+      <translation>Personalizza i font</translation>
     </message>
   </context>
   <context>
