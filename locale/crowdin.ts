@@ -504,10 +504,6 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Search mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>This element determines how filter string will be interpreted</source>
         <translation type="unfinished"></translation>
     </message>
@@ -529,10 +525,6 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <source>Specify the maximum filtered headwords returned.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filter max results:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -589,6 +581,10 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <source>Regular Expression</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Max:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
