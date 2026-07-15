@@ -518,10 +518,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>篩選器：</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>搜尋模式</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>此部份決定程式如何解析欲篩選的字串</translation>
     </message>
@@ -544,18 +540,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>指定傳回的最大過濾詞條。</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>過濾最大結果：</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>說明</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>確定</translation>
     </message>
     <message>
       <source>Text</source>
@@ -604,6 +588,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>正規表示式</translation>
+    </message>
+    <message>
+      <source>Max:</source>
+      <translation>Max：</translation>
     </message>
   </context>
   <context>
