@@ -522,10 +522,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Φίλτρο:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Λειτουργία αναζήτησης</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Αυτό το στοιχείο καθορίζει πώς θα ερμηνεύεται η συμβολοσειρά φίλτρου</translation>
     </message>
@@ -548,18 +544,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Καθορίστε τα μέγιστα φιλτραρισμένα headwords που επιστρέφονται.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Φιλτράρισμα μέγιστων αποτελεσμάτων:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Βοήθεια</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>Εντάξει</translation>
     </message>
     <message>
       <source>Text</source>
@@ -608,6 +592,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>Κανονική Έκφραση</translation>
+    </message>
+    <message>
+      <source>Max:</source>
+      <translation>Μέγιστη:</translation>
     </message>
   </context>
   <context>
