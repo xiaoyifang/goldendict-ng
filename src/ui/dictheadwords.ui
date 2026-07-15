@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>458</width>
-    <height>550</height>
+    <width>520</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,8 +15,22 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="1">
+    <layout class="QHBoxLayout" name="filterLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Filter:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="filterLine">
+       <property name="toolTip">
+        <string>Filter string (fixed string, wildcards or regular expression)</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QCheckBox" name="autoApply">
        <property name="toolTip">
         <string>If checked any filter changes will we immediately applied to headwords list</string>
@@ -26,10 +40,7 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
-      <widget class="QListView" name="headersListView"/>
-     </item>
-     <item row="2" column="1">
+     <item>
       <widget class="QPushButton" name="applyButton">
        <property name="toolTip">
         <string>Press this button to apply filter to headwords list</string>
@@ -40,128 +51,91 @@
        <property name="autoDefault">
         <bool>false</bool>
        </property>
-       <property name="default">
-        <bool>true</bool>
-       </property>
       </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLineEdit" name="filterLine">
-       <property name="toolTip">
-        <string>Filter string (fixed string, wildcards or regular expression)</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Filter:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QGroupBox" name="groupBox">
-         <property name="title">
-          <string>Search mode</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout">
-          <item>
-           <widget class="QComboBox" name="searchModeCombo">
-            <property name="toolTip">
-             <string>This element determines how filter string will be interpreted</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="matchCase">
-            <property name="toolTip">
-             <string>If checked on the symbols case will be take in account when filtering</string>
-            </property>
-            <property name="text">
-             <string>Match case</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="exportButton">
-         <property name="toolTip">
-          <string>Exports headwords to file</string>
-         </property>
-         <property name="text">
-          <string>Export</string>
-         </property>
-         <property name="autoDefault">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-           <widget class="QLabel" name="label_2">
-               <property name="toolTip">
-                   <string>Specify the maximum filtered headwords returned.</string>
-               </property>
-               <property name="text">
-                   <string>Filter max results:</string>
-               </property>
-           </widget>
-       </item>
-          <item>
-              <widget class="QSpinBox" name="filterMaxResult">
-                  <property name="toolTip">
-                      <string/>
-                  </property>
-                  <property name="minimum">
-                      <number>10</number>
-                  </property>
-                  <property name="maximum">
-                      <number>3000</number>
-                  </property>
-                  <property name="singleStep">
-                      <number>10</number>
-                  </property>
-              </widget>
-          </item>
-          <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QPushButton" name="helpButton">
-         <property name="text">
-          <string>Help</string>
-         </property>
-         <property name="autoDefault">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="OKButton">
-         <property name="text">
-          <string>OK</string>
-         </property>
-         <property name="autoDefault">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
      </item>
     </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="toolbarLayout">
+     <item>
+      <widget class="QComboBox" name="searchModeCombo">
+       <property name="toolTip">
+        <string>This element determines how filter string will be interpreted</string>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="matchCase">
+       <property name="toolTip">
+        <string>If checked on the symbols case will be take in account when filtering</string>
+       </property>
+       <property name="text">
+        <string>Match case</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="toolTip">
+        <string>Specify the maximum filtered headwords returned.</string>
+       </property>
+       <property name="text">
+        <string>Max:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="filterMaxResult">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="minimum">
+        <number>10</number>
+       </property>
+       <property name="maximum">
+        <number>3000</number>
+       </property>
+       <property name="singleStep">
+        <number>10</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="exportButton">
+       <property name="toolTip">
+        <string>Exports headwords to file</string>
+       </property>
+       <property name="text">
+        <string>Export</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+   </layout>
+   </item>
+   <item>
+    <widget class="QListView" name="headersListView"/>
    </item>
    <item>
     <widget class="QLabel" name="headersNumber">
@@ -175,3 +149,4 @@
  <resources/>
  <connections/>
 </ui>
+

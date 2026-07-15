@@ -23,8 +23,7 @@ enum SearchType {
 DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary::Class * dict_ ):
   QDialog( parent ),
   cfg( cfg_ ),
-  dict( dict_ ),
-  helpAction( this )
+  dict( dict_ )
 {
   ui.setupUi( this );
 
@@ -46,7 +45,6 @@ DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary
   ui.searchModeCombo->setCurrentIndex( cfg.headwordsDialog.searchMode );
 
   ui.exportButton->setAutoDefault( false );
-  ui.OKButton->setAutoDefault( false );
   ui.applyButton->setAutoDefault( true );
   ui.applyButton->setDefault( true );
 
@@ -82,23 +80,11 @@ DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary
   connect( this, &QDialog::finished, this, &DictHeadwords::savePos );
 
   if ( !fromMainWindow ) {
-    ui.helpButton->hide();
     connect( this, &DictHeadwords::closeDialog, this, &QDialog::accept );
   }
   else {
-
-    helpAction.setShortcut( QKeySequence( "F1" ) );
-    helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
-
-    connect( ui.helpButton, &QAbstractButton::clicked, &helpAction, &QAction::trigger );
-    connect( &helpAction, &QAction::triggered, this, []() {
-      Help::openHelpWebpage( Help::section::ui_headwords );
-    } );
-
-    addAction( &helpAction );
   }
 
-  connect( ui.OKButton, &QAbstractButton::clicked, this, &DictHeadwords::okButtonClicked );
   connect( ui.exportButton, &QAbstractButton::clicked, this, &DictHeadwords::exportButtonClicked );
   connect( ui.applyButton, &QAbstractButton::clicked, this, &DictHeadwords::filterChanged );
 
