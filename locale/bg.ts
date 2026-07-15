@@ -520,10 +520,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Филтър:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Режим търсене</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Този елемент определя, как ще интерпретира реда от филтъра</translation>
     </message>
@@ -546,18 +542,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Посочете максималния брой върнати филтрирани заглавни думи.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Филтриране на макс. резултати:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Помощ</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>ОК</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>Регулярен израз</translation>
+    </message>
+    <message>
+      <source>Max:</source>
+      <translation>Макс:</translation>
     </message>
   </context>
   <context>
