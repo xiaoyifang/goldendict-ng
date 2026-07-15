@@ -520,10 +520,6 @@ arasındaki farkı giderir)</translation>
       <translation>Süzgeç:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Arama kipi</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Bu eleman süzgeç dizesinin nasıl yorumlanacağını belirler</translation>
     </message>
@@ -546,18 +542,6 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Döndürülen maksimum filtrelenmiş başlık kelimelerini belirtin.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Maksimum sonuçları filtrele:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Yardım</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>Tamam</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Regular Expression</source>
       <translation>Düzenli İfade</translation>
+    </message>
+    <message>
+      <source>Max:</source>
+      <translation>Max:</translation>
     </message>
   </context>
   <context>
