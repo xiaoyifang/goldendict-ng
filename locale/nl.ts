@@ -520,10 +520,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Filter:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Zoek modus</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Dit element bepaalt hoe filterstring zal worden geïnterpreteerd</translation>
     </message>
@@ -546,18 +542,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Specificeer de maximale gefilterde kopwoorden geretourneerd.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Maximale resultaten filteren:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Hulp</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>Ok</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Regular Expression</source>
       <translation>Reguliere expressie</translation>
+    </message>
+    <message>
+      <source>Max:</source>
+      <translation>Max:</translation>
     </message>
   </context>
   <context>
