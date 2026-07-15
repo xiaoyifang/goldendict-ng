@@ -528,14 +528,6 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Help</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Text</source>
         <translation type="unfinished"></translation>
     </message>
