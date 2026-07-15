@@ -519,10 +519,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>منقي:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>وضع البحث</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>يحدد هذا العنصر كيفية تفسير سلسلة المرشح</translation>
     </message>
@@ -545,18 +541,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>حدد الحد الأقصى للكلمات الرئيسية المصفاة التي تم إرجاعها.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>تصفية النتائج الأقصى:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>يساعد</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation type="unfinished">OK</translation>
     </message>
     <message>
       <source>Text</source>
@@ -605,6 +589,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>Regular Expression</translation>
+    </message>
+    <message>
+      <source>Max:</source>
+      <translation>ماكس:</translation>
     </message>
   </context>
   <context>
