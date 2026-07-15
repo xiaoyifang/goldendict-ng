@@ -508,10 +508,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Susuña:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Kunjams thaqhaña</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Kunjamatixa akaxa, aru-pirwanakxa susuyasini</translation>
     </message>
@@ -534,18 +530,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Uñacht’ayaña jilpacha filtrado p’iqinchawinaka kutt’ayata.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Filtro max ukax akhamawa:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Yanapa</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>Jisa saña</translation>
     </message>
     <message>
       <source>Text</source>
@@ -594,6 +578,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>Regular Uñakipawi</translation>
+    </message>
+    <message>
+      <source>Max:</source>
+      <translation>Jach'a:</translation>
     </message>
   </context>
   <context>
