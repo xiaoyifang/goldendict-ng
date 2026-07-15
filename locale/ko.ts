@@ -519,10 +519,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>필터:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>검색 모드</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>이 요소는 필터가 어떻게 해석될 것인지 결정합니다</translation>
     </message>
@@ -545,18 +541,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>반환된 최대 필터링된 표제어를 지정합니다.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>최대 결과 필터링:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>도움말</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>확인</translation>
     </message>
     <message>
       <source>Text</source>
@@ -605,6 +589,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>정규식</translation>
+    </message>
+    <message>
+      <source>Max:</source>
+      <translation>맥스:</translation>
     </message>
   </context>
   <context>
