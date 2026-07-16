@@ -591,7 +591,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Max:</source>
-      <translation>马克斯：</translation>
+      <translation>最大：</translation>
     </message>
   </context>
   <context>
