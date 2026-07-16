@@ -3494,7 +3494,7 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
-      <translation type="unfinished">Hide tab bar when only one tab is open.</translation>
+      <translation>Reiterleiste ausblenden, wenn nur ein Reiter offen ist</translation>
     </message>
     <message>
       <source>Use any external audio player to play audio files</source>
@@ -3510,11 +3510,11 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Internal Audio Player:</source>
-      <translation type="unfinished">Internal Audio Player:</translation>
+      <translation>Interner Audio Player:</translation>
     </message>
     <message>
       <source>External Audio Player:</source>
-      <translation type="unfinished">External Audio Player:</translation>
+      <translation>Externer Audio Player</translation>
     </message>
     <message>
       <source>Automatically switches based on system theme.</source>
