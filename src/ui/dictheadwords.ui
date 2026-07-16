@@ -86,7 +86,7 @@
         <string>Specify the maximum filtered headwords returned.</string>
        </property>
        <property name="text">
-        <string>Max:</string>
+        <string>Maximum:</string>
        </property>
       </widget>
      </item>
