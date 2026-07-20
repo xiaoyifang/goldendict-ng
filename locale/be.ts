@@ -505,10 +505,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Фільтр:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Рэжым пошуку</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Гэты элемент вызначае тлумачэнне радка спіса</translation>
     </message>
@@ -531,18 +527,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Укажыце максімальную колькасць вернутых адфільтраваных загалоўных слоў.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Максімальныя вынікі фільтра:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Даведка</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>Добра</translation>
     </message>
     <message>
       <source>Text</source>
@@ -591,6 +575,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>Рэгулярны выраз</translation>
+    </message>
+    <message>
+      <source>Max:</source>
+      <translation>Макс:</translation>
     </message>
   </context>
   <context>

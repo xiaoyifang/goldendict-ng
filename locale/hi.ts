@@ -519,10 +519,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>छाँटें :</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>खोज पद्धति</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>यह तत्व निर्धारित करता है कि छँटाई स्ट्रिंग की व्याख्या कैसे की जाएगी</translation>
     </message>
@@ -545,18 +541,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>लौटाए गए अधिकतम फ़िल्टर किए गए हेडवर्ड निर्दिष्ट करें.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>अधिकतम परिणाम फ़िल्टर करें:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>सहायता</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>ठीक</translation>
     </message>
     <message>
       <source>Text</source>
@@ -605,6 +589,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>नियमित अभिव्यक्ति</translation>
+    </message>
+    <message>
+      <source>Max:</source>
+      <translation>अधिकतम:</translation>
     </message>
   </context>
   <context>

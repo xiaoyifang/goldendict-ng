@@ -520,10 +520,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>پالایه:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>شیوه جست‌وجو</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>این رکن تعیین می‌کند که رشته پالایه چگونه تفسیر شود</translation>
     </message>
@@ -546,18 +542,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>حداکثر عبارات فیلتر شده بازگشتی را مشخص کنید.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>فیلتر حداکثر نتایج:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>کمک</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>خوب</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>عبارت باقاعده</translation>
+    </message>
+    <message>
+      <source>Max:</source>
+      <translation>مکس:</translation>
     </message>
   </context>
   <context>

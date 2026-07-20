@@ -520,10 +520,6 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
       <translation>Filtro:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Modalità di ricerca</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Questo elemento determina come la stringa del filtro debba essere interpretata</translation>
     </message>
@@ -546,18 +542,6 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Specifica la massima intestazione filtrata restituita.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Filtro max risultati:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Guida</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>OK</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
     <message>
       <source>Regular Expression</source>
       <translation>Espressione Regolare</translation>
+    </message>
+    <message>
+      <source>Max:</source>
+      <translation>Max:</translation>
     </message>
   </context>
   <context>

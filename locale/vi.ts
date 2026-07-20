@@ -504,10 +504,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Bộ lọc:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Kiểu tìm kiếm</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Xác định cách thức chuỗi bộ lọc sẽ được thể hiện</translation>
     </message>
@@ -530,18 +526,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Chỉ định số lượng tiêu đề được lọc tối đa được trả về.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Lọc kết quả tối đa:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Trợ giúp</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>ĐƯỢC RỒI</translation>
     </message>
     <message>
       <source>Text</source>
@@ -590,6 +574,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>Biểu thức chính quy</translation>
+    </message>
+    <message>
+      <source>Max:</source>
+      <translation>Tối đa:</translation>
     </message>
   </context>
   <context>

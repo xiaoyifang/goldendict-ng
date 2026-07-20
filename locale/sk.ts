@@ -520,10 +520,6 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <translation>Filter:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Režim vyhľadávania</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Tento prvok určuje, ako bude interpretovaný reťazec filtra</translation>
     </message>
@@ -546,18 +542,6 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Zadajte maximálny počet vrátených filtrovaných hesiel.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Filtrovať maximálne výsledky:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Pomocník</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>OK</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     <message>
       <source>Regular Expression</source>
       <translation>Regulárny výraz</translation>
+    </message>
+    <message>
+      <source>Max:</source>
+      <translation>Max:</translation>
     </message>
   </context>
   <context>

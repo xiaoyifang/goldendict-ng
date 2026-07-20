@@ -520,10 +520,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Filtrera:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Sökläge</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Detta element bestämmer hur filtersträngen ska tolkas</translation>
     </message>
@@ -546,18 +542,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Ange de maximalt filtrerade headwords som returnerats.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Filtrera max resultat:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Hjälp</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>Ok</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Regular Expression</source>
       <translation>Reguljärt uttryck</translation>
+    </message>
+    <message>
+      <source>Max:</source>
+      <translation>Max:</translation>
     </message>
   </context>
   <context>

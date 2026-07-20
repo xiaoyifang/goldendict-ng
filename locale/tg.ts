@@ -520,10 +520,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Филтр:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Ҳолати ҷустуҷӯ</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Ин унсур муайян мекунад, ки чӣ тавр фитри сатр иҷро мешавад</translation>
     </message>
@@ -546,18 +542,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Сарлавҳаҳои ҳадди аксар филтршудаи баргардонидашударо муайян кунед.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Натиҷаҳои максималии филтр:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Кумак</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>ДУРУСТ</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>Regular Expression</translation>
+    </message>
+    <message>
+      <source>Max:</source>
+      <translation type="unfinished">Max:</translation>
     </message>
   </context>
   <context>

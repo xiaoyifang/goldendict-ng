@@ -520,10 +520,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <translation>Szűrő:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Keresés módja</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Megadja a szűrési kifejezések formátumát</translation>
     </message>
@@ -546,18 +542,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Adja meg a szűrésben maximálisan visszaadható címszavak számát.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Találatok maximális száma:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Súgó</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>OK</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     <message>
       <source>Regular Expression</source>
       <translation>Regular Expression</translation>
+    </message>
+    <message>
+      <source>Max:</source>
+      <translation>Max:</translation>
     </message>
   </context>
   <context>
