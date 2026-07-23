@@ -576,7 +576,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>Biểu thức chính quy</translation>
     </message>
     <message>
-      <source>Max:</source>
+      <source>Maximum:</source>
       <translation>Tối đa:</translation>
     </message>
   </context>
@@ -2641,6 +2641,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Ứng dụng vẫn đang chạy trong nền. Nhấp vào biểu tượng khay để hiển thị cửa sổ.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Mở trong &amp; trình duyệt bên ngoài</translation>
     </message>
   </context>
   <context>
