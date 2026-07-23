@@ -592,8 +592,8 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Regula Esprimo</translation>
     </message>
     <message>
-      <source>Max:</source>
-      <translation>Maks:</translation>
+      <source>Maximum:</source>
+      <translation>Maksimumo:</translation>
     </message>
   </context>
   <context>
@@ -2657,6 +2657,10 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Aplikaĵo ankoraŭ funkcias en la fono. Alklaku la pleton-ikonon por montri la fenestron.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Malfermi en &amp;Ekstera Retumilo</translation>
     </message>
   </context>
   <context>
