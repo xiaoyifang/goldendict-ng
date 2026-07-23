@@ -135,6 +135,7 @@ private:
   QMenu dockMenu; // Separate menu for macOS Dock
 #endif
   QMenu * tabMenu;
+  QAction * openInExternalBrowserAction;
   QAction * menuButtonAction;
   QToolButton * menuButton;
   MRUQMenu * tabListMenu;
@@ -356,6 +357,7 @@ private slots:
   void pageLoaded( ArticleView * );
   void tabSwitched( int );
   void tabMenuRequested( QPoint pos );
+  void openCurrentTabInExternalBrowser();
 
   void dictionaryBarToggled( bool checked );
 
