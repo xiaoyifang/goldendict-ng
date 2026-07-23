@@ -592,8 +592,8 @@ a školní ortografií v cyrilici)</translation>
       <translation>Pravidelný výraz</translation>
     </message>
     <message>
-      <source>Max:</source>
-      <translation>Max:</translation>
+      <source>Maximum:</source>
+      <translation>Maximum:</translation>
     </message>
   </context>
   <context>
@@ -2657,6 +2657,10 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Aplikace stále běží na pozadí. Klikněte na ikonu v lize pro zobrazení okna.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Otevřít v a externím prohlížeči</translation>
     </message>
   </context>
   <context>
