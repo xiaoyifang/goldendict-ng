@@ -591,7 +591,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>नियमित अभिव्यक्ति</translation>
     </message>
     <message>
-      <source>Max:</source>
+      <source>Maximum:</source>
       <translation>अधिकतम:</translation>
     </message>
   </context>
@@ -2656,6 +2656,10 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>अनुप्रयोग अभी भी पृष्ठभूमि में चल रहा है। विंडो दिखाने के लिए ट्रे आइकन पर क्लिक करें।</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>&amp;बाहरी ब्राउज़र में खोलें</translation>
     </message>
   </context>
   <context>
