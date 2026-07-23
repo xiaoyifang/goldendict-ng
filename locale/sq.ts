@@ -591,7 +591,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>Shprehje e rregullt</translation>
     </message>
     <message>
-      <source>Max:</source>
+      <source>Maximum:</source>
       <translation>Maksimumi:</translation>
     </message>
   </context>
@@ -2656,6 +2656,10 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Aplikacioni është ende duke funksionuar në sfond. Klikoni ikonën e tabakës për të shfaqur dritaren.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Hap në &amp;Shfletuesin e jashtëm</translation>
     </message>
   </context>
   <context>
