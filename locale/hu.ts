@@ -592,8 +592,8 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <translation>Regular Expression</translation>
     </message>
     <message>
-      <source>Max:</source>
-      <translation>Max:</translation>
+      <source>Maximum:</source>
+      <translation>Maximum:</translation>
     </message>
   </context>
   <context>
@@ -2657,6 +2657,10 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Az alkalmazás még mindig a háttérben fut. Kattints a tálca ikonra, hogy megmutasd az ablakot.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Nyisd meg és Külső böngésző</translation>
     </message>
   </context>
   <context>
