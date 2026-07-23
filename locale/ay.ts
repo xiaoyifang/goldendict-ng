@@ -580,7 +580,7 @@ between classic and school orthography in cyrillic)</source>
       <translation>Regular Uñakipawi</translation>
     </message>
     <message>
-      <source>Max:</source>
+      <source>Maximum:</source>
       <translation>Jach'a:</translation>
     </message>
   </context>
@@ -2702,6 +2702,10 @@ Error de importación: datos incorrectos en el fichero.</translation>
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Aplicación ukax qhipatakiw llamkt'askakiwa. Ventana uñacht'ayañatakiw bandeja icono ukar ch'iqt'añama.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>&amp;Anqa Tuyurinxa jist'araña</translation>
     </message>
   </context>
   <context>
