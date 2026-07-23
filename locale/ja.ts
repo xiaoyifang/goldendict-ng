@@ -591,8 +591,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>正規表現</translation>
     </message>
     <message>
-      <source>Max:</source>
-      <translation>マックス:</translation>
+      <source>Maximum:</source>
+      <translation>最大限:</translation>
     </message>
   </context>
   <context>
@@ -2656,6 +2656,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>アプリケーションはまだバックグラウンドで実行されています。トレイのアイコンをクリックするとウィンドウが表示されます。</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>外部ブラウザで開く</translation>
     </message>
   </context>
   <context>

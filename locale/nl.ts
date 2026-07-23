@@ -592,8 +592,8 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Reguliere expressie</translation>
     </message>
     <message>
-      <source>Max:</source>
-      <translation>Max:</translation>
+      <source>Maximum:</source>
+      <translation>Maximaal:</translation>
     </message>
   </context>
   <context>
@@ -2657,6 +2657,10 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>De applicatie draait nog steeds op de achtergrond. Klik op het tray-icoon om het venster te tonen.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Openen in &amp; Externe Browser</translation>
     </message>
   </context>
   <context>

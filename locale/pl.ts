@@ -592,8 +592,8 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>Wyrażenie regularne</translation>
     </message>
     <message>
-      <source>Max:</source>
-      <translation>Max:</translation>
+      <source>Maximum:</source>
+      <translation>Maksymalne:</translation>
     </message>
   </context>
   <context>
@@ -2657,6 +2657,10 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Aplikacja nadal działa w tle. Kliknij ikonę w tacce, aby wyświetlić okno.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Otwórz przeglądarkę w i zewnętrzną</translation>
     </message>
   </context>
   <context>

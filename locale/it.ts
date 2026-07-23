@@ -592,8 +592,8 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
       <translation>Espressione Regolare</translation>
     </message>
     <message>
-      <source>Max:</source>
-      <translation>Max:</translation>
+      <source>Maximum:</source>
+      <translation>Massimo:</translation>
     </message>
   </context>
   <context>
@@ -2658,6 +2658,10 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>L'applicazione è ancora in esecuzione in background. Clicca sull'icona del vassoio per mostrare la finestra.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Apri e Browser esterno</translation>
     </message>
   </context>
   <context>

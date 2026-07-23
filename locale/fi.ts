@@ -592,8 +592,8 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Säännöllinen Lauseke</translation>
     </message>
     <message>
-      <source>Max:</source>
-      <translation>Max:</translation>
+      <source>Maximum:</source>
+      <translation>Maksimi:</translation>
     </message>
   </context>
   <context>
@@ -2657,6 +2657,10 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Sovellus pyörii edelleen taustalla. Klikkaa tarjottimen kuvaketta näyttääksesi ikkunan.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Avaa sisään &amp; ulkoinen selain</translation>
     </message>
   </context>
   <context>

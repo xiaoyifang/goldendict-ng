@@ -590,8 +590,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>正規表示式</translation>
     </message>
     <message>
-      <source>Max:</source>
-      <translation>Max：</translation>
+      <source>Maximum:</source>
+      <translation>最高：</translation>
     </message>
   </context>
   <context>
@@ -2656,6 +2656,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>應用程式仍在背景執行。點擊托盤圖示即可顯示視窗。</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>開啟 → 外部瀏覽器</translation>
     </message>
   </context>
   <context>

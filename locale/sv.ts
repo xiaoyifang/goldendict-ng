@@ -592,8 +592,8 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Reguljärt uttryck</translation>
     </message>
     <message>
-      <source>Max:</source>
-      <translation>Max:</translation>
+      <source>Maximum:</source>
+      <translation>Maximalt:</translation>
     </message>
   </context>
   <context>
@@ -2657,6 +2657,10 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Applikationen körs fortfarande i bakgrunden. Klicka på brickikonen för att visa fönstret.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Öppna i &amp; Extern webbläsare</translation>
     </message>
   </context>
   <context>

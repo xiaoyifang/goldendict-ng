@@ -592,8 +592,8 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <translation>Regulárny výraz</translation>
     </message>
     <message>
-      <source>Max:</source>
-      <translation>Max:</translation>
+      <source>Maximum:</source>
+      <translation>Maximum:</translation>
     </message>
   </context>
   <context>
@@ -2658,6 +2658,10 @@ Pre vyhľadanie znakov &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Aplikácia stále beží na pozadí. Kliknite na ikonu v zásobníku, aby ste zobrazili okno.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Otvoriť v a externý prehliadač</translation>
     </message>
   </context>
   <context>

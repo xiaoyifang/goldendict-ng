@@ -591,8 +591,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Reguliarioji išraiška</translation>
     </message>
     <message>
-      <source>Max:</source>
-      <translation>Maks.:</translation>
+      <source>Maximum:</source>
+      <translation>Maksimalus:</translation>
     </message>
   </context>
   <context>
@@ -2657,6 +2657,10 @@ Norėdami atverti parsisiuntimo puslapį, spauskite &lt;b&gt;Parsisiųsti&lt;/b&
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Programa vis dar veikia fone. Spustelėkite dėklo piktogramą, kad būtų rodomas langas.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Atidaryti ir išorinėje naršyklėje</translation>
     </message>
   </context>
   <context>

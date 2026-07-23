@@ -592,8 +592,8 @@ arasındaki farkı giderir)</translation>
       <translation>Düzenli İfade</translation>
     </message>
     <message>
-      <source>Max:</source>
-      <translation>Max:</translation>
+      <source>Maximum:</source>
+      <translation>Maksimum:</translation>
     </message>
   </context>
   <context>
@@ -2657,6 +2657,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Uygulama hâlâ arka planda çalışıyor. Pencereyi göstermek için tepsi simgesine tıklayın.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Aç &amp; Dış Tarayıcı</translation>
     </message>
   </context>
   <context>

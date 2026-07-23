@@ -592,8 +592,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Регуларен израз</translation>
     </message>
     <message>
-      <source>Max:</source>
-      <translation>Макс:</translation>
+      <source>Maximum:</source>
+      <translation>Максимум:</translation>
     </message>
   </context>
   <context>
@@ -2658,6 +2658,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Апликацијата сè уште работи во позадина. Кликнете на иконата на tray за да го покажете прозорецот.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Отворен во и Надворешен прелистувач</translation>
     </message>
   </context>
   <context>

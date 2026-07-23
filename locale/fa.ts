@@ -592,8 +592,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>عبارت باقاعده</translation>
     </message>
     <message>
-      <source>Max:</source>
-      <translation>مکس:</translation>
+      <source>Maximum:</source>
+      <translation>حداکثر:</translation>
     </message>
   </context>
   <context>
@@ -2657,6 +2657,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>برنامه هنوز در پس زمینه اجرا می شود. روی آیکون سینی کلیک کنید تا پنجره نمایش داده شود.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>مرورگر باز در و خارجی</translation>
     </message>
   </context>
   <context>

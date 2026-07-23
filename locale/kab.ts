@@ -592,8 +592,8 @@ between classic and school orthography in cyrillic)</translation>
       <translation type="unfinished">Regular Expression</translation>
     </message>
     <message>
-      <source>Max:</source>
-      <translation>Amqqran:</translation>
+      <source>Maximum:</source>
+      <translation>Afellay:</translation>
     </message>
   </context>
   <context>
@@ -2657,6 +2657,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Tunigt mazal tettruḥu deg deffir. Ssenqed ikun n ttray iwakken ad tban ttaqet.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Ldi deg &amp;Umeklas Uffiɣ</translation>
     </message>
   </context>
   <context>

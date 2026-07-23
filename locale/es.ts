@@ -592,8 +592,8 @@ entre ortografía clásica y escolar en cirílico)</translation>
       <translation>Expresión regular</translation>
     </message>
     <message>
-      <source>Max:</source>
-      <translation>Max:</translation>
+      <source>Maximum:</source>
+      <translation>Máximo:</translation>
     </message>
   </context>
   <context>
@@ -2657,6 +2657,10 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>La aplicación sigue ejecutándose en segundo plano. Haz clic en el icono de la bandeja para mostrar la ventana.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Abrir en y Navegador externo</translation>
     </message>
   </context>
   <context>

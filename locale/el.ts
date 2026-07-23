@@ -594,8 +594,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Κανονική Έκφραση</translation>
     </message>
     <message>
-      <source>Max:</source>
-      <translation>Μέγιστη:</translation>
+      <source>Maximum:</source>
+      <translation>Μέγιστο:</translation>
     </message>
   </context>
   <context>
@@ -2659,6 +2659,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Η εφαρμογή εξακολουθεί να εκτελείται στο παρασκήνιο. Κάντε κλικ στο εικονίδιο του δίσκου για να εμφανιστεί το παράθυρο.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Άνοιγμα σε &amp;εξωτερικό πρόγραμμα περιήγησης</translation>
     </message>
   </context>
   <context>
