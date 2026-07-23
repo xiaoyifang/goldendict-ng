@@ -4581,7 +4581,7 @@ void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId,
 
 void MainWindow::openCurrentTabInExternalBrowser()
 {
-  int tabIndex = openInExternalBrowserAction->data().toInt();
+  int tabIndex       = openInExternalBrowserAction->data().toInt();
   ArticleView * view = qobject_cast< ArticleView * >( ui.tabWidget->widget( tabIndex ) );
   if ( view ) {
     QDesktopServices::openUrl( view->page()->url() );
