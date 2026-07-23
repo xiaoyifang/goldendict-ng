@@ -591,8 +591,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Regular Expression</translation>
     </message>
     <message>
-      <source>Max:</source>
-      <translation type="unfinished">Max:</translation>
+      <source>Maximum:</source>
+      <translation type="unfinished">Maximum:</translation>
     </message>
   </context>
   <context>
@@ -2657,6 +2657,10 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; uso de
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation type="unfinished">Application is still running in the background. Click the tray icon to show the window.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation type="unfinished">Open in &amp;External Browser</translation>
     </message>
   </context>
   <context>
