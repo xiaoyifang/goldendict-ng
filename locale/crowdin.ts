@@ -576,7 +576,7 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Max:</source>
+        <source>Maximum:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2637,6 +2637,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
         <source>Application is still running in the background. Click the tray icon to show the window.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open in &amp;External Browser</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
