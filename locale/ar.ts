@@ -2659,7 +2659,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Open in &amp;External Browser</source>
-      <translation>فتح المتصفح الداخلي والخارجي</translation>
+      <translation>افتح في متصفّح &amp;خارجي</translation>
     </message>
   </context>
   <context>
