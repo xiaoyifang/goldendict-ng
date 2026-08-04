@@ -145,6 +145,11 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( ui.sendWordButton, &QToolButton::pressed, this, &ScanPopup::sendWordButton_clicked );
   connect( ui.sendWordToFavoritesButton, &QToolButton::pressed, this, &ScanPopup::sendWordToFavoritesButton_clicked );
 
+  sendWordAction.setShortcut( QKeySequence( "Alt+W" ) );
+  sendWordAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
+  addAction( &sendWordAction );
+  connect( &sendWordAction, &QAction::triggered, this, &ScanPopup::sendWordButton_clicked );
+
   openSearchAction.setShortcut( QKeySequence( "Ctrl+F" ) );
   openSearchAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
   addAction( &openSearchAction );
