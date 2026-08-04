@@ -3816,10 +3816,6 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Woord naar hoofdvenster verzenden (Alt+W)</translation>
     </message>
     <message>
-      <source>Alt+W</source>
-      <translation>Alt+W</translation>
-    </message>
-    <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>Woord aan favorieten toevoegen (Ctrl+E)</translation>
     </message>
