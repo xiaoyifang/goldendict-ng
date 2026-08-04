@@ -3817,10 +3817,6 @@ Erreur lors de l&apos;enregistrement de la ressource :</translation>
       <translation>Envoyer un mot à la fenêtre principale (Alt+W)</translation>
     </message>
     <message>
-      <source>Alt+W</source>
-      <translation>Alt + W</translation>
-    </message>
-    <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>Ajouter un mot aux favoris (Ctrl+E)</translation>
     </message>
