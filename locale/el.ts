@@ -3820,10 +3820,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Αποστολή λέξης στο κύριο παράθυρο (Alt+W)</translation>
     </message>
     <message>
-      <source>Alt+W</source>
-      <translation>Alt+W</translation>
-    </message>
-    <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>Προσθήκη λέξης στα αγαπημένα (Ctrl+E)</translation>
     </message>
