@@ -3813,10 +3813,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Sende Wort zum Hauptfenster (Alt+W)</translation>
     </message>
     <message>
-      <source>Alt+W</source>
-      <translation>Alt+W</translation>
-    </message>
-    <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>Wort zu Favoriten hinzufügen (Strg+E)</translation>
     </message>
