@@ -3817,10 +3817,6 @@ dai dizionari di Stardict, Babylon e GLS</translation>
       <translation>Invia parola alla finestra principale (Alt+W)</translation>
     </message>
     <message>
-      <source>Alt+W</source>
-      <translation>Alt+W</translation>
-    </message>
-    <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>Aggiungi parola ai preferiti (Ctrl+E)</translation>
     </message>
