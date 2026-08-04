@@ -7,6 +7,7 @@
 #include "utils.hh"
 #include <QCursor>
 #include <QPixmap>
+#include <QDateTime>
 #include <QMenu>
 #include <QMouseEvent>
 #include <QFileDialog>
@@ -586,6 +587,8 @@ void ScanPopup::showEngagePopup()
 
 void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
 {
+  GlobalBroadcaster::instance()->lastPopupEngageMs.store( QDateTime::currentMSecsSinceEpoch() );
+
   if ( cfg.preferences.scanToMainWindow && !forcePopup ) {
     // Send translated word to main window istead of show popup
     emit sendPhraseToMainWindow( pendingWord );
