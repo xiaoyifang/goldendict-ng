@@ -3425,11 +3425,20 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
 #ifdef Q_OS_MACOS
 void MainWindow::handleApplicationStateChanged( Qt::ApplicationState state )
 {
-  // When the application becomes active (e.g., user clicks on Dock icon)
-  // and the main window is minimized or hidden, restore it
-  if ( state == Qt::ApplicationActive && ( isMinimized() || !isVisible() ) ) {
-    toggleMainWindow( true );
+  if ( state != Qt::ApplicationActive || ( !isMinimized() && isVisible() ) ) {
+    return;
   }
+
+  // Activation caused by the scan popup (hotkey, or clicking into a
+  // pinned popup) must not restore the main window.
+  if ( scanPopup && scanPopup->isVisible()
+       && ( QApplication::activeWindow() == scanPopup
+            || QDateTime::currentMSecsSinceEpoch()
+                 - GlobalBroadcaster::instance()->lastPopupEngageMs.load() < 3000 ) ) {
+    return;
+  }
+
+  toggleMainWindow( true );
 }
 #endif
 
