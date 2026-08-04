@@ -3819,10 +3819,6 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <translation>Enviar palavra para a janela principal (Alt+W)</translation>
     </message>
     <message>
-      <source>Alt+W</source>
-      <translation>Alt+O</translation>
-    </message>
-    <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>Adicionar palavra aos Favoritos (Ctrl+E)</translation>
     </message>
