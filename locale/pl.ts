@@ -3817,10 +3817,6 @@ ze słowników Stardict, Babylon i GLS</translation>
       <translation>Wyślij słowo do okna głównego (Alt+W)</translation>
     </message>
     <message>
-      <source>Alt+W</source>
-      <translation>Głębokość + W</translation>
-    </message>
-    <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>Dodaj słowo do ulubionych (Ctrl+E)</translation>
     </message>
