@@ -3807,10 +3807,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>发送单词到主窗口 (Alt+W)</translation>
     </message>
     <message>
-      <source>Alt+W</source>
-      <translation>Alt+W</translation>
-    </message>
-    <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>添加单词到收藏夹 (Ctrl+E)</translation>
     </message>

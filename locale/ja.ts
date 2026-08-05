@@ -3817,10 +3817,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>単語をメインウィンドウに送信 (Alt+W)</translation>
     </message>
     <message>
-      <source>Alt+W</source>
-      <translation>Alt+W</translation>
-    </message>
-    <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>単語をお気に入りに追加 (Ctrl+E)</translation>
     </message>

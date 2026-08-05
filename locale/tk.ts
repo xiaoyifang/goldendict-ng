@@ -3818,10 +3818,6 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
       <translation>Send word to main window (Alt+W)</translation>
     </message>
     <message>
-      <source>Alt+W</source>
-      <translation type="unfinished">Alt+W</translation>
-    </message>
-    <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>Add word to Favorites (Ctrl+E)</translation>
     </message>

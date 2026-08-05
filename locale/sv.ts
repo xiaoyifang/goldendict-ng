@@ -3820,10 +3820,6 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation>Skicka ord till huvudfönstret (Alt+W)</translation>
     </message>
     <message>
-      <source>Alt+W</source>
-      <translation>Alt+W</translation>
-    </message>
-    <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>Lägg till ord i favoriter (Ctrl+E)</translation>
     </message>

@@ -3808,10 +3808,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>將單字傳送到主視窗 (Alt+W)</translation>
     </message>
     <message>
-      <source>Alt+W</source>
-      <translation type="unfinished">Alt+W</translation>
-    </message>
-    <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>新增單字到我的最愛 (Ctrl+E)</translation>
     </message>

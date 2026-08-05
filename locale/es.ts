@@ -3817,10 +3817,6 @@ de diccionarios Stardict, Babylon y GLS</translation>
       <translation>Enviar palabra a la ventana principal (Alt+W)</translation>
     </message>
     <message>
-      <source>Alt+W</source>
-      <translation>Alt + W</translation>
-    </message>
-    <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>Añadir palabra a favoritos (Ctrl+E)</translation>
     </message>

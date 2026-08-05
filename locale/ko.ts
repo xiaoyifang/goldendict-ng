@@ -3815,10 +3815,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>단어를 메인창으로 보냅니다(Alt+W)</translation>
     </message>
     <message>
-      <source>Alt+W</source>
-      <translation type="unfinished">Alt+W</translation>
-    </message>
-    <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>즐겨찾기에 단어 추가(Ctrl+E)</translation>
     </message>
