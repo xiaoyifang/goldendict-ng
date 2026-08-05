@@ -3825,10 +3825,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Отправить слово в главное окно (Alt+W)</translation>
     </message>
     <message>
-      <source>Alt+W</source>
-      <translation>Alt+W</translation>
-    </message>
-    <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>Добавить слово в избранное (Ctrl+E)</translation>
     </message>

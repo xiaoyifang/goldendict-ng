@@ -3819,10 +3819,6 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <translation type="unfinished">Send word to main window (Alt+W)</translation>
     </message>
     <message>
-      <source>Alt+W</source>
-      <translation type="unfinished">Alt+W</translation>
-    </message>
-    <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation type="unfinished">Add word to Favorites (Ctrl+E)</translation>
     </message>

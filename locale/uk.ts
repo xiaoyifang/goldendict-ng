@@ -3819,10 +3819,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Відправити слово в основне вікно (Alt+W)</translation>
     </message>
     <message>
-      <source>Alt+W</source>
-      <translation>Alt+клавiша переходу</translation>
-    </message>
-    <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>Додати слово до обраного (Ctrl+E)</translation>
     </message>

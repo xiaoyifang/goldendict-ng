@@ -3817,10 +3817,6 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Odeslat slovo do hlavního okna (Alt+W)</translation>
     </message>
     <message>
-      <source>Alt+W</source>
-      <translation>Alt + W</translation>
-    </message>
-    <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>Přidat slovo do oblíbených (Ctrl + E)</translation>
     </message>
