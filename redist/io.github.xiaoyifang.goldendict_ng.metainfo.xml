@@ -43,10 +43,13 @@
     <id>org.goldendict_ng.desktop</id>
   </provides>
   <releases>
-    <release version="26.6.2" date="2026-7-10">
+    <release version="26.8.0" date="2026-8-5">
       <description>
         <p>Check the full release notes for more details.</p>
       </description>
+      <url type="details">https://github.com/xiaoyifang/goldendict-ng/releases/tag/v26.8.0</url>
+    </release>
+    <release version="26.6.2" date="2026-7-10">
       <url type="details">https://github.com/xiaoyifang/goldendict-ng/releases/tag/v26.6.2</url>
     </release>
     <release version="26.6.1" date="2026-6-29">
@@ -58,7 +61,5 @@
     <release version="26.5.7" date="2026-6-4">
       <url type="details">https://github.com/xiaoyifang/goldendict-ng/releases/tag/v26.5.7</url>
     </release>
-    <release version="26.5.6" date="2026-5-26">
-      </release>
   </releases>
 </component>
