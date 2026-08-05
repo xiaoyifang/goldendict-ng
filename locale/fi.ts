@@ -520,10 +520,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Suodatin:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Hakutila</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Tämä elementti määrittää, miten suodatinmerkkijono tulkitaan</translation>
     </message>
@@ -546,18 +542,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Määritä suurin suodatetut otsikot.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Suodatin max tulokset:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Ohje</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>Ok</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Regular Expression</source>
       <translation>Säännöllinen Lauseke</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation>Maksimi:</translation>
     </message>
   </context>
   <context>
@@ -2670,6 +2658,10 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Sovellus pyörii edelleen taustalla. Klikkaa tarjottimen kuvaketta näyttääksesi ikkunan.</translation>
     </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Avaa sisään &amp; ulkoinen selain</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3825,10 +3817,6 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Send word to main window (Alt+W)</source>
       <translation>Lähetä sana pääikkunaan (Alt+W)</translation>
-    </message>
-    <message>
-      <source>Alt+W</source>
-      <translation>Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>

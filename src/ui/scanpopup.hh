@@ -133,6 +133,7 @@ private:
   QAction escapeAction, switchExpandModeAction, focusTranslateLineAction;
   QAction stopAudioAction;
   QAction openSearchAction;
+  QAction sendWordAction;
   QString pendingWord; // Word that is going to be translated
   WordFinder wordFinder;
   DictionaryBar dictionaryBar;

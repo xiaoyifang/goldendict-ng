@@ -519,10 +519,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Фільтр:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Режим пошуку</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Цей елемент визначає, як буде інтерпретовано фільтром</translation>
     </message>
@@ -545,18 +541,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Вкажіть максимальну кількість відфільтрованих заголовків (серверів).</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Фільтрувати макс. результати:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Довідка</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>Гаразд</translation>
     </message>
     <message>
       <source>Text</source>
@@ -605,6 +589,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>Регулярний вираз</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation>Максимум:</translation>
     </message>
   </context>
   <context>
@@ -2670,6 +2658,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Додаток досі працює у фоновому режимі. Натисніть на іконку трека, щоб показати вікно.</translation>
     </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Відкритий у та зовнішній браузер</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3825,10 +3817,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Send word to main window (Alt+W)</source>
       <translation>Відправити слово в основне вікно (Alt+W)</translation>
-    </message>
-    <message>
-      <source>Alt+W</source>
-      <translation>Alt+клавiша переходу</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>

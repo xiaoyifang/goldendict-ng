@@ -131,9 +131,6 @@
       <iconset resource="../../resources.qrc">
        <normaloff>:/icons/programicon.png</normaloff>:/icons/programicon.png</iconset>
      </property>
-     <property name="shortcut">
-      <string>Alt+W</string>
-     </property>
      <property name="iconSize">
       <size>
        <width>24</width>

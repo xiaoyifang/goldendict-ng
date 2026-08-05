@@ -520,10 +520,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Filtro: 1.1.</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Modo de búsqueda nisqa</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Kay elementoqa imayna filtro watiqa t'ikrakunqa chayta kamachin</translation>
     </message>
@@ -546,18 +542,6 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Aswan filtrasqa uma simikuna kutichisqa kaqta willay.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Filtro max ruwasqakuna:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Yanapay</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>KUSA</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Regular Expression</source>
       <translation>Kamaq Sut'inchana</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation type="unfinished">Maximum:</translation>
     </message>
   </context>
   <context>
@@ -2670,6 +2658,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation type="unfinished">Application is still running in the background. Click the tray icon to show the window.</translation>
     </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation type="unfinished">Open in &amp;External Browser</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3819,10 +3811,6 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     <message>
       <source>Send word to main window (Alt+W)</source>
       <translation>Send word to main window (Alt+W)</translation>
-    </message>
-    <message>
-      <source>Alt+W</source>
-      <translation type="unfinished">Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>

@@ -7,6 +7,8 @@
 #include "sptr.hh"
 #include <QMap>
 #include <QScopedPointer>
+#include <QDateTime>
+#include <atomic>
 #include <vector>
 #include "instances.hh"
 #include "audio/audioplayerinterface.hh"
@@ -43,6 +45,7 @@ class GlobalBroadcaster: public QObject
 
 public:
   std::atomic_bool is_popup;
+  std::atomic<qint64> lastPopupEngageMs{ 0 };
 
   void setConfig( Config::Class * _config );
   Config::Class * getConfig() const;

@@ -546,8 +546,12 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   tabMenu->addSeparator();
   tabMenu->addAction( &closeAllTabAction );
   tabMenu->addSeparator();
+  openInExternalBrowserAction = new QAction( QIcon( ":/icons/internet.svg" ), tr( "Open in &External Browser" ), this );
+  openInExternalBrowserAction->setVisible( false );
+  tabMenu->addAction( openInExternalBrowserAction );
   tabMenu->addAction( addToFavorites );
   tabMenu->addAction( &addAllTabToFavoritesAction );
+  connect( openInExternalBrowserAction, &QAction::triggered, this, &MainWindow::openCurrentTabInExternalBrowser );
 
   // Dictionary bar names
   showDictBarNamesAction.setCheckable( true );
@@ -2238,9 +2242,19 @@ void MainWindow::tabSwitched( int )
 
 void MainWindow::tabMenuRequested( QPoint pos )
 {
-  //  // do not show this menu for single tab
-  //  if ( ui.tabWidget->count() < 2 )
-  //    return;
+  int tabIndex = ui.tabWidget->tabBar()->tabAt( pos );
+  if ( tabIndex == -1 ) {
+    return;
+  }
+
+  ArticleView * view = qobject_cast< ArticleView * >( ui.tabWidget->widget( tabIndex ) );
+  if ( view && view->isWebsite() ) {
+    openInExternalBrowserAction->setVisible( true );
+    openInExternalBrowserAction->setData( tabIndex );
+  }
+  else {
+    openInExternalBrowserAction->setVisible( false );
+  }
 
   tabMenu->popup( ui.tabWidget->mapToGlobal( pos ) );
 }
@@ -3411,11 +3425,20 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
 #ifdef Q_OS_MACOS
 void MainWindow::handleApplicationStateChanged( Qt::ApplicationState state )
 {
-  // When the application becomes active (e.g., user clicks on Dock icon)
-  // and the main window is minimized or hidden, restore it
-  if ( state == Qt::ApplicationActive && ( isMinimized() || !isVisible() ) ) {
-    toggleMainWindow( true );
+  if ( state != Qt::ApplicationActive || ( !isMinimized() && isVisible() ) ) {
+    return;
   }
+
+  // Activation caused by the scan popup (hotkey, or clicking into a
+  // pinned popup) must not restore the main window.
+  if ( scanPopup && scanPopup->isVisible()
+       && ( QApplication::activeWindow() == scanPopup
+            || QDateTime::currentMSecsSinceEpoch()
+                 - GlobalBroadcaster::instance()->lastPopupEngageMs.load() < 3000 ) ) {
+    return;
+  }
+
+  toggleMainWindow( true );
 }
 #endif
 
@@ -4563,6 +4586,15 @@ void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId,
   }
 
   view->load( url, name );
+}
+
+void MainWindow::openCurrentTabInExternalBrowser()
+{
+  int tabIndex       = openInExternalBrowserAction->data().toInt();
+  ArticleView * view = qobject_cast< ArticleView * >( ui.tabWidget->widget( tabIndex ) );
+  if ( view ) {
+    QDesktopServices::openUrl( view->page()->url() );
+  }
 }
 
 void MainWindow::addCurrentTabToFavorites()

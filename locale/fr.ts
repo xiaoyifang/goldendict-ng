@@ -520,10 +520,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Filtre :</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Mode de recherche</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Détermine la façon dont le filtre sera interprété</translation>
     </message>
@@ -546,18 +542,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Spécifiez le nombre maximum de mots clés filtrés retournés.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Filtrer les résultats max :</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Aide</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>Appliquer</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>Expression régulière</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation>Maximum :</translation>
     </message>
   </context>
   <context>
@@ -2670,6 +2658,10 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>L’application tourne toujours en arrière-plan. Cliquez sur l’icône du plateau pour afficher la fenêtre.</translation>
     </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Ouvrir dans et navigateur externe</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3823,10 +3815,6 @@ Erreur lors de l&apos;enregistrement de la ressource :</translation>
     <message>
       <source>Send word to main window (Alt+W)</source>
       <translation>Envoyer un mot à la fenêtre principale (Alt+W)</translation>
-    </message>
-    <message>
-      <source>Alt+W</source>
-      <translation>Alt + W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>

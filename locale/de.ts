@@ -520,10 +520,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Suchfilter:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Suchmodus</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Dieses Element bestimmt, wie Filterstring interpretiert werden soll</translation>
     </message>
@@ -546,18 +542,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Geben Sie die maximale Anzahl gefilterter Schlagwörter zurück.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Maximale Ergebnisse filtern:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Hilfe</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>Ok</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>Regulärer Ausdruck</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation>Maximal:</translation>
     </message>
   </context>
   <context>
@@ -2670,6 +2658,10 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Die Anwendung läuft noch im Hintergrund. Klicken Sie auf das Tray-Symbol, um das Fenster anzuzeigen.</translation>
     </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Im &amp;Externen Browser öffnen</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3819,10 +3811,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Send word to main window (Alt+W)</source>
       <translation>Sende Wort zum Hauptfenster (Alt+W)</translation>
-    </message>
-    <message>
-      <source>Alt+W</source>
-      <translation>Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>

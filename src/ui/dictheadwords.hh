@@ -28,8 +28,6 @@ protected:
   WordListItemDelegate * delegate;
   QString dictId;
 
-  QAction helpAction;
-
   void saveHeadersToFile();
   bool eventFilter( QObject * obj, QEvent * ev );
 

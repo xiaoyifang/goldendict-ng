@@ -520,10 +520,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Suchfilter:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Suchmodus</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Dieses Element definiert wie der Filter interpretiert wird</translation>
     </message>
@@ -546,18 +542,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Geben Sie die maximale Anzahl gefilterter Schlagwörter zurück.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Maximale Ergebnisse filtern:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Hilfe</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>Ok</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>Regular Expression</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation>Maximum:</translation>
     </message>
   </context>
   <context>
@@ -2668,6 +2656,10 @@ Um folgende Symbole zu finden &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Die Anwendung läuft weiterhin im Hintergrund. Klicken Sie auf das Taskleistensymbol, um das Fenster anzuzeigen.</translation>
     </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Im &amp;externen Browser öffnen</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3506,7 +3498,7 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
-      <translation type="unfinished">Hide tab bar when only one tab is open.</translation>
+      <translation>Reiterleiste ausblenden, wenn nur ein Reiter offen ist</translation>
     </message>
     <message>
       <source>Use any external audio player to play audio files</source>
@@ -3522,11 +3514,11 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Internal Audio Player:</source>
-      <translation type="unfinished">Internal Audio Player:</translation>
+      <translation>Interner Audio Player:</translation>
     </message>
     <message>
       <source>External Audio Player:</source>
-      <translation type="unfinished">External Audio Player:</translation>
+      <translation>Externer Audio Player</translation>
     </message>
     <message>
       <source>Automatically switches based on system theme.</source>
@@ -3813,10 +3805,6 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     <message>
       <source>Send word to main window (Alt+W)</source>
       <translation>Send word to main window (Alt+W)</translation>
-    </message>
-    <message>
-      <source>Alt+W</source>
-      <translation type="unfinished">Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>

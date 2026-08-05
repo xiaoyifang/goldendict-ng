@@ -519,10 +519,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Süzgüç:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Gözleg tertibi</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Bu element süzgüç setiriniň nähili düşündiriljekdigini kesgitleýär</translation>
     </message>
@@ -545,18 +541,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Iň köp süzülen söz sözlerini görkeziň.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Iň ýokary netijeleri süzüň:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Kömek ediň</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>Bolýar</translation>
     </message>
     <message>
       <source>Text</source>
@@ -605,6 +589,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>Yzygiderli ifade</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation>Maksimum:</translation>
     </message>
   </context>
   <context>
@@ -2669,6 +2657,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Programma henizem arka planda işleýär. Äpişgäni görkezmek üçin tabak belgisine basyň.</translation>
     </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Aç &amp; Daşky Brauzer</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3824,10 +3816,6 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>Send word to main window (Alt+W)</source>
       <translation>Send word to main window (Alt+W)</translation>
-    </message>
-    <message>
-      <source>Alt+W</source>
-      <translation type="unfinished">Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>

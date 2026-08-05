@@ -521,10 +521,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Фильтр:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Режим поиска</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Этот элемент определяет, как будет интерпретироваться строка фильтра</translation>
     </message>
@@ -548,18 +544,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Укажите максимальное количество возвращаемых отфильтрованных заголовков.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Максимальное количество фильтров:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Справка</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>ОК</translation>
     </message>
     <message>
       <source>Text</source>
@@ -608,6 +592,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>Регулярное выражение</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation>Максимум:</translation>
     </message>
   </context>
   <context>
@@ -2673,6 +2661,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Приложение всё ещё работает в фоне. Нажмите на иконку лотка, чтобы показать окно.</translation>
     </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Открытый и внешний браузер</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3831,10 +3823,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Send word to main window (Alt+W)</source>
       <translation>Отправить слово в главное окно (Alt+W)</translation>
-    </message>
-    <message>
-      <source>Alt+W</source>
-      <translation>Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>

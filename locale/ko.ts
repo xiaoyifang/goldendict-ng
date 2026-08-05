@@ -519,10 +519,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>필터:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>검색 모드</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>이 요소는 필터가 어떻게 해석될 것인지 결정합니다</translation>
     </message>
@@ -545,18 +541,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>반환된 최대 필터링된 표제어를 지정합니다.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>최대 결과 필터링:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>도움말</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>확인</translation>
     </message>
     <message>
       <source>Text</source>
@@ -605,6 +589,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>정규식</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation>최대치:</translation>
     </message>
   </context>
   <context>
@@ -2669,6 +2657,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>애플리케이션은 여전히 백그라운드에서 실행 중입니다. 트레이 아이콘을 클릭하면 창이 표시됩니다.</translation>
     </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>외부 브라우저에서 열기</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3821,10 +3813,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Send word to main window (Alt+W)</source>
       <translation>단어를 메인창으로 보냅니다(Alt+W)</translation>
-    </message>
-    <message>
-      <source>Alt+W</source>
-      <translation type="unfinished">Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>

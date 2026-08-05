@@ -520,10 +520,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Филтер:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Режим на пребарување</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Овој елемент одредува како ќе се толкува низата на филтерот</translation>
     </message>
@@ -546,18 +542,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Наведете ги максималните вратени филтрирани зборови.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Филтрирајте ги максималните резултати:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Помош</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>добро</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>Регуларен израз</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation>Максимум:</translation>
     </message>
   </context>
   <context>
@@ -2671,6 +2659,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Апликацијата сè уште работи во позадина. Кликнете на иконата на tray за да го покажете прозорецот.</translation>
     </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Отворен во и Надворешен прелистувач</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3825,10 +3817,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Send word to main window (Alt+W)</source>
       <translation>Send word to main window (Alt+W)</translation>
-    </message>
-    <message>
-      <source>Alt+W</source>
-      <translation type="unfinished">Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>

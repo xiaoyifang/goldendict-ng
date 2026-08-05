@@ -522,10 +522,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Φίλτρο:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Λειτουργία αναζήτησης</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Αυτό το στοιχείο καθορίζει πώς θα ερμηνεύεται η συμβολοσειρά φίλτρου</translation>
     </message>
@@ -548,18 +544,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Καθορίστε τα μέγιστα φιλτραρισμένα headwords που επιστρέφονται.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Φιλτράρισμα μέγιστων αποτελεσμάτων:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Βοήθεια</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>Εντάξει</translation>
     </message>
     <message>
       <source>Text</source>
@@ -608,6 +592,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>Κανονική Έκφραση</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation>Μέγιστο:</translation>
     </message>
   </context>
   <context>
@@ -2672,6 +2660,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Η εφαρμογή εξακολουθεί να εκτελείται στο παρασκήνιο. Κάντε κλικ στο εικονίδιο του δίσκου για να εμφανιστεί το παράθυρο.</translation>
     </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Άνοιγμα σε &amp;εξωτερικό πρόγραμμα περιήγησης</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3826,10 +3818,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Send word to main window (Alt+W)</source>
       <translation>Αποστολή λέξης στο κύριο παράθυρο (Alt+W)</translation>
-    </message>
-    <message>
-      <source>Alt+W</source>
-      <translation>Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
