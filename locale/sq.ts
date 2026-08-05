@@ -519,10 +519,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Filtri:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Mënyra e kërkimit</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Ky element përcakton se si do të interpretohet vargu i filtrit</translation>
     </message>
@@ -545,18 +541,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Specifikoni kryefjalët maksimale të filtruara të kthyera.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Filtro rezultatet maksimale:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Ndihmë</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>Ne rregull</translation>
     </message>
     <message>
       <source>Text</source>
@@ -605,6 +589,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>Shprehje e rregullt</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation>Maksimumi:</translation>
     </message>
   </context>
   <context>
@@ -2668,6 +2656,10 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Aplikacioni është ende duke funksionuar në sfond. Klikoni ikonën e tabakës për të shfaqur dritaren.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Hap në &amp;Shfletuesin e jashtëm</translation>
     </message>
   </context>
   <context>

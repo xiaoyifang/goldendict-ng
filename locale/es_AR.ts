@@ -519,10 +519,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Filtrar:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Modo de búsqueda</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Este elemento determina cómo se interpretará la cadena de filtro.</translation>
     </message>
@@ -545,18 +541,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Especifique el máximo filtrado de palabras de cabecera devueltas.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Filtrar máximos resultados:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Ayuda</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>DE ACUERDO</translation>
     </message>
     <message>
       <source>Text</source>
@@ -605,6 +589,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>Regular Expression</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation type="unfinished">Maximum:</translation>
     </message>
   </context>
   <context>
@@ -2669,6 +2657,10 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; uso de
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation type="unfinished">Application is still running in the background. Click the tray icon to show the window.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation type="unfinished">Open in &amp;External Browser</translation>
     </message>
   </context>
   <context>

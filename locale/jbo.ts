@@ -520,10 +520,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation>julne</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>tadji lo nu sisku</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>This element determines how filter string will be interpreted</translation>
     </message>
@@ -546,18 +542,6 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Specify the maximum filtered headwords returned.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Filter max results:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>sidju</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>mipri</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Regular Expression</source>
       <translation>Regular Expression</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation type="unfinished">Maximum:</translation>
     </message>
   </context>
   <context>
@@ -2669,6 +2657,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>le programe ca'o preja lo nu'u jukpa. vokre le sraku pixra fi'o nu sidbo le cukla</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation type="unfinished">Open in &amp;External Browser</translation>
     </message>
   </context>
   <context>

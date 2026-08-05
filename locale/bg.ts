@@ -520,10 +520,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Филтър:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Режим търсене</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Този елемент определя, как ще интерпретира реда от филтъра</translation>
     </message>
@@ -546,18 +542,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Посочете максималния брой върнати филтрирани заглавни думи.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Филтриране на макс. резултати:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Помощ</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>ОК</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>Регулярен израз</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation>Максимум:</translation>
     </message>
   </context>
   <context>
@@ -2669,6 +2657,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Приложението все още работи във фонов режим. Кликни върху иконата на tray, за да покажеш прозореца.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Отворен в и Външен браузър</translation>
     </message>
   </context>
   <context>

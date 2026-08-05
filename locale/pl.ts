@@ -520,10 +520,6 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>Filtr:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Tryb wyszukiwania</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Ta opcja decyduje o sposobie interpretacji ciągu znaków filtru</translation>
     </message>
@@ -546,18 +542,6 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Podaj maksymalną liczbę zwracanych przefiltrowanych haseł.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Maks. liczba wyników filtru:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Pomoc</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>OK</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <source>Regular Expression</source>
       <translation>Wyrażenie regularne</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation>Maksymalne:</translation>
     </message>
   </context>
   <context>
@@ -2669,6 +2657,10 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Aplikacja nadal działa w tle. Kliknij ikonę w tacce, aby wyświetlić okno.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Otwórz przeglądarkę w i zewnętrzną</translation>
     </message>
   </context>
   <context>

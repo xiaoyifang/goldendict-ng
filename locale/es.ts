@@ -520,10 +520,6 @@ entre ortografía clásica y escolar en cirílico)</translation>
       <translation>Filtro:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Modo de búsqueda</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Este elemento determina cómo se interpreta la cadena de filtro</translation>
     </message>
@@ -546,18 +542,6 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Especifique el máximo filtrado de palabras de cabecera devueltas.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Filtrar máximos resultados:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Ayuda</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>Vale</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <source>Regular Expression</source>
       <translation>Expresión regular</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation>Máximo:</translation>
     </message>
   </context>
   <context>
@@ -2669,6 +2657,10 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>La aplicación sigue ejecutándose en segundo plano. Haz clic en el icono de la bandeja para mostrar la ventana.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Abrir en y Navegador externo</translation>
     </message>
   </context>
   <context>

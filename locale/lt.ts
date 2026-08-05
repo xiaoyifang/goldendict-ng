@@ -519,10 +519,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Atranka:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Paieškos veiksena</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Šis elementas nurodo, kaip bus interpretuojama atrankos užklausa</translation>
     </message>
@@ -545,18 +541,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Nurodykite maksimalų grąžinamų filtruotų antraščių skaičių.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Filtruoti maks. rezultatus:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Pagalba</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>Gerai</translation>
     </message>
     <message>
       <source>Text</source>
@@ -605,6 +589,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>Reguliarioji išraiška</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation>Maksimalus:</translation>
     </message>
   </context>
   <context>
@@ -2669,6 +2657,10 @@ Norėdami atverti parsisiuntimo puslapį, spauskite &lt;b&gt;Parsisiųsti&lt;/b&
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Programa vis dar veikia fone. Spustelėkite dėklo piktogramą, kad būtų rodomas langas.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Atidaryti ir išorinėje naršyklėje</translation>
     </message>
   </context>
   <context>

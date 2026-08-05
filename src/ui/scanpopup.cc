@@ -7,6 +7,7 @@
 #include "utils.hh"
 #include <QCursor>
 #include <QPixmap>
+#include <QDateTime>
 #include <QMenu>
 #include <QMouseEvent>
 #include <QFileDialog>
@@ -144,6 +145,11 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( ui.saveArticleButton, &QToolButton::pressed, this, &ScanPopup::saveArticleButton_clicked );
   connect( ui.sendWordButton, &QToolButton::pressed, this, &ScanPopup::sendWordButton_clicked );
   connect( ui.sendWordToFavoritesButton, &QToolButton::pressed, this, &ScanPopup::sendWordToFavoritesButton_clicked );
+
+  sendWordAction.setShortcut( QKeySequence( "Alt+W" ) );
+  sendWordAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
+  addAction( &sendWordAction );
+  connect( &sendWordAction, &QAction::triggered, this, &ScanPopup::sendWordButton_clicked );
 
   openSearchAction.setShortcut( QKeySequence( "Ctrl+F" ) );
   openSearchAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
@@ -581,6 +587,8 @@ void ScanPopup::showEngagePopup()
 
 void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
 {
+  GlobalBroadcaster::instance()->lastPopupEngageMs.store( QDateTime::currentMSecsSinceEpoch() );
+
   if ( cfg.preferences.scanToMainWindow && !forcePopup ) {
     // Send translated word to main window istead of show popup
     emit sendPhraseToMainWindow( pendingWord );

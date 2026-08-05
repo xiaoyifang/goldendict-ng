@@ -520,10 +520,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Filtrilo:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Serĉreĝimo</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Ĉi tiu elemento determinas kiel filtrila ĉeno estos interpretita</translation>
     </message>
@@ -546,18 +542,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Indiku la maksimumajn filtritajn kapvortojn resenditajn.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Filtrilaj maksimumaj rezultoj:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Helpo</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>bone</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Regular Expression</source>
       <translation>Regula Esprimo</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation>Maksimumo:</translation>
     </message>
   </context>
   <context>
@@ -2669,6 +2657,10 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Aplikaĵo ankoraŭ funkcias en la fono. Alklaku la pleton-ikonon por montri la fenestron.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Malfermi en &amp;Ekstera Retumilo</translation>
     </message>
   </context>
   <context>

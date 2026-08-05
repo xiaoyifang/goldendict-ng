@@ -518,10 +518,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>过滤器：</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>搜索模式</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>在这里可以选择过滤器字符串的执行方式</translation>
     </message>
@@ -544,18 +540,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>指定返回的最大过滤头字。</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>最多过滤：</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>帮助</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>确定</translation>
     </message>
     <message>
       <source>Text</source>
@@ -604,6 +588,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>正则表达式</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation>最大限制：</translation>
     </message>
   </context>
   <context>
@@ -2668,6 +2656,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>应用程序仍在后台运行。点击托盘图标显示窗口。</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>在外部浏览器中打开</translation>
     </message>
   </context>
   <context>

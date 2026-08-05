@@ -504,10 +504,6 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Search mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>This element determines how filter string will be interpreted</source>
         <translation type="unfinished"></translation>
     </message>
@@ -529,18 +525,6 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <source>Specify the maximum filtered headwords returned.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filter max results:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Help</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -589,6 +573,10 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <source>Regular Expression</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maximum:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2651,6 +2639,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <source>Application is still running in the background. Click the tray icon to show the window.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Open in &amp;External Browser</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3784,10 +3776,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Send word to main window (Alt+W)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Alt+W</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

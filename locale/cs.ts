@@ -520,10 +520,6 @@ a školní ortografií v cyrilici)</translation>
       <translation>Filtr:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>Režim vyhledávání</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>Tento prvek určuje, jak bude filtr interpretován</translation>
     </message>
@@ -546,18 +542,6 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>Zadejte maximální filtrovaná slova hlaviček.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Filtrovat maximální výsledky:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>Nápověda</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>OK</translation>
     </message>
     <message>
       <source>Text</source>
@@ -606,6 +590,10 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <source>Regular Expression</source>
       <translation>Pravidelný výraz</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation>Maximum:</translation>
     </message>
   </context>
   <context>
@@ -2669,6 +2657,10 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>Aplikace stále běží na pozadí. Klikněte na ikonu v lize pro zobrazení okna.</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Otevřít v a externím prohlížeči</translation>
     </message>
   </context>
   <context>

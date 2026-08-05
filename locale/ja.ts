@@ -519,10 +519,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>フィルタ:</translation>
     </message>
     <message>
-      <source>Search mode</source>
-      <translation>検索モード</translation>
-    </message>
-    <message>
       <source>This element determines how filter string will be interpreted</source>
       <translation>この要素はフィルター文字列の解釈方法を決定します</translation>
     </message>
@@ -545,18 +541,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
       <translation>返される最大フィルタリングされたヘッドワードを指定します。</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>最大検索結果:</translation>
-    </message>
-    <message>
-      <source>Help</source>
-      <translation>ヘルプ</translation>
-    </message>
-    <message>
-      <source>OK</source>
-      <translation>OK</translation>
     </message>
     <message>
       <source>Text</source>
@@ -605,6 +589,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Regular Expression</source>
       <translation>正規表現</translation>
+    </message>
+    <message>
+      <source>Maximum:</source>
+      <translation>最大限:</translation>
     </message>
   </context>
   <context>
@@ -2668,6 +2656,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
       <translation>アプリケーションはまだバックグラウンドで実行されています。トレイのアイコンをクリックするとウィンドウが表示されます。</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>外部ブラウザで開く</translation>
     </message>
   </context>
   <context>
