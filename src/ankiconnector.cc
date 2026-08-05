@@ -5,11 +5,21 @@
 
 QString markTargetWord( const QString & sentence, const QString & word )
 {
+  // Mark whole words only: "cat" in "The cat is in the category."
+  // must produce "The <b>cat</b> is in the category.".
+  // Note: Qt's replacement string supports \1..\99 (capture groups) but not \0,
+  // hence the capturing group around the whole pattern.
   QString escapedWord = QRegularExpression::escape( word );
-  QRegularExpression re( QString( R"((?<!\w)%1(?!\w))" ).arg( escapedWord ),
+  QRegularExpression re( QString( R"(((?<!\w)%1(?!\w)))" ).arg( escapedWord ),
                          QRegularExpression::CaseInsensitiveOption | QRegularExpression::UseUnicodePropertiesOption );
   QString result = sentence;
-  return result.replace( re, "<b>\\0</b>" );
+  result.replace( re, "<b>\\1</b>" );
+  if ( result == sentence ) {
+    // Japanese/Chinese text has no word boundaries (\w matches kanji/kana):
+    // "すき焼き" in "昨日すき焼きを食べました" must produce "昨日<b>すき焼き</b>を食べました".
+    result.replace( word, "<b>" + word + "</b>", Qt::CaseInsensitive );
+  }
+  return result;
 }
 
 AnkiConnector::AnkiConnector( QObject * parent, const Config::Class & _cfg ):
