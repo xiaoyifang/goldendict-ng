@@ -11,3 +11,14 @@ All dictionaries must be placed in or inside the subfolders of `content` folder,
 
 Folder structure:
 
+```
+<program directory>/
+├── Goldendict            main program file
+├── content/              all dictionary files (.mdx, .dsl, .ifo, ...)
+│   └── morphology/       morphology dictionaries
+└── portable/             GoldenDict's own data lives here
+    ├── config            program configuration
+    └── index/            full-text search indexes
+```
+
+All dictionary files you want to load can be placed in or inside the subfolders of the `content` folder described above.
