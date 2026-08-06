@@ -1,3 +1,8 @@
+!!! note
+    The dictionary will index for full-text search in background and started immediately after program start, name of the currently indexing dictionary is displayed in the status line. This process can take a long time and require many computing resources.You may turn off indexing for huge dictionaries like Wikipedias or Wiktionaries in preferences. To find dictionary which can't be indexed check GoldenDict with `--log-to-file` or check `stdout`.
+
+    These full-text indexes can also take up a large amount of disk space. If the indexes fill up your system drive, you can move the index folder to another place using symbolic/hard links (see [Move the index folder](topic_move_index_folder.md)) or relocate all configurations and indexes by enabling [Portable Mode](topic_portablemode.md).
+
 The full-text search dialog can be opened via menu "Search" or "Ctrl+Shift+F".
 
 Full-text search allow to search words or sentences not in dictionary headwords but in articles text of dictionaries from current dictionaries group.
