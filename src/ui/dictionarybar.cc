@@ -37,7 +37,7 @@ public:
     return new DimmedIconEngine( m_source, m_opacity );
   }
 
-  void paint( QPainter * painter, const QRect & rect, Qt::Alignment alignment, Mode, State ) override
+  void paint( QPainter * painter, const QRect & rect, Qt::Alignment alignment, QIcon::Mode, QIcon::State ) override
   {
     painter->save();
     painter->setOpacity( m_opacity );
