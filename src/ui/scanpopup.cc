@@ -1532,11 +1532,18 @@ void ScanPopup::closeRestTabs()
 
 void ScanPopup::closeAllTabs()
 {
+  // Close all tabs except the Definition tab, then clear its content.
+  // The Definition tab must remain because the `definition` pointer is used
+  // throughout ScanPopup (translateWord, showDefinition, etc.).
   for ( int i = tabWidget->count() - 1; i >= 1; --i ) {
     auto widget = tabWidget->widget( i );
     tabWidget->removeTab( i );
     widget->deleteLater();
   }
+
+  // Reset the Definition tab to a clean state
+  definition->clearContent();
+  tabWidget->setTabText( 0, tr( "Definition" ) );
 }
 
 bool ScanPopup::isWordPresentedInFavorites( const QString & word ) const
