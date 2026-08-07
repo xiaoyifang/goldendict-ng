@@ -29,7 +29,6 @@ jobs:
       issues: write
       contents: read
       pull-requests: write
-      models: read
     steps:
       - name: Extract issue content
         id: extract
@@ -86,22 +85,78 @@ jobs:
 
       - name: Detect language and translate
         id: ai
-        uses: actions/ai-inference@v1
+        uses: actions/github-script@v7
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_API_BASE_URL: ${{ vars.LLM_API_BASE_URL }}
+          LLM_MODEL: ${{ vars.LLM_MODEL }}
+          EXTRACT_PROMPT: ${{ steps.extract.outputs.prompt }}
         with:
-          model: openai/gpt-4o-mini
-          system-prompt: |
-            You are a professional technical translator.
+          script: |
+            const systemPrompt = `You are a professional technical translator.
             Preserve the original markdown formatting in translated_body, including blockquotes (>), code blocks, bold, italic, lists, and other markdown elements.
             Example: If original is "> quoted text", output must be "> translated quoted text".
-            Return ONLY a valid JSON:
+            Return ONLY a valid JSON object (no other text):
             {
               "needs_translation": boolean,
               "source_language": "string",
               "translated_title": "string",
               "translated_body": "string"
+            }`;
+
+            const prompt = process.env.EXTRACT_PROMPT;
+            const apiKey = process.env.LLM_API_KEY;
+
+            // Decide provider: custom API if key configured, otherwise free Pollinations
+            let baseUrl, model, headers = { 'Content-Type': 'application/json' };
+            let extraBody = {};
+
+            if (apiKey) {
+              // User-configured provider (OpenRouter, OpenAI direct, etc.)
+              baseUrl = process.env.LLM_API_BASE_URL || 'https://openrouter.ai/api/v1';
+              model = process.env.LLM_MODEL || 'openai/gpt-4o-mini';
+              headers['Authorization'] = `Bearer ${apiKey}`;
+              extraBody = { response_format: { type: 'json_object' } };
+            } else {
+              // Free Pollinations (no API key required)
+              baseUrl = 'https://text.pollinations.ai/openai';
+              model = process.env.LLM_MODEL || 'openai';
+              // Pollinations does not support response_format; rely on prompt instruction
             }
-          # Use the prompt string generated from the previous step
-          prompt: ${{ steps.extract.outputs.prompt }}
+
+            let response;
+            try {
+              response = await fetch(`${baseUrl}/chat/completions`, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify({
+                  model,
+                  messages: [
+                    { role: 'system', content: systemPrompt },
+                    { role: 'user', content: prompt }
+                  ],
+                  ...extraBody
+                })
+              });
+            } catch (e) {
+              core.setFailed(`Network error calling LLM API: ${e.message}`);
+              return;
+            }
+
+            if (!response.ok) {
+              const errorText = await response.text();
+              core.setFailed(`LLM API error: HTTP ${response.status} — ${errorText}`);
+              return;
+            }
+
+            const data = await response.json();
+            if (!data.choices || !data.choices[0]) {
+              core.setFailed(`Unexpected LLM API response: ${JSON.stringify(data)}`);
+              return;
+            }
+
+            const content = data.choices[0].message.content;
+            core.setOutput('response', content);
 
       - name: Update Issue or Comment
         uses: actions/github-script@v7
@@ -124,7 +179,13 @@ jobs:
             
             let result;
             try {
-              const jsonStr = AI_RESPONSE.replace(/```json\n?|```/g, '').trim();
+              let jsonStr = AI_RESPONSE.replace(/```json\n?|```/g, '').trim();
+              // Extract JSON object from response (handles text wrapping from free-form models)
+              const braceStart = jsonStr.indexOf('{');
+              const braceEnd = jsonStr.lastIndexOf('}');
+              if (braceStart !== -1 && braceEnd !== -1 && braceEnd > braceStart) {
+                jsonStr = jsonStr.substring(braceStart, braceEnd + 1);
+              }
               result = JSON.parse(jsonStr);
             } catch (e) {
               console.error('JSON Parse Error:', e.message);
