@@ -3,8 +3,10 @@
 #include "globalbroadcaster.hh"
 #include <QAction>
 #include <QApplication>
+#include <QIconEngine>
 #include <QMenu>
 #include <QInputDialog>
+#include <QPainter>
 #include "metadata.hh"
 #include "common/utils.hh"
 #include <QContextMenuEvent>
@@ -12,6 +14,82 @@
 
 
 using std::vector;
+
+namespace {
+
+/// A QIconEngine that paints another icon as a fixed grayscale image.
+/// Unlike QIcon::Disabled (which re-involves the Qt style system and can
+/// change on hover / state changes), this engine:
+///   1. Extracts the source icon's pixels as a QPixmap via the Normal mode
+///      (so the source icon is painted in its original appearance once).
+///   2. Converts those pixels to grayscale via QImage::convertToFormat.
+///   3. Draws the grayscale pixmap directly onto the target rect.
+/// Because the engine ignores the incoming Mode/State parameters, the result
+/// is identical regardless of hover, press, or any other state -- the icon
+/// looks the same grayed-out "disabled" snapshot at all times.
+class DimmedIconEngine: public QIconEngine
+{
+public:
+  explicit DimmedIconEngine( const QIcon & source_ ): source( source_ ) {}
+
+  QIconEngine * clone() const override
+  {
+    return new DimmedIconEngine( source );
+  }
+
+  void paint( QPainter * painter, const QRect & rect, QIcon::Mode, QIcon::State ) override
+  {
+    if ( rect.isEmpty() )
+      return;
+
+    // Force the source icon to render in its Normal appearance and at the
+    // exact size needed. This is independent of the mode/state requested on
+    // this engine (which is intentionally ignored -- see class doc above).
+    QPixmap srcPixmap = source.pixmap( rect.size(), QIcon::Normal, QIcon::Off );
+
+    // Convert to grayscale8 to strip color information. Using Qt's built-in
+    // pixel-format conversion means Qt does the right thing for any input
+    // (SVG, PNG, painter-generated, etc.).
+    QImage grayImage = srcPixmap.toImage().convertToFormat( QImage::Format_Grayscale8 );
+
+    // Clear the target rect first with CompositionMode_Source so any residual
+    // pixels from a previously painted icon are wiped out. Without this,
+    // alpha-blending the grayscale image over leftover pixels would produce
+    // the "mixed icons" look reported earlier.
+    painter->save();
+    painter->setCompositionMode( QPainter::CompositionMode_Source );
+    painter->fillRect( rect, Qt::transparent );
+    painter->restore();
+
+    // Draw the grayscale icon.
+    painter->drawImage( rect, grayImage );
+
+    // Draw a bold diagonal strike-through line to indicate the disabled
+    // state. The line uses full opacity so it remains clearly visible on
+    // both light and dark themes regardless of the icon opacity.
+    const int lineWidth = qMax( 3, rect.height() / 8 );
+    QPen pen( Qt::darkGray, lineWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin );
+    painter->setPen( pen );
+
+    const int padding = lineWidth + 1;
+    painter->drawLine( rect.bottomLeft() + QPoint( padding, -padding ),
+                       rect.topRight() + QPoint( -padding, padding ) );
+  }
+
+private:
+  QIcon source;
+};
+
+/// Returns a fixed-grayscale copy of @p source. A null icon is returned
+/// unchanged so text-only dictionary entries are not affected.
+QIcon makeDimmedIcon( const QIcon & source )
+{
+  if ( source.isNull() ) {
+    return source;
+  }
+  return QIcon( new DimmedIconEngine( source ) );
+}
+} // namespace
 
 DictionaryBar::DictionaryBar( QWidget * parent, const unsigned short & maxDictionaryRefsInContextMenu_ ):
   QToolBar( tr( "&Dictionary Bar" ), parent ),
@@ -57,6 +135,8 @@ void DictionaryBar::setDictionaries( const vector< sptr< Dictionary::Class > > &
 
   clear();
   dictActions.clear();
+  fullIcons.clear();
+  dimmedIcons.clear();
 
   for ( const auto & dictionary : dictionaries ) {
     QIcon icon = dictionary->getIcon();
@@ -74,6 +154,18 @@ void DictionaryBar::setDictionaries( const vector< sptr< Dictionary::Class > > &
     action->setCheckable( true );
 
     action->setChecked( mutedDictionaries ? !mutedDictionaries->contains( id ) : true );
+
+    // Keep two icon variants and switch them by checked state. The unchecked
+    // variant is alpha-blended at reduced opacity, which fades naturally into
+    // both light and dark backgrounds without relying on QSS.
+    fullIcons.insert( action, icon );
+    dimmedIcons.insert( action, makeDimmedIcon( icon ) );
+
+    connect( action, &QAction::toggled, this, [ this, action ]( bool checked ) {
+      applyActionIcon( action, checked );
+    } );
+
+    applyActionIcon( action, action->isChecked() );
 
     dictActions.append( action );
   }
@@ -408,4 +500,18 @@ void DictionaryBar::dictsPaneClicked( const QString & id )
       break;
     }
   }
+}
+
+void DictionaryBar::applyActionIcon( QAction * action, bool checked )
+{
+  if ( action == nullptr ) {
+    return;
+  }
+
+  const auto it = fullIcons.constFind( action );
+  if ( it == fullIcons.constEnd() ) {
+    return; // Not one of our dictionary actions
+  }
+
+  action->setIcon( checked ? it.value() : dimmedIcons.value( action ) );
 }
