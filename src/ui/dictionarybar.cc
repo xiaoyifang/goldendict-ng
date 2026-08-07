@@ -16,25 +16,25 @@
 using std::vector;
 
 namespace {
-/// Opacity used for the unchecked (muted) dictionary icons. Lower means more
-/// faded. Tuned to be clearly different from the checked state while still
-/// recognizable on both light and dark backgrounds.
-constexpr qreal kDimmedOpacity = 0.4;
 
-/// A QIconEngine that paints another icon at a reduced opacity. Because the
-/// effect is achieved via alpha-blending in QPainter, the result adapts to any
-/// background color (light or dark theme) without Qt style sheets, and works
-/// for SVG, raster and painter-generated icons alike. Painting on demand also
-/// means it supports arbitrary sizes / device pixel ratios automatically.
+/// A QIconEngine that paints another icon as a fixed grayscale image.
+/// Unlike QIcon::Disabled (which re-involves the Qt style system and can
+/// change on hover / state changes), this engine:
+///   1. Extracts the source icon's pixels as a QPixmap via the Normal mode
+///      (so the source icon is painted in its original appearance once).
+///   2. Converts those pixels to grayscale via QImage::convertToFormat.
+///   3. Draws the grayscale pixmap directly onto the target rect.
+/// Because the engine ignores the incoming Mode/State parameters, the result
+/// is identical regardless of hover, press, or any other state -- the icon
+/// looks the same grayed-out "disabled" snapshot at all times.
 class DimmedIconEngine: public QIconEngine
 {
 public:
-  DimmedIconEngine( const QIcon & source_, qreal opacity_ ):
-    source( source_ ), opacity( opacity_ ) {}
+  explicit DimmedIconEngine( const QIcon & source_ ): source( source_ ) {}
 
   QIconEngine * clone() const override
   {
-    return new DimmedIconEngine( source, opacity );
+    return new DimmedIconEngine( source );
   }
 
   void paint( QPainter * painter, const QRect & rect, QIcon::Mode, QIcon::State ) override
@@ -42,25 +42,42 @@ public:
     if ( rect.isEmpty() )
       return;
 
-    // Draw the source icon onto a clean temporary pixmap first, to isolate it
-    // from any content already on the target painter's canvas.
-    QPixmap tmpPixmap( rect.size() );
-    tmpPixmap.fill( Qt::transparent );
-    QPainter tmpPainter( &tmpPixmap );
-    source.paint( &tmpPainter, tmpPixmap.rect(), Qt::AlignCenter, QIcon::Normal, QIcon::Off );
-    tmpPainter.end();
+    // Force the source icon to render in its Normal appearance and at the
+    // exact size needed. This is independent of the mode/state requested on
+    // this engine (which is intentionally ignored -- see class doc above).
+    QPixmap srcPixmap = source.pixmap( rect.size(), QIcon::Normal, QIcon::Off );
 
-    // Draw the dimmed icon onto the target painter.
+    // Convert to grayscale8 to strip color information. Using Qt's built-in
+    // pixel-format conversion means Qt does the right thing for any input
+    // (SVG, PNG, painter-generated, etc.).
+    QImage grayImage = srcPixmap.toImage().convertToFormat( QImage::Format_Grayscale8 );
+
+    // Clear the target rect first with CompositionMode_Source so any residual
+    // pixels from a previously painted icon are wiped out. Without this,
+    // alpha-blending the grayscale image over leftover pixels would produce
+    // the "mixed icons" look reported earlier.
     painter->save();
-    painter->setOpacity( opacity );
-    painter->drawPixmap( rect.topLeft(), tmpPixmap );
+    painter->setCompositionMode( QPainter::CompositionMode_Source );
+    painter->fillRect( rect, Qt::transparent );
     painter->restore();
 
-    // Draw a diagonal strike-through line on top of the icon to indicate
-    // "disabled" state. The line is drawn at full opacity so it stays clearly
-    // visible on both light and dark themes, independent of the icon opacity.
-    const int lineWidth = qMax( 2, rect.height() / 12 );
-    QPen pen( QColor( 80, 80, 80, 200 ), lineWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin );
+    // Draw a light gray background behind the icon so the disabled state
+    // stands out clearly against the toolbar's own background (light or dark
+    // theme). Using CompositionMode_Multiply blend keeps any existing alpha
+    // channel intact.
+    painter->save();
+    painter->setCompositionMode( QPainter::CompositionMode_Source );
+    painter->fillRect( rect, QColor( 180, 180, 180, 120 ) );
+    painter->restore();
+
+    // Draw the grayscale icon on top of the background.
+    painter->drawImage( rect, grayImage );
+
+    // Draw a bold diagonal strike-through line to indicate the disabled
+    // state. The line uses full opacity so it remains clearly visible on
+    // both light and dark themes regardless of the icon opacity.
+    const int lineWidth = qMax( 3, rect.height() / 8 );
+    QPen pen( Qt::darkGray, lineWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin );
     painter->setPen( pen );
 
     const int padding = lineWidth + 1;
@@ -70,17 +87,16 @@ public:
 
 private:
   QIcon source;
-  qreal opacity;
 };
 
-/// Returns a dimmed copy of @p source. A null icon is returned unchanged so
-/// text-only dictionary entries are not affected.
-QIcon makeDimmedIcon( const QIcon & source, qreal opacity = kDimmedOpacity )
+/// Returns a fixed-grayscale copy of @p source. A null icon is returned
+/// unchanged so text-only dictionary entries are not affected.
+QIcon makeDimmedIcon( const QIcon & source )
 {
   if ( source.isNull() ) {
     return source;
   }
-  return QIcon( new DimmedIconEngine( source, opacity ) );
+  return QIcon( new DimmedIconEngine( source ) );
 }
 } // namespace
 
