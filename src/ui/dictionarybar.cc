@@ -61,16 +61,7 @@ public:
     painter->fillRect( rect, Qt::transparent );
     painter->restore();
 
-    // Draw a light gray background behind the icon so the disabled state
-    // stands out clearly against the toolbar's own background (light or dark
-    // theme). Using CompositionMode_Multiply blend keeps any existing alpha
-    // channel intact.
-    painter->save();
-    painter->setCompositionMode( QPainter::CompositionMode_Source );
-    painter->fillRect( rect, QColor( 180, 180, 180, 120 ) );
-    painter->restore();
-
-    // Draw the grayscale icon on top of the background.
+    // Draw the grayscale icon.
     painter->drawImage( rect, grayImage );
 
     // Draw a bold diagonal strike-through line to indicate the disabled
