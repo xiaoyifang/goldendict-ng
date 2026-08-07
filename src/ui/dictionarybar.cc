@@ -3,8 +3,10 @@
 #include "globalbroadcaster.hh"
 #include <QAction>
 #include <QApplication>
+#include <QIconEngine>
 #include <QMenu>
 #include <QInputDialog>
+#include <QPainter>
 #include "metadata.hh"
 #include "common/utils.hh"
 #include <QContextMenuEvent>
@@ -12,6 +14,54 @@
 
 
 using std::vector;
+
+namespace {
+/// Opacity used for the unchecked (muted) dictionary icons. Lower means more
+/// faded. Tuned to be clearly different from the checked state while still
+/// recognizable on both light and dark backgrounds.
+constexpr qreal kDimmedOpacity = 0.4;
+
+/// A QIconEngine that paints another icon at a reduced opacity. Because the
+/// effect is achieved via alpha-blending in QPainter, the result adapts to any
+/// background color (light or dark theme) without Qt style sheets, and works
+/// for SVG, raster and painter-generated icons alike. Painting on demand also
+/// means it supports arbitrary sizes / device pixel ratios automatically.
+class DimmedIconEngine: public QIconEngine
+{
+public:
+  DimmedIconEngine( const QIcon & source, qreal opacity ):
+    m_source( source ), m_opacity( opacity ) {}
+
+  QIconEngine * clone() const override
+  {
+    return new DimmedIconEngine( m_source, m_opacity );
+  }
+
+  void paint( QPainter * painter, const QRect & rect, Qt::Alignment alignment, Mode, State ) override
+  {
+    painter->save();
+    painter->setOpacity( m_opacity );
+    // Always paint the source in its Normal/Off appearance regardless of the
+    // requested mode/state, so the only visual change is the opacity.
+    m_source.paint( painter, rect, alignment, QIcon::Normal, QIcon::Off );
+    painter->restore();
+  }
+
+private:
+  QIcon m_source;
+  qreal m_opacity;
+};
+
+/// Returns a dimmed copy of @p source. A null icon is returned unchanged so
+/// text-only dictionary entries are not affected.
+QIcon makeDimmedIcon( const QIcon & source, qreal opacity = kDimmedOpacity )
+{
+  if ( source.isNull() ) {
+    return source;
+  }
+  return QIcon( new DimmedIconEngine( source, opacity ) );
+}
+} // namespace
 
 DictionaryBar::DictionaryBar( QWidget * parent, const unsigned short & maxDictionaryRefsInContextMenu_ ):
   QToolBar( tr( "&Dictionary Bar" ), parent ),
@@ -57,6 +107,8 @@ void DictionaryBar::setDictionaries( const vector< sptr< Dictionary::Class > > &
 
   clear();
   dictActions.clear();
+  fullIcons.clear();
+  dimmedIcons.clear();
 
   for ( const auto & dictionary : dictionaries ) {
     QIcon icon = dictionary->getIcon();
@@ -74,6 +126,18 @@ void DictionaryBar::setDictionaries( const vector< sptr< Dictionary::Class > > &
     action->setCheckable( true );
 
     action->setChecked( mutedDictionaries ? !mutedDictionaries->contains( id ) : true );
+
+    // Keep two icon variants and switch them by checked state. The unchecked
+    // variant is alpha-blended at reduced opacity, which fades naturally into
+    // both light and dark backgrounds without relying on QSS.
+    fullIcons.insert( action, icon );
+    dimmedIcons.insert( action, makeDimmedIcon( icon ) );
+
+    connect( action, &QAction::toggled, this, [ this, action ]( bool checked ) {
+      applyActionIcon( action, checked );
+    } );
+
+    applyActionIcon( action, action->isChecked() );
 
     dictActions.append( action );
   }
@@ -408,4 +472,18 @@ void DictionaryBar::dictsPaneClicked( const QString & id )
       break;
     }
   }
+}
+
+void DictionaryBar::applyActionIcon( QAction * action, bool checked )
+{
+  if ( action == nullptr ) {
+    return;
+  }
+
+  const auto it = fullIcons.constFind( action );
+  if ( it == fullIcons.constEnd() ) {
+    return; // Not one of our dictionary actions
+  }
+
+  action->setIcon( checked ? it.value() : dimmedIcons.value( action ) );
 }
