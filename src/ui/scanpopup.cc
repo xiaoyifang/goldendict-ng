@@ -6,6 +6,7 @@
 #include "articlesaver.hh"
 #include "utils.hh"
 #include <QCursor>
+#include <QDesktopServices>
 #include <QPixmap>
 #include <QDateTime>
 #include <QMenu>
@@ -105,6 +106,32 @@ ScanPopup::ScanPopup( QWidget * parent,
       widget->deleteLater();
     }
   } );
+
+  // Tab bar context menu: offer closing tabs and opening website dictionaries
+  // in an external browser, mirroring the main window's tab context menu behavior.
+  tabWidget->setContextMenuPolicy( Qt::CustomContextMenu );
+  connect( tabWidget, &QWidget::customContextMenuRequested, this, &ScanPopup::tabMenuRequested );
+
+  tabMenu = new QMenu( this );
+
+  closeCurrentTabAction = new QAction( tr( "Close current tab" ), this );
+  tabMenu->addAction( closeCurrentTabAction );
+  connect( closeCurrentTabAction, &QAction::triggered, this, &ScanPopup::closeCurrentTab );
+
+  closeRestTabsAction = new QAction( tr( "Close all tabs except current" ), this );
+  tabMenu->addAction( closeRestTabsAction );
+  connect( closeRestTabsAction, &QAction::triggered, this, &ScanPopup::closeRestTabs );
+
+  closeAllTabsAction = new QAction( tr( "Close all tabs" ), this );
+  tabMenu->addAction( closeAllTabsAction );
+  connect( closeAllTabsAction, &QAction::triggered, this, &ScanPopup::closeAllTabs );
+
+  tabMenu->addSeparator();
+
+  openInExternalBrowserAction = new QAction( QIcon( ":/icons/internet.svg" ), tr( "Open in &External Browser" ), this );
+  openInExternalBrowserAction->setVisible( false );
+  tabMenu->addAction( openInExternalBrowserAction );
+  connect( openInExternalBrowserAction, &QAction::triggered, this, &ScanPopup::openCurrentTabInExternalBrowser );
 
   definition = new ArticleView( tabWidget,
                                 articleNetMgr,
@@ -1424,6 +1451,92 @@ void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId, 
   tabWidget->setCurrentIndex( index );
 
   view->load( url, name );
+}
+
+void ScanPopup::tabMenuRequested( QPoint pos )
+{
+  int tabIndex = tabWidget->tabBar()->tabAt( pos );
+  if ( tabIndex == -1 ) {
+    return;
+  }
+
+  ArticleView * view = qobject_cast< ArticleView * >( tabWidget->widget( tabIndex ) );
+
+  // Open in external browser: only for website dictionary tabs
+  if ( view && view->isWebsite() ) {
+    openInExternalBrowserAction->setVisible( true );
+    openInExternalBrowserAction->setData( tabIndex );
+  }
+  else {
+    openInExternalBrowserAction->setVisible( false );
+  }
+
+  // The Definition tab (index 0) cannot be closed
+  bool isClosableTab = tabIndex > 0;
+
+  closeCurrentTabAction->setEnabled( isClosableTab );
+  closeCurrentTabAction->setData( tabIndex );
+
+  bool hasClosableOthers = false;
+  for ( int i = 1; i < tabWidget->count(); ++i ) {
+    if ( i != tabIndex ) {
+      hasClosableOthers = true;
+      break;
+    }
+  }
+  closeRestTabsAction->setEnabled( isClosableTab && hasClosableOthers );
+  closeRestTabsAction->setData( tabIndex );
+
+  bool hasAnyClosable = tabWidget->count() > 1;
+  closeAllTabsAction->setEnabled( hasAnyClosable );
+
+  tabMenu->popup( tabWidget->mapToGlobal( pos ) );
+}
+
+void ScanPopup::openCurrentTabInExternalBrowser()
+{
+  int tabIndex = openInExternalBrowserAction->data().toInt();
+  ArticleView * view = qobject_cast< ArticleView * >( tabWidget->widget( tabIndex ) );
+  if ( view ) {
+    QDesktopServices::openUrl( view->page()->url() );
+  }
+}
+
+void ScanPopup::closeCurrentTab()
+{
+  int tabIndex = closeCurrentTabAction->data().toInt();
+  if ( tabIndex <= 0 ) {
+    return;
+  }
+
+  auto widget = tabWidget->widget( tabIndex );
+  tabWidget->removeTab( tabIndex );
+  widget->deleteLater();
+}
+
+void ScanPopup::closeRestTabs()
+{
+  int tabIndex = closeRestTabsAction->data().toInt();
+  if ( tabIndex <= 0 ) {
+    return;
+  }
+
+  for ( int i = tabWidget->count() - 1; i >= 1; --i ) {
+    if ( i != tabIndex ) {
+      auto widget = tabWidget->widget( i );
+      tabWidget->removeTab( i );
+      widget->deleteLater();
+    }
+  }
+}
+
+void ScanPopup::closeAllTabs()
+{
+  for ( int i = tabWidget->count() - 1; i >= 1; --i ) {
+    auto widget = tabWidget->widget( i );
+    tabWidget->removeTab( i );
+    widget->deleteLater();
+  }
 }
 
 bool ScanPopup::isWordPresentedInFavorites( const QString & word ) const
