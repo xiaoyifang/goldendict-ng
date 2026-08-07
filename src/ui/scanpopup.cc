@@ -1460,7 +1460,7 @@ void ScanPopup::tabMenuRequested( QPoint pos )
     return;
   }
 
-  ArticleView * view = qobject_cast< ArticleView * >( tabWidget->widget( tabIndex ) );
+  const ArticleView * view = qobject_cast< ArticleView * >( tabWidget->widget( tabIndex ) );
 
   // Open in external browser: only for website dictionary tabs
   if ( view && view->isWebsite() ) {
