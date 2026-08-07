@@ -29,27 +29,27 @@ constexpr qreal kDimmedOpacity = 0.4;
 class DimmedIconEngine: public QIconEngine
 {
 public:
-  DimmedIconEngine( const QIcon & source, qreal opacity ):
-    m_source( source ), m_opacity( opacity ) {}
+  DimmedIconEngine( const QIcon & source_, qreal opacity_ ):
+    source( source_ ), opacity( opacity_ ) {}
 
   QIconEngine * clone() const override
   {
-    return new DimmedIconEngine( m_source, m_opacity );
+    return new DimmedIconEngine( source, opacity );
   }
 
   void paint( QPainter * painter, const QRect & rect, QIcon::Mode, QIcon::State ) override
   {
     painter->save();
-    painter->setOpacity( m_opacity );
+    painter->setOpacity( opacity );
     // Always paint the source in its Normal/Off appearance regardless of the
     // requested mode/state, so the only visual change is the opacity.
-    m_source.paint( painter, rect, Qt::AlignCenter, QIcon::Normal, QIcon::Off );
+    source.paint( painter, rect, Qt::AlignCenter, QIcon::Normal, QIcon::Off );
     painter->restore();
   }
 
 private:
-  QIcon m_source;
-  qreal m_opacity;
+  QIcon source;
+  qreal opacity;
 };
 
 /// Returns a dimmed copy of @p source. A null icon is returned unchanged so
