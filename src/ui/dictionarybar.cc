@@ -39,12 +39,33 @@ public:
 
   void paint( QPainter * painter, const QRect & rect, QIcon::Mode, QIcon::State ) override
   {
+    if ( rect.isEmpty() )
+      return;
+
+    // Draw the source icon onto a clean temporary pixmap first, to isolate it
+    // from any content already on the target painter's canvas.
+    QPixmap tmpPixmap( rect.size() );
+    tmpPixmap.fill( Qt::transparent );
+    QPainter tmpPainter( &tmpPixmap );
+    source.paint( &tmpPainter, tmpPixmap.rect(), Qt::AlignCenter, QIcon::Normal, QIcon::Off );
+    tmpPainter.end();
+
+    // Draw the dimmed icon onto the target painter.
     painter->save();
     painter->setOpacity( opacity );
-    // Always paint the source in its Normal/Off appearance regardless of the
-    // requested mode/state, so the only visual change is the opacity.
-    source.paint( painter, rect, Qt::AlignCenter, QIcon::Normal, QIcon::Off );
+    painter->drawPixmap( rect.topLeft(), tmpPixmap );
     painter->restore();
+
+    // Draw a diagonal strike-through line on top of the icon to indicate
+    // "disabled" state. The line is drawn at full opacity so it stays clearly
+    // visible on both light and dark themes, independent of the icon opacity.
+    const int lineWidth = qMax( 2, rect.height() / 12 );
+    QPen pen( QColor( 80, 80, 80, 200 ), lineWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin );
+    painter->setPen( pen );
+
+    const int padding = lineWidth + 1;
+    painter->drawLine( rect.bottomLeft() + QPoint( padding, -padding ),
+                       rect.topRight() + QPoint( -padding, padding ) );
   }
 
 private:
