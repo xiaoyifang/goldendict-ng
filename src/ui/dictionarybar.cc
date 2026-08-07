@@ -37,13 +37,13 @@ public:
     return new DimmedIconEngine( m_source, m_opacity );
   }
 
-  void paint( QPainter * painter, const QRect & rect, Qt::Alignment alignment, QIcon::Mode, QIcon::State ) override
+  void paint( QPainter * painter, const QRect & rect, QIcon::Mode, QIcon::State ) override
   {
     painter->save();
     painter->setOpacity( m_opacity );
     // Always paint the source in its Normal/Off appearance regardless of the
     // requested mode/state, so the only visual change is the opacity.
-    m_source.paint( painter, rect, alignment, QIcon::Normal, QIcon::Off );
+    m_source.paint( painter, rect, Qt::AlignCenter, QIcon::Normal, QIcon::Off );
     painter->restore();
   }
 
