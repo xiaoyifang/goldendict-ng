@@ -4,6 +4,12 @@ target_include_directories(${GOLDENDICT} PRIVATE /usr/local/include /opt/homebre
 find_library(CARBON_LIBRARY Carbon REQUIRED) # for accessibility API
 target_link_libraries(${GOLDENDICT} PRIVATE ${CARBON_LIBRARY})
 
+
+# ScreenCaptureKit + Vision for OCR-based mouse-over word capture fallback (macOS 12.3+)
+find_library(SCREENCAPTUREKIT_LIBRARY ScreenCaptureKit REQUIRED)
+find_library(VISION_LIBRARY Vision REQUIRED)
+target_link_libraries(${GOLDENDICT} PRIVATE ${SCREENCAPTUREKIT_LIBRARY} ${VISION_LIBRARY})
+
 find_package(PkgConfig REQUIRED)
 
 set(Optional_Pkgs "")
@@ -55,4 +61,3 @@ if (WITH_EPWING_SUPPORT)
     find_library(EB_LIBRARY eb REQUIRED)
     target_link_libraries(${GOLDENDICT} PRIVATE ${EB_LIBRARY})
 endif ()
-

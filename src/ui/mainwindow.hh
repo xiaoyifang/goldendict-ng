@@ -126,7 +126,7 @@ private:
   QAction stopAudioAction;
   QToolBar * navToolbar;
   MainStatusBar * mainStatusBar;
-  QAction *navBack, *navForward, *navPronounce, *enableScanningAction;
+  QAction *navBack, *navForward, *navPronounce, *enableScanningAction, *enableMouseOverAction;
   QAction * beforeOptionsSeparator;
   QAction *zoomIn, *zoomOut, *zoomBase;
   QAction *addToFavorites, *beforeAddToFavoritesSeparator;

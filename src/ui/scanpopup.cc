@@ -20,7 +20,7 @@ using std::pair;
 
 #ifdef Q_OS_MAC
   #include "macos/macmouseover.hh"
-  #define MouseOver MacMouseOver
+  #include "macos/macscreencapture.hh"
 #endif
 
 static const Qt::WindowFlags defaultUnpinnedWindowFlags = Qt::Tool | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint;
@@ -308,7 +308,14 @@ ScanPopup::ScanPopup( QWidget * parent,
   } );
 
 #ifdef Q_OS_MAC
-  connect( &MouseOver::instance(), &MouseOver::hovered, this, &ScanPopup::handleInputWord );
+  // Connect both capture methods — they emit the same hovered signal.
+  // Which one fires depends on which permissions are available.
+  if ( MacMouseOver::isAXAPIEnabled() ) {
+    connect( &MacMouseOver::instance(), &MacMouseOver::hovered, this, &ScanPopup::handleInputWord );
+  }
+  if ( MacScreenCapture::isAvailable() ) {
+    connect( &MacScreenCapture::instance(), &MacScreenCapture::hovered, this, &ScanPopup::handleInputWord );
+  }
 #endif
 
   hideTimer.setSingleShot( true );
@@ -320,7 +327,8 @@ ScanPopup::ScanPopup( QWidget * parent,
   mouseGrabPollTimer.setInterval( 10 );
   connect( &mouseGrabPollTimer, &QTimer::timeout, this, &ScanPopup::mouseGrabPoll );
 #ifdef Q_OS_MAC
-  MouseOver::instance().setPreferencesPtr( &( cfg.preferences ) );
+  MacMouseOver::instance().setPreferencesPtr( &( cfg.preferences ) );
+  MacScreenCapture::instance().setPreferencesPtr( &( cfg.preferences ) );
 #endif
   ui.goBackButton->setEnabled( false );
   ui.goForwardButton->setEnabled( false );

@@ -639,12 +639,22 @@ be the last ones.</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_10">
        <item>
-        <widget class="QCheckBox" name="startWithScanPopupOn">
+        <widget class="QCheckBox" name="enableMouseOverCapture">
          <property name="toolTip">
-          <string>Chooses whether the clipboard monitoring will be turned on by default at the program's startup.</string>
+          <string>Enables mouse-over word capture. When the mouse hovers over text, the word under cursor will be detected and translated. Uses Accessibility API or ScreenCapture+OCR fallback.</string>
          </property>
          <property name="text">
-          <string>Start with clipboard monitoring turned on</string>
+          <string>启用屏幕取词功能</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="startWithScanPopupOn">
+         <property name="toolTip">
+          <string>Activate screen word capture automatically when the program starts.</string>
+         </property>
+         <property name="text">
+          <string>启动程序时同时启动屏幕取词</string>
          </property>
         </widget>
        </item>
@@ -687,7 +697,7 @@ be the last ones.</string>
 in the pressed state when the word selection changes.</string>
             </property>
             <property name="text">
-             <string>Only track selection when all selected keys are kept pressed:</string>
+             <string>仅在按住下列特定的按键时屏幕取词才会启动：</string>
             </property>
            </widget>
           </item>
@@ -735,40 +745,40 @@ in the pressed state when the word selection changes.</string>
                  <item row="0" column="0">
                   <widget class="QCheckBox" name="altKey">
                    <property name="toolTip">
-                    <string>Alt key</string>
+                    <string>Option key (⌥)</string>
                    </property>
                    <property name="text">
-                    <string notr="true">Alt</string>
+                    <string notr="true">leftOpt</string>
                    </property>
                   </widget>
                  </item>
                  <item row="0" column="1">
                   <widget class="QCheckBox" name="ctrlKey">
                    <property name="toolTip">
-                    <string>Ctrl key</string>
+                    <string>Control key (⌃)</string>
                    </property>
                    <property name="text">
-                    <string notr="true">Ctrl</string>
+                    <string notr="true">leftCtrl</string>
                    </property>
                   </widget>
                  </item>
                  <item row="0" column="2">
                   <widget class="QCheckBox" name="shiftKey">
                    <property name="toolTip">
-                    <string>Shift key</string>
+                    <string>Shift key (⇧)</string>
                    </property>
                    <property name="text">
-                    <string notr="true">Shift</string>
+                    <string notr="true">leftShift</string>
                    </property>
                   </widget>
                  </item>
                  <item row="0" column="3">
                   <widget class="QCheckBox" name="winKey">
                    <property name="toolTip">
-                    <string>Windows key or Meta key</string>
+                    <string>Command key (⌘)</string>
                    </property>
                    <property name="text">
-                    <string notr="true">Win/Meta</string>
+                    <string notr="true">leftCmd</string>
                    </property>
                   </widget>
                  </item>

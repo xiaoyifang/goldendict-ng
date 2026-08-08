@@ -304,6 +304,7 @@ struct Preferences
   bool startWithScanPopupOn;
   bool enableScanPopupModifiers;
   unsigned long scanPopupModifiers; // Combination of KeyboardState::Modifier
+  bool enableMouseOverCapture;      // Enable mouse-over screen word capture (OCR or AX API)
   bool ignoreOwnClipboardChanges;
 
   bool scanToMainWindow;

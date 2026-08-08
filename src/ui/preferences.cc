@@ -226,6 +226,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 #endif
 
   ui.startWithScanPopupOn->setChecked( p.startWithScanPopupOn );
+  ui.enableMouseOverCapture->setChecked( p.enableMouseOverCapture );
   ui.enableScanPopupModifiers->setChecked( p.enableScanPopupModifiers );
 
   ui.altKey->setChecked( p.scanPopupModifiers & KeyboardState::Alt );
@@ -497,6 +498,7 @@ Config::Preferences Preferences::getPreferences()
   p.clipboardHotkey        = ui.clipboardHotkey->keySequence();
 
   p.startWithScanPopupOn     = ui.startWithScanPopupOn->isChecked();
+  p.enableMouseOverCapture   = ui.enableMouseOverCapture->isChecked();
   p.enableScanPopupModifiers = ui.enableScanPopupModifiers->isChecked();
 
   p.scanPopupModifiers += ui.altKey->isChecked() ? KeyboardState::Alt : 0;

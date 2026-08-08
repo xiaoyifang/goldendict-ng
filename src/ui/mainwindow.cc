@@ -59,6 +59,7 @@
 
 #ifdef Q_OS_MAC
   #include "macos/macmouseover.hh"
+  #include "macos/macscreencapture.hh"
 #endif
 
 #if defined( Q_OS_WIN )
@@ -300,6 +301,12 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   navToolbar->widgetForAction( enableScanningAction )->setObjectName( "scanPopupButton" );
 
+  enableMouseOverAction = navToolbar->addAction( QIcon( ":/icons/mouse-capture.svg" ), tr( "Toggle screen word capture" ) );
+  enableMouseOverAction->setCheckable( true );
+#ifndef Q_OS_MAC
+  enableMouseOverAction->setVisible( false );
+#endif
+
   navToolbar->addSeparator();
 
   // sound
@@ -443,6 +450,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // Add scanning action for all platforms
   trayIconMenu.addAction( enableScanningAction );
+#ifdef Q_OS_MAC
+  trayIconMenu.addAction( enableMouseOverAction );
+#endif
 
   // Add separator and quit action for all platforms
   trayIconMenu.addSeparator();
@@ -454,6 +464,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     this->toggleMainWindow( true );
   } );
   dockMenu.addAction( enableScanningAction );
+  dockMenu.addAction( enableMouseOverAction );
   // Don't add Quit here - macOS will automatically add a Quit item to the Dock menu
 #endif
 
@@ -879,9 +890,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 
   // Scanpopup related
-  // Deferred initialization until first use or if scanning is enabled
+  // Deferred initialization until first use or if scanning or screen capture is enabled
   // Use a delayed call to avoid blocking the main window's initial show-up
-  if ( cfg.preferences.startWithScanPopupOn ) {
+  if ( cfg.preferences.startWithScanPopupOn || cfg.preferences.enableMouseOverCapture ) {
     QTimer::singleShot( 1000, this, &MainWindow::ensureScanPopup );
   }
 
@@ -896,13 +907,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
       enableScanningAction->setIcon( QIcon( ":/icons/wizard.svg" ) );
     }
 
-#ifdef Q_OS_MAC
-    if ( !MacMouseOver::isAXAPIEnabled() ) {
-      mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000, QPixmap( ":/icons/error.svg" ) );
-    }
-#endif
-
-
     if ( on ) {
       clipboardListener->start();
     }
@@ -914,8 +918,46 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     trayIconUpdateOrInit();
   } );
 
+  connect( enableMouseOverAction, &QAction::toggled, this, [ this ]( bool on ) {
+#ifdef Q_OS_MAC
+    if ( on ) {
+      bool sc = MacScreenCapture::isAvailable();
+      bool ax = MacMouseOver::isAXAPIEnabled();
+      if ( sc ) MacScreenCapture::instance().enableCapture();
+      if ( ax ) MacMouseOver::instance().enableMouseOver();
+      if ( sc || ax ) {
+        cfg.preferences.enableMouseOverCapture = true;
+        cfg.dirty = true;
+        Config::save( cfg );
+        mainStatusBar->showMessage(
+          tr( "Screen word capture ON" ), 3000 );
+      } else {
+        enableMouseOverAction->setChecked( false );
+        cfg.preferences.enableMouseOverCapture = false;
+        cfg.dirty = true;
+        Config::save( cfg );
+        mainStatusBar->showMessage(
+          tr( "Need Accessibility or Screen Recording permission in System Settings" ),
+          10000, QPixmap( ":/icons/error.svg" ) );
+      }
+    } else {
+      MacMouseOver::instance().disableMouseOver();
+      MacScreenCapture::instance().disableCapture();
+      cfg.preferences.enableMouseOverCapture = false;
+      cfg.dirty = true;
+      Config::save( cfg );
+      mainStatusBar->showMessage( tr( "Screen word capture OFF" ), 2000 );
+    }
+#endif
+  } );
+
+#ifdef Q_OS_MAC
+  if ( cfg.preferences.enableMouseOverCapture ) {
+    enableMouseOverAction->trigger();
+  }
+#endif
   if ( cfg.preferences.startWithScanPopupOn ) {
-    enableScanningAction->trigger();
+    enableScanningAction->setChecked( true );
   }
 
   updateSearchPaneAndBar( cfg.preferences.searchInDock );
@@ -942,17 +984,21 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     toggleMenuBarTriggered( false );
   }
 
-  // makeDictionaries() didn't do deferred init - we do it here, at the end.
-  // Use a delay to let the UI breathe first
+  // Start after deferred dictionary initialization. Existing indexes are reused.
   QTimer::singleShot( 3000, this, [ this ]() {
     doDeferredInit( dictionaries );
+    ftsIndexing.doIndexing();
   } );
 
   updateStatusLine();
 
 #ifdef Q_OS_MAC
-  if ( cfg.preferences.startWithScanPopupOn && !MacMouseOver::isAXAPIEnabled() ) {
-    mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000, QPixmap( ":/icons/error.svg" ) );
+  if ( cfg.preferences.enableMouseOverCapture
+       && !MacMouseOver::isAXAPIEnabled()
+       && !MacScreenCapture::isAvailable() ) {
+    mainStatusBar->showMessage(
+      tr( "Screen word capture requires Accessibility or Screen Recording permission." ),
+      15000, QPixmap( ":/icons/error.svg" ) );
   }
 #endif
 
@@ -1168,7 +1214,15 @@ void MainWindow::clipboardChange( QClipboard::Mode m )
     scanPopup->selectionDelayTimer.start();
   }
 #elif defined( Q_OS_MAC )
+#ifdef Q_OS_MACOS
+  bool wasMinimized = isMinimized();
+#endif
   scanPopup->translateWord( clipboardListener->text() );
+#ifdef Q_OS_MACOS
+  if ( wasMinimized && !isMinimized() ) {
+    showMinimized();
+  }
+#endif
 #else
   scanPopup->translateWordFromPrimaryClipboard();
 #endif
@@ -1783,7 +1837,6 @@ void MainWindow::makeDictionaries()
   }
 
   ftsIndexing.setDictionaries( dictionaries );
-  ftsIndexing.doIndexing();
 
   updateStatusLine();
   updateGroupList( false );
@@ -2526,6 +2579,13 @@ void MainWindow::editPreferences()
     trayIconUpdateOrInit();
     applyProxySettings();
 
+    // Without a tray/status icon there is no way back to the main window,
+    // so make sure it is visible whenever the tray icon is turned off.
+    if ( !cfg.preferences.enableTrayIcon && !isVisible() ) {
+      show();
+      focusTranslateLine();
+    }
+
     ui.tabWidget->setHideSingleTab( cfg.preferences.hideSingleTab );
 
     setAutostart( cfg.preferences.autoStart );
@@ -3172,6 +3232,18 @@ void MainWindow::toggleMainWindow( bool ensureShow )
   }
 
   if ( !isVisible() ) {
+    // The window may have started hidden (start to tray). Re-apply the
+    // saved geometry at the moment it is brought back, since restoring a
+    // hidden window on macOS does not always take effect.
+    if ( !cfg.resetState ) {
+      if ( cfg.mainWindowState.size() ) {
+        restoreState( cfg.mainWindowState );
+      }
+      if ( cfg.mainWindowGeometry.size() ) {
+        restoreGeometry( cfg.mainWindowGeometry );
+      }
+    }
+
     show();
 
     activateWindow();
@@ -3201,11 +3273,17 @@ void MainWindow::toggleMainWindow( bool ensureShow )
     // On Windows and Linux, a hidden window won't show a task bar icon
     // When trayicon is enabled, the duplication is unneeded
 
-    // On macOS, a hidden window will still show on the Dock,
-    // but click it won't bring it back, thus we can only minimize it.
+    // On macOS, hide the window completely when running with a status item,
+    // so the app leaves the Dock and Cmd+Tab. Without a status item we
+    // minimize instead, because a hidden window can't be restored.
 
 #ifdef Q_OS_MAC
-    showMinimized();
+    if ( cfg.preferences.enableTrayIcon ) {
+      hide();
+    }
+    else {
+      showMinimized();
+    }
 #else
     if ( cfg.preferences.enableTrayIcon )
       hide();
@@ -3289,6 +3367,12 @@ void MainWindow::hotKeyActivated( int hk )
       return;
     }
 
+#ifdef Q_OS_MACOS
+    // On macOS, showing the scan popup may cause the main window to
+    // un-minimize (app activation side-effect). Save & restore state.
+    bool wasMinimized = isMinimized();
+#endif
+
 #if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
     // Delay clipboard handling on Linux to let active app finish handling Ctrl+C
     // Workaround for Ctrl+C+C hotkey issue where clipboard may be empty
@@ -3296,6 +3380,12 @@ void MainWindow::hotKeyActivated( int hk )
     QTimer::singleShot( clipboardDelayMs, scanPopup, &ScanPopup::translateWordFromPrimaryClipboard );
 #else
     scanPopup->translateWordFromPrimaryClipboard();
+#endif
+
+#ifdef Q_OS_MACOS
+    if ( wasMinimized && !isMinimized() ) {
+      showMinimized();
+    }
 #endif
   }
 }
@@ -3412,8 +3502,15 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
 void MainWindow::handleApplicationStateChanged( Qt::ApplicationState state )
 {
   // When the application becomes active (e.g., user clicks on Dock icon)
-  // and the main window is minimized or hidden, restore it
+  // and the main window is minimized or hidden, restore it. In tray mode
+  // this must not happen: the window is brought back explicitly by the
+  // status item, and an external lookup should not force it open.
   if ( state == Qt::ApplicationActive && ( isMinimized() || !isVisible() ) ) {
+#ifdef Q_OS_MACOS
+    if ( cfg.preferences.enableTrayIcon ) {
+      return;
+    }
+#endif
     toggleMainWindow( true );
   }
 }

@@ -123,6 +123,7 @@ Preferences::Preferences():
   startWithScanPopupOn( false ),
   enableScanPopupModifiers( false ),
   scanPopupModifiers( 0 ),
+  enableMouseOverCapture( true ),
   ignoreOwnClipboardChanges( false ),
   scanToMainWindow( false ),
   ignoreDiacritics( false ),
@@ -861,6 +862,10 @@ Class load()
     c.preferences.enableScanPopupModifiers =
       ( preferences.namedItem( "enableScanPopupModifiers" ).toElement().text() == "1" );
     c.preferences.scanPopupModifiers = ( preferences.namedItem( "scanPopupModifiers" ).toElement().text().toULong() );
+    if ( !preferences.namedItem( "enableMouseOverCapture" ).isNull() ) {
+      c.preferences.enableMouseOverCapture =
+        ( preferences.namedItem( "enableMouseOverCapture" ).toElement().text() == "1" );
+    }
     c.preferences.ignoreOwnClipboardChanges =
       ( preferences.namedItem( "ignoreOwnClipboardChanges" ).toElement().text() == "1" );
     c.preferences.scanToMainWindow = ( preferences.namedItem( "scanToMainWindow" ).toElement().text() == "1" );
@@ -1799,6 +1804,10 @@ void save( const Class & c )
 
     opt = dd.createElement( "startWithScanPopupOn" );
     opt.appendChild( dd.createTextNode( c.preferences.startWithScanPopupOn ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "enableMouseOverCapture" );
+    opt.appendChild( dd.createTextNode( c.preferences.enableMouseOverCapture ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "enableScanPopupModifiers" );
