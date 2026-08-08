@@ -800,6 +800,12 @@ Class load()
     c.preferences.alwaysOnTop  = ( preferences.namedItem( "alwaysOnTop" ).toElement().text() == "1" );
     c.preferences.searchInDock = ( preferences.namedItem( "searchInDock" ).toElement().text() == "1" );
 
+    // "Start to tray" and "Close to tray" only make sense with a tray/status
+    // icon, so keep the two coupled for older configurations.
+    if ( c.preferences.startToTray || c.preferences.closeToTray ) {
+      c.preferences.enableTrayIcon = true;
+    }
+
     if ( !preferences.namedItem( "customFonts" ).isNull() ) {
       CustomFonts fonts         = CustomFonts::fromElement( preferences.namedItem( "customFonts" ).toElement() );
       c.preferences.customFonts = fonts;

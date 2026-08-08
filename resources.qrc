@@ -54,6 +54,7 @@
         <file>icons/folders.svg</file>
         <file>icons/hotkeys.svg</file>
         <file>icons/icon.svg</file>
+        <file>icons/trayicon.svg</file>
         <file>icons/icon32_zoombase.png</file>
         <file>icons/icon32_zoomin.png</file>
         <file>icons/icon32_zoomout.png</file>

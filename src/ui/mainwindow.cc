@@ -26,6 +26,10 @@
 #include <QList>
 #include <QToolBar>
 #include <QCloseEvent>
+#include <QMoveEvent>
+#include <QResizeEvent>
+#include <QShowEvent>
+#include <QHideEvent>
 #include <QDesktopServices>
 #include <QCryptographicHash>
 #include <QFileDialog>
@@ -59,6 +63,7 @@
 
 #ifdef Q_OS_MAC
   #include "macos/macmouseover.hh"
+  #include "macos/mactray.hh"
 #endif
 
 #if defined( Q_OS_WIN )
@@ -156,6 +161,7 @@ void MainWindow::changeWebEngineViewFont() const
 
 MainWindow::MainWindow( Config::Class & cfg_ ):
   trayIcon( nullptr ),
+  geometrySaveTimer( this ),
   foundInDictsLabel( &dictsPaneTitleBar ),
   escAction( this ),
   focusTranslateLineAction( this ),
@@ -868,15 +874,33 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   if ( cfg.mainWindowState.size() && !cfg.resetState ) {
     restoreState( cfg.mainWindowState );
   }
-  if ( cfg.mainWindowGeometry.size() ) {
+  if ( cfg.mainWindowGeometry.size() && !cfg.resetState ) {
     restoreGeometry( cfg.mainWindowGeometry );
   }
 
-  // Show window unless it is configured not to
-  if ( !cfg.preferences.enableTrayIcon || !cfg.preferences.startToTray ) {
+  geometrySaveTimer.setSingleShot( true );
+  geometrySaveTimer.setInterval( 500 );
+  connect( &geometrySaveTimer, &QTimer::timeout, this, [ this ]() {
+    saveMainWindowGeometry();
+  } );
+
+#ifdef Q_OS_MACOS
+  connect( qApp, &QGuiApplication::applicationStateChanged, this, [ this ]( Qt::ApplicationState ) {
+    updateMacDockAndMenu();
+  } );
+#endif
+
+  // Show window unless it is configured to start in the tray/status bar.
+  // "Start to tray" is honored even if the tray icon is disabled, so the
+  // main window stays out of the way after login.
+  if ( !cfg.preferences.startToTray ) {
     show();
     focusTranslateLine();
   }
+
+#ifdef Q_OS_MACOS
+  updateMacDockAndMenu();
+#endif
 
   // Scanpopup related
   // Deferred initialization until first use or if scanning is enabled
@@ -1607,6 +1631,7 @@ void MainWindow::trayIconUpdateOrInit()
 // Set dock menu for macOS
 #ifdef Q_OS_MACOS
   dockMenu.setAsDockMenu(); // Use separate dockMenu for Dock, not trayIconMenu
+  updateMacDockAndMenu();
 #endif
 
   if ( !cfg.preferences.enableTrayIcon ) {
@@ -1618,11 +1643,15 @@ void MainWindow::trayIconUpdateOrInit()
   }
   else {
     // Update the icon to reflect the scanning mode
-    QIcon icon = QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon.png" ) );
+    QIcon icon;
 
 #ifdef Q_OS_MACOS
-    // On macOS, use the icon directly without mask for proper color display
-    // setIsMask(true) would convert it to black silhouette which is not desired
+    // A template (mask) icon lets macOS draw it in the right color for the
+    // current menu bar appearance, just like the built-in clock/weather icons.
+    icon = QIcon( ":/icons/trayicon.svg" );
+    icon.setIsMask( true );
+#else
+    icon = QIcon::fromTheme( "goldendict-tray", QIcon( ":/icons/programicon.png" ) );
 #endif
 
     if ( !trayIcon ) {
@@ -1660,6 +1689,74 @@ void MainWindow::wheelEvent( QWheelEvent * ev )
   }
 }
 
+void MainWindow::resizeEvent( QResizeEvent * ev )
+{
+  QMainWindow::resizeEvent( ev );
+  scheduleGeometrySave();
+}
+
+void MainWindow::moveEvent( QMoveEvent * ev )
+{
+  QMainWindow::moveEvent( ev );
+  scheduleGeometrySave();
+}
+
+void MainWindow::showEvent( QShowEvent * ev )
+{
+  QMainWindow::showEvent( ev );
+#ifdef Q_OS_MACOS
+  updateMacDockAndMenu();
+#endif
+}
+
+void MainWindow::hideEvent( QHideEvent * ev )
+{
+  QMainWindow::hideEvent( ev );
+#ifdef Q_OS_MACOS
+  updateMacDockAndMenu();
+#endif
+}
+
+#ifdef Q_OS_MACOS
+void MainWindow::updateMacDockAndMenu()
+{
+  // Changing the activation policy while the scan popup is on screen makes
+  // macOS hide the popup immediately. Leave the current policy untouched
+  // until the popup is gone.
+  if ( scanPopup && scanPopup->isVisible() ) {
+    return;
+  }
+
+  // macOS has no supported way to keep the top-left app menu while
+  // excluding the app from the Dock and Cmd+Tab at the same time.
+  // Keep the normal Dock/menu while the app is actually in the foreground;
+  // as soon as it is hidden to the tray or loses focus, drop it from the
+  // Dock and Cmd+Tab so it only lives in the status item.
+  const bool keepDock = !cfg.preferences.enableTrayIcon
+                        || ( isVisible() && QApplication::applicationState() == Qt::ApplicationActive );
+  MacTray::setDockIconVisible( keepDock );
+}
+#endif
+
+void MainWindow::scheduleGeometrySave()
+{
+  if ( !isVisible() || isMinimized() ) {
+    return;
+  }
+  geometrySaveTimer.start();
+}
+
+void MainWindow::saveMainWindowGeometry()
+{
+  if ( cfg.resetState ) {
+    return;
+  }
+  cfg.mainWindowState    = saveState();
+  cfg.mainWindowGeometry = saveGeometry();
+  cfg.dirty              = true;
+  Config::save( cfg );
+}
+
 void MainWindow::closeEvent( QCloseEvent * ev )
 {
   if ( isQuitting ) {
@@ -1667,8 +1764,8 @@ void MainWindow::closeEvent( QCloseEvent * ev )
     return;
   }
 
-  // If tray icon is disabled or closing to tray is not enabled, quit the application
-  if ( !cfg.preferences.enableTrayIcon || !cfg.preferences.closeToTray ) {
+  // If closing to tray is not enabled, quit the application
+  if ( !cfg.preferences.closeToTray ) {
     ev->accept();
     quitApp();
     return;
@@ -1695,6 +1792,7 @@ void MainWindow::closeEvent( QCloseEvent * ev )
 #else
   // On Windows and macOS (manual close), ignore the event and hide the window.
   // This ensures global hotkey hooks remain valid on Windows.
+  saveMainWindowGeometry();
   if ( trayIcon ) {
     trayIcon->showMessage(
       QApplication::applicationName(),
@@ -3380,6 +3478,7 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
       // macOS specific focus handling
 #ifdef Q_OS_MACOS
       // Ensure the window gets focus, especially when there are fullscreen apps
+      MacTray::activateApplication();
       if ( isVisible() ) {
         this->raise();
         this->activateWindow();
@@ -3584,6 +3683,10 @@ void MainWindow::setAutostart( bool autostart )
     reg.remove( ApplicationSettingName );
   }
   reg.sync();
+#elif defined( Q_OS_MACOS )
+  if ( !MacTray::setAutoStartEnabled( autostart ) ) {
+    qWarning() << "Failed to update macOS login item";
+  }
 #elif defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
   const QString destinationPath = QDir::homePath() + "/.config/autostart/goldendict-owned-by-preferences.desktop";
   if ( autostart == QFile::exists( destinationPath ) )
@@ -3600,7 +3703,8 @@ void MainWindow::setAutostart( bool autostart )
 
 void MainWindow::on_actionCloseToTray_triggered()
 {
-  if ( cfg.preferences.enableTrayIcon && isVisible() ) {
+  if ( cfg.preferences.closeToTray && isVisible() ) {
+    saveMainWindowGeometry();
     hide();
   }
 }
@@ -3860,6 +3964,11 @@ bool MainWindow::handleStructuredMessage( const QString & message )
 void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
 {
   if ( message == "bringToFront" ) {
+    // When "start to tray" is enabled, launching the app again should not
+    // force the hidden main window open.
+    if ( cfg.preferences.startToTray && !isVisible() ) {
+      return;
+    }
     toggleMainWindow( true );
     return;
   }

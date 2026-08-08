@@ -618,6 +618,28 @@ void Preferences::on_enableClipboardHotkey_toggled( bool checked )
   ui.clipboardHotkey->setEnabled( checked );
 }
 
+void Preferences::on_enableTrayIcon_toggled( bool checked )
+{
+  if ( !checked ) {
+    ui.startToTray->setChecked( false );
+    ui.closeToTray->setChecked( false );
+  }
+}
+
+void Preferences::on_startToTray_toggled( bool checked )
+{
+  if ( checked ) {
+    ui.enableTrayIcon->setChecked( true );
+  }
+}
+
+void Preferences::on_closeToTray_toggled( bool checked )
+{
+  if ( checked ) {
+    ui.enableTrayIcon->setChecked( true );
+  }
+}
+
 void Preferences::on_buttonBox_accepted()
 {
   QString promptText;

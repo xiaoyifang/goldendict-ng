@@ -2,9 +2,7 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "hotkeywrapper.hh"
-#include <QMessageBox>
 #include <QObject>
-#include <QPushButton>
 #include <QTimer>
 
 #include <memory>
@@ -161,17 +159,16 @@ void checkAndRequestAccessibilityPermission()
         return;
     }
 
-    auto msgBox = std::make_unique<QMessageBox>(nullptr);
-    auto* turnOnPermission = new QPushButton(QObject::tr("Turn on Accessibility"), msgBox.get());
+    // Use the system-native prompt: this registers GoldenDict-ng in the
+    // Accessibility list (and opens System Settings when the user agrees).
+    // The old approach of only opening the settings pane did not create
+    // the permission entry for the app.
+    [NSApp activateIgnoringOtherApps:YES];
 
-    msgBox->setInformativeText(QObject::tr("Global shortcut using ⌘+C needs Accessibility permission. Please grant it to Goldendict or change ⌘+C to something else."));
-
-    msgBox->addButton(QMessageBox::Ok);
-    msgBox->addButton(turnOnPermission, QMessageBox::AcceptRole); // the role is unused.
-    msgBox->setDefaultButton(turnOnPermission);
-    msgBox->exec();
-
-    if (msgBox->clickedButton() == turnOnPermission) {
+    NSDictionary *options = @{ (__bridge id)kAXTrustedCheckOptionPrompt : @YES };
+    if (!AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options)) {
+        // Fallback for the case where the system prompt was already answered
+        // or cannot be shown again.
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility"]];
     }
 }

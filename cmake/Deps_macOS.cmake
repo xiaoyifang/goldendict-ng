@@ -4,6 +4,10 @@ target_include_directories(${GOLDENDICT} PRIVATE /usr/local/include /opt/homebre
 find_library(CARBON_LIBRARY Carbon REQUIRED) # for accessibility API
 target_link_libraries(${GOLDENDICT} PRIVATE ${CARBON_LIBRARY})
 
+# ServiceManagement for macOS login-item (auto-start) support
+find_library(SERVICEMANAGEMENT_LIBRARY ServiceManagement REQUIRED)
+target_link_libraries(${GOLDENDICT} PRIVATE ${SERVICEMANAGEMENT_LIBRARY})
+
 find_package(PkgConfig REQUIRED)
 
 set(Optional_Pkgs "")

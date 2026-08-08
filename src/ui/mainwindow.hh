@@ -217,7 +217,19 @@ private:
   void trayIconUpdateOrInit();
 
   void wheelEvent( QWheelEvent * );
+  void resizeEvent( QResizeEvent * ) override;
+  void moveEvent( QMoveEvent * ) override;
+  void showEvent( QShowEvent * ) override;
+  void hideEvent( QHideEvent * ) override;
   void closeEvent( QCloseEvent * );
+  void scheduleGeometrySave();
+  void saveMainWindowGeometry();
+#ifdef Q_OS_MACOS
+  /// macOS keeps the app in the Dock/menu bar while the main window is
+  /// visible (so the app menu stays usable) and hides it when window is
+  /// hidden to the tray/status item.
+  void updateMacDockAndMenu();
+#endif
 
   void applyProxySettings();
   void makeDictionaries();
