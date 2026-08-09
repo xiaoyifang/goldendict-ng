@@ -283,6 +283,7 @@ struct Preferences
   bool enableTrayIcon = true;
   bool closeToTray    = true;
   bool startToTray    = false;
+  bool showDockIcon   = false;
 
   bool autoStart;
   bool doubleClickTranslates;

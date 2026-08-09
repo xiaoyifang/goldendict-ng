@@ -219,6 +219,7 @@ private:
 
   void wheelEvent( QWheelEvent * );
   void closeEvent( QCloseEvent * );
+  void hideEvent( QHideEvent * event ) override;
 
   void applyProxySettings();
   void makeDictionaries();

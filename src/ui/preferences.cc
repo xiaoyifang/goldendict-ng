@@ -178,10 +178,19 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.mruTabOrder->setChecked( p.mruTabOrder );
   ui.enableTrayIcon->setChecked( p.enableTrayIcon );
 
-  // Enable tray icon option for all platforms
-
   ui.startToTray->setChecked( p.startToTray );
   ui.closeToTray->setChecked( p.closeToTray );
+  ui.showDockIcon->setChecked( p.showDockIcon );
+#ifdef Q_OS_MACOS
+  // Menu-bar-only mode has no Dock icon, so its status icon is mandatory.
+  // Keep "Start to system tray" configurable, but prevent configurations that
+  // would leave no way to restore a hidden main window.
+  ui.enableTrayIcon->setCheckable( false );
+  ui.closeToTray->setChecked( true );
+  ui.closeToTray->setEnabled( false );
+#else
+  ui.showDockIcon->hide();
+#endif
   ui.cbAutostart->setChecked( p.autoStart );
   ui.doubleClickTranslates->setChecked( p.doubleClickTranslates );
   ui.selectBySingleClick->setChecked( p.selectWordBySingleClick );
@@ -482,6 +491,13 @@ Config::Preferences Preferences::getPreferences()
   p.enableTrayIcon             = ui.enableTrayIcon->isChecked();
   p.startToTray                = ui.startToTray->isChecked();
   p.closeToTray                = ui.closeToTray->isChecked();
+  p.showDockIcon               = ui.showDockIcon->isChecked();
+#ifdef Q_OS_MACOS
+  // These keep the application reachable after its main window and optional
+  // Dock icon have been hidden.
+  p.enableTrayIcon = true;
+  p.closeToTray    = true;
+#endif
   p.autoStart                  = ui.cbAutostart->isChecked();
   p.doubleClickTranslates      = ui.doubleClickTranslates->isChecked();
   p.selectWordBySingleClick    = ui.selectBySingleClick->isChecked();
