@@ -3793,6 +3793,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Definition</source>
       <translation>التعريف</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>أغلق اللسان الحالي</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>أغلق كل الألسنة ما عدا هذا</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>أغلق كل الألسنة</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>افتح في متصفّح &amp;خارجي</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
