@@ -3771,6 +3771,22 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <source>Definition</source>
       <translation>Định nghĩa</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Đóng thẻ hiện tại</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Đóng tất cả thẻ trừ thẻ hiện tại</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Đóng tất cả các thẻ</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Mở trong &amp; trình duyệt bên ngoài</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
