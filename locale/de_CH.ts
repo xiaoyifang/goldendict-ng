@@ -3783,6 +3783,22 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
       <source>Definition</source>
       <translation>Definition</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Aktuellen Tab schliessen</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Alle anderen Tabs schliessen</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Alle Tabs schliessen</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Im &amp;externen Browser öffnen</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
