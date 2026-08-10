@@ -3793,6 +3793,22 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <source>Definition</source>
       <translation>smuni</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>mipri pa vanbi poi sepli je ca se cuxna</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>mipri ro vanbi poi sepli je ca na se cuxna</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>mipri ro vanbi poi sepli</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation type="unfinished">Open in &amp;External Browser</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
