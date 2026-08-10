@@ -3792,6 +3792,22 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <source>Definition</source>
       <translation>Definitie</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Huidig tabblad sluiten</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Alle andere tabbladen sluiten</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Alle tabbladen sluiten</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Openen in &amp; Externe Browser</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
