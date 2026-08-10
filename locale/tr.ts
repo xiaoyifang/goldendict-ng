@@ -3791,6 +3791,22 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <source>Definition</source>
       <translation>Tanım</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Bu Sekmeyi Kapat</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Bu sekmenin dışındaki bütün sekmeleri kapat</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Bütün sekmeleri kapat</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Aç &amp; Dış Tarayıcı</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
