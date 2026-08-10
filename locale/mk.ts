@@ -3795,6 +3795,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Definition</source>
       <translation>Дефиниција</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Затвори ја тековната картичка</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Затворите ги сите картички освен тековната</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Затвори ги сите картички</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Отворен во и Надворешен прелистувач</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
