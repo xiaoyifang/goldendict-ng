@@ -3755,6 +3755,22 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>Definition</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Close current tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close all tabs except current</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close all tabs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open in &amp;External Browser</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ScanPopupToolBar</name>
