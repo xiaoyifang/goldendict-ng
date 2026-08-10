@@ -3793,6 +3793,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Definition</source>
       <translation>定義</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>現在のタブを閉じる</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>現在以外のすべてのタブを閉じる</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>すべてのタブを閉じる</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>外部ブラウザで開く</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
