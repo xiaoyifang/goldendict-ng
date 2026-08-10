@@ -3795,6 +3795,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Definition</source>
       <translation>Визначення процесу</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Закрити поточну вкладку</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Закрити всі вкладки заодно з поточною</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Закрити всі вкладки</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Відкритий у та зовнішній браузер</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
