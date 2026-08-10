@@ -3780,6 +3780,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Definition</source>
       <translation>परिभाषा</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Fermer l&apos;onglet courant</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Fermer tous les onglets sauf l&apos;onglet courant</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Fermer tous les onglets</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>&amp;बाहरी ब्राउज़र में खोलें</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
