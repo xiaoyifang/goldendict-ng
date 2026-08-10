@@ -3795,6 +3795,22 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <source>Definition</source>
       <translation type="unfinished">Definition</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Fermi aktualan langeton</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Fermi ĉiujn langetojn krom aktuala</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Fermi ĉiujn langetojn</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Malfermi en &amp;Ekstera Retumilo</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
