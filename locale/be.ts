@@ -3769,6 +3769,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Definition</source>
       <translation>Азначэнне</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Закрыць бягучую ўкладку</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Закрыць усе ўкладкі апроч бягучай</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Закрыць усе ўкладкі</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Адкрыць у &amp;вонкавым браўзеры</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
