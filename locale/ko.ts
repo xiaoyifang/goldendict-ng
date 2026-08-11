@@ -3791,6 +3791,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Definition</source>
       <translation>정의</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>현재 탭 닫기</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>다른 탭 닫기</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>모든 탭 닫기</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>외부 브라우저에서 열기</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>

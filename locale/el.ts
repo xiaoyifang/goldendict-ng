@@ -3796,6 +3796,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Definition</source>
       <translation>Ορισμός</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Κλείσιμο τρέχουσας καρτέλας</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Κλείσιμο όλων των άλλων καρτελών</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Κλείσιμο όλων των καρτελών</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Άνοιγμα σε &amp;εξωτερικό πρόγραμμα περιήγησης</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>

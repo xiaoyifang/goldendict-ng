@@ -3795,6 +3795,22 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <source>Definition</source>
       <translation type="unfinished">Definition</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Cluder li actual carte</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Cluder omni cartes except li actual</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Cluder omni cartes</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation type="unfinished">Open in &amp;External Browser</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>

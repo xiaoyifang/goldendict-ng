@@ -3789,6 +3789,22 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
       <source>Definition</source>
       <translation>Sut'inchay</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Kunan pestañata wisq&apos;ay</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Llapan tablakunata wichqay, kunanmanta aswan</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Cierra todas las pestañas</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation type="unfinished">Open in &amp;External Browser</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>

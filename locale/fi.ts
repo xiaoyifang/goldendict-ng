@@ -3795,6 +3795,22 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <source>Definition</source>
       <translation>Määritelmä</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Sulje nykyinen välilehti</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Sulje kaikki välilehdet paitsi nykyisen</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Sulje kaikki välilehdet</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Avaa sisään &amp; ulkoinen selain</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>

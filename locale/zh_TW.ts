@@ -3784,6 +3784,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Definition</source>
       <translation>定義</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>關閉目前分頁</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>關閉其它分頁</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>關閉所有分頁</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>開啟 → 外部瀏覽器</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>

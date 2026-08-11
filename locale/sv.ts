@@ -3796,6 +3796,22 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <source>Definition</source>
       <translation>Definition</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Stäng aktuell flik</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Stäng alla flikar utom aktuell flik</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Stäng alla flikar</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Öppna i &amp; Extern webbläsare</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>

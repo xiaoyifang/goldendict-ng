@@ -3795,6 +3795,22 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <source>Definition</source>
       <translation type="unfinished">Definition</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Close current tab</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Close all tabs except current</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Close all tabs</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Ldi deg &amp;Umeklas Uffiɣ</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>

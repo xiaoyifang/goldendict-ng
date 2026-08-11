@@ -3794,6 +3794,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Definition</source>
       <translation>Маъно</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Варақаи ҷориро пӯшидан</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Ҳамаи варақаҳоро ба ғайр аз ҷорӣ пӯшидан</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Ҳамаи варақаҳоро пӯшидан</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation type="unfinished">Open in &amp;External Browser</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>

@@ -3791,6 +3791,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Definition</source>
       <translation>تعریف</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>بستن زبانه جاری</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>بستن همه زبانه‌ها مگر زبانه جاری</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>بستن همه زبانه‌ها</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>مرورگر باز در و خارجی</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>

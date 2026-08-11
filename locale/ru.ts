@@ -3801,6 +3801,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Definition</source>
       <translation>Определение</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Закрыть текущую вкладку</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Закрыть все вкладки, кроме текущей</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Закрыть все вкладки</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Открытый и внешний браузер</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>

@@ -3786,6 +3786,22 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
       <source>Definition</source>
       <translation>Definícia</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Zatvoriť aktuálnu kartu</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Zatvoriť všetky karty okrem aktuálnej</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Zatvoriť všetky karty</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Otvoriť v a externý prehliadač</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>

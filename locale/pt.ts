@@ -3795,6 +3795,22 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <source>Definition</source>
       <translation>Definição</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Fechar aba atual</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Fechar todas as abas, exceto as atuais</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Fechar todas as abas</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Abrir e Navegador Externo</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>

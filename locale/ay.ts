@@ -3885,6 +3885,22 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <source>Definition</source>
       <translation>Qhanañchaña</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Jichha phichhu ist&apos;antaña</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Taqi phichhu jist&apos;antaña, jichhakis ukax janiwa</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Taqi phichhu jist&apos;antaña</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>&amp;Anqa Tuyurinxa jist'araña</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>

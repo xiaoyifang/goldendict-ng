@@ -3794,6 +3794,22 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
       <source>Definition</source>
       <translation>Düşündiriş</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Şu wagtky wkladkany ýap</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Şu wagtky açylandan daşary ähli başga wkladkalary ýap</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Ähli açyk wkladkalary ýap</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Aç &amp; Daşky Brauzer</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>

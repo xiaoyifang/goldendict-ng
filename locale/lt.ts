@@ -3792,6 +3792,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Definition</source>
       <translation>Apibrėžimas</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Užverti veikiamąją kortelę</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Užverti visas korteles, iškyrus veikiamąją</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Užverti visas korteles</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Atidaryti ir išorinėje naršyklėje</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>

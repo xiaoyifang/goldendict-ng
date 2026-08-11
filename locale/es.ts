@@ -3793,6 +3793,22 @@ de diccionarios Stardict, Babylon y GLS</translation>
       <source>Definition</source>
       <translation>Definición</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Cerrrar la pestaña actual</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Cerrar todas las pestañas excepto la actual</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Cerrar todas las pestañas</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Abrir en y Navegador externo</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>

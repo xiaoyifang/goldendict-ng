@@ -3787,6 +3787,22 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <source>Definition</source>
       <translation>Përkufizimi</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Mbyll fushën</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Mbyll të gjitha fushat veç kësaj</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Mbyll të gjitha fushat</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Hap në &amp;Shfletuesin e jashtëm</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>

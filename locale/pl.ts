@@ -3793,6 +3793,22 @@ ze słowników Stardict, Babylon i GLS</translation>
       <source>Definition</source>
       <translation>Definicja</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Zamknij bieżącą kartę</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Zamknij wszystkie karty z wyjątkiem bieżącej</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Zamknij wszystkie karty</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Otwórz przeglądarkę w i zewnętrzną</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>

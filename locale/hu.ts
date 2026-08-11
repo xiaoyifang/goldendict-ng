@@ -3794,6 +3794,22 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <source>Definition</source>
       <translation>Definíció</translation>
     </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Jelenlegi lap bezárása</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>A jelenlegin kívüli összes lap bezárása</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Összes lap bezárása</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Nyisd meg és Külső böngésző</translation>
+    </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
