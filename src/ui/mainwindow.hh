@@ -217,8 +217,8 @@ private:
   /// current configuration and situation.
   void trayIconUpdateOrInit();
 
-  void wheelEvent( QWheelEvent * );
-  void closeEvent( QCloseEvent * );
+  void wheelEvent( QWheelEvent * ) override;
+  void closeEvent( QCloseEvent * ) override;
   void hideEvent( QHideEvent * event ) override;
 
   void applyProxySettings();
@@ -236,7 +236,7 @@ private:
   /// muting or unmuting dictionaries, or showing/hiding dictionary bar.
   void applyMutedDictionariesState();
 
-  virtual bool eventFilter( QObject *, QEvent * );
+  bool eventFilter( QObject *, QEvent * ) override;
 
 #if defined( Q_OS_WIN )
   /// Handle theme change events as fallback when colorSchemeChanged signal is not available
@@ -256,7 +256,7 @@ private:
   void applyZoomFactor();
   void adjustCurrentZoomFactor();
 
-  void mousePressEvent( QMouseEvent * event );
+  void mousePressEvent( QMouseEvent * event ) override;
 
 
   /// Handles backward and forward mouse buttons and
