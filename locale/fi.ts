@@ -3540,6 +3540,14 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <source>Customize Fonts</source>
       <translation>Fonttien räätälöinti</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Dock-kuvake näkyy aina, kun pääikkuna on auki, jotta macOS voi näyttää sovelluksen nimen ja valikot. Ota tämä asetus käyttöön, jotta Dock-kuvake pysyy näkyvissä, kun pääikkuna on piilotettu.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Pidä telakkakuvake näkyvissä taustalla</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
