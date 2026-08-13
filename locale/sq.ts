@@ -3532,6 +3532,14 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <source>Customize Fonts</source>
       <translation>Personalizoni fontet</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Ikona e Dock-ut shfaqet gjithmonë ndërsa dritarja kryesore është e hapur, në mënyrë që macOS të shfaqë emrin e aplikacionit dhe menutë. Aktivizoni këtë opsion për të mbajtur ikonën e dokut të dukshme pasi dritarja kryesore të jetë fshehur.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Mbani ikonën e dokut të dukshme në sfond</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
