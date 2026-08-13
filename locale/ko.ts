@@ -3536,6 +3536,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Customize Fonts</source>
       <translation>글꼴 커스터마이즈</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Dock 아이콘은 메인 창이 열려 있을 때 항상 표시되어 macOS가 애플리케이션 이름과 메뉴를 표시할 수 있습니다. 이 옵션을 활성화하면 메인 창이 숨겨진 후에도 도크 아이콘이 보이게 유지됩니다.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>배경에서 도크 아이콘을 보이게 하세요</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
