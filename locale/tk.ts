@@ -3539,6 +3539,14 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
       <source>Customize Fonts</source>
       <translation>Kalamlary Üýtget</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>macOS programmanyň adyny we menýularyny görkezip biler ýaly, esasy äpişge açyk wagty Dock belgisi hemişe görkezilýär. Esasy äpişge gizlenenden soň Dock belgisini görünmek üçin bu seçgini etkinleştir.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Dock simgesini arka planda görün</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
