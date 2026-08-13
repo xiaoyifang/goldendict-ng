@@ -3537,6 +3537,14 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <source>Customize Fonts</source>
       <translation>Lettertypen aanpassen</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Het Dock-icoon wordt altijd weergegeven terwijl het hoofdvenster open is, zodat macOS de applicatienaam en menu's kan tonen. Schakel deze optie in om het Dock-icoon zichtbaar te houden nadat het hoofdvenster is verborgen.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Houd het dock-icoon zichtbaar op de achtergrond</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
