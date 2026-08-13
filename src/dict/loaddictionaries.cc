@@ -122,6 +122,25 @@ void LoadDictionaries::load()
       dictionaries.insert( dictionaries.end(), hunspellDictionaries.begin(), hunspellDictionaries.end() );
     }
 
+    // Deduplicate by dictId: a single LSA archive may be loaded both via
+    // automatic Path scanning (Lsa::makeDictionaries) and via SoundDirs config.
+    // Since both sources yield equivalent dictionaries we keep the first occurrence
+    // and drop any later duplicates.
+    {
+      std::set< string > seenIds;
+      vector< sptr< Dictionary::Class > > uniqueDicts;
+      uniqueDicts.reserve( dictionaries.size() );
+      for ( const auto & dict : dictionaries ) {
+        if ( seenIds.insert( dict->getId() ).second ) {
+          uniqueDicts.push_back( dict );
+        }
+        else {
+          qDebug( "LoadDictionaries: skipped duplicate dictionary id=%s", dict->getId().c_str() );
+        }
+      }
+      dictionaries.swap( uniqueDicts );
+    }
+
     //handle the custom dictionary name&fts option
     for ( const auto & dict : dictionaries ) {
       auto baseDir = dict->getContainingFolder();

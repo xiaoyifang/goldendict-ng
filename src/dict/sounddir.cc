@@ -2,6 +2,7 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "sounddir.hh"
+#include "lsa.hh"
 #include "folding.hh"
 #include "btreeidx.hh"
 #include "chunkedstorage.hh"
@@ -424,6 +425,23 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const Config::SoundDirs & 
   vector< sptr< Dictionary::Class > > dictionaries;
 
   for ( const auto & soundDir : soundDirs ) {
+    QFileInfo entryInfo( soundDir.path );
+
+    // Check if it's an LSA sound archive file (.lsa or .dat)
+    if ( entryInfo.isFile() ) {
+      QString nativePath = QDir::toNativeSeparators( entryInfo.absoluteFilePath() );
+      if ( Utils::endsWithIgnoreCase( nativePath.toStdString(), ".lsa" )
+           || Utils::endsWithIgnoreCase( nativePath.toStdString(), ".dat" ) ) {
+        vector< string > lsaFileList( 1, nativePath.toStdString() );
+        auto lsaDicts = Lsa::makeDictionaries( lsaFileList, indicesDir, initializing );
+        dictionaries.insert( dictionaries.end(), lsaDicts.begin(), lsaDicts.end() );
+        continue;
+      }
+      // Not a known LSA extension as a file, skip
+      continue;
+    }
+
+    // Otherwise treat it as a directory (original SoundDir behavior)
     QDir dir( soundDir.path );
 
     if ( !dir.exists() ) {

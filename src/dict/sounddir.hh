@@ -6,7 +6,8 @@
 #include "dictionary.hh"
 #include "config.hh"
 
-/// Support for sound dirs, arbitrary directories full of audio files.
+/// Support for sound dirs (directories full of audio files),
+/// and LSA sound archives (.lsa / .dat files) added via the same config entry.
 namespace SoundDir {
 
 using std::vector;

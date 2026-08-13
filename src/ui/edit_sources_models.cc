@@ -3,8 +3,10 @@
 
 #include "edit_sources_models.hh"
 #include "globalbroadcaster.hh"
+#include <QCursor>
 #include <QFileDialog>
 #include <QGuiApplication>
+#include <QMenu>
 #include <QMessageBox>
 #include <QStandardItemModel>
 #include <QStyleHints>
@@ -194,12 +196,44 @@ void Sources::on_removePath_clicked()
 
 void Sources::on_addSoundDir_clicked()
 {
-  QString dir = QFileDialog::getExistingDirectory( this, tr( "Choose a directory" ) );
+  enum Choice { DirChoice, LsaChoice };
 
-  if ( !dir.isEmpty() ) {
-    soundDirsModel.addNewSoundDir( dir, QDir( dir ).dirName() );
-    fitSoundDirsColumns();
+  QMenu picker( this );
+  QAction * dirAction = picker.addAction( tr( "Add a sound directory…" ) );
+  QAction * lsaAction = picker.addAction( tr( "Add an LSA/DAT sound archive…" ) );
+  QAction * chosen = picker.exec( QCursor::pos() );
+
+  QString picked;
+  if ( chosen == dirAction ) {
+    picked = QFileDialog::getExistingDirectory( this,
+                                                 tr( "Choose a directory" ),
+                                                 QString(),
+                                                 QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks );
   }
+  else if ( chosen == lsaAction ) {
+    picked = QFileDialog::getOpenFileName( this,
+                                            tr( "Choose an LSA sound archive" ),
+                                            QString(),
+                                            tr( "LSA Sound Archives (*.lsa *.dat)" ),
+                                            nullptr,
+                                            QFileDialog::DontResolveSymlinks | QFileDialog::ReadOnly );
+  }
+
+  if ( picked.isEmpty() ) {
+    return;
+  }
+
+  QFileInfo info( picked );
+  QString displayName;
+  if ( info.isFile() ) {
+    displayName = info.completeBaseName();
+  }
+  else {
+    displayName = QDir( picked ).dirName();
+  }
+
+  soundDirsModel.addNewSoundDir( QDir::toNativeSeparators( picked ), displayName );
+  fitSoundDirsColumns();
 }
 
 void Sources::on_removeSoundDir_clicked()
