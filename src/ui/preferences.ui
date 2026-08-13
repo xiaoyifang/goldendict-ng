@@ -226,6 +226,16 @@ the application.</string>
               </property>
              </widget>
             </item>
+            <item>
+             <widget class="QCheckBox" name="showDockIcon">
+              <property name="toolTip">
+               <string>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</string>
+              </property>
+              <property name="text">
+               <string>Keep Dock icon visible in background</string>
+              </property>
+             </widget>
+            </item>
            </layout>
           </widget>
          </item>

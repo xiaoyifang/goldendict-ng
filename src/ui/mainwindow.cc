@@ -58,6 +58,7 @@
 #include "globalregex.hh"
 
 #ifdef Q_OS_MAC
+  #include "macos/mac_app_activation.hh"
   #include "macos/macmouseover.hh"
 #endif
 
@@ -880,7 +881,19 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   if ( !cfg.preferences.enableTrayIcon || !cfg.preferences.startToTray ) {
     show();
     focusTranslateLine();
+#ifdef Q_OS_MACOS
+    // Run activation after Qt has finished creating the native window and its
+    // menu bar. This also makes a launch from Terminal become the active app.
+    QTimer::singleShot( 0, this, []() { MacAppActivation::activate(); } );
+#endif
   }
+#ifdef Q_OS_MACOS
+  else {
+    // A start-to-tray launch has no visible main window. Enter accessory mode
+    // unless the user explicitly asked to keep the Dock icon visible.
+    MacAppActivation::setDockIconVisible( cfg.preferences.showDockIcon );
+  }
+#endif
 
   // Scanpopup related
   // Deferred initialization until first use or if scanning is enabled
@@ -1711,6 +1724,16 @@ void MainWindow::closeEvent( QCloseEvent * ev )
 #endif
 }
 
+void MainWindow::hideEvent( QHideEvent * event )
+{
+  QMainWindow::hideEvent( event );
+#ifdef Q_OS_MACOS
+  if ( !cfg.preferences.showDockIcon ) {
+    MacAppActivation::setDockIconVisible( false );
+  }
+#endif
+}
+
 void MainWindow::quitApp()
 {
   performCleanup();
@@ -2493,6 +2516,10 @@ void MainWindow::editPreferences()
 
     cfg.preferences = p;
 
+#ifdef Q_OS_MACOS
+    MacAppActivation::setDockIconVisible( cfg.preferences.showDockIcon || isVisible() );
+#endif
+
     // Loop through all tabs and reload pages due to ArticleMaker's change.
     for ( int x = 0; x < ui.tabWidget->count(); ++x ) {
       auto & view = dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( x ) ) );
@@ -3185,6 +3212,15 @@ void MainWindow::toggleMainWindow( bool ensureShow )
     translateBox->setPopupEnabled( false );
   }
 
+#ifdef Q_OS_MACOS
+  // Switch to regular-app mode before asking Qt to expose or restore the
+  // native window. Doing this from showEvent is too late and can interfere
+  // with Qt's initial window painting and native menu setup.
+  if ( !isVisible() || isMinimized() ) {
+    MacAppActivation::setDockIconVisible( true );
+  }
+#endif
+
   if ( !isVisible() ) {
     show();
 
@@ -3215,8 +3251,8 @@ void MainWindow::toggleMainWindow( bool ensureShow )
     // On Windows and Linux, a hidden window won't show a task bar icon
     // When trayicon is enabled, the duplication is unneeded
 
-    // On macOS, a hidden window will still show on the Dock,
-    // but click it won't bring it back, thus we can only minimize it.
+    // On macOS, minimizing triggers the accessory-mode transition when the
+    // user has chosen not to keep a Dock icon in the background.
 
 #ifdef Q_OS_MAC
     showMinimized();
@@ -3238,6 +3274,9 @@ void MainWindow::toggleMainWindow( bool ensureShow )
   }
 
   if ( shown ) {
+#ifdef Q_OS_MACOS
+    MacAppActivation::activate();
+#endif
     if ( headwordsDlg ) {
       headwordsDlg->show();
     }
