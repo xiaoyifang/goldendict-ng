@@ -23,14 +23,12 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-
           fetch-depth: 2
-      # format the latest commit
-      - name: ubuntu install clang-format
-        run: |
-          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-          brew install clang-format
-          (/home/linuxbrew/.linuxbrew/opt/clang-format/bin/git-clang-format --binary=/home/linuxbrew/.linuxbrew/opt/clang-format/bin/clang-format --style=file HEAD^) || true
+      - name: install clang-format
+        run: pip install clang-format
+      # HEAD^ is the base branch tip: pull_request checks out the merge commit
+      - name: clang-format PR changes
+        run: git-clang-format --binary=clang-format --style=file HEAD^ || true
       - uses: autofix-ci/action@c5b2d67aa2274e7b5a18224e8171550871fc7e4a
 
 
