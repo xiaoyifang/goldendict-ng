@@ -3525,6 +3525,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Customize Fonts</source>
       <translation>फ़ॉन्ट्स अनुकूलित करें</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>मुख्य विंडो खुली रहने पर डॉक आइकन हमेशा दिखाया जाता है ताकि macOS एप्लिकेशन का नाम और मेनू प्रदर्शित कर सके। मुख्य विंडो छिपे होने के बाद डॉक आइकन को दृश्यमान रखने के लिए इस विकल्प को सक्षम करें।</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>पृष्ठभूमि में डॉक आइकन दृश्यमान रखें</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

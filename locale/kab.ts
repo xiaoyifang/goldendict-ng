@@ -3540,6 +3540,14 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <source>Customize Fonts</source>
       <translation>Ssemyif Tiṭṭawin</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Ayen n "Dock" yettban-d dima mi ara yeldi uguggu amezwaru akken ad yezmer macOS ad yesken isem n usnas akked yimenuyen. Semres takemniwt-agi akken ad yeqqim wayen n "Dock" yettban-d ula mi ara yeffer uguggu amezwaru.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Eg ayen n "Dock" yettban-d deg yidisan</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

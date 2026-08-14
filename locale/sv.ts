@@ -3541,6 +3541,14 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <source>Customize Fonts</source>
       <translation>Anpassa typsnitt</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Dockikonen visas alltid när huvudfönstret är öppet så att macOS kan visa applikationsnamn och menyer. Aktivera detta alternativ för att hålla dockikonen synlig efter att huvudfönstret är dolt.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Håll dockikonen synlig i bakgrunden</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

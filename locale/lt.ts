@@ -3537,6 +3537,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Customize Fonts</source>
       <translation>Tinkinti šriftus</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Dock piktograma visada rodoma, kai pagrindinis langas atidarytas, kad macOS galėtų rodyti programos pavadinimą ir meniu. Įjunkite šią parinktį, kad Doko piktograma būtų matoma po pagrindinio lango paslėpimo.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Laikykite doko piktogramą matomą fone</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

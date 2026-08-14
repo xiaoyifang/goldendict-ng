@@ -3538,6 +3538,14 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <source>Customize Fonts</source>
       <translation>galfi jdaselsku</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>la dak. jikmu cu ro roi claxra fo lo nu le ralju bloti cu pinxe fi'o nu la makos. klama ciska le kantu cmene .e le meniu. cipni le facki lo ka claxra la dak. jikmu lo nu le ralju bloti cu jundi.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>klama claxra la dak. jikmu lo'i jundi</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

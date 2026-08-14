@@ -3536,6 +3536,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Customize Fonts</source>
       <translation>فونت های سفارشی سازی</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>آیکون داک همیشه هنگام باز بودن پنجره اصلی نمایش داده می شود تا macOS بتواند نام برنامه و منوها را نمایش دهد. این گزینه را فعال کنید تا آیکون داک پس از مخفی شدن پنجره اصلی قابل مشاهده بماند.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>آیکون داک را در پس زمینه قابل مشاهده نگه دارید</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

@@ -3538,6 +3538,14 @@ dai dizionari di Stardict, Babylon e GLS</translation>
       <source>Customize Fonts</source>
       <translation>Personalizza i font</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>L'icona del Dock viene sempre mostrata mentre la finestra principale è aperta, così macOS può mostrare il nome dell'applicazione e i menu. Abilita questa opzione per mantenere visibile l'icona del Dock dopo che la finestra principale è nascosta.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Tieni visibile l'icona del Dock sullo sfondo</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

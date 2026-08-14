@@ -3531,6 +3531,14 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
       <source>Customize Fonts</source>
       <translation>Prispôsobenie fontov</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Ikona Docku sa vždy zobrazí, keď je hlavné okno otvorené, aby macOS mohol zobraziť názov aplikácie a menu. Zapnite túto možnosť, aby ikona Docku zostala viditeľná aj po skrytí hlavného okna.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Nechajte ikonu Docku viditeľnú na pozadí</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

@@ -3539,6 +3539,14 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <source>Customize Fonts</source>
       <translation>Betűtípusok testreszabása</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>A dokk ikon mindig látható, amíg a fő ablak nyitva van, így a macOS megjelenítheti az alkalmazás nevét és a menüket. Engedélyezd ezt az opciót, hogy a dokk ikon látható maradjon a fő ablak elrejtése után.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Tartsd a dokk ikonját a háttérben</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

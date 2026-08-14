@@ -3516,6 +3516,14 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <source>Customize Fonts</source>
       <translation>Tùy chỉnh phông chữ</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Biểu tượng Dock luôn được hiển thị khi cửa sổ chính đang mở để macOS có thể hiển thị tên ứng dụng và menu. Bật tùy chọn này để giữ biểu tượng Dock hiển thị sau khi cửa sổ chính bị ẩn.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Giữ biểu tượng Dock hiển thị ở nền</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

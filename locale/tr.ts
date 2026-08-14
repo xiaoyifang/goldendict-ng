@@ -3536,6 +3536,14 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <source>Customize Fonts</source>
       <translation>Fontları Özelleştirin</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Ana pencere açıkken Dock simgesi her zaman görünür, böylece macOS uygulama adını ve menüleri gösterebilir. Ana pencere gizlendikten sonra Dock simgesinin görünür kalması için bu seçeneği etkinleştirin.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Dock simgesi arka planda görünür kalın</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

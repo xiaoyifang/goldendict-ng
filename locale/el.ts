@@ -3541,6 +3541,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Customize Fonts</source>
       <translation>Προσαρμογή γραμματοσειρών</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Το εικονίδιο του Dock εμφανίζεται πάντα όταν το κύριο παράθυρο είναι ανοιχτό, έτσι ώστε το macOS να μπορεί να εμφανίζει το όνομα της εφαρμογής και τα μενού. Ενεργοποιήστε αυτήν την επιλογή για να διατηρήσετε το εικονίδιο Dock ορατό μετά την απόκρυψη του κύριου παραθύρου.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Διατηρήστε το εικονίδιο Dock ορατό στο παρασκήνιο</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

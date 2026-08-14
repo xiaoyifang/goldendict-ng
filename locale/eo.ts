@@ -3540,6 +3540,14 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <source>Customize Fonts</source>
       <translation>Agordi Tiparojn</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>La Doka ikono ĉiam estas montrata dum la ĉefa fenestro estas malfermita, tiel ke macOS povas montri la aplikaĵan nomon kaj menuojn. Ebligu ĉi tiun opcion por teni la Dokan ikonon videbla post kiam la ĉefa fenestro estas kaŝita.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Tenu la Dokan ikonon videbla en fono</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

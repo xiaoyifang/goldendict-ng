@@ -3630,6 +3630,14 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <source>Customize Fonts</source>
       <translation>Qillqanak kunjams munta</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Dock uñakipawi utjawa jach'a ventana jist'aratäkipan, ukhamaraki macOS ukax uñacht'ayañapataki aplicación sutipa ukat menunaka. Aka opción jist'araña Dock uñakipawi uñstayañataki jach'a ventana imantatäxipan.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Dock uñakipawi qhipatx uñstayaña</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

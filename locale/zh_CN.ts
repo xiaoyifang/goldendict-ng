@@ -3528,6 +3528,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Customize Fonts</source>
       <translation>自定义字体</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Dock图标在主窗口打开时始终显示，以便macOS显示应用名称和菜单。启用这个选项，在主窗口隐藏后，Dock图标依然可见。</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>保持Dock图标在背景中可见</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
