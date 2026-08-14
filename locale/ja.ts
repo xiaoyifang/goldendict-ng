@@ -368,15 +368,15 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
+      <translation>台湾繁体字</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
-      <translation>香港の種類</translation>
+      <translation>香港繁体字</translation>
     </message>
     <message>
       <source>Mainland variant</source>
-      <translation>本土の種類</translation>
+      <translation>中国大陸簡体字</translation>
     </message>
   </context>
   <context>
@@ -755,19 +755,19 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Cancel reindex</source>
-      <translation>インデックス再作成をキャンセル</translation>
+      <translation>インデックス再作成を取り消す</translation>
     </message>
     <message>
       <source>Schedule for reindex</source>
-      <translation>再インデックスのスケジュール</translation>
+      <translation>インデックス再作成を予約</translation>
     </message>
     <message>
       <source>Cancel schedule reindex</source>
-      <translation>スケジュールの再インデックスをキャンセル</translation>
+      <translation>インデックス再作成の予約を解除</translation>
     </message>
     <message>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
-      <translation>辞書の再インデックスがスケジュールされています。インデックスは次のアプリケーションの再起動時に再構築されます。</translation>
+      <translation>辞書の再インデックスが予約された。次回アプリ起動時に再構築される。</translation>
     </message>
     <message>
       <source>Change display name</source>
@@ -1126,11 +1126,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Group already exists</source>
-      <translation>グループは既に存在します</translation>
+      <translation>グループは既に存在している</translation>
     </message>
     <message>
       <source>A group with the name &apos;%1&apos; already exists.</source>
-      <translation>A group with the name &apos;%1&apos; already exists.</translation>
+      <translation>「%1」というグループは既に存在している。</translation>
     </message>
   </context>
   <context>
@@ -2639,7 +2639,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Lock Panels</source>
-      <translation>ロックパネル</translation>
+      <translation>パネルをロック</translation>
     </message>
     <message>
       <source>Clear History</source>
@@ -2647,7 +2647,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Are you sure you want to clear all history items?</source>
-      <translation>すべての履歴アイテムを消去してもよろしいですか？</translation>
+      <translation>すべての履歴項目を消去してもよろしいですか？</translation>
     </message>
     <message>
       <source>Save File</source>
@@ -2655,11 +2655,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Application is still running in the background. Click the tray icon to show the window.</source>
-      <translation>アプリケーションはまだバックグラウンドで実行されています。トレイのアイコンをクリックするとウィンドウが表示されます。</translation>
+      <translation>アプリケーションはバックグラウンドで起動中だよ。タスクトレイのアイコンをクリックしてウィンドウを表示してね。</translation>
     </message>
     <message>
       <source>Open in &amp;External Browser</source>
-      <translation>外部ブラウザで開く</translation>
+      <translation>外部ブラウザで開く(&amp;E)</translation>
     </message>
   </context>
   <context>
@@ -2995,9 +2995,9 @@ the application.</source>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise, they are added to
 be the last ones.</source>
-      <translation>これをオンにすると、
-現在のアクティブなタブの直後に新しいタブが開かれます。それ以外の場合は、
-最後のタブに追加されます。</translation>
+      <translation>このオプションを有効にすると、
+新しいタブは現在アクティブなタブの直後に開く。
+無効の場合は、すべてのタブの最後に追加される。</translation>
     </message>
     <message>
       <source>&amp;Style</source>
@@ -3013,11 +3013,11 @@ be the last ones.</source>
     </message>
     <message>
       <source>Font</source>
-      <translation>Font</translation>
+      <translation>フォント</translation>
     </message>
     <message>
       <source>Font Size</source>
-      <translation>Font Size</translation>
+      <translation>フォントサイズ</translation>
     </message>
     <message>
       <source>Interface language</source>
@@ -3115,7 +3115,7 @@ in the pressed state when the word selection changes.</source>
     </message>
     <message>
       <source>Only track selection when all selected keys are kept pressed:</source>
-      <translation>選択したすべてのキーが押されたときにのみトラック選択されます:</translation>
+      <translation>指定したキーをすべて押している場合のみ、選択を追跡する：</translation>
     </message>
     <message>
       <source>Alt key</source>
@@ -3476,11 +3476,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>S&amp;can</source>
-      <translation>缶(&amp;C)</translation>
+      <translation>スキャン(&amp;C)</translation>
     </message>
     <message>
       <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
-      <translation>記事ビューでJavaScriptアラート、確認、およびプロンプトを抑制します。</translation>
+      <translation>本文ビューでのJavaScriptアラート、確認ダイアログ、プロンプトを抑制する。</translation>
     </message>
     <message>
       <source>Suppress JavaScript dialogs</source>
@@ -3488,7 +3488,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Open website dictionary in separate tab</source>
-      <translation>ウェブサイト辞書を別タブで開く</translation>
+      <translation>オンライン辞書ページを別タブで開く</translation>
     </message>
     <message>
       <source>Anki</source>
@@ -3496,7 +3496,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Allow JavaScript to access clipboard in the article view.</source>
-      <translation>記事ビューでのクリップボードへのアクセスをJavaScriptに許可する。</translation>
+      <translation>本文ビューで、JavaScriptにクリップボードへのアクセスを許可する。</translation>
     </message>
     <message>
       <source>Enable JavaScript clipboard access (need restart)</source>
@@ -3504,7 +3504,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Restart to apply the JavaScript clipboard access change.</source>
-      <translation>再起動してJavaScriptクリップボードのアクセス権の変更を適用します。</translation>
+      <translation>再起動して、JavaScriptのクリップボードアクセス設定の変更を適用する。</translation>
     </message>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
@@ -3815,7 +3815,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Open in &amp;External Browser</source>
-      <translation>外部ブラウザで開く</translation>
+      <translation>外部ブラウザで開く(&amp;E)</translation>
     </message>
   </context>
   <context>
