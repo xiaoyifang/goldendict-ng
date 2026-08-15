@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki：发布到 Anki 失败</translation>
+      <translation>Anki：发布至 Anki 失败</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki：发帖至Anki 成功</translation>
+      <translation>Anki：发布至Anki 成功</translation>
     </message>
   </context>
   <context>
@@ -285,7 +285,7 @@
     </message>
     <message>
       <source>&amp;Copy sound to clipboard</source>
-      <translation>&amp;复制声音到剪贴板</translation>
+      <translation>复制声音到剪贴板(&amp;C)</translation>
     </message>
     <message>
       <source>Failed to copy sound</source>
@@ -3466,7 +3466,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>S&amp;can</source>
-      <translation>S&amp;can</translation>
+      <translation>扫描(&amp;C)</translation>
     </message>
     <message>
       <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
@@ -3682,7 +3682,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Website Url:</source>
-      <translation>网站 Url：</translation>
+      <translation>网站 URL：</translation>
     </message>
     <message>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
@@ -3690,11 +3690,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation>Complete Html (*.html *.htm)</translation>
+      <translation>完整HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation>single Html (*.html *.htm)</translation>
+      <translation>仅 HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
@@ -3702,7 +3702,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation>Mime Html (*.mhtml)</translation>
+      <translation>Mime HTML (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -4123,7 +4123,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
-      <translation>基于英语音系的日语最广泛使用的转录方法</translation>
+      <translation>日语使用最广泛的罗马字（拉丁字母）转写方式，基于英文拼写习惯。</translation>
     </message>
     <message>
       <source>Remove selected directories from the list?</source>
