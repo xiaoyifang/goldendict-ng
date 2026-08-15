@@ -3508,11 +3508,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Hide tab bar when only one tab is open.</source>
-      <translation>タブが開いているときはタブバーを非表示にします。</translation>
+      <translation>タブが1つだけのときにタブバーを非表示にする。</translation>
     </message>
     <message>
       <source>Use any external audio player to play audio files</source>
-      <translation>外部オーディオプレーヤーを使用してオーディオファイルを再生する</translation>
+      <translation>外部プレーヤーを使用して音声ファイルを再生する</translation>
     </message>
     <message>
       <source>View detailed configuration guide</source>
@@ -3520,19 +3520,19 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>The audio path will be passed as a command-line argument to the external player. </source>
-      <translation>オーディオパスはコマンドライン引数として外部プレーヤーに渡されます。 </translation>
+      <translation>音声ファイルのパスがコマンドライン引数として外部プレーヤーに渡される。</translation>
     </message>
     <message>
       <source>Internal Audio Player:</source>
-      <translation>内蔵オーディオプレーヤー:</translation>
+      <translation>内蔵プレーヤー：</translation>
     </message>
     <message>
       <source>External Audio Player:</source>
-      <translation>外部オーディオプレーヤー:</translation>
+      <translation>外部プレーヤー：</translation>
     </message>
     <message>
       <source>Automatically switches based on system theme.</source>
-      <translation>システムテーマに応じて自動的に切り替わります。</translation>
+      <translation>システムテーマに応じて自動的に切り替わる。</translation>
     </message>
     <message>
       <source>Customize Fonts</source>
@@ -3540,11 +3540,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
-      <translation>メインウィンドウが開いている間は常にDockアイコンが表示され、macOSがアプリケーション名やメニューを表示できるようにしています。メインウィンドウが非表示になった後もDockアイコンを表示させておくために、このオプションを有効にしてください。</translation>
+      <translation>メインウィンドウ表示中はDockアイコンが表示され、macOSがアプリ名とメニューを表示できる。このオプションを有効にすると、メインウィンドウを隠した後もDockアイコンを表示し続ける。</translation>
     </message>
     <message>
       <source>Keep Dock icon visible in background</source>
-      <translation>背景にドックアイコンを表示させてください</translation>
+      <translation>バックグラウンドでDockアイコンを表示し続ける</translation>
     </message>
   </context>
   <context>
@@ -3680,39 +3680,39 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>configフォルダのgd_log.txtにデバッグメッセージを保存します。</translation>
+      <translation>デバッグメッセージをgd_log.txtとして設定フォルダに保存する。</translation>
     </message>
     <message>
       <source>Force the word to be translated in Popup.</source>
-      <translation>ポップアップで翻訳する単語を強制します。</translation>
+      <translation>ポップアップで単語を翻訳するよう強制する。</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
-      <translation>メインウィンドウに単語を強制的に翻訳します。</translation>
+      <translation>メインウィンドウで単語を翻訳するよう強制する。</translation>
     </message>
     <message>
       <source>Website Url:</source>
-      <translation>Website Url:</translation>
+      <translation>Web URL：</translation>
     </message>
     <message>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
-      <translation>Url では、 &quot;%GDWORD%&quot; が検索されている単語に置き換えられます。</translation>
+      <translation>URL内の「%GDWORD%」は、検索している単語に置き換えられる。</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation>Complete Html (*.html *.htm)</translation>
+      <translation>完全なHTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation>シングルHtml (*.html *.htm)</translation>
+      <translation>単一HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
-      <translation>PDF ドキュメント (*.pdf *.PDF)</translation>
+      <translation>PDFドキュメント (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation>Mime Html (*.mhtml)</translation>
+      <translation>MIME HTML (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -3720,7 +3720,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation>記事を保存完了しました</translation>
+      <translation>記事の保存が完了した</translation>
     </message>
     <message>
       <source>Error</source>
@@ -3728,19 +3728,19 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation>記事を保存できません: %1</translation>
+      <translation>記事を保存ない： %1</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation>PDFの保存が完了しました</translation>
+      <translation>PDFの保存が完了した</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation>PDFの保存に失敗しました</translation>
+      <translation>PDFの保存に失敗した</translation>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
-      <translation>記事を保存しています... (%1/%2)</translation>
+      <translation>記事を保存している… (%1/%2)</translation>
     </message>
   </context>
   <context>
@@ -4130,7 +4130,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
-      <translation>最も広く使用されている日本語の音韻論に基づく表記法</translation>
+      <translation>英語の綴りに基づいた、最も広く使われている日本語のローマ字表記法</translation>
     </message>
     <message>
       <source>Remove selected directories from the list?</source>
@@ -4138,19 +4138,19 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Remove %1 directories from the list?</source>
-      <translation>%1 ディレクトリをリストから削除しますか？</translation>
+      <translation>リストから%1個のディレクトリを削除しますか？</translation>
     </message>
     <message>
       <source>Remove %1 sites from the list?</source>
-      <translation>%1 サイトをリストから削除しますか？</translation>
+      <translation>リストから%1個のサイトを削除しますか？</translation>
     </message>
     <message>
       <source>Remove %1 servers from the list?</source>
-      <translation>%1 サーバーをリストから削除しますか？</translation>
+      <translation>リストから%1個のサーバーを削除しますか？</translation>
     </message>
     <message>
       <source>Remove %1 programs from the list?</source>
-      <translation>%1 プログラムをリストから削除しますか？</translation>
+      <translation>リストから%1個のプログラムを削除しますか？</translation>
     </message>
   </context>
   <context>
@@ -4250,7 +4250,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <name>WebSite</name>
     <message>
       <source>This website dictionary is opened in a new tab</source>
-      <translation>このウェブサイト辞書は新しいタブで開かれています</translation>
+      <translation>このオンライン辞書は新しいタブで開いている</translation>
     </message>
   </context>
   <context>
@@ -4277,15 +4277,15 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Icon file name. Relative to the config directory.</source>
-      <translation>アイコンのファイル名。設定ディレクトリに相対的です。</translation>
+      <translation>アイコンのファイル名（設定フォルダからの相対パス）</translation>
     </message>
     <message>
       <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
-      <translation>個別のタブでウェブサイトを開くときにのみ利用できます。ファイルパス（設定ディレクトリまたは絶対ディレクトリからの相対）または直接スクリプトコンテンツにすることができます。</translation>
+      <translation>別タブでウェブサイトを開く場合にのみ利用可能。ファイルパス（設定フォルダからの相対パスまたは絶対パス）またはスクリプトを直接指定できる。</translation>
     </message>
     <message>
       <source>This column is disabled because &quot;Open website dictionary in separate tab&quot; option is not enabled in Preferences.</source>
-      <translation>&quot;別タブ&quot; オプションでウェブサイト辞書を開く設定で有効になっていないため、この列は無効です。</translation>
+      <translation>環境設定で「別タブでオンライン辞書を開く」オプションが有効になっていないため、この列は無効である。</translation>
     </message>
   </context>
   <context>
