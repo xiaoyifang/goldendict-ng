@@ -81,14 +81,15 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation>&lt;div class=&quot;welcome-container&quot;&gt;
+      <translation>
+&lt;div class=&quot;welcome-container&quot;&gt;
 &lt;h3&gt;&lt;strong&gt;GoldenDict-ng&lt;/strong&gt;へようこそ！&lt;/h3&gt;
 &lt;section&gt;
 &lt;h4&gt;使い始めるには&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;編集&lt;/span&gt; > &lt;span&gt;辞書&lt;/span&gt;&lt;/span&gt; に進み、辞書ファイルの追加、Wikipediaなどのオンラインソースの設定、およびグループへの整理を行ってください。&lt;/li&gt;
 &lt;li&gt;設定が完了すると、このウィンドウ内で単語を検索できるほか、&lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;「スキャンポップアップ」機能を使って他のアプリケーションで検索する&lt;/a&gt;ことも可能になります。&lt;/li&gt;
-&lt;li&gt;プログラムをカスタマイズするには、&lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;編集&lt;/span&gt; > &lt;span&gt;設定&lt;/span&gt;&lt;/span&gt; から各種設定項目をご確認ください。すべての設定にはツールチップによる説明が付いていますので、不明な点があればぜひご参照ください。&lt;/li&gt;
+&lt;li&gt;プログラムをカスタマイズするには、&lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;編集&lt;/span&gt; > &lt;span&gt;環境設定&lt;/span&gt;&lt;/span&gt; から各種設定項目をご確認ください。すべての設定にはツールチップによる説明が付いていますので、不明な点があればぜひご参照ください。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
 &lt;p&gt;さらに詳しいヘルプが必要な場合や、ご質問・ご提案などがございましたら、本プログラムの&lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;フォーラム&lt;/a&gt;または&lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;公式サイト&lt;/a&gt;をご利用ください。&lt;/p&gt;
