@@ -37,8 +37,6 @@ qt_generate_deploy_script(
         ${MACOS_DEPLOY_ICU_SETUP}
         qt_deploy_runtime_dependencies(
                     EXECUTABLE \"${Redistributable_APP}\"
-                    DEPLOY_TOOL_OPTIONS
-                        \"-no-codesign\"
                     GENERATE_QT_CONF
                     NO_APP_STORE_COMPLIANCE)
         # Homebrew's aggregate Qt package exposes an optional virtual-keyboard
