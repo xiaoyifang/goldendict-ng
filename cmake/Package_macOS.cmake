@@ -115,18 +115,23 @@ install(CODE "
 
 find_program(CREATE-DMG "create-dmg")
 if (CREATE-DMG)
+    set(DMG_OUTPUT_NAME "GoldenDict-ng-${CMAKE_PROJECT_VERSION}-Qt${Qt6_VERSION}-macOS-${CMAKE_SYSTEM_PROCESSOR}.dmg")
     install(CODE "
+    # The shell-version of create-dmg shipped by Homebrew does not always ship with
+    # the --overwrite flag (it was added very recently). Mirror the upstream README's
+    # example by removing any existing output file beforehand, and drop --overwrite.
+    file(REMOVE \"${CMAKE_CURRENT_BINARY_DIR}/${DMG_OUTPUT_NAME}\")
     execute_process(COMMAND ${CREATE-DMG} \
         --skip-jenkins \
-        --overwrite \
         --format \"ULMO\"
         --volname ${CMAKE_PROJECT_NAME}-${CMAKE_PROJECT_VERSION}-${CMAKE_SYSTEM_PROCESSOR} \
         --volicon ${CMAKE_SOURCE_DIR}/icons/macicon.icns \
         --icon \"${App_Name}\" 100 100
         --app-drop-link 300 100 \
-        \"GoldenDict-ng-${CMAKE_PROJECT_VERSION}-Qt${Qt6_VERSION}-macOS-${CMAKE_SYSTEM_PROCESSOR}.dmg\" \
-        \"${Assembling_Dir}\")"
+        \"${DMG_OUTPUT_NAME}\" \
+        \"${Assembling_Dir}\"
+        COMMAND_ERROR_IS_FATAL ANY)"
     )
 else ()
-    message(WARNING "create-dmg not found. No .dmg will be created")
+    message(FATAL_ERROR "create-dmg not found. Install it via `brew install create-dmg` before running cmake --install, otherwise no .dmg artifact will be produced.")
 endif ()
