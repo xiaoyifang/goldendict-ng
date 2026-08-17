@@ -497,7 +497,7 @@ between classic and school orthography in cyrillic)</translation>
     <name>DictHeadwords</name>
     <message>
       <source>If checked any filter changes will we immediately applied to headwords list</source>
-      <translation type="unfinished">If checked any filter changes will we immediately applied to headwords list</translation>
+      <translation>If checked, any filter changes will be immediately applied to headwords list</translation>
     </message>
     <message>
       <source>Auto apply</source>
