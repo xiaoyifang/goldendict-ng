@@ -94,15 +94,15 @@ jobs:
       - name: Print package content
         run: |
           ls -Rl ./build_dir/redist
-          echo "--- .dmg files in build_dir/ ---"
-          ls -l build_dir/*.dmg 2>/dev/null || echo "(none)"
+          echo "--- .dmg files in  ---"
+          ls -l *.dmg 2>/dev/null || echo "(none)"
       - uses: actions/upload-artifact@v7
         with:
           name: macOS-${{ matrix.os }}-Qt${{ matrix.qt_ver }}
           if-no-files-found: error
           retention-days: 7
           archive: false
-          path: 'build_dir/*.dmg'
+          path: '*.dmg'
 
   build_Windows:
     permissions:
