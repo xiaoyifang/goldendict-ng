@@ -94,6 +94,8 @@ jobs:
       - name: Print package content
         run: |
           ls -Rl ./build_dir/redist
+          echo "--- .dmg files in  ---"
+          ls -l *.dmg 2>/dev/null || echo "(none)"
       - uses: actions/upload-artifact@v7
         with:
           name: macOS-${{ matrix.os }}-Qt${{ matrix.qt_ver }}
