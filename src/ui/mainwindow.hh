@@ -39,6 +39,10 @@
 using std::string;
 using std::vector;
 
+class QMoveEvent;
+class QResizeEvent;
+class QShowEvent;
+
 class MainWindow: public QMainWindow
 {
   Q_OBJECT
@@ -186,6 +190,9 @@ private:
   QTimer ftsRestartTimer;       // Timer to delay FTS indexing restart after state change
   bool ftsStateChanged = false; // Track if FTS state was changed in DictInfo
 
+  QTimer * geometrySaveTimer = nullptr; // Debounce timer for persisting main window geometry
+  bool geometryReappliedOnFirstShow = false;
+
   FTS::FullTextSearchDialog * ftsDlg;
 
   QIcon starIcon, blueStarIcon;
@@ -220,6 +227,14 @@ private:
   void wheelEvent( QWheelEvent * ) override;
   void closeEvent( QCloseEvent * ) override;
   void hideEvent( QHideEvent * event ) override;
+  void resizeEvent( QResizeEvent * ) override;
+  void moveEvent( QMoveEvent * ) override;
+  void showEvent( QShowEvent * event ) override;
+
+  /// Schedules a debounced (1s) save of the main window geometry.
+  void scheduleGeometrySave();
+  /// Persists the current validated main window geometry to the config.
+  void saveMainWindowGeometry();
 
   void applyProxySettings();
   void makeDictionaries();

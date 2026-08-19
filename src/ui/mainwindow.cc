@@ -80,6 +80,10 @@
 #endif
 
 #include <QGuiApplication>
+#include <QScreen>
+#include <QResizeEvent>
+#include <QMoveEvent>
+#include <QShowEvent>
 #include <QWindow>
 #include <QWebEngineSettings>
 #include <QProxyStyle>
@@ -154,6 +158,57 @@ void MainWindow::changeWebEngineViewFont() const
                                                                     cfg.preferences.customFonts.monospace );
   }
 }
+
+namespace {
+
+/// Decodes the saved geometry and checks whether it is usable: the window must
+/// be reasonably large and at least partially visible on one of the screens.
+/// This guards against corrupted configs (e.g. a tiny window saved at an
+/// off-screen position) that would otherwise make the main window open in a
+/// broken size on every launch.
+bool isMainWindowGeometryUsable( const QByteArray & geometry )
+{
+  if ( geometry.isEmpty() ) {
+    return false;
+  }
+
+  QWidget probe;
+  if ( !probe.restoreGeometry( geometry ) ) {
+    return false;
+  }
+
+  const QRect r = probe.geometry();
+  if ( r.width() < 500 || r.height() < 400 ) {
+    return false;
+  }
+
+  const QList< QScreen * > screens = QGuiApplication::screens();
+  for ( QScreen * screen : screens ) {
+    if ( r.intersects( screen->availableGeometry() ) ) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/// Returns true if the given rectangle is large enough and at least partially
+/// visible on one of the screens.
+bool isRectUsable( const QRect & r )
+{
+  if ( !r.isValid() || r.width() < 500 || r.height() < 400 ) {
+    return false;
+  }
+
+  const QList< QScreen * > screens = QGuiApplication::screens();
+  for ( QScreen * screen : screens ) {
+    if ( r.intersects( screen->availableGeometry() ) ) {
+      return true;
+    }
+  }
+  return false;
+}
+
+} // namespace
 
 MainWindow::MainWindow( Config::Class & cfg_ ):
   trayIcon( nullptr ),
@@ -873,8 +928,15 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   if ( cfg.mainWindowState.size() && !cfg.resetState ) {
     restoreState( cfg.mainWindowState );
   }
-  if ( cfg.mainWindowGeometry.size() ) {
+  if ( cfg.mainWindowGeometry.size() && isMainWindowGeometryUsable( cfg.mainWindowGeometry ) ) {
     restoreGeometry( cfg.mainWindowGeometry );
+  }
+  else {
+    // Missing or invalid saved geometry (e.g. a tiny off-screen window):
+    // fall back to a sane default size centered on the primary screen.
+    const QRect screenRect = QGuiApplication::primaryScreen()->availableGeometry();
+    resize( 900, 700 );
+    move( screenRect.center() - QPoint( 450, 350 ) );
   }
 
   // Show window unless it is configured not to
@@ -1412,8 +1474,14 @@ void MainWindow::commitData()
 
   try {
     // Save MainWindow state and geometry
-    cfg.mainWindowState    = saveState();
-    cfg.mainWindowGeometry = saveGeometry();
+    cfg.mainWindowState = saveState();
+    // Only persist geometry while the window is actually visible. When it is
+    // hidden (e.g. started to tray or closed to tray), saveGeometry() may
+    // return an un-applied default frame on macOS, which would clobber the
+    // last validated geometry saved by the debounced handler.
+    if ( isVisible() ) {
+      cfg.mainWindowGeometry = saveGeometry();
+    }
 
     // Save popup window state and geometry
     if ( scanPopup ) {
@@ -1732,6 +1800,69 @@ void MainWindow::hideEvent( QHideEvent * event )
     MacAppActivation::setDockIconVisible( false );
   }
 #endif
+}
+
+void MainWindow::showEvent( QShowEvent * event )
+{
+  QMainWindow::showEvent( event );
+
+  // On macOS, a window that is restored while hidden (e.g. "start to tray")
+  // may not have its saved size applied to the native frame until it is first
+  // shown. Re-apply the validated saved geometry on that first show so the
+  // window opens at the size the user last chose instead of the UI default.
+  if ( !geometryReappliedOnFirstShow && cfg.mainWindowGeometry.size()
+       && isMainWindowGeometryUsable( cfg.mainWindowGeometry ) ) {
+    geometryReappliedOnFirstShow = true;
+    restoreGeometry( cfg.mainWindowGeometry );
+  }
+}
+
+void MainWindow::resizeEvent( QResizeEvent * event )
+{
+  QMainWindow::resizeEvent( event );
+  scheduleGeometrySave();
+}
+
+void MainWindow::moveEvent( QMoveEvent * event )
+{
+  QMainWindow::moveEvent( event );
+  scheduleGeometrySave();
+}
+
+void MainWindow::scheduleGeometrySave()
+{
+  if ( isQuitting ) {
+    return;
+  }
+
+  if ( !geometrySaveTimer ) {
+    geometrySaveTimer = new QTimer( this );
+    geometrySaveTimer->setSingleShot( true );
+    geometrySaveTimer->setInterval( 1000 );
+    connect( geometrySaveTimer, &QTimer::timeout, this, &MainWindow::saveMainWindowGeometry );
+  }
+  geometrySaveTimer->start();
+}
+
+void MainWindow::saveMainWindowGeometry()
+{
+  if ( isQuitting || !isVisible() || isMinimized() ) {
+    return;
+  }
+
+  // Only persist a geometry that is large enough and still on screen, so a
+  // corrupted value can never be written back into the config.
+  if ( !isRectUsable( normalGeometry() ) ) {
+    return;
+  }
+
+  cfg.mainWindowGeometry = saveGeometry();
+  try {
+    Config::save( cfg );
+  }
+  catch ( std::exception & e ) {
+    qWarning() << "Failed to save main window geometry:" << e.what();
+  }
 }
 
 void MainWindow::quitApp()
