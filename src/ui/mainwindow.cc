@@ -60,6 +60,7 @@
 #ifdef Q_OS_MAC
   #include "macos/mac_app_activation.hh"
   #include "macos/macmouseover.hh"
+  #include "macos/fullscreen_aux.hh"
 #endif
 
 #if defined( Q_OS_WIN )
@@ -3877,7 +3878,17 @@ void MainWindow::showTranslation( const QString & word, const QString & windowTy
   else {
     ensureScanPopup();
     if ( scanPopup ) {
+      // External (URL / structured message) popup lookups show without
+      // activating GoldenDict when the frontmost app is fullscreen, so a
+      // fullscreen video app stays in fullscreen. Otherwise behave normally
+      // (activatable, editable search box).
+      bool fullscreenMode = false;
+#ifdef Q_OS_MAC
+      fullscreenMode = IsFrontmostAppFullscreen();
+#endif
+      scanPopup->setFullscreenFriendlyMode( fullscreenMode );
       scanPopup->translateWord( word );
+      scanPopup->setFullscreenFriendlyMode( false );
     }
   }
 }
