@@ -113,7 +113,10 @@ install(CODE "
         COMMAND_ERROR_IS_FATAL ANY)
 ")
 
-find_program(CREATE-DMG "create-dmg")
+# create-dmg is only needed at install time (cmake --install) to produce the
+# .dmg artifact. Keep it optional at configure time so that configure-only
+# flows (e.g. PR build checks) succeed even when the tool is absent.
+find_program(CREATE-DMG "create-dmg" HINTS "/opt/homebrew/bin" "/usr/local/bin")
 if (CREATE-DMG)
     set(DMG_OUTPUT_NAME "GoldenDict-ng-${CMAKE_PROJECT_VERSION}-Qt${Qt6_VERSION}-macOS-${CMAKE_SYSTEM_PROCESSOR}.dmg")
     install(CODE "
@@ -133,5 +136,5 @@ if (CREATE-DMG)
         COMMAND_ERROR_IS_FATAL ANY)"
     )
 else ()
-    message(FATAL_ERROR "create-dmg not found. Install it via `brew install create-dmg` before running cmake --install, otherwise no .dmg artifact will be produced.")
+    message(WARNING "create-dmg not found. Install it via `brew install create-dmg` before running cmake --install, otherwise no .dmg artifact will be produced (the .app bundle is still produced).")
 endif ()
