@@ -73,6 +73,7 @@ jobs:
           HOMEBREW_NO_INSTALL_CLEANUP: 1
         run: |
           brew install --force --overwrite \
+          create-dmg \
           ccache \
           opencc \
           ffmpeg@6 \
