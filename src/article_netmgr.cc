@@ -284,7 +284,9 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( const 
     return handleLookupScheme( url, contentType );
   }
 
-  if ( ( scheme == "bres" || scheme == "gdau" || scheme == "gdvideo" || scheme == "gico" ) && url.path().size() ) {
+  if ( ( scheme == "bres" || scheme == "gdau" || scheme == "gdvideo" || scheme == "gico"
+         || scheme == "qrcx" )
+       && url.path().size() ) {
     return handleResourceScheme( url, contentType );
   }
 
