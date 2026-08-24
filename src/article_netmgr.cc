@@ -14,6 +14,65 @@
 
 using std::string;
 
+namespace {
+
+// Extension whitelist table. Keeping these in a flat array (rather than a
+// chain of ifs) makes the lookup O(table_size) with constant low overhead and,
+// more importantly, keeps the cognitive complexity of the main resolver
+// below SonarCloud's 25-point threshold.
+struct ExtensionMime {
+  const char * ext;
+  const char * mime;
+};
+const ExtensionMime kExtensionMimeTable[] = {
+  { "html", "text/html; charset=utf-8" }, { "htm", "text/html; charset=utf-8" },
+  { "css", "text/css; charset=utf-8" },     { "js", "text/javascript; charset=utf-8" },
+  { "mjs", "text/javascript; charset=utf-8" }, { "png", "image/png" },
+  { "jpg", "image/jpeg" },                   { "jpeg", "image/jpeg" },
+  { "gif", "image/gif" },                    { "svg", "image/svg+xml" },
+  { "webp", "image/webp" },                 { "woff", "font/woff" },
+  { "woff2", "font/woff2" },                { "ttf", "font/ttf" },
+  { "mp3", "audio/mpeg" },                  { "wav", "audio/wav" },
+  { "ogg", "audio/ogg" },
+};
+const size_t kExtensionMimeTableSize = sizeof( kExtensionMimeTable ) / sizeof( kExtensionMimeTable[ 0 ] );
+
+// Returns the whitelisted MIME type for the given file extension, or an
+// empty QByteArray when the extension is not in the table.
+QByteArray lookupMimeByExtension( const QString & ext )
+{
+  for ( size_t i = 0; i < kExtensionMimeTableSize; ++i ) {
+    if ( ext.compare( QLatin1String( kExtensionMimeTable[ i ].ext ), Qt::CaseInsensitive ) == 0 ) {
+      return QByteArray( kExtensionMimeTable[ i ].mime );
+    }
+  }
+  return {};
+}
+
+// Returns true when the payload smells like an HTML / XML document, so we
+// can detect cases where the system MIME database mis-classified HTML as
+// text/plain or application/octet-stream.
+bool sniffHtmlContent( const QByteArray & data )
+{
+  const QByteArray trimmed = data.trimmed().toLower();
+  return trimmed.startsWith( "<!doctype html" )
+    || trimmed.startsWith( "<html" )
+    || trimmed.startsWith( "<?xml" );
+}
+
+// Appends "; charset=utf-8" for textual MIME types so QtWebEngine renders
+// pages with the correct encoding regardless of system locale defaults.
+QByteArray withUtf8Charset( const QString & mimeName )
+{
+  QByteArray result = mimeName.toUtf8();
+  if ( result.startsWith( "text/" ) || result == "application/javascript" ) {
+    result.append( "; charset=utf-8" );
+  }
+  return result;
+}
+
+} // namespace
+
 QByteArray getMimeTypeWithFallback( const QUrl & url, const QByteArray & data )
 {
   const QString scheme = url.scheme().toLower();
@@ -28,48 +87,10 @@ QByteArray getMimeTypeWithFallback( const QUrl & url, const QByteArray & data )
   //    shared-mime-info database, which is absent on some minimal Linux
   //    installations and would otherwise make these resources fall back to
   //    text/plain (and render as raw source) in QtWebEngine.
-  const QString ext = QFileInfo( url.path() ).suffix().toLower();
-  if ( ext == "html" || ext == "htm" ) {
-    return "text/html; charset=utf-8";
-  }
-  if ( ext == "css" ) {
-    return "text/css; charset=utf-8";
-  }
-  if ( ext == "js" || ext == "mjs" ) {
-    return "text/javascript; charset=utf-8";
-  }
-  if ( ext == "png" ) {
-    return "image/png";
-  }
-  if ( ext == "jpg" || ext == "jpeg" ) {
-    return "image/jpeg";
-  }
-  if ( ext == "gif" ) {
-    return "image/gif";
-  }
-  if ( ext == "svg" ) {
-    return "image/svg+xml";
-  }
-  if ( ext == "webp" ) {
-    return "image/webp";
-  }
-  if ( ext == "woff" ) {
-    return "font/woff";
-  }
-  if ( ext == "woff2" ) {
-    return "font/woff2";
-  }
-  if ( ext == "ttf" ) {
-    return "font/ttf";
-  }
-  if ( ext == "mp3" ) {
-    return "audio/mpeg";
-  }
-  if ( ext == "wav" ) {
-    return "audio/wav";
-  }
-  if ( ext == "ogg" ) {
-    return "audio/ogg";
+  const QString ext      = QFileInfo( url.path() ).suffix().toLower();
+  const QByteArray extMime = lookupMimeByExtension( ext );
+  if ( !extMime.isEmpty() ) {
+    return extMime;
   }
 
   // 3. System MIME database (URL/extension based).
@@ -88,14 +109,10 @@ QByteArray getMimeTypeWithFallback( const QUrl & url, const QByteArray & data )
   // 5. HTML content sniffing. Never let real HTML be served as text/plain or
   //    application/octet-stream, which is exactly what makes the main window
   //    render raw HTML source on misconfigured systems.
-  if ( !data.isEmpty() ) {
-    const QByteArray trimmed = data.trimmed().toLower();
-    const bool looksLikeHtml =
-      trimmed.startsWith( "<!doctype html" ) || trimmed.startsWith( "<html" ) || trimmed.startsWith( "<?xml" );
-    if ( looksLikeHtml
-         && ( mimeName.isEmpty() || mimeName == "application/octet-stream" || mimeName == "text/plain" ) ) {
-      return "text/html; charset=utf-8";
-    }
+  const bool misclassifiedHtml = !data.isEmpty() && sniffHtmlContent( data )
+    && ( mimeName.isEmpty() || mimeName == "application/octet-stream" || mimeName == "text/plain" );
+  if ( misclassifiedHtml ) {
+    return "text/html; charset=utf-8";
   }
 
   // 6. Final fallback. Prefer application/octet-stream over text/plain so that
@@ -104,11 +121,7 @@ QByteArray getMimeTypeWithFallback( const QUrl & url, const QByteArray & data )
   if ( mimeName.isEmpty() ) {
     return "application/octet-stream";
   }
-  QByteArray result = mimeName.toUtf8();
-  if ( result.startsWith( "text/" ) || result == "application/javascript" ) {
-    result.append( "; charset=utf-8" );
-  }
-  return result;
+  return withUtf8Charset( mimeName );
 }
 
 
