@@ -8,9 +8,137 @@
 #include <QNetworkAccessManager>
 #include <QUrl>
 #include <QWebEngineUrlRequestJob>
+#include <QMimeDatabase>
+#include <QMimeType>
+#include <algorithm>
+#include <array>
 #include <stdint.h>
 
 using std::string;
+
+namespace {
+
+// Extension whitelist table. Keeping these in a flat array (rather than a
+// chain of ifs) makes the lookup O(table_size) with constant low overhead and,
+// more importantly, keeps the cognitive complexity of the main resolver
+// below SonarCloud's 25-point threshold.
+struct ExtensionMime
+{
+  const char * ext;
+  const char * mime;
+};
+// Note: the size is specified explicitly (not via CTAD) for MSVC
+// compatibility. While C++17 class template argument deduction works for
+// std::array in most contexts, MSVC 2022 may fail to resolve the type in
+// subsequent template-dependent expressions (e.g. std::find_if on the
+// iterator). An explicit size keeps the code portable across toolchains
+// without any runtime or maintenance penalty for this fixed-size table.
+const std::array< ExtensionMime, 17 > kExtensionMimeTable = { {
+  { "html", "text/html; charset=utf-8" },
+  { "htm", "text/html; charset=utf-8" },
+  { "css", "text/css; charset=utf-8" },
+  { "js", "text/javascript; charset=utf-8" },
+  { "mjs", "text/javascript; charset=utf-8" },
+  { "png", "image/png" },
+  { "jpg", "image/jpeg" },
+  { "jpeg", "image/jpeg" },
+  { "gif", "image/gif" },
+  { "svg", "image/svg+xml" },
+  { "webp", "image/webp" },
+  { "woff", "font/woff" },
+  { "woff2", "font/woff2" },
+  { "ttf", "font/ttf" },
+  { "mp3", "audio/mpeg" },
+  { "wav", "audio/wav" },
+  { "ogg", "audio/ogg" },
+} };
+
+// Returns the whitelisted MIME type for the given file extension, or an
+// empty QByteArray when the extension is not in the table.
+QByteArray lookupMimeByExtension( const QString & ext )
+{
+  auto it =
+    std::find_if( kExtensionMimeTable.begin(), kExtensionMimeTable.end(), [ &ext ]( const ExtensionMime & entry ) {
+      return ext.compare( QLatin1String( entry.ext ), Qt::CaseInsensitive ) == 0;
+    } );
+  if ( it != kExtensionMimeTable.end() ) {
+    return QByteArray( it->mime );
+  }
+  return {};
+}
+
+// Returns true when the payload smells like an HTML / XML document, so we
+// can detect cases where the system MIME database mis-classified HTML as
+// text/plain or application/octet-stream.
+bool sniffHtmlContent( const QByteArray & data )
+{
+  const QByteArray trimmed = data.trimmed().toLower();
+  return trimmed.startsWith( "<!doctype html" ) || trimmed.startsWith( "<html" ) || trimmed.startsWith( "<?xml" );
+}
+
+// Appends "; charset=utf-8" for textual MIME types so QtWebEngine renders
+// pages with the correct encoding regardless of system locale defaults.
+QByteArray withUtf8Charset( const QString & mimeName )
+{
+  QByteArray result = mimeName.toUtf8();
+  if ( result.startsWith( "text/" ) || result == "application/javascript" ) {
+    result.append( "; charset=utf-8" );
+  }
+  return result;
+}
+
+} // namespace
+
+QByteArray getMimeTypeWithFallback( const QUrl & url, const QByteArray & data )
+{
+  const QString scheme = url.scheme().toLower();
+
+  // 1. Article lookup / internal page schemes always serve HTML documents, so
+  //    never subject them to dynamic MIME probing.
+  if ( scheme == "gdlookup" || scheme == "bword" || scheme == "entry" || scheme == "gdinternal" ) {
+    return "text/html; charset=utf-8";
+  }
+
+  // 2. Extension whitelist. This avoids depending on the system's
+  //    shared-mime-info database, which is absent on some minimal Linux
+  //    installations and would otherwise make these resources fall back to
+  //    text/plain (and render as raw source) in QtWebEngine.
+  const QString ext        = QFileInfo( url.path() ).suffix().toLower();
+  const QByteArray extMime = lookupMimeByExtension( ext );
+  if ( !extMime.isEmpty() ) {
+    return extMime;
+  }
+
+  // 3. System MIME database (URL/extension based).
+  QMimeDatabase mimeDb;
+  QMimeType urlMime = mimeDb.mimeTypeForUrl( url );
+  QString mimeName  = ( urlMime.isValid() && !urlMime.isDefault() ) ? urlMime.name() : QString();
+
+  // 4. Content-based detection when the URL yielded nothing usable.
+  if ( mimeName.isEmpty() && !data.isEmpty() ) {
+    QMimeType dataMime = mimeDb.mimeTypeForData( data );
+    if ( dataMime.isValid() && !dataMime.isDefault() ) {
+      mimeName = dataMime.name();
+    }
+  }
+
+  // 5. HTML content sniffing. Never let real HTML be served as text/plain or
+  //    application/octet-stream, which is exactly what makes the main window
+  //    render raw HTML source on misconfigured systems.
+  const bool misclassifiedHtml = !data.isEmpty() && sniffHtmlContent( data )
+    && ( mimeName.isEmpty() || mimeName == "application/octet-stream" || mimeName == "text/plain" );
+  if ( misclassifiedHtml ) {
+    return "text/html; charset=utf-8";
+  }
+
+  // 6. Final fallback. Prefer application/octet-stream over text/plain so that
+  //    unrecognized HTML-ish payloads are not rendered as plain text. Keep the
+  //    charset hint for textual types for consistent rendering.
+  if ( mimeName.isEmpty() ) {
+    return "application/octet-stream";
+  }
+  return withUtf8Charset( mimeName );
+}
 
 
 QNetworkReply * ArticleNetworkAccessManager::getArticleReply( const QNetworkRequest & req )
@@ -156,7 +284,8 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( const 
     return handleLookupScheme( url, contentType );
   }
 
-  if ( ( scheme == "bres" || scheme == "gdau" || scheme == "gdvideo" || scheme == "gico" ) && url.path().size() ) {
+  if ( ( scheme == "bres" || scheme == "gdau" || scheme == "gdvideo" || scheme == "gico" || scheme == "qrcx" )
+       && url.path().size() ) {
     return handleResourceScheme( url, contentType );
   }
 
@@ -166,7 +295,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( const 
 sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::handleInternalScheme( const QUrl & url,
                                                                                    QString & contentType )
 {
-  contentType = "text/html";
+  contentType = "text/html; charset=utf-8";
   if ( url.host() == "welcome-page" ) {
     return articleMaker.makeWelcomePage();
   }
@@ -180,7 +309,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::handleLookupScheme(
     return std::make_shared< Dictionary::DataRequestInstant >( false );
   }
 
-  contentType  = "text/html";
+  contentType  = "text/html; charset=utf-8";
   QString word = Utils::Url::queryItemValue( url, "word" ).trimmed();
 
   bool groupIsValid = false;
@@ -225,9 +354,12 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::handleLookupScheme(
 sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::handleResourceScheme( const QUrl & url,
                                                                                    QString & contentType )
 {
-  QMimeType mineType = db.mimeTypeForUrl( url );
-  contentType        = mineType.name();
-  string id          = url.host().toStdString();
+  // Use the robust resolver (extension whitelist + QMimeDatabase) instead of a
+  // bare QMimeDatabase lookup, which may return text/plain on systems lacking
+  // shared-mime-info. The payload is not available here, so only URL-based
+  // heuristics are applied at this stage.
+  contentType = QString::fromLatin1( getMimeTypeWithFallback( url ) );
+  string id   = url.host().toStdString();
 
   // Special handling for 'user' host to access user configuration files
   if ( id == "user" && url.scheme() == "bres" ) {
@@ -424,7 +556,10 @@ void LocalSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
   }
 
   QNetworkReply * reply = this->mManager.getArticleReply( request );
-  requestJob->reply( "text/html", reply );
+  // Local (HTML) schemes always serve HTML documents: pin the content type
+  // explicitly so QtWebEngine never falls back to text/plain when the system
+  // lacks shared-mime-info, which would render the article as raw source.
+  requestJob->reply( "text/html; charset=utf-8", reply );
   connect( requestJob, &QObject::destroyed, reply, &QObject::deleteLater );
 }
 
