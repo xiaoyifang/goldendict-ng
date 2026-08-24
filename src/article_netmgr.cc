@@ -29,34 +29,48 @@ QByteArray getMimeTypeWithFallback( const QUrl & url, const QByteArray & data )
   //    installations and would otherwise make these resources fall back to
   //    text/plain (and render as raw source) in QtWebEngine.
   const QString ext = QFileInfo( url.path() ).suffix().toLower();
-  if ( ext == "html" || ext == "htm" )
+  if ( ext == "html" || ext == "htm" ) {
     return "text/html; charset=utf-8";
-  if ( ext == "css" )
+  }
+  if ( ext == "css" ) {
     return "text/css; charset=utf-8";
-  if ( ext == "js" || ext == "mjs" )
+  }
+  if ( ext == "js" || ext == "mjs" ) {
     return "text/javascript; charset=utf-8";
-  if ( ext == "png" )
+  }
+  if ( ext == "png" ) {
     return "image/png";
-  if ( ext == "jpg" || ext == "jpeg" )
+  }
+  if ( ext == "jpg" || ext == "jpeg" ) {
     return "image/jpeg";
-  if ( ext == "gif" )
+  }
+  if ( ext == "gif" ) {
     return "image/gif";
-  if ( ext == "svg" )
+  }
+  if ( ext == "svg" ) {
     return "image/svg+xml";
-  if ( ext == "webp" )
+  }
+  if ( ext == "webp" ) {
     return "image/webp";
-  if ( ext == "woff" )
+  }
+  if ( ext == "woff" ) {
     return "font/woff";
-  if ( ext == "woff2" )
+  }
+  if ( ext == "woff2" ) {
     return "font/woff2";
-  if ( ext == "ttf" )
+  }
+  if ( ext == "ttf" ) {
     return "font/ttf";
-  if ( ext == "mp3" )
+  }
+  if ( ext == "mp3" ) {
     return "audio/mpeg";
-  if ( ext == "wav" )
+  }
+  if ( ext == "wav" ) {
     return "audio/wav";
-  if ( ext == "ogg" )
+  }
+  if ( ext == "ogg" ) {
     return "audio/ogg";
+  }
 
   // 3. System MIME database (URL/extension based).
   QMimeDatabase mimeDb;
