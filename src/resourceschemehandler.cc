@@ -29,8 +29,7 @@ void ResourceSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob
 }
 
 
-void ResourceSchemeHandler::replyJob( sptr< Dictionary::DataRequest > reply,
-                                      QWebEngineUrlRequestJob * requestJob )
+void ResourceSchemeHandler::replyJob( sptr< Dictionary::DataRequest > reply, QWebEngineUrlRequestJob * requestJob )
 {
   if ( !reply.get() ) {
     requestJob->fail( QWebEngineUrlRequestJob::UrlNotFound );

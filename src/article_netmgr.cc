@@ -29,20 +29,34 @@ QByteArray getMimeTypeWithFallback( const QUrl & url, const QByteArray & data )
   //    installations and would otherwise make these resources fall back to
   //    text/plain (and render as raw source) in QtWebEngine.
   const QString ext = QFileInfo( url.path() ).suffix().toLower();
-  if ( ext == "html" || ext == "htm" ) return "text/html; charset=utf-8";
-  if ( ext == "css" )                  return "text/css; charset=utf-8";
-  if ( ext == "js" || ext == "mjs" )   return "text/javascript; charset=utf-8";
-  if ( ext == "png" )                  return "image/png";
-  if ( ext == "jpg" || ext == "jpeg" ) return "image/jpeg";
-  if ( ext == "gif" )                  return "image/gif";
-  if ( ext == "svg" )                  return "image/svg+xml";
-  if ( ext == "webp" )                 return "image/webp";
-  if ( ext == "woff" )                 return "font/woff";
-  if ( ext == "woff2" )                return "font/woff2";
-  if ( ext == "ttf" )                  return "font/ttf";
-  if ( ext == "mp3" )                  return "audio/mpeg";
-  if ( ext == "wav" )                  return "audio/wav";
-  if ( ext == "ogg" )                  return "audio/ogg";
+  if ( ext == "html" || ext == "htm" )
+    return "text/html; charset=utf-8";
+  if ( ext == "css" )
+    return "text/css; charset=utf-8";
+  if ( ext == "js" || ext == "mjs" )
+    return "text/javascript; charset=utf-8";
+  if ( ext == "png" )
+    return "image/png";
+  if ( ext == "jpg" || ext == "jpeg" )
+    return "image/jpeg";
+  if ( ext == "gif" )
+    return "image/gif";
+  if ( ext == "svg" )
+    return "image/svg+xml";
+  if ( ext == "webp" )
+    return "image/webp";
+  if ( ext == "woff" )
+    return "font/woff";
+  if ( ext == "woff2" )
+    return "font/woff2";
+  if ( ext == "ttf" )
+    return "font/ttf";
+  if ( ext == "mp3" )
+    return "audio/mpeg";
+  if ( ext == "wav" )
+    return "audio/wav";
+  if ( ext == "ogg" )
+    return "audio/ogg";
 
   // 3. System MIME database (URL/extension based).
   QMimeDatabase mimeDb;
@@ -62,9 +76,8 @@ QByteArray getMimeTypeWithFallback( const QUrl & url, const QByteArray & data )
   //    render raw HTML source on misconfigured systems.
   if ( !data.isEmpty() ) {
     const QByteArray trimmed = data.trimmed().toLower();
-    const bool looksLikeHtml = trimmed.startsWith( "<!doctype html" )
-      || trimmed.startsWith( "<html" )
-      || trimmed.startsWith( "<?xml" );
+    const bool looksLikeHtml =
+      trimmed.startsWith( "<!doctype html" ) || trimmed.startsWith( "<html" ) || trimmed.startsWith( "<?xml" );
     if ( looksLikeHtml
          && ( mimeName.isEmpty() || mimeName == "application/octet-stream" || mimeName == "text/plain" ) ) {
       return "text/html; charset=utf-8";
@@ -302,7 +315,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::handleResourceSchem
   // shared-mime-info. The payload is not available here, so only URL-based
   // heuristics are applied at this stage.
   contentType = QString::fromLatin1( getMimeTypeWithFallback( url ) );
-  string id    = url.host().toStdString();
+  string id   = url.host().toStdString();
 
   // Special handling for 'user' host to access user configuration files
   if ( id == "user" && url.scheme() == "bres" ) {
