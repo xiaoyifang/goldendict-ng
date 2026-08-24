@@ -51,10 +51,10 @@ const std::array< ExtensionMime, 17 > kExtensionMimeTable = { {
 // empty QByteArray when the extension is not in the table.
 QByteArray lookupMimeByExtension( const QString & ext )
 {
-  auto it = std::find_if( kExtensionMimeTable.begin(), kExtensionMimeTable.end(),
-                          [ &ext ]( const ExtensionMime & entry ) {
-                            return ext.compare( QLatin1String( entry.ext ), Qt::CaseInsensitive ) == 0;
-                          } );
+  auto it =
+    std::find_if( kExtensionMimeTable.begin(), kExtensionMimeTable.end(), [ &ext ]( const ExtensionMime & entry ) {
+      return ext.compare( QLatin1String( entry.ext ), Qt::CaseInsensitive ) == 0;
+    } );
   if ( it != kExtensionMimeTable.end() ) {
     return QByteArray( it->mime );
   }
