@@ -20,19 +20,28 @@ namespace {
 // chain of ifs) makes the lookup O(table_size) with constant low overhead and,
 // more importantly, keeps the cognitive complexity of the main resolver
 // below SonarCloud's 25-point threshold.
-struct ExtensionMime {
+struct ExtensionMime
+{
   const char * ext;
   const char * mime;
 };
 const ExtensionMime kExtensionMimeTable[] = {
-  { "html", "text/html; charset=utf-8" }, { "htm", "text/html; charset=utf-8" },
-  { "css", "text/css; charset=utf-8" },     { "js", "text/javascript; charset=utf-8" },
-  { "mjs", "text/javascript; charset=utf-8" }, { "png", "image/png" },
-  { "jpg", "image/jpeg" },                   { "jpeg", "image/jpeg" },
-  { "gif", "image/gif" },                    { "svg", "image/svg+xml" },
-  { "webp", "image/webp" },                 { "woff", "font/woff" },
-  { "woff2", "font/woff2" },                { "ttf", "font/ttf" },
-  { "mp3", "audio/mpeg" },                  { "wav", "audio/wav" },
+  { "html", "text/html; charset=utf-8" },
+  { "htm", "text/html; charset=utf-8" },
+  { "css", "text/css; charset=utf-8" },
+  { "js", "text/javascript; charset=utf-8" },
+  { "mjs", "text/javascript; charset=utf-8" },
+  { "png", "image/png" },
+  { "jpg", "image/jpeg" },
+  { "jpeg", "image/jpeg" },
+  { "gif", "image/gif" },
+  { "svg", "image/svg+xml" },
+  { "webp", "image/webp" },
+  { "woff", "font/woff" },
+  { "woff2", "font/woff2" },
+  { "ttf", "font/ttf" },
+  { "mp3", "audio/mpeg" },
+  { "wav", "audio/wav" },
   { "ogg", "audio/ogg" },
 };
 const size_t kExtensionMimeTableSize = sizeof( kExtensionMimeTable ) / sizeof( kExtensionMimeTable[ 0 ] );
@@ -55,9 +64,7 @@ QByteArray lookupMimeByExtension( const QString & ext )
 bool sniffHtmlContent( const QByteArray & data )
 {
   const QByteArray trimmed = data.trimmed().toLower();
-  return trimmed.startsWith( "<!doctype html" )
-    || trimmed.startsWith( "<html" )
-    || trimmed.startsWith( "<?xml" );
+  return trimmed.startsWith( "<!doctype html" ) || trimmed.startsWith( "<html" ) || trimmed.startsWith( "<?xml" );
 }
 
 // Appends "; charset=utf-8" for textual MIME types so QtWebEngine renders
@@ -87,7 +94,7 @@ QByteArray getMimeTypeWithFallback( const QUrl & url, const QByteArray & data )
   //    shared-mime-info database, which is absent on some minimal Linux
   //    installations and would otherwise make these resources fall back to
   //    text/plain (and render as raw source) in QtWebEngine.
-  const QString ext      = QFileInfo( url.path() ).suffix().toLower();
+  const QString ext        = QFileInfo( url.path() ).suffix().toLower();
   const QByteArray extMime = lookupMimeByExtension( ext );
   if ( !extMime.isEmpty() ) {
     return extMime;
