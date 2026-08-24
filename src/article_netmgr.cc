@@ -27,7 +27,10 @@ struct ExtensionMime
   const char * ext;
   const char * mime;
 };
-const std::array< ExtensionMime, 17 > kExtensionMimeTable = { {
+// CTAD (C++17): the compiler automatically deduces the array size from the
+// initializer list, so there is no risk of a mismatch between the declared
+// size and the actual number of entries.
+const std::array kExtensionMimeTable = { {
   { "html", "text/html; charset=utf-8" },
   { "htm", "text/html; charset=utf-8" },
   { "css", "text/css; charset=utf-8" },
