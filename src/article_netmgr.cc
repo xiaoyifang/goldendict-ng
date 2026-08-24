@@ -10,6 +10,8 @@
 #include <QWebEngineUrlRequestJob>
 #include <QMimeDatabase>
 #include <QMimeType>
+#include <algorithm>
+#include <array>
 #include <stdint.h>
 
 using std::string;
@@ -25,7 +27,7 @@ struct ExtensionMime
   const char * ext;
   const char * mime;
 };
-const ExtensionMime kExtensionMimeTable[] = {
+const std::array< ExtensionMime, 17 > kExtensionMimeTable = { {
   { "html", "text/html; charset=utf-8" },
   { "htm", "text/html; charset=utf-8" },
   { "css", "text/css; charset=utf-8" },
@@ -43,17 +45,18 @@ const ExtensionMime kExtensionMimeTable[] = {
   { "mp3", "audio/mpeg" },
   { "wav", "audio/wav" },
   { "ogg", "audio/ogg" },
-};
-const size_t kExtensionMimeTableSize = sizeof( kExtensionMimeTable ) / sizeof( kExtensionMimeTable[ 0 ] );
+} };
 
 // Returns the whitelisted MIME type for the given file extension, or an
 // empty QByteArray when the extension is not in the table.
 QByteArray lookupMimeByExtension( const QString & ext )
 {
-  for ( size_t i = 0; i < kExtensionMimeTableSize; ++i ) {
-    if ( ext.compare( QLatin1String( kExtensionMimeTable[ i ].ext ), Qt::CaseInsensitive ) == 0 ) {
-      return QByteArray( kExtensionMimeTable[ i ].mime );
-    }
+  auto it = std::find_if( kExtensionMimeTable.begin(), kExtensionMimeTable.end(),
+                          [ &ext ]( const ExtensionMime & entry ) {
+                            return ext.compare( QLatin1String( entry.ext ), Qt::CaseInsensitive ) == 0;
+                          } );
+  if ( it != kExtensionMimeTable.end() ) {
+    return QByteArray( it->mime );
   }
   return {};
 }
