@@ -27,10 +27,13 @@ struct ExtensionMime
   const char * ext;
   const char * mime;
 };
-// CTAD (C++17): the compiler automatically deduces the array size from the
-// initializer list, so there is no risk of a mismatch between the declared
-// size and the actual number of entries.
-const std::array kExtensionMimeTable = { {
+// Note: the size is specified explicitly (not via CTAD) for MSVC
+// compatibility. While C++17 class template argument deduction works for
+// std::array in most contexts, MSVC 2022 may fail to resolve the type in
+// subsequent template-dependent expressions (e.g. std::find_if on the
+// iterator). An explicit size keeps the code portable across toolchains
+// without any runtime or maintenance penalty for this fixed-size table.
+const std::array< ExtensionMime, 17 > kExtensionMimeTable = { {
   { "html", "text/html; charset=utf-8" },
   { "htm", "text/html; charset=utf-8" },
   { "css", "text/css; charset=utf-8" },
