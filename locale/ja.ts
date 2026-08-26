@@ -3778,7 +3778,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <name>Romaji</name>
     <message>
       <source>Hepburn Romaji for Hiragana</source>
-      <translation>ヘボン式ローマ字のひらがな</translation>
+      <translation>平仮名をヘボン式ローマ字で検索</translation>
     </message>
     <message>
       <source>Hepburn Romaji for Katakana</source>
@@ -3789,7 +3789,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <name>RussianTranslit</name>
     <message>
       <source>Russian Transliteration</source>
-      <translation>ロシア語音訳</translation>
+      <translation>ロシア語翻字</translation>
     </message>
   </context>
   <context>
@@ -3926,11 +3926,11 @@ could be resized or managed in other ways.</source>
     </message>
     <message>
       <source>Sound Dirs</source>
-      <translation>サウンド ディレクトリ</translation>
+      <translation>音声ディレクトリ</translation>
     </message>
     <message>
       <source>Make dictionaries from bunches of audiofiles by adding paths here:</source>
-      <translation>ここにパスを追加してオーディオ ファイルのディレクトリを作成します:</translation>
+      <translation>ここにパスを追加して、多数のオーディオファイルから辞書を作成する：</translation>
     </message>
     <message>
       <source>Morphology</source>
