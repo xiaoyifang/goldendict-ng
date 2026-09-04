@@ -286,7 +286,7 @@
     </message>
     <message>
       <source>&amp;Copy sound to clipboard</source>
-      <translation type="unfinished">&amp;Copy sound to clipboard</translation>
+      <translation>&amp;Nɣel ameslaw ar tecfawit</translation>
     </message>
     <message>
       <source>Failed to copy sound</source>
@@ -2644,7 +2644,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Clear History</source>
-      <translation type="unfinished">Clear History</translation>
+      <translation>Sfeḍ amazray</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all history items?</source>
@@ -3010,7 +3010,7 @@ be the last ones.</translation>
     </message>
     <message>
       <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
+      <translation>Rmed tasefsit n ugrudem</translation>
     </message>
     <message>
       <source>Font</source>
@@ -3702,7 +3702,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation>Complete Html (*.html *.htm)</translation>
+      <translation>Html ummid (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
@@ -3718,11 +3718,11 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Save Article As</source>
-      <translation>Save Article As</translation>
+      <translation>Sekles amagrad am</translation>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation>Save article complete</translation>
+      <translation>Asekles n umagrad yemmed</translation>
     </message>
     <message>
       <source>Error</source>
@@ -3734,15 +3734,15 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation>Save PDF complete</translation>
+      <translation>Asekles n PDF yemmed</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation>Save PDF failed</translation>
+      <translation>Asekles n PDF yecceḍ</translation>
     </message>
     <message>
       <source>Saving article... (%1/%2)</source>
-      <translation type="unfinished">Saving article... (%1/%2)</translation>
+      <translation>Yeseklas amagrad... (%1/%2)</translation>
     </message>
   </context>
   <context>
