@@ -60,7 +60,7 @@ using ZimFile = zim::Archive;
 
 enum {
   Signature            = 0x584D495A, // ZIMX on little-endian, XMIZ on big-endian
-  CurrentFormatVersion = 4 + BtreeIndexing::FormatVersion + Folding::Version
+  CurrentFormatVersion = 5 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
   #pragma pack( push, 1 )
@@ -891,11 +891,17 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
         //only iterate the article
         for ( const auto & entry : df.iterByTitle() ) {
-          auto item     = entry.getItem( true );
-          auto mimeType = item.getMimetype();
-          auto url      = item.getPath();
-          auto title    = item.getTitle();
-          auto index    = item.getIndex();
+          // Index each entry under its own title/path/index.  Zim redirects
+          // must not be followed here: following them would collapse every
+          // redirect alias into its target article, hiding aliases such as
+          // "四国地方"->"四国" from lookups.  The mime type still has to be
+          // taken from the target, since a redirect entry itself is not a
+          // media item.
+          const auto mimeType =
+            entry.isRedirect() ? entry.getRedirect().getMimetype() : entry.getItem().getMimetype();
+          auto url   = entry.getPath();
+          auto title = entry.getTitle();
+          auto index = entry.getIndex();
           // Read article url and title
           if ( !isArticleMime( mimeType ) ) {
             continue;
