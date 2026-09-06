@@ -176,6 +176,8 @@ struct AnkiConnectServer
   QString text;
   QString sentence;
 
+  bool addAudio = true;
+
   AnkiConnectServer();
 };
 

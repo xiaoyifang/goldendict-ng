@@ -55,7 +55,8 @@ AnkiConnectServer::AnkiConnectServer():
   port( 8765 ),
   word( "word" ),
   text( "selected_text" ),
-  sentence( "marked_sentence" )
+  sentence( "marked_sentence" ),
+  addAudio( true )
 {
 }
 
@@ -932,6 +933,10 @@ Class load()
       c.preferences.ankiConnectServer.word     = ankiConnectServer.namedItem( "word" ).toElement().text();
       c.preferences.ankiConnectServer.text     = ankiConnectServer.namedItem( "text" ).toElement().text();
       c.preferences.ankiConnectServer.sentence = ankiConnectServer.namedItem( "sentence" ).toElement().text();
+
+      if ( !ankiConnectServer.namedItem( "addAudio" ).isNull() ) {
+        c.preferences.ankiConnectServer.addAudio = ( ankiConnectServer.namedItem( "addAudio" ).toElement().text() == "1" );
+      }
     }
 
     if ( !preferences.namedItem( "checkForNewReleases" ).isNull() ) {
@@ -1959,6 +1964,10 @@ void save( const Class & c )
 
       opt = dd.createElement( "sentence" );
       opt.appendChild( dd.createTextNode( c.preferences.ankiConnectServer.sentence ) );
+      proxy.appendChild( opt );
+
+      opt = dd.createElement( "addAudio" );
+      opt.appendChild( dd.createTextNode( c.preferences.ankiConnectServer.addAudio ? "1" : "0" ) );
       proxy.appendChild( opt );
     }
 
