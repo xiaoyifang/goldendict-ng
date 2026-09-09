@@ -437,6 +437,12 @@ void ArticleView::sendToAnki( const QString & word,
                               const QByteArray & audioData,
                               const QString & audioFileName )
 {
+  // Allow users to opt out of automatic audio attachments.
+  if ( !cfg.preferences.ankiConnectServer.addAudio ) {
+    ankiConnector->sendToAnki( word, dict_definition, sentence, QJsonObject() );
+    return;
+  }
+
   QJsonObject audioObj;
   QByteArray data = audioData;
   QString url     = audioFileName;

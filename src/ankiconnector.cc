@@ -56,7 +56,7 @@ void AnkiConnector::sendToAnki( const QString & word,
   }
 
   QJsonArray audioArray;
-  if ( !audio.isEmpty() ) {
+  if ( !audio.isEmpty() && cfg.preferences.ankiConnectServer.addAudio ) {
     audioArray.append( audio );
   }
 
