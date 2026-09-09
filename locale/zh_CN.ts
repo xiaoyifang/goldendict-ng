@@ -3536,6 +3536,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Keep Dock icon visible in background</source>
       <translation>保持Dock图标在背景中可见</translation>
     </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>有音频时可以添加到Anki卡</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
