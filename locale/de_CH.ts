@@ -3536,6 +3536,10 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
       <source>Keep Dock icon visible in background</source>
       <translation>Dock-Symbol im Hintergrund sichtbar lassen</translation>
     </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Audio zu Anki-Karte hinzufügen, falls verfügbar</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
