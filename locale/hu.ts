@@ -3547,6 +3547,10 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <source>Keep Dock icon visible in background</source>
       <translation>Tartsd a dokk ikonját a háttérben</translation>
     </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Hang hozzáadása az Anki kártyához, ha elérhető</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
