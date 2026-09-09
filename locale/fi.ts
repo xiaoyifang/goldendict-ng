@@ -3548,6 +3548,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <source>Keep Dock icon visible in background</source>
       <translation>Pidä telakkakuvake näkyvissä taustalla</translation>
     </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Lisää ääni Anki-kortille, kun se on saatavilla</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
