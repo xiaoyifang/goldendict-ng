@@ -3550,7 +3550,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Add audio to Anki card when available</source>
-      <translation type="unfinished">Add audio to Anki card when available</translation>
+      <translation>Rnu imesli i tkarti n Anki mi yella</translation>
     </message>
   </context>
   <context>
