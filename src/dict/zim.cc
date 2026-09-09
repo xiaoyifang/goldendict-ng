@@ -122,12 +122,10 @@ bool getRedirectFromHtml( const string & html, string & result )
 {
   QString text = QString::fromUtf8( html.c_str() );
 
-  static const QRegularExpression rxMeta( R"(<meta\b[^>]*>)",
-                                          QRegularExpression::CaseInsensitiveOption );
-  static const QRegularExpression rxRefresh(
-    R"(http-equiv\s*=\s*["']?refresh)", QRegularExpression::CaseInsensitiveOption );
-  static const QRegularExpression rxUrl( R"(url\s*=\s*['"]?([^'"\s]+))",
-                                         QRegularExpression::CaseInsensitiveOption );
+  static const QRegularExpression rxMeta( R"(<meta\b[^>]*>)", QRegularExpression::CaseInsensitiveOption );
+  static const QRegularExpression rxRefresh( R"(http-equiv\s*=\s*["']?refresh)",
+                                             QRegularExpression::CaseInsensitiveOption );
+  static const QRegularExpression rxUrl( R"(url\s*=\s*['"]?([^'"\s]+))", QRegularExpression::CaseInsensitiveOption );
 
   auto it = rxMeta.globalMatch( text );
   while ( it.hasNext() ) {
@@ -139,7 +137,7 @@ bool getRedirectFromHtml( const string & html, string & result )
     if ( !m.hasMatch() ) {
       continue;
     }
-    QString url = m.captured( 1 );
+    QString url    = m.captured( 1 );
     const int hash = url.indexOf( '#' );
     if ( hash >= 0 ) {
       url.truncate( hash );
@@ -897,11 +895,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
           // "四国地方"->"四国" from lookups.  The mime type still has to be
           // taken from the target, since a redirect entry itself is not a
           // media item.
-          const auto mimeType =
-            entry.isRedirect() ? entry.getRedirect().getMimetype() : entry.getItem().getMimetype();
-          auto url   = entry.getPath();
-          auto title = entry.getTitle();
-          auto index = entry.getIndex();
+          const auto mimeType = entry.isRedirect() ? entry.getRedirect().getMimetype() : entry.getItem().getMimetype();
+          auto url            = entry.getPath();
+          auto title          = entry.getTitle();
+          auto index          = entry.getIndex();
           // Read article url and title
           if ( !isArticleMime( mimeType ) ) {
             continue;
