@@ -3547,6 +3547,10 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
       <source>Keep Dock icon visible in background</source>
       <translation>Dock simgesini arka planda görün</translation>
     </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Bar bolsa, Anki kartyna ses goş</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
