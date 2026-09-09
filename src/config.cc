@@ -935,7 +935,8 @@ Class load()
       c.preferences.ankiConnectServer.sentence = ankiConnectServer.namedItem( "sentence" ).toElement().text();
 
       if ( !ankiConnectServer.namedItem( "addAudio" ).isNull() ) {
-        c.preferences.ankiConnectServer.addAudio = ( ankiConnectServer.namedItem( "addAudio" ).toElement().text() == "1" );
+        c.preferences.ankiConnectServer.addAudio =
+          ( ankiConnectServer.namedItem( "addAudio" ).toElement().text() == "1" );
       }
     }
 
