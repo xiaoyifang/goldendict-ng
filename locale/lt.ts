@@ -3545,6 +3545,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Keep Dock icon visible in background</source>
       <translation>Laikykite doko piktogramą matomą fone</translation>
     </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Pridėkite garsą į Anki kortelę, kai tik bus prieinama</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
