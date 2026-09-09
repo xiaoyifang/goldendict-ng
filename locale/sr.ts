@@ -3548,6 +3548,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Keep Dock icon visible in background</source>
       <translation>Држите икону Дока видљивом у позадини</translation>
     </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Додајте аудио на Анки картицу када је доступна</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
