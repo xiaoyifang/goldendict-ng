@@ -3542,6 +3542,10 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
       <source>Keep Dock icon visible in background</source>
       <translation type="unfinished">Keep Dock icon visible in background</translation>
     </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation type="unfinished">Add audio to Anki card when available</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
