@@ -302,7 +302,7 @@
     </message>
     <message>
       <source>Failed to download sound</source>
-      <translation type="unfinished">Failed to download sound</translation>
+      <translation>Tuccḍa deg usader n umeslaw</translation>
     </message>
   </context>
   <context>
@@ -3734,7 +3734,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation>Can&apos;t save article: %1</translation>
+      <translation>D aweɣzi usekles n umagrad: %1</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
