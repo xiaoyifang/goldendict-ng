@@ -3552,6 +3552,10 @@ dos dicionários Stardict, Babylon e GLS</translation>
       <source>Keep Dock icon visible in background</source>
       <translation>Mantenha o ícone do Dock visível ao fundo</translation>
     </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Adicionar áudio ao cartão Anki quando estiver disponível</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

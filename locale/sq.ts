@@ -3540,6 +3540,10 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <source>Keep Dock icon visible in background</source>
       <translation>Mbani ikonën e dokut të dukshme në sfond</translation>
     </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Shto audio në kartën Anki kur të jetë e disponueshme</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

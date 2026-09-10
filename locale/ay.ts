@@ -3638,6 +3638,10 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <source>Keep Dock icon visible in background</source>
       <translation>Dock uñakipawi qhipatx uñstayaña</translation>
     </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Anki k'uchururu uywa yapt'aña utjki ukhaxa</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

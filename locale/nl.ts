@@ -3545,6 +3545,10 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <source>Keep Dock icon visible in background</source>
       <translation>Houd het dock-icoon zichtbaar op de achtergrond</translation>
     </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Voeg audio toe aan de Anki-kaart wanneer beschikbaar</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

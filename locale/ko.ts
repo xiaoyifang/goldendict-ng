@@ -3544,6 +3544,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Keep Dock icon visible in background</source>
       <translation>배경에서 도크 아이콘을 보이게 하세요</translation>
     </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>가능하면 Anki 카드에 오디오를 추가하세요</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

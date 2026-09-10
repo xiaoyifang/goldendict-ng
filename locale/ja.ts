@@ -3547,6 +3547,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Keep Dock icon visible in background</source>
       <translation>バックグラウンドでDockアイコンを表示し続ける</translation>
     </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>利用可能な場合はAnkiカードに音声を追加してください</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
