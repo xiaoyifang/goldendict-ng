@@ -44,6 +44,11 @@ public:
   /// Translate the word
   void translateWord( const QString & word );
 
+  /// When enabled, the popup shows without activating the app and floats
+  /// above fullscreen spaces (used for external URL-triggered lookups while
+  /// another app, e.g. a fullscreen video player, is in the foreground).
+  void setFullscreenFriendlyMode( bool enabled ) { fullscreenFriendlyMode = enabled; }
+
   void setDictionaryIconSize();
 
   void saveConfigData() const;
@@ -104,6 +109,8 @@ public slots:
   void reloadAllTabs();
 
 private:
+
+  bool fullscreenFriendlyMode = false;
 
   Qt::WindowFlags unpinnedWindowFlags() const;
 

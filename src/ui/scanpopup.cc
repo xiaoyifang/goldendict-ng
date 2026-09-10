@@ -11,6 +11,7 @@
 #include <QDateTime>
 #include <QMenu>
 #include <QMouseEvent>
+#include <QTimer>
 #include <QFileDialog>
 #include <QMessageBox>
 #include "gestures.hh"
@@ -22,6 +23,7 @@ using std::pair;
 
 #ifdef Q_OS_MAC
   #include "macos/macmouseover.hh"
+  #include "macos/fullscreen_aux.hh"
   #define MouseOver MacMouseOver
 #endif
 
@@ -345,7 +347,14 @@ ScanPopup::ScanPopup( QWidget * parent,
 #endif
 
   hideTimer.setSingleShot( true );
-  hideTimer.setInterval( 400 );
+  hideTimer.setInterval( 50 );
+
+#ifdef Q_OS_MAC
+  // Pre-configure the native panel as non-activating & auxiliary so the very
+  // first show does not activate GoldenDict (which would drop fullscreen).
+  winId();
+  ConfigureWindowAsAuxiliaryPanel( windowHandle() );
+#endif
 
   connect( &hideTimer, &QTimer::timeout, this, &ScanPopup::hideTimerExpired );
 
@@ -677,10 +686,36 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
       }
     }
 
+    if ( fullscreenFriendlyMode ) {
+      // Show without activating, but still allow click-to-focus so the
+      // search box stays usable when the user interacts with the popup.
+      setAttribute( Qt::WA_ShowWithoutActivating, true );
+#ifdef Q_OS_MAC
+      // Create the native window BEFORE showing so the auxiliary-window
+      // behavior is in place from the start.
+      winId();
+      MakeWindowFullscreenAuxiliary( windowHandle() );
+#endif
+    }
+
     show();
 
+#ifdef Q_OS_MAC
+    if ( fullscreenFriendlyMode ) {
+      // Qt may recreate the platform window around show(), so re-apply the
+      // auxiliary-window behavior after the native window settles.
+      for ( int attempt = 0; attempt < 3; ++attempt ) {
+        QTimer::singleShot( attempt * 60, this, [ this ]() {
+          MakeWindowFullscreenAuxiliary( windowHandle() );
+        } );
+      }
+    }
+#endif
+
     if ( giveFocus ) {
-      activateWindow();
+      if ( !fullscreenFriendlyMode ) {
+        activateWindow();
+      }
       raise();
     }
 
@@ -697,7 +732,9 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
     // Pinned-down window isn't always on top, so we need to raise it
     show();
     if ( cfg.preferences.raiseWindowOnSearch ) {
-      activateWindow();
+      if ( !fullscreenFriendlyMode ) {
+        activateWindow();
+      }
       raise();
     }
   }
@@ -896,36 +933,28 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
 void ScanPopup::reactOnMouseMove( const QPointF & p )
 {
   if ( geometry().contains( p.toPoint() ) ) {
-    //        qDebug( "got inside" );
-
     hideTimer.stop();
     mouseEnteredOnce = true;
-    uninterceptMouse();
   }
   else {
-    //        qDebug( "outside" );
-    // We're in grab mode and outside the window - calculate the
-    // distance from it. We might want to hide it.
-
-    // When the mouse has entered once, we don't allow it stayng outside,
+    // We're outside the window - calculate the distance from it.
+    // When the mouse has entered once, we don't allow it staying outside,
     // but we give a grace period for it to return.
     int proximity = mouseEnteredOnce ? 0 : 60;
 
-    // Note: watched == this ensures no other child objects popping out are
-    // receiving this event, meaning there's basically nothing under the
-    // cursor.
-    if ( /*watched == this &&*/
-         !frameGeometry().adjusted( -proximity, -proximity, proximity, proximity ).contains( p.toPoint() ) ) {
+    if ( !frameGeometry().adjusted( -proximity, -proximity, proximity, proximity ).contains( p.toPoint() ) ) {
       // We've way too far from the window -- hide the popup
-
-      // If the mouse never entered the popup, hide the window instantly --
-      // the user just moved the cursor further away from the window.
 
       if ( !mouseEnteredOnce ) {
         hideWindow();
       }
       else {
-        hideTimer.start();
+        // The 10 ms poll would otherwise restart the timer every tick and it
+        // would never fire; only start it once so the popup hides promptly
+        // after the mouse leaves.
+        if ( !hideTimer.isActive() ) {
+          hideTimer.start();
+        }
       }
     }
   }
