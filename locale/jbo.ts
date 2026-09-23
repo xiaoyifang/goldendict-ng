@@ -3546,6 +3546,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <source>Keep Dock icon visible in background</source>
       <translation>klama claxra la dak. jikmu lo'i jundi</translation>
     </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>jmina samci lo anki karce ti'e zasti</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

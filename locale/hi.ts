@@ -3533,6 +3533,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Keep Dock icon visible in background</source>
       <translation>पृष्ठभूमि में डॉक आइकन दृश्यमान रखें</translation>
     </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>उपलब्ध होने पर Anki कार्ड में ऑडियो जोड़ें</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

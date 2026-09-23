@@ -3548,6 +3548,10 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <source>Keep Dock icon visible in background</source>
       <translation>Tenu la Dokan ikonon videbla en fono</translation>
     </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Aldoni sonaĵon al Anki-karto kiam disponeblas</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

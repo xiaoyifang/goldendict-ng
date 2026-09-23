@@ -3524,6 +3524,10 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <source>Keep Dock icon visible in background</source>
       <translation>Giữ biểu tượng Dock hiển thị ở nền</translation>
     </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Thêm âm thanh vào thẻ Anki khi có sẵn</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>

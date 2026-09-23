@@ -3544,6 +3544,10 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <source>Keep Dock icon visible in background</source>
       <translation>Dock simgesi arka planda görünür kalın</translation>
     </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Anki kartına ses ekle mümkün olduğunda</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
