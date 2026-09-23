@@ -3,6 +3,7 @@
         <file>darkreader.js</file>
         <file>gd-builtin.js</file>
         <file>gd-custom.js</file>
+        <file>gd-preferred-color-scheme.js</file>
         <file>iframe-defer.js</file>
         <file>iframeResizer.contentWindow.min.js</file>
         <file>iframeResizer.min.js</file>

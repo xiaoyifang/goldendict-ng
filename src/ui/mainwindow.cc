@@ -2535,11 +2535,11 @@ void MainWindow::editPreferences()
         connect( QGuiApplication::styleHints(),
                  &QStyleHints::colorSchemeChanged,
                  &view,
-                 &ArticleView::reload,
+                 &ArticleView::applyColorSchemeAndReload,
                  Qt::UniqueConnection );
       }
       else {
-        disconnect( QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, &view, &ArticleView::reload );
+        disconnect( QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, &view, &ArticleView::applyColorSchemeAndReload );
       }
 #endif
     }
@@ -2988,6 +2988,9 @@ bool MainWindow::event( QEvent * event )
     if ( cfg.preferences.darkReaderMode == Config::Dark::Auto ) {
       for ( int i = 0; i < ui.tabWidget->count(); ++i ) {
         if ( auto view = qobject_cast< ArticleView * >( ui.tabWidget->widget( i ) ) ) {
+          // Re-sync the preferred color-scheme script before reloading so the
+          // freshly evaluated theme is applied on the new document.
+          view->syncBackgroundColorWithCfgDarkReader();
           view->reload();
         }
       }

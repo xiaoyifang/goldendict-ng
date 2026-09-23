@@ -452,6 +452,7 @@ void ScanPopup::reloadAllTabs()
 {
   for ( int i = 0; i < tabWidget->count(); ++i ) {
     if ( auto view = qobject_cast< ArticleView * >( tabWidget->widget( i ) ) ) {
+      view->syncBackgroundColorWithCfgDarkReader();
       view->reload();
     }
   }
