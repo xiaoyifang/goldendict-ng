@@ -2539,7 +2539,10 @@ void MainWindow::editPreferences()
                  Qt::UniqueConnection );
       }
       else {
-        disconnect( QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, &view, &ArticleView::applyColorSchemeAndReload );
+        disconnect( QGuiApplication::styleHints(),
+                    &QStyleHints::colorSchemeChanged,
+                    &view,
+                    &ArticleView::applyColorSchemeAndReload );
       }
 #endif
     }

@@ -46,7 +46,7 @@ void ArticleWebView::setUp( Config::Class * _cfg )
 void ArticleWebView::updatePreferredColorSchemeScript( bool isDark )
 {
   static const QString name = QStringLiteral( "GdPreferredColorScheme" );
-  auto * const scripts = page()->scripts();
+  auto * const scripts      = page()->scripts();
 
   // Remove any previously installed copy so the page never carries a stale
   // script across theme changes.
