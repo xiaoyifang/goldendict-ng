@@ -66,7 +66,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          submodules: false
+          submodules: true
       - name: Install dependencies
         env:
           HOMEBREW_NO_AUTO_UPDATE: 1
@@ -92,21 +92,6 @@ jobs:
         uses: hendrikmuhs/ccache-action@v1.2
         with:
           key: ${{ runner.os }}-macos
-      - name: Cache EB
-        id: cache-eb
-        uses: actions/cache@v4
-        with:
-          path: |
-            /usr/local/lib/libeb*
-            /usr/local/include/eb
-            /usr/local/bin/eb*
-          key: ${{ runner.os }}-${{ runner.arch }}-eb-v4.4.3
-      - name: Install eb
-        if: steps.cache-eb.outputs.cache-hit != 'true'
-        run: |
-          wget https://github.com/mistydemeo/eb/releases/download/v4.4.3/eb-4.4.3.tar.bz2
-          tar xvjf eb-4.4.3.tar.bz2
-          cd eb-4.4.3 && ./configure && make -j 8 && sudo make install && cd ..
       - name: Run build
         run: |
           mkdir build_dir
@@ -121,6 +106,16 @@ jobs:
             -DCMAKE_COMPILE_WARNING_AS_ERROR=ON
           cd ./build_dir
           ninja -k 0
+      - name: Verify eb target was built
+        run: |
+          set -euo pipefail
+          echo "== libeb*.dylib built in the build tree =="
+          find ./build_dir -name 'libeb*.dylib' -print
+          if ! find ./build_dir -name 'libeb*.dylib' | grep -q .; then
+            echo "::error::libeb.dylib was not built. Did the thirdparty/eb submodule get checked out?"
+            exit 1
+          fi
+          echo "OK: libeb.dylib was built."
 
   job_window_build_check:
     name: windows Build and analyze
