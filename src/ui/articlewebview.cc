@@ -46,12 +46,14 @@ void ArticleWebView::setUp( Config::Class * _cfg )
 void ArticleWebView::updatePreferredColorSchemeScript( bool isDark )
 {
   static const QString name = QStringLiteral( "GdPreferredColorScheme" );
-  auto * const scripts      = page()->scripts();
+  // QWebEnginePage::scripts() returns the collection by value; it is a handle
+  // to the page's collection, so findByName()/remove()/insert() mutate it.
+  auto scripts = page()->scripts();
 
   // Remove any previously installed copy so the page never carries a stale
   // script across theme changes.
-  for ( const auto & existing : scripts->findByName( name ) ) {
-    scripts->remove( existing );
+  for ( const auto & existing : scripts.findByName( name ) ) {
+    scripts.remove( existing );
   }
 
   // In dark mode GoldenDict-ng already injects and force-enables Dark Reader
@@ -79,7 +81,7 @@ void ArticleWebView::updatePreferredColorSchemeScript( bool isDark )
   script.setInjectionPoint( QWebEngineScript::DocumentCreation );
   script.setWorldId( QWebEngineScript::MainWorld );
   script.setRunsOnSubFrames( true );
-  scripts->insert( script );
+  scripts.insert( script );
 }
 
 void ArticleWebView::setPopup( bool isPopup )
