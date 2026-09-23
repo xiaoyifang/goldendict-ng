@@ -46,13 +46,12 @@ void ArticleWebView::setUp( Config::Class * _cfg )
 void ArticleWebView::updatePreferredColorSchemeScript( bool isDark )
 {
   static const QString name = QStringLiteral( "GdPreferredColorScheme" );
-  // QWebEnginePage::scripts() returns the collection by value; it is a handle
-  // to the page's collection, so findByName()/remove()/insert() mutate it.
-  auto scripts = page()->scripts();
+  // QWebEnginePage::scripts() returns a reference to the page's collection.
+  QWebEngineScriptCollection & scripts = page()->scripts();
 
   // Remove any previously installed copy so the page never carries a stale
   // script across theme changes.
-  for ( const auto & existing : scripts.findByName( name ) ) {
+  for ( const auto & existing : scripts.find( name ) ) {
     scripts.remove( existing );
   }
 
