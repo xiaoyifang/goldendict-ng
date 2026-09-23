@@ -2,6 +2,8 @@
   if (window.__gdPcsInjected) return;
   window.__gdPcsInjected = true;
 
+  console.log("[GoldenDict] gd-preferred-color-scheme injected @", location.href);
+
   // 1) Enforce a light root color-scheme so UA-provided chrome (canvas,
   //    scrollbars, form controls, system colors) follows GoldenDict-ng's
   //    light theme instead of an OS-level dark appearance.

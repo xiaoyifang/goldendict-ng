@@ -4,7 +4,6 @@
 #include "articlewebpage.hh"
 #include "articlewebview.hh"
 #include "version.hh"
-#include <QFile>
 #include <QMouseEvent>
 #include <QWebEngineScript>
 #include <QWebEngineScriptCollection>
@@ -61,22 +60,18 @@ void ArticleWebView::updatePreferredColorSchemeScript( bool isDark )
   // perceive a light scheme, overriding an OS-level dark appearance -- exactly
   // the scenario of issue #3077.
   if ( isDark ) {
+    qDebug() << "PCS: isDark" << isDark << "-- script not registered";
     return;
   }
 
-  // Load the (static) light-mode override script from the qrc resource so the
-  // JS stays a standalone, syntax-highlightable file under src/scripts/.
-  static const QString source = []() {
-    QFile f( ":/scripts/gd-preferred-color-scheme.js" );
-    if ( f.open( QIODevice::ReadOnly | QIODevice::Text ) ) {
-      return QString::fromUtf8( f.readAll() );
-    }
-    return QString();
-  }();
+  qDebug() << "PCS: isDark" << isDark << "-- registering via sourceUrl";
 
   QWebEngineScript script;
   script.setName( name );
-  script.setSourceCode( source );
+  // Refer to the script by URL instead of embedding its source: it stays a
+  // standalone file under src/scripts/ (via qrc) and shows up as a named file
+  // in DevTools.
+  script.setSourceUrl( QUrl( "qrc:///scripts/gd-preferred-color-scheme.js" ) );
   script.setInjectionPoint( QWebEngineScript::DocumentCreation );
   script.setWorldId( QWebEngineScript::MainWorld );
   script.setRunsOnSubFrames( true );
