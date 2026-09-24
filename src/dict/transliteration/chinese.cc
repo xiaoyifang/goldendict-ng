@@ -38,7 +38,7 @@ CharacterConversionDictionary::CharacterConversionDictionary( const std::string 
   Transliteration::BaseTransliterationDictionary( id, name_, icon_, false )
 {
   for ( size_t i = 0; i < openccConfigs.size(); ++i ) {
-    const QString & openccConfig = openccConfigs[i];
+    const QString & openccConfig = openccConfigs[ i ];
     // The last config is the primary conversion step; the ones before it are
     // optional normalization steps (e.g. jp2t before t2s).
     const bool isPrimary = ( i + 1 == openccConfigs.size() );
@@ -201,10 +201,7 @@ std::vector< sptr< Dictionary::Class > > makeDictionaries( const Config::Chinese
       // Shinjitai (t2jp). This makes simplified and traditional input both work.
       result.push_back( std::make_shared< CharacterConversionDictionary >(
         "7d8e9f1a2b3c4d5e6f0a1b2c3d4e5f60",
-        QCoreApplication::translate( "ChineseConversion",
-                                     "Chinese to Japanese Shinjitai conversion" )
-          .toUtf8()
-          .data(),
+        QCoreApplication::translate( "ChineseConversion", "Chinese to Japanese Shinjitai conversion" ).toUtf8().data(),
         QIcon( ":/flags/jp.png" ),
         std::vector< QString >{ configDir + "s2t.json", configDir + "t2jp.json" } ) );
     }
