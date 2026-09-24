@@ -81,7 +81,7 @@ std::vector< opencc_t > openChain( const std::vector< QString > & chainConfigs )
 
   for ( size_t i = 0; i < chainConfigs.size(); ++i ) {
     const QString & openccConfig = chainConfigs[ i ];
-    opencc_t converter            = openConverter( openccConfig );
+    opencc_t converter           = openConverter( openccConfig );
 
     if ( converter != nullptr ) {
       chain.push_back( converter );
