@@ -333,15 +333,15 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <name>ChineseConversion</name>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Włącz konwersję z uproszczonych znaków na tradycyjne (wariant Hongkongu)</translation>
+      <translation>Włącz konwersję znaków uproszczonych na tradycyjne (wariant Hongkongu)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Zmiana uproszczona do tradycyjnego chińskiego (wariant Taiwański)</translation>
+      <translation>Konwersja chińskich znaków uproszczonych na tradycyjne (wariant Tajwanu)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Zmiana uproszczona do tradycyjnego chińskiego (wariant Hongkongu)</translation>
+      <translation>Konwersja chińskich znaków uproszczonych na tradycyjne (wariant Hongkongu)</translation>
     </message>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
