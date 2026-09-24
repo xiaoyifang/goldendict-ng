@@ -67,6 +67,13 @@ if (WITH_EPWING_SUPPORT)
             )
     target_link_libraries(${GOLDENDICT} PRIVATE eb)
 
+    # `thirdparty/eb` is upstream C code that mixes `char` and `unsigned char`
+    # pointers. Clang enables -Wpointer-sign by default, and the macOS PR build
+    # enables CMAKE_COMPILE_WARNING_AS_ERROR, which would turn those warnings
+    # into hard errors. Silence just this warning class for the third-party
+    # library instead of relaxing -Werror for our own sources.
+    target_compile_options(eb PRIVATE -Wno-pointer-sign)
+
     # `eb` is built with an `@rpath/libeb.dylib` install name. macdeployqt can
     # only resolve `@rpath/` against Qt's own library directories (the build
     # tree rpath is stripped on install), so such a dylib never reaches
