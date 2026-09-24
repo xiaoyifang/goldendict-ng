@@ -14,6 +14,7 @@ ChineseConversion::ChineseConversion( QWidget * parent, const Config::Chinese & 
   ui->enableSCToTWConversion->setChecked( cfg.enableSCToTWConversion );
   ui->enableSCToHKConversion->setChecked( cfg.enableSCToHKConversion );
   ui->enableTCToSCConversion->setChecked( cfg.enableTCToSCConversion );
+  ui->enableJapaneseConversion->setChecked( cfg.enableJapaneseConversion );
 }
 
 ChineseConversion::~ChineseConversion()
@@ -23,8 +24,9 @@ ChineseConversion::~ChineseConversion()
 
 void ChineseConversion::getConfig( Config::Chinese & cfg ) const
 {
-  cfg.enable                 = isChecked();
-  cfg.enableSCToTWConversion = ui->enableSCToTWConversion->isChecked();
-  cfg.enableSCToHKConversion = ui->enableSCToHKConversion->isChecked();
-  cfg.enableTCToSCConversion = ui->enableTCToSCConversion->isChecked();
+  cfg.enable                   = isChecked();
+  cfg.enableSCToTWConversion   = ui->enableSCToTWConversion->isChecked();
+  cfg.enableSCToHKConversion   = ui->enableSCToHKConversion->isChecked();
+  cfg.enableTCToSCConversion   = ui->enableTCToSCConversion->isChecked();
+  cfg.enableJapaneseConversion = ui->enableJapaneseConversion->isChecked();
 }

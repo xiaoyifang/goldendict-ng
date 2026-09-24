@@ -163,7 +163,8 @@ Chinese::Chinese():
   enable( false ),
   enableSCToTWConversion( true ),
   enableSCToHKConversion( true ),
-  enableTCToSCConversion( true )
+  enableTCToSCConversion( true ),
+  enableJapaneseConversion( true )
 {
 }
 
@@ -592,6 +593,8 @@ Class load()
                        chinese.namedItem( "enableSCToHKConversion" ) );
       applyBoolOption( c.transliteration.chinese.enableTCToSCConversion,
                        chinese.namedItem( "enableTCToSCConversion" ) );
+      applyBoolOption( c.transliteration.chinese.enableJapaneseConversion,
+                       chinese.namedItem( "enableJapaneseConversion" ) );
     }
 #endif
 
@@ -1414,6 +1417,10 @@ void save( const Class & c )
 
     opt = dd.createElement( "enableTCToSCConversion" );
     opt.appendChild( dd.createTextNode( c.transliteration.chinese.enableTCToSCConversion ? "1" : "0" ) );
+    chinese.appendChild( opt );
+
+    opt = dd.createElement( "enableJapaneseConversion" );
+    opt.appendChild( dd.createTextNode( c.transliteration.chinese.enableJapaneseConversion ? "1" : "0" ) );
     chinese.appendChild( opt );
 #endif
 
