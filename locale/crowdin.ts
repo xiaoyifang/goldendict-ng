@@ -336,15 +336,7 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Chinese and Japanese Kanji Conversion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Enable conversion between simplified, traditional Chinese and Japanese Shinjitai characters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Chinese and Japanese Kanji Con&amp;version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -373,6 +365,14 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <source>Chinese to Japanese Shinjitai conversion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chinese and Japanese Character Conversion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chinese and Japanese Character Con&amp;version</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
