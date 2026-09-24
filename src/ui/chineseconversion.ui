@@ -16,11 +16,8 @@
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
-  <property name="windowTitle">
-   <string>Chinese and Japanese Character Conversion</string>
-  </property>
   <property name="toolTip">
-   <string>Enable conversion between simplified, traditional Chinese and Japanese Shinjitai characters</string>
+   <string>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</string>
   </property>
   <property name="title">
    <string>Chinese and Japanese Character Con&amp;version</string>
