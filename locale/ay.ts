@@ -317,28 +317,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>&amp;Chino aru tukuyawi</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Chino simplificado ukhamaraki chino tradicional uka tukuyawi naktayaña</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>&amp;Chino aru tukuyawi</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Chino simplificado ukat chino tradicional (aru Taiwan) ukaru tukuyawi naktayaña</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Chino simplificado ukat chino tradicional (aru Hong Kong) ukaru tukuyawi naktayaña</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Chino aru tradicional uk chino aru simplificado ukar tukuyawi</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -353,16 +333,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>Chino tradicional ukat chino simplificado tukuyawi</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan uñacht'äwi</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Hong Kong uñacht'äwi</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Jach'a uraqi uñacht'äwi</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>China qillqanaka tradicional uka china qillqanaka jisk'achata (Mainland) ukar tukuyayaña naktayaña</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Jisk'achata (Mainland)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>China qillqanaka jisk'achata uka china qillqanaka tradicional (Taiwan/Standard) ukar tukuyayaña naktayaña</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Tradicional (Taiwan/Standard)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>China qillqanaka jisk'achata/tradicional uka japonés Shinjitai qillqanaka ukar tukuyayaña naktayaña</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Japonés Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Chinu Japonés Shinjitai tikxatäwi</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Chinu ukat Japonés Qillqa &amp;Tikxatäwi</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Juk'achata Chinu, Nayra Chinu (Taiwan/Hong Kong) ukat Japonés Shinjitai qillqanak taypin tikxatäw wakiyaña</translation>
     </message>
   </context>
   <context>
