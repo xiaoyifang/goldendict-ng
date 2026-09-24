@@ -17,13 +17,13 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>Chinese and Japanese Kanji Conversion</string>
+   <string>Chinese and Japanese Character Conversion</string>
   </property>
   <property name="toolTip">
    <string>Enable conversion between simplified, traditional Chinese and Japanese Shinjitai characters</string>
   </property>
   <property name="title">
-   <string>Chinese and Japanese Kanji Con&amp;version</string>
+   <string>Chinese and Japanese Character Con&amp;version</string>
   </property>
   <property name="checkable">
    <bool>true</bool>
