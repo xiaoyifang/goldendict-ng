@@ -332,28 +332,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>تبدیل چینی</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>تبدیل بین نویسه های چینی ساده و سنتی را فعال کنید</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>تبدیل چینی</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>تبدیل از نویسه های ساده شده به نویسه های سنتی (نوع تایوان) را فعال کنید</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>تبدیل نویسه های ساده شده به نویسه های سنتی (نوع هنگ کنگ) را فعال کنید</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>تبدیل از نویسه های سنتی به نویسه های ساده شده را فعال کنید</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>تبدیل سنتی به چینی ساده شده</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>نسخه تایوان</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>نسخه هنگ کنگ</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>نسخه سرزمین اصلی</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>امکان تبدیل از کاراکترهای سنتی به کاراکترهای ساده شده (سرزمین اصلی)</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>ساده شده (سرزمین اصلی)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>امکان تبدیل از کاراکترهای ساده شده به کاراکترهای سنتی (تایوانی/استاندارد)</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>سنتی (تایوان/استاندارد)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>امکان تبدیل از کاراکترهای ساده شده/سنتی چینی به کاراکترهای شینجیتای ژاپنی</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>شینجیتای ژاپنی</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>تبدیل چینی به شینجی تای ژاپنی</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>نسخه های نویسه چینی و ژاپنی</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>امکان تبدیل بین چینی ساده شده، چینی سنتی (تایوان/هنگ کنگ) و کاراکترهای شینجیتای ژاپنی را فعال کنید</translation>
     </message>
   </context>
   <context>

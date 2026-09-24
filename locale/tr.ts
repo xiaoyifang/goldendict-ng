@@ -332,28 +332,8 @@ arasındaki farkı giderir)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Çince Dönüşüm</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Basitleştirilmiş ve geleneksel Çince karakterler arasında dönüştürmeyi etkinleştir</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Çince &amp;Dönüşüm</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Basitleştirilmiş karakterlerden geleneksel (Tayvan değişkeni) karakterlere dönüştürmeyi etkinleştir</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Basitleştirilmiş karakterlerden geleneksel (Hong Kong değişken) karakterlere dönüştürmeyi etkinleştir</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Geleneksel karakterlerden basitleştirilmiş karakterlere dönüştürmeyi etkinleştir</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ arasındaki farkı giderir)</translation>
       <translation>Basitleştirilmiş Çince dönüşümü için geleneksel</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Tayvan varyantı</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Hong Kong varyantı</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Anakara varyantı</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Geleneksel karakterlerden basitleştirilmiş (Anakara) karakterlere dönüştürmeyi etkinleştirin</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Basitleştirilmiş (Anakara)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Basitleştirilmiş karakterlerden geleneksel (Tayvan/Standart) karakterlere dönüştürmeyi etkinleştirin</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Geleneksel (Tayvan/Standart)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Basitleştirilmiş/geleneksel Çin karakterlerinden Japon Shinjitai karakterlerine dönüştürmeyi mümkün kılın</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Japon Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Çin'den Japon'a Shinjitai'ye dönüşüm</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Çince ve Japonca Karakter Değişimi</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Basitleştirilmiş Çince, geleneksel Çince (Tayvan/Hong Kong) ve Japon Shinjitai karakterleri arasında dönüşümü etkinleştirin</translation>
     </message>
   </context>
   <context>

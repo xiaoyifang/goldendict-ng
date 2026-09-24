@@ -331,28 +331,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>التحويل الصيني</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>تمكين التحويل بين الأحرف الصينية المبسطة والتقليدية</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>يخدع ونسخة الصينية</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>قم بتمكين التحويل من الأحرف المبسطة إلى الأحرف التقليدية (البديل التايواني)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>تمكين التحويل من الأحرف المبسطة إلى الأحرف التقليدية (متغير هونج كونج)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>تمكين التحويل من الأحرف التقليدية إلى الأحرف المبسطة</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -367,16 +347,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>التقليدية إلى الصينية المبسطة التحويل</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Hong Kong variant</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Mainland variant</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>تمكين التحويل من الحروف التقليدية إلى الأحرف المبسطة (البر الرئيسي)</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>مبسط (البر الرئيسي)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>تمكين التحويل من الأحرف المبسطة إلى الأحرف التقليدية (تايواني/القياسية)</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>التقليدية (تايوان/ستاندرد)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>تمكين التحويل من الحروف الصينية المبسطة/التقليدية إلى حروف شينجيتاي اليابانية</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>شينجيتاي الياباني</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>تحويل شينجيتاي من الصين إلى اليابان</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>نسخة الحروف الصينية واليابانية</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>تمكين التحويل بين الصينية المبسطة، والصينية التقليدية (تايوان/هونغ كونغ) والحروف اليابانية الشينجيتاي</translation>
     </message>
   </context>
   <context>

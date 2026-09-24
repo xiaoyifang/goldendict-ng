@@ -332,28 +332,8 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Ĉina Konvertiĝo</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Ebligu konvertiĝon inter simpligitaj kaj tradiciaj ĉinaj signoj</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Ĉina Konvertiĝo</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Ebligu konvertiĝon de simpligitaj signoj al tradiciaj (tajvana varianto) signoj</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Ebligu konvertiĝon de simpligitaj signoj al tradiciaj (Honkonga varianto) signoj</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Ebligu konvertiĝon de tradiciaj signoj al simpligitaj signoj</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Tradicia al simpligita ĉina konvertiĝo</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Tajvana varianto</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation type="unfinished">Hong Kong variant</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation type="unfinished">Mainland variant</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Ebligu konvertiĝon de tradiciaj signoj al simpligitaj (kontinentaj) signoj</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Simpligita (kontinenta)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Ebligu konvertiĝon de simpligitaj signoj al tradiciaj (Tajvana/Norma) signoj</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Tradicia (Tajvana/Norma)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Ebligu konvertiĝon de simpligitaj/tradiciaj ĉinaj signoj al japanaj Shinjitai-signoj</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Japana Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Konverto de ĉina al japana Ŝinĵitaj</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Kon&amp;verto de Ĉinaj kaj Japanaj Karakteroj</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Ebligi konverton inter simpligita ĉina, tradicia ĉina (Tajvano/Honkongo) kaj japanaj Ŝinĵitaj-karakteroj</translation>
     </message>
   </context>
   <context>
