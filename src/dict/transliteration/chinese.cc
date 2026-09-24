@@ -37,6 +37,83 @@ public:
   std::vector< std::u32string > getAlternateWritings( const std::u32string & ) noexcept override;
 };
 
+namespace {
+
+/// Opens a single OpenCC configuration, returning nullptr on failure. OpenCC
+/// reports a failure by returning a (opencc_t)-1 handle instead of throwing,
+/// and may also throw on a malformed configuration file.
+opencc_t openConverter( const QString & openccConfig )
+{
+  // opencc_open() reports a failure by returning this sentinel handle instead
+  // of throwing (see the opencc.h contract), so it must be checked explicitly.
+  // There is no safer way to express it: opencc_t is an opaque void*.
+  const opencc_t invalidConverter = reinterpret_cast< opencc_t >( -1 );
+
+  try {
+    opencc_t converter = opencc_open( openccConfig.toLocal8Bit().constData() );
+    if ( converter != invalidConverter ) {
+      return converter;
+    }
+    qWarning( "CharacterConversionDictionary: failed to initialize OpenCC from config %s: %s",
+              openccConfig.toLocal8Bit().constData(),
+              opencc_error() );
+  }
+  catch ( std::exception & e ) {
+    qWarning( "CharacterConversionDictionary: failed to initialize OpenCC from config %s: %s",
+              openccConfig.toLocal8Bit().constData(),
+              e.what() );
+  }
+  catch ( ... ) {
+    qWarning( "CharacterConversionDictionary: failed to initialize OpenCC from config %s",
+              openccConfig.toLocal8Bit().constData() );
+  }
+
+  return nullptr;
+}
+
+/// Opens one conversion chain. The last config is the primary conversion step
+/// while the ones before it are optional normalization steps (e.g. jp2t before
+/// t2s): an unavailable optional step is skipped, but an unavailable primary
+/// step makes the whole chain unusable and an empty vector is returned.
+std::vector< opencc_t > openChain( const std::vector< QString > & chainConfigs )
+{
+  std::vector< opencc_t > chain;
+
+  for ( size_t i = 0; i < chainConfigs.size(); ++i ) {
+    const QString & openccConfig = chainConfigs[ i ];
+    opencc_t converter            = openConverter( openccConfig );
+
+    if ( converter != nullptr ) {
+      chain.push_back( converter );
+      continue;
+    }
+
+    // An optional normalization step (e.g. the Japanese jp2t data) is missing;
+    // skip it and keep the rest of the chain working so the original
+    // simplified/traditional conversion is not broken.
+    if ( i + 1 != chainConfigs.size() ) {
+      qWarning( "CharacterConversionDictionary: skipping unavailable config %s",
+                openccConfig.toLocal8Bit().constData() );
+      continue;
+    }
+
+    // Without the primary step this chain would return wrong results (or none),
+    // so drop the whole chain. The other chains of this dictionary keep working,
+    // so the plain conversion stays intact.
+    qWarning( "CharacterConversionDictionary: dropping conversion chain, config %s is unavailable",
+              openccConfig.toLocal8Bit().constData() );
+    for ( opencc_t opened : chain ) {
+      opencc_close( opened );
+    }
+    chain.clear();
+    break;
+  }
+
+  return chain;
+}
+
+} // namespace
+
 CharacterConversionDictionary::CharacterConversionDictionary(
   const std::string & id,
   const std::string & name_,
@@ -45,61 +122,7 @@ CharacterConversionDictionary::CharacterConversionDictionary(
   Transliteration::BaseTransliterationDictionary( id, name_, icon_, false )
 {
   for ( const std::vector< QString > & chainConfigs : openccConfigChains ) {
-    std::vector< opencc_t > chain;
-
-    for ( size_t i = 0; i < chainConfigs.size(); ++i ) {
-      const QString & openccConfig = chainConfigs[ i ];
-      // The last config is the primary conversion step; the ones before it are
-      // optional normalization steps (e.g. jp2t before t2s).
-      const bool isPrimary = ( i + 1 == chainConfigs.size() );
-
-      opencc_t converter = nullptr;
-      try {
-        converter = opencc_open( openccConfig.toLocal8Bit().constData() );
-        if ( converter == reinterpret_cast< opencc_t >( -1 ) ) {
-          qWarning( "CharacterConversionDictionary: failed to initialize OpenCC from config %s: %s",
-                    openccConfig.toLocal8Bit().constData(),
-                    opencc_error() );
-          converter = nullptr;
-        }
-      }
-      catch ( std::exception & e ) {
-        qWarning( "CharacterConversionDictionary: failed to initialize OpenCC from config %s: %s",
-                  openccConfig.toLocal8Bit().constData(),
-                  e.what() );
-        converter = nullptr;
-      }
-      catch ( ... ) {
-        qWarning( "CharacterConversionDictionary: failed to initialize OpenCC from config %s",
-                  openccConfig.toLocal8Bit().constData() );
-        converter = nullptr;
-      }
-
-      if ( converter == nullptr ) {
-        if ( isPrimary ) {
-          // Without the primary step this chain would return wrong results (or
-          // none), so drop the whole chain. The other chains of this dictionary
-          // keep working, so the plain conversion stays intact.
-          qWarning( "CharacterConversionDictionary: dropping conversion chain, config %s is unavailable",
-                    openccConfig.toLocal8Bit().constData() );
-          for ( opencc_t opened : chain ) {
-            opencc_close( opened );
-          }
-          chain.clear();
-          break;
-        }
-
-        // An optional normalization step (e.g. the Japanese jp2t data) is
-        // missing; skip it and keep the rest of the chain working so the
-        // original simplified/traditional conversion is not broken.
-        qWarning( "CharacterConversionDictionary: skipping unavailable config %s",
-                  openccConfig.toLocal8Bit().constData() );
-        continue;
-      }
-
-      chain.push_back( converter );
-    }
-
+    std::vector< opencc_t > chain = openChain( chainConfigs );
     if ( !chain.empty() ) {
       chains.push_back( std::move( chain ) );
     }
@@ -108,11 +131,11 @@ CharacterConversionDictionary::CharacterConversionDictionary(
 
 CharacterConversionDictionary::~CharacterConversionDictionary()
 {
+  // Only successfully opened converters are ever stored, so no validity check
+  // is needed here.
   for ( const std::vector< opencc_t > & chain : chains ) {
     for ( opencc_t converter : chain ) {
-      if ( converter != nullptr && converter != reinterpret_cast< opencc_t >( -1 ) ) {
-        opencc_close( converter );
-      }
+      opencc_close( converter );
     }
   }
 }
