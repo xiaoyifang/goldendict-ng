@@ -332,28 +332,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Chinesische Konvertierung</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Konvertierung zwischen vereinfachten und traditionellen chinesischen Zeichen aktivieren</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Chinesische Konvertierung</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Konvertierung von vereinfachten Zeichen in traditionelle (Taiwan-Variante) Zeichen aktivieren</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Umwandlung von vereinfachten Zeichen in traditionelle (Hong Kong Variant) Zeichen aktivieren</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Umwandlung von traditionellen Zeichen in vereinfachte Zeichen aktivieren</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>Traditionelle bis vereinfachte chinesische Konvertierung</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Hongkong-Variante</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Festland-Variante</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Umwandlung von traditionellen Zeichen zu vereinfachten (Festland-) Zeichen ermöglichen</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Vereinfacht (Festland)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Umwandlung von vereinfachten Zeichen zu traditionellen (Taiwan/Standard) Zeichen ermöglichen</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Traditionell (Taiwan/Standard)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Umwandlung von vereinfachten/traditionellen chinesischen Schriftzeichen zu japanischen Shinjitai-Zeichen ermöglichen</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Japanisches Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Chinesische zu japanische Shinjitai-Umwandlung</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Chinesische und japanische Zeichenkonversion</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Umwandlung zwischen vereinfachtem Chinesisch, traditionellem Chinesisch (Taiwan/Hongkong) und japanischen Shinjitai-Zeichen aktivieren</translation>
     </message>
   </context>
   <context>
