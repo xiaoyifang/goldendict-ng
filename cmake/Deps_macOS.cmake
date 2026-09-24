@@ -66,5 +66,16 @@ if (WITH_EPWING_SUPPORT)
             thirdparty
             )
     target_link_libraries(${GOLDENDICT} PRIVATE eb)
+
+    # `eb` is built with an `@rpath/libeb.dylib` install name. macdeployqt can
+    # only resolve `@rpath/` against Qt's own library directories (the build
+    # tree rpath is stripped on install), so such a dylib never reaches
+    # Contents/Frameworks and epwing support is broken in the packaged app.
+    # Reference it by its absolute build tree path instead, so macdeployqt
+    # bundles it like any other third-party dylib (e.g. the Homebrew ones) and
+    # rewrites the reference to `@executable_path/../Frameworks`.
+    set_target_properties(eb PROPERTIES
+            BUILD_WITH_INSTALL_NAME_DIR ON
+            INSTALL_NAME_DIR "$<TARGET_FILE_DIR:eb>")
 endif ()
 
