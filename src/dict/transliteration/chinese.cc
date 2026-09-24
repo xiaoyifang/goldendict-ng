@@ -201,8 +201,11 @@ std::vector< sptr< Dictionary::Class > > makeDictionaries( const Config::Chinese
       // Shinjitai (t2jp). This makes simplified and traditional input both work.
       result.push_back( std::make_shared< CharacterConversionDictionary >(
         "7d8e9f1a2b3c4d5e6f0a1b2c3d4e5f60",
-        QCoreApplication::translate( "ChineseConversion", "Chinese to Japanese Shinjitai conversion" ).toUtf8().data(),
-        QIcon( ":/flags/jp.png" ),
+        QCoreApplication::translate( "ChineseConversion",
+                                     "Chinese to Japanese Shinjitai conversion" )
+          .toUtf8()
+          .data(),
+        QIcon( ":/icons/jpc.svg" ),
         std::vector< QString >{ configDir + "s2t.json", configDir + "t2jp.json" } ) );
     }
   }
