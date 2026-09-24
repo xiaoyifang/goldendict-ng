@@ -9,7 +9,7 @@
     </message>
     <message>
       <source>Licensed under GNU GPLv3 or later</source>
-      <translation>Licensed under GNU GPLv3 or later</translation>
+      <translation>Yettwasireg ddaw n turagt GNU GPLv3 naɣ taneggarut</translation>
     </message>
     <message>
       <source>Copy version info</source>
@@ -111,7 +111,7 @@
     </message>
     <message>
       <source>Query error: %1</source>
-      <translation>Query error: %1</translation>
+      <translation>Tuccḍa n tuttra: %1</translation>
     </message>
     <message>
       <source>Close words: </source>
@@ -138,7 +138,7 @@
     </message>
     <message>
       <source>Select Current Article</source>
-      <translation>Select Current Article</translation>
+      <translation>Fren amagrad amiran</translation>
     </message>
     <message>
       <source>Copy as text</source>
@@ -282,7 +282,7 @@
     </message>
     <message>
       <source>&amp;Create Anki note</source>
-      <translation>&amp;Create Anki note</translation>
+      <translation>&amp;Snulfu-d tabzimt n Anki</translation>
     </message>
     <message>
       <source>&amp;Copy sound to clipboard</source>
@@ -399,7 +399,7 @@ between classic and school orthography in cyrillic)</translation>
     <name>DictGroupWidget</name>
     <message>
       <source>Form</source>
-      <translation>Form</translation>
+      <translation>Talɣa</translation>
     </message>
     <message>
       <source>Group icon:</source>
@@ -450,7 +450,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Confirmation</source>
-      <translation>Confirmation</translation>
+      <translation>Asentem</translation>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on language pairs?</source>
@@ -494,7 +494,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Remove group</source>
-      <translation>Remove group</translation>
+      <translation>Kkes agraw</translation>
     </message>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
@@ -525,7 +525,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Filter:</source>
-      <translation>Filter:</translation>
+      <translation>Amsizdeg:</translation>
     </message>
     <message>
       <source>This element determines how filter string will be interpreted</source>
@@ -612,7 +612,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Total articles:</source>
-      <translation>Total articles:</translation>
+      <translation>Aɣrud n imagraden:</translation>
     </message>
     <message>
       <source>Index filename:</source>
@@ -620,7 +620,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Total words:</source>
-      <translation>Total words:</translation>
+      <translation>Aɣrud n wawalen:</translation>
     </message>
     <message>
       <source>Open folder</source>
@@ -656,11 +656,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Disable</source>
-      <translation>Disable</translation>
+      <translation>Kkes armad</translation>
     </message>
     <message>
       <source>Enable</source>
-      <translation>Enable</translation>
+      <translation>Sermed</translation>
     </message>
     <message>
       <source>Dictionary Components:</source>
@@ -697,7 +697,7 @@ between classic and school orthography in cyrillic)</translation>
     <name>DictServersModel</name>
     <message>
       <source>Enabled</source>
-      <translation>Enabled</translation>
+      <translation>D urdmid</translation>
     </message>
     <message>
       <source>Name</source>
@@ -744,7 +744,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Edit this group</source>
-      <translation>Edit this group</translation>
+      <translation>Ẓreg agraw-a</translation>
     </message>
     <message>
       <source>Dictionary info</source>
@@ -860,7 +860,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Articles found: </source>
-      <translation>Articles found: </translation>
+      <translation>Imagraden i yettwafen: </translation>
     </message>
     <message>
       <source>Now indexing: </source>
@@ -941,11 +941,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Male</source>
-      <translation>Male</translation>
+      <translation>Awtem</translation>
     </message>
     <message>
       <source>Female</source>
-      <translation>Female</translation>
+      <translation>Unti</translation>
     </message>
     <message>
       <source>from</source>
@@ -956,7 +956,7 @@ between classic and school orthography in cyrillic)</translation>
     <name>FtsSearchPanel</name>
     <message>
       <source>&amp;Previous</source>
-      <translation>&amp;Previous</translation>
+      <translation>&amp;Uzwir</translation>
     </message>
     <message>
       <source>&amp;Next</source>
@@ -971,11 +971,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Mode:</source>
-      <translation>Mode:</translation>
+      <translation>Askar:</translation>
     </message>
     <message>
       <source>Articles found:</source>
-      <translation>Articles found:</translation>
+      <translation>Imagraden i yettwafen:</translation>
     </message>
     <message>
       <source>Available dictionaries in group:</source>
@@ -987,7 +987,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Total:</source>
-      <translation>Total:</translation>
+      <translation>Aɣrud:</translation>
     </message>
     <message>
       <source>Indexed:</source>
@@ -1024,7 +1024,7 @@ between classic and school orthography in cyrillic)</translation>
     <name>GroupComboBox</name>
     <message>
       <source>Choose a Group (Alt+G)</source>
-      <translation>Choose a Group (Alt+G)</translation>
+      <translation>Fren agraw (Alt+G)</translation>
     </message>
   </context>
   <context>
@@ -1043,11 +1043,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Groups:</source>
-      <translation>Groups:</translation>
+      <translation>Igrawen:</translation>
     </message>
     <message>
       <source>Tab 2</source>
-      <translation>Tab 2</translation>
+      <translation>Iccer wis 2</translation>
     </message>
     <message>
       <source>Rename current dictionary group</source>
@@ -1071,7 +1071,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Group by Languages</source>
-      <translation>Group by Languages</translation>
+      <translation>Segrew s tutlayin</translation>
     </message>
     <message>
       <source>Create folder-based groups.</source>
@@ -1115,7 +1115,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Remove group</source>
-      <translation>Remove group</translation>
+      <translation>Kkes agraw</translation>
     </message>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
@@ -1154,7 +1154,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>History:</source>
-      <translation>History:</translation>
+      <translation>Azray:</translation>
     </message>
     <message>
       <source>%1/%2</source>
@@ -1582,7 +1582,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Latin</source>
-      <translation>Latin</translation>
+      <translation>Talatinit</translation>
     </message>
     <message>
       <source>Luxembourgish</source>
@@ -1970,7 +1970,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Other</source>
-      <translation>Other</translation>
+      <translation>Tayeḍ</translation>
     </message>
     <message>
       <source>Other Simplified Chinese dialects</source>
@@ -2218,15 +2218,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>&amp;Edit</source>
-      <translation>&amp;Edit</translation>
+      <translation>Ẓ&amp;reg</translation>
     </message>
     <message>
       <source>&amp;Help</source>
-      <translation>&amp;Help</translation>
+      <translation>&amp;Tallalt</translation>
     </message>
     <message>
       <source>&amp;View</source>
-      <translation>&amp;View</translation>
+      <translation>&amp;Taskant</translation>
     </message>
     <message>
       <source>&amp;Zoom</source>
@@ -2234,7 +2234,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>H&amp;istory</source>
-      <translation>H&amp;istory</translation>
+      <translation>A&amp;zray</translation>
     </message>
     <message>
       <source>Search</source>
@@ -2242,7 +2242,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Favo&amp;rites</source>
-      <translation>Favo&amp;rites</translation>
+      <translation>I&amp;menyafen</translation>
     </message>
     <message>
       <source>&amp;Search Pane</source>
@@ -2274,15 +2274,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>&amp;About</source>
-      <translation>&amp;About</translation>
+      <translation>Ɣ&amp;ef</translation>
     </message>
     <message>
       <source>About GoldenDict-ng</source>
-      <translation>About GoldenDict-ng</translation>
+      <translation>Ɣef GoldenDict-ng</translation>
     </message>
     <message>
       <source>&amp;Quit</source>
-      <translation>&amp;Quit</translation>
+      <translation>&amp;Ffeɣ</translation>
     </message>
     <message>
       <source>Quit from application</source>
@@ -2302,15 +2302,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>&amp;Save Article</source>
-      <translation>&amp;Save Article</translation>
+      <translation>&amp;Sekles amagrad</translation>
     </message>
     <message>
       <source>Save Article</source>
-      <translation>Save Article</translation>
+      <translation>Sekles amagrad</translation>
     </message>
     <message>
       <source>&amp;Print</source>
-      <translation>&amp;Print</translation>
+      <translation>&amp;Siggez</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2326,19 +2326,19 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>&amp;Clear</source>
-      <translation>&amp;Clear</translation>
+      <translation>&amp;Sfeḍ</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
-      <translation>&amp;New Tab</translation>
+      <translation>&amp;Iccer amaynut</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
-      <translation>&amp;Configuration Folder</translation>
+      <translation>&amp;Akaram n tawila</translation>
     </message>
     <message>
       <source>&amp;Show</source>
-      <translation>&amp;Show</translation>
+      <translation>&amp;Sken-d</translation>
     </message>
     <message>
       <source>Ctrl+H</source>
@@ -2370,7 +2370,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Search in page</source>
-      <translation>Search in page</translation>
+      <translation>Ned deg usebter</translation>
     </message>
     <message>
       <source>Full-text search</source>
@@ -2478,7 +2478,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>New Tab</source>
-      <translation>New Tab</translation>
+      <translation>Iccer amaynut</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2500,7 +2500,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>All</source>
-      <translation>All</translation>
+      <translation>Akk</translation>
     </message>
     <message>
       <source>Open Tabs List</source>
@@ -2528,7 +2528,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Download</source>
-      <translation>Download</translation>
+      <translation>Sader</translation>
     </message>
     <message>
       <source>Skip This Release</source>
@@ -2544,7 +2544,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Page Setup</source>
-      <translation>Page Setup</translation>
+      <translation>Tawila n usebter</translation>
     </message>
     <message>
       <source>No printer is available. Please install one first.</source>
@@ -2552,7 +2552,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Print Article</source>
-      <translation>Print Article</translation>
+      <translation>Siggez amagrad</translation>
     </message>
     <message>
       <source>The main window is set to be always on top.</source>
@@ -2560,7 +2560,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>&amp;Hide</source>
-      <translation>&amp;Hide</translation>
+      <translation>&amp;Ffer</translation>
     </message>
     <message>
       <source>Export history to file</source>
@@ -2716,7 +2716,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Language Variant</source>
-      <translation>Language Variant</translation>
+      <translation>Tutlayt tamlellayt</translation>
     </message>
   </context>
   <context>
@@ -2778,7 +2778,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Sort by name</source>
-      <translation>Sort by name</translation>
+      <translation>Smizzwer s yisem</translation>
     </message>
     <message>
       <source>Sort by languages</source>
@@ -2820,7 +2820,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>&amp;Interface</source>
-      <translation>&amp;Interface</translation>
+      <translation>&amp;Agrudem</translation>
     </message>
     <message>
       <source>Double-click translates the word clicked</source>
@@ -2950,7 +2950,7 @@ the application.</translation>
     </message>
     <message>
       <source>Modern</source>
-      <translation>Modern</translation>
+      <translation>Atrar</translation>
     </message>
     <message>
       <source>Lingvo</source>
@@ -2986,15 +2986,15 @@ the application.</translation>
     </message>
     <message>
       <source>Enable</source>
-      <translation>Enable</translation>
+      <translation>Sermed</translation>
     </message>
     <message>
       <source>Disable</source>
-      <translation>Disable</translation>
+      <translation>Kkes armad</translation>
     </message>
     <message>
       <source>Automatic</source>
-      <translation>Automatic</translation>
+      <translation>Awurman</translation>
     </message>
     <message>
       <source>None</source>
@@ -3014,7 +3014,7 @@ be the last ones.</translation>
     </message>
     <message>
       <source>Appearance</source>
-      <translation>Appearance</translation>
+      <translation>Udem</translation>
     </message>
     <message>
       <source>Enable Interface Font</source>
@@ -3030,7 +3030,7 @@ be the last ones.</translation>
     </message>
     <message>
       <source>Interface language</source>
-      <translation>Interface language</translation>
+      <translation>Tutlayt n ugrudem</translation>
     </message>
     <message>
       <source>Article Display style</source>
@@ -3042,7 +3042,7 @@ be the last ones.</translation>
     </message>
     <message>
       <source>Interface Style</source>
-      <translation>Interface Style</translation>
+      <translation>Aɣanib n ugrudem</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -3050,7 +3050,7 @@ be the last ones.</translation>
     </message>
     <message>
       <source>Dark Mode</source>
-      <translation>Dark Mode</translation>
+      <translation>Askar ubrik</translation>
     </message>
     <message>
       <source>Turn the article display style to dark.</source>
@@ -3184,7 +3184,7 @@ in the pressed state when the word selection changes.</translation>
     </message>
     <message>
       <source>&amp;Audio</source>
-      <translation>&amp;Audio</translation>
+      <translation>&amp;Ameslaw</translation>
     </message>
     <message>
       <source>Pronunciation</source>
@@ -3216,7 +3216,7 @@ in the pressed state when the word selection changes.</translation>
     </message>
     <message>
       <source>&amp;Network</source>
-      <translation>&amp;Network</translation>
+      <translation>&amp;Aẓeṭṭa</translation>
     </message>
     <message>
       <source>Enable if you wish to use a proxy server
@@ -3250,7 +3250,7 @@ for all program&apos;s network requests.</translation>
     </message>
     <message>
       <source>Port:</source>
-      <translation>Port:</translation>
+      <translation>Tawwurt:</translation>
     </message>
     <message>
       <source>User:</source>
@@ -3262,7 +3262,7 @@ for all program&apos;s network requests.</translation>
     </message>
     <message>
       <source>Anki Connect</source>
-      <translation>Anki Connect</translation>
+      <translation>Tuqqna n Anki</translation>
     </message>
     <message>
       <source>http://</source>
@@ -3290,7 +3290,7 @@ for all program&apos;s network requests.</translation>
     </message>
     <message>
       <source>Sentence</source>
-      <translation>Sentence</translation>
+      <translation>Tafyirt</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3350,7 +3350,7 @@ download page.</translation>
     </message>
     <message>
       <source>History</source>
-      <translation>History</translation>
+      <translation>Azray</translation>
     </message>
     <message>
       <source>Turn this option on to store history of the translated words</source>
@@ -3378,7 +3378,7 @@ download page.</translation>
     </message>
     <message>
       <source>Save every</source>
-      <translation>Save every</translation>
+      <translation>Sekles yal</translation>
     </message>
     <message>
       <source>minutes</source>
@@ -3394,7 +3394,7 @@ download page.</translation>
     </message>
     <message>
       <source>Articles</source>
-      <translation>Articles</translation>
+      <translation>Imagraden</translation>
     </message>
     <message>
       <source>Ignore punctuation while searching</source>
@@ -3406,7 +3406,7 @@ download page.</translation>
     </message>
     <message>
       <source>symbols</source>
-      <translation>symbols</translation>
+      <translation>izamulen</translation>
     </message>
     <message>
       <source>Select this option to automatic collapse big articles</source>
@@ -3581,7 +3581,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Unknown</source>
-      <translation>Unknown</translation>
+      <translation>D arussin</translation>
     </message>
   </context>
   <context>
@@ -3662,11 +3662,11 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>A dictionary lookup program.</source>
-      <translation>A dictionary lookup program.</translation>
+      <translation>Aseɣẓan n unadi deg uzegzawal.</translation>
     </message>
     <message>
       <source>Word or sentence to query.</source>
-      <translation>Word or sentence to query.</translation>
+      <translation>Awal naɣ tafyirt iɣef i tettnadiḍ.</translation>
     </message>
     <message>
       <source>Reset window state.</source>
@@ -3765,7 +3765,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Clear Search</source>
-      <translation>Clear Search</translation>
+      <translation>Sfeḍ anadi</translation>
     </message>
   </context>
   <context>
@@ -3870,7 +3870,7 @@ could be resized or managed in other ways.</translation>
     </message>
     <message>
       <source>Save Article</source>
-      <translation>Save Article</translation>
+      <translation>Sekles amagrad</translation>
     </message>
   </context>
   <context>
@@ -3985,7 +3985,7 @@ of the appropriate groups to use them.</translation>
     </message>
     <message>
       <source>Websites</source>
-      <translation>Websites</translation>
+      <translation>Ismal Web</translation>
     </message>
     <message>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
@@ -4069,7 +4069,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Transliteration</source>
-      <translation>Transliteration</translation>
+      <translation>Asiskel</translation>
     </message>
     <message>
       <source>Greek transliteration</source>
@@ -4137,7 +4137,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Text to Speech</source>
-      <translation>Text to Speech</translation>
+      <translation>Aḍris ar taɣect</translation>
     </message>
     <message>
       <source>Choose a directory</source>
@@ -4145,7 +4145,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Confirm removal</source>
-      <translation>Confirm removal</translation>
+      <translation>Sentem tukksa</translation>
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
@@ -4176,11 +4176,11 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <name>TextToSpeechSource</name>
     <message>
       <source>Selected voice engines:</source>
-      <translation>Selected voice engines:</translation>
+      <translation>Fren imseddayen n taɣect:</translation>
     </message>
     <message>
       <source>&amp;Add</source>
-      <translation>&amp;Add</translation>
+      <translation>&amp;Rnu</translation>
     </message>
     <message>
       <source>&amp;Remove</source>
