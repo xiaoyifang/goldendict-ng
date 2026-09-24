@@ -160,11 +160,7 @@ Preferences::Preferences():
 }
 
 Chinese::Chinese():
-  enable( false ),
-  enableSCToTWConversion( true ),
-  enableSCToHKConversion( true ),
-  enableTCToSCConversion( true ),
-  enableJapaneseConversion( true )
+  enable( false )
 {
 }
 
