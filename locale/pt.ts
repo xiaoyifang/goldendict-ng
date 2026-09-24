@@ -332,28 +332,8 @@ entre ortografia clássica e escolar em ciílico)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Conversão Chinesa</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Habilitar conversão entre caracteres Chineses simplificados e tradicionais</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Con&amp;versão em Chinês</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Ativar conversão de caracteres simplificados para caracteres tradicionais (variante de Taiwan)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Habilitar conversão de caracteres simplificados para caracteres tradicionais (variante Hong Kong)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Habilitar conversão de caracteres tradicionais para caracteres simplificados</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ entre ortografia clássica e escolar em ciílico)</translation>
       <translation>Tradicional à conversão Chinesa simplificada</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Variante de Hong Kong</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Variante continental</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Permitir a conversão de caracteres tradicionais para caracteres simplificados (do continente)</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Simplificado (Continente)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Permitir a conversão de caracteres simplificados para caracteres tradicionais (Taiwan/Standard)</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Tradicional (Taiwan/Standard)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Permitir a conversão de caracteres chineses simplificados/tradicionais para caracteres Shinjitai japoneses</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Shinjitai japonês</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Conversão do Shinjitai do chinês para o japonês</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Con&amp;versão de caracteres chineses e japoneses</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Permitir a conversão entre caracteres Shinjitai em chinês simplificado, chinês tradicional (Taiwan/Hong Kong) e japonês Shinjitai</translation>
     </message>
   </context>
   <context>
