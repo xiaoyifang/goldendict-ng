@@ -334,28 +334,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Μετατροπή Κινέζικων</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Ενεργοποίηση μετατροπής μεταξύ απλουστευμένων και παραδοσιακών κινεζικών χαρακτήρων</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Μετατροπή Κινέζικων</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Ενεργοποίηση μετατροπής από απλοποιημένους χαρακτήρες σε παραδοσιακούς (παραλλαγή Ταϊβάν) χαρακτήρες</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Ενεργοποίηση μετατροπής από απλοποιημένους χαρακτήρες σε παραδοσιακούς (παραλλαγή Χονγκ Κονγκ) χαρακτήρες</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Ενεργοποίηση μετατροπής από παραδοσιακούς χαρακτήρες σε απλοποιημένους χαρακτήρες</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -370,16 +350,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>Παραδοσιακά στην απλουστευμένη κινεζική μετατροπή</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Παραλλαγή του Χονγκ Κονγκ</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Παραλλαγή ηπειρωτικής χώρας</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Ενεργοποίηση μετατροπής από παραδοσιακούς χαρακτήρες σε απλοποιημένους χαρακτήρες (ηπειρωτικής χώρας)</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Απλοποιημένη (ηπειρωτική χώρα)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Ενεργοποίηση μετατροπής από απλοποιημένους χαρακτήρες σε παραδοσιακούς χαρακτήρες (Ταϊβάν/Τυπικούς) χαρακτήρες</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Παραδοσιακό (Ταϊβάν/Τυπικό)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Ενεργοποίηση μετατροπής από απλοποιημένους/παραδοσιακούς κινεζικούς χαρακτήρες σε ιαπωνικούς χαρακτήρες Shinjitai</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Ιαπωνικό Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Κινέζικα σε Ιαπωνικά Shinjitai μετατροπή</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Μετατροπή κινεζικών και ιαπωνικών χαρακτήρων</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Ενεργοποίηση μετατροπής μεταξύ απλοποιημένων κινεζικών, παραδοσιακών κινεζικών (Ταϊβάν/Χονγκ Κονγκ) και ιαπωνικών χαρακτήρων Shinjitai</translation>
     </message>
   </context>
   <context>
