@@ -186,26 +186,34 @@ jobs:
           fetch-depth: 0 # need all tags to genearte changelog
       - name: Load version from VERSION file
         run: echo "version=$(xargs < VERSION)" >> $GITHUB_ENV
-      - name: Get previous tag
+      - name: Get previous tag via gh
         id: changelogTags
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [[ '${{env.prerelease}}' == 'true' ]]
-          then
-            echo "This is a pre-release"
-            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v -e "Release" -e "vcpkg" -e "chaos" | head -n 1)
+          if [[ '${{ env.prerelease }}' == 'true' ]]; then
+            echo "This is a pre-release, finding the latest release of any kind..."
+            previousTag=$(gh release list --repo "$GITHUB_REPOSITORY" --limit 1 --json tagName -q '.[0].tagName' 2>/dev/null || echo "")
           else
-            echo "This is not a pre-release"
-            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v -e "alpha" -e "vcpkg" -e "chaos" | head -n 1)
+            echo "This is a stable release, finding the latest non-prerelease..."
+            previousTag=$(gh release view --repo "$GITHUB_REPOSITORY" --json tagName -q .tagName 2>/dev/null || echo "")
           fi
 
+          echo "previousTag: $previousTag"
           echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
-          echo "previousTag : $previousTag"
+
+          # Build the commit range required by git-cliff (prevents the "..HEAD" error on the first release)
+          if [[ -n "$previousTag" ]]; then
+            echo "cliff_args=${previousTag}..HEAD" >> $GITHUB_OUTPUT
+          else
+            echo "cliff_args=HEAD" >> $GITHUB_OUTPUT
+          fi
       - name: Build Changelog
         id: build_changelog
         uses: orhun/git-cliff-action@v4.3.0
         with:
           config: cliff.toml
-          args: ${{ steps.changelogTags.outputs.prev_tag }}..HEAD
+          args: ${{ steps.changelogTags.outputs.cliff_args }}
         env:
           OUTPUT: changelog.txt
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
