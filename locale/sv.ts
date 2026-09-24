@@ -332,28 +332,8 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Kinesisk konvertering</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Aktivera konvertering mellan förenklade och traditionella kinesiska tecken</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Kinesisk Con&amp;version</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Aktivera konvertering från förenklade tecken till traditionella (Taiwan variant) tecken</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Aktivera konvertering från förenklade tecken till traditionella (Hong Kong variant) tecken</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Aktivera konvertering från traditionella tecken till förenklade tecken</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Traditionell till förenklad kinesisk konvertering</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Hongkong variant</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Variant på fastlandet</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Möjliggöra konvertering från traditionella tecken till förenklade (fastlands) tecken</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Förenklad (fastlandet)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Möjliggör konvertering från förenklade tecken till traditionella (Taiwan/Standard) tecken</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Traditionell (Taiwan/Standard)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Möjliggör konvertering från förenklade/traditionella kinesiska tecken till japanska Shinjitai-tecken</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Japansk Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Kinesisk till japansk Shinjitai-konvertering</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Kinesisk och japansk teckenkonversion</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Aktivera konvertering mellan förenklade kinesiska, traditionella kinesiska (Taiwan/Hongkong) och japanska Shinjitai-tecken</translation>
     </message>
   </context>
   <context>
