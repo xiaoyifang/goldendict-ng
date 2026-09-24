@@ -533,10 +533,10 @@ struct Chinese
 {
   bool enable;
 
-  bool enableSCToTWConversion;
-  bool enableSCToHKConversion;
-  bool enableTCToSCConversion;
-  bool enableJapaneseConversion;
+  bool enableSCToTWConversion   = true;
+  bool enableSCToHKConversion   = true;
+  bool enableTCToSCConversion   = true;
+  bool enableJapaneseConversion = true;
 
   Chinese();
 
