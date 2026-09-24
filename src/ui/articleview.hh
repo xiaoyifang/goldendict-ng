@@ -217,6 +217,12 @@ public:
   /// Reloads the view
   void reload();
 
+  /// Re-evaluates the dark-reader color scheme (e.g. after a system theme
+  /// change in Auto mode) and then reloads, so the embedded web view's
+  /// prefers-color-scheme script stays in sync with the reload instead of
+  /// carrying a stale light/dark script into the freshly loaded page.
+  void applyColorSchemeAndReload();
+
   void stopSound();
 
   /// Returns true if there's an audio reference on the page, false otherwise.

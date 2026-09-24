@@ -1416,6 +1416,13 @@ void ArticleView::syncBackgroundColorWithCfgDarkReader() const
     webview->page()->setBackgroundColor( Qt::white );
   }
 #endif
+
+  // Enforce GoldenDict-ng's active color scheme onto the embedded web view so
+  // that prefers-color-scheme / color-scheme reflect the application theme
+  // instead of the OS-level appearance. This is kept in sync here because
+  // syncBackgroundColorWithCfgDarkReader() is invoked on init, on preference
+  // changes and (via callers) before theme-triggered reloads.
+  webview->updatePreferredColorSchemeScript( isDarkModeEnabled() );
 }
 
 QString ArticleView::getCurrentWord()
@@ -1463,6 +1470,14 @@ void ArticleView::handleAnkiAction()
 void ArticleView::reload()
 {
   webview->reload();
+}
+
+void ArticleView::applyColorSchemeAndReload()
+{
+  // Keep the prefers-color-scheme script in sync BEFORE the reload so the new
+  // page does not carry a stale light/dark script (see issue #3077, Auto mode).
+  syncBackgroundColorWithCfgDarkReader();
+  reload();
 }
 
 void ArticleView::hasSound( const std::function< void( bool ) > & callback )
