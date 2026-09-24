@@ -371,11 +371,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Japanese Shinjitai</source>
-      <translation>日本新次體</translation>
+      <translation>日文新字體</translation>
     </message>
     <message>
       <source>Chinese to Japanese Shinjitai conversion</source>
-      <translation>中國至日本新吉泰改裝</translation>
+      <translation>中文到日文新字體的轉換</translation>
     </message>
     <message>
       <source>Chinese and Japanese Character Con&amp;version</source>
