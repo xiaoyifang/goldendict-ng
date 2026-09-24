@@ -332,28 +332,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>中国語変換</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>簡体字と繁体字の変換を有効にする</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>中国語バージョン(&amp;V)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>簡略化された文字から従来の文字への変換を有効にする (台湾のバリアント文字)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>簡略化された文字から従来の文字への変換を有効にする (香港のバリアント文字)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>従来の文字から簡略化された文字への変換を有効にする</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>繁体字から簡体字への変換</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>台湾繁体字</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>香港繁体字</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>中国大陸簡体字</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>繁体字から簡体字(本土)文字への変換を可能にする</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>簡略化(本土)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>簡体字から繁体字(台湾/標準)文字への変換を可能にする</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>トラディカル(台湾/スタンダード)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>簡体字/繁体字の中国語文字から日本語の新字体文字への変換を可能にする</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>日本の新治隊</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>中国から日本の新次台への改造</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>中国語と日本語の文字変換</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>簡体字中国語、繁体字(台湾/香港)、日本語の新字台文字間の変換を可能にする</translation>
     </message>
   </context>
   <context>
