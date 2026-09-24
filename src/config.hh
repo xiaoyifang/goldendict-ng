@@ -536,6 +536,7 @@ struct Chinese
   bool enableSCToTWConversion;
   bool enableSCToHKConversion;
   bool enableTCToSCConversion;
+  bool enableJapaneseConversion;
 
   Chinese();
 
@@ -543,7 +544,8 @@ struct Chinese
   {
     return enable == other.enable && enableSCToTWConversion == other.enableSCToTWConversion
       && enableSCToHKConversion == other.enableSCToHKConversion
-      && enableTCToSCConversion == other.enableTCToSCConversion;
+      && enableTCToSCConversion == other.enableTCToSCConversion
+      && enableJapaneseConversion == other.enableJapaneseConversion;
   }
 
   bool operator!=( const Chinese & other ) const
