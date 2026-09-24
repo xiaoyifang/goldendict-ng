@@ -316,27 +316,7 @@ between classic and school orthography in cyrillic)</source>
 <context>
     <name>ChineseConversion</name>
     <message>
-        <source>Chinese Conversion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable conversion between simplified and traditional Chinese characters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Chinese Con&amp;version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable conversion from traditional characters to simplified characters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -352,15 +332,47 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Taiwan variant</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Hong Kong variant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mainland variant</source>
+        <source>Chinese and Japanese Kanji Conversion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable conversion between simplified, traditional Chinese and Japanese Shinjitai characters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chinese and Japanese Kanji Con&amp;version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Simplified (Mainland)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Traditional (Taiwan/Standard)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Japanese Shinjitai</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chinese to Japanese Shinjitai conversion</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
