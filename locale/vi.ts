@@ -316,28 +316,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Chuyển đổi tiếng Trung</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Cho phép chuyển đổi giữa các ký tự tiếng Trung giản thể và phồn thể</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Phiên bản&amp;Chuyển đổi tiếng Trung</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Cho phép chuyển đổi từ ký tự giản thể sang ký tự truyền thống (biến thể Đài Loan)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Cho phép chuyển đổi từ ký tự giản thể sang ký tự truyền thống (biến thể Hồng Kông)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Cho phép chuyển đổi từ chữ phồn thể sang chữ giản thể</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -352,16 +332,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>Chuyển đổi tiếng Trung phồn thể sang giản thể</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Biến thể Đài Loan</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Biến thể Hồng Kông</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Biến thể Đại lục</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Cho phép chuyển đổi từ ký tự truyền thống sang ký tự đơn giản (Mainland)</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Đơn giản hóa (Đại lục)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Bật chuyển đổi từ ký tự đơn giản sang ký tự truyền thống (Đài Loan/Chuẩn)</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Truyền thống (Đài Loan/Tiêu chuẩn)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Bật chuyển đổi từ ký tự Trung Quốc giản thể/phồn thể sang ký tự Shinjitai tiếng Nhật</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Shinjitai Nhật Bản</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Chuyển đổi Shinjitai từ Trung Quốc sang Nhật Bản</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Chuyển đổi ký tự Trung và Nhật</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Cho phép chuyển đổi giữa chữ Trung giản thể, chữ Trung phồn thể (Đài Loan/Hồng Kông) và chữ Shinjitai tiếng Nhật</translation>
     </message>
   </context>
   <context>

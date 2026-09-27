@@ -332,28 +332,8 @@ between classic and school orthography in cyrillic)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Chinese Conversion</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Enable conversion between simplified and traditional Chinese characters</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Chinese Con&amp;version</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Enable conversion from simplified characters to traditional (Taiwan variant) characters</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Enable conversion from traditional characters to simplified characters</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ between classic and school orthography in cyrillic)</translation>
       <translation>Traditional to simplified Chinese conversion</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Hong Kong variant</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Mainland variant</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>gasnu lo cfika be'o lo prulamorfi lerfu lo sampu lerfu poi juncai</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>sampu poi juncai</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>gasnu lo cfika be'o lo sampu lerfu lo prulamorfi lerfu poi tainvan ja stani</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>prulamorfi poi tainvan ja stani</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>gasnu lo cfika be'o lo lerfu poi sampu ja prulamorfi xunto lo lerfu nihon be'o sincitai</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>sincitai poi nihon</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>cirmu be'o lo cninu lo ponjo shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>cninu .e ponjo cifnu &amp;cirmu be'o</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>galfi le cirmu be'o lo sampu cninu .e lo banro cninu be'o taivan. .e xon.kong. .e lo ponjo shinjitai cifnu</translation>
     </message>
   </context>
   <context>

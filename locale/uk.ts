@@ -331,28 +331,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Перетворення китайської</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Ввімкнути перетворення між спрощеними та традиційними китайськими символами</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Перетворення &amp;китайської</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Ввімкнути перетворення від спрощених символів до традиційних (варіант Тайвань)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Увімкнути перетворення з спрощених символів на традиційні (гонконгські варіанти) символи</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Включити перетворення з традиційних символів на спрощені символи</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -367,16 +347,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>Традиційне формулювання китайської конверсії</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Гонконзький варіант</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Схема материкового</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Увімкнути конвертацію з традиційних символів у спрощені (материкові) символи</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Спрощений (материковий)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Увімкніть конвертацію зі спрощених символів у традиційні (тайванські/стандартні) символи</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Традиційне (Тайвань/Стандарт)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Увімкніть конвертацію з спрощених/традиційних китайських ієрогліфів на японські ієрогліфи Shinjitai</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Японський Сіндзітай</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Перехід з китайської на японську Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Конверсія китайських і японських ієрогліфів</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Увімкніть конвертацію між спрощеними китайськими, традиційними китайськими (Тайвань/Гонконг) та японськими ієрогліфами Shinjitai</translation>
     </message>
   </context>
   <context>

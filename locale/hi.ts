@@ -331,28 +331,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>चीनी रूपांतरण</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>सरलीकृत और पारंपरिक चीनी अक्षरों के बीच रूपांतरण सक्षम करें</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>चीनी कान्टोनी संस्करण</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>सरलीकृत वर्णों से पारंपरिक (ताइवान संस्करण) वर्णों में रूपांतरण सक्षम करें</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>सरलीकृत वर्णों से पारंपरिक (हांगकांग संस्करण) वर्णों में रूपांतरण सक्षम करें</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>पारंपरिक वर्णों से सरलीकृत वर्णों में रूपांतरण सक्षम करें</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -367,16 +347,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>पारंपरिक से सरलीकृत चीनी में रूपांतरण</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>ताइवान संस्करण</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>हांगकांग संस्करण</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>मुख्यभूमि संस्करण</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>पारंपरिक वर्णों से सरलीकृत (मुख्यभूमि) वर्णों में रूपांतरण सक्षम करें</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>सरलीकृत (मुख्यभूमि)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>सरलीकृत वर्णों से पारंपरिक (ताइवान/मानक) वर्णों में रूपांतरण सक्षम करें</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>पारंपरिक (ताइवान/मानक)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>सरलीकृत/पारंपरिक चीनी वर्णों से जापानी शिंजिताई वर्णों में रूपांतरण सक्षम करें</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>जापानी शिंजिताई</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>चीनी से जापानी शिंजिताई रूपांतरण</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>चीनी और जापानी चरित्र Con&amp;version</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>सरलीकृत चीनी, पारंपरिक चीनी (ताइवान/हांगकांग) और जापानी शिंजिताई वर्णों के बीच रूपांतरण सक्षम करें</translation>
     </message>
   </context>
   <context>

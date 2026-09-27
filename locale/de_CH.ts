@@ -332,28 +332,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Chinesische Konvertierung</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Aktiviere Konvertierung zwischen Chinesischen Charakterzeichen Simpel (SC) und Traditionell (TC).</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Chinesische Konvertierung (SC=Simpel, TC=Traditionell)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Aktiviere Konvertierung von Chinesischen Charakterzeichen Simpel zu Traditionell (Taiwan).</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Aktiviere Konvertierung von Chinesischen Charakterzeichen Simpel zu Traditionell (Hongkong).</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Aktiviere Konvertierung von Chinesischen Charakterzeichen Traditionell zu Simpel.</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>Konvertierung von Chinesischen Charakterzeichen Traditionell (TC) zu Simpel (SC).</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan Variante</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Hong Kong Variante</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Mainland (Festland) Variante</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Aktiviere Konvertierung von traditionellen zu vereinfachten (Festland-)Zeichen</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Vereinfacht (Festland)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Aktiviere Konvertierung von vereinfachten zu traditionellen (Taiwan/Standard-)Zeichen</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Traditionell (Taiwan/Standard)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Aktiviere Konvertierung von vereinfachten/traditionellen chinesischen Zeichen zu japanischen Shinjitai-Zeichen</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Japanisch Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Konvertierung Chinesisch zu Japanisch Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Chinesische und japanische Zeichenkon&amp;vertierung</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Konvertierung zwischen vereinfachten Chinesisch-, traditionellen Chinesisch- (Taiwan/Hongkong) und japanischen Shinjitai-Zeichen aktivieren</translation>
     </message>
   </context>
   <context>

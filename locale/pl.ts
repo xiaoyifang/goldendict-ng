@@ -332,52 +332,60 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Konwersja chińska</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Włącz konwersję między uproszczonymi i tradycyjnymi chińskimi znakami</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>&amp;Konwersja chińska</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Włącz konwersję z uproszczonych znaków na tradycyjne (Tajwan Wariant)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Włącz konwersję z uproszczonych znaków na tradycyjne (wariant Hongkongu)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Włącz konwersję z tradycyjnych znaków na uproszczone znaki</translation>
+      <translation>Włącz konwersję znaków uproszczonych na tradycyjne (wariant Hongkongu)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Zmiana uproszczona do tradycyjnego chińskiego (wariant Taiwański)</translation>
+      <translation>Konwersja chińskich znaków uproszczonych na tradycyjne (wariant Tajwanu)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Zmiana uproszczona do tradycyjnego chińskiego (wariant Hongkongu)</translation>
+      <translation>Konwersja chińskich znaków uproszczonych na tradycyjne (wariant Hongkongu)</translation>
     </message>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Tradycyjne dla uproszczonej chińskiej konwersji</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Wariant tajwański</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Wariant hongkoński</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Wariant kontynentalny</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Umożliwienie konwersji z tradycyjnych znaków na uproszczone (z Mainland) znaki</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Uproszczone (Mainland)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Umożliwienie konwersji ze uproszczonych znaków na tradycyjne (tajwańskie/standardowe) znaki</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Tradycyjny (Tajwan/Standard)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Umożliwienie konwersji z uproszczonych/tradycyjnych znaków chińskich na japońskie znaki Shinjitai</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Japoński Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Konwersja Shinjitai z Chiny na Japończyków</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Chińskie i japońskie znaki kontra wersja</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Umożliwienie konwersji między uproszczonym chińskim, tradycyjnym chińskim (Tajwan/Hongkong) oraz japońskimi znakami Shinjitai</translation>
     </message>
   </context>
   <context>

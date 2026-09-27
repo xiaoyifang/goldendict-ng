@@ -332,28 +332,8 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Kiinalainen Muuntaminen</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Ota käyttöön muuntaminen yksinkertaistettujen ja perinteisten kiinalaisten merkkien välillä</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Kiinan&amp;muunnos</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Ota käyttöön muuntaminen yksinkertaistetuista merkeistä perinteisiin (Taiwan variantti) merkkeihin</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Ota käyttöön muuntaminen yksinkertaistetuista merkeistä perinteisiin (Hong Kong -variantti) merkkeihin</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Ota käyttöön muuntaminen perinteisistä merkeistä yksinkertaistettuihin merkkeihin</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Perinteinen yksinkertaistettu Kiinan muuntaminen</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Hongkongin muunnos</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Manner-Euroopan variantti</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Ota käyttöön muuntaminen perinteisistä merkeistä yksinkertaistettuihin (manner-) merkkeihin</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Simplified (Manner)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Ota käyttöön muuntaminen yksinkertaistetuista merkeistä perinteisiin (Taiwan/Standardi) merkkeihin</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Perinteinen (Taiwan/standardi)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Mahdollista muuntaminen yksinkertaistetuista/perinteisistä kiinalaisista merkeistä japanilaisiin Shinjitai-merkkeihin</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Japanilainen Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Kiinasta japanilaiseen Shinjitai-muunnos</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Kiinan ja japanin merkkien muunnos</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Mahdollista muunnos yksinkertaistetun kiinan, perinteisen kiinan (Taiwan/Hongkong) ja japanilaisen shinjitai-merkkien välillä</translation>
     </message>
   </context>
   <context>

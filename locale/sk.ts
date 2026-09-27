@@ -332,28 +332,8 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Čínska konverzia</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Povoliť konverziu medzi zjednodušenými a tradičnými čínskymi znakmi</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Čínska &amp;konverzia</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Povoliť konverziu zjednodušených znakov na tradičné (Tajvanský variant)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Povoliť konverziu zjednodušených znakov na tradičné (Hong-Kongský variant)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Povoliť konverziu tradičných znakov na zjednodušené znaky</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <translation>Konverzia z tradičnej do zjednodušenej čínštiny</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwanský variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Hongkonský variant</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Pevninský variant</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Umožniť konverziu z tradičných znakov na zjednodušené (pevninské) znaky</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Zjednodušené (pevnina)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Umožniť konverziu zo zjednodušených znakov na tradičné (Taiwan/Standard) znaky</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Tradičné (Taiwan/Standard)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Umožniť konverziu zo zjednodušených/tradičných čínskych znakov na japonské znaky Shinjitai</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Japonský Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Čínska konverzia na japonskú konverziu Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Čínske a japonské znaky Proti&amp;verzia</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Umožniť konverziu medzi zjednodušenou čínštinou, tradičnou čínštinou (Taiwan/Hongkong) a japonskými znakmi Shinjitai</translation>
     </message>
   </context>
   <context>

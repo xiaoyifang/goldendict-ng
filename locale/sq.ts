@@ -331,28 +331,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Konvertimi kinez</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Aktivizo konvertimin midis karaktereve të thjeshtuara dhe tradicionale kineze</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Konvertimi kinez</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Aktivizo konvertimin nga karaktere të thjeshtuara në karaktere tradicionale (varianti i Tajvanit).</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Aktivizo konvertimin nga karaktere të thjeshtuara në karaktere tradicionale (varianti i Hong Kongut).</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Aktivizo konvertimin nga karaktere tradicionale në karaktere të thjeshtuara</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -367,16 +347,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>Konvertimi tradicional në kinezisht i thjeshtuar</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Varianti i Tajvanit</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Varianti i Hong Kongut</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Varianti i Kinës kontinentale</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Mundësoni konvertimin nga karakteret tradicionale në karaktere të thjeshtuara (Mainland)</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Thjeshtuar (Kontinent)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Mundësoni konvertimin nga karakteret e thjeshtuara në karakteret tradicionale (Taiwan/Standard)</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Tradicionale (Tajvan/Standard)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Mundësoni konvertimin nga karakteret kineze të thjeshtuara/tradicionale në karaktere japoneze Shinjitai</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Shinjitai japonez</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Konvertimi nga Shinjitai nga kinezja në japoneze</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Konversioni i Karaktereve Kineze dhe Japoneze</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Mundësoni konvertimin midis kinezishtes së thjeshtuar, kinezishtes tradicionale (Taiwan/Hong Kong) dhe karaktereve japoneze Shinjitai</translation>
     </message>
   </context>
   <context>

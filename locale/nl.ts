@@ -332,28 +332,8 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Chinese conversie</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Conversie tussen vereenvoudigde en traditionele Chinese tekens inschakelen</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Chinese Con&amp;versie</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Schakel conversie van vereenvoudigde tekens naar traditionele (Taiwan-variant) tekens in</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Schakel conversie van vereenvoudigde tekens naar traditionele (Hong Kong variant) tekens in</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Schakel conversie van traditionele tekens naar vereenvoudigde tekens in</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Traditioneel naar vereenvoudigde Chinese conversie</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Hong Kong variant</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Hoofdland variant</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Schakel omzetting in van traditionele tekens naar vereenvoudigde (vasteland) tekens</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Vereenvoudigd (vasteland)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Schakel omzetting in van vereenvoudigde tekens naar traditionele (Taiwan/Standaard) tekens</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Traditioneel (Taiwan/Standaard)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Schakel de omzetting in van vereenvoudigde/traditionele Chinese karakters naar Japanse Shinjitai-karakters</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Japanse Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Chinese naar Japanse Shinjitai-bekering</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Chinese en Japanse karakterconversie</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Schakel omzetting in tussen vereenvoudigde Chinees, traditionele Chinese (Taiwan/Hong Kong) en Japanse Shinjitai-karakters mogelijk</translation>
     </message>
   </context>
   <context>
