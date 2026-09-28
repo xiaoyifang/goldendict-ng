@@ -49,7 +49,7 @@ public:
     // drawImage() scale it back into the logical rect (SmoothPixmapTransform
     // is enabled below). No DPR is set on the images, so all coordinates
     // stay unambiguous.
-    const qreal dpr = painter->device() ? painter->device()->devicePixelRatioF() : qApp->devicePixelRatio();
+    const qreal dpr   = painter->device() ? painter->device()->devicePixelRatioF() : qApp->devicePixelRatio();
     QPixmap srcPixmap = source.pixmap( rect.size() * dpr, QIcon::Normal, QIcon::Off );
 
     // Convert to grayscale while keeping the alpha channel. The image is
