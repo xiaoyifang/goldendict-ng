@@ -75,11 +75,19 @@ public:
     // Plain SourceOver draw: Qt repaints the button background before the
     // icon engine runs. Do NOT clear with CompositionMode_Source -- widget
     // backing stores have no alpha, so a transparent fill paints black.
-    painter->drawImage( rect, grayImage );
+    // Scale with KeepAspectRatio and center, so non-square icons keep their
+    // original proportions instead of being stretched to fill the rect.
+    const QSizeF fitted = QSizeF( grayImage.size() ).scaled( QSizeF( rect.size() ), Qt::KeepAspectRatio );
+    const QRectF target( rect.center().x() - fitted.width() / 2.0,
+                         rect.center().y() - fitted.height() / 2.0,
+                         fitted.width(),
+                         fitted.height() );
+    painter->drawImage( target, grayImage );
 
-    // Strike-through line indicating the disabled state.
+    // Strike-through line indicating the disabled state. A bright color is
+    // used so it stays visible on the dark grayscale icon.
     const int lineWidth = qMax( 2, rect.height() / 10 );
-    QPen pen( QColor( 100, 100, 100, 220 ), lineWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin );
+    QPen pen( QColor( 235, 90, 70, 230 ), lineWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin );
     painter->setPen( pen );
 
     const int padding = lineWidth + 2;
