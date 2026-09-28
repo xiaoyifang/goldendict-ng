@@ -44,6 +44,11 @@ public:
     painter->drawPixmap( rect, pixmap( rect.size(), mode, state ) );
   }
 
+  QSize actualSize( const QSize & size, QIcon::Mode mode, QIcon::State state ) override
+  {
+    return source.actualSize( size, mode, state );
+  }
+
   QPixmap pixmap( const QSize & size, QIcon::Mode, QIcon::State ) override
   {
     // Render the source in its Normal appearance. QIcon scales to fit while
@@ -64,6 +69,11 @@ public:
         dstLine[ x ]     = qRgba( gValue, gValue, gValue, qAlpha( rgba ) );
       }
     }
+
+    // Switch back to premultiplied alpha. If an unpremultiplied image is
+    // scaled (SmoothPixmapTransform), bilinear interpolation on zero-alpha
+    // pixels produces black contamination along translucent edges.
+    grayImage = grayImage.convertToFormat( QImage::Format_ARGB32_Premultiplied );
 
     // Strike-through line indicating the disabled state. A bright color is
     // used so it stays visible on the dark grayscale icon.
