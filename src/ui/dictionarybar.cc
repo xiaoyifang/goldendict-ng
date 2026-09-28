@@ -44,21 +44,21 @@ public:
     painter->drawPixmap( rect, pixmap( rect.size(), mode, state ) );
   }
 
-  QSize actualSize( const QSize & size, QIcon::Mode mode, QIcon::State state ) override
-  {
-    return source.actualSize( size, mode, state );
-  }
-
   QPixmap pixmap( const QSize & size, QIcon::Mode, QIcon::State ) override
   {
-    // Render the source in its Normal appearance. QIcon scales to fit while
-    // keeping the aspect ratio, so non-square icons are not stretched.
-    QImage srcImage =
-      source.pixmap( size, QIcon::Normal, QIcon::Off ).toImage().convertToFormat( QImage::Format_ARGB32 );
+    if ( size.isEmpty() )
+      return {};
+
+    // The source pixmap keeps aspect ratio, so it may be smaller than the
+    // requested size (e.g. a 12x24 image fitted into a 24x24 request).
+    QPixmap srcPixmap = source.pixmap( size, QIcon::Normal, QIcon::Off );
+    if ( srcPixmap.isNull() )
+      return srcPixmap;
 
     // Convert to grayscale while keeping the alpha channel. The image is
     // unpremultiplied first: qGray() on premultiplied pixels would darken
     // semi-transparent edges.
+    QImage srcImage = srcPixmap.toImage().convertToFormat( QImage::Format_ARGB32 );
     QImage grayImage( srcImage.size(), QImage::Format_ARGB32 );
     for ( int y = 0; y < srcImage.height(); ++y ) {
       const QRgb * srcLine = reinterpret_cast< const QRgb * >( srcImage.constScanLine( y ) );
@@ -75,18 +75,35 @@ public:
     // pixels produces black contamination along translucent edges.
     grayImage = grayImage.convertToFormat( QImage::Format_ARGB32_Premultiplied );
 
-    // Strike-through line indicating the disabled state. A bright color is
-    // used so it stays visible on the dark grayscale icon.
-    QPainter p( &grayImage );
+    // Always compose on a canvas of the requested logical size. The source
+    // image is centered inside it, and the strike-through line spans the
+    // whole canvas, so the line has the same length for every icon
+    // regardless of the source image's aspect ratio.
+    const qreal dpr = qMax< qreal >( srcPixmap.devicePixelRatio(), 1.0 );
+    QImage canvas( size * dpr, QImage::Format_ARGB32_Premultiplied );
+    canvas.setDevicePixelRatio( dpr );
+    canvas.fill( Qt::transparent );
+
+    QPainter p( &canvas );
     p.setRenderHint( QPainter::Antialiasing, true );
-    const int lineWidth = qMax( 2, grayImage.height() / 10 );
+    p.setRenderHint( QPainter::SmoothPixmapTransform, true );
+
+    // Center the grayscale source (all geometry is in logical coordinates).
+    const QSizeF srcLogical = QSizeF( srcImage.size() ) / dpr;
+    const QPointF topLeft( ( size.width() - srcLogical.width() ) / 2.0,
+                           ( size.height() - srcLogical.height() ) / 2.0 );
+    p.drawImage( topLeft, grayImage );
+
+    // Strike-through line across the full canvas. A bright color is used so
+    // it stays visible on the dark grayscale icon.
+    const qreal lineWidth = qMax< qreal >( 2, size.height() / 10.0 );
     p.setPen( QPen( QColor( 235, 90, 70, 230 ), lineWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin ) );
-    const int padding = lineWidth + 2;
-    p.drawLine( grayImage.rect().bottomLeft() + QPoint( padding, -padding ),
-                grayImage.rect().topRight() + QPoint( -padding, padding ) );
+    const qreal padding = lineWidth + 2;
+    p.drawLine( QPointF( padding, size.height() - padding ),
+                QPointF( size.width() - padding, padding ) );
     p.end();
 
-    return QPixmap::fromImage( grayImage );
+    return QPixmap::fromImage( canvas );
   }
 
 private:
