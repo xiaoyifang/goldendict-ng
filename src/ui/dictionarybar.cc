@@ -47,7 +47,7 @@ public:
 
     // Render the source icon at the device pixel ratio of the target device
     // so no scaling happens at paint time.
-    const qreal dpr = painter->device() ? painter->device()->devicePixelRatioF() : QGuiApplication::devicePixelRatio();
+    const qreal dpr = painter->device() ? painter->device()->devicePixelRatioF() : qApp->devicePixelRatio();
     QPixmap srcPixmap = source.pixmap( rect.size(), dpr, QIcon::Normal, QIcon::Off );
 
     // Convert to grayscale while keeping the alpha channel. The image is
