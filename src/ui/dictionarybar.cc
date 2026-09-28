@@ -45,17 +45,18 @@ public:
     if ( rect.isEmpty() )
       return;
 
-    // Render the source icon at the device pixel ratio of the target device
-    // so no scaling happens at paint time.
-    const qreal dpr   = painter->device() ? painter->device()->devicePixelRatioF() : qApp->devicePixelRatio();
-    QPixmap srcPixmap = source.pixmap( rect.size(), dpr, QIcon::Normal, QIcon::Off );
+    // Render the source icon at device pixels for crispness, then let
+    // drawImage() scale it back into the logical rect (SmoothPixmapTransform
+    // is enabled below). No DPR is set on the images, so all coordinates
+    // stay unambiguous.
+    const qreal dpr = painter->device() ? painter->device()->devicePixelRatioF() : qApp->devicePixelRatio();
+    QPixmap srcPixmap = source.pixmap( rect.size() * dpr, QIcon::Normal, QIcon::Off );
 
     // Convert to grayscale while keeping the alpha channel. The image is
     // unpremultiplied first: qGray() on premultiplied pixels would darken
     // semi-transparent edges.
     QImage srcImage = srcPixmap.toImage().convertToFormat( QImage::Format_ARGB32 );
     QImage grayImage( srcImage.size(), QImage::Format_ARGB32 );
-    grayImage.setDevicePixelRatio( srcImage.devicePixelRatio() );
 
     for ( int y = 0; y < srcImage.height(); ++y ) {
       const QRgb * srcLine = reinterpret_cast< const QRgb * >( srcImage.constScanLine( y ) );
@@ -71,10 +72,9 @@ public:
     painter->setRenderHint( QPainter::Antialiasing, true );
     painter->setRenderHint( QPainter::SmoothPixmapTransform, true );
 
-    // Do NOT clear the rect with CompositionMode_Source: widget backing
-    // stores have no alpha channel, so filling with transparent would paint
-    // an opaque black block. The button background is always repainted
-    // before this engine runs, so a plain SourceOver draw is correct.
+    // Plain SourceOver draw: Qt repaints the button background before the
+    // icon engine runs. Do NOT clear with CompositionMode_Source -- widget
+    // backing stores have no alpha, so a transparent fill paints black.
     painter->drawImage( rect, grayImage );
 
     // Strike-through line indicating the disabled state.
