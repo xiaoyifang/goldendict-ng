@@ -21,9 +21,12 @@ namespace {
 /// Unlike QIcon::Disabled (which re-involves the Qt style system and can
 /// change on hover / state changes), this engine:
 ///   1. Extracts the source icon's pixels as a QPixmap via the Normal mode
-///      (so the source icon is painted in its original appearance once).
-///   2. Converts those pixels to grayscale via QImage::convertToFormat.
-///   3. Draws the grayscale pixmap directly onto the target rect.
+///      at the target device pixel ratio (so the result stays crisp on
+///      high-DPI screens).
+///   2. Converts those pixels to grayscale while keeping the alpha channel
+///      intact (Format_Grayscale8 would drop alpha and turn transparent
+///      pixels into an opaque black block with jagged edges).
+///   3. Draws the grayscale image directly onto the target rect.
 /// Because the engine ignores the incoming Mode/State parameters, the result
 /// is identical regardless of hover, press, or any other state -- the icon
 /// looks the same grayed-out "disabled" snapshot at all times.
@@ -42,38 +45,45 @@ public:
     if ( rect.isEmpty() )
       return;
 
-    // Force the source icon to render in its Normal appearance and at the
-    // exact size needed. This is independent of the mode/state requested on
-    // this engine (which is intentionally ignored -- see class doc above).
-    QPixmap srcPixmap = source.pixmap( rect.size(), QIcon::Normal, QIcon::Off );
+    // Render the source icon at the device pixel ratio of the target device
+    // so no scaling happens at paint time.
+    const qreal dpr = painter->device() ? painter->device()->devicePixelRatioF() : qApp->devicePixelRatioF();
+    QPixmap srcPixmap = source.pixmap( rect.size(), dpr, QIcon::Normal, QIcon::Off );
 
-    // Convert to grayscale8 to strip color information. Using Qt's built-in
-    // pixel-format conversion means Qt does the right thing for any input
-    // (SVG, PNG, painter-generated, etc.).
-    QImage grayImage = srcPixmap.toImage().convertToFormat( QImage::Format_Grayscale8 );
+    // Convert to grayscale while keeping the alpha channel. The image is
+    // unpremultiplied first: qGray() on premultiplied pixels would darken
+    // semi-transparent edges.
+    QImage srcImage = srcPixmap.toImage().convertToFormat( QImage::Format_ARGB32 );
+    QImage grayImage( srcImage.size(), QImage::Format_ARGB32 );
+    grayImage.setDevicePixelRatio( srcImage.devicePixelRatio() );
 
-    // Clear the target rect first with CompositionMode_Source so any residual
-    // pixels from a previously painted icon are wiped out. Without this,
-    // alpha-blending the grayscale image over leftover pixels would produce
-    // the "mixed icons" look reported earlier.
+    for ( int y = 0; y < srcImage.height(); ++y ) {
+      const QRgb * srcLine = reinterpret_cast< const QRgb * >( srcImage.constScanLine( y ) );
+      QRgb * dstLine       = reinterpret_cast< QRgb * >( grayImage.scanLine( y ) );
+      for ( int x = 0; x < srcImage.width(); ++x ) {
+        const QRgb rgba  = srcLine[ x ];
+        const int gValue = qGray( rgba );
+        dstLine[ x ]     = qRgba( gValue, gValue, gValue, qAlpha( rgba ) );
+      }
+    }
+
     painter->save();
-    painter->setCompositionMode( QPainter::CompositionMode_Source );
-    painter->fillRect( rect, Qt::transparent );
-    painter->restore();
+    painter->setRenderHint( QPainter::Antialiasing, true );
+    painter->setRenderHint( QPainter::SmoothPixmapTransform, true );
 
-    // Draw the grayscale icon.
+    // Draw over the toolbar background as usual (SourceOver, no clearing).
     painter->drawImage( rect, grayImage );
 
-    // Draw a bold diagonal strike-through line to indicate the disabled
-    // state. The line uses full opacity so it remains clearly visible on
-    // both light and dark themes regardless of the icon opacity.
-    const int lineWidth = qMax( 3, rect.height() / 8 );
-    QPen pen( Qt::darkGray, lineWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin );
+    // Strike-through line indicating the disabled state.
+    const int lineWidth = qMax( 2, rect.height() / 10 );
+    QPen pen( QColor( 100, 100, 100, 220 ), lineWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin );
     painter->setPen( pen );
 
-    const int padding = lineWidth + 1;
+    const int padding = lineWidth + 2;
     painter->drawLine( rect.bottomLeft() + QPoint( padding, -padding ),
                        rect.topRight() + QPoint( -padding, padding ) );
+
+    painter->restore();
   }
 
 private:
