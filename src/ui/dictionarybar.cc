@@ -46,14 +46,16 @@ public:
 
   QPixmap pixmap( const QSize & size, QIcon::Mode, QIcon::State ) override
   {
-    if ( size.isEmpty() )
+    if ( size.isEmpty() ) {
       return {};
+    }
 
     // The source pixmap keeps aspect ratio, so it may be smaller than the
     // requested size (e.g. a 12x24 image fitted into a 24x24 request).
     QPixmap srcPixmap = source.pixmap( size, QIcon::Normal, QIcon::Off );
-    if ( srcPixmap.isNull() )
+    if ( srcPixmap.isNull() ) {
       return srcPixmap;
+    }
 
     // Convert to grayscale while keeping the alpha channel. The image is
     // unpremultiplied first: qGray() on premultiplied pixels would darken
@@ -90,8 +92,7 @@ public:
 
     // Center the grayscale source (all geometry is in logical coordinates).
     const QSizeF srcLogical = QSizeF( srcImage.size() ) / dpr;
-    const QPointF topLeft( ( size.width() - srcLogical.width() ) / 2.0,
-                           ( size.height() - srcLogical.height() ) / 2.0 );
+    const QPointF topLeft( ( size.width() - srcLogical.width() ) / 2.0, ( size.height() - srcLogical.height() ) / 2.0 );
     p.drawImage( topLeft, grayImage );
 
     // Strike-through line across the full canvas. A bright color is used so
@@ -99,8 +100,7 @@ public:
     const qreal lineWidth = qMax< qreal >( 2, size.height() / 10.0 );
     p.setPen( QPen( QColor( 235, 90, 70, 230 ), lineWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin ) );
     const qreal padding = lineWidth + 2;
-    p.drawLine( QPointF( padding, size.height() - padding ),
-                QPointF( size.width() - padding, padding ) );
+    p.drawLine( QPointF( padding, size.height() - padding ), QPointF( size.width() - padding, padding ) );
     p.end();
 
     return QPixmap::fromImage( canvas );
