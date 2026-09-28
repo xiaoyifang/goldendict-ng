@@ -71,12 +71,10 @@ public:
     painter->setRenderHint( QPainter::Antialiasing, true );
     painter->setRenderHint( QPainter::SmoothPixmapTransform, true );
 
-    // Clear the rect first so the semi-transparent grayscale pixels do not
-    // blend with the varying button background (normal vs. hover highlight),
-    // which would make the icon's appearance change on hover.
-    painter->setCompositionMode( QPainter::CompositionMode_Source );
-    painter->fillRect( rect, Qt::transparent );
-    painter->setCompositionMode( QPainter::CompositionMode_SourceOver );
+    // Do NOT clear the rect with CompositionMode_Source: widget backing
+    // stores have no alpha channel, so filling with transparent would paint
+    // an opaque black block. The button background is always repainted
+    // before this engine runs, so a plain SourceOver draw is correct.
     painter->drawImage( rect, grayImage );
 
     // Strike-through line indicating the disabled state.
