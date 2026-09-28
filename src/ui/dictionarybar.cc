@@ -17,16 +17,18 @@ using std::vector;
 
 namespace {
 
-/// A QIconEngine that paints another icon as a fixed grayscale image.
-/// Unlike QIcon::Disabled (which re-involves the Qt style system and can
-/// change on hover / state changes), this engine:
-///   1. Extracts the source icon's pixels as a QPixmap via the Normal mode
-///      (so the source icon is painted in its original appearance once).
-///   2. Converts those pixels to grayscale via QImage::convertToFormat.
-///   3. Draws the grayscale pixmap directly onto the target rect.
-/// Because the engine ignores the incoming Mode/State parameters, the result
-/// is identical regardless of hover, press, or any other state -- the icon
-/// looks the same grayed-out "disabled" snapshot at all times.
+/// A QIconEngine that paints another icon as a fixed grayscale image with a
+/// strike-through line. Unlike QIcon::Disabled (which re-involves the Qt
+/// style system and can change on hover / state changes), this engine ignores
+/// the incoming Mode/State, so the icon looks the same grayed-out "disabled"
+/// snapshot at all times.
+///
+/// The engine overrides pixmap() instead of paint(): all composition happens
+/// on an offscreen image with a real alpha channel, and the returned pixmap
+/// is blended onto widgets by Qt's regular icon painting path. This avoids
+/// both stale-pixel artifacts (the target of paint() is not guaranteed to be
+/// cleared) and the opaque-black result of clearing a widget's alpha-less
+/// backing store.
 class DimmedIconEngine: public QIconEngine
 {
 public:
@@ -37,43 +39,75 @@ public:
     return new DimmedIconEngine( source );
   }
 
-  void paint( QPainter * painter, const QRect & rect, QIcon::Mode, QIcon::State ) override
+  void paint( QPainter * painter, const QRect & rect, QIcon::Mode mode, QIcon::State state ) override
   {
-    if ( rect.isEmpty() )
-      return;
+    painter->drawPixmap( rect, pixmap( rect.size(), mode, state ) );
+  }
 
-    // Force the source icon to render in its Normal appearance and at the
-    // exact size needed. This is independent of the mode/state requested on
-    // this engine (which is intentionally ignored -- see class doc above).
-    QPixmap srcPixmap = source.pixmap( rect.size(), QIcon::Normal, QIcon::Off );
+  QPixmap pixmap( const QSize & size, QIcon::Mode, QIcon::State ) override
+  {
+    if ( size.isEmpty() ) {
+      return {};
+    }
 
-    // Convert to grayscale8 to strip color information. Using Qt's built-in
-    // pixel-format conversion means Qt does the right thing for any input
-    // (SVG, PNG, painter-generated, etc.).
-    QImage grayImage = srcPixmap.toImage().convertToFormat( QImage::Format_Grayscale8 );
+    // The source pixmap keeps aspect ratio, so it may be smaller than the
+    // requested size (e.g. a 12x24 image fitted into a 24x24 request).
+    QPixmap srcPixmap = source.pixmap( size, QIcon::Normal, QIcon::Off );
+    if ( srcPixmap.isNull() ) {
+      return srcPixmap;
+    }
 
-    // Clear the target rect first with CompositionMode_Source so any residual
-    // pixels from a previously painted icon are wiped out. Without this,
-    // alpha-blending the grayscale image over leftover pixels would produce
-    // the "mixed icons" look reported earlier.
-    painter->save();
-    painter->setCompositionMode( QPainter::CompositionMode_Source );
-    painter->fillRect( rect, Qt::transparent );
-    painter->restore();
+    // Convert to grayscale while keeping the alpha channel. The image is
+    // unpremultiplied first: qGray() on premultiplied pixels would darken
+    // semi-transparent edges.
+    QImage srcImage = srcPixmap.toImage().convertToFormat( QImage::Format_ARGB32 );
+    QImage grayImage( srcImage.size(), QImage::Format_ARGB32 );
+    for ( int y = 0; y < srcImage.height(); ++y ) {
+      const QRgb * srcLine = reinterpret_cast< const QRgb * >( srcImage.constScanLine( y ) );
+      QRgb * dstLine       = reinterpret_cast< QRgb * >( grayImage.scanLine( y ) );
+      for ( int x = 0; x < srcImage.width(); ++x ) {
+        const QRgb rgba  = srcLine[ x ];
+        const int gValue = qGray( rgba );
+        dstLine[ x ]     = qRgba( gValue, gValue, gValue, qAlpha( rgba ) );
+      }
+    }
 
-    // Draw the grayscale icon.
-    painter->drawImage( rect, grayImage );
+    // Switch back to premultiplied alpha. If an unpremultiplied image is
+    // scaled (SmoothPixmapTransform), bilinear interpolation on zero-alpha
+    // pixels produces black contamination along translucent edges.
+    grayImage = grayImage.convertToFormat( QImage::Format_ARGB32_Premultiplied );
 
-    // Draw a bold diagonal strike-through line to indicate the disabled
-    // state. The line uses full opacity so it remains clearly visible on
-    // both light and dark themes regardless of the icon opacity.
-    const int lineWidth = qMax( 3, rect.height() / 8 );
-    QPen pen( Qt::darkGray, lineWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin );
-    painter->setPen( pen );
+    // Always compose on a canvas of the requested logical size. The source
+    // image is centered inside it, and the strike-through line spans the
+    // whole canvas, so the line has the same length for every icon
+    // regardless of the source image's aspect ratio.
+    const qreal dpr = qMax< qreal >( srcPixmap.devicePixelRatio(), 1.0 );
+    QImage canvas( size * dpr, QImage::Format_ARGB32_Premultiplied );
+    canvas.setDevicePixelRatio( dpr );
+    canvas.fill( Qt::transparent );
 
-    const int padding = lineWidth + 1;
-    painter->drawLine( rect.bottomLeft() + QPoint( padding, -padding ),
-                       rect.topRight() + QPoint( -padding, padding ) );
+    QPainter p( &canvas );
+    p.setRenderHint( QPainter::Antialiasing, true );
+    p.setRenderHint( QPainter::SmoothPixmapTransform, true );
+
+    // Center the grayscale source. The explicit target rect (in logical
+    // coordinates) determines geometry, so grayImage needs no DPR metadata.
+    const QSizeF srcLogical = QSizeF( srcImage.size() ) / dpr;
+    const QRectF target( ( size.width() - srcLogical.width() ) / 2.0,
+                         ( size.height() - srcLogical.height() ) / 2.0,
+                         srcLogical.width(),
+                         srcLogical.height() );
+    p.drawImage( target, grayImage );
+
+    // Strike-through line across the full canvas. A bright color is used so
+    // it stays visible on the dark grayscale icon.
+    const qreal lineWidth = qMax< qreal >( 2, size.height() / 10.0 );
+    p.setPen( QPen( QColor( 235, 90, 70, 230 ), lineWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin ) );
+    const qreal padding = lineWidth + 2;
+    p.drawLine( QPointF( padding, size.height() - padding ), QPointF( size.width() - padding, padding ) );
+    p.end();
+
+    return QPixmap::fromImage( canvas );
   }
 
 private:
