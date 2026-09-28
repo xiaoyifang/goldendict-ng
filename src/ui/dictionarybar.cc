@@ -17,19 +17,18 @@ using std::vector;
 
 namespace {
 
-/// A QIconEngine that paints another icon as a fixed grayscale image.
-/// Unlike QIcon::Disabled (which re-involves the Qt style system and can
-/// change on hover / state changes), this engine:
-///   1. Extracts the source icon's pixels as a QPixmap via the Normal mode
-///      at the target device pixel ratio (so the result stays crisp on
-///      high-DPI screens).
-///   2. Converts those pixels to grayscale while keeping the alpha channel
-///      intact (Format_Grayscale8 would drop alpha and turn transparent
-///      pixels into an opaque black block with jagged edges).
-///   3. Draws the grayscale image directly onto the target rect.
-/// Because the engine ignores the incoming Mode/State parameters, the result
-/// is identical regardless of hover, press, or any other state -- the icon
-/// looks the same grayed-out "disabled" snapshot at all times.
+/// A QIconEngine that paints another icon as a fixed grayscale image with a
+/// strike-through line. Unlike QIcon::Disabled (which re-involves the Qt
+/// style system and can change on hover / state changes), this engine ignores
+/// the incoming Mode/State, so the icon looks the same grayed-out "disabled"
+/// snapshot at all times.
+///
+/// The engine overrides pixmap() instead of paint(): all composition happens
+/// on an offscreen image with a real alpha channel, and the returned pixmap
+/// is blended onto widgets by Qt's regular icon painting path. This avoids
+/// both stale-pixel artifacts (the target of paint() is not guaranteed to be
+/// cleared) and the opaque-black result of clearing a widget's alpha-less
+/// backing store.
 class DimmedIconEngine: public QIconEngine
 {
 public:
@@ -40,24 +39,17 @@ public:
     return new DimmedIconEngine( source );
   }
 
-  void paint( QPainter * painter, const QRect & rect, QIcon::Mode, QIcon::State ) override
+  QPixmap pixmap( const QSize & size, QIcon::Mode, QIcon::State ) override
   {
-    if ( rect.isEmpty() )
-      return;
-
-    // Render the source icon at device pixels for crispness, then let
-    // drawImage() scale it back into the logical rect (SmoothPixmapTransform
-    // is enabled below). No DPR is set on the images, so all coordinates
-    // stay unambiguous.
-    const qreal dpr   = painter->device() ? painter->device()->devicePixelRatioF() : qApp->devicePixelRatio();
-    QPixmap srcPixmap = source.pixmap( rect.size() * dpr, QIcon::Normal, QIcon::Off );
+    // Render the source in its Normal appearance. QIcon scales to fit while
+    // keeping the aspect ratio, so non-square icons are not stretched.
+    QImage srcImage =
+      source.pixmap( size, QIcon::Normal, QIcon::Off ).toImage().convertToFormat( QImage::Format_ARGB32 );
 
     // Convert to grayscale while keeping the alpha channel. The image is
     // unpremultiplied first: qGray() on premultiplied pixels would darken
     // semi-transparent edges.
-    QImage srcImage = srcPixmap.toImage().convertToFormat( QImage::Format_ARGB32 );
     QImage grayImage( srcImage.size(), QImage::Format_ARGB32 );
-
     for ( int y = 0; y < srcImage.height(); ++y ) {
       const QRgb * srcLine = reinterpret_cast< const QRgb * >( srcImage.constScanLine( y ) );
       QRgb * dstLine       = reinterpret_cast< QRgb * >( grayImage.scanLine( y ) );
@@ -68,33 +60,18 @@ public:
       }
     }
 
-    painter->save();
-    painter->setRenderHint( QPainter::Antialiasing, true );
-    painter->setRenderHint( QPainter::SmoothPixmapTransform, true );
-
-    // Plain SourceOver draw: Qt repaints the button background before the
-    // icon engine runs. Do NOT clear with CompositionMode_Source -- widget
-    // backing stores have no alpha, so a transparent fill paints black.
-    // Scale with KeepAspectRatio and center, so non-square icons keep their
-    // original proportions instead of being stretched to fill the rect.
-    const QSizeF fitted = QSizeF( grayImage.size() ).scaled( QSizeF( rect.size() ), Qt::KeepAspectRatio );
-    const QRectF target( rect.center().x() - fitted.width() / 2.0,
-                         rect.center().y() - fitted.height() / 2.0,
-                         fitted.width(),
-                         fitted.height() );
-    painter->drawImage( target, grayImage );
-
     // Strike-through line indicating the disabled state. A bright color is
     // used so it stays visible on the dark grayscale icon.
-    const int lineWidth = qMax( 2, rect.height() / 10 );
-    QPen pen( QColor( 235, 90, 70, 230 ), lineWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin );
-    painter->setPen( pen );
-
+    QPainter p( &grayImage );
+    p.setRenderHint( QPainter::Antialiasing, true );
+    const int lineWidth = qMax( 2, grayImage.height() / 10 );
+    p.setPen( QPen( QColor( 235, 90, 70, 230 ), lineWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin ) );
     const int padding = lineWidth + 2;
-    painter->drawLine( rect.bottomLeft() + QPoint( padding, -padding ),
-                       rect.topRight() + QPoint( -padding, padding ) );
+    p.drawLine( grayImage.rect().bottomLeft() + QPoint( padding, -padding ),
+                grayImage.rect().topRight() + QPoint( -padding, padding ) );
+    p.end();
 
-    painter->restore();
+    return QPixmap::fromImage( grayImage );
   }
 
 private:
