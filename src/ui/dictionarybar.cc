@@ -39,6 +39,11 @@ public:
     return new DimmedIconEngine( source );
   }
 
+  void paint( QPainter * painter, const QRect & rect, QIcon::Mode mode, QIcon::State state ) override
+  {
+    painter->drawPixmap( rect, pixmap( rect.size(), mode, state ) );
+  }
+
   QPixmap pixmap( const QSize & size, QIcon::Mode, QIcon::State ) override
   {
     // Render the source in its Normal appearance. QIcon scales to fit while
