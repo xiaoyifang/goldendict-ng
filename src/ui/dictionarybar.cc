@@ -90,10 +90,14 @@ public:
     p.setRenderHint( QPainter::Antialiasing, true );
     p.setRenderHint( QPainter::SmoothPixmapTransform, true );
 
-    // Center the grayscale source (all geometry is in logical coordinates).
+    // Center the grayscale source. The explicit target rect (in logical
+    // coordinates) determines geometry, so grayImage needs no DPR metadata.
     const QSizeF srcLogical = QSizeF( srcImage.size() ) / dpr;
-    const QPointF topLeft( ( size.width() - srcLogical.width() ) / 2.0, ( size.height() - srcLogical.height() ) / 2.0 );
-    p.drawImage( topLeft, grayImage );
+    const QRectF target( ( size.width() - srcLogical.width() ) / 2.0,
+                         ( size.height() - srcLogical.height() ) / 2.0,
+                         srcLogical.width(),
+                         srcLogical.height() );
+    p.drawImage( target, grayImage );
 
     // Strike-through line across the full canvas. A bright color is used so
     // it stays visible on the dark grayscale icon.
