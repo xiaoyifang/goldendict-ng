@@ -71,7 +71,12 @@ public:
     painter->setRenderHint( QPainter::Antialiasing, true );
     painter->setRenderHint( QPainter::SmoothPixmapTransform, true );
 
-    // Draw over the toolbar background as usual (SourceOver, no clearing).
+    // Clear the rect first so the semi-transparent grayscale pixels do not
+    // blend with the varying button background (normal vs. hover highlight),
+    // which would make the icon's appearance change on hover.
+    painter->setCompositionMode( QPainter::CompositionMode_Source );
+    painter->fillRect( rect, Qt::transparent );
+    painter->setCompositionMode( QPainter::CompositionMode_SourceOver );
     painter->drawImage( rect, grayImage );
 
     // Strike-through line indicating the disabled state.
