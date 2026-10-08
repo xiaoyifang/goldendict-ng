@@ -133,10 +133,6 @@
       <translation>Ilmausta ei löydy</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 / %2 ottelua</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Valitse nykyinen artikkeli</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Äänen lataaminen epäonnistui</translation>
+    </message>
+    <message>
+      <source>%1 of %2</source>
+      <translation>%1 of %2</translation>
     </message>
   </context>
   <context>
