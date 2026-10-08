@@ -87,8 +87,8 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
   if ( !ZipFile::skipLocalHeader( zip ) ) {
     zip.seek( header.offset );
     const QByteArray preview = zip.read( 16 );
-    qDebug() << "Failed to skip local header: local header offset:" << header.offset
-             << "| zip file size:" << zip.size() << "| expected signature: 0x04034b50"
+    qDebug() << "Failed to skip local header: local header offset:" << header.offset << "| zip file size:" << zip.size()
+             << "| expected signature: 0x04034b50"
              << "| actual first 16 bytes:" << QString::fromLatin1( preview.toHex( ' ' ) );
     return false;
   }

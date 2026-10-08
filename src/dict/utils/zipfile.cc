@@ -72,10 +72,10 @@ namespace {
 /// (header id 0x0001, APPNOTE 4.5.3).
 struct Zip64ExtraValues
 {
-  quint64 uncompressedSize   = 0;
-  quint64 compressedSize     = 0;
-  quint64 localHeaderOffset  = 0;
-  quint32 diskNumberStart    = 0;
+  quint64 uncompressedSize  = 0;
+  quint64 compressedSize    = 0;
+  quint64 localHeaderOffset = 0;
+  quint32 diskNumberStart   = 0;
 };
 
 /// Parses the Zip64 extended information extra field out of an extra field
@@ -100,7 +100,7 @@ Zip64ExtraValues parseZip64Extra( const QByteArray & extra,
 
     if ( qFromLittleEndian( headerId ) == 0x0001 ) {
       const char * p = extra.constData() + pos;
-      int remaining  = qMin( ( int )qFromLittleEndian( dataSize ), ( int )( extra.size() - pos ) );
+      int remaining  = qMin( (int)qFromLittleEndian( dataSize ), (int)( extra.size() - pos ) );
 
       if ( needUncompressedSize && remaining >= 8 ) {
         memcpy( &v.uncompressedSize, p, sizeof( quint64 ) );
@@ -141,7 +141,7 @@ quint32 toUint32( quint64 value, const char * what )
     qWarning( "Zip warning: %s exceeds 4GB, such archive entries won't load", what );
     warned = true;
   }
-  return ( quint32 )value;
+  return (quint32)value;
 }
 
 } // anonymous namespace
@@ -278,8 +278,8 @@ bool readNextEntry( SplitZipFile & zip, CentralDirEntry & entry )
   // was read from -- no disk number arithmetic applies to it.
   entry.centralHeaderOffset = toUint32( centralDirOffset, "central directory offset" );
 
-  entry.localHeaderOffset = toUint32( zip.calcAbsoluteOffset( localHeaderOffset, diskNumberStart ),
-                                      "local header offset" );
+  entry.localHeaderOffset =
+    toUint32( zip.calcAbsoluteOffset( localHeaderOffset, diskNumberStart ), "local header offset" );
   entry.compressedSize    = toUint32( compressedSize, "compressed size" );
   entry.uncompressedSize  = toUint32( uncompressedSize, "uncompressed size" );
   entry.compressionMethod = getCompressionMethod( record.compressionMethod );
@@ -362,8 +362,7 @@ bool readLocalHeaderFromCentral( SplitZipFile & zip, LocalFileHeader & entry )
   entry.compressedSize    = toUint32( compressedSize, "compressed size" );
   entry.uncompressedSize  = toUint32( uncompressedSize, "uncompressed size" );
   entry.compressionMethod = getCompressionMethod( record.compressionMethod );
-  entry.offset            = toUint32( zip.calcAbsoluteOffset( localHeaderOffset, diskNumberStart ),
-                                      "local header offset" );
+  entry.offset = toUint32( zip.calcAbsoluteOffset( localHeaderOffset, diskNumberStart ), "local header offset" );
 
   return true;
 }
