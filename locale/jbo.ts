@@ -133,10 +133,6 @@
       <translation>Phrase not found</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 of %2 matches</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>cuxna pa notci poi ca se viska</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>na'e jmaji lo nu benji fi lo cusku</translation>
+    </message>
+    <message>
+      <source>%1 of %2</source>
+      <translation type="unfinished">%1 of %2</translation>
     </message>
   </context>
   <context>
