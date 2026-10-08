@@ -133,10 +133,6 @@
       <translation>Fraza nuk u gjet</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 nga %2 ndeshje</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Seleksionoj këtë artikullin</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Dështoi shkarkimi i zërit</translation>
+    </message>
+    <message>
+      <source>%1 of %2</source>
+      <translation>%1 të %2</translation>
     </message>
   </context>
   <context>
