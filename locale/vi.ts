@@ -118,10 +118,6 @@
       <translation>không tìm thấy cụm từ</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 trên %2 trận đấu</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Chọn bài viết hiện tại</translation>
     </message>
@@ -288,6 +284,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Không thể tải xuống âm thanh</translation>
+    </message>
+    <message>
+      <source>%1 of %2</source>
+      <translation>%1 của %2</translation>
     </message>
   </context>
   <context>
