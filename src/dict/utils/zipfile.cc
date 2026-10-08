@@ -66,6 +66,86 @@ static CompressionMethod getCompressionMethod( quint16 compressionMethod )
   }
 }
 
+namespace {
+
+/// Values possibly stored in the Zip64 extended information extra field
+/// (header id 0x0001, APPNOTE 4.5.3).
+struct Zip64ExtraValues
+{
+  quint64 uncompressedSize   = 0;
+  quint64 compressedSize     = 0;
+  quint64 localHeaderOffset  = 0;
+  quint32 diskNumberStart    = 0;
+};
+
+/// Parses the Zip64 extended information extra field out of an extra field
+/// buffer. In Zip64 archives the fields of the central directory / local
+/// records hold marker values (0xFFFFFFFF for sizes and offsets, 0xFFFF for
+/// the disk number) and the real values are moved into this extra field,
+/// in exactly the order of the "need" flags below.
+Zip64ExtraValues parseZip64Extra( const QByteArray & extra,
+                                  bool needUncompressedSize,
+                                  bool needCompressedSize,
+                                  bool needLocalHeaderOffset,
+                                  bool needDiskNumber )
+{
+  Zip64ExtraValues v;
+
+  int pos = 0;
+  while ( pos + 4 <= extra.size() ) {
+    quint16 headerId, dataSize;
+    memcpy( &headerId, extra.constData() + pos, sizeof( headerId ) );
+    memcpy( &dataSize, extra.constData() + pos + 2, sizeof( dataSize ) );
+    pos += 4;
+
+    if ( qFromLittleEndian( headerId ) == 0x0001 ) {
+      const char * p = extra.constData() + pos;
+      int remaining  = qMin( ( int )qFromLittleEndian( dataSize ), ( int )( extra.size() - pos ) );
+
+      if ( needUncompressedSize && remaining >= 8 ) {
+        memcpy( &v.uncompressedSize, p, sizeof( quint64 ) );
+        v.uncompressedSize = qFromLittleEndian( v.uncompressedSize );
+        p += 8;
+        remaining -= 8;
+      }
+      if ( needCompressedSize && remaining >= 8 ) {
+        memcpy( &v.compressedSize, p, sizeof( quint64 ) );
+        v.compressedSize = qFromLittleEndian( v.compressedSize );
+        p += 8;
+        remaining -= 8;
+      }
+      if ( needLocalHeaderOffset && remaining >= 8 ) {
+        memcpy( &v.localHeaderOffset, p, sizeof( quint64 ) );
+        v.localHeaderOffset = qFromLittleEndian( v.localHeaderOffset );
+        p += 8;
+        remaining -= 8;
+      }
+      if ( needDiskNumber && remaining >= 4 ) {
+        memcpy( &v.diskNumberStart, p, sizeof( quint32 ) );
+        v.diskNumberStart = qFromLittleEndian( v.diskNumberStart );
+      }
+      break;
+    }
+    pos += qFromLittleEndian( dataSize );
+  }
+  return v;
+}
+
+/// Safely narrows a 64-bit zip value to the 32-bit value the index can hold.
+/// Values beyond 4GB can't be addressed by the 32-bit offsets and will fail
+/// on load; warn once so the problematic archive is identifiable.
+quint32 toUint32( quint64 value, const char * what )
+{
+  static bool warned = false;
+  if ( value > 0xFFFFFFFFULL && !warned ) {
+    qWarning( "Zip warning: %s exceeds 4GB, such archive entries won't load", what );
+    warned = true;
+  }
+  return ( quint32 )value;
+}
+
+} // anonymous namespace
+
 bool positionAtCentralDir( SplitZipFile & zip )
 {
   // Find the end-of-central-directory record
@@ -155,20 +235,55 @@ bool readNextEntry( SplitZipFile & zip, CentralDirEntry & entry )
     return false;
   }
 
-  // Skip extra fields
+  // Read the extra field: in Zip64 archives it holds the real values of the
+  // fields which contain the marker values. Then skip the file comment.
 
-  if ( !zip.seek( ( zip.pos() + qFromLittleEndian( record.extraFieldLength ) )
-                  + qFromLittleEndian( record.fileCommentLength ) ) ) {
+  const qint64 extraFieldPos  = zip.pos();
+  const int extraFieldLength  = qFromLittleEndian( record.extraFieldLength );
+  const QByteArray extraField = zip.read( extraFieldLength );
+
+  if ( !zip.seek( extraFieldPos + extraFieldLength + qFromLittleEndian( record.fileCommentLength ) ) ) {
     return false;
   }
 
-  entry.centralHeaderOffset = zip.calcAbsoluteOffset( centralDirOffset, qFromLittleEndian( record.diskNumberStart ) );
-  entry.localHeaderOffset   = zip.calcAbsoluteOffset( qFromLittleEndian( record.offsetOfLocalHeader ),
-                                                    qFromLittleEndian( record.diskNumberStart ) );
-  entry.compressedSize      = qFromLittleEndian( record.compressedSize );
-  entry.uncompressedSize    = qFromLittleEndian( record.uncompressedSize );
-  entry.compressionMethod   = getCompressionMethod( record.compressionMethod );
-  entry.fileNameInUTF8      = ( qFromLittleEndian( record.gpBits ) & 0x800 ) != 0;
+  quint16 diskNumberStart   = qFromLittleEndian( record.diskNumberStart );
+  quint64 localHeaderOffset = qFromLittleEndian( record.offsetOfLocalHeader );
+  quint64 uncompressedSize  = qFromLittleEndian( record.uncompressedSize );
+  quint64 compressedSize    = qFromLittleEndian( record.compressedSize );
+
+  if ( diskNumberStart == 0xFFFF || localHeaderOffset == 0xFFFFFFFF || uncompressedSize == 0xFFFFFFFF
+       || compressedSize == 0xFFFFFFFF ) {
+    // At least one field holds the Zip64 marker -- the real values are in
+    // the Zip64 extended information extra field.
+    const Zip64ExtraValues zip64 = parseZip64Extra( extraField,
+                                                    uncompressedSize == 0xFFFFFFFF,
+                                                    compressedSize == 0xFFFFFFFF,
+                                                    localHeaderOffset == 0xFFFFFFFF,
+                                                    diskNumberStart == 0xFFFF );
+    if ( uncompressedSize == 0xFFFFFFFF ) {
+      uncompressedSize = zip64.uncompressedSize;
+    }
+    if ( compressedSize == 0xFFFFFFFF ) {
+      compressedSize = zip64.compressedSize;
+    }
+    if ( localHeaderOffset == 0xFFFFFFFF ) {
+      localHeaderOffset = zip64.localHeaderOffset;
+    }
+    if ( diskNumberStart == 0xFFFF ) {
+      diskNumberStart = zip64.diskNumberStart;
+    }
+  }
+
+  // The position of the central directory record is the absolute position it
+  // was read from -- no disk number arithmetic applies to it.
+  entry.centralHeaderOffset = toUint32( centralDirOffset, "central directory offset" );
+
+  entry.localHeaderOffset = toUint32( zip.calcAbsoluteOffset( localHeaderOffset, diskNumberStart ),
+                                      "local header offset" );
+  entry.compressedSize    = toUint32( compressedSize, "compressed size" );
+  entry.uncompressedSize  = toUint32( uncompressedSize, "uncompressed size" );
+  entry.compressionMethod = getCompressionMethod( record.compressionMethod );
+  entry.fileNameInUTF8    = ( qFromLittleEndian( record.gpBits ) & 0x800 ) != 0;
 
   return true;
 }
@@ -204,6 +319,7 @@ bool readLocalHeaderFromCentral( SplitZipFile & zip, LocalFileHeader & entry )
   }
 
   // Read file name
+
   int fileNameLength = qFromLittleEndian( record.fileNameLength );
   entry.fileName     = zip.read( fileNameLength );
 
@@ -211,11 +327,43 @@ bool readLocalHeaderFromCentral( SplitZipFile & zip, LocalFileHeader & entry )
     return false;
   }
 
-  entry.compressedSize    = qFromLittleEndian( record.compressedSize );
-  entry.uncompressedSize  = qFromLittleEndian( record.uncompressedSize );
+  // Read the extra field: in Zip64 archives it holds the real values of the
+  // fields which contain the marker values.
+
+  const int extraFieldLength  = qFromLittleEndian( record.extraFieldLength );
+  const QByteArray extraField = zip.read( extraFieldLength );
+
+  quint16 diskNumberStart   = qFromLittleEndian( record.diskNumberStart );
+  quint64 localHeaderOffset = qFromLittleEndian( record.offsetOfLocalHeader );
+  quint64 uncompressedSize  = qFromLittleEndian( record.uncompressedSize );
+  quint64 compressedSize    = qFromLittleEndian( record.compressedSize );
+
+  if ( diskNumberStart == 0xFFFF || localHeaderOffset == 0xFFFFFFFF || uncompressedSize == 0xFFFFFFFF
+       || compressedSize == 0xFFFFFFFF ) {
+    const Zip64ExtraValues zip64 = parseZip64Extra( extraField,
+                                                    uncompressedSize == 0xFFFFFFFF,
+                                                    compressedSize == 0xFFFFFFFF,
+                                                    localHeaderOffset == 0xFFFFFFFF,
+                                                    diskNumberStart == 0xFFFF );
+    if ( uncompressedSize == 0xFFFFFFFF ) {
+      uncompressedSize = zip64.uncompressedSize;
+    }
+    if ( compressedSize == 0xFFFFFFFF ) {
+      compressedSize = zip64.compressedSize;
+    }
+    if ( localHeaderOffset == 0xFFFFFFFF ) {
+      localHeaderOffset = zip64.localHeaderOffset;
+    }
+    if ( diskNumberStart == 0xFFFF ) {
+      diskNumberStart = zip64.diskNumberStart;
+    }
+  }
+
+  entry.compressedSize    = toUint32( compressedSize, "compressed size" );
+  entry.uncompressedSize  = toUint32( uncompressedSize, "uncompressed size" );
   entry.compressionMethod = getCompressionMethod( record.compressionMethod );
-  entry.offset            = zip.calcAbsoluteOffset( qFromLittleEndian( record.offsetOfLocalHeader ),
-                                         qFromLittleEndian( record.diskNumberStart ) );
+  entry.offset            = toUint32( zip.calcAbsoluteOffset( localHeaderOffset, diskNumberStart ),
+                                      "local header offset" );
 
   return true;
 }
@@ -279,7 +427,10 @@ QDateTime SplitZipFile::lastModified() const
 qint64 SplitZipFile::calcAbsoluteOffset( qint64 offset, quint16 partNo )
 {
   if ( partNo >= offsets.size() ) {
-    return 0;
+    // Bogus disk number, or the Zip64 0xFFFF marker ("the real value is in
+    // the extra field") on a single volume archive. Fall back to the first
+    // part instead of silently producing a zero offset.
+    partNo = 0;
   }
 
   return offsets.at( partNo ) + offset;
