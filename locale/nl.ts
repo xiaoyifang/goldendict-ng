@@ -133,10 +133,6 @@
       <translation>Zin niet gevonden</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 van %2 wedstrijden</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Huidig artikel selecteren</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Kan geluid niet downloaden</translation>
+    </message>
+    <message>
+      <source>%1 of %2</source>
+      <translation type="unfinished">%1 of %2</translation>
     </message>
   </context>
   <context>
