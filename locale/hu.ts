@@ -133,10 +133,6 @@
       <translation>Kifejezés nem található</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 / %2 találat</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Jelenlegi szócikk kijelölése</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Nem sikerült letölteni a hangot</translation>
+    </message>
+    <message>
+      <source>%1 of %2</source>
+      <translation>%1 of %2</translation>
     </message>
   </context>
   <context>
