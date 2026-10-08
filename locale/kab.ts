@@ -133,10 +133,6 @@
       <translation>Phrase not found</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 of %2 matches</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Fren amagrad amiran</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Tuccḍa deg usader n umeslaw</translation>
+    </message>
+    <message>
+      <source>%1 of %2</source>
+      <translation type="unfinished">%1 of %2</translation>
     </message>
   </context>
   <context>
