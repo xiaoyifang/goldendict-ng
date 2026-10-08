@@ -134,10 +134,6 @@
       <translation>Ausdruck nicht gefunden</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 von %2 Treffer</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Aktuellen Artikel auswählen</translation>
     </message>
@@ -304,6 +300,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Fehler beim Herunterladen des Tons</translation>
+    </message>
+    <message>
+      <source>%1 of %2</source>
+      <translation>%1 von %2</translation>
     </message>
   </context>
   <context>
