@@ -560,33 +560,27 @@ bool ArticleView::fetchAnkiAudioAndSend( const QString & word,
     timeout->setSingleShot( true );
     auto done = std::make_shared< bool >( false );
 
-    connect( req.get(),
-             &Dictionary::Request::finished,
-             this,
-             [ req, timeout, done, sendNote ]() {
-               if ( *done ) {
-                 return;
-               }
-               *done = true;
-               timeout->stop();
-               timeout->deleteLater();
-               sendNote( req );
-             } );
+    connect( req.get(), &Dictionary::Request::finished, this, [ req, timeout, done, sendNote ]() {
+      if ( *done ) {
+        return;
+      }
+      *done = true;
+      timeout->stop();
+      timeout->deleteLater();
+      sendNote( req );
+    } );
 
-    connect( timeout,
-             &QTimer::timeout,
-             this,
-             [ word, req, timeout, done, sendNote ]() {
-               if ( *done ) {
-                 return;
-               }
-               *done = true;
-               timeout->deleteLater();
-               if ( !req->isFinished() ) {
-                 qDebug() << "sendToAnki: audio fetch timed out for" << word;
-               }
-               sendNote( req );
-             } );
+    connect( timeout, &QTimer::timeout, this, [ word, req, timeout, done, sendNote ]() {
+      if ( *done ) {
+        return;
+      }
+      *done = true;
+      timeout->deleteLater();
+      if ( !req->isFinished() ) {
+        qDebug() << "sendToAnki: audio fetch timed out for" << word;
+      }
+      sendNote( req );
+    } );
 
     timeout->start( 5000 );
     return true;
