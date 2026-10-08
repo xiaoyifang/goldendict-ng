@@ -133,10 +133,6 @@
       <translation>Fráze nenalezena</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 z %2 shod</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Vybrat aktuální článek</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Nepodařilo se stáhnout zvuk</translation>
+    </message>
+    <message>
+      <source>%1 of %2</source>
+      <translation>%1 z %2</translation>
     </message>
   </context>
   <context>
