@@ -563,7 +563,7 @@ bool ArticleView::fetchAnkiAudioAndSend( const QString & word,
     connect( req.get(),
              &Dictionary::Request::finished,
              this,
-             [ this, word, dict_definition, sentence, req, timeout, done, sendNote ]() {
+             [ req, timeout, done, sendNote ]() {
                if ( *done ) {
                  return;
                }
@@ -576,7 +576,7 @@ bool ArticleView::fetchAnkiAudioAndSend( const QString & word,
     connect( timeout,
              &QTimer::timeout,
              this,
-             [ this, word, dict_definition, sentence, req, timeout, done, sendNote ]() {
+             [ word, req, timeout, done, sendNote ]() {
                if ( *done ) {
                  return;
                }
