@@ -133,10 +133,6 @@
       <translation>Frase ne trovat</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 of %2 matches</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Select li actual articul</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation type="unfinished">Failed to download sound</translation>
+    </message>
+    <message>
+      <source>%1 of %2</source>
+      <translation type="unfinished">%1 of %2</translation>
     </message>
   </context>
   <context>
