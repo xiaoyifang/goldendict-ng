@@ -118,10 +118,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>%1 of %2 matches</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Select Current Article</source>
         <translation type="unfinished"></translation>
     </message>
@@ -287,6 +283,10 @@
     </message>
     <message>
         <source>Failed to download sound</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 of %2</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
