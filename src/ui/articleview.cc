@@ -455,28 +455,8 @@ void ArticleView::sendToAnki( const QString & word,
   // If no data yet, but we have a local sound link, try to fetch it first
   if ( data.isEmpty() && !audioLink_.isEmpty() && !Utils::Url::isWebAudioUrl( QUrl( audioLink_ ) ) ) {
     QUrl audioUrl( audioLink_ );
-    if ( audioUrl.scheme() == "gdau" ) {
-      sptr< Dictionary::Class > dict = dictionaryGroup->getDictionaryById( audioUrl.host().toStdString() );
-      if ( dict ) {
-        sptr< Dictionary::DataRequest > req = dict->getResource( audioUrl.path().mid( 1 ).toUtf8().data() );
-        if ( req->isFinished() ) {
-          const vector< char > & d = req->getFullData();
-          sendToAnki( word, dict_definition, sentence, QByteArray( d.data(), d.size() ), audioUrl.toString() );
-          return;
-        }
-        else {
-          connect(
-            req.get(),
-            &Dictionary::Request::finished,
-            this,
-            [ this, word, dict_definition, sentence, req, audioUrl ]() {
-              const vector< char > & d = req->getFullData();
-              sendToAnki( word, dict_definition, sentence, QByteArray( d.data(), d.size() ), audioUrl.toString() );
-            } );
-          return;
-        }
-      }
-    }
+    if ( audioUrl.scheme() == "gdau" && fetchAnkiAudioAndSend( word, dict_definition, sentence, audioUrl ) )
+      return;
   }
 
   if ( !data.isEmpty() ) {
@@ -509,6 +489,76 @@ void ArticleView::sendToAnki( const QString & word,
   }
 
   ankiConnector->sendToAnki( word, dict_definition, sentence, audioObj );
+}
+
+bool ArticleView::fetchAnkiAudioAndSend( const QString & word,
+                                        const QString & dict_definition,
+                                        const QString & sentence,
+                                        const QUrl & audioUrl )
+{
+  sptr< Dictionary::Class > dict = dictionaryGroup->getDictionaryById( audioUrl.host().toStdString() );
+  if ( !dict )
+    return false;
+
+  try {
+    // Mirror playAudio(): append "#"+fragment to the resource path when
+    // present, so dictionaries that key audio behind a fragment resolve it.
+    QString requestUrlPath = audioUrl.path();
+    if ( audioUrl.hasFragment() ) {
+      requestUrlPath = audioUrl.path() + "#" + audioUrl.fragment();
+    }
+
+    qDebug() << "sendToAnki: fetching audio resource for" << word << "from" << audioUrl;
+
+    sptr< Dictionary::DataRequest > req = dict->getResource( requestUrlPath.mid( 1 ).toUtf8().data() );
+    if ( req->isFinished() ) {
+      const vector< char > & d = req->getFullData();
+      sendToAnki( word, dict_definition, sentence, QByteArray( d.data(), d.size() ), audioUrl.toString() );
+      return true;
+    }
+
+    // Guard the async audio fetch with a timeout. If the dictionary never
+    // delivers the resource, fall back to sending the note without audio
+    // instead of swallowing the Anki export silently.
+    auto * timeout = new QTimer( this );
+    timeout->setSingleShot( true );
+    auto done = std::make_shared< bool >( false );
+
+    connect( req.get(),
+             &Dictionary::Request::finished,
+             this,
+             [ this, word, dict_definition, sentence, req, audioUrl, timeout, done ]() {
+               if ( *done )
+                 return;
+               *done = true;
+               timeout->stop();
+               timeout->deleteLater();
+               const vector< char > & d = req->getFullData();
+               sendToAnki( word, dict_definition, sentence, QByteArray( d.data(), d.size() ), audioUrl.toString() );
+             } );
+
+    connect( timeout, &QTimer::timeout, this, [ this, word, dict_definition, sentence, req, audioUrl, timeout, done ]() {
+      if ( *done )
+        return;
+      *done = true;
+      timeout->deleteLater();
+      if ( req->isFinished() && req->dataSize() >= 0 ) {
+        const vector< char > & d = req->getFullData();
+        sendToAnki( word, dict_definition, sentence, QByteArray( d.data(), d.size() ), audioUrl.toString() );
+      }
+      else {
+        qDebug() << "sendToAnki: audio fetch timed out, sending note without audio for" << word;
+        ankiConnector->sendToAnki( word, dict_definition, sentence, QJsonObject() );
+      }
+    } );
+
+    timeout->start( 5000 );
+    return true;
+  }
+  catch ( std::exception & e ) {
+    qDebug() << "sendToAnki: audio fetch failed:" << e.what() << "- sending note without audio";
+    return false;
+  }
 }
 
 
