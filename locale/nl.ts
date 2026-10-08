@@ -302,7 +302,7 @@
     </message>
     <message>
       <source>%1 of %2</source>
-      <translation type="unfinished">%1 of %2</translation>
+      <translation>%1 van %2</translation>
     </message>
   </context>
   <context>
