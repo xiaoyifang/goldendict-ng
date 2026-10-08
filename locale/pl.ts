@@ -133,10 +133,6 @@
       <translation>Nie znaleziono frazy</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 z %2 dopasowań</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Wybierz aktualny artykuł</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Nie udało się pobrać dźwięku</translation>
+    </message>
+    <message>
+      <source>%1 of %2</source>
+      <translation>%1 of %2</translation>
     </message>
   </context>
   <context>
