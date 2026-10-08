@@ -132,10 +132,6 @@
       <translation>找不到該片語。</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1/%2 個匹配</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>選擇目前條目</translation>
     </message>
@@ -302,6 +298,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>下載聲音失敗</translation>
+    </message>
+    <message>
+      <source>%1 of %2</source>
+      <translation>%1 的 %2</translation>
     </message>
   </context>
   <context>
