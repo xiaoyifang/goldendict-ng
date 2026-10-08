@@ -152,9 +152,9 @@ public:
   /// sent via this path; false if the caller should send the note without
   /// audio (dictionary not found, resource fetch threw, etc.).
   bool fetchAnkiAudioAndSend( const QString & word,
-                             const QString & dict_definition,
-                             const QString & sentence,
-                             const QUrl & audioUrl );
+                              const QString & dict_definition,
+                              const QString & sentence,
+                              const QUrl & audioUrl );
 
   /// Create a new Anki card from a currently displayed article with the provided id.
   /// This function will call QWebEnginePage::runJavaScript() to fetch the corresponding HTML.

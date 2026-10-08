@@ -90,18 +90,19 @@ QJsonObject buildAnkiAudioDataObject( const QString & textField,
   audioObj.insert( "data", QString::fromLatin1( data.toBase64() ) );
 
   QString ext = "mp3";
-  if ( url.contains( ".wav", Qt::CaseInsensitive ) )
+  if ( url.contains( ".wav", Qt::CaseInsensitive ) ) {
     ext = "wav";
-  else if ( url.contains( ".ogg", Qt::CaseInsensitive ) )
+  }
+  else if ( url.contains( ".ogg", Qt::CaseInsensitive ) ) {
     ext = "ogg";
-  else if ( url.contains( ".opus", Qt::CaseInsensitive ) )
+  }
+  else if ( url.contains( ".opus", Qt::CaseInsensitive ) ) {
     ext = "opus";
+  }
 
-  audioObj.insert( "filename",
-                   QString( "%1_%2.%3" )
-                     .arg( Utils::trimNonChar( word ) )
-                     .arg( QDateTime::currentMSecsSinceEpoch() )
-                     .arg( ext ) );
+  audioObj.insert(
+    "filename",
+    QString( "%1_%2.%3" ).arg( Utils::trimNonChar( word ) ).arg( QDateTime::currentMSecsSinceEpoch() ).arg( ext ) );
 
   QJsonArray fields;
   fields.append( textField );
@@ -484,8 +485,9 @@ void ArticleView::sendToAnki( const QString & word,
   // If no data yet, but we have a local sound link, try to fetch it first
   if ( data.isEmpty() && !audioLink_.isEmpty() && !Utils::Url::isWebAudioUrl( QUrl( audioLink_ ) ) ) {
     QUrl audioUrl( audioLink_ );
-    if ( audioUrl.scheme() == "gdau" && fetchAnkiAudioAndSend( word, dict_definition, sentence, audioUrl ) )
+    if ( audioUrl.scheme() == "gdau" && fetchAnkiAudioAndSend( word, dict_definition, sentence, audioUrl ) ) {
       return;
+    }
   }
 
   if ( !data.isEmpty() ) {
@@ -505,13 +507,14 @@ void ArticleView::sendToAnki( const QString & word,
 }
 
 bool ArticleView::fetchAnkiAudioAndSend( const QString & word,
-                                        const QString & dict_definition,
-                                        const QString & sentence,
-                                        const QUrl & audioUrl )
+                                         const QString & dict_definition,
+                                         const QString & sentence,
+                                         const QUrl & audioUrl )
 {
   sptr< Dictionary::Class > dict = dictionaryGroup->getDictionaryById( audioUrl.host().toStdString() );
-  if ( !dict )
+  if ( !dict ) {
     return false;
+  }
 
   try {
     // Mirror playAudio(): append "#"+fragment to the resource path when
@@ -529,21 +532,21 @@ bool ArticleView::fetchAnkiAudioAndSend( const QString & word,
     // ArticleView::sendToAnki(): doing so with empty bytes would loop back
     // here (audioLink_ is still set) and recurse. A finished request with
     // dataSize() <= 0 carries no usable audio, so the note goes out without.
-    auto sendNote = [ this, word, dict_definition, sentence, audioUrl ]
-                      ( const sptr< Dictionary::DataRequest > & request ) {
-      QJsonObject audioObj;
-      if ( request->isFinished() && request->dataSize() > 0 ) {
-        const vector< char > & bytes = request->getFullData();
-        audioObj = buildAnkiAudioDataObject( cfg.preferences.ankiConnectServer.text,
-                                             word,
-                                             QByteArray( bytes.data(), bytes.size() ),
-                                             audioUrl.toString() );
-      }
-      else {
-        qDebug() << "sendToAnki: no audio data, sending note without audio for" << word;
-      }
-      ankiConnector->sendToAnki( word, dict_definition, sentence, audioObj );
-    };
+    auto sendNote =
+      [ this, word, dict_definition, sentence, audioUrl ]( const sptr< Dictionary::DataRequest > & request ) {
+        QJsonObject audioObj;
+        if ( request->isFinished() && request->dataSize() > 0 ) {
+          const vector< char > & bytes = request->getFullData();
+          audioObj                     = buildAnkiAudioDataObject( cfg.preferences.ankiConnectServer.text,
+                                                                   word,
+                                                                   QByteArray( bytes.data(), bytes.size() ),
+                                                                   audioUrl.toString() );
+        }
+        else {
+          qDebug() << "sendToAnki: no audio data, sending note without audio for" << word;
+        }
+        ankiConnector->sendToAnki( word, dict_definition, sentence, audioObj );
+      };
 
     if ( req->isFinished() ) {
       sendNote( req );
@@ -561,8 +564,9 @@ bool ArticleView::fetchAnkiAudioAndSend( const QString & word,
              &Dictionary::Request::finished,
              this,
              [ this, word, dict_definition, sentence, req, timeout, done, sendNote ]() {
-               if ( *done )
+               if ( *done ) {
                  return;
+               }
                *done = true;
                timeout->stop();
                timeout->deleteLater();
@@ -573,8 +577,9 @@ bool ArticleView::fetchAnkiAudioAndSend( const QString & word,
              &QTimer::timeout,
              this,
              [ this, word, dict_definition, sentence, req, timeout, done, sendNote ]() {
-               if ( *done )
+               if ( *done ) {
                  return;
+               }
                *done = true;
                timeout->deleteLater();
                if ( !req->isFinished() ) {
