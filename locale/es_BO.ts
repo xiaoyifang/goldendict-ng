@@ -133,10 +133,6 @@
       <translation>Frase no encontrada</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 de %2 partidos</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Seleccionar artículo actual</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation type="unfinished">Failed to download sound</translation>
+    </message>
+    <message>
+      <source>%1 of %2</source>
+      <translation type="unfinished">%1 of %2</translation>
     </message>
   </context>
   <context>
