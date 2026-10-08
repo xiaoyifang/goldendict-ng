@@ -133,10 +133,6 @@
       <translation>Ибора ёфт нашуд</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 аз %2 бозӣ</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Интихоб кардани мақолаи ҷорӣ</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Зеркашии овоз ноком шуд</translation>
+    </message>
+    <message>
+      <source>%1 of %2</source>
+      <translation type="unfinished">%1 of %2</translation>
     </message>
   </context>
   <context>
