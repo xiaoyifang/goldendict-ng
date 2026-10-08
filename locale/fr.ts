@@ -134,10 +134,6 @@
       <translation>Phrase introuvable</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 sur %2 correspondances</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Sélectionner l&apos;article courant</translation>
     </message>
@@ -304,6 +300,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Impossible de télécharger le son</translation>
+    </message>
+    <message>
+      <source>%1 of %2</source>
+      <translation>%1 de %2</translation>
     </message>
   </context>
   <context>
