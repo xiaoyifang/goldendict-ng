@@ -133,10 +133,6 @@
       <translation>वाक्यांश नहीं मिला</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%2 मैचों में से %1</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>वर्तमान लेख का चयन करें</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>ध्वनि डाउनलोड करने में विफल रहा</translation>
+    </message>
+    <message>
+      <source>%1 of %2</source>
+      <translation>%1 का %2</translation>
     </message>
   </context>
   <context>
