@@ -133,10 +133,6 @@
       <translation>Fras hittades inte</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 av %2 träffar</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Markera aktuell artikel</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Det gick inte att ladda ner ljud</translation>
+    </message>
+    <message>
+      <source>%1 of %2</source>
+      <translation>%1 av %2</translation>
     </message>
   </context>
   <context>
