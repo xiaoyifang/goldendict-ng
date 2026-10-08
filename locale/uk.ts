@@ -132,10 +132,6 @@
       <translation>Фраза не знайдена</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 з %2 збігів</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Вибрати поточний об&apos;єкт</translation>
     </message>
@@ -302,6 +298,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Не вдалося завантажити звук</translation>
+    </message>
+    <message>
+      <source>%1 of %2</source>
+      <translation>%1 з %2</translation>
     </message>
   </context>
   <context>
