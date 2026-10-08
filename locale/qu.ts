@@ -133,10 +133,6 @@
       <translation>Frase mana tarisqachu</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 de %2 tupachiykuna</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Kunan qillqasqata akllay</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Uyarita uraykachiy mana atikun</translation>
+    </message>
+    <message>
+      <source>%1 of %2</source>
+      <translation type="unfinished">%1 of %2</translation>
     </message>
   </context>
   <context>
