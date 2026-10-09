@@ -301,8 +301,8 @@
       <translation>فشل تنزيل الصوت</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation>%1 من %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1 من %2 تطابق</translation>
     </message>
   </context>
   <context>
