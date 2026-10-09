@@ -333,8 +333,8 @@ bool handleGestureEvent( QObject * obj, QEvent * event, GestureResult & result, 
 void registerRecognizers()
 {
   // Ownership of the recognizers is transferred to Qt (QApplication) by registerRecognizer().
-  GDPinchGestureType = QGestureRecognizer::registerRecognizer( new Gestures::GDPinchGestureRecognizer() );
-  GDSwipeGestureType = QGestureRecognizer::registerRecognizer( new Gestures::GDSwipeGestureRecognizer() );
+  GDPinchGestureType = QGestureRecognizer::registerRecognizer( new Gestures::GDPinchGestureRecognizer() );  // NOSONAR
+  GDSwipeGestureType = QGestureRecognizer::registerRecognizer( new Gestures::GDSwipeGestureRecognizer() );  // NOSONAR
 }
 
 void unregisterRecognizers()
