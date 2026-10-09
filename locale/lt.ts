@@ -3557,6 +3557,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Add audio to Anki card when available</source>
       <translation>Pridėkite garsą į Anki kortelę, kai tik bus prieinama</translation>
     </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Įjungus, interneto svetainių žodynai atsidaro atskiroje kortelėje, o ne įterpiami į straipsnio peržiūrą. Tai leidžia išvengti iframe išdėstymo ir slinkimo apribojimų, taip pat leidžia žodyno Script stulpelį Dictionaries dialoge.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4266,6 +4270,10 @@ visą galimų kalbų sąrašą rasite &lt;a href=&quot;https://lingualibre.org/w
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Šis svetainės žodynas atidaromas naujame skirtuke</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Išjunk &quot;Atidarykite svetainės žodyną atskirame skirtuke&quot; Nustatymuose, kad vietoje to straipsnyje būtų rodoma svetainė.</translation>
     </message>
   </context>
   <context>
