@@ -3559,6 +3559,10 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <source>Add audio to Anki card when available</source>
       <translation>Hang hozzáadása az Anki kártyához, ha elérhető</translation>
     </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Ha engedélyezik, a weboldalak szótárak saját fülükön nyílnak meg, nem pedig a cikknézetben lennének beágyazva. Ez elkerüli az iframe elrendezést és a görgetés korlátozásait, és lehetővé teszi a szótáronkénti Script oszlopot a Szótárak párbeszédben.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4269,6 +4273,10 @@ Az elérhető nyelvek teljes listája megtalálható &lt;a href=&quot;https://li
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Ez a weboldal szótár új fülben nyílik meg</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Kapcsolj ki &quot;Nyisd meg a weboldal szótárt külön fülön&quot; a Beállítások menüben, hogy a weboldalt a cikk belsejében jelenítse meg.</translation>
     </message>
   </context>
   <context>
