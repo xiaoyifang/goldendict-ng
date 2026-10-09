@@ -3559,6 +3559,10 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
       <source>Add audio to Anki card when available</source>
       <translation>Bar bolsa, Anki kartyna ses goş</translation>
     </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Web-saýtyň sözlükleri makala görnüşine gömülen däl-de, öz sekmesinde açylýar. Bu iframe düzümi we kaydırma çäklendirmelerinden gaça durýar we sözlükler dialogynda her sözlük üçin Script sütünini açýar.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4267,6 +4271,10 @@ tapyp bilersiňiz &lt;/a&gt;</translation>
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Bu web-saýtyň sözlügi täze sekmede açylýar</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Öçür &quot;Web saýtynyň sözlügini aýratyn sekmede aç&quot; Preferences içinde web-saýty makalanyň içinde görkezmek üçin.</translation>
     </message>
   </context>
   <context>
