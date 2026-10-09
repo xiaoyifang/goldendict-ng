@@ -332,11 +332,11 @@ bool handleGestureEvent( QObject * obj, QEvent * event, GestureResult & result, 
 
 void registerRecognizers()
 {
-  QGestureRecognizer * pRecognizer = new Gestures::GDPinchGestureRecognizer();
-  GDPinchGestureType               = QGestureRecognizer::registerRecognizer( pRecognizer );
+  QGestureRecognizer * pinchRecognizer = new Gestures::GDPinchGestureRecognizer();
+  GDPinchGestureType                   = QGestureRecognizer::registerRecognizer( pinchRecognizer );
 
-  pRecognizer        = new Gestures::GDSwipeGestureRecognizer();
-  GDSwipeGestureType = QGestureRecognizer::registerRecognizer( pRecognizer );
+  QGestureRecognizer * swipeRecognizer = new Gestures::GDSwipeGestureRecognizer();
+  GDSwipeGestureType                   = QGestureRecognizer::registerRecognizer( swipeRecognizer );
 }
 
 void unregisterRecognizers()
