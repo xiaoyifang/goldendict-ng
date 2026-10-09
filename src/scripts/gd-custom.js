@@ -43,20 +43,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     anchor.setAttribute("href", newLink);
   });
-
-  // monitor iframe height.
-  if (globalThis.iFrameResize) {
-    globalThis.iFrameResize(
-      {
-        checkOrigin: false,
-        maxHeight: 800,
-        scrolling: true,
-        warningTimeout: 0,
-        minHeight: 550,
-        log: true,
-        autoResize: false,
-      },
-      "iframe",
-    );
-  }
 });
