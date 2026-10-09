@@ -3536,7 +3536,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
-      <translation type="unfinished">When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</translation>
+      <translation>Пры ўключэнні вэб-слоўнікі адкрываюцца ў асобнай укладцы замест убудавання ў выгляд артыкула. Гэта дазваляе пазбегнуць абмежаванняў макета iframe і пракруткі, а таксама ўключае слупок Скрыпт для кожнага слоўніка ў дыялогавым акне Слоўнікі.</translation>
     </message>
   </context>
   <context>
@@ -4247,7 +4247,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
-      <translation type="unfinished">Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</translation>
+      <translation>Выключыце &quot;Адкрываць анлайн-слоўнік у асобнай укладцы&quot; у Наладах, каб замест гэтага паказваць вэб-сайт у артыкуле.</translation>
     </message>
   </context>
   <context>
