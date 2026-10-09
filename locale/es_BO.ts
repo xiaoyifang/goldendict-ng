@@ -3555,6 +3555,10 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
       <source>Add audio to Anki card when available</source>
       <translation type="unfinished">Add audio to Anki card when available</translation>
     </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation type="unfinished">When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4265,6 +4269,10 @@ Lista completa de idiomas disponibles puede encontrarse &lt;a href=&quot;https:/
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation type="unfinished">This website dictionary is opened in a new tab</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation type="unfinished">Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</translation>
     </message>
   </context>
   <context>
