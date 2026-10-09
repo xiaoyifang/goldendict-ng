@@ -301,8 +301,8 @@
       <translation type="unfinished">Failed to download sound</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation type="unfinished">%1 of %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1 el %2 matĉoj</translation>
     </message>
   </context>
   <context>
