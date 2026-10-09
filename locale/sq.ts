@@ -3552,6 +3552,10 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <source>Add audio to Anki card when available</source>
       <translation>Shto audio në kartën Anki kur të jetë e disponueshme</translation>
     </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Kur aktivizohet, fjalorët e faqeve të internetit hapen në skedën e tyre në vend që të jenë të integruar në pamjen e artikullit. Kjo shmang kufizimet e paraqitjes së iframe dhe lëvizjes, dhe aktivizon kolonën Script për çdo fjalor në dialogun e Fjalorëve.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4261,6 +4265,10 @@ Lista e plotë e gjuhëve të disponueshme mund të gjendet &lt;a href=&quot;htt
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Ky fjalor uebsajti hapet në një skedë të re</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Fike &quot;Hapni fjalorin e faqes në skedë të veçantë&quot; në Preferenca për të shfaqur faqen brenda artikullit.</translation>
     </message>
   </context>
   <context>
