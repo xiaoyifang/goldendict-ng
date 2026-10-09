@@ -301,8 +301,8 @@
       <translation>Error al descargar el sonido</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation>%1 de %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1 de %2 partidas</translation>
     </message>
   </context>
   <context>
