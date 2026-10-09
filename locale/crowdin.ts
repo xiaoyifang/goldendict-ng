@@ -286,7 +286,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>%1 of %2</source>
+        <source>%1 of %2 matches</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
