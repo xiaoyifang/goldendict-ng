@@ -1148,13 +1148,24 @@ void processUnsortedParts( std::u32string & str, bool strip )
 
 void expandOptionalParts( std::u32string & str, list< std::u32string > * result, size_t x, bool inside_recurse )
 {
-  // if str is too long ,it can never be headwords.
+  // Expansion is only done on reasonably short strings: recursion depth and
+  // variant count grow with length. Longer strings are kept unexpanded so the
+  // result list stays non-empty; index-key truncation happens later in
+  // IndexedWords::addWord().
   if ( str.size() > 100 ) {
+    result->push_back( str );
     return;
   }
+
   list< std::u32string > expanded;
   list< std::u32string > * headwords;
   headwords = inside_recurse ? result : &expanded;
+
+  // Stop exploring once enough results are collected: this prunes the
+  // recursion tree without changing which results get stored.
+  if ( headwords->size() >= 32 ) {
+    return;
+  }
 
   for ( ; x < str.size(); ) {
     char32_t ch = str[ x ];
