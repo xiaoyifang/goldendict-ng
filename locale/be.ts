@@ -286,8 +286,8 @@
       <translation>Не ўдалося спампаваць гук</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation type="unfinished">%1 of %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1 з %2 супадзенняў</translation>
     </message>
   </context>
   <context>
