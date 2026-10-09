@@ -1585,7 +1585,6 @@ public:
   {
     isCancelled.ref();
     f.waitForFinished();
-    //hasExited.acquire();
   }
 };
 
@@ -1902,9 +1901,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
             hasString = false;
 
-            // The line read should either consist of pure whitespace, or be a headword
-            // skip too long headword,it can never be headword.
-            if ( curString.empty() || curString.size() > 100 ) {
+            // The line read should either consist of pure whitespace, or be a headword.
+            // Too long lines are kept as headwords: addWord() truncates the index key
+            // at a word boundary while the article itself stays reachable.
+            if ( curString.empty() ) {
               continue;
             }
 
