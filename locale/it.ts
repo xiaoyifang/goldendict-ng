@@ -301,8 +301,8 @@
       <translation>Impossibile scaricare il suono</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation>%1 di %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1 di %2 corrispondenze</translation>
     </message>
   </context>
   <context>
