@@ -77,7 +77,7 @@ QString searchStatusMessage( int activeMatch, int matchCount )
   Q_ASSERT( matchCount > 0 );
   Q_ASSERT( activeMatch > 0 );
   Q_ASSERT( activeMatch <= matchCount );
-  return ArticleView::tr( "%1 of %2" ).arg( activeMatch ).arg( matchCount );
+  return ArticleView::tr( "%1 of %2 matches" ).arg( activeMatch ).arg( matchCount );
 }
 
 // Build the AnkiConnect audio object carrying embedded (base64) audio bytes.
