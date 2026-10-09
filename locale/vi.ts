@@ -3536,6 +3536,10 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <source>Add audio to Anki card when available</source>
       <translation>Thêm âm thanh vào thẻ Anki khi có sẵn</translation>
     </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Khi được bật, các từ điển trang web sẽ mở trong tab riêng thay vì được nhúng trong chế độ xem bài viết. Điều này giúp tránh các giới hạn về bố cục iframe và việc cuộn, đồng thời kích hoạt cột Script cho từng từ điển trong hộp thoại Từ điển.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4245,6 +4249,10 @@ Có thể tìm thấy danh sách đầy đủ các ngôn ngữ khả dụng &lt;
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Từ điển trang web này được mở trong một tab mới</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Tắt đi &quot;Mở từ điển trang web trong tab riêng biệt&quot; trong phần Tùy chọn để hiển thị trang web bên trong bài viết thay thế.</translation>
     </message>
   </context>
   <context>
