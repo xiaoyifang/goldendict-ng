@@ -3558,6 +3558,10 @@ de diccionarios Stardict, Babylon y GLS</translation>
       <source>Add audio to Anki card when available</source>
       <translation>Añadir audio a la tarjeta Anki cuando esté disponible</translation>
     </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Cuando están habilitados, los diccionarios del sitio web se abren en su propia pestaña en lugar de incrustarse en la vista de artículos. Esto evita limitaciones de diseño de iframe y desplazamiento, y permite la columna Script por diccionario en el diálogo de Diccionarios.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4268,6 +4272,10 @@ Puede encontrar la lista completa de idiomas disponibles &lt;a href=&quot;https:
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Este diccionario web está abierto en una nueva pestaña</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Apaga &quot;Abrir diccionario web en una pestaña separada&quot; en Preferencias para mostrar la web dentro del artículo en su lugar.</translation>
     </message>
   </context>
   <context>
