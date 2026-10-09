@@ -3573,7 +3573,7 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
     </message>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
-      <translation type="unfinished">When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</translation>
+      <translation>Cuando está habilitado, los diccionarios de sitios web se abren en su propia pestaña en lugar de estar incrustados en la vista del artículo. Esto evita las limitaciones de diseño y desplazamiento de iframe, y habilita la columna de script por diccionario en el diálogo de Diccionarios.</translation>
     </message>
   </context>
   <context>
@@ -4288,7 +4288,7 @@ basado en la fonología inglesa</translation>
     </message>
     <message>
       <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
-      <translation type="unfinished">Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</translation>
+      <translation>Desactivá &quot;Abrir diccionario de sitio web en pestaña separada&quot; en Preferencias para mostrar el sitio web dentro del artículo en su lugar.</translation>
     </message>
   </context>
   <context>
