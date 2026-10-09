@@ -301,8 +301,8 @@
       <translation>ध्वनि डाउनलोड करने में विफल रहा</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation>%1 का %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%2 मैचों में से %1</translation>
     </message>
   </context>
   <context>
