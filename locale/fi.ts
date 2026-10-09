@@ -301,8 +301,8 @@
       <translation>Äänen lataaminen epäonnistui</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation>%1 of %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1 / %2 ottelua</translation>
     </message>
   </context>
   <context>
