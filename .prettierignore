@@ -7,6 +7,5 @@
 
 # reignore other js files
 **/*.min.js
-**/iframe-defer.js
 **/mark.js
 **/darkreader.js

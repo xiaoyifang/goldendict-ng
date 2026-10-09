@@ -4,9 +4,6 @@
         <file>gd-builtin.js</file>
         <file>gd-custom.js</file>
         <file>gd-preferred-color-scheme.js</file>
-        <file>iframe-defer.js</file>
-        <file>iframeResizer.contentWindow.min.js</file>
-        <file>iframeResizer.min.js</file>
         <file>jquery-3.6.0.slim.min.js</file>
         <file>mark.min.js</file>
     </qresource>
