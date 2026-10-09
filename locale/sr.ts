@@ -301,8 +301,8 @@
       <translation>Преузимање звука није успело</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation>%1 од %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1 од %2 утакмица</translation>
     </message>
   </context>
   <context>
