@@ -301,8 +301,8 @@
       <translation>Det gick inte att ladda ner ljud</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation>%1 av %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1 av %2 träffar</translation>
     </message>
   </context>
   <context>
