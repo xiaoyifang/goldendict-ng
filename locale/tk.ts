@@ -301,8 +301,8 @@
       <translation>Ses ýüklenilmedi</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation>%1 of %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%2 oýundan %1</translation>
     </message>
   </context>
   <context>
