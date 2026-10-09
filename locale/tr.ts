@@ -3556,6 +3556,10 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <source>Add audio to Anki card when available</source>
       <translation>Anki kartına ses ekle mümkün olduğunda</translation>
     </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Etkinleştirildiğinde, web sitesi sözlükleri makale görünümüne gömülü olmak yerine kendi sekmelerinde açılır. Bu, iframe düzeni ve kaydırma kısıtlamalarını önler ve Sözlükler diyalogunda sözlük başına Script sütununu etkinleştirir.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4265,6 +4269,10 @@ Mevcut dillerin tam listesi burada bulunabilir &lt;a href=&quot;https://linguali
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Bu web sitesi sözlüğü yeni bir sekmede açılıyor</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Kapal &quot;Web sitesi sözlüğünü ayrı sekmede aç&quot; Tercihler'de web sitesini makalenin içinde göstermek için kullanabilir.</translation>
     </message>
   </context>
   <context>
