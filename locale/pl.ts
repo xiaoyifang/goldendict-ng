@@ -301,8 +301,8 @@
       <translation>Nie udało się pobrać dźwięku</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation>%1 of %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1 z %2 dopasowań</translation>
     </message>
   </context>
   <context>
