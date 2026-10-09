@@ -300,8 +300,8 @@
       <translation>사운드 다운로드 실패</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation>%1 의 %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1 %2</translation>
     </message>
   </context>
   <context>
