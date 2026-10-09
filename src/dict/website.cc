@@ -135,7 +135,7 @@ sptr< DataRequest > WebSiteDictionary::getArticle( const std::u32string & str,
   else {
     fmt::format_to( std::back_inserter( result ),
                     R"(<iframe id="gdexpandframe-{}" src="{}"
-scrolling="no" data-gd-id="{}" 
+data-gd-id="{}" 
 class="website-iframe"
 sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>)",
                     getId(),
