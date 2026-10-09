@@ -301,8 +301,8 @@
       <translation>Nepodarilo sa stiahnuť zvuk</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation>%1 z %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1 z %2 zápasov</translation>
     </message>
   </context>
   <context>
