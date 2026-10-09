@@ -287,8 +287,8 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
       <translation>Ist'awi apkatasiñax pantjasi</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation type="unfinished">%1 of %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1 ukat %2 uñt’ayata</translation>
     </message>
   </context>
   <context>
