@@ -300,8 +300,8 @@
       <translation>下載聲音失敗</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation>%1 的 %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1/%2 個匹配</translation>
     </message>
   </context>
   <context>
