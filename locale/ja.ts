@@ -301,8 +301,8 @@
       <translation>音声ファイルのダウンロードに失敗したんだ</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation>%1 の %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1件目 / %2件</translation>
     </message>
   </context>
   <context>
