@@ -301,8 +301,8 @@
       <translation>Dështoi shkarkimi i zërit</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation>%1 të %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1 nga %2 ndeshje</translation>
     </message>
   </context>
   <context>
