@@ -133,10 +133,6 @@
       <translation>Ничего не найдено</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 из %2 совпадений</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Выделить текущую статью</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Не удалось загрузить звук</translation>
+    </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 из %2 совпадений</translation>
     </message>
   </context>
   <context>

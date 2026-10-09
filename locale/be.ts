@@ -118,10 +118,6 @@
       <translation>Фраза не знойдзена</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 з %2 супадзенняў</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Абраць бягучы артыкул</translation>
     </message>
@@ -288,6 +284,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Не ўдалося спампаваць гук</translation>
+    </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 з %2 супадзенняў</translation>
     </message>
   </context>
   <context>

@@ -132,10 +132,6 @@
       <translation>没找到词组</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>匹配（%1/%2）</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>选择当前文章</translation>
     </message>
@@ -302,6 +298,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>下载声音失败</translation>
+    </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>匹配（%1/%2）</translation>
     </message>
   </context>
   <context>

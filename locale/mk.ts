@@ -133,10 +133,6 @@
       <translation>Фразата не е пронајдена</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 од %2 натпревари</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Одберете тековна статија</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Не успеа да се преземе звукот</translation>
+    </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 од %2 натпревари</translation>
     </message>
   </context>
   <context>

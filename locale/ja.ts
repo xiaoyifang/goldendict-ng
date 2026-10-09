@@ -133,10 +133,6 @@
       <translation>フレーズが見つかりません</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1件目 / %2件</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>記事を選択</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>音声ファイルのダウンロードに失敗したんだ</translation>
+    </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1件目 / %2件</translation>
     </message>
   </context>
   <context>

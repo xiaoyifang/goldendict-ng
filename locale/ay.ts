@@ -119,10 +119,6 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
       <translation>Frase ukax janiw jikxataskiti</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 ukat %2 uñt’ayata</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Jichha qillqata uk ajlliña</translation>
     </message>
@@ -289,6 +285,10 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
     <message>
       <source>Failed to download sound</source>
       <translation>Ist'awi apkatasiñax pantjasi</translation>
+    </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 ukat %2 uñt’ayata</translation>
     </message>
   </context>
   <context>

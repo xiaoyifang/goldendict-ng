@@ -133,10 +133,6 @@
       <translation>Jümle tapylmady</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%2 oýundan %1</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Şu makalany saýla</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Ses ýüklenilmedi</translation>
+    </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%2 oýundan %1</translation>
     </message>
   </context>
   <context>

@@ -133,10 +133,6 @@
       <translation>Η φράση δεν βρέθηκε</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 από %2 ταιριάσματα</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Επιλογή τρέχοντος άρθρου</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Αποτυχία λήψης ήχου</translation>
+    </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 από %2 ταιριάσματα</translation>
     </message>
   </context>
   <context>

@@ -133,10 +133,6 @@
       <translation>Fráza sa nenašla</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 z %2 zápasov</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Označiť aktuálny článok</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Nepodarilo sa stiahnuť zvuk</translation>
+    </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 z %2 zápasov</translation>
     </message>
   </context>
   <context>

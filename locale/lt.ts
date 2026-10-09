@@ -133,10 +133,6 @@
       <translation>Frazė nerasta</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 iš %2 rungtynių</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Dabartinio straipsnio pasirinkimas</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>Nepavyko atsisiųsti garso</translation>
+    </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 iš %2 rungtynių</translation>
     </message>
   </context>
   <context>

@@ -133,10 +133,6 @@
       <translation>لم يتم العثور على المرحلة</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 من %2 تطابق</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>حدّد المقالة الحالية</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>فشل تنزيل الصوت</translation>
+    </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 من %2 تطابق</translation>
     </message>
   </context>
   <context>

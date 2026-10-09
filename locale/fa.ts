@@ -133,10 +133,6 @@
       <translation>عبارت پیدا نشد</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 از %2 مسابقه</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>برگزیدن بند جاری</translation>
     </message>
@@ -303,6 +299,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>دانلود صدا با شکست مواجه شد</translation>
+    </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 از %2 مسابقه</translation>
     </message>
   </context>
   <context>
