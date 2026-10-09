@@ -128,14 +128,19 @@ sptr< DataRequest > WebSiteDictionary::getArticle( const std::u32string & str,
     fmt::format_to(
       std::back_inserter( result ),
       R"(<div class="website-new-tab-notice">
-                          <p>{}</p>
-                        </div>)",
-      QCoreApplication::translate( "WebSite", "This website dictionary is opened in a new tab" ).toStdString() );
+  <p class="website-new-tab-notice-title">{}</p>
+  <p class="website-new-tab-notice-hint">{}</p>
+</div>)",
+      QCoreApplication::translate( "WebSite", "This website dictionary is opened in a new tab" ).toStdString(),
+      QCoreApplication::translate( "WebSite",
+                                   "Turn off \"Open website dictionary in separate tab\" in Preferences to show the "
+                                   "website inside the article instead." )
+        .toStdString() );
   }
   else {
     fmt::format_to( std::back_inserter( result ),
                     R"(<iframe id="gdexpandframe-{}" src="{}"
-scrolling="no" data-gd-id="{}" 
+data-gd-id="{}" 
 class="website-iframe"
 sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>)",
                     getId(),

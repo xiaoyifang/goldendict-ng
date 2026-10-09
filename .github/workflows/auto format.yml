@@ -78,4 +78,4 @@ jobs:
       - name: update crowdin.ts
         run: |
           lupdate -no-obsolete -no-ui-lines -locations none src -ts locale/crowdin.ts
-      - uses: autofix-ci/action@c5b2d67aa2274e7b5a18224e8171550871fc7e4a
+      - uses: autofix-ci/action@v1.3.4

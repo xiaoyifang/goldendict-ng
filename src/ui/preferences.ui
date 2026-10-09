@@ -1959,6 +1959,9 @@ from Stardict, Babylon and GLS dictionaries</string>
           </item>
           <item>
            <widget class="QCheckBox" name="openWebsiteInNewTab">
+            <property name="toolTip">
+             <string>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</string>
+            </property>
             <property name="text">
              <string>Open website dictionary in separate tab</string>
             </property>
