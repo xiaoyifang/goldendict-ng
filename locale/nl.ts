@@ -3559,7 +3559,7 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     </message>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
-      <translation type="unfinished">When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</translation>
+      <translation>Wanneer ingeschakeld, openen websitewoordenboeken in hun eigen tabblad in plaats van ingebed te zijn in de artikelweergave. Dit voorkomt beperkingen in de indeling van iframes en scrollen, en schakelt de per-woordenboek-kolom Script in het dialoogvenster Woordenboeken in.</translation>
     </message>
   </context>
   <context>
@@ -4274,7 +4274,7 @@ De volledige lijst met beschikbare talen vindt u &lt;a href=&quot;https://lingua
     </message>
     <message>
       <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
-      <translation type="unfinished">Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</translation>
+      <translation>Zet het uit &quot;Open websitewoordenboek in een apart tabblad&quot; in Voorkeuren om de website in het artikel te tonen.</translation>
     </message>
   </context>
   <context>
