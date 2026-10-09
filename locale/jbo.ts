@@ -301,8 +301,8 @@
       <translation>na'e jmaji lo nu benji fi lo cusku</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation type="unfinished">%1 of %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1 of %2 matches</translation>
     </message>
   </context>
   <context>
