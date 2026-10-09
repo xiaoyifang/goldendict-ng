@@ -301,8 +301,8 @@
       <translation>Αποτυχία λήψης ήχου</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation>%1 της %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1 από %2 ταιριάσματα</translation>
     </message>
   </context>
   <context>
