@@ -286,8 +286,8 @@
       <translation>Không thể tải xuống âm thanh</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation>%1 của %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1 trên %2 trận đấu</translation>
     </message>
   </context>
   <context>
