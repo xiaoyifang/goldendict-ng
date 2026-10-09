@@ -301,8 +301,8 @@
       <translation>Uyarita uraykachiy mana atikun</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation type="unfinished">%1 of %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1 de %2 tupachiykuna</translation>
     </message>
   </context>
   <context>
