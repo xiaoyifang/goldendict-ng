@@ -301,8 +301,8 @@
       <translation>Nem sikerült letölteni a hangot</translation>
     </message>
     <message>
-      <source>%1 of %2</source>
-      <translation>%1 of %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1 / %2 találat</translation>
     </message>
   </context>
   <context>
