@@ -3549,6 +3549,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Add audio to Anki card when available</source>
       <translation>有音訊時加入 Anki 卡</translation>
     </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>啟用後，網站字典會在獨立分頁開啟，而非嵌入文章檢視中。這避免了 iframe 版面與捲動限制，並啟用字典對話框中的每個字典腳本欄位。</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4257,6 +4261,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>這個網站字典會在新分頁中開啟</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>關掉 &quot;在獨立分頁開啟網站字典&quot; 在偏好設定中顯示該網站。</translation>
     </message>
   </context>
   <context>
