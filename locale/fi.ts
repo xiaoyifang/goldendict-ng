@@ -3560,6 +3560,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <source>Add audio to Anki card when available</source>
       <translation>Lisää ääni Anki-kortille, kun se on saatavilla</translation>
     </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Kun ne ovat käytössä, verkkosivuston sanakirjat avautuvat omalla välilehdellään artikkelinäkymän sijaan. Tämä välttää iframe-asettelun ja vieritysrajoitukset, ja mahdollistaa sanakirjakohtaisen Script-sarakkeen sanakirja-ikkunassa.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4270,6 +4274,10 @@ Täydellinen luettelo saatavilla olevista kielistä löytyy &lt;a href=&quot;htt
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Tämä sivusto sanakirja on avattu uudessa välilehdessä</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Virta poikki &quot;Avaa verkkosivuston sanakirja erillisessä välilehdessä&quot; asetuksissa näyttääksesi verkkosivuston artikkelin sisällä.</translation>
     </message>
   </context>
   <context>
