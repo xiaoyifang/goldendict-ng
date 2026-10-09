@@ -3560,6 +3560,10 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <source>Add audio to Anki card when available</source>
       <translation>Aldoni sonaĵon al Anki-karto kiam disponeblas</translation>
     </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Kiam ebligite, retejaj vortaroj malfermiĝas en sia propra langeto anstataŭ esti enkonstruitaj en la artikola vido. Ĉi tio evitas kadrajn aranĝajn kaj rulajn limigojn, kaj ebligas la Skriptan kolumnon por ĉiu vortaro en la dialogujo de Vortaroj.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4270,6 +4274,10 @@ Plena listo de disponeblaj lingvoj troveblas &lt;a href=&quot;https://lingualibr
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation type="unfinished">This website dictionary is opened in a new tab</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Malŝaltu &quot;Malfermi retejan vortaron en aparta langeto&quot; en Preferoj por montri la retejon interne de la artikolo anstataŭe.</translation>
     </message>
   </context>
   <context>
