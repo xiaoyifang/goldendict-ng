@@ -3558,6 +3558,10 @@ ze słowników Stardict, Babylon i GLS</translation>
       <source>Add audio to Anki card when available</source>
       <translation>Dodaj dźwięk do karty Anki, gdy jest dostępna</translation>
     </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Po włączeniu słowniki stron internetowych otwierają się w osobnej zakładce, zamiast być osadzone w widoku artykułu. Pozwala to uniknąć ograniczeń układu i przewijania w ramce iframe, a także umożliwia użycie kolumny Script dla słownika w dialogu słownikowym.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4269,6 +4273,10 @@ Pełną listę dostępnych języków można znaleźć &lt;a href=&quot;https://l
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Ten słownik internetowy jest otwarty w nowej karcie</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Wyłącz &quot;Otwórz słownik stron internetowych w osobnej zakładce&quot; w Preferencjach, aby wyświetlić stronę internetową wewnątrz artykułu.</translation>
     </message>
   </context>
   <context>

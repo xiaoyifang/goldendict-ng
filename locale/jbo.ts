@@ -3558,6 +3558,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <source>Add audio to Anki card when available</source>
       <translation>jmina samci lo anki karce ti'e zasti</translation>
     </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>lo ka zifre cu rinka lo du'u lo web cukta cu selcu'e lo tabli ce'o na sefta lo lisri skepi. ti cu fanza lo re'iskafi selkai .e lo galri tcana. gi'e jmina lo skriptu stani be roi cukta fi lo cukta bangu ke xusra'a.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4268,6 +4272,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>ti kibystu vlacku se cisku lo pa nitslu</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>cipni lo &quot;selcu'e lo web cukta fi lo jamna tabli&quot; fi lo prefre ke'e lo ka sefta lo web site fi lo lisri.</translation>
     </message>
   </context>
   <context>

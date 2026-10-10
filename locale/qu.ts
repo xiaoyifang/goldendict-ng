@@ -3554,6 +3554,10 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
       <source>Add audio to Anki card when available</source>
       <translation type="unfinished">Add audio to Anki card when available</translation>
     </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Kacharisqa kaptinqa, web qillqarinakuna sapankama tabpi kicharinkun, manam qillqa rikuchinapi churasqa kaspankuchu. Kaywanqa iframe ruwaypa hinaspa purichiy hark'aykuna hark'asqa kanku, hinaspa sapanka qillqarinapaq Script nisqa siq'i Qillqarinakuna Rimarinapi kacharisqa kachkan.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4264,6 +4268,10 @@ Lliw simikuna tarikuq listataqa tarinki &lt;a href=&quot;https://lingualibre.org
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Kay web-sitio simi-pirwa musuq qillqana-pacharapi kichasqa</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Wañuchiy &quot;Web simi qillqata huk tabpi kichay&quot; Akllanakunapi, chaypa rantinpi web p'anqata qillqa ukhupi rikuchinapaq.</translation>
     </message>
   </context>
   <context>

@@ -3650,6 +3650,10 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <source>Add audio to Anki card when available</source>
       <translation>Anki k'uchururu uywa yapt'aña utjki ukhaxa</translation>
     </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Aktibata ukhaxa, internet aru qillqatanakax jupanakpachpa patatjanjaman jist'arasi, yatichäwi uñjawi taypin juch'usa uñacht'ayata ukhama jan ukata. Aka jan juch'usa markachawi ukat muytayaña jark'anakaru chhaqaya, ukat Aru Qillqatanaka dialogon mayat mayaru Qillqawi qillqa qalltawa.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4369,6 +4373,10 @@ Taqi lista utjki uka arunakax &lt;a href=&quot;https://lingualibre.org/wiki/Ling
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Aka web aru-pirwax machaq ficha-n jist'aratäni</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Ispiya &quot;Internet aru qillqata may maya patatjanjan jist'araña&quot; Kamachinakan, yatichäwi taypin internet uñacht'ayañataki.</translation>
     </message>
   </context>
   <context>

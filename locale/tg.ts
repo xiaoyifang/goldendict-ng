@@ -3559,6 +3559,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Add audio to Anki card when available</source>
       <translation type="unfinished">Add audio to Anki card when available</translation>
     </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Ҳангоми фаъол будан, луғатҳои вебсайт дар ҷадвали худ кушода мешаванд, на дар дохили намуди мақола. Ин маҳдудиятҳои тарҳбандии iframe ва ҳаракатро пешгирӣ мекунад ва сутуни скрипти барои ҳар як луғатро дар муколамаи Луғатҳо фаъол месозад.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4269,6 +4273,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Луғати ин вебсайт дар варақаи нав кушода мешавад</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Барои нишон додани вебсайт дар дохили мақола, &quot;Луғати вебсайтро дар ҷадвали алоҳида кушоед&quot;-ро дар Танзимот хомӯш кунед.</translation>
     </message>
   </context>
   <context>

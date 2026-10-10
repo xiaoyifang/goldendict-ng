@@ -3558,6 +3558,10 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <source>Add audio to Anki card when available</source>
       <translation>Přidejte zvuk na kartu Anki, pokud je k dispozici</translation>
     </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Po zapnutí se webové slovníky otevírají ve vlastní záložce místo toho, aby byly vloženy přímo v článku zobrazené. Tím se eliminuje omezení rozložení a posouvání iframe a umožňuje se v dialogu slovníků používat sloupec Script pro slovník.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4268,6 +4272,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Tento webový slovník je otevřen na nové kartě</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Vypni &quot;Otevřete slovník webových stránek v samostatné záložce&quot; v Preferencích zobrazit web uvnitř článku.</translation>
     </message>
   </context>
   <context>
