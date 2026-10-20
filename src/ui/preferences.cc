@@ -481,9 +481,9 @@ Config::Preferences Preferences::getPreferences()
   p.useFallbackFonts = ui.fallbackFontsGroupBox->isChecked();
 
   p.displayStyle = ui.displayStyle->itemData( ui.displayStyle->currentIndex() ).toString();
-  if ( ui.InterfaceStyle->isVisible() ) {
-    p.interfaceStyle = ui.InterfaceStyle->itemData( ui.InterfaceStyle->currentIndex() ).toString();
-  }
+#if !defined( Q_OS_WIN )
+  p.interfaceStyle = ui.InterfaceStyle->itemData( ui.InterfaceStyle->currentIndex() ).toString();
+#endif
 
   p.newTabsOpenAfterCurrentOne = ui.newTabsOpenAfterCurrentOne->isChecked();
   p.newTabsOpenInBackground    = ui.newTabsOpenInBackground->isChecked();
