@@ -766,11 +766,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Schedule for reindex</source>
-      <translation>重建计划</translation>
+      <translation>安排重新索引</translation>
     </message>
     <message>
       <source>Cancel schedule reindex</source>
-      <translation>取消计划恢复</translation>
+      <translation>取消计划重新索引</translation>
     </message>
     <message>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
