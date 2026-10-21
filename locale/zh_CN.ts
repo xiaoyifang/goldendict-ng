@@ -766,7 +766,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Schedule for reindex</source>
-      <translation>安排重新索引（需重启）</translation>
+      <translation>安排重新索引</translation>
     </message>
     <message>
       <source>Cancel schedule reindex</source>
