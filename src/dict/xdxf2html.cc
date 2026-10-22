@@ -623,7 +623,7 @@ string convert( const string & in,
     }
 
     //    if( type == XDXF && dictPtr != NULL && !el.hasAttribute( "start" ) )
-    if ( dictPtr != NULL && !el.hasAttribute( "start" ) ) {
+    if ( dictPtr != nullptr && !el.hasAttribute( "start" ) ) {
       string filename = Text::toUtf8( el.text().toStdU32String() );
 
       if ( Filetype::isNameOfPicture( filename ) ) {

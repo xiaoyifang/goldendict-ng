@@ -106,7 +106,7 @@ ArticleDom::ArticleDom( const std::u32string & str, const string & dictName, con
 {
   list< Node * > stack; // Currently opened tags
 
-  Node * textNode = 0; // A leaf node which currently accumulates text.
+  Node * textNode = nullptr; // A leaf node which currently accumulates text.
 
   try {
     for ( ;; ) {
