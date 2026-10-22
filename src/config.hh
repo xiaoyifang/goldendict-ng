@@ -841,7 +841,6 @@ struct Class
 
   QSet< QString > mutedDictionaries;      // Disabled via dictionary bar
   QSet< QString > popupMutedDictionaries; // Disabled via dictionary bar in popup
-  QSet< QString > dictionariesToReindex;  // Dictionaries scheduled for reindexing
 
   QDateTime timeForNewReleaseCheck; // Last time when the release was checked.
 

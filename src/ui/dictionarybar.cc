@@ -3,10 +3,14 @@
 #include "globalbroadcaster.hh"
 #include <QAction>
 #include <QApplication>
+#include <QDebug>
+#include <QFile>
+#include <QFileInfo>
 #include <QIconEngine>
 #include <QMenu>
 #include <QInputDialog>
 #include <QPainter>
+#include <QStringList>
 #include "metadata.hh"
 #include "common/utils.hh"
 #include <QContextMenuEvent>
@@ -122,6 +126,33 @@ QIcon makeDimmedIcon( const QIcon & source )
     return source;
   }
   return QIcon( new DimmedIconEngine( source ) );
+}
+
+/// Returns the path of the marker file which schedules one of the dictionary
+/// indices for a rebuild. Dictionary::needToRebuildIndex() consumes the marker
+/// on the next application start. The FTS index lives in a separate file named
+/// "<id>_FTS_x", so it needs its own marker.
+QString reindexMarkerPath( const QString & dictId, bool fts )
+{
+  QString indexFileName = dictId;
+  if ( fts ) {
+    indexFileName += QString::fromStdString( Dictionary::getFtsSuffix() );
+  }
+  return Config::getIndexDir() + indexFileName + QStringLiteral( ".stale" );
+}
+
+/// True if the dictionary has already been scheduled for reindexing. Only the
+/// headword index marker is checked, since it is created for every local
+/// dictionary, unlike the optional FTS one.
+bool hasReindexMarker( const QString & dictId )
+{
+  try {
+    return QFileInfo::exists( reindexMarkerPath( dictId, false ) );
+  }
+  catch ( const std::exception & e ) {
+    qWarning() << "Cannot access the index directory:" << e.what();
+    return false;
+  }
 }
 } // namespace
 
@@ -298,9 +329,8 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
         changeNameAction = menu.addAction( tr( "Change display name" ) );
 
         // Add schedule/cancel reindex action
-        Config::Class * cfg  = GlobalBroadcaster::instance()->getConfig();
-        const QString dictId = pDict->getId().c_str();
-        if ( cfg && cfg->dictionariesToReindex.contains( dictId ) ) {
+        const QString dictId = QString::fromStdString( pDict->getId() );
+        if ( hasReindexMarker( dictId ) ) {
           scheduleReindexAction = menu.addAction( tr( "Cancel reindex" ) );
         }
         else {
@@ -377,34 +407,47 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
 
   if ( result && result == scheduleReindexAction ) {
     const QString dictId = dictAction->data().toString();
-    Config::Class * cfg  = GlobalBroadcaster::instance()->getConfig();
 
-    // Check if the dictionary is already scheduled for reindexing
-    if ( cfg && cfg->dictionariesToReindex.contains( dictId ) ) {
-      // Remove from reindex list (cancel reindex)
-      cfg->dictionariesToReindex.remove( dictId );
+    try {
+      // An empty "<index file>.stale" marker next to the index file makes
+      // Dictionary::needToRebuildIndex() rebuild that index on the next start.
+      QStringList markers{ reindexMarkerPath( dictId, false ) };
+      if ( pDict && pDict->canFTS() ) {
+        markers.append( reindexMarkerPath( dictId, true ) );
+      }
 
-      // Note: Using status bar notification instead of message box for lighter user feedback
-      // After canceling reindexing plan, show operation result in status bar
-      emit showStatusBarMessage( tr( "Cancel schedule reindex" ), 3000 ); // Show for 3 seconds
+      if ( QFileInfo::exists( markers.first() ) ) {
+        // Remove the markers to cancel the scheduled reindex
+        for ( const auto & marker : std::as_const( markers ) ) {
+          QFile::remove( marker );
+        }
+
+        // Note: Using status bar notification instead of message box for lighter user feedback
+        emit showStatusBarMessage( tr( "Cancel schedule reindex" ), 3000 ); // Show for 3 seconds
+      }
+      else {
+        bool success = true;
+        for ( const auto & marker : std::as_const( markers ) ) {
+          QFile markerFile( marker );
+          success = markerFile.open( QIODevice::WriteOnly ) && success;
+          markerFile.close();
+        }
+
+        if ( success ) {
+          // Using status bar notification instead of message box for lighter user feedback
+          emit showStatusBarMessage(
+            tr(
+              "The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart." ),
+            3000 ); // Show for 3 seconds
+        }
+        else {
+          emit showStatusBarMessage( tr( "Failed to schedule the dictionary for reindexing." ), 3000 );
+        }
+      }
     }
-    else if ( cfg ) {
-      // Add to reindex list
-      cfg->dictionariesToReindex.insert( dictId );
-
-      // Using status bar notification instead of message box for lighter user feedback
-      // After scheduling reindexing, show operation result and follow-up hint in status bar
-      emit showStatusBarMessage(
-        tr(
-          "The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart." ),
-        3000 ); // Show for 3 seconds
-    }
-
-    // Set dirty flag specifically for reindex schedule changes
-    if ( cfg ) {
-      cfg->dirty = true;
-      // Always save configuration to ensure the action text updates correctly next time the menu is opened
-      Config::save( *cfg );
+    catch ( const std::exception & e ) {
+      qWarning() << "Cannot write the reindex marker:" << e.what();
+      emit showStatusBarMessage( tr( "Failed to schedule the dictionary for reindexing." ), 3000 );
     }
 
     return;
