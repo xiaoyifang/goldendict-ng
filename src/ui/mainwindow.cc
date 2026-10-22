@@ -1370,6 +1370,13 @@ void MainWindow::commitData()
       if ( dictMap.contains( fileName.toStdString() ) ) {
         continue;
       }
+
+      // Pending "Schedule for reindex" markers must survive the cleanup,
+      // otherwise the scheduled rebuild would never happen on the next start.
+      if ( fileName.endsWith( QLatin1String( ".stale" ) ) ) {
+        continue;
+      }
+
       //remove both normal index and fts index.
       auto filePath = file.absoluteFilePath();
       qDebug() << "remove invalid index files & fts dirs";
