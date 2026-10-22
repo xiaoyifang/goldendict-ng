@@ -121,9 +121,26 @@ QStringList RX::Ftx::processSearchStringForHighlight( const QString & searchStri
     }
     else {
       QString token;
-      while ( pos < length && !searchString[ pos ].isSpace() && searchString[ pos ] != '"'
-              && searchString[ pos ] != '\'' ) {
-        token += searchString[ pos ];
+      while ( pos < length && !searchString[ pos ].isSpace() ) {
+        const QChar ch = searchString[ pos ];
+
+        if ( ch == '"' || ch == '\'' ) {
+          // A quote that opens a complete quoted phrase has been consumed above.
+          if ( quotedPhraseRx.match( searchString, pos ).hasMatch() ) {
+            break;
+          }
+
+          // Unpaired quote (e.g. the Greek elision "καθ'"): keep it only when it
+          // continues a token, otherwise drop it. Either way pos advances, so the
+          // scan can never get stuck on it (issue #3115).
+          if ( !token.isEmpty() ) {
+            token += ch;
+          }
+          ++pos;
+          continue;
+        }
+
+        token += ch;
         ++pos;
       }
 
