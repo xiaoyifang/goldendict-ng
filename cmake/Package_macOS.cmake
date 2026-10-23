@@ -58,9 +58,9 @@ qt_generate_deploy_script(
         if (NOT EXISTS \"${QT_WEBENGINE_HELPER_FRAMEWORKS}\"
             AND NOT IS_SYMLINK \"${QT_WEBENGINE_HELPER_FRAMEWORKS}\")
             # NOTE: a symlink's target resolves relative to the symlink's
-            # parent dir (.../QtWebEngineProcess.app/Contents), so six ".."
-            # land on the main app's Contents/Frameworks. Same value as the
-            # bundles shipped in release 26.10.0.
+            # parent dir (.../QtWebEngineProcess.app/Contents), so the six ..
+            # segments land on the main app's Contents/Frameworks. Same value
+            # as the bundles shipped in release 26.10.0.
             file(CREATE_LINK
                  \"../../../../../..\"
                  \"${QT_WEBENGINE_HELPER_FRAMEWORKS}\"
