@@ -133,10 +133,6 @@
       <translation>Fráza sa nenašla</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 z %2 zápasov</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Označiť aktuálny článok</translation>
     </message>
@@ -304,6 +300,10 @@
       <source>Failed to download sound</source>
       <translation>Nepodarilo sa stiahnuť zvuk</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 z %2 zápasov</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,28 +332,8 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Čínska konverzia</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Povoliť konverziu medzi zjednodušenými a tradičnými čínskymi znakmi</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Čínska &amp;konverzia</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Povoliť konverziu zjednodušených znakov na tradičné (Tajvanský variant)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Povoliť konverziu zjednodušených znakov na tradičné (Hong-Kongský variant)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Povoliť konverziu tradičných znakov na zjednodušené znaky</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <translation>Konverzia z tradičnej do zjednodušenej čínštiny</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwanský variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Hongkonský variant</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Pevninský variant</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Umožniť konverziu z tradičných znakov na zjednodušené (pevninské) znaky</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Zjednodušené (pevnina)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Umožniť konverziu zo zjednodušených znakov na tradičné (Taiwan/Standard) znaky</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Tradičné (Taiwan/Standard)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Umožniť konverziu zo zjednodušených/tradičných čínskych znakov na japonské znaky Shinjitai</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Japonský Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Čínska konverzia na japonskú konverziu Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Čínske a japonské znaky Proti&amp;verzia</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Umožniť konverziu medzi zjednodušenou čínštinou, tradičnou čínštinou (Taiwan/Hongkong) a japonskými znakmi Shinjitai</translation>
     </message>
   </context>
   <context>
@@ -3531,6 +3539,22 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
       <source>Customize Fonts</source>
       <translation>Prispôsobenie fontov</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Ikona Docku sa vždy zobrazí, keď je hlavné okno otvorené, aby macOS mohol zobraziť názov aplikácie a menu. Zapnite túto možnosť, aby ikona Docku zostala viditeľná aj po skrytí hlavného okna.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Nechajte ikonu Docku viditeľnú na pozadí</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Pridajte zvuk do Anki karty, keď je k dispozícii</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Keď sú zapnuté, webové slovníky sa otvárajú vo vlastnej karte namiesto toho, aby boli vložené priamo v zobrazení článku. Tým sa eliminuje obmedzenia rozloženia a posúvania iframe a umožňuje stĺpec Script pre slovník v dialógu slovníkov.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3785,6 +3809,22 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     <message>
       <source>Definition</source>
       <translation>Definícia</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Zatvoriť aktuálnu kartu</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Zatvoriť všetky karty okrem aktuálnej</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Zatvoriť všetky karty</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Otvoriť v a externý prehliadač</translation>
     </message>
   </context>
   <context>
@@ -4223,6 +4263,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Tento webový slovník je otvorený v novej karte</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Vypnite &quot;Otvorte slovník webovej stránky v samostatnej záložke&quot; v nastaveniach, aby sa webová stránka zobrazila priamo v článku.</translation>
     </message>
   </context>
   <context>

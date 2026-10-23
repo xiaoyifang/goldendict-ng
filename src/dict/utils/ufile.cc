@@ -31,10 +31,11 @@ gzFile gd_gzopen( const char * filename )
 {
   int id = gd_open( filename );
   if ( id == -1 )
-    return NULL;
+    return nullptr;
   gzFile f = gzdopen( id, "rb" );
-  if ( f == NULL )
+  if ( f == nullptr ) {
     _close( id );
+  }
   return f;
 }
 

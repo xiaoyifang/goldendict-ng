@@ -132,10 +132,6 @@
       <translation>找不到該片語。</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1/%2 個匹配</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>選擇目前條目</translation>
     </message>
@@ -303,6 +299,10 @@
       <source>Failed to download sound</source>
       <translation>下載聲音失敗</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1/%2 個匹配</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -330,28 +330,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>中文轉換</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>啟用簡繁轉換</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>中文轉換(&amp;V)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>啟用簡體字轉換為台灣繁體字</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>啟用簡體字轉換為香港繁體字</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>啟用繁體字轉換為簡體字</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -366,16 +346,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>繁體字轉換為簡體字</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>台灣版本</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>香港版本</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>大陸版本</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>啟用繁體字轉換為簡體（大陸）字</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>簡化（大陸）</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>啟用簡體字元轉換為繁體（台灣/標準）字元。</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>繁體（台灣/標準）</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>啟用從簡體/繁體漢字轉換為日文新字體</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>日文新字體</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>中文到日文新字體的轉換</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>中文與日文字符轉換</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>支援簡體中文、繁體中文（台灣/香港）及日文新字體間的轉換</translation>
     </message>
   </context>
   <context>
@@ -3529,6 +3537,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Customize Fonts</source>
       <translation>自訂字型</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>當主視窗開啟時，Dock 圖示總是會顯示，讓 macOS 能顯示應用程式名稱和選單。啟用這個選項，讓 Dock 圖示在主視窗被隱藏後仍可見。</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>請在背景中保持 Dock 圖示可見</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>有音訊時加入 Anki 卡</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>啟用後，網站字典會在獨立分頁開啟，而非嵌入文章檢視中。這避免了 iframe 版面與捲動限制，並啟用字典對話框中的每個字典腳本欄位。</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3783,6 +3807,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Definition</source>
       <translation>定義</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>關閉目前分頁</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>關閉其它分頁</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>關閉所有分頁</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>開啟 → 外部瀏覽器</translation>
     </message>
   </context>
   <context>
@@ -4221,6 +4261,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>這個網站字典會在新分頁中開啟</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>關掉 &quot;在獨立分頁開啟網站字典&quot; 在偏好設定中顯示該網站。</translation>
     </message>
   </context>
   <context>

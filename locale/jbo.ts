@@ -133,10 +133,6 @@
       <translation>Phrase not found</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 of %2 matches</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>cuxna pa notci poi ca se viska</translation>
     </message>
@@ -304,6 +300,10 @@
       <source>Failed to download sound</source>
       <translation>na'e jmaji lo nu benji fi lo cusku</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 of %2 matches</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,28 +332,8 @@ between classic and school orthography in cyrillic)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Chinese Conversion</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Enable conversion between simplified and traditional Chinese characters</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Chinese Con&amp;version</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Enable conversion from simplified characters to traditional (Taiwan variant) characters</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Enable conversion from traditional characters to simplified characters</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ between classic and school orthography in cyrillic)</translation>
       <translation>Traditional to simplified Chinese conversion</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Hong Kong variant</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Mainland variant</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>gasnu lo cfika be'o lo prulamorfi lerfu lo sampu lerfu poi juncai</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>sampu poi juncai</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>gasnu lo cfika be'o lo sampu lerfu lo prulamorfi lerfu poi tainvan ja stani</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>prulamorfi poi tainvan ja stani</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>gasnu lo cfika be'o lo lerfu poi sampu ja prulamorfi xunto lo lerfu nihon be'o sincitai</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>sincitai poi nihon</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>cirmu be'o lo cninu lo ponjo shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>cninu .e ponjo cifnu &amp;cirmu be'o</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>galfi le cirmu be'o lo sampu cninu .e lo banro cninu be'o taivan. .e xon.kong. .e lo ponjo shinjitai cifnu</translation>
     </message>
   </context>
   <context>
@@ -3538,6 +3546,22 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <source>Customize Fonts</source>
       <translation>galfi jdaselsku</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>la dak. jikmu cu ro roi claxra fo lo nu le ralju bloti cu pinxe fi'o nu la makos. klama ciska le kantu cmene .e le meniu. cipni le facki lo ka claxra la dak. jikmu lo nu le ralju bloti cu jundi.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>klama claxra la dak. jikmu lo'i jundi</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>jmina samci lo anki karce ti'e zasti</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>lo ka zifre cu rinka lo du'u lo web cukta cu selcu'e lo tabli ce'o na sefta lo lisri skepi. ti cu fanza lo re'iskafi selkai .e lo galri tcana. gi'e jmina lo skriptu stani be roi cukta fi lo cukta bangu ke xusra'a.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3792,6 +3816,22 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>Definition</source>
       <translation>smuni</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>mipri pa vanbi poi sepli je ca se cuxna</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>mipri ro vanbi poi sepli je ca na se cuxna</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>mipri ro vanbi poi sepli</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation type="unfinished">Open in &amp;External Browser</translation>
     </message>
   </context>
   <context>
@@ -4232,6 +4272,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>ti kibystu vlacku se cisku lo pa nitslu</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>cipni lo &quot;selcu'e lo web cukta fi lo jamna tabli&quot; fi lo prefre ke'e lo ka sefta lo web site fi lo lisri.</translation>
     </message>
   </context>
   <context>

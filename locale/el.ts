@@ -133,10 +133,6 @@
       <translation>Η φράση δεν βρέθηκε</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 από %2 ταιριάσματα</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Επιλογή τρέχοντος άρθρου</translation>
     </message>
@@ -304,6 +300,10 @@
       <source>Failed to download sound</source>
       <translation>Αποτυχία λήψης ήχου</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 από %2 ταιριάσματα</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -334,28 +334,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Μετατροπή Κινέζικων</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Ενεργοποίηση μετατροπής μεταξύ απλουστευμένων και παραδοσιακών κινεζικών χαρακτήρων</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Μετατροπή Κινέζικων</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Ενεργοποίηση μετατροπής από απλοποιημένους χαρακτήρες σε παραδοσιακούς (παραλλαγή Ταϊβάν) χαρακτήρες</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Ενεργοποίηση μετατροπής από απλοποιημένους χαρακτήρες σε παραδοσιακούς (παραλλαγή Χονγκ Κονγκ) χαρακτήρες</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Ενεργοποίηση μετατροπής από παραδοσιακούς χαρακτήρες σε απλοποιημένους χαρακτήρες</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -370,16 +350,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>Παραδοσιακά στην απλουστευμένη κινεζική μετατροπή</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Παραλλαγή του Χονγκ Κονγκ</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Παραλλαγή ηπειρωτικής χώρας</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Ενεργοποίηση μετατροπής από παραδοσιακούς χαρακτήρες σε απλοποιημένους χαρακτήρες (ηπειρωτικής χώρας)</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Απλοποιημένη (ηπειρωτική χώρα)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Ενεργοποίηση μετατροπής από απλοποιημένους χαρακτήρες σε παραδοσιακούς χαρακτήρες (Ταϊβάν/Τυπικούς) χαρακτήρες</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Παραδοσιακό (Ταϊβάν/Τυπικό)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Ενεργοποίηση μετατροπής από απλοποιημένους/παραδοσιακούς κινεζικούς χαρακτήρες σε ιαπωνικούς χαρακτήρες Shinjitai</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Ιαπωνικό Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Κινέζικα σε Ιαπωνικά Shinjitai μετατροπή</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Μετατροπή κινεζικών και ιαπωνικών χαρακτήρων</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Ενεργοποίηση μετατροπής μεταξύ απλοποιημένων κινεζικών, παραδοσιακών κινεζικών (Ταϊβάν/Χονγκ Κονγκ) και ιαπωνικών χαρακτήρων Shinjitai</translation>
     </message>
   </context>
   <context>
@@ -3541,6 +3549,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Customize Fonts</source>
       <translation>Προσαρμογή γραμματοσειρών</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Το εικονίδιο του Dock εμφανίζεται πάντα όταν το κύριο παράθυρο είναι ανοιχτό, έτσι ώστε το macOS να μπορεί να εμφανίζει το όνομα της εφαρμογής και τα μενού. Ενεργοποιήστε αυτήν την επιλογή για να διατηρήσετε το εικονίδιο Dock ορατό μετά την απόκρυψη του κύριου παραθύρου.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Διατηρήστε το εικονίδιο Dock ορατό στο παρασκήνιο</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Προσθέστε ήχο στην κάρτα Anki όταν είναι διαθέσιμος</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Όταν είναι ενεργοποιημένα, τα λεξικά τοποθεσιών Web ανοίγουν στη δική τους καρτέλα αντί να ενσωματώνονται στην προβολή άρθρου. Με αυτόν τον τρόπο αποφεύγονται οι περιορισμοί διάταξης iframe και κύλισης και ενεργοποιείται η στήλη Δέσμη ενεργειών ανά λεξικό στο παράθυρο διαλόγου Λεξικά.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3795,6 +3819,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Definition</source>
       <translation>Ορισμός</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Κλείσιμο τρέχουσας καρτέλας</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Κλείσιμο όλων των άλλων καρτελών</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Κλείσιμο όλων των καρτελών</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Άνοιγμα σε &amp;εξωτερικό πρόγραμμα περιήγησης</translation>
     </message>
   </context>
   <context>
@@ -4234,6 +4274,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Αυτό το λεξικό ιστοσελίδας ανοίγει σε νέα καρτέλα</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Σβήνω &quot;Ανοίξτε το λεξικό ιστότοπου σε ξεχωριστή καρτέλα&quot; στις Προτιμήσεις για να εμφανίσετε τον ιστότοπο μέσα στο άρθρο.</translation>
     </message>
   </context>
   <context>

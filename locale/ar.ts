@@ -133,10 +133,6 @@
       <translation>لم يتم العثور على المرحلة</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 من %2 تطابق</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>حدّد المقالة الحالية</translation>
     </message>
@@ -304,6 +300,10 @@
       <source>Failed to download sound</source>
       <translation>فشل تنزيل الصوت</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 من %2 تطابق</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -331,28 +331,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>التحويل الصيني</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>تمكين التحويل بين الأحرف الصينية المبسطة والتقليدية</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>يخدع ونسخة الصينية</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>قم بتمكين التحويل من الأحرف المبسطة إلى الأحرف التقليدية (البديل التايواني)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>تمكين التحويل من الأحرف المبسطة إلى الأحرف التقليدية (متغير هونج كونج)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>تمكين التحويل من الأحرف التقليدية إلى الأحرف المبسطة</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -367,16 +347,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>التقليدية إلى الصينية المبسطة التحويل</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Hong Kong variant</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Mainland variant</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>تمكين التحويل من الحروف التقليدية إلى الأحرف المبسطة (البر الرئيسي)</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>مبسط (البر الرئيسي)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>تمكين التحويل من الأحرف المبسطة إلى الأحرف التقليدية (تايواني/القياسية)</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>التقليدية (تايوان/ستاندرد)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>تمكين التحويل من الحروف الصينية المبسطة/التقليدية إلى حروف شينجيتاي اليابانية</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>شينجيتاي الياباني</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>تحويل شينجيتاي من الصين إلى اليابان</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>نسخة الحروف الصينية واليابانية</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>تمكين التحويل بين الصينية المبسطة، والصينية التقليدية (تايوان/هونغ كونغ) والحروف اليابانية الشينجيتاي</translation>
     </message>
   </context>
   <context>
@@ -3538,6 +3546,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Customize Fonts</source>
       <translation>تخصيص الخطوط</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>يعرض أيقونة Dock دائما أثناء فتح النافذة الرئيسية حتى يتمكن macOS من عرض اسم التطبيق والقوائم المستخدمة. فعل هذا الخيار للحفاظ على أيقونة القاعدة ظاهرة بعد إخفاء النافذة الرئيسية.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>أبق أيقونة Dock ظاهرة في الخلفية</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>أضف الصوت إلى بطاقة أنكي عندما يكون متاحا</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>عند تفعيلها، تفتح قواميس المواقع في تبويب خاص بها بدلا من أن تكون مدمجة في عرض المقالة. هذا يتجنب قيود تخطيط iframe والتمرير، ويمكن من عمود السكريبت لكل قاموس في حوار القواميس.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3792,6 +3816,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Definition</source>
       <translation>التعريف</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>أغلق اللسان الحالي</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>أغلق كل الألسنة ما عدا هذا</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>أغلق كل الألسنة</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>افتح في متصفّح &amp;خارجي</translation>
     </message>
   </context>
   <context>
@@ -4233,6 +4273,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>تم فتح قاموس الموقع هذا في علامة تبويب جديدة</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>أطفئ &quot;قاموس الموقع المفتوح في تبويب منفصل&quot; في التفضيلات لعرض الموقع داخل المقال بدلا من ذلك.</translation>
     </message>
   </context>
   <context>

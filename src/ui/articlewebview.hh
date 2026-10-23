@@ -22,6 +22,13 @@ public:
   explicit ArticleWebView( QWidget * parent );
   void setUp( Config::Class * _cfg );
 
+  /// Updates (or installs) the DocumentCreation script that enforces
+  /// GoldenDict-ng's preferred color scheme onto the embedded page, overriding
+  /// the OS-level appearance so @media (prefers-color-scheme) / color-scheme
+  /// reflect the application theme rather than the system theme.
+  /// @param isDark whether the application is currently in dark mode.
+  void updatePreferredColorSchemeScript( bool isDark );
+
   bool isMidButtonPressed() const
   {
     return midButtonPressed;

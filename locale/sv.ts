@@ -133,10 +133,6 @@
       <translation>Fras hittades inte</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 av %2 träffar</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Markera aktuell artikel</translation>
     </message>
@@ -304,6 +300,10 @@
       <source>Failed to download sound</source>
       <translation>Det gick inte att ladda ner ljud</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 av %2 träffar</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,28 +332,8 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Kinesisk konvertering</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Aktivera konvertering mellan förenklade och traditionella kinesiska tecken</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Kinesisk Con&amp;version</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Aktivera konvertering från förenklade tecken till traditionella (Taiwan variant) tecken</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Aktivera konvertering från förenklade tecken till traditionella (Hong Kong variant) tecken</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Aktivera konvertering från traditionella tecken till förenklade tecken</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Traditionell till förenklad kinesisk konvertering</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Hongkong variant</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Variant på fastlandet</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Möjliggöra konvertering från traditionella tecken till förenklade (fastlands) tecken</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Förenklad (fastlandet)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Möjliggör konvertering från förenklade tecken till traditionella (Taiwan/Standard) tecken</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Traditionell (Taiwan/Standard)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Möjliggör konvertering från förenklade/traditionella kinesiska tecken till japanska Shinjitai-tecken</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Japansk Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Kinesisk till japansk Shinjitai-konvertering</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Kinesisk och japansk teckenkonversion</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Aktivera konvertering mellan förenklade kinesiska, traditionella kinesiska (Taiwan/Hongkong) och japanska Shinjitai-tecken</translation>
     </message>
   </context>
   <context>
@@ -3541,6 +3549,22 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <source>Customize Fonts</source>
       <translation>Anpassa typsnitt</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Dockikonen visas alltid när huvudfönstret är öppet så att macOS kan visa applikationsnamn och menyer. Aktivera detta alternativ för att hålla dockikonen synlig efter att huvudfönstret är dolt.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Håll dockikonen synlig i bakgrunden</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Lägg till ljud på Anki-kortet när det finns tillgängligt</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>När de är aktiverade öppnas webbplatsordböcker i en egen flik istället för att vara inbäddade i artikelvyn. Detta undviker begränsningar i iframe-layout och scrollning och aktiverar kolumnen Script per ordbok i dialogen för ordböcker.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3795,6 +3819,22 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Definition</source>
       <translation>Definition</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Stäng aktuell flik</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Stäng alla flikar utom aktuell flik</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Stäng alla flikar</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Öppna i &amp; Extern webbläsare</translation>
     </message>
   </context>
   <context>
@@ -4235,6 +4275,10 @@ Fullständig lista över tillgängliga språk finns &lt;a href=&quot;https://lin
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Denna webbplats ordbok öppnas i en ny flik</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Stäng av &quot;Öppna webbplatsordbok i separat flik&quot; i Inställningar för att visa webbplatsen inuti artikeln istället.</translation>
     </message>
   </context>
   <context>

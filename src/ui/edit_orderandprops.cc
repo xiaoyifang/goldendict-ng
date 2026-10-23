@@ -275,7 +275,7 @@ void OrderAndProps::contextMenuRequested( const QPoint & pos )
 {
   QMenu menu( this );
 
-  QAction * showHeadwordsAction = NULL;
+  QAction * showHeadwordsAction = nullptr;
   QModelIndex idx               = ui.searchLine->mapToSource( ui.dictionaryOrder->indexAt( pos ) );
   sptr< Dictionary::Class > dict;
   if ( idx.isValid() && (unsigned)idx.row() < ui.dictionaryOrder->getCurrentDictionaries().size() ) {

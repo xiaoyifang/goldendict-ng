@@ -132,10 +132,6 @@
       <translation>Фраза не знайдена</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 з %2 збігів</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Вибрати поточний об&apos;єкт</translation>
     </message>
@@ -303,6 +299,10 @@
       <source>Failed to download sound</source>
       <translation>Не вдалося завантажити звук</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 з %2 збігів</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -331,28 +331,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Перетворення китайської</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Ввімкнути перетворення між спрощеними та традиційними китайськими символами</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Перетворення &amp;китайської</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Ввімкнути перетворення від спрощених символів до традиційних (варіант Тайвань)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Увімкнути перетворення з спрощених символів на традиційні (гонконгські варіанти) символи</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Включити перетворення з традиційних символів на спрощені символи</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -367,16 +347,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>Традиційне формулювання китайської конверсії</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Гонконзький варіант</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Схема материкового</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Увімкнути конвертацію з традиційних символів у спрощені (материкові) символи</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Спрощений (материковий)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Увімкніть конвертацію зі спрощених символів у традиційні (тайванські/стандартні) символи</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Традиційне (Тайвань/Стандарт)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Увімкніть конвертацію з спрощених/традиційних китайських ієрогліфів на японські ієрогліфи Shinjitai</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Японський Сіндзітай</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Перехід з китайської на японську Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Конверсія китайських і японських ієрогліфів</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Увімкніть конвертацію між спрощеними китайськими, традиційними китайськими (Тайвань/Гонконг) та японськими ієрогліфами Shinjitai</translation>
     </message>
   </context>
   <context>
@@ -3540,6 +3548,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Customize Fonts</source>
       <translation>Налаштовуйте шрифти</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Іконка Dock завжди відображається, коли головне вікно відкрите, щоб macOS могла відображати назву програми та меню. Увімкніть цю опцію, щоб іконка Dock залишалася видимою після прихованого основного вікна.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Тримайте іконку Dock видимою на фоні</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Додайте аудіо на карту Anki, коли це доступно</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>При активації веб-словники відкриваються у власній вкладці, а не вбудовані у вигляд статті. Це уникає обмежень макет iframe і прокрутки, а також активує стовпець Script для кожного словника в діалозі Словники.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3794,6 +3818,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Definition</source>
       <translation>Визначення процесу</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Закрити поточну вкладку</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Закрити всі вкладки заодно з поточною</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Закрити всі вкладки</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Відкритий у та зовнішній браузер</translation>
     </message>
   </context>
   <context>
@@ -4233,6 +4273,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Цей словник веб-сайту відкрито у новій вкладці</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Вимкни &quot;Відкрийте словник вебсайту в окремій вкладці&quot; у Налаштуваннях, щоб показати вебсайт у статті замість цього.</translation>
     </message>
   </context>
   <context>

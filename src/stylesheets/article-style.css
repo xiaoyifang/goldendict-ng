@@ -720,6 +720,26 @@ div.xdxf {
   clear: both;
 }
 
+.website-new-tab-notice {
+  margin: 0.5em 0;
+  padding: 0.75em 1em;
+  border: 1px dashed var(--border-color);
+  border-radius: 4px;
+  background-color: var(--container-bg);
+  color: var(--secondary-text-color);
+}
+
+.website-new-tab-notice-title {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.website-new-tab-notice-hint {
+  margin: 0.35em 0 0;
+  font-size: 0.9em;
+}
+
 .website-iframe {
   overflow: auto;
   width: 100%;

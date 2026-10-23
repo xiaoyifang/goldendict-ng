@@ -173,7 +173,7 @@ GlsScanner::GlsScanner( const string & fileName ):
   lineFeed = Text::initLineFeed( encoding );
 
   std::u32string str;
-  std::u32string * currentField  = 0;
+  std::u32string * currentField  = nullptr;
   std::u32string mark            = U"###";
   std::u32string titleMark       = U"### Glossary title:";
   std::u32string authorMark      = U"### Author:";
@@ -420,7 +420,7 @@ GlsDictionary::GlsDictionary( const string & id, const string & indexFile, const
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() ),
-  dz( 0 ),
+  dz( nullptr ),
   chunks( idx, idxHeader.chunksOffset )
 {
   // Open the .gls file

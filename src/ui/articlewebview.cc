@@ -7,6 +7,7 @@
 #include <QMouseEvent>
 #include <QWebEngineScript>
 #include <QWebEngineScriptCollection>
+#include <QWebEnginePage>
 #include <QWebEngineView>
 #include <QApplication>
 #include <QTimer>
@@ -39,6 +40,42 @@ void ArticleWebView::setUp( Config::Class * _cfg )
 {
   this->cfg = _cfg;
   setZoomFactor( _cfg->preferences.zoomFactor );
+}
+
+void ArticleWebView::updatePreferredColorSchemeScript( bool isDark )
+{
+  static const QString name = QStringLiteral( "GdPreferredColorScheme" );
+  // QWebEnginePage::scripts() returns a reference to the page's collection.
+  QWebEngineScriptCollection & scripts = page()->scripts();
+
+  // Remove any previously installed copy so the page never carries a stale
+  // script across theme changes.
+  for ( const auto & existing : scripts.find( name ) ) {
+    scripts.remove( existing );
+  }
+
+  // In dark mode GoldenDict-ng already injects and force-enables Dark Reader
+  // (which sets color-scheme:dark itself), so no override is needed there.
+  // The script below is a light-mode-only fix: it forces the embedded view to
+  // perceive a light scheme, overriding an OS-level dark appearance -- exactly
+  // the scenario of issue #3077.
+  if ( isDark ) {
+    qDebug() << "PCS: isDark" << isDark << "-- script not registered";
+    return;
+  }
+
+  qDebug() << "PCS: isDark" << isDark << "-- registering via sourceUrl";
+
+  QWebEngineScript script;
+  script.setName( name );
+  // Refer to the script by URL instead of embedding its source: it stays a
+  // standalone file under src/scripts/ (via qrc) and shows up as a named file
+  // in DevTools.
+  script.setSourceUrl( QUrl( "qrc:///scripts/gd-preferred-color-scheme.js" ) );
+  script.setInjectionPoint( QWebEngineScript::DocumentCreation );
+  script.setWorldId( QWebEngineScript::MainWorld );
+  script.setRunsOnSubFrames( true );
+  scripts.insert( script );
 }
 
 void ArticleWebView::setPopup( bool isPopup )

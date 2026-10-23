@@ -176,6 +176,8 @@ struct AnkiConnectServer
   QString text;
   QString sentence;
 
+  bool addAudio = true;
+
   AnkiConnectServer();
 };
 
@@ -283,6 +285,7 @@ struct Preferences
   bool enableTrayIcon = true;
   bool closeToTray    = true;
   bool startToTray    = false;
+  bool showDockIcon   = false;
 
   bool autoStart;
   bool doubleClickTranslates;
@@ -530,9 +533,10 @@ struct Chinese
 {
   bool enable;
 
-  bool enableSCToTWConversion;
-  bool enableSCToHKConversion;
-  bool enableTCToSCConversion;
+  bool enableSCToTWConversion   = true;
+  bool enableSCToHKConversion   = true;
+  bool enableTCToSCConversion   = true;
+  bool enableJapaneseConversion = true;
 
   Chinese();
 
@@ -540,7 +544,8 @@ struct Chinese
   {
     return enable == other.enable && enableSCToTWConversion == other.enableSCToTWConversion
       && enableSCToHKConversion == other.enableSCToHKConversion
-      && enableTCToSCConversion == other.enableTCToSCConversion;
+      && enableTCToSCConversion == other.enableTCToSCConversion
+      && enableJapaneseConversion == other.enableJapaneseConversion;
   }
 
   bool operator!=( const Chinese & other ) const
@@ -836,7 +841,6 @@ struct Class
 
   QSet< QString > mutedDictionaries;      // Disabled via dictionary bar
   QSet< QString > popupMutedDictionaries; // Disabled via dictionary bar in popup
-  QSet< QString > dictionariesToReindex;  // Dictionaries scheduled for reindexing
 
   QDateTime timeForNewReleaseCheck; // Last time when the release was checked.
 

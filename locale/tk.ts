@@ -133,10 +133,6 @@
       <translation>Jümle tapylmady</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%2 oýundan %1</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Şu makalany saýla</translation>
     </message>
@@ -304,6 +300,10 @@
       <source>Failed to download sound</source>
       <translation>Ses ýüklenilmedi</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%2 oýundan %1</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -331,28 +331,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Hytaý dili</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Simplönekeýleşdirilen we adaty hytaý nyşanlarynyň arasynda öwrülmegi üpjün ediň</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Hytaýyň wersiýasy</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Simplönekeýleşdirilen nyşanlardan adaty (Taýwan warianty) nyşanlara öwrülmegi üpjün ediň</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Simplönekeýleşdirilen nyşanlardan adaty (Gonkong warianty) nyşanlara öwrülmegi üpjün ediň</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Adaty nyşanlardan ýönekeýleşdirilen nyşanlara öwrülmegi üpjün ediň</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -367,16 +347,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>Chineseönekeýleşdirilen hytaý öwrülişigi</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taýwan varianty</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Gonkong varianty</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Materik varianty</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Adatça karakterlerden sadalaşdyrylan (Materik) karakterlere öwürmegi mümkin</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Sadalaşdyrylan (materik)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Ýönekeýleşdirilen karakterlerden däp bolan (Taýwan/Standart) karakterlere öwürmegi mümkin et</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Adatça (Taýwan/Standart)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Ýönekeýleşdirilen/däp bolan hytaý karakterlerinden ýapon Shinjitai karakterlerine öwürmegi mümkin</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Ýapon Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Hytaýdan ýapona Shinjitai öwrülişi</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Hytaý we ýapon karakterleriniň konversiony</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Ýönekeýleşdirilen hytaý, däp bolan hytaý (Taýwan/Gonkong) we ýapon shinjitai karakterleriniň arasynda çalyşmagy mümkin</translation>
     </message>
   </context>
   <context>
@@ -3539,6 +3547,22 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
       <source>Customize Fonts</source>
       <translation>Kalamlary Üýtget</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>macOS programmanyň adyny we menýularyny görkezip biler ýaly, esasy äpişge açyk wagty Dock belgisi hemişe görkezilýär. Esasy äpişge gizlenenden soň Dock belgisini görünmek üçin bu seçgini etkinleştir.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Dock simgesini arka planda görün</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Bar bolsa, Anki kartyna ses goş</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Web-saýtyň sözlükleri makala görnüşine gömülen däl-de, öz sekmesinde açylýar. Bu iframe düzümi we kaydırma çäklendirmelerinden gaça durýar we sözlükler dialogynda her sözlük üçin Script sütünini açýar.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3793,6 +3817,22 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>Definition</source>
       <translation>Düşündiriş</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Şu wagtky wkladkany ýap</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Şu wagtky açylandan daşary ähli başga wkladkalary ýap</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Ähli açyk wkladkalary ýap</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Aç &amp; Daşky Brauzer</translation>
     </message>
   </context>
   <context>
@@ -4231,6 +4271,10 @@ tapyp bilersiňiz &lt;/a&gt;</translation>
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Bu web-saýtyň sözlügi täze sekmede açylýar</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Öçür &quot;Web saýtynyň sözlügini aýratyn sekmede aç&quot; Preferences içinde web-saýty makalanyň içinde görkezmek üçin.</translation>
     </message>
   </context>
   <context>

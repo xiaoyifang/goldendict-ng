@@ -55,7 +55,8 @@ AnkiConnectServer::AnkiConnectServer():
   port( 8765 ),
   word( "word" ),
   text( "selected_text" ),
-  sentence( "marked_sentence" )
+  sentence( "marked_sentence" ),
+  addAudio( true )
 {
 }
 
@@ -159,10 +160,7 @@ Preferences::Preferences():
 }
 
 Chinese::Chinese():
-  enable( false ),
-  enableSCToTWConversion( true ),
-  enableSCToHKConversion( true ),
-  enableTCToSCConversion( true )
+  enable( false )
 {
 }
 
@@ -591,6 +589,8 @@ Class load()
                        chinese.namedItem( "enableSCToHKConversion" ) );
       applyBoolOption( c.transliteration.chinese.enableTCToSCConversion,
                        chinese.namedItem( "enableTCToSCConversion" ) );
+      applyBoolOption( c.transliteration.chinese.enableJapaneseConversion,
+                       chinese.namedItem( "enableJapaneseConversion" ) );
     }
 #endif
 
@@ -761,7 +761,6 @@ Class load()
 
   c.mutedDictionaries      = loadDictionaries( root.namedItem( "mutedDictionaries" ) );
   c.popupMutedDictionaries = loadDictionaries( root.namedItem( "popupMutedDictionaries" ) );
-  c.dictionariesToReindex  = loadDictionaries( root.namedItem( "dictionariesToReindex" ), "dictionary" );
 
   QDomNode preferences = root.namedItem( "preferences" );
 
@@ -796,6 +795,9 @@ Class load()
     }
     c.preferences.startToTray    = ( preferences.namedItem( "startToTray" ).toElement().text() == "1" );
     c.preferences.closeToTray    = ( preferences.namedItem( "closeToTray" ).toElement().text() == "1" );
+    if ( !preferences.namedItem( "showDockIcon" ).isNull() ) {
+      c.preferences.showDockIcon = ( preferences.namedItem( "showDockIcon" ).toElement().text() == "1" );
+    }
     c.preferences.autoStart    = ( preferences.namedItem( "autoStart" ).toElement().text() == "1" );
     c.preferences.alwaysOnTop  = ( preferences.namedItem( "alwaysOnTop" ).toElement().text() == "1" );
     c.preferences.searchInDock = ( preferences.namedItem( "searchInDock" ).toElement().text() == "1" );
@@ -929,6 +931,11 @@ Class load()
       c.preferences.ankiConnectServer.word     = ankiConnectServer.namedItem( "word" ).toElement().text();
       c.preferences.ankiConnectServer.text     = ankiConnectServer.namedItem( "text" ).toElement().text();
       c.preferences.ankiConnectServer.sentence = ankiConnectServer.namedItem( "sentence" ).toElement().text();
+
+      if ( !ankiConnectServer.namedItem( "addAudio" ).isNull() ) {
+        c.preferences.ankiConnectServer.addAudio =
+          ( ankiConnectServer.namedItem( "addAudio" ).toElement().text() == "1" );
+      }
     }
 
     if ( !preferences.namedItem( "checkForNewReleases" ).isNull() ) {
@@ -1406,6 +1413,10 @@ void save( const Class & c )
     opt = dd.createElement( "enableTCToSCConversion" );
     opt.appendChild( dd.createTextNode( c.transliteration.chinese.enableTCToSCConversion ? "1" : "0" ) );
     chinese.appendChild( opt );
+
+    opt = dd.createElement( "enableJapaneseConversion" );
+    opt.appendChild( dd.createTextNode( c.transliteration.chinese.enableJapaneseConversion ? "1" : "0" ) );
+    chinese.appendChild( opt );
 #endif
 
     // Romaji
@@ -1668,12 +1679,6 @@ void save( const Class & c )
   }
 
   {
-    QDomElement reindex = dd.createElement( "dictionariesToReindex" );
-    root.appendChild( reindex );
-    saveDictionaries( dd, reindex, c.dictionariesToReindex, "dictionary" );
-  }
-
-  {
     QDomElement preferences = dd.createElement( "preferences" );
     root.appendChild( preferences );
 
@@ -1743,6 +1748,10 @@ void save( const Class & c )
 
     opt = dd.createElement( "closeToTray" );
     opt.appendChild( dd.createTextNode( c.preferences.closeToTray ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "showDockIcon" );
+    opt.appendChild( dd.createTextNode( c.preferences.showDockIcon ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "autoStart" );
@@ -1952,6 +1961,10 @@ void save( const Class & c )
 
       opt = dd.createElement( "sentence" );
       opt.appendChild( dd.createTextNode( c.preferences.ankiConnectServer.sentence ) );
+      proxy.appendChild( opt );
+
+      opt = dd.createElement( "addAudio" );
+      opt.appendChild( dd.createTextNode( c.preferences.ankiConnectServer.addAudio ? "1" : "0" ) );
       proxy.appendChild( opt );
     }
 

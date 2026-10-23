@@ -14,6 +14,16 @@
 
 using std::vector;
 
+/// Robustly resolves the MIME type for an article/resource URL served via a
+/// custom scheme (gdlookup, bres, gdau, ...). It consults an extension
+/// whitelist first so it does not depend on the system's shared-mime-info
+/// database (which may be missing on minimal Linux installs and makes
+/// QtWebEngine fall back to text/plain, rendering HTML as raw source), then
+/// QMimeDatabase, and finally sniffs the payload so HTML documents are never
+/// misreported as text/plain. When \a data is empty (e.g. the payload is not
+/// available yet) only the URL-based heuristics are applied.
+QByteArray getMimeTypeWithFallback( const QUrl & url, const QByteArray & data = QByteArray() );
+
 /// A custom QNetworkAccessManager version which fetches images from the
 /// dictionaries when requested.
 

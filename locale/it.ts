@@ -133,10 +133,6 @@
       <translation>Frase non trovata</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 di %2 corrispondenze</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Seleziona traduzione corrente</translation>
     </message>
@@ -304,6 +300,10 @@
       <source>Failed to download sound</source>
       <translation>Impossibile scaricare il suono</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 di %2 corrispondenze</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,28 +332,8 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Conversione cinese</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Attiva la conversione dei caratteri tra cinese semplificato e tradizionale</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>conversione caratteri del cinese</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Attiva la conversione dei caratteri dal cinese semplificato a quello tradizionale (variante locale Taiwan)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Attiva la conversione dei caratteri dal cinese semplificato a quello tradizionale (variante locale Hong Kong)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Attiva la conversione dei caratteri dal cinese tradizionale a quello semplificato</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
       <translation>Conversione cinese tradizionale a semplificato</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Variante di Hong Kong</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Variante continentale</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Consentire la conversione da caratteri tradizionali a caratteri semplificati (continentali)</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Semplificato (Terraferma)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Consentire la conversione da caratteri semplificati a caratteri tradizionali (Taiwan/Standard)</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Tradizionale (Taiwan/Standard)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Abilita la conversione da caratteri cinesi semplificati/tradizionali a caratteri giapponesi Shinjitai</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Shinjitai giapponese</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Conversione da cinese a giapponese da Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Con&amp;Versione dei caratteri cinesi e giapponesi</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Consentire la conversione tra caratteri Shinjitai cinesi semplificati, cinesi tradizionali (Taiwan/Hong Kong) e giapponesi Shinjitai</translation>
     </message>
   </context>
   <context>
@@ -3538,6 +3546,22 @@ dai dizionari di Stardict, Babylon e GLS</translation>
       <source>Customize Fonts</source>
       <translation>Personalizza i font</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>L'icona del Dock viene sempre mostrata mentre la finestra principale è aperta, così macOS può mostrare il nome dell'applicazione e i menu. Abilita questa opzione per mantenere visibile l'icona del Dock dopo che la finestra principale è nascosta.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Tieni visibile l'icona del Dock sullo sfondo</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Aggiungi audio alla scheda Anki quando disponibile</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Quando abilitati, i dizionari dei siti web si aprono in una scheda a parte invece di essere incorporati nella vista articolo. Questo evita limitazioni di layout iframe e scorrimento, e abilita la colonna Script per dizionario nella finestra di dialogo Dizionari.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3792,6 +3816,22 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <source>Definition</source>
       <translation>Definizione</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Chiudi scheda corrente</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Chiudi ogni scheda eccetto la corrente</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Chiudi ogni scheda</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Apri e Browser esterno</translation>
     </message>
   </context>
   <context>
@@ -4232,6 +4272,10 @@ L'elenco completo delle lingue disponibili può essere trovato &lt;a href=&quot;
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Questo dizionario del sito web è aperto in una nuova scheda</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Spegni &quot;Apri il dizionario del sito web in una scheda separata&quot; nelle Preferenze per mostrare il sito all'interno dell'articolo invece.</translation>
     </message>
   </context>
   <context>

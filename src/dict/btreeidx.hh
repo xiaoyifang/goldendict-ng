@@ -27,7 +27,7 @@ enum {
   /// to each dictionary's internal format version.
   FormatVersion = 4,
   //the indexedzip parse logic version
-  ZipParseLogicVersion = 1
+  ZipParseLogicVersion = 2
 };
 
 // These exceptions which might be thrown during the index traversal

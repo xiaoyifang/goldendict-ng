@@ -7,6 +7,7 @@
 #include "dictionary.hh"
 
 // For needToRebuildIndex(), read below
+#include <QFile>
 #include <QFileInfo>
 #include <QDateTime>
 
@@ -604,17 +605,17 @@ string makeDictionaryId( const vector< string > & dictionaryFiles ) noexcept
 // be fixed in the future when it's needed.
 bool needToRebuildIndex( const vector< string > & dictionaryFiles, const string & indexFile ) noexcept
 {
-  // First check if the dictionary is scheduled for reindexing
-  Config::Class * cfg = GlobalBroadcaster::instance()->getConfig();
-
-  // Only calculate dictId and check if reindex list is not empty
-  if ( cfg && !cfg->dictionariesToReindex.isEmpty() ) {
-    std::string dictId = makeDictionaryId( dictionaryFiles );
-
-    // If the dictionary ID is in the reindex list, return true
-    if ( cfg->dictionariesToReindex.contains( QString::fromStdString( dictId ) ) ) {
-      return true;
-    }
+  // "Schedule for reindex" in the dictionary bar creates an empty
+  // "<indexFile>.stale" marker next to the index file. Its presence forces a
+  // rebuild, and the marker is consumed here so that the rebuild happens only
+  // once. Unlike a config-based list of dictionary ids, this does not depend on
+  // how a particular format derives its id (ZIM uses the file checksum,
+  // SoundDir hashes a mixin, ...), and it works for the FTS index as well,
+  // since that index has its own "<id>_FTS_x" file name.
+  const QString staleMarker = QString::fromStdString( indexFile ) + QLatin1String( ".stale" );
+  if ( QFileInfo::exists( staleMarker ) ) {
+    QFile::remove( staleMarker );
+    return true;
   }
 
   // Original logic: check file modification times

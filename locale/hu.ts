@@ -133,10 +133,6 @@
       <translation>Kifejezés nem található</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 / %2 találat</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Jelenlegi szócikk kijelölése</translation>
     </message>
@@ -304,6 +300,10 @@
       <source>Failed to download sound</source>
       <translation>Nem sikerült letölteni a hangot</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 / %2 találat</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,28 +332,8 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Kínai átalakítás</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Átalakítás engedélyezése az egyszerűsített és a hagyományos kínai írás közt</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Kínai á&amp;talakítás</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Átalakítás engedélyezése az egyszerűsített kínai írásról a hagyományosra (tajvani változtat)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Átalakítás engedélyezése az egyszerűsített kínai írásról a hagyományosra (hongkongi változtat)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Átalakítás engedélyezése a hagyományos kínai írásról az egyszerűsítettre</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <translation>Átalakítás hagyományosról egyszerűsített kínai írásra</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Hong Kong variant</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Mainland variant</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Engedélyezze a hagyományos karakterek egyszerűsített (szárazföldi) karakterekre történő átalakítását</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Egyszerűsített (Szárazföld)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Egyszerűsített karakterek átalakítása hagyományos (Tajvan/Standard) karakterekre</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Hagyományos (Tajvan/Standard)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Egyszerűsített/hagyományos kínai karakterek átalakítása japán shinjitai karakterekre</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Japán Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Kínai-japánból Shinjitai-ra konverzió</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Kínai és japán karakterek változatossága</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Engedélyezze az egyszerűsített kínai, hagyományos kínai (Tajvan/Hongkong) és japán Shinjitai karakterek közötti átalakítást</translation>
     </message>
   </context>
   <context>
@@ -3539,6 +3547,22 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <source>Customize Fonts</source>
       <translation>Betűtípusok testreszabása</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>A dokk ikon mindig látható, amíg a fő ablak nyitva van, így a macOS megjelenítheti az alkalmazás nevét és a menüket. Engedélyezd ezt az opciót, hogy a dokk ikon látható maradjon a fő ablak elrejtése után.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Tartsd a dokk ikonját a háttérben</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Hang hozzáadása az Anki kártyához, ha elérhető</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Ha engedélyezik, a weboldalak szótárak saját fülükön nyílnak meg, nem pedig a cikknézetben lennének beágyazva. Ez elkerüli az iframe elrendezést és a görgetés korlátozásait, és lehetővé teszi a szótáronkénti Script oszlopot a Szótárak párbeszédben.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3793,6 +3817,22 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     <message>
       <source>Definition</source>
       <translation>Definíció</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Jelenlegi lap bezárása</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>A jelenlegin kívüli összes lap bezárása</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Összes lap bezárása</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Nyisd meg és Külső böngésző</translation>
     </message>
   </context>
   <context>
@@ -4233,6 +4273,10 @@ Az elérhető nyelvek teljes listája megtalálható &lt;a href=&quot;https://li
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Ez a weboldal szótár új fülben nyílik meg</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Kapcsolj ki &quot;Nyisd meg a weboldal szótárt külön fülön&quot; a Beállítások menüben, hogy a weboldalt a cikk belsejében jelenítse meg.</translation>
     </message>
   </context>
   <context>

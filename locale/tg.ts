@@ -133,10 +133,6 @@
       <translation>Ибора ёфт нашуд</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 аз %2 бозӣ</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Интихоб кардани мақолаи ҷорӣ</translation>
     </message>
@@ -304,6 +300,10 @@
       <source>Failed to download sound</source>
       <translation>Зеркашии овоз ноком шуд</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 аз %2 бозӣ</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,28 +332,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Табдилдиҳии Чин</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Фаъол кардани табдил байни аломатҳои хитоии оддӣ ва анъанавӣ</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>&amp;Табдилдиҳии хитоӣ</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Фаъол кардани табдил аз аломатҳои оддӣ ба анъанавӣ (Варианти тайванӣ)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Фаъол кардани табдил аз аломатҳои оддӣ ба анъанавӣ (Варианти ҳонконгӣ)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Фаъол кардани табдил аз аломатҳои оддӣ ба аломатҳои анъанавӣ</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>Табдилдиҳӣ аз хитоии оддӣ ба анъанавӣ</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Hong Kong variant</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Mainland variant</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Фаъол кардани табдил аз аломатҳои анъанавӣ ба аломатҳои содакардашудаи (Чинӣ)</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Содакардашуда (Чинӣ)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Фаъол кардани табдил аз аломатҳои содакардашуда ба аломатҳои анъанавии (Тайванӣ/Стандартӣ)</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Анъанавӣ (Тайванӣ/Стандартӣ)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Фаъол кардани табдил аз аломатҳои содакардашуда/анъанавии хитоӣ ба аломатҳои Шинҷитайи ҷопонӣ</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Шинҷитайи ҷопонӣ</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation type="unfinished">Chinese to Japanese Shinjitai conversion</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation type="unfinished">Chinese and Japanese Character Con&amp;version</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation type="unfinished">Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</translation>
     </message>
   </context>
   <context>
@@ -3539,6 +3547,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Customize Fonts</source>
       <translation type="unfinished">Customize Fonts</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation type="unfinished">The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation type="unfinished">Keep Dock icon visible in background</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation type="unfinished">Add audio to Anki card when available</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Ҳангоми фаъол будан, луғатҳои вебсайт дар ҷадвали худ кушода мешаванд, на дар дохили намуди мақола. Ин маҳдудиятҳои тарҳбандии iframe ва ҳаракатро пешгирӣ мекунад ва сутуни скрипти барои ҳар як луғатро дар муколамаи Луғатҳо фаъол месозад.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3793,6 +3817,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Definition</source>
       <translation>Маъно</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Варақаи ҷориро пӯшидан</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Ҳамаи варақаҳоро ба ғайр аз ҷорӣ пӯшидан</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Ҳамаи варақаҳоро пӯшидан</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation type="unfinished">Open in &amp;External Browser</translation>
     </message>
   </context>
   <context>
@@ -4233,6 +4273,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Луғати ин вебсайт дар варақаи нав кушода мешавад</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Барои нишон додани вебсайт дар дохили мақола, &quot;Луғати вебсайтро дар ҷадвали алоҳида кушоед&quot;-ро дар Танзимот хомӯш кунед.</translation>
     </message>
   </context>
   <context>

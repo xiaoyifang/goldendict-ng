@@ -119,10 +119,6 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
       <translation>Frase ukax janiw jikxataskiti</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 ukat %2 uñt’ayata</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Jichha qillqata uk ajlliña</translation>
     </message>
@@ -290,6 +286,10 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
       <source>Failed to download sound</source>
       <translation>Ist'awi apkatasiñax pantjasi</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 ukat %2 uñt’ayata</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -317,28 +317,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>&amp;Chino aru tukuyawi</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Chino simplificado ukhamaraki chino tradicional uka tukuyawi naktayaña</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>&amp;Chino aru tukuyawi</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Chino simplificado ukat chino tradicional (aru Taiwan) ukaru tukuyawi naktayaña</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Chino simplificado ukat chino tradicional (aru Hong Kong) ukaru tukuyawi naktayaña</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Chino aru tradicional uk chino aru simplificado ukar tukuyawi</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -353,16 +333,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>Chino tradicional ukat chino simplificado tukuyawi</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan uñacht'äwi</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Hong Kong uñacht'äwi</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Jach'a uraqi uñacht'äwi</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>China qillqanaka tradicional uka china qillqanaka jisk'achata (Mainland) ukar tukuyayaña naktayaña</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Jisk'achata (Mainland)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>China qillqanaka jisk'achata uka china qillqanaka tradicional (Taiwan/Standard) ukar tukuyayaña naktayaña</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Tradicional (Taiwan/Standard)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>China qillqanaka jisk'achata/tradicional uka japonés Shinjitai qillqanaka ukar tukuyayaña naktayaña</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Japonés Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Chinu Japonés Shinjitai tikxatäwi</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Chinu ukat Japonés Qillqa &amp;Tikxatäwi</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Juk'achata Chinu, Nayra Chinu (Taiwan/Hong Kong) ukat Japonés Shinjitai qillqanak taypin tikxatäw wakiyaña</translation>
     </message>
   </context>
   <context>
@@ -3630,6 +3638,22 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <source>Customize Fonts</source>
       <translation>Qillqanak kunjams munta</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Dock uñakipawi utjawa jach'a ventana jist'aratäkipan, ukhamaraki macOS ukax uñacht'ayañapataki aplicación sutipa ukat menunaka. Aka opción jist'araña Dock uñakipawi uñstayañataki jach'a ventana imantatäxipan.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Dock uñakipawi qhipatx uñstayaña</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Anki k'uchururu uywa yapt'aña utjki ukhaxa</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Aktibata ukhaxa, internet aru qillqatanakax jupanakpachpa patatjanjaman jist'arasi, yatichäwi uñjawi taypin juch'usa uñacht'ayata ukhama jan ukata. Aka jan juch'usa markachawi ukat muytayaña jark'anakaru chhaqaya, ukat Aru Qillqatanaka dialogon mayat mayaru Qillqawi qillqa qalltawa.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3884,6 +3908,22 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     <message>
       <source>Definition</source>
       <translation>Qhanañchaña</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Jichha phichhu ist&apos;antaña</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Taqi phichhu jist&apos;antaña, jichhakis ukax janiwa</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Taqi phichhu jist&apos;antaña</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>&amp;Anqa Tuyurinxa jist'araña</translation>
     </message>
   </context>
   <context>
@@ -4333,6 +4373,10 @@ Taqi lista utjki uka arunakax &lt;a href=&quot;https://lingualibre.org/wiki/Ling
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Aka web aru-pirwax machaq ficha-n jist'aratäni</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Ispiya &quot;Internet aru qillqata may maya patatjanjan jist'araña&quot; Kamachinakan, yatichäwi taypin internet uñacht'ayañataki.</translation>
     </message>
   </context>
   <context>

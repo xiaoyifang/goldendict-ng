@@ -133,10 +133,6 @@
       <translation type="unfinished">Phrase not found</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation type="unfinished">%1 of %2 matches</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation type="unfinished">Select Current Article</translation>
     </message>
@@ -304,6 +300,10 @@
       <source>Failed to download sound</source>
       <translation type="unfinished">Failed to download sound</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation type="unfinished">%1 of %2 matches</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,28 +332,8 @@ between classic and school orthography in cyrillic)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation type="unfinished">Chinese Conversion</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation type="unfinished">Enable conversion between simplified and traditional Chinese characters</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation type="unfinished">Chinese Con&amp;version</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Taiwan variant) characters</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong variant) characters</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation type="unfinished">Enable conversion from traditional characters to simplified characters</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ between classic and school orthography in cyrillic)</translation>
       <translation type="unfinished">Traditional to simplified Chinese conversion</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation type="unfinished">Taiwan variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation type="unfinished">Hong Kong variant</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation type="unfinished">Mainland variant</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation type="unfinished">Enable conversion from traditional characters to simplified (Mainland) characters</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation type="unfinished">Simplified (Mainland)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation type="unfinished">Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation type="unfinished">Traditional (Taiwan/Standard)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation type="unfinished">Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation type="unfinished">Japanese Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation type="unfinished">Chinese to Japanese Shinjitai conversion</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation type="unfinished">Chinese and Japanese Character Con&amp;version</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation type="unfinished">Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</translation>
     </message>
   </context>
   <context>
@@ -497,7 +505,7 @@ between classic and school orthography in cyrillic)</translation>
     <name>DictHeadwords</name>
     <message>
       <source>If checked any filter changes will we immediately applied to headwords list</source>
-      <translation type="unfinished">If checked any filter changes will we immediately applied to headwords list</translation>
+      <translation>If checked, any filter changes will be immediately applied to headwords list</translation>
     </message>
     <message>
       <source>Auto apply</source>
@@ -3540,6 +3548,22 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <source>Customize Fonts</source>
       <translation type="unfinished">Customize Fonts</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation type="unfinished">The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation type="unfinished">Keep Dock icon visible in background</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation type="unfinished">Add audio to Anki card when available</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation type="unfinished">When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3794,6 +3818,22 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>Definition</source>
       <translation type="unfinished">Definition</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation type="unfinished">Close current tab</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation type="unfinished">Close all tabs except current</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation type="unfinished">Close all tabs</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation type="unfinished">Open in &amp;External Browser</translation>
     </message>
   </context>
   <context>
@@ -4234,6 +4274,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation type="unfinished">This website dictionary is opened in a new tab</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation type="unfinished">Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</translation>
     </message>
   </context>
   <context>

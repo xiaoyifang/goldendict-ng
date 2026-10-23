@@ -109,6 +109,21 @@ In the "Icon" column, you can set a custom icon for every application. If you ad
 
 Here you can add transliteration algorithms. To add an algorithm to the dictionaries list, just set a mark beside it. When such a dictionary is added to the current dictionaries group, GoldenDict will search for the word in the input line as well as the result of its handling by the corresponding transliteration algorithm.
 
+### Chinese and Japanese character conversion
+
+GoldenDict-ng ships with a built-in conversion between the Chinese character variants and Japanese Shinjitai. Tick the target variants in the "Chinese and Japanese Character Conversion" group:
+
+| Option | Effect |
+|--------|--------|
+| Simplified (Mainland) | Traditional Chinese and Japanese Shinjitai input is also searched as simplified Chinese. |
+| Traditional (Taiwan/Standard) | Simplified Chinese and Japanese Shinjitai input is also searched as traditional Chinese (Taiwan standard). |
+| Hong Kong variant | Simplified Chinese and Japanese Shinjitai input is also searched as traditional Chinese (Hong Kong variant). |
+| Japanese Shinjitai | Simplified and traditional Chinese input is also searched as Japanese Shinjitai. |
+
+Every ticked option is registered as a separate dictionary in the list below, so it can be enabled per dictionary group. The word can be typed in any of the variants and still match the entries, for example searching `図書館` also finds `圖書館` and `图书馆`.
+
+The conversion data is provided by [OpenCC](https://github.com/BYVoid/OpenCC); see [Customize the opencc](<howto/how to customize the opencc.md>) for the configuration files in use. If you want to define your own transliteration rules, see [Custom transliteration](topic_transliteration.md).
+
 ## System Text-to-speech engines
 
 Its capability is provided via Qt Speech.
