@@ -33,8 +33,9 @@ gzFile gd_gzopen( const char * filename )
   if ( id == -1 )
     return nullptr;
   gzFile f = gzdopen( id, "rb" );
-  if ( f == nullptr )
+  if ( f == nullptr ) {
     _close( id );
+  }
   return f;
 }
 
