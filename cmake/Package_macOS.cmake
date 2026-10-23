@@ -28,6 +28,14 @@ if (BREW_ICU_ADDITIONAL_DYLIBS)
                   FOLLOW_SYMLINK_CHAIN)")
 endif ()
 
+set(QT_WEBENGINE_CORE_FRAMEWORK
+        "${Redistributable_APP}/Contents/Frameworks/QtWebEngineCore.framework")
+set(QT_WEBENGINE_HELPER_APP
+        "${QT_WEBENGINE_CORE_FRAMEWORK}/Versions/A/Helpers/QtWebEngineProcess.app")
+set(QT_WEBENGINE_HELPER_FRAMEWORKS "${QT_WEBENGINE_HELPER_APP}/Contents/Frameworks")
+set(QT_WEBENGINE_HELPER_ENTITLEMENTS
+        "${QT_WEBENGINE_HELPER_APP}/Contents/Resources/QtWebEngineProcess.entitlements")
+
 qt_generate_deploy_script(
         TARGET ${GOLDENDICT}
         OUTPUT_SCRIPT deploy_script
@@ -37,7 +45,6 @@ qt_generate_deploy_script(
         ${MACOS_DEPLOY_ICU_SETUP}
         qt_deploy_runtime_dependencies(
                     EXECUTABLE \"${Redistributable_APP}\"
-                    GENERATE_QT_CONF
                     NO_APP_STORE_COMPLIANCE)
         # Homebrew's aggregate Qt package exposes an optional virtual-keyboard
         # input plugin without its split framework on macdeployqt's default
@@ -48,13 +55,15 @@ qt_generate_deploy_script(
         # @executable_path/../Frameworks. That path is correct for the main
         # executable, but QtWebEngineProcess is nested several bundles deep.
         # Give the helper the same Frameworks view so dyld can start Chromium.
-        if (NOT EXISTS
-            \"${Redistributable_APP}/Contents/Frameworks/QtWebEngineCore.framework/Versions/A/Helpers/QtWebEngineProcess.app/Contents/Frameworks\"
-            AND NOT IS_SYMLINK
-            \"${Redistributable_APP}/Contents/Frameworks/QtWebEngineCore.framework/Versions/A/Helpers/QtWebEngineProcess.app/Contents/Frameworks\")
+        if (NOT EXISTS \"${QT_WEBENGINE_HELPER_FRAMEWORKS}\"
+            AND NOT IS_SYMLINK \"${QT_WEBENGINE_HELPER_FRAMEWORKS}\")
+            # NOTE: a symlink's target resolves relative to the symlink's
+            # parent dir (.../QtWebEngineProcess.app/Contents), so the six ..
+            # segments land on the main app's Contents/Frameworks. Same value
+            # as the bundles shipped in release 26.10.0.
             file(CREATE_LINK
                  \"../../../../../..\"
-                 \"${Redistributable_APP}/Contents/Frameworks/QtWebEngineCore.framework/Versions/A/Helpers/QtWebEngineProcess.app/Contents/Frameworks\"
+                 \"${QT_WEBENGINE_HELPER_FRAMEWORKS}\"
                  SYMBOLIC)
         endif()
 
@@ -82,13 +91,6 @@ message(STATUS "OPENCC data is found -> ${OPENCC_DATA_PATH_FOR_REAL}")
 install(DIRECTORY "${OPENCC_DATA_PATH_FOR_REAL}" DESTINATION "${Redistributable_APP}/Contents/MacOS")
 
 install(SCRIPT ${deploy_script})
-
-set(QT_WEBENGINE_CORE_FRAMEWORK
-        "${Redistributable_APP}/Contents/Frameworks/QtWebEngineCore.framework")
-set(QT_WEBENGINE_HELPER_APP
-        "${QT_WEBENGINE_CORE_FRAMEWORK}/Versions/A/Helpers/QtWebEngineProcess.app")
-set(QT_WEBENGINE_HELPER_ENTITLEMENTS
-        "${QT_WEBENGINE_HELPER_APP}/Contents/Resources/QtWebEngineProcess.entitlements")
 
 install(CODE "
     # First sign every nested component, then restore the WebEngine helper's
