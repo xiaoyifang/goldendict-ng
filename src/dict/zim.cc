@@ -60,7 +60,7 @@ using ZimFile = zim::Archive;
 
 enum {
   Signature            = 0x584D495A, // ZIMX on little-endian, XMIZ on big-endian
-  CurrentFormatVersion = 4 + BtreeIndexing::FormatVersion + Folding::Version
+  CurrentFormatVersion = 5 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
   #pragma pack( push, 1 )
@@ -111,6 +111,45 @@ quint32 getArticleCluster( const ZimFile & file, quint32 articleNumber )
 bool isArticleMime( const string & mime_type )
 {
   return mime_type == "text/html" /*|| mime_type.compare( "text/plain" ) == 0*/;
+}
+
+/// Wikipedia-style zim redirect entries are tiny html pages containing
+/// <meta http-equiv="refresh" content="0;URL='./Target#Anchor'">.  Resolving
+/// them while reading (instead of leaving the meta in the rendered html)
+/// prevents the web page from auto-navigating and hiding the other
+/// dictionaries' entries on the same article page.
+bool getRedirectFromHtml( const string & html, string & result )
+{
+  QString text = QString::fromUtf8( html.c_str() );
+
+  static const QRegularExpression rxMeta( R"(<meta\b[^>]*>)", QRegularExpression::CaseInsensitiveOption );
+  static const QRegularExpression rxRefresh( R"(http-equiv\s*=\s*["']?refresh)",
+                                             QRegularExpression::CaseInsensitiveOption );
+  static const QRegularExpression rxUrl( R"(url\s*=\s*['"]?([^'"\s]+))", QRegularExpression::CaseInsensitiveOption );
+
+  auto it = rxMeta.globalMatch( text );
+  while ( it.hasNext() ) {
+    const QString meta = it.next().captured();
+    if ( !meta.contains( rxRefresh ) ) {
+      continue;
+    }
+    const auto m = rxUrl.match( meta );
+    if ( !m.hasMatch() ) {
+      continue;
+    }
+    QString url    = m.captured( 1 );
+    const int hash = url.indexOf( '#' );
+    if ( hash >= 0 ) {
+      url.truncate( hash );
+    }
+    url.remove( RX::Zim::leadingDotSlash );
+    if ( url.isEmpty() || url.startsWith( "//" ) || url.contains( "://" ) ) {
+      continue;
+    }
+    result = url.toStdString();
+    return true;
+  }
+  return false;
 }
 
 quint32 readArticle( const ZimFile & file, quint32 articleNumber, string & result )
@@ -286,6 +325,19 @@ quint32 ZimDictionary::loadArticle( quint32 address, string & articleText, bool 
     QMutexLocker _( &zimMutex );
     ret = readArticle( df, address, articleText );
   }
+
+  // A zim redirect entry is a tiny page with <meta http-equiv="refresh"> to
+  // its target. Resolve it here so the browser never auto-navigates the whole
+  // article, which would hide other dictionaries' entries on the same page.
+  string target;
+  if ( getRedirectFromHtml( articleText, target ) ) {
+    string targetText;
+    QMutexLocker _( &zimMutex );
+    if ( readArticleByPath( df, target, targetText ) != 0xFFFFFFFF ) {
+      articleText = targetText;
+    }
+  }
+
   if ( !rawText ) {
     articleText = convert( articleText );
   }
@@ -837,11 +889,16 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
         //only iterate the article
         for ( const auto & entry : df.iterByTitle() ) {
-          auto item     = entry.getItem( true );
-          auto mimeType = item.getMimetype();
-          auto url      = item.getPath();
-          auto title    = item.getTitle();
-          auto index    = item.getIndex();
+          // Index each entry under its own title/path/index.  Zim redirects
+          // must not be followed here: following them would collapse every
+          // redirect alias into its target article, hiding aliases such as
+          // "四国地方"->"四国" from lookups.  The mime type still has to be
+          // taken from the target, since a redirect entry itself is not a
+          // media item.
+          const auto mimeType = entry.isRedirect() ? entry.getRedirect().getMimetype() : entry.getItem().getMimetype();
+          auto url            = entry.getPath();
+          auto title          = entry.getTitle();
+          auto index          = entry.getIndex();
           // Read article url and title
           if ( !isArticleMime( mimeType ) ) {
             continue;

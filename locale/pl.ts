@@ -133,10 +133,6 @@
       <translation>Nie znaleziono frazy</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 z %2 dopasowań</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Wybierz aktualny artykuł</translation>
     </message>
@@ -304,6 +300,10 @@
       <source>Failed to download sound</source>
       <translation>Nie udało się pobrać dźwięku</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 z %2 dopasowań</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,52 +332,60 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Konwersja chińska</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Włącz konwersję między uproszczonymi i tradycyjnymi chińskimi znakami</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>&amp;Konwersja chińska</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Włącz konwersję z uproszczonych znaków na tradycyjne (Tajwan Wariant)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Włącz konwersję z uproszczonych znaków na tradycyjne (wariant Hongkongu)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Włącz konwersję z tradycyjnych znaków na uproszczone znaki</translation>
+      <translation>Włącz konwersję znaków uproszczonych na tradycyjne (wariant Hongkongu)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Zmiana uproszczona do tradycyjnego chińskiego (wariant Taiwański)</translation>
+      <translation>Konwersja chińskich znaków uproszczonych na tradycyjne (wariant Tajwanu)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Zmiana uproszczona do tradycyjnego chińskiego (wariant Hongkongu)</translation>
+      <translation>Konwersja chińskich znaków uproszczonych na tradycyjne (wariant Hongkongu)</translation>
     </message>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Tradycyjne dla uproszczonej chińskiej konwersji</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Wariant tajwański</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Wariant hongkoński</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Wariant kontynentalny</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Umożliwienie konwersji z tradycyjnych znaków na uproszczone (z Mainland) znaki</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Uproszczone (Mainland)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Umożliwienie konwersji ze uproszczonych znaków na tradycyjne (tajwańskie/standardowe) znaki</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Tradycyjny (Tajwan/Standard)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Umożliwienie konwersji z uproszczonych/tradycyjnych znaków chińskich na japońskie znaki Shinjitai</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Japoński Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Konwersja Shinjitai z Chiny na Japończyków</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Chińskie i japońskie znaki kontra wersja</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Umożliwienie konwersji między uproszczonym chińskim, tradycyjnym chińskim (Tajwan/Hongkong) oraz japońskimi znakami Shinjitai</translation>
     </message>
   </context>
   <context>
@@ -3538,6 +3546,22 @@ ze słowników Stardict, Babylon i GLS</translation>
       <source>Customize Fonts</source>
       <translation>Dostosowanie czcionek</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Ikona Dock jest zawsze wyświetlana, gdy główne okno jest otwarte, aby macOS mógł wyświetlić nazwę aplikacji i menu. Włącz tę opcję, aby ikona Dock pozostała widoczna po ukryciu głównego okna.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Zachowaj ikonę Dock widoczną w tle</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Dodaj dźwięk do karty Anki, gdy jest dostępna</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Po włączeniu słowniki stron internetowych otwierają się w osobnej zakładce, zamiast być osadzone w widoku artykułu. Pozwala to uniknąć ograniczeń układu i przewijania w ramce iframe, a także umożliwia użycie kolumny Script dla słownika w dialogu słownikowym.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3792,6 +3816,22 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>Definition</source>
       <translation>Definicja</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Zamknij bieżącą kartę</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Zamknij wszystkie karty z wyjątkiem bieżącej</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Zamknij wszystkie karty</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Otwórz przeglądarkę w i zewnętrzną</translation>
     </message>
   </context>
   <context>
@@ -4233,6 +4273,10 @@ Pełną listę dostępnych języków można znaleźć &lt;a href=&quot;https://l
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Ten słownik internetowy jest otwarty w nowej karcie</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Wyłącz &quot;Otwórz słownik stron internetowych w osobnej zakładce&quot; w Preferencjach, aby wyświetlić stronę internetową wewnątrz artykułu.</translation>
     </message>
   </context>
   <context>

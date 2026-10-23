@@ -133,10 +133,6 @@
       <translation>Ilmausta ei löydy</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 / %2 ottelua</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Valitse nykyinen artikkeli</translation>
     </message>
@@ -304,6 +300,10 @@
       <source>Failed to download sound</source>
       <translation>Äänen lataaminen epäonnistui</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 / %2 ottelua</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,28 +332,8 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Kiinalainen Muuntaminen</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Ota käyttöön muuntaminen yksinkertaistettujen ja perinteisten kiinalaisten merkkien välillä</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Kiinan&amp;muunnos</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Ota käyttöön muuntaminen yksinkertaistetuista merkeistä perinteisiin (Taiwan variantti) merkkeihin</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Ota käyttöön muuntaminen yksinkertaistetuista merkeistä perinteisiin (Hong Kong -variantti) merkkeihin</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Ota käyttöön muuntaminen perinteisistä merkeistä yksinkertaistettuihin merkkeihin</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Perinteinen yksinkertaistettu Kiinan muuntaminen</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Hongkongin muunnos</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Manner-Euroopan variantti</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Ota käyttöön muuntaminen perinteisistä merkeistä yksinkertaistettuihin (manner-) merkkeihin</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Simplified (Manner)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Ota käyttöön muuntaminen yksinkertaistetuista merkeistä perinteisiin (Taiwan/Standardi) merkkeihin</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Perinteinen (Taiwan/standardi)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Mahdollista muuntaminen yksinkertaistetuista/perinteisistä kiinalaisista merkeistä japanilaisiin Shinjitai-merkkeihin</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Japanilainen Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Kiinasta japanilaiseen Shinjitai-muunnos</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Kiinan ja japanin merkkien muunnos</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Mahdollista muunnos yksinkertaistetun kiinan, perinteisen kiinan (Taiwan/Hongkong) ja japanilaisen shinjitai-merkkien välillä</translation>
     </message>
   </context>
   <context>
@@ -3540,6 +3548,22 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <source>Customize Fonts</source>
       <translation>Fonttien räätälöinti</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Dock-kuvake näkyy aina, kun pääikkuna on auki, jotta macOS voi näyttää sovelluksen nimen ja valikot. Ota tämä asetus käyttöön, jotta Dock-kuvake pysyy näkyvissä, kun pääikkuna on piilotettu.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Pidä telakkakuvake näkyvissä taustalla</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Lisää ääni Anki-kortille, kun se on saatavilla</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Kun ne ovat käytössä, verkkosivuston sanakirjat avautuvat omalla välilehdellään artikkelinäkymän sijaan. Tämä välttää iframe-asettelun ja vieritysrajoitukset, ja mahdollistaa sanakirjakohtaisen Script-sarakkeen sanakirja-ikkunassa.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3794,6 +3818,22 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Definition</source>
       <translation>Määritelmä</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Sulje nykyinen välilehti</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Sulje kaikki välilehdet paitsi nykyisen</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Sulje kaikki välilehdet</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Avaa sisään &amp; ulkoinen selain</translation>
     </message>
   </context>
   <context>
@@ -4234,6 +4274,10 @@ Täydellinen luettelo saatavilla olevista kielistä löytyy &lt;a href=&quot;htt
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Tämä sivusto sanakirja on avattu uudessa välilehdessä</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Virta poikki &quot;Avaa verkkosivuston sanakirja erillisessä välilehdessä&quot; asetuksissa näyttääksesi verkkosivuston artikkelin sisällä.</translation>
     </message>
   </context>
   <context>

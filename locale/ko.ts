@@ -132,10 +132,6 @@
       <translation>문구를 찾을 수 없습니다</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 %2</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>현재 항목 선택</translation>
     </message>
@@ -303,6 +299,10 @@
       <source>Failed to download sound</source>
       <translation>사운드 다운로드 실패</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 %2</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -331,28 +331,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>중국어 변환</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>중국어 간체와 번체 간 변환 가능</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>중국어 변환</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>간체 문자에서 번체(대만 변형) 문자로 변환 가능</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>간체 문자에서 전통(홍콩 변형) 문자로 변환 가능</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>번체 문자에서 간체 문자로 변환 가능</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -367,16 +347,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>번체에서 간체로 변환</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>대만어 변형</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>홍콩 변형</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>본토 변형</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>번체 문자에서 간체(본토) 문자로 변환 가능</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>심플리파이드 (본토)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>간체 문자에서 번체자(대만/표준) 문자로 변환 가능</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>전통 (대만/표준)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>간체/번체 한자에서 일본어 신지타이 문자로 변환 가능</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>일본 신지타이</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>중국에서 일본으로 변환된 신지타이</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>중국어와 일본어 문자 변환</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>간체 중국어, 번체(대만/홍콩), 일본어 신지타이 문자 간 변환 가능</translation>
     </message>
   </context>
   <context>
@@ -3536,6 +3544,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Customize Fonts</source>
       <translation>글꼴 커스터마이즈</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Dock 아이콘은 메인 창이 열려 있을 때 항상 표시되어 macOS가 애플리케이션 이름과 메뉴를 표시할 수 있습니다. 이 옵션을 활성화하면 메인 창이 숨겨진 후에도 도크 아이콘이 보이게 유지됩니다.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>배경에서 도크 아이콘을 보이게 하세요</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>가능하면 Anki 카드에 오디오를 추가하세요</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>활성화되면 웹사이트 사전이 기사 뷰에 삽입되지 않고 자체 탭에서 열립니다. 이로 인해 iframe 레이아웃과 스크롤 제한을 피하고, 사전 대화상자에서 각 사전별 스크립트 열이 활성화됩니다.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3790,6 +3814,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Definition</source>
       <translation>정의</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>현재 탭 닫기</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>다른 탭 닫기</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>모든 탭 닫기</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>외부 브라우저에서 열기</translation>
     </message>
   </context>
   <context>
@@ -4234,6 +4274,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>이 웹사이트 사전은 새 탭에서 열립니다</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>꺼 &quot;별도의 탭에서 웹사이트 사전을 엽니다&quot; 대신 문서 내 웹사이트를 표시하기 위해 환경설정에서 선택하세요.</translation>
     </message>
   </context>
   <context>

@@ -133,10 +133,6 @@
       <translation>Фразата не е намерена</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 от %2 съвпадения</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Избери текуща статия</translation>
     </message>
@@ -304,6 +300,10 @@
       <source>Failed to download sound</source>
       <translation>Неуспешно изтегляне на звук</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 от %2 съвпадения</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,28 +332,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Преобразуване на китайски иероглифи</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Преобразуване между опростени и класически китайски иероглифи</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Прео&amp;бразуване на китайски иероглифи</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Преобразуване на опростени иероглифи в класически (Тайвански вариант)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Преобразуване на опростени иероглифи в класически (Хонконгски вариант)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Преобразуване на класически иероглифи в опростени</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>Преобразуване на класически иероглифи в опростени</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Вариант Тайван</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Вариант Хонконг</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Континентален вариант</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Възможно е преобразуване от традиционни знаци към опростени (континентални) персонажи</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Опростено (континентално)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Възможно е преобразуването от опростени знаци към традиционни (тайвански/стандартни) знаци</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Традиционен (Тайван/Стандарт)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Възможно е преобразуването от опростени/традиционни китайски йероглифи към японски шинджитай йероглифи</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Японски шинджитай</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Преобразуване от китайски към японски Шинджитай</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Конверсия на китайски и японски йероглифи</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Активирайте конвертиране между опростени китайски, традиционни китайски (тайвански/хонконгски) и японски шинджитай знаци</translation>
     </message>
   </context>
   <context>
@@ -3537,6 +3545,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Customize Fonts</source>
       <translation>Персонализиране на шрифтовете</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Иконата Dock винаги се показва, докато главният прозорец е отворен, за да може macOS да показва името на приложението и менютата. Включете тази опция, за да запазите иконата Док видима след като основният прозорец е скрит.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Дръжте иконата Док видима на заден план</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Добавете аудио към Anki картата, когато е налична</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Когато са активирани, речниците на уебсайтовете се отварят в отделен раздел, вместо да бъдат вградени в изгледа на статията. Това избягва ограниченията за оформление на iframe и превъртането, и активира колоната Script за всеки речник в диалога Речници.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3791,6 +3815,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Definition</source>
       <translation>Дефиниция</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Затваряне на текущия подпрозорец</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Затваряне на всички подпрозорци без текущия</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Затваряне на всички подпрозорци</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Отворен в и Външен браузър</translation>
     </message>
   </context>
   <context>
@@ -4235,6 +4275,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Този уебсайт речник се отваря в нов раздел</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Изключи се &quot;Отворете уебсайт речник в отделен раздел&quot; в Preferences да покажете уебсайта вътре в статията вместо това.</translation>
     </message>
   </context>
   <context>

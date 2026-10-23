@@ -133,10 +133,6 @@
       <translation>Zin niet gevonden</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 van %2 wedstrijden</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Huidig artikel selecteren</translation>
     </message>
@@ -304,6 +300,10 @@
       <source>Failed to download sound</source>
       <translation>Kan geluid niet downloaden</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 van %2 wedstrijden</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,28 +332,8 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Chinese conversie</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Conversie tussen vereenvoudigde en traditionele Chinese tekens inschakelen</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Chinese Con&amp;versie</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Schakel conversie van vereenvoudigde tekens naar traditionele (Taiwan-variant) tekens in</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Schakel conversie van vereenvoudigde tekens naar traditionele (Hong Kong variant) tekens in</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Schakel conversie van traditionele tekens naar vereenvoudigde tekens in</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Traditioneel naar vereenvoudigde Chinese conversie</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Hong Kong variant</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Hoofdland variant</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Schakel omzetting in van traditionele tekens naar vereenvoudigde (vasteland) tekens</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Vereenvoudigd (vasteland)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Schakel omzetting in van vereenvoudigde tekens naar traditionele (Taiwan/Standaard) tekens</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Traditioneel (Taiwan/Standaard)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Schakel de omzetting in van vereenvoudigde/traditionele Chinese karakters naar Japanse Shinjitai-karakters</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Japanse Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Chinese naar Japanse Shinjitai-bekering</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Chinese en Japanse karakterconversie</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Schakel omzetting in tussen vereenvoudigde Chinees, traditionele Chinese (Taiwan/Hong Kong) en Japanse Shinjitai-karakters mogelijk</translation>
     </message>
   </context>
   <context>
@@ -3537,6 +3545,22 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <source>Customize Fonts</source>
       <translation>Lettertypen aanpassen</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Het Dock-icoon wordt altijd weergegeven terwijl het hoofdvenster open is, zodat macOS de applicatienaam en menu's kan tonen. Schakel deze optie in om het Dock-icoon zichtbaar te houden nadat het hoofdvenster is verborgen.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Houd het dock-icoon zichtbaar op de achtergrond</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Voeg audio toe aan de Anki-kaart wanneer beschikbaar</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Wanneer ingeschakeld, openen websitewoordenboeken in hun eigen tabblad in plaats van ingebed te zijn in de artikelweergave. Dit voorkomt beperkingen in de indeling van iframes en scrollen, en schakelt de per-woordenboek-kolom Script in het dialoogvenster Woordenboeken in.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3791,6 +3815,22 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Definition</source>
       <translation>Definitie</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Huidig tabblad sluiten</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Alle andere tabbladen sluiten</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Alle tabbladen sluiten</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Openen in &amp; Externe Browser</translation>
     </message>
   </context>
   <context>
@@ -4231,6 +4271,10 @@ De volledige lijst met beschikbare talen vindt u &lt;a href=&quot;https://lingua
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Dit woordenboek van deze website wordt geopend in een nieuw tabblad</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Zet het uit &quot;Open websitewoordenboek in een apart tabblad&quot; in Voorkeuren om de website in het artikel te tonen.</translation>
     </message>
   </context>
   <context>

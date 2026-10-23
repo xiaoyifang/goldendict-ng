@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki：发布到 Anki 失败</translation>
+      <translation>Anki：发布至 Anki 失败</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki：发帖至Anki 成功</translation>
+      <translation>Anki：发布至Anki 成功</translation>
     </message>
   </context>
   <context>
@@ -130,10 +130,6 @@
     <message>
       <source>Phrase not found</source>
       <translation>没找到词组</translation>
-    </message>
-    <message>
-      <source>%1 of %2 matches</source>
-      <translation>匹配（%1/%2）</translation>
     </message>
     <message>
       <source>Select Current Article</source>
@@ -285,7 +281,7 @@
     </message>
     <message>
       <source>&amp;Copy sound to clipboard</source>
-      <translation>&amp;复制声音到剪贴板</translation>
+      <translation>复制声音到剪贴板(&amp;C)</translation>
     </message>
     <message>
       <source>Failed to copy sound</source>
@@ -302,6 +298,10 @@
     <message>
       <source>Failed to download sound</source>
       <translation>下载声音失败</translation>
+    </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>匹配（%1/%2）</translation>
     </message>
   </context>
   <context>
@@ -330,28 +330,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>中文转换</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>启用简体中文与繁体/正体中文字符之间的转换</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>中文转换(&amp;V)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>启用从简体中文字符转换为正体中文（台湾）字符</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>启用从简体中文字符转换为繁体中文（香港）字符</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>启用从繁体中文字符转换为简体中文字符</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -366,16 +346,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>繁体中文至简体中文转换</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>台湾变体</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>香港变体</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>内地变体</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>支持从繁体字转换为简体（大陆）字</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>简化（大陆）</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>支持从简体字转换为繁体（台湾/标准）字</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>繁体（台湾/标准）</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>支持从简体/繁体汉字转换为日文新字体</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>日本新次体</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>中国向日本的Shinjitai改装</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>中文和日文字符转换</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>支持简体中文、繁体中文（台湾/香港）和日文新字体字符之间的转换</translation>
     </message>
   </context>
   <context>
@@ -758,11 +766,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Schedule for reindex</source>
-      <translation>重建计划</translation>
+      <translation>安排重新索引</translation>
     </message>
     <message>
       <source>Cancel schedule reindex</source>
-      <translation>取消计划恢复</translation>
+      <translation>取消计划重新索引</translation>
     </message>
     <message>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
@@ -3466,7 +3474,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>S&amp;can</source>
-      <translation>S&amp;can</translation>
+      <translation>扫描(&amp;C)</translation>
     </message>
     <message>
       <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
@@ -3527,6 +3535,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Customize Fonts</source>
       <translation>自定义字体</translation>
+    </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Dock图标在主窗口打开时始终显示，以便macOS显示应用名称和菜单。启用这个选项，在主窗口隐藏后，Dock图标依然可见。</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>保持Dock图标在背景中可见</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>有音频时可以添加到Anki卡</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>启用后，网站词典会在独立标签页中打开，而非嵌入文章视图中。这避免了 iframe 布局和滚动限制，并在词典对话框中启用了每个词典的 Script 栏。</translation>
     </message>
   </context>
   <context>
@@ -3674,7 +3698,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Website Url:</source>
-      <translation>网站 Url：</translation>
+      <translation>网站 URL：</translation>
     </message>
     <message>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
@@ -3682,11 +3706,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation>Complete Html (*.html *.htm)</translation>
+      <translation>完整HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation>single Html (*.html *.htm)</translation>
+      <translation>仅 HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
@@ -3694,7 +3718,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation>Mime Html (*.mhtml)</translation>
+      <translation>Mime HTML (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -3782,6 +3806,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Definition</source>
       <translation>定 义</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>关闭当前标签页</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>关闭其它标签页</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>关闭所有标签页</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>在外部浏览器中打开</translation>
     </message>
   </context>
   <context>
@@ -4099,7 +4139,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
-      <translation>基于英语音系的日语最广泛使用的转录方法</translation>
+      <translation>日语使用最广泛的罗马字（拉丁字母）转写方式，基于英文拼写习惯。</translation>
     </message>
     <message>
       <source>Remove selected directories from the list?</source>
@@ -4220,6 +4260,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>此网站字典在一个新标签中打开</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>关掉 &quot;在单独的标签页中打开网站词典&quot; 在偏好设置中显示文章内的网站。</translation>
     </message>
   </context>
   <context>

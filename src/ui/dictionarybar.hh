@@ -4,6 +4,8 @@
 class QMainWindow;
 #include <QSize>
 #include <QList>
+#include <QHash>
+#include <QIcon>
 #include <QString>
 #include <QTimer>
 #include "dict/dictionary.hh"
@@ -78,11 +80,21 @@ private:
 
   void selectSingleDict( const QString & id );
 
+  /// Updates the action's icon according to its checked state: full-color
+  /// when checked, dimmed (lower opacity) when unchecked. The dimmed variant
+  /// is alpha-blended, so it fades naturally into both light and dark
+  /// backgrounds without relying on Qt style sheets.
+  void applyActionIcon( QAction * action, bool checked );
+
   // how many dictionaries should be shown in the context menu:
   const unsigned short & maxDictionaryRefsInContextMenu;
   std::vector< sptr< Dictionary::Class > > allDictionaries;
   /// All the actions we have added to the toolbar
   QList< QAction * > dictActions;
+  /// Full-color icons keyed by action, used when the action is checked.
+  QHash< QAction *, QIcon > fullIcons;
+  /// Dimmed (reduced-opacity) icons keyed by action, used when unchecked.
+  QHash< QAction *, QIcon > dimmedIcons;
   QAction * maxDictionaryRefsAction;
 
   QSize normalIconSize; // cache icon size set by stylesheet provided by user

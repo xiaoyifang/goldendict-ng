@@ -9,33 +9,27 @@ ResourceSchemeHandler::ResourceSchemeHandler( ArticleNetworkAccessManager & arti
 void ResourceSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
 {
   const QUrl url = requestJob->requestUrl();
+  // The content type is resolved in replyJob, where the actual payload is
+  // available and can be sniffed. The out-parameter below is therefore unused.
   QString content_type;
   const sptr< Dictionary::DataRequest > reply = this->mManager.getResource( url, content_type );
-
-  if ( content_type.isEmpty() )
-    content_type = db.mimeTypeForUrl( url ).name();
-
-  if ( content_type.startsWith( "text/" ) || content_type == "application/javascript" )
-    content_type.append( "; charset=utf-8" );
 
   if ( reply == nullptr ) {
     qDebug() << "Resource failed to load: " << url.toString();
     requestJob->fail( QWebEngineUrlRequestJob::RequestFailed );
   }
   else if ( reply->isFinished() ) {
-    replyJob( reply, requestJob, content_type );
+    replyJob( reply, requestJob );
   }
   else {
     connect( reply.get(), &Dictionary::DataRequest::finished, requestJob, [ = ]() {
-      replyJob( reply, requestJob, content_type );
+      replyJob( reply, requestJob );
     } );
   }
 }
 
 
-void ResourceSchemeHandler::replyJob( sptr< Dictionary::DataRequest > reply,
-                                      QWebEngineUrlRequestJob * requestJob,
-                                      QString content_type )
+void ResourceSchemeHandler::replyJob( sptr< Dictionary::DataRequest > reply, QWebEngineUrlRequestJob * requestJob )
 {
   if ( !reply.get() ) {
     requestJob->fail( QWebEngineUrlRequestJob::UrlNotFound );
@@ -46,13 +40,21 @@ void ResourceSchemeHandler::replyJob( sptr< Dictionary::DataRequest > reply,
     requestJob->fail( QWebEngineUrlRequestJob::UrlNotFound );
     return;
   }
+
+  // Resolve the content type robustly: extension whitelist first (independent
+  // of the system's shared-mime-info), then QMimeDatabase, then sniff the
+  // payload so HTML is never misreported as text/plain on misconfigured
+  // systems. This is where the full data is available, so data sniffing works.
+  const QByteArray contentType =
+    getMimeTypeWithFallback( requestJob->requestUrl(), QByteArray( data.data(), data.size() ) );
+
   QByteArray * ba  = new QByteArray( data.data(), data.size() );
   QBuffer * buffer = new QBuffer( ba );
   buffer->open( QBuffer::ReadOnly );
   buffer->seek( 0 );
 
   // Reply segment
-  requestJob->reply( content_type.toLatin1(), buffer );
+  requestJob->reply( contentType, buffer );
 
   connect( requestJob, &QObject::destroyed, buffer, [ = ]() {
     buffer->close();

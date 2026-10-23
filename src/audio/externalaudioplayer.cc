@@ -5,7 +5,7 @@
 #include "externalviewer.hh"
 
 ExternalAudioPlayer::ExternalAudioPlayer():
-  exitingViewer( 0 )
+  exitingViewer( nullptr )
 {
 }
 
@@ -67,7 +67,7 @@ void ExternalAudioPlayer::stop()
 void ExternalAudioPlayer::onViewerDestroyed( QObject * destroyedViewer )
 {
   if ( exitingViewer == destroyedViewer ) {
-    exitingViewer = 0;
+    exitingViewer = nullptr;
     if ( viewer ) {
       QString errorMessage = startViewer();
       if ( !errorMessage.isEmpty() ) {

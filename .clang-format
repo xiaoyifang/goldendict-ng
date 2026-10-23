@@ -77,6 +77,7 @@ IndentPPDirectives: BeforeHash
 IndentExternBlock: AfterExternBlock
 IndentWidth: 2
 IndentWrappedFunctionNames: false
+InsertBraces: true
 InsertNewlineAtEOF: true
 InsertTrailingCommas: None
 KeepEmptyLinesAtTheStartOfBlocks: true

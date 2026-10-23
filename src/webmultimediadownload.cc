@@ -19,7 +19,7 @@ WebMultimediaDownload::WebMultimediaDownload( QUrl const & url, QNetworkAccessMa
 
 void WebMultimediaDownload::cancel()
 {
-  reply = NULL;
+  reply = nullptr;
 
   finish();
 }
@@ -36,7 +36,7 @@ void WebMultimediaDownload::replyFinished( QNetworkReply * r )
     QVariant possibleRedirectUrl = reply->attribute( QNetworkRequest::RedirectionTargetAttribute );
     QUrl redirectUrl             = possibleRedirectUrl.toUrl();
     if ( !redirectUrl.isEmpty() ) {
-      disconnect( reply, 0, 0, 0 );
+      disconnect( reply, nullptr, nullptr, nullptr );
       reply->deleteLater();
 
       if ( ++redirectCount > MAX_REDIRECTS ) {
@@ -66,9 +66,9 @@ void WebMultimediaDownload::replyFinished( QNetworkReply * r )
     setErrorString( r->errorString() );
   }
 
-  disconnect( r, 0, 0, 0 );
+  disconnect( r, nullptr, nullptr, nullptr );
   r->deleteLater();
-  reply = NULL;
+  reply = nullptr;
 
   finish();
 }

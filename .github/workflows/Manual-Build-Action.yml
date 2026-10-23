@@ -54,20 +54,6 @@ jobs:
         uses: hendrikmuhs/ccache-action@v1.2
         with:
           key: ${{ runner.os }}-${{ runner.arch }}-${{ matrix.qt_ver }}
-      - name: Cache EB
-        id: cache-eb
-        uses: actions/cache@v4
-        with:
-          path: |
-            /usr/local/lib/libeb*
-            /usr/local/include/eb
-            /usr/local/bin/eb*
-          key: ${{ runner.os }}-${{ runner.arch }}-eb-custom
-      - name: Install EB
-        if: steps.cache-eb.outputs.cache-hit != 'true'
-        run: |
-          git clone --depth 1 https://github.com/xiaoyifang/eb.git
-          cd eb && ./configure && make -j 8 && sudo make install && cd ..
       - uses: jurplel/install-qt-action@v4.3.1
         with:
           version: ${{ matrix.qt_ver }}
@@ -91,6 +77,23 @@ jobs:
       - name: Print package content
         run: |
           ls -Rl ./build_dir/redist
+      - name: Verify eb is bundled
+        run: |
+          set -euo pipefail
+          APP="./build_dir/redist/GoldenDict-ng.app"
+          BIN="$APP/Contents/MacOS/GoldenDict-ng"
+          echo "== otool -L $BIN (eb entries) =="
+          otool -L "$BIN" | grep -i eb || echo "(no eb entry in main binary link list)"
+          echo "== Contents/Frameworks (eb entries) =="
+          ls -1 "$APP/Contents/Frameworks" | grep -i eb || echo "(no eb dylib in Frameworks)"
+          echo "== Bundled libeb*.dylib files =="
+          find "$APP" -name 'libeb*.dylib' -print
+          # Fail the build if eb was not deployed into the bundle.
+          if ! find "$APP" -name 'libeb*.dylib' | grep -q .; then
+            echo "::error::libeb.dylib was not bundled into the .app (epwing support would be broken at runtime)."
+            exit 1
+          fi
+          echo "OK: libeb.dylib is bundled."
       - uses: actions/upload-artifact@v7
         with:
           name: macOS-${{ matrix.os }}-Qt${{ matrix.qt_ver }}

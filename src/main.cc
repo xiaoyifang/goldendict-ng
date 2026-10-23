@@ -423,6 +423,14 @@ int main( int argc, char ** argv )
     break;
   }
 
+#ifdef Q_OS_MACOS
+  // The application starts in regular mode so Qt can initialize the native
+  // macOS application menu. It switches to menu-bar-only mode at runtime after
+  // the main window is hidden unless the user keeps the Dock icon visible.
+  cfg.preferences.enableTrayIcon = true;
+  cfg.preferences.closeToTray    = true;
+#endif
+
   if ( gdcl.notts ) {
     cfg.notts = true;
 #ifdef TTS_SUPPORT

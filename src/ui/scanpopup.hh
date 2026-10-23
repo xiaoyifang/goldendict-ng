@@ -21,6 +21,7 @@
   #include "scanflag.hh"
 #endif
 
+class QMenu;
 
 /// This is a popup dialog to show translations when clipboard scanning mode
 /// is enabled.
@@ -141,6 +142,11 @@ private:
   QActionGroup * actionGroup = nullptr;
   MainStatusBar * mainStatusBar;
   MainTabWidget * tabWidget;
+  QMenu * tabMenu;
+  QAction * openInExternalBrowserAction;
+  QAction * closeCurrentTabAction;
+  QAction * closeRestTabsAction;
+  QAction * closeAllTabsAction;
   ArticleNetworkAccessManager & articleNetMgr;
   /// Fonts saved before words zooming is in effect, so it could be reset back.
   QFont wordListDefaultFont, translateLineDefaultFont, groupListDefaultFont;
@@ -239,4 +245,11 @@ private slots:
   void activeArticleChanged( const ArticleView *, const QString & id );
   void updateFoundInDictsList();
   void onActionTriggered();
+
+  void tabMenuRequested( QPoint pos );
+  void openCurrentTabInExternalBrowser();
+
+  void closeCurrentTab();
+  void closeRestTabs();
+  void closeAllTabs();
 };

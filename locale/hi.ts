@@ -133,10 +133,6 @@
       <translation>वाक्यांश नहीं मिला</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%2 मैचों में से %1</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>वर्तमान लेख का चयन करें</translation>
     </message>
@@ -304,6 +300,10 @@
       <source>Failed to download sound</source>
       <translation>ध्वनि डाउनलोड करने में विफल रहा</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%2 मैचों में से %1</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -331,28 +331,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>चीनी रूपांतरण</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>सरलीकृत और पारंपरिक चीनी अक्षरों के बीच रूपांतरण सक्षम करें</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>चीनी कान्टोनी संस्करण</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>सरलीकृत वर्णों से पारंपरिक (ताइवान संस्करण) वर्णों में रूपांतरण सक्षम करें</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>सरलीकृत वर्णों से पारंपरिक (हांगकांग संस्करण) वर्णों में रूपांतरण सक्षम करें</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>पारंपरिक वर्णों से सरलीकृत वर्णों में रूपांतरण सक्षम करें</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -367,16 +347,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>पारंपरिक से सरलीकृत चीनी में रूपांतरण</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>ताइवान संस्करण</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>हांगकांग संस्करण</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>मुख्यभूमि संस्करण</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>पारंपरिक वर्णों से सरलीकृत (मुख्यभूमि) वर्णों में रूपांतरण सक्षम करें</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>सरलीकृत (मुख्यभूमि)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>सरलीकृत वर्णों से पारंपरिक (ताइवान/मानक) वर्णों में रूपांतरण सक्षम करें</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>पारंपरिक (ताइवान/मानक)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>सरलीकृत/पारंपरिक चीनी वर्णों से जापानी शिंजिताई वर्णों में रूपांतरण सक्षम करें</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>जापानी शिंजिताई</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>चीनी से जापानी शिंजिताई रूपांतरण</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>चीनी और जापानी चरित्र Con&amp;version</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>सरलीकृत चीनी, पारंपरिक चीनी (ताइवान/हांगकांग) और जापानी शिंजिताई वर्णों के बीच रूपांतरण सक्षम करें</translation>
     </message>
   </context>
   <context>
@@ -3525,6 +3533,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Customize Fonts</source>
       <translation>फ़ॉन्ट्स अनुकूलित करें</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>मुख्य विंडो खुली रहने पर डॉक आइकन हमेशा दिखाया जाता है ताकि macOS एप्लिकेशन का नाम और मेनू प्रदर्शित कर सके। मुख्य विंडो छिपे होने के बाद डॉक आइकन को दृश्यमान रखने के लिए इस विकल्प को सक्षम करें।</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>पृष्ठभूमि में डॉक आइकन दृश्यमान रखें</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>उपलब्ध होने पर Anki कार्ड में ऑडियो जोड़ें</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>सक्षम होने पर, वेबसाइट शब्दकोश आलेख दृश्य में एम्बेड किए जाने के बजाय अपने स्वयं के टैब में खुलते हैं. यह iframe लेआउट और स्क्रॉलिंग सीमाओं से बचता है, और शब्दकोश संवाद में प्रति-शब्दकोश स्क्रिप्ट स्तंभ को सक्षम करता है.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3779,6 +3803,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Definition</source>
       <translation>परिभाषा</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Fermer l&apos;onglet courant</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Fermer tous les onglets sauf l&apos;onglet courant</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Fermer tous les onglets</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>&amp;बाहरी ब्राउज़र में खोलें</translation>
     </message>
   </context>
   <context>
@@ -4214,6 +4254,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>यह वेबसाइट शब्दकोश एक नए टैब में खोला गया है</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>बंद करें &quot;वेबसाइट शब्दकोश को अलग टैब में खोलें&quot; इसके बजाय लेख के अंदर वेबसाइट दिखाने के लिए प्राथमिकताएं।</translation>
     </message>
   </context>
   <context>

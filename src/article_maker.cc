@@ -52,7 +52,6 @@ std::string ArticleMaker::makeHtmlHeader( const QString & word, const QString & 
     result += R"(<script> jQuery.noConflict(); </script>)";
 
     result += R"(<script src="qrc:///scripts/gd-custom.js"></script>)";
-    result += R"(<script src="qrc:///scripts/iframeResizer.min.js"></script>)";
   }
 
   // add qwebchannel
@@ -319,7 +318,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( const QString &
 
   // Find the given group
 
-  const Instances::Group * activeGroup = 0;
+  const Instances::Group * activeGroup = nullptr;
 
   for ( const auto & group : groups ) {
     if ( group.id == groupId ) {

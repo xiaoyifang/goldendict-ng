@@ -932,14 +932,16 @@ void IndexedWords::addWord( const std::u32string & index_word, uint32_t articleO
     qWarning() << "Abbreviate the too long headword: " << QString::fromStdU32String( word.substr( 0, 30 ) )
                << "size:" << wordSize;
 
-    //find the closest string to the maxHeadwordSize;
-    auto nonSpacePos = word.find_last_not_of( ' ', maxHeadwordSize );
-    if ( nonSpacePos > 0 ) {
-      word = word.substr( 0, nonSpacePos );
+    // Cut at the last whitespace within maxHeadwordSize so the truncated key
+    // stays on a word boundary; hard-cut when no whitespace exists (e.g. CJK).
+    string::size_type cutPos = maxHeadwordSize;
+    while ( cutPos > 0 && !Folding::isWhitespace( word[ cutPos ] ) ) {
+      --cutPos;
     }
-    else {
-      word = word.substr( 0, maxHeadwordSize );
+    if ( cutPos == 0 ) {
+      cutPos = maxHeadwordSize; // No whitespace found, fall back to hard cut
     }
+    word.resize( cutPos );
 
     wordSize = word.size();
   }

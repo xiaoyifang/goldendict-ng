@@ -133,10 +133,6 @@
       <translation>Frazė nerasta</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 iš %2 rungtynių</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Dabartinio straipsnio pasirinkimas</translation>
     </message>
@@ -304,6 +300,10 @@
       <source>Failed to download sound</source>
       <translation>Nepavyko atsisiųsti garso</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 iš %2 rungtynių</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -331,28 +331,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Kinų kalbos rašto ženklų konvertavimas</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Įgalinti konvertavimą tarp supaprastintos ir tradicinės kinų kalbos ženklų</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>&amp;Kinų kalbos rašto ženklų konvertavimas</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Įgalinti konvertavimą iš supaprastintų simbolių į tradicinius (Taivano variantas) simbolius</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Įgalinti konvertavimą iš supaprastintų simbolių į tradicinius (Honkongo variantas) simbolius</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Įgalinti tradicinių simbolių konvertavimą į supaprastintus simbolius</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -367,16 +347,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>Tradicinis konvertavimas į supaprastintą kinų kalbą</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Taivano variantas</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Honkongo variantas</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Žemyninis variantas</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Galimybė konvertuoti tradicinius simbolius į supaprastintus (žemyno) simbolius</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Supaprastintas (žemynas)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Įgalinkite konvertavimą iš supaprastintų simbolių į tradicinius (Taivano/Standartinius) simbolius</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Tradicinis (Taivanas/Standartinis)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Galimybė konvertuoti supaprastintus/tradicinius kinų simbolius į japoniškus Shinjitai simbolius</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Japonų Shinjitai</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Kinų į japonų Shinjitai konvertavimas</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Kinų ir japonų simbolių konversija</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Leisti konvertuoti supaprastintus kinų, tradicinius kinų (Taivanas/Honkongas) ir japonų Shinjitai simbolius</translation>
     </message>
   </context>
   <context>
@@ -3537,6 +3545,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Customize Fonts</source>
       <translation>Tinkinti šriftus</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Dock piktograma visada rodoma, kai pagrindinis langas atidarytas, kad macOS galėtų rodyti programos pavadinimą ir meniu. Įjunkite šią parinktį, kad Doko piktograma būtų matoma po pagrindinio lango paslėpimo.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Laikykite doko piktogramą matomą fone</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Pridėkite garsą į Anki kortelę, kai tik bus prieinama</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Įjungus, interneto svetainių žodynai atsidaro atskiroje kortelėje, o ne įterpiami į straipsnio peržiūrą. Tai leidžia išvengti iframe išdėstymo ir slinkimo apribojimų, taip pat leidžia žodyno Script stulpelį Dictionaries dialoge.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3791,6 +3815,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Definition</source>
       <translation>Apibrėžimas</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Užverti veikiamąją kortelę</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Užverti visas korteles, iškyrus veikiamąją</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Užverti visas korteles</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Atidaryti ir išorinėje naršyklėje</translation>
     </message>
   </context>
   <context>
@@ -4230,6 +4270,10 @@ visą galimų kalbų sąrašą rasite &lt;a href=&quot;https://lingualibre.org/w
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Šis svetainės žodynas atidaromas naujame skirtuke</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Išjunk &quot;Atidarykite svetainės žodyną atskirame skirtuke&quot; Nustatymuose, kad vietoje to straipsnyje būtų rodoma svetainė.</translation>
     </message>
   </context>
   <context>

@@ -562,6 +562,9 @@ string makeDictionaryId( const vector< string > & dictionaryFiles ) noexcept;
 /// and the timestamps of the dictionary files. If some files are newer than
 /// the index file, or the index file doesn't exist, returns true. If some
 /// dictionary files don't exist, returns true, too.
+/// A "<indexFile>.stale" marker file next to the index (created by the
+/// "Schedule for reindex" action of the dictionary bar) also forces a rebuild;
+/// the marker is removed once it has been consumed.
 /// This function is supposed to be used by dictionary implementations.
 bool needToRebuildIndex( const vector< string > & dictionaryFiles, const string & indexFile ) noexcept;
 

@@ -133,10 +133,6 @@
       <translation>Fraza nuk u gjet</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 nga %2 ndeshje</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Seleksionoj këtë artikullin</translation>
     </message>
@@ -304,6 +300,10 @@
       <source>Failed to download sound</source>
       <translation>Dështoi shkarkimi i zërit</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 nga %2 ndeshje</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -331,28 +331,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Konvertimi kinez</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Aktivizo konvertimin midis karaktereve të thjeshtuara dhe tradicionale kineze</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Konvertimi kinez</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Aktivizo konvertimin nga karaktere të thjeshtuara në karaktere tradicionale (varianti i Tajvanit).</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Aktivizo konvertimin nga karaktere të thjeshtuara në karaktere tradicionale (varianti i Hong Kongut).</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Aktivizo konvertimin nga karaktere tradicionale në karaktere të thjeshtuara</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -367,16 +347,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>Konvertimi tradicional në kinezisht i thjeshtuar</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Varianti i Tajvanit</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Varianti i Hong Kongut</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Varianti i Kinës kontinentale</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Mundësoni konvertimin nga karakteret tradicionale në karaktere të thjeshtuara (Mainland)</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Thjeshtuar (Kontinent)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Mundësoni konvertimin nga karakteret e thjeshtuara në karakteret tradicionale (Taiwan/Standard)</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Tradicionale (Tajvan/Standard)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Mundësoni konvertimin nga karakteret kineze të thjeshtuara/tradicionale në karaktere japoneze Shinjitai</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Shinjitai japonez</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Konvertimi nga Shinjitai nga kinezja në japoneze</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Konversioni i Karaktereve Kineze dhe Japoneze</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Mundësoni konvertimin midis kinezishtes së thjeshtuar, kinezishtes tradicionale (Taiwan/Hong Kong) dhe karaktereve japoneze Shinjitai</translation>
     </message>
   </context>
   <context>
@@ -3532,6 +3540,22 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <source>Customize Fonts</source>
       <translation>Personalizoni fontet</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Ikona e Dock-ut shfaqet gjithmonë ndërsa dritarja kryesore është e hapur, në mënyrë që macOS të shfaqë emrin e aplikacionit dhe menutë. Aktivizoni këtë opsion për të mbajtur ikonën e dokut të dukshme pasi dritarja kryesore të jetë fshehur.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Mbani ikonën e dokut të dukshme në sfond</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Shto audio në kartën Anki kur të jetë e disponueshme</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Kur aktivizohet, fjalorët e faqeve të internetit hapen në skedën e tyre në vend që të jenë të integruar në pamjen e artikullit. Kjo shmang kufizimet e paraqitjes së iframe dhe lëvizjes, dhe aktivizon kolonën Script për çdo fjalor në dialogun e Fjalorëve.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3786,6 +3810,22 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>Definition</source>
       <translation>Përkufizimi</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Mbyll fushën</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Mbyll të gjitha fushat veç kësaj</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Mbyll të gjitha fushat</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Hap në &amp;Shfletuesin e jashtëm</translation>
     </message>
   </context>
   <context>
@@ -4225,6 +4265,10 @@ Lista e plotë e gjuhëve të disponueshme mund të gjendet &lt;a href=&quot;htt
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Ky fjalor uebsajti hapet në një skedë të re</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Fike &quot;Hapni fjalorin e faqes në skedë të veçantë&quot; në Preferenca për të shfaqur faqen brenda artikullit.</translation>
     </message>
   </context>
   <context>

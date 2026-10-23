@@ -139,14 +139,6 @@ void FtsIndexing::onIndexingFinished()
     started = false;
   }
   setNowIndexedName( QString() );
-
-  // Unified clear reindex list
-  Config::Class * cfg = GlobalBroadcaster::instance()->getConfig();
-  if ( cfg && !cfg->dictionariesToReindex.isEmpty() ) {
-    cfg->dictionariesToReindex.clear();
-    cfg->dirty = true;
-    Config::save( *cfg );
-  }
 }
 
 void FtsIndexing::setNowIndexedName( const QString & name )
@@ -501,7 +493,7 @@ void FullTextSearchDialog::updateDictionaries()
 
   // Find the given group
 
-  const Instances::Group * activeGroup = 0;
+  const Instances::Group * activeGroup = nullptr;
 
   for ( unsigned x = 0; x < groups.size(); ++x ) {
     if ( groups[ x ].id == group ) {

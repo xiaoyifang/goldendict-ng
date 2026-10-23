@@ -118,10 +118,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>%1 of %2 matches</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Select Current Article</source>
         <translation type="unfinished"></translation>
     </message>
@@ -289,6 +285,10 @@
         <source>Failed to download sound</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>%1 of %2 matches</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ArticleWebView</name>
@@ -316,27 +316,7 @@ between classic and school orthography in cyrillic)</source>
 <context>
     <name>ChineseConversion</name>
     <message>
-        <source>Chinese Conversion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable conversion between simplified and traditional Chinese characters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Chinese Con&amp;version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable conversion from traditional characters to simplified characters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -352,15 +332,43 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Taiwan variant</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Hong Kong variant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mainland variant</source>
+        <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Simplified (Mainland)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Traditional (Taiwan/Standard)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Japanese Shinjitai</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chinese to Japanese Shinjitai conversion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chinese and Japanese Character Con&amp;version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -758,6 +766,10 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <source>New display name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to schedule the dictionary for reindexing.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3500,6 +3512,22 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>Customize Fonts</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Keep Dock icon visible in background</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add audio to Anki card when available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProgramTypeEditor</name>
@@ -3753,6 +3781,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Definition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close current tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close all tabs except current</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close all tabs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open in &amp;External Browser</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4185,6 +4229,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <name>WebSite</name>
     <message>
         <source>This website dictionary is opened in a new tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

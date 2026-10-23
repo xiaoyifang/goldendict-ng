@@ -226,6 +226,16 @@ the application.</string>
               </property>
              </widget>
             </item>
+            <item>
+             <widget class="QCheckBox" name="showDockIcon">
+              <property name="toolTip">
+               <string>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</string>
+              </property>
+              <property name="text">
+               <string>Keep Dock icon visible in background</string>
+              </property>
+             </widget>
+            </item>
            </layout>
           </widget>
          </item>
@@ -1397,6 +1407,16 @@ download page.</string>
             </item>
            </layout>
           </item>
+          <item>
+           <widget class="QCheckBox" name="ankiAddAudio">
+            <property name="text">
+             <string>Add audio to Anki card when available</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -1939,6 +1959,9 @@ from Stardict, Babylon and GLS dictionaries</string>
           </item>
           <item>
            <widget class="QCheckBox" name="openWebsiteInNewTab">
+            <property name="toolTip">
+             <string>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</string>
+            </property>
             <property name="text">
              <string>Open website dictionary in separate tab</string>
             </property>

@@ -51,7 +51,4 @@ This project is licensed under the <b>GNU GPLv3+</b> license, a copy of which ca
 
 The original project was developed at <http://goldendict.org/> and <https://github.com/goldendict/goldendict>.
 
-## Thank JetBrains for the help
-
-[![JetBrains Black Box Logo logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_square.png)](https://jb.gg/OpenSourceSupport)
 

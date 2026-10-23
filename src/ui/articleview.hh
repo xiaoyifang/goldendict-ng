@@ -147,6 +147,15 @@ public:
                    const QByteArray & audioData  = QByteArray(),
                    const QString & audioFileName = QString() );
 
+  /// Attempt to fetch audio for the given gdau:// url and send the Anki note
+  /// with the audio attached. Returns true if the note has been (or will be)
+  /// sent via this path; false if the caller should send the note without
+  /// audio (dictionary not found, resource fetch threw, etc.).
+  bool fetchAnkiAudioAndSend( const QString & word,
+                              const QString & dict_definition,
+                              const QString & sentence,
+                              const QUrl & audioUrl );
+
   /// Create a new Anki card from a currently displayed article with the provided id.
   /// This function will call QWebEnginePage::runJavaScript() to fetch the corresponding HTML.
   void makeAnkiCardFromArticle( const QString & article_id );
@@ -216,6 +225,12 @@ public:
 
   /// Reloads the view
   void reload();
+
+  /// Re-evaluates the dark-reader color scheme (e.g. after a system theme
+  /// change in Auto mode) and then reloads, so the embedded web view's
+  /// prefers-color-scheme script stays in sync with the reload instead of
+  /// carrying a stale light/dark script into the freshly loaded page.
+  void applyColorSchemeAndReload();
 
   void stopSound();
 

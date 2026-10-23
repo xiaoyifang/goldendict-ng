@@ -59,7 +59,7 @@ class DictServerImpl: public QObject
 
   QString url;
   QString errorString;
-
+  std::function< void() > callback;
 
   QString msgId;
   QString client;
@@ -77,8 +77,10 @@ public:
   {
   }
 
-  void run( std::function< void() > callback )
+  void run( std::function< void() > callback_ )
   {
+    callback = std::move( callback_ );
+
     int pos = url.indexOf( "://" );
     if ( pos < 0 ) {
       url = "dict://" + url;
@@ -86,7 +88,6 @@ public:
 
     QUrl serverUrl( url );
     quint16 port = serverUrl.port( DefaultPort );
-    QString reply;
     socket.connectToHost( serverUrl.host(), port );
     state = DictServerState::CONNECT;
     connect( &socket, &QTcpSocket::connected, this, []() {} );
@@ -94,80 +95,84 @@ public:
     connect( &socket, &QTcpSocket::errorOccurred, this, []( QAbstractSocket::SocketError error ) {
       qDebug() << "socket error message: " << error;
     } );
-    connect( &socket, &QTcpSocket::readyRead, this, [ this, callback ]() {
-      const QMutexLocker _( &mutex );
-
-      if ( state == DictServerState::CONNECT ) {
-        QByteArray reply = socket.readLine();
-        qDebug() << "received:" << reply;
-
-        if ( !reply.isEmpty() && reply.left( 3 ) != "220" ) {
-          errorString = "Server refuse connection: " + reply;
-          return;
-        }
-
-        msgId = reply.mid( reply.lastIndexOf( " " ) ).trimmed();
-
-        state = DictServerState::CLIENT;
-        socket.write( QString( "CLIENT %1\r\n" ).arg( client ).toUtf8() );
-      }
-
-      else if ( state == DictServerState::CLIENT ) {
-        QByteArray reply = socket.readLine();
-        qDebug() << "received:" << reply;
-
-        QUrl serverUrl( url );
-        if ( !serverUrl.userInfo().isEmpty() ) {
-          QString authCommand = QString( "AUTH " );
-          QString authString  = msgId;
-
-          int pos = serverUrl.userInfo().indexOf( QRegularExpression( "[:;]" ) );
-          if ( pos > 0 ) {
-            authCommand += serverUrl.userInfo().left( pos );
-            authString += serverUrl.userInfo().mid( pos + 1 );
-          }
-          else {
-            authCommand += serverUrl.userInfo();
-          }
-
-          authCommand += " ";
-          authCommand += QCryptographicHash::hash( authString.toUtf8(), QCryptographicHash::Md5 ).toHex();
-          authCommand += "\r\n";
-
-          state = DictServerState::AUTH;
-          socket.write( authCommand.toUtf8() );
-        }
-        else {
-          const QByteArray & data = QByteArray( "OPTION MIME\r\n" );
-          socket.write( data );
-          qDebug() << "write:" << data;
-          state = DictServerState::OPTION;
-        }
-      }
-      else if ( ( state == DictServerState::OPTION ) || ( state == DictServerState::AUTH ) ) {
-        QByteArray reply = socket.readLine();
-        qDebug() << "received option:" << reply;
-
-        if ( reply.left( 3 ) != "250" ) {
-          // RFC 2229, 3.10.1.1:
-          // OPTION MIME is a REQUIRED server capability,
-          // all DICT servers MUST implement this command.
-          errorString = "Server doesn't support mime capability: " + reply;
-          return;
-        }
-
-        state = DictServerState::FINISHED;
-
-        if ( callback ) {
-          callback();
-        }
-      }
-    } );
+    connect( &socket, &QTcpSocket::readyRead, this, &DictServerImpl::onReadyRead );
   }
 
   ~DictServerImpl() override
   {
     disconnectFromServer( socket );
+  }
+
+private:
+  void onReadyRead()
+  {
+    const QMutexLocker _( &mutex );
+
+    if ( state == DictServerState::CONNECT ) {
+      QByteArray reply = socket.readLine();
+      qDebug() << "received:" << reply;
+
+      if ( !reply.isEmpty() && reply.left( 3 ) != "220" ) {
+        errorString = "Server refuse connection: " + reply;
+        return;
+      }
+
+      msgId = reply.mid( reply.lastIndexOf( " " ) ).trimmed();
+
+      state = DictServerState::CLIENT;
+      socket.write( QString( "CLIENT %1\r\n" ).arg( client ).toUtf8() );
+    }
+
+    else if ( state == DictServerState::CLIENT ) {
+      QByteArray reply = socket.readLine();
+      qDebug() << "received:" << reply;
+
+      QUrl serverUrl( url );
+      if ( !serverUrl.userInfo().isEmpty() ) {
+        QString authCommand = QString( "AUTH " );
+        QString authString  = msgId;
+
+        int pos = serverUrl.userInfo().indexOf( QRegularExpression( "[:;]" ) );
+        if ( pos > 0 ) {
+          authCommand += serverUrl.userInfo().left( pos );
+          authString += serverUrl.userInfo().mid( pos + 1 );
+        }
+        else {
+          authCommand += serverUrl.userInfo();
+        }
+
+        authCommand += " ";
+        authCommand += QCryptographicHash::hash( authString.toUtf8(), QCryptographicHash::Md5 ).toHex();
+        authCommand += "\r\n";
+
+        state = DictServerState::AUTH;
+        socket.write( authCommand.toUtf8() );
+      }
+      else {
+        const QByteArray & data = QByteArray( "OPTION MIME\r\n" );
+        socket.write( data );
+        qDebug() << "write:" << data;
+        state = DictServerState::OPTION;
+      }
+    }
+    else if ( ( state == DictServerState::OPTION ) || ( state == DictServerState::AUTH ) ) {
+      QByteArray reply = socket.readLine();
+      qDebug() << "received option:" << reply;
+
+      if ( reply.left( 3 ) != "250" ) {
+        // RFC 2229, 3.10.1.1:
+        // OPTION MIME is a REQUIRED server capability,
+        // all DICT servers MUST implement this command.
+        errorString = "Server doesn't support mime capability: " + reply;
+        return;
+      }
+
+      state = DictServerState::FINISHED;
+
+      if ( callback ) {
+        callback();
+      }
+    }
   }
 };
 
@@ -244,67 +249,7 @@ public:
     connect( socket, &QTcpSocket::errorOccurred, this, []( QAbstractSocket::SocketError error ) {
       qDebug() << "socket error message: " << error;
     } );
-    connect( socket, &QTcpSocket::readyRead, this, [ this ]() {
-      const QMutexLocker _( &mutex );
-      QByteArray reply = socket->readLine();
-      qDebug() << "received:" << reply;
-      if ( state == DictServerState::DB ) {
-
-        if ( reply.left( 3 ) == "110" ) {
-          state        = DictServerState::DB_DATA;
-          int countPos = reply.indexOf( ' ', 4 );
-          // Get databases count
-          int count = reply.mid( 4, countPos > 4 ? countPos - 4 : -1 ).toInt();
-
-          // Read databases
-          int x = 0;
-          for ( ; x < count; x++ ) {
-            reply = socket->readLine();
-
-            if ( reply.isEmpty() ) {
-              return;
-            }
-            reply = reply.trimmed();
-
-            qDebug() << "receive db:" << reply;
-
-            if ( reply[ 0 ] == '.' ) {
-              state = DictServerState::DB_DATA_FINISHED;
-              emit finishDatabase();
-              return;
-            }
-
-            if ( !reply.isEmpty() ) {
-              serverDatabases.append( reply );
-            }
-          }
-
-          qDebug() << "db count:" << x;
-          if ( x == count ) {
-            emit finishDatabase();
-          }
-        }
-      }
-      else if ( state == DictServerState::DB_DATA ) {
-        while ( !reply.isEmpty() ) {
-
-          qDebug() << "receive db:" << reply;
-          if ( reply[ 0 ] == '.' ) {
-            state = DictServerState::DB_DATA_FINISHED;
-            emit finishDatabase();
-            return;
-          }
-
-          reply = reply.trimmed();
-
-          if ( !reply.isEmpty() ) {
-            serverDatabases.append( reply );
-          }
-
-          reply = socket->readLine();
-        }
-      }
-    } );
+    connect( socket, &QTcpSocket::readyRead, this, &DictServerDictionary::onSocketReadyRead );
   }
 
   ~DictServerDictionary() override
@@ -351,9 +296,74 @@ protected:
   friend class DictServerArticleRequest;
 
 private:
+  void onSocketReadyRead();
+
 signals:
   void finishDatabase();
 };
+
+void DictServerDictionary::onSocketReadyRead()
+{
+  const QMutexLocker _( &mutex );
+  QByteArray reply = socket->readLine();
+  qDebug() << "received:" << reply;
+  if ( state == DictServerState::DB ) {
+
+    if ( reply.left( 3 ) == "110" ) {
+      state        = DictServerState::DB_DATA;
+      int countPos = reply.indexOf( ' ', 4 );
+      // Get databases count
+      int count = reply.mid( 4, countPos > 4 ? countPos - 4 : -1 ).toInt();
+
+      // Read databases
+      int x = 0;
+      for ( ; x < count; x++ ) {
+        reply = socket->readLine();
+
+        if ( reply.isEmpty() ) {
+          return;
+        }
+        reply = reply.trimmed();
+
+        qDebug() << "receive db:" << reply;
+
+        if ( reply[ 0 ] == '.' ) {
+          state = DictServerState::DB_DATA_FINISHED;
+          emit finishDatabase();
+          return;
+        }
+
+        if ( !reply.isEmpty() ) {
+          serverDatabases.append( reply );
+        }
+      }
+
+      qDebug() << "db count:" << x;
+      if ( x == count ) {
+        emit finishDatabase();
+      }
+    }
+  }
+  else if ( state == DictServerState::DB_DATA ) {
+    while ( !reply.isEmpty() ) {
+
+      qDebug() << "receive db:" << reply;
+      if ( reply[ 0 ] == '.' ) {
+        state = DictServerState::DB_DATA_FINISHED;
+        emit finishDatabase();
+        return;
+      }
+
+      reply = reply.trimmed();
+
+      if ( !reply.isEmpty() ) {
+        serverDatabases.append( reply );
+      }
+
+      reply = socket->readLine();
+    }
+  }
+}
 
 void DictServerDictionary::loadIcon() noexcept
 {
@@ -439,8 +449,6 @@ public:
     this->run();
 
     dictImpl->run( [ this ]() {
-      state = dictImpl->state;
-
       matchNext();
     } );
   }
@@ -734,7 +742,6 @@ public:
     this->run();
 
     dictImpl->run( [ this ]() {
-      state = dictImpl->state;
       state = DictServerState::DEFINE;
 
       defineNext();

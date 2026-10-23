@@ -118,10 +118,6 @@
       <translation>không tìm thấy cụm từ</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 trên %2 trận đấu</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>Chọn bài viết hiện tại</translation>
     </message>
@@ -289,6 +285,10 @@
       <source>Failed to download sound</source>
       <translation>Không thể tải xuống âm thanh</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 trên %2 trận đấu</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -316,28 +316,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>Chuyển đổi tiếng Trung</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Cho phép chuyển đổi giữa các ký tự tiếng Trung giản thể và phồn thể</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>Phiên bản&amp;Chuyển đổi tiếng Trung</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Cho phép chuyển đổi từ ký tự giản thể sang ký tự truyền thống (biến thể Đài Loan)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Cho phép chuyển đổi từ ký tự giản thể sang ký tự truyền thống (biến thể Hồng Kông)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Cho phép chuyển đổi từ chữ phồn thể sang chữ giản thể</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -352,16 +332,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>Chuyển đổi tiếng Trung phồn thể sang giản thể</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>Biến thể Đài Loan</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>Biến thể Hồng Kông</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>Biến thể Đại lục</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>Cho phép chuyển đổi từ ký tự truyền thống sang ký tự đơn giản (Mainland)</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>Đơn giản hóa (Đại lục)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>Bật chuyển đổi từ ký tự đơn giản sang ký tự truyền thống (Đài Loan/Chuẩn)</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>Truyền thống (Đài Loan/Tiêu chuẩn)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>Bật chuyển đổi từ ký tự Trung Quốc giản thể/phồn thể sang ký tự Shinjitai tiếng Nhật</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>Shinjitai Nhật Bản</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>Chuyển đổi Shinjitai từ Trung Quốc sang Nhật Bản</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>Chuyển đổi ký tự Trung và Nhật</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>Cho phép chuyển đổi giữa chữ Trung giản thể, chữ Trung phồn thể (Đài Loan/Hồng Kông) và chữ Shinjitai tiếng Nhật</translation>
     </message>
   </context>
   <context>
@@ -3516,6 +3524,22 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <source>Customize Fonts</source>
       <translation>Tùy chỉnh phông chữ</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>Biểu tượng Dock luôn được hiển thị khi cửa sổ chính đang mở để macOS có thể hiển thị tên ứng dụng và menu. Bật tùy chọn này để giữ biểu tượng Dock hiển thị sau khi cửa sổ chính bị ẩn.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>Giữ biểu tượng Dock hiển thị ở nền</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>Thêm âm thanh vào thẻ Anki khi có sẵn</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>Khi được bật, các từ điển trang web sẽ mở trong tab riêng thay vì được nhúng trong chế độ xem bài viết. Điều này giúp tránh các giới hạn về bố cục iframe và việc cuộn, đồng thời kích hoạt cột Script cho từng từ điển trong hộp thoại Từ điển.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3770,6 +3794,22 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>Definition</source>
       <translation>Định nghĩa</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Đóng thẻ hiện tại</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Đóng tất cả thẻ trừ thẻ hiện tại</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Đóng tất cả các thẻ</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>Mở trong &amp; trình duyệt bên ngoài</translation>
     </message>
   </context>
   <context>
@@ -4209,6 +4249,10 @@ Có thể tìm thấy danh sách đầy đủ các ngôn ngữ khả dụng &lt;
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>Từ điển trang web này được mở trong một tab mới</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>Tắt đi &quot;Mở từ điển trang web trong tab riêng biệt&quot; trong phần Tùy chọn để hiển thị trang web bên trong bài viết thay thế.</translation>
     </message>
   </context>
   <context>

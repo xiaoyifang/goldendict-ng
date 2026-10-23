@@ -107,7 +107,7 @@ a:hover {
 .gddicticon {
   display: block;
   vertical-align: text-bottom;
-  padding-right: -1em;
+  padding-right: 1em;
   padding-left: 0.3em;
   order: 2;
 }

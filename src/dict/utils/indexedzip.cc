@@ -71,12 +71,25 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
     }
 
     qDebug() << "Current failed zip file:" << QString::fromStdString( filename );
+
+    // Dump the details of the failure: a signature mismatch at this position
+    // means the index offset does not point at a central directory record
+    // (stale index, Zip64 archive quirks or a corrupted archive).
+    zip.seek( offset );
+    const QByteArray preview = zip.read( 16 );
+    qDebug() << "Header read failed: offset in index:" << offset << "| zip file size:" << zip.size()
+             << "| expected signature: 0x02014b50"
+             << "| actual first 16 bytes:" << QString::fromLatin1( preview.toHex( ' ' ) );
     return false;
   }
 
   zip.seek( header.offset );
   if ( !ZipFile::skipLocalHeader( zip ) ) {
-    qDebug() << "Failed to skip local header";
+    zip.seek( header.offset );
+    const QByteArray preview = zip.read( 16 );
+    qDebug() << "Failed to skip local header: local header offset:" << header.offset << "| zip file size:" << zip.size()
+             << "| expected signature: 0x04034b50"
+             << "| actual first 16 bytes:" << QString::fromLatin1( preview.toHex( ' ' ) );
     return false;
   }
 

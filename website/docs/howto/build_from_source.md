@@ -14,7 +14,7 @@ libxtst-dev liblzo2-dev libbz2-dev libavutil-dev libavformat-dev \
 libeb16-dev libzstd-dev libxkbcommon-dev libxapian-dev libzim-dev \
 libopencc-dev libfmt-dev qt6-5compat-dev qt6-base-dev qt6-multimedia-dev \
 qt6-speech-dev qt6-svg-dev qt6-tools-dev qt6-tools-dev-tools \
-qt6-webchannel-dev qt6-webengine-dev
+qt6-webchannel-dev qt6-webengine-dev libtomlplusplus-dev
 ```
 
 In other words, those libraries

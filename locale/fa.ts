@@ -133,10 +133,6 @@
       <translation>عبارت پیدا نشد</translation>
     </message>
     <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 از %2 مسابقه</translation>
-    </message>
-    <message>
       <source>Select Current Article</source>
       <translation>برگزیدن بند جاری</translation>
     </message>
@@ -304,6 +300,10 @@
       <source>Failed to download sound</source>
       <translation>دانلود صدا با شکست مواجه شد</translation>
     </message>
+    <message>
+      <source>%1 of %2 matches</source>
+      <translation>%1 از %2 مسابقه</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,28 +332,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Chinese Conversion</source>
-      <translation>تبدیل چینی</translation>
-    </message>
-    <message>
-      <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>تبدیل بین نویسه های چینی ساده و سنتی را فعال کنید</translation>
-    </message>
-    <message>
-      <source>Chinese Con&amp;version</source>
-      <translation>تبدیل چینی</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>تبدیل از نویسه های ساده شده به نویسه های سنتی (نوع تایوان) را فعال کنید</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>تبدیل نویسه های ساده شده به نویسه های سنتی (نوع هنگ کنگ) را فعال کنید</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>تبدیل از نویسه های سنتی به نویسه های ساده شده را فعال کنید</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -368,16 +348,44 @@ between classic and school orthography in cyrillic)</source>
       <translation>تبدیل سنتی به چینی ساده شده</translation>
     </message>
     <message>
-      <source>Taiwan variant</source>
-      <translation>نسخه تایوان</translation>
-    </message>
-    <message>
       <source>Hong Kong variant</source>
       <translation>نسخه هنگ کنگ</translation>
     </message>
     <message>
-      <source>Mainland variant</source>
-      <translation>نسخه سرزمین اصلی</translation>
+      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
+      <translation>امکان تبدیل از کاراکترهای سنتی به کاراکترهای ساده شده (سرزمین اصلی)</translation>
+    </message>
+    <message>
+      <source>Simplified (Mainland)</source>
+      <translation>ساده شده (سرزمین اصلی)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
+      <translation>امکان تبدیل از کاراکترهای ساده شده به کاراکترهای سنتی (تایوانی/استاندارد)</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan/Standard)</source>
+      <translation>سنتی (تایوان/استاندارد)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
+      <translation>امکان تبدیل از کاراکترهای ساده شده/سنتی چینی به کاراکترهای شینجیتای ژاپنی</translation>
+    </message>
+    <message>
+      <source>Japanese Shinjitai</source>
+      <translation>شینجیتای ژاپنی</translation>
+    </message>
+    <message>
+      <source>Chinese to Japanese Shinjitai conversion</source>
+      <translation>تبدیل چینی به شینجی تای ژاپنی</translation>
+    </message>
+    <message>
+      <source>Chinese and Japanese Character Con&amp;version</source>
+      <translation>نسخه های نویسه چینی و ژاپنی</translation>
+    </message>
+    <message>
+      <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
+      <translation>امکان تبدیل بین چینی ساده شده، چینی سنتی (تایوان/هنگ کنگ) و کاراکترهای شینجیتای ژاپنی را فعال کنید</translation>
     </message>
   </context>
   <context>
@@ -3536,6 +3544,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Customize Fonts</source>
       <translation>فونت های سفارشی سازی</translation>
     </message>
+    <message>
+      <source>The Dock icon is always shown while the main window is open so that macOS can display the application name and menus. Enable this option to keep the Dock icon visible after the main window is hidden.</source>
+      <translation>آیکون داک همیشه هنگام باز بودن پنجره اصلی نمایش داده می شود تا macOS بتواند نام برنامه و منوها را نمایش دهد. این گزینه را فعال کنید تا آیکون داک پس از مخفی شدن پنجره اصلی قابل مشاهده بماند.</translation>
+    </message>
+    <message>
+      <source>Keep Dock icon visible in background</source>
+      <translation>آیکون داک را در پس زمینه قابل مشاهده نگه دارید</translation>
+    </message>
+    <message>
+      <source>Add audio to Anki card when available</source>
+      <translation>وقتی در دسترس بود، صدا را به کارت انکی اضافه کنید</translation>
+    </message>
+    <message>
+      <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+      <translation>وقتی فعال باشند، دیکشنری های وب سایت در تب خود باز می شوند و در نمای مقاله جاسازی نمی شوند. این کار محدودیت های چیدمان iframe و اسکرول را حذف می کند و ستون Script را در دیالوگ دیکشنری فعال می کند.</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3790,6 +3814,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Definition</source>
       <translation>تعریف</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>بستن زبانه جاری</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>بستن همه زبانه‌ها مگر زبانه جاری</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>بستن همه زبانه‌ها</translation>
+    </message>
+    <message>
+      <source>Open in &amp;External Browser</source>
+      <translation>مرورگر باز در و خارجی</translation>
     </message>
   </context>
   <context>
@@ -4230,6 +4270,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>This website dictionary is opened in a new tab</source>
       <translation>این واژه‌نامه وب‌سایت در یک برگه جدید باز می‌شود</translation>
+    </message>
+    <message>
+      <source>Turn off &quot;Open website dictionary in separate tab&quot; in Preferences to show the website inside the article instead.</source>
+      <translation>خاموش کن &quot;دیکشنری وب سایت را در تب جداگانه باز کنید&quot; در تنظیمات برای نمایش وب سایت داخل مقاله به جای آن.</translation>
     </message>
   </context>
   <context>
