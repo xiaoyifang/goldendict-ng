@@ -261,7 +261,7 @@ DslDictionary::DslDictionary( const string & id, const string & indexFile, const
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() ),
-  dz( 0 ),
+  dz( nullptr ),
   deferredInitRunnableStarted( false ),
   optionalPartNom( 0 ),
   articleNom( 0 )

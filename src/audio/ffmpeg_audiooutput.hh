@@ -15,8 +15,8 @@ public:
   void stop();
 
 private:
-  QScopedPointer< AudioOutputPrivate > d_ptr;
+  // named "d" to avoid shadowing QObject's own d_ptr
+  QScopedPointer< AudioOutputPrivate > d;
 
   Q_DISABLE_COPY( AudioOutput )
-  Q_DECLARE_PRIVATE( AudioOutput )
 };

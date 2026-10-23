@@ -31,7 +31,7 @@ class AudioOutputPrivate: public QIODevice
 public:
   AudioOutputPrivate()
   {
-    open( QIODevice::ReadOnly );
+    QIODevice::open( QIODevice::ReadOnly );
     threadPool.setMaxThreadCount( 1 );
   }
 
@@ -113,7 +113,7 @@ public:
         qAudioSink = nullptr;
       }
       qAudioSink = new QAudioSink( fmt );
-      QObject::connect( qAudioSink, &QAudioSink::stateChanged, qAudioSink, [ & ]( QAudio::State state ) {
+      QObject::connect( qAudioSink, &QAudioSink::stateChanged, qAudioSink, [ this ]( QAudio::State state ) {
         switch ( state ) {
           case QAudio::StoppedState:
             quit = true;
@@ -165,37 +165,36 @@ public:
 
 void AudioOutput::stop()
 {
-  d_ptr->stop();
+  d->stop();
 }
 
 AudioOutput::AudioOutput( QObject * parent ):
   QObject( parent ),
-  d_ptr( new AudioOutputPrivate )
+  d( new AudioOutputPrivate )
 {
-  d_ptr->audioPlayFuture = QtConcurrent::run( &d_ptr->threadPool, &AudioOutputPrivate::doPlayAudio, d_ptr.data() );
+  d->audioPlayFuture = QtConcurrent::run( &d->threadPool, &AudioOutputPrivate::doPlayAudio, d.data() );
 }
 
 void AudioOutput::setAudioFormat( int sampleRate, int channels )
 {
-  d_ptr->setAudioFormat( sampleRate, channels );
+  d->setAudioFormat( sampleRate, channels );
 }
 
 AudioOutput::~AudioOutput()
 {
-  d_ptr->stop();
+  d->stop();
 }
 
 bool AudioOutput::play( const uint8_t * data, qint64 len )
 {
-  if ( d_ptr->quit ) {
+  if ( d->quit ) {
     return false;
   }
 
-  QMutexLocker locker( &d_ptr->mutex );
-  auto * cuint = const_cast< uint8_t * >( data );
-  auto * cptr  = reinterpret_cast< char * >( cuint );
-  d_ptr->buffer.append( cptr, len );
-  d_ptr->cond.wakeAll();
+  QMutexLocker locker( &d->mutex );
+  auto * cptr = reinterpret_cast< const char * >( data );
+  d->buffer.append( cptr, len );
+  d->cond.wakeAll();
 
   return true;
 }

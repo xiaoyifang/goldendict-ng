@@ -493,7 +493,7 @@ void FullTextSearchDialog::updateDictionaries()
 
   // Find the given group
 
-  const Instances::Group * activeGroup = 0;
+  const Instances::Group * activeGroup = nullptr;
 
   for ( unsigned x = 0; x < groups.size(); ++x ) {
     if ( groups[ x ].id == group ) {

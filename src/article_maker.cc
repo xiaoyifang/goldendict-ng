@@ -318,7 +318,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( const QString &
 
   // Find the given group
 
-  const Instances::Group * activeGroup = 0;
+  const Instances::Group * activeGroup = nullptr;
 
   for ( const auto & group : groups ) {
     if ( group.id == groupId ) {
