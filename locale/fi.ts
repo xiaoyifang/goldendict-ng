@@ -786,6 +786,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <source>New display name:</source>
       <translation>Uusi näytön nimi:</translation>
     </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Sanakirjan uudelleenindeksointi ei onnistunut.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>

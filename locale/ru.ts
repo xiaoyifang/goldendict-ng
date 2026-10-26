@@ -788,6 +788,10 @@ between classic and school orthography in cyrillic)</source>
       <source>New display name:</source>
       <translation>Новое отображаемое имя:</translation>
     </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Не удалось запланировать реиндексацию словаря.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>

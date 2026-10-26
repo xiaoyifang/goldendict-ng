@@ -786,6 +786,10 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <source>New display name:</source>
       <translation>Nytt visningsnamn:</translation>
     </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Misslyckades med att boka ordboken för omindexering.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>

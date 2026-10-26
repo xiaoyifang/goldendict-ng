@@ -786,6 +786,10 @@ entre ortografia clássica e escolar em ciílico)</translation>
       <source>New display name:</source>
       <translation>Novo nome de exibição:</translation>
     </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Não consegui agendar o dicionário para reindexação.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>

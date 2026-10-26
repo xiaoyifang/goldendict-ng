@@ -786,6 +786,10 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <source>New display name:</source>
       <translation>Új kijelzőnév:</translation>
     </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Nem sikerült időztetni a szótárt az újraindexelésre.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>

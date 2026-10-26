@@ -771,6 +771,10 @@ between classic and school orthography in cyrillic)</source>
       <source>New display name:</source>
       <translation>Новая назва для адлюстравання:</translation>
     </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation type="unfinished">Failed to schedule the dictionary for reindexing.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>

@@ -786,6 +786,10 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <source>New display name:</source>
       <translation>Nové zobrazované meno:</translation>
     </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Nepodarilo sa mi naplánovať slovník na preindexovanie.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
