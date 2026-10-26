@@ -786,6 +786,10 @@ entre ortografía clásica y escolar en cirílico)</translation>
       <source>New display name:</source>
       <translation>Nuevo nombre de pantalla:</translation>
     </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation type="unfinished">Failed to schedule the dictionary for reindexing.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
