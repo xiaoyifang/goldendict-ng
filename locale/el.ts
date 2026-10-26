@@ -790,7 +790,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Failed to schedule the dictionary for reindexing.</source>
-      <translation type="unfinished">Failed to schedule the dictionary for reindexing.</translation>
+      <translation>Απέτυχε ο προγραμματισμός του λεξικού για εκ νέου ευρετηρίαση.</translation>
     </message>
   </context>
   <context>
