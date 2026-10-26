@@ -784,6 +784,10 @@ between classic and school orthography in cyrillic)</source>
       <source>New display name:</source>
       <translation>新显示名称：</translation>
     </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>未能安排词典重新索引。</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
