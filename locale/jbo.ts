@@ -786,6 +786,10 @@ between classic and school orthography in cyrillic)</translation>
       <source>New display name:</source>
       <translation>cnino cusku cmene:</translation>
     </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>lo nu sisku lo valsi ciska lo nu zifre seltapla cu na sarcu</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
