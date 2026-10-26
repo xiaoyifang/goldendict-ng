@@ -774,6 +774,10 @@ between classic and school orthography in cyrillic)</source>
       <source>New display name:</source>
       <translation>Machaq uñacht'awi suti:</translation>
     </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Janiw aru pirwa jichhastayañataki sawkañjamäkänti.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
