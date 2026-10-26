@@ -788,7 +788,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Failed to schedule the dictionary for reindexing.</source>
-      <translation type="unfinished">Failed to schedule the dictionary for reindexing.</translation>
+      <translation>Impossible de programmer le dictionnaire pour la réindexation.</translation>
     </message>
   </context>
   <context>
