@@ -786,6 +786,10 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <source>New display name:</source>
       <translation>Nieuwe weergavenaam</translation>
     </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Het woordenboek voor herindexering is niet ingepland.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
