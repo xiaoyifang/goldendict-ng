@@ -786,6 +786,10 @@ arasındaki farkı giderir)</translation>
       <source>New display name:</source>
       <translation>Yeni gösterim adı:</translation>
     </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Sözlüğü yeniden indeksleme için zamanlamayı başaramadı.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
