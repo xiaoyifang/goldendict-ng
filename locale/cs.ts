@@ -786,6 +786,10 @@ a školní ortografií v cyrilici)</translation>
       <source>New display name:</source>
       <translation>Nové zobrazovací jméno:</translation>
     </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation type="unfinished">Failed to schedule the dictionary for reindexing.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
