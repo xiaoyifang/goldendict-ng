@@ -786,6 +786,10 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <source>New display name:</source>
       <translation type="unfinished">New display name:</translation>
     </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Malsukcesis plani la vortaron por reindeksado.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
