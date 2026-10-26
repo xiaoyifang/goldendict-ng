@@ -140,7 +140,7 @@ void TranslateBox::showPopup()
 bool TranslateBox::eventFilter( QObject * watched, QEvent * event )
 {
   if ( watched == translate_line && event->type() == QEvent::KeyPress ) {
-    auto keyEvent = static_cast< QKeyEvent * >( event );
+    auto keyEvent   = static_cast< QKeyEvent * >( event );
     QWidget * popup = completer->popup();
 
     // The Qt::Popup keyboard grab used to route key events through the popup, where
@@ -149,23 +149,23 @@ bool TranslateBox::eventFilter( QObject * watched, QEvent * event )
     // popup. Other keys (typing, Enter) stay with the line edit, which also keeps
     // the input method working while the popup is open.
     switch ( keyEvent->key() ) {
-    case Qt::Key_Up:
-    case Qt::Key_Down:
-    case Qt::Key_PageUp:
-    case Qt::Key_PageDown:
-      if ( popup->isVisible() ) {
-        QApplication::sendEvent( popup, event );
-        return true;
-      }
-      break;
-    case Qt::Key_Escape:
-      if ( popup->isVisible() ) {
-        popup->hide();
-        return true;
-      }
-      break;
-    default:
-      break;
+      case Qt::Key_Up:
+      case Qt::Key_Down:
+      case Qt::Key_PageUp:
+      case Qt::Key_PageDown:
+        if ( popup->isVisible() ) {
+          QApplication::sendEvent( popup, event );
+          return true;
+        }
+        break;
+      case Qt::Key_Escape:
+        if ( popup->isVisible() ) {
+          popup->hide();
+          return true;
+        }
+        break;
+      default:
+        break;
     }
   }
   return QObject::eventFilter( watched, event );
