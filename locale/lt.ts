@@ -785,6 +785,10 @@ between classic and school orthography in cyrillic)</source>
       <source>New display name:</source>
       <translation>Naujas rodomas vardas:</translation>
     </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Nepavyko suplanuoti žodyno perindeksavimui.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
