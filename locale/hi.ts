@@ -785,6 +785,10 @@ between classic and school orthography in cyrillic)</source>
       <source>New display name:</source>
       <translation>नया प्रदर्शन नाम:</translation>
     </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>पुन: अनुक्रमणिका के लिए शब्दकोश शेड्यूल करने में विफल।</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
