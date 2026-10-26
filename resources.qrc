@@ -74,7 +74,7 @@
         <file>icons/star_blue.svg</file>
         <file>icons/system-search.svg</file>
         <file>icons/windows-list.svg</file>
-        <file>icons/wizard.svg</file>
+        <file>icons/clipboard.svg</file>
         <file>icons/dictionary.svg</file>
         <file>icons/advanced.png</file>
         <file>icons/webdict.svg</file>
@@ -86,7 +86,7 @@
         <file>icons/text2speech.svg</file>
         <file>icons/closetab-hover.png</file>
         <file>icons/1downarrow.svg</file>
-        <file>icons/wizard-selected.svg</file>
+        <file>icons/clipboard-selected.svg</file>
         <file>icons/old-arrow.svg</file>
         <file>icons/old-downarrow.svg</file>
         <file>icons/custom_trans.svg</file>
