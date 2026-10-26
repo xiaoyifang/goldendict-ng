@@ -786,6 +786,10 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
       <source>New display name:</source>
       <translation>Nuovo nome del display:</translation>
     </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Non sono riuscito a programmare il dizionario per il reindicizzazione.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
