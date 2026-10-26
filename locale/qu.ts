@@ -786,6 +786,10 @@ chiqan kayninta sumaqyachin)</translation>
       <source>New display name:</source>
       <translation>Musuq rikuchina sutin:</translation>
     </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Mana atipakurqachu simi qullqata musuqmanta allichanapaq wakichiyta.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
