@@ -788,7 +788,7 @@ a školní ortografií v cyrilici)</translation>
     </message>
     <message>
       <source>Failed to schedule the dictionary for reindexing.</source>
-      <translation type="unfinished">Failed to schedule the dictionary for reindexing.</translation>
+      <translation>Nepodařilo se naplánovat přeindexování slovníku.</translation>
     </message>
   </context>
   <context>
