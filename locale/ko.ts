@@ -785,6 +785,10 @@ between classic and school orthography in cyrillic)</source>
       <source>New display name:</source>
       <translation>새로운 표시 이름:</translation>
     </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>사전 재색인 일정을 맞추지 못했습니다.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
