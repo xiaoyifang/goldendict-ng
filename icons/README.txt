@@ -5,7 +5,6 @@ list:
 internet.svg
 configure.svg
 addtab.svg
-wizard.svg
 fulltext
 text2speech
 icons/print.svg

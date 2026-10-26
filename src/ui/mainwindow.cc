@@ -296,7 +296,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // popup
   navToolbar->addSeparator();
 
-  enableScanningAction = navToolbar->addAction( QIcon( ":/icons/wizard.svg" ), tr( "Toggle clipboard monitoring" ) );
+  enableScanningAction = navToolbar->addAction( QIcon( ":/icons/clipboard.svg" ), tr( "Toggle clipboard monitoring" ) );
   enableScanningAction->setCheckable( true );
 
   navToolbar->widgetForAction( enableScanningAction )->setObjectName( "scanPopupButton" );
@@ -907,10 +907,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( enableScanningAction, &QAction::toggled, this, [ this ]( bool on ) {
     if ( on ) {
-      enableScanningAction->setIcon( QIcon( ":/icons/wizard-selected.svg" ) );
+      enableScanningAction->setIcon( QIcon( ":/icons/clipboard-selected.svg" ) );
     }
     else {
-      enableScanningAction->setIcon( QIcon( ":/icons/wizard.svg" ) );
+      enableScanningAction->setIcon( QIcon( ":/icons/clipboard.svg" ) );
     }
 
 #ifdef Q_OS_MAC
