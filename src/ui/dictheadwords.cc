@@ -13,6 +13,7 @@
 #include <QMessageBox>
 #include <QMutexLocker>
 #include <memory>
+#include <limits>
 
 
 enum SearchType {
@@ -133,6 +134,12 @@ void DictHeadwords::setup( Dictionary::Class * dict_ )
   //arbitrary number.
   bool exceedLimit = model->totalCount() > HEADWORDS_MAX_LIMIT;
   ui.filterMaxResult->setEnabled( exceedLimit );
+
+  // A disabled spinbox means "no limit" -- don't cap filter results with the
+  // stale default value. Use INT_MAX rather than 0: the legacy prefixMatch
+  // request breaks immediately on matches.size() >= maxResults, so 0 would
+  // return an empty result set.
+  model->setMaxFilterResults( exceedLimit ? ui.filterMaxResult->value() : std::numeric_limits< int >::max() );
 
   setWindowIcon( dict->getIcon() );
 
