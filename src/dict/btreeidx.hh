@@ -168,8 +168,10 @@ public:
   /// need not to implement this function.
   virtual sptr< Dictionary::WordSearchRequest > prefixMatch( const std::u32string &, unsigned long ) override;
 
-  virtual sptr< Dictionary::WordSearchRequest >
-  stemmedMatch( const std::u32string &, unsigned minLength, unsigned maxSuffixVariation, unsigned long maxResults ) override;
+  virtual sptr< Dictionary::WordSearchRequest > stemmedMatch( const std::u32string &,
+                                                              unsigned minLength,
+                                                              unsigned maxSuffixVariation,
+                                                              unsigned long maxResults ) override;
 
   virtual bool isLocalDictionary() override
   {
