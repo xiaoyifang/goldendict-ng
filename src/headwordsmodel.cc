@@ -100,8 +100,7 @@ void HeadwordListModel::setFilter( const QRegularExpression & reg )
     // Pure literal ("\Q...\E" wrapping the whole pattern, i.e. Text mode)
     // → contiguous range via binary search.
     // Anything else (wildcard/regex) → linear scan with early exit.
-    const bool pureLiteral =
-      !prefixText.isEmpty() && reg.pattern() == ( "\\Q" + prefixText + "\\E" );
+    const bool pureLiteral = !prefixText.isEmpty() && reg.pattern() == ( "\\Q" + prefixText + "\\E" );
 
     const uint32_t n = hwCache.count();
 
@@ -458,7 +457,7 @@ void HeadwordListModel::refreshCache()
     // Reset filter -- caller (DictHeadwords::refreshModelCache) will re-apply
     filterBegin = filterEnd = 0;
     filterMatches.clear();
-    filtering               = false;
+    filtering = false;
     endResetModel();
     emit numberPopulated( static_cast< int >( hwCache.count() ) );
   }
