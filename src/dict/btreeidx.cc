@@ -1495,7 +1495,11 @@ void BtreeDictionary::makeHeadwordsCache( QAtomicInt & isCancelled )
   auto leafOffsets = findNodes();
 
   QFile dataFile( QString::fromStdString( dataTmpPath ) );
-  if ( !dataFile.open( QIODevice::WriteOnly | QIODevice::Append ) ) {
+  // Fresh start (no resume) must not append to stale scratch data left by a
+  // previous run; only a real resume may append.
+  const QIODevice::OpenMode dataOpenMode =
+    ( leafIndex > 0 ) ? QIODevice::WriteOnly | QIODevice::Append : QIODevice::WriteOnly | QIODevice::Truncate;
+  if ( !dataFile.open( dataOpenMode ) ) {
     qWarning() << "BtreeDictionary::makeHeadwordsCache: cannot open data tmp" << QString::fromStdString( dataTmpPath );
     return;
   }

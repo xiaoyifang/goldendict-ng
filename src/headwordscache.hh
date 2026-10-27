@@ -33,7 +33,7 @@ namespace HeadwordCache {
 // File format constants
 // -----------------------------
 constexpr const char MAGIC[ 8 ] = { 'G', 'D', 'B', 'T', 'H', 'D', 'W', '0' };
-constexpr uint32_t FILE_VERSION = 1;
+constexpr uint32_t FILE_VERSION = 2; // v2: fixed reader-side offset handling
 constexpr uint32_t HEADER_SIZE  = 20; // magic + version + count + index_table_offset
 
 #pragma pack( push, 1 )

@@ -114,24 +114,21 @@ QString HeadwordCache::at( uint32_t row ) const
     return {};
   }
 
-  // Read offset from index table
+  // Read offset from index table. Offsets are relative to the START OF THE
+  // DATA AREA (i.e. byte HEADER_SIZE in the file), not absolute.
   const uint32_t * indexTable = reinterpret_cast< const uint32_t * >( mapped + header.index_table_offset );
-  uint32_t offset             = indexTable[ row ];
+  const uint32_t offset       = indexTable[ row ];
+  const uint32_t absOffset    = HEADER_SIZE + offset;
 
-  // Sanity: offset must land inside the data area
-  if ( offset >= header.index_table_offset ) {
+  // Sanity: absolute offset must land inside the data area
+  if ( absOffset >= header.index_table_offset ) {
     return {};
   }
 
-  // Find null terminator
-  const char * start = reinterpret_cast< const char * >( mapped + offset );
+  // Find null terminator (bounded by the end of the data area)
+  const char * start = reinterpret_cast< const char * >( mapped + absOffset );
   const char * end   = reinterpret_cast< const char * >( mapped + header.index_table_offset );
   const char * p     = std::find( start, end, '\0' );
-
-  if ( p == end ) {
-    // No null terminator -- treat everything to the data area end as the string
-    return QString::fromUtf8( start, static_cast< int >( p - start ) );
-  }
 
   return QString::fromUtf8( start, static_cast< int >( p - start ) );
 }
@@ -260,7 +257,9 @@ bool HeadwordCacheBuilder::finalizeFromTmp( const std::string & finalPath )
   const int sz = rawData.size();
   for ( int i = 0; i < sz; ++i ) {
     if ( rawData.at( i ) == '\0' ) {
-      allHeadwords.append( QString::fromUtf8( rawData.constData() + start, i - start ) );
+      if ( i > start ) { // skip empty strings (defensive: stray \0\0 pairs)
+        allHeadwords.append( QString::fromUtf8( rawData.constData() + start, i - start ) );
+      }
       start = i + 1;
     }
   }
@@ -277,8 +276,14 @@ bool HeadwordCacheBuilder::finalizeFromTmp( const std::string & finalPath )
     return QString::compare( a, b, Qt::CaseInsensitive ) < 0;
   } );
 
-  // Deduplicate
-  allHeadwords.removeDuplicates();
+  // Deduplicate. QList::removeDuplicates() uses case-sensitive equality,
+  // which would keep case variants ("View"/"view") adjacent after a
+  // case-insensitive sort. Dedup with the same comparison as the sort.
+  const auto newEnd =
+    std::unique( allHeadwords.begin(), allHeadwords.end(), []( const QString & a, const QString & b ) {
+      return QString::compare( a, b, Qt::CaseInsensitive ) == 0;
+    } );
+  allHeadwords.erase( newEnd, allHeadwords.end() );
 
   // Build the final .hwcache file atomically
   if ( !writeAndCommit( finalPath, allHeadwords ) ) {
