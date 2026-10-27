@@ -1336,7 +1336,7 @@ download page.</string>
           <item row="2" column="0">
            <widget class="QLabel" name="wordLabel">
             <property name="text">
-             <string>Word</string>
+             <string>Word:</string>
             </property>
            </widget>
           </item>
@@ -1350,7 +1350,7 @@ download page.</string>
           <item row="3" column="0">
            <widget class="QLabel" name="textLabel">
             <property name="text">
-             <string>Text</string>
+             <string>Text:</string>
             </property>
            </widget>
           </item>
@@ -1364,7 +1364,7 @@ download page.</string>
           <item row="4" column="0">
            <widget class="QLabel" name="sentenceLabel">
             <property name="text">
-             <string>Sentence</string>
+             <string>Sentence:</string>
             </property>
            </widget>
           </item>
