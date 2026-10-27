@@ -1262,152 +1262,120 @@ download page.</string>
          <property name="checked">
           <bool>false</bool>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_13">
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_21">
+         <layout class="QGridLayout" name="gridLayout_anki" columnstretch="0,2,0,1">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_22">
+            <property name="text">
+             <string>Host:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <layout class="QHBoxLayout" name="hostLayout">
+            <property name="spacing">
+             <number>0</number>
+            </property>
             <item>
-             <widget class="QLabel" name="label_22">
+             <widget class="QLabel" name="label_24">
               <property name="text">
-               <string>Host:</string>
+               <string>http://</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignVCenter|Qt::AlignRight</set>
               </property>
              </widget>
             </item>
             <item>
-             <layout class="QHBoxLayout" name="hostLayout">
-              <property name="spacing">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="label_24">
-                <property name="text">
-                 <string>http://</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignVCenter|Qt::AlignRight</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="ankiHost"/>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_23">
-              <property name="text">
-               <string>Port:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QSpinBox" name="ankiPort">
-              <property name="maximum">
-               <number>65535</number>
-              </property>
-              <property name="value">
-               <number>8080</number>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_16">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
+             <widget class="QLineEdit" name="ankiHost"/>
             </item>
            </layout>
           </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_22">
-            <item>
-             <widget class="QLabel" name="label_28">
-              <property name="text">
-               <string>Deck:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="ankiDeck"/>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_25">
-              <property name="text">
-               <string>Type:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="ankiModel"/>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_17">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
+          <item row="0" column="2">
+           <widget class="QLabel" name="label_23">
+            <property name="text">
+             <string>Port:</string>
+            </property>
+           </widget>
           </item>
-          <item>
-           <layout class="QFormLayout" name="formLayout">
-            <item row="0" column="0">
-             <widget class="QLabel" name="wordLabel">
-              <property name="text">
-               <string>Word</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="ankiWord">
-              <property name="placeholderText">
-               <string>Vocabulary field...</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="textLabel">
-              <property name="text">
-               <string>Text</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QLineEdit" name="ankiText">
-              <property name="placeholderText">
-               <string>Definition field...</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="sentenceLabel">
-              <property name="text">
-               <string>Sentence</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QLineEdit" name="ankiSentence">
-              <property name="placeholderText">
-               <string>Sentence field (can be empty)...</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
+          <item row="0" column="3">
+           <widget class="QSpinBox" name="ankiPort">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximum">
+             <number>65535</number>
+            </property>
+            <property name="value">
+             <number>8080</number>
+            </property>
+           </widget>
           </item>
-          <item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_28">
+            <property name="text">
+             <string>Deck:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="ankiDeck"/>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="label_25">
+            <property name="text">
+             <string>Type:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QLineEdit" name="ankiModel"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="wordLabel">
+            <property name="text">
+             <string>Word</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" colspan="3">
+           <widget class="QLineEdit" name="ankiWord">
+            <property name="placeholderText">
+             <string>Vocabulary field...</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="textLabel">
+            <property name="text">
+             <string>Text</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1" colspan="3">
+           <widget class="QLineEdit" name="ankiText">
+            <property name="placeholderText">
+             <string>Definition field...</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="sentenceLabel">
+            <property name="text">
+             <string>Sentence</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1" colspan="3">
+           <widget class="QLineEdit" name="ankiSentence">
+            <property name="placeholderText">
+             <string>Sentence field (can be empty)...</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0" colspan="4">
            <widget class="QCheckBox" name="ankiAddAudio">
             <property name="text">
              <string>Add audio to Anki card when available</string>
