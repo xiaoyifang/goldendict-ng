@@ -95,7 +95,7 @@ bool HeadwordCache::open( const std::string & path )
   // and the index table must fit inside the file. Compute in signed
   // arithmetic to avoid sign-compare warnings.
   const qint64 tableEnd = static_cast< qint64 >( header.index_table_offset )
-                        + static_cast< qint64 >( header.headword_count ) * static_cast< qint64 >( sizeof( uint32_t ) );
+    + static_cast< qint64 >( header.headword_count ) * static_cast< qint64 >( sizeof( uint32_t ) );
   if ( header.index_table_offset < HEADER_SIZE || tableEnd > fileSize ) {
     file.unmap( mapped );
     mapped = nullptr;
