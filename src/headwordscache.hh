@@ -117,9 +117,6 @@ public:
   /// file (via batch btree traversal in BtreeDictionary::makeHeadwordsCache).
   static bool finalizeFromTmp( const std::string & path );
 
-  /// Validates that <path> is a well-formed .hwcache file.
-  static bool validateHeader( const std::string & path );
-
 private:
   /// Writes the final sorted binary format atomically (tmp + rename).
   static bool writeAndCommit( const std::string & finalPath, const QStringList & sortedHeadwords );

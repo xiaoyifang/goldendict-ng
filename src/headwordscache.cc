@@ -218,7 +218,7 @@ bool HeadwordCacheBuilder::writeAndCommit( const std::string & finalPath, const 
   tmpFile.close();
 
   // Validate before commit
-  if ( !validateHeader( tmpPath ) ) {
+  if ( !HeadwordCache::validateHeader( tmpPath ) ) {
     qWarning() << "HeadwordCacheBuilder: tmp file failed validation";
     QFile::remove( QString::fromStdString( tmpPath ) );
     return false;
