@@ -123,7 +123,13 @@ void DictHeadwords::setup( Dictionary::Class * dict_ )
   model->setMaxFilterResults( ui.filterMaxResult->value() );
   model->setDict( dict );
   proxy->setSourceModel( model.get() );
-  proxy->sort( 0 );
+
+  // In cache mode the source rows are already sorted (the cache file is
+  // built sorted) -- sorting the proxy over ~100k rows here costs seconds
+  // for nothing.
+  if ( !model->usingCache() ) {
+    proxy->sort( 0 );
+  }
   filterChanged();
 
   ui.autoApply->setEnabled( true );
@@ -258,8 +264,16 @@ void DictHeadwords::filterChanged()
 
   model->setFilter( regExp );
 
-  proxy->setFilterRegularExpression( regExp );
-  proxy->sort( 0 );
+  if ( !model->usingCache() ) {
+    proxy->setFilterRegularExpression( regExp );
+    proxy->sort( 0 );
+  }
+  else if ( !proxy->filterRegularExpression().pattern().isEmpty() ) {
+    // Cache mode: the model is pre-sorted and does its own filtering
+    // (binary range / match list). Clear a stale proxy filter left over
+    // from the legacy phase so it doesn't filter the already-filtered rows.
+    proxy->setFilterRegularExpression( QRegularExpression() );
+  }
 
   QApplication::restoreOverrideCursor();
 
