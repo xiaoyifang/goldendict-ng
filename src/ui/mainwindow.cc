@@ -790,6 +790,16 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            this,
            &MainWindow::showFTSIndexingName );
 
+  // Headword-cache build progress + completion ("") display
+  connect( GlobalBroadcaster::instance(),
+           &GlobalBroadcaster::indexingHeadwordsCache,
+           this,
+           &MainWindow::showHeadwordsCacheIndexingName );
+  connect( &headwordIndexing,
+           &HeadwordCache::HeadwordIndexing::newIndexingName,
+           this,
+           &MainWindow::showHeadwordsCacheIndexingName );
+
   // When FTS state changes (from DictInfo), stop indexing and schedule restart
   connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::stopFtsIndexing, this, [ this ]() {
     qDebug() << "FTS state changed, stopping indexing and scheduling restart";
@@ -4639,6 +4649,16 @@ void MainWindow::showFTSIndexingName( const QString & name )
   }
   else {
     mainStatusBar->setBackgroundMessage( tr( "Now indexing for full-text search: " ) + name );
+  }
+}
+
+void MainWindow::showHeadwordsCacheIndexingName( const QString & name )
+{
+  if ( name.isEmpty() ) {
+    mainStatusBar->setBackgroundMessage( QString() );
+  }
+  else {
+    mainStatusBar->setBackgroundMessage( tr( "Now building headwords cache: " ) + name );
   }
 }
 

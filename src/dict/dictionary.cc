@@ -677,7 +677,7 @@ void Class::setIndexedHeadwordsCount( long count )
   if ( newProgress != lastHWProgress ) {
     lastHWProgress = newProgress;
     emit GlobalBroadcaster::instance()
-      -> indexingDictionary( QString( "%1......%%2" ).arg( QString::fromStdString( getName() ) ).arg( newProgress ) );
+      -> indexingHeadwordsCache( QString( "%1......%%2" ).arg( QString::fromStdString( getName() ) ).arg( newProgress ) );
   }
 }
 
