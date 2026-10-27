@@ -141,10 +141,21 @@ void HeadwordListModel::fetchMore( const QModelIndex & parent )
   if ( totalSize < HEADWORDS_MAX_LIMIT ) {
     finished = true;
 
-    beginInsertRows( QModelIndex(), 0, totalSize - 1 );
-    _dict->getHeadwords( words );
-
-    endInsertRows();
+    // getHeadwords() may deduplicate headwords (e.g. via a QSet) and clear the
+    // passed-in list, so the actually inserted count can be less than
+    // totalSize. Fetch into a temp list first, then announce the real count,
+    // otherwise QSortFilterProxyModel creates phantom rows that render blank.
+    QStringList fresh;
+    _dict->getHeadwords( fresh );
+    if ( !fresh.isEmpty() ) {
+      beginInsertRows( QModelIndex(), words.size(), words.size() + fresh.size() - 1 );
+      words += fresh;
+      endInsertRows();
+    }
+    // getHeadwords() returns deduplicated words, which can be fewer than the
+    // index-reported getWordCount(). Sync totalSize to the actual count so
+    // totalCount() no longer over-reports.
+    totalSize = words.size();
     emit numberPopulated( words.size() );
     return;
   }
@@ -155,6 +166,11 @@ void HeadwordListModel::fetchMore( const QModelIndex & parent )
 
   _dict->findHeadWordsWithLenth( index, &headword, 1000 );
   if ( headword.isEmpty() ) {
+    // All index nodes have been consumed. words (deduplicated per batch) may
+    // never reach totalSize (which counts raw index entries, duplicates
+    // included), so mark loading as finished to stop the view from calling
+    // fetchMore (and thus a full findNodes() tree walk) over and over.
+    finished = true;
     return;
   }
 
