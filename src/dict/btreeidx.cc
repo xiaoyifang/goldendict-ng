@@ -1469,7 +1469,7 @@ void BtreeDictionary::makeHeadwordsCache( QAtomicInt & isCancelled )
   }
 
   // Already have a valid cache? Skip.
-  if ( HeadwordCache::validateHeader( finalPath ) ) {
+  if ( HeadwordCache::HeadwordCache::validateHeader( finalPath ) ) {
     markHeadwordsCacheCompleted();
     QFile::remove( QString::fromStdString( progressPath ) );
     QFile::remove( QString::fromStdString( dataTmpPath ) );
@@ -1552,7 +1552,7 @@ void BtreeDictionary::makeHeadwordsCache( QAtomicInt & isCancelled )
            << "leaves. Sorting...";
 
   // Finalize: read _data.tmp, sort, write final .hwcache atomically
-  if ( !HeadwordCacheBuilder::finalizeFromTmp( finalPath ) ) {
+  if ( !HeadwordCache::HeadwordCacheBuilder::finalizeFromTmp( finalPath ) ) {
     qWarning() << "makeHeadwordsCache: finalize failed for" << QString::fromStdString( getName() );
     return;
   }

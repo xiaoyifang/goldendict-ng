@@ -71,4 +71,9 @@ private:
   // When no filter is active both are 0, meaning "show all".
   uint32_t filterBegin = 0;
   uint32_t filterEnd   = 0;
+
+  // Cache-mode wildcard/regex results: absolute row indices into the cache,
+  // capped at maxFilterResults. Non-empty means "matches mode", which takes
+  // precedence over the filterBegin/filterEnd range above.
+  QVector< uint32_t > filterMatches;
 };

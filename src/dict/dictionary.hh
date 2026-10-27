@@ -339,7 +339,7 @@ public:
   virtual void deferredInit();
 
   /// Returns the dictionary's id.
-  string getId() noexcept
+  string getId() const noexcept
   {
     return id;
   }

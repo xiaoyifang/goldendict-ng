@@ -17,6 +17,10 @@ int HeadwordListModel::rowCount( const QModelIndex & parent ) const
     return 0;
   }
   if ( cacheMode ) {
+    // Matches mode: regex/wildcard results capped at maxFilterResults
+    if ( !filterMatches.isEmpty() ) {
+      return filterMatches.size();
+    }
     // filterBegin != filterEnd means we have an active prefix filter
     if ( filterBegin != filterEnd ) {
       return static_cast< int >( filterEnd - filterBegin );
@@ -68,9 +72,10 @@ void HeadwordListModel::setFilter( const QRegularExpression & reg )
 
     // No filter text -- show all
     if ( reg.pattern().isEmpty() ) {
-      // If there was an active filter range, clear it
-      if ( filterBegin != filterEnd ) {
+      // If there was an active filter (range or match list), clear it
+      if ( filterBegin != filterEnd || !filterMatches.isEmpty() ) {
         filterBegin = filterEnd = 0; // 0,0 = "show all"
+        filterMatches.clear();
         beginResetModel();
         endResetModel();
       }
@@ -80,11 +85,9 @@ void HeadwordListModel::setFilter( const QRegularExpression & reg )
 
     // Extract the literal prefix from the regex pattern.
     // DictHeadwords sets up patterns as follows (see dictheadwords.cc getFilterRegex()):
-    //   Text  → QRegularExpression::escape(text)      -> pure literal prefix
-    //   Wildcard → wildcardsToRegexp(text)            -> may have .*? etc
+    //   Text  → QRegularExpression::escape(text)      -> "\Qtext\E" (pure literal)
+    //   Wildcard → wildcardsToRegexp(text)            -> may start with "\Q"
     //   Regex → user input as-is
-    // For Text mode we get a literal we can use for binary search.
-    // For Wildcard/Regex we fall through to full range + proxy regex.
     QString prefixText;
     if ( reg.pattern().startsWith( "\\Q" ) ) {
       // QRegularExpression::escape produces \Q...\E; grab literal inside
@@ -94,36 +97,46 @@ void HeadwordListModel::setFilter( const QRegularExpression & reg )
       }
     }
 
-    beginResetModel();
+    // Pure literal ("\Q...\E" wrapping the whole pattern, i.e. Text mode)
+    // → contiguous range via binary search.
+    // Anything else (wildcard/regex) → linear scan with early exit.
+    const bool pureLiteral =
+      !prefixText.isEmpty() && reg.pattern() == ( "\\Q" + prefixText + "\\E" );
 
+    const uint32_t n = hwCache.count();
+
+    // Skip the alphabetically smaller part of the cache when a literal
+    // prefix is known (works for Text mode and wildcard with leading literal).
+    uint32_t lb = 0;
     if ( !prefixText.isEmpty() ) {
-      // Binary search for lower_bound and upper_bound of prefixText
-      // hwCache is sorted case-insensitively, so we search with same comparison.
-      const uint32_t n = hwCache.count();
       uint32_t lo = 0, hi = n;
-
-      // lower_bound
       while ( lo < hi ) {
         uint32_t mid = lo + ( hi - lo ) / 2;
-        int cmp      = QString::compare( hwCache.at( mid ), prefixText, Qt::CaseInsensitive );
-        if ( cmp < 0 ) {
+        if ( QString::compare( hwCache.at( mid ), prefixText, Qt::CaseInsensitive ) < 0 ) {
           lo = mid + 1;
         }
         else {
           hi = mid;
         }
       }
-      uint32_t lb = lo;
+      lb = lo;
+    }
 
-      // upper_bound -- search for prefixText+"\uFFFF" (anything that starts with the prefix
-      // is strictly less than this sentinel)
-      const QString sentinel = prefixText + QString::fromUtf16( 0xFFFF );
-      lo                     = 0;
-      hi                     = n;
+    beginResetModel();
+    filterMatches.clear();
+
+    if ( !reg.isValid() ) {
+      // Invalid regex -- behave like an empty filter.
+      filterBegin = filterEnd = 0;
+    }
+    else if ( pureLiteral ) {
+      // upper_bound -- search for prefixText+U+FFFF (anything starting with
+      // the prefix is strictly less than this sentinel)
+      const QString sentinel = prefixText + QChar( 0xFFFF );
+      uint32_t lo = 0, hi = n;
       while ( lo < hi ) {
         uint32_t mid = lo + ( hi - lo ) / 2;
-        int cmp      = QString::compare( hwCache.at( mid ), sentinel, Qt::CaseInsensitive );
-        if ( cmp < 0 ) {
+        if ( QString::compare( hwCache.at( mid ), sentinel, Qt::CaseInsensitive ) < 0 ) {
           lo = mid + 1;
         }
         else {
@@ -132,12 +145,27 @@ void HeadwordListModel::setFilter( const QRegularExpression & reg )
       }
       uint32_t ub = lo;
 
+      // Limit the range, matching the legacy prefixMatch behaviour
+      // ("filtered (limited)").
+      if ( maxFilterResults > 0 && ub - lb > static_cast< uint32_t >( maxFilterResults ) ) {
+        ub = lb + static_cast< uint32_t >( maxFilterResults );
+      }
+
       filterBegin = lb;
       filterEnd   = ub;
     }
     else {
-      // Wildcard / Regex -- leave to proxy, show all rows to let it filter
+      // Wildcard / Regex: scan the cache from lb, collect matching rows into
+      // filterMatches and stop as soon as maxFilterResults is reached.
       filterBegin = filterEnd = 0;
+      for ( uint32_t i = lb; i < n; ++i ) {
+        if ( maxFilterResults > 0 && filterMatches.size() >= maxFilterResults ) {
+          break;
+        }
+        if ( reg.match( hwCache.at( i ) ).hasMatch() ) {
+          filterMatches.append( i );
+        }
+      }
     }
 
     endResetModel();
@@ -220,7 +248,14 @@ QVariant HeadwordListModel::data( const QModelIndex & index, int role ) const
   if ( role == Qt::DisplayRole ) {
     if ( cacheMode ) {
       uint32_t row;
-      if ( filterBegin != filterEnd ) {
+      if ( !filterMatches.isEmpty() ) {
+        // matches mode -- row indexes into the collected match list
+        if ( index.row() < 0 || index.row() >= filterMatches.size() ) {
+          return {};
+        }
+        row = filterMatches.at( index.row() );
+      }
+      else if ( filterBegin != filterEnd ) {
         // filtered mode -- row is relative to the filtered range
         if ( index.row() >= static_cast< int >( filterEnd - filterBegin ) || index.row() < 0 ) {
           return {};
@@ -383,6 +418,7 @@ void HeadwordListModel::setDict( Dictionary::Class * dict )
   finished    = false;
   index       = 0;
   filterBegin = filterEnd = 0; // reset filter range
+  filterMatches.clear();
 
   if ( dict->supportsHeadwordsCache() ) {
     const auto path = dict->headwordsCachePath();
@@ -421,6 +457,7 @@ void HeadwordListModel::refreshCache()
     hashedWords.clear();
     // Reset filter -- caller (DictHeadwords::refreshModelCache) will re-apply
     filterBegin = filterEnd = 0;
+    filterMatches.clear();
     filtering               = false;
     endResetModel();
     emit numberPopulated( static_cast< int >( hwCache.count() ) );
