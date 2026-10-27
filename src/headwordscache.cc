@@ -276,12 +276,12 @@ bool HeadwordCacheBuilder::finalizeFromTmp( const std::string & finalPath )
     return QString::compare( a, b, Qt::CaseInsensitive ) < 0;
   } );
 
-  // Deduplicate. QList::removeDuplicates() uses case-sensitive equality,
-  // which would keep case variants ("View"/"view") adjacent after a
-  // case-insensitive sort. Dedup with the same comparison as the sort.
+  // Deduplicate exact matches only (case-sensitive): dictionaries legitimately
+  // contain case-distinct headwords ("CAD"/"cad"). After the case-insensitive
+  // sort above, exact duplicates are guaranteed to be adjacent.
   const auto newEnd =
     std::unique( allHeadwords.begin(), allHeadwords.end(), []( const QString & a, const QString & b ) {
-      return QString::compare( a, b, Qt::CaseInsensitive ) == 0;
+      return a == b;
     } );
   allHeadwords.erase( newEnd, allHeadwords.end() );
 
