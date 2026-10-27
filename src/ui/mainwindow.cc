@@ -4443,8 +4443,10 @@ void MainWindow::showDictionaryHeadwords( Dictionary::Class * dict )
     // Refresh the model when the background cache build finishes,
     // in case the dialog was opened before the cache was ready.
     QObject::disconnect( &headwordIndexing, nullptr, headwordsDlg, nullptr );
-    connect( &headwordIndexing, &HeadwordCache::HeadwordIndexing::indexingFinished,
-             headwordsDlg, &DictHeadwords::refreshModelCache );
+    connect( &headwordIndexing,
+             &HeadwordCache::HeadwordIndexing::indexingFinished,
+             headwordsDlg,
+             &DictHeadwords::refreshModelCache );
     headwordsDlg->show();
   }
 }

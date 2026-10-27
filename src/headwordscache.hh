@@ -32,14 +32,14 @@ namespace HeadwordCache {
 // -----------------------------
 // File format constants
 // -----------------------------
-constexpr const char MAGIC[ 8 ]  = { 'G', 'D', 'B', 'T', 'H', 'D', 'W', '0' };
-constexpr uint32_t FILE_VERSION  = 1;
-constexpr uint32_t HEADER_SIZE   = 20; // magic + version + count + index_table_offset
+constexpr const char MAGIC[ 8 ] = { 'G', 'D', 'B', 'T', 'H', 'D', 'W', '0' };
+constexpr uint32_t FILE_VERSION = 1;
+constexpr uint32_t HEADER_SIZE  = 20; // magic + version + count + index_table_offset
 
 #pragma pack( push, 1 )
 struct FileHeader
 {
-  char     magic[ 8 ];
+  char magic[ 8 ];
   uint32_t version;
   uint32_t headword_count;
   uint32_t index_table_offset; // offset to the uint32_t array
@@ -78,11 +78,12 @@ public:
 
   /// Full iteration support -- useful for export.
   /// Calls visitor( QString ) for each headword in order.
-  template < typename Fn >
+  template< typename Fn >
   void forEach( Fn && visitor ) const
   {
-    if ( !valid )
+    if ( !valid ) {
       return;
+    }
     for ( uint32_t i = 0; i < header.headword_count; ++i ) {
       visitor( at( i ) );
     }
@@ -94,9 +95,9 @@ public:
 private:
   bool valid = false;
   QString cachePath;
-  QFile   file;
+  QFile file;
   uchar * mapped  = nullptr;
-  qint64  fileSize = 0;
+  qint64 fileSize = 0;
   FileHeader header{};
 };
 
@@ -129,7 +130,7 @@ private:
 // -----------------------------
 class IndexingRunnable; // forward
 
-class HeadwordIndexing : public QObject
+class HeadwordIndexing: public QObject
 {
   Q_OBJECT
 

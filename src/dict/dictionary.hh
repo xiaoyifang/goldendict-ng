@@ -300,7 +300,7 @@ protected:
   // headword cache: mmap'd sorted file for fast headword access
   QAtomicInt HW_cache_completed;
   long indexedHeadwordsCount = 0;
-  long lastHWProgress = 0;
+  long lastHWProgress        = 0;
   bool synonymSearchEnabled;
   string dictionaryName;
   string originalDictionaryName;
@@ -534,11 +534,13 @@ public:
   /// Progress for headword cache building, 0-100
   int getHeadwordsCacheProgress()
   {
-    if ( haveHeadwordsCache() )
+    if ( haveHeadwordsCache() ) {
       return 100;
+    }
     auto total = getWordCount();
-    if ( total == 0 )
+    if ( total == 0 ) {
       return 0;
+    }
     int progress = (int)indexedHeadwordsCount * 100 / total;
     return qMin( progress, 100 );
   }

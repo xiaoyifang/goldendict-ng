@@ -1496,8 +1496,7 @@ void BtreeDictionary::makeHeadwordsCache( QAtomicInt & isCancelled )
 
   QFile dataFile( QString::fromStdString( dataTmpPath ) );
   if ( !dataFile.open( QIODevice::WriteOnly | QIODevice::Append ) ) {
-    qWarning() << "BtreeDictionary::makeHeadwordsCache: cannot open data tmp"
-               << QString::fromStdString( dataTmpPath );
+    qWarning() << "BtreeDictionary::makeHeadwordsCache: cannot open data tmp" << QString::fromStdString( dataTmpPath );
     return;
   }
 
@@ -1505,8 +1504,7 @@ void BtreeDictionary::makeHeadwordsCache( QAtomicInt & isCancelled )
 
   while ( leafIndex < static_cast< uint32_t >( leafOffsets.size() ) ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
-      qDebug() << "makeHeadwordsCache: cancelled at leaf"
-               << leafIndex << "/" << leafOffsets.size()
+      qDebug() << "makeHeadwordsCache: cancelled at leaf" << leafIndex << "/" << leafOffsets.size()
                << "collected so far =" << totalCollected;
       dataFile.close();
       QFile progOut( QString::fromStdString( progressPath ) );
@@ -1544,29 +1542,26 @@ void BtreeDictionary::makeHeadwordsCache( QAtomicInt & isCancelled )
   dataFile.close();
 
   if ( totalCollected == 0 ) {
-    qWarning() << "makeHeadwordsCache: no headwords collected for"
-               << QString::fromStdString( getName() );
+    qWarning() << "makeHeadwordsCache: no headwords collected for" << QString::fromStdString( getName() );
     QFile::remove( QString::fromStdString( dataTmpPath ) );
     QFile::remove( QString::fromStdString( progressPath ) );
     return;
   }
 
-  qDebug() << "makeHeadwordsCache: collected" << totalCollected
-           << "headwords from" << leafOffsets.size() << "leaves. Sorting...";
+  qDebug() << "makeHeadwordsCache: collected" << totalCollected << "headwords from" << leafOffsets.size()
+           << "leaves. Sorting...";
 
   // Finalize: read _data.tmp, sort, write final .hwcache atomically
   if ( !HeadwordCacheBuilder::finalizeFromTmp( finalPath ) ) {
-    qWarning() << "makeHeadwordsCache: finalize failed for"
-               << QString::fromStdString( getName() );
+    qWarning() << "makeHeadwordsCache: finalize failed for" << QString::fromStdString( getName() );
     return;
   }
 
   markHeadwordsCacheCompleted();
   setIndexedHeadwordsCount( static_cast< long >( getWordCount() ) );
 
-  qDebug() << "makeHeadwordsCache: built cache for"
-           << QString::fromStdString( getName() )
-           << "(" << getWordCount() << " headwords)";
+  qDebug() << "makeHeadwordsCache: built cache for" << QString::fromStdString( getName() ) << "(" << getWordCount()
+           << " headwords)";
 }
 
 void BtreeDictionary::getArticleText( uint32_t, QString &, QString & ) {}

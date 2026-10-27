@@ -103,9 +103,8 @@ QString HeadwordCache::at( uint32_t row ) const
   }
 
   // Read offset from index table
-  const uint32_t * indexTable =
-    reinterpret_cast< const uint32_t * >( mapped + header.index_table_offset );
-  uint32_t offset = indexTable[ row ];
+  const uint32_t * indexTable = reinterpret_cast< const uint32_t * >( mapped + header.index_table_offset );
+  uint32_t offset             = indexTable[ row ];
 
   // Sanity: offset must land inside the data area
   if ( offset >= header.index_table_offset ) {
@@ -142,10 +141,12 @@ bool HeadwordCache::validateHeader( const std::string & path )
   }
   f.close();
 
-  if ( std::memcmp( hdr.magic, MAGIC, 8 ) != 0 )
+  if ( std::memcmp( hdr.magic, MAGIC, 8 ) != 0 ) {
     return false;
-  if ( hdr.version != FILE_VERSION )
+  }
+  if ( hdr.version != FILE_VERSION ) {
     return false;
+  }
 
   qint64 idxEnd = hdr.index_table_offset + hdr.headword_count * sizeof( uint32_t );
   return idxEnd <= f.size();
@@ -184,9 +185,9 @@ bool HeadwordCacheBuilder::writeAndCommit( const std::string & finalPath, const 
   // Phase 2: write header + data area + index table
   FileHeader hdr{};
   std::memcpy( hdr.magic, MAGIC, 8 );
-  hdr.version             = FILE_VERSION;
-  hdr.headword_count      = count;
-  hdr.index_table_offset  = indexTableOffset;
+  hdr.version            = FILE_VERSION;
+  hdr.headword_count     = count;
+  hdr.index_table_offset = indexTableOffset;
 
   if ( tmpFile.write( reinterpret_cast< const char * >( &hdr ), HEADER_SIZE ) != HEADER_SIZE ) {
     tmpFile.remove();
@@ -230,7 +231,7 @@ bool HeadwordCacheBuilder::writeAndCommit( const std::string & finalPath, const 
 
 bool HeadwordCacheBuilder::finalizeFromTmp( const std::string & finalPath )
 {
-  const std::string dataTmpPath = finalPath + "_data.tmp";
+  const std::string dataTmpPath  = finalPath + "_data.tmp";
   const std::string progressPath = finalPath + ".progress";
 
   // Read collected headwords from the scratch file
@@ -243,7 +244,7 @@ bool HeadwordCacheBuilder::finalizeFromTmp( const std::string & finalPath )
   allData.close();
 
   QStringList allHeadwords;
-  int start = 0;
+  int start    = 0;
   const int sz = rawData.size();
   for ( int i = 0; i < sz; ++i ) {
     if ( rawData.at( i ) == '\0' ) {
@@ -260,10 +261,9 @@ bool HeadwordCacheBuilder::finalizeFromTmp( const std::string & finalPath )
   }
 
   // Sort alphabetically (case-insensitive)
-  std::sort( allHeadwords.begin(), allHeadwords.end(),
-             []( const QString & a, const QString & b ) {
-               return QString::compare( a, b, Qt::CaseInsensitive ) < 0;
-             } );
+  std::sort( allHeadwords.begin(), allHeadwords.end(), []( const QString & a, const QString & b ) {
+    return QString::compare( a, b, Qt::CaseInsensitive ) < 0;
+  } );
 
   // Deduplicate
   allHeadwords.removeDuplicates();
@@ -286,7 +286,7 @@ bool HeadwordCacheBuilder::finalizeFromTmp( const std::string & finalPath )
 // HeadwordIndexing (background manager)
 // ================================================================
 
-class IndexingRunnable : public QObject, public QRunnable
+class IndexingRunnable: public QObject, public QRunnable
 {
   Q_OBJECT
 
@@ -366,10 +366,8 @@ void HeadwordIndexing::doIndexing()
 
   auto * r = new IndexingRunnable( isCancelled, dictionaries, indexingExited );
   runnable = r;
-  QObject::connect( r, &IndexingRunnable::sendNowIndexingName,
-                    this, &HeadwordIndexing::setNowIndexedName );
-  QObject::connect( r, &IndexingRunnable::indexingFinished,
-                    this, &HeadwordIndexing::onIndexingFinished );
+  QObject::connect( r, &IndexingRunnable::sendNowIndexingName, this, &HeadwordIndexing::setNowIndexedName );
+  QObject::connect( r, &IndexingRunnable::indexingFinished, this, &HeadwordIndexing::onIndexingFinished );
 
   QThreadPool::globalInstance()->start( r );
   timer.start();
@@ -391,25 +389,28 @@ void HeadwordIndexing::stopIndexing()
 
 void HeadwordIndexing::onTimeout()
 {
-  if ( runnable.isNull() )
+  if ( runnable.isNull() ) {
     return;
+  }
 
   QString indexingNames;
   for ( const auto & dictionary : dictionaries ) {
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
       break;
-    if ( dictionary->haveHeadwordsCache() )
+    }
+    if ( dictionary->haveHeadwordsCache() ) {
       continue;
-    if ( !dictionary->supportsHeadwordsCache() )
+    }
+    if ( !dictionary->supportsHeadwordsCache() ) {
       continue;
+    }
     auto progress = dictionary->getHeadwordsCacheProgress();
     if ( progress > 0 && progress < 100 ) {
-      if ( !indexingNames.isEmpty() )
+      if ( !indexingNames.isEmpty() ) {
         indexingNames.append( "," );
+      }
       indexingNames.append(
-        QString( "%1......%%2" )
-          .arg( QString::fromStdString( dictionary->getName() ) )
-          .arg( progress ) );
+        QString( "%1......%%2" ).arg( QString::fromStdString( dictionary->getName() ) ).arg( progress ) );
     }
   }
   if ( !indexingNames.isEmpty() ) {

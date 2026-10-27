@@ -105,7 +105,7 @@ void HeadwordListModel::setFilter( const QRegularExpression & reg )
       // lower_bound
       while ( lo < hi ) {
         uint32_t mid = lo + ( hi - lo ) / 2;
-        int cmp = QString::compare( hwCache.at( mid ), prefixText, Qt::CaseInsensitive );
+        int cmp      = QString::compare( hwCache.at( mid ), prefixText, Qt::CaseInsensitive );
         if ( cmp < 0 ) {
           lo = mid + 1;
         }
@@ -118,11 +118,11 @@ void HeadwordListModel::setFilter( const QRegularExpression & reg )
       // upper_bound -- search for prefixText+"\uFFFF" (anything that starts with the prefix
       // is strictly less than this sentinel)
       const QString sentinel = prefixText + QString::fromUtf16( 0xFFFF );
-      lo = 0;
-      hi = n;
+      lo                     = 0;
+      hi                     = n;
       while ( lo < hi ) {
         uint32_t mid = lo + ( hi - lo ) / 2;
-        int cmp = QString::compare( hwCache.at( mid ), sentinel, Qt::CaseInsensitive );
+        int cmp      = QString::compare( hwCache.at( mid ), sentinel, Qt::CaseInsensitive );
         if ( cmp < 0 ) {
           lo = mid + 1;
         }
@@ -146,7 +146,7 @@ void HeadwordListModel::setFilter( const QRegularExpression & reg )
   }
 
   // ===== Legacy btree mode (unchanged) =====
-  //if the headword is already finished loaded, do nothing。
+  // if the headword is already finished loaded, do nothing。
   if ( finished ) {
     return;
   }
@@ -320,7 +320,7 @@ bool HeadwordListModel::containWord( const QString & word )
     uint32_t lo = 0, hi = hwCache.count();
     while ( lo < hi ) {
       uint32_t mid = lo + ( hi - lo ) / 2;
-      int cmp = QString::compare( hwCache.at( mid ), word, Qt::CaseInsensitive );
+      int cmp      = QString::compare( hwCache.at( mid ), word, Qt::CaseInsensitive );
       if ( cmp < 0 ) {
         lo = mid + 1;
       }
@@ -350,7 +350,9 @@ QSet< QString > HeadwordListModel::getRemainRows( int & nodeIndex )
     }
     nodeIndex = 1; // mark as "done"
     QSet< QString > all;
-    hwCache.forEach( [ &all ]( const QString & hw ) { all.insert( hw ); } );
+    hwCache.forEach( [ &all ]( const QString & hw ) {
+      all.insert( hw );
+    } );
     return all;
   }
 
@@ -377,9 +379,9 @@ void HeadwordListModel::setDict( Dictionary::Class * dict )
   words.clear();
   fileSortedList.clear();
   hashedWords.clear();
-  filtering = false;
-  finished  = false;
-  index     = 0;
+  filtering   = false;
+  finished    = false;
+  index       = 0;
   filterBegin = filterEnd = 0; // reset filter range
 
   if ( dict->supportsHeadwordsCache() ) {
@@ -419,7 +421,7 @@ void HeadwordListModel::refreshCache()
     hashedWords.clear();
     // Reset filter -- caller (DictHeadwords::refreshModelCache) will re-apply
     filterBegin = filterEnd = 0;
-    filtering = false;
+    filtering               = false;
     endResetModel();
     emit numberPopulated( static_cast< int >( hwCache.count() ) );
   }
