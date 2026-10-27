@@ -38,6 +38,16 @@ HeadwordCache::~HeadwordCache()
 
 bool HeadwordCache::open( const std::string & path )
 {
+  // Reset any previous state first -- allows re-opening on the same object.
+  if ( mapped ) {
+    file.unmap( mapped );
+    mapped = nullptr;
+  }
+  if ( file.isOpen() ) {
+    file.close();
+  }
+  valid = false;
+
   cachePath = QString::fromStdString( path );
 
   file.setFileName( cachePath );
@@ -82,9 +92,11 @@ bool HeadwordCache::open( const std::string & path )
   header = *hdr;
 
   // Sanity check: index_table_offset must be >= HEADER_SIZE,
-  // and <= fileSize - header.headword_count * 4
-  if ( header.index_table_offset < HEADER_SIZE
-       || header.index_table_offset + header.headword_count * sizeof( uint32_t ) > fileSize ) {
+  // and the index table must fit inside the file. Compute in signed
+  // arithmetic to avoid sign-compare warnings.
+  const qint64 tableEnd = static_cast< qint64 >( header.index_table_offset )
+                        + static_cast< qint64 >( header.headword_count ) * static_cast< qint64 >( sizeof( uint32_t ) );
+  if ( header.index_table_offset < HEADER_SIZE || tableEnd > fileSize ) {
     file.unmap( mapped );
     mapped = nullptr;
     file.close();
@@ -300,7 +312,7 @@ public:
                     QSemaphore & hasExited_ ):
     isCancelled( cancelled ),
     dictionaries( dicts ),
-    hasExited( hasExited )
+    hasExited( hasExited_ )
   {
     setAutoDelete( true );
   }

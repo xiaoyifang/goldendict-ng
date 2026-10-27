@@ -444,11 +444,10 @@ void HeadwordListModel::refreshCache()
     return;
   }
 
-  // Try to open -- if successful, switch to cache mode
-  HeadwordCache::HeadwordCache newCache;
-  if ( newCache.open( path ) ) {
+  // Try to open -- if successful, switch to cache mode.
+  // open() resets any previous state, so re-opening in place is safe.
+  if ( hwCache.open( path ) ) {
     beginResetModel();
-    hwCache   = std::move( newCache );
     cacheMode = true;
     // Free legacy data
     words.clear();
