@@ -264,15 +264,13 @@ void DictHeadwords::filterChanged()
 
   model->setFilter( regExp );
 
+  // In cache mode the model is pre-sorted and does its own filtering
+  // (binary range / match list); the proxy must pass everything through.
+  // A stale proxy filter can only exist right after a legacy->cache switch,
+  // and is cleared at that transition point (refreshModelCache).
   if ( !model->usingCache() ) {
     proxy->setFilterRegularExpression( regExp );
     proxy->sort( 0 );
-  }
-  else if ( !proxy->filterRegularExpression().pattern().isEmpty() ) {
-    // Cache mode: the model is pre-sorted and does its own filtering
-    // (binary range / match list). Clear a stale proxy filter left over
-    // from the legacy phase so it doesn't filter the already-filtered rows.
-    proxy->setFilterRegularExpression( QRegularExpression() );
   }
 
   QApplication::restoreOverrideCursor();
@@ -312,12 +310,16 @@ void DictHeadwords::refreshModelCache()
   }
   model->refreshCache();
 
-  // After switching to cache mode, re-apply the current filter if any
+  if ( model->usingCache() ) {
+    // Legacy->cache transition: drop any proxy filter left over from the
+    // legacy phase -- cache-mode rows are already filtered/sorted by the
+    // model itself.
+    proxy->setFilterRegularExpression( QRegularExpression() );
+  }
+
+  // Re-apply the current filter if any
   if ( !ui.filterLine->text().isEmpty() ) {
     filterChanged();
-  }
-  else {
-    proxy->sort( 0 );
   }
   showHeadwordsNumber();
 }
