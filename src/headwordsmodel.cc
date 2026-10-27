@@ -166,6 +166,11 @@ void HeadwordListModel::fetchMore( const QModelIndex & parent )
 
   _dict->findHeadWordsWithLenth( index, &headword, 1000 );
   if ( headword.isEmpty() ) {
+    // All index nodes have been consumed. words (deduplicated per batch) may
+    // never reach totalSize (which counts raw index entries, duplicates
+    // included), so mark loading as finished to stop the view from calling
+    // fetchMore (and thus a full findNodes() tree walk) over and over.
+    finished = true;
     return;
   }
 
