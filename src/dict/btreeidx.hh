@@ -191,6 +191,18 @@ public:
     return ftsIdxMutex;
   }
 
+  /// BtreeDictionary is the canonical source for headword caches.
+  virtual bool supportsHeadwordsCache() const override
+  {
+    return true;
+  }
+
+  /// Path to the headword cache file. Built from indexDir + dictId + "_HW_x".
+  virtual std::string headwordsCachePath() const override;
+
+  /// Build the headword cache from btree leaves.
+  virtual void makeHeadwordsCache( QAtomicInt & isCancelled ) override;
+
   virtual uint32_t getFtsIndexVersion()
   {
     return 0;

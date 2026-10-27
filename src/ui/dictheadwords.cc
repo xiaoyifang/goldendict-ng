@@ -284,6 +284,23 @@ void DictHeadwords::showHeadwordsNumber()
   }
 }
 
+void DictHeadwords::refreshModelCache()
+{
+  if ( !model || !dict ) {
+    return;
+  }
+  model->refreshCache();
+
+  // After switching to cache mode, re-apply the current filter if any
+  if ( !ui.filterLine->text().isEmpty() ) {
+    filterChanged();
+  }
+  else {
+    proxy->sort( 0 );
+  }
+  showHeadwordsNumber();
+}
+
 void DictHeadwords::exportAllWords( QProgressDialog & progress, QTextStream & out )
 {
   if ( const QRegularExpression regExp = getFilterRegex(); regExp.isValid() && !regExp.pattern().isEmpty() ) {

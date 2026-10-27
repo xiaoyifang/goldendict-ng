@@ -664,6 +664,23 @@ string getFtsSuffix()
   return "_FTS_x";
 }
 
+string getHeadwordsSuffix()
+{
+  return "_HW_x";
+}
+
+void Class::setIndexedHeadwordsCount( long count )
+{
+  indexedHeadwordsCount = count;
+
+  auto newProgress = getHeadwordsCacheProgress();
+  if ( newProgress != lastHWProgress ) {
+    lastHWProgress = newProgress;
+    emit GlobalBroadcaster::instance()
+      -> indexingDictionary( QString( "%1......%%2" ).arg( QString::fromStdString( getName() ) ).arg( newProgress ) );
+  }
+}
+
 QString generateRandomDictionaryId()
 {
   return QCryptographicHash::hash( QUuid::createUuid().toString().toUtf8(), QCryptographicHash::Md5 ).toHex();

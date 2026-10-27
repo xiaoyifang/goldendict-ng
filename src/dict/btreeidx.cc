@@ -13,6 +13,8 @@
 
 #include <QtConcurrentRun>
 #include <zlib.h>
+#include "config.hh"
+#include "headwordscache.hh"
 
 namespace BtreeIndexing {
 
@@ -1442,6 +1444,129 @@ void BtreeDictionary::findHeadWordsWithLenth( int & index, QSet< QString > * hea
 {
   auto leafNodeOffsets = findNodes();
   findHeadWords( leafNodeOffsets, index, headwords, length );
+}
+
+std::string BtreeDictionary::headwordsCachePath() const
+{
+  return Config::getIndexDir().toStdString() + getId() + Dictionary::getHeadwordsSuffix();
+}
+
+void BtreeDictionary::makeHeadwordsCache( QAtomicInt & isCancelled )
+{
+  const std::string finalPath    = headwordsCachePath();
+  const std::string progressPath = finalPath + ".progress";
+  const std::string dataTmpPath  = finalPath + "_data.tmp";
+
+  if ( finalPath.empty() ) {
+    return;
+  }
+
+  // Check stale marker -- wipe if dict changed
+  if ( Dictionary::needToRebuildIndex( getDictionaryFilenames(), finalPath ) ) {
+    QFile::remove( QString::fromStdString( finalPath ) );
+    QFile::remove( QString::fromStdString( progressPath ) );
+    QFile::remove( QString::fromStdString( dataTmpPath ) );
+  }
+
+  // Already have a valid cache? Skip.
+  if ( HeadwordCache::validateHeader( finalPath ) ) {
+    markHeadwordsCacheCompleted();
+    QFile::remove( QString::fromStdString( progressPath ) );
+    QFile::remove( QString::fromStdString( dataTmpPath ) );
+    return;
+  }
+
+  // Batch traversal with resume support.
+  // Each iteration processes one complete leaf node (findSingleNodeHeadwords
+  // is called once per leaf via findHeadWords), writes its headwords to
+  // _data.tmp, and flushes + saves the leaf index to .progress every 10 leaves.
+
+  uint32_t leafIndex = 0;
+  {
+    QFile progFile( QString::fromStdString( progressPath ) );
+    if ( progFile.open( QIODevice::ReadOnly ) && progFile.size() >= 4 ) {
+      uint32_t val = 0;
+      if ( progFile.read( reinterpret_cast< char * >( &val ), 4 ) == 4 ) {
+        leafIndex = val;
+      }
+    }
+  }
+
+  auto leafOffsets = findNodes();
+
+  QFile dataFile( QString::fromStdString( dataTmpPath ) );
+  if ( !dataFile.open( QIODevice::WriteOnly | QIODevice::Append ) ) {
+    qWarning() << "BtreeDictionary::makeHeadwordsCache: cannot open data tmp"
+               << QString::fromStdString( dataTmpPath );
+    return;
+  }
+
+  uint64_t totalCollected = 0;
+
+  while ( leafIndex < static_cast< uint32_t >( leafOffsets.size() ) ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+      qDebug() << "makeHeadwordsCache: cancelled at leaf"
+               << leafIndex << "/" << leafOffsets.size()
+               << "collected so far =" << totalCollected;
+      dataFile.close();
+      QFile progOut( QString::fromStdString( progressPath ) );
+      if ( progOut.open( QIODevice::WriteOnly | QIODevice::Truncate ) ) {
+        progOut.write( reinterpret_cast< const char * >( &leafIndex ), 4 );
+      }
+      return;
+    }
+
+    // Process exactly one leaf per call (huge length prevents early stop)
+    int idx = static_cast< int >( leafIndex );
+    QSet< QString > batch;
+    findHeadWords( leafOffsets, idx, &batch, std::numeric_limits< uint32_t >::max() );
+
+    for ( const auto & hw : batch ) {
+      QByteArray utf8 = hw.toUtf8();
+      dataFile.write( utf8 );
+      dataFile.putChar( '\0' );
+      totalCollected++;
+    }
+
+    leafIndex = static_cast< uint32_t >( idx );
+
+    if ( leafIndex % 10 == 0 ) {
+      setIndexedHeadwordsCount( static_cast< long >( totalCollected ) );
+      dataFile.flush();
+      QFile progOut( QString::fromStdString( progressPath ) );
+      if ( progOut.open( QIODevice::WriteOnly | QIODevice::Truncate ) ) {
+        progOut.write( reinterpret_cast< const char * >( &leafIndex ), 4 );
+      }
+    }
+  }
+
+  dataFile.flush();
+  dataFile.close();
+
+  if ( totalCollected == 0 ) {
+    qWarning() << "makeHeadwordsCache: no headwords collected for"
+               << QString::fromStdString( getName() );
+    QFile::remove( QString::fromStdString( dataTmpPath ) );
+    QFile::remove( QString::fromStdString( progressPath ) );
+    return;
+  }
+
+  qDebug() << "makeHeadwordsCache: collected" << totalCollected
+           << "headwords from" << leafOffsets.size() << "leaves. Sorting...";
+
+  // Finalize: read _data.tmp, sort, write final .hwcache atomically
+  if ( !HeadwordCacheBuilder::finalizeFromTmp( finalPath ) ) {
+    qWarning() << "makeHeadwordsCache: finalize failed for"
+               << QString::fromStdString( getName() );
+    return;
+  }
+
+  markHeadwordsCacheCompleted();
+  setIndexedHeadwordsCount( static_cast< long >( getWordCount() ) );
+
+  qDebug() << "makeHeadwordsCache: built cache for"
+           << QString::fromStdString( getName() )
+           << "(" << getWordCount() << " headwords)";
 }
 
 void BtreeDictionary::getArticleText( uint32_t, QString &, QString & ) {}

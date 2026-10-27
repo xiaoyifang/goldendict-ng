@@ -26,6 +26,7 @@
 #include "translatebox.hh"
 #include "dictheadwords.hh"
 #include "fulltextsearch.hh"
+#include "headwordscache.hh"
 #include "base_type.hh"
 #include "hotkey/hotkeywrapper.hh"
 #include "resourceschemehandler.hh"
@@ -182,6 +183,9 @@ private:
   DictHeadwords * headwordsDlg;
 
   FTS::FtsIndexing ftsIndexing;
+
+  /// Background headword cache builder -- mirrors FtsIndexing for .hwcache files
+  HeadwordCache::HeadwordIndexing headwordIndexing;
 
   QTimer ftsRestartTimer;       // Timer to delay FTS indexing restart after state change
   bool ftsStateChanged = false; // Track if FTS state was changed in DictInfo
