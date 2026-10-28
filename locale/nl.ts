@@ -3276,24 +3276,12 @@ for all program&apos;s network requests.</source>
       <translation>Deck:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Woord</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Woordenboek velden...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Tekstveld</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Definitie velden...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Zin</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3564,6 +3552,18 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Wanneer ingeschakeld, openen websitewoordenboeken in hun eigen tabblad in plaats van ingebed te zijn in de artikelweergave. Dit voorkomt beperkingen in de indeling van iframes en scrollen, en schakelt de per-woordenboek-kolom Script in het dialoogvenster Woordenboeken in.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Woord:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Tekst:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Zin:</translation>
     </message>
   </context>
   <context>
