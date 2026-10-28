@@ -3274,24 +3274,12 @@ for all program&apos;s network requests.</source>
       <translation>デッキ:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>単語</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>語彙フィールド...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>テキスト</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>定義フィールド...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>センテンス</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3560,6 +3548,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>有効化すると、ウェブサイトの辞書は記事ビューに埋め込まれるのではなく、独立したタブで開きます。これによりiframeレイアウトやスクロールの制限を回避し、「辞書」ダイアログで辞書ごとのスクリプト欄が有効になります。</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>単語:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>テキスト:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>文:</translation>
     </message>
   </context>
   <context>
