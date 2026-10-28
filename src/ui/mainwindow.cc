@@ -1368,7 +1368,7 @@ void MainWindow::commitData()
     // main index ("<id>"), headword caches ("<id>_HW_x" and their ".progress"/
     // "_data.tmp" scratch files), "<id>_FTS_x.stale" reindex markers etc.
     // Those are valid data and must survive the cleanup.
-    auto belongsToLoadedDict = [ &dictMap ]( const QString & fileName ) {
+    auto belongsToLoadedDict = [ this ]( const QString & fileName ) {
       const std::string name = fileName.toStdString();
       if ( dictMap.contains( name ) ) {
         return true;
