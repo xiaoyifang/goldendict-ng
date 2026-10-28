@@ -3275,24 +3275,12 @@ for all program&apos;s network requests.</source>
       <translation>갑판:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>단어</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>어휘 분야...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>텍스트</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>정의 필드...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>문장</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3563,6 +3551,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>활성화되면 웹사이트 사전이 기사 뷰에 삽입되지 않고 자체 탭에서 열립니다. 이로 인해 iframe 레이아웃과 스크롤 제한을 피하고, 사전 대화상자에서 각 사전별 스크립트 열이 활성화됩니다.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>단어:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>본문:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>문장:</translation>
     </message>
   </context>
   <context>

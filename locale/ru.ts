@@ -3281,24 +3281,12 @@ for all program&apos;s network requests.</source>
       <translation>Колода:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Слово</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Поле словаря...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Текст</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Поле определения...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Предложение</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3573,6 +3561,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>При включении веб-словари открываются в отдельной вкладке, а не встроены в представление статей. Это избегает ограничений по макет iframe и прокрутке, а также открывает столбец Script по словару в диалоговом диалоге Словари.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Слово:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Текст:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Предложение:</translation>
     </message>
   </context>
   <context>

@@ -3289,24 +3289,12 @@ para todos los accesos a la red del programa.</translation>
       <translation>Cubierta:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Palabra</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Campo de vocabulario...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Texto</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Campo de definición...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Oración</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3578,6 +3566,18 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Cuando está habilitado, los diccionarios de sitios web se abren en su propia pestaña en lugar de estar incrustados en la vista del artículo. Esto evita las limitaciones de diseño y desplazamiento de iframe, y habilita la columna de script por diccionario en el diálogo de Diccionarios.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation type="unfinished">Word:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation type="unfinished">Text:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation type="unfinished">Sentence:</translation>
     </message>
   </context>
   <context>

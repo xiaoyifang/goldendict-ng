@@ -3273,24 +3273,12 @@ servidor proxy por todas las solicitudes de red del programa.</translation>
       <translation>Carpeta:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Rimay</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Simikuna yachay pampa...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Qillqa</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Definición nisqa pampa...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Rimay</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3561,6 +3549,18 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Kacharisqa kaptinqa, web qillqarinakuna sapankama tabpi kicharinkun, manam qillqa rikuchinapi churasqa kaspankuchu. Kaywanqa iframe ruwaypa hinaspa purichiy hark'aykuna hark'asqa kanku, hinaspa sapanka qillqarinapaq Script nisqa siq'i Qillqarinakuna Rimarinapi kacharisqa kachkan.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation type="unfinished">Word:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation type="unfinished">Text:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation type="unfinished">Sentence:</translation>
     </message>
   </context>
   <context>

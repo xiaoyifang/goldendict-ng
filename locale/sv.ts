@@ -3277,24 +3277,12 @@ förfrågningar.</translation>
       <translation>Däck:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Ord</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Ordförrådsfältet...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Text</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Definition fält...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Mening</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3568,6 +3556,18 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>När de är aktiverade öppnas webbplatsordböcker i en egen flik istället för att vara inbäddade i artikelvyn. Detta undviker begränsningar i iframe-layout och scrollning och aktiverar kolumnen Script per ordbok i dialogen för ordböcker.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Ord:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Text:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Mening:</translation>
     </message>
   </context>
   <context>

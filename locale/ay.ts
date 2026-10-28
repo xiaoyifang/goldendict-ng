@@ -3350,24 +3350,12 @@ para todos los accesos a la red del programa.</translation>
       <translation>Imantata:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Aru</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Vocabulario ukan yapupax...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Panka</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Qhanancht’awi yapu...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Urasyuna</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3657,6 +3645,18 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Aktibata ukhaxa, internet aru qillqatanakax jupanakpachpa patatjanjaman jist'arasi, yatichäwi uñjawi taypin juch'usa uñacht'ayata ukhama jan ukata. Aka jan juch'usa markachawi ukat muytayaña jark'anakaru chhaqaya, ukat Aru Qillqatanaka dialogon mayat mayaru Qillqawi qillqa qalltawa.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Aru:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Panka:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Urasyuna:</translation>
     </message>
   </context>
   <context>

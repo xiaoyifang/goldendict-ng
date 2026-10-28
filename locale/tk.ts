@@ -3276,24 +3276,12 @@ for all program&apos;s network requests.</source>
       <translation>Paluba:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Söz</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Sözlük meýdany ...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Tekst</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Kesgitleme meýdany ...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Jümle</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3566,6 +3554,18 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Web-saýtyň sözlükleri makala görnüşine gömülen däl-de, öz sekmesinde açylýar. Bu iframe düzümi we kaydırma çäklendirmelerinden gaça durýar we sözlükler dialogynda her sözlük üçin Script sütünini açýar.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Söz:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Tekst:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Sözlem:</translation>
     </message>
   </context>
   <context>

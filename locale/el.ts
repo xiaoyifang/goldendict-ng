@@ -3278,24 +3278,12 @@ for all program&apos;s network requests.</source>
       <translation>Τράπουλα:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Λέξη</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Πεδίο λεξιλογίου...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Κείμενο</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Πεδίο ορισμού...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Πρόταση</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3568,6 +3556,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Όταν είναι ενεργοποιημένα, τα λεξικά τοποθεσιών Web ανοίγουν στη δική τους καρτέλα αντί να ενσωματώνονται στην προβολή άρθρου. Με αυτόν τον τρόπο αποφεύγονται οι περιορισμοί διάταξης iframe και κύλισης και ενεργοποιείται η στήλη Δέσμη ενεργειών ανά λεξικό στο παράθυρο διαλόγου Λεξικά.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Λέξη:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Κείμενο:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Πρόταση:</translation>
     </message>
   </context>
   <context>

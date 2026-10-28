@@ -3277,24 +3277,12 @@ por ĉiuj retaj petoj de la programo.</translation>
       <translation>Ferdeko:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Vorto</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Vortfara kampo...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Teksto</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Difina kampo...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Frazo</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3567,6 +3555,18 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Kiam ebligite, retejaj vortaroj malfermiĝas en sia propra langeto anstataŭ esti enkonstruitaj en la artikola vido. Ĉi tio evitas kadrajn aranĝajn kaj rulajn limigojn, kaj ebligas la Skriptan kolumnon por ĉiu vortaro en la dialogujo de Vortaroj.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Vorto:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Teksto:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Frazo:</translation>
     </message>
   </context>
   <context>

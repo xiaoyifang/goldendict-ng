@@ -3276,24 +3276,12 @@ for all program&apos;s network requests.</source>
       <translation>ظهر السفينة:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>كلمة</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>مجال المفردات ...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>نص</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>مجال التعريف...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>جملة</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3565,6 +3553,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>عند تفعيلها، تفتح قواميس المواقع في تبويب خاص بها بدلا من أن تكون مدمجة في عرض المقالة. هذا يتجنب قيود تخطيط iframe والتمرير، ويمكن من عمود السكريبت لكل قاموس في حوار القواميس.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>الكلمة:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>النص:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>الجملة:</translation>
     </message>
   </context>
   <context>

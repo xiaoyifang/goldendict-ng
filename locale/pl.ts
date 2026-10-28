@@ -3274,24 +3274,12 @@ for all program&apos;s network requests.</source>
       <translation>Talia:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Słowo</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Pole słownika...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Tekst</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Pole definicji...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Zdanie</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3565,6 +3553,18 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Po włączeniu słowniki stron internetowych otwierają się w osobnej zakładce, zamiast być osadzone w widoku artykułu. Pozwala to uniknąć ograniczeń układu i przewijania w ramce iframe, a także umożliwia użycie kolumny Script dla słownika w dialogu słownikowym.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Słowo:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Tekst:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Zdanie:</translation>
     </message>
   </context>
   <context>

@@ -3270,24 +3270,12 @@ pre všetky sieťové požiadavky programu.</translation>
       <translation>Paluba:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Slovo</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Oblasť slovnej zásoby...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Text</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Definičné pole...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Veta</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3558,6 +3546,18 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Keď sú zapnuté, webové slovníky sa otvárajú vo vlastnej karte namiesto toho, aby boli vložené priamo v zobrazení článku. Tým sa eliminuje obmedzenia rozloženia a posúvania iframe a umožňuje stĺpec Script pre slovník v dialógu slovníkov.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Slovo:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Text:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Veta:</translation>
     </message>
   </context>
   <context>

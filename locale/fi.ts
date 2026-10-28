@@ -3277,24 +3277,12 @@ kaikille ohjelmille&apos;s verkkopyyntöille.</translation>
       <translation>Pakka:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Sana</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Sanaston kenttä...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Teksti</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Määritelmän kenttä...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Lause</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3567,6 +3555,18 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Kun ne ovat käytössä, verkkosivuston sanakirjat avautuvat omalla välilehdellään artikkelinäkymän sijaan. Tämä välttää iframe-asettelun ja vieritysrajoitukset, ja mahdollistaa sanakirjakohtaisen Script-sarakkeen sanakirja-ikkunassa.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Sana:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Tekstiviesti:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Lause:</translation>
     </message>
   </context>
   <context>

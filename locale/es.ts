@@ -3276,24 +3276,12 @@ para todos los accesos a la red del programa.</translation>
       <translation>Masco:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Palabra</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Campo vocabulario...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Texto</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Campo de definición...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Frase</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3565,6 +3553,18 @@ de diccionarios Stardict, Babylon y GLS</translation>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Cuando están habilitados, los diccionarios del sitio web se abren en su propia pestaña en lugar de incrustarse en la vista de artículos. Esto evita limitaciones de diseño de iframe y desplazamiento, y permite la columna Script por diccionario en el diálogo de Diccionarios.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Word:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Texto:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Frase:</translation>
     </message>
   </context>
   <context>

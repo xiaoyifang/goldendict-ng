@@ -3274,24 +3274,12 @@ for all program&apos;s network requests.</source>
       <translation>عرشه:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>کلمه</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>رشته واژگان ...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>متن</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>فیلد تعریف ...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>جمله</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3563,6 +3551,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>وقتی فعال باشند، دیکشنری های وب سایت در تب خود باز می شوند و در نمای مقاله جاسازی نمی شوند. این کار محدودیت های چیدمان iframe و اسکرول را حذف می کند و ستون Script را در دیالوگ دیکشنری فعال می کند.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>کلمه:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>متن:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>جمله:</translation>
     </message>
   </context>
   <context>

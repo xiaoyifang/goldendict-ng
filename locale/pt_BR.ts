@@ -3282,24 +3282,12 @@ para todos os acessos à rede pelo programa.</translation>
       <translation>Baralho:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Palavra</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Campo de vocabulário...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>texto</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Campo de definição...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Frase</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3571,6 +3559,18 @@ dos dicionários Stardict, Babylon e GLS</translation>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Quando ativados, os dicionários do site abrem em sua própria aba em vez de serem incorporados na visualização do artigo. Isso evita limitações de layout iframe e rolagem, e permite a coluna Script por dicionário no diálogo Dicionários.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Palavra:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Texto:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Frase:</translation>
     </message>
   </context>
   <context>
