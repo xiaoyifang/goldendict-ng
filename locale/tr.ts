@@ -3275,24 +3275,12 @@ proxy sunucusu kullanmak istiyorsanız etkinleştirin.</translation>
       <translation>Güverte:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Kelime</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Kelime alanı...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Metin</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>tanım alanı...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Cümle</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3563,6 +3551,18 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Etkinleştirildiğinde, web sitesi sözlükleri makale görünümüne gömülü olmak yerine kendi sekmelerinde açılır. Bu, iframe düzeni ve kaydırma kısıtlamalarını önler ve Sözlükler diyalogunda sözlük başına Script sütununu etkinleştirir.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Kelime:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Metin:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Cümle:</translation>
     </message>
   </context>
   <context>
