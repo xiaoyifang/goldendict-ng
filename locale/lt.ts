@@ -3277,24 +3277,12 @@ užklausoms naudoti įgaliotąjį serverį.</translation>
       <translation>Denis:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Žodis</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Žodyno laukas...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Tekstas</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Apibrėžimo laukas...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Sakinys</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3564,6 +3552,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Įjungus, interneto svetainių žodynai atsidaro atskiroje kortelėje, o ne įterpiami į straipsnio peržiūrą. Tai leidžia išvengti iframe išdėstymo ir slinkimo apribojimų, taip pat leidžia žodyno Script stulpelį Dictionaries dialoge.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Žodis:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>SMS žinutė:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Sakinys:</translation>
     </message>
   </context>
   <context>
