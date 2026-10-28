@@ -3276,24 +3276,12 @@ pro všechny síťové požadavky programu.</translation>
       <translation>Balíček:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Slovo</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Pole slovníku...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Text</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Pole definice...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Věta</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3565,6 +3553,18 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Po zapnutí se webové slovníky otevírají ve vlastní záložce místo toho, aby byly vloženy přímo v článku zobrazené. Tím se eliminuje omezení rozložení a posouvání iframe a umožňuje se v dialogu slovníků používat sloupec Script pro slovník.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Slovo:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Text:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Věta:</translation>
     </message>
   </context>
   <context>
