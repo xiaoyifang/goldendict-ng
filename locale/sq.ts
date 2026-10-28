@@ -3271,24 +3271,12 @@ për tërë kërkesat e programit për internet.</translation>
       <translation>Kuvertë:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>fjalë</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Fusha e fjalorit...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Teksti</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Fusha e përkufizimit...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Fjali</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3559,6 +3547,18 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Kur aktivizohet, fjalorët e faqeve të internetit hapen në skedën e tyre në vend që të jenë të integruar në pamjen e artikullit. Kjo shmang kufizimet e paraqitjes së iframe dhe lëvizjes, dhe aktivizon kolonën Script për çdo fjalor në dialogun e Fjalorëve.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Fjala:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Teksti:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Fjalia:</translation>
     </message>
   </context>
   <context>
