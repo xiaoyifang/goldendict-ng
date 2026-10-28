@@ -3268,24 +3268,12 @@ for all program&apos;s network requests.</source>
       <translation>牌组：</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>单词</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>对应 Anki 里面的变量名，如设置 word，则用{{Word}}引用</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>释义</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>释义的变量字段</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>句子</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3555,6 +3543,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>启用后，网站词典会在独立标签页中打开，而非嵌入文章视图中。这避免了 iframe 布局和滚动限制，并在词典对话框中启用了每个词典的 Script 栏。</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>词：</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>文本：</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>句子：</translation>
     </message>
   </context>
   <context>
