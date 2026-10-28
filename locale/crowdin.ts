@@ -3245,23 +3245,11 @@ for all program&apos;s network requests.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Word</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Vocabulary field...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Text</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Definition field...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Sentence</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3526,6 +3514,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Word:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sentence:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
