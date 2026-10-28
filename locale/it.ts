@@ -3277,24 +3277,12 @@ per ogni programma della rete che lo richieda.</translation>
       <translation>Mazzo:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Parola</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Campo di vocabolario...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Testo</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Campo di definizione...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Frase</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3565,6 +3553,18 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Quando abilitati, i dizionari dei siti web si aprono in una scheda a parte invece di essere incorporati nella vista articolo. Questo evita limitazioni di layout iframe e scorrimento, e abilita la colonna Script per dizionario nella finestra di dialogo Dizionari.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Parola:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Testo:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Frase:</translation>
     </message>
   </context>
   <context>
