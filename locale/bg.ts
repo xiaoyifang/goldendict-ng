@@ -3275,24 +3275,12 @@ for all program&apos;s network requests.</source>
       <translation>Палуба:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Слово</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Речниково поле...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Текст</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Дефиниционно поле...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Изречение</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3564,6 +3552,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Когато са активирани, речниците на уебсайтовете се отварят в отделен раздел, вместо да бъдат вградени в изгледа на статията. Това избягва ограниченията за оформление на iframe и превъртането, и активира колоната Script за всеки речник в диалога Речници.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Дума:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Текст:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Изречение:</translation>
     </message>
   </context>
   <context>
