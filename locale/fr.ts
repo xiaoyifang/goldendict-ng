@@ -3275,24 +3275,12 @@ pour toutes les requêtes passant par le réseau.</translation>
       <translation>Deck :</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Mot</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Champ de vocabulaire...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Texte du texte</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Champ de définition...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Phrase</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3564,6 +3552,18 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Lorsqu’ils sont activés, les dictionnaires du site s’ouvrent dans leur propre onglet au lieu d’être intégrés dans la vue article. Cela évite la mise en page iframe et les limitations de défilement, et permet la colonne Script par dictionnaire dans la boîte de dialogue Dictionnaires.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Mot :</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Texte :</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Phrase :</translation>
     </message>
   </context>
   <context>
