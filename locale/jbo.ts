@@ -3275,24 +3275,12 @@ for all program&apos;s network requests.</translation>
       <translation>Deck:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Word</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Vocabulary field...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Text</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Definition field...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Sentence</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3565,6 +3553,18 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>lo ka zifre cu rinka lo du'u lo web cukta cu selcu'e lo tabli ce'o na sefta lo lisri skepi. ti cu fanza lo re'iskafi selkai .e lo galri tcana. gi'e jmina lo skriptu stani be roi cukta fi lo cukta bangu ke xusra'a.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Valsi:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Textu:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Bacru:</translation>
     </message>
   </context>
   <context>
