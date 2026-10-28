@@ -3268,24 +3268,12 @@ for all program&apos;s network requests.</source>
       <translation>牌組：</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>單字</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>字彙輸入欄</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>文字</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>定義輸入欄</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>語句</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3556,6 +3544,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>啟用後，網站字典會在獨立分頁開啟，而非嵌入文章檢視中。這避免了 iframe 版面與捲動限制，並啟用字典對話框中的每個字典腳本欄位。</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>字：</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>文字：</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>句子：</translation>
     </message>
   </context>
   <context>
