@@ -3256,24 +3256,12 @@ cho tất cả các yêu cầu mạng của chương trình.</translation>
       <translation>Deck:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Từ</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Trường từ vựng...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Chữ</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Trường định nghĩa...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Câu</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3543,6 +3531,18 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Khi được bật, các từ điển trang web sẽ mở trong tab riêng thay vì được nhúng trong chế độ xem bài viết. Điều này giúp tránh các giới hạn về bố cục iframe và việc cuộn, đồng thời kích hoạt cột Script cho từng từ điển trong hộp thoại Từ điển.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Từ:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Văn bản:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Câu:</translation>
     </message>
   </context>
   <context>
