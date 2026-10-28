@@ -1364,16 +1364,27 @@ void MainWindow::commitData()
 
     const QFileInfoList entries = dir.entryInfoList( QDir::Files | QDir::NoDotAndDotDot );
 
+    // Every file derived from a loaded dictionary starts with its id: the
+    // main index ("<id>"), headword caches ("<id>_HW_x" and their ".progress"/
+    // "_data.tmp" scratch files), "<id>_FTS_x.stale" reindex markers etc.
+    // Those are valid data and must survive the cleanup.
+    auto belongsToLoadedDict = [ this ]( const QString & fileName ) {
+      const std::string name = fileName.toStdString();
+      if ( dictMap.contains( name ) ) {
+        return true;
+      }
+      for ( auto it = dictMap.keyBegin(); it != dictMap.keyEnd(); ++it ) {
+        if ( name.compare( 0, it->size(), *it ) == 0 ) {
+          return true;
+        }
+      }
+      return false;
+    };
+
     for ( auto & file : entries ) {
       const QString fileName = file.fileName();
 
-      if ( dictMap.contains( fileName.toStdString() ) ) {
-        continue;
-      }
-
-      // Pending "Schedule for reindex" markers must survive the cleanup,
-      // otherwise the scheduled rebuild would never happen on the next start.
-      if ( fileName.endsWith( QLatin1String( ".stale" ) ) ) {
+      if ( belongsToLoadedDict( fileName ) ) {
         continue;
       }
 
