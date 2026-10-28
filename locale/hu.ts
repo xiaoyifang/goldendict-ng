@@ -3277,24 +3277,12 @@ forgalmát proxy szerveren át szeretné irányítani.</translation>
       <translation>Dekk:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Szó</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Szókincs mező...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Szöveg</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Definíció mező...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Mondat</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3566,6 +3554,18 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Ha engedélyezik, a weboldalak szótárak saját fülükön nyílnak meg, nem pedig a cikknézetben lennének beágyazva. Ez elkerüli az iframe elrendezést és a görgetés korlátozásait, és lehetővé teszi a szótáronkénti Script oszlopot a Szótárak párbeszédben.</translation>
+    </message>
+    <message>
+      <source>Word:</source>
+      <translation>Szó:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Szöveg:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Mondat:</translation>
     </message>
   </context>
   <context>
