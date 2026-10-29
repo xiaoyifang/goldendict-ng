@@ -1540,31 +1540,20 @@ Ifo::Ifo( const QString & fileName )
         return false;
       };
 
-      if ( parseValue( "bookname=", bookname ) ) {}
-      else if ( parseUint32( "wordcount=", wordcount ) ) {
-      }
-      else if ( parseUint32( "synwordcount=", synwordcount ) ) {
-      }
-      else if ( parseUint32( "idxfilesize=", idxfilesize ) ) {
-      }
-      else if ( parseUint32( "idxoffsetbits=", idxoffsetbits, true ) ) {
-      }
-      else if ( parseValue( "sametypesequence=", sametypesequence ) ) {
-      }
-      else if ( parseValue( "dicttype=", dicttype ) ) {
-      }
-      else if ( parseValue( "description=", description ) ) {
-      }
-      else if ( parseValue( "copyright=", copyright ) ) {
-      }
-      else if ( parseValue( "author=", author ) ) {
-      }
-      else if ( parseValue( "email=", email ) ) {
-      }
-      else if ( parseValue( "website=", website ) ) {
-      }
-      else if ( parseValue( "date=", date ) ) {
-      }
+      // Try to match the line against one of the known fields; unknown fields are silently ignored.
+      [[maybe_unused]] const bool parsed = parseValue( "bookname=", bookname )
+        || parseUint32( "wordcount=", wordcount )
+        || parseUint32( "synwordcount=", synwordcount )
+        || parseUint32( "idxfilesize=", idxfilesize )
+        || parseUint32( "idxoffsetbits=", idxoffsetbits, true )
+        || parseValue( "sametypesequence=", sametypesequence )
+        || parseValue( "dicttype=", dicttype )
+        || parseValue( "description=", description )
+        || parseValue( "copyright=", copyright )
+        || parseValue( "author=", author )
+        || parseValue( "email=", email )
+        || parseValue( "website=", website )
+        || parseValue( "date=", date );
     }
   }
 }

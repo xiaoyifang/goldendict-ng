@@ -27,36 +27,13 @@ function gdMakeArticleActive(newId, noEvent) {
   }
 }
 
-var overIframeId = null;
-
 function gdSelectArticle(id) {
-  var selection = globalThis.getSelection();
-  var range = document.createRange();
+  const selection = globalThis.getSelection();
+  const range = document.createRange();
   range.selectNodeContents(document.getElementById("gdfrom-" + id));
   selection.removeAllRanges();
   selection.addRange(range);
 }
-
-function processIframeMouseOut() {
-  overIframeId = null;
-  top.focus();
-}
-
-function processIframeMouseOver(newId) {
-  overIframeId = newId;
-}
-
-function processIframeClick() {
-  if (overIframeId != null) {
-    overIframeId = overIframeId.replace("gdexpandframe-", "");
-    gdMakeArticleActive(overIframeId);
-  }
-}
-
-function init() {
-  globalThis.addEventListener("blur", processIframeClick, false);
-}
-globalThis.addEventListener("load", init, false);
 
 function gdExpandOptPart(expanderId, optionalId) {
   const d1 = document.getElementById(expanderId);
@@ -157,9 +134,7 @@ function gdAttachEventHandlers() {
 
     if (dictNameElement) {
       // Get the data-gd-id attribute from the parent div
-      const articleId = dictNameElement
-        .closest(".gdarticle")
-        ?.getAttribute("data-gd-id");
+      const articleId = dictNameElement.closest(".gdarticle")?.dataset.gdId;
 
       gdExpandArticle(articleId);
 
@@ -169,9 +144,7 @@ function gdAttachEventHandlers() {
 
   function gdHandleArticleEvent(event) {
     // Get the _id attribute
-    const articleId = event.target
-      .closest(".gdarticle")
-      ?.getAttribute("data-gd-id");
+    const articleId = event.target.closest(".gdarticle")?.dataset.gdId;
     gdMakeArticleActive(articleId, false);
   }
 
@@ -179,18 +152,25 @@ function gdAttachEventHandlers() {
 }
 
 function handleIframeEvents() {
-  const iframes = document.querySelectorAll("iframe[data-gd-id]");
+  let hoveredIframe = null;
 
-  iframes.forEach((iframe) => {
-    const gdId = iframe.getAttribute("data-gd-id");
-
-    iframe.addEventListener("mouseover", function () {
-      processIframeMouseOver("gdexpandframe-" + gdId);
+  document.querySelectorAll("iframe[data-gd-id]").forEach((iframe) => {
+    iframe.addEventListener("mouseover", () => {
+      hoveredIframe = iframe;
     });
 
-    iframe.addEventListener("mouseout", function () {
-      processIframeMouseOut();
+    iframe.addEventListener("mouseout", () => {
+      hoveredIframe = null;
+      top.focus();
     });
+  });
+
+  // Clicking inside an iframe moves focus away from the top-level window.
+  // Use the blur event to activate the article the hovered iframe belongs to.
+  globalThis.addEventListener("blur", () => {
+    if (hoveredIframe) {
+      gdMakeArticleActive(hoveredIframe.dataset.gdId);
+    }
   });
 }
 
