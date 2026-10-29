@@ -371,19 +371,19 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Japanese Shinjitai</source>
-      <translation>日本新次体</translation>
+      <translation>日文新字体</translation>
     </message>
     <message>
       <source>Chinese to Japanese Shinjitai conversion</source>
-      <translation>中国向日本的Shinjitai改装</translation>
+      <translation>将中文汉字转换为日文新字体汉字</translation>
     </message>
     <message>
       <source>Chinese and Japanese Character Con&amp;version</source>
-      <translation>中文和日文字符转换</translation>
+      <translation>中文和日文汉字转换</translation>
     </message>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
-      <translation>支持简体中文、繁体中文（台湾/香港）和日文新字体字符之间的转换</translation>
+      <translation>支持简体中文、繁体中文（台湾/香港）和日文新字体汉字之间的转换</translation>
     </message>
   </context>
   <context>
@@ -3018,11 +3018,11 @@ be the last ones.</source>
     </message>
     <message>
       <source>Font</source>
-      <translation>Font</translation>
+      <translation>字体</translation>
     </message>
     <message>
       <source>Font Size</source>
-      <translation>Font Size</translation>
+      <translation>字体大小</translation>
     </message>
     <message>
       <source>Interface language</source>
