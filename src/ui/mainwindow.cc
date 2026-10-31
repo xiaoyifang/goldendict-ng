@@ -192,6 +192,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   isQuitting( false ),
   headwordsDlg( nullptr ),
   ftsIndexing( dictionaries ),
+  headwordIndexing( dictionaries ),
   ftsRestartTimer( this ), // Initialize timer with MainWindow as parent
   ftsStateChanged( false ),
   ftsDlg( nullptr ),
@@ -789,6 +790,16 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            this,
            &MainWindow::showFTSIndexingName );
 
+  // Headword-cache build progress + completion ("") display
+  connect( GlobalBroadcaster::instance(),
+           &GlobalBroadcaster::indexingHeadwordsCache,
+           this,
+           &MainWindow::showHeadwordsCacheIndexingName );
+  connect( &headwordIndexing,
+           &HeadwordCache::HeadwordIndexing::newIndexingName,
+           this,
+           &MainWindow::showHeadwordsCacheIndexingName );
+
   // When FTS state changes (from DictInfo), stop indexing and schedule restart
   connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::stopFtsIndexing, this, [ this ]() {
     qDebug() << "FTS state changed, stopping indexing and scheduling restart";
@@ -1291,6 +1302,7 @@ MainWindow::~MainWindow()
   closeHeadwordsDialog();
 
   ftsIndexing.stopIndexing();
+  headwordIndexing.stopIndexing();
 #ifndef Q_OS_MACOS
   ui.centralWidget->ungrabGesture( Gestures::GDPinchGestureType );
   ui.centralWidget->ungrabGesture( Gestures::GDSwipeGestureType );
@@ -1816,6 +1828,8 @@ void MainWindow::makeDictionaries()
 
   ftsIndexing.stopIndexing();
   ftsIndexing.clearDictionaries();
+  headwordIndexing.stopIndexing();
+  headwordIndexing.setDictionaries( dictionaries );
 
   loadDictionaries( this, cfg, dictionaries, dictNetMgr, false );
 
@@ -1829,6 +1843,8 @@ void MainWindow::makeDictionaries()
 
   ftsIndexing.setDictionaries( dictionaries );
   ftsIndexing.doIndexing();
+  headwordIndexing.setDictionaries( dictionaries );
+  headwordIndexing.doIndexing();
 
   updateStatusLine();
   updateGroupList( false );
@@ -2440,6 +2456,7 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
     if ( dicts.areDictionariesChanged() || dicts.areGroupsChanged() ) {
       ftsIndexing.stopIndexing();
       ftsIndexing.clearDictionaries();
+      headwordIndexing.stopIndexing();
       // Set muted dictionaries from old groups
       for ( auto & group : newCfg.groups ) {
         unsigned id = group.id;
@@ -2469,6 +2486,8 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
 
       ftsIndexing.setDictionaries( dictionaries );
       ftsIndexing.doIndexing();
+      headwordIndexing.setDictionaries( dictionaries );
+      headwordIndexing.doIndexing();
     }
   }
 
@@ -4431,6 +4450,13 @@ void MainWindow::showDictionaryHeadwords( Dictionary::Class * dict )
     else {
       headwordsDlg->setup( dict );
     }
+    // Refresh the model when the background cache build finishes,
+    // in case the dialog was opened before the cache was ready.
+    QObject::disconnect( &headwordIndexing, nullptr, headwordsDlg, nullptr );
+    connect( &headwordIndexing,
+             &HeadwordCache::HeadwordIndexing::indexingFinished,
+             headwordsDlg,
+             &DictHeadwords::refreshModelCache );
     headwordsDlg->show();
   }
 }
@@ -4623,6 +4649,16 @@ void MainWindow::showFTSIndexingName( const QString & name )
   }
   else {
     mainStatusBar->setBackgroundMessage( tr( "Now indexing for full-text search: " ) + name );
+  }
+}
+
+void MainWindow::showHeadwordsCacheIndexingName( const QString & name )
+{
+  if ( name.isEmpty() ) {
+    mainStatusBar->setBackgroundMessage( QString() );
+  }
+  else {
+    mainStatusBar->setBackgroundMessage( tr( "Now building headwords cache: " ) + name );
   }
 }
 

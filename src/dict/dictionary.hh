@@ -297,6 +297,10 @@ protected:
   bool dictionaryIconLoaded;
   bool can_FTS;
   QAtomicInt FTS_index_completed;
+  // headword cache: mmap'd sorted file for fast headword access
+  QAtomicInt HW_cache_completed;
+  long indexedHeadwordsCount = 0;
+  long lastHWProgress        = 0;
   bool synonymSearchEnabled;
   string dictionaryName;
   string originalDictionaryName;
@@ -335,7 +339,7 @@ public:
   virtual void deferredInit();
 
   /// Returns the dictionary's id.
-  string getId() noexcept
+  string getId() const noexcept
   {
     return id;
   }
@@ -510,6 +514,53 @@ public:
   /// Make index for full-text search
   virtual void makeFTSIndex( QAtomicInt & ) {}
 
+  /// Dictionary have headword cache file (mmap'd sorted headwords)
+  bool haveHeadwordsCache()
+  {
+    return Utils::AtomicInt::loadAcquire( HW_cache_completed ) != 0;
+  }
+
+  /// Build headword cache file. Default impl is a no-op.
+  /// BtreeDictionary overrides this to write a .hwcache binary file.
+  virtual void makeHeadwordsCache( QAtomicInt & ) {}
+
+  /// Returns the path to the headword cache file.
+  /// BtreeDictionary sets this; base Class returns empty.
+  virtual std::string headwordsCachePath() const
+  {
+    return {};
+  }
+
+  /// Progress for headword cache building, 0-100
+  int getHeadwordsCacheProgress()
+  {
+    if ( haveHeadwordsCache() ) {
+      return 100;
+    }
+    auto total = getWordCount();
+    if ( total == 0 ) {
+      return 0;
+    }
+    int progress = (int)indexedHeadwordsCount * 100 / total;
+    return qMin( progress, 100 );
+  }
+
+  void setIndexedHeadwordsCount( long count );
+
+  /// Called by the cache builder when the headword cache file has been
+  /// successfully written and validated. Sets HW_cache_completed flag.
+  void markHeadwordsCacheCompleted()
+  {
+    HW_cache_completed.ref();
+  }
+
+  /// Whether this dictionary type can produce a headword cache
+  /// (only btree-indexed dictionaries do, ZIM/MDX/etc. override)
+  virtual bool supportsHeadwordsCache() const
+  {
+    return false;
+  }
+
   /// Create a duplicate of this dictionary instance
   /// This ensures the new instance inherits FTS state from the original
   virtual sptr< Class > duplicate()
@@ -569,6 +620,11 @@ string makeDictionaryId( const vector< string > & dictionaryFiles ) noexcept;
 bool needToRebuildIndex( const vector< string > & dictionaryFiles, const string & indexFile ) noexcept;
 
 string getFtsSuffix();
+
+/// Suffix appended to the index file path to form the headword cache path,
+/// analogous to getFtsSuffix() for full-text search.
+string getHeadwordsSuffix();
+
 /// Returns a random dictionary id useful for interactively created
 /// dictionaries.
 QString generateRandomDictionaryId();

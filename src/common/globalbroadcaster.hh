@@ -96,6 +96,9 @@ signals:
 
   void indexingDictionary( QString );
 
+  // Headword-cache build progress (distinct from full-text search indexing)
+  void indexingHeadwordsCache( QString );
+
   void websiteDictionarySignal( QString, QString, QString, bool, QString );
 
   void ftsStateChanged();

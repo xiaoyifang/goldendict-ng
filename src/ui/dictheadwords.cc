@@ -13,6 +13,7 @@
 #include <QMessageBox>
 #include <QMutexLocker>
 #include <memory>
+#include <limits>
 
 
 enum SearchType {
@@ -122,7 +123,13 @@ void DictHeadwords::setup( Dictionary::Class * dict_ )
   model->setMaxFilterResults( ui.filterMaxResult->value() );
   model->setDict( dict );
   proxy->setSourceModel( model.get() );
-  proxy->sort( 0 );
+
+  // In cache mode the source rows are already sorted (the cache file is
+  // built sorted) -- sorting the proxy over ~100k rows here costs seconds
+  // for nothing.
+  if ( !model->usingCache() ) {
+    proxy->sort( 0 );
+  }
   filterChanged();
 
   ui.autoApply->setEnabled( true );
@@ -133,6 +140,12 @@ void DictHeadwords::setup( Dictionary::Class * dict_ )
   //arbitrary number.
   bool exceedLimit = model->totalCount() > HEADWORDS_MAX_LIMIT;
   ui.filterMaxResult->setEnabled( exceedLimit );
+
+  // A disabled spinbox means "no limit" -- don't cap filter results with the
+  // stale default value. Use INT_MAX rather than 0: the legacy prefixMatch
+  // request breaks immediately on matches.size() >= maxResults, so 0 would
+  // return an empty result set.
+  model->setMaxFilterResults( exceedLimit ? ui.filterMaxResult->value() : std::numeric_limits< int >::max() );
 
   setWindowIcon( dict->getIcon() );
 
@@ -251,8 +264,14 @@ void DictHeadwords::filterChanged()
 
   model->setFilter( regExp );
 
-  proxy->setFilterRegularExpression( regExp );
-  proxy->sort( 0 );
+  // In cache mode the model is pre-sorted and does its own filtering
+  // (binary range / match list); the proxy must pass everything through.
+  // A stale proxy filter can only exist right after a legacy->cache switch,
+  // and is cleared at that transition point (refreshModelCache).
+  if ( !model->usingCache() ) {
+    proxy->setFilterRegularExpression( regExp );
+    proxy->sort( 0 );
+  }
 
   QApplication::restoreOverrideCursor();
 
@@ -282,6 +301,27 @@ void DictHeadwords::showHeadwordsNumber()
     ui.headersNumber->setText( tr( "Unique headwords total: %1, filtered(limited): %2" )
                                  .arg( QString::number( model->totalCount() ), QString::number( proxy->rowCount() ) ) );
   }
+}
+
+void DictHeadwords::refreshModelCache()
+{
+  if ( !model || !dict ) {
+    return;
+  }
+  model->refreshCache();
+
+  if ( model->usingCache() ) {
+    // Legacy->cache transition: drop any proxy filter left over from the
+    // legacy phase -- cache-mode rows are already filtered/sorted by the
+    // model itself.
+    proxy->setFilterRegularExpression( QRegularExpression() );
+  }
+
+  // Re-apply the current filter if any
+  if ( !ui.filterLine->text().isEmpty() ) {
+    filterChanged();
+  }
+  showHeadwordsNumber();
 }
 
 void DictHeadwords::exportAllWords( QProgressDialog & progress, QTextStream & out )
