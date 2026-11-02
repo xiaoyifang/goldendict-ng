@@ -524,6 +524,11 @@ bool ArticleView::fetchAnkiAudioAndSend( const QString & word,
       requestUrlPath = audioUrl.path() + "#" + audioUrl.fragment();
     }
 
+    if ( !Utils::isSafeResourceName( requestUrlPath.mid( 1 ) ) ) {
+      qWarning() << "sendToAnki: blocked unsafe audio resource path" << audioUrl;
+      return false;
+    }
+
     qDebug() << "sendToAnki: fetching audio resource for" << word << "from" << audioUrl;
 
     sptr< Dictionary::DataRequest > req = dict->getResource( requestUrlPath.mid( 1 ).toUtf8().data() );
@@ -1340,6 +1345,12 @@ void ArticleView::playAudio( const QUrl & url )
           if ( url.hasFragment() ) {
             requestUrlPath = url.path() + "#" + url.fragment();
           }
+
+          if ( !Utils::isSafeResourceName( requestUrlPath.mid( 1 ) ) ) {
+            qWarning() << "playAudio: blocked unsafe audio resource path" << url;
+            return;
+          }
+
           sptr< Dictionary::DataRequest > req = dict->getResource( requestUrlPath.mid( 1 ).toUtf8().data() );
 
           if ( !req->isFinished() ) {

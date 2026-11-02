@@ -11,6 +11,8 @@
 #include <QUrl>
 #include <QUrlQuery>
 #include <QFileInfo>
+#include <QDir>
+#include <QStringList>
 #include <QWidget>
 #include "filetype.hh"
 #include <string>
@@ -31,6 +33,44 @@ inline bool isCJKChar( ushort ch )
 
   return false;
 }
+
+/// Returns true when \a name, decoded from a custom-scheme resource URL path
+/// (with the leading slash already removed), is safe to join onto a base
+/// directory: non-empty and containing no ".." segments, treating both '/' and
+/// '\\' as separators. Leading separators are permitted, because some formats
+/// (e.g. MDict) conventionally use names like "\\img\\x.png"; such names still
+/// stay inside the base directory -- only ".." segments can escape it.
+inline bool isSafeResourceName( const QString & name )
+{
+  if ( name.isEmpty() ) {
+    return false;
+  }
+  QString normalized = name;
+  normalized.replace( QLatin1Char( '\\' ), QLatin1Char( '/' ) );
+  const QStringList segments = normalized.split( QLatin1Char( '/' ) );
+  for ( const QString & segment : segments ) {
+    if ( segment == QLatin1String( ".." ) ) {
+      return false;
+    }
+  }
+  return true;
+}
+
+/// Stricter variant of isSafeResourceName() for user files: the name must in
+/// addition be strictly relative -- no absolute paths (including Windows drive
+/// and UNC forms, which QDir::filePath() would silently honor) and no leading
+/// separators, so that "bres://user//etc/passwd" or "..%2F" style requests
+/// cannot escape the user's directory.
+inline bool isSafeUserFileName( const QString & name )
+{
+  if ( !isSafeResourceName( name ) ) {
+    return false;
+  }
+  QString normalized = name;
+  normalized.replace( QLatin1Char( '\\' ), QLatin1Char( '/' ) );
+  return !QDir::isAbsolutePath( normalized );
+}
+
 /**
  * remove right end space
  */
