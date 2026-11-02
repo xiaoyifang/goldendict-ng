@@ -3366,10 +3366,12 @@ void MainWindow::hotKeyActivated( int hk )
       return;
     }
 
-#if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
-    // Delay clipboard handling on Linux to let active app finish handling Ctrl+C
-    // Workaround for Ctrl+C+C hotkey issue where clipboard may be empty
-    static constexpr int clipboardDelayMs = 10;
+#if !defined( Q_OS_MACOS )
+    // Delay clipboard handling on Linux and Windows to let the active app
+    // finish handling Ctrl+C. With a single-key clipboard hotkey (e.g. plain
+    // Ctrl+C) the lookup is triggered before the app has updated the
+    // clipboard, which would show the previously copied word instead.
+    static constexpr int clipboardDelayMs = 100;
     QTimer::singleShot( clipboardDelayMs, scanPopup, &ScanPopup::translateWordFromPrimaryClipboard );
 #else
     scanPopup->translateWordFromPrimaryClipboard();
