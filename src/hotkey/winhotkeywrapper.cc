@@ -24,12 +24,15 @@ static LRESULT CALLBACK lowLevelKeyboardProc( int code, WPARAM wParam, LPARAM lP
   if ( code == HC_ACTION && llHookOwner ) {
     const KBDLLHOOKSTRUCT * info = reinterpret_cast< const KBDLLHOOKSTRUCT * >( lParam );
     bool swallow                 = false;
-    if ( wParam == WM_KEYDOWN || wParam == WM_SYSKEYDOWN )
+    if ( wParam == WM_KEYDOWN || wParam == WM_SYSKEYDOWN ) {
       swallow = llHookOwner->llKeyDown( info->vkCode );
-    else if ( wParam == WM_KEYUP || wParam == WM_SYSKEYUP )
+    }
+    else if ( wParam == WM_KEYUP || wParam == WM_SYSKEYUP ) {
       swallow = llHookOwner->llKeyUp( info->vkCode );
-    if ( swallow )
+    }
+    if ( swallow ) {
       return 1;
+    }
   }
   return CallNextHookEx( nullptr, code, wParam, lParam );
 }
@@ -227,8 +230,9 @@ bool HotkeyWrapper::isPassThroughHotkey( const HotkeyStruct & hs ) const
 
 void HotkeyWrapper::installKeyboardHook()
 {
-  if ( keyboardHook )
+  if ( keyboardHook ) {
     return;
+  }
 
   HHOOK hook = SetWindowsHookEx( WH_KEYBOARD_LL, lowLevelKeyboardProc, GetModuleHandle( nullptr ), 0 );
   if ( hook ) {
@@ -240,10 +244,11 @@ void HotkeyWrapper::installKeyboardHook()
 void HotkeyWrapper::removeKeyboardHook()
 {
   if ( keyboardHook ) {
-    UnhookWindowsHookEx( ( HHOOK )keyboardHook );
+    UnhookWindowsHookEx( (HHOOK)keyboardHook );
     keyboardHook = nullptr;
-    if ( llHookOwner == this )
+    if ( llHookOwner == this ) {
       llHookOwner = nullptr;
+    }
   }
   state2       = false;
   swallowKeyUp = false;
@@ -252,24 +257,33 @@ void HotkeyWrapper::removeKeyboardHook()
 bool HotkeyWrapper::llKeyDown( quint32 vk )
 {
   quint32 mod = 0;
-  if ( GetAsyncKeyState( VK_CONTROL ) & 0x8000 )
+  if ( GetAsyncKeyState( VK_CONTROL ) & 0x8000 ) {
     mod |= MOD_CONTROL;
-  if ( GetAsyncKeyState( VK_MENU ) & 0x8000 )
+  }
+  if ( GetAsyncKeyState( VK_MENU ) & 0x8000 ) {
     mod |= MOD_ALT;
-  if ( GetAsyncKeyState( VK_SHIFT ) & 0x8000 )
+  }
+  if ( GetAsyncKeyState( VK_SHIFT ) & 0x8000 ) {
     mod |= MOD_SHIFT;
-  if ( ( GetAsyncKeyState( VK_LWIN ) | GetAsyncKeyState( VK_RWIN ) ) & 0x8000 )
+  }
+  if ( ( GetAsyncKeyState( VK_LWIN ) | GetAsyncKeyState( VK_RWIN ) ) & 0x8000 ) {
     mod |= MOD_WIN;
+  }
 
   if ( state2 ) { // waiting for the 2nd key of a sequence
 
     if ( state2waiter.key2 == vk && state2waiter.modifier == mod ) {
-      state2       = false;
-      swallowKeyUp = true;
-      swallowVk    = vk;
+      state2           = false;
+      swallowKeyUp     = true;
+      swallowVk        = vk;
       const int handle = state2waiter.handle;
       // Notify asynchronously: the hook procedure must return promptly.
-      QMetaObject::invokeMethod( this, [ this, handle ]() { emit hotkeyActivated( handle ); }, Qt::QueuedConnection );
+      QMetaObject::invokeMethod(
+        this,
+        [ this, handle ]() {
+          emit hotkeyActivated( handle );
+        },
+        Qt::QueuedConnection );
       return true; // Swallow the 2nd key of the sequence.
     }
 
@@ -300,7 +314,12 @@ bool HotkeyWrapper::llKeyDown( quint32 vk )
       if ( hs.key2 == 0 ) {
         // Plain copy key: let it reach the focused application untouched.
         const int handle = hs.handle;
-        QMetaObject::invokeMethod( this, [ this, handle ]() { emit hotkeyActivated( handle ); }, Qt::QueuedConnection );
+        QMetaObject::invokeMethod(
+          this,
+          [ this, handle ]() {
+            emit hotkeyActivated( handle );
+          },
+          Qt::QueuedConnection );
         return false;
       }
 
