@@ -5,6 +5,7 @@
   #include <windows.h>
   #include <QWidget>
   #include <QTimer>
+  #include <QDebug>
 
 /// Implementation is pretty much using RegisterHotKey & UnregisterHotKey
 /// https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-registerhotkey
@@ -238,6 +239,10 @@ void HotkeyWrapper::installKeyboardHook()
   if ( hook ) {
     keyboardHook = hook;
     llHookOwner  = this;
+    qDebug() << "Hotkey: pass-through keys are monitored via WH_KEYBOARD_LL hook (no RegisterHotKey, no SendInput)";
+  }
+  else {
+    qWarning() << "Hotkey: WH_KEYBOARD_LL hook installation failed, falling back to RegisterHotKey + SendInput";
   }
 }
 
@@ -277,6 +282,7 @@ bool HotkeyWrapper::llKeyDown( quint32 vk )
       swallowKeyUp     = true;
       swallowVk        = vk;
       const int handle = state2waiter.handle;
+      qDebug( "Hotkey: 2nd key of sequence detected via LL hook, activating (handle=%d)", handle );
       // Notify asynchronously: the hook procedure must return promptly.
       QMetaObject::invokeMethod(
         this,
@@ -313,6 +319,7 @@ bool HotkeyWrapper::llKeyDown( quint32 vk )
 
       if ( hs.key2 == 0 ) {
         // Plain copy key: let it reach the focused application untouched.
+        qDebug( "Hotkey: plain copy key passed through via LL hook (handle=%d)", hs.handle );
         const int handle = hs.handle;
         QMetaObject::invokeMethod(
           this,
@@ -325,6 +332,7 @@ bool HotkeyWrapper::llKeyDown( quint32 vk )
 
       // First key of a compound sequence: pass it through (so the application
       // still performs its copy) and start waiting for the 2nd key.
+      qDebug( "Hotkey: 1st key of sequence passed through via LL hook, waiting for 2nd key (handle=%d)", hs.handle );
       state2       = true;
       state2waiter = hs;
       QTimer::singleShot( 500, this, &HotkeyWrapper::waitKey2 );
