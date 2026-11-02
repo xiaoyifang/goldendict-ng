@@ -20,7 +20,7 @@ using std::map;
 using std::pair;
 
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
   #include "macos/macmouseover.hh"
   #define MouseOver MacMouseOver
 #endif
@@ -340,7 +340,7 @@ ScanPopup::ScanPopup( QWidget * parent,
     updateBackForwardButtons();
   } );
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
   connect( &MouseOver::instance(), &MouseOver::hovered, this, &ScanPopup::handleInputWord );
 #endif
 
@@ -352,7 +352,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   mouseGrabPollTimer.setSingleShot( false );
   mouseGrabPollTimer.setInterval( 10 );
   connect( &mouseGrabPollTimer, &QTimer::timeout, this, &ScanPopup::mouseGrabPoll );
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
   MouseOver::instance().setPreferencesPtr( &( cfg.preferences ) );
 #endif
   ui.goBackButton->setEnabled( false );

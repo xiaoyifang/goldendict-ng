@@ -27,7 +27,7 @@
   #include <QAbstractNativeEventFilter>
 #endif
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
   #import <Carbon/Carbon.h>
 #endif
 
@@ -48,7 +48,7 @@ struct HotkeyStruct
   quint32 modifier = 0;
   int handle       = 0;
   int id           = 0;
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
   EventHotKeyRef hkRef  = nullptr;
   EventHotKeyRef hkRef2 = nullptr;
 #endif
@@ -123,7 +123,7 @@ private:
   bool isPassThroughHotkey( const HotkeyStruct & hs ) const;
 #endif
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 
 private:
   void sendCmdC();

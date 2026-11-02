@@ -57,7 +57,7 @@
 #include "config.hh"
 #include "globalregex.hh"
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
   #include "macos/mac_app_activation.hh"
   #include "macos/macmouseover.hh"
 #endif
@@ -259,7 +259,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   ui.setupUi( this );
 
   // Set own gesture recognizers
-#ifndef Q_OS_MAC
+#ifndef Q_OS_MACOS
   Gestures::registerRecognizers();
 #endif
   // use our own, custom statusbar
@@ -851,7 +851,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // Create tab list menu
   createTabList();
 
-#if defined( Q_OS_MAC )
+#if defined( Q_OS_MACOS )
   defaultInterfaceStyle = "Fusion";
 #else
   defaultInterfaceStyle = QApplication::style()->name();
@@ -913,7 +913,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
       enableScanningAction->setIcon( QIcon( ":/icons/clipboard.svg" ) );
     }
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
     if ( !MacMouseOver::isAXAPIEnabled() ) {
       mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000, QPixmap( ":/icons/error.svg" ) );
     }
@@ -967,7 +967,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   updateStatusLine();
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
   if ( cfg.preferences.startWithScanPopupOn && !MacMouseOver::isAXAPIEnabled() ) {
     mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000, QPixmap( ":/icons/error.svg" ) );
   }
@@ -1184,7 +1184,7 @@ void MainWindow::clipboardChange( QClipboard::Mode m )
     // Use delay show to prevent multiple popups while selection in progress
     scanPopup->selectionDelayTimer.start();
   }
-#elif defined( Q_OS_MAC )
+#elif defined( Q_OS_MACOS )
   scanPopup->translateWord( clipboardListener->text() );
 #else
   scanPopup->translateWordFromPrimaryClipboard();
@@ -3278,7 +3278,7 @@ void MainWindow::toggleMainWindow( bool ensureShow )
     // On macOS, minimizing triggers the accessory-mode transition when the
     // user has chosen not to keep a Dock icon in the background.
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
     showMinimized();
 #else
     if ( cfg.preferences.enableTrayIcon )

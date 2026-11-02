@@ -38,7 +38,7 @@ using GD_QApplication = QtSingleApplication;
 #endif
 
 #if defined( USE_BREAKPAD )
-  #if defined( Q_OS_MAC )
+  #if defined( Q_OS_MACOS )
     #include "client/mac/handler/exception_handler.h"
   #elif defined( Q_OS_WIN32 )
     #include "client/windows/handler/exception_handler.h"
@@ -63,7 +63,7 @@ bool callback( const wchar_t * dump_path,
   return succeeded;
 }
   #endif
-  #ifdef Q_OS_MAC
+  #ifdef Q_OS_MACOS
 bool callback( const char * dump_dir, const char * minidump_id, void * context, bool succeeded )
 {
   if ( succeeded ) {
@@ -266,7 +266,7 @@ int main( int argc, char ** argv )
   }
 #endif
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
   setenv( "LANG", "en_US.UTF-8", 1 );
 #endif
 
@@ -323,7 +323,7 @@ int main( int argc, char ** argv )
                                         callback,
                                         NULL,
                                         google_breakpad::ExceptionHandler::HANDLER_ALL );
-  #elif defined( Q_OS_MAC )
+  #elif defined( Q_OS_MACOS )
 
   google_breakpad::ExceptionHandler eh( appDirPath.toStdString(), 0, callback, 0, true, NULL );
 

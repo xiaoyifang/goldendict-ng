@@ -2351,7 +2351,7 @@ QString getOpenCCDir() noexcept
     return "opencc";
   else
     return QCoreApplication::applicationDirPath() + "/opencc";
-  #elif defined( Q_OS_MAC )
+  #elif defined( Q_OS_MACOS )
   QString path = QCoreApplication::applicationDirPath() + "/opencc";
   if ( QDir( path ).exists() ) {
     return path;
