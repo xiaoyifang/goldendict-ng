@@ -278,7 +278,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 #if defined( Q_OS_WIN )
   ui.winKey->hide();
 #else
-  #ifdef Q_OS_MAC
+  #ifdef Q_OS_MACOS
   ui.altKey->setText( "Opt" );
   ui.winKey->setText( "Ctrl" );
   ui.ctrlKey->setText( "Cmd" );

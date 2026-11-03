@@ -13,7 +13,7 @@
   #include "epwing_charmap.hh"
   #include "htmlescape.hh"
   #include "iconv.hh"
-  #if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
+  #if defined( Q_OS_WIN32 ) || defined( Q_OS_MACOS )
     #define _FILE_OFFSET_BITS 64
   #endif
 

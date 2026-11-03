@@ -1014,7 +1014,7 @@ bool ArticleView::handleF3( QObject * /*obj*/, QEvent * ev )
 
 bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
 {
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 
   if ( ev->type() == QEvent::NativeGesture ) {
     qDebug() << "it's a Native Gesture!";

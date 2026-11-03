@@ -11,7 +11,7 @@
 #include <string>
 #include <vector>
 
-#if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
+#if defined( Q_OS_WIN32 ) || defined( Q_OS_MACOS )
   #define _FILE_OFFSET_BITS 64
 #endif
 
