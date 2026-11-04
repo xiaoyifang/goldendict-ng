@@ -2675,6 +2675,10 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
       <source>Open in &amp;External Browser</source>
       <translation>Apri e Browser esterno</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Ora costruendo la cache delle headwords: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
