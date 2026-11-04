@@ -1399,8 +1399,8 @@ void MainWindow::commitData()
     // a single bad session, only remove files that have not been touched
     // recently; genuine orphans (dictionaries deleted long ago) will still be
     // cleaned up once they age past the threshold.
-    const QDateTime now          = QDateTime::currentDateTime();
-    const int keepRecentDays     = 3;
+    const QDateTime now      = QDateTime::currentDateTime();
+    const int keepRecentDays = 3;
 
     for ( auto & file : entries ) {
       const QString fileName = file.fileName();
