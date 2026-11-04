@@ -2673,6 +2673,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation>Aç &amp; Daşky Brauzer</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Indi headwords cache gurmak: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
