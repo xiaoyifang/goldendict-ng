@@ -2674,6 +2674,10 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
       <source>Open in &amp;External Browser</source>
       <translation>Otwórz przeglądarkę w i zewnętrzną</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Teraz budowanie pamięci podręcznej z nagłówkami: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
