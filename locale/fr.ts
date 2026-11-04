@@ -2674,6 +2674,10 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <source>Open in &amp;External Browser</source>
       <translation>Ouvrir dans et navigateur externe</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Maintenant, la construction d’un cache de mots-têtes : </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
