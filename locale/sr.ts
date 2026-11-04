@@ -2675,6 +2675,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation>Отвори у и спољни претраживач</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Сада гради кеш кеш за насловне речи: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
