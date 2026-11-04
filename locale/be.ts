@@ -2661,7 +2661,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Now building headwords cache: </source>
-      <translation type="unfinished">Now building headwords cache: </translation>
+      <translation>Зараз ствараецца кэш загалоўных слоў: </translation>
     </message>
   </context>
   <context>
