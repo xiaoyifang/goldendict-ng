@@ -2674,6 +2674,10 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
       <source>Open in &amp;External Browser</source>
       <translation>Nyisd meg és Külső böngésző</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Most pedig fejszavak tártárának építése: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
