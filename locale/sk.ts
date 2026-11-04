@@ -2675,6 +2675,10 @@ Pre vyhľadanie znakov &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos
       <source>Open in &amp;External Browser</source>
       <translation>Otvoriť v a externý prehliadač</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Teraz budovanie cache pre hlavičky: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
