@@ -2674,6 +2674,10 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
       <source>Open in &amp;External Browser</source>
       <translation>Malfermi en &amp;Ekstera Retumilo</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Nun konstruante kapvortan kaŝmemoron: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
