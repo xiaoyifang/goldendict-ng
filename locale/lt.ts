@@ -2674,6 +2674,10 @@ Norėdami atverti parsisiuntimo puslapį, spauskite &lt;b&gt;Parsisiųsti&lt;/b&
       <source>Open in &amp;External Browser</source>
       <translation>Atidaryti ir išorinėje naršyklėje</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Dabar kuriant headwords talpyklą: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
