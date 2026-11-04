@@ -2685,6 +2685,10 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; uso de
       <source>Open in &amp;External Browser</source>
       <translation type="unfinished">Open in &amp;External Browser</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation type="unfinished">Now building headwords cache: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
