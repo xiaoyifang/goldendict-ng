@@ -1393,10 +1393,23 @@ void MainWindow::commitData()
       return false;
     };
 
+    // A dictionary may fail to load for transient reasons (an unreachable
+    // network path, a temporarily locked file), which would make its perfectly
+    // valid index look "invalid". To avoid discarding such indexes because of
+    // a single bad session, only remove files that have not been touched
+    // recently; genuine orphans (dictionaries deleted long ago) will still be
+    // cleaned up once they age past the threshold.
+    const QDateTime now          = QDateTime::currentDateTime();
+    const int keepRecentDays     = 3;
+
     for ( auto & file : entries ) {
       const QString fileName = file.fileName();
 
       if ( belongsToLoadedDict( fileName ) ) {
+        continue;
+      }
+
+      if ( file.lastModified().isValid() && file.lastModified().daysTo( now ) < keepRecentDays ) {
         continue;
       }
 
@@ -1427,14 +1440,15 @@ void MainWindow::commitData()
         continue;
       }
 
-      const QFileInfo info( fileName );
-      const QDateTime lastModified = info.lastModified();
+      // file is relative to the index dir; lastModified() only works with the
+      // absolute path.
+      const QDateTime lastModified = file.lastModified();
 
       //if the temp directory has not been modified within 7 days,remove the temp directory.
-      if ( lastModified.addDays( 7 ) > QDateTime::currentDateTime() ) {
+      if ( !lastModified.isValid() || lastModified.addDays( 7 ) > QDateTime::currentDateTime() ) {
         continue;
       }
-      QDir d( fileName );
+      QDir d( file.absoluteFilePath() );
       d.removeRecursively();
     }
   }
