@@ -2674,6 +2674,10 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <source>Open in &amp;External Browser</source>
       <translation>Openen in &amp; Externe Browser</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Nu het opbouwen van headwords cache: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
