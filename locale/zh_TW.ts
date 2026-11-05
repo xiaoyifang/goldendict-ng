@@ -2675,7 +2675,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Now building headwords cache: </source>
-      <translation>現在正在累積頭文字的寶藏： </translation>
+      <translation>正在建立詞頭緩存：</translation>
     </message>
   </context>
   <context>
