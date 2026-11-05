@@ -54,3 +54,13 @@ flatpak override --env=GOLDENDICT_FORCE_XCB=1 io.github.xiaoyifang.goldendict_ng
 
 !!! tip "Workaround for Wayland Hotkeys"
     Users on KDE or GNOME can manually bind a custom system shortcut to a command that sends a word to GoldenDict, for example: `goldendict "selection"`.
+
+    Note that the command argument is a **literal word** — `goldendict "selection"` only looks up the word `selection` itself. To look up the **currently selected text** (like ScanPopup on X11), read the mouse primary selection with `wl-paste` and pass it to GoldenDict in scan popup mode:
+
+    ```bash
+    sh -c 'goldendict -s "$(wl-paste -p -n)"'
+    ```
+
+    This requires [`wl-clipboard`](https://github.com/bugaevc/wl-clipboard) to be installed (`sudo apt install wl-clipboard` on Ubuntu/Debian). `-p` reads the primary selection (text highlighted with the mouse) and `-n` trims the trailing newline. Then bind this command to a shortcut in your desktop's shortcut settings (e.g. *GNOME: Settings → Keyboard → View and Customise Shortcuts → Custom Shortcuts*).
+
+    `wl-paste` is **Wayland-only**. This workaround is only needed in native Wayland mode; if you run GoldenDict in X11 mode (`GOLDENDICT_FORCE_XCB=1`), global hotkeys and ScanPopup already work and no shortcut is required.
