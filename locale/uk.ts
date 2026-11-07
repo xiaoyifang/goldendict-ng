@@ -2674,6 +2674,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation>Відкритий у та зовнішній браузер</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Тепер створюємо кеш заголовків: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

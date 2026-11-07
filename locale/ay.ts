@@ -2719,6 +2719,10 @@ Error de importación: datos incorrectos en el fichero.</translation>
       <source>Open in &amp;External Browser</source>
       <translation>&amp;Anqa Tuyurinxa jist'araña</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Jichha arunaka qullqichata wakichaskaski: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

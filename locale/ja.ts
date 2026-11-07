@@ -2672,6 +2672,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation>外部ブラウザで開く(&amp;E)</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>現在、ヘッドワードの地位を築き上げています: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

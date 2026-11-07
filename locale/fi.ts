@@ -2674,6 +2674,10 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <source>Open in &amp;External Browser</source>
       <translation>Avaa sisään &amp; ulkoinen selain</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Nyt rakennamme otsikkosanavarastoa: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

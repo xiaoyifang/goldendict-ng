@@ -2674,6 +2674,10 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
       <source>Open in &amp;External Browser</source>
       <translation>Im &amp;Externen Browser öffnen</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Jetzt den Headwords-Cache aufbauen: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

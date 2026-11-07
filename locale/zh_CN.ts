@@ -2673,6 +2673,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation>在外部浏览器中打开</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>正在建立词头缓存：</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

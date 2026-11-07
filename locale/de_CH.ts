@@ -2672,6 +2672,10 @@ Um folgende Symbole zu finden &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos
       <source>Open in &amp;External Browser</source>
       <translation>Im &amp;externen Browser öffnen</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Jetzt wird der Stichwort-Cache erstellt: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

@@ -2674,6 +2674,10 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
       <source>Open in &amp;External Browser</source>
       <translation>Öppna i &amp; Extern webbläsare</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Nu bygger vi headwords-cache: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

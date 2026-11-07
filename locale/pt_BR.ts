@@ -2674,6 +2674,10 @@ Para encontrar os símbolos &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]
       <source>Open in &amp;External Browser</source>
       <translation>Abrir e Navegador Externo</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Agora construindo cache de headwords: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

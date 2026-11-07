@@ -2674,6 +2674,10 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <source>Open in &amp;External Browser</source>
       <translation>Otevřít v a externím prohlížeči</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Nyní budování cache pro hlavičky: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

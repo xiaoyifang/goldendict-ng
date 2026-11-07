@@ -2674,6 +2674,10 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
       <source>Open in &amp;External Browser</source>
       <translation>Abrir e Navegador Externo</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Agora a construir cache de headwords: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

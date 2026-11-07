@@ -2673,6 +2673,10 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <source>Open in &amp;External Browser</source>
       <translation>&amp;बाहरी ब्राउज़र में खोलें</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>अब हेडवर्ड कैश का निर्माण: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

@@ -2673,6 +2673,10 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
       <source>Open in &amp;External Browser</source>
       <translation>Hap në &amp;Shfletuesin e jashtëm</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Tani ndërtimi i cache-it të fjalëve kryesore: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

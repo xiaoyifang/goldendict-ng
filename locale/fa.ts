@@ -2674,6 +2674,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation>مرورگر باز در و خارجی</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>اکنون کش headwords را می سازیم: </translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
