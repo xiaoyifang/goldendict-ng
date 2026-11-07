@@ -23,9 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // the click becomes a real navigation. External schemes (mailto:, ...)
       // are left untouched.
       const scheme = link.slice(0, link.indexOf(":")).toLowerCase();
-      const internalSchemes = [
-        "bword"
-      ];
+      const internalSchemes = ["bword"];
       if (!link.includes("//") && internalSchemes.includes(scheme)) {
         anchor.setAttribute("href", link.replace(":", "://"));
       }
