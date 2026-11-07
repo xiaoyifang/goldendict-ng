@@ -87,6 +87,11 @@ class ArticleView: public QWidget
   /// Host part of the website URL for identification
   QString websiteHost;
 
+  /// Whether the "articleview" QWebChannel object is currently registered
+  /// on the page. The registration follows the trust state of the
+  /// top-level document, see updateWebChannelAccess().
+  bool webChannelAttached = false;
+
   void highlightFTSResults();
   void performFtsFindOperation( bool backwards );
 
@@ -271,6 +276,12 @@ public:
   /// Sets website host
   void setWebsiteHost( const QString & host );
 
+  /// Returns whether the current top-level document is trusted to use the
+  /// "articleview" QWebChannel bridge. Untrusted documents (remote websites
+  /// opened in the view, pages reached through a meta refresh, file:// pages,
+  /// etc.) must not be able to invoke native actions through the bridge.
+  bool isBridgeTrusted() const;
+
   /// Returns current article's text in .html format
   void toHtml( const std::function< void( QString & ) > & callback );
 
@@ -305,7 +316,7 @@ public:
   QString getActiveArticleId();
   void setActiveArticleId( const QString & );
 
-  ResourceToSaveHandler * saveResource( const QUrl & url, const QString & fileName );
+  ResourceToSaveHandler * saveResource( const QUrl & url, const QString & fileName, const QString & rootDir = QString() );
 
   void findText( QString & text,
                  const QWebEnginePage::FindFlags & f,
@@ -383,15 +394,18 @@ public slots:
 
   /// Selects an entire text of the current article
   void selectCurrentArticle();
-  //receive signal from weburlinterceptor.
+  // Handles link clicks reported by ArticleWebPage / weburlinterceptor:
+  // internal schemes look up or play audio, external ones go to the desktop.
   void linkClicked( const QUrl & );
-  //aim to receive signal from html. the fragment url click to  navigation through page wil not be intecepted by weburlinteceptor
-  Q_INVOKABLE void linkClickedInHtml( const QUrl & );
 private slots:
   void inspectElement();
   void loadFinished( bool ok );
   void handleTitleChanged( const QString & title );
   void attachWebChannelToHtml();
+
+  /// Registers or deregisters the "articleview" QWebChannel object so that
+  /// only trusted top-level documents can see the bridge.
+  void updateWebChannelAccess();
 
   void linkHovered( const QString & link );
   void contextMenuRequested( const QPoint & );
@@ -483,7 +497,7 @@ class ResourceToSaveHandler: public QObject
   Q_OBJECT
 
 public:
-  explicit ResourceToSaveHandler( ArticleView * view, QString fileName );
+  explicit ResourceToSaveHandler( ArticleView * view, QString fileName, QString rootDir = QString() );
   void addRequest( const sptr< Dictionary::DataRequest > & req );
   bool isEmpty()
   {
@@ -500,6 +514,7 @@ public slots:
 private:
   std::list< sptr< Dictionary::DataRequest > > downloadRequests;
   QString fileName;
+  QString rootDir; // Destination writes are only allowed inside this directory; empty means no root confinement.
   bool alreadyDone;
 };
 
@@ -514,6 +529,5 @@ public:
 
 public slots:
   Q_INVOKABLE void onJsActiveArticleChanged( const QString & id );
-  Q_INVOKABLE void linkClickedInHtml( const QUrl & );
   Q_INVOKABLE void collapseInHtml( const QString & dictId, bool on = true ) const;
 };

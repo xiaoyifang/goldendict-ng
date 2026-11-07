@@ -12,6 +12,7 @@
 #include "webmultimediadownload.hh"
 #include "htmlescape.hh"
 #include "article_maker.hh"
+#include "articlewebpage.hh"
 #include <QBuffer>
 #include <QClipboard>
 #include <QDebug>
@@ -54,6 +55,24 @@ using std::list;
 namespace {
 
 const char * const scrollToPrefix = "gdfrom-";
+
+// Schemes of the top-level ArticleView document that are allowed to use the
+// "articleview" QWebChannel bridge. Dictionary content is rendered into a
+// gdlookup://localhost document, so these are the only schemes that should
+// ever host it. Everything else - websites opened in the view, documents
+// reached through a meta refresh, file:// pages, etc. - is untrusted content
+// and must not be able to invoke native actions through the bridge.
+bool isTrustedDocumentScheme( const QUrl & url )
+{
+  static const QSet< QString > trustedSchemes = { QStringLiteral( "gdlookup" ),
+                                                  QStringLiteral( "bword" ),
+                                                  QStringLiteral( "entry" ),
+                                                  QStringLiteral( "gdinternal" ),
+                                                  QStringLiteral( "qrc" ),
+                                                  QStringLiteral( "about" ) };
+  // An empty URL means the view hasn't started loading anything yet.
+  return url.isEmpty() || trustedSchemes.contains( url.scheme() );
+}
 
 bool isScrollTo( const QString & id )
 {
@@ -244,7 +263,12 @@ ArticleView::ArticleView( QWidget * parent,
   ftsSearchPanel->installEventFilter( this );
 
   QWebEngineSettings * settings = webview->settings();
-  settings->setUnknownUrlSchemePolicy( QWebEngineSettings::UnknownUrlSchemePolicy::DisallowUnknownUrlSchemes );
+  // Unknown schemes (not registered via QWebEngineUrlScheme) may only be
+  // navigated to as a result of real user interaction, never from scripts.
+  // The actual handling of all link clicks happens in
+  // ArticleWebPage::acceptNavigationRequest.
+  settings->setUnknownUrlSchemePolicy(
+    QWebEngineSettings::UnknownUrlSchemePolicy::AllowUnknownUrlSchemesFromUserInteraction );
 
   settings->setAttribute( QWebEngineSettings::LocalContentCanAccessRemoteUrls, true );
   // More secure settings to prevent XSS attacks and filesystem access
@@ -269,6 +293,10 @@ ArticleView::ArticleView( QWidget * parent,
   channel = new QWebChannel( webview->page() );
   agent   = new ArticleViewAgent( this );
   attachWebChannelToHtml();
+  // Keep the bridge only for trusted documents: navigating to a remote
+  // website (or any other untrusted document) removes it, navigating back
+  // to dictionary content restores it.
+  connect( webview, &QWebEngineView::urlChanged, this, &ArticleView::updateWebChannelAccess );
   ankiConnector = new AnkiConnector( this, cfg );
   connect( ankiConnector, &AnkiConnector::errorText, this, [ this ]( const QString & errorText ) {
     emit statusBarMessage( errorText );
@@ -607,7 +635,10 @@ void ArticleView::loadFinished( bool result )
   setZoomFactor( cfg.preferences.zoomFactor );
   webview->unsetCursor();
   if ( !result ) {
-    qWarning() << "article loaded unsuccessful:" << webview->url().toString();
+    auto * articlePage = qobject_cast< ArticleWebPage * >( webview->page() );
+    if ( !articlePage || !articlePage->takeResourceClickRejection() ) {
+      qWarning() << "article loaded unsuccessful:" << webview->url().toString();
+    }
     return;
   }
   QUrl url = webview->url();
@@ -659,8 +690,9 @@ void ArticleView::loadFinished( bool result )
     injectWebsiteConfigScript();
   }
 
-  //the click audio url such as gdau://xxxx ,webview also emit a pageLoaded signal but with the result is false.need future investigation.
-  //the audio link click ,no need to emit pageLoaded signal
+  // Clicking an audio/video resource link rejects the navigation in
+  // ArticleWebPage::acceptNavigationRequest, which makes QtWebEngine emit
+  // loadFinished(false). Only a real document load announces pageLoaded.
   if ( result ) {
     emit pageLoaded( this );
   }
@@ -1191,6 +1223,37 @@ void ArticleView::attachWebChannelToHtml()
 
   // register QObjects to be exposed to JavaScript
   channel->registerObject( QStringLiteral( "articleview" ), agent );
+  webChannelAttached = true;
+}
+
+bool ArticleView::isBridgeTrusted() const
+{
+  // Website views are dedicated to browsing remote content.
+  if ( isWebsiteView ) {
+    return false;
+  }
+  return isTrustedDocumentScheme( webview->url() );
+}
+
+void ArticleView::updateWebChannelAccess()
+{
+  const bool trusted = isBridgeTrusted();
+  if ( trusted == webChannelAttached ) {
+    return;
+  }
+
+  if ( trusted ) {
+    channel->registerObject( QStringLiteral( "articleview" ), agent );
+  }
+  else {
+    // Untrusted top-level document (a website opened in the view, a page
+    // reached through a meta refresh, etc.): remove the bridge so that such
+    // content cannot invoke native actions like opening file:// URLs or
+    // launching programs.
+    qDebug() << "Revoking articleview webchannel for untrusted document:" << webview->url();
+    channel->deregisterObject( agent );
+  }
+  webChannelAttached = trusted;
 }
 
 void ArticleView::linkClicked( const QUrl & url_ )
@@ -1215,14 +1278,6 @@ void ArticleView::linkClicked( const QUrl & url_ )
   }
   else {
     openLink( url, webview->url(), getCurrentArticle(), contexts );
-  }
-}
-
-void ArticleView::linkClickedInHtml( const QUrl & url_ )
-{
-  webview->linkClickedInHtml( url_ );
-  if ( !url_.isEmpty() ) {
-    linkClicked( url_ );
   }
 }
 
@@ -1420,9 +1475,9 @@ void ArticleView::playAudio( const QUrl & url )
   }
 }
 
-ResourceToSaveHandler * ArticleView::saveResource( const QUrl & url, const QString & fileName )
+ResourceToSaveHandler * ArticleView::saveResource( const QUrl & url, const QString & fileName, const QString & rootDir )
 {
-  ResourceToSaveHandler * handler = new ResourceToSaveHandler( this, fileName );
+  ResourceToSaveHandler * handler = new ResourceToSaveHandler( this, fileName, rootDir );
   sptr< Dictionary::DataRequest > req;
 
   if ( url.scheme() == "bres" || url.scheme() == "gico" || url.scheme() == "gdau" || url.scheme() == "gdvideo" ) {
@@ -1951,6 +2006,9 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
 
 
       QString name = Utils::Url::path( url ).section( '/', -1 );
+      // The name is an attacker-controlled dictionary key; strip path
+      // separators and drive/ADS markers so the temp file can't traverse.
+      name.remove( QRegularExpression( R"([\\:])" ) );
       // Image data
 
       // Check for babylon image name
@@ -2198,8 +2256,9 @@ void ArticleView::on_searchCaseSensitive_clicked( bool checked )
 //the id start with "gdform-"
 void ArticleView::onJsActiveArticleChanged( const QString & id )
 {
-  // Skip dictionary article change handling for website views
-  if ( isWebsiteView ) {
+  // Skip dictionary article change handling for website views and any other
+  // untrusted documents the bridge is not supposed to be reachable from.
+  if ( isWebsiteView || !isBridgeTrusted() ) {
     return;
   }
 
@@ -2552,9 +2611,35 @@ void ArticleView::load( QString url, const QString & customTitle )
 }
 
 
-ResourceToSaveHandler::ResourceToSaveHandler( ArticleView * view, QString fileName ):
+// Destination paths are derived from attacker-controlled dictionary resource
+// names. Never write through a path that still contains traversal segments,
+// and when a save root is known, require the destination to stay inside it.
+static bool isAllowedDestination( const QString & fileName, const QString & rootDir )
+{
+  const QString absolutePath = QFileInfo( fileName ).absoluteFilePath();
+
+  // Split on both separators: backslash traversal matters on Windows even
+  // though the path formally uses '/'.
+  const QStringList segments = absolutePath.split( QRegularExpression( R"([\\/])" ), Qt::SkipEmptyParts );
+  for ( const QString & segment : segments ) {
+    if ( segment == QLatin1String( ".." ) ) {
+      return false;
+    }
+  }
+
+  if ( !rootDir.isEmpty() ) {
+    const QString root = QDir::cleanPath( rootDir );
+    if ( !QDir::cleanPath( absolutePath ).startsWith( root + '/' ) ) {
+      return false;
+    }
+  }
+  return true;
+}
+
+ResourceToSaveHandler::ResourceToSaveHandler( ArticleView * view, QString fileName, QString rootDir_ ):
   QObject( view ),
   fileName( std::move( fileName ) ),
+  rootDir( std::move( rootDir_ ) ),
   alreadyDone( false )
 {
   connect( this, &ResourceToSaveHandler::statusBarMessage, view, &ArticleView::statusBarMessage );
@@ -2585,7 +2670,12 @@ void ResourceToSaveHandler::downloadFinished()
 
         // Write data to file
 
-        if ( !fileName.isEmpty() ) {
+        if ( !fileName.isEmpty() && !isAllowedDestination( fileName, rootDir ) ) {
+          emit statusBarMessage( tr( "ERROR: %1" ).arg( tr( "Resource saving error: " ) + tr( "the resource would be saved outside of the destination folder." ) ),
+                                 10000,
+                                 QPixmap( ":/icons/error.svg" ) );
+        }
+        else if ( !fileName.isEmpty() ) {
           const QFileInfo fileInfo( fileName );
           QDir().mkpath( fileInfo.absoluteDir().absolutePath() );
 
@@ -2640,13 +2730,11 @@ void ArticleViewAgent::onJsActiveArticleChanged( const QString & id )
   articleView->onJsActiveArticleChanged( id );
 }
 
-void ArticleViewAgent::linkClickedInHtml( const QUrl & url )
-{
-  articleView->linkClickedInHtml( url );
-}
-
 void ArticleViewAgent::collapseInHtml( const QString & dictId, bool on ) const
 {
+  if ( !articleView->isBridgeTrusted() ) {
+    return;
+  }
   if ( GlobalBroadcaster::instance()->getPreference()->sessionCollapse ) {
     if ( on ) {
       GlobalBroadcaster::instance()->collapsedDicts.insert( dictId );

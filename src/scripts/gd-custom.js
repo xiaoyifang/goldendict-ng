@@ -15,13 +15,22 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // return if the link is like gdlookup:// or other valid url. bword:xxx is also valid url.
+    // Links as bword:xxx etc.
     if (link.includes(":")) {
-      emitClickedEvent(link);
-      event.preventDefault();
+      // Chromium requires an authority (//) for navigations to schemes
+      // registered with QWebEngineUrlScheme::Syntax::Host (bword, gdau, ...).
+      // Legacy dictionaries emit the opaque form (bword:word); normalize it so
+      // the click becomes a real navigation. External schemes (mailto:, ...)
+      // are left untouched.
+      const scheme = link.slice(0, link.indexOf(":")).toLowerCase();
+      const internalSchemes = [
+        "bword"
+      ];
+      if (!link.includes("//") && internalSchemes.includes(scheme)) {
+        anchor.setAttribute("href", link.replace(":", "://"));
+      }
       return;
     }
-    emitClickedEvent("");
 
     let newLink;
     const { href } = globalThis.location;

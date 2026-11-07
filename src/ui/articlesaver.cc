@@ -26,6 +26,23 @@ using std::vector;
 using std::pair;
 
 namespace {
+// Resource names are opaque dictionary keys fully controlled by the
+// dictionary author, so a destination path built from them must never
+// contain traversal sequences or Windows drive/ADS markers. Such paths get
+// replaced with a generated, content-addressed name inside the save folder.
+static bool hasUnsafeSegments( const QString & path )
+{
+  // Split on both separators: backslash traversal matters on Windows even
+  // though URL paths formally use '/'.
+  const QStringList segments = path.split( QRegularExpression( R"([\\/])" ), Qt::SkipEmptyParts );
+  for ( const QString & segment : segments ) {
+    if ( segment == QLatin1String( ".." ) || segment.contains( ':' ) ) {
+      return true;
+    }
+  }
+  return false;
+}
+
 // Helper moved from original implementations: collect resource urls and
 // rewrite html to point to local files.
 static void filterAndCollectResources( QString & html,
@@ -54,16 +71,37 @@ static void filterAndCollectResources( QString & html,
     QCryptographicHash hash( QCryptographicHash::Md5 );
     hash.addData( match.captured().toUtf8() );
 
-    if ( resourceIncluded.insert( hash.result() ).second ) {
-      // Gather resource information (url, filename) to be downloaded later
-      downloadResources.emplace_back( url, folder + host + resourcePath );
+    // The destination "folder + host + resourcePath" must stay inside the
+    // save folder. Canonicalize it and verify containment; anything that
+    // would escape (traversal segments, drive letters, UNC paths) falls back
+    // to a generated, content-addressed name so the saved article remains
+    // self-contained without letting a dictionary write arbitrary files.
+    const QString root      = QDir::cleanPath( folder );
+    const QString candidate = QDir::cleanPath( folder + host + resourcePath );
+
+    const bool contained = candidate.startsWith( root + '/' ) && !hasUnsafeSegments( host + resourcePath );
+
+    QString destFileName, location;
+    if ( contained ) {
+      destFileName = candidate;
+      resourcePath = QString::fromLatin1( QUrl::toPercentEncoding( resourcePath, "/" ) );
+      location     = host + resourcePath;
+    }
+    else {
+      destFileName = root + '/' + QString::fromLatin1( hash.result().toHex() );
+      location     = '/' + QString::fromLatin1( hash.result().toHex() );
     }
 
-    // Modify original url, set to the native one
-    resourcePath   = QString::fromLatin1( QUrl::toPercentEncoding( resourcePath, "/" ) );
-    QString newUrl = sep + QDir( folder ).dirName() + host + resourcePath + sep;
-    html.replace( pos, match.captured().length(), newUrl );
-    pos += newUrl.length();
+    if ( resourceIncluded.insert( hash.result() ).second ) {
+      // Gather resource information (url, filename) to be downloaded later
+      downloadResources.emplace_back( url, destFileName );
+
+      // Modify original url, set to the native one
+      QString newUrl = sep + QDir( folder ).dirName() + location + sep;
+      html.replace( pos, match.captured().length(), newUrl );
+    }
+
+    pos += match.captured().length();
     match = rx.match( html, pos );
   }
 }
@@ -217,7 +255,7 @@ void ArticleSaver::save()
         auto completedResourcesPtr = std::make_shared< int >( 0 );
 
         for ( const auto & p : downloadResources ) {
-          ResourceToSaveHandler * handler = view_->saveResource( p.first, p.second );
+          ResourceToSaveHandler * handler = view_->saveResource( p.first, p.second, folder );
           if ( handler && !handler->isEmpty() ) {
             QObject::connect(
               handler,

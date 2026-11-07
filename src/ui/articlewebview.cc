@@ -20,10 +20,13 @@
 ArticleWebView::ArticleWebView( QWidget * parent ):
   QWebEngineView( parent ),
   midButtonPressed( false ),
-  selectionBySingleClick( false )
+  selectionBySingleClick( false ),
+  singleClickToDbClick( false ),
+  dbClicked( false )
 {
   auto page = new ArticleWebPage( this );
   connect( page, &ArticleWebPage::linkClicked, this, &ArticleWebView::linkClicked );
+  connect( page, &QWebEnginePage::linkHovered, this, &ArticleWebView::linkHovered );
   this->setPage( page );
 
   QWebEngineScript script;
@@ -113,10 +116,9 @@ bool ArticleWebView::event( QEvent * event )
   return QWebEngineView::event( event );
 }
 
-void ArticleWebView::linkClickedInHtml( const QUrl & )
+void ArticleWebView::linkHovered( const QString & link )
 {
-  //disable single click to simulate dbclick action on the new loaded pages.
-  singleClickToDbClick = false;
+  hoveredLink = link;
 }
 
 bool ArticleWebView::eventFilter( QObject * obj, QEvent * ev )
@@ -134,11 +136,18 @@ bool ArticleWebView::eventFilter( QObject * obj, QEvent * ev )
   if ( ev->type() == QEvent::MouseButtonPress ) {
     auto pe = dynamic_cast< QMouseEvent * >( ev );
     if ( pe->button() == Qt::LeftButton ) {
-      singleClickToDbClick = true;
-      dbClicked            = false;
-      QTimer::singleShot( QApplication::doubleClickInterval(), this, [ = ]() {
-        singleClickAction();
-      } );
+      dbClicked = false;
+      // A press on a link is a plain link click, not the start of a
+      // single-click-to-select-word action.
+      if ( !hoveredLink.isEmpty() ) {
+        singleClickToDbClick = false;
+      }
+      else {
+        singleClickToDbClick = true;
+        QTimer::singleShot( QApplication::doubleClickInterval(), this, [ = ]() {
+          singleClickAction();
+        } );
+      }
     }
     if ( pe->buttons() & Qt::MiddleButton ) {
       midButtonPressed = true;

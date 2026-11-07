@@ -82,9 +82,11 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
       return;
     }
 
-    emit linkClicked( url );
-    qDebug() << "Blocked external link: " << url.toString();
-    info.block( true );
+    // Link clicks are decided by ArticleWebPage::acceptNavigationRequest: internal
+    // schemes (gdlookup, gdau, gdvideo, ...) trigger dictionary lookup / audio /
+    // video playback there, and external links go to the desktop handler. Blocking
+    // here would drop those requests before the page ever sees them.
+    return;
   }
 
   //window.location=audio link

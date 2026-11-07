@@ -961,9 +961,13 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
 
       QRegularExpressionMatch match = RX::Mdx::audioRe.match( newLink );
       if ( match.hasMatch() ) {
-        // sounds and audio link script
+        // sounds and audio link script. The anchor must keep its default
+        // navigation: audio links are handled by
+        // ArticleWebPage::acceptNavigationRequest, which routes the click to
+        // ArticleView::playAudio. An inline "onclick=return false" would cancel
+        // the navigation before the page ever sees it.
         QString newTxt = match.captured( 1 ) + match.captured( 2 ) + "gdau://" + id + "/" + match.captured( 3 )
-          + match.captured( 2 ) + R"( onclick="return false;" )";
+          + match.captured( 2 );
         newLink = QString::fromUtf8(
                     addAudioLink( "gdau://" + getId() + "/" + match.captured( 3 ).toUtf8().data(), getId() ).c_str() )
           + newLink.replace( match.capturedStart(), match.capturedLength(), newTxt );

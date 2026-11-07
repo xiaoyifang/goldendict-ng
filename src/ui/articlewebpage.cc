@@ -61,13 +61,32 @@ bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationTyp
   }
 
   if ( type == QWebEnginePage::NavigationTypeLinkClicked ) {
-    // If configured to open website in new tab, trigger linkClicked signal normally
-    // Otherwise, for websiteview, we allow navigation request
+    // In a website view (the top-level document is a remote page), links are
+    // allowed to navigate the view itself when configured to open websites in
+    // new tabs. In dictionary articles every click is routed through the
+    // linkClicked signal, so that openLink() decides: internal schemes look
+    // up / play audio, external ones go to the desktop handler.
     if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+      // Use the member function explicitly: the local variable `url` (the
+      // navigation target) shadows QWebEnginePage::url(), and the context
+      // must be judged by the *current* document, not the target.
+      const QUrl currentUrl = QWebEnginePage::url();
+      const bool websiteContext = currentUrl.scheme() == QLatin1String( "http" )
+        || currentUrl.scheme() == QLatin1String( "https" );
       // Check if URL is external link, if so, allow navigation in current webview
-      if ( Utils::isExternalLink( url ) ) {
+      if ( websiteContext && Utils::isExternalLink( url ) ) {
         return true;
       }
+    }
+
+    // Internal resource links (audio/video) are played natively via the
+    // linkClicked signal instead of being navigated. Rejecting the navigation
+    // below still makes QtWebEngine emit loadFinished(false); account for it so
+    // the view can tell this expected failure from a real one. Only main-frame
+    // rejections are counted: exactly one loadFinished(false) is delivered for
+    // each of them, while sub-frame rejections never reach the view.
+    if ( isMainFrame && ( Utils::Url::isAudioUrl( url ) || url.scheme() == "bres" || url.scheme() == "gdvideo" ) ) {
+      ++pendingResourceRejections;
     }
 
     // Use singleShot to emit signal asynchronously. This prevents crashes if the
@@ -77,6 +96,15 @@ bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationTyp
   }
 
   return QWebEnginePage::acceptNavigationRequest( url, type, isMainFrame );
+}
+
+bool ArticleWebPage::takeResourceClickRejection()
+{
+  if ( pendingResourceRejections <= 0 ) {
+    return false;
+  }
+  --pendingResourceRejections;
+  return true;
 }
 
 void ArticleWebPage::javaScriptAlert( const QUrl & securityOrigin, const QString & msg )
