@@ -3794,6 +3794,10 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <source>The referenced resource failed to download.</source>
       <translation>Başvurulan kaynak indirilemedi.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Kaynak hedef klasörün dışında kaydedilirdi.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>
