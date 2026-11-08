@@ -3798,6 +3798,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <source>The referenced resource failed to download.</source>
       <translation>Viitattua resurssia ei voitu ladata.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Resurssi tallennettaisiin kohdekansion ulkopuolelle.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>
