@@ -3772,6 +3772,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>The referenced resource failed to download.</source>
       <translation>Не ўдалося спампаваць пазначаны рэсурс.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation type="unfinished">the resource would be saved outside of the destination folder.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>
