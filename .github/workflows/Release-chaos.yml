@@ -23,7 +23,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-14,macos-15-intel]
+        os: [macos-15,macos-15-intel]
         qt_ver: [ 6.8.3, 6.10.3 ]
     steps:
       - uses: actions/checkout@v6
