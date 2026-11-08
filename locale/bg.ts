@@ -3795,6 +3795,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>The referenced resource failed to download.</source>
       <translation>Указаният ресурс не успя да се свали.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Ресурсът се запазва извън папката с дестинация.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>
