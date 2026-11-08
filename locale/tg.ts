@@ -3799,7 +3799,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>the resource would be saved outside of the destination folder.</source>
-      <translation type="unfinished">the resource would be saved outside of the destination folder.</translation>
+      <translation>манбаъ берун аз ҷузвдони таъинотӣ захира карда мешуд.</translation>
     </message>
   </context>
   <context>
