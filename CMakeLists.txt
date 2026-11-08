@@ -29,7 +29,14 @@ if (WIN32)
         )
         FetchContent_MakeAvailable(vcpkg-export)
         set(VCPKG_MANIFEST_MODE OFF CACHE BOOL "disable existing manifest mode caused by the existrance of vcpkg.json" FORCE)
-        set(CMAKE_TOOLCHAIN_FILE "${CMAKE_BINARY_DIR}/_deps/vcpkg-export-src/scripts/buildsystems/vcpkg.cmake")
+        # Locate the toolchain regardless of the archive layout: newer vcpkg
+        # export wraps everything in a top-level folder named after --output,
+        # while older versions put scripts/ at the archive root.
+        file(GLOB _gd_vcpkg_toolchain
+                "${vcpkg-export_SOURCE_DIR}/scripts/buildsystems/vcpkg.cmake"
+                "${vcpkg-export_SOURCE_DIR}/*/scripts/buildsystems/vcpkg.cmake")
+        list(GET _gd_vcpkg_toolchain 0 _gd_vcpkg_toolchain)
+        set(CMAKE_TOOLCHAIN_FILE "${_gd_vcpkg_toolchain}")
     endif ()
     if (WITH_VCPKG_BREAKPAD)
         list(APPEND VCPKG_MANIFEST_FEATURES "breakpad")
