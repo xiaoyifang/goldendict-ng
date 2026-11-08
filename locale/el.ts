@@ -3799,6 +3799,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>The referenced resource failed to download.</source>
       <translation>Απέτυχε η λήψη του ζητούμενου πόρου.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Ο πόρος θα αποθηκευτεί εκτός του φακέλου προορισμού.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>
