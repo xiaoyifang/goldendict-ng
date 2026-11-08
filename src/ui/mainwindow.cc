@@ -9,6 +9,7 @@
 #include "keyboardstate.hh"
 #include "logger.hh"
 #include <QWebEngineProfile>
+#include <QWebEngineDownloadRequest>
 #include "edit_dictionaries.hh"
 #include "dict/loaddictionaries.hh"
 #include "preferences.hh"
@@ -4866,6 +4867,14 @@ void MainWindow::headwordFromFavorites( const QString & headword, const QString 
 
 void MainWindow::handleDownloadRequested( QWebEngineDownloadRequest * download )
 {
+  // QWebEnginePage::save() (article saving) issues its own download request.
+  // Its destination has already been chosen by the user in the
+  // "Save Article As" dialog, and Qt accepts such requests automatically,
+  // so don't show another dialog (or the save would appear to repeat).
+  if ( download->isSavePageDownload() ) {
+    return;
+  }
+
   QString savePath;
   if ( cfg.resourceSavePath.isEmpty() ) {
     savePath = QDir::homePath();
