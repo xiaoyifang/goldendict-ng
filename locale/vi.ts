@@ -3774,6 +3774,10 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <source>The referenced resource failed to download.</source>
       <translation>Nguồn tham chiếu lỗi tải xuống.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Tài nguyên sẽ được lưu bên ngoài thư mục đích.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>

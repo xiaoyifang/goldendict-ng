@@ -3797,6 +3797,10 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <source>The referenced resource failed to download.</source>
       <translation>A hivatkozott erőforrás letöltése nem sikerült.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Az erőforrás a cél mappán kívül mentett volna el.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>

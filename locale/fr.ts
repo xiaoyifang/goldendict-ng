@@ -3796,6 +3796,10 @@ Erreur lors de l&apos;enregistrement de la ressource :</translation>
       <source>The referenced resource failed to download.</source>
       <translation>La ressource référencée n&apos;a pas pu être téléchargée.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>La ressource serait sauvegardée en dehors du dossier de destination.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>

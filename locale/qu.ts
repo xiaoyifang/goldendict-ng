@@ -3792,6 +3792,10 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
       <source>The referenced resource failed to download.</source>
       <translation>El recurso ha fallado de descargar.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>recursoqa destino q'ipaqpa hawapi waqaychasqa kanman.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>

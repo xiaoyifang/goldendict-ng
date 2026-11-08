@@ -3804,6 +3804,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>The referenced resource failed to download.</source>
       <translation>Невозможно загрузить указанный ресурс.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Ресурс сохранялся вне папки назначения.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>

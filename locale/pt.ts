@@ -3798,6 +3798,10 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <source>The referenced resource failed to download.</source>
       <translation>O download do recurso referenciado falhou.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>O recurso seria guardado fora da pasta de destino.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>

@@ -3796,6 +3796,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <source>The referenced resource failed to download.</source>
       <translation>The referenced resource failed to download.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>lo se rirni cu ka'o se finti claxu lo fatri da'u.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>

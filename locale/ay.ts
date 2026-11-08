@@ -3888,6 +3888,10 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <source>The referenced resource failed to download.</source>
       <translation>Internet ukat apaqasinxa pantjiwa.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>utjiri puriñ q'ipit anqan imataspawa.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>

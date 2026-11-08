@@ -3793,6 +3793,10 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
       <source>The referenced resource failed to download.</source>
       <translation>El recurso ha fallado de descargar.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>el recurso se guardaría fuera de la carpeta de destino.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>

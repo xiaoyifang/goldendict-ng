@@ -3796,6 +3796,10 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <source>The referenced resource failed to download.</source>
       <translation>Odkázaný zdroj se nepovedlo stáhnout.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Zdroj by byl uložen mimo cílovou složku.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>

@@ -3796,6 +3796,10 @@ de diccionarios Stardict, Babylon y GLS</translation>
       <source>The referenced resource failed to download.</source>
       <translation>No se ha podido descargar recurso referenciado.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>El recurso se guardaría fuera de la carpeta de destino.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>

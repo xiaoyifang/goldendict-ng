@@ -3794,6 +3794,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>The referenced resource failed to download.</source>
       <translation>참조할 리소스를 다운로드하지 못했습니다.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>리소스는 목적지 폴더 외부에 저장됩니다.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>
