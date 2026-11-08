@@ -3795,6 +3795,10 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <source>The referenced resource failed to download.</source>
       <translation>Kan de bron waarnaar wordt verwezen niet downloaden.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>De bron zou buiten de bestemmingsmap worden opgeslagen.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>
