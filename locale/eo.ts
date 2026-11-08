@@ -3798,6 +3798,10 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <source>The referenced resource failed to download.</source>
       <translation>La referencita rimedo malsukcesis elŝuti.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>la rimedo estus konservita ekster la cel-dosierujo.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>
