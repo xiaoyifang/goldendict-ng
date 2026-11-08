@@ -3774,7 +3774,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>the resource would be saved outside of the destination folder.</source>
-      <translation type="unfinished">the resource would be saved outside of the destination folder.</translation>
+      <translation>рэсурс будзе захаваны па-за тэчкі прызначэння.</translation>
     </message>
   </context>
   <context>
