@@ -358,35 +358,55 @@ QList< std::u32string > suggest( const std::u32string & word, QMutex & hunspellM
   try {
     QMutexLocker _( &hunspellMutex );
 
-    auto suggestions = hunspell.analyze( Iconv::toUtf8( Text::utf32_le, word ) );
-    if ( !suggestions.empty() ) {
-      // There were some suggestions made for us. Make an appropriate output.
+    std::u32string lowercasedWord = Folding::applySimpleCaseOnly( word );
 
-      std::u32string lowercasedWord = Folding::applySimpleCaseOnly( word );
+    static QRegularExpression cutStem( R"((?:^|\s)st:(((\s+(?!\w{2}:)(?!-)(?!\+))|\S+)+))" );
 
-      static QRegularExpression cutStem( R"(^\s*st:(((\s+(?!\w{2}:)(?!-)(?!\+))|\S+)+))" );
+    // Feed extracted stems back to hunspell iteratively, so multi-level
+    // stemming works (e.g. drunkest -> drunk -> drink). Dictionaries without
+    // such chains yield no new stems in the next round and the loop stops,
+    // so no configuration is needed. Depth is bounded to keep pathological
+    // dictionaries in check.
+    constexpr int maxStemDepth = 4;
 
-      for ( const auto & x : suggestions ) {
-        QString suggestion = QString::fromStdU32String( decodeFromHunspell( hunspell, x.c_str() ) );
+    vector< std::u32string > pending;
+    pending.push_back( word );
 
-        // Strip comments
-        int n = suggestion.indexOf( '#' );
-        if ( n >= 0 ) {
-          suggestion.chop( suggestion.length() - n );
-        }
+    std::set< std::u32string > collected;
 
-        qDebug( ">>>Sugg: %s", suggestion.toLocal8Bit().data() );
+    for ( int depth = 0; depth < maxStemDepth && !pending.empty(); ++depth ) {
+      vector< std::u32string > next;
 
-        auto match = cutStem.match( suggestion.trimmed() );
-        if ( match.hasMatch() ) {
-          std::u32string alt = match.captured( 1 ).toStdU32String();
+      for ( const auto & currentWord : pending ) {
+        auto suggestions = hunspell.analyze( Iconv::toUtf8( Text::utf32_le, currentWord ) );
 
-          if ( Folding::applySimpleCaseOnly( alt ) != lowercasedWord ) // No point in providing same word
-          {
-            result.append( alt );
+        for ( const auto & x : suggestions ) {
+          QString suggestion = QString::fromStdU32String( decodeFromHunspell( hunspell, x.c_str() ) );
+
+          // Strip comments
+          int n = suggestion.indexOf( '#' );
+          if ( n >= 0 ) {
+            suggestion.chop( suggestion.length() - n );
+          }
+
+          qDebug( ">>>Sugg: %s", suggestion.toLocal8Bit().data() );
+
+          auto match = cutStem.match( suggestion.trimmed() );
+          if ( match.hasMatch() ) {
+            std::u32string alt       = match.captured( 1 ).toStdU32String();
+            std::u32string foldedAlt = Folding::applySimpleCaseOnly( alt );
+
+            if ( foldedAlt != lowercasedWord && !collected.count( foldedAlt ) ) // No point in providing same word
+            {
+              collected.insert( foldedAlt );
+              result.append( alt );
+              next.push_back( alt );
+            }
           }
         }
       }
+
+      pending = std::move( next );
     }
   }
   catch ( Iconv::Ex & e ) {
