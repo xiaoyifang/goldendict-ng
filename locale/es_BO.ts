@@ -3795,7 +3795,7 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
     </message>
     <message>
       <source>the resource would be saved outside of the destination folder.</source>
-      <translation type="unfinished">the resource would be saved outside of the destination folder.</translation>
+      <translation>el recurso se guardaría fuera de la carpeta de destino.</translation>
     </message>
   </context>
   <context>
