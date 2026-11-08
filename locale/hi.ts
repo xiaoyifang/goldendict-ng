@@ -3783,6 +3783,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>The referenced resource failed to download.</source>
       <translation>संदर्भित संसाधन डाउनलोड करने में विफल रहा।</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>संसाधन गंतव्य फ़ोल्डर के बाहर सहेजा जाएगा।</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>
