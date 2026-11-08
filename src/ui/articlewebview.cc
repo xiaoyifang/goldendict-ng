@@ -5,6 +5,7 @@
 #include "articlewebview.hh"
 #include "version.hh"
 #include <QMouseEvent>
+#include <QKeyEvent>
 #include <QWebEngineScript>
 #include <QWebEngineScriptCollection>
 #include <QWebEnginePage>
@@ -123,6 +124,30 @@ void ArticleWebView::linkHovered( const QString & link )
 
 bool ArticleWebView::eventFilter( QObject * obj, QEvent * ev )
 {
+  // Return/Enter with a non-empty selection looks the selected text up. With no
+  // selection the key keeps its normal browser behaviour (activating a focused
+  // link, submitting a form field, ...). ShortcutOverride is handled as well so
+  // that a parent QAction cannot steal the key before the KeyPress arrives.
+  if ( ev->type() == QEvent::ShortcutOverride || ev->type() == QEvent::KeyPress ) {
+    auto * keyEvent = static_cast< QKeyEvent * >( ev );
+    // Check the key first -- selectedText() is a synchronous call into the
+    // renderer, so only pay for it when the key is actually of interest.
+    if ( ( keyEvent->key() == Qt::Key_Return || keyEvent->key() == Qt::Key_Enter )
+         && !selectedText().trimmed().isEmpty() ) {
+      const Qt::KeyboardModifiers mods = keyEvent->modifiers();
+      // Only bare Enter and Ctrl+Enter belong to us. Shift/Alt/Meta variants
+      // are left alone (Qt::Key_Enter from the keypad carries KeypadModifier).
+      if ( !mods.testFlag( Qt::ShiftModifier ) && !mods.testFlag( Qt::AltModifier )
+           && !mods.testFlag( Qt::MetaModifier ) ) {
+        if ( ev->type() == QEvent::KeyPress ) {
+          emit searchSelectedText( mods.testFlag( Qt::ControlModifier ) );
+        }
+        ev->accept();
+        return true;
+      }
+    }
+  }
+
   if ( ev->type() == QEvent::MouseButtonDblClick ) {
     auto pe = dynamic_cast< QMouseEvent * >( ev );
     if ( Qt::MouseEventSynthesizedByApplication != pe->source() ) {
