@@ -3794,6 +3794,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>The referenced resource failed to download.</source>
       <translation>بارگیری منبع ارجاع شده شکست خورد.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>منبع خارج از پوشه مقصد ذخیره می شد.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>
