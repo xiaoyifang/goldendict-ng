@@ -4867,11 +4867,21 @@ void MainWindow::headwordFromFavorites( const QString & headword, const QString 
 
 void MainWindow::handleDownloadRequested( QWebEngineDownloadRequest * download )
 {
-  // QWebEnginePage::save() (article saving) issues its own download request.
-  // Its destination has already been chosen by the user in the
-  // "Save Article As" dialog, and Qt accepts such requests automatically,
-  // so don't show another dialog (or the save would appear to repeat).
-  if ( download->isSavePageDownload() ) {
+  qDebug() << "Download requested:" << download->url() << "isSavePageDownload:" << download->isSavePageDownload()
+           << "savePageFormat:" << download->savePageFormat() << "state:" << download->state();
+
+  // QWebEnginePage::save() (article saving) issues its own save-page download
+  // request. Its destination has already been chosen by the user in the
+  // "Save Article As" dialog, so don't show another dialog (or the save would
+  // appear to repeat). Such requests carry either the save-page flag or a
+  // non-unknown save page format (the flag propagation differs between Qt
+  // versions, the format is always set by QWebEnginePage::save()).
+  // Accept it explicitly: accept() is a no-op when the request was already
+  // auto-accepted by Qt, and guarantees the save proceeds with the pre-set
+  // destination on Qt versions that leave it unaccepted.
+  if ( download->isSavePageDownload()
+       || download->savePageFormat() != QWebEngineDownloadRequest::UnknownSaveFormat ) {
+    download->accept();
     return;
   }
 
