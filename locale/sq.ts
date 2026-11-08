@@ -3790,6 +3790,10 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <source>The referenced resource failed to download.</source>
       <translation>Dështoi shkarkimi i resursit të referuar.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Burimi do të ruhej jashtë dosjes së destinacionit.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>
