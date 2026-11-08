@@ -393,7 +393,7 @@ QList< std::u32string > suggest( const std::u32string & word, QMutex & hunspellM
 
           auto match = cutStem.match( suggestion.trimmed() );
           if ( match.hasMatch() ) {
-            std::u32string alt = match.captured( 1 ).toStdU32String();
+            std::u32string alt       = match.captured( 1 ).toStdU32String();
             std::u32string foldedAlt = Folding::applySimpleCaseOnly( alt );
 
             if ( foldedAlt != lowercasedWord && !collected.count( foldedAlt ) ) // No point in providing same word
