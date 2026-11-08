@@ -173,11 +173,23 @@ jobs:
           if ($downloadSuccess) {
             Write-Host "==> [Strategy A] Pre-built package downloaded, extracting..."
             7z x $zipPath "-o$targetDir" -y
-            $toolchain = "$targetDir\scripts\buildsystems\vcpkg.cmake"
 
-            # Export toolchain path via env
-            "USE_TOOLCHAIN=true" >> $env:GITHUB_ENV
-            "VCPKG_TOOLCHAIN_PATH=$toolchain" >> $env:GITHUB_ENV
+            # Locate the toolchain regardless of the archive layout: newer vcpkg
+            # export wraps everything in a top-level folder named after --output,
+            # while older versions put scripts/ at the archive root.
+            $toolchain = Get-ChildItem -Path $targetDir -Recurse -Filter vcpkg.cmake |
+              Where-Object { $_.FullName -like "*scripts\buildsystems\vcpkg.cmake" } |
+              Select-Object -First 1 -ExpandProperty FullName
+
+            if ($toolchain) {
+              Write-Host "==> Found vcpkg toolchain: $toolchain"
+              # Export toolchain path via env
+              "USE_TOOLCHAIN=true" >> $env:GITHUB_ENV
+              "VCPKG_TOOLCHAIN_PATH=$toolchain" >> $env:GITHUB_ENV
+            } else {
+              Write-Warning "==> Extraction finished but vcpkg.cmake not found, falling back to CMakeLists.txt FetchContent"
+              "USE_TOOLCHAIN=false" >> $env:GITHUB_ENV
+            }
           } else {
             Write-Warning "==> [Strategy B] Pre-built package download failed (504 or network error), falling back to CMakeLists.txt FetchContent"
             "USE_TOOLCHAIN=false" >> $env:GITHUB_ENV
