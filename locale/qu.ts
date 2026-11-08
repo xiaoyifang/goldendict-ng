@@ -3794,7 +3794,7 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     </message>
     <message>
       <source>the resource would be saved outside of the destination folder.</source>
-      <translation type="unfinished">the resource would be saved outside of the destination folder.</translation>
+      <translation>recursoqa destino q'ipaqpa hawapi waqaychasqa kanman.</translation>
     </message>
   </context>
   <context>
