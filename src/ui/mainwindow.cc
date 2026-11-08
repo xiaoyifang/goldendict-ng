@@ -4879,8 +4879,7 @@ void MainWindow::handleDownloadRequested( QWebEngineDownloadRequest * download )
   // Accept it explicitly: accept() is a no-op when the request was already
   // auto-accepted by Qt, and guarantees the save proceeds with the pre-set
   // destination on Qt versions that leave it unaccepted.
-  if ( download->isSavePageDownload()
-       || download->savePageFormat() != QWebEngineDownloadRequest::UnknownSaveFormat ) {
+  if ( download->isSavePageDownload() || download->savePageFormat() != QWebEngineDownloadRequest::UnknownSaveFormat ) {
     download->accept();
     return;
   }
