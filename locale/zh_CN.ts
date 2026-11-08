@@ -3786,6 +3786,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>The referenced resource failed to download.</source>
       <translation>所引用的资源下载失败。</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>资源会保存在目标文件夹之外。</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>
