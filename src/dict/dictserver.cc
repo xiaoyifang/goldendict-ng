@@ -260,8 +260,9 @@ public:
 
   void deferredInit() override
   {
-    if ( socket || !enabledInBar() )
+    if ( socket || !enabledInBar() ) {
       return;
+    }
 
     socket = new QTcpSocket( this );
 
