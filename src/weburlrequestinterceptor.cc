@@ -19,11 +19,6 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
   if ( QUrl firstPartyUrl = info.firstPartyUrl(); firstPartyUrl.isValid()
        && ( firstPartyUrl.scheme() == "gdlookup" || firstPartyUrl.scheme() == "gdinternal" )
        && Utils::isExternalLink( url ) ) {
-    // For navigation to a main page, using the target URL's own host as Referer is safer
-    // than revealing the local scheme.
-    if ( info.requestMethod() != "GET" ) {
-      info.setHttpHeader( "origin", Utils::Url::getSchemeAndHost( url ).toUtf8() );
-    }
     info.setHttpHeader( "referer", Utils::Url::getSchemeAndHost( url ).toUtf8() + "/" );
   }
 
