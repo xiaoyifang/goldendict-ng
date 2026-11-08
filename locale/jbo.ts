@@ -3798,7 +3798,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>the resource would be saved outside of the destination folder.</source>
-      <translation type="unfinished">the resource would be saved outside of the destination folder.</translation>
+      <translation>lo se rirni cu ka'o se finti claxu lo fatri da'u.</translation>
     </message>
   </context>
   <context>
