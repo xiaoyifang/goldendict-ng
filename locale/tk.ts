@@ -3797,6 +3797,10 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
       <source>The referenced resource failed to download.</source>
       <translation>Salgylanýan çeşmäni ýükläp almak bolmady.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Resurs maksat haltasynyň daşynda saklanar.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>
