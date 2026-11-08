@@ -12,6 +12,7 @@
 #include <QFileInfo>
 #include <QRegularExpression>
 #include <QtConcurrentRun>
+#include "globalbroadcaster.hh"
 
 namespace DictServer {
 
@@ -222,11 +223,44 @@ public:
     if ( strategies.isEmpty() ) {
       strategies.append( "prefix" );
     }
+
+    // Initialize only when the dictionary is enabled in the dictionary bar.
+    // Re-check whenever the muted dictionaries change, which covers the
+    // "initially disabled, enabled later" case.
+    connect( GlobalBroadcaster::instance(),
+             &GlobalBroadcaster::mutedDictionariesChanged,
+             this,
+             &DictServerDictionary::deferredInit );
+  }
+
+  /// True if the dictionary is enabled (unmuted) in the dictionary bar of the
+  /// current group. Disabled dictionaries are not initialized until they get
+  /// enabled.
+  bool enabledInBar() const
+  {
+    const Config::Class * cfg = GlobalBroadcaster::instance()->getConfig();
+    if ( !cfg ) {
+      return true; // No configuration context yet -- behave as before.
+    }
+
+    const QSet< QString > * mutedDictionaries = nullptr;
+    if ( const unsigned groupId = GlobalBroadcaster::instance()->currentGroupId; groupId == GroupId::AllGroupId ) {
+      mutedDictionaries = &cfg->mutedDictionaries;
+    }
+    else if ( const Config::Group * grp = cfg->getGroup( groupId ) ) {
+      mutedDictionaries = &grp->mutedDictionaries;
+    }
+
+    if ( !mutedDictionaries ) {
+      return true;
+    }
+
+    return !mutedDictionaries->contains( QString::fromStdString( getId() ) );
   }
 
   void deferredInit() override
   {
-    if ( socket )
+    if ( socket || !enabledInBar() )
       return;
 
     socket = new QTcpSocket( this );

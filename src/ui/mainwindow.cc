@@ -2686,6 +2686,11 @@ void MainWindow::currentGroupChanged( int )
 
   dictionaryBar.updateToGroup( groupInstances.findGroup( groupList->getCurrentGroup() ), &cfg.mutedDictionaries, cfg );
 
+  // The effective muted-dictionaries context has changed with the group.
+  // Broadcast it so listeners like DictServer dictionaries can initialize
+  // themselves when they become enabled in the new group.
+  GlobalBroadcaster::instance()->mutedDictionariesChanged();
+
   // Update word search results
   translateBox->setPopupEnabled( false );
   updateSuggestionList();
