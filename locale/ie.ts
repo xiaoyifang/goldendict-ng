@@ -3800,7 +3800,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>the resource would be saved outside of the destination folder.</source>
-      <translation type="unfinished">the resource would be saved outside of the destination folder.</translation>
+      <translation>li ressource vell esser savet exter li destination carpeta.</translation>
     </message>
   </context>
   <context>
