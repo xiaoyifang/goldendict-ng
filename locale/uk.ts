@@ -3798,6 +3798,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>The referenced resource failed to download.</source>
       <translation>Не вдалось звантажити поданий ресурс.</translation>
     </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Ресурс зберігався поза папкою призначення.</translation>
+    </message>
   </context>
   <context>
     <name>Romaji</name>
