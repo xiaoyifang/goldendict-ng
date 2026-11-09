@@ -204,6 +204,21 @@ static QIcon searchModeIcon( Config::SearchMode mode, const QColor & color )
   return QIcon( pixmap );
 }
 
+namespace {
+Dictionary::WordMatchMode toWordMatchMode( Config::SearchMode mode )
+{
+  switch ( mode ) {
+    case Config::SearchMode::Suffix:
+      return Dictionary::WordMatchMode::Suffix;
+    case Config::SearchMode::MultiWord:
+      return Dictionary::WordMatchMode::MultiWord;
+    case Config::SearchMode::Prefix:
+    default:
+      return Dictionary::WordMatchMode::Prefix;
+  }
+}
+} // namespace
+
 MainWindow::MainWindow( Config::Class & cfg_ ):
   trayIcon( nullptr ),
   foundInDictsLabel( &dictsPaneTitleBar ),
@@ -2898,7 +2913,11 @@ void MainWindow::updateSuggestionList( const QString & newValue )
   }
 
   ui.wordList->setCursor( Qt::WaitCursor );
-  wordFinder.prefixMatch( req, getActiveDicts() );
+  wordFinder.prefixMatch( req,
+                          getActiveDicts(),
+                          40,
+                          Dictionary::NoFeatures,
+                          toWordMatchMode( cfg.preferences.searchMode ) );
 }
 
 void MainWindow::translateInputFinished( bool checkModifiers )

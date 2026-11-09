@@ -173,6 +173,12 @@ public:
                                                               unsigned maxSuffixVariation,
                                                               unsigned long maxResults ) override;
 
+  virtual sptr< Dictionary::WordSearchRequest > suffixMatch( const std::u32string &,
+                                                             unsigned long maxResults ) override;
+
+  virtual sptr< Dictionary::WordSearchRequest > multiWordMatch( const std::u32string &,
+                                                                unsigned long maxResults ) override;
+
   virtual bool isLocalDictionary() override
   {
     return true;
@@ -234,6 +240,7 @@ protected:
   unsigned minLength;
   int maxSuffixVariation;
   bool allowMiddleMatches;
+  Dictionary::WordMatchMode matchMode;
   QAtomicInt isCancelled;
   QFuture< void > f;
 
@@ -245,7 +252,8 @@ public:
                           int maxSuffixVariation_,
                           bool allowMiddleMatches_,
                           unsigned long maxResults_,
-                          bool startRunnable = true );
+                          bool startRunnable                              = true,
+                          Dictionary::WordMatchMode mode_                 = Dictionary::WordMatchMode::Prefix );
 
   virtual void findMatches();
 

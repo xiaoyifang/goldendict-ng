@@ -25,6 +25,13 @@ using std::vector;
 using std::string;
 using std::map;
 
+/// How a headword search compares the query with a headword.
+enum class WordMatchMode {
+  Prefix    = 0, ///< Headwords starting with the query (the historical behaviour).
+  Suffix    = 1, ///< Headwords ending with the query.
+  MultiWord = 2, ///< Headwords containing every whitespace-separated token, in any order.
+};
+
 DEF_EX( Ex, "Dictionary error", std::exception )
 DEF_EX( exIndexOutOfRange, "The supplied index is out of range", Ex )
 DEF_EX( exSliceOutOfRange, "The requested data slice is out of range", Ex )
@@ -424,6 +431,16 @@ public:
   /// be stored. The whole operation is supposed to be fast, though some
   /// dictionaries, the network ones particularly, may of course be slow.
   virtual sptr< WordSearchRequest > prefixMatch( const std::u32string &, unsigned long maxResults ) = 0;
+
+  /// Finds headwords ENDING with the given string, e.g. the entries a printed
+  /// reverse dictionary groups by their last character. Backends that cannot
+  /// do it should leave the default implementation, which returns empty.
+  virtual sptr< WordSearchRequest > suffixMatch( const std::u32string &, unsigned long maxResults );
+
+  /// Finds headwords containing every whitespace-separated token of the given
+  /// string, in any order and not necessarily adjacent. Backends that cannot
+  /// do it should leave the default implementation, which returns empty.
+  virtual sptr< WordSearchRequest > multiWordMatch( const std::u32string &, unsigned long maxResults );
 
   /// Looks up a given word in the dictionary, aiming to find different forms
   /// of the given word by allowing suffix variations. This means allowing words

@@ -30,11 +30,13 @@ WordFinder::~WordFinder()
 void WordFinder::prefixMatch( const QString & str,
                               const std::vector< sptr< Dictionary::Class > > & dicts,
                               unsigned long maxResults,
-                              Dictionary::Features features )
+                              Dictionary::Features features,
+                              Dictionary::WordMatchMode matchMode_ )
 {
   cancel();
 
   searchType          = PrefixMatch;
+  matchMode           = matchMode_;
   inputWord           = str;
   inputDicts          = &dicts;
   requestedMaxResults = maxResults;
@@ -57,6 +59,7 @@ void WordFinder::stemmedMatch( const QString & str,
   cancel();
 
   searchType                = StemmedMatch;
+  matchMode                 = Dictionary::WordMatchMode::Prefix;
   inputWord                 = str;
   inputDicts                = &dicts;
   requestedMaxResults       = maxResults;
@@ -79,6 +82,7 @@ void WordFinder::expressionMatch( const QString & str,
   cancel();
 
   searchType          = ExpressionMatch;
+  matchMode           = Dictionary::WordMatchMode::Prefix;
   inputWord           = str;
   inputDicts          = &dicts;
   requestedMaxResults = maxResults;
@@ -128,9 +132,20 @@ void WordFinder::startSearch()
 
     for ( const auto & allWordWriting : allWordWritings ) {
       try {
-        sptr< Dictionary::WordSearchRequest > sr = ( searchType == PrefixMatch || searchType == ExpressionMatch ) ?
-          inputDict->prefixMatch( allWordWriting, requestedMaxResults ) :
-          inputDict->stemmedMatch( allWordWriting, stemmedMinLength, stemmedMaxSuffixVariation, requestedMaxResults );
+        sptr< Dictionary::WordSearchRequest > sr;
+
+        if ( searchType == PrefixMatch && matchMode == Dictionary::WordMatchMode::Suffix ) {
+          sr = inputDict->suffixMatch( allWordWriting, requestedMaxResults );
+        }
+        else if ( searchType == PrefixMatch && matchMode == Dictionary::WordMatchMode::MultiWord ) {
+          sr = inputDict->multiWordMatch( allWordWriting, requestedMaxResults );
+        }
+        else if ( searchType == PrefixMatch || searchType == ExpressionMatch ) {
+          sr = inputDict->prefixMatch( allWordWriting, requestedMaxResults );
+        }
+        else {
+          sr = inputDict->stemmedMatch( allWordWriting, stemmedMinLength, stemmedMaxSuffixVariation, requestedMaxResults );
+        }
 
         connect( sr.get(), &Dictionary::Request::finished, this, [ this ]() {
           requestFinished();

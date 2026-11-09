@@ -184,6 +184,16 @@ sptr< WordSearchRequest > Class::stemmedMatch( const std::u32string & /*str*/,
   return std::make_shared< WordSearchRequestInstant >();
 }
 
+sptr< WordSearchRequest > Class::suffixMatch( const std::u32string & /*str*/, unsigned long /*maxResults*/ )
+{
+  return std::make_shared< WordSearchRequestInstant >();
+}
+
+sptr< WordSearchRequest > Class::multiWordMatch( const std::u32string & /*str*/, unsigned long /*maxResults*/ )
+{
+  return std::make_shared< WordSearchRequestInstant >();
+}
+
 sptr< WordSearchRequest > Class::findHeadwordsForSynonym( const std::u32string & )
 {
   return std::make_shared< WordSearchRequestInstant >();

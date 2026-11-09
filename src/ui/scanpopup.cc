@@ -29,6 +29,21 @@ static const Qt::WindowFlags defaultUnpinnedWindowFlags = Qt::Tool | Qt::Framele
 
 static const Qt::WindowFlags pinnedWindowFlags = Qt::Window;
 
+namespace {
+Dictionary::WordMatchMode toWordMatchMode( Config::SearchMode mode )
+{
+  switch ( mode ) {
+    case Config::SearchMode::Suffix:
+      return Dictionary::WordMatchMode::Suffix;
+    case Config::SearchMode::MultiWord:
+      return Dictionary::WordMatchMode::MultiWord;
+    case Config::SearchMode::Prefix:
+    default:
+      return Dictionary::WordMatchMode::Prefix;
+  }
+}
+} // namespace
+
 ScanPopup::ScanPopup( QWidget * parent,
                       Config::Class & cfg_,
                       ArticleNetworkAccessManager & articleNetMgr,
@@ -782,7 +797,11 @@ void ScanPopup::updateSuggestionList( const QString & text )
     return;
   }
 
-  wordFinder.prefixMatch( req, getActiveDicts() );
+  wordFinder.prefixMatch( req,
+                          getActiveDicts(),
+                          40,
+                          Dictionary::NoFeatures,
+                          toWordMatchMode( cfg.preferences.searchMode ) );
 }
 
 void ScanPopup::translateInputFinished()

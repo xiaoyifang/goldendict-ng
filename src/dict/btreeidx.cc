@@ -12,6 +12,7 @@
 #include "globalbroadcaster.hh"
 
 #include <QtConcurrentRun>
+#include <algorithm>
 #include <zlib.h>
 #include "config.hh"
 #include "headwordscache.hh"
@@ -102,13 +103,15 @@ BtreeWordSearchRequest::BtreeWordSearchRequest( BtreeDictionary & dict_,
                                                 int maxSuffixVariation_,
                                                 bool allowMiddleMatches_,
                                                 unsigned long maxResults_,
-                                                bool startRunnable ):
+                                                bool startRunnable,
+                                                Dictionary::WordMatchMode mode_ ):
   dict( dict_ ),
   str( str_ ),
   maxResults( maxResults_ ),
   minLength( minLength_ ),
   maxSuffixVariation( maxSuffixVariation_ ),
-  allowMiddleMatches( allowMiddleMatches_ )
+  allowMiddleMatches( allowMiddleMatches_ ),
+  matchMode( mode_ )
 {
   if ( startRunnable ) {
     f = QtConcurrent::run( [ this ]() {
@@ -132,8 +135,11 @@ void BtreeWordSearchRequest::findMatches()
 
   QRegularExpression regexp;
 
+  const bool suffixOnly = ( matchMode == Dictionary::WordMatchMode::Suffix );
+  const bool multiWord  = ( matchMode == Dictionary::WordMatchMode::MultiWord );
+
   bool useWildcards = false;
-  if ( allowMiddleMatches ) {
+  if ( allowMiddleMatches && !suffixOnly && !multiWord ) {
     useWildcards = ( str.find( '*' ) != std::u32string::npos || str.find( '?' ) != std::u32string::npos
                      || str.find( '[' ) != std::u32string::npos || str.find( ']' ) != std::u32string::npos );
   }
@@ -142,7 +148,47 @@ void BtreeWordSearchRequest::findMatches()
 
   int minMatchLength = 0;
 
-  if ( useWildcards ) {
+  std::vector< std::u32string > multiWordTokens;
+
+  if ( multiWord ) {
+    // Split on whitespace and fold every token the same way headwords are
+    // folded below, so the comparison ignores case and diacritics.
+    std::u32string current;
+    for ( char32_t ch : str ) {
+      if ( ch == U' ' || ch == U'\t' || ch == U'\n' || ch == U'\r' ) {
+        if ( !current.empty() ) {
+          multiWordTokens.push_back( Folding::applyDiacriticsOnly( Folding::applySimpleCaseOnly( current ) ) );
+          current.clear();
+        }
+      }
+      else {
+        current.push_back( ch );
+      }
+    }
+    if ( !current.empty() ) {
+      multiWordTokens.push_back( Folding::applyDiacriticsOnly( Folding::applySimpleCaseOnly( current ) ) );
+    }
+
+    // A query with no usable token matches nothing.
+    if ( multiWordTokens.empty() ) {
+      finish();
+      return;
+    }
+
+    // There is no literal prefix to seek: start from the first chain.
+    folded.clear();
+  }
+  else if ( suffixOnly ) {
+    // A suffix has no literal prefix either, so the scan starts at the first
+    // chain and the regex anchors both ends. \A and \z are explicit so the
+    // match cannot tolerate a trailing newline.
+    const std::u32string foldedQuery = Folding::applyDiacriticsOnly( Folding::applySimpleCaseOnly( str ) );
+    regexp.setPattern( "\\A.*" + QRegularExpression::escape( QString::fromStdU32String( foldedQuery ) ) + "\\z" );
+    regexp.setPatternOptions( QRegularExpression::CaseInsensitiveOption );
+    minMatchLength = foldedQuery.size();
+    folded.clear();
+  }
+  else if ( useWildcards ) {
     regexp.setPattern( wildcardsToRegexp(
       QString::fromStdU32String( Folding::applyDiacriticsOnly( Folding::applySimpleCaseOnly( str ) ) ) ) );
     if ( !regexp.isValid() ) {
@@ -272,7 +318,7 @@ void BtreeWordSearchRequest::findMatches()
             resultFolded = Folding::applyWhitespaceOnly( chainHead );
           }
 
-          if ( ( useWildcards && folded.empty() )
+          if ( multiWord || ( useWildcards && folded.empty() )
                || ( resultFolded.size() >= folded.size() && !resultFolded.compare( 0, folded.size(), folded ) ) ) {
             // Exact or prefix match
 
@@ -281,11 +327,28 @@ void BtreeWordSearchRequest::findMatches()
               if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
                 break;
               }
-              if ( useWildcards ) {
+              if ( multiWord ) {
+                std::u32string word = Text::toUtf32( x.prefix + x.word );
+                std::u32string result =
+                  Folding::applyDiacriticsOnly( Folding::applySimpleCaseOnly( word ) );
+                const bool containsAll =
+                  std::all_of( multiWordTokens.begin(),
+                               multiWordTokens.end(),
+                               [ &result ]( const std::u32string & token ) {
+                                 return result.find( token ) != std::u32string::npos;
+                               } );
+                if ( containsAll ) {
+                  addMatch( word );
+                }
+              }
+              else if ( useWildcards || suffixOnly ) {
                 std::u32string word   = Text::toUtf32( x.prefix + x.word );
                 std::u32string result = Folding::applyDiacriticsOnly( word );
                 if ( result.size() >= (std::u32string::size_type)minMatchLength ) {
                   QRegularExpressionMatch match = regexp.match( QString::fromStdU32String( result ) );
+                  // \A...\z already anchors both ends. Comparing capturedEnd()
+                  // with result.size() would be wrong for non-BMP characters:
+                  // QString counts UTF-16 units, std::u32string counts code points.
                   if ( match.hasMatch() && match.capturedStart() == 0 ) {
                     addMatch( word );
                   }
@@ -408,6 +471,22 @@ sptr< Dictionary::WordSearchRequest > BtreeDictionary::stemmedMatch( const std::
                                                      (int)maxSuffixVariation,
                                                      false,
                                                      maxResults );
+}
+
+sptr< Dictionary::WordSearchRequest > BtreeDictionary::suffixMatch( const std::u32string & str,
+                                                                   unsigned long maxResults )
+
+{
+  return std::make_shared< BtreeWordSearchRequest >(
+    *this, str, 0, -1, true, maxResults, true, Dictionary::WordMatchMode::Suffix );
+}
+
+sptr< Dictionary::WordSearchRequest > BtreeDictionary::multiWordMatch( const std::u32string & str,
+                                                                      unsigned long maxResults )
+
+{
+  return std::make_shared< BtreeWordSearchRequest >(
+    *this, str, 0, -1, true, maxResults, true, Dictionary::WordMatchMode::MultiWord );
 }
 
 void BtreeIndex::readNode( uint32_t offset, vector< char > & out )

@@ -40,6 +40,7 @@ private:
     StemmedMatch,
     ExpressionMatch
   } searchType;
+  Dictionary::WordMatchMode matchMode = Dictionary::WordMatchMode::Prefix;
   unsigned long requestedMaxResults;
   Dictionary::Features requestedFeatures;
   unsigned stemmedMinLength;
@@ -110,8 +111,9 @@ public:
   /// and the new one replaces it.
   void prefixMatch( const QString &,
                     const std::vector< sptr< Dictionary::Class > > &,
-                    unsigned long maxResults = 40,
-                    Dictionary::Features     = Dictionary::NoFeatures );
+                    unsigned long maxResults               = 40,
+                    Dictionary::Features                    = Dictionary::NoFeatures,
+                    Dictionary::WordMatchMode matchMode_   = Dictionary::WordMatchMode::Prefix );
 
   /// Do a stemmed-match search in the given list of dictionaries. All comments
   /// from prefixMatch() generally apply as well.
