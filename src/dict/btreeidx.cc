@@ -328,15 +328,13 @@ void BtreeWordSearchRequest::findMatches()
                 break;
               }
               if ( multiWord ) {
-                std::u32string word = Text::toUtf32( x.prefix + x.word );
-                std::u32string result =
-                  Folding::applyDiacriticsOnly( Folding::applySimpleCaseOnly( word ) );
-                const bool containsAll =
-                  std::all_of( multiWordTokens.begin(),
-                               multiWordTokens.end(),
-                               [ &result ]( const std::u32string & token ) {
-                                 return result.find( token ) != std::u32string::npos;
-                               } );
+                std::u32string word    = Text::toUtf32( x.prefix + x.word );
+                std::u32string result  = Folding::applyDiacriticsOnly( Folding::applySimpleCaseOnly( word ) );
+                const bool containsAll = std::all_of( multiWordTokens.begin(),
+                                                      multiWordTokens.end(),
+                                                      [ &result ]( const std::u32string & token ) {
+                                                        return result.find( token ) != std::u32string::npos;
+                                                      } );
                 if ( containsAll ) {
                   addMatch( word );
                 }
@@ -474,19 +472,31 @@ sptr< Dictionary::WordSearchRequest > BtreeDictionary::stemmedMatch( const std::
 }
 
 sptr< Dictionary::WordSearchRequest > BtreeDictionary::suffixMatch( const std::u32string & str,
-                                                                   unsigned long maxResults )
+                                                                    unsigned long maxResults )
 
 {
-  return std::make_shared< BtreeWordSearchRequest >(
-    *this, str, 0, -1, true, maxResults, true, Dictionary::WordMatchMode::Suffix );
+  return std::make_shared< BtreeWordSearchRequest >( *this,
+                                                     str,
+                                                     0,
+                                                     -1,
+                                                     true,
+                                                     maxResults,
+                                                     true,
+                                                     Dictionary::WordMatchMode::Suffix );
 }
 
 sptr< Dictionary::WordSearchRequest > BtreeDictionary::multiWordMatch( const std::u32string & str,
-                                                                      unsigned long maxResults )
+                                                                       unsigned long maxResults )
 
 {
-  return std::make_shared< BtreeWordSearchRequest >(
-    *this, str, 0, -1, true, maxResults, true, Dictionary::WordMatchMode::MultiWord );
+  return std::make_shared< BtreeWordSearchRequest >( *this,
+                                                     str,
+                                                     0,
+                                                     -1,
+                                                     true,
+                                                     maxResults,
+                                                     true,
+                                                     Dictionary::WordMatchMode::MultiWord );
 }
 
 void BtreeIndex::readNode( uint32_t offset, vector< char > & out )

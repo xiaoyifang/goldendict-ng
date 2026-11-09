@@ -2813,8 +2813,7 @@ void MainWindow::setupSearchModeMenu()
   addMode( tr( "Multi-word" ), Config::SearchMode::MultiWord );
 
   searchModeMenu->addSeparator();
-  QAction * fullTextAction =
-    searchModeMenu->addAction( QIcon( ":/icons/fulltext.svg" ), tr( "Full-text search…" ) );
+  QAction * fullTextAction = searchModeMenu->addAction( QIcon( ":/icons/fulltext.svg" ), tr( "Full-text search…" ) );
   fullTextAction->setObjectName( "searchModeFullTextAction" );
 
   // An action, not a mode: full-text hits are a different pipeline (per-dictionary

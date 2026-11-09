@@ -252,8 +252,8 @@ public:
                           int maxSuffixVariation_,
                           bool allowMiddleMatches_,
                           unsigned long maxResults_,
-                          bool startRunnable                              = true,
-                          Dictionary::WordMatchMode mode_                 = Dictionary::WordMatchMode::Prefix );
+                          bool startRunnable              = true,
+                          Dictionary::WordMatchMode mode_ = Dictionary::WordMatchMode::Prefix );
 
   virtual void findMatches();
 

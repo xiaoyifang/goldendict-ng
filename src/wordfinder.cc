@@ -144,7 +144,8 @@ void WordFinder::startSearch()
           sr = inputDict->prefixMatch( allWordWriting, requestedMaxResults );
         }
         else {
-          sr = inputDict->stemmedMatch( allWordWriting, stemmedMinLength, stemmedMaxSuffixVariation, requestedMaxResults );
+          sr =
+            inputDict->stemmedMatch( allWordWriting, stemmedMinLength, stemmedMaxSuffixVariation, requestedMaxResults );
         }
 
         connect( sr.get(), &Dictionary::Request::finished, this, [ this ]() {
