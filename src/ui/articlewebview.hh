@@ -55,6 +55,10 @@ signals:
 
   void linkClicked( const QUrl & url );
 
+  /// Signals that Return/Enter was pressed while the view had a text selection.
+  /// @param inNewTab true when Ctrl was held, i.e. look the selection up in a new tab.
+  void searchSelectedText( bool inNewTab );
+
 protected:
   QWebEngineView * createWindow( QWebEnginePage::WebWindowType type ) override;
   bool event( QEvent * event ) override;

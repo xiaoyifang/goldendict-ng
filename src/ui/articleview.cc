@@ -229,6 +229,8 @@ ArticleView::ArticleView( QWidget * parent,
 
   connect( webview, &ArticleWebView::doubleClicked, this, &ArticleView::doubleClicked );
 
+  connect( webview, &ArticleWebView::searchSelectedText, this, &ArticleView::searchSelectedText );
+
   pasteAction.setShortcut( QKeySequence::Paste );
   webview->addAction( &pasteAction );
   connect( &pasteAction, &QAction::triggered, this, &ArticleView::pasteTriggered );
@@ -2295,6 +2297,38 @@ void ArticleView::doubleClicked( QPoint pos )
       // Send signal to MainWindow to handle translation
       emit translateSelectedText( selectedText, webview->url(), getCurrentArticle() );
     }
+  }
+}
+
+void ArticleView::searchSelectedText( bool inNewTab )
+{
+  const QString text = Utils::trimNonChar( webview->selectedText() );
+  // Same sanity check as the context menu and the double-click lookup: a large
+  // selection is never meant to be a single headword.
+  if ( text.isEmpty() || text.size() >= 60 ) {
+    return;
+  }
+
+  if ( popupView ) {
+    // A scan popup has no tabs. Its sendWordToInputLine() is connected to
+    // ScanPopup::translateWord(), so emitting it alone performs the lookup.
+    emit sendWordToInputLine( text );
+    return;
+  }
+
+  // Keep the search line in sync with what is being looked up.
+  emit sendWordToInputLine( text );
+
+  unsigned group = getGroup( webview->url() );
+  if ( group == GroupId::NoGroupId ) {
+    group = currentGroupId;
+  }
+
+  if ( inNewTab ) {
+    emit showDefinitionInNewTab( text, group, getCurrentArticle(), Contexts() );
+  }
+  else {
+    showDefinition( text, group, getCurrentArticle() );
   }
 }
 

@@ -439,6 +439,9 @@ private slots:
   /// Handles the double-click from the definition.
   void doubleClicked( QPoint pos );
 
+  /// Looks up the current text selection (Enter / Ctrl+Enter in the article).
+  void searchSelectedText( bool inNewTab );
+
   /// Handles audio player error message
   void audioPlayerError( const QString & message );
 
