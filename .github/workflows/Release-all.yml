@@ -375,7 +375,7 @@ jobs:
           then
             gh release create '${{ env.newTag }}' \
               -t '${{ env.releaseTitle }}' \
-              --target '${{ github.ref_name }}' \
+              --target '${{ github.sha }}' \
               --notes-file=./changelog.txt \
               --latest=false \
               --prerelease \
@@ -383,7 +383,7 @@ jobs:
           else
             gh release create '${{ env.newTag }}' \
               -t '${{ env.releaseTitle }}' \
-              --target '${{ github.ref_name }}' \
+              --target '${{ github.sha }}' \
               --notes-file=./changelog.txt \
               --latest=true \
               --repo ${GITHUB_REPOSITORY}
