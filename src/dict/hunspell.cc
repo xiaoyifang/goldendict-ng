@@ -175,7 +175,7 @@ string HunspellDictionary::getMorphologyContent( const std::u32string & word )
     }
 
     const std::u32string lowercasedWord = Folding::applySimpleCaseOnly( trimmedWord );
-    const vector< string > stems         = hunspell.stem( trimmedWordUtf8 );
+    const vector< string > stems        = hunspell.stem( trimmedWordUtf8 );
     string wordForms;
 
     for ( const auto & stem : stems ) {

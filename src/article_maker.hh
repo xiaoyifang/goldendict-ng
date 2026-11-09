@@ -97,7 +97,7 @@ class ArticleRequest: public Dictionary::DataRequest
   bool altsDone{ false };
   bool bodyDone{ false };
   bool foundAnyDefinitions{ false };
-  bool morphologyOnly{ false }; // The group has no article-providing dictionaries
+  bool morphologyOnly{ false };         // The group has no article-providing dictionaries
   sptr< WordFinder > stemmedWordFinder; // Used when there're no results
 
   /// A sequence of words and spacings between them, including the initial
