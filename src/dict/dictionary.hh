@@ -493,6 +493,20 @@ public:
     return false;
   }
 
+  /// Returns true if the dictionary provides only morphology/spelling data
+  /// instead of articles.
+  virtual bool isMorphologyDictionary() const noexcept
+  {
+    return false;
+  }
+
+  /// Returns an html fragment describing the morphology of the given word.
+  /// It is used when the group contains no article-providing dictionaries.
+  virtual string getMorphologyContent( const std::u32string & /*word*/ )
+  {
+    return {};
+  }
+
   /// Dictionary can full-text search
   bool canFTS()
   {

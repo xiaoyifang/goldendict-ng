@@ -71,6 +71,13 @@ public:
     return true;
   }
 
+  bool isMorphologyDictionary() const noexcept override
+  {
+    return true;
+  }
+
+  string getMorphologyContent( const std::u32string & ) override;
+
   vector< std::u32string > getAlternateWritings( const std::u32string & word ) noexcept override;
 
 protected:
@@ -144,6 +151,72 @@ vector< std::u32string > HunspellDictionary::getAlternateWritings( const std::u3
   }
 
   return results;
+}
+
+string HunspellDictionary::getMorphologyContent( const std::u32string & word )
+{
+  string result;
+
+  try {
+    std::u32string trimmedWord = Folding::trimWhitespaceOrPunct( word );
+
+    // Only single correct words have usable morphology here. Phrase handling
+    // belongs to getAlternateWritings(), and unknown words to getArticle().
+    if ( trimmedWord.empty() || containsWhitespace( trimmedWord ) ) {
+      return {};
+    }
+
+    QMutexLocker _( &getHunspellMutex() );
+
+    string trimmedWordUtf8 = Iconv::toUtf8( Text::utf32_le, trimmedWord );
+
+    if ( !hunspell.spell( trimmedWordUtf8 ) ) {
+      return {};
+    }
+
+    const std::u32string lowercasedWord = Folding::applySimpleCaseOnly( trimmedWord );
+    const vector< string > stems         = hunspell.stem( trimmedWordUtf8 );
+    string wordForms;
+
+    for ( const auto & stem : stems ) {
+      std::u32string decoded = decodeFromHunspell( hunspell, stem.c_str() );
+
+      if ( Folding::applySimpleCaseOnly( decoded ) == lowercasedWord ) {
+        continue; // The word itself is not a useful "form"
+      }
+
+      if ( !wordForms.empty() ) {
+        wordForms += ", ";
+      }
+
+      string stemUtf8 = Text::toUtf8( decoded );
+
+      wordForms += "<a href=\"bword:" + Html::escape( stemUtf8 ) + "\">" + Html::escape( stemUtf8 ) + "</a>";
+    }
+
+    result = "<div class=\"gdmorphology\">";
+
+    if ( wordForms.empty() ) {
+      result += Html::escape(
+        QCoreApplication::translate( "Hunspell", "Spelling correct, no other word forms found." ).toUtf8().data() );
+    }
+    else {
+      result += Html::escape( QCoreApplication::translate( "Hunspell", "Word forms: " ).toUtf8().data() );
+      result += wordForms;
+    }
+
+    result += "</div>";
+  }
+  catch ( Iconv::Ex & e ) {
+    qWarning( "Hunspell: charset conversion error, no processing's done: %s", e.what() );
+    return {};
+  }
+  catch ( std::exception & e ) {
+    qWarning( "Hunspell: error: %s", e.what() );
+    return {};
+  }
+
+  return result;
 }
 
 /// HunspellDictionary::getArticle()
