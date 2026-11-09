@@ -2854,6 +2854,18 @@ void MainWindow::setupSearchModeMenu()
   ui.translateLine->addAction( searchModeAction, QLineEdit::TrailingPosition );
   translateBox->translateLine()->addAction( searchModeAction, QLineEdit::TrailingPosition );
 
+  // The icon is painted from the current palette, so redraw it whenever the
+  // interface colours change (dark mode toggle, style switch).
+  // QEvent::ApplicationPaletteChange is handled in changeEvent() below.
+#if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
+  connect( QGuiApplication::styleHints(),
+           &QStyleHints::colorSchemeChanged,
+           this,
+           [ this ]( Qt::ColorScheme ) {
+             updateSearchModeAction();
+           } );
+#endif
+
   updateSearchModeAction();
 }
 
@@ -2878,14 +2890,26 @@ void MainWindow::updateSearchModeAction()
   }
 
   searchModeAction->setToolTip( tr( "Search mode: %1" ).arg( name ) );
+
+  // Match the input text colour: the icon sits inside the search box and must
+  // stay visible in both light and dark palettes.
   searchModeAction->setIcon(
-    searchModeIcon( cfg.preferences.searchMode, QApplication::palette().color( QPalette::WindowText ) ) );
+    searchModeIcon( cfg.preferences.searchMode, translateLine->palette().color( QPalette::Text ) ) );
 
   const int current = static_cast< int >( cfg.preferences.searchMode );
   for ( QAction * action : searchModeMenu->actions() ) {
     if ( !action->isSeparator() && action->data().isValid() ) {
       action->setChecked( action->data().toInt() == current );
     }
+  }
+}
+
+void MainWindow::changeEvent( QEvent * event )
+{
+  QMainWindow::changeEvent( event );
+
+  if ( event->type() == QEvent::ApplicationPaletteChange || event->type() == QEvent::PaletteChange ) {
+    updateSearchModeAction();
   }
 }
 

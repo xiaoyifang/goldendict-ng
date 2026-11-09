@@ -244,6 +244,9 @@ private:
 
   bool eventFilter( QObject *, QEvent * ) override;
 
+  /// Redraws palette-dependent decorations (the search-mode icon) on theme changes.
+  void changeEvent( QEvent * ) override;
+
 #if defined( Q_OS_WIN )
   /// Handle theme change events as fallback when colorSchemeChanged signal is not available
   bool event( QEvent * event ) override;
