@@ -2812,6 +2812,20 @@ void MainWindow::setupSearchModeMenu()
   addMode( tr( "Suffix" ), Config::SearchMode::Suffix );
   addMode( tr( "Multi-word" ), Config::SearchMode::MultiWord );
 
+  searchModeMenu->addSeparator();
+  QAction * fullTextAction =
+    searchModeMenu->addAction( QIcon( ":/icons/fulltext.svg" ), tr( "Full-text search…" ) );
+  fullTextAction->setObjectName( "searchModeFullTextAction" );
+
+  // An action, not a mode: full-text hits are a different pipeline (per-dictionary
+  // index, dictIDs, highlighting), so it opens the existing dialog instead.
+  connect( fullTextAction, &QAction::triggered, this, [ this ]() {
+    showFullTextSearchDialog();
+    if ( ftsDlg ) {
+      ftsDlg->setSearchText( translateLine->text() );
+    }
+  } );
+
   searchModeAction = new QAction( tr( "Search mode" ), this );
   searchModeAction->setObjectName( "searchModeAction" );
 
@@ -4776,7 +4790,6 @@ void MainWindow::showFullTextSearchDialog()
 {
   if ( !ftsDlg ) {
     ftsDlg = new FTS::FullTextSearchDialog( this, cfg, dictionaries, groupInstances, ftsIndexing );
-    // ftsDlg->setSearchText( translateLine->text() );
 
     addGlobalActionsToDialog( ftsDlg );
     addGroupComboBoxActionsToDialog( ftsDlg, groupList );
