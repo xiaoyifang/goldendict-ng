@@ -2858,12 +2858,9 @@ void MainWindow::setupSearchModeMenu()
   // interface colours change (dark mode toggle, style switch).
   // QEvent::ApplicationPaletteChange is handled in changeEvent() below.
 #if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
-  connect( QGuiApplication::styleHints(),
-           &QStyleHints::colorSchemeChanged,
-           this,
-           [ this ]( Qt::ColorScheme ) {
-             updateSearchModeAction();
-           } );
+  connect( QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, [ this ]( Qt::ColorScheme ) {
+    updateSearchModeAction();
+  } );
 #endif
 
   updateSearchModeAction();
