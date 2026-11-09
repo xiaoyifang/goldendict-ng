@@ -1161,6 +1161,14 @@ between classic and school orthography in cyrillic)</source>
         <source>%1 Morphology</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Spelling correct, no other word forms found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Word forms: </source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>HunspellDictsModel</name>
