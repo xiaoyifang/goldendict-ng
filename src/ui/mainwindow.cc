@@ -26,6 +26,11 @@
 #include <QPixmap>
 #include <QList>
 #include <QToolBar>
+#include <QPainter>
+#include <QPalette>
+#include <QMenu>
+#include <QActionGroup>
+#include <QCursor>
 #include <QCloseEvent>
 #include <QDesktopServices>
 #include <QCryptographicHash>
@@ -154,6 +159,49 @@ void MainWindow::changeWebEngineViewFont() const
     QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::FixedFont,
                                                                     cfg.preferences.customFonts.monospace );
   }
+}
+
+/// A small monochrome icon that shows which end of a headword the mode matches:
+/// a bracket on the left for prefix, on the right for suffix, and a plus for
+/// multi-word.
+static QIcon searchModeIcon( Config::SearchMode mode, const QColor & color )
+{
+  constexpr qreal dpr = 2.0;
+  QPixmap pixmap( static_cast< int >( 20 * dpr ), static_cast< int >( 20 * dpr ) );
+  pixmap.setDevicePixelRatio( dpr );
+  pixmap.fill( Qt::transparent );
+
+  QPainter painter( &pixmap );
+  painter.setRenderHint( QPainter::Antialiasing );
+  painter.setPen( QPen( color, 1.6, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin ) );
+
+  if ( mode == Config::SearchMode::MultiWord ) {
+    // Two words joined by a plus.
+    painter.drawLine( QPointF( 2.5, 10 ), QPointF( 7.5, 10 ) );
+    painter.drawLine( QPointF( 12.5, 10 ), QPointF( 17.5, 10 ) );
+    painter.drawLine( QPointF( 10, 5 ), QPointF( 10, 15 ) );
+  }
+  else if ( mode == Config::SearchMode::Prefix ) {
+    // A left bracket around the start of the word bars.
+    painter.drawLine( QPointF( 3.5, 4 ), QPointF( 3.5, 16 ) );
+    painter.drawLine( QPointF( 3.5, 4 ), QPointF( 6.5, 4 ) );
+    painter.drawLine( QPointF( 3.5, 16 ), QPointF( 6.5, 16 ) );
+    painter.drawLine( QPointF( 8, 7 ), QPointF( 17, 7 ) );
+    painter.drawLine( QPointF( 8, 10 ), QPointF( 17, 10 ) );
+    painter.drawLine( QPointF( 8, 13 ), QPointF( 17, 13 ) );
+  }
+  else {
+    // A right bracket around the end of the word bars.
+    painter.drawLine( QPointF( 16.5, 4 ), QPointF( 16.5, 16 ) );
+    painter.drawLine( QPointF( 13.5, 4 ), QPointF( 16.5, 4 ) );
+    painter.drawLine( QPointF( 13.5, 16 ), QPointF( 16.5, 16 ) );
+    painter.drawLine( QPointF( 3, 7 ), QPointF( 12, 7 ) );
+    painter.drawLine( QPointF( 3, 10 ), QPointF( 12, 10 ) );
+    painter.drawLine( QPointF( 3, 13 ), QPointF( 12, 13 ) );
+  }
+
+  painter.end();
+  return QIcon( pixmap );
 }
 
 MainWindow::MainWindow( Config::Class & cfg_ ):
@@ -404,6 +452,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
   connect( &wordFinder, &WordFinder::updated, this, &MainWindow::prefixMatchUpdated );
   connect( &wordFinder, &WordFinder::finished, this, &MainWindow::prefixMatchFinished );
+
+  setupSearchModeMenu();
 
 
   groupList->setFocusPolicy( Qt::ClickFocus );
@@ -2726,6 +2776,89 @@ void MainWindow::translateInputChanged( const QString & newValue )
   updateSuggestionList( newValue );
   // Save translate line text. Later it can be passed to external applications.
   GlobalBroadcaster::instance()->translateLineText = newValue;
+}
+
+void MainWindow::setupSearchModeMenu()
+{
+  searchModeMenu = new QMenu( this );
+  searchModeMenu->setObjectName( "searchModeMenu" );
+
+  auto * modeGroup = new QActionGroup( searchModeMenu );
+  modeGroup->setExclusive( true );
+
+  auto addMode = [ & ]( const QString & text, Config::SearchMode mode ) {
+    QAction * action = searchModeMenu->addAction( text );
+    action->setCheckable( true );
+    action->setData( static_cast< int >( mode ) );
+    modeGroup->addAction( action );
+  };
+
+  addMode( tr( "Prefix" ), Config::SearchMode::Prefix );
+  addMode( tr( "Suffix" ), Config::SearchMode::Suffix );
+  addMode( tr( "Multi-word" ), Config::SearchMode::MultiWord );
+
+  searchModeAction = new QAction( tr( "Search mode" ), this );
+  searchModeAction->setObjectName( "searchModeAction" );
+
+  connect( searchModeAction, &QAction::triggered, this, [ this ]() {
+    searchModeMenu->exec( QCursor::pos() );
+  } );
+
+  connect( searchModeMenu, &QMenu::triggered, this, [ this ]( QAction * action ) {
+    if ( !action || action->isSeparator() || !action->data().isValid() ) {
+      return;
+    }
+
+    const auto mode = static_cast< Config::SearchMode >( action->data().toInt() );
+    if ( mode == cfg.preferences.searchMode ) {
+      return;
+    }
+
+    cfg.preferences.searchMode = mode;
+    updateSearchModeAction();
+
+    if ( !translateLine->text().trimmed().isEmpty() ) {
+      updateSuggestionList();
+    }
+  } );
+
+  // Both search boxes stay alive at the same time; the action is shared.
+  ui.translateLine->addAction( searchModeAction, QLineEdit::TrailingPosition );
+  translateBox->translateLine()->addAction( searchModeAction, QLineEdit::TrailingPosition );
+
+  updateSearchModeAction();
+}
+
+void MainWindow::updateSearchModeAction()
+{
+  if ( !searchModeAction || !searchModeMenu ) {
+    return;
+  }
+
+  QString name;
+  switch ( cfg.preferences.searchMode ) {
+    case Config::SearchMode::Suffix:
+      name = tr( "Suffix" );
+      break;
+    case Config::SearchMode::MultiWord:
+      name = tr( "Multi-word" );
+      break;
+    case Config::SearchMode::Prefix:
+    default:
+      name = tr( "Prefix" );
+      break;
+  }
+
+  searchModeAction->setToolTip( tr( "Search mode: %1" ).arg( name ) );
+  searchModeAction->setIcon(
+    searchModeIcon( cfg.preferences.searchMode, QApplication::palette().color( QPalette::WindowText ) ) );
+
+  const int current = static_cast< int >( cfg.preferences.searchMode );
+  for ( QAction * action : searchModeMenu->actions() ) {
+    if ( !action->isSeparator() && action->data().isValid() ) {
+      action->setChecked( action->data().toInt() == current );
+    }
+  }
 }
 
 void MainWindow::updateSuggestionList()

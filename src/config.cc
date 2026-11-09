@@ -867,6 +867,20 @@ Class load()
       ( preferences.namedItem( "ignoreOwnClipboardChanges" ).toElement().text() == "1" );
     c.preferences.scanToMainWindow = ( preferences.namedItem( "scanToMainWindow" ).toElement().text() == "1" );
     c.preferences.ignoreDiacritics = ( preferences.namedItem( "ignoreDiacritics" ).toElement().text() == "1" );
+
+    if ( !preferences.namedItem( "searchMode" ).isNull() ) {
+      const QString searchMode = preferences.namedItem( "searchMode" ).toElement().text();
+      if ( searchMode == "suffix" ) {
+        c.preferences.searchMode = SearchMode::Suffix;
+      }
+      else if ( searchMode == "multiWord" ) {
+        c.preferences.searchMode = SearchMode::MultiWord;
+      }
+      else {
+        c.preferences.searchMode = SearchMode::Prefix;
+      }
+    }
+
     if ( !preferences.namedItem( "ignorePunctuation" ).isNull() ) {
       c.preferences.ignorePunctuation = ( preferences.namedItem( "ignorePunctuation" ).toElement().text() == "1" );
     }
@@ -1828,6 +1842,18 @@ void save( const Class & c )
 
     opt = dd.createElement( "ignoreDiacritics" );
     opt.appendChild( dd.createTextNode( c.preferences.ignoreDiacritics ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "searchMode" );
+    if ( c.preferences.searchMode == SearchMode::Suffix ) {
+      opt.appendChild( dd.createTextNode( "suffix" ) );
+    }
+    else if ( c.preferences.searchMode == SearchMode::MultiWord ) {
+      opt.appendChild( dd.createTextNode( "multiWord" ) );
+    }
+    else {
+      opt.appendChild( dd.createTextNode( "prefix" ) );
+    }
     preferences.appendChild( opt );
 
     opt = dd.createElement( "ignorePunctuation" );
