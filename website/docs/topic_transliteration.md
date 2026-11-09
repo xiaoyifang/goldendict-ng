@@ -29,6 +29,8 @@ For example, searching `図書館` also finds `圖書館` and `图书馆`.
 
 The conversion data is provided by [OpenCC](https://github.com/BYVoid/OpenCC); see [Customize the opencc](<howto/how to customize the opencc.md>) for the configuration files in use.
 
+OpenCC applies a deterministic conversion, so one simplified character cannot expand to several traditional ones. A Hunspell dictionary such as [hunspell_zh_CN](https://github.com/yx-wh/hunspell_zh_CN) can be added as a supplementary source for that; see [Manage Dictionaries](manage_sources.md#morphology).
+
 ## Custom transliteration
 
 This will enable users to configure their own transliteration if the provided transliteration can not meet the requirements.
