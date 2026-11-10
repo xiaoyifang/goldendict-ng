@@ -2678,6 +2678,30 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Now building headwords cache: </source>
       <translation type="unfinished">Now building headwords cache: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation type="unfinished">Prefix</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation type="unfinished">Suffix</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation type="unfinished">Multi-word</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation type="unfinished">Full-text search…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation type="unfinished">Search mode</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation type="unfinished">Search mode: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
