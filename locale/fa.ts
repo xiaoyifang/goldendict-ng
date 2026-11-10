@@ -2678,6 +2678,30 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Now building headwords cache: </source>
       <translation>اکنون کش headwords را می سازیم: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>پیشوند</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>پسوند</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>چندکلمه ای</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>جستجوی متن کامل…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>حالت جستجو</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>حالت جستجو: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
