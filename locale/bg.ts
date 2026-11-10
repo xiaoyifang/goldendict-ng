@@ -2678,6 +2678,30 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Now building headwords cache: </source>
       <translation>Сега изграждам кеша с заглавни думи: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Префикс</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Суфикс</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Многословно</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Търсене в пълен текст…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Режим на търсене</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Режим на търсене: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
