@@ -2680,6 +2680,30 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Now building headwords cache: </source>
       <translation>Τώρα δημιουργείτε κρυφή μνήμη λέξεων-κλειδιών: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Πρόθεμα</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Επίθημα</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Πολλές λέξεις</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Αναζήτηση πλήρους κειμένου…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Λειτουργία αναζήτησης</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Λειτουργία αναζήτησης: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

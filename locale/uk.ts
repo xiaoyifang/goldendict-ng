@@ -2678,6 +2678,30 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Now building headwords cache: </source>
       <translation>Тепер створюємо кеш заголовків: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Префікс</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Суфікс</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Багатословний</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Повнотекстовий пошук…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Режим пошуку</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Режим пошуку: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

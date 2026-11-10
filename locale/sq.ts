@@ -2677,6 +2677,30 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
       <source>Now building headwords cache: </source>
       <translation>Tani ndërtimi i cache-it të fjalëve kryesore: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Parashtesa</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Prapashtesa</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Me shumë fjalë</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Kërkimi me tekst të plotë…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Mënyra e kërkimit</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Mënyra e kërkimit: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

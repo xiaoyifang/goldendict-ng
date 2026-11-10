@@ -2679,6 +2679,30 @@ Pre vyhľadanie znakov &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos
       <source>Now building headwords cache: </source>
       <translation>Teraz budovanie cache pre hlavičky: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Predpona</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Prípona</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Viacslovné</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Vyhľadávanie v plnom texte…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Režim vyhľadávania</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Režim vyhľadávania: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

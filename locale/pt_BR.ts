@@ -2678,6 +2678,30 @@ Para encontrar os símbolos &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]
       <source>Now building headwords cache: </source>
       <translation>Agora construindo cache de headwords: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Prefixo</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Sufixo</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Várias palavras</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Busca em texto completo…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Modo de busca</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Modo de busca: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

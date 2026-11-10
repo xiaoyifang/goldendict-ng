@@ -2723,6 +2723,30 @@ Error de importación: datos incorrectos en el fichero.</translation>
       <source>Now building headwords cache: </source>
       <translation>Jichha arunaka qullqichata wakichaskaski: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Nayraqata</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Tukuyana</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Walja arunaka</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Taqi qillqan thaqhaña…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Kunjams thaqhaña</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Kunjams thaqhaña: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

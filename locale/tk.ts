@@ -2677,6 +2677,30 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Now building headwords cache: </source>
       <translation>Indi headwords cache gurmak: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Prefiks</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Suffiks</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Köp söz</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Doly tekst agtarma…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Agtarma modu</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Agtarma modu: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

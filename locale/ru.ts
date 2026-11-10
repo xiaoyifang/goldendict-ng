@@ -2681,6 +2681,30 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Now building headwords cache: </source>
       <translation>Теперь строим кэш заголовков: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Префикс</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Суффикс</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Многословное</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Полнотекстовый поиск…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Режим поиска</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Режим поиска: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

@@ -2678,6 +2678,30 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Now building headwords cache: </source>
       <translation>Tella tebni n ugbur n yirawen n yisefra: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Amezwaru</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Anagaruy</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>S waṭas n wawalen</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Anadi ačuran n uḍris…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Talɣa n unadi</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Talɣa n unadi: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

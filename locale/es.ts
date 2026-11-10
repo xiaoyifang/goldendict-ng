@@ -2678,6 +2678,30 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
       <source>Now building headwords cache: </source>
       <translation>Ahora construyendo caché de palabras principales: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Prefijo</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Sufijo</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Palabra múltiple</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Búsqueda en texto completo…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Modo de búsqueda</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Modo de búsqueda: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

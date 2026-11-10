@@ -2678,6 +2678,30 @@ Norėdami atverti parsisiuntimo puslapį, spauskite &lt;b&gt;Parsisiųsti&lt;/b&
       <source>Now building headwords cache: </source>
       <translation>Dabar kuriant headwords talpyklą: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Priešdėlis</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Priesaga</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Daugiažodis</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Pilno teksto paieška…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Paieškos režimas</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Paieškos režimas: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

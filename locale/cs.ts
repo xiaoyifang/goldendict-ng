@@ -2678,6 +2678,30 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <source>Now building headwords cache: </source>
       <translation>Nyní budování cache pro hlavičky: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Předpona</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Přípona</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Víceslovné</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Vyhledávání v plném textu…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Režim vyhledávání</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Režim vyhledávání: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

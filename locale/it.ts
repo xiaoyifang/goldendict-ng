@@ -2679,6 +2679,30 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
       <source>Now building headwords cache: </source>
       <translation>Ora costruendo la cache delle headwords: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Prefisso</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Suffisso</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Più parole</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Ricerca a testo completo…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Modalità di ricerca</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Modalità di ricerca: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
