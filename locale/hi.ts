@@ -2677,6 +2677,30 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <source>Now building headwords cache: </source>
       <translation>अब हेडवर्ड कैश का निर्माण: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>पूर्वसर्ग</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>अनुलग्‍न</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>बहु शब्द</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>पूर्ण-पाठ खोज…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>खोज मोड</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>खोज मोड: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
