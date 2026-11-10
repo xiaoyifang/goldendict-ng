@@ -302,13 +302,13 @@ int main( int argc, char ** argv )
   }
 
   // bword is special: dictionaries emit it in opaque form (bword:word), not as
-  // an authority URL. Registering it as Opaque lets Chromium pass non-ASCII
+  // an authority URL. Registering it as Path lets Chromium pass non-ASCII
   // headwords (CJK, diacritics) through untouched as the URL's path, instead
   // of forcing them into host() which QUrl cannot parse correctly for
   // non-ASCII characters.
   {
     QWebEngineUrlScheme bwordScheme( "bword" );
-    bwordScheme.setSyntax( QWebEngineUrlScheme::Syntax::Opaque );
+    bwordScheme.setSyntax( QWebEngineUrlScheme::Syntax::Path );
     bwordScheme.setFlags( QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled
                           | QWebEngineUrlScheme::SecureScheme );
     QWebEngineUrlScheme::registerScheme( bwordScheme );
