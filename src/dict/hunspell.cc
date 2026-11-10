@@ -191,21 +191,45 @@ string HunspellDictionary::getMorphologyContent( const std::u32string & word )
 
       string stemUtf8 = Text::toUtf8( decoded );
 
-      wordForms += "<a href=\"bword:" + Html::escape( stemUtf8 ) + "\">" + Html::escape( stemUtf8 ) + "</a>";
+      // Use gdlookup://localhost/<encoded> so QUrl parses any non-ASCII word
+      // correctly (host() returns empty for non-ASCII "hosts", while path
+      // always preserves percent-encoded content).
+      std::string encoded = QUrl::toPercentEncoding( QString::fromUtf8( stemUtf8.c_str() ) ).toStdString();
+
+      wordForms += "<a href=\"gdlookup://localhost/" + encoded + "\">" + Html::escape( stemUtf8 ) + "</a>";
     }
 
-    result = "<div class=\"gdmorphology\">";
+    // Wrap the content in the same <article> + <gd-dict-header> layout that
+    // regular articles use, so the dictionary name is visible.
+    string dictHeader;
+    dictHeader = "<article class=\"gdarticle\" id=\"gdmorphology-"
+      + Html::escape( getId() ) + "\">";
+    dictHeader += "<gd-dict-header class=\"gddictname\" id=\"gddictname-"
+      + Html::escape( getId() ) + "\" role=\"button\" aria-expanded=\"true\">";
+    dictHeader += "<span class=\"gddicticon\"><img src=\"gico://"
+      + Html::escape( getId() ) + "/dicticon.png\" alt=\"\"></span>";
+    dictHeader += "<div class=\"gdarticlehead\">";
+    dictHeader += Html::escape(
+      QCoreApplication::translate( "Hunspell", "From %1").arg(
+        QString::fromStdString( getName() ) ).toUtf8().data() );
+    dictHeader += "</div></gd-dict-header>";
+
+    result = dictHeader;
+
+    result += "<div class=\"gdmorphology\">";
 
     if ( wordForms.empty() ) {
       result += Html::escape(
         QCoreApplication::translate( "Hunspell", "Spelling correct, no other word forms found." ).toUtf8().data() );
     }
     else {
-      result += Html::escape( QCoreApplication::translate( "Hunspell", "Word forms: " ).toUtf8().data() );
+      result += Html::escape( QCoreApplication::translate( "Hunspell", "Word forms for %1: ")
+                               .arg( QString::fromStdString( Html::escape( trimmedWordUtf8 ) ) )
+                               .toUtf8().data() );
       result += wordForms;
     }
 
-    result += "</div>";
+    result += "</div></article>";
   }
   catch ( Iconv::Ex & e ) {
     qWarning( "Hunspell: charset conversion error, no processing's done: %s", e.what() );
