@@ -2662,6 +2662,30 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Now building headwords cache: </source>
       <translation>Bây giờ đang xây dựng bộ nhớ đệm headwords: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Tiền tố</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>hậu tố</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Nhiều từ</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Tìm kiếm toàn văn…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Chế độ tìm kiếm</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Chế độ tìm kiếm: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
