@@ -2678,6 +2678,30 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
       <source>Now building headwords cache: </source>
       <translation>Nu bygger vi headwords-cache: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Prefix</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Suffix</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Flerords</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Fulltextsökning…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Sökläge</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Sökläge: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
