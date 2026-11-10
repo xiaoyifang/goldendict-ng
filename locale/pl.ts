@@ -2678,6 +2678,30 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
       <source>Now building headwords cache: </source>
       <translation>Teraz budowanie pamięci podręcznej z nagłówkami: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Prefiks</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Przyrostek</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Wielowyrazowe</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Wyszukiwanie w pełnym tekstie…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Tryb wyszukiwania</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Tryb wyszukiwania: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
