@@ -1191,6 +1191,18 @@ Abrir una lista de grupos</translation>
       <source>%1 Morphology</source>
       <translation>Morfología %1</translation>
     </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Ortugrafiya chiqapawa, janiw yaqha arunaka jikxatapkiti.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Ukata %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Aru formanakapa %1: </translation>
+    </message>
   </context>
   <context>
     <name>HunspellDictsModel</name>
