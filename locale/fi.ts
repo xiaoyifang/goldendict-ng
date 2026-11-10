@@ -1179,6 +1179,18 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <source>%1 Morphology</source>
       <translation>%1 Morfologia</translation>
     </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Oikeinkirjoitus, muita sanamuotoja ei löytynyt.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Lähde %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Sanamuodot %1: </translation>
+    </message>
   </context>
   <context>
     <name>HunspellDictsModel</name>
