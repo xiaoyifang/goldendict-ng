@@ -1179,6 +1179,18 @@ arasındaki farkı giderir)</translation>
       <source>%1 Morphology</source>
       <translation>%1 Morfoloji</translation>
     </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Yazım doğru, başka kelime formu bulunamadı.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>From %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Kelime biçimleri %1: </translation>
+    </message>
   </context>
   <context>
     <name>HunspellDictsModel</name>
