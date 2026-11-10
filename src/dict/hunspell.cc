@@ -202,15 +202,18 @@ string HunspellDictionary::getMorphologyContent( const std::u32string & word )
 
     // Wrap the content in the same <article> + <gd-dict-header> layout that
     // regular articles use, so the dictionary name is visible.
-    string escapedId = Html::escape( getId() );
+    string escapedId  = Html::escape( getId() );
     string dictHeader = R"(<article class="gdarticle" id="gdmorphology-)" + escapedId
       + R"("><gd-dict-header class="gddictname" id="gddictname-)" + escapedId
       + R"(" role="button" aria-expanded="true">)"
-        R"(<span class="gddicticon"><img src="gico://)" + escapedId
+        R"(<span class="gddicticon"><img src="gico://)"
+      + escapedId
       + R"(/dicticon.png" alt=""></span>)"
         R"(<div class="gdarticlehead">)"
-      + Html::escape(
-        QCoreApplication::translate( "Hunspell", "From %1" ).arg( QString::fromStdString( getName() ) ).toUtf8().data() )
+      + Html::escape( QCoreApplication::translate( "Hunspell", "From %1" )
+                        .arg( QString::fromStdString( getName() ) )
+                        .toUtf8()
+                        .data() )
       + R"(</div></gd-dict-header>)";
 
     result = dictHeader;
