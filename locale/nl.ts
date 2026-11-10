@@ -2678,6 +2678,30 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <source>Now building headwords cache: </source>
       <translation>Nu het opbouwen van headwords cache: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Voorvoegsel</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Suffix</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Meerwoordige</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Volledige tekst zoekopdracht…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Zoekmodus</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Zoekmodus: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
