@@ -156,6 +156,11 @@ a:hover {
   margin-top: 1.5em;
 }
 
+.gdmorphology {
+  /* Add some vertical space before the article */
+  margin-top: 1.5em;
+}
+
 .dsl_ex,
 .dsl_ex .dsl_opt {
   color: steelblue;

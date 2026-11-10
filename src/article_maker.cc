@@ -447,6 +447,16 @@ ArticleRequest::ArticleRequest( const QString & word,
 
   hasAnyData = true;
 
+  // A group "has content" when at least one of its enabled dictionaries
+  // produces articles. Morphology-only dictionaries (Hunspell) don't count.
+  morphologyOnly = !activeDicts.empty();
+  for ( const auto & activeDict : activeDicts ) {
+    if ( !activeDict->isMorphologyDictionary() ) {
+      morphologyOnly = false;
+      break;
+    }
+  }
+
   appendString( header );
 
   //clear founded dicts.
@@ -718,8 +728,25 @@ void ArticleRequest::bodyFinished()
     bodyDone = true;
 
     string footer;
+    string morphologyContent;
 
-    if ( !foundAnyDefinitions ) {
+    if ( !foundAnyDefinitions && morphologyOnly ) {
+      // The group contains only morphology dictionaries (e.g. Hunspell), which
+      // can't provide articles. Show the word forms they know instead.
+      const std::u32string wordStd = Text::removeTrailingZero( word );
+
+      for ( const auto & activeDict : activeDicts ) {
+        morphologyContent += activeDict->getMorphologyContent( wordStd );
+      }
+    }
+
+    if ( !morphologyContent.empty() ) {
+      // Morphology data is available; there's no need for the generic
+      // "not found" message.
+      footer += morphologyContent;
+      footer += "</body></html>";
+    }
+    else if ( !foundAnyDefinitions ) {
       // No definitions were ever found, say so to the user.
 
       // Larger words are usually whole sentences - don't clutter the output
