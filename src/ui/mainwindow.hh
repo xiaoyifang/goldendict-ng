@@ -139,6 +139,8 @@ private:
   QAction * openInExternalBrowserAction;
   QAction * menuButtonAction;
   QToolButton * menuButton;
+  QAction * searchModeAction = nullptr;
+  QMenu * searchModeMenu     = nullptr;
   MRUQMenu * tabListMenu;
   //List that contains indexes of tabs arranged in a most-recently-used order
   QList< QWidget * > mruList;
@@ -242,6 +244,9 @@ private:
 
   bool eventFilter( QObject *, QEvent * ) override;
 
+  /// Redraws palette-dependent decorations (the search-mode icon) on theme changes.
+  void changeEvent( QEvent * ) override;
+
 #if defined( Q_OS_WIN )
   /// Handle theme change events as fallback when colorSchemeChanged signal is not available
   bool event( QEvent * event ) override;
@@ -278,6 +283,11 @@ private:
 
   void updateSuggestionList();
   void updateSuggestionList( const QString & text );
+
+  /// Builds the search-mode menu and attaches its action to both search boxes.
+  void setupSearchModeMenu();
+  /// Syncs the mode action's tooltip and the checked menu item with the config.
+  void updateSearchModeAction();
 
   enum TranslateBoxPopup {
     NoPopupChange,

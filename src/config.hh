@@ -39,6 +39,12 @@ enum class Dark : std::uint8_t {
   Auto = 2,
 };
 
+/// How the search box matches the typed text against dictionary headwords.
+enum class SearchMode : std::uint8_t {
+  Prefix    = 0, ///< Headwords starting with the query (the historical behaviour).
+  Suffix    = 1, ///< Headwords ending with the query.
+  MultiWord = 2, ///< Headwords containing every whitespace-separated token, in any order.
+};
 
 /// A path where to search for the dictionaries
 struct Path
@@ -366,6 +372,9 @@ struct Preferences
   bool synonymSearchEnabled;
   bool stripClipboard;
   bool raiseWindowOnSearch = true;
+
+  /// Selected headword matching mode for the search box.
+  SearchMode searchMode = SearchMode::Prefix;
 
   FullTextSearch fts;
 
