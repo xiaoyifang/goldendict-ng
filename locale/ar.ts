@@ -2677,6 +2677,30 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Now building headwords cache: </source>
       <translation>الآن بناء ذاكرة تخزين مؤقت للكلمات الرئيسية: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>بادئة</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>اللاحقة</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>الكلمات متعددة</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>البحث الكامل…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>وضع البحث</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>وضع البحث: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
