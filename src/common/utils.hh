@@ -278,11 +278,13 @@ inline void addQueryItem( QUrl & url, const QString & key, const QString & value
 
 inline QString getWordFromPathOrHost( const QUrl & url )
 {
-  auto path = url.path();
+  // Use FullyDecoded so percent-encoded headwords (CJK, diacritics, spaces)
+  // are returned as their original characters instead of %XX sequences.
+  auto path = url.path( QUrl::FullyDecoded );
   if ( !path.isEmpty() ) {
     return path.startsWith( "/" ) ? path.mid( 1 ) : path;
   }
-  auto host = url.host();
+  auto host = url.host( QUrl::FullyDecoded );
   return host != "localhost" ? host : QString();
 }
 

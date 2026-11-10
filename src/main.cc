@@ -288,15 +288,30 @@ int main( int argc, char ** argv )
   QGuiApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
   
   // Registration of custom URL schemes must be done before QCoreApplication/QApplication is created.
-  const QStringList localSchemes =
-    { "gdlookup", "gdau", "gico", "qrcx", "bres", "bword", "gdprg", "gdvideo", "gdtts", "gdinternal", "entry" };
 
-  for ( const auto & localScheme : localSchemes ) {
+  // Schemes that use the host/path authority form (scheme://host/path).
+  const QStringList hostSchemes =
+    { "gdlookup", "gdau", "gico", "qrcx", "bres", "gdprg", "gdvideo", "gdtts", "gdinternal", "entry" };
+
+  for ( const auto & localScheme : hostSchemes ) {
     QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
     webUiScheme.setSyntax( QWebEngineUrlScheme::Syntax::Host );
     webUiScheme.setFlags( QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled
                           | QWebEngineUrlScheme::SecureScheme );
     QWebEngineUrlScheme::registerScheme( webUiScheme );
+  }
+
+  // bword is special: dictionaries emit it in opaque form (bword:word), not as
+  // an authority URL. Registering it as Opaque lets Chromium pass non-ASCII
+  // headwords (CJK, diacritics) through untouched as the URL's path, instead
+  // of forcing them into host() which QUrl cannot parse correctly for
+  // non-ASCII characters.
+  {
+    QWebEngineUrlScheme bwordScheme( "bword" );
+    bwordScheme.setSyntax( QWebEngineUrlScheme::Syntax::Opaque );
+    bwordScheme.setFlags( QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled
+                          | QWebEngineUrlScheme::SecureScheme );
+    QWebEngineUrlScheme::registerScheme( bwordScheme );
   }
 
   GD_QApplication app( "GoldenDict-ng", argc, argv );
