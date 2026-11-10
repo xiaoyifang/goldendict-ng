@@ -2678,6 +2678,30 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
       <source>Now building headwords cache: </source>
       <translation>Most pedig fejszavak tártárának építése: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Előtag</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Utótag</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Többszavas</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Teljes szöveges keresés…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Keresési mód</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Keresési mód: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
