@@ -2689,6 +2689,30 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; uso de
       <source>Now building headwords cache: </source>
       <translation type="unfinished">Now building headwords cache: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Prefijo</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Sufijo</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Multipalabra</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Búsqueda de texto completo…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Modo de búsqueda</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Modo de búsqueda: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
