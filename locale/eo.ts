@@ -2678,6 +2678,30 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
       <source>Now building headwords cache: </source>
       <translation>Nun konstruante kapvortan kaŝmemoron: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Prefikso</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Sufikso</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Plurvorta</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Plenteksta serĉo…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Serĉreĝimo</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Serĉreĝimo: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
