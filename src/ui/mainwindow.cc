@@ -1727,6 +1727,7 @@ void MainWindow::refreshAppearances()
                      cfg.preferences.displayStyle,
                      cfg.preferences.darkMode,
                      cfg.preferences.interfaceStyle );
+  updateSearchModeAction();
 }
 
 void MainWindow::trayIconUpdateOrInit()
@@ -2854,15 +2855,8 @@ void MainWindow::setupSearchModeMenu()
   ui.translateLine->addAction( searchModeAction, QLineEdit::TrailingPosition );
   translateBox->translateLine()->addAction( searchModeAction, QLineEdit::TrailingPosition );
 
-  // The icon is painted from the current palette, so redraw it whenever the
-  // interface colours change (dark mode toggle, style switch).
-  // QEvent::ApplicationPaletteChange is handled in changeEvent() below.
-#if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
-  connect( QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, [ this ]( Qt::ColorScheme ) {
-    updateSearchModeAction();
-  } );
-#endif
-
+  // The icon is painted from the current palette: changeEvent() handles
+  // ApplicationPaletteChange, and refreshAppearances() covers colorSchemeChanged.
   updateSearchModeAction();
 }
 
