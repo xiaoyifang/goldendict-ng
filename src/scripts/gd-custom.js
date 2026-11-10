@@ -15,18 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Links as bword:xxx etc.
+    // Links containing a colon (gdlookup:, bword:, mailto:, http:, ...) are
+    // already absolute. Let them through as-is; the C++ acceptNavigationRequest
+    // handler will route internal schemes correctly.
     if (link.includes(":")) {
-      // Chromium requires an authority (//) for navigations to schemes
-      // registered with QWebEngineUrlScheme::Syntax::Host (bword, gdau, ...).
-      // Legacy dictionaries emit the opaque form (bword:word); normalize it so
-      // the click becomes a real navigation. External schemes (mailto:, ...)
-      // are left untouched.
-      const scheme = link.slice(0, link.indexOf(":")).toLowerCase();
-      const internalSchemes = ["bword"];
-      if (!link.includes("//") && internalSchemes.includes(scheme)) {
-        anchor.setAttribute("href", link.replace(":", "://"));
-      }
       return;
     }
 
