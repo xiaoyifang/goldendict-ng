@@ -1178,6 +1178,18 @@ between classic and school orthography in cyrillic)</source>
       <source>%1 Morphology</source>
       <translation>%1 철자법사전</translation>
     </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>철자가 맞았고, 다른 단어 형태는 발견되지 않았습니다.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>출처 %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>어형 %1: </translation>
+    </message>
   </context>
   <context>
     <name>HunspellDictsModel</name>
