@@ -202,16 +202,14 @@ string HunspellDictionary::getMorphologyContent( const std::u32string & word )
     // Wrap the content in the same <article> + <gd-dict-header> layout that
     // regular articles use, so the dictionary name is visible.
     string dictHeader;
-    dictHeader = "<article class=\"gdarticle\" id=\"gdmorphology-"
-      + Html::escape( getId() ) + "\">";
-    dictHeader += "<gd-dict-header class=\"gddictname\" id=\"gddictname-"
-      + Html::escape( getId() ) + "\" role=\"button\" aria-expanded=\"true\">";
-    dictHeader += "<span class=\"gddicticon\"><img src=\"gico://"
-      + Html::escape( getId() ) + "/dicticon.png\" alt=\"\"></span>";
+    dictHeader = "<article class=\"gdarticle\" id=\"gdmorphology-" + Html::escape( getId() ) + "\">";
+    dictHeader += "<gd-dict-header class=\"gddictname\" id=\"gddictname-" + Html::escape( getId() )
+      + "\" role=\"button\" aria-expanded=\"true\">";
+    dictHeader +=
+      "<span class=\"gddicticon\"><img src=\"gico://" + Html::escape( getId() ) + "/dicticon.png\" alt=\"\"></span>";
     dictHeader += "<div class=\"gdarticlehead\">";
     dictHeader += Html::escape(
-      QCoreApplication::translate( "Hunspell", "From %1").arg(
-        QString::fromStdString( getName() ) ).toUtf8().data() );
+      QCoreApplication::translate( "Hunspell", "From %1" ).arg( QString::fromStdString( getName() ) ).toUtf8().data() );
     dictHeader += "</div></gd-dict-header>";
 
     result = dictHeader;
@@ -223,9 +221,10 @@ string HunspellDictionary::getMorphologyContent( const std::u32string & word )
         QCoreApplication::translate( "Hunspell", "Spelling correct, no other word forms found." ).toUtf8().data() );
     }
     else {
-      result += Html::escape( QCoreApplication::translate( "Hunspell", "Word forms for %1: ")
-                               .arg( QString::fromStdString( Html::escape( trimmedWordUtf8 ) ) )
-                               .toUtf8().data() );
+      result += Html::escape( QCoreApplication::translate( "Hunspell", "Word forms for %1: " )
+                                .arg( QString::fromStdString( Html::escape( trimmedWordUtf8 ) ) )
+                                .toUtf8()
+                                .data() );
       result += wordForms;
     }
 
