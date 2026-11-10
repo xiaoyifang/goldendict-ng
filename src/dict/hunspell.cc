@@ -103,6 +103,11 @@ private:
 /// Iconv::Ex
 std::u32string decodeFromHunspell( Hunspell &, const char * );
 
+/// Extracts stems from the hunspell analyses of the given word, following
+/// multi-level chains (e.g. drunkest -> drunk -> drink). The word itself and
+/// duplicates are not included. The caller must hold hunspellMutex.
+QList< std::u32string > collectWordForms( const std::u32string & word, Hunspell & hunspell );
+
 /// Generates suggestions via hunspell
 QList< std::u32string > suggest( const std::u32string & word, QMutex & hunspellMutex, Hunspell & hunspell );
 
@@ -174,17 +179,13 @@ string HunspellDictionary::getMorphologyContent( const std::u32string & word )
       return {};
     }
 
-    const std::u32string lowercasedWord = Folding::applySimpleCaseOnly( trimmedWord );
-    const vector< string > stems        = hunspell.stem( trimmedWordUtf8 );
+    // Same multi-level stemming as the spelling suggestions, so chains like
+    // unlovable -> lovable -> love are followed. collectWordForms() already
+    // drops the word itself and duplicates.
+    const QList< std::u32string > stems = collectWordForms( trimmedWord, hunspell );
     string wordForms;
 
-    for ( const auto & stem : stems ) {
-      std::u32string decoded = decodeFromHunspell( hunspell, stem.c_str() );
-
-      if ( Folding::applySimpleCaseOnly( decoded ) == lowercasedWord ) {
-        continue; // The word itself is not a useful "form"
-      }
-
+    for ( const auto & decoded : stems ) {
       if ( !wordForms.empty() ) {
         wordForms += ", ";
       }
@@ -447,63 +448,71 @@ void HunspellHeadwordsRequest::run()
   finish();
 }
 
+QList< std::u32string > collectWordForms( const std::u32string & word, Hunspell & hunspell )
+{
+  QList< std::u32string > result;
+
+  std::u32string lowercasedWord = Folding::applySimpleCaseOnly( word );
+
+  static QRegularExpression cutStem( R"((?:^|\s)st:(((\s+(?!\w{2}:)(?!-)(?!\+))|\S+)+))" );
+
+  // Feed extracted stems back to hunspell iteratively, so multi-level
+  // stemming works (e.g. drunkest -> drunk -> drink). Dictionaries without
+  // such chains yield no new stems in the next round and the loop stops,
+  // so no configuration is needed. Depth is bounded to keep pathological
+  // dictionaries in check.
+  constexpr int maxStemDepth = 4;
+
+  vector< std::u32string > pending;
+  pending.push_back( word );
+
+  std::set< std::u32string > collected;
+
+  for ( int depth = 0; depth < maxStemDepth && !pending.empty(); ++depth ) {
+    vector< std::u32string > next;
+
+    for ( const auto & currentWord : pending ) {
+      auto suggestions = hunspell.analyze( Iconv::toUtf8( Text::utf32_le, currentWord ) );
+
+      for ( const auto & x : suggestions ) {
+        QString suggestion = QString::fromStdU32String( decodeFromHunspell( hunspell, x.c_str() ) );
+
+        // Strip comments
+        int n = suggestion.indexOf( '#' );
+        if ( n >= 0 ) {
+          suggestion.chop( suggestion.length() - n );
+        }
+
+        qDebug( ">>>Sugg: %s", suggestion.toLocal8Bit().data() );
+
+        auto match = cutStem.match( suggestion.trimmed() );
+        if ( match.hasMatch() ) {
+          std::u32string alt       = match.captured( 1 ).toStdU32String();
+          std::u32string foldedAlt = Folding::applySimpleCaseOnly( alt );
+
+          if ( foldedAlt != lowercasedWord && !collected.count( foldedAlt ) ) // No point in providing same word
+          {
+            collected.insert( foldedAlt );
+            result.append( alt );
+            next.push_back( alt );
+          }
+        }
+      }
+    }
+
+    pending = std::move( next );
+  }
+
+  return result;
+}
+
 QList< std::u32string > suggest( const std::u32string & word, QMutex & hunspellMutex, Hunspell & hunspell )
 {
   QList< std::u32string > result;
 
   try {
     QMutexLocker _( &hunspellMutex );
-
-    std::u32string lowercasedWord = Folding::applySimpleCaseOnly( word );
-
-    static QRegularExpression cutStem( R"((?:^|\s)st:(((\s+(?!\w{2}:)(?!-)(?!\+))|\S+)+))" );
-
-    // Feed extracted stems back to hunspell iteratively, so multi-level
-    // stemming works (e.g. drunkest -> drunk -> drink). Dictionaries without
-    // such chains yield no new stems in the next round and the loop stops,
-    // so no configuration is needed. Depth is bounded to keep pathological
-    // dictionaries in check.
-    constexpr int maxStemDepth = 4;
-
-    vector< std::u32string > pending;
-    pending.push_back( word );
-
-    std::set< std::u32string > collected;
-
-    for ( int depth = 0; depth < maxStemDepth && !pending.empty(); ++depth ) {
-      vector< std::u32string > next;
-
-      for ( const auto & currentWord : pending ) {
-        auto suggestions = hunspell.analyze( Iconv::toUtf8( Text::utf32_le, currentWord ) );
-
-        for ( const auto & x : suggestions ) {
-          QString suggestion = QString::fromStdU32String( decodeFromHunspell( hunspell, x.c_str() ) );
-
-          // Strip comments
-          int n = suggestion.indexOf( '#' );
-          if ( n >= 0 ) {
-            suggestion.chop( suggestion.length() - n );
-          }
-
-          qDebug( ">>>Sugg: %s", suggestion.toLocal8Bit().data() );
-
-          auto match = cutStem.match( suggestion.trimmed() );
-          if ( match.hasMatch() ) {
-            std::u32string alt       = match.captured( 1 ).toStdU32String();
-            std::u32string foldedAlt = Folding::applySimpleCaseOnly( alt );
-
-            if ( foldedAlt != lowercasedWord && !collected.count( foldedAlt ) ) // No point in providing same word
-            {
-              collected.insert( foldedAlt );
-              result.append( alt );
-              next.push_back( alt );
-            }
-          }
-        }
-      }
-
-      pending = std::move( next );
-    }
+    result = collectWordForms( word, hunspell );
   }
   catch ( Iconv::Ex & e ) {
     qWarning( "Hunspell: charset conversion error, no processing's done: %s", e.what() );
