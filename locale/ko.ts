@@ -2677,6 +2677,30 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Now building headwords cache: </source>
       <translation>이제 헤드워드 캐시를 쌓아가고 있습니다: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>접두사</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>접미사</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>다중 단어</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>전체 텍스트 검색…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>검색 모드</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>검색 모드: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
