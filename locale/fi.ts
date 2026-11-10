@@ -2678,6 +2678,30 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <source>Now building headwords cache: </source>
       <translation>Nyt rakennamme otsikkosanavarastoa: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Etuliite</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Päätte</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Monisanainen</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Koko tekstin haku…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Hakutila</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Hakutila: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
