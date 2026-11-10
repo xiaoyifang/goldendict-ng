@@ -1179,6 +1179,18 @@ a školní ortografií v cyrilici)</translation>
       <source>%1 Morphology</source>
       <translation>%1 Morfologie</translation>
     </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Pravopis správný, žádné jiné slovní formy nenalezeny.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Z %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Tvary slov pro %1: </translation>
+    </message>
   </context>
   <context>
     <name>HunspellDictsModel</name>
