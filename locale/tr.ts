@@ -2678,6 +2678,30 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Now building headwords cache: </source>
       <translation>Şimdi başlık önbelleği oluşturuyor: </translation>
     </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Ön ek</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Eki</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Çok kelimeli</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Tam metin arama…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Arama modu</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Arama modu: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
