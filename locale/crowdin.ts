@@ -1166,7 +1166,11 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Word forms: </source>
+        <source>From %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Word forms for %1: </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
