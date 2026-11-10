@@ -1178,6 +1178,18 @@ between classic and school orthography in cyrillic)</source>
       <source>%1 Morphology</source>
       <translation>%1 आकारिकी</translation>
     </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>वर्तनी सही है, कोई अन्य शब्द रूप नहीं मिला।</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>से %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>के लिए शब्द रूप %1: </translation>
+    </message>
   </context>
   <context>
     <name>HunspellDictsModel</name>
