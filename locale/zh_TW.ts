@@ -1177,6 +1177,18 @@ between classic and school orthography in cyrillic)</source>
       <source>%1 Morphology</source>
       <translation>%1 構詞法</translation>
     </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>拼寫正確，未找到其他單字形式。</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>來自 %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>詞形為 %1: </translation>
+    </message>
   </context>
   <context>
     <name>HunspellDictsModel</name>

@@ -1190,6 +1190,18 @@ Reordene los grupos usando el mouse sobre las pestañas con los nombres de los m
       <source>%1 Morphology</source>
       <translation>Morfología de %1</translation>
     </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Ortografía correcta, no se encontraron otras formas de la palabra.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>De %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Formas de la palabra para %1: </translation>
+    </message>
   </context>
   <context>
     <name>HunspellDictsModel</name>

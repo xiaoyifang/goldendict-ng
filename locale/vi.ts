@@ -1163,6 +1163,18 @@ between classic and school orthography in cyrillic)</source>
       <source>%1 Morphology</source>
       <translation>Hình thái học %1</translation>
     </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Chính tả đúng, không tìm thấy dạng từ nào khác.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Từ %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Dạng từ cho %1: </translation>
+    </message>
   </context>
   <context>
     <name>HunspellDictsModel</name>

@@ -1178,6 +1178,18 @@ between classic and school orthography in cyrillic)</source>
       <source>%1 Morphology</source>
       <translation>الصَرْف %1</translation>
     </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>التهجئة صحيحة، لم يتم العثور على أشكال كلمات أخرى.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>من %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>أشكال الكلمات ل %1: </translation>
+    </message>
   </context>
   <context>
     <name>HunspellDictsModel</name>

@@ -1179,6 +1179,18 @@ between classic and school orthography in cyrillic)</source>
       <source>%1 Morphology</source>
       <translation>Морфологияи %1</translation>
     </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Имло дуруст аст, шаклҳои дигари калима ёфт нашуданд.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Аз %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Шаклҳои калима барои %1: </translation>
+    </message>
   </context>
   <context>
     <name>HunspellDictsModel</name>

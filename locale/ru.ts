@@ -1181,6 +1181,18 @@ between classic and school orthography in cyrillic)</source>
       <source>%1 Morphology</source>
       <translation>%1 (морфология)</translation>
     </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Орфография правильна, других форм слов не найдено.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Из %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Формы слов для %1: </translation>
+    </message>
   </context>
   <context>
     <name>HunspellDictsModel</name>

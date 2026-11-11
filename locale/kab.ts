@@ -1179,6 +1179,18 @@ between classic and school orthography in cyrillic)</translation>
       <source>%1 Morphology</source>
       <translation>%1 Morphology</translation>
     </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Tasebḍart teṣṣeḥ, ulac talɣiwin n wawal nniḍen i yettwafen.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Seg %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Talɣiwin n wawal i %1: </translation>
+    </message>
   </context>
   <context>
     <name>HunspellDictsModel</name>

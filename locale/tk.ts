@@ -1178,6 +1178,18 @@ between classic and school orthography in cyrillic)</source>
       <source>%1 Morphology</source>
       <translation>%1 Morfologiýa</translation>
     </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Ýazylyşy dogry, başga söz formasy tapylmady.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>From %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Söz formalary %1: </translation>
+    </message>
   </context>
   <context>
     <name>HunspellDictsModel</name>

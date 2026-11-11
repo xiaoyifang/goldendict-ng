@@ -1179,6 +1179,18 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <source>%1 Morphology</source>
       <translation>Morfologi för %1</translation>
     </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Stavning rätt, inga andra ordformer hittades.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Från %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Ordformer för %1: </translation>
+    </message>
   </context>
   <context>
     <name>HunspellDictsModel</name>

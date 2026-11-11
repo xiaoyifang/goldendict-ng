@@ -1179,6 +1179,18 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <source>%1 Morphology</source>
       <translation>Morfologie %1</translation>
     </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Spelling correct, geen andere woordvormen gevonden.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Van %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Woordvormen voor %1: </translation>
+    </message>
   </context>
   <context>
     <name>HunspellDictsModel</name>
