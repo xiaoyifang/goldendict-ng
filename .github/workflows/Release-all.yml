@@ -311,6 +311,8 @@ jobs:
           if git ls-remote --exit-code --tags origin "refs/tags/${{ env.newTag }}" >/dev/null 2>&1; then
             echo "Tag ${{ env.newTag }} already exists, skip tag creation"
           else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
             git tag -a "${{ env.newTag }}" -m "${{ env.releaseTitle }}" "${{ github.sha }}"
             git push origin "refs/tags/${{ env.newTag }}"
           fi
