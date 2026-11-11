@@ -295,9 +295,6 @@ jobs:
         releaseTitle: ${{ needs.generate_other_staffs.outputs.releaseTitle }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v6
-        with:
-          fetch-depth: 1
       - uses: actions/download-artifact@v8
         with:
           merge-multiple: true
@@ -308,13 +305,18 @@ jobs:
           # Annotated tag date (= publish time) is what GitHub uses to order
           # the Releases page; lightweight tags fall back to the commit date
           # and make daily builds sort out of order.
-          if git ls-remote --exit-code --tags origin "refs/tags/${{ env.newTag }}" >/dev/null 2>&1; then
+          if gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${{ env.newTag }}" >/dev/null 2>&1; then
             echo "Tag ${{ env.newTag }} already exists, skip tag creation"
           else
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git tag -a "${{ env.newTag }}" -m "${{ env.releaseTitle }}" "${{ github.sha }}"
-            git push origin "refs/tags/${{ env.newTag }}"
+            tag_obj=$(gh api "repos/${GITHUB_REPOSITORY}/git/tags" \
+              -f tag="${{ env.newTag }}" \
+              -f message="${{ env.releaseTitle }}" \
+              -f type="commit" \
+              -f object="${{ github.sha }}" \
+              --jq .sha)
+            gh api "repos/${GITHUB_REPOSITORY}/git/refs" \
+              -f ref="refs/tags/${{ env.newTag }}" \
+              -f sha="$tag_obj"
           fi
       - name: Create new tag
         run: |
