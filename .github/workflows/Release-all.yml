@@ -300,13 +300,30 @@ jobs:
           merge-multiple: true
       - name: List all files
         run: ls -R
+      - name: Create annotated tag
+        run: |
+          # Annotated tag date (= publish time) is what GitHub uses to order
+          # the Releases page; lightweight tags fall back to the commit date
+          # and make daily builds sort out of order.
+          if gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${{ env.newTag }}" >/dev/null 2>&1; then
+            echo "Tag ${{ env.newTag }} already exists, skip tag creation"
+          else
+            tag_obj=$(gh api "repos/${GITHUB_REPOSITORY}/git/tags" \
+              -f tag="${{ env.newTag }}" \
+              -f message="${{ env.releaseTitle }}" \
+              -f type="commit" \
+              -f object="${{ github.sha }}" \
+              --jq .sha)
+            gh api "repos/${GITHUB_REPOSITORY}/git/refs" \
+              -f ref="refs/tags/${{ env.newTag }}" \
+              -f sha="$tag_obj"
+          fi
       - name: Create new tag
         run: |
           if [[ '${{ env.prerelease }}' == 'true' ]]
           then
             gh release create '${{ env.newTag }}' \
               -t '${{ env.releaseTitle }}' \
-              --target '${{ github.sha }}' \
               --notes-file=./changelog.txt \
               --latest=false \
               --prerelease \
@@ -314,7 +331,6 @@ jobs:
           else
             gh release create '${{ env.newTag }}' \
               -t '${{ env.releaseTitle }}' \
-              --target '${{ github.sha }}' \
               --notes-file=./changelog.txt \
               --latest=true \
               --repo ${GITHUB_REPOSITORY}
