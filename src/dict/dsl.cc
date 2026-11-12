@@ -1602,11 +1602,40 @@ void DslResourceRequest::run()
     return;
   }
 
+  // The article renderer appends the name of the sound dictionary specified
+  // via the #SOUND_DICTIONARY directive as a URL fragment. Strip it off and
+  // remember it so that the sound can be looked up in that dictionary.
+  string soundDictName;
+  const auto fragPos = resourceName.find( '#' );
+  if ( fragPos != string::npos ) {
+    soundDictName  = resourceName.substr( fragPos + 1 );
+    resourceName.resize( fragPos );
+  }
+
   string n = dict.getContainingFolder().toStdString() + Utils::Fs::separator() + resourceName;
 
   auto fp = Utils::Fs::findFirstExistingFile(
     { n, dict.getResourceDir1() + resourceName, dict.getResourceDir2() + resourceName } );
   qDebug( "found dsl resource name is %s", fp.c_str() );
+
+  auto loadFromDict = [ this ]( const sptr< Dictionary::Class > & sourceDict ) -> bool {
+    if ( !sourceDict ) {
+      return false;
+    }
+    try {
+      sptr< Dictionary::DataRequest > req = sourceDict->getResource( resourceName );
+
+      if ( req->isFinished() && req->dataSize() > 0 ) {
+        data       = req->getFullData();
+        hasAnyData = true;
+        return true;
+      }
+    }
+    catch ( std::exception & ) {
+    }
+    return false;
+  };
+
   try {
     QMutexLocker _( &dataMutex );
 
@@ -1619,34 +1648,55 @@ void DslResourceRequest::run()
       }
     }
     else {
-      // try the .lsa dictionary if existed.
+      // 1. The sound dictionary specified via the #SOUND_DICTIONARY directive.
+      //    When the URL carries no fragment, fall back to the directive stored
+      //    in the dictionary's header.
+      if ( soundDictName.empty() && !dict.preferredSoundDictionary.empty() ) {
+        soundDictName = dict.preferredSoundDictionary;
+      }
+
+      if ( !soundDictName.empty() ) {
+        loadFromDict( GlobalBroadcaster::instance()->getSoundDictionaryByName(
+          QString::fromUtf8( soundDictName.c_str() ) ) );
+      }
+
+      // 2. Try the .lsa dictionary if existed.
       // The original resource request failed. Let's try to find a matching .lsa dictionary.
-      QString containingFolder = dict.getContainingFolder();
-      if ( !containingFolder.isEmpty() ) {
-        QDir dir( containingFolder );
-        QStringList lsaFiles = dir.entryList( QStringList() << "*.lsa", QDir::Files );
+      if ( !hasAnyData ) {
+        QString containingFolder = dict.getContainingFolder();
+        if ( !containingFolder.isEmpty() ) {
+          QDir dir( containingFolder );
+          QStringList lsaFiles = dir.entryList( QStringList() << "*.lsa", QDir::Files );
 
-        if ( !lsaFiles.isEmpty() ) {
-          QString lsaFilePath = dir.absoluteFilePath( lsaFiles.first() );
-          QString lsaDictId   = GlobalBroadcaster::instance()->getLsaIdFromPath( lsaFilePath );
+          if ( !lsaFiles.isEmpty() ) {
+            QString lsaFilePath = dir.absoluteFilePath( lsaFiles.first() );
+            QString lsaDictId   = GlobalBroadcaster::instance()->getLsaIdFromPath( lsaFilePath );
 
-          if ( !lsaDictId.isEmpty() ) {
-            sptr< Dictionary::Class > lsaDict = GlobalBroadcaster::instance()->getDictionaryById( lsaDictId );
+            if ( !lsaDictId.isEmpty() ) {
+              sptr< Dictionary::Class > lsaDict = GlobalBroadcaster::instance()->getDictionaryById( lsaDictId );
 
-            if ( lsaDict ) {
-              sptr< Dictionary::DataRequest > lsaReq = lsaDict->getResource( resourceName );
-
-              if ( lsaReq->isFinished() && lsaReq->dataSize() > 0 ) {
-                data       = lsaReq->getFullData();
-                hasAnyData = true;
+              if ( lsaDict ) {
+                loadFromDict( lsaDict );
               }
             }
           }
         }
       }
+
+      // 3. Try the sound dir dictionaries. Their sounds ( plain files or
+      //    "universal" .lsa archives ) are shared between dictionaries.
       if ( !hasAnyData ) {
-        throw std::runtime_error( "Resource not found." );
+        const auto & soundDirIds = GlobalBroadcaster::instance()->getSoundDirDictIds();
+        for ( const auto & id : soundDirIds ) {
+          if ( loadFromDict( GlobalBroadcaster::instance()->getDictionaryById( id ) ) ) {
+            break;
+          }
+        }
       }
+    }
+
+    if ( !hasAnyData ) {
+      throw std::runtime_error( "Resource not found." );
     }
 
     if ( Filetype::isNameOfTiff( resourceName ) ) {

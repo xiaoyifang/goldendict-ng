@@ -39,6 +39,7 @@ class GlobalBroadcaster: public QObject
   Icons::DictionaryIconName _icon_names;
   QMap< QString, QString > lsaIdToPathMap;
   QMap< QString, QString > lsaPathToIdMap;
+  QSet< QString > soundDirDictIds;
   QMap< QString, sptr< Dictionary::Class > > dictMap;
   void loadWhitelist();
 
@@ -60,6 +61,12 @@ public:
   void addLsaDictMapping( const QString & dictId, const QString & path );
   QString getLsaPathFromId( const QString & dictId ) const;
   QString getLsaIdFromPath( const QString & path ) const;
+  void addSoundDirDictId( const QString & dictId );
+  const QSet< QString > & getSoundDirDictIds() const;
+  /// Finds a sound-capable dictionary ( a sound dir or a Lingvo sound
+  /// archive ) by its name, as referenced by the DSL #SOUND_DICTIONARY
+  /// directive.
+  sptr< Dictionary::Class > getSoundDictionaryByName( const QString & name ) const;
   // For backward compatibility
   Config::Preferences * getPreference() const;
   GlobalBroadcaster( QObject * parent = nullptr );

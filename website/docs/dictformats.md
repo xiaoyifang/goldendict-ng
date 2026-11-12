@@ -70,7 +70,7 @@ Main file of ABBYY Lingvo dictionary (.dsl) can be compressed by Dictzip program
 
 Additional dictionary resources (images, sound files, etc.) also can be compressed into zip archive. This archive must be named on main dictionary file name (include extension) with adding ".files.zip" and placed beside other dictionary files. If main file of your dictionary, for example, named "My_best_dictionary.dsl" therefore archive with resources must be named "My_best_dictionary.dsl.files.zip".
 
-GoldenDict supports the "#SOUND_DICTIONARY" directive. Sounds missing in the resources of the dictionary will be searched first in the dictionary specified in this directive.
+GoldenDict supports the "#SOUND_DICTIONARY" directive. Sounds missing in the resources of the dictionary will be searched first in the dictionary specified in this directive. The dictionary name in this directive must match the display name of a sound dir or a Lingvo sound archive that is already added to GoldenDict.
 
 ### DictD and XDXF compression
 
@@ -88,9 +88,18 @@ Main file of Babylon source dictionary must be in UTF-8 (or UTF-16 with BOM) enc
 
 ABBYY Lingvo sound archives are set of sound files packed into one file of some specific format. These files can be called directly from matches list or from dictionary articles.
 
+There are two kinds of such archives:
+
+- **Universal archives**: every entry is named after the real word it pronounces (e.g. an entry named `hello` holds the sound for the word "hello"). These archives can be shared between different dictionaries and can be placed inside a [sound dir](#sound-files-in-separate-folders).
+- **Dictionary-specific archives**: the DSL dictionary references its sounds by internal ids (e.g. the article contains `1.wav` while the archive has an entry named `1`). The mapping between the ids and the words exists only inside that specific dictionary, so such an archive must be placed in the same folder as the DSL dictionary it was made for. Putting it into a sound dir will not work and may even play wrong sounds for other dictionaries.
+
+An easy way to tell the difference: add the archive to GoldenDict as a standalone dictionary. If it can be queried directly with real words, it is a universal one; if it only works together with a specific DSL dictionary, it is a dictionary-specific one.
+
 ### Sound files in separate folders
 
 The separate folder with sound files can be added into GoldenDict dictionaries list. GoldenDict will handle this folders like ABBYY Lingvo sound archives (inapplicable in portable mode).
+
+Lingvo sound archives (.lsa) placed inside the folder are supported as well: their entries are indexed like ordinary sound files. Only [universal archives](#abbyy-lingvo-sound-archives) are usable this way — dictionary-specific archives that name their sounds with internal ids must stay beside their DSL dictionary instead. Sounds from the sound dir (plain files as well as universal .lsa archives) are also used by DSL dictionaries as a fallback when a sound cannot be found in the dictionary's own resources.
 
 ### Zips sound packs
 

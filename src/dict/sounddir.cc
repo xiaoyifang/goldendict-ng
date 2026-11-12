@@ -8,6 +8,9 @@
 #include "filetype.hh"
 #include "htmlescape.hh"
 #include "audiolink.hh"
+#include "lsa.hh"
+#include "globalbroadcaster.hh"
+#include "text.hh"
 
 #include "utils.hh"
 
@@ -32,7 +35,7 @@ namespace {
 
 enum {
   Signature            = 0x58524453, // SDRX on little-endian, XRDS on big-endian
-  CurrentFormatVersion = 2 + BtreeIndexing::FormatVersion + Folding::Version
+  CurrentFormatVersion = 3 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
 #pragma pack( push, 1 )
@@ -328,6 +331,27 @@ bool SoundDirDictionary::get_file_name( uint32_t articleOffset, QString & file_n
   return true;
 }
 
+/// Splits a null-separated chunk record into fields. Plain sound file
+/// records have a single field ( the relative file path ), while records
+/// referencing an entry inside a Lingvo sound archive (.lsa) have four:
+/// display name, relative .lsa path, vorbis stream offset, entry offset.
+QStringList splitRecordFields( const vector< char > & chunk )
+{
+  QStringList fields;
+
+  const char * start = chunk.data();
+  const char * end   = start + chunk.size();
+
+  for ( const char * p = start; p != end; ++p ) {
+    if ( *p == '\0' ) {
+      fields.append( QString::fromUtf8( start, static_cast< int >( p - start ) ) );
+      start = p + 1;
+    }
+  }
+
+  return fields;
+}
+
 sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( const string & name )
 
 {
@@ -346,18 +370,81 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( const string & 
 
 
   if ( !isNumber ) {
+    // The name is not the internal offset-based one but a plain file or
+    // entry name, e.g. when the sound is requested by another dictionary
+    // ( a DSL fallback or the #SOUND_DICTIONARY directive ). Resolve it
+    // through the index.
+    string strippedName( name );
+
+    if ( Filetype::isNameOfSound( strippedName ) ) {
+      const auto dotPos = strippedName.rfind( '.' );
+      if ( dotPos != string::npos ) {
+        strippedName.erase( dotPos );
+      }
+    }
+
+    vector< WordArticleLink > chain = findArticles( Text::toUtf32( strippedName ) );
+
+    if ( chain.empty() ) {
+      return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
+    }
+
+    articleOffset = chain[ 0 ].articleOffset;
+  }
+
+  vector< char > chunk;
+  char * recordData;
+
+  try {
+    QMutexLocker _( &idxMutex );
+
+    recordData = chunks.getBlock( articleOffset, chunk );
+
+    if ( recordData >= &chunk.front() + chunk.size() ) {
+      // chunks reader thinks it's okay since zero-sized records can exist,
+      // but we don't allow that.
+      throw ChunkedStorage::exAddressOutOfRange();
+    }
+  }
+  catch ( ChunkedStorage::exAddressOutOfRange & ) {
     return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
   }
 
-  QString file_name;
-  if ( !get_file_name( articleOffset, file_name ) ) {
-    // Bad address
-    return std::make_shared< Dictionary::DataRequestInstant >( false );
+  const QStringList fields = splitRecordFields( chunk );
+
+  if ( fields.isEmpty() ) {
+    return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
   }
 
   const QDir dir( QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() ) );
 
-  const QString fileName = QDir::toNativeSeparators( dir.filePath( file_name ) );
+  if ( fields.size() >= 4 && !fields[ 1 ].isEmpty() ) {
+    // The record references an entry inside a Lingvo sound archive (.lsa)
+
+    bool vorbisOk = false, entryOk = false;
+
+    const uint32_t vorbisOffset = fields[ 2 ].toULong( &vorbisOk );
+    const uint32_t entryOffset  = fields[ 3 ].toULong( &entryOk );
+
+    if ( !vorbisOk || !entryOk ) {
+      return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
+    }
+
+    const QString lsaPath = QDir::toNativeSeparators( dir.filePath( fields[ 1 ] ) );
+
+    auto dr = std::make_shared< Dictionary::DataRequestInstant >( true );
+
+    try {
+      Lsa::loadLsaSound( lsaPath.toStdString(), entryOffset, vorbisOffset, dr->getData() );
+    }
+    catch ( std::exception & ) {
+      return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
+    }
+
+    return dr;
+  }
+
+  const QString fileName = QDir::toNativeSeparators( dir.filePath( fields[ 0 ] ) );
 
   // Now try loading that file
 
@@ -408,6 +495,55 @@ void addDir( const QDir & dir, IndexedWords & indexedWords, uint32_t & soundsCou
       }
 
       indexedWords.addWord( name, articleOffset );
+
+      ++soundsCount;
+    }
+  }
+}
+
+/// Adds entries of Lingvo sound archives (.lsa) found inside the directory.
+/// Only archives with entries named after real words ("universal" ones) are
+/// of any use here; archives which name their sounds with internal ids are
+/// paired with a specific DSL dictionary and must stay beside it instead.
+void addLsaArchives( const QDir & dir, IndexedWords & indexedWords, uint32_t & soundsCount, ChunkedStorage::Writer & chunks )
+{
+  QDirIterator it( dir.path(),
+                   QDir::Files | QDir::NoSymLinks, // We only care about files
+                   QDirIterator::Subdirectories ); // Recurse into subdirectories
+
+  while ( it.hasNext() ) {
+    it.next();
+
+    const std::string filePath = it.filePath().toStdString();
+
+    if ( !Utils::endsWithIgnoreCase( filePath, ".lsa" ) ) {
+      continue;
+    }
+
+    std::vector< Lsa::LsaEntryInfo > entries;
+    uint32_t vorbisOffset = 0;
+
+    if ( !Lsa::parseLsaEntries( filePath, entries, vorbisOffset ) ) {
+      continue; // Not a valid LSA archive
+    }
+
+    const string relLsaPath = dir.relativeFilePath( it.filePath() ).toUtf8().data();
+
+    for ( const auto & entry : entries ) {
+      if ( entry.name.empty() ) {
+        continue;
+      }
+
+      const uint32_t articleOffset = chunks.startNewBlock();
+
+      // Null-separated fields: display name, relative .lsa path,
+      // vorbis stream offset, entry offset.
+      const string record = entry.name + '\0' + relLsaPath + '\0' + std::to_string( vorbisOffset ) + '\0'
+        + std::to_string( entry.offset ) + '\0';
+
+      chunks.addToBlock( record.c_str(), record.size() );
+
+      indexedWords.addWord( Text::toUtf32( entry.name ), articleOffset );
 
       ++soundsCount;
     }
@@ -527,6 +663,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const Config::SoundDirs & 
 
       addDir( dir, indexedWords, soundsCount, chunks );
 
+      addLsaArchives( dir, indexedWords, soundsCount, chunks );
+
       idxHeader.soundsCount = soundsCount;
 
       // Finish with the chunks
@@ -570,11 +708,15 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const Config::SoundDirs & 
       idx.write( &idxHeader, sizeof( idxHeader ) );
     }
 
-    dictionaries.push_back( std::make_shared< SoundDirDictionary >( dictId,
-                                                                    soundDir.name.toUtf8().data(),
-                                                                    indexFile,
-                                                                    dictFiles,
-                                                                    soundDir.iconFilename ) );
+    auto dict = std::make_shared< SoundDirDictionary >( dictId,
+                                                        soundDir.name.toUtf8().data(),
+                                                        indexFile,
+                                                        dictFiles,
+                                                        soundDir.iconFilename );
+
+    GlobalBroadcaster::instance()->addSoundDirDictId( QString::fromStdString( dictId ) );
+
+    dictionaries.push_back( dict );
   }
 
   return dictionaries;
