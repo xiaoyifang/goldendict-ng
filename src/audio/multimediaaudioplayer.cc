@@ -27,8 +27,14 @@ MultimediaAudioPlayer::MultimediaAudioPlayer()
 
 void MultimediaAudioPlayer::audioOutputChange()
 {
+  const QAudioDevice newDevice = QMediaDevices::defaultAudioOutput();
+  if ( newDevice == audioOutput.device() ) {
+    // OS may emit several device notifications for a single plug/unplug
+    // event; only react when the default output actually changes.
+    return;
+  }
   qDebug() << "audio device changed";
-  audioOutput.setDevice( QMediaDevices::defaultAudioOutput() );
+  audioOutput.setDevice( newDevice );
 }
 
 QString MultimediaAudioPlayer::play( const char * data, int size )
