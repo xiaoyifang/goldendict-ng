@@ -35,7 +35,7 @@ namespace {
 
 enum {
   Signature            = 0x58524453, // SDRX on little-endian, XRDS on big-endian
-  CurrentFormatVersion = 3 + BtreeIndexing::FormatVersion + Folding::Version
+  CurrentFormatVersion = 4 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
 #pragma pack( push, 1 )
@@ -331,22 +331,32 @@ bool SoundDirDictionary::get_file_name( uint32_t articleOffset, QString & file_n
   return true;
 }
 
-/// Splits a null-separated chunk record into fields. Plain sound file
-/// records have a single field ( the relative file path ), while records
-/// referencing an entry inside a Lingvo sound archive (.lsa) have four:
-/// display name, relative .lsa path, vorbis stream offset, entry offset.
-QStringList splitRecordFields( const vector< char > & chunk )
+/// Splits the null-separated fields of a single chunk record. \p recordStart
+/// points at the record inside the decompressed chunk ( several records share
+/// one chunk ), \p chunkEnd marks the chunk's end. At most \p maxFields are
+/// read, which reliably terminates multi-field records: anything past them
+/// belongs to the following record, not to this one.
+///
+/// Plain sound file records have a single field ( the relative file path ),
+/// while records referencing an entry inside a Lingvo sound archive (.lsa)
+/// have five: display name, "lsa" marker, relative .lsa path, vorbis stream
+/// offset, entry offset.
+QStringList splitRecordFields( const char * recordStart, const char * chunkEnd, int maxFields )
 {
   QStringList fields;
 
-  const char * start = chunk.data();
-  const char * end   = start + chunk.size();
+  const char * p = recordStart;
 
-  for ( const char * p = start; p != end; ++p ) {
-    if ( *p == '\0' ) {
-      fields.append( QString::fromUtf8( start, static_cast< int >( p - start ) ) );
-      start = p + 1;
+  while ( p < chunkEnd && fields.size() < maxFields ) {
+    const char * q = p;
+
+    while ( q < chunkEnd && *q != '\0' ) {
+      ++q;
     }
+
+    fields.append( QString::fromUtf8( p, static_cast< int >( q - p ) ) );
+
+    p = q + 1; // Skip the terminator
   }
 
   return fields;
@@ -410,7 +420,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( const string & 
     return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
   }
 
-  const QStringList fields = splitRecordFields( chunk );
+  const QStringList fields = splitRecordFields( recordData, &chunk.front() + chunk.size(), 5 );
 
   if ( fields.isEmpty() ) {
     return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
@@ -418,19 +428,23 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( const string & 
 
   const QDir dir( QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() ) );
 
-  if ( fields.size() >= 4 && !fields[ 1 ].isEmpty() ) {
-    // The record references an entry inside a Lingvo sound archive (.lsa)
+  // The record references an entry inside a Lingvo sound archive (.lsa) if
+  // it has the "lsa" marker in its second field. Any other record is a plain
+  // sound file record ( its first field is the relative file path ).
+  const bool isLsaRecord =
+    ( fields.size() == 5 && fields[ 1 ] == QLatin1String( "lsa" ) && !fields[ 2 ].isEmpty() );
 
+  if ( isLsaRecord ) {
     bool vorbisOk = false, entryOk = false;
 
-    const uint32_t vorbisOffset = fields[ 2 ].toULong( &vorbisOk );
-    const uint32_t entryOffset  = fields[ 3 ].toULong( &entryOk );
+    const uint32_t vorbisOffset = fields[ 3 ].toULong( &vorbisOk );
+    const uint32_t entryOffset  = fields[ 4 ].toULong( &entryOk );
 
     if ( !vorbisOk || !entryOk ) {
       return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
     }
 
-    const QString lsaPath = QDir::toNativeSeparators( dir.filePath( fields[ 1 ] ) );
+    const QString lsaPath = QDir::toNativeSeparators( dir.filePath( fields[ 2 ] ) );
 
     auto dr = std::make_shared< Dictionary::DataRequestInstant >( true );
 
@@ -539,10 +553,12 @@ void addLsaArchives( const QDir & dir,
 
       const uint32_t articleOffset = chunks.startNewBlock();
 
-      // Null-separated fields: display name, relative .lsa path,
-      // vorbis stream offset, entry offset.
-      const string record = entry.name + '\0' + relLsaPath + '\0' + std::to_string( vorbisOffset ) + '\0'
-        + std::to_string( entry.offset ) + '\0';
+      // Null-separated fields: display name, "lsa" marker, relative .lsa
+      // path, vorbis stream offset, entry offset. The marker distinguishes
+      // multi-field .lsa records from single-field plain file records which
+      // share the same chunks.
+      const string record = entry.name + '\0' + "lsa" + '\0' + relLsaPath + '\0' + std::to_string( vorbisOffset )
+        + '\0' + std::to_string( entry.offset ) + '\0';
 
       chunks.addToBlock( record.c_str(), record.size() );
 
