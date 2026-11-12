@@ -91,7 +91,11 @@ ABBYY Lingvo sound archives are set of sound files packed into one file of some 
 There are two kinds of such archives:
 
 - **Universal archives**: every entry is named after the real word it pronounces (e.g. an entry named `hello` holds the sound for the word "hello"). These archives can be shared between different dictionaries and can be placed inside a [sound dir](#sound-files-in-separate-folders).
-- **Dictionary-specific archives**: the DSL dictionary references its sounds by internal ids (e.g. the article contains `1.wav` while the archive has an entry named `1`). The mapping between the ids and the words exists only inside that specific dictionary, so such an archive must be placed in the same folder as the DSL dictionary it was made for. Putting it into a sound dir will not work and may even play wrong sounds for other dictionaries.
+- **Dictionary-specific archives**: the DSL dictionary references its sounds by internal ids (e.g. the article contains `1.wav` while the archive has an entry named `1`). The mapping between the ids and the words exists only inside that specific dictionary.
+
+!!! warning "Dictionary-specific archives must stay beside their DSL"
+
+    A dictionary-specific archive must be placed in the same folder as the DSL dictionary it was made for. Putting it into a sound dir will not work and may even play wrong sounds for other dictionaries.
 
 An easy way to tell the difference: add the archive to GoldenDict as a standalone dictionary. If it can be queried directly with real words, it is a universal one; if it only works together with a specific DSL dictionary, it is a dictionary-specific one.
 
