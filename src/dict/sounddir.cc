@@ -431,8 +431,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( const string & 
   // The record references an entry inside a Lingvo sound archive (.lsa) if
   // it has the "lsa" marker in its second field. Any other record is a plain
   // sound file record ( its first field is the relative file path ).
-  const bool isLsaRecord =
-    ( fields.size() == 5 && fields[ 1 ] == QLatin1String( "lsa" ) && !fields[ 2 ].isEmpty() );
+  const bool isLsaRecord = ( fields.size() == 5 && fields[ 1 ] == QLatin1String( "lsa" ) && !fields[ 2 ].isEmpty() );
 
   if ( isLsaRecord ) {
     bool vorbisOk = false, entryOk = false;
@@ -557,8 +556,8 @@ void addLsaArchives( const QDir & dir,
       // path, vorbis stream offset, entry offset. The marker distinguishes
       // multi-field .lsa records from single-field plain file records which
       // share the same chunks.
-      const string record = entry.name + '\0' + "lsa" + '\0' + relLsaPath + '\0' + std::to_string( vorbisOffset )
-        + '\0' + std::to_string( entry.offset ) + '\0';
+      const string record = entry.name + '\0' + "lsa" + '\0' + relLsaPath + '\0' + std::to_string( vorbisOffset ) + '\0'
+        + std::to_string( entry.offset ) + '\0';
 
       chunks.addToBlock( record.c_str(), record.size() );
 
