@@ -46,6 +46,7 @@
 #include <QStyleHints>
 #include <QNetworkProxyFactory>
 #include <QVersionNumber>
+#include <QShortcut>
 
 #include "weburlrequestinterceptor.hh"
 #include "folding.hh"
@@ -370,12 +371,13 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // sound
   navPronounce = navToolbar->addAction( QIcon( ":/icons/playsound_full.png" ), tr( "Pronounce Word (Alt+S)" ) );
-  navPronounce->setShortcut( QKeySequence( "Alt+S" ) );
   navPronounce->setEnabled( false );
-  // Add the action to the main window so the Alt+S shortcut keeps working
-  // even when the navigation toolbar is hidden.
-  addAction( navPronounce );
   navToolbar->widgetForAction( navPronounce )->setObjectName( "soundButton" );
+
+  // Bind Alt+S to the main window instead of the toolbar action, so the
+  // shortcut keeps working even when the navigation toolbar is hidden.
+  auto pronounceShortcut = new QShortcut( QKeySequence( "Alt+S" ), this );
+  connect( pronounceShortcut, &QShortcut::activated, navPronounce, &QAction::trigger );
 
   connect( navPronounce, &QAction::triggered, this, [ this ]() {
     getCurrentArticleView()->playSound();
