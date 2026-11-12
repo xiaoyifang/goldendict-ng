@@ -1425,6 +1425,9 @@ void ArticleView::playAudio( const QUrl & url )
           emit statusBarMessage( tr( "ERROR: %1" ).arg( e.what() ), 10000, QPixmap( ":/icons/error.svg" ) );
         }
       }
+      else {
+        qWarning() << "playAudio: dictionary not found for audio url" << url;
+      }
     }
     else if ( url.scheme() == "gdprg" ) {
       // Program. Run it.
@@ -2124,6 +2127,9 @@ void ArticleView::audioDownloadFinished( const sptr< Dictionary::DataRequest > &
     if ( !errorMessage.isEmpty() ) {
       QMessageBox::critical( this, "GoldenDict", tr( "Failed to play sound file: %1" ).arg( errorMessage ) );
     }
+  }
+  else {
+    qWarning() << "audio download finished with no data:" << req->getErrorString();
   }
 }
 
