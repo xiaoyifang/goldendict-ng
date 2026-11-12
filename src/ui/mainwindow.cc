@@ -372,6 +372,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   navPronounce = navToolbar->addAction( QIcon( ":/icons/playsound_full.png" ), tr( "Pronounce Word (Alt+S)" ) );
   navPronounce->setShortcut( QKeySequence( "Alt+S" ) );
   navPronounce->setEnabled( false );
+  // Add the action to the main window so the Alt+S shortcut keeps working
+  // even when the navigation toolbar is hidden.
+  addAction( navPronounce );
   navToolbar->widgetForAction( navPronounce )->setObjectName( "soundButton" );
 
   connect( navPronounce, &QAction::triggered, this, [ this ]() {
