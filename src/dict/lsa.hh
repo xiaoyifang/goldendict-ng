@@ -16,7 +16,7 @@ makeDictionaries( const vector< string > & fileNames, const string & indicesDir,
 
 struct LsaEntryInfo
 {
-  string name;    // UTF-8 entry name, with the ".wav" extension stripped
+  string name;     // UTF-8 entry name, with the ".wav" extension stripped
   uint32_t offset; // Byte offset of the entry record inside the archive
 };
 
@@ -24,9 +24,7 @@ struct LsaEntryInfo
 /// Returns false if the file is not a valid LSA archive. On success fills
 /// \p entries and sets \p vorbisOffset to the offset of the embedded
 /// Ogg stream which contains all of the sounds.
-bool parseLsaEntries( const string & lsaFilePath,
-                      std::vector< LsaEntryInfo > & entries,
-                      uint32_t & vorbisOffset );
+bool parseLsaEntries( const string & lsaFilePath, std::vector< LsaEntryInfo > & entries, uint32_t & vorbisOffset );
 
 /// Decodes the sound stored at \p entryOffset of the archive into WAV data
 /// (a PCM16 header followed by the samples).

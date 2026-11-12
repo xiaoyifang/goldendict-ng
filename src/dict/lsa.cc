@@ -423,9 +423,7 @@ void LsaDictionary::loadIcon() noexcept
 
 } // namespace
 
-bool parseLsaEntries( const string & lsaFilePath,
-                      std::vector< LsaEntryInfo > & entries,
-                      uint32_t & vorbisOffset )
+bool parseLsaEntries( const string & lsaFilePath, std::vector< LsaEntryInfo > & entries, uint32_t & vorbisOffset )
 {
   try {
     File::Index f( lsaFilePath, QIODevice::ReadOnly );

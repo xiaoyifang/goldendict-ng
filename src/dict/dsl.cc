@@ -1608,7 +1608,7 @@ void DslResourceRequest::run()
   string soundDictName;
   const auto fragPos = resourceName.find( '#' );
   if ( fragPos != string::npos ) {
-    soundDictName  = resourceName.substr( fragPos + 1 );
+    soundDictName = resourceName.substr( fragPos + 1 );
     resourceName.resize( fragPos );
   }
 
@@ -1656,8 +1656,8 @@ void DslResourceRequest::run()
       }
 
       if ( !soundDictName.empty() ) {
-        loadFromDict( GlobalBroadcaster::instance()->getSoundDictionaryByName(
-          QString::fromUtf8( soundDictName.c_str() ) ) );
+        loadFromDict(
+          GlobalBroadcaster::instance()->getSoundDictionaryByName( QString::fromUtf8( soundDictName.c_str() ) ) );
       }
 
       // 2. Try the .lsa dictionary if existed.

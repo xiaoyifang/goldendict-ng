@@ -505,7 +505,10 @@ void addDir( const QDir & dir, IndexedWords & indexedWords, uint32_t & soundsCou
 /// Only archives with entries named after real words ("universal" ones) are
 /// of any use here; archives which name their sounds with internal ids are
 /// paired with a specific DSL dictionary and must stay beside it instead.
-void addLsaArchives( const QDir & dir, IndexedWords & indexedWords, uint32_t & soundsCount, ChunkedStorage::Writer & chunks )
+void addLsaArchives( const QDir & dir,
+                     IndexedWords & indexedWords,
+                     uint32_t & soundsCount,
+                     ChunkedStorage::Writer & chunks )
 {
   QDirIterator it( dir.path(),
                    QDir::Files | QDir::NoSymLinks, // We only care about files
