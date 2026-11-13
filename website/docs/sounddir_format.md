@@ -177,5 +177,4 @@ beside a specific DSL dictionary and must not be placed in a sound directory.
 
 `CurrentFormatVersion` is part of the index header. When the record format changes,
 the constant is incremented and `indexIsOldOrBad()` rejects the old index, forcing a
-rebuild on the next start. The format described here is version `5` of the sound dir
-record layout.
+rebuild on the next start.
