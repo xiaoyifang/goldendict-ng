@@ -109,6 +109,8 @@ Lingvo sound archives (.lsa) placed inside the folder are supported as well: the
 
 Zips sound pack is zip archive with extension ".zips" contains set of sound files. To create suck pack it needs to compress sound files into zip archive and change extension of this archive to ".zips". GoldenDict will handle such sound packs like ABBYY Lingvo sound archives.
 
+A `.zips` pack is a dictionary on its own: add it through the dictionary list. It is not one of the inputs of a [sound dir](#sound-files-in-separate-folders) — a sound dir only indexes plain sound files and `.lsa` archives, so a `.zips` file dropped inside it is ignored.
+
 ### General notes
 
 At every launch GoldenDict scan folders with dictionaries to create dictionaries list. The more files in these folder is the more time for scanning. Therefore it is recommended to compress dictionary resources into zip archives and to use Zips sound packs instead of sound files in separate folders.

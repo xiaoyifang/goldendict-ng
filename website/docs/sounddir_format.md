@@ -29,6 +29,36 @@ sound archive (`.lsa`) it is the entry name (also without extension). Several re
 may share the same word (for example `hello.wav` and an `.lsa` entry named `hello`);
 `getArticle()` then offers all of them.
 
+### 1.1 Supported inputs
+
+When a sound directory is turned into a dictionary, it is scanned recursively
+(subdirectories included) and exactly two kinds of files are indexed:
+
+| Input | Recognised when | Indexed word |
+| :--- | :--- | :--- |
+| Plain sound file | the extension is in the audio list below | file name without its extension |
+| Lingvo sound archive | the extension is `.lsa` and the archive header is valid | entry name without its extension |
+
+The audio extensions treated as plain sound files are `.wav .au .voc .ogg .oga
+.mp3 .m4a .aac .flac .mid .kar .mpc .wma .wv .ape .spx .opus .mpa .mp2`
+(the authoritative list lives in `Filetype::isNameOfSound()`). An `.lsa` file is
+accepted only when its entry table can be parsed (`Lsa::parseLsaEntries()`).
+
+Everything else is ignored. In particular:
+
+- `.zips` packs are a **separate dictionary type** (`src/dict/zipsounds.cc`), not an
+  input of a sound directory. A `.zips` file placed inside a sound directory is not
+  indexed by it.
+- `.dat` archives are accepted by the standalone `.lsa` backend, but a sound directory
+  only looks for the `.lsa` extension.
+- Non-sound resources (images, stylesheets, ...) are not indexed; only the two kinds
+  above are.
+
+Because the look-up is by name, a dictionary-specific `.lsa` (entries named after
+internal ids such as `1`) also matches when a DSL dictionary asks for `1.wav`. That is
+name coincidence, not a supported workflow — such archives must stay beside their DSL
+dictionary, otherwise ids from unrelated dictionaries collide.
+
 ## 2. Chunked Storage Mechanics
 
 Records are appended through `ChunkedStorage::Writer`:
