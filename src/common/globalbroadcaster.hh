@@ -67,6 +67,9 @@ public:
   /// archive ) by its name, as referenced by the DSL #SOUND_DICTIONARY
   /// directive.
   sptr< Dictionary::Class > getSoundDictionaryByName( const QString & name ) const;
+  /// True if the dictionary is not muted in the dictionary bar of the current
+  /// group.
+  bool isDictionaryEnabledInBar( const QString & dictId ) const;
   // For backward compatibility
   Config::Preferences * getPreference() const;
   GlobalBroadcaster( QObject * parent = nullptr );

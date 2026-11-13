@@ -1662,6 +1662,7 @@ void DslResourceRequest::run()
 
       // 2. Try the .lsa dictionary if existed.
       // The original resource request failed. Let's try to find a matching .lsa dictionary.
+      // Dictionaries muted in the dictionary bar are not used.
       if ( !hasAnyData ) {
         QString containingFolder = dict.getContainingFolder();
         if ( !containingFolder.isEmpty() ) {
@@ -1672,7 +1673,7 @@ void DslResourceRequest::run()
             QString lsaFilePath = dir.absoluteFilePath( lsaFiles.first() );
             QString lsaDictId   = GlobalBroadcaster::instance()->getLsaIdFromPath( lsaFilePath );
 
-            if ( !lsaDictId.isEmpty() ) {
+            if ( !lsaDictId.isEmpty() && GlobalBroadcaster::instance()->isDictionaryEnabledInBar( lsaDictId ) ) {
               sptr< Dictionary::Class > lsaDict = GlobalBroadcaster::instance()->getDictionaryById( lsaDictId );
 
               if ( lsaDict ) {
@@ -1685,9 +1686,14 @@ void DslResourceRequest::run()
 
       // 3. Try the sound dir dictionaries. Their sounds ( plain files or
       //    "universal" .lsa archives ) are shared between dictionaries.
+      //    Dictionaries muted in the dictionary bar are not used.
       if ( !hasAnyData ) {
         const auto & soundDirIds = GlobalBroadcaster::instance()->getSoundDirDictIds();
         for ( const auto & id : soundDirIds ) {
+          if ( !GlobalBroadcaster::instance()->isDictionaryEnabledInBar( id ) ) {
+            continue;
+          }
+
           if ( loadFromDict( GlobalBroadcaster::instance()->getDictionaryById( id ) ) ) {
             break;
           }

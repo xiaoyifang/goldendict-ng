@@ -259,6 +259,24 @@ sptr< Dictionary::Class > GlobalBroadcaster::getSoundDictionaryByName( const QSt
   return {};
 }
 
+bool GlobalBroadcaster::isDictionaryEnabledInBar( const QString & dictId ) const
+{
+  if ( !config ) {
+    return true; // No configuration context yet -- behave as before.
+  }
+
+  const QSet< QString > * mutedDictionaries = nullptr;
+
+  if ( currentGroupId == GroupId::AllGroupId ) {
+    mutedDictionaries = &config->mutedDictionaries;
+  }
+  else if ( const Config::Group * grp = config->getGroup( currentGroupId ) ) {
+    mutedDictionaries = &grp->mutedDictionaries;
+  }
+
+  return !mutedDictionaries || !mutedDictionaries->contains( dictId );
+}
+
 bool GlobalBroadcaster::isDarkReaderModeEnabled() const
 {
   if ( !config ) {
