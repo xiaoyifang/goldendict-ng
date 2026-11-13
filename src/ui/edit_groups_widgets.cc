@@ -10,6 +10,7 @@
 #include "metadata.hh"
 #include "utils.hh"
 #include <climits>
+#include <algorithm>
 
 #include <QFileDialog>
 #include <QFileInfo>
@@ -20,6 +21,7 @@
 #include <QMessageBox>
 #include <QTimer>
 #include <QList>
+#include <QShortcut>
 #include <QToolButton>
 
 using std::vector;
@@ -82,6 +84,14 @@ DictGroupWidget::DictGroupWidget( QWidget * parent,
   connect( ui.dictionaries, &QWidget::customContextMenuRequested, this, &DictGroupWidget::showDictInfo );
 
   connect( ui.dictionaries, &QAbstractItemView::doubleClicked, this, &DictGroupWidget::removeCurrentItem );
+
+  // Limit the Del shortcut to the dictionaries list, otherwise it would also trigger
+  // while editing the filter line or the group properties.
+  auto * deleteShortcut = new QShortcut( QKeySequence::Delete, ui.dictionaries );
+  deleteShortcut->setContext( Qt::WidgetWithChildrenShortcut );
+  connect( deleteShortcut, &QShortcut::activated, this, [ this ]() {
+    ui.dictionaries->getModel()->removeSelectedRows( ui.dictionaries->selectionModel() );
+  } );
 }
 
 void DictGroupWidget::groupIconActivated( int index )
@@ -364,7 +374,7 @@ void DictListModel::removeSelectedRows( QItemSelectionModel * source )
   }
 
   // selectedRows() is not guaranteed to be sorted (see Qt docs of selectedIndexes()),
-  // so collect the row numbers into a set instead of relying on their order.
+  // so collect the row numbers and sort them before removing.
   QList< int > rows;
   const QModelIndexList selected = source->selectedRows();
   for ( const auto & idx : selected ) {
@@ -377,20 +387,26 @@ void DictListModel::removeSelectedRows( QItemSelectionModel * source )
     return;
   }
 
-  beginResetModel();
+  std::sort( rows.begin(), rows.end() );
 
-  std::vector< sptr< Dictionary::Class > > kept;
-  kept.reserve( dictionaries.size() - static_cast< size_t >( rows.size() ) );
+  // Remove the rows from the bottom up, grouping adjacent ones, so that the indexes
+  // of the rows still to be removed stay valid.
+  for ( int i = rows.size() - 1; i >= 0; ) {
+    const int last = rows.at( i );
+    int first      = last;
 
-  for ( int i = 0; i < (int)dictionaries.size(); ++i ) {
-    if ( !rows.contains( i ) ) {
-      kept.push_back( dictionaries[ i ] );
+    while ( i > 0 && rows.at( i - 1 ) == first - 1 ) {
+      first = rows.at( i - 1 );
+      --i;
     }
+
+    beginRemoveRows( QModelIndex(), first, last );
+    dictionaries.erase( dictionaries.begin() + first, dictionaries.begin() + last + 1 );
+    endRemoveRows();
+
+    --i;
   }
 
-  dictionaries.swap( kept );
-
-  endResetModel();
   emit contentChanged();
 }
 
@@ -994,8 +1010,15 @@ void DictGroupsWidget::removeCurrentGroup()
 {
   const int current = currentIndex();
 
-  if ( current >= 0 ) {
-    removeTab( current );
+  if ( current < 0 ) {
+    return;
+  }
+
+  QWidget * page = widget( current );
+  removeTab( current );
+
+  if ( page ) {
+    page->deleteLater();
   }
 }
 
@@ -1010,7 +1033,12 @@ void DictGroupsWidget::removeTabRequested( int index )
                               QMessageBox::Yes,
                               QMessageBox::Cancel )
        == QMessageBox::Yes ) {
+    QWidget * page = widget( index );
     removeTab( index );
+
+    if ( page ) {
+      page->deleteLater();
+    }
   }
 }
 
