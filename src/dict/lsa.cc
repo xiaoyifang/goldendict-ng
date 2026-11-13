@@ -398,14 +398,89 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( const string & name 
     return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
   }
 
-  File::Index f( getDictionaryFilenames()[ 0 ], QIODevice::ReadOnly );
+  auto dr = std::make_shared< Dictionary::DataRequestInstant >( true );
 
-  f.seek( chain[ 0 ].articleOffset );
+  loadLsaSound( getDictionaryFilenames()[ 0 ], chain[ 0 ].articleOffset, idxHeader.vorbisOffset, dr->getData() );
+
+  return dr;
+}
+
+void LsaDictionary::loadIcon() noexcept
+{
+  if ( dictionaryIconLoaded ) {
+    return;
+  }
+
+  QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
+
+  if ( !loadIconFromFileName( fileName ) ) {
+    // Load failed -- use default icons
+    dictionaryIcon = QIcon( ":/icons/lsasound.png" );
+  }
+
+  dictionaryIconLoaded = true;
+}
+
+} // namespace
+
+bool parseLsaEntries( const string & lsaFilePath, std::vector< LsaEntryInfo > & entries, uint32_t & vorbisOffset )
+{
+  try {
+    File::Index f( lsaFilePath, QIODevice::ReadOnly );
+
+    /// Check the signature
+
+    char buf[ 9 ];
+
+    if ( f.readRecords( buf, 9, 1 ) != 1 || memcmp( buf, "L\09\0S\0A\0\xff", 9 ) != 0 ) {
+      // The file is too short or the signature doesn't match
+      return false;
+    }
+
+    auto entriesCount = f.read< uint32_t >();
+
+    entries.clear();
+
+    while ( entriesCount-- ) {
+      uint32_t offset = f.tell();
+
+      Entry e( f );
+
+      // Remove the extension, no need for that in the index
+      entries.push_back( LsaEntryInfo{ stripExtension( e.name ), offset } );
+    }
+
+    vorbisOffset = f.tell();
+
+    // Make sure there's really some vorbis data there
+
+    char buf2[ 4 ];
+
+    f.read( buf2, sizeof( buf2 ) );
+
+    if ( strncmp( buf2, "OggS", 4 ) != 0 ) {
+      entries.clear();
+      return false;
+    }
+
+    return true;
+  }
+  catch ( std::exception & ) {
+    entries.clear();
+    return false;
+  }
+}
+
+void loadLsaSound( const string & lsaFilePath, uint32_t entryOffset, uint32_t vorbisOffset, std::vector< char > & data )
+{
+  File::Index f( lsaFilePath, QIODevice::ReadOnly );
+
+  f.seek( entryOffset );
   Entry e( f );
 
-  f.seek( idxHeader.vorbisOffset );
+  f.seek( vorbisOffset );
 
-  ShiftedVorbis sv( f.file(), idxHeader.vorbisOffset );
+  ShiftedVorbis sv( f.file(), vorbisOffset );
 
   OggVorbis_File vf;
 
@@ -426,10 +501,6 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( const string & name 
 
     throw exFailedToRetrieveVorbisInfo();
   }
-
-  sptr< Dictionary::DataRequestInstant > dr = std::make_shared< Dictionary::DataRequestInstant >( true );
-
-  vector< char > & data = dr->getData();
 
   data.resize( sizeof( WavHeader ) + e.samplesLength * 2 );
 
@@ -477,27 +548,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( const string & name 
   }
 
   ov_clear( &vf );
-
-  return dr;
 }
-
-void LsaDictionary::loadIcon() noexcept
-{
-  if ( dictionaryIconLoaded ) {
-    return;
-  }
-
-  QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
-
-  if ( !loadIconFromFileName( fileName ) ) {
-    // Load failed -- use default icons
-    dictionaryIcon = QIcon( ":/icons/lsasound.png" );
-  }
-
-  dictionaryIconLoaded = true;
-}
-
-} // namespace
 
 vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & fileNames,
                                                       const string & indicesDir,
