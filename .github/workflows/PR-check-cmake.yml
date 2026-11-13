@@ -165,6 +165,9 @@ jobs:
     container:
       image: ghcr.io/archlinux/archlinux:base-devel
     steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: false
       - name: Print Version
         run: |
           if [[ -f /etc/os-release ]]; then
@@ -211,9 +214,6 @@ jobs:
             tomlplusplus \
             xapian-core
 
-      - uses: actions/checkout@v6
-        with:
-          submodules: false
       - name: Run build
         run: |
           mkdir build_dir
