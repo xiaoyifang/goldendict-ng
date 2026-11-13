@@ -179,13 +179,3 @@ beside a specific DSL dictionary and must not be placed in a sound directory.
 the constant is incremented and `indexIsOldOrBad()` rejects the old index, forcing a
 rebuild on the next start. The format described here is version `5` of the sound dir
 record layout.
-
-## 8. Historical Note
-
-Earlier versions stored records as NUL-separated text fields (one field for a plain
-file, five fields with an `"lsa"` marker for an archive entry). Record boundaries had
-to be inferred from a convention rather than from the data, and a reader that started
-at the wrong offset silently decoded a neighbouring entry, which produced wrong or
-truncated audio. The unified header + `payloadSize` layout described above removes
-that class of bugs: a record is delimited by its own header and can be parsed without
-any knowledge of the surrounding records.
