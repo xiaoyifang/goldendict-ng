@@ -546,7 +546,10 @@ void addLsaArchives( const QDir & dir,
     const string relLsaPath = dir.relativeFilePath( it.filePath() ).toUtf8().data();
 
     for ( const auto & entry : entries ) {
-      if ( entry.name.empty() ) {
+      if ( entry.name.empty() || entry.name.find( '\0' ) != string::npos ) {
+        // Empty names are useless, and a name containing a NUL character
+        // ( possible only in a malformed archive ) would corrupt the
+        // null-separated record format.
         continue;
       }
 
