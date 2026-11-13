@@ -109,7 +109,11 @@ struct RecordReader
 
   RecordReader() = default;
 
-  RecordReader( const char * start, size_t size ): p( start ), end( start + size ) {}
+  RecordReader( const char * start, size_t size ):
+    p( start ),
+    end( start + size )
+  {
+  }
 
   bool u32( uint32_t & value )
   {
@@ -525,8 +529,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( const string & 
       return std::make_shared< Dictionary::DataRequestInstant >( false ); // Malformed record
     }
 
-    const QString lsaPath =
-      QDir::toNativeSeparators( dir.filePath( QString::fromStdString( relLsaPath ) ) );
+    const QString lsaPath = QDir::toNativeSeparators( dir.filePath( QString::fromStdString( relLsaPath ) ) );
 
     auto dr = std::make_shared< Dictionary::DataRequestInstant >( true );
 
