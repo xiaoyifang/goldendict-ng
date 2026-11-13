@@ -170,30 +170,46 @@ jobs:
           if [[ -f /etc/os-release ]]; then
             cat /etc/os-release
           fi
+      - uses: actions/cache@v4
+        with:
+          path: /var/cache/pacman/pkg
+          key: arch-pkg-${{ hashFiles('.github/workflows/PR-check-cmake.yml') }}
+          restore-keys: |
+            arch-pkg-
       - name: Install dependencies
         run: |
+          # Make pacman fall back to the official mirror if the primary CDN flips out
+          # (e.g. fastly-backed geo.mirror.pkgbuild.com returning 404 mid-transaction).
+          printf '%s\n' \
+            'Server = https://geo.mirror.pkgbuild.com/$repo/os/$arch' \
+            'Server = https://mirror.archlinux.org/$repo/os/$arch' \
+            > /etc/pacman.d/mirrorlist
+
           # https://github.com/archlinux/archlinux-docker
-          # base-devel is already included in the `base-devel` image
-          pacman --noconfirm -Syuu \
-          cmake \
-          ffmpeg \
-          fmt \
-          hunspell \
-          libvorbis \
-          libxtst \
-          libzim \
-          lzo \
-          ninja \
-          opencc \
-          qt6-5compat \
-          qt6-base \
-          qt6-multimedia \
-          qt6-speech \
-          qt6-svg \
-          qt6-tools \
-          qt6-webengine \
-          tomlplusplus \
-          xapian-core
+          # base-devel image brings gcc / make / patch etc., but NOT cmake / ninja —
+          # those still need to be installed explicitly.
+          # -Syu must run first so that the package DB matches the local state.
+          pacman -Syu --noconfirm --disable-download-timeout
+          pacman -S --noconfirm --needed --disable-download-timeout \
+            cmake \
+            ninja \
+            ffmpeg \
+            fmt \
+            hunspell \
+            libvorbis \
+            libxtst \
+            libzim \
+            lzo \
+            opencc \
+            qt6-5compat \
+            qt6-base \
+            qt6-multimedia \
+            qt6-speech \
+            qt6-svg \
+            qt6-tools \
+            qt6-webengine \
+            tomlplusplus \
+            xapian-core
 
       - uses: actions/checkout@v6
         with:
