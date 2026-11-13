@@ -15,6 +15,7 @@
 #include "utils.hh"
 
 #include <set>
+#include <cstring>
 #include <QFileInfo>
 #include <QDirIterator>
 #include <QDateTime>
@@ -35,7 +36,7 @@ namespace {
 
 enum {
   Signature            = 0x58524453, // SDRX on little-endian, XRDS on big-endian
-  CurrentFormatVersion = 4 + BtreeIndexing::FormatVersion + Folding::Version
+  CurrentFormatVersion = 5 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
 #pragma pack( push, 1 )
@@ -60,6 +61,121 @@ bool indexIsOldOrBad( string const & indexFile )
 
   return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
     || header.formatVersion != CurrentFormatVersion;
+}
+
+/// Records stored in the chunks share a unified binary layout:
+///
+///   [ uint32 type ][ uint32 payloadSize ][ payload ]
+///
+/// The payload is a sequence of fields, their order defined by the type:
+///
+///   SoundFile: str path         -- relative path of the sound file
+///   LsaEntry:  u32 vorbisOffset -- offset of the Ogg stream in the archive
+///              u32 entryOffset  -- offset of the entry record in the archive
+///              str name         -- entry name, the extension stripped
+///              str path         -- relative path of the .lsa archive
+///
+/// A str is stored as [ uint32 size ][ size bytes of UTF-8 ], so neither a
+/// terminator nor escaping is needed and embedded NUL characters are harmless.
+///
+/// Values use the host byte order, like the rest of the index file; the index
+/// header signature makes a foreign-endianness index fail to open, which
+/// forces a rebuild.
+enum class RecordType : uint32_t {
+  SoundFile = 0,
+  LsaEntry  = 1
+};
+
+struct RecordWriter
+{
+  string buffer;
+
+  void u32( uint32_t value )
+  {
+    buffer.append( reinterpret_cast< const char * >( &value ), sizeof( value ) );
+  }
+
+  void str( const string & value )
+  {
+    u32( static_cast< uint32_t >( value.size() ) );
+    buffer.append( value );
+  }
+};
+
+struct RecordReader
+{
+  const char * p   = nullptr;
+  const char * end = nullptr;
+
+  RecordReader() = default;
+
+  RecordReader( const char * start, size_t size ): p( start ), end( start + size ) {}
+
+  bool u32( uint32_t & value )
+  {
+    if ( static_cast< size_t >( end - p ) < sizeof( value ) ) {
+      return false;
+    }
+
+    memcpy( &value, p, sizeof( value ) );
+    p += sizeof( value );
+    return true;
+  }
+
+  bool str( string & value )
+  {
+    uint32_t size = 0;
+
+    if ( !u32( size ) || static_cast< size_t >( end - p ) < size ) {
+      return false;
+    }
+
+    value.assign( p, size );
+    p += size;
+    return true;
+  }
+};
+
+/// Appends a record of \p type with the given payload to the chunks storage
+/// and returns its article offset.
+uint32_t addRecord( ChunkedStorage::Writer & chunks, RecordType type, const string & payload )
+{
+  RecordWriter record;
+
+  record.u32( static_cast< uint32_t >( type ) );
+  record.u32( static_cast< uint32_t >( payload.size() ) );
+  record.buffer.append( payload );
+
+  const uint32_t articleOffset = chunks.startNewBlock();
+
+  chunks.addToBlock( record.buffer.data(), record.buffer.size() );
+
+  return articleOffset;
+}
+
+/// Reads the record header at \p recordStart and makes \p payload span the
+/// payload only. Returns false if the record is malformed or truncated.
+bool openRecord( const char * recordStart, const char * chunkEnd, RecordType & type, RecordReader & payload )
+{
+  if ( recordStart >= chunkEnd ) {
+    return false;
+  }
+
+  RecordReader record( recordStart, static_cast< size_t >( chunkEnd - recordStart ) );
+
+  uint32_t typeValue   = 0;
+  uint32_t payloadSize = 0;
+
+  if ( !record.u32( typeValue ) || !record.u32( payloadSize )
+       || static_cast< size_t >( chunkEnd - record.p ) < payloadSize ) {
+    return false;
+  }
+
+  type = static_cast< RecordType >( typeValue );
+
+  payload = RecordReader( record.p, payloadSize );
+
+  return true;
 }
 
 class SoundDirDictionary: public BtreeIndexing::BtreeDictionary
@@ -178,8 +294,6 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( const std::u32st
   multimap< std::u32string, uint32_t >::const_iterator i;
 
   string displayedName;
-  vector< char > chunk;
-  char * nameBlock;
 
   result += "<div class=\"audio-play\">";
 
@@ -190,23 +304,12 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( const std::u32st
       displayedName = chain[ i->second ].word;
     }
     else {
-      try {
-        QMutexLocker _( &idxMutex );
-        nameBlock = chunks.getBlock( address, chunk );
-
-        if ( nameBlock >= &chunk.front() + chunk.size() ) {
-          // chunks reader thinks it's okay since zero-sized records can exist,
-          // but we don't allow that.
-          throw ChunkedStorage::exAddressOutOfRange();
-        }
-
-        chunk.back()  = 0; // It must end with 0 anyway, but just in case
-        displayedName = string( nameBlock );
-      }
-      catch ( ChunkedStorage::exAddressOutOfRange & ) {
+      QString name;
+      if ( !get_file_name( address, name ) ) {
         // Bad address
         continue;
       }
+      displayedName = name.toStdString();
     }
 
     result += "<div class=\"audio-play-item\">";
@@ -238,23 +341,12 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( const std::u32st
       displayedName = chain[ i->second ].word;
     }
     else {
-      try {
-        QMutexLocker _( &idxMutex );
-        nameBlock = chunks.getBlock( address, chunk );
-
-        if ( nameBlock >= &chunk.front() + chunk.size() ) {
-          // chunks reader thinks it's okay since zero-sized records can exist,
-          // but we don't allow that.
-          throw ChunkedStorage::exAddressOutOfRange();
-        }
-
-        chunk.back()  = 0; // It must end with 0 anyway, but just in case
-        displayedName = string( nameBlock );
-      }
-      catch ( ChunkedStorage::exAddressOutOfRange & ) {
+      QString name;
+      if ( !get_file_name( address, name ) ) {
         // Bad address
         continue;
       }
+      displayedName = name.toStdString();
     }
 
     result += "<div class=\"audio-play-item\">";
@@ -309,14 +401,14 @@ void SoundDirDictionary::loadIcon() noexcept
 bool SoundDirDictionary::get_file_name( uint32_t articleOffset, QString & file_name )
 {
   vector< char > chunk;
-  char * articleData;
+  char * recordData;
 
   try {
     QMutexLocker _( &idxMutex );
 
-    articleData = chunks.getBlock( articleOffset, chunk );
+    recordData = chunks.getBlock( articleOffset, chunk );
 
-    if ( articleData >= &chunk.front() + chunk.size() ) {
+    if ( chunk.empty() || recordData >= &chunk.front() + chunk.size() ) {
       // chunks reader thinks it's okay since zero-sized records can exist,
       // but we don't allow that.
       throw ChunkedStorage::exAddressOutOfRange();
@@ -326,40 +418,33 @@ bool SoundDirDictionary::get_file_name( uint32_t articleOffset, QString & file_n
     return false; // No such resource
   }
 
-  chunk.back() = 0; // It must end with 0 anyway, but just in case
-  file_name    = QString::fromUtf8( articleData );
-  return true;
-}
+  RecordType type;
+  RecordReader payload;
 
-/// Splits the null-separated fields of a single chunk record. \p recordStart
-/// points at the record inside the decompressed chunk ( several records share
-/// one chunk ), \p chunkEnd marks the chunk's end. At most \p maxFields are
-/// read, which reliably terminates multi-field records: anything past them
-/// belongs to the following record, not to this one.
-///
-/// Plain sound file records have a single field ( the relative file path ),
-/// while records referencing an entry inside a Lingvo sound archive (.lsa)
-/// have five: display name, "lsa" marker, relative .lsa path, vorbis stream
-/// offset, entry offset.
-QStringList splitRecordFields( const char * recordStart, const char * chunkEnd, int maxFields )
-{
-  QStringList fields;
-
-  const char * p = recordStart;
-
-  while ( p < chunkEnd && fields.size() < maxFields ) {
-    const char * q = p;
-
-    while ( q < chunkEnd && *q != '\0' ) {
-      ++q;
-    }
-
-    fields.append( QString::fromUtf8( p, static_cast< int >( q - p ) ) );
-
-    p = q + 1; // Skip the terminator
+  if ( !openRecord( recordData, &chunk.front() + chunk.size(), type, payload ) ) {
+    return false; // Malformed record
   }
 
-  return fields;
+  if ( type == RecordType::LsaEntry ) {
+    uint32_t vorbisOffset = 0, entryOffset = 0;
+    string entryName;
+
+    if ( !payload.u32( vorbisOffset ) || !payload.u32( entryOffset ) || !payload.str( entryName ) ) {
+      return false; // Malformed record
+    }
+
+    file_name = QString::fromStdString( entryName );
+    return true;
+  }
+
+  string relPath;
+
+  if ( type != RecordType::SoundFile || !payload.str( relPath ) ) {
+    return false; // Malformed record
+  }
+
+  file_name = QString::fromStdString( relPath );
+  return true;
 }
 
 sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( const string & name )
@@ -410,7 +495,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( const string & 
 
     recordData = chunks.getBlock( articleOffset, chunk );
 
-    if ( recordData >= &chunk.front() + chunk.size() ) {
+    if ( chunk.empty() || recordData >= &chunk.front() + chunk.size() ) {
       // chunks reader thinks it's okay since zero-sized records can exist,
       // but we don't allow that.
       throw ChunkedStorage::exAddressOutOfRange();
@@ -420,30 +505,28 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( const string & 
     return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
   }
 
-  const QStringList fields = splitRecordFields( recordData, &chunk.front() + chunk.size(), 5 );
+  RecordType type;
+  RecordReader payload;
 
-  if ( fields.isEmpty() ) {
-    return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
+  if ( !openRecord( recordData, &chunk.front() + chunk.size(), type, payload ) ) {
+    return std::make_shared< Dictionary::DataRequestInstant >( false ); // Malformed record
   }
 
   const QDir dir( QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() ) );
 
-  // The record references an entry inside a Lingvo sound archive (.lsa) if
-  // it has the "lsa" marker in its second field. Any other record is a plain
-  // sound file record ( its first field is the relative file path ).
-  const bool isLsaRecord = ( fields.size() == 5 && fields[ 1 ] == QLatin1String( "lsa" ) && !fields[ 2 ].isEmpty() );
+  if ( type == RecordType::LsaEntry ) {
+    // The record references an entry inside a Lingvo sound archive (.lsa)
 
-  if ( isLsaRecord ) {
-    bool vorbisOk = false, entryOk = false;
+    uint32_t vorbisOffset = 0, entryOffset = 0;
+    string entryName, relLsaPath;
 
-    const uint32_t vorbisOffset = fields[ 3 ].toULong( &vorbisOk );
-    const uint32_t entryOffset  = fields[ 4 ].toULong( &entryOk );
-
-    if ( !vorbisOk || !entryOk ) {
-      return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
+    if ( !payload.u32( vorbisOffset ) || !payload.u32( entryOffset ) || !payload.str( entryName )
+         || !payload.str( relLsaPath ) ) {
+      return std::make_shared< Dictionary::DataRequestInstant >( false ); // Malformed record
     }
 
-    const QString lsaPath = QDir::toNativeSeparators( dir.filePath( fields[ 2 ] ) );
+    const QString lsaPath =
+      QDir::toNativeSeparators( dir.filePath( QString::fromStdString( relLsaPath ) ) );
 
     auto dr = std::make_shared< Dictionary::DataRequestInstant >( true );
 
@@ -457,7 +540,13 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( const string & 
     return dr;
   }
 
-  const QString fileName = QDir::toNativeSeparators( dir.filePath( fields[ 0 ] ) );
+  string relPath;
+
+  if ( type != RecordType::SoundFile || !payload.str( relPath ) ) {
+    return std::make_shared< Dictionary::DataRequestInstant >( false ); // Malformed record
+  }
+
+  const QString fileName = QDir::toNativeSeparators( dir.filePath( QString::fromStdString( relPath ) ) );
 
   // Now try loading that file
 
@@ -496,8 +585,10 @@ void addDir( const QDir & dir, IndexedWords & indexedWords, uint32_t & soundsCou
       // Add this sound to index
       string fileName = dir.relativeFilePath( fileInfo.filePath() ).toUtf8().data();
 
-      const uint32_t articleOffset = chunks.startNewBlock();
-      chunks.addToBlock( fileName.c_str(), fileName.size() + 1 );
+      RecordWriter payload;
+      payload.str( fileName );
+
+      const uint32_t articleOffset = addRecord( chunks, RecordType::SoundFile, payload.buffer );
 
       std::u32string name = fileInfo.fileName().toStdU32String();
 
@@ -546,23 +637,17 @@ void addLsaArchives( const QDir & dir,
     const string relLsaPath = dir.relativeFilePath( it.filePath() ).toUtf8().data();
 
     for ( const auto & entry : entries ) {
-      if ( entry.name.empty() || entry.name.find( '\0' ) != string::npos ) {
-        // Empty names are useless, and a name containing a NUL character
-        // ( possible only in a malformed archive ) would corrupt the
-        // null-separated record format.
+      if ( entry.name.empty() ) {
         continue;
       }
 
-      const uint32_t articleOffset = chunks.startNewBlock();
+      RecordWriter payload;
+      payload.u32( vorbisOffset );
+      payload.u32( entry.offset );
+      payload.str( entry.name );
+      payload.str( relLsaPath );
 
-      // Null-separated fields: display name, "lsa" marker, relative .lsa
-      // path, vorbis stream offset, entry offset. The marker distinguishes
-      // multi-field .lsa records from single-field plain file records which
-      // share the same chunks.
-      const string record = entry.name + '\0' + "lsa" + '\0' + relLsaPath + '\0' + std::to_string( vorbisOffset ) + '\0'
-        + std::to_string( entry.offset ) + '\0';
-
-      chunks.addToBlock( record.c_str(), record.size() );
+      const uint32_t articleOffset = addRecord( chunks, RecordType::LsaEntry, payload.buffer );
 
       indexedWords.addWord( Text::toUtf32( entry.name ), articleOffset );
 
