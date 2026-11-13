@@ -221,7 +221,7 @@ int DictListModel::rowCount( const QModelIndex & ) const
 
 QVariant DictListModel::data( const QModelIndex & index, int role ) const
 {
-  if ( index.row() < 0 ) {
+  if ( !index.isValid() || index.row() < 0 || index.row() >= (int)dictionaries.size() ) {
     return QVariant();
   }
 
@@ -363,17 +363,33 @@ void DictListModel::removeSelectedRows( QItemSelectionModel * source )
     return;
   }
 
-  const QModelIndexList rows = source->selectedRows();
+  // selectedRows() is not guaranteed to be sorted (see Qt docs of selectedIndexes()),
+  // so collect the row numbers into a set instead of relying on their order.
+  QList< int > rows;
+  const QModelIndexList selected = source->selectedRows();
+  for ( const auto & idx : selected ) {
+    if ( idx.isValid() && idx.row() >= 0 && idx.row() < (int)dictionaries.size() && !rows.contains( idx.row() ) ) {
+      rows.push_back( idx.row() );
+    }
+  }
 
-  if ( !rows.count() ) {
+  if ( rows.isEmpty() ) {
     return;
   }
 
-  for ( int i = rows.count() - 1; i >= 0; --i ) {
-    dictionaries.erase( dictionaries.begin() + rows.at( i ).row() );
+  beginResetModel();
+
+  std::vector< sptr< Dictionary::Class > > kept;
+  kept.reserve( dictionaries.size() - static_cast< size_t >( rows.size() ) );
+
+  for ( int i = 0; i < (int)dictionaries.size(); ++i ) {
+    if ( !rows.contains( i ) ) {
+      kept.push_back( dictionaries[ i ] );
+    }
   }
 
-  beginResetModel();
+  dictionaries.swap( kept );
+
   endResetModel();
   emit contentChanged();
 }
@@ -408,12 +424,25 @@ void DictListModel::addSelectedUniqueFromModel( QItemSelectionModel * source )
   QList< std::string > list;
   QList< std::string > dicts;
   for ( const auto & dictionarie : dictionaries ) {
-    dicts.append( dictionarie->getId() );
+    if ( dictionarie ) {
+      dicts.append( dictionarie->getId() );
+    }
   }
 
   for ( int i = 0; i < rows.count(); i++ ) {
-    QModelIndex idx = proxyModel ? proxyModel->mapToSource( rows.at( i ) ) : rows.at( i );
-    std::string id  = baseModel->dictionaries.at( idx.row() )->getId();
+    const QModelIndex idx = proxyModel ? proxyModel->mapToSource( rows.at( i ) ) : rows.at( i );
+
+    if ( !idx.isValid() || idx.row() < 0 || idx.row() >= (int)baseModel->dictionaries.size() ) {
+      continue;
+    }
+
+    const sptr< Dictionary::Class > & dict = baseModel->dictionaries[ idx.row() ];
+
+    if ( !dict ) {
+      continue;
+    }
+
+    const std::string id = dict->getId();
 
     if ( !dicts.contains( id ) ) {
       list.append( id );
@@ -424,6 +453,8 @@ void DictListModel::addSelectedUniqueFromModel( QItemSelectionModel * source )
     return;
   }
 
+  beginResetModel();
+
   for ( const auto & j : list ) {
     for ( const auto & allDict : *allDicts ) {
       if ( allDict->getId() == j ) {
@@ -433,7 +464,6 @@ void DictListModel::addSelectedUniqueFromModel( QItemSelectionModel * source )
     }
   }
 
-  beginResetModel();
   endResetModel();
   emit contentChanged();
 }
