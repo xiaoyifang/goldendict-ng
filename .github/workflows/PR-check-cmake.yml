@@ -95,12 +95,8 @@ jobs:
           xapian \
           fmt \
           libzim \
-          tomlplusplus || true
-      - uses: jurplel/install-qt-action@v4.3.1
-        with:
-          version: 6.11.3 # same as release workflows: >= 6.11.3 fixes the tray icon crash on macOS 27 (qtbase 65020b43cd)
-          arch: clang_64
-          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
+          tomlplusplus \
+          qt || true
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2
         with:
