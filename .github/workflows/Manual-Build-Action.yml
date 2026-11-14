@@ -25,7 +25,9 @@ jobs:
     strategy:
       matrix:
         os: [macos-15]
-        qt_ver: [ 6.10.3 ]
+        # Qt >= 6.11.3 is required to fix the tray icon crash on macOS 27
+        # (qtbase 65020b43cd: [NSEvent clickCount] assertion). 6.8/6.10 lack the fix.
+        qt_ver: [ 6.11.3 ]
     steps:
       - uses: actions/checkout@v6
         with:
