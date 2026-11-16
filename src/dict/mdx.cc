@@ -92,7 +92,6 @@ static_assert( alignof( IdxHeader ) == 1 );
 class IndexedMdd: public BtreeIndexing::BtreeIndex
 {
   QMutex & idxMutex;
-  QMutex fileMutex;
   ChunkedStorage::Reader & chunks;
   QFile mddFile;
   bool isFileOpen;
@@ -115,23 +114,6 @@ public:
     mddFile.setFileName( QString::fromUtf8( fileName ) );
     isFileOpen = mddFile.open( QFile::ReadOnly );
     return isFileOpen;
-  }
-
-  /// Returns true if the mdd is open, false otherwise.
-  inline bool isOpen() const
-  {
-    return isFileOpen;
-  }
-
-  /// Checks whether the given file exists in the mdd file or not.
-  /// Note that this function is thread-safe, since it does not access mdd file.
-  bool hasFile( const std::u32string & name )
-  {
-    if ( !isFileOpen ) {
-      return false;
-    }
-    vector< WordArticleLink > links = findArticles( name );
-    return !links.empty();
   }
 
   /// Attempts loading the given file into the given vector. Returns true on
@@ -198,7 +180,6 @@ class MdxDictionary: public BtreeIndexing::BtreeDictionary
   bool deferredInitRunnableStarted = false;
 
   string initError;
-  QString cacheDirName;
 
 public:
 
@@ -257,8 +238,6 @@ public:
     }
   }
 
-  QString getCachedFileName( QString name );
-
 protected:
 
   void loadIcon() noexcept override;
@@ -313,8 +292,6 @@ MdxDictionary::MdxDictionary( const string & id, const string & indexFile, const
   // Full-text search parameters
 
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
-
-  cacheDirName = QDir::tempPath() + QDir::separator() + QString::fromUtf8( getId().c_str() ) + ".cache";
 }
 
 MdxDictionary::~MdxDictionary()
@@ -322,8 +299,6 @@ MdxDictionary::~MdxDictionary()
   QMutexLocker _( &deferredInitMutex );
 
   dictFile.close();
-
-  Utils::Fs::removeDirectory( cacheDirName );
 }
 
 //////// MdxDictionary::deferredInit()
@@ -1237,91 +1212,6 @@ void MdxDictionary::replaceFontLinks( QString & id, QString & article )
   }
 }
 
-
-QString MdxDictionary::getCachedFileName( QString filename )
-{
-  QDir dir;
-  QFileInfo info( cacheDirName );
-  if ( !info.exists() || !info.isDir() ) {
-    if ( !dir.mkdir( cacheDirName ) ) {
-      qWarning( "Mdx: can't create cache directory \"%s\"", cacheDirName.toUtf8().data() );
-      return QString();
-    }
-  }
-
-  // Create subfolders if needed
-
-  QString name = filename;
-  name.replace( '/', '\\' );
-  QStringList list = name.split( '\\' );
-  int subFolders   = list.size() - 1;
-  if ( subFolders > 0 ) {
-    QString dirName = cacheDirName;
-    for ( int i = 0; i < subFolders; i++ ) {
-      dirName += QDir::separator() + list.at( i );
-      QFileInfo dirInfo( dirName );
-      if ( !dirInfo.exists() ) {
-        if ( !dir.mkdir( dirName ) ) {
-          qWarning( "Mdx: can't create cache directory \"%s\"", dirName.toUtf8().data() );
-          return QString();
-        }
-      }
-    }
-  }
-
-  QString fullName = cacheDirName + QDir::separator() + filename;
-
-  info.setFile( fullName );
-  if ( info.exists() ) {
-    return fullName;
-  }
-  QFile f( fullName );
-  if ( !f.open( QFile::WriteOnly ) ) {
-    qWarning( R"(Mdx: file "%s" creating error: "%s")", fullName.toUtf8().data(), f.errorString().toUtf8().data() );
-    return QString();
-  }
-  std::u32string resourceName = filename.toStdU32String();
-  vector< char > data;
-
-  // In order to prevent recursive internal redirection...
-  set< std::u32string, std::less<> > resourceIncluded;
-
-  for ( ;; ) {
-    if ( !resourceIncluded.insert( resourceName ).second ) {
-      continue;
-    }
-
-    loadResourceFile( resourceName, data );
-
-    // Check if this file has a redirection
-    // Always encoded in UTF16-LE
-    // L"@@@LINK="
-    if ( static const char pattern[ 16 ] =
-           { '@', '\0', '@', '\0', '@', '\0', 'L', '\0', 'I', '\0', 'N', '\0', 'K', '\0', '=', '\0' };
-         data.size() > sizeof( pattern ) && memcmp( &data.front(), pattern, sizeof( pattern ) ) == 0 ) {
-      data.push_back( '\0' );
-      data.push_back( '\0' );
-      QString target =
-        MdictParser::toUtf16( "UTF-16LE", &data.front() + sizeof( pattern ), data.size() - sizeof( pattern ) );
-      resourceName = target.trimmed().toStdU32String();
-      continue;
-    }
-    break;
-  }
-
-  qint64 n = 0;
-  if ( !data.empty() ) {
-    n = f.write( data.data(), data.size() );
-  }
-
-  f.close();
-
-  if ( n < (qint64)data.size() ) {
-    qWarning( R"(Mdx: file "%s" writing error: "%s")", fullName.toUtf8().data(), f.errorString().toUtf8().data() );
-    return QString();
-  }
-  return fullName;
-}
 
 void MdxDictionary::loadResourceFile( const std::u32string & resourceName, vector< char > & data )
 {
