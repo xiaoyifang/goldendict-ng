@@ -331,40 +331,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Aktivizo konvertimin nga karaktere të thjeshtuara në karaktere tradicionale (varianti i Hong Kongut).</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Konvertimi i thjeshtuar në tradicional kinez (varianti i Tajvanit).</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Konvertimi i thjeshtuar në kinezisht tradicional (varianti i Hong Kongut).</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Konvertimi tradicional në kinezisht i thjeshtuar</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Varianti i Hong Kongut</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Mundësoni konvertimin nga karakteret tradicionale në karaktere të thjeshtuara (Mainland)</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Thjeshtuar (Kontinent)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Mundësoni konvertimin nga karakteret e thjeshtuara në karakteret tradicionale (Taiwan/Standard)</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Tradicionale (Tajvan/Standard)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -385,6 +353,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Mundësoni konvertimin midis kinezishtes së thjeshtuar, kinezishtes tradicionale (Taiwan/Hong Kong) dhe karaktereve japoneze Shinjitai</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Aktivizo konvertimin nga karaktere tradicionale në karaktere të thjeshtuara</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Thjeshtuar</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Mundësoni konvertimin nga karakteret e thjeshtuara në karaktere tradicionale (tajvaneze)</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Tradicionale (Tajvan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation type="unfinished">Traditional (Hong Kong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
     </message>
   </context>
   <context>
