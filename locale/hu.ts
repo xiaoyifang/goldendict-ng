@@ -373,19 +373,19 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+      <translation>Egyszerűsített karakterekről hagyományos (hongkongi) karakterekre történő átalakítás engedélyezése</translation>
     </message>
     <message>
       <source>Traditional (Hong Kong)</source>
-      <translation type="unfinished">Traditional (Hong Kong)</translation>
+      <translation>Hagyományos (Hongkong)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+      <translation>Egyszerűsítve a hagyományos kínai (Tajvani) átalakításra</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
+      <translation>Egyszerűsítve hagyományos kínai (hongkongi) átváltásra</translation>
     </message>
   </context>
   <context>
