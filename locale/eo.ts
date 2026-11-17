@@ -332,40 +332,8 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Ebligu konvertiĝon de simpligitaj signoj al tradiciaj (Honkonga varianto) signoj</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Simpligita al tradicia ĉina (tajvana varianto) konvertiĝo</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Simpligita al tradicia ĉina (Honkonga varianto) konvertiĝo</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Tradicia al simpligita ĉina konvertiĝo</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation type="unfinished">Hong Kong variant</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Ebligu konvertiĝon de tradiciaj signoj al simpligitaj (kontinentaj) signoj</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Simpligita (kontinenta)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Ebligu konvertiĝon de simpligitaj signoj al tradiciaj (Tajvana/Norma) signoj</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Tradicia (Tajvana/Norma)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +354,38 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Ebligi konverton inter simpligita ĉina, tradicia ĉina (Tajvano/Honkongo) kaj japanaj Ŝinĵitaj-karakteroj</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Ebligu konvertiĝon de tradiciaj signoj al simpligitaj signoj</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Simpligita</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Ebligu konvertiĝon de simpligitaj signoj al tradiciaj (Tajvano) signoj</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Tradicia (Tajvano)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation type="unfinished">Traditional (Hong Kong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
     </message>
   </context>
   <context>
