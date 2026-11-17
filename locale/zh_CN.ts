@@ -375,7 +375,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Traditional (Hong Kong)</source>
-      <translation>传统（香港）</translation>
+      <translation>繁体（香港）</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan) conversion</source>
@@ -383,7 +383,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
-      <translation>简体中文转繁体中文（香港语）</translation>
+      <translation>简体中文转繁体中文（香港）</translation>
     </message>
   </context>
   <context>
