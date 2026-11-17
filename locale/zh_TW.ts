@@ -367,7 +367,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Traditional (Taiwan)</source>
-      <translation>傳統（台灣）</translation>
+      <translation>繁體（台灣）</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
