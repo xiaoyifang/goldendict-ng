@@ -361,31 +361,31 @@ chiqan kayninta sumaqyachin)</translation>
     </message>
     <message>
       <source>Simplified</source>
-      <translation type="unfinished">Simplified</translation>
+      <translation>Sasachasqa</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Taiwan) characters</translation>
+      <translation>Sasachasqa qillqakunamanta ñawpaq (Taiwán) qillqakunaman tikrayta atichiy</translation>
     </message>
     <message>
       <source>Traditional (Taiwan)</source>
-      <translation type="unfinished">Traditional (Taiwan)</translation>
+      <translation>Ñawpaq (Taiwán)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+      <translation>Sasachasqa qillqakunamanta ñawpaq (Hong Kong) qillqakunaman tikrayta atichiy</translation>
     </message>
     <message>
       <source>Traditional (Hong Kong)</source>
-      <translation type="unfinished">Traditional (Hong Kong)</translation>
+      <translation>Ñawpaq (Hong Kong)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+      <translation>Sasachasqa qillqakunamanta ñawpaq China simiman (Taiwán) tikray</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
+      <translation>Sasachasqa qillqakunamanta ñawpaq China simiman (Hong Kong) tikray</translation>
     </message>
   </context>
   <context>
