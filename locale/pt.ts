@@ -373,19 +373,19 @@ entre ortografia clássica e escolar em ciílico)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+      <translation>Permitir a conversão de caracteres simplificados para caracteres tradicionais (de Hong Kong)</translation>
     </message>
     <message>
       <source>Traditional (Hong Kong)</source>
-      <translation type="unfinished">Traditional (Hong Kong)</translation>
+      <translation>Tradicional (Hong Kong)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+      <translation>Conversão simplificada para o chinês tradicional (Taiwan)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
+      <translation>Conversão simplificada para chinês tradicional (Hong Kong)</translation>
     </message>
   </context>
   <context>
