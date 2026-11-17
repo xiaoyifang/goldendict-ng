@@ -363,31 +363,31 @@ es Shinjitai</translation>
     </message>
     <message>
       <source>Simplified</source>
-      <translation type="unfinished">Simplified</translation>
+      <translation>Simplificado</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Taiwan) characters</translation>
+      <translation>Habilitar la conversión de caracteres simplificados a caracteres tradicionales (Taiwán)</translation>
     </message>
     <message>
       <source>Traditional (Taiwan)</source>
-      <translation type="unfinished">Traditional (Taiwan)</translation>
+      <translation>Tradicional (Taiwán)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+      <translation>Habilitar la conversión de caracteres simplificados a caracteres tradicionales (Hong Kong)</translation>
     </message>
     <message>
       <source>Traditional (Hong Kong)</source>
-      <translation type="unfinished">Traditional (Hong Kong)</translation>
+      <translation>Tradicional (Hong Kong)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+      <translation>Conversión de chino simplificado a tradicional (Taiwán)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
+      <translation>Conversión de chino simplificado a tradicional (Hong Kong)</translation>
     </message>
   </context>
   <context>
