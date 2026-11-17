@@ -373,19 +373,19 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+      <translation>Ebligu konvertiĝon de simpligitaj signoj al tradiciaj (Honkonga) signoj</translation>
     </message>
     <message>
       <source>Traditional (Hong Kong)</source>
-      <translation type="unfinished">Traditional (Hong Kong)</translation>
+      <translation>Tradicia (Honkonga)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+      <translation>Simpligita al tradicia ĉina (tajvana) konvertiĝo</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
+      <translation>Simpligita al tradicia ĉina (Honkonga) konvertiĝo</translation>
     </message>
   </context>
   <context>
