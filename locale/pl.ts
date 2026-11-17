@@ -332,40 +332,8 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Włącz konwersję znaków uproszczonych na tradycyjne (wariant Hongkongu)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Konwersja chińskich znaków uproszczonych na tradycyjne (wariant Tajwanu)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Konwersja chińskich znaków uproszczonych na tradycyjne (wariant Hongkongu)</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Tradycyjne dla uproszczonej chińskiej konwersji</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Wariant hongkoński</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Umożliwienie konwersji z tradycyjnych znaków na uproszczone (z Mainland) znaki</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Uproszczone (Mainland)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Umożliwienie konwersji ze uproszczonych znaków na tradycyjne (tajwańskie/standardowe) znaki</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Tradycyjny (Tajwan/Standard)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +354,38 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Umożliwienie konwersji między uproszczonym chińskim, tradycyjnym chińskim (Tajwan/Hongkong) oraz japońskimi znakami Shinjitai</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Włącz konwersję z tradycyjnych znaków na uproszczone znaki</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Uproszczone</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Włącz konwersję ze znaków uproszczonych na tradycyjne (tajwańskie) znaki</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Tradycyjne (Tajwan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation type="unfinished">Traditional (Hong Kong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
     </message>
   </context>
   <context>
