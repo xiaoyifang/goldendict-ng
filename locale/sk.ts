@@ -332,40 +332,8 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Povoliť konverziu zjednodušených znakov na tradičné (Hong-Kongský variant)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Konverzia zo zjednodušenej do tradičnej čínštiny (Tajvanský variant)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Konverzia zo zjednodušenej do tradičnej čínštiny (Hong-Kongský variant)</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Konverzia z tradičnej do zjednodušenej čínštiny</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Hongkonský variant</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Umožniť konverziu z tradičných znakov na zjednodušené (pevninské) znaky</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Zjednodušené (pevnina)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Umožniť konverziu zo zjednodušených znakov na tradičné (Taiwan/Standard) znaky</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Tradičné (Taiwan/Standard)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +354,38 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Umožniť konverziu medzi zjednodušenou čínštinou, tradičnou čínštinou (Taiwan/Hongkong) a japonskými znakmi Shinjitai</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Povoliť konverziu tradičných znakov na zjednodušené znaky</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Zjednodušené</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Povoliť konverziu zo zjednodušených znakov na tradičné (Taiwan) znaky</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Tradičné (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation type="unfinished">Traditional (Hong Kong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
     </message>
   </context>
   <context>
