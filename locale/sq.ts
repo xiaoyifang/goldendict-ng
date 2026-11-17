@@ -372,19 +372,19 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+      <translation>Mundësimi i konvertimit nga karakteret e thjeshtuara në karaktere tradicionale (Hong Kongu)</translation>
     </message>
     <message>
       <source>Traditional (Hong Kong)</source>
-      <translation type="unfinished">Traditional (Hong Kong)</translation>
+      <translation>Tradicionale (Hong Kong)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+      <translation>Konvertimi i thjeshtuar në kinezisht tradicional (Taiwan)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
+      <translation>Konvertimi i thjeshtuar në kinezisht tradicional (Hong Kong)</translation>
     </message>
   </context>
   <context>
