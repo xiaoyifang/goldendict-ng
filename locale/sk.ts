@@ -373,19 +373,19 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+      <translation>Povoliť konverziu zo zjednodušených znakov na tradičné (hongkonské) znaky</translation>
     </message>
     <message>
       <source>Traditional (Hong Kong)</source>
-      <translation type="unfinished">Traditional (Hong Kong)</translation>
+      <translation>Tradičné (Hongkong)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+      <translation>Zjednodušená konverzia na tradičnú čínštinu (Taiwan)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
+      <translation>Zjednodušená konverzia na tradičnú čínštinu (Hongkong)</translation>
     </message>
   </context>
   <context>
