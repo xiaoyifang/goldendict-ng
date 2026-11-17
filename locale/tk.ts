@@ -331,40 +331,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Simplönekeýleşdirilen nyşanlardan adaty (Gonkong warianty) nyşanlara öwrülmegi üpjün ediň</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Adaty hytaý (Taýwan warianty) öwrülişine ýönekeýleşdirildi</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Adaty hytaý (Gonkong görnüşi) öwrülişine ýönekeýleşdirildi</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Chineseönekeýleşdirilen hytaý öwrülişigi</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Gonkong varianty</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Adatça karakterlerden sadalaşdyrylan (Materik) karakterlere öwürmegi mümkin</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Sadalaşdyrylan (materik)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Ýönekeýleşdirilen karakterlerden däp bolan (Taýwan/Standart) karakterlere öwürmegi mümkin et</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Adatça (Taýwan/Standart)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -385,6 +353,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Ýönekeýleşdirilen hytaý, däp bolan hytaý (Taýwan/Gonkong) we ýapon shinjitai karakterleriniň arasynda çalyşmagy mümkin</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Adaty nyşanlardan ýönekeýleşdirilen nyşanlara öwrülmegi üpjün ediň</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>sadalaşdyrylan</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Ýönekeýleşdirilen karakterlerden däp bolan (Taýwan) karakterlere öwürmegi mümkin et</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Adatça (Taýwan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Ýönekeýleşdirilen karakterlerden däp bolan (Gonkong) karakterlere öwürmegi mümkin et</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Adatça (Gonkong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Däp bolan hytaý (Taýwan) konwersiýasyna sadalaşdyryldy</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Ýönekeýleşdirilen däp bolan hytaý (Gonkong) konwersiýasy</translation>
     </message>
   </context>
   <context>
