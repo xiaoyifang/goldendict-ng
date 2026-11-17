@@ -373,19 +373,19 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+      <translation>Омогући конверзију са поједностављених карактера на традиционалне (хонгконшке) карактере</translation>
     </message>
     <message>
       <source>Traditional (Hong Kong)</source>
-      <translation type="unfinished">Traditional (Hong Kong)</translation>
+      <translation>Традиционални (Хонг Конг)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+      <translation>Поједностављено на традиционални кинески (Тајван) конверзија</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
+      <translation>Поједностављено на традиционални кинески (Хонг Конг) конверзија</translation>
     </message>
   </context>
   <context>
