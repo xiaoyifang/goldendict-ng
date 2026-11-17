@@ -373,19 +373,19 @@ a školní ortografií v cyrilici)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+      <translation>Povolit převod ze zjednodušených znaků na tradiční (hongkongské) znaky</translation>
     </message>
     <message>
       <source>Traditional (Hong Kong)</source>
-      <translation type="unfinished">Traditional (Hong Kong)</translation>
+      <translation>Tradiční (Hongkong)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+      <translation>Zjednodušená konverze na tradiční čínštinu (Tchaj-wan)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
+      <translation>Zjednodušená konverze na tradiční čínštinu (Hongkong)</translation>
     </message>
   </context>
   <context>
