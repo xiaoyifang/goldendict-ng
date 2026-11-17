@@ -371,11 +371,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
-      <translation>啟用從簡體字轉換為繁體（香港字）</translation>
+      <translation>啟用從簡體字轉換為繁體（香港）</translation>
     </message>
     <message>
       <source>Traditional (Hong Kong)</source>
-      <translation>傳統（香港）</translation>
+      <translation>繁體（香港）</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan) conversion</source>
