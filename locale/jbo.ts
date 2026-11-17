@@ -361,15 +361,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Simplified</source>
-      <translation type="unfinished">Simplified</translation>
+      <translation>cfipu</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Taiwan) characters</translation>
+      <translation>jbari lo fraso be'o lo cfipu cirocmu loi jai taiuan relcli cirocmu</translation>
     </message>
     <message>
       <source>Traditional (Taiwan)</source>
-      <translation type="unfinished">Traditional (Taiwan)</translation>
+      <translation>taiuan relcli</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
