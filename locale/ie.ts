@@ -361,15 +361,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Simplified</source>
-      <translation type="unfinished">Simplified</translation>
+      <translation>Simplificat</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Taiwan) characters</translation>
+      <translation>Permisser li conversion de caracteres simplificat a traditional (Taiwan) caracteres</translation>
     </message>
     <message>
       <source>Traditional (Taiwan)</source>
-      <translation type="unfinished">Traditional (Taiwan)</translation>
+      <translation>Traditional (Taiwan)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
