@@ -332,40 +332,8 @@ chiqan kayninta sumaqyachin)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Sasachasqa qillqakunamanta ñawpaq (Hong Kong variante) qillqakunaman tikrayta atichiy</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Simplificasqa tradicional chino (Taiwán variante) tikrayman</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Simplificasqa tradicional chino (Hong Kong variante) tikrayman</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Tradicionalmanta chino tikrayman pisiyachisqaman</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Hong Kong rikch'aq</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Ñawpaq qillqakunamanta pisiyachisqa (Suyu Hatun) qillqakunaman tikrayta atichiy</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Pisiyachisqa (Suyu Hatun)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Pisiyachisqa qillqakunamanta ñawpaq (Taiwán/Kamachiq) qillqakunaman tikrayta atichiy</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Ñawpaq (Taiwán/Kamachiq)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +354,38 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation type="unfinished">Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Ñawpa qillqakunamanta pisiyachisqa qillqakunaman tikrayta atichiy</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation type="unfinished">Simplified</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation type="unfinished">Enable conversion from simplified characters to traditional (Taiwan) characters</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation type="unfinished">Traditional (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation type="unfinished">Traditional (Hong Kong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
     </message>
   </context>
   <context>
