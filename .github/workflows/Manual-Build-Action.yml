@@ -55,11 +55,12 @@ jobs:
         uses: hendrikmuhs/ccache-action@v1.2
         with:
           key: ${{ runner.os }}-${{ runner.arch }}-${{ matrix.qt_ver }}
-      - uses: jurplel/install-qt-action@v4.3.1
+      - uses: jurplel/install-qt-action@v4.5.0
         with:
           version: ${{ matrix.qt_ver }}
           arch: clang_64
-          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech      
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
+          aqtsource: git+https://github.com/miurahr/aqtinstall.git@refs/pull/1048/head
       - name: Build
         run: |
           mkdir build_dir
@@ -117,12 +118,12 @@ jobs:
           - arch: win64_msvc2022_64
             vs_arch: amd64
     steps:
-      - uses: jurplel/install-qt-action@v4.3.1
+      - uses: jurplel/install-qt-action@v4.5.0
         with:
           version: ${{ matrix.qt_ver }}
           arch: ${{ matrix.arch }}
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
-          # setup-python: 'false'
+          aqtsource: git+https://github.com/miurahr/aqtinstall.git@refs/pull/1048/head
       - uses: actions/checkout@v6
         with:
           submodules: true
