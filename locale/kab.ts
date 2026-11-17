@@ -332,40 +332,8 @@ between classic and school orthography in cyrillic)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Simplified to traditional Chinese (Taiwan variant) conversion</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Simplified to traditional Chinese (Hong Kong variant) conversion</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Traditional to simplified Chinese conversion</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation type="unfinished">Hong Kong variant</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Serrer abeddel seg yisekkilen imezwura ɣer yisekkilen isehlan (n Ccinwa n Aneẓruf)</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Asehlan (n Ccinwa n Aneẓruf)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Serrer abeddel seg yisekkilen isehlan ɣer yisekkilen imezwura (n Taiwán/Amezggan)</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Inesliyen (n Taiwán/Amezggan)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +354,38 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Slelli aslelli gar isekkilen icenwiyen yessefken, isekkilen icenwiyen n zik (Taiwan/Hong Kong) d isekkilen ijapuniyen n Shinjitai</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Enable conversion from traditional characters to simplified characters</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Afrar</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Swel aserwes seg isekkilen ifraren ɣer isekkilen imenzayen (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Amenzay (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation type="unfinished">Traditional (Hong Kong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
     </message>
   </context>
   <context>
