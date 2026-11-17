@@ -372,19 +372,19 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+      <translation>تمكين التحويل من الأحرف المبسطة إلى الأحرف التقليدية (هونغ كونغ)</translation>
     </message>
     <message>
       <source>Traditional (Hong Kong)</source>
-      <translation type="unfinished">Traditional (Hong Kong)</translation>
+      <translation>التقليدي (هونغ كونغ)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+      <translation>تحويل مبسط إلى تقليدي صيني (تايوان)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
+      <translation>تحويل مبسط إلى تقليدي صيني (هونغ كونغ)</translation>
     </message>
   </context>
   <context>
