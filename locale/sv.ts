@@ -332,40 +332,8 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Aktivera konvertering från förenklade tecken till traditionella (Hong Kong variant) tecken</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Förenklad till traditionell kinesisk (Taiwanesisk variant) konvertering</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Förenklad till traditionell kinesisk (Hong Kong variant) konvertering</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Traditionell till förenklad kinesisk konvertering</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Hongkong variant</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Möjliggöra konvertering från traditionella tecken till förenklade (fastlands) tecken</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Förenklad (fastlandet)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Möjliggör konvertering från förenklade tecken till traditionella (Taiwan/Standard) tecken</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Traditionell (Taiwan/Standard)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +354,38 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Aktivera konvertering mellan förenklade kinesiska, traditionella kinesiska (Taiwan/Hongkong) och japanska Shinjitai-tecken</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Aktivera konvertering från traditionella tecken till förenklade tecken</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Förenklad</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Aktivera konvertering från förenklade tecken till traditionella (taiwanska) tecken</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Traditionell (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation type="unfinished">Traditional (Hong Kong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
     </message>
   </context>
   <context>
