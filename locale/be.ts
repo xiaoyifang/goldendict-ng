@@ -346,31 +346,31 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Simplified</source>
-      <translation type="unfinished">Simplified</translation>
+      <translation>Спрошчаная</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Taiwan) characters</translation>
+      <translation>Уключыць пераўтварэнне са спрошчаных знакаў у традыцыйныя (Тайвань)</translation>
     </message>
     <message>
       <source>Traditional (Taiwan)</source>
-      <translation type="unfinished">Traditional (Taiwan)</translation>
+      <translation>Традыцыйная (Тайвань)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+      <translation>Уключыць канверсію са знакаў спрошчанага кітайскага пісьма ў знакі традыцыйнага кітайскага пісьма (Ганконг)</translation>
     </message>
     <message>
       <source>Traditional (Hong Kong)</source>
-      <translation type="unfinished">Traditional (Hong Kong)</translation>
+      <translation>Традыцыйныя (Ганконг)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+      <translation>Канверсія знакаў спрошчанага кітайскага пісьма ў знакі традыцыйнага кітайскага пісьма (Тайвань)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
+      <translation>Канверсія знакаў спрошчанага кітайскага пісьма ў знакі традыцыйнага кітайскага пісьма (Ганконг)</translation>
     </message>
   </context>
   <context>
