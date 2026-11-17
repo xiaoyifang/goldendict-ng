@@ -29,30 +29,30 @@
    <item row="0" column="0">
     <widget class="QCheckBox" name="enableTCToSCConversion">
      <property name="toolTip">
-      <string>Enable conversion from traditional characters to simplified (Mainland) characters</string>
+      <string>Enable conversion from traditional characters to simplified characters</string>
      </property>
      <property name="text">
-      <string>Simplified (Mainland)</string>
+      <string>Simplified</string>
      </property>
     </widget>
    </item>
    <item row="0" column="1">
     <widget class="QCheckBox" name="enableSCToTWConversion">
      <property name="toolTip">
-      <string>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</string>
+      <string>Enable conversion from simplified characters to traditional (Taiwan) characters</string>
      </property>
      <property name="text">
-      <string>Traditional (Taiwan/Standard)</string>
+      <string>Traditional (Taiwan)</string>
      </property>
     </widget>
    </item>
    <item row="1" column="0">
     <widget class="QCheckBox" name="enableSCToHKConversion">
      <property name="toolTip">
-      <string>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</string>
+      <string>Enable conversion from simplified characters to traditional (Hong Kong) characters</string>
      </property>
      <property name="text">
-      <string>Hong Kong variant</string>
+      <string>Traditional (Hong Kong)</string>
      </property>
     </widget>
    </item>

@@ -21,8 +21,8 @@ GoldenDict-ng converts the searched word into the ticked character variants, so 
 | Option | Effect |
 |--------|--------|
 | Simplified (Mainland) | Traditional Chinese and Japanese Shinjitai input is also searched as simplified Chinese. |
-| Traditional (Taiwan/Standard) | Simplified Chinese and Japanese Shinjitai input is also searched as traditional Chinese (Taiwan standard). |
-| Hong Kong variant | Simplified Chinese and Japanese Shinjitai input is also searched as traditional Chinese (Hong Kong variant). |
+| Traditional (Taiwan) | Simplified Chinese and Japanese Shinjitai input is also searched as traditional Chinese (Taiwan). |
+| Traditional (Hong Kong) | Simplified Chinese and Japanese Shinjitai input is also searched as traditional Chinese (Hong Kong). |
 | Japanese Shinjitai | Simplified and traditional Chinese input is also searched as Japanese Shinjitai. |
 
 For example, searching `図書館` also finds `圖書館` and `图书馆`.
