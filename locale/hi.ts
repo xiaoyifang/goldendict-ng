@@ -331,40 +331,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>सरलीकृत वर्णों से पारंपरिक (हांगकांग संस्करण) वर्णों में रूपांतरण सक्षम करें</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>सरलीकृत से पारंपरिक चीनी (ताइवान संस्करण) रूपांतरण</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>सरलीकृत से पारंपरिक चीनी (हांगकांग संस्करण) रूपांतरण</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>पारंपरिक से सरलीकृत चीनी में रूपांतरण</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>हांगकांग संस्करण</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>पारंपरिक वर्णों से सरलीकृत (मुख्यभूमि) वर्णों में रूपांतरण सक्षम करें</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>सरलीकृत (मुख्यभूमि)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>सरलीकृत वर्णों से पारंपरिक (ताइवान/मानक) वर्णों में रूपांतरण सक्षम करें</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>पारंपरिक (ताइवान/मानक)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -385,6 +353,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>सरलीकृत चीनी, पारंपरिक चीनी (ताइवान/हांगकांग) और जापानी शिंजिताई वर्णों के बीच रूपांतरण सक्षम करें</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>पारंपरिक वर्णों से सरलीकृत वर्णों में रूपांतरण सक्षम करें</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>सरलीकृत</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>सरल अक्षरों से पारंपरिक (ताइवान) अक्षरों में रूपांतरण सक्षम करें</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>पारंपरिक (ताइवान)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>सरल अक्षरों से पारंपरिक (हांगकांग) अक्षरों में रूपांतरण सक्षम करें</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>पारंपरिक (हांगकांग)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>पारंपरिक चीनी (ताइवान) रूपांतरण के लिए सरलीकृत</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>पारंपरिक चीनी (हांगकांग) रूपांतरण में सरलीकृत</translation>
     </message>
   </context>
   <context>

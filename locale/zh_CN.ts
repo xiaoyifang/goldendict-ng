@@ -330,40 +330,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>启用从简体中文字符转换为繁体中文（香港）字符</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>简体中文至正体中文（台湾）转换</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>简体中文至繁体中文（香港）转换</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>繁体中文至简体中文转换</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>香港变体</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>支持从繁体字转换为简体（大陆）字</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>简化（大陆）</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>支持从简体字转换为繁体（台湾/标准）字</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>繁体（台湾/标准）</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -384,6 +352,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>支持简体中文、繁体中文（台湾/香港）和日文新字体汉字之间的转换</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>启用从繁体中文字符转换为简体中文字符</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>简化版</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>支持从简体字转换为繁体（台湾）字符</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>繁体（台湾）</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>支持从简体字转换为繁体（香港）字</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>繁体（香港）</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>简体中文到繁体中文（台湾）转换</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>简体中文转繁体中文（香港）</translation>
     </message>
   </context>
   <context>

@@ -331,40 +331,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>간체 문자에서 전통(홍콩 변형) 문자로 변환 가능</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>번체 중국어(대만 변형) 변환으로 간체</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>번체 중국어(홍콩 변형) 변환으로 간체</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>번체에서 간체로 변환</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>홍콩 변형</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>번체 문자에서 간체(본토) 문자로 변환 가능</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>심플리파이드 (본토)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>간체 문자에서 번체자(대만/표준) 문자로 변환 가능</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>전통 (대만/표준)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -385,6 +353,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>간체 중국어, 번체(대만/홍콩), 일본어 신지타이 문자 간 변환 가능</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>번체 문자에서 간체 문자로 변환 가능</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>간소화</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>간체 문자에서 번체(대만) 문자로의 변환 활성화</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>전통 (대만)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>간체 문자에서 번체(홍콩) 문자로의 변환 가능</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>전통 (홍콩)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>간체체를 번체체(대만) 변환</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>간체체(홍콩) 중국어로의 변환</translation>
     </message>
   </context>
   <context>

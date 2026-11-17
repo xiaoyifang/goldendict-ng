@@ -332,40 +332,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Овозможете конверзија од поедноставени знаци во традиционални (варијанта на Хонг Конг) знаци</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Поедноставена конверзија во традиционална кинеска (тајванска варијанта).</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Поедноставено конверзија во традиционална кинеска (варјанта на Хонг Конг).</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Традиционална во поедноставена кинеска конверзија</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Хонгконшка варијанта</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Овозможи конверзија од традиционални карактери во поедноставени (копнени) карактери</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Поедноставено (копно)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Овозможи конверзија од поедноставени карактери во традиционални (тајвански/стандардни) карактери</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Традиционално (Тајван/Стандард)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +354,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Овозможи конверзија помеѓу поедноставени кинески, традиционални кинески (Тајван/Хонг Конг) и јапонски Шинџитај карактери</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Овозможете конверзија од традиционални знаци во поедноставени знаци</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Поедноставено</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Овозможи конверзија од поедноставени знаци во традиционални (тајвански) карактери</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Традиционално (Тајван)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Овозможи конверзија од поедноставени знаци во традиционални (Хонг Конг) карактери</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Традиционално (Хонг Конг)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Поедноставено во традиционална кинеска (тајванска) конверзија</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Поедноставено во традиционална кинеска (Хонг Конг) конверзија</translation>
     </message>
   </context>
   <context>

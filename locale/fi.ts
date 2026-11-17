@@ -332,40 +332,8 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Ota käyttöön muuntaminen yksinkertaistetuista merkeistä perinteisiin (Hong Kong -variantti) merkkeihin</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Yksinkertaistettu perinteiseen kiinalaiseen (Taiwan variantti) muuntamiseen</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Yksinkertaistettu perinteiseen kiinalaiseen (Hong Kong -versioon) muuntamiseen</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Perinteinen yksinkertaistettu Kiinan muuntaminen</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Hongkongin muunnos</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Ota käyttöön muuntaminen perinteisistä merkeistä yksinkertaistettuihin (manner-) merkkeihin</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Simplified (Manner)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Ota käyttöön muuntaminen yksinkertaistetuista merkeistä perinteisiin (Taiwan/Standardi) merkkeihin</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Perinteinen (Taiwan/standardi)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +354,38 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Mahdollista muunnos yksinkertaistetun kiinan, perinteisen kiinan (Taiwan/Hongkong) ja japanilaisen shinjitai-merkkien välillä</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Ota käyttöön muuntaminen perinteisistä merkeistä yksinkertaistettuihin merkkeihin</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Yksinkertaistettu</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Ota muuntaminen yksinkertaistetuista merkeistä perinteisiksi (Taiwan) merkeiksi</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Perinteinen (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Ota käyttöön muuntaminen yksinkertaistetuista merkeistä perinteisiin (Hongkongin) merkkeihin</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Perinteinen (Hongkong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Yksinkertaistettu perinteiseen kiinalaiseen (Taiwan) muunnokseen</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Yksinkertaistettu perinteiseen kiinalaiseen (Hongkong) muunnokseen</translation>
     </message>
   </context>
   <context>

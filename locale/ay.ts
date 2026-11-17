@@ -317,40 +317,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Chino simplificado ukat chino tradicional (aru Hong Kong) ukaru tukuyawi naktayaña</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Chino simplificado ukat chino tradicional (aru Taiwan) tukuyawi</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Chino simplificado ukat chino tradicional (aru Hong Kong) tukuyawi</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Chino tradicional ukat chino simplificado tukuyawi</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Hong Kong uñacht'äwi</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>China qillqanaka tradicional uka china qillqanaka jisk'achata (Mainland) ukar tukuyayaña naktayaña</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Jisk'achata (Mainland)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>China qillqanaka jisk'achata uka china qillqanaka tradicional (Taiwan/Standard) ukar tukuyayaña naktayaña</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Tradicional (Taiwan/Standard)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -371,6 +339,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Juk'achata Chinu, Nayra Chinu (Taiwan/Hong Kong) ukat Japonés Shinjitai qillqanak taypin tikxatäw wakiyaña</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Chino aru tradicional uk chino aru simplificado ukar tukuyawi</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Simplificado</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Chino simplificado ukat chino tradicional (aru Taiwan) ukaru tukuyawi naktayaña</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Tradicional (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Chino simplificado ukat chino tradicional (aru Hong Kong) ukaru tukuyawi naktayaña</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Tradicional (Hong Kong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Chino simplificado ukat chino tradicional (aru Taiwan) tukuyawi</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Chino simplificado ukat chino tradicional (aru Hong Kong) tukuyawi</translation>
     </message>
   </context>
   <context>

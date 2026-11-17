@@ -334,40 +334,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Ενεργοποίηση μετατροπής από απλοποιημένους χαρακτήρες σε παραδοσιακούς (παραλλαγή Χονγκ Κονγκ) χαρακτήρες</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Απλουστευμένο στην παραδοσιακή κινεζική (παραλλαγή του Ταϊβάν) μετατροπή</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Μετατροπή απλουστευμένη στην παραδοσιακή κινεζική (παραλλαγή Χονγκ Κονγκ)</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Παραδοσιακά στην απλουστευμένη κινεζική μετατροπή</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Παραλλαγή του Χονγκ Κονγκ</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Ενεργοποίηση μετατροπής από παραδοσιακούς χαρακτήρες σε απλοποιημένους χαρακτήρες (ηπειρωτικής χώρας)</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Απλοποιημένη (ηπειρωτική χώρα)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Ενεργοποίηση μετατροπής από απλοποιημένους χαρακτήρες σε παραδοσιακούς χαρακτήρες (Ταϊβάν/Τυπικούς) χαρακτήρες</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Παραδοσιακό (Ταϊβάν/Τυπικό)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -388,6 +356,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Ενεργοποίηση μετατροπής μεταξύ απλοποιημένων κινεζικών, παραδοσιακών κινεζικών (Ταϊβάν/Χονγκ Κονγκ) και ιαπωνικών χαρακτήρων Shinjitai</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Ενεργοποίηση μετατροπής από παραδοσιακούς χαρακτήρες σε απλοποιημένους χαρακτήρες</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Απλοποιημένο</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Ενεργοποιήστε τη μετατροπή από απλοποιημένους χαρακτήρες σε παραδοσιακούς (Ταϊβάν) χαρακτήρες</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Παραδοσιακό (Ταϊβάν)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Ενεργοποιήστε τη μετατροπή από απλοποιημένους χαρακτήρες σε παραδοσιακούς (Χονγκ Κονγκ) χαρακτήρες</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Παραδοσιακό (Χονγκ Κονγκ)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Απλοποιημένη μετατροπή σε παραδοσιακά κινέζικα (Ταϊβάν)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Απλοποιημένη μετατροπή σε παραδοσιακά κινέζικα (Χονγκ Κονγκ)</translation>
     </message>
   </context>
   <context>

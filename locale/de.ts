@@ -332,40 +332,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Umwandlung von vereinfachten Zeichen in traditionelle (Hong Kong Variant) Zeichen aktivieren</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Vereinfacht auf traditionelle chinesische (Taiwan-Variante) Konvertierung</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Vereinfachte Umstellung auf traditionelle chinesische (Hong Kong Variante)</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Traditionelle bis vereinfachte chinesische Konvertierung</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Hongkong-Variante</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Umwandlung von traditionellen Zeichen zu vereinfachten (Festland-) Zeichen ermöglichen</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Vereinfacht (Festland)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Umwandlung von vereinfachten Zeichen zu traditionellen (Taiwan/Standard) Zeichen ermöglichen</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Traditionell (Taiwan/Standard)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +354,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Umwandlung zwischen vereinfachtem Chinesisch, traditionellem Chinesisch (Taiwan/Hongkong) und japanischen Shinjitai-Zeichen aktivieren</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Umwandlung von traditionellen Zeichen in vereinfachte Zeichen aktivieren</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Vereinfacht</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Aktivieren Sie die Konvertierung von vereinfachten Zeichen in traditionelle (taiwanesische) Zeichen</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Traditionell (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Aktivieren Sie die Konvertierung von vereinfachten Zeichen auf traditionelle (Hongkong-)Zeichen</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Traditionell (Hongkong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Vereinfacht auf traditionelle chinesische (Taiwan-)Konversion</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Vereinfacht zur traditionellen chinesischen (Hongkonger) Konversion</translation>
     </message>
   </context>
   <context>

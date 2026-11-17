@@ -332,40 +332,8 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Átalakítás engedélyezése az egyszerűsített kínai írásról a hagyományosra (hongkongi változtat)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Átalakítás egyszerűsítettről hagyományos kínai írásra (tajvani változat)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Átalakítás egyszerűsítettről hagyományos kínai írásra (hongkongi változat)</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Átalakítás hagyományosról egyszerűsített kínai írásra</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Hong Kong variant</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Engedélyezze a hagyományos karakterek egyszerűsített (szárazföldi) karakterekre történő átalakítását</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Egyszerűsített (Szárazföld)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Egyszerűsített karakterek átalakítása hagyományos (Tajvan/Standard) karakterekre</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Hagyományos (Tajvan/Standard)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +354,38 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Engedélyezze az egyszerűsített kínai, hagyományos kínai (Tajvan/Hongkong) és japán Shinjitai karakterek közötti átalakítást</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Átalakítás engedélyezése a hagyományos kínai írásról az egyszerűsítettre</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Egyszerűsített</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Egyszerűsített karakterekről hagyományos (tajvani) karakterekre történő átalakítás engedélyezése</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Hagyományos (Tajvan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Egyszerűsített karakterekről hagyományos (hongkongi) karakterekre történő átalakítás engedélyezése</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Hagyományos (Hongkong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Egyszerűsítve a hagyományos kínai (Tajvani) átalakításra</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Egyszerűsítve hagyományos kínai (hongkongi) átváltásra</translation>
     </message>
   </context>
   <context>

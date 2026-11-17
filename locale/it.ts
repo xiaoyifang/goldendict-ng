@@ -332,40 +332,8 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Attiva la conversione dei caratteri dal cinese semplificato a quello tradizionale (variante locale Hong Kong)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Conversione cinese semplificato a tradizionale (variante locale Taiwan)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Conversione cinese semplificato a tradizionale (variante locale Hong Kong)</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Conversione cinese tradizionale a semplificato</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Variante di Hong Kong</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Consentire la conversione da caratteri tradizionali a caratteri semplificati (continentali)</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Semplificato (Terraferma)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Consentire la conversione da caratteri semplificati a caratteri tradizionali (Taiwan/Standard)</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Tradizionale (Taiwan/Standard)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +354,38 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Consentire la conversione tra caratteri Shinjitai cinesi semplificati, cinesi tradizionali (Taiwan/Hong Kong) e giapponesi Shinjitai</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Attiva la conversione dei caratteri dal cinese tradizionale a quello semplificato</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Semplificato</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Abilita la conversione da caratteri semplificati a caratteri tradizionali (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Tradizionale (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Abilita la conversione da caratteri semplificati a caratteri tradizionali (di Hong Kong)</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Tradizionale (Hong Kong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Conversione semplificata al cinese tradizionale (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Conversione semplificata alla cinese tradizionale (Hong Kong)</translation>
     </message>
   </context>
   <context>

@@ -331,40 +331,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>簡体字から繁体字（香港用）への変換を有効にする</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>簡体字から台湾繁体字への変換</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>簡体字から香港繁体字への変換</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>繁体字から簡体字への変換</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>香港繁体字</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>繁体字から簡体字(本土)文字への変換を可能にする</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>簡略化(本土)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>簡体字から繁体字(台湾/標準)文字への変換を可能にする</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>トラディカル(台湾/スタンダード)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -385,6 +353,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>簡体字中国語、繁体字(台湾/香港)、日本語の新字台文字間の変換を可能にする</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>従来の文字から簡略化された文字への変換を有効にする</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>簡略化</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>簡体字から繁体字(台湾)文字への変換を有効にする</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>伝統的(台湾)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>簡体字から繁体字(香港)文字への変換を可能にする</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>トラディショナル(香港)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>簡体字から繁体字中国語(台湾)への変換</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>簡体字から繁体字(香港)への変換</translation>
     </message>
   </context>
   <context>
