@@ -99,6 +99,10 @@ public:
   /// Check if system is in dark theme
   /// @return true if system is in dark theme, false otherwise
   static bool isSystemDarkTheme();
+  // Some Linux desktops (KDE) do not update QStyleHints::colorScheme() at runtime, so the
+  // application derives light/dark from the palette it applied and publishes it here.
+  static void setSystemDarkThemeOverride( bool dark, bool valid );
+  static bool hasSystemDarkThemeOverride();
 
 signals:
   void dictionaryChanges( ActiveDictIds ad );
