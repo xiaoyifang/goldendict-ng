@@ -84,6 +84,14 @@ jobs:
           ls -Rl ./build_dir/redist
           echo "--- .dmg files in  ---"
           ls -l *.dmg 2>/dev/null || echo "(none)"
+          echo "--- binary arch info ---"
+          BIN="./build_dir/redist/GoldenDict-ng.app/Contents/MacOS/GoldenDict-ng"
+          if [ -f "$BIN" ]; then
+            file "$BIN"
+            lipo -info "$BIN"
+          else
+            echo "Binary not found at $BIN"
+          fi
       - name: Verify eb is bundled
         run: |
           set -euo pipefail
