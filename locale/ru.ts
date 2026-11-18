@@ -87,14 +87,14 @@
       &lt;section&gt;
         &lt;h4&gt;Для начала работы с&lt;/h4&gt;
         &lt;ul&gt;
-          &lt;li&gt;Перейти к &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Редактировать&lt;/span&gt;&lt;span&gt;словари&lt;/span&gt;&lt;/span&gt; для добавления файлов словаря, настройте онлайн источники, такие как Википедия, и группируйте их в группы.&lt;/li&gt;
-          &lt;li&gt;После установки, Слова можно найти в этом окне или &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;из других приложений, используя Scan Popup&lt;/a&gt;.&lt;/li&gt;
-          &lt;li&gt;Для настройки программы, изучение настроек в &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Изменить&lt;/span&gt;&lt;span&gt;Настройки&lt;/span&gt;&lt;/span&gt;. Все настройки имеют подсказки, поэтому не забудьте прочитать их, если что-то не понятно.&lt;/li&gt;
+          &lt;li&gt;Перейдите к &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Редактировать&lt;/span&gt;&lt;span&gt;словари&lt;/span&gt;&lt;/span&gt; для добавления файлов словаря, настройте онлайн-источники, такие как Википедия, и организуйте их в группы.&lt;/li&gt;
+          &lt;li&gt;После установки слова можно найти в этом окне или &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;из других приложений, используя Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;Для настройки программы изучите настройки в &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Изменить&lt;/span&gt;&lt;span&gt;Настройки&lt;/span&gt;&lt;/span&gt;. Все настройки имеют подсказки, поэтому не забудьте прочитать их, если что-то не понятно.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;
-      &lt;p&gt;Если вам нужна дополнительная помощь, с любыми вопросами или предложениями вы можете ознакомиться в программе&apos;с &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;форумами&lt;/a&gt; и &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;на сайте&lt;/a&gt;.&lt;/p&gt;
+      &lt;p&gt;Если вам нужна дополнительная помощь, с любыми вопросами или предложениями вы можете обратиться &apos;на &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;форум&lt;/a&gt; и &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;сайт&lt;/a&gt; программы.&lt;/p&gt;
       &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;На основе оригинального GoldenDict Константина Исакова (c) 2008-2013. Поддерживается и разрабатывается Сообществом GoldenDict-NG, лицензируется под GPLv3 или более поздними версиями.&lt;/small&gt;
+        &lt;small&gt;На основе оригинального GoldenDict Константина Исакова (c) 2008-2013. Поддерживается и разрабатывается Сообществом GoldenDict-NG, распространяется по лицензии GPLv3 или более поздней версии.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</translation>
     </message>
@@ -3596,7 +3596,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Add audio to Anki card when available</source>
-      <translation>Добавьте аудио на карту Anki, когда доступно</translation>
+      <translation>Добавлять аудио на карточку Anki, если доступно</translation>
     </message>
     <message>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
@@ -3796,7 +3796,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation>Может&apos;т сохранить статью: %1</translation>
+      <translation>Не удалось сохранить статью: %1</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
