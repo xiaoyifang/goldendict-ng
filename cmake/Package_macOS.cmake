@@ -97,30 +97,45 @@ install(SCRIPT ${deploy_script})
 # gets ~300 MB smaller, and macOS no longer spends seconds assessing these
 # universal libraries on the first launch after every reboot. Runs before the
 # signing step below, which re-signs the thinned files.
-install(CODE "set(GD_THIN_APP \"${Redistributable_APP}\")
-              set(GD_THIN_ARCH \"${CMAKE_SYSTEM_PROCESSOR}\")")
-install(CODE [=[
-    # Do not follow the QtWebEngineProcess Frameworks symlink back up the tree.
-    cmake_policy(SET CMP0009 NEW)
-    find_program(GD_LIPO lipo REQUIRED)
-    file(GLOB_RECURSE gd_thin_files LIST_DIRECTORIES false "${GD_THIN_APP}/*")
-    foreach (gd_file IN LISTS gd_thin_files)
-        if (IS_SYMLINK "${gd_file}")
-            continue()
-        endif ()
-        execute_process(COMMAND "${GD_LIPO}" -archs "${gd_file}"
-                        OUTPUT_VARIABLE gd_archs
-                        RESULT_VARIABLE gd_result
-                        OUTPUT_STRIP_TRAILING_WHITESPACE
-                        ERROR_QUIET)
-        # Fat files list several architectures separated by spaces.
-        if (gd_result EQUAL 0 AND gd_archs MATCHES " ")
-            execute_process(COMMAND "${GD_LIPO}" -thin "${GD_THIN_ARCH}" "${gd_file}" -output "${gd_file}.thin"
-                            COMMAND_ERROR_IS_FATAL ANY)
-            file(RENAME "${gd_file}.thin" "${gd_file}")
-        endif ()
-    endforeach ()
-]=])
+#
+# CMAKE_SYSTEM_PROCESSOR is the host's architecture, so a single target set in
+# CMAKE_OSX_ARCHITECTURES takes precedence. A build for several architectures
+# (a universal GoldenDict) keeps every slice and skips this step.
+set(GD_THIN_ARCH "${CMAKE_SYSTEM_PROCESSOR}")
+if (CMAKE_OSX_ARCHITECTURES)
+    list(LENGTH CMAKE_OSX_ARCHITECTURES GD_OSX_ARCH_COUNT)
+    if (GD_OSX_ARCH_COUNT EQUAL 1)
+        set(GD_THIN_ARCH "${CMAKE_OSX_ARCHITECTURES}")
+    else ()
+        set(GD_THIN_ARCH "")
+    endif ()
+endif ()
+if (GD_THIN_ARCH)
+    install(CODE "set(GD_THIN_APP \"${Redistributable_APP}\")
+                  set(GD_THIN_ARCH \"${GD_THIN_ARCH}\")")
+    install(CODE [=[
+        # Do not follow the QtWebEngineProcess Frameworks symlink back up the tree.
+        cmake_policy(SET CMP0009 NEW)
+        find_program(GD_LIPO lipo REQUIRED)
+        file(GLOB_RECURSE gd_thin_files LIST_DIRECTORIES false "${GD_THIN_APP}/*")
+        foreach (gd_file IN LISTS gd_thin_files)
+            if (IS_SYMLINK "${gd_file}")
+                continue()
+            endif ()
+            execute_process(COMMAND "${GD_LIPO}" -archs "${gd_file}"
+                            OUTPUT_VARIABLE gd_archs
+                            RESULT_VARIABLE gd_result
+                            OUTPUT_STRIP_TRAILING_WHITESPACE
+                            ERROR_QUIET)
+            # Fat files list several architectures separated by spaces.
+            if (gd_result EQUAL 0 AND gd_archs MATCHES " ")
+                execute_process(COMMAND "${GD_LIPO}" -thin "${GD_THIN_ARCH}" "${gd_file}" -output "${gd_file}.thin"
+                                COMMAND_ERROR_IS_FATAL ANY)
+                file(RENAME "${gd_file}.thin" "${gd_file}")
+            endif ()
+        endforeach ()
+    ]=])
+endif ()
 
 install(CODE "
     # First sign every nested component, then restore the WebEngine helper's
