@@ -947,11 +947,12 @@ void DictGroupsWidget::groupsByMetadata()
   if ( activeDicts->empty() ) {
     return;
   }
-  if ( QMessageBox::information( this,
-                                 tr( "Confirmation" ),
-                                 tr( "Are you sure you want to generate a set of groups based on dictionary metadata files?" ),
-                                 QMessageBox::Yes,
-                                 QMessageBox::Cancel )
+  if ( QMessageBox::information(
+         this,
+         tr( "Confirmation" ),
+         tr( "Are you sure you want to generate a set of groups based on dictionary metadata files?" ),
+         QMessageBox::Yes,
+         QMessageBox::Cancel )
        != QMessageBox::Yes ) {
     return;
   }

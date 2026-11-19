@@ -69,8 +69,7 @@ std::string Metadata::dictionaryFilePath( std::string_view folder, std::string_v
   return combinePath( folder, std::string{ dictId } + ".toml" );
 }
 
-std::optional< Metadata::result > Metadata::loadForDictionary( std::string_view folder,
-                                                               std::string_view dictId )
+std::optional< Metadata::result > Metadata::loadForDictionary( std::string_view folder, std::string_view dictId )
 {
   const auto perDictPath = dictionaryFilePath( folder, dictId );
   if ( fileExists( perDictPath ) ) {

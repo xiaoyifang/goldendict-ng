@@ -28,8 +28,7 @@ struct result
 
 /// Loads `<dictId>.toml` if it exists, otherwise falls back to the legacy
 /// `<folder>/metadata.toml`.
-[[nodiscard]] std::optional< Metadata::result > loadForDictionary( std::string_view folder,
-                                                                  std::string_view dictId );
+[[nodiscard]] std::optional< Metadata::result > loadForDictionary( std::string_view folder, std::string_view dictId );
 
 /// One-time migration of the legacy shared `metadata.toml`: renames it to
 /// `<dictId>.toml` of the first dictionary in `folder`. The shared file
