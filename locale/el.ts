@@ -475,10 +475,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Είστε βέβαιοι ότι θέλετε να δημιουργήσετε ένα σύνολο ομάδων με βάση τους φακέλους που περιέχουν;</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Είστε βέβαιοι ότι θέλετε να δημιουργήσετε ένα σύνολο ομάδων με βάση το metadata.toml;</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Συνδυασμός ομάδων ανά γλώσσα πηγή ως &quot;%1-&gt;&quot;</translation>
     </message>
@@ -501,6 +497,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Σίγουρα θέλετε να αφαιρέσετε την ομάδα &lt;b&gt;%1&lt;/b&gt;;</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Είστε σίγουροι ότι θέλετε να δημιουργήσετε ένα σύνολο ομάδων βασισμένο σε αρχεία μεταδεδομένων λεξικού;</translation>
     </message>
   </context>
   <context>
