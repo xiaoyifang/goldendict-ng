@@ -472,10 +472,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>هل أنت متأكد من أنك تريد إنشاء مجموعة من المجموعات بناءً على المجلدات المحتوية؟</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>هل أنت متأكد من أنك تريد إنشاء مجموعة من المجموعات بناءً على metadata.toml؟</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>ادمج المجموعات باللغة المصدر إلى &quot;%1-&gt;&quot;</translation>
     </message>
@@ -498,6 +494,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>هل أنت متأكد من إزالة المجموعة &lt;b&gt;%1&lt;/b&gt;؟</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>هل أنت متأكد من رغبتك في إنشاء مجموعة من المجموعات بناء على ملفات بيانات وصفية للقاموس؟</translation>
     </message>
   </context>
   <context>
