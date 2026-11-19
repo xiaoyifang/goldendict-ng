@@ -475,10 +475,6 @@ es Shinjitai</translation>
       <translation>¿Está seguro de que desea generar un conjunto de grupos basados en las carpetas que lo contienen?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>¿Está seguro de que desea generar un conjunto de grupos basados en metadata.toml?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Combinar grupos por idioma origen a &quot;%1-&gt;&quot;</translation>
     </message>
@@ -501,6 +497,10 @@ es Shinjitai</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>¿Está seguro que desea eliminar el grupo &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation type="unfinished">Are you sure you want to generate a set of groups based on dictionary metadata files?</translation>
     </message>
   </context>
   <context>
