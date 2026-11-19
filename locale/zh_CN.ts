@@ -496,7 +496,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
-      <translation>您确定要基于字典元数据文件生成一组组吗？</translation>
+      <translation>您确定要基于字典元数据文件生成群组吗？</translation>
     </message>
   </context>
   <context>
