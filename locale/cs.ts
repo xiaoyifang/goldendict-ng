@@ -473,10 +473,6 @@ a školní ortografií v cyrilici)</translation>
       <translation>Opravdu chcete vygenerovat sadu skupin na základě složek, které obsahují?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Opravdu chcete vygenerovat sadu skupin na základě metadata.toml?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Sloučit skupiny podle zdrojového jazyka do &quot;%1-&gt;&quot;</translation>
     </message>
@@ -499,6 +495,10 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Opravdu chcete odstranit skupinu &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Opravdu chcete vytvořit sadu skupin na základě metadatových souborů slovníku?</translation>
     </message>
   </context>
   <context>
