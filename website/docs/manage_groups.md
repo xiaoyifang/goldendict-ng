@@ -73,7 +73,7 @@ More levels of folder nesting are not supported.
 
 Click the "group by metadata" will group your dicts based on their metadata files.
 
-The metadata file should be placed beside dictionary files and named after the dictionary's id, e.g. `d41d8cd98f00b204e9800998ecf8427e.toml`. The id can be found in the dictionary's info dialog. The legacy `metadata.toml` is migrated automatically on load by renaming it to the per-dictionary file of the first dictionary in the folder; it keeps being read as a fallback when the dictionary folder is not writable.
+The metadata file should be placed beside dictionary files and named after the dictionary's main file (with its extension) plus a `.toml` suffix, e.g. `Cambridge.ifo.toml` or `Collins.dsl.toml`. The legacy `metadata.toml` is migrated automatically on load by renaming it to the per-dictionary file of the first dictionary in the folder; it keeps being read as a fallback when the dictionary folder is not writable.
 
 The metadata file uses [TOML](https://toml.io) format.
 
@@ -92,13 +92,14 @@ For example,
 ```
 .
 ├── Cambridge
-│    ├── 3e6c2a2d5f1b4c8e9a7d0f2b6c1e4a8d.toml     (A)
+│    ├── Cambridge.ifo.toml     (A)
+│    ├── Cambridge.ifo
 │    ├── Cambridge.idx
 │    ├── Cambridge.info
 │    ├── Cambridge.syn
 │    └── Cambridge.dict.dz
 └── Collins
-     ├── 8f14e45fceea167a5a36dedd4bea2543.toml
+     ├── Collins.dsl.toml
      ├── res.zip
      └── Collins.dsl       (B)
 
