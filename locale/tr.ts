@@ -473,10 +473,6 @@ arasındaki farkı giderir)</translation>
       <translation>İçerdiği klasörlere göre bir dizi grup oluşturmak istediğinizden emin misiniz?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>metadata.toml tabanlı bir grup grubu oluşturmak istediğinizden emin misiniz?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Grupları kaynak dile göre &quot;%1-&gt;&quot; ile birleştir</translation>
     </message>
@@ -499,6 +495,10 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>&lt;b&gt;%1&lt;/b&gt; isimli grubu kaldırmak istiyor musunuz?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Sözlük meta veri dosyalarına dayalı bir grup seti oluşturmak istediğinizden emin misiniz?</translation>
     </message>
   </context>
   <context>
