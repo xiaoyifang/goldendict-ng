@@ -40,9 +40,9 @@ toml::table parseFile( std::string_view filepath )
 /**
  * Table to be modified before writing to the per-dictionary file.
  */
-toml::table loadTableForSave( std::string_view folder, std::string_view dictId )
+toml::table loadTableForSave( std::string_view folder, std::string_view fileStem )
 {
-  const auto perDictPath = Metadata::dictionaryFilePath( folder, dictId );
+  const auto perDictPath = Metadata::dictionaryFilePath( folder, fileStem );
   if ( fileExists( perDictPath ) ) {
     return parseFile( perDictPath );
   }
@@ -64,14 +64,15 @@ void writeFile( std::string_view filepath, const toml::table & tbl )
 } // namespace
 
 
-std::string Metadata::dictionaryFilePath( std::string_view folder, std::string_view dictId )
+std::string Metadata::dictionaryFilePath( std::string_view folder, std::string_view fileStem )
 {
-  return combinePath( folder, std::string{ dictId } + ".toml" );
+  return combinePath( folder, std::string{ fileStem } + ".toml" );
 }
 
-std::optional< Metadata::result > Metadata::loadForDictionary( std::string_view folder, std::string_view dictId )
+std::optional< Metadata::result > Metadata::loadForDictionary( std::string_view folder,
+                                                               std::string_view fileStem )
 {
-  const auto perDictPath = dictionaryFilePath( folder, dictId );
+  const auto perDictPath = dictionaryFilePath( folder, fileStem );
   if ( fileExists( perDictPath ) ) {
     return load( perDictPath );
   }
@@ -84,14 +85,14 @@ std::optional< Metadata::result > Metadata::loadForDictionary( std::string_view 
   return std::nullopt;
 }
 
-void Metadata::migrateLegacyFile( std::string_view folder, std::string_view dictId )
+void Metadata::migrateLegacyFile( std::string_view folder, std::string_view fileStem )
 {
   const auto legacyPath = legacyFilePath( folder );
   if ( !fileExists( legacyPath ) ) {
     return;
   }
 
-  const auto perDictPath = dictionaryFilePath( folder, dictId );
+  const auto perDictPath = dictionaryFilePath( folder, fileStem );
   if ( fileExists( perDictPath ) ) {
     // The per-dictionary file already exists; leave the legacy file in place
     // so that the other dictionaries in the folder can still fall back to it.
@@ -151,9 +152,9 @@ std::optional< Metadata::result > Metadata::load( std::string_view filepath )
   return result;
 }
 
-void Metadata::saveDisplayName( std::string_view folder, std::string_view dictId, std::string_view name )
+void Metadata::saveDisplayName( std::string_view folder, std::string_view fileStem, std::string_view name )
 {
-  toml::table tbl = loadTableForSave( folder, dictId );
+  toml::table tbl = loadTableForSave( folder, fileStem );
 
   auto * metadata = tbl[ "metadata" ].as_table();
   if ( !metadata ) {
@@ -168,14 +169,14 @@ void Metadata::saveDisplayName( std::string_view folder, std::string_view dictId
     metadata->insert_or_assign( "name", name );
   }
 
-  writeFile( dictionaryFilePath( folder, dictId ), tbl );
+  writeFile( dictionaryFilePath( folder, fileStem ), tbl );
 }
 
-void Metadata::saveFullIndex( std::string_view folder, std::string_view dictId, bool enabled )
+void Metadata::saveFullIndex( std::string_view folder, std::string_view fileStem, bool enabled )
 {
-  toml::table tbl = loadTableForSave( folder, dictId );
+  toml::table tbl = loadTableForSave( folder, fileStem );
 
   tbl.insert_or_assign( "fts", enabled );
 
-  writeFile( dictionaryFilePath( folder, dictId ), tbl );
+  writeFile( dictionaryFilePath( folder, fileStem ), tbl );
 }

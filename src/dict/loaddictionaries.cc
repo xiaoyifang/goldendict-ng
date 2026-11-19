@@ -134,7 +134,7 @@ void LoadDictionaries::load()
           continue;
         }
 
-        Metadata::migrateLegacyFile( baseDir.toStdString(), dict->getId() );
+        Metadata::migrateLegacyFile( baseDir.toStdString(), dict->getMetadataFileStem() );
       }
     }
 
@@ -145,7 +145,7 @@ void LoadDictionaries::load()
         continue;
       }
 
-      auto dictMetaData = Metadata::loadForDictionary( baseDir.toStdString(), dict->getId() );
+      auto dictMetaData = Metadata::loadForDictionary( baseDir.toStdString(), dict->getMetadataFileStem() );
       if ( dictMetaData && dictMetaData->name ) {
         dict->setName( dictMetaData->name.value() );
       }

@@ -965,7 +965,7 @@ void DictGroupsWidget::groupsByMetadata()
       continue;
     }
 
-    const auto dictMetaData = Metadata::loadForDictionary( baseDir.toStdString(), dict->getId() );
+    const auto dictMetaData = Metadata::loadForDictionary( baseDir.toStdString(), dict->getMetadataFileStem() );
     if ( dictMetaData && dictMetaData->categories ) {
       for ( const auto & category : dictMetaData->categories.value() ) {
         auto group = QString::fromStdString( category ).trimmed();
