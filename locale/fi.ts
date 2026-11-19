@@ -473,10 +473,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Haluatko varmasti luoda joukon ryhmiä sisältävien kansioiden perusteella?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Haluatko varmasti luoda joukon ryhmiä metadata.toml-tiedoston perusteella?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Yhdistä ryhmät lähdekielen mukaan &quot;%1-&gt;&quot;</translation>
     </message>
@@ -499,6 +495,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Oletko varma, että haluat poistaa ryhmän &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Oletko varma, että haluat luoda joukon ryhmiä sanakirjan metatietotiedostojen perusteella?</translation>
     </message>
   </context>
   <context>
