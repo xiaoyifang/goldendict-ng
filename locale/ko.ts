@@ -472,10 +472,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>포함된 폴더를 기반으로 그룹 세트를 생성하시겠습니까?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>metadata.toml을 기반으로 그룹 세트를 생성하시겠습니까?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>소스언어에 따라 그룹을 합칩니다  &quot;%1-&gt;&quot;</translation>
     </message>
@@ -498,6 +494,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>&lt;b&gt;%1&lt;/b&gt;그룹을 삭제하시겠습니까?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>사전 메타데이터 파일을 기반으로 그룹 집합을 생성하시겠습니까?</translation>
     </message>
   </context>
   <context>
