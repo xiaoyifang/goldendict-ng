@@ -498,7 +498,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on dictionary metadata files?</translation>
+      <translation>Шумо мутмаин ҳастед, ки мехоҳед маҷмӯи гурӯҳҳоро дар асоси файлҳои метамаълумоти луғат эҷод кунед?</translation>
     </message>
   </context>
   <context>
