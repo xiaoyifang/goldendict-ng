@@ -949,7 +949,7 @@ void DictGroupsWidget::groupsByMetadata()
   }
   if ( QMessageBox::information( this,
                                  tr( "Confirmation" ),
-                                 tr( "Are you sure you want to generate a set of groups based on metadata.toml?" ),
+                                 tr( "Are you sure you want to generate a set of groups based on dictionary metadata files?" ),
                                  QMessageBox::Yes,
                                  QMessageBox::Cancel )
        != QMessageBox::Yes ) {
@@ -964,9 +964,7 @@ void DictGroupsWidget::groupsByMetadata()
       continue;
     }
 
-    auto filePath = Utils::Path::combine( baseDir, "metadata.toml" );
-
-    const auto dictMetaData = Metadata::load( filePath.toStdString() );
+    const auto dictMetaData = Metadata::loadForDictionary( baseDir.toStdString(), dict->getId() );
     if ( dictMetaData && dictMetaData->categories ) {
       for ( const auto & category : dictMetaData->categories.value() ) {
         auto group = QString::fromStdString( category ).trimmed();

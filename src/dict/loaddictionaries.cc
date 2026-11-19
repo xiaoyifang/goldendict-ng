@@ -122,6 +122,22 @@ void LoadDictionaries::load()
       dictionaries.insert( dictionaries.end(), hunspellDictionaries.begin(), hunspellDictionaries.end() );
     }
 
+    // One-time migration of the legacy per-folder `metadata.toml` to the
+    // per-dictionary file of the first dictionary in the folder. A shared file
+    // could never represent several dictionaries correctly anyway.
+    {
+      std::set< QString > handledFolders;
+
+      for ( const auto & dict : dictionaries ) {
+        auto baseDir = dict->getContainingFolder();
+        if ( baseDir.isEmpty() || !handledFolders.insert( baseDir ).second ) {
+          continue;
+        }
+
+        Metadata::migrateLegacyFile( baseDir.toStdString(), dict->getId() );
+      }
+    }
+
     //handle the custom dictionary name&fts option
     for ( const auto & dict : dictionaries ) {
       auto baseDir = dict->getContainingFolder();
@@ -129,9 +145,7 @@ void LoadDictionaries::load()
         continue;
       }
 
-      auto filePath = Utils::Path::combine( baseDir, "metadata.toml" );
-
-      auto dictMetaData = Metadata::load( filePath.toStdString() );
+      auto dictMetaData = Metadata::loadForDictionary( baseDir.toStdString(), dict->getId() );
       if ( dictMetaData && dictMetaData->name ) {
         dict->setName( dictMetaData->name.value() );
       }

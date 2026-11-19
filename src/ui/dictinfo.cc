@@ -101,8 +101,7 @@ void DictInfo::on_ftsToggleButton_clicked()
   bool currentState = currentDict->canFTS();
   bool newState     = !currentState;
 
-  QString metadataPath = Utils::Path::combine( currentDict->getContainingFolder(), "metadata.toml" );
-  Metadata::saveFullIndex( metadataPath.toStdString(), newState );
+  Metadata::saveFullIndex( currentDict->getContainingFolder().toStdString(), currentDict->getId(), newState );
 
   currentDict->setFtsEnabled( newState );
 

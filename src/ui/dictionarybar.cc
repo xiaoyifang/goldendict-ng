@@ -396,7 +396,8 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
 
     if ( dialog.exec() == QDialog::Accepted ) {
       QString newName = dialog.textValue();
-      Metadata::saveDisplayName( Utils::Path::combine( pDict->getContainingFolder(), "metadata.toml" ).toStdString(),
+      Metadata::saveDisplayName( pDict->getContainingFolder().toStdString(),
+                                 pDict->getId(),
                                  newName.toStdString() );
       pDict->setName( newName.toStdString() );
       QString effectiveName = QString::fromUtf8( pDict->getName().c_str() );
