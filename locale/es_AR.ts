@@ -500,7 +500,7 @@ es Shinjitai</translation>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on dictionary metadata files?</translation>
+      <translation>¿Está seguro de que desea generar un conjunto de grupos basados en archivos de metadatos de diccionario?</translation>
     </message>
   </context>
   <context>
