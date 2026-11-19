@@ -472,10 +472,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>含まれているフォルダに基づいて一連のグループを生成してもよろしいですか？</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>metadata.tomlに基づいてグループのセットを生成してもよろしいですか？</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>グループをソース言語別に結合し、「%1->」とする</translation>
     </message>
@@ -498,6 +494,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>グループ &lt;b&gt;%1&lt;/b&gt; を削除してもよろしいですか?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>辞書メタデータファイルに基づいてグループ群を生成しても本当に良いですか?</translation>
     </message>
   </context>
   <context>
