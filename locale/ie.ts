@@ -498,7 +498,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on dictionary metadata files?</translation>
+      <translation>Es vu cert que vu vole generar un ensemble de gruppes basat sur li files de metadonnées del dictionarium?</translation>
     </message>
   </context>
   <context>
