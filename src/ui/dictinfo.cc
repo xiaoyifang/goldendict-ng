@@ -101,7 +101,9 @@ void DictInfo::on_ftsToggleButton_clicked()
   bool currentState = currentDict->canFTS();
   bool newState     = !currentState;
 
-  Metadata::saveFullIndex( currentDict->getContainingFolder().toStdString(), currentDict->getMetadataFileStem(), newState );
+  Metadata::saveFullIndex( currentDict->getContainingFolder().toStdString(),
+                           currentDict->getMetadataFileStem(),
+                           newState );
 
   currentDict->setFtsEnabled( newState );
 
