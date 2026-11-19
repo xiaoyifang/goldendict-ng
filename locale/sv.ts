@@ -473,10 +473,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Är du säker på att du vill skapa en uppsättning grupper baserat på innehållande mappar?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Är du säker på att du vill skapa en uppsättning grupper baserade på metadata.toml?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Kombinera grupper efter källspråk till &quot;%1 &gt;&quot;</translation>
     </message>
@@ -499,6 +495,10 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Är du säker på att du vill ta bort gruppen &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Är du säker på att du vill generera en uppsättning grupper baserat på metadatafiler i ordboksdata?</translation>
     </message>
   </context>
   <context>
