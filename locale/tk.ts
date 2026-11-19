@@ -472,10 +472,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Papkalary öz içine alýan toparlar toplumyny döretmek isleýändigiňize ynanýarsyňyzmy?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Metadata.toml esasynda bir topar topar döretmek isleýändigiňize ynanýarsyňyzmy?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Toparlary çeşme dillere görä utgaşdyr -  &quot;%1-&gt;&quot;</translation>
     </message>
@@ -498,6 +494,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>&lt;b&gt;%1&lt;/b&gt;? topary çyndan hem aýyrmak isleýäňmi?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Siz sözlük metadata faýllary esasynda toparlar setini döretmek isleýändigiňize ynanýarmysyňyz?</translation>
     </message>
   </context>
   <context>
