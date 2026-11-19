@@ -472,10 +472,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Jeni i sigurt që dëshironi të krijoni një grup grupesh bazuar në dosjet që përmbajnë?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Jeni i sigurt që dëshironi të krijoni një grup grupesh bazuar në metadata.toml?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Kombinoj grupet sipas gjuhës së burimit në &quot;%1-&gt;&quot;</translation>
     </message>
@@ -498,6 +494,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Jeni i sigurt për heqjen e grupit &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Je i sigurt që dëshiron të gjenerosh një grup grupesh bazuar në skedarët e metadata-s së fjalorit?</translation>
     </message>
   </context>
   <context>
