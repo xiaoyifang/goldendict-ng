@@ -361,6 +361,12 @@ public:
   /// If the dict don't have folder like website/program, an empty string will be returned.
   QString getContainingFolder() const;
 
+  /// Returns the base name (with extension) of the dictionary's main file,
+  /// e.g. "longman.mdx". For directory-based dictionaries (e.g. Epwing) it is
+  /// the directory name. Used to name the per-dictionary metadata file.
+  /// Returns an empty string when the dictionary has no files.
+  string getMetadataFileStem() const;
+
   /// Returns the dictionary's full name, utf8.
   virtual string getName()
   {

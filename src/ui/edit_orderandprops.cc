@@ -330,9 +330,8 @@ void OrderAndProps::contextMenuRequested( const QPoint & pos )
 
     if ( dialog.exec() == QDialog::Accepted ) {
       QString newName = dialog.textValue();
-      auto filePath   = Utils::Path::combine( metadataPath, "metadata.toml" );
       dict->setName( newName.toStdString() );
-      Metadata::saveDisplayName( filePath.toStdString(), newName.toStdString() );
+      Metadata::saveDisplayName( metadataPath.toStdString(), dict->getMetadataFileStem(), newName.toStdString() );
 
       ui.dictionaryOrder->update( idx );
       describeDictionary( ui.dictionaryOrder, idx );

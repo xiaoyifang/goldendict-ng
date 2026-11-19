@@ -217,6 +217,16 @@ QString Class::getContainingFolder() const
   return {};
 }
 
+string Class::getMetadataFileStem() const
+{
+  if ( dictionaryFiles.empty() ) {
+    return {};
+  }
+  // fileName() returns the file name with extension for files, and the
+  // directory name for directories (e.g. Epwing dictionaries).
+  return QFileInfo( QString::fromStdString( dictionaryFiles[ 0 ] ) ).fileName().toStdString();
+}
+
 sptr< DataRequest > Class::getResource( const string & /*name*/ )
 
 {

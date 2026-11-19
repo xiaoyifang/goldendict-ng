@@ -1,14 +1,111 @@
 #include "metadata.hh"
 #include <toml++/toml.hpp>
 #include <QDebug>
+#include <QDir>
 #include <QSaveFile>
 #include <QFile>
 #include <sstream>
 
 
+namespace {
+
+std::string combinePath( std::string_view folder, std::string_view fileName )
+{
+  QDir dir( QString::fromStdString( std::string{ folder } ) );
+  return dir.filePath( QString::fromStdString( std::string{ fileName } ) ).toStdString();
+}
+
+std::string legacyFilePath( std::string_view folder )
+{
+  return combinePath( folder, "metadata.toml" );
+}
+
+bool fileExists( std::string_view filepath )
+{
+  return QFile::exists( QString::fromStdString( std::string{ filepath } ) );
+}
+
+toml::table parseFile( std::string_view filepath )
+{
+  try {
+    return toml::parse_file( filepath );
+  }
+  catch ( toml::parse_error & e ) {
+    qWarning() << "Failed to load metadata: " << QString::fromUtf8( filepath.data(), filepath.size() )
+               << "Reason:" << e.what();
+    return {};
+  }
+}
+
+/**
+ * Table to be modified before writing to the per-dictionary file.
+ */
+toml::table loadTableForSave( std::string_view folder, std::string_view fileStem )
+{
+  const auto perDictPath = Metadata::dictionaryFilePath( folder, fileStem );
+  if ( fileExists( perDictPath ) ) {
+    return parseFile( perDictPath );
+  }
+
+  return {};
+}
+
+void writeFile( std::string_view filepath, const toml::table & tbl )
+{
+  QSaveFile file( QString::fromStdString( std::string{ filepath } ) );
+  if ( file.open( QIODevice::WriteOnly | QIODevice::Text ) ) {
+    std::stringstream ss;
+    ss << tbl;
+    file.write( ss.str().c_str() );
+    file.commit();
+  }
+}
+
+} // namespace
+
+
+std::string Metadata::dictionaryFilePath( std::string_view folder, std::string_view fileStem )
+{
+  return combinePath( folder, std::string{ fileStem } + ".toml" );
+}
+
+std::optional< Metadata::result > Metadata::loadForDictionary( std::string_view folder, std::string_view fileStem )
+{
+  const auto perDictPath = dictionaryFilePath( folder, fileStem );
+  if ( fileExists( perDictPath ) ) {
+    return load( perDictPath );
+  }
+
+  const auto legacyPath = legacyFilePath( folder );
+  if ( fileExists( legacyPath ) ) {
+    return load( legacyPath );
+  }
+
+  return std::nullopt;
+}
+
+void Metadata::migrateLegacyFile( std::string_view folder, std::string_view fileStem )
+{
+  const auto legacyPath = legacyFilePath( folder );
+  if ( !fileExists( legacyPath ) ) {
+    return;
+  }
+
+  const auto perDictPath = dictionaryFilePath( folder, fileStem );
+  if ( fileExists( perDictPath ) ) {
+    // The per-dictionary file already exists; leave the legacy file in place
+    // so that the other dictionaries in the folder can still fall back to it.
+    return;
+  }
+
+  if ( !QFile::rename( QString::fromStdString( legacyPath ), QString::fromStdString( perDictPath ) ) ) {
+    qWarning() << "Failed to migrate metadata file to:" << QString::fromStdString( perDictPath );
+  }
+}
+
 std::optional< Metadata::result > Metadata::load( std::string_view filepath )
 {
-  if ( !QFile::exists( QString::fromStdString( std::string{ filepath } ) ) ) {
+  if ( !fileExists( filepath ) ) {
     return std::nullopt;
   }
 
@@ -54,60 +151,31 @@ std::optional< Metadata::result > Metadata::load( std::string_view filepath )
   return result;
 }
 
-void Metadata::saveDisplayName( std::string_view filepath, std::string_view name )
+void Metadata::saveDisplayName( std::string_view folder, std::string_view fileStem, std::string_view name )
 {
-  toml::table tbl;
-  if ( QFile::exists( QString::fromStdString( std::string{ filepath } ) ) ) {
-    try {
-      tbl = toml::parse_file( filepath );
-    }
-    catch ( toml::parse_error & e ) {
-      qWarning() << "Failed to load metadata: " << QString::fromUtf8( filepath.data(), filepath.size() )
-                 << "Reason:" << e.what();
-      // Continue with an empty table
-    }
-  }
+  toml::table tbl = loadTableForSave( folder, fileStem );
 
-  if ( !tbl.contains( "metadata" ) ) {
-    tbl.emplace( "metadata", toml::table{} );
+  auto * metadata = tbl[ "metadata" ].as_table();
+  if ( !metadata ) {
+    tbl.insert_or_assign( "metadata", toml::table{} );
+    metadata = tbl[ "metadata" ].as_table();
   }
 
   if ( name.empty() ) {
-    tbl[ "metadata" ].as_table()->erase( "name" );
+    metadata->erase( "name" );
   }
   else {
-    tbl[ "metadata" ].as_table()->insert_or_assign( "name", name );
+    metadata->insert_or_assign( "name", name );
   }
 
-  QSaveFile file( QString::fromStdString( std::string{ filepath } ) );
-  if ( file.open( QIODevice::WriteOnly | QIODevice::Text ) ) {
-    std::stringstream ss;
-    ss << tbl;
-    file.write( ss.str().c_str() );
-    file.commit();
-  }
+  writeFile( dictionaryFilePath( folder, fileStem ), tbl );
 }
 
-void Metadata::saveFullIndex( std::string_view filepath, bool enabled )
+void Metadata::saveFullIndex( std::string_view folder, std::string_view fileStem, bool enabled )
 {
-  toml::table tbl;
-  if ( QFile::exists( QString::fromStdString( std::string{ filepath } ) ) ) {
-    try {
-      tbl = toml::parse_file( filepath );
-    }
-    catch ( toml::parse_error & e ) {
-      qWarning() << "Failed to load metadata: " << QString::fromUtf8( filepath.data(), filepath.size() )
-                 << "Reason:" << e.what();
-    }
-  }
+  toml::table tbl = loadTableForSave( folder, fileStem );
 
   tbl.insert_or_assign( "fts", enabled );
 
-  QSaveFile file( QString::fromStdString( std::string{ filepath } ) );
-  if ( file.open( QIODevice::WriteOnly | QIODevice::Text ) ) {
-    std::stringstream ss;
-    ss << tbl;
-    file.write( ss.str().c_str() );
-    file.commit();
-  }
+  writeFile( dictionaryFilePath( folder, fileStem ), tbl );
 }
