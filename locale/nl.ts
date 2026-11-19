@@ -473,10 +473,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Weet u zeker dat u een set groepen wilt genereren op basis van mappen?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Weet u zeker dat u een set groepen wilt genereren op basis van metadata.toml?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Groepen met dezelfde brontaal combineren tot &quot;%1-&gt;&quot;</translation>
     </message>
@@ -499,6 +495,10 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Weet u zeker dat u de groep &lt;b&gt;%1&lt;/b&gt; wilt verwijderen?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Weet je zeker dat je een set groepen wilt genereren op basis van woordenboekmetadatabestanden?</translation>
     </message>
   </context>
   <context>
