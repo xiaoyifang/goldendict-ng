@@ -473,10 +473,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Ĉu vi certas, ke vi volas generi aron da grupoj bazitaj sur enhavado de dosierujoj?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Ĉu vi certas, ke vi volas generi aron da grupoj bazitaj sur metadata.toml?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Kombinu grupojn laŭ fontlingvo al &quot;%1-&gt;&quot;</translation>
     </message>
@@ -499,6 +495,10 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Ĉu vi certas, ke vi volas forigi la grupon &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Ĉu vi certas, ke vi volas generi aron da grupoj bazitaj sur vortaraj metadatenaj dosieroj?</translation>
     </message>
   </context>
   <context>
