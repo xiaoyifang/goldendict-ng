@@ -1545,15 +1545,18 @@ void MainWindow::commitData()
     qInfo() << "Save main window state, bytes:" << cfg.mainWindowState.size()
             << "geometry bytes:" << cfg.mainWindowGeometry.size() << "portable:" << Config::isPortableVersion()
             << "config:" << Config::getConfigFileName();
-    // The window may never have been shown (e.g. started to tray), in which case the
-    // docks still have their pre-layout sizes. Keep the loaded values then.
-    if ( dockSizesRestored ) {
-      cfg.dockWidgetSizes.clear();
-      for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
-        const QSize dockSize = dockGroupSize( dock );
-        cfg.dockWidgetSizes.insert( dock->objectName(), dockSize );
-        qInfo() << "Save dock:" << dock->objectName() << "visible:" << dock->isVisible() << "size:" << dockSize;
+    // Only overwrite the sizes of the docks that took part in the layout, or were
+    // restored earlier in this session. The entries of the docks that were never
+    // shown keep their loaded values.
+    for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
+      const QString dockName = dock->objectName();
+      if ( !dock->isVisible() && !restoredDockNames.contains( dockName ) ) {
+        continue;
       }
+
+      const QSize dockSize = dockGroupSize( dock );
+      cfg.dockWidgetSizes.insert( dockName, dockSize );
+      qInfo() << "Save dock:" << dockName << "visible:" << dock->isVisible() << "size:" << dockSize;
     }
 
     // Save popup window state and geometry
@@ -1662,6 +1665,12 @@ void MainWindow::applyDockWidgetSizes()
       docks.append( dock );
       widths.append( savedSize->width() );
       heights.append( savedSize->height() );
+
+      // All the tabs of a group share the size, so remember them too.
+      restoredDockNames.insert( dock->objectName() );
+      for ( auto * tabifiedDock : tabified ) {
+        restoredDockNames.insert( tabifiedDock->objectName() );
+      }
     }
 
     if ( docks.isEmpty() ) {
@@ -1990,7 +1999,6 @@ void MainWindow::showEvent( QShowEvent * event )
   // Wait for the layout to be activated, otherwise resizeDocks() has no effect.
   QTimer::singleShot( 0, this, [ this ]() {
     applyDockWidgetSizes();
-    dockSizesRestored = true;
     for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
       qInfo() << "Dock after show:" << dock->objectName() << "visible:" << dock->isVisible() << "size:" << dock->size();
     }
