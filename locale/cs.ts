@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 z %2 shod</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Otevřít článek v externím a prohlížeči</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
