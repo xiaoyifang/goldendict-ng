@@ -305,7 +305,7 @@
     </message>
     <message>
       <source>Open Article in External &amp;Browser</source>
-      <translation>在外部和浏览器中打开文章</translation>
+      <translation>在外部浏览器中打开文章(&amp;B)</translation>
     </message>
   </context>
   <context>

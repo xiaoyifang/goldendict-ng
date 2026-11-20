@@ -291,7 +291,7 @@
     </message>
     <message>
       <source>Open Article in External &amp;Browser</source>
-      <translation>Mở bài viết trong External &amp; Browser</translation>
+      <translation>Mở bài viết trong trình duyệt &amp;bên ngoài</translation>
     </message>
   </context>
   <context>

@@ -306,7 +306,7 @@
     </message>
     <message>
       <source>Open Article in External &amp;Browser</source>
-      <translation>Artikull i hapur në External &amp; Browser</translation>
+      <translation>Hap artikullin në &amp;shfletues të jashtëm</translation>
     </message>
   </context>
   <context>

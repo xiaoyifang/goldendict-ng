@@ -306,7 +306,7 @@
     </message>
     <message>
       <source>Open Article in External &amp;Browser</source>
-      <translation>Makalany Daşky &amp; Brauzerde Aç</translation>
+      <translation>Makalany Daşky &amp;Brauzerde Aç</translation>
     </message>
   </context>
   <context>

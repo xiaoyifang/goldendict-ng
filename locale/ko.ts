@@ -305,7 +305,7 @@
     </message>
     <message>
       <source>Open Article in External &amp;Browser</source>
-      <translation>외부 및 브라우저에서 문서 열기</translation>
+      <translation>외부 브라우저에서 문서 열기(&amp;B)</translation>
     </message>
   </context>
   <context>

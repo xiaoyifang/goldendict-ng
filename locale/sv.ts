@@ -306,7 +306,7 @@
     </message>
     <message>
       <source>Open Article in External &amp;Browser</source>
-      <translation>Öppna artikel i extern och webbläsare</translation>
+      <translation>Öppna artikel i extern &amp;webbläsare</translation>
     </message>
   </context>
   <context>

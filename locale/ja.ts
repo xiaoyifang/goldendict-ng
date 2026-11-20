@@ -306,7 +306,7 @@
     </message>
     <message>
       <source>Open Article in External &amp;Browser</source>
-      <translation>外部 &amp; ブラウザで記事を開く</translation>
+      <translation>外部ブラウザで記事を開く(&amp;B)</translation>
     </message>
   </context>
   <context>
