@@ -13,6 +13,7 @@
 #include "utils.hh"
 
 #include <QRegularExpression>
+#include <QUrlQuery>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
@@ -75,10 +76,19 @@ public:
 
   QString getArticleWebUrl( const std::u32string & word ) override
   {
-    // url points to the api.php directory, e.g. "https://en.wikipedia.org/w",
-    // while the article pages live under "/wiki/".
+    // url points to the api.php directory, e.g. "https://en.wikipedia.org/w".
+    // Articles are served by index.php in that directory regardless of whether
+    // the wiki uses short URLs, so this also works for custom installations.
     QUrl articleUrl( url );
-    articleUrl.setPath( "/wiki/" + QString::fromStdU32String( word ) );
+    QString path = articleUrl.path();
+    if ( path.endsWith( '/' ) ) {
+      path.chop( 1 );
+    }
+    articleUrl.setPath( path + "/index.php" );
+
+    QUrlQuery query;
+    query.addQueryItem( "title", QString::fromStdU32String( word ) );
+    articleUrl.setQuery( query );
     return articleUrl.toString( QUrl::FullyEncoded );
   }
 
