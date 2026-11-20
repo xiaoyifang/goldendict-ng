@@ -13,10 +13,56 @@
 #include <QApplication>
 #include <QTimer>
 #include <QDialog>
+#include <QDesktopServices>
 #include <QMainWindow>
+#include <QSet>
+#include <functional>
+#include <memory>
+#include <utility>
 #ifdef Q_OS_WIN32
   #include <qt_windows.h>
 #endif
+
+namespace {
+
+/// Schemes the Resource Viewer is meant to display: resources referenced by an
+/// article (images, stylesheets, audio/video, built-in and local files).
+bool isResourceViewerUrl( const QUrl & url )
+{
+  static const QSet< QString > schemes = { "bres", "gico", "qrc", "qrcx", "file", "data", "gdau", "gdvideo" };
+  return schemes.contains( url.scheme() );
+}
+
+/// Page of the Resource Viewer windows. Only resource navigations are loaded;
+/// anything else (dictionary links, web pages, ...) is reported back and
+/// rejected, so a window opened from the inspector never just stays blank.
+class ResourceViewerPage: public QWebEnginePage
+{
+public:
+  using UnsupportedHandler = std::function< void( const QUrl & ) >;
+
+  ResourceViewerPage( UnsupportedHandler handler, QObject * parent ):
+    QWebEnginePage( parent ),
+    unsupportedHandler( std::move( handler ) )
+  {
+  }
+
+protected:
+  bool acceptNavigationRequest( const QUrl & url, NavigationType, bool isMainFrame ) override
+  {
+    if ( !isMainFrame || isResourceViewerUrl( url ) || url.scheme().isEmpty() || url.scheme() == "about" ) {
+      return true;
+    }
+
+    unsupportedHandler( url );
+    return false;
+  }
+
+private:
+  UnsupportedHandler unsupportedHandler;
+};
+
+} // namespace
 
 ArticleWebView::ArticleWebView( QWidget * parent ):
   QWebEngineView( parent ),
@@ -100,7 +146,65 @@ QWebEngineView * ArticleWebView::createWindow( QWebEnginePage::WebWindowType typ
     dlg->setCentralWidget( view );
     dlg->resize( 800, 600 );
     dlg->setWindowTitle( tr( "GoldenDict Resource Viewer" ) );
-    dlg->show();
+
+    auto dispatched = std::make_shared< bool >( false );
+
+    // Navigation the viewer cannot display. Dictionary links are handled as if
+    // they were clicked inside an article, everything else goes to the desktop
+    // handler. The (still empty) window is discarded either way.
+    auto handleUnsupported = [ this, dlg, dispatched ]( const QUrl & url ) {
+      if ( *dispatched || url.scheme().isEmpty() || url.scheme() == "about" ) {
+        return;
+      }
+      *dispatched = true;
+      dlg->deleteLater();
+
+      if ( url.scheme() == "gdlookup" || url.scheme() == "bword" || url.scheme() == "entry" ) {
+        // Emit asynchronously: the article view may rebuild its tabs in
+        // response, and we are still inside a navigation callback here.
+        QTimer::singleShot( 0, this, [ this, url ]() { emit linkClicked( url ); } );
+      }
+      else if ( url.scheme() == "http" || url.scheme() == "https" || url.scheme() == "ftp"
+                 || url.scheme() == "mailto" ) {
+        QDesktopServices::openUrl( url );
+      }
+    };
+
+    auto page = new ResourceViewerPage( handleUnsupported, view );
+    view->setPage( page );
+
+    // Only reveal the window once a resource actually loaded, so rejected or
+    // failed navigations never leave a blank window on screen.
+    connect( view, &QWebEngineView::loadFinished, dlg,
+             [ view, dlg, dispatched, handleUnsupported ]( bool ok ) {
+               if ( *dispatched ) {
+                 return;
+               }
+               const QUrl loaded = view->url();
+               if ( isResourceViewerUrl( loaded ) ) {
+                 if ( ok ) {
+                   dlg->show();
+                 }
+                 else {
+                   dlg->deleteLater();
+                 }
+                 return;
+               }
+               if ( loaded.scheme().isEmpty() || loaded.scheme() == "about" ) {
+                 dlg->deleteLater();
+                 return;
+               }
+               handleUnsupported( loaded );
+             } );
+
+    // When Qt adopts the target URL directly instead of asking
+    // acceptNavigationRequest (the initial navigation of a new window), the
+    // scheme still has to be checked here.
+    connect( view, &QWebEngineView::urlChanged, dlg, [ handleUnsupported ]( const QUrl & url ) {
+      if ( !isResourceViewerUrl( url ) ) {
+        handleUnsupported( url );
+      }
+    } );
 
     return view;
   }
