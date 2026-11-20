@@ -1556,8 +1556,18 @@ void MainWindow::commitData()
             << "config:" << Config::getConfigFileName();
     cfg.dockWidgetSizes.clear();
     for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
-      cfg.dockWidgetSizes.insert( dock->objectName(), dock->size() );
-      qInfo() << "Save dock:" << dock->objectName() << "visible:" << dock->isVisible() << "size:" << dock->size();
+      // Inactive tabs keep the size they had when they were last selected, while the
+      // tab group itself has the current size. Save the group size for every tab member
+      // so that any of them can represent the group on restore.
+      QSize dockSize = dock->size();
+      if ( !tabifiedDockWidgets( dock ).isEmpty() ) {
+        if ( auto * container = dock->parentWidget(); container != nullptr && container != this ) {
+          dockSize = container->size();
+        }
+      }
+
+      cfg.dockWidgetSizes.insert( dock->objectName(), dockSize );
+      qInfo() << "Save dock:" << dock->objectName() << "visible:" << dock->isVisible() << "size:" << dockSize;
     }
 
     // Save popup window state and geometry
