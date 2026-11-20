@@ -457,10 +457,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Bạn có chắc chắn muốn tạo một tập hợp các nhóm dựa trên các thư mục chứa không?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Bạn có chắc chắn muốn tạo một tập hợp các nhóm dựa trên metadata.toml không?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Kết hợp nhóm theo ngôn ngữ nguồn &quot;%1-&gt;&quot;</translation>
     </message>
@@ -483,6 +479,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Bạn có muốn xóa nhóm &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Bạn có chắc chắn muốn tạo một tập hợp các nhóm dựa trên các tệp siêu dữ liệu từ điển không?</translation>
     </message>
   </context>
   <context>

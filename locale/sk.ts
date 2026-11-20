@@ -473,10 +473,6 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <translation>Naozaj chcete vygenerovať skupinu skupín na základe priečinkov, ktoré obsahujú?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Naozaj chcete vygenerovať skupinu skupín na základe metadata.toml?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Kombinovať skupiny podľa zdrojového jazyka do &quot;%1-&gt;&quot;</translation>
     </message>
@@ -499,6 +495,10 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Ste si istí, že chcete odstrániť skupinu &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Ste si istí, že chcete vytvoriť sadu skupín na základe metadát slovníka?</translation>
     </message>
   </context>
   <context>

@@ -472,10 +472,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ar tikrai norite sugeneruoti grupių rinkinį pagal aplankus, kuriuose yra?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Ar tikrai norite sugeneruoti grupių rinkinį pagal metadata.toml?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Apjungti grupes pagal kalbą, iš kurios verčiama („%1-&gt;“)</translation>
     </message>
@@ -498,6 +494,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Tikrai norite pašalinti &lt;b&gt;%1&lt;/b&gt; grupę?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Ar tikrai norite generuoti grupių rinkinį pagal žodyno metaduomenų failus?</translation>
     </message>
   </context>
   <context>

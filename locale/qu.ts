@@ -473,10 +473,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>¿Segurochu kanki huk huñu huñukuna ruwayta munanki mayt'ukuna hap'iypi?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>¿Segurochu kanki metadata.toml nisqapi huk huñu huñukunata paqarichiyta munanki?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Pukyu simimanhina huñukunata huñuy &quot;%1-&gt;&quot;</translation>
     </message>
@@ -499,6 +495,10 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>&lt;b&gt;%1&lt;/b&gt; juñuta chinkachiyta munankichu?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>¿Segurochu kanki diccionario metadata willakuykuna nisqakunapi huk huñu huñukunata paqarichiyta munanki?</translation>
     </message>
   </context>
   <context>

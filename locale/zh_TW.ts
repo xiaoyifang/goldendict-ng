@@ -471,10 +471,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>您確定要根據包含的資料夾產生一組群組嗎？</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>您確定要依據metadata.toml產生群組嗎？</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>依來源語言合併分組至 &quot;%1-&gt;&quot;</translation>
     </message>
@@ -497,6 +493,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>您確定要移除&lt;b&gt;%1&lt;/b&gt;群組嗎？</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>您確定要根據字典元資料檔產生群組嗎？</translation>
     </message>
   </context>
   <context>

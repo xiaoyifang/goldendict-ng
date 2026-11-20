@@ -473,10 +473,6 @@ entre ortografia clássica e escolar em ciílico)</translation>
       <translation>Tem certeza de que deseja gerar um conjunto de grupos com base no repositório das pastas?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Tem certeza que deseja gerar um conjunto de grupos com base em metadata.toml?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Combinar grupos pelo idioma de origem em &quot;%1-&gt;&quot;</translation>
     </message>
@@ -499,6 +495,10 @@ entre ortografia clássica e escolar em ciílico)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Você tem certeza que deseja remover o grupo &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Tem a certeza de que quer gerar um conjunto de grupos com base em ficheiros de metadados de dicionário?</translation>
     </message>
   </context>
   <context>

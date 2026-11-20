@@ -473,10 +473,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <translation>Biztos, hogy létre szeretne hozni csoportokat a tartalmazó mappák alapján?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Biztos, hogy létre szeretne hozni csoportokat a metadata.toml alapján?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Csoportok kombinálása forrásnyelv alapján: &quot;%1 -&gt;&quot;</translation>
     </message>
@@ -499,6 +495,10 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Biztos, hogy törli a csoportot: &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Biztos benne, hogy szótár metaadat-fájlok alapján szeretne csoportokat generálni?</translation>
     </message>
   </context>
   <context>

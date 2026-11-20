@@ -460,10 +460,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>¿Jumaxa mä qutu qutuchata luraña muntati carpetas ukanaka utjatapata?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>¿Jumax metadata.toml ukarjam mä tama tamanak lurañ munasmati?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Aru qalltampi &quot;%1-&gt;&quot; ukarjama qutunak kisantaña</translation>
     </message>
@@ -487,6 +483,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Chiqpacha &lt;b&gt;%1&lt;/b&gt; qutu chhaqtayañ muntati?&lt;br&gt;&lt;br&gt;
 ¿Esta seguro de que quiere eliminar el grupo &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>¿Jumax diccionario metadata qillqanak ukarjam mä tama tamanak lurañ munasmati?</translation>
     </message>
   </context>
   <context>
