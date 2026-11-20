@@ -2115,10 +2115,12 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
 
         if ( !handler->isEmpty() ) {
           connect( handler, &ResourceToSaveHandler::done, this, [ fileName ]() {
-            QDesktopServices::openUrl( QUrl::fromLocalFile( fileName ) );
+            if ( QFileInfo::exists( fileName ) ) {
+              QDesktopServices::openUrl( QUrl::fromLocalFile( fileName ) );
+            }
           } );
         }
-        else {
+        else if ( QFileInfo::exists( fileName ) ) {
           QDesktopServices::openUrl( QUrl::fromLocalFile( fileName ) );
         }
       }
