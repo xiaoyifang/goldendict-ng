@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 από %2 ταιριάσματα</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Άνοιγμα Άρθρου σε Εξωτερικό &amp;Περιηγητή</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
