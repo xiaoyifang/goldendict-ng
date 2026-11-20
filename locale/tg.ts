@@ -306,7 +306,7 @@
     </message>
     <message>
       <source>Open Article in External &amp;Browser</source>
-      <translation type="unfinished">Open Article in External &amp;Browser</translation>
+      <translation>Мақоларо дар &amp;браузери беруна кушоед</translation>
     </message>
   </context>
   <context>
