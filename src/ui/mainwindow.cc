@@ -988,16 +988,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 #endif
 
-  // Re-apply the saved dock sizes and log the resulting geometry once the
-  // initial layout has been applied, so it can be compared with the sizes
-  // written by commitData().
-  QTimer::singleShot( 0, this, [ this ]() {
-    applyDockWidgetSizes();
-    for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
-      qInfo() << "Dock after show:" << dock->objectName() << "visible:" << dock->isVisible() << "size:" << dock->size();
-    }
-  } );
-
   // Scanpopup related
   // Deferred initialization until first use or if scanning is enabled
   // Use a delayed call to avoid blocking the main window's initial show-up
@@ -1603,9 +1593,9 @@ void MainWindow::applyDockWidgetSizes()
                                                      Qt::BottomDockWidgetArea };
 
   for ( Qt::DockWidgetArea area : areas ) {
-    const bool horizontal = ( area == Qt::LeftDockWidgetArea || area == Qt::RightDockWidgetArea );
     QList< QDockWidget * > docks;
-    QList< int > sizes;
+    QList< int > widths;
+    QList< int > heights;
 
     for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
       if ( !dock->isVisible() || dock->isFloating() || dockWidgetArea( dock ) != area ) {
@@ -1631,11 +1621,28 @@ void MainWindow::applyDockWidgetSizes()
       }
 
       docks.append( dock );
-      sizes.append( horizontal ? savedSize->width() : savedSize->height() );
+      widths.append( savedSize->width() );
+      heights.append( savedSize->height() );
     }
 
-    if ( !docks.isEmpty() ) {
-      resizeDocks( docks, sizes, horizontal ? Qt::Horizontal : Qt::Vertical );
+    if ( docks.isEmpty() ) {
+      continue;
+    }
+
+    // The docks of an area can be split in both directions, restore the primary
+    // one always and the other one only when a split in that direction exists.
+    const bool horizontalArea = ( area == Qt::LeftDockWidgetArea || area == Qt::RightDockWidgetArea );
+    if ( horizontalArea ) {
+      resizeDocks( docks, widths, Qt::Horizontal );
+      if ( docks.size() > 1 ) {
+        resizeDocks( docks, heights, Qt::Vertical );
+      }
+    }
+    else {
+      resizeDocks( docks, heights, Qt::Vertical );
+      if ( docks.size() > 1 ) {
+        resizeDocks( docks, widths, Qt::Horizontal );
+      }
     }
   }
 }
@@ -1924,6 +1931,30 @@ void MainWindow::closeEvent( QCloseEvent * ev )
   ev->ignore();
   hide();
 #endif
+}
+
+void MainWindow::showEvent( QShowEvent * event )
+{
+  QMainWindow::showEvent( event );
+
+  // Dock sizes can only be restored once the window is actually visible, which
+  // may happen long after the constructor when the app starts minimized to tray.
+  if ( dockSizesApplied ) {
+    return;
+  }
+  dockSizesApplied = true;
+
+  if ( cfg.resetState ) {
+    return;
+  }
+
+  // Wait for the layout to be activated, otherwise resizeDocks() has no effect.
+  QTimer::singleShot( 0, this, [ this ]() {
+    applyDockWidgetSizes();
+    for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
+      qInfo() << "Dock after show:" << dock->objectName() << "visible:" << dock->isVisible() << "size:" << dock->size();
+    }
+  } );
 }
 
 void MainWindow::hideEvent( QHideEvent * event )

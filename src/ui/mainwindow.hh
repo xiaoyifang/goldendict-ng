@@ -180,6 +180,9 @@ private:
 
   bool isQuitting = false;
 
+  // Whether the saved dock widget sizes have already been applied.
+  bool dockSizesApplied = false;
+
   QPrinter & getPrinter(); // Creates a printer if it's not there and returns it
 
   DictHeadwords * headwordsDlg;
@@ -226,6 +229,7 @@ private:
   void wheelEvent( QWheelEvent * ) override;
   void closeEvent( QCloseEvent * ) override;
   void hideEvent( QHideEvent * event ) override;
+  void showEvent( QShowEvent * event ) override;
 
   void applyProxySettings();
   void makeDictionaries();
