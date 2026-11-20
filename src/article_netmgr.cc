@@ -518,12 +518,6 @@ qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
     return 0;
   }
 
-  qDebug( "====reading  %lld of (%lld) bytes, %lld bytes readed . Finish status: %d",
-          toRead,
-          avail,
-          alreadyRead,
-          finished );
-
   try {
     req->getDataSlice( alreadyRead, toRead, out );
   }
@@ -549,12 +543,16 @@ void ArticleResourceReply::readyReadSlot()
 void ArticleResourceReply::finishedSlot()
 {
   if ( req->dataSize() < 0 ) {
+    qWarning( "ArticleResourceReply: content not found for %s", url().toEncoded().constData() );
     emit errorOccurred( ContentNotFoundError );
     setError( ContentNotFoundError, "content not found" );
   }
   //prevent sent multi times.
   if ( !finishSignalSent.loadAcquire() ) {
     finishSignalSent.ref();
+    qDebug( "ArticleResourceReply: %lld bytes served %s",
+            static_cast< long long >( alreadyRead ),
+            url().toEncoded().constData() );
     setFinished( true );
     emit finished();
   }
