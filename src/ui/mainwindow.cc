@@ -1608,7 +1608,7 @@ void MainWindow::applyDockWidgetSizes()
       }
 
       // resizeDocks() expects only one dock widget per tab group.
-      bool inTabGroup = false;
+      bool inTabGroup     = false;
       const auto tabified = tabifiedDockWidgets( dock );
       for ( auto * added : docks ) {
         if ( tabified.contains( added ) ) {
