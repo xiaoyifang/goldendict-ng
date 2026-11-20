@@ -955,8 +955,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // restore should be called after all UI initialized but not necessarily after show()
   // This must be called before show() as of Qt6.5 on Windows, not sure if it is a bug
   // Due to a bug of WebEngine, this also must be called after WebEngine has a view loaded https://bugreports.qt.io/browse/QTBUG-115074
-  qInfo() << "Load window state, bytes:" << cfg.mainWindowState.size() << "geometry bytes:" << cfg.mainWindowGeometry.size()
-          << "portable:" << Config::isPortableVersion() << "config:" << Config::getConfigFileName();
+  qInfo() << "Load window state, bytes:" << cfg.mainWindowState.size()
+          << "geometry bytes:" << cfg.mainWindowGeometry.size() << "portable:" << Config::isPortableVersion()
+          << "config:" << Config::getConfigFileName();
   if ( cfg.mainWindowState.size() && !cfg.resetState ) {
     const bool ok = restoreState( cfg.mainWindowState );
     qInfo() << "Restore main window state, bytes:" << cfg.mainWindowState.size() << "ok:" << ok;
@@ -1551,8 +1552,7 @@ void MainWindow::commitData()
     cfg.mainWindowGeometry = saveGeometry();
 
     qInfo() << "Save main window state, bytes:" << cfg.mainWindowState.size()
-            << "geometry bytes:" << cfg.mainWindowGeometry.size()
-            << "portable:" << Config::isPortableVersion()
+            << "geometry bytes:" << cfg.mainWindowGeometry.size() << "portable:" << Config::isPortableVersion()
             << "config:" << Config::getConfigFileName();
     cfg.dockWidgetSizes.clear();
     for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {

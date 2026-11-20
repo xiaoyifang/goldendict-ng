@@ -1111,10 +1111,9 @@ Class load()
   QDomElement dockWidgetSizes = root.namedItem( "dockWidgetSizes" ).toElement();
 
   for ( QDomElement dock = dockWidgetSizes.firstChildElement( "dockWidget" ); !dock.isNull();
-        dock            = dock.nextSiblingElement( "dockWidget" ) ) {
-    c.dockWidgetSizes.insert(
-      dock.attribute( "name" ),
-      QSize( dock.attribute( "width" ).toInt(), dock.attribute( "height" ).toInt() ) );
+        dock             = dock.nextSiblingElement( "dockWidget" ) ) {
+    c.dockWidgetSizes.insert( dock.attribute( "name" ),
+                              QSize( dock.attribute( "width" ).toInt(), dock.attribute( "height" ).toInt() ) );
   }
 
   QDomNode dictInfoGeometry = root.namedItem( "dictInfoGeometry" );
