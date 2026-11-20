@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 / %2 találat</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Cikk megnyitása külső &amp; böngészőben</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
