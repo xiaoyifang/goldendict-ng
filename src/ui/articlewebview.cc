@@ -117,16 +117,19 @@ QWebEngineView * ArticleWebView::createWindow( QWebEnginePage::WebWindowType typ
     dlg->setWindowTitle( tr( "GoldenDict Resource Viewer" ) );
 
     auto dispatched = std::make_shared< bool >( false );
+    auto revealed   = std::make_shared< bool >( false );
 
     // Navigation the viewer cannot display. Dictionary links are handled as if
     // they were clicked inside an article, everything else goes to the desktop
-    // handler. The window is discarded either way.
-    auto handleUnsupported = [ this, dlg, dispatched ]( const QUrl & url ) {
+    // handler. A hidden window is discarded; a visible one stays open.
+    auto handleUnsupported = [ this, dlg, dispatched, revealed ]( const QUrl & url ) {
       if ( *dispatched ) {
         return;
       }
-      *dispatched = true;
-      dlg->deleteLater();
+      if ( !*revealed ) {
+        *dispatched = true;
+        dlg->deleteLater();
+      }
 
       if ( url.scheme() == "gdlookup" || url.scheme() == "bword" || url.scheme() == "entry" ) {
         // Emit asynchronously: the article view may rebuild its tabs in
@@ -148,23 +151,30 @@ QWebEngineView * ArticleWebView::createWindow( QWebEnginePage::WebWindowType typ
     };
 
     connect( view, &QWebEngineView::urlChanged, dlg, handleUrl );
-    connect( view, &QWebEngineView::loadFinished, dlg, [ view, dlg, dispatched, handleUrl ]( bool ok ) {
+    connect( view, &QWebEngineView::loadFinished, dlg, [ view, dlg, dispatched, revealed, handleUrl ]( bool ok ) {
       if ( *dispatched ) {
         return;
       }
 
       const QUrl loaded = view->url();
-      handleUrl( loaded );
-      if ( *dispatched || !isResourceViewerUrl( loaded ) ) {
+      if ( isResourceViewerUrl( loaded ) ) {
+        if ( ok ) {
+          *revealed = true;
+          dlg->show();
+        }
+        else if ( !*revealed ) {
+          *dispatched = true;
+          dlg->deleteLater();
+        }
         return;
       }
-      if ( !ok ) {
-        *dispatched = true;
-        dlg->deleteLater();
+
+      // urlChanged handles links clicked in an already visible viewer. Keep
+      // this fallback for the initial navigation, which may only finish here.
+      if ( !*revealed ) {
+        handleUrl( loaded );
       }
     } );
-
-    dlg->show();
     return view;
   }
   return QWebEngineView::createWindow( type );

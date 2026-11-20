@@ -1708,6 +1708,10 @@ void DslResourceRequest::run()
     }
 
     if ( Filetype::isNameOfTiff( resourceName ) ) {
+      if ( data.empty() ) {
+        throw std::runtime_error( "Empty TIFF resource." );
+      }
+
       // Convert it
       GdTiff::tiff2img( data );
     }
@@ -1715,6 +1719,7 @@ void DslResourceRequest::run()
     hasAnyData = true;
   }
   catch ( std::exception & ex ) {
+    hasAnyData = false;
     qWarning() << "DSL: Failed loading resource" << QString::fromStdString( resourceName ) << "for"
                << QString::fromStdString( dict.getName() ) << ", reason:" << ex.what();
 
