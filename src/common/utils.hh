@@ -336,6 +336,13 @@ inline std::pair< bool, QString > getQueryWord( const QUrl & url )
     validScheme = true;
     word        = Url::getWordFromPathOrHost( url );
   }
+  if ( url.scheme().compare( "gdwiki" ) == 0 ) {
+    validScheme = true;
+    word        = url.path( QUrl::FullyDecoded );
+    if ( word.startsWith( '/' ) ) {
+      word = word.mid( 1 );
+    }
+  }
   return std::make_pair( validScheme, word );
 }
 

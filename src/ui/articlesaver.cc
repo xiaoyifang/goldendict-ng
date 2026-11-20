@@ -213,7 +213,7 @@ void ArticleSaver::save()
       cfg_.articleSavePath = QDir::toNativeSeparators( fi.absoluteDir().absolutePath() );
 
       // Convert internal links
-      static QRegularExpression rx3( R"lit(href="(bword:|gdlookup://localhost/)([^"]+)")lit" );
+      static QRegularExpression rx3( R"lit(href="(bword:|gdlookup://localhost/|gdwiki://[^/"]+/)([^"]+)")lit" );
       int pos = 0;
       QRegularExpression anchorRx( "(g[0-9a-f]{32}_[0-9a-f]+_)" );
       auto match = rx3.match( html, pos );

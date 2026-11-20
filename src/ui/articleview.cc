@@ -1187,9 +1187,13 @@ void ArticleView::linkHovered( const QString & link )
       msg = tr( "Video: %1" ).arg( path );
     }
   }
-  else if ( url.scheme() == "gdlookup" || url.scheme().compare( "bword" ) == 0 ) {
-    QString def = url.path();
-    if ( def.startsWith( "/" ) ) {
+  else if ( url.scheme() == "gdlookup" || url.scheme().compare( "bword" ) == 0
+            || url.scheme().compare( "gdwiki" ) == 0 ) {
+    QString def = url.path( QUrl::FullyDecoded );
+    if ( def.startsWith( "/wiki/" ) ) {
+      def = def.mid( 6 );
+    }
+    else if ( def.startsWith( "/" ) ) {
       def = def.mid( 1 );
     }
 
@@ -1362,6 +1366,15 @@ void ArticleView::openLink( const QUrl & url, const QUrl & ref, const QString & 
 
       showDefinition( word, getGroup( ref ), newScrollTo, contexts );
     }
+  }
+  else if ( url.scheme() == "gdwiki" ) {
+    // Wiki article links are rewritten by the MediaWiki dictionary to this
+    // scheme so that the target title survives in the article HTML. Look the
+    // word up in the current group, like a gdlookup link would do.
+    if ( url.hasFragment() ) {
+      contexts[ "gdanchor" ] = url.fragment( QUrl::FullyDecoded );
+    }
+    showDefinition( word, getGroup( ref ), scrollTo, contexts );
   }
   else if ( url.scheme() == "bres" || url.scheme() == "gdau" || url.scheme() == "gdvideo"
             || Utils::Url::isAudioUrl( url ) ) {
@@ -1779,16 +1792,29 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
         menu.addAction( followLinkNewTab );
       }
 
-      // Wiki links are rewritten to internal gdlookup links so that they can be
-      // followed inside GoldenDict. Offer the original web page for them too.
+      // Wiki links are rewritten to the internal gdwiki scheme so that they can
+      // be followed inside GoldenDict. Such a link keeps the id of the
+      // dictionary which produced it, which is enough to reconstruct its page.
       const auto [ validScheme, linkedWord ] = Utils::Url::getQueryWord( targetUrl );
+      QUrl webUrl;
       if ( validScheme ) {
-        const QUrl webUrl = articleWebUrl( linkedWord );
-        if ( !webUrl.isEmpty() ) {
-          followLinkWebExternal = new QAction( tr( "Open Link in &External Browser" ), &menu );
-          followLinkWebExternal->setData( webUrl );
-          menu.addAction( followLinkWebExternal );
+        if ( targetUrl.scheme() == "gdwiki" ) {
+          if ( auto dict = dictionaryGroup->getDictionaryById( targetUrl.host().toStdString() ) ) {
+            webUrl = QUrl( dict->getArticleWebUrl( linkedWord.toStdU32String() ) );
+          }
         }
+        if ( webUrl.isEmpty() ) {
+          webUrl = articleWebUrl( linkedWord );
+        }
+        if ( !webUrl.isEmpty() && targetUrl.hasFragment() ) {
+          webUrl.setFragment( targetUrl.fragment( QUrl::FullyDecoded ) );
+        }
+      }
+
+      if ( !webUrl.isEmpty() ) {
+        followLinkWebExternal = new QAction( tr( "Open Link in &External Browser" ), &menu );
+        followLinkWebExternal->setData( webUrl );
+        menu.addAction( followLinkWebExternal );
       }
     }
 
