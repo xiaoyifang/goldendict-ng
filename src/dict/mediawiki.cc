@@ -73,6 +73,15 @@ public:
   sptr< DataRequest >
   getArticle( const std::u32string &, const vector< std::u32string > & alts, const std::u32string &, bool ) override;
 
+  QString getArticleWebUrl( const std::u32string & word ) override
+  {
+    // url points to the api.php directory, e.g. "https://en.wikipedia.org/w",
+    // while the article pages live under "/wiki/".
+    QUrl articleUrl( url );
+    articleUrl.setPath( "/wiki/" + QString::fromStdU32String( word ) );
+    return articleUrl.toString( QUrl::FullyEncoded );
+  }
+
   quint32 getLangFrom() const override
   {
     return langId;

@@ -1717,6 +1717,8 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
 
   QAction * followLink                = nullptr;
   QAction * followLinkExternal        = nullptr;
+  QAction * followLinkWebExternal     = nullptr;
+  QAction * openArticleWebExternal    = nullptr;
   QAction * followLinkNewTab          = nullptr;
   QAction * lookupSelection           = nullptr;
   QAction * lookupSelectionGr         = nullptr;
@@ -1738,6 +1740,35 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
 
   tryMangleWebsiteClickedUrl( targetUrl, contexts );
 
+  // Returns the web page URL of the given word when the dictionary providing
+  // the current article has one (e.g. MediaWiki-based wikis). Local
+  // dictionaries have no web page and return an empty URL.
+  const auto articleWebUrl = [ this ]( const QString & word ) -> QUrl {
+    if ( word.isEmpty() ) {
+      return {};
+    }
+
+    QStringList dictIds  = currentActiveDictIds;
+    const QString active = getActiveArticleId();
+    if ( !active.isEmpty() ) {
+      // Prefer the dictionary of the article currently in view.
+      dictIds.removeAll( active );
+      dictIds.prepend( active );
+    }
+
+    for ( const auto & dictId : dictIds ) {
+      auto dict = dictionaryGroup->getDictionaryById( dictId.toUtf8().data() );
+      if ( !dict ) {
+        continue;
+      }
+      const QString url = dict->getArticleWebUrl( word.toStdU32String() );
+      if ( !url.isEmpty() ) {
+        return QUrl( url );
+      }
+    }
+    return {};
+  };
+
   if ( !targetUrl.isEmpty() ) {
     if ( !Utils::isExternalLink( targetUrl ) ) {
       followLink = new QAction( tr( "Op&en Link" ), &menu );
@@ -1747,12 +1778,35 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
         followLinkNewTab = new QAction( QIcon( ":/icons/addtab.svg" ), tr( "Open Link in New &Tab" ), &menu );
         menu.addAction( followLinkNewTab );
       }
+
+      // Wiki links are rewritten to internal gdlookup links so that they can be
+      // followed inside GoldenDict. Offer the original web page for them too.
+      const auto [ validScheme, linkedWord ] = Utils::Url::getQueryWord( targetUrl );
+      if ( validScheme ) {
+        const QUrl webUrl = articleWebUrl( linkedWord );
+        if ( !webUrl.isEmpty() ) {
+          followLinkWebExternal = new QAction( tr( "Open Link in &External Browser" ), &menu );
+          followLinkWebExternal->setData( webUrl );
+          menu.addAction( followLinkWebExternal );
+        }
+      }
     }
 
     if ( Utils::isExternalLink( targetUrl ) ) {
       followLinkExternal = new QAction( tr( "Open Link in &External Browser" ), &menu );
       menu.addAction( followLinkExternal );
       menu.addAction( webview->pageAction( QWebEnginePage::CopyLinkToClipboard ) );
+    }
+  }
+  else {
+    // Right-clicking on the article text (not on a link): offer opening the
+    // page of the current article in the external browser.
+    const auto [ validScheme, shownWord ] = Utils::Url::getQueryWord( webview->url() );
+    const QUrl webUrl                     = validScheme ? articleWebUrl( shownWord ) : QUrl();
+    if ( !webUrl.isEmpty() ) {
+      openArticleWebExternal = new QAction( tr( "Open Article in External &Browser" ), &menu );
+      openArticleWebExternal->setData( webUrl );
+      menu.addAction( openArticleWebExternal );
     }
   }
 
@@ -1913,6 +1967,9 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
     }
     else if ( result == followLinkExternal ) {
       QDesktopServices::openUrl( targetUrl );
+    }
+    else if ( result == followLinkWebExternal || result == openArticleWebExternal ) {
+      QDesktopServices::openUrl( result->data().toUrl() );
     }
     else if ( result == lookupSelection ) {
       showDefinition( text, getGroup( webview->url() ), getCurrentArticle() );

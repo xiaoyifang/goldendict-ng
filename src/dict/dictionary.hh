@@ -484,6 +484,13 @@ public:
                                           const std::u32string & context = std::u32string(),
                                           bool ignoreDiacritics          = false ) = 0;
 
+  /// Returns the web page URL of the given word's article, or an empty string
+  /// when the dictionary has no corresponding website (e.g. local dictionaries).
+  virtual QString getArticleWebUrl( const std::u32string & /*word*/ )
+  {
+    return {};
+  }
+
   /// Loads contents of a resource named 'name' into the 'data' vector. This is
   /// usually a picture file referenced in the article or something like that.
   /// The default implementation always returns the non-existing resource
