@@ -1600,6 +1600,11 @@ QSize MainWindow::dockGroupSize( QDockWidget * dock ) const
       continue;
     }
 
+    // A single visible tab gets no tab bar, so the group matches the dock content.
+    if ( tabBar->count() < 2 ) {
+      return dock->size();
+    }
+
     // The dock content excludes the tab bar, while resizeDocks() expects the whole
     // tab group. Inactive tabs are moved off-screen, so only the active dock can be
     // used to compute the group extent.
