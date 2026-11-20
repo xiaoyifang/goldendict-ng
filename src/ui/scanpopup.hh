@@ -46,7 +46,7 @@ public:
 
   void setDictionaryIconSize();
 
-  void saveConfigData() const;
+  void saveConfigData();
 
 #ifdef WITH_X11
   /// Interaction with scan flag window
@@ -161,6 +161,12 @@ private:
   QPointF startPos; // For window moving
   QByteArray pinnedGeometry;
 
+  QSize lastStableNormalSize;
+  QSize pendingNormalSize;
+  QTimer normalSizeTimer;
+  QTimer screenChangeTimer;
+  bool handlingScreenChange = false;
+
   QTimer hideTimer; // When mouse leaves the window, a grace period is
                     // given for it to return back. If it doesn't before
                     // this timer expires, the window gets hidden.
@@ -189,6 +195,14 @@ private:
   virtual void showEvent( QShowEvent * );
   virtual void closeEvent( QCloseEvent * );
   virtual void moveEvent( QMoveEvent * );
+  virtual void resizeEvent( QResizeEvent * );
+  virtual void changeEvent( QEvent * );
+
+  void initializeScreenGeometryHandling();
+  void rememberNormalSize();
+  void commitNormalSize();
+  void scheduleScreenGeometryRestore();
+  void restoreNormalSizeAfterScreenChange();
 
   /// Returns inputWord, chopped with appended ... if it's too long/
   QString elideInputWord() const;

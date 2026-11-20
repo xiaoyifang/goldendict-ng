@@ -13,6 +13,9 @@
 #include <QMouseEvent>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QGuiApplication>
+#include <QWindow>
+#include <QScreen>
 #include "gestures.hh"
 
 using std::set;
@@ -164,12 +167,6 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   resize( 247, 400 );
 
-  QScreen * screen = QGuiApplication::primaryScreen();
-  if ( screen ) {
-    int maxWidth = screen->availableGeometry().width() * 0.8;
-    setMaximumWidth( maxWidth );
-  }
-
   translateBox->setMaximumWidth( 200 );
   groupList->setMaximumWidth( 200 );
 
@@ -271,6 +268,13 @@ ScanPopup::ScanPopup( QWidget * parent,
     restoreState( cfg.popupWindowState );
   }
 
+  lastStableNormalSize = normalGeometry().size();
+  if ( lastStableNormalSize.isEmpty() ) {
+    lastStableNormalSize = size();
+  }
+  initializeScreenGeometryHandling();
+  handlingScreenChange = true;
+  restoreNormalSizeAfterScreenChange();
 
   ui.onTopButton->setChecked( cfg.popupWindowAlwaysOnTop );
   ui.onTopButton->setVisible( cfg.pinPopupWindow );
@@ -515,8 +519,13 @@ ScanPopup::~ScanPopup()
 #endif
 }
 
-void ScanPopup::saveConfigData() const
+void ScanPopup::saveConfigData()
 {
+  if ( handlingScreenChange ) {
+    screenChangeTimer.stop();
+    restoreNormalSizeAfterScreenChange();
+  }
+
   // Save state, geometry and pin status
   cfg.popupWindowState       = saveState();
   cfg.popupWindowGeometry    = saveGeometry();
@@ -1026,9 +1035,97 @@ void ScanPopup::enterEvent( QEnterEvent * event )
   }
 }
 
+void ScanPopup::initializeScreenGeometryHandling()
+{
+  normalSizeTimer.setSingleShot( true );
+  normalSizeTimer.setInterval( 200 );
+  screenChangeTimer.setSingleShot( true );
+  screenChangeTimer.setInterval( 150 );
+
+  connect( &normalSizeTimer, &QTimer::timeout, this, &ScanPopup::commitNormalSize );
+  connect( &screenChangeTimer, &QTimer::timeout, this, &ScanPopup::restoreNormalSizeAfterScreenChange );
+
+  connect( qApp, &QGuiApplication::screenAdded, this, [ this ]( QScreen * screen ) {
+    connect( screen,
+             &QScreen::availableGeometryChanged,
+             this,
+             &ScanPopup::scheduleScreenGeometryRestore,
+             Qt::UniqueConnection );
+    scheduleScreenGeometryRestore();
+  } );
+  connect( qApp, &QGuiApplication::screenRemoved, this, &ScanPopup::scheduleScreenGeometryRestore );
+
+  for ( auto * screen : QGuiApplication::screens() ) {
+    connect( screen,
+             &QScreen::availableGeometryChanged,
+             this,
+             &ScanPopup::scheduleScreenGeometryRestore,
+             Qt::UniqueConnection );
+  }
+}
+
+void ScanPopup::rememberNormalSize()
+{
+  if ( handlingScreenChange || isMinimized() || isMaximized() || isFullScreen() || size().isEmpty() ) {
+    return;
+  }
+
+  pendingNormalSize = size();
+  normalSizeTimer.start();
+}
+
+void ScanPopup::commitNormalSize()
+{
+  if ( !handlingScreenChange && !isMinimized() && !isMaximized() && !isFullScreen() && !pendingNormalSize.isEmpty() ) {
+    lastStableNormalSize = pendingNormalSize;
+  }
+  pendingNormalSize = QSize();
+}
+
+void ScanPopup::scheduleScreenGeometryRestore()
+{
+  normalSizeTimer.stop();
+  pendingNormalSize    = QSize();
+  handlingScreenChange = true;
+  screenChangeTimer.start();
+}
+
+void ScanPopup::restoreNormalSizeAfterScreenChange()
+{
+  normalSizeTimer.stop();
+  pendingNormalSize = QSize();
+
+  QScreen * screen = windowHandle() ? windowHandle()->screen() : QGuiApplication::primaryScreen();
+  if ( screen ) {
+    setMaximumWidth( qMax( 1, screen->availableGeometry().width() * 4 / 5 ) );
+  }
+
+  if ( !isMinimized() && !isMaximized() && !isFullScreen() && !lastStableNormalSize.isEmpty() ) {
+    QSize targetSize = lastStableNormalSize;
+    if ( screen ) {
+      const QSize availableSize = screen->availableGeometry().size();
+      targetSize                = targetSize.boundedTo( QSize( maximumWidth(), availableSize.height() ) );
+    }
+    if ( !targetSize.isEmpty() && targetSize != size() ) {
+      resize( targetSize );
+    }
+  }
+
+  handlingScreenChange = false;
+}
+
 void ScanPopup::showEvent( QShowEvent * ev )
 {
   QMainWindow::showEvent( ev );
+
+  if ( windowHandle() ) {
+    connect( windowHandle(),
+             &QWindow::screenChanged,
+             this,
+             &ScanPopup::scheduleScreenGeometryRestore,
+             Qt::UniqueConnection );
+  }
+  scheduleScreenGeometryRestore();
 
   if ( groups.size() <= 1 ) { // Only the default group? Hide then.
     groupListAction->setVisible( false );
@@ -1045,7 +1142,7 @@ void ScanPopup::showEvent( QShowEvent * ev )
 
 void ScanPopup::closeEvent( QCloseEvent * ev )
 {
-  if ( isVisible() && ui.pinButton->isChecked() ) {
+  if ( !handlingScreenChange && isVisible() && ui.pinButton->isChecked() ) {
     pinnedGeometry = saveGeometry();
   }
 
@@ -1054,11 +1151,26 @@ void ScanPopup::closeEvent( QCloseEvent * ev )
 
 void ScanPopup::moveEvent( QMoveEvent * ev )
 {
-  if ( isVisible() && ui.pinButton->isChecked() ) {
+  if ( !handlingScreenChange && isVisible() && ui.pinButton->isChecked() ) {
     pinnedGeometry = saveGeometry();
   }
 
   QMainWindow::moveEvent( ev );
+}
+
+void ScanPopup::resizeEvent( QResizeEvent * ev )
+{
+  QMainWindow::resizeEvent( ev );
+  rememberNormalSize();
+}
+
+void ScanPopup::changeEvent( QEvent * ev )
+{
+  QMainWindow::changeEvent( ev );
+
+  if ( ev->type() == QEvent::WindowStateChange && !isMinimized() && !isMaximized() && !isFullScreen() ) {
+    scheduleScreenGeometryRestore();
+  }
 }
 
 void ScanPopup::prefixMatchFinished()
