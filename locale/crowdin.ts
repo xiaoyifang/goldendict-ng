@@ -289,6 +289,10 @@
         <source>%1 of %2 matches</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Open Article in External &amp;Browser</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ArticleWebView</name>
