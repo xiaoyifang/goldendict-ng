@@ -291,7 +291,7 @@
     </message>
     <message>
       <source>Open Article in External &amp;Browser</source>
-      <translation type="unfinished">Open Article in External &amp;Browser</translation>
+      <translation>Адкрыць артыкул у вонкавым &amp;браўзеры</translation>
     </message>
   </context>
   <context>
