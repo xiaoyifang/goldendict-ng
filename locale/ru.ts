@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 из %2 совпадений</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Открыть статью во внешнем и браузере</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
