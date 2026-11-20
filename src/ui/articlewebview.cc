@@ -16,9 +16,7 @@
 #include <QDesktopServices>
 #include <QMainWindow>
 #include <QSet>
-#include <functional>
 #include <memory>
-#include <utility>
 #ifdef Q_OS_WIN32
   #include <qt_windows.h>
 #endif
@@ -32,35 +30,6 @@ bool isResourceViewerUrl( const QUrl & url )
   static const QSet< QString > schemes = { "bres", "gico", "qrc", "qrcx", "file", "data", "gdau", "gdvideo" };
   return schemes.contains( url.scheme() );
 }
-
-/// Page of the Resource Viewer windows. Only resource navigations are loaded;
-/// anything else (dictionary links, web pages, ...) is reported back and
-/// rejected, so a window opened from the inspector never just stays blank.
-class ResourceViewerPage: public QWebEnginePage
-{
-public:
-  using UnsupportedHandler = std::function< void( const QUrl & ) >;
-
-  ResourceViewerPage( UnsupportedHandler handler, QObject * parent ):
-    QWebEnginePage( parent ),
-    unsupportedHandler( std::move( handler ) )
-  {
-  }
-
-protected:
-  bool acceptNavigationRequest( const QUrl & url, NavigationType, bool isMainFrame ) override
-  {
-    if ( !isMainFrame || isResourceViewerUrl( url ) || url.scheme().isEmpty() || url.scheme() == "about" ) {
-      return true;
-    }
-
-    unsupportedHandler( url );
-    return false;
-  }
-
-private:
-  UnsupportedHandler unsupportedHandler;
-};
 
 } // namespace
 
@@ -151,9 +120,9 @@ QWebEngineView * ArticleWebView::createWindow( QWebEnginePage::WebWindowType typ
 
     // Navigation the viewer cannot display. Dictionary links are handled as if
     // they were clicked inside an article, everything else goes to the desktop
-    // handler. The (still empty) window is discarded either way.
+    // handler. The window is discarded either way.
     auto handleUnsupported = [ this, dlg, dispatched ]( const QUrl & url ) {
-      if ( *dispatched || url.scheme().isEmpty() || url.scheme() == "about" ) {
+      if ( *dispatched ) {
         return;
       }
       *dispatched = true;
@@ -172,41 +141,30 @@ QWebEngineView * ArticleWebView::createWindow( QWebEnginePage::WebWindowType typ
       }
     };
 
-    auto page = new ResourceViewerPage( handleUnsupported, view );
-    view->setPage( page );
+    auto handleUrl = [ handleUnsupported ]( const QUrl & url ) {
+      if ( !url.scheme().isEmpty() && url.scheme() != "about" && !isResourceViewerUrl( url ) ) {
+        handleUnsupported( url );
+      }
+    };
 
-    // Only reveal the window once a resource actually loaded, so rejected or
-    // failed navigations never leave a blank window on screen.
-    connect( view, &QWebEngineView::loadFinished, dlg, [ view, dlg, dispatched, handleUnsupported ]( bool ok ) {
+    connect( view, &QWebEngineView::urlChanged, dlg, handleUrl );
+    connect( view, &QWebEngineView::loadFinished, dlg, [ view, dlg, dispatched, handleUrl ]( bool ok ) {
       if ( *dispatched ) {
         return;
       }
+
       const QUrl loaded = view->url();
-      if ( isResourceViewerUrl( loaded ) ) {
-        if ( ok ) {
-          dlg->show();
-        }
-        else {
-          dlg->deleteLater();
-        }
+      handleUrl( loaded );
+      if ( *dispatched || !isResourceViewerUrl( loaded ) ) {
         return;
       }
-      if ( loaded.scheme().isEmpty() || loaded.scheme() == "about" ) {
+      if ( !ok ) {
+        *dispatched = true;
         dlg->deleteLater();
-        return;
-      }
-      handleUnsupported( loaded );
-    } );
-
-    // When Qt adopts the target URL directly instead of asking
-    // acceptNavigationRequest (the initial navigation of a new window), the
-    // scheme still has to be checked here.
-    connect( view, &QWebEngineView::urlChanged, dlg, [ handleUnsupported ]( const QUrl & url ) {
-      if ( !isResourceViewerUrl( url ) ) {
-        handleUnsupported( url );
       }
     } );
 
+    dlg->show();
     return view;
   }
   return QWebEngineView::createWindow( type );
