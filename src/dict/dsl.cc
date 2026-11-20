@@ -1641,11 +1641,13 @@ void DslResourceRequest::run()
 
     if ( !fp.empty() ) {
       File::loadFromFile( fp, data );
+      hasAnyData = true;
     }
     else if ( dict.resourceZip.isOpen() ) {
       if ( !dict.resourceZip.loadFile( Text::toUtf32( resourceName ), data ) ) {
         throw std::runtime_error( "Failed to load file from resource zip" );
       }
+      hasAnyData = true;
     }
     else {
       // 1. The sound dictionary specified via the #SOUND_DICTIONARY directive.
