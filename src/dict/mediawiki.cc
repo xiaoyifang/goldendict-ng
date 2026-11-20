@@ -612,9 +612,9 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
       QUrl target;
       target.setScheme( "gdwiki" );
       target.setHost( QString::fromStdString( dictPtr->getId() ) );
-      target.setPath( "/" + QString::fromPercentEncoding( title.toUtf8() ).replace( '_', ' ' ) );
+      target.setPath( "/" + QUrl::fromPercentEncoding( title.toUtf8() ).replace( '_', ' ' ) );
       if ( !anchor.isEmpty() ) {
-        target.setFragment( QString::fromPercentEncoding( anchor.toUtf8() ) );
+        target.setFragment( QUrl::fromPercentEncoding( anchor.toUtf8() ) );
       }
       articleNewString += QString( "<a href=\"%1\"" ).arg( target.toString( QUrl::FullyEncoded ) );
     }
