@@ -305,6 +305,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 von %2 übereinstimmen</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Artikel in externem &amp;Browser öffnen</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
