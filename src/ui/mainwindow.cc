@@ -90,6 +90,7 @@
 #include <QWindow>
 #include <QWebEngineSettings>
 #include <QProxyStyle>
+#include <QTabBar>
 
 #ifdef WITH_X11
   #include <X11/Xlib.h>
@@ -1546,16 +1547,7 @@ void MainWindow::commitData()
             << "config:" << Config::getConfigFileName();
     cfg.dockWidgetSizes.clear();
     for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
-      // Inactive tabs keep the size they had when they were last selected, while the
-      // tab group itself has the current size. Save the group size for every tab member
-      // so that any of them can represent the group on restore.
-      QSize dockSize = dock->size();
-      if ( !tabifiedDockWidgets( dock ).isEmpty() ) {
-        if ( auto * container = dock->parentWidget(); container != nullptr && container != this ) {
-          dockSize = container->size();
-        }
-      }
-
+      const QSize dockSize = dockGroupSize( dock );
       cfg.dockWidgetSizes.insert( dock->objectName(), dockSize );
       qInfo() << "Save dock:" << dock->objectName() << "visible:" << dock->isVisible() << "size:" << dockSize;
     }
@@ -1583,6 +1575,44 @@ void MainWindow::commitData()
   catch ( std::exception & e ) {
     qWarning( "Commit data failed, error: %s", e.what() );
   }
+}
+
+QSize MainWindow::dockGroupSize( QDockWidget * dock ) const
+{
+  if ( tabifiedDockWidgets( dock ).isEmpty() ) {
+    return dock->size();
+  }
+
+  const auto dockId = reinterpret_cast< quintptr >( dock );
+  for ( auto * tabBar : findChildren< QTabBar * >( QString(), Qt::FindDirectChildrenOnly ) ) {
+    bool ownsDock = false;
+    for ( int i = 0; i < tabBar->count(); ++i ) {
+      if ( tabBar->tabData( i ).value< quintptr >() == dockId ) {
+        ownsDock = true;
+        break;
+      }
+    }
+    if ( !ownsDock ) {
+      continue;
+    }
+
+    // The dock content excludes the tab bar, while resizeDocks() expects the whole
+    // tab group. Inactive tabs are moved off-screen, so only the active dock can be
+    // used to compute the group extent.
+    const int current = tabBar->currentIndex();
+    if ( current < 0 ) {
+      return dock->size();
+    }
+
+    auto * activeDock = reinterpret_cast< QWidget * >( tabBar->tabData( current ).value< quintptr >() );
+    if ( activeDock == nullptr ) {
+      return dock->size();
+    }
+
+    return tabBar->geometry().united( activeDock->geometry() ).size();
+  }
+
+  return dock->size();
 }
 
 void MainWindow::applyDockWidgetSizes()

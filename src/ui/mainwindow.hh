@@ -250,6 +250,10 @@ private:
   /// QMainWindow::restoreState() does not restore them reliably.
   void applyDockWidgetSizes();
 
+  /// Returns the size of the docking area occupied by the dock widget. For a tab
+  /// group this includes the tab bar, which QMainWindow::resizeDocks() expects.
+  QSize dockGroupSize( QDockWidget * dock ) const;
+
   bool eventFilter( QObject *, QEvent * ) override;
 
   /// Redraws palette-dependent decorations (the search-mode icon) on theme changes.
