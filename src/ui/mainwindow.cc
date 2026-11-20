@@ -3124,11 +3124,8 @@ void MainWindow::translateInputFinished( bool checkModifiers )
   respondToTranslationRequest( word, checkModifiers );
 }
 
-void MainWindow::respondToTranslationRequest( const QString & word,
-                                              bool checkModifiers,
-                                              const QString & scrollTo,
-                                              bool focus,
-                                              bool newTab )
+void MainWindow::respondToTranslationRequest(
+  const QString & word, bool checkModifiers, const QString & scrollTo, bool focus, bool newTab )
 {
   if ( !word.isEmpty() ) {
     Qt::KeyboardModifiers mods = QApplication::keyboardModifiers();
