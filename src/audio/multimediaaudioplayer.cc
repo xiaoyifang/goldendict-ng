@@ -37,16 +37,13 @@ void MultimediaAudioPlayer::createPlayer()
   player.reset( new QMediaPlayer );
   player->setAudioOutput( audioOutput.data() );
   connect( player.data(), &QMediaPlayer::errorChanged, this, &MultimediaAudioPlayer::onMediaPlayerError );
-  connect( player.data(),
-           &QMediaPlayer::mediaStatusChanged,
-           this,
-           [ this ]( QMediaPlayer::MediaStatus status ) {
-             if ( status == QMediaPlayer::EndOfMedia ) {
-               // Release the audio device once playback ends, but never destroy
-               // the player from within its own signal handler.
-               releaseTimer.start();
-             }
-           } );
+  connect( player.data(), &QMediaPlayer::mediaStatusChanged, this, [ this ]( QMediaPlayer::MediaStatus status ) {
+    if ( status == QMediaPlayer::EndOfMedia ) {
+      // Release the audio device once playback ends, but never destroy
+      // the player from within its own signal handler.
+      releaseTimer.start();
+    }
+  } );
 
   mediaDevices.reset( new QMediaDevices );
   connect( mediaDevices.data(), &QMediaDevices::audioOutputsChanged, this, &MultimediaAudioPlayer::audioOutputChange );
