@@ -5,6 +5,7 @@
 
 #include <QSystemTrayIcon>
 #include <QSignalBlocker>
+#include <QSet>
 #include <QWebEngineProfile>
 #include <QWebEngineDownloadRequest>
 #include <QWebEngineSettings>
@@ -180,6 +181,13 @@ private:
 
   bool isQuitting = false;
 
+  // Whether the saved dock widget sizes have already been applied.
+  bool dockSizesApplied = false;
+
+  // Names of the dock widgets whose saved sizes were restored in this session.
+  // The configured values of the others must be kept as is on exit.
+  QSet< QString > restoredDockNames;
+
   QPrinter & getPrinter(); // Creates a printer if it's not there and returns it
 
   DictHeadwords * headwordsDlg;
@@ -226,6 +234,7 @@ private:
   void wheelEvent( QWheelEvent * ) override;
   void closeEvent( QCloseEvent * ) override;
   void hideEvent( QHideEvent * event ) override;
+  void showEvent( QShowEvent * event ) override;
 
   void applyProxySettings();
   void makeDictionaries();
@@ -241,6 +250,14 @@ private:
   /// Updates word search request and active article view in response to
   /// muting or unmuting dictionaries, or showing/hiding dictionary bar.
   void applyMutedDictionariesState();
+
+  /// Re-applies the dock widget sizes saved in the configuration, because
+  /// QMainWindow::restoreState() does not restore them reliably.
+  void applyDockWidgetSizes();
+
+  /// Returns the size of the docking area occupied by the dock widget. For a tab
+  /// group this includes the tab bar, which QMainWindow::resizeDocks() expects.
+  QSize dockGroupSize( QDockWidget * dock ) const;
 
   bool eventFilter( QObject *, QEvent * ) override;
 

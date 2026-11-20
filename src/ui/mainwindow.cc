@@ -90,6 +90,7 @@
 #include <QWindow>
 #include <QWebEngineSettings>
 #include <QProxyStyle>
+#include <QTabBar>
 
 #ifdef WITH_X11
   #include <X11/Xlib.h>
@@ -955,11 +956,19 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // restore should be called after all UI initialized but not necessarily after show()
   // This must be called before show() as of Qt6.5 on Windows, not sure if it is a bug
   // Due to a bug of WebEngine, this also must be called after WebEngine has a view loaded https://bugreports.qt.io/browse/QTBUG-115074
+  qInfo() << "Load window state, bytes:" << cfg.mainWindowState.size()
+          << "geometry bytes:" << cfg.mainWindowGeometry.size() << "portable:" << Config::isPortableVersion()
+          << "config:" << Config::getConfigFileName();
   if ( cfg.mainWindowState.size() && !cfg.resetState ) {
-    restoreState( cfg.mainWindowState );
+    const bool ok = restoreState( cfg.mainWindowState );
+    qInfo() << "Restore main window state, bytes:" << cfg.mainWindowState.size() << "ok:" << ok;
   }
   if ( cfg.mainWindowGeometry.size() ) {
-    restoreGeometry( cfg.mainWindowGeometry );
+    const bool ok = restoreGeometry( cfg.mainWindowGeometry );
+    qInfo() << "Restore main window geometry, bytes:" << cfg.mainWindowGeometry.size() << "ok:" << ok;
+  }
+  for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
+    qInfo() << "Restored dock:" << dock->objectName() << "visible:" << dock->isVisible() << "size:" << dock->size();
   }
 
   // Show window unless it is configured not to
@@ -1533,6 +1542,23 @@ void MainWindow::commitData()
     cfg.mainWindowState    = saveState();
     cfg.mainWindowGeometry = saveGeometry();
 
+    qInfo() << "Save main window state, bytes:" << cfg.mainWindowState.size()
+            << "geometry bytes:" << cfg.mainWindowGeometry.size() << "portable:" << Config::isPortableVersion()
+            << "config:" << Config::getConfigFileName();
+    // Only overwrite the sizes of the docks that took part in the layout, or were
+    // restored earlier in this session. The entries of the docks that were never
+    // shown keep their loaded values.
+    for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
+      const QString dockName = dock->objectName();
+      if ( !dock->isVisible() && !restoredDockNames.contains( dockName ) ) {
+        continue;
+      }
+
+      const QSize dockSize = dockGroupSize( dock );
+      cfg.dockWidgetSizes.insert( dockName, dockSize );
+      qInfo() << "Save dock:" << dockName << "visible:" << dock->isVisible() << "size:" << dockSize;
+    }
+
     // Save popup window state and geometry
     if ( scanPopup ) {
       scanPopup->saveConfigData();
@@ -1541,6 +1567,7 @@ void MainWindow::commitData()
     // Save any changes in last chosen groups etc
     try {
       Config::save( cfg );
+      qInfo() << "Configuration saved to" << Config::getConfigFileName();
     }
     catch ( std::exception & e ) {
       qWarning( "Configuration saving failed, error: %s", e.what() );
@@ -1554,6 +1581,117 @@ void MainWindow::commitData()
   }
   catch ( std::exception & e ) {
     qWarning( "Commit data failed, error: %s", e.what() );
+  }
+}
+
+QSize MainWindow::dockGroupSize( QDockWidget * dock ) const
+{
+  if ( tabifiedDockWidgets( dock ).isEmpty() ) {
+    return dock->size();
+  }
+
+  const auto dockId = reinterpret_cast< quintptr >( dock );
+  for ( auto * tabBar : findChildren< QTabBar * >( QString(), Qt::FindDirectChildrenOnly ) ) {
+    bool ownsDock = false;
+    for ( int i = 0; i < tabBar->count(); ++i ) {
+      if ( tabBar->tabData( i ).value< quintptr >() == dockId ) {
+        ownsDock = true;
+        break;
+      }
+    }
+    if ( !ownsDock ) {
+      continue;
+    }
+
+    // A single visible tab gets no tab bar, so the group matches the dock content.
+    if ( tabBar->count() < 2 ) {
+      return dock->size();
+    }
+
+    // The dock content excludes the tab bar, while resizeDocks() expects the whole
+    // tab group. Inactive tabs are moved off-screen, so only the active dock can be
+    // used to compute the group extent.
+    const int current = tabBar->currentIndex();
+    if ( current < 0 ) {
+      return dock->size();
+    }
+
+    auto * activeDock = reinterpret_cast< QWidget * >( tabBar->tabData( current ).value< quintptr >() );
+    if ( activeDock == nullptr ) {
+      return dock->size();
+    }
+
+    return tabBar->geometry().united( activeDock->geometry() ).size();
+  }
+
+  return dock->size();
+}
+
+void MainWindow::applyDockWidgetSizes()
+{
+  static const QList< Qt::DockWidgetArea > areas = { Qt::LeftDockWidgetArea,
+                                                     Qt::RightDockWidgetArea,
+                                                     Qt::TopDockWidgetArea,
+                                                     Qt::BottomDockWidgetArea };
+
+  for ( Qt::DockWidgetArea area : areas ) {
+    QList< QDockWidget * > docks;
+    QList< int > widths;
+    QList< int > heights;
+
+    for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
+      if ( !dock->isVisible() || dock->isFloating() || dockWidgetArea( dock ) != area ) {
+        continue;
+      }
+
+      const auto savedSize = cfg.dockWidgetSizes.constFind( dock->objectName() );
+      if ( savedSize == cfg.dockWidgetSizes.cend() ) {
+        continue;
+      }
+
+      // resizeDocks() expects only one dock widget per tab group.
+      bool inTabGroup     = false;
+      const auto tabified = tabifiedDockWidgets( dock );
+      for ( auto * added : docks ) {
+        if ( tabified.contains( added ) ) {
+          inTabGroup = true;
+          break;
+        }
+      }
+      if ( inTabGroup ) {
+        continue;
+      }
+
+      docks.append( dock );
+      widths.append( savedSize->width() );
+      heights.append( savedSize->height() );
+
+      // All the tabs of a group share the size, so remember them too.
+      restoredDockNames.insert( dock->objectName() );
+      for ( auto * tabifiedDock : tabified ) {
+        restoredDockNames.insert( tabifiedDock->objectName() );
+      }
+    }
+
+    if ( docks.isEmpty() ) {
+      continue;
+    }
+
+    // The docks of an area can be split in both directions, restore the primary
+    // one always and the other one only when a split in that direction exists.
+    const bool horizontalArea = ( area == Qt::LeftDockWidgetArea || area == Qt::RightDockWidgetArea );
+    if ( horizontalArea ) {
+      resizeDocks( docks, widths, Qt::Horizontal );
+      if ( docks.size() > 1 ) {
+        resizeDocks( docks, heights, Qt::Vertical );
+      }
+    }
+    else {
+      resizeDocks( docks, heights, Qt::Vertical );
+      if ( docks.size() > 1 ) {
+        resizeDocks( docks, widths, Qt::Horizontal );
+      }
+    }
   }
 }
 
@@ -1841,6 +1979,30 @@ void MainWindow::closeEvent( QCloseEvent * ev )
   ev->ignore();
   hide();
 #endif
+}
+
+void MainWindow::showEvent( QShowEvent * event )
+{
+  QMainWindow::showEvent( event );
+
+  // Dock sizes can only be restored once the window is actually visible, which
+  // may happen long after the constructor when the app starts minimized to tray.
+  if ( dockSizesApplied ) {
+    return;
+  }
+  dockSizesApplied = true;
+
+  if ( cfg.resetState ) {
+    return;
+  }
+
+  // Wait for the layout to be activated, otherwise resizeDocks() has no effect.
+  QTimer::singleShot( 0, this, [ this ]() {
+    applyDockWidgetSizes();
+    for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
+      qInfo() << "Dock after show:" << dock->objectName() << "visible:" << dock->isVisible() << "size:" << dock->size();
+    }
+  } );
 }
 
 void MainWindow::hideEvent( QHideEvent * event )
