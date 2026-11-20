@@ -303,6 +303,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1/%2 個匹配</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>在外部與瀏覽器中開啟文章</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
