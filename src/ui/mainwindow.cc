@@ -955,11 +955,18 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // restore should be called after all UI initialized but not necessarily after show()
   // This must be called before show() as of Qt6.5 on Windows, not sure if it is a bug
   // Due to a bug of WebEngine, this also must be called after WebEngine has a view loaded https://bugreports.qt.io/browse/QTBUG-115074
+  qInfo() << "Load window state, bytes:" << cfg.mainWindowState.size() << "geometry bytes:" << cfg.mainWindowGeometry.size()
+          << "portable:" << Config::isPortableVersion() << "config:" << Config::getConfigFileName();
   if ( cfg.mainWindowState.size() && !cfg.resetState ) {
-    restoreState( cfg.mainWindowState );
+    const bool ok = restoreState( cfg.mainWindowState );
+    qInfo() << "Restore main window state, bytes:" << cfg.mainWindowState.size() << "ok:" << ok;
   }
   if ( cfg.mainWindowGeometry.size() ) {
-    restoreGeometry( cfg.mainWindowGeometry );
+    const bool ok = restoreGeometry( cfg.mainWindowGeometry );
+    qInfo() << "Restore main window geometry, bytes:" << cfg.mainWindowGeometry.size() << "ok:" << ok;
+  }
+  for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
+    qInfo() << "Restored dock:" << dock->objectName() << "visible:" << dock->isVisible() << "size:" << dock->size();
   }
 
   // Show window unless it is configured not to
@@ -979,6 +986,16 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     MacAppActivation::setDockIconVisible( cfg.preferences.showDockIcon );
   }
 #endif
+
+  // Re-apply the saved dock sizes and log the resulting geometry once the
+  // initial layout has been applied, so it can be compared with the sizes
+  // written by commitData().
+  QTimer::singleShot( 0, this, [ this ]() {
+    applyDockWidgetSizes();
+    for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
+      qInfo() << "Dock after show:" << dock->objectName() << "visible:" << dock->isVisible() << "size:" << dock->size();
+    }
+  } );
 
   // Scanpopup related
   // Deferred initialization until first use or if scanning is enabled
@@ -1533,6 +1550,16 @@ void MainWindow::commitData()
     cfg.mainWindowState    = saveState();
     cfg.mainWindowGeometry = saveGeometry();
 
+    qInfo() << "Save main window state, bytes:" << cfg.mainWindowState.size()
+            << "geometry bytes:" << cfg.mainWindowGeometry.size()
+            << "portable:" << Config::isPortableVersion()
+            << "config:" << Config::getConfigFileName();
+    cfg.dockWidgetSizes.clear();
+    for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
+      cfg.dockWidgetSizes.insert( dock->objectName(), dock->size() );
+      qInfo() << "Save dock:" << dock->objectName() << "visible:" << dock->isVisible() << "size:" << dock->size();
+    }
+
     // Save popup window state and geometry
     if ( scanPopup ) {
       scanPopup->saveConfigData();
@@ -1541,6 +1568,7 @@ void MainWindow::commitData()
     // Save any changes in last chosen groups etc
     try {
       Config::save( cfg );
+      qInfo() << "Configuration saved to" << Config::getConfigFileName();
     }
     catch ( std::exception & e ) {
       qWarning( "Configuration saving failed, error: %s", e.what() );
@@ -1554,6 +1582,38 @@ void MainWindow::commitData()
   }
   catch ( std::exception & e ) {
     qWarning( "Commit data failed, error: %s", e.what() );
+  }
+}
+
+void MainWindow::applyDockWidgetSizes()
+{
+  static const QList< Qt::DockWidgetArea > areas = { Qt::LeftDockWidgetArea,
+                                                     Qt::RightDockWidgetArea,
+                                                     Qt::TopDockWidgetArea,
+                                                     Qt::BottomDockWidgetArea };
+
+  for ( Qt::DockWidgetArea area : areas ) {
+    const bool horizontal = ( area == Qt::LeftDockWidgetArea || area == Qt::RightDockWidgetArea );
+    QList< QDockWidget * > docks;
+    QList< int > sizes;
+
+    for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
+      if ( !dock->isVisible() || dock->isFloating() || dockWidgetArea( dock ) != area ) {
+        continue;
+      }
+
+      const auto savedSize = cfg.dockWidgetSizes.constFind( dock->objectName() );
+      if ( savedSize == cfg.dockWidgetSizes.cend() ) {
+        continue;
+      }
+
+      docks.append( dock );
+      sizes.append( horizontal ? savedSize->width() : savedSize->height() );
+    }
+
+    if ( !docks.isEmpty() ) {
+      resizeDocks( docks, sizes, horizontal ? Qt::Horizontal : Qt::Vertical );
+    }
   }
 }
 

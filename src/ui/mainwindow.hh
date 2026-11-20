@@ -242,6 +242,10 @@ private:
   /// muting or unmuting dictionaries, or showing/hiding dictionary bar.
   void applyMutedDictionariesState();
 
+  /// Re-applies the dock widget sizes saved in the configuration, because
+  /// QMainWindow::restoreState() does not restore them reliably.
+  void applyDockWidgetSizes();
+
   bool eventFilter( QObject *, QEvent * ) override;
 
   /// Redraws palette-dependent decorations (the search-mode icon) on theme changes.

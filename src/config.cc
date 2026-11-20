@@ -1108,6 +1108,15 @@ Class load()
     c.mainWindowGeometry = QByteArray::fromBase64( mainWindowGeometry.toElement().text().toLatin1() );
   }
 
+  QDomElement dockWidgetSizes = root.namedItem( "dockWidgetSizes" ).toElement();
+
+  for ( QDomElement dock = dockWidgetSizes.firstChildElement( "dockWidget" ); !dock.isNull();
+        dock            = dock.nextSiblingElement( "dockWidget" ) ) {
+    c.dockWidgetSizes.insert(
+      dock.attribute( "name" ),
+      QSize( dock.attribute( "width" ).toInt(), dock.attribute( "height" ).toInt() ) );
+  }
+
   QDomNode dictInfoGeometry = root.namedItem( "dictInfoGeometry" );
 
   if ( !dictInfoGeometry.isNull() ) {
@@ -2132,6 +2141,16 @@ void save( const Class & c )
 
     opt = dd.createElement( "mainWindowGeometry" );
     opt.appendChild( dd.createTextNode( QString::fromLatin1( c.mainWindowGeometry.toBase64() ) ) );
+    root.appendChild( opt );
+
+    opt = dd.createElement( "dockWidgetSizes" );
+    for ( auto it = c.dockWidgetSizes.cbegin(); it != c.dockWidgetSizes.cend(); ++it ) {
+      QDomElement dock = dd.createElement( "dockWidget" );
+      dock.setAttribute( "name", it.key() );
+      dock.setAttribute( "width", it.value().width() );
+      dock.setAttribute( "height", it.value().height() );
+      opt.appendChild( dock );
+    }
     root.appendChild( opt );
 
     opt = dd.createElement( "dictInfoGeometry" );

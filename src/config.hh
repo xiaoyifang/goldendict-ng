@@ -7,6 +7,7 @@
 #include "ex.hh"
 #include <QDateTime>
 #include <QDomDocument>
+#include <QHash>
 #include <QKeySequence>
 #include <QList>
 #include <QLocale>
@@ -847,6 +848,11 @@ struct Class
 
   QByteArray mainWindowState;    // Binary state saved by QMainWindow
   QByteArray mainWindowGeometry; // Geometry saved by QMainWindow
+
+  // Sizes of the dock widgets, keyed by their object name. QMainWindow's
+  // restoreState() does not restore dock sizes reliably, so they are kept
+  // separately and re-applied with resizeDocks().
+  QHash< QString, QSize > dockWidgetSizes;
 
   QSet< QString > mutedDictionaries;      // Disabled via dictionary bar
   QSet< QString > popupMutedDictionaries; // Disabled via dictionary bar in popup
