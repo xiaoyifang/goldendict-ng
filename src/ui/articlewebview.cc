@@ -162,10 +162,12 @@ QWebEngineView * ArticleWebView::createWindow( QWebEnginePage::WebWindowType typ
       if ( url.scheme() == "gdlookup" || url.scheme() == "bword" || url.scheme() == "entry" ) {
         // Emit asynchronously: the article view may rebuild its tabs in
         // response, and we are still inside a navigation callback here.
-        QTimer::singleShot( 0, this, [ this, url ]() { emit linkClicked( url ); } );
+        QTimer::singleShot( 0, this, [ this, url ]() {
+          emit linkClicked( url );
+        } );
       }
       else if ( url.scheme() == "http" || url.scheme() == "https" || url.scheme() == "ftp"
-                 || url.scheme() == "mailto" ) {
+                || url.scheme() == "mailto" ) {
         QDesktopServices::openUrl( url );
       }
     };
@@ -175,27 +177,26 @@ QWebEngineView * ArticleWebView::createWindow( QWebEnginePage::WebWindowType typ
 
     // Only reveal the window once a resource actually loaded, so rejected or
     // failed navigations never leave a blank window on screen.
-    connect( view, &QWebEngineView::loadFinished, dlg,
-             [ view, dlg, dispatched, handleUnsupported ]( bool ok ) {
-               if ( *dispatched ) {
-                 return;
-               }
-               const QUrl loaded = view->url();
-               if ( isResourceViewerUrl( loaded ) ) {
-                 if ( ok ) {
-                   dlg->show();
-                 }
-                 else {
-                   dlg->deleteLater();
-                 }
-                 return;
-               }
-               if ( loaded.scheme().isEmpty() || loaded.scheme() == "about" ) {
-                 dlg->deleteLater();
-                 return;
-               }
-               handleUnsupported( loaded );
-             } );
+    connect( view, &QWebEngineView::loadFinished, dlg, [ view, dlg, dispatched, handleUnsupported ]( bool ok ) {
+      if ( *dispatched ) {
+        return;
+      }
+      const QUrl loaded = view->url();
+      if ( isResourceViewerUrl( loaded ) ) {
+        if ( ok ) {
+          dlg->show();
+        }
+        else {
+          dlg->deleteLater();
+        }
+        return;
+      }
+      if ( loaded.scheme().isEmpty() || loaded.scheme() == "about" ) {
+        dlg->deleteLater();
+        return;
+      }
+      handleUnsupported( loaded );
+    } );
 
     // When Qt adopts the target URL directly instead of asking
     // acceptNavigationRequest (the initial navigation of a new window), the
