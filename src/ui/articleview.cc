@@ -1761,25 +1761,17 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
       return {};
     }
 
-    QStringList dictIds  = currentActiveDictIds;
-    const QString active = getActiveArticleId();
-    if ( !active.isEmpty() ) {
-      // Prefer the dictionary of the article currently in view.
-      dictIds.removeAll( active );
-      dictIds.prepend( active );
+    const QString dictId = getActiveArticleId();
+    if ( dictId.isEmpty() ) {
+      return {};
     }
 
-    for ( const auto & dictId : dictIds ) {
-      auto dict = dictionaryGroup->getDictionaryById( dictId.toUtf8().data() );
-      if ( !dict ) {
-        continue;
-      }
-      const QString url = dict->getArticleWebUrl( word.toStdU32String() );
-      if ( !url.isEmpty() ) {
-        return QUrl( url );
-      }
+    auto dict = dictionaryGroup->getDictionaryById( dictId.toUtf8().data() );
+    if ( !dict ) {
+      return {};
     }
-    return {};
+
+    return QUrl( dict->getArticleWebUrl( word.toStdU32String() ) );
   };
 
   if ( !targetUrl.isEmpty() ) {
