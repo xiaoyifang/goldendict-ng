@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 از %2 مسابقه</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>باز کردن مقاله در بخش خارجی و مرورگر</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
