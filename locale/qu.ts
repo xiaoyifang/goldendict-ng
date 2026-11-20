@@ -306,7 +306,7 @@
     </message>
     <message>
       <source>Open Article in External &amp;Browser</source>
-      <translation type="unfinished">Open Article in External &amp;Browser</translation>
+      <translation>K'ichay artikuluta hawapi &amp;Wamp'uqpi</translation>
     </message>
   </context>
   <context>
