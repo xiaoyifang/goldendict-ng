@@ -306,7 +306,7 @@
     </message>
     <message>
       <source>Open Article in External &amp;Browser</source>
-      <translation type="unfinished">Open Article in External &amp;Browser</translation>
+      <translation>claxu lo cukta fi'o lo jitro &amp;Browser</translation>
     </message>
   </context>
   <context>
