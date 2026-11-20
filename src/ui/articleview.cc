@@ -1807,7 +1807,7 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
           webUrl = articleWebUrl( linkedWord );
         }
         if ( !webUrl.isEmpty() && targetUrl.hasFragment() ) {
-          webUrl.setFragment( targetUrl.fragment( QUrl::FullyDecoded ) );
+          webUrl.setFragment( targetUrl.fragment( QUrl::FullyDecoded ), QUrl::DecodedMode );
         }
       }
 

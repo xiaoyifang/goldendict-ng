@@ -86,8 +86,9 @@ public:
     }
     articleUrl.setPath( path + "/index.php" );
 
+    // PHP decodes a literal '+' as a space, so keep it percent-encoded.
     QUrlQuery query;
-    query.addQueryItem( "title", QString::fromStdU32String( word ) );
+    query.addQueryItem( "title", QString::fromStdU32String( word ).replace( '+', "%2B" ) );
     articleUrl.setQuery( query );
     return articleUrl.toString( QUrl::FullyEncoded );
   }
@@ -596,6 +597,14 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
       }
 
       QString title = link.mid( 5 );
+
+      // Query-bearing article URLs (old revisions, diffs, ...) only make sense
+      // on the wiki itself.
+      if ( title.contains( '?' ) ) {
+        articleNewString += QString( "<a href=\"%1%2\"" ).arg( wikiUrl.toString(), link );
+        continue;
+      }
+
       QString anchor;
       const int anchorPos = title.indexOf( '#' );
       if ( anchorPos >= 0 ) {
@@ -603,8 +612,10 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
         title.truncate( anchorPos );
       }
 
+      QString decodedTitle = QUrl::fromPercentEncoding( title.toUtf8() );
+
       // File pages contain no article text; open them on the wiki instead.
-      if ( title.startsWith( "File:", Qt::CaseInsensitive ) ) {
+      if ( decodedTitle.startsWith( "File:", Qt::CaseInsensitive ) ) {
         articleNewString += QString( "<a href=\"%1%2\"" ).arg( wikiUrl.toString(), link );
         continue;
       }
@@ -612,11 +623,14 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
       QUrl target;
       target.setScheme( "gdwiki" );
       target.setHost( QString::fromStdString( dictPtr->getId() ) );
-      target.setPath( "/" + QUrl::fromPercentEncoding( title.toUtf8() ).replace( '_', ' ' ) );
+      target.setPath( "/" + decodedTitle.replace( '_', ' ' ) );
       if ( !anchor.isEmpty() ) {
-        target.setFragment( QUrl::fromPercentEncoding( anchor.toUtf8() ) );
+        target.setFragment( QUrl::fromPercentEncoding( anchor.toUtf8() ), QUrl::DecodedMode );
       }
-      articleNewString += QString( "<a href=\"%1\"" ).arg( target.toString( QUrl::FullyEncoded ) );
+      // Escape because the serialized URL may still contain '&', which the
+      // HTML parser would turn into an entity inside the href attribute.
+      const QString linkUrl = target.toString( QUrl::FullyEncoded ).toHtmlEscaped();
+      articleNewString += QString( "<a href=\"%1\"" ).arg( linkUrl );
     }
     if ( pos ) {
       articleNewString += articleString.mid( pos );
