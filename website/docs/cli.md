@@ -81,12 +81,13 @@ goldendict://<word>?target=<window>
 | Parameter | Value | Description |
 |-----------|-------|-------------|
 | `word` | URL-encoded word | The word to translate |
-| `target` | `popup` or `main` | Target window (defaults to `main`) |
+| `target` | `popup`, `main` or `newtab` | Target window (defaults to `main`); `newtab` opens the result in a new tab of the main window |
 
 **Example:**
 
 ```
 goldendict://hello?target=popup
+goldendict://hello?target=newtab
 ```
 
 ### Environment Variables
