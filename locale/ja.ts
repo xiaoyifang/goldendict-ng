@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1件目 / %2件</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>外部 &amp; ブラウザで記事を開く</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
