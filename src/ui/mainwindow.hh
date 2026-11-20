@@ -183,6 +183,10 @@ private:
   // Whether the saved dock widget sizes have already been applied.
   bool dockSizesApplied = false;
 
+  // Whether the saved dock widget sizes were actually restored in this session.
+  // Until then the configured values must be kept as is on exit.
+  bool dockSizesRestored = false;
+
   QPrinter & getPrinter(); // Creates a printer if it's not there and returns it
 
   DictHeadwords * headwordsDlg;
