@@ -1607,6 +1607,19 @@ void MainWindow::applyDockWidgetSizes()
         continue;
       }
 
+      // resizeDocks() expects only one dock widget per tab group.
+      bool inTabGroup = false;
+      const auto tabified = tabifiedDockWidgets( dock );
+      for ( auto * added : docks ) {
+        if ( tabified.contains( added ) ) {
+          inTabGroup = true;
+          break;
+        }
+      }
+      if ( inTabGroup ) {
+        continue;
+      }
+
       docks.append( dock );
       sizes.append( horizontal ? savedSize->width() : savedSize->height() );
     }
