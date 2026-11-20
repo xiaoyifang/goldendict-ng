@@ -81,6 +81,7 @@ struct GDOptions
 {
   bool logFile     = false;
   bool togglePopup = false;
+  bool newTab      = false;
   QString word, groupName, popupGroupName;
   QString window;
 
@@ -237,6 +238,9 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
         else if ( targetParam == "main" ) {
           result->window = "main";
         }
+        else if ( targetParam == "newtab" ) {
+          result->newTab = true;
+        }
       }
     }
     else {
@@ -377,6 +381,9 @@ int main( int argc, char ** argv )
       }
       if ( gdcl.needSetPopupGroup() ) {
         message += "|popupGroup:" + gdcl.getPopupGroupName();
+      }
+      if ( gdcl.newTab ) {
+        message += "|newtab:true";
       }
       QString encodedWord = QUrl::toPercentEncoding( gdcl.wordToTranslate() );
       message += "|word:" + encodedWord;
@@ -594,7 +601,7 @@ int main( int argc, char ** argv )
     }
     else {
       // Default to main window when target parameter is not specified or set to "main"
-      m.showTranslation( gdcl.wordToTranslate(), "main" );
+      m.showTranslation( gdcl.wordToTranslate(), "main", gdcl.newTab );
     }
   }
 

@@ -62,7 +62,7 @@ public slots:
 
   void messageFromAnotherInstanceReceived( const QString & );
   void showStatusBarMessage( const QString & message, int timeout = 5000, const QPixmap & pixmap = QPixmap() );
-  void wordReceived( const QString & );
+  void wordReceived( const QString &, bool newTab = false );
   void headwordFromFavorites( const QString & word, const QString & favFolderFullPath );
   /// Save config and states...
   void commitData();
@@ -86,7 +86,7 @@ private:
   bool handleStructuredMessage( const QString & message );
 
 public:
-  void showTranslation( const QString & word, const QString & windowType );
+  void showTranslation( const QString & word, const QString & windowType, bool newTab = false );
 
 private:
 
@@ -296,7 +296,8 @@ private:
   void respondToTranslationRequest( const QString & word,
                                     bool checkModifiers,
                                     const QString & scrollTo = QString(),
-                                    bool focus               = true );
+                                    bool focus               = true,
+                                    bool newTab              = false );
 
   void updateSuggestionList();
   void updateSuggestionList( const QString & text );

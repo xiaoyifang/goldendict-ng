@@ -3127,11 +3127,12 @@ void MainWindow::translateInputFinished( bool checkModifiers )
 void MainWindow::respondToTranslationRequest( const QString & word,
                                               bool checkModifiers,
                                               const QString & scrollTo,
-                                              bool focus )
+                                              bool focus,
+                                              bool newTab )
 {
   if ( !word.isEmpty() ) {
     Qt::KeyboardModifiers mods = QApplication::keyboardModifiers();
-    if ( checkModifiers && ( mods & ( Qt::ControlModifier | Qt::ShiftModifier ) ) ) {
+    if ( newTab || ( checkModifiers && ( mods & ( Qt::ControlModifier | Qt::ShiftModifier ) ) ) ) {
       addNewTab();
     }
 
@@ -4284,10 +4285,10 @@ void MainWindow::scaleArticlesByCurrentZoomFactor()
   }
 }
 
-void MainWindow::showTranslation( const QString & word, const QString & windowType )
+void MainWindow::showTranslation( const QString & word, const QString & windowType, bool newTab )
 {
   if ( windowType == "main" ) {
-    wordReceived( word );
+    wordReceived( word, newTab );
   }
   else {
     ensureScanPopup();
@@ -4317,6 +4318,7 @@ bool MainWindow::handleStructuredMessage( const QString & message )
     QString word       = QUrl::fromPercentEncoding( params.value( "word" ).toLatin1() );
     QString group      = params.value( "group" );
     QString popupGroup = params.value( "popupGroup" );
+    bool newTab        = params.value( "newtab" ) == "true";
 
     // Handle group settings if specified
     if ( !group.isEmpty() ) {
@@ -4327,7 +4329,7 @@ bool MainWindow::handleStructuredMessage( const QString & message )
     }
 
     // Show translation based on window type
-    showTranslation( word, windowType );
+    showTranslation( word, windowType, newTab );
   }
 
   return true;
@@ -4424,14 +4426,14 @@ ArticleView * MainWindow::findArticleViewByDictId( const QString & dictId )
   return nullptr;
 }
 
-void MainWindow::wordReceived( const QString & word )
+void MainWindow::wordReceived( const QString & word, bool newTab )
 {
   const bool shouldFocus = cfg.preferences.raiseWindowOnSearch;
   if ( shouldFocus ) {
     toggleMainWindow( true );
   }
   setInputLineText( word, WildcardPolicy::EscapeWildcards, NoPopupChange );
-  respondToTranslationRequest( word, false, QString(), shouldFocus );
+  respondToTranslationRequest( word, false, QString(), shouldFocus, newTab );
 }
 
 void MainWindow::updateFavoritesMenu()
