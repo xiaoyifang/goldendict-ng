@@ -13,6 +13,7 @@
 #include "utils.hh"
 
 #include <QRegularExpression>
+#include <QUrlQuery>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
@@ -72,6 +73,25 @@ public:
 
   sptr< DataRequest >
   getArticle( const std::u32string &, const vector< std::u32string > & alts, const std::u32string &, bool ) override;
+
+  QString getArticleWebUrl( const std::u32string & word ) override
+  {
+    // url points to the api.php directory, e.g. "https://en.wikipedia.org/w".
+    // Articles are served by index.php in that directory regardless of whether
+    // the wiki uses short URLs, so this also works for custom installations.
+    QUrl articleUrl( url );
+    QString path = articleUrl.path();
+    if ( path.endsWith( '/' ) ) {
+      path.chop( 1 );
+    }
+    articleUrl.setPath( path + "/index.php" );
+
+    // PHP decodes a literal '+' as a space, so keep it percent-encoded.
+    QUrlQuery query;
+    query.addQueryItem( "title", QString::fromStdU32String( word ).replace( '+', "%2B" ) );
+    articleUrl.setQuery( query );
+    return articleUrl.toString( QUrl::FullyEncoded );
+  }
 
   quint32 getLangFrom() const override
   {
@@ -541,7 +561,13 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
 
     addedPageIds.insert( pageId );
 
-    // Replace all ":" in links, remove '#' part in links to other articles
+    QUrl wikiUrl( url );
+    wikiUrl.setPath( "/" );
+
+    // Rewrite article links to the gdwiki scheme: the id of this dictionary
+    // plus the target title. GoldenDict then knows that the link should be
+    // looked up internally, and the dictionary is still identifiable when the
+    // link is followed or when its web page is requested.
     int pos = 0;
     QRegularExpression regLinks( "<a\\s+href=\"/([^\"]+)\"" );
     QString articleNewString;
@@ -553,39 +579,64 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
 
       QString link = match.captured( 1 );
 
-      if ( link.indexOf( "://" ) >= 0 ) {
-        // External link
+      // Absolute and protocol-relative links are handled by the passes below.
+      if ( link.startsWith( "/" ) || link.contains( "://" ) ) {
         articleNewString += match.captured();
         continue;
       }
 
-      if ( link.indexOf( ':' ) >= 0 ) {
-        link.replace( ':', "%3A" );
+      // Edit/history pages and other non-article pages are opened on the wiki.
+      if ( link.startsWith( "index.php?" ) || link.contains( "/index.php?" ) ) {
+        articleNewString += QString( "<a href=\"%1%2\"" ).arg( wikiUrl.toString(), link );
+        continue;
       }
 
-      int n = link.indexOf( '#', 1 );
-      if ( n > 0 ) {
-        QString anchor = link.mid( n + 1 ).replace( '_', "%5F" );
-        link.truncate( n );
-        link += QString( "?gdanchor=%1" ).arg( anchor );
+      if ( !link.startsWith( "wiki/" ) ) {
+        articleNewString += match.captured();
+        continue;
       }
 
-      QString newLink = QString( "<a href=\"/%1\"" ).arg( link );
-      articleNewString += newLink;
+      QString title = link.mid( 5 );
+
+      // Query-bearing article URLs (old revisions, diffs, ...) only make sense
+      // on the wiki itself.
+      if ( title.contains( '?' ) ) {
+        articleNewString += QString( "<a href=\"%1%2\"" ).arg( wikiUrl.toString(), link );
+        continue;
+      }
+
+      QString anchor;
+      const int anchorPos = title.indexOf( '#' );
+      if ( anchorPos >= 0 ) {
+        anchor = title.mid( anchorPos + 1 );
+        title.truncate( anchorPos );
+      }
+
+      QString decodedTitle = QUrl::fromPercentEncoding( title.toUtf8() );
+
+      // File pages contain no article text; open them on the wiki instead.
+      if ( decodedTitle.startsWith( "File:", Qt::CaseInsensitive ) ) {
+        articleNewString += QString( "<a href=\"%1%2\"" ).arg( wikiUrl.toString(), link );
+        continue;
+      }
+
+      QUrl target;
+      target.setScheme( "gdwiki" );
+      target.setHost( QString::fromStdString( dictPtr->getId() ) );
+      target.setPath( "/" + decodedTitle.replace( '_', ' ' ) );
+      if ( !anchor.isEmpty() ) {
+        target.setFragment( QUrl::fromPercentEncoding( anchor.toUtf8() ), QUrl::DecodedMode );
+      }
+      // Escape because the serialized URL may still contain '&', which the
+      // HTML parser would turn into an entity inside the href attribute.
+      const QString linkUrl = target.toString( QUrl::FullyEncoded ).toHtmlEscaped();
+      articleNewString += QString( "<a href=\"%1\"" ).arg( linkUrl );
     }
     if ( pos ) {
       articleNewString += articleString.mid( pos );
       articleString = articleNewString;
       articleNewString.clear();
     }
-
-
-    QUrl wikiUrl( url );
-    wikiUrl.setPath( "/" );
-
-    // Update any special index.php pages to be absolute
-    articleString.replace( QRegularExpression( R"(<a\shref="(/([\w]*/)*index.php\?))" ),
-                           QString( "<a href=\"%1\\1" ).arg( wikiUrl.toString() ) );
 
 
     // audio tag
@@ -628,26 +679,6 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
     articleString.replace( " src=\"//", " src=\"" + wikiUrl.scheme() + "://" );
     // fix src="/foo/bar/Baz.png"
     articleString.replace( "src=\"/", "src=\"" + wikiUrl.toString() );
-
-    // Remove the /wiki/ prefix from links
-    articleString.replace( "<a href=\"/wiki/", "<a href=\"" );
-
-    // In those strings, change any underscores to spaces
-    QRegularExpression rxLink( R"(<a\s+href="[^/:">#]+)" );
-    it = rxLink.globalMatch( articleString );
-    while ( it.hasNext() ) {
-      QRegularExpressionMatch match = it.next();
-      for ( int i = match.capturedStart() + 9; i < match.capturedEnd(); i++ ) {
-        if ( articleString.at( i ) == QChar( '_' ) ) {
-          articleString[ i ] = ' ';
-        }
-      }
-    }
-
-    // fix file: url
-    articleString.replace(
-      QRegularExpression( R"(<a\s+href="([^:/"]*file%3A[^/"]+"))", QRegularExpression::CaseInsensitiveOption ),
-      QString( "<a href=\"%1/index.php?title=\\1" ).arg( url ) );
 
     // Add url scheme to other urls like  "//xxx"
     articleString.replace( " href=\"//", " href=\"" + wikiUrl.scheme() + "://" );

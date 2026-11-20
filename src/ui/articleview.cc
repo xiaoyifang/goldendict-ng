@@ -1187,9 +1187,13 @@ void ArticleView::linkHovered( const QString & link )
       msg = tr( "Video: %1" ).arg( path );
     }
   }
-  else if ( url.scheme() == "gdlookup" || url.scheme().compare( "bword" ) == 0 ) {
-    QString def = url.path();
-    if ( def.startsWith( "/" ) ) {
+  else if ( url.scheme() == "gdlookup" || url.scheme().compare( "bword" ) == 0
+            || url.scheme().compare( "gdwiki" ) == 0 ) {
+    QString def = url.path( QUrl::FullyDecoded );
+    if ( def.startsWith( "/wiki/" ) ) {
+      def = def.mid( 6 );
+    }
+    else if ( def.startsWith( "/" ) ) {
       def = def.mid( 1 );
     }
 
@@ -1362,6 +1366,15 @@ void ArticleView::openLink( const QUrl & url, const QUrl & ref, const QString & 
 
       showDefinition( word, getGroup( ref ), newScrollTo, contexts );
     }
+  }
+  else if ( url.scheme() == "gdwiki" ) {
+    // Wiki article links are rewritten by the MediaWiki dictionary to this
+    // scheme so that the target title survives in the article HTML. Look the
+    // word up in the current group, like a gdlookup link would do.
+    if ( url.hasFragment() ) {
+      contexts[ "gdanchor" ] = url.fragment( QUrl::FullyDecoded );
+    }
+    showDefinition( word, getGroup( ref ), scrollTo, contexts );
   }
   else if ( url.scheme() == "bres" || url.scheme() == "gdau" || url.scheme() == "gdvideo"
             || Utils::Url::isAudioUrl( url ) ) {
@@ -1717,6 +1730,8 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
 
   QAction * followLink                = nullptr;
   QAction * followLinkExternal        = nullptr;
+  QAction * followLinkWebExternal     = nullptr;
+  QAction * openArticleWebExternal    = nullptr;
   QAction * followLinkNewTab          = nullptr;
   QAction * lookupSelection           = nullptr;
   QAction * lookupSelectionGr         = nullptr;
@@ -1738,6 +1753,35 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
 
   tryMangleWebsiteClickedUrl( targetUrl, contexts );
 
+  // Returns the web page URL of the given word when the dictionary providing
+  // the current article has one (e.g. MediaWiki-based wikis). Local
+  // dictionaries have no web page and return an empty URL.
+  const auto articleWebUrl = [ this ]( const QString & word ) -> QUrl {
+    if ( word.isEmpty() ) {
+      return {};
+    }
+
+    QStringList dictIds  = currentActiveDictIds;
+    const QString active = getActiveArticleId();
+    if ( !active.isEmpty() ) {
+      // Prefer the dictionary of the article currently in view.
+      dictIds.removeAll( active );
+      dictIds.prepend( active );
+    }
+
+    for ( const auto & dictId : dictIds ) {
+      auto dict = dictionaryGroup->getDictionaryById( dictId.toUtf8().data() );
+      if ( !dict ) {
+        continue;
+      }
+      const QString url = dict->getArticleWebUrl( word.toStdU32String() );
+      if ( !url.isEmpty() ) {
+        return QUrl( url );
+      }
+    }
+    return {};
+  };
+
   if ( !targetUrl.isEmpty() ) {
     if ( !Utils::isExternalLink( targetUrl ) ) {
       followLink = new QAction( tr( "Op&en Link" ), &menu );
@@ -1747,12 +1791,48 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
         followLinkNewTab = new QAction( QIcon( ":/icons/addtab.svg" ), tr( "Open Link in New &Tab" ), &menu );
         menu.addAction( followLinkNewTab );
       }
+
+      // Wiki links are rewritten to the internal gdwiki scheme so that they can
+      // be followed inside GoldenDict. Such a link keeps the id of the
+      // dictionary which produced it, which is enough to reconstruct its page.
+      const auto [ validScheme, linkedWord ] = Utils::Url::getQueryWord( targetUrl );
+      QUrl webUrl;
+      if ( validScheme ) {
+        if ( targetUrl.scheme() == "gdwiki" ) {
+          if ( auto dict = dictionaryGroup->getDictionaryById( targetUrl.host().toStdString() ) ) {
+            webUrl = QUrl( dict->getArticleWebUrl( linkedWord.toStdU32String() ) );
+          }
+        }
+        if ( webUrl.isEmpty() ) {
+          webUrl = articleWebUrl( linkedWord );
+        }
+        if ( !webUrl.isEmpty() && targetUrl.hasFragment() ) {
+          webUrl.setFragment( targetUrl.fragment( QUrl::FullyDecoded ), QUrl::DecodedMode );
+        }
+      }
+
+      if ( !webUrl.isEmpty() ) {
+        followLinkWebExternal = new QAction( tr( "Open Link in &External Browser" ), &menu );
+        followLinkWebExternal->setData( webUrl );
+        menu.addAction( followLinkWebExternal );
+      }
     }
 
     if ( Utils::isExternalLink( targetUrl ) ) {
       followLinkExternal = new QAction( tr( "Open Link in &External Browser" ), &menu );
       menu.addAction( followLinkExternal );
       menu.addAction( webview->pageAction( QWebEnginePage::CopyLinkToClipboard ) );
+    }
+  }
+  else {
+    // Right-clicking on the article text (not on a link): offer opening the
+    // page of the current article in the external browser.
+    const auto [ validScheme, shownWord ] = Utils::Url::getQueryWord( webview->url() );
+    const QUrl webUrl                     = validScheme ? articleWebUrl( shownWord ) : QUrl();
+    if ( !webUrl.isEmpty() ) {
+      openArticleWebExternal = new QAction( tr( "Open Article in External &Browser" ), &menu );
+      openArticleWebExternal->setData( webUrl );
+      menu.addAction( openArticleWebExternal );
     }
   }
 
@@ -1913,6 +1993,9 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
     }
     else if ( result == followLinkExternal ) {
       QDesktopServices::openUrl( targetUrl );
+    }
+    else if ( result == followLinkWebExternal || result == openArticleWebExternal ) {
+      QDesktopServices::openUrl( result->data().toUrl() );
     }
     else if ( result == lookupSelection ) {
       showDefinition( text, getGroup( webview->url() ), getCurrentArticle() );

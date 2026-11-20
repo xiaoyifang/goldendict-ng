@@ -296,7 +296,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   } );
 
   localSchemeHandler     = new LocalSchemeHandler( articleNetMgr, this );
-  QStringList htmlScheme = { "gdlookup", "bword", "entry", "gdinternal" };
+  // A scheme handler is required even for schemes that are always rejected in
+  // acceptNavigationRequest: without one QtWebEngine treats the scheme as an
+  // external protocol and the click never reaches the page handler.
+  QStringList htmlScheme = { "gdlookup", "gdwiki", "bword", "entry", "gdinternal" };
   for ( const auto & localScheme : htmlScheme ) {
     QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( localScheme.toLatin1(), localSchemeHandler );
   }

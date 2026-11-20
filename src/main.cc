@@ -291,7 +291,7 @@ int main( int argc, char ** argv )
 
   // Schemes that use the host/path authority form (scheme://host/path).
   const QStringList hostSchemes =
-    { "gdlookup", "gdau", "gico", "qrcx", "bres", "gdprg", "gdvideo", "gdtts", "gdinternal", "entry" };
+    { "gdlookup", "gdwiki", "gdau", "gico", "qrcx", "bres", "gdprg", "gdvideo", "gdtts", "gdinternal", "entry" };
 
   for ( const auto & localScheme : hostSchemes ) {
     QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
