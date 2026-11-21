@@ -292,8 +292,28 @@ bool GlobalBroadcaster::isDarkReaderModeEnabled() const
   return darkModeEnabled;
 }
 
+namespace
+{
+bool g_darkThemeOverride    = false;
+bool g_darkThemeOverridden  = false;
+} // namespace
+
+void GlobalBroadcaster::setSystemDarkThemeOverride( bool dark, bool valid )
+{
+  g_darkThemeOverride   = dark;
+  g_darkThemeOverridden = valid;
+}
+
+bool GlobalBroadcaster::hasSystemDarkThemeOverride()
+{
+  return g_darkThemeOverridden;
+}
+
 bool GlobalBroadcaster::isSystemDarkTheme()
 {
+  if ( g_darkThemeOverridden ) {
+    return g_darkThemeOverride;
+  }
 #if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
   #if defined( Q_OS_WINDOWS )
   // For all Windows versions (10 and 11), use registry check as it's more reliable
