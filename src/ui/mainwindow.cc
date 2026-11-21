@@ -1132,6 +1132,12 @@ void MainWindow::ensureScanPopup()
     return;
   }
 
+  // The popup cannot be built before the dictionary groups are loaded,
+  // otherwise its group list would be empty and the first show() could crash.
+  if ( GlobalBroadcaster::instance()->getGroups()->empty() ) {
+    return;
+  }
+
   // Scanpopup related
   scanPopup = new ScanPopup( nullptr, cfg, articleNetMgr, history );
 
@@ -4310,7 +4316,9 @@ bool MainWindow::handleStructuredMessage( const QString & message )
     }
   }
 
-  if ( QString action = params.value( "action" ); action == "translate" ) {
+  const QString action = params.value( "action" );
+
+  if ( action == "translate" ) {
     QString windowType = params.value( "window", "main" );
     QString word       = QUrl::fromPercentEncoding( params.value( "word" ).toLatin1() );
     QString group      = params.value( "group" );
@@ -4327,9 +4335,36 @@ bool MainWindow::handleStructuredMessage( const QString & message )
 
     // Show translation based on window type
     showTranslation( word, windowType, newTab );
+
+    return true;
   }
 
-  return true;
+  if ( action == "setGroup" ) {
+    setGroupByName( params.value( "group" ), true );
+    return true;
+  }
+
+  if ( action == "setPopupGroup" ) {
+    setGroupByName( params.value( "popupGroup" ), false );
+    return true;
+  }
+
+  if ( action == "togglePopup" ) {
+    enableScanningAction->trigger();
+    return true;
+  }
+
+  if ( action == "show" ) {
+    if ( params.value( "window", "main" ) == "popup" ) {
+      ensureScanPopup();
+    }
+    else {
+      toggleMainWindow( true );
+    }
+    return true;
+  }
+
+  return false;
 }
 
 
@@ -4337,11 +4372,6 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
 {
   if ( message == "bringToFront" ) {
     toggleMainWindow( true );
-    return;
-  }
-
-  if ( message == "toggleScanPopup" ) {
-    enableScanningAction->trigger();
     return;
   }
 

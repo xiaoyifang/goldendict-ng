@@ -391,19 +391,19 @@ int main( int argc, char ** argv )
       wasMessage = true;
     }
     else if ( gdcl.needSetGroup() ) {
-      app.sendMessage( QString( "setGroup: " ) + gdcl.getGroupName() );
+      app.sendMessage( QString( "action:setGroup|group:" ) + gdcl.getGroupName() );
       wasMessage = true;
     }
     else if ( gdcl.needSetPopupGroup() ) {
-      app.sendMessage( QString( "setPopupGroup: " ) + gdcl.getPopupGroupName() );
+      app.sendMessage( QString( "action:setPopupGroup|popupGroup:" ) + gdcl.getPopupGroupName() );
       wasMessage = true;
     }
     else if ( gdcl.needTogglePopup() ) {
-      app.sendMessage( QStringLiteral( "toggleScanPopup" ) );
+      app.sendMessage( QStringLiteral( "action:togglePopup" ) );
       wasMessage = true;
     }
     else if ( !gdcl.window.isEmpty() ) {
-      app.sendMessage( QString( "window:" ) + gdcl.window );
+      app.sendMessage( QString( "action:show|window:" ) + gdcl.window );
       wasMessage = true;
     }
 

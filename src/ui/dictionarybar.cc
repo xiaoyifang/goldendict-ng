@@ -244,9 +244,10 @@ void DictionaryBar::updateToGroup( const Instances::Group * grp,
                                    Config::Class & cfg,
                                    bool isPopup )
 {
-  Q_ASSERT( grp != nullptr ); // should never occur
-  if ( !this->toggleViewAction()->isChecked() ) {
-    return; // It's not enabled, therefore hidden -- don't waste time
+  if ( !grp || !this->toggleViewAction()->isChecked() ) {
+    // The group may be missing while dictionary groups are still loading,
+    // or the bar is not enabled, therefore hidden -- don't waste time
+    return;
   }
 
   setMutedDictionaries( nullptr );
