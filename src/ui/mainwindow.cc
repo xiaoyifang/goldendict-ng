@@ -1132,6 +1132,12 @@ void MainWindow::ensureScanPopup()
     return;
   }
 
+  // The popup cannot be built before the dictionary groups are loaded,
+  // otherwise its group list would be empty and the first show() could crash.
+  if ( GlobalBroadcaster::instance()->getGroups()->empty() ) {
+    return;
+  }
+
   // Scanpopup related
   scanPopup = new ScanPopup( nullptr, cfg, articleNetMgr, history );
 
@@ -4327,9 +4333,11 @@ bool MainWindow::handleStructuredMessage( const QString & message )
 
     // Show translation based on window type
     showTranslation( word, windowType, newTab );
+
+    return true;
   }
 
-  return true;
+  return false;
 }
 
 
@@ -4337,11 +4345,6 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
 {
   if ( message == "bringToFront" ) {
     toggleMainWindow( true );
-    return;
-  }
-
-  if ( message == "toggleScanPopup" ) {
-    enableScanningAction->trigger();
     return;
   }
 
