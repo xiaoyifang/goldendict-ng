@@ -3134,7 +3134,9 @@ void MainWindow::rememberNormalSize()
 
 void MainWindow::commitNormalSize()
 {
-  if ( !handlingScreenChange && !isMinimized() && !isMaximized() && !isFullScreen() && !pendingNormalSize.isEmpty() ) {
+  // The pending size is only recorded in normal state, so it stays valid even
+  // if the timer fires after the window has been minimized.
+  if ( !handlingScreenChange && !isMaximized() && !isFullScreen() && !pendingNormalSize.isEmpty() ) {
     lastStableNormalSize = pendingNormalSize;
   }
   pendingNormalSize = QSize();

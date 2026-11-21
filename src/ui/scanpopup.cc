@@ -1076,7 +1076,9 @@ void ScanPopup::rememberNormalSize()
 
 void ScanPopup::commitNormalSize()
 {
-  if ( !handlingScreenChange && !isMinimized() && !isMaximized() && !isFullScreen() && !pendingNormalSize.isEmpty() ) {
+  // The pending size is only recorded in normal state, so it stays valid even
+  // if the timer fires after the popup has been minimized.
+  if ( !handlingScreenChange && !isMaximized() && !isFullScreen() && !pendingNormalSize.isEmpty() ) {
     lastStableNormalSize = pendingNormalSize;
   }
   pendingNormalSize = QSize();
@@ -1095,12 +1097,20 @@ void ScanPopup::restoreNormalSizeAfterScreenChange()
   normalSizeTimer.stop();
   pendingNormalSize = QSize();
 
+  if ( isMinimized() || isMaximized() || isFullScreen() ) {
+    // Defer the width cap and size restoration until the popup is back in
+    // normal state; applying the cap now could resize the popup and clear
+    // its maximized/full-screen state.
+    handlingScreenChange = false;
+    return;
+  }
+
   QScreen * screen = windowHandle() ? windowHandle()->screen() : QGuiApplication::primaryScreen();
   if ( screen ) {
     setMaximumWidth( qMax( 1, screen->availableGeometry().width() * 4 / 5 ) );
   }
 
-  if ( !isMinimized() && !isMaximized() && !isFullScreen() && !lastStableNormalSize.isEmpty() ) {
+  if ( !lastStableNormalSize.isEmpty() ) {
     QSize targetSize = lastStableNormalSize;
     if ( screen ) {
       const QSize availableSize = screen->availableGeometry().size();
@@ -1108,6 +1118,18 @@ void ScanPopup::restoreNormalSizeAfterScreenChange()
     }
     if ( !targetSize.isEmpty() && targetSize != size() ) {
       resize( targetSize );
+
+      // The popup may have been placed using its pre-restore size; clamp the
+      // position so the restored size stays fully visible on the screen.
+      if ( screen && isVisible() ) {
+        const QRect available = screen->availableGeometry();
+        const QRect frame     = frameGeometry();
+        const QPoint offset   = geometry().topLeft() - frame.topLeft();
+        QPoint topLeft        = frame.topLeft();
+        topLeft.setX( qBound( available.left(), topLeft.x(), available.right() - frame.width() + 1 ) );
+        topLeft.setY( qBound( available.top(), topLeft.y(), available.bottom() - frame.height() + 1 ) );
+        move( topLeft + offset );
+      }
     }
   }
 
