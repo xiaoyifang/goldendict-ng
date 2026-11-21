@@ -303,6 +303,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 %2</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>외부 브라우저에서 문서 열기(&amp;B)</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>

@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 z %2 zápasov</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Otvoriť článok v externom a prehliadači</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>

@@ -289,6 +289,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 з %2 супадзенняў</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Адкрыць артыкул у вонкавым &amp;браўзеры</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>

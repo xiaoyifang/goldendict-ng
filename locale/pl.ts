@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 z %2 dopasowań</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Otwórz artykuł w zewnętrznej &amp;przeglądarce</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>

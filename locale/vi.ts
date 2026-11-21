@@ -289,6 +289,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 trên %2 trận đấu</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Mở bài viết trong trình duyệt &amp;bên ngoài</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>

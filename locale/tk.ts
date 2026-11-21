@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%2 oýundan %1</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Makalany Daşky &amp;Brauzerde Aç</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>

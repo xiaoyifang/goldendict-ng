@@ -290,6 +290,10 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
       <source>%1 of %2 matches</source>
       <translation>%1 ukat %2 uñt’ayata</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Qillqata Jawt'a &amp;Browser-na Jist'araña</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>

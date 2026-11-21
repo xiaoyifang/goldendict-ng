@@ -303,6 +303,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 з %2 збігів</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Відкрити статтю у &amp;зовнішньому браузері</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>

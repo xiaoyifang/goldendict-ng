@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 van %2 wedstrijden</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Open artikel in Extern &amp;Browser</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>

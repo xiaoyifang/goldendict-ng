@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 of %2 matches</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Aperter li articul in extern &amp;Navigator</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>

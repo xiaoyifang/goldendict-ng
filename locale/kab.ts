@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 of %2 matches</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Ldi aḍris deg U&amp;myazan uffiɣ</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>

@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 аз %2 бозӣ</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Мақоларо дар &amp;браузери беруна кушоед</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>

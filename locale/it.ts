@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 di %2 corrispondenze</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Apri l'articolo nel &amp;browser esterno</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>

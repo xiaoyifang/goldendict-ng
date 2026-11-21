@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 nga %2 ndeshje</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Hap artikullin në &amp;shfletues të jashtëm</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>

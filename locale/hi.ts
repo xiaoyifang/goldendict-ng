@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%2 मैचों में से %1</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>लेख को बाहरी ब्राउज़र में खोलें</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>

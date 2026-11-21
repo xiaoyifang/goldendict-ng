@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 de %2 tupachiykuna</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>K'ichay artikuluta hawapi &amp;Wamp'uqpi</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>

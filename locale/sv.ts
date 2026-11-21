@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 av %2 träffar</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Öppna artikel i extern &amp;webbläsare</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>

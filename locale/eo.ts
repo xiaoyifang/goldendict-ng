@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 el %2 matĉoj</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Malfermi Artikolon en ekstera &amp;Retumilo</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>

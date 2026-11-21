@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 / %2 ottelua</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Avaa artikkeli ulkoisessa &amp;selaimessa</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>

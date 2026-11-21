@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 من %2 تطابق</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>افتح المقالة في &amp;متصفح خارجي</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
