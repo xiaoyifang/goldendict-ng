@@ -24,9 +24,8 @@ jobs:
     strategy:
       matrix:
         os: [macos-15,macos-15-intel]
-        # Qt >= 6.11.3 is required to fix the tray icon crash on macOS 27
-        # (qtbase 65020b43cd: [NSEvent clickCount] assertion). 6.8/6.10 lack the fix.
-        qt_ver: [ 6.11.3 ]
+        # Qt 6.12 LTS (also fixes the tray icon crash on macOS 27 that 6.8/6.10 lack)
+        qt_ver: [ 6.12.0 ]
     steps:
       - uses: actions/checkout@v6
         with:
@@ -56,11 +55,12 @@ jobs:
         uses: hendrikmuhs/ccache-action@v1.2
         with:
           key: ${{ runner.os }}-${{ runner.arch }}-${{ matrix.qt_ver }}
-      - uses: jurplel/install-qt-action@v4.3.1
+      - uses: jurplel/install-qt-action@v4.5.0
         with:
           version: ${{ matrix.qt_ver }}
           arch: clang_64
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
+          aqtsource: git+https://github.com/miurahr/aqtinstall.git@refs/pull/1048/head
       - name: Build
         run: |
           mkdir build_dir
@@ -113,17 +113,18 @@ jobs:
     strategy:
       matrix:
         os: [windows-2022]
-        qt_ver: [ 6.8.3, 6.10.3 ]
+        qt_ver: [ 6.12.0 ]
         arch: [ win64_msvc2022_64 ]
         include:
           - arch: win64_msvc2022_64
             vs_arch: amd64
     steps:
-      - uses: jurplel/install-qt-action@v4.3.1
+      - uses: jurplel/install-qt-action@v4.5.0
         with:
           version: ${{ matrix.qt_ver }}
           arch: ${{ matrix.arch }}
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
+          aqtsource: git+https://github.com/miurahr/aqtinstall.git@refs/pull/1048/head
       - uses: actions/checkout@v6
         with:
           submodules: true
