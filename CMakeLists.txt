@@ -1,6 +1,14 @@
 cmake_minimum_required(VERSION 3.25) # Debian 11 Ubuntu 24.04 Fedora 36
 
-option(WITH_FFMPEG_PLAYER "Enable support for FFMPEG player. Note: This is useless for Qt >= 6.8" ON)
+# Only Linux/macOS provide the ffmpeg dev packages (see cmake/Deps_Linux.cmake and
+# cmake/Deps_macOS.cmake). Windows has no ffmpeg dependency, so keep the player off by
+# default there; pass -DWITH_FFMPEG_PLAYER=ON to override.
+if (WIN32)
+    set(_with_ffmpeg_player_default OFF)
+else ()
+    set(_with_ffmpeg_player_default ON)
+endif ()
+option(WITH_FFMPEG_PLAYER "Enable support for FFMPEG player. Note: This is useless for Qt >= 6.8" ${_with_ffmpeg_player_default})
 option(WITH_QT_MULTIMEDIA "Enable support for Qt Multimedia player" ON)
 option(WITH_EPWING_SUPPORT "Enable epwing support" ON)
 option(WITH_ZIM "enable zim support" ON)
