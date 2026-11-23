@@ -3065,18 +3065,6 @@ legyetek az utolsók.</translation>
       <translation>Megjelenés</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Kapcsold be az interfész betűtípust</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Betűtípus</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Betűméret</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3610,6 +3598,18 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     <message>
       <source>Sentence:</source>
       <translation>Mondat:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Felület betűtípusa</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Egyedi család</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Egyedi méret</translation>
     </message>
   </context>
   <context>
