@@ -3064,18 +3064,6 @@ essere le ultime.</translation>
       <translation>Aspetto</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Abilita Carattere Dell'Interfaccia</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Lingua dell'interfaccia</translation>
     </message>
@@ -3609,6 +3597,18 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <source>Sentence:</source>
       <translation>Frase:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Carattere Dell'Interfaccia</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Famiglia personalizzata</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Dimensione personalizzata</translation>
     </message>
   </context>
   <context>
