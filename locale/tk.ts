@@ -3064,18 +3064,6 @@ iň soňkusy bol.</translation>
       <translation>Daş görnüşi</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Interfeýs kalamyny etkinleştir</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Kalam ululygy</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3610,6 +3598,18 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>Sentence:</source>
       <translation>Sözlem:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Interfeýs şrifti</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Gümrük maşgalasy</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Ýörite ululyklar</translation>
     </message>
   </context>
   <context>
