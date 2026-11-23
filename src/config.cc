@@ -497,6 +497,11 @@ Class load()
 
   Class c;
 
+  int configVersion = Config::CONFIG_VERSION_LEGACY;
+  if ( root.isElement() && !root.toElement().attribute( "version" ).isEmpty() ) {
+    configVersion = root.toElement().attribute( "version" ).toInt();
+  }
+
   // Put the hard-code portable directory to the first.
   // To allow additional directories, this path should not be saved.
   if ( isPortableVersion() ) {
@@ -773,11 +778,36 @@ Class load()
       c.preferences.interfaceFontSize = fontSize.toElement().text().toInt();
     }
     else {
-      c.preferences.interfaceFontSize = Config::DEFAULT_FONT_SIZE;
+      // 0 means "not set"; the actual size falls back to the system default
+      // when enableInterfaceFontSize is unchecked, or to the spin box min (8)
+      // when the user enables the toggle later.
+      c.preferences.interfaceFontSize = 0;
     }
-    auto enableInterfaceFont = preferences.namedItem( "enableInterfaceFont" );
-    if ( !enableInterfaceFont.isNull() ) {
-      c.preferences.enableInterfaceFont = enableInterfaceFont.toElement().text() == "1";
+
+    // v1: interfaceFontSize was stored as physical pixels; v2+ use Qt logical
+    // point size which scales with the system DPI. Convert on load so the
+    // visible size at 96 DPI is preserved and the font now scales correctly.
+    // Some legacy values (e.g. 8px → 6pt) fall below the supported range, so
+    // clamp to the minimum accepted at application time.
+    if ( configVersion <= Config::CONFIG_VERSION_LEGACY && c.preferences.interfaceFontSize > 0 ) {
+      c.preferences.interfaceFontSize = qBound( 8, qRound( c.preferences.interfaceFontSize * 72.0 / 96.0 ), 32 );
+    }
+
+    // v1: single enableInterfaceFont toggle controlled both family and size;
+    // v2+: enableInterfaceFontFamily and enableInterfaceFontSize are independent.
+    auto enableFamily = preferences.namedItem( "enableInterfaceFontFamily" );
+    auto enableSize   = preferences.namedItem( "enableInterfaceFontSize" );
+    if ( !enableFamily.isNull() && !enableSize.isNull() ) {
+      c.preferences.enableInterfaceFontFamily = enableFamily.toElement().text() == "1";
+      c.preferences.enableInterfaceFontSize   = enableSize.toElement().text() == "1";
+    }
+    else {
+      // Migrate v1 legacy: the old single toggle enables both family and size.
+      auto legacy                             = preferences.namedItem( "enableInterfaceFont" );
+      const bool both                         = !legacy.isNull() ? legacy.toElement().text() == "1" : false;
+      c.preferences.enableInterfaceFontFamily = both;
+      c.preferences.enableInterfaceFontSize   = both;
+      c.preferences.enableInterfaceFont       = both; // keep for completeness
     }
 
     c.preferences.interfaceStyle = preferences.namedItem( "interfaceStyle" ).toElement().text();
@@ -1302,6 +1332,12 @@ void save( const Class & c )
   QDomElement root = dd.createElement( "config" );
   dd.appendChild( root );
 
+  // Persist the config format version so older configs can be migrated when
+  // a persisted value changes semantics.
+  QDomAttr versionAttr = dd.createAttribute( "version" );
+  versionAttr.setValue( QString::number( Config::CONFIG_VERSION ) );
+  root.setAttributeNode( versionAttr );
+
   {
     QDomElement paths = dd.createElement( "paths" );
     root.appendChild( paths );
@@ -1716,8 +1752,12 @@ void save( const Class & c )
     opt.appendChild( dd.createTextNode( QString::number( c.preferences.interfaceFontSize ) ) );
     preferences.appendChild( opt );
 
-    opt = dd.createElement( "enableInterfaceFont" );
-    opt.appendChild( dd.createTextNode( c.preferences.enableInterfaceFont ? "1" : "0" ) );
+    opt = dd.createElement( "enableInterfaceFontFamily" );
+    opt.appendChild( dd.createTextNode( c.preferences.enableInterfaceFontFamily ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "enableInterfaceFontSize" );
+    opt.appendChild( dd.createTextNode( c.preferences.enableInterfaceFontSize ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt             = dd.createElement( "customFonts" );

@@ -50,9 +50,13 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     previewInterfaceFont( ui.systemFont->currentText(), size );
   } );
 
-  connect( ui.enableInterfaceFont, &QGroupBox::toggled, this, [ this ]( bool on ) {
+  auto refreshFontPreview = [ this ]() {
+    ui.systemFont->setEnabled( ui.enableInterfaceFontFamily->isChecked() );
+    ui.interfaceFontSize->setEnabled( ui.enableInterfaceFontSize->isChecked() );
     previewInterfaceFont( ui.systemFont->currentText(), ui.interfaceFontSize->value() );
-  } );
+  };
+  connect( ui.enableInterfaceFontFamily, &QCheckBox::stateChanged, this, refreshFontPreview );
+  connect( ui.enableInterfaceFontSize, &QCheckBox::stateChanged, this, refreshFontPreview );
 
   previewInterfaceFont( ui.systemFont->currentText(), ui.interfaceFontSize->value() );
 
@@ -86,13 +90,28 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   if ( !p.interfaceFont.isEmpty() ) {
     ui.systemFont->setCurrentText( p.interfaceFont );
   }
-  ui.enableInterfaceFont->setChecked( p.enableInterfaceFont );
+  ui.enableInterfaceFontFamily->setChecked( p.enableInterfaceFontFamily );
+  ui.enableInterfaceFontSize->setChecked( p.enableInterfaceFontSize );
+  ui.systemFont->setEnabled( p.enableInterfaceFontFamily );
+  ui.interfaceFontSize->setEnabled( p.enableInterfaceFontSize );
 
-  if ( p.interfaceFontSize > 0 ) {
+  // Resolve the OS default font size. QFontDatabase::systemFont() is the
+  // authoritative source — QApplication::font() may already have been
+  // polluted by a previous setFont() call. pointSize() can return -1 on
+  // platforms where the system font is specified in pixels, so fall back
+  // to converting pixelSize() using Qt's logical 96-DPI assumption.
+  const QFont systemFont = QFontDatabase::systemFont( QFontDatabase::GeneralFont );
+  int systemPointSize    = systemFont.pointSize();
+  if ( systemPointSize <= 0 ) {
+    const int px    = systemFont.pixelSize();
+    systemPointSize = px > 0 ? qRound( px * 72.0 / 96.0 ) : 9; // 9pt ≈ Windows Qt default
+  }
+
+  if ( p.enableInterfaceFontSize && p.interfaceFontSize > 0 ) {
     ui.interfaceFontSize->setValue( p.interfaceFontSize );
   }
   else {
-    ui.interfaceFontSize->setValue( QApplication::font().pixelSize() );
+    ui.interfaceFontSize->setValue( systemPointSize );
   }
 
 
@@ -439,16 +458,30 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 }
 void Preferences::previewInterfaceFont( QString family, int size )
 {
-  auto fontName = family;
-  auto fontSize = size;
-  if ( !ui.enableInterfaceFont->isChecked() ) {
-    QFont defaultFont = QFontDatabase::systemFont( QFontDatabase::SystemFont::GeneralFont );
-    fontName          = defaultFont.family();
-    fontSize          = defaultFont.pixelSize() > -1 ? defaultFont.pixelSize() : Config::DEFAULT_FONT_SIZE;
+  // Start from the OS general font (systemFont, not QApplication::font(),
+  // because the latter is polluted after main.cc applied a custom font).
+  // Then override each attribute only when its own toggle is enabled.
+  const QFont systemFont = QFontDatabase::systemFont( QFontDatabase::GeneralFont );
+  bool sizeResolved      = systemFont.pointSize() > 0;
+  int systemSize         = systemFont.pointSize();
+  if ( !sizeResolved && systemFont.pixelSize() > 0 ) {
+    systemSize   = qRound( systemFont.pixelSize() * 72.0 / 96.0 );
+    sizeResolved = true;
   }
-  QFont f = QApplication::font();
-  f.setFamily( fontName );
-  f.setPixelSize( fontSize );
+  if ( !sizeResolved ) {
+    systemSize = 9; // final fallback, see loading path above
+  }
+
+  QFont f( systemFont );
+  if ( ui.enableInterfaceFontFamily->isChecked() && !family.isEmpty() ) {
+    f.setFamily( family );
+  }
+  if ( ui.enableInterfaceFontSize->isChecked() && size > 0 ) {
+    f.setPointSize( size );
+  }
+  else {
+    f.setPointSize( systemSize );
+  }
   this->ui.previewFont->setFont( f );
 }
 
@@ -469,8 +502,9 @@ Config::Preferences Preferences::getPreferences()
   p.interfaceLanguage = ui.interfaceLanguage->itemData( ui.interfaceLanguage->currentIndex() ).toString();
 
   p.interfaceFont       = ui.systemFont->currentText();
-  p.interfaceFontSize   = ui.interfaceFontSize->value();
-  p.enableInterfaceFont = ui.enableInterfaceFont->isChecked();
+  p.interfaceFontSize         = ui.enableInterfaceFontSize->isChecked() ? ui.interfaceFontSize->value() : 0;
+  p.enableInterfaceFontFamily = ui.enableInterfaceFontFamily->isChecked();
+  p.enableInterfaceFontSize   = ui.enableInterfaceFontSize->isChecked();
 
   Config::CustomFonts c;
   c.standard    = ui.font_standard->currentText();

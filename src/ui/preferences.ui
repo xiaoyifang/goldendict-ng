@@ -311,20 +311,17 @@ be the last ones.</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_17">
             <item>
-             <widget class="QGroupBox" name="enableInterfaceFont">
+             <widget class="QGroupBox" name="interfaceFontGroup">
               <property name="title">
-               <string>Enable Interface Font</string>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
+               <string>Interface Font</string>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_23">
                <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_17">
                  <item>
-                  <widget class="QLabel" name="label_29">
+                  <widget class="QCheckBox" name="enableInterfaceFontFamily">
                    <property name="text">
-                    <string>Font</string>
+                    <string>Custom family</string>
                    </property>
                   </widget>
                  </item>
@@ -336,9 +333,9 @@ be the last ones.</string>
                <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_19">
                  <item>
-                  <widget class="QLabel" name="label_30">
+                  <widget class="QCheckBox" name="enableInterfaceFontSize">
                    <property name="text">
-                    <string>Font Size</string>
+                    <string>Custom size</string>
                    </property>
                   </widget>
                  </item>
