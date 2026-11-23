@@ -3063,18 +3063,6 @@ Son olanlar ol.</translation>
       <translation>Dış görünüş</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Arayüz Fontunu Etkinleştir</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Boyutu</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3607,6 +3595,18 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <message>
       <source>Sentence:</source>
       <translation>Cümle:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Arayüz Yazı Tipi</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Özel aile</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Özel boyut</translation>
     </message>
   </context>
   <context>
