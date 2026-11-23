@@ -3612,11 +3612,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Пользовательское семейство шрифтов</translation>
+      <translation>Семейство заказов</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Пользовательский размер шрифта</translation>
+      <translation>Индивидуальный размер</translation>
     </message>
   </context>
   <context>
