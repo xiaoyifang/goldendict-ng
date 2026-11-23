@@ -3610,11 +3610,11 @@ dos dicionários Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Família de fontes personalizada</translation>
+      <translation>Família personalizada</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Tamanho da fonte personalizado</translation>
+      <translation>Tamanho personalizado</translation>
     </message>
   </context>
   <context>
