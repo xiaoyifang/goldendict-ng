@@ -3602,11 +3602,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>خانواده فونت سفارشی</translation>
+      <translation>خانواده سفارشی</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>اندازه فونت سفارشی</translation>
+      <translation>اندازه سفارشی</translation>
     </message>
   </context>
   <context>
