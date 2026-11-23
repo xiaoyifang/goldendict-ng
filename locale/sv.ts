@@ -3064,18 +3064,6 @@ vara de sista.</translation>
       <translation>Utseende</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Aktivera typsnitt för gränssnitt</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Gränssnittets språk</translation>
     </message>
@@ -3612,6 +3600,18 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Sentence:</source>
       <translation>Mening:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Gränssnittets teckensnitt</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Custom family</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Anpassad storlek</translation>
     </message>
   </context>
   <context>
