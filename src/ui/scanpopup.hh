@@ -22,6 +22,7 @@
 #endif
 
 class QMenu;
+class WindowGeometryKeeper;
 
 /// This is a popup dialog to show translations when clipboard scanning mode
 /// is enabled.
@@ -161,11 +162,7 @@ private:
   QPointF startPos; // For window moving
   QByteArray pinnedGeometry;
 
-  QSize lastStableNormalSize;
-  QSize pendingNormalSize;
-  QTimer normalSizeTimer;
-  QTimer screenChangeTimer;
-  bool handlingScreenChange = false;
+  WindowGeometryKeeper * geometryKeeper = nullptr;
 
   QTimer hideTimer; // When mouse leaves the window, a grace period is
                     // given for it to return back. If it doesn't before
@@ -195,14 +192,6 @@ private:
   virtual void showEvent( QShowEvent * );
   virtual void closeEvent( QCloseEvent * );
   virtual void moveEvent( QMoveEvent * );
-  virtual void resizeEvent( QResizeEvent * );
-  virtual void changeEvent( QEvent * );
-
-  void initializeScreenGeometryHandling();
-  void rememberNormalSize();
-  void commitNormalSize();
-  void scheduleScreenGeometryRestore();
-  void restoreNormalSizeAfterScreenChange();
 
   /// Returns inputWord, chopped with appended ... if it's too long/
   QString elideInputWord() const;

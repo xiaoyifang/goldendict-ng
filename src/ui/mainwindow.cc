@@ -6,6 +6,7 @@
 #endif
 
 #include "mainwindow.hh"
+#include "windowgeometrykeeper.hh"
 #include "keyboardstate.hh"
 #include "logger.hh"
 #include <QWebEngineProfile>
@@ -87,8 +88,6 @@
 #endif
 
 #include <QGuiApplication>
-#include <QWindow>
-#include <QScreen>
 #include <QWebEngineSettings>
 #include <QProxyStyle>
 #include <QTabBar>
@@ -969,11 +968,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     qInfo() << "Restore main window geometry, bytes:" << cfg.mainWindowGeometry.size() << "ok:" << ok;
   }
 
-  lastStableNormalSize = normalGeometry().size();
-  if ( lastStableNormalSize.isEmpty() ) {
-    lastStableNormalSize = size();
-  }
-  initializeScreenGeometryHandling();
+  geometryKeeper = new WindowGeometryKeeper( this );
 
   for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
     qInfo() << "Restored dock:" << dock->objectName() << "visible:" << dock->isVisible() << "size:" << dock->size();
@@ -1552,10 +1547,7 @@ void MainWindow::commitData()
 
 
   try {
-    if ( handlingScreenChange ) {
-      screenChangeTimer.stop();
-      restoreNormalSizeAfterScreenChange();
-    }
+    geometryKeeper->prepareForSave();
 
     // Save MainWindow state and geometry
     cfg.mainWindowState    = saveState();
@@ -2003,15 +1995,6 @@ void MainWindow::closeEvent( QCloseEvent * ev )
 void MainWindow::showEvent( QShowEvent * event )
 {
   QMainWindow::showEvent( event );
-
-  if ( windowHandle() ) {
-    connect( windowHandle(),
-             &QWindow::screenChanged,
-             this,
-             &MainWindow::scheduleScreenGeometryRestore,
-             Qt::UniqueConnection );
-  }
-  scheduleScreenGeometryRestore();
 
   // Dock sizes can only be restored once the window is actually visible, which
   // may happen long after the constructor when the app starts minimized to tray.
@@ -3093,89 +3076,9 @@ void MainWindow::updateSearchModeAction()
   }
 }
 
-void MainWindow::initializeScreenGeometryHandling()
-{
-  normalSizeTimer.setSingleShot( true );
-  normalSizeTimer.setInterval( 200 );
-  screenChangeTimer.setSingleShot( true );
-  screenChangeTimer.setInterval( 150 );
-
-  connect( &normalSizeTimer, &QTimer::timeout, this, &MainWindow::commitNormalSize );
-  connect( &screenChangeTimer, &QTimer::timeout, this, &MainWindow::restoreNormalSizeAfterScreenChange );
-
-  connect( qApp, &QGuiApplication::screenAdded, this, [ this ]( QScreen * screen ) {
-    connect( screen,
-             &QScreen::availableGeometryChanged,
-             this,
-             &MainWindow::scheduleScreenGeometryRestore,
-             Qt::UniqueConnection );
-    scheduleScreenGeometryRestore();
-  } );
-  connect( qApp, &QGuiApplication::screenRemoved, this, &MainWindow::scheduleScreenGeometryRestore );
-
-  for ( auto * screen : QGuiApplication::screens() ) {
-    connect( screen,
-             &QScreen::availableGeometryChanged,
-             this,
-             &MainWindow::scheduleScreenGeometryRestore,
-             Qt::UniqueConnection );
-  }
-}
-
-void MainWindow::rememberNormalSize()
-{
-  if ( handlingScreenChange || isMinimized() || isMaximized() || isFullScreen() || size().isEmpty() ) {
-    return;
-  }
-
-  pendingNormalSize = size();
-  normalSizeTimer.start();
-}
-
-void MainWindow::commitNormalSize()
-{
-  // The pending size is only recorded in normal state, so it stays valid even
-  // if the timer fires after the window has been minimized.
-  if ( !handlingScreenChange && !isMaximized() && !isFullScreen() && !pendingNormalSize.isEmpty() ) {
-    lastStableNormalSize = pendingNormalSize;
-  }
-  pendingNormalSize = QSize();
-}
-
-void MainWindow::scheduleScreenGeometryRestore()
-{
-  normalSizeTimer.stop();
-  pendingNormalSize    = QSize();
-  handlingScreenChange = true;
-  screenChangeTimer.start();
-}
-
-void MainWindow::restoreNormalSizeAfterScreenChange()
-{
-  normalSizeTimer.stop();
-  pendingNormalSize = QSize();
-
-  if ( !isMinimized() && !isMaximized() && !isFullScreen() && !lastStableNormalSize.isEmpty() ) {
-    QSize targetSize = lastStableNormalSize;
-    QScreen * screen = windowHandle() ? windowHandle()->screen() : QGuiApplication::primaryScreen();
-    if ( screen ) {
-      targetSize = targetSize.boundedTo( screen->availableGeometry().size() );
-    }
-    if ( !targetSize.isEmpty() && targetSize != size() ) {
-      resize( targetSize );
-    }
-  }
-
-  handlingScreenChange = false;
-}
-
 void MainWindow::changeEvent( QEvent * event )
 {
   QMainWindow::changeEvent( event );
-
-  if ( event->type() == QEvent::WindowStateChange && !isMinimized() && !isMaximized() && !isFullScreen() ) {
-    scheduleScreenGeometryRestore();
-  }
 
   if ( event->type() == QEvent::ApplicationPaletteChange || event->type() == QEvent::PaletteChange ) {
     updateSearchModeAction();
@@ -3354,10 +3257,6 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
         return true;
       }
     }
-  }
-
-  if ( obj == this && ev->type() == QEvent::Resize ) {
-    rememberNormalSize();
   }
 
   // when the main window is moved or resized, hide the word list suggestions

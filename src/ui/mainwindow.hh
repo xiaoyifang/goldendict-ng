@@ -41,6 +41,8 @@
 using std::string;
 using std::vector;
 
+class WindowGeometryKeeper;
+
 class MainWindow: public QMainWindow
 {
   Q_OBJECT
@@ -184,11 +186,7 @@ private:
   // Whether the saved dock widget sizes have already been applied.
   bool dockSizesApplied = false;
 
-  QSize lastStableNormalSize;
-  QSize pendingNormalSize;
-  QTimer normalSizeTimer;
-  QTimer screenChangeTimer;
-  bool handlingScreenChange = false;
+  WindowGeometryKeeper * geometryKeeper = nullptr;
 
   // Names of the dock widgets whose saved sizes were restored in this session.
   // The configured values of the others must be kept as is on exit.
@@ -266,12 +264,6 @@ private:
   QSize dockGroupSize( QDockWidget * dock ) const;
 
   bool eventFilter( QObject *, QEvent * ) override;
-
-  void initializeScreenGeometryHandling();
-  void rememberNormalSize();
-  void commitNormalSize();
-  void scheduleScreenGeometryRestore();
-  void restoreNormalSizeAfterScreenChange();
 
   /// Redraws palette-dependent decorations (the search-mode icon) on theme changes.
   void changeEvent( QEvent * ) override;
