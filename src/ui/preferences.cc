@@ -92,7 +92,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     ui.interfaceFontSize->setValue( p.interfaceFontSize );
   }
   else {
-    ui.interfaceFontSize->setValue( QApplication::font().pixelSize() );
+    ui.interfaceFontSize->setValue( QApplication::font().pointSize() );
   }
 
 
@@ -444,11 +444,11 @@ void Preferences::previewInterfaceFont( QString family, int size )
   if ( !ui.enableInterfaceFont->isChecked() ) {
     QFont defaultFont = QFontDatabase::systemFont( QFontDatabase::SystemFont::GeneralFont );
     fontName          = defaultFont.family();
-    fontSize          = defaultFont.pixelSize() > -1 ? defaultFont.pixelSize() : Config::DEFAULT_FONT_SIZE;
+    fontSize          = defaultFont.pointSize() > -1 ? defaultFont.pointSize() : Config::DEFAULT_FONT_SIZE;
   }
   QFont f = QApplication::font();
   f.setFamily( fontName );
-  f.setPixelSize( fontSize );
+  f.setPointSize( fontSize );
   this->ui.previewFont->setFont( f );
 }
 

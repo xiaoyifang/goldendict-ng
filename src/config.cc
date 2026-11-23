@@ -497,6 +497,11 @@ Class load()
 
   Class c;
 
+  int configVersion = Config::CONFIG_VERSION_LEGACY;
+  if ( root.isElement() && !root.toElement().attribute( "version" ).isEmpty() ) {
+    configVersion = root.toElement().attribute( "version" ).toInt();
+  }
+
   // Put the hard-code portable directory to the first.
   // To allow additional directories, this path should not be saved.
   if ( isPortableVersion() ) {
@@ -774,6 +779,14 @@ Class load()
     }
     else {
       c.preferences.interfaceFontSize = Config::DEFAULT_FONT_SIZE;
+    }
+
+    // Config version <= 1 stored interfaceFontSize as physical pixels, which
+    // breaks high-DPI setups. Convert to point size using Qt's logical DPI
+    // (96) so the font keeps its 96-DPI size on load but scales with the
+    // system DPI afterwards.
+    if ( configVersion <= Config::CONFIG_VERSION_LEGACY && c.preferences.interfaceFontSize > 0 ) {
+      c.preferences.interfaceFontSize = qRound( c.preferences.interfaceFontSize * 72.0 / 96.0 );
     }
     auto enableInterfaceFont = preferences.namedItem( "enableInterfaceFont" );
     if ( !enableInterfaceFont.isNull() ) {
@@ -1301,6 +1314,12 @@ void save( const Class & c )
 
   QDomElement root = dd.createElement( "config" );
   dd.appendChild( root );
+
+  // Persist the config format version at the root so we can migrate older
+  // configs when the semantics of a persisted field change.
+  QDomAttr versionAttr = dd.createAttribute( "version" );
+  versionAttr.setValue( QString::number( Config::CONFIG_VERSION ) );
+  root.setAttributeNode( versionAttr );
 
   {
     QDomElement paths = dd.createElement( "paths" );
