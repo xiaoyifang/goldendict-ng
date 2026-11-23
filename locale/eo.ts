@@ -3602,15 +3602,15 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation>Interfaca Tiparo</translation>
+      <translation>Interfaco Tiparo</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Propra tipara familio</translation>
+      <translation>Propra familio</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Propra tipara grandeco</translation>
+      <translation>Propra grandeco</translation>
     </message>
   </context>
   <context>
