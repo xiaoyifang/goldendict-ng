@@ -3591,15 +3591,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation>介面字型</translation>
+      <translation>介面用字型</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>自訂字型家族</translation>
+      <translation>自訂家族</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>自訂字型大小</translation>
+      <translation>自訂尺寸</translation>
     </message>
   </context>
   <context>
