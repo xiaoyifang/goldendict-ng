@@ -3064,18 +3064,6 @@ be the last ones.</source>
       <translation>مظهر</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>تمكين خط الواجهة</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3609,6 +3597,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Sentence:</source>
       <translation>الجملة:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>واجهة الخط</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>عائلة الكسٽم</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>حجم مخصص</translation>
     </message>
   </context>
   <context>
