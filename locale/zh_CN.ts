@@ -3594,11 +3594,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>自定义字体族</translation>
+      <translation>自定义家族</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>自定义字号</translation>
+      <translation>自定义尺寸</translation>
     </message>
   </context>
   <context>
