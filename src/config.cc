@@ -790,8 +790,7 @@ Class load()
     // Some legacy values (e.g. 8px → 6pt) fall below the supported range, so
     // clamp to the minimum accepted at application time.
     if ( configVersion <= Config::CONFIG_VERSION_LEGACY && c.preferences.interfaceFontSize > 0 ) {
-      c.preferences.interfaceFontSize =
-          qBound( 8, qRound( c.preferences.interfaceFontSize * 72.0 / 96.0 ), 32 );
+      c.preferences.interfaceFontSize = qBound( 8, qRound( c.preferences.interfaceFontSize * 72.0 / 96.0 ), 32 );
     }
 
     // v1: single enableInterfaceFont toggle controlled both family and size;
@@ -804,8 +803,8 @@ Class load()
     }
     else {
       // Migrate v1 legacy: the old single toggle enables both family and size.
-      auto legacy = preferences.namedItem( "enableInterfaceFont" );
-      const bool both = !legacy.isNull() ? legacy.toElement().text() == "1" : false;
+      auto legacy                             = preferences.namedItem( "enableInterfaceFont" );
+      const bool both                         = !legacy.isNull() ? legacy.toElement().text() == "1" : false;
       c.preferences.enableInterfaceFontFamily = both;
       c.preferences.enableInterfaceFontSize   = both;
       c.preferences.enableInterfaceFont       = both; // keep for completeness

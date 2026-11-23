@@ -31,7 +31,7 @@ namespace Config {
 
 // Current configuration file format version. Bump when a persisted value
 // changes its semantics so older configs can be migrated on load.
-constexpr int CONFIG_VERSION      = 2;
+constexpr int CONFIG_VERSION        = 2;
 constexpr int CONFIG_VERSION_LEGACY = 1;
 // v1: pixelSize + single enableInterfaceFont
 // v2: pointSize + enableInterfaceFontFamily / enableInterfaceFontSize
@@ -283,7 +283,7 @@ struct Preferences
   QString interfaceFont;     //Empty as default value.
   bool enableInterfaceFontFamily = false; // New in v2; migrate from enableInterfaceFont below
   bool enableInterfaceFontSize   = false; // New in v2; migrate from enableInterfaceFont below
-  bool enableInterfaceFont      = false; // Deprecated since v2, kept for config migration only
+  bool enableInterfaceFont       = false; // Deprecated since v2, kept for config migration only
   int interfaceFontSize;
 
   CustomFonts customFonts;

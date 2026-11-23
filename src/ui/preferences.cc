@@ -103,7 +103,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   const QFont systemFont = QFontDatabase::systemFont( QFontDatabase::GeneralFont );
   int systemPointSize    = systemFont.pointSize();
   if ( systemPointSize <= 0 ) {
-    const int px = systemFont.pixelSize();
+    const int px    = systemFont.pixelSize();
     systemPointSize = px > 0 ? qRound( px * 72.0 / 96.0 ) : 9; // 9pt ≈ Windows Qt default
   }
 
@@ -461,9 +461,9 @@ void Preferences::previewInterfaceFont( QString family, int size )
   // Start from the OS general font (systemFont, not QApplication::font(),
   // because the latter is polluted after main.cc applied a custom font).
   // Then override each attribute only when its own toggle is enabled.
-  const QFont systemFont    = QFontDatabase::systemFont( QFontDatabase::GeneralFont );
-  bool        sizeResolved = systemFont.pointSize() > 0;
-  int         systemSize   = systemFont.pointSize();
+  const QFont systemFont = QFontDatabase::systemFont( QFontDatabase::GeneralFont );
+  bool sizeResolved      = systemFont.pointSize() > 0;
+  int systemSize         = systemFont.pointSize();
   if ( !sizeResolved && systemFont.pixelSize() > 0 ) {
     systemSize   = qRound( systemFont.pixelSize() * 72.0 / 96.0 );
     sizeResolved = true;
@@ -502,7 +502,7 @@ Config::Preferences Preferences::getPreferences()
   p.interfaceLanguage = ui.interfaceLanguage->itemData( ui.interfaceLanguage->currentIndex() ).toString();
 
   p.interfaceFont       = ui.systemFont->currentText();
-  p.interfaceFontSize   = ui.enableInterfaceFontSize->isChecked() ? ui.interfaceFontSize->value() : 0;
+  p.interfaceFontSize         = ui.enableInterfaceFontSize->isChecked() ? ui.interfaceFontSize->value() : 0;
   p.enableInterfaceFontFamily = ui.enableInterfaceFontFamily->isChecked();
   p.enableInterfaceFontSize   = ui.enableInterfaceFontSize->isChecked();
 

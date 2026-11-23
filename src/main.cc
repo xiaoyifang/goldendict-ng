@@ -466,9 +466,9 @@ int main( int argc, char ** argv )
   // Log to file enabled through command line or preference
   Logger::switchLoggingMethod( gdcl.logFile || cfg.preferences.enableApplicationLog );
 
-  //System Font
-  // Always read the OS default first — QApplication::font() can be polluted
-  // by a previous setFont() call (e.g. after style reset on the main window).
+  // System Font
+  //  Always read the OS default first — QApplication::font() can be polluted
+  //  by a previous setFont() call (e.g. after style reset on the main window).
   const QFont systemFont = QFontDatabase::systemFont( QFontDatabase::GeneralFont );
   auto font              = systemFont;
   bool customApplied     = false;

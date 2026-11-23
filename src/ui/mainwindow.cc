@@ -2821,7 +2821,7 @@ void MainWindow::editPreferences()
     // previous session had them enabled.
     {
       const QFont systemFont = QFontDatabase::systemFont( QFontDatabase::GeneralFont );
-      QFont      font        = systemFont;
+      QFont font             = systemFont;
       if ( p.enableInterfaceFontFamily && !p.interfaceFont.isEmpty() ) {
         font.setFamily( p.interfaceFont );
       }
