@@ -3606,11 +3606,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Користувацьке сімейство шрифтів</translation>
+      <translation>Кастомна сімейство</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Користувацький розмір шрифту</translation>
+      <translation>Індивідуальний розмір</translation>
     </message>
   </context>
   <context>
