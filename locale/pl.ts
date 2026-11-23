@@ -3604,11 +3604,11 @@ ze słowników Stardict, Babylon i GLS</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Rodzina niestandardowa</translation>
+      <translation>Niestandardowa rodzina czcionek</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Rozmiar niestandardowy</translation>
+      <translation>Niestandardowy rozmiar czcionki</translation>
     </message>
   </context>
   <context>

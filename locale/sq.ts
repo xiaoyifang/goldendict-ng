@@ -3598,11 +3598,11 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Familja e personalizuar</translation>
+      <translation>Familja e personalizuar e shkronjave</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Madhësia e personalizuar</translation>
+      <translation>Madhësia e personalizuar e shkronjave</translation>
     </message>
   </context>
   <context>

@@ -3602,11 +3602,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>커스텀 패밀리</translation>
+      <translation>사용자 지정 글꼴 패밀리</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>맞춤 사이즈</translation>
+      <translation>사용자 지정 글꼴 크기</translation>
     </message>
   </context>
   <context>

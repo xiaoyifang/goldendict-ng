@@ -3604,11 +3604,11 @@ ze Stardict, Babylon a GLS slovníků</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Zakázková rodina</translation>
+      <translation>Vlastní rodina písma</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Vlastní velikost</translation>
+      <translation>Vlastní velikost písma</translation>
     </message>
   </context>
   <context>

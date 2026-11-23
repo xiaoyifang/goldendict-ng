@@ -3600,7 +3600,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation>Interface Font</translation>
+      <translation>ninji ciska</translation>
     </message>
     <message>
       <source>Custom family</source>

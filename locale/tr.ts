@@ -3602,11 +3602,11 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Özel aile</translation>
+      <translation>Özel yazı tipi ailesi</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Özel boyut</translation>
+      <translation>Özel yazı tipi boyutu</translation>
     </message>
   </context>
   <context>

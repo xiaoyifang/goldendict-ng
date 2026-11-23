@@ -3580,11 +3580,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Custom family</source>
-      <translation type="unfinished">Custom family</translation>
+      <translation>Уласнае сямейства шрыфтоў</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation type="unfinished">Custom size</translation>
+      <translation>Уласны памер шрыфта</translation>
     </message>
   </context>
   <context>

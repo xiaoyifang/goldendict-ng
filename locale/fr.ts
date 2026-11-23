@@ -3603,11 +3603,11 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Famille personnalisée</translation>
+      <translation>Famille de polices personnalisée</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Taille personnalisée</translation>
+      <translation>Taille de police personnalisée</translation>
     </message>
   </context>
   <context>

@@ -3692,7 +3692,7 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     </message>
     <message>
       <source>Interface Font</source>
-      <translation>Interfaz ukax Fuente ukawa</translation>
+      <translation>Interfaz Qillqa</translation>
     </message>
     <message>
       <source>Custom family</source>

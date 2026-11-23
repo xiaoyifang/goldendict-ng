@@ -3599,15 +3599,15 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation>Lettertype interface</translation>
+      <translation>Lettertype van de interface</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Aangepaste familie</translation>
+      <translation>Aangepaste lettertypefamilie</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Aangepaste grootte</translation>
+      <translation>Aangepaste lettertypegrootte</translation>
     </message>
   </context>
   <context>

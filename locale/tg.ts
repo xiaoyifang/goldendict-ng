@@ -3605,11 +3605,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Оилаи фармоишӣ</translation>
+      <translation>Оилаи шрифти фармоишӣ</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Андозаи фармоишӣ</translation>
+      <translation>Андозаи шрифти фармоишӣ</translation>
     </message>
   </context>
   <context>

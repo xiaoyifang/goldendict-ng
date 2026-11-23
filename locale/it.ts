@@ -3600,15 +3600,15 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation>Carattere Dell'Interfaccia</translation>
+      <translation>Carattere dell'interfaccia</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Famiglia personalizzata</translation>
+      <translation>Famiglia di caratteri personalizzata</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Dimensione personalizzata</translation>
+      <translation>Dimensione carattere personalizzata</translation>
     </message>
   </context>
   <context>

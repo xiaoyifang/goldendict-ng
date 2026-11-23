@@ -3594,11 +3594,11 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Benutzerdefinierte Familie</translation>
+      <translation>Benutzerdefinierte Schriftfamilie</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Benutzerdefinierte Grösse</translation>
+      <translation>Benutzerdefinierte Schriftgrösse</translation>
     </message>
   </context>
   <context>

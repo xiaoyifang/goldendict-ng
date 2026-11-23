@@ -3606,11 +3606,11 @@ no Stardict, Babilônia e dicionários GLS</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Família personalizada</translation>
+      <translation>Família de fontes personalizada</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Tamanho personalizado</translation>
+      <translation>Tamanho da fonte personalizado</translation>
     </message>
   </context>
   <context>

@@ -3602,15 +3602,15 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation>Käyttöliittymän Kirjasin</translation>
+      <translation>Käyttöliittymän kirjasin</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Mukautettu perhe</translation>
+      <translation>Mukautettu kirjasinperhe</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Mukautettu koko</translation>
+      <translation>Mukautettu kirjasinkoko</translation>
     </message>
   </context>
   <context>

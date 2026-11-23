@@ -3602,15 +3602,15 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation>Interface Font</translation>
+      <translation>Tasefsit n ugrudem</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Tawacult yebnan</translation>
+      <translation>Tawacult n tsefsit</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Aqedduḥ yebnan</translation>
+      <translation>Aqedduḥ n tsefsit</translation>
     </message>
   </context>
   <context>

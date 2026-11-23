@@ -3600,15 +3600,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation>واجهة الخط</translation>
+      <translation>خط الواجهة</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>عائلة الكسٽم</translation>
+      <translation>عائلة الخط المخصصة</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>حجم مخصص</translation>
+      <translation>حجم الخط المخصص</translation>
     </message>
   </context>
   <context>

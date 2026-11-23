@@ -3591,11 +3591,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>कस्टम परिवार</translation>
+      <translation>कस्टम फ़ॉन्ट परिवार</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>कस्टम आकार</translation>
+      <translation>कस्टम फ़ॉन्ट आकार</translation>
     </message>
   </context>
   <context>

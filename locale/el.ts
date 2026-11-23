@@ -3607,11 +3607,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Προσαρμοσμένη οικογένεια</translation>
+      <translation>Προσαρμοσμένη οικογένεια γραμματοσειρών</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Προσαρμοσμένο μέγεθος</translation>
+      <translation>Προσαρμοσμένο μέγεθος γραμματοσειράς</translation>
     </message>
   </context>
   <context>

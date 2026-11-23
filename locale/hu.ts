@@ -3601,15 +3601,15 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation>Felület betűtípusa</translation>
+      <translation>Interfész betűtípusa</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Egyedi család</translation>
+      <translation>Egyedi betűtípuscsalád</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Egyedi méret</translation>
+      <translation>Egyedi betűméret</translation>
     </message>
   </context>
   <context>

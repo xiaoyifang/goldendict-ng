@@ -3602,15 +3602,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation>Интерфејс Фонт</translation>
+      <translation>Фонт интерфејса</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Прилагођена породица</translation>
+      <translation>Прилагођена породица фонтова</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Прилагођена величина</translation>
+      <translation>Прилагођена величина фонта</translation>
     </message>
   </context>
   <context>
