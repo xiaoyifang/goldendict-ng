@@ -3062,18 +3062,6 @@ be the last ones.</source>
       <translation>ظاهر</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>فعال‌سازی فونت رابط</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>فونت</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>اندازه فونت</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3607,6 +3595,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Sentence:</source>
       <translation>جمله:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>فونت رابط</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>خانواده سفارشی</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>اندازه سفارشی</translation>
     </message>
   </context>
   <context>
