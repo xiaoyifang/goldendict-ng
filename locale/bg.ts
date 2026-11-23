@@ -3063,18 +3063,6 @@ be the last ones.</source>
       <translation>Външен вид</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Активиране на шрифта на интерфейса</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Шрифт</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Размер на шрифта</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3608,6 +3596,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Sentence:</source>
       <translation>Изречение:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Шрифт на интерфейса</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Персонализирано семейство</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Персонализиран размер</translation>
     </message>
   </context>
   <context>
