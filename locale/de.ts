@@ -3063,18 +3063,6 @@ als letzte hinzugefügt.</translation>
       <translation>Erscheinungsbild</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Interface-Schriftart aktivieren</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Schnittstellensprache</translation>
     </message>
@@ -3605,6 +3593,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Sentence:</source>
       <translation>Satz:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Schnittstellenschriftart</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Benutzerdefinierte Familie</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Benutzerdefinierte Größe</translation>
     </message>
   </context>
   <context>
