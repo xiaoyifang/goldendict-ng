@@ -275,7 +275,12 @@ ScanPopup::ScanPopup( QWidget * parent,
       if ( screen ) {
         const QSize availableSize = screen->availableGeometry().size();
         setMaximumWidth( qMax( 1, availableSize.width() * 4 / 5 ) );
-        targetSize = targetSize.boundedTo( QSize( maximumWidth(), availableSize.height() ) );
+
+        // size() is the client size, so the frame of a decorated pinned popup
+        // has to be reserved before limiting the height.
+        const QMargins margins = frameMargins();
+        const int maxHeight    = qMax( 1, availableSize.height() - margins.top() - margins.bottom() );
+        targetSize             = targetSize.boundedTo( QSize( maximumWidth(), maxHeight ) );
       }
       return targetSize;
     },
@@ -287,11 +292,13 @@ ScanPopup::ScanPopup( QWidget * parent,
       }
       const QRect available = screen->availableGeometry();
       const QRect frame     = frameGeometry();
-      const QPoint offset   = geometry().topLeft() - frame.topLeft();
+      const int maxX        = qMax( available.left(), available.right() - frame.width() + 1 );
+      const int maxY        = qMax( available.top(), available.bottom() - frame.height() + 1 );
       QPoint topLeft        = frame.topLeft();
-      topLeft.setX( qBound( available.left(), topLeft.x(), available.right() - frame.width() + 1 ) );
-      topLeft.setY( qBound( available.top(), topLeft.y(), available.bottom() - frame.height() + 1 ) );
-      move( topLeft + offset );
+      // move() positions the frame of a top-level widget, so topLeft is used as is.
+      topLeft.setX( qBound( available.left(), topLeft.x(), maxX ) );
+      topLeft.setY( qBound( available.top(), topLeft.y(), maxY ) );
+      move( topLeft );
     } );
 
   ui.onTopButton->setChecked( cfg.popupWindowAlwaysOnTop );

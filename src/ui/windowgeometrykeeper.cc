@@ -116,9 +116,9 @@ void WindowGeometryKeeper::rememberNormalSize()
 
 void WindowGeometryKeeper::commitNormalSize()
 {
-  // The pending size is only recorded in normal state, so it stays valid even
-  // if the timer fires after the window has been minimized.
-  if ( !handlingScreenChange && !window->isMaximized() && !window->isFullScreen() && !pendingNormalSize.isEmpty() ) {
+  // pendingNormalSize is only recorded in normal state, so it stays valid even
+  // if the timer fires after the window has been maximized or minimized.
+  if ( !handlingScreenChange && !pendingNormalSize.isEmpty() ) {
     lastStableNormalSize = pendingNormalSize;
   }
   pendingNormalSize = QSize();
@@ -156,10 +156,12 @@ void WindowGeometryKeeper::restoreNormalSizeAfterScreenChange()
 
   if ( !targetSize.isEmpty() && targetSize != window->size() ) {
     window->resize( targetSize );
+  }
 
-    if ( postRestore ) {
-      postRestore( screen );
-    }
+  // Run even without a resize: the size constraint may already have changed
+  // the window, leaving it partly outside the available area.
+  if ( postRestore ) {
+    postRestore( screen );
   }
 
   handlingScreenChange = false;
