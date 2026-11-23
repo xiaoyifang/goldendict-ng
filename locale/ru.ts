@@ -3069,18 +3069,6 @@ be the last ones.</source>
       <translation>Появление</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Включить шрифт интерфейса</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Язык интерфейса</translation>
     </message>
@@ -3617,6 +3605,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Sentence:</source>
       <translation>Предложение:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Шрифт интерфейса</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Семейство заказов</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Индивидуальный размер</translation>
     </message>
   </context>
   <context>
