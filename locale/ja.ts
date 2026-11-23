@@ -3062,18 +3062,6 @@ be the last ones.</source>
       <translation>外観</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>インターフェースフォントを有効にする</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>フォント</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>フォントサイズ</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>インターフェース言語</translation>
     </message>
@@ -3604,6 +3592,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Sentence:</source>
       <translation>文:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>インターフェースフォント</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>カスタムファミリー</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>カスタムサイズ</translation>
     </message>
   </context>
   <context>
