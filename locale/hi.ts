@@ -3059,18 +3059,6 @@ be the last ones.</source>
       <translation>उपस्थिति</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>इंटरफ़ेस फ़ॉन्ट सक्षम करें</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>फ़ांट</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>फ़ॉन्ट आकार</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3596,6 +3584,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Sentence:</source>
       <translation>वाक्य:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>इंटरफ़ेस फ़ॉन्ट</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>कस्टम परिवार</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>कस्टम आकार</translation>
     </message>
   </context>
   <context>
