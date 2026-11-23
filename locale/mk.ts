@@ -3606,11 +3606,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Прилагодено семејство на фонтови</translation>
+      <translation>Прилагодено семејство</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Прилагодена големина на фонт</translation>
+      <translation>Прилагодена големина</translation>
     </message>
   </context>
   <context>
