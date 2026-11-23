@@ -3599,11 +3599,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>カスタムフォントファミリー</translation>
+      <translation>カスタムファミリー</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>カスタムフォントサイズ</translation>
+      <translation>カスタムサイズ</translation>
     </message>
   </context>
   <context>
