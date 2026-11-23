@@ -3602,7 +3602,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation>Fonte de interfacie</translation>
+      <translation>Interface Font</translation>
     </message>
     <message>
       <source>Custom family</source>
