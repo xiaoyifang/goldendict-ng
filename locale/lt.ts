@@ -3603,11 +3603,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Individuali šriftų šeima</translation>
+      <translation>Individuali šeima</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Individualus šrifto dydis</translation>
+      <translation>Individualus dydis</translation>
     </message>
   </context>
   <context>
