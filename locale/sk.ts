@@ -3597,11 +3597,11 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Vlastná rodina písma</translation>
+      <translation>Vlastná rodina</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Vlastná veľkosť písma</translation>
+      <translation>Vlastná veľkosť</translation>
     </message>
   </context>
   <context>
