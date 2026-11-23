@@ -3607,11 +3607,11 @@ från Stardict, Babylon och GLS ordböcker</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Anpassad teckensnittsfamilj</translation>
+      <translation>Custom family</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Anpassad teckenstorlek</translation>
+      <translation>Anpassad storlek</translation>
     </message>
   </context>
   <context>
