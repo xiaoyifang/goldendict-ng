@@ -3582,11 +3582,11 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Họ phông chữ tùy chỉnh</translation>
+      <translation>Dòng tùy chỉnh</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Kích thước phông chữ tùy chỉnh</translation>
+      <translation>Kích thước tùy chỉnh</translation>
     </message>
   </context>
   <context>
