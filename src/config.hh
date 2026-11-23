@@ -31,7 +31,7 @@ namespace Config {
 
 // Current configuration file format version. Bump when a persisted value
 // changes its semantics so older configs can be migrated on load.
-constexpr int CONFIG_VERSION     = 2;
+constexpr int CONFIG_VERSION        = 2;
 constexpr int CONFIG_VERSION_LEGACY = 1;
 
 //define a default font fize value
