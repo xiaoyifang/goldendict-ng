@@ -3604,11 +3604,11 @@ de diccionarios Stardict, Babylon y GLS</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Familia de fuentes personalizada</translation>
+      <translation>Familia personalizada</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Tamaño de fuente personalizado</translation>
+      <translation>Tamaño personalizado</translation>
     </message>
   </context>
   <context>
