@@ -20,6 +20,7 @@
 #include "dictheadwords.hh"
 #include <QTextStream>
 #include <QDir>
+#include <QFontDatabase>
 #include <QUrl>
 #include <QMessageBox>
 #include <QIcon>
@@ -1814,15 +1815,19 @@ void MainWindow::updateAppearances( const QString & addonStyle,
   }
 #endif
 
-  // Re-apply the user-configured font after resetting the palette or style
-  if ( cfg.preferences.enableInterfaceFont && !cfg.preferences.interfaceFont.isEmpty() ) {
-    QFont font = QApplication::font();
+  // Re-apply the user-configured font after resetting the palette or style.
+  // If neither custom toggle is on, reset back to the OS default —
+  // QApplication::font() was polluted the last time we applied a custom font.
+  const QFont systemFont = QFontDatabase::systemFont( QFontDatabase::GeneralFont );
+  QFont font             = systemFont;
+  if ( cfg.preferences.enableInterfaceFontFamily && !cfg.preferences.interfaceFont.isEmpty() ) {
     font.setFamily( cfg.preferences.interfaceFont );
-    if ( cfg.preferences.interfaceFontSize > 0 ) {
-      font.setPixelSize( cfg.preferences.interfaceFontSize );
-    }
-    QApplication::setFont( font );
   }
+  if ( cfg.preferences.enableInterfaceFontSize && cfg.preferences.interfaceFontSize >= 8
+       && cfg.preferences.interfaceFontSize <= 32 ) {
+    font.setPointSize( cfg.preferences.interfaceFontSize );
+  }
+  QApplication::setFont( font );
 
 
   QByteArray css{};
@@ -2809,6 +2814,22 @@ void MainWindow::editPreferences()
       );
 
     cfg.preferences = p;
+
+    // Apply the accepted interface font after cfg.preferences holds the new
+    // values, so updateAppearances cannot restore the previous font. Starting
+    // from the OS default keeps disabled attributes from leaking over when the
+    // previous session had them enabled.
+    {
+      const QFont systemFont = QFontDatabase::systemFont( QFontDatabase::GeneralFont );
+      QFont      font        = systemFont;
+      if ( p.enableInterfaceFontFamily && !p.interfaceFont.isEmpty() ) {
+        font.setFamily( p.interfaceFont );
+      }
+      if ( p.enableInterfaceFontSize && p.interfaceFontSize >= 8 && p.interfaceFontSize <= 32 ) {
+        font.setPointSize( p.interfaceFontSize );
+      }
+      QApplication::setFont( font );
+    }
 
 #ifdef Q_OS_MACOS
     MacAppActivation::setDockIconVisible( cfg.preferences.showDockIcon || isVisible() );

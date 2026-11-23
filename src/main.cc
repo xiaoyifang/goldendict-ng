@@ -8,6 +8,7 @@
 #include <QByteArray>
 #include <QCommandLineParser>
 #include <QFile>
+#include <QFontDatabase>
 #include <QIcon>
 #include <QMessageBox>
 #include <QSessionManager>
@@ -466,22 +467,26 @@ int main( int argc, char ** argv )
   Logger::switchLoggingMethod( gdcl.logFile || cfg.preferences.enableApplicationLog );
 
   //System Font
-  auto font = QApplication::font();
-  if ( cfg.preferences.enableInterfaceFont && !cfg.preferences.interfaceFont.isEmpty()
+  // Always read the OS default first — QApplication::font() can be polluted
+  // by a previous setFont() call (e.g. after style reset on the main window).
+  const QFont systemFont = QFontDatabase::systemFont( QFontDatabase::GeneralFont );
+  auto font              = systemFont;
+  bool customApplied     = false;
+
+  if ( cfg.preferences.enableInterfaceFontFamily && !cfg.preferences.interfaceFont.isEmpty()
        && font.family() != cfg.preferences.interfaceFont ) {
     font.setFamily( cfg.preferences.interfaceFont );
-    QApplication::setFont( font );
+    customApplied = true;
   }
 
-  //system font size
-  if ( cfg.preferences.enableInterfaceFont && cfg.preferences.interfaceFontSize >= 8
+  if ( cfg.preferences.enableInterfaceFontSize && cfg.preferences.interfaceFontSize >= 8
        && cfg.preferences.interfaceFontSize <= 32 ) {
-    font.setPixelSize( cfg.preferences.interfaceFontSize );
-    QApplication::setFont( font );
+    font.setPointSize( cfg.preferences.interfaceFontSize );
+    customApplied = true;
   }
-  else {
-    qDebug() << "Use default font";
-    cfg.preferences.interfaceFontSize = Config::DEFAULT_FONT_SIZE;
+
+  if ( customApplied ) {
+    QApplication::setFont( font );
   }
 
   // Update default locale
