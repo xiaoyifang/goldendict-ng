@@ -3605,11 +3605,11 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Özel şrift maşgalasy</translation>
+      <translation>Gümrük maşgalasy</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Özel şrift ululygy</translation>
+      <translation>Ýörite ululyklar</translation>
     </message>
   </context>
   <context>
