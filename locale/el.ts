@@ -3066,18 +3066,6 @@ be the last ones.</source>
       <translation>Εμφάνιση</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Ενεργοποίηση Γραμματοσειράς Διεπαφής</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Γλώσσα διεπαφής</translation>
     </message>
@@ -3612,6 +3600,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Sentence:</source>
       <translation>Πρόταση:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Γραμματοσειρά Διεπαφής</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Προσαρμοσμένη οικογένεια</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Προσαρμοσμένο μέγεθος</translation>
     </message>
   </context>
   <context>
