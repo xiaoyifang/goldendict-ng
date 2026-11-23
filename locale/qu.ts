@@ -3061,18 +3061,6 @@ be the last ones.</source>
       <translation>Rikchaynin</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Rikunaq qillqana-rikch'ayta llamk'achiy</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Qillqana-rikch'ay</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Qillqana-rikch'aypa sayaynin</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3605,6 +3593,18 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     <message>
       <source>Sentence:</source>
       <translation type="unfinished">Sentence:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Interfaz nisqa Fuente</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Sapanchasqa rikch'ay</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Sapanchasqa sayay</translation>
     </message>
   </context>
   <context>
