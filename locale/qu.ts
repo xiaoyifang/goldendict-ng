@@ -3596,15 +3596,15 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation>Rikunaq qillqana-rikch'ay</translation>
+      <translation>Interfaz nisqa Fuente</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Sapan qillqana-rikch'ay</translation>
+      <translation>Sapanchasqa rikch'ay</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Sapan qillqana-rikch'ay sayaynin</translation>
+      <translation>Sapanchasqa sayay</translation>
     </message>
   </context>
   <context>
