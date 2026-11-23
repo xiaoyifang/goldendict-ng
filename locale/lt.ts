@@ -3065,18 +3065,6 @@ būkite paskutiniai.</translation>
       <translation>Išvaizda</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Įgalinti sąsajos šriftą</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Šriftas</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Šrifto dydis</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3608,6 +3596,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Sentence:</source>
       <translation>Sakinys:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Sąsajos šriftas</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Individuali šeima</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Individualus dydis</translation>
     </message>
   </context>
   <context>
