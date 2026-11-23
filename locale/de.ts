@@ -3600,11 +3600,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Benutzerdefinierte Schriftfamilie</translation>
+      <translation>Benutzerdefinierte Familie</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Benutzerdefinierte Schriftgröße</translation>
+      <translation>Benutzerdefinierte Größe</translation>
     </message>
   </context>
   <context>
