@@ -17,7 +17,7 @@ class QWidget;
 /// The size the user picked is remembered separately from the size the window
 /// may temporarily be forced to by the window system, so unplugging a monitor
 /// no longer shrinks the window for good.
-class WindowGeometryKeeper final : public QObject
+class WindowGeometryKeeper final: public QObject
 {
 public:
   /// Adjusts the desired size for the target screen, e.g. to apply window
