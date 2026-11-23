@@ -3062,18 +3062,6 @@ be the last ones.</source>
       <translation>Wygląd</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Włącz czcionkę interfejsu</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Czcionka</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Rozmiar czcionki</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Język interfejsu</translation>
     </message>
@@ -3609,6 +3597,18 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>Sentence:</source>
       <translation>Zdanie:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Czcionka interfejsu</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Rodzina niestandardowa</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Rozmiar niestandardowy</translation>
     </message>
   </context>
   <context>
