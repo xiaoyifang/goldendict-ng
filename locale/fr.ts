@@ -3064,18 +3064,6 @@ courant, actif. Sinon, ils sont ajoutés à
       <translation>Apparence</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Activer la police de l'interface</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Langue de l'interface</translation>
     </message>
@@ -3608,6 +3596,18 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>Sentence:</source>
       <translation>Phrase :</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Police de l'interface</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Famille personnalisée</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Taille personnalisée</translation>
     </message>
   </context>
   <context>
