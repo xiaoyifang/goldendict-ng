@@ -278,9 +278,9 @@ ScanPopup::ScanPopup( QWidget * parent,
 
         // size() is the client size, so the frame of a decorated pinned popup
         // has to be reserved before limiting the height.
-        const QMargins margins = frameMargins();
-        const int maxHeight    = qMax( 1, availableSize.height() - margins.top() - margins.bottom() );
-        targetSize             = targetSize.boundedTo( QSize( maximumWidth(), maxHeight ) );
+        const int frameHeight = qMax( 0, frameGeometry().height() - height() );
+        const int maxHeight   = qMax( 1, availableSize.height() - frameHeight );
+        targetSize            = targetSize.boundedTo( QSize( maximumWidth(), maxHeight ) );
       }
       return targetSize;
     },
