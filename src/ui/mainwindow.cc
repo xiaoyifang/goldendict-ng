@@ -3540,7 +3540,12 @@ void MainWindow::toggleMainWindow( bool ensureShow )
 void MainWindow::installHotKeys()
 {
 #if defined( WITH_X11 )
-  if ( QGuiApplication::platformName() != "xcb" ) {
+  const QString platformName = QGuiApplication::platformName();
+  if ( platformName != QLatin1String( "xcb" )
+  #ifdef HAVE_KGLOBALACCEL
+       && !platformName.startsWith( QLatin1String( "wayland" ), Qt::CaseInsensitive )
+  #endif
+     ) {
     return;
   }
 #endif

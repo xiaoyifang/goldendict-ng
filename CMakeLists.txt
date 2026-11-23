@@ -171,6 +171,16 @@ target_link_libraries(${GOLDENDICT} PRIVATE
         $<$<PLATFORM_ID:Windows>:dwmapi>
 )
 
+# Optional KDE global shortcuts: on Wayland, register hotkeys through
+# kglobalaccel instead of the X11 RECORD extension.
+if (UNIX AND NOT APPLE)
+    find_package(KF6GlobalAccel QUIET)
+    if (TARGET KF6::GlobalAccel)
+        target_link_libraries(${GOLDENDICT} PRIVATE KF6::GlobalAccel)
+        target_compile_definitions(${GOLDENDICT} PRIVATE HAVE_KGLOBALACCEL)
+    endif ()
+endif ()
+
 target_include_directories(${GOLDENDICT} PRIVATE
         ${PROJECT_SOURCE_DIR}/thirdparty/qtsingleapplication/src
         ${PROJECT_SOURCE_DIR}/src/

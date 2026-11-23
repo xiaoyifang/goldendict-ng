@@ -3,6 +3,12 @@
   #include <X11/keysym.h>
   #include <QTimer>
 
+  #ifdef HAVE_KGLOBALACCEL
+    #include <KGlobalAccel>
+    #include <QAction>
+    #include <QDebug>
+  #endif
+
 //
 /// Previously impletended with XGrabKey
 /// Then reimplemented with X Record Extension Library
@@ -12,6 +18,14 @@ HotkeyWrapper::HotkeyWrapper( QObject * parent ):
   QThread( parent ),
   state2( false )
 {
+#ifdef HAVE_KGLOBALACCEL
+  // On Wayland the X11 RECORD extension never sees keys from other clients.
+  // KDE's kglobalaccel daemon is the supported way to register global hotkeys.
+  if ( QGuiApplication::platformName().startsWith( QStringLiteral( "wayland" ), Qt::CaseInsensitive ) ) {
+    useKGlobalAccel = true;
+    return;
+  }
+#endif
   init();
 }
 
@@ -23,6 +37,11 @@ HotkeyWrapper::~HotkeyWrapper()
 void HotkeyWrapper::waitKey2()
 {
   state2 = false;
+
+#ifdef HAVE_KGLOBALACCEL
+  if ( useKGlobalAccel )
+    return;
+#endif
 
   if ( keyToUngrab != grabbedKeys.end() ) {
     ungrabKey( keyToUngrab );
@@ -192,6 +211,48 @@ void HotkeyWrapper::handleRecordEvent( XRecordInterceptData * data )
 
 bool HotkeyWrapper::setGlobalKey( const QKeySequence & seq, int handle )
 {
+#ifdef HAVE_KGLOBALACCEL
+  if ( useKGlobalAccel ) {
+    // KGlobalAccel registers one key chord per action; compound sequences
+    // such as "Ctrl+C, Ctrl+C" cannot be represented there.
+    if ( seq.count() != 1 ) {
+      qWarning() << "Global hotkey on Wayland requires a single key chord; ignoring" << seq.toString();
+      return false;
+    }
+
+    auto * action = new QAction( this );
+    action->setObjectName( QStringLiteral( "goldendict_hotkey_%1" ).arg( handle ) );
+    if ( handle == 0 ) {
+      action->setText( tr( "Show or hide the main window" ) );
+    }
+    else if ( handle == 1 ) {
+      action->setText( tr( "Translate a word from clipboard" ) );
+    }
+    else {
+      action->setText( tr( "GoldenDict hotkey %1" ).arg( handle ) );
+    }
+    // Use the desktop file id as the component name so the KDE KCM can match
+    // the .desktop file and classify the component as an application.
+    const QString desktopFileName = QGuiApplication::desktopFileName();
+    action->setProperty( "componentName",
+                         desktopFileName.isEmpty() ? QStringLiteral( "goldendict" ) : desktopFileName );
+    action->setProperty( "componentDisplayName", QStringLiteral( "GoldenDict" ) );
+
+    connect( action, &QAction::triggered, this, [ this, handle ]() {
+      emit hotkeyActivated( handle );
+    }, Qt::QueuedConnection );
+
+    if ( !KGlobalAccel::self()->setShortcut( action, { seq }, KGlobalAccel::NoAutoloading ) ) {
+      qWarning() << "KGlobalAccel refused shortcut" << seq.toString();
+      delete action;
+      return false;
+    }
+
+    kgaActions.insert( handle, action );
+    return true;
+  }
+#endif
+
   Config::HotKey hk( seq );
   int key                        = hk.key1;
   int key2                       = hk.key2;
@@ -356,6 +417,17 @@ quint32 HotkeyWrapper::nativeKey( int key )
 
 void HotkeyWrapper::unregister()
 {
+#ifdef HAVE_KGLOBALACCEL
+  if ( useKGlobalAccel ) {
+    for ( QAction * action : kgaActions ) {
+      KGlobalAccel::self()->removeAllShortcuts( action );
+      delete action;
+    }
+    kgaActions.clear();
+    return;
+  }
+#endif
+
   QNativeInterface::QX11Application * x11AppInfo = qApp->nativeInterface< QNativeInterface::QX11Application >();
   Display * display                              = x11AppInfo->display();
 

@@ -8,9 +8,13 @@
 /// + `x11hotkeywrapper`
 
 #include <QGuiApplication>
+#include <QHash>
+#include <QKeySequence>
 #include "config.hh"
 #include "ex.hh"
 #include "utils.hh"
+
+class QAction;
 
 #ifdef WITH_X11
   #include <fixx11h.h>
@@ -91,6 +95,12 @@ protected slots:
 private:
   void init();
   quint32 nativeKey( int key );
+
+#ifdef HAVE_KGLOBALACCEL
+  /// Wayland: use KDE's KGlobalAccel (works through kglobalaccel on Wayland).
+  bool useKGlobalAccel = false;
+  QHash< int, QAction * > kgaActions;
+#endif
 
   QList< HotkeyStruct > hotkeys;
 
