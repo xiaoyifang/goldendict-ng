@@ -3603,11 +3603,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Персонализирано семейство шрифтове</translation>
+      <translation>Персонализирано семейство</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Персонализиран размер на шрифта</translation>
+      <translation>Персонализиран размер</translation>
     </message>
   </context>
   <context>
