@@ -3065,18 +3065,6 @@ be the last ones.</translation>
       <translation>Aspekto</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation type="unfinished">Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3611,6 +3599,18 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     <message>
       <source>Sentence:</source>
       <translation>Frazo:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Interfaco Tiparo</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Propra familio</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Propra grandeco</translation>
     </message>
   </context>
   <context>

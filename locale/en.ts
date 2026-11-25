@@ -3065,18 +3065,6 @@ be the last ones.</translation>
       <translation type="unfinished">Appearance</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation type="unfinished">Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation type="unfinished">Interface language</translation>
     </message>
@@ -3611,6 +3599,18 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>Sentence:</source>
       <translation type="unfinished">Sentence:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation type="unfinished">Interface Font</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation type="unfinished">Custom family</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation type="unfinished">Custom size</translation>
     </message>
   </context>
   <context>

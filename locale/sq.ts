@@ -3059,18 +3059,6 @@ aktive. Përndryshe, ato shtohen si të fundit.</translation>
       <translation>Pamja e jashtme</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Aktivizo fontin e ndërfaqes</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Fonti</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Madhësia e fontit</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3603,6 +3591,18 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>Sentence:</source>
       <translation>Fjalia:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Fonti i ndërfaqes</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Familja e personalizuar</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Madhësia e personalizuar</translation>
     </message>
   </context>
   <context>

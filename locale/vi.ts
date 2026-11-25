@@ -3045,18 +3045,6 @@ be the last ones.</source>
       <translation>Vẻ bề ngoài</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Bật Phông chữ Giao diện</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Phông chữ</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Cỡ chữ</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3587,6 +3575,18 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>Sentence:</source>
       <translation>Câu:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Phông chữ giao diện</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Dòng tùy chỉnh</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Kích thước tùy chỉnh</translation>
     </message>
   </context>
   <context>

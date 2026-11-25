@@ -3069,18 +3069,6 @@ Do contrário, elas serão adicionadas como as últimas.</translation>
       <translation>Aparência</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Habilitar Fonte de Interface</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Idioma da interface</translation>
     </message>
@@ -3615,6 +3603,18 @@ dos dicionários Stardict, Babylon e GLS</translation>
     <message>
       <source>Sentence:</source>
       <translation>Frase:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Fonte da Interface</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Família personalizada</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Tamanho personalizado</translation>
     </message>
   </context>
   <context>

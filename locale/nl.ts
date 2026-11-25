@@ -3065,18 +3065,6 @@ de laatste.</translation>
       <translation>Verschijning</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Interfacetlettertype inschakelen</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface taal</translation>
     </message>
@@ -3608,6 +3596,18 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Sentence:</source>
       <translation>Zin:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Lettertype interface</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Aangepaste familie</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Aangepaste grootte</translation>
     </message>
   </context>
   <context>

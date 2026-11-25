@@ -3064,18 +3064,6 @@ be the last ones.</source>
       <translation>Намуди зоҳирӣ</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Шрифти интерфейсро фаъол созед</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Шрифт</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Андозаи шрифт</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3610,6 +3598,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Sentence:</source>
       <translation type="unfinished">Sentence:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Шрифти интерфейс</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Оилаи фармоишӣ</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Андозаи фармоишӣ</translation>
     </message>
   </context>
   <context>

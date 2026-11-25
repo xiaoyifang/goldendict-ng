@@ -3059,18 +3059,6 @@ be the last ones.</source>
       <translation>Vzhľad</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Povoliť písmo rozhrania</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Písmo</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Veľkosť písma</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3602,6 +3590,18 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     <message>
       <source>Sentence:</source>
       <translation>Veta:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Písmo rozhrania</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Vlastná rodina</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Vlastná veľkosť</translation>
     </message>
   </context>
   <context>

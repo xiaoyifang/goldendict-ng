@@ -3065,18 +3065,6 @@ be the last ones.</translation>
       <translation>Udem</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Rmed tasefsit n ugrudem</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Tasefsit</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Teɣzi n tsefsit</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Tutlayt n ugrudem</translation>
     </message>
@@ -3611,6 +3599,18 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>Sentence:</source>
       <translation>Tafyirt:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Interface Font</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Tawacult yebnan</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Aqedduḥ yebnan</translation>
     </message>
   </context>
   <context>

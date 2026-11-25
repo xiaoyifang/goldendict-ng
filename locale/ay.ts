@@ -3123,18 +3123,6 @@ be the last ones.</source>
       <translation>Aparinsya</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Interfaz Qillqa churaña</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Qillqa</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Qillqa jach'a</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3701,6 +3689,18 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     <message>
       <source>Sentence:</source>
       <translation>Urasyuna:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Interfaz ukax Fuente ukawa</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Sapan qillqa laya</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Sapan tama</translation>
     </message>
   </context>
   <context>

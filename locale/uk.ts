@@ -3064,18 +3064,6 @@ be the last ones.</source>
       <translation>Зовнішній вигляд</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Увімкнути шрифт інтерфейсу</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Мова інтерфейсу</translation>
     </message>
@@ -3611,6 +3599,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Sentence:</source>
       <translation>Речення:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Шрифт інтерфейсу</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Кастомна сімейство</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Індивідуальний розмір</translation>
     </message>
   </context>
   <context>

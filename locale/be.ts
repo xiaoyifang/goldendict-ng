@@ -3043,18 +3043,6 @@ be the last ones.</source>
       <translation>Выгляд</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Уключыць шрыфт інтэрфейсу</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Шрыфт</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Памер шрыфта</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3585,6 +3573,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Sentence:</source>
       <translation>Сказ:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Шрыфт інтэрфейсу</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Карыстальніцкае сямейства</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Карыстальніцкі памер</translation>
     </message>
   </context>
   <context>

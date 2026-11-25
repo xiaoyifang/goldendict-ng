@@ -3065,18 +3065,6 @@ ovat viimeisiä.</translation>
       <translation>Ulkomuoto</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Ota Käyttöön Käyttöliittymän Kirjasin</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Käyttöliittymän kieli</translation>
     </message>
@@ -3611,6 +3599,18 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Sentence:</source>
       <translation>Lause:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Käyttöliittymän Kirjasin</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Mukautettu perhe</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Mukautettu koko</translation>
     </message>
   </context>
   <context>

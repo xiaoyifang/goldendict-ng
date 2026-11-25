@@ -3057,18 +3057,6 @@ be the last ones.</source>
       <translation>界面外觀</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>啟用介面字型</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>字體</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>字體大小</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>介面語言</translation>
     </message>
@@ -3600,6 +3588,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Sentence:</source>
       <translation>句子：</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>介面用字型</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>自訂家族</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>自訂尺寸</translation>
     </message>
   </context>
   <context>

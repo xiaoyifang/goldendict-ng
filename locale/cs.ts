@@ -3064,18 +3064,6 @@ jako poslední.</translation>
       <translation>Vzhled</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Povolit písmo rozhraní</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Jazyk rozhraní</translation>
     </message>
@@ -3609,6 +3597,18 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Sentence:</source>
       <translation>Věta:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Písmo rozhraní</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Zakázková rodina</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Vlastní velikost</translation>
     </message>
   </context>
   <context>

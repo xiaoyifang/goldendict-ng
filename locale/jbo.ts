@@ -3063,18 +3063,6 @@ be the last ones.</source>
       <translation>Appearance</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>cfagau lo ninji ciska</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>ciska</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>ciska cinri</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3609,6 +3597,18 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>Sentence:</source>
       <translation>Bacru:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Interface Font</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>kusfa girzu</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>kusfa nilce</translation>
     </message>
   </context>
   <context>

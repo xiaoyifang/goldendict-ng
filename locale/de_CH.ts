@@ -3058,18 +3058,6 @@ dem aktiven. Ansonsten werden sie zum letzten hinzugefügt.</translation>
       <translation>Erscheinungsbild</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Aktiviere Benutzeroberflächen Schriftart</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font (Schriftart)</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Schriftgrösse</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3599,6 +3587,18 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     <message>
       <source>Sentence:</source>
       <translation>Satz:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Interface-Schriftart</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Benutzerdefinierte Familie</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Benutzerdefinierte Grösse</translation>
     </message>
   </context>
   <context>

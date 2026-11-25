@@ -3064,18 +3064,6 @@ be the last ones.</source>
       <translation>Изглед</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Овозможи фонт за интерфејс</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Фонт</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Големина на фонт</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3611,6 +3599,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Sentence:</source>
       <translation>Реченица:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Фонт за интерфејс</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Прилагодено семејство</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Прилагодена големина</translation>
     </message>
   </context>
   <context>

@@ -3063,18 +3063,6 @@ be the last ones.</source>
       <translation>모습</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>인터페이스 폰트 활성화</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>세례대</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>글꼴 크기</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>인터페이스 언어</translation>
     </message>
@@ -3607,6 +3595,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Sentence:</source>
       <translation>문장:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>인터페이스 글꼴</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>커스텀 패밀리</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>맞춤 사이즈</translation>
     </message>
   </context>
   <context>
