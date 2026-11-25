@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Анки: может&apos;t создать карту без слова</translation>
+      <translation>Anki: нельзя создать карточку без слова</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Анки: сообщение в Анки не удалось</translation>
+      <translation>Anki: не удалось выполнить запись в Anki</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Анки: запись в Anki успеха</translation>
+      <translation>Anki: запись в Anki выполнена</translation>
     </message>
   </context>
   <context>
@@ -1057,7 +1057,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Tab 2</source>
-      <translation>Tab 2</translation>
+      <translation>Вкладка 2</translation>
     </message>
     <message>
       <source>Rename current dictionary group</source>
@@ -2546,7 +2546,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
-      <translation>Версия &lt;b&gt;%1&lt;/b&gt; программы GoldenDict доступа для загрузки.&lt;br&gt;
+      <translation>Версия &lt;b&gt;%1&lt;/b&gt; программы GoldenDict доступна для загрузки.&lt;br&gt;
 Нажмите &lt;b&gt;Загрузить&lt;/b&gt;, чтобы перейти на страницу загрузки.</translation>
     </message>
     <message>
@@ -2940,10 +2940,10 @@ With this on however, it will hide the main window.</source>
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
 however, the article from the topmost dictionary is shown.</source>
-      <translation>Обычно нажмите на ссылку, двойной щелчок по слову или поиск по
-выбору в статье загружает перевод и почти мгновенно
-прокручивает статью из того же словаря. With this option off,
-however, the article from the topmost dictionary is shown on the top dictionary .</translation>
+      <translation>Обычно при нажатии на ссылку, двойном щелчке по слову или поиске по
+выбору в статье загружается перевод и почти мгновенно выполняется
+прокрутка к статье из того же словаря. Если этот параметр отключён,
+будет показана статья из самого верхнего словаря.</translation>
     </message>
     <message>
       <source>Automatically scroll to target article</source>
@@ -3106,7 +3106,7 @@ be the last ones.</source>
     </message>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng это словарь программного обеспечения.</translation>
+      <translation>GoldenDict-ng — это программа-словарь.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3487,7 +3487,7 @@ from mouse-over, selection, clipboard or command line</source>
     <message>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
-      <translation>Включите эту опцию, чтобы чтобы разрешить поиск статей по спискам синонимов
+      <translation>Включите эту опцию, чтобы разрешить поиск статей по спискам синонимов
 из словарей формата Stardict, Babylon и GLS</translation>
     </message>
     <message>
@@ -3612,11 +3612,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Семейство заказов</translation>
+      <translation>Пользовательское семейство шрифтов</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Индивидуальный размер</translation>
+      <translation>Пользовательский размер шрифта</translation>
     </message>
   </context>
   <context>
@@ -4070,7 +4070,7 @@ of the appropriate groups to use them.</source>
     </message>
     <message>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-      <translation>Любые внешние программы. Строка %GDWORD% будет заменена на запрашиваемое слово. Строка %GDSEARCH% будет заменена на текст в поисковой строке. Если обоих строк нет задано, запрашиваемое слово будет отправлено в стандартный входной поток внешней программы.</translation>
+      <translation>Любые внешние программы. Строка %GDWORD% будет заменена на запрашиваемое слово. Строка %GDSEARCH% будет заменена на текст в поисковой строке. Если обе строки не заданы, запрашиваемое слово будет отправлено в стандартный входной поток внешней программы.</translation>
     </message>
     <message>
       <source>Lingua Libre</source>
