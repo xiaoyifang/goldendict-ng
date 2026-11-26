@@ -13,7 +13,7 @@
     </message>
     <message>
       <source>Copy version info</source>
-      <translation>Copy thông tin phiên bản</translation>
+      <translation>Sao chép thông tin phiên bản</translation>
     </message>
   </context>
   <context>
@@ -345,7 +345,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Favorites folder:</source>
-      <translation>Thư mục yêu thích:</translation>
+      <translation>Thư mục ưa thích:</translation>
     </message>
     <message>
       <source>None</source>
@@ -491,7 +491,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>OK</source>
-      <translation>ĐƯỢC RỒI</translation>
+      <translation>Đồng ý</translation>
     </message>
     <message>
       <source>Text</source>
@@ -785,7 +785,7 @@ between classic and school orthography in cyrillic)</source>
     <name>FavoritesModel</name>
     <message>
       <source>Error in favorities file</source>
-      <translation>Lỗi trong tệp yêu thích</translation>
+      <translation>Lỗi trong tệp các ưa thích</translation>
     </message>
   </context>
   <context>
@@ -808,7 +808,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Favorites:</source>
-      <translation>yêu thích:</translation>
+      <translation>Ưa thích:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
@@ -2132,7 +2132,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>&amp;Help</source>
-      <translation>&amp;Giúp đỡ</translation>
+      <translation>&amp;Trợ giúp</translation>
     </message>
     <message>
       <source>&amp;View</source>
@@ -2152,7 +2152,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Favo&amp;rites</source>
-      <translation>&amp;Yêu thích</translation>
+      <translation>&amp;Ưa thích</translation>
     </message>
     <message>
       <source>&amp;Search Pane</source>
@@ -2160,15 +2160,15 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>&amp;Results Navigation Pane</source>
-      <translation>Ngăn Điều hướng Kết &amp;quả</translation>
+      <translation>Ngăn Từ điển Tìm &amp;Thấy</translation>
     </message>
     <message>
       <source>Favor&amp;ites Pane</source>
-      <translation>Ngăn&amp;Ưa thích</translation>
+      <translation>Ngăn Ư&amp;a thích</translation>
     </message>
     <message>
       <source>&amp;History Pane</source>
-      <translation>Ngăn Lược &amp;sử</translation>
+      <translation>Ngăn Lịch &amp;sử</translation>
     </message>
     <message>
       <source>&amp;Dictionaries...</source>
@@ -2384,11 +2384,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Back</source>
-      <translation>Trở lại</translation>
+      <translation>Trước</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Tiếp tục</translation>
+      <translation>Sau</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
@@ -2598,7 +2598,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Export Favorites to file</source>
-      <translation>Xuất yêu thích sang tệp</translation>
+      <translation>Xuất Các ưa thích sang tệp</translation>
     </message>
     <message>
       <source>Text files (*.txt);;XML files (*.xml)</source>
@@ -2606,7 +2606,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Favorites export complete</source>
-      <translation>Hoàn tất xuất yêu thích</translation>
+      <translation>Hoàn tất xuất tệp ưa thích</translation>
     </message>
     <message>
       <source>Import Favorites from file</source>
@@ -2622,7 +2622,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Favorites import complete</source>
-      <translation>Yêu thích nhập khẩu hoàn tất</translation>
+      <translation>Nhập hoàn tất Các ưa thích</translation>
     </message>
     <message>
       <source>Dictionary info</source>
@@ -2764,7 +2764,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
-      <translation>Từ điển hoạt động:%1, không hoạt động: %2</translation>
+      <translation>Từ điển hoạt động: %1, không hoạt động: %2</translation>
     </message>
   </context>
   <context>
@@ -2918,7 +2918,7 @@ the application.</source>
     </message>
     <message>
       <source>Appearance</source>
-      <translation>Vẻ bề ngoài</translation>
+      <translation>Giao diện</translation>
     </message>
     <message>
       <source>Interface Font</source>
@@ -3063,11 +3063,11 @@ in the pressed state when the word selection changes.</source>
     </message>
     <message>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Không hiển thị cửa sổ bật lên khi lựa chọn hoặc khay nhớ tạm trong một trong các cửa sổ riêng của GoldenDict thay đổi</translation>
+      <translation>Không hiển thị cửa sổ bật lên khi lựa chọn hoặc khay nhớ tạm trong một trong các cửa sổ riêng của Từ điển Vàng thay đổi</translation>
     </message>
     <message>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>Bỏ qua lựa chọn riêng của GoldenDict và thay đổi khay nhớ tạm</translation>
+      <translation>Bỏ qua lựa chọn riêng của từ điển Vàng và thay đổi khay nhớ tạm</translation>
     </message>
     <message>
       <source>Delay time</source>
@@ -3253,7 +3253,7 @@ và chặn truy vấn. Bật tính năng này để không chèn định danh v�
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Dung lượng ổ đĩa tối đa do bộ đệm mạng của GoldenDict chiếm trong
+      <translation>Dung lượng ổ đĩa tối đa do bộ đệm mạng của Từ điển Vàng chiếm trong
 %1
 Nếu được đặt thành 0, bộ đệm đĩa mạng sẽ bị tắt.</translation>
     </message>
@@ -3334,19 +3334,19 @@ download page.</source>
     </message>
     <message>
       <source>Save every</source>
-      <translation>Lưu mỗi</translation>
+      <translation>Lưu mỗi </translation>
     </message>
     <message>
       <source>minutes</source>
-      <translation>phút</translation>
+      <translation> phút</translation>
     </message>
     <message>
       <source>Favorites</source>
-      <translation>Yêu thích</translation>
+      <translation>Ưa thích</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation>Khoảng thời gian lưu yêu thích. Nếu được đặt thành 0 Mục ưa thích sẽ chỉ được lưu trong khi thoát.</translation>
+      <translation>Khoảng thời gian lưu các ưa thích. Nếu được đặt thành 0 Mục ưa thích sẽ chỉ được lưu trong khi thoát.</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3717,11 +3717,11 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Back</source>
-      <translation>Trở lại</translation>
+      <translation>Trước</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Tiếp tục</translation>
+      <translation>Sau</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -4077,7 +4077,7 @@ Nhật, dựa trên hệ thống âm vị Anh ngữ</translation>
     </message>
     <message>
       <source>Preferences</source>
-      <translation>Tuỳ thích</translation>
+      <translation>Tuỳ chỉnh</translation>
     </message>
     <message>
       <source>Volume:</source>
