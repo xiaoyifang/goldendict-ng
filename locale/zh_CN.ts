@@ -2695,11 +2695,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Prefix</source>
-      <translation>前缀</translation>
+      <translation>正序</translation>
     </message>
     <message>
       <source>Suffix</source>
-      <translation>后缀</translation>
+      <translation>倒序</translation>
     </message>
     <message>
       <source>Multi-word</source>
@@ -3594,11 +3594,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>自定义家族</translation>
+      <translation>自定义字体族</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>自定义尺寸</translation>
+      <translation>自定义字号</translation>
     </message>
   </context>
   <context>
