@@ -2695,11 +2695,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Prefix</source>
-      <translation>正序</translation>
+      <translation>前缀</translation>
     </message>
     <message>
       <source>Suffix</source>
-      <translation>倒序</translation>
+      <translation>后缀</translation>
     </message>
     <message>
       <source>Multi-word</source>
