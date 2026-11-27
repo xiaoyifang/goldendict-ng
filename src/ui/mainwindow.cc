@@ -45,6 +45,11 @@
 #include <QSslConfiguration>
 #include <QStyleFactory>
 #include <QStyleHints>
+#include <QColor>
+#include <QFile>
+#include <QFileSystemWatcher>
+#include <QStandardPaths>
+#include <QTimer>
 #include <QNetworkProxyFactory>
 #include <QVersionNumber>
 #include <QShortcut>
@@ -221,6 +226,127 @@ Dictionary::WordMatchMode toWordMatchMode( Config::SearchMode mode )
   }
 }
 } // namespace
+
+#if defined( Q_OS_LINUX )
+namespace
+{
+QString kdeGlobalsFilePath()
+{
+  return QStandardPaths::writableLocation( QStandardPaths::GenericConfigLocation ) + QLatin1String( "/kdeglobals" );
+}
+
+// kdeglobals is a plain INI file; QSettings cannot read the "Colors:Window/BackgroundNormal"
+// entries of it reliably, so the colour table is parsed directly.
+QHash<QString, QColor> readKdeColorTable( const QString & path )
+{
+  QHash<QString, QColor> colors;
+
+  QFile file( path );
+  if ( !file.open( QIODevice::ReadOnly | QIODevice::Text ) ) {
+    return colors;
+  }
+
+  QString section;
+  QTextStream stream( &file );
+  while ( !stream.atEnd() ) {
+    const QString line = stream.readLine().trimmed();
+    if ( line.isEmpty() || line.startsWith( QLatin1Char( '#' ) ) || line.startsWith( QLatin1Char( ';' ) ) ) {
+      continue;
+    }
+    if ( line.startsWith( QLatin1Char( '[' ) ) && line.endsWith( QLatin1Char( ']' ) ) ) {
+      section = line.mid( 1, line.size() - 2 );
+      continue;
+    }
+    const int separator = line.indexOf( QLatin1Char( '=' ) );
+    if ( separator <= 0 ) {
+      continue;
+    }
+    const QStringList parts = line.mid( separator + 1 ).split( QLatin1Char( ',' ) );
+    if ( parts.size() < 3 ) {
+      continue;
+    }
+    bool okRed   = false;
+    bool okGreen = false;
+    bool okBlue  = false;
+    const int red   = parts[ 0 ].trimmed().toInt( &okRed );
+    const int green = parts[ 1 ].trimmed().toInt( &okGreen );
+    const int blue  = parts[ 2 ].trimmed().toInt( &okBlue );
+    if ( !okRed || !okGreen || !okBlue ) {
+      continue;
+    }
+    colors.insert( section + QLatin1Char( '/' ) + line.left( separator ).trimmed(), QColor( red, green, blue ) );
+  }
+
+  return colors;
+}
+
+// Rebuild the application palette from the KDE colour scheme. Qt's KDE platform theme does not
+// refresh the palette when the user switches between a light and a dark scheme, so without this
+// the interface keeps the colours it had at start-up until GoldenDict is restarted.
+bool applyKdeColorScheme()
+{
+  const QString path = kdeGlobalsFilePath();
+  if ( path.isEmpty() || !QFile::exists( path ) ) {
+    return false;
+  }
+
+  const QHash<QString, QColor> colors = readKdeColorTable( path );
+  if ( colors.isEmpty() ) {
+    return false;
+  }
+
+  QPalette palette = QApplication::palette();
+
+  const auto setFrom = [ & ]( QPalette::ColorRole role, const QString & key ) {
+    const auto it = colors.constFind( key );
+    if ( it != colors.constEnd() ) {
+      palette.setColor( role, it.value() );
+    }
+  };
+
+  setFrom( QPalette::Window, QStringLiteral( "Colors:Window/BackgroundNormal" ) );
+  setFrom( QPalette::WindowText, QStringLiteral( "Colors:Window/ForegroundNormal" ) );
+  setFrom( QPalette::Base, QStringLiteral( "Colors:View/BackgroundNormal" ) );
+  setFrom( QPalette::AlternateBase, QStringLiteral( "Colors:View/BackgroundAlternate" ) );
+  setFrom( QPalette::Text, QStringLiteral( "Colors:View/ForegroundNormal" ) );
+  setFrom( QPalette::Button, QStringLiteral( "Colors:Button/BackgroundNormal" ) );
+  setFrom( QPalette::ButtonText, QStringLiteral( "Colors:Button/ForegroundNormal" ) );
+  setFrom( QPalette::Highlight, QStringLiteral( "Colors:Selection/BackgroundNormal" ) );
+  setFrom( QPalette::HighlightedText, QStringLiteral( "Colors:Selection/ForegroundNormal" ) );
+  setFrom( QPalette::ToolTipBase, QStringLiteral( "Colors:Tooltip/BackgroundNormal" ) );
+  setFrom( QPalette::ToolTipText, QStringLiteral( "Colors:Tooltip/ForegroundNormal" ) );
+  setFrom( QPalette::Link, QStringLiteral( "Colors:View/ForegroundLink" ) );
+
+  QApplication::setPalette( palette );
+  return true;
+}
+
+// Breeze (and possibly other KStyles) paint the menu bar and the tool bars from the palette the
+// style was constructed with, so they keep their old colours after a live colour-scheme switch and
+// can stay light while the rest of the window is dark. Pin those few widgets to the colours that
+// were just applied, using concrete values (palette() inside a style sheet is resolved once and
+// does not follow later palette changes).
+QString kdeChromeStyleSheet()
+{
+  const QPalette palette = QApplication::palette();
+  const auto hex = []( const QColor & color ) { return color.name(); };
+
+  return QStringLiteral(
+           "QMenuBar{background-color:%1;color:%2;}"
+           "QMenuBar::item{background:transparent;padding:4px 8px;}"
+           "QMenuBar::item:selected{background-color:%3;color:%4;border-radius:4px;}"
+           "QToolBar{background-color:%1;border:none;}"
+           "QToolBar QToolButton{background:transparent;color:%2;border-radius:4px;}"
+           "QToolBar QToolButton:hover{background-color:%5;}"
+           "QStatusBar{background-color:%1;color:%2;}" )
+    .arg( hex( palette.color( QPalette::Window ) ),
+          hex( palette.color( QPalette::WindowText ) ),
+          hex( palette.color( QPalette::Highlight ) ),
+          hex( palette.color( QPalette::HighlightedText ) ),
+          hex( palette.color( QPalette::Button ) ) );
+}
+} // namespace
+#endif
 
 MainWindow::MainWindow( Config::Class & cfg_ ):
   trayIcon( nullptr ),
@@ -948,6 +1074,42 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
                      cfg.preferences.displayStyle,
                      cfg.preferences.darkMode,
                      cfg.preferences.interfaceStyle );
+
+#if defined( Q_OS_LINUX )
+  // Follow light/dark switches made in the desktop settings without a restart.
+  {
+    const QString kdeGlobals = kdeGlobalsFilePath();
+    if ( !kdeGlobals.isEmpty() ) {
+      auto * watcher  = new QFileSystemWatcher( this );
+      auto * debounce = new QTimer( this );
+      debounce->setSingleShot( true );
+      debounce->setInterval( 200 );
+      watcher->addPath( kdeGlobals );
+
+      connect( debounce, &QTimer::timeout, this, [ this ]() {
+        const bool ok = applyKdeColorScheme();
+        if ( !ok ) {
+          return;
+        }
+        const QColor windowColor = QApplication::palette().color( QPalette::Window );
+        GlobalBroadcaster::instance()->setSystemDarkThemeOverride( windowColor.lightness() < 128, true );
+        refreshAppearances();
+        for ( int index = 0; index < ui.tabWidget->count(); ++index ) {
+          if ( auto view = qobject_cast< ArticleView * >( ui.tabWidget->widget( index ) ) ) {
+            view->syncBackgroundColorWithCfgDarkReader();
+            view->reload();
+          }
+        }
+      } );
+      connect( watcher, &QFileSystemWatcher::fileChanged, this, [ watcher, debounce, kdeGlobals ]() {
+        if ( !watcher->files().contains( kdeGlobals ) ) {
+          watcher->addPath( kdeGlobals ); // the file is usually replaced, not modified in place
+        }
+        debounce->start();
+      } );
+    }
+  }
+#endif
 
   // Create and show the initial welcome tab
   history.enableAdd( false );
@@ -1803,14 +1965,19 @@ void MainWindow::updateAppearances( const QString & addonStyle,
 #endif
 
 #if !defined( Q_OS_WIN )
+  // Recreating the style is only meaningful when the requested style differs from the one
+  // that is already active. With the default value ("Default") the active style *is* the
+  // platform style, and building a fresh instance of it makes KStyle (Breeze) re-read the
+  // desktop color scheme, while the widgets keep the palette installed by the platform
+  // theme. On a dark Plasma theme the menu bar and the tool bars then end up painted with
+  // light colors although the rest of the window stays dark. Skipping the redundant
+  // recreation keeps light and dark themes consistent.
   if ( !interfaceStyle.isEmpty() ) {
-    if ( interfaceStyle == "Default" ) {
-      QApplication::setStyle( QStyleFactory::create( defaultInterfaceStyle ) );
-    }
-    else {
-      if ( QStyleFactory::keys().contains( interfaceStyle ) ) {
-        QApplication::setStyle( QStyleFactory::create( interfaceStyle ) );
-      }
+    const QString requestedStyle =
+      interfaceStyle == QLatin1String( "Default" ) ? defaultInterfaceStyle : interfaceStyle;
+    if ( QStyleFactory::keys().contains( requestedStyle, Qt::CaseInsensitive )
+         && QApplication::style()->name().compare( requestedStyle, Qt::CaseInsensitive ) != 0 ) {
+      QApplication::setStyle( QStyleFactory::create( requestedStyle ) );
     }
   }
 #endif
@@ -1836,6 +2003,11 @@ void MainWindow::updateAppearances( const QString & addonStyle,
   if ( commonCssFile.open( QFile::ReadOnly ) ) {
     css += commonCssFile.readAll();
   }
+
+#if defined( Q_OS_LINUX )
+  // Keep the window chrome in sync with the palette that was applied above (see kdeChromeStyleSheet()).
+  css += kdeChromeStyleSheet().toUtf8();
+#endif
 
 #if defined( Q_OS_WIN )
   QFile winCssFile( ":qt-style-win.css" );
