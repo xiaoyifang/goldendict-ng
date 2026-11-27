@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 / %2 találat</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Cikk megnyitása külső &amp; böngészőben</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,40 +336,8 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Átalakítás engedélyezése az egyszerűsített kínai írásról a hagyományosra (hongkongi változtat)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Átalakítás egyszerűsítettről hagyományos kínai írásra (tajvani változat)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Átalakítás egyszerűsítettről hagyományos kínai írásra (hongkongi változat)</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Átalakítás hagyományosról egyszerűsített kínai írásra</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Hong Kong variant</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Engedélyezze a hagyományos karakterek egyszerűsített (szárazföldi) karakterekre történő átalakítását</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Egyszerűsített (Szárazföld)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Egyszerűsített karakterek átalakítása hagyományos (Tajvan/Standard) karakterekre</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Hagyományos (Tajvan/Standard)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +358,38 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Engedélyezze az egyszerűsített kínai, hagyományos kínai (Tajvan/Hongkong) és japán Shinjitai karakterek közötti átalakítást</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Átalakítás engedélyezése a hagyományos kínai írásról az egyszerűsítettre</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Egyszerűsített</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Egyszerűsített karakterekről hagyományos (tajvani) karakterekre történő átalakítás engedélyezése</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Hagyományos (Tajvan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Egyszerűsített karakterekről hagyományos (hongkongi) karakterekre történő átalakítás engedélyezése</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Hagyományos (Hongkong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Egyszerűsítve a hagyományos kínai (Tajvani) átalakításra</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Egyszerűsítve hagyományos kínai (hongkongi) átváltásra</translation>
     </message>
   </context>
   <context>
@@ -473,10 +477,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <translation>Biztos, hogy létre szeretne hozni csoportokat a tartalmazó mappák alapján?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Biztos, hogy létre szeretne hozni csoportokat a metadata.toml alapján?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Csoportok kombinálása forrásnyelv alapján: &quot;%1 -&gt;&quot;</translation>
     </message>
@@ -499,6 +499,10 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Biztos, hogy törli a csoportot: &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Biztos benne, hogy szótár metaadat-fájlok alapján szeretne csoportokat generálni?</translation>
     </message>
   </context>
   <context>
@@ -785,6 +789,10 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     <message>
       <source>New display name:</source>
       <translation>Új kijelzőnév:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Nem sikerült időztetni a szótárt az újraindexelésre.</translation>
     </message>
   </context>
   <context>
@@ -1174,6 +1182,18 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     <message>
       <source>%1 Morphology</source>
       <translation>%1 morfológia</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Helyes helyesírás, más szóforma nem talált.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>From %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Szóformák a %1: </translation>
     </message>
   </context>
   <context>
@@ -2670,6 +2690,34 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
       <source>Open in &amp;External Browser</source>
       <translation>Nyisd meg és Külső böngésző</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Most pedig fejszavak tártárának építése: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Előtag</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Utótag</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Többszavas</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Teljes szöveges keresés…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Keresési mód</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Keresési mód: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3017,18 +3065,6 @@ legyetek az utolsók.</translation>
       <translation>Megjelenés</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Kapcsold be az interfész betűtípust</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Betűtípus</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Betűméret</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3273,24 +3309,12 @@ forgalmát proxy szerveren át szeretné irányítani.</translation>
       <translation>Dekk:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Szó</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Szókincs mező...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Szöveg</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Definíció mező...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Mondat</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3563,6 +3587,30 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Ha engedélyezik, a weboldalak szótárak saját fülükön nyílnak meg, nem pedig a cikknézetben lennének beágyazva. Ez elkerüli az iframe elrendezést és a görgetés korlátozásait, és lehetővé teszi a szótáronkénti Script oszlopot a Szótárak párbeszédben.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>Szó:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Szöveg:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Mondat:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Felület betűtípusa</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Egyedi család</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Egyedi méret</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3788,6 +3836,10 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>A hivatkozott erőforrás letöltése nem sikerült.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Az erőforrás a cél mappán kívül mentett volna el.</translation>
     </message>
   </context>
   <context>

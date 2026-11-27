@@ -55,6 +55,10 @@ signals:
 
   void linkClicked( const QUrl & url );
 
+  /// Signals that Return/Enter was pressed while the view had a text selection.
+  /// @param inNewTab true when Ctrl was held, i.e. look the selection up in a new tab.
+  void searchSelectedText( bool inNewTab );
+
 protected:
   QWebEngineView * createWindow( QWebEnginePage::WebWindowType type ) override;
   bool event( QEvent * event ) override;
@@ -75,8 +79,13 @@ private:
   bool singleClickToDbClick;
   bool dbClicked;
 
-public slots:
+  /// Link currently under the mouse cursor, as reported by page's linkHovered.
+  /// Empty when the cursor is not over a link. Used to tell link clicks from
+  /// plain single clicks on text.
+  QString hoveredLink;
 
-  //receive signal ,a link has been clicked.
-  void linkClickedInHtml( const QUrl & url );
+private slots:
+
+  /// Tracks the link under the mouse cursor.
+  void linkHovered( const QString & link );
 };

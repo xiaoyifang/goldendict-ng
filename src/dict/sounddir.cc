@@ -8,10 +8,14 @@
 #include "filetype.hh"
 #include "htmlescape.hh"
 #include "audiolink.hh"
+#include "lsa.hh"
+#include "globalbroadcaster.hh"
+#include "text.hh"
 
 #include "utils.hh"
 
 #include <set>
+#include <cstring>
 #include <QFileInfo>
 #include <QDirIterator>
 #include <QDateTime>
@@ -32,7 +36,7 @@ namespace {
 
 enum {
   Signature            = 0x58524453, // SDRX on little-endian, XRDS on big-endian
-  CurrentFormatVersion = 2 + BtreeIndexing::FormatVersion + Folding::Version
+  CurrentFormatVersion = 5 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
 #pragma pack( push, 1 )
@@ -57,6 +61,125 @@ bool indexIsOldOrBad( string const & indexFile )
 
   return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
     || header.formatVersion != CurrentFormatVersion;
+}
+
+/// Records stored in the chunks share a unified binary layout:
+///
+///   [ uint32 type ][ uint32 payloadSize ][ payload ]
+///
+/// The payload is a sequence of fields, their order defined by the type:
+///
+///   SoundFile: str path         -- relative path of the sound file
+///   LsaEntry:  u32 vorbisOffset -- offset of the Ogg stream in the archive
+///              u32 entryOffset  -- offset of the entry record in the archive
+///              str name         -- entry name, the extension stripped
+///              str path         -- relative path of the .lsa archive
+///
+/// A str is stored as [ uint32 size ][ size bytes of UTF-8 ], so neither a
+/// terminator nor escaping is needed and embedded NUL characters are harmless.
+///
+/// Values use the host byte order, like the rest of the index file; the index
+/// header signature makes a foreign-endianness index fail to open, which
+/// forces a rebuild.
+enum class RecordType : uint32_t {
+  SoundFile = 0,
+  LsaEntry  = 1
+};
+
+struct RecordWriter
+{
+  string buffer;
+
+  void u32( uint32_t value )
+  {
+    buffer.append( reinterpret_cast< const char * >( &value ), sizeof( value ) );
+  }
+
+  void str( const string & value )
+  {
+    u32( static_cast< uint32_t >( value.size() ) );
+    buffer.append( value );
+  }
+};
+
+struct RecordReader
+{
+  const char * p   = nullptr;
+  const char * end = nullptr;
+
+  RecordReader() = default;
+
+  RecordReader( const char * start, size_t size ):
+    p( start ),
+    end( start + size )
+  {
+  }
+
+  bool u32( uint32_t & value )
+  {
+    if ( static_cast< size_t >( end - p ) < sizeof( value ) ) {
+      return false;
+    }
+
+    memcpy( &value, p, sizeof( value ) );
+    p += sizeof( value );
+    return true;
+  }
+
+  bool str( string & value )
+  {
+    uint32_t size = 0;
+
+    if ( !u32( size ) || static_cast< size_t >( end - p ) < size ) {
+      return false;
+    }
+
+    value.assign( p, size );
+    p += size;
+    return true;
+  }
+};
+
+/// Appends a record of \p type with the given payload to the chunks storage
+/// and returns its article offset.
+uint32_t addRecord( ChunkedStorage::Writer & chunks, RecordType type, const string & payload )
+{
+  RecordWriter record;
+
+  record.u32( static_cast< uint32_t >( type ) );
+  record.u32( static_cast< uint32_t >( payload.size() ) );
+  record.buffer.append( payload );
+
+  const uint32_t articleOffset = chunks.startNewBlock();
+
+  chunks.addToBlock( record.buffer.data(), record.buffer.size() );
+
+  return articleOffset;
+}
+
+/// Reads the record header at \p recordStart and makes \p payload span the
+/// payload only. Returns false if the record is malformed or truncated.
+bool openRecord( const char * recordStart, const char * chunkEnd, RecordType & type, RecordReader & payload )
+{
+  if ( recordStart >= chunkEnd ) {
+    return false;
+  }
+
+  RecordReader record( recordStart, static_cast< size_t >( chunkEnd - recordStart ) );
+
+  uint32_t typeValue   = 0;
+  uint32_t payloadSize = 0;
+
+  if ( !record.u32( typeValue ) || !record.u32( payloadSize )
+       || static_cast< size_t >( chunkEnd - record.p ) < payloadSize ) {
+    return false;
+  }
+
+  type = static_cast< RecordType >( typeValue );
+
+  payload = RecordReader( record.p, payloadSize );
+
+  return true;
 }
 
 class SoundDirDictionary: public BtreeIndexing::BtreeDictionary
@@ -175,8 +298,6 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( const std::u32st
   multimap< std::u32string, uint32_t >::const_iterator i;
 
   string displayedName;
-  vector< char > chunk;
-  char * nameBlock;
 
   result += "<div class=\"audio-play\">";
 
@@ -187,23 +308,12 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( const std::u32st
       displayedName = chain[ i->second ].word;
     }
     else {
-      try {
-        QMutexLocker _( &idxMutex );
-        nameBlock = chunks.getBlock( address, chunk );
-
-        if ( nameBlock >= &chunk.front() + chunk.size() ) {
-          // chunks reader thinks it's okay since zero-sized records can exist,
-          // but we don't allow that.
-          throw ChunkedStorage::exAddressOutOfRange();
-        }
-
-        chunk.back()  = 0; // It must end with 0 anyway, but just in case
-        displayedName = string( nameBlock );
-      }
-      catch ( ChunkedStorage::exAddressOutOfRange & ) {
+      QString name;
+      if ( !get_file_name( address, name ) ) {
         // Bad address
         continue;
       }
+      displayedName = name.toStdString();
     }
 
     result += "<div class=\"audio-play-item\">";
@@ -235,23 +345,12 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( const std::u32st
       displayedName = chain[ i->second ].word;
     }
     else {
-      try {
-        QMutexLocker _( &idxMutex );
-        nameBlock = chunks.getBlock( address, chunk );
-
-        if ( nameBlock >= &chunk.front() + chunk.size() ) {
-          // chunks reader thinks it's okay since zero-sized records can exist,
-          // but we don't allow that.
-          throw ChunkedStorage::exAddressOutOfRange();
-        }
-
-        chunk.back()  = 0; // It must end with 0 anyway, but just in case
-        displayedName = string( nameBlock );
-      }
-      catch ( ChunkedStorage::exAddressOutOfRange & ) {
+      QString name;
+      if ( !get_file_name( address, name ) ) {
         // Bad address
         continue;
       }
+      displayedName = name.toStdString();
     }
 
     result += "<div class=\"audio-play-item\">";
@@ -306,14 +405,14 @@ void SoundDirDictionary::loadIcon() noexcept
 bool SoundDirDictionary::get_file_name( uint32_t articleOffset, QString & file_name )
 {
   vector< char > chunk;
-  char * articleData;
+  char * recordData;
 
   try {
     QMutexLocker _( &idxMutex );
 
-    articleData = chunks.getBlock( articleOffset, chunk );
+    recordData = chunks.getBlock( articleOffset, chunk );
 
-    if ( articleData >= &chunk.front() + chunk.size() ) {
+    if ( chunk.empty() || recordData >= &chunk.front() + chunk.size() ) {
       // chunks reader thinks it's okay since zero-sized records can exist,
       // but we don't allow that.
       throw ChunkedStorage::exAddressOutOfRange();
@@ -323,8 +422,32 @@ bool SoundDirDictionary::get_file_name( uint32_t articleOffset, QString & file_n
     return false; // No such resource
   }
 
-  chunk.back() = 0; // It must end with 0 anyway, but just in case
-  file_name    = QString::fromUtf8( articleData );
+  RecordType type;
+  RecordReader payload;
+
+  if ( !openRecord( recordData, &chunk.front() + chunk.size(), type, payload ) ) {
+    return false; // Malformed record
+  }
+
+  if ( type == RecordType::LsaEntry ) {
+    uint32_t vorbisOffset = 0, entryOffset = 0;
+    string entryName;
+
+    if ( !payload.u32( vorbisOffset ) || !payload.u32( entryOffset ) || !payload.str( entryName ) ) {
+      return false; // Malformed record
+    }
+
+    file_name = QString::fromStdString( entryName );
+    return true;
+  }
+
+  string relPath;
+
+  if ( type != RecordType::SoundFile || !payload.str( relPath ) ) {
+    return false; // Malformed record
+  }
+
+  file_name = QString::fromStdString( relPath );
   return true;
 }
 
@@ -346,18 +469,87 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( const string & 
 
 
   if ( !isNumber ) {
+    // The name is not the internal offset-based one but a plain file or
+    // entry name, e.g. when the sound is requested by another dictionary
+    // ( a DSL fallback or the #SOUND_DICTIONARY directive ). Resolve it
+    // through the index.
+    string strippedName( name );
+
+    if ( Filetype::isNameOfSound( strippedName ) ) {
+      const auto dotPos = strippedName.rfind( '.' );
+      if ( dotPos != string::npos ) {
+        strippedName.erase( dotPos );
+      }
+    }
+
+    vector< WordArticleLink > chain = findArticles( Text::toUtf32( strippedName ) );
+
+    if ( chain.empty() ) {
+      return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
+    }
+
+    articleOffset = chain[ 0 ].articleOffset;
+  }
+
+  vector< char > chunk;
+  char * recordData;
+
+  try {
+    QMutexLocker _( &idxMutex );
+
+    recordData = chunks.getBlock( articleOffset, chunk );
+
+    if ( chunk.empty() || recordData >= &chunk.front() + chunk.size() ) {
+      // chunks reader thinks it's okay since zero-sized records can exist,
+      // but we don't allow that.
+      throw ChunkedStorage::exAddressOutOfRange();
+    }
+  }
+  catch ( ChunkedStorage::exAddressOutOfRange & ) {
     return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
   }
 
-  QString file_name;
-  if ( !get_file_name( articleOffset, file_name ) ) {
-    // Bad address
-    return std::make_shared< Dictionary::DataRequestInstant >( false );
+  RecordType type;
+  RecordReader payload;
+
+  if ( !openRecord( recordData, &chunk.front() + chunk.size(), type, payload ) ) {
+    return std::make_shared< Dictionary::DataRequestInstant >( false ); // Malformed record
   }
 
   const QDir dir( QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() ) );
 
-  const QString fileName = QDir::toNativeSeparators( dir.filePath( file_name ) );
+  if ( type == RecordType::LsaEntry ) {
+    // The record references an entry inside a Lingvo sound archive (.lsa)
+
+    uint32_t vorbisOffset = 0, entryOffset = 0;
+    string entryName, relLsaPath;
+
+    if ( !payload.u32( vorbisOffset ) || !payload.u32( entryOffset ) || !payload.str( entryName )
+         || !payload.str( relLsaPath ) ) {
+      return std::make_shared< Dictionary::DataRequestInstant >( false ); // Malformed record
+    }
+
+    const QString lsaPath = QDir::toNativeSeparators( dir.filePath( QString::fromStdString( relLsaPath ) ) );
+
+    auto dr = std::make_shared< Dictionary::DataRequestInstant >( true );
+
+    try {
+      Lsa::loadLsaSound( lsaPath.toStdString(), entryOffset, vorbisOffset, dr->getData() );
+    }
+    catch ( std::exception & ) {
+      return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
+    }
+
+    return dr;
+  }
+
+  string relPath;
+
+  if ( type != RecordType::SoundFile || !payload.str( relPath ) ) {
+    return std::make_shared< Dictionary::DataRequestInstant >( false ); // Malformed record
+  }
+
+  const QString fileName = QDir::toNativeSeparators( dir.filePath( QString::fromStdString( relPath ) ) );
 
   // Now try loading that file
 
@@ -396,8 +588,10 @@ void addDir( const QDir & dir, IndexedWords & indexedWords, uint32_t & soundsCou
       // Add this sound to index
       string fileName = dir.relativeFilePath( fileInfo.filePath() ).toUtf8().data();
 
-      const uint32_t articleOffset = chunks.startNewBlock();
-      chunks.addToBlock( fileName.c_str(), fileName.size() + 1 );
+      RecordWriter payload;
+      payload.str( fileName );
+
+      const uint32_t articleOffset = addRecord( chunks, RecordType::SoundFile, payload.buffer );
 
       std::u32string name = fileInfo.fileName().toStdU32String();
 
@@ -408,6 +602,57 @@ void addDir( const QDir & dir, IndexedWords & indexedWords, uint32_t & soundsCou
       }
 
       indexedWords.addWord( name, articleOffset );
+
+      ++soundsCount;
+    }
+  }
+}
+
+/// Adds entries of Lingvo sound archives (.lsa) found inside the directory.
+/// Only archives with entries named after real words ("universal" ones) are
+/// of any use here; archives which name their sounds with internal ids are
+/// paired with a specific DSL dictionary and must stay beside it instead.
+void addLsaArchives( const QDir & dir,
+                     IndexedWords & indexedWords,
+                     uint32_t & soundsCount,
+                     ChunkedStorage::Writer & chunks )
+{
+  QDirIterator it( dir.path(),
+                   QDir::Files | QDir::NoSymLinks, // We only care about files
+                   QDirIterator::Subdirectories ); // Recurse into subdirectories
+
+  while ( it.hasNext() ) {
+    it.next();
+
+    const std::string filePath = it.filePath().toStdString();
+
+    if ( !Utils::endsWithIgnoreCase( filePath, ".lsa" ) ) {
+      continue;
+    }
+
+    std::vector< Lsa::LsaEntryInfo > entries;
+    uint32_t vorbisOffset = 0;
+
+    if ( !Lsa::parseLsaEntries( filePath, entries, vorbisOffset ) ) {
+      continue; // Not a valid LSA archive
+    }
+
+    const string relLsaPath = dir.relativeFilePath( it.filePath() ).toUtf8().data();
+
+    for ( const auto & entry : entries ) {
+      if ( entry.name.empty() ) {
+        continue;
+      }
+
+      RecordWriter payload;
+      payload.u32( vorbisOffset );
+      payload.u32( entry.offset );
+      payload.str( entry.name );
+      payload.str( relLsaPath );
+
+      const uint32_t articleOffset = addRecord( chunks, RecordType::LsaEntry, payload.buffer );
+
+      indexedWords.addWord( Text::toUtf32( entry.name ), articleOffset );
 
       ++soundsCount;
     }
@@ -527,6 +772,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const Config::SoundDirs & 
 
       addDir( dir, indexedWords, soundsCount, chunks );
 
+      addLsaArchives( dir, indexedWords, soundsCount, chunks );
+
       idxHeader.soundsCount = soundsCount;
 
       // Finish with the chunks
@@ -570,11 +817,15 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const Config::SoundDirs & 
       idx.write( &idxHeader, sizeof( idxHeader ) );
     }
 
-    dictionaries.push_back( std::make_shared< SoundDirDictionary >( dictId,
-                                                                    soundDir.name.toUtf8().data(),
-                                                                    indexFile,
-                                                                    dictFiles,
-                                                                    soundDir.iconFilename ) );
+    auto dict = std::make_shared< SoundDirDictionary >( dictId,
+                                                        soundDir.name.toUtf8().data(),
+                                                        indexFile,
+                                                        dictFiles,
+                                                        soundDir.iconFilename );
+
+    GlobalBroadcaster::instance()->addSoundDirDictId( QString::fromStdString( dictId ) );
+
+    dictionaries.push_back( dict );
   }
 
   return dictionaries;

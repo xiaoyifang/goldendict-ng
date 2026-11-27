@@ -22,6 +22,10 @@ public:
   {
     isPopup = popup;
   }
+  // Consumes one pending loadFinished(false) caused by rejecting an internal
+  // audio/video link navigation (played natively, not navigated). Returns
+  // false for genuine load failures.
+  bool takeResourceClickRejection();
 signals:
   void linkClicked( const QUrl & url );
 
@@ -45,5 +49,6 @@ protected:
 
 private:
   LastReqInfo lastReq;
+  int pendingResourceRejections = 0;
   bool isPopup = false;
 };

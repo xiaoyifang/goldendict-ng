@@ -150,6 +150,11 @@ ZipSoundsDictionary::ZipSoundsDictionary( const string & id,
 
 string ZipSoundsDictionary::getName() noexcept
 {
+  // Prefer a user-defined display name (set via setName(), persisted in metadata).
+  if ( !dictionaryName.empty() ) {
+    return dictionaryName;
+  }
+
   string result = Utils::Fs::basename( getDictionaryFilenames()[ 0 ] );
 
   // Strip the extension

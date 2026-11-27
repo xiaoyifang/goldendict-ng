@@ -8,6 +8,7 @@
 #include <QByteArray>
 #include <QCommandLineParser>
 #include <QFile>
+#include <QFontDatabase>
 #include <QIcon>
 #include <QMessageBox>
 #include <QSessionManager>
@@ -38,7 +39,7 @@ using GD_QApplication = QtSingleApplication;
 #endif
 
 #if defined( USE_BREAKPAD )
-  #if defined( Q_OS_MAC )
+  #if defined( Q_OS_MACOS )
     #include "client/mac/handler/exception_handler.h"
   #elif defined( Q_OS_WIN32 )
     #include "client/windows/handler/exception_handler.h"
@@ -63,7 +64,7 @@ bool callback( const wchar_t * dump_path,
   return succeeded;
 }
   #endif
-  #ifdef Q_OS_MAC
+  #ifdef Q_OS_MACOS
 bool callback( const char * dump_dir, const char * minidump_id, void * context, bool succeeded )
 {
   if ( succeeded ) {
@@ -81,6 +82,7 @@ struct GDOptions
 {
   bool logFile     = false;
   bool togglePopup = false;
+  bool newTab      = false;
   QString word, groupName, popupGroupName;
   QString window;
 
@@ -237,6 +239,9 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
         else if ( targetParam == "main" ) {
           result->window = "main";
         }
+        else if ( targetParam == "newtab" ) {
+          result->newTab = true;
+        }
       }
     }
     else {
@@ -266,7 +271,7 @@ int main( int argc, char ** argv )
   }
 #endif
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
   setenv( "LANG", "en_US.UTF-8", 1 );
 #endif
 
@@ -288,15 +293,30 @@ int main( int argc, char ** argv )
   QGuiApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
   
   // Registration of custom URL schemes must be done before QCoreApplication/QApplication is created.
-  const QStringList localSchemes =
-    { "gdlookup", "gdau", "gico", "qrcx", "bres", "bword", "gdprg", "gdvideo", "gdtts", "gdinternal", "entry" };
 
-  for ( const auto & localScheme : localSchemes ) {
+  // Schemes that use the host/path authority form (scheme://host/path).
+  const QStringList hostSchemes =
+    { "gdlookup", "gdwiki", "gdau", "gico", "qrcx", "bres", "gdprg", "gdvideo", "gdtts", "gdinternal", "entry" };
+
+  for ( const auto & localScheme : hostSchemes ) {
     QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
     webUiScheme.setSyntax( QWebEngineUrlScheme::Syntax::Host );
     webUiScheme.setFlags( QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled
                           | QWebEngineUrlScheme::SecureScheme );
     QWebEngineUrlScheme::registerScheme( webUiScheme );
+  }
+
+  // bword is special: dictionaries emit it in opaque form (bword:word), not as
+  // an authority URL. Registering it as Path lets Chromium pass non-ASCII
+  // headwords (CJK, diacritics) through untouched as the URL's path, instead
+  // of forcing them into host() which QUrl cannot parse correctly for
+  // non-ASCII characters.
+  {
+    QWebEngineUrlScheme bwordScheme( "bword" );
+    bwordScheme.setSyntax( QWebEngineUrlScheme::Syntax::Path );
+    bwordScheme.setFlags( QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled
+                          | QWebEngineUrlScheme::SecureScheme );
+    QWebEngineUrlScheme::registerScheme( bwordScheme );
   }
 
   GD_QApplication app( "GoldenDict-ng", argc, argv );
@@ -323,7 +343,7 @@ int main( int argc, char ** argv )
                                         callback,
                                         NULL,
                                         google_breakpad::ExceptionHandler::HANDLER_ALL );
-  #elif defined( Q_OS_MAC )
+  #elif defined( Q_OS_MACOS )
 
   google_breakpad::ExceptionHandler eh( appDirPath.toStdString(), 0, callback, 0, true, NULL );
 
@@ -363,25 +383,28 @@ int main( int argc, char ** argv )
       if ( gdcl.needSetPopupGroup() ) {
         message += "|popupGroup:" + gdcl.getPopupGroupName();
       }
+      if ( gdcl.newTab ) {
+        message += "|newtab:true";
+      }
       QString encodedWord = QUrl::toPercentEncoding( gdcl.wordToTranslate() );
       message += "|word:" + encodedWord;
       app.sendMessage( message );
       wasMessage = true;
     }
     else if ( gdcl.needSetGroup() ) {
-      app.sendMessage( QString( "setGroup: " ) + gdcl.getGroupName() );
+      app.sendMessage( QString( "action:setGroup|group:" ) + gdcl.getGroupName() );
       wasMessage = true;
     }
     else if ( gdcl.needSetPopupGroup() ) {
-      app.sendMessage( QString( "setPopupGroup: " ) + gdcl.getPopupGroupName() );
+      app.sendMessage( QString( "action:setPopupGroup|popupGroup:" ) + gdcl.getPopupGroupName() );
       wasMessage = true;
     }
     else if ( gdcl.needTogglePopup() ) {
-      app.sendMessage( QStringLiteral( "toggleScanPopup" ) );
+      app.sendMessage( QStringLiteral( "action:togglePopup" ) );
       wasMessage = true;
     }
     else if ( !gdcl.window.isEmpty() ) {
-      app.sendMessage( QString( "window:" ) + gdcl.window );
+      app.sendMessage( QString( "action:show|window:" ) + gdcl.window );
       wasMessage = true;
     }
 
@@ -443,23 +466,27 @@ int main( int argc, char ** argv )
   // Log to file enabled through command line or preference
   Logger::switchLoggingMethod( gdcl.logFile || cfg.preferences.enableApplicationLog );
 
-  //System Font
-  auto font = QApplication::font();
-  if ( cfg.preferences.enableInterfaceFont && !cfg.preferences.interfaceFont.isEmpty()
+  // System Font
+  //  Always read the OS default first — QApplication::font() can be polluted
+  //  by a previous setFont() call (e.g. after style reset on the main window).
+  const QFont systemFont = QFontDatabase::systemFont( QFontDatabase::GeneralFont );
+  auto font              = systemFont;
+  bool customApplied     = false;
+
+  if ( cfg.preferences.enableInterfaceFontFamily && !cfg.preferences.interfaceFont.isEmpty()
        && font.family() != cfg.preferences.interfaceFont ) {
     font.setFamily( cfg.preferences.interfaceFont );
-    QApplication::setFont( font );
+    customApplied = true;
   }
 
-  //system font size
-  if ( cfg.preferences.enableInterfaceFont && cfg.preferences.interfaceFontSize >= 8
+  if ( cfg.preferences.enableInterfaceFontSize && cfg.preferences.interfaceFontSize >= 8
        && cfg.preferences.interfaceFontSize <= 32 ) {
-    font.setPixelSize( cfg.preferences.interfaceFontSize );
-    QApplication::setFont( font );
+    font.setPointSize( cfg.preferences.interfaceFontSize );
+    customApplied = true;
   }
-  else {
-    qDebug() << "Use default font";
-    cfg.preferences.interfaceFontSize = Config::DEFAULT_FONT_SIZE;
+
+  if ( customApplied ) {
+    QApplication::setFont( font );
   }
 
   // Update default locale
@@ -579,7 +606,7 @@ int main( int argc, char ** argv )
     }
     else {
       // Default to main window when target parameter is not specified or set to "main"
-      m.showTranslation( gdcl.wordToTranslate(), "main" );
+      m.showTranslation( gdcl.wordToTranslate(), "main", gdcl.newTab );
     }
   }
 

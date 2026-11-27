@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 el %2 matĉoj</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Malfermi Artikolon en ekstera &amp;Retumilo</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,40 +336,8 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Ebligu konvertiĝon de simpligitaj signoj al tradiciaj (Honkonga varianto) signoj</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Simpligita al tradicia ĉina (tajvana varianto) konvertiĝo</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Simpligita al tradicia ĉina (Honkonga varianto) konvertiĝo</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Tradicia al simpligita ĉina konvertiĝo</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation type="unfinished">Hong Kong variant</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Ebligu konvertiĝon de tradiciaj signoj al simpligitaj (kontinentaj) signoj</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Simpligita (kontinenta)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Ebligu konvertiĝon de simpligitaj signoj al tradiciaj (Tajvana/Norma) signoj</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Tradicia (Tajvana/Norma)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +358,38 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Ebligi konverton inter simpligita ĉina, tradicia ĉina (Tajvano/Honkongo) kaj japanaj Ŝinĵitaj-karakteroj</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Ebligu konvertiĝon de tradiciaj signoj al simpligitaj signoj</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Simpligita</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Ebligu konvertiĝon de simpligitaj signoj al tradiciaj (Tajvano) signoj</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Tradicia (Tajvano)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Ebligu konvertiĝon de simpligitaj signoj al tradiciaj (Honkonga) signoj</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Tradicia (Honkonga)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Simpligita al tradicia ĉina (tajvana) konvertiĝo</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Simpligita al tradicia ĉina (Honkonga) konvertiĝo</translation>
     </message>
   </context>
   <context>
@@ -473,10 +477,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Ĉu vi certas, ke vi volas generi aron da grupoj bazitaj sur enhavado de dosierujoj?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Ĉu vi certas, ke vi volas generi aron da grupoj bazitaj sur metadata.toml?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Kombinu grupojn laŭ fontlingvo al &quot;%1-&gt;&quot;</translation>
     </message>
@@ -499,6 +499,10 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Ĉu vi certas, ke vi volas forigi la grupon &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Ĉu vi certas, ke vi volas generi aron da grupoj bazitaj sur vortaraj metadatenaj dosieroj?</translation>
     </message>
   </context>
   <context>
@@ -785,6 +789,10 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>New display name:</source>
       <translation type="unfinished">New display name:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Malsukcesis plani la vortaron por reindeksado.</translation>
     </message>
   </context>
   <context>
@@ -1174,6 +1182,18 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>%1 Morphology</source>
       <translation>%1 Morfologio</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Ortografio ĝusta, neniuj aliaj vortformoj trovitaj.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>El %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Vortformoj por %1: </translation>
     </message>
   </context>
   <context>
@@ -2670,6 +2690,34 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
       <source>Open in &amp;External Browser</source>
       <translation>Malfermi en &amp;Ekstera Retumilo</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Nun konstruante kapvortan kaŝmemoron: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Prefikso</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Sufikso</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Plurvorta</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Plenteksta serĉo…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Serĉreĝimo</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Serĉreĝimo: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3017,18 +3065,6 @@ be the last ones.</translation>
       <translation>Aspekto</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation type="unfinished">Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3273,24 +3309,12 @@ por ĉiuj retaj petoj de la programo.</translation>
       <translation>Ferdeko:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Vorto</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Vortfara kampo...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Teksto</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Difina kampo...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Frazo</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3564,6 +3588,30 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Kiam ebligite, retejaj vortaroj malfermiĝas en sia propra langeto anstataŭ esti enkonstruitaj en la artikola vido. Ĉi tio evitas kadrajn aranĝajn kaj rulajn limigojn, kaj ebligas la Skriptan kolumnon por ĉiu vortaro en la dialogujo de Vortaroj.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>Vorto:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Teksto:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Frazo:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Interfaco Tiparo</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Propra familio</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Propra grandeco</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3789,6 +3837,10 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>La referencita rimedo malsukcesis elŝuti.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>la rimedo estus konservita ekster la cel-dosierujo.</translation>
     </message>
   </context>
   <context>

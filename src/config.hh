@@ -7,6 +7,7 @@
 #include "ex.hh"
 #include <QDateTime>
 #include <QDomDocument>
+#include <QHash>
 #include <QKeySequence>
 #include <QList>
 #include <QLocale>
@@ -28,8 +29,12 @@ enum GroupId : unsigned {
 /// GoldenDict's configuration
 namespace Config {
 
-//define a default font fize value
-constexpr int DEFAULT_FONT_SIZE = 12;
+// Current configuration file format version. Bump when a persisted value
+// changes its semantics so older configs can be migrated on load.
+constexpr int CONFIG_VERSION        = 2;
+constexpr int CONFIG_VERSION_LEGACY = 1;
+// v1: pixelSize + single enableInterfaceFont
+// v2: pointSize + enableInterfaceFontFamily / enableInterfaceFontSize
 
 
 // Tri states enum for Dark and Dark reader mode
@@ -39,6 +44,12 @@ enum class Dark : std::uint8_t {
   Auto = 2,
 };
 
+/// How the search box matches the typed text against dictionary headwords.
+enum class SearchMode : std::uint8_t {
+  Prefix    = 0, ///< Headwords starting with the query (the historical behaviour).
+  Suffix    = 1, ///< Headwords ending with the query.
+  MultiWord = 2, ///< Headwords containing every whitespace-separated token, in any order.
+};
 
 /// A path where to search for the dictionaries
 struct Path
@@ -270,7 +281,9 @@ struct Preferences
 {
   QString interfaceLanguage; // Empty value corresponds to system default
   QString interfaceFont;     //Empty as default value.
-  bool enableInterfaceFont = false;
+  bool enableInterfaceFontFamily = false; // New in v2; migrate from enableInterfaceFont below
+  bool enableInterfaceFontSize   = false; // New in v2; migrate from enableInterfaceFont below
+  bool enableInterfaceFont       = false; // Deprecated since v2, kept for config migration only
   int interfaceFontSize;
 
   CustomFonts customFonts;
@@ -366,6 +379,9 @@ struct Preferences
   bool synonymSearchEnabled;
   bool stripClipboard;
   bool raiseWindowOnSearch = true;
+
+  /// Selected headword matching mode for the search box.
+  SearchMode searchMode = SearchMode::Prefix;
 
   FullTextSearch fts;
 
@@ -838,6 +854,11 @@ struct Class
 
   QByteArray mainWindowState;    // Binary state saved by QMainWindow
   QByteArray mainWindowGeometry; // Geometry saved by QMainWindow
+
+  // Sizes of the dock widgets, keyed by their object name. QMainWindow's
+  // restoreState() does not restore dock sizes reliably, so they are kept
+  // separately and re-applied with resizeDocks().
+  QHash< QString, QSize > dockWidgetSizes;
 
   QSet< QString > mutedDictionaries;      // Disabled via dictionary bar
   QSet< QString > popupMutedDictionaries; // Disabled via dictionary bar in popup

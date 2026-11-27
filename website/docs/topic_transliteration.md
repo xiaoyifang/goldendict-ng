@@ -21,13 +21,15 @@ GoldenDict-ng converts the searched word into the ticked character variants, so 
 | Option | Effect |
 |--------|--------|
 | Simplified (Mainland) | Traditional Chinese and Japanese Shinjitai input is also searched as simplified Chinese. |
-| Traditional (Taiwan/Standard) | Simplified Chinese and Japanese Shinjitai input is also searched as traditional Chinese (Taiwan standard). |
-| Hong Kong variant | Simplified Chinese and Japanese Shinjitai input is also searched as traditional Chinese (Hong Kong variant). |
+| Traditional (Taiwan) | Simplified Chinese and Japanese Shinjitai input is also searched as traditional Chinese (Taiwan). |
+| Traditional (Hong Kong) | Simplified Chinese and Japanese Shinjitai input is also searched as traditional Chinese (Hong Kong). |
 | Japanese Shinjitai | Simplified and traditional Chinese input is also searched as Japanese Shinjitai. |
 
 For example, searching `図書館` also finds `圖書館` and `图书馆`.
 
 The conversion data is provided by [OpenCC](https://github.com/BYVoid/OpenCC); see [Customize the opencc](<howto/how to customize the opencc.md>) for the configuration files in use.
+
+OpenCC applies a deterministic conversion, so one simplified character cannot expand to several traditional ones. A Hunspell dictionary such as [hunspell_zh_CN](https://github.com/yx-wh/hunspell_zh_CN) can be added as a supplementary source for that; see [Manage Dictionaries](manage_sources.md#morphology).
 
 ## Custom transliteration
 

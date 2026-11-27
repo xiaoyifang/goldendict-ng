@@ -44,7 +44,8 @@
 | Ctrl+Shift+W          | Close all tabs                                                                                                                   |
 | Ctrl+Shift+S          | Stop current playing sound                                                                                                       |
 | Del                   | (History) delete select line                                                                                                     |
-| Enter                 | (In main window) go to search line                                                                                               |
+| Enter                 | (Article view, with text selected) look up the selection in the current tab / (In main window) go to search line                |
+| Ctrl+Enter            | (Article view, with text selected) look up the selection in a new tab                                                            |
 | Esc                   | (In main window) go to search line (the action for Esc key can be changed in preferences) / (in popup window) close popup window |
 | F1                    | GoldenDict reference                                                                                                             |
 | F2                    | (In main window) save current page to html                                                                                       |

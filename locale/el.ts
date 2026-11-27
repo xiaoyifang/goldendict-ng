@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 από %2 ταιριάσματα</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Άνοιγμα Άρθρου σε Εξωτερικό &amp;Περιηγητή</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -334,40 +338,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Ενεργοποίηση μετατροπής από απλοποιημένους χαρακτήρες σε παραδοσιακούς (παραλλαγή Χονγκ Κονγκ) χαρακτήρες</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Απλουστευμένο στην παραδοσιακή κινεζική (παραλλαγή του Ταϊβάν) μετατροπή</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Μετατροπή απλουστευμένη στην παραδοσιακή κινεζική (παραλλαγή Χονγκ Κονγκ)</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Παραδοσιακά στην απλουστευμένη κινεζική μετατροπή</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Παραλλαγή του Χονγκ Κονγκ</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Ενεργοποίηση μετατροπής από παραδοσιακούς χαρακτήρες σε απλοποιημένους χαρακτήρες (ηπειρωτικής χώρας)</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Απλοποιημένη (ηπειρωτική χώρα)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Ενεργοποίηση μετατροπής από απλοποιημένους χαρακτήρες σε παραδοσιακούς χαρακτήρες (Ταϊβάν/Τυπικούς) χαρακτήρες</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Παραδοσιακό (Ταϊβάν/Τυπικό)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -388,6 +360,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Ενεργοποίηση μετατροπής μεταξύ απλοποιημένων κινεζικών, παραδοσιακών κινεζικών (Ταϊβάν/Χονγκ Κονγκ) και ιαπωνικών χαρακτήρων Shinjitai</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Ενεργοποίηση μετατροπής από παραδοσιακούς χαρακτήρες σε απλοποιημένους χαρακτήρες</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Απλοποιημένο</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Ενεργοποιήστε τη μετατροπή από απλοποιημένους χαρακτήρες σε παραδοσιακούς (Ταϊβάν) χαρακτήρες</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Παραδοσιακό (Ταϊβάν)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Ενεργοποιήστε τη μετατροπή από απλοποιημένους χαρακτήρες σε παραδοσιακούς (Χονγκ Κονγκ) χαρακτήρες</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Παραδοσιακό (Χονγκ Κονγκ)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Απλοποιημένη μετατροπή σε παραδοσιακά κινέζικα (Ταϊβάν)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Απλοποιημένη μετατροπή σε παραδοσιακά κινέζικα (Χονγκ Κονγκ)</translation>
     </message>
   </context>
   <context>
@@ -475,10 +479,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Είστε βέβαιοι ότι θέλετε να δημιουργήσετε ένα σύνολο ομάδων με βάση τους φακέλους που περιέχουν;</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Είστε βέβαιοι ότι θέλετε να δημιουργήσετε ένα σύνολο ομάδων με βάση το metadata.toml;</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Συνδυασμός ομάδων ανά γλώσσα πηγή ως &quot;%1-&gt;&quot;</translation>
     </message>
@@ -501,6 +501,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Σίγουρα θέλετε να αφαιρέσετε την ομάδα &lt;b&gt;%1&lt;/b&gt;;</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Είστε σίγουροι ότι θέλετε να δημιουργήσετε ένα σύνολο ομάδων βασισμένο σε αρχεία μεταδεδομένων λεξικού;</translation>
     </message>
   </context>
   <context>
@@ -787,6 +791,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New display name:</source>
       <translation>Νέο όνομα προβολής:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Απέτυχε ο προγραμματισμός του λεξικού για εκ νέου ευρετηρίαση.</translation>
     </message>
   </context>
   <context>
@@ -1176,6 +1184,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>%1 Morphology</source>
       <translation>Μορφολογία για %1</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Ορθογραφία σωστή, δεν βρέθηκαν άλλες μορφές λέξεων.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Από %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Φόρμες Word για %1: </translation>
     </message>
   </context>
   <context>
@@ -2672,6 +2692,34 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation>Άνοιγμα σε &amp;εξωτερικό πρόγραμμα περιήγησης</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Τώρα δημιουργείτε κρυφή μνήμη λέξεων-κλειδιών: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Πρόθεμα</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Επίθημα</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Πολλές λέξεις</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Αναζήτηση πλήρους κειμένου…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Λειτουργία αναζήτησης</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Λειτουργία αναζήτησης: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3018,18 +3066,6 @@ be the last ones.</source>
       <translation>Εμφάνιση</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Ενεργοποίηση Γραμματοσειράς Διεπαφής</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Γλώσσα διεπαφής</translation>
     </message>
@@ -3274,24 +3310,12 @@ for all program&apos;s network requests.</source>
       <translation>Τράπουλα:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Λέξη</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Πεδίο λεξιλογίου...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Κείμενο</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Πεδίο ορισμού...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Πρόταση</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3565,6 +3589,30 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Όταν είναι ενεργοποιημένα, τα λεξικά τοποθεσιών Web ανοίγουν στη δική τους καρτέλα αντί να ενσωματώνονται στην προβολή άρθρου. Με αυτόν τον τρόπο αποφεύγονται οι περιορισμοί διάταξης iframe και κύλισης και ενεργοποιείται η στήλη Δέσμη ενεργειών ανά λεξικό στο παράθυρο διαλόγου Λεξικά.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>Λέξη:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Κείμενο:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Πρόταση:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Γραμματοσειρά Διεπαφής</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Προσαρμοσμένη οικογένεια</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Προσαρμοσμένο μέγεθος</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3790,6 +3838,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>Απέτυχε η λήψη του ζητούμενου πόρου.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Ο πόρος θα αποθηκευτεί εκτός του φακέλου προορισμού.</translation>
     </message>
   </context>
   <context>

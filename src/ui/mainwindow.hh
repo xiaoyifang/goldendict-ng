@@ -5,6 +5,7 @@
 
 #include <QSystemTrayIcon>
 #include <QSignalBlocker>
+#include <QSet>
 #include <QWebEngineProfile>
 #include <QWebEngineDownloadRequest>
 #include <QWebEngineSettings>
@@ -26,6 +27,7 @@
 #include "translatebox.hh"
 #include "dictheadwords.hh"
 #include "fulltextsearch.hh"
+#include "headwordscache.hh"
 #include "base_type.hh"
 #include "hotkey/hotkeywrapper.hh"
 #include "resourceschemehandler.hh"
@@ -60,7 +62,7 @@ public slots:
 
   void messageFromAnotherInstanceReceived( const QString & );
   void showStatusBarMessage( const QString & message, int timeout = 5000, const QPixmap & pixmap = QPixmap() );
-  void wordReceived( const QString & );
+  void wordReceived( const QString &, bool newTab = false );
   void headwordFromFavorites( const QString & word, const QString & favFolderFullPath );
   /// Save config and states...
   void commitData();
@@ -84,7 +86,7 @@ private:
   bool handleStructuredMessage( const QString & message );
 
 public:
-  void showTranslation( const QString & word, const QString & windowType );
+  void showTranslation( const QString & word, const QString & windowType, bool newTab = false );
 
 private:
 
@@ -138,6 +140,8 @@ private:
   QAction * openInExternalBrowserAction;
   QAction * menuButtonAction;
   QToolButton * menuButton;
+  QAction * searchModeAction = nullptr;
+  QMenu * searchModeMenu     = nullptr;
   MRUQMenu * tabListMenu;
   //List that contains indexes of tabs arranged in a most-recently-used order
   QList< QWidget * > mruList;
@@ -177,11 +181,21 @@ private:
 
   bool isQuitting = false;
 
+  // Whether the saved dock widget sizes have already been applied.
+  bool dockSizesApplied = false;
+
+  // Names of the dock widgets whose saved sizes were restored in this session.
+  // The configured values of the others must be kept as is on exit.
+  QSet< QString > restoredDockNames;
+
   QPrinter & getPrinter(); // Creates a printer if it's not there and returns it
 
   DictHeadwords * headwordsDlg;
 
   FTS::FtsIndexing ftsIndexing;
+
+  /// Background headword cache builder -- mirrors FtsIndexing for .hwcache files
+  HeadwordCache::HeadwordIndexing headwordIndexing;
 
   QTimer ftsRestartTimer;       // Timer to delay FTS indexing restart after state change
   bool ftsStateChanged = false; // Track if FTS state was changed in DictInfo
@@ -220,6 +234,7 @@ private:
   void wheelEvent( QWheelEvent * ) override;
   void closeEvent( QCloseEvent * ) override;
   void hideEvent( QHideEvent * event ) override;
+  void showEvent( QShowEvent * event ) override;
 
   void applyProxySettings();
   void makeDictionaries();
@@ -236,7 +251,18 @@ private:
   /// muting or unmuting dictionaries, or showing/hiding dictionary bar.
   void applyMutedDictionariesState();
 
+  /// Re-applies the dock widget sizes saved in the configuration, because
+  /// QMainWindow::restoreState() does not restore them reliably.
+  void applyDockWidgetSizes();
+
+  /// Returns the size of the docking area occupied by the dock widget. For a tab
+  /// group this includes the tab bar, which QMainWindow::resizeDocks() expects.
+  QSize dockGroupSize( QDockWidget * dock ) const;
+
   bool eventFilter( QObject *, QEvent * ) override;
+
+  /// Redraws palette-dependent decorations (the search-mode icon) on theme changes.
+  void changeEvent( QEvent * ) override;
 
 #if defined( Q_OS_WIN )
   /// Handle theme change events as fallback when colorSchemeChanged signal is not available
@@ -270,10 +296,16 @@ private:
   void respondToTranslationRequest( const QString & word,
                                     bool checkModifiers,
                                     const QString & scrollTo = QString(),
-                                    bool focus               = true );
+                                    bool focus               = true,
+                                    bool newTab              = false );
 
   void updateSuggestionList();
   void updateSuggestionList( const QString & text );
+
+  /// Builds the search-mode menu and attaches its action to both search boxes.
+  void setupSearchModeMenu();
+  /// Syncs the mode action's tooltip and the checked menu item with the config.
+  void updateSearchModeAction();
 
   enum TranslateBoxPopup {
     NoPopupChange,
@@ -322,6 +354,7 @@ private slots:
   void openDictionaryFolder( const QString & id );
 
   void showFTSIndexingName( const QString & name );
+  void showHeadwordsCacheIndexingName( const QString & name );
   void openWebsiteInNewTab( QString name, QString url, QString dictId, bool isPopup, QString word = QString() );
 
   void handleAddToFavoritesButton();

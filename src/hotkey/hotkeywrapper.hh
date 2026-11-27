@@ -27,7 +27,7 @@
   #include <QAbstractNativeEventFilter>
 #endif
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
   #import <Carbon/Carbon.h>
 #endif
 
@@ -48,7 +48,7 @@ struct HotkeyStruct
   quint32 modifier = 0;
   int handle       = 0;
   int id           = 0;
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
   EventHotKeyRef hkRef  = nullptr;
   EventHotKeyRef hkRef2 = nullptr;
 #endif
@@ -102,9 +102,28 @@ private:
   HWND hwnd;
 private slots:
   bool checkState( quint32 vk, quint32 mod );
+
+public:
+  /// Low-level keyboard hook handling for pass-through hotkeys (e.g. Ctrl+C+C).
+  /// Called from the hook procedure in winhotkeywrapper.cc, always on the GUI thread.
+  bool llKeyDown( quint32 vk );
+  bool llKeyUp( quint32 vk );
+  void installKeyboardHook();
+  void removeKeyboardHook();
+
+private:
+  void * keyboardHook = nullptr; // HHOOK
+  bool swallowKeyUp   = false;
+  quint32 swallowVk   = 0;
+
+  /// True for hotkeys whose first keypress must still reach the focused
+  /// application (compound sequences like Ctrl+C+C, and plain copy keys).
+  /// These can't be registered via RegisterHotKey because that swallows the
+  /// key system-wide; they are monitored with a WH_KEYBOARD_LL hook instead.
+  bool isPassThroughHotkey( const HotkeyStruct & hs ) const;
 #endif
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 
 private:
   void sendCmdC();

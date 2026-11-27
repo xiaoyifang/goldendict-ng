@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 iš %2 rungtynių</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Atidaryti straipsnį išorinėje &amp;naršyklėje</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -331,40 +335,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Įgalinti konvertavimą iš supaprastintų simbolių į tradicinius (Honkongo variantas) simbolius</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Supaprastinta į tradicinę kinų (Taivano variantą) konversiją</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Supaprastinta į tradicinę kinų (Honkongo variantą) konversiją</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Tradicinis konvertavimas į supaprastintą kinų kalbą</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Honkongo variantas</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Galimybė konvertuoti tradicinius simbolius į supaprastintus (žemyno) simbolius</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Supaprastintas (žemynas)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Įgalinkite konvertavimą iš supaprastintų simbolių į tradicinius (Taivano/Standartinius) simbolius</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Tradicinis (Taivanas/Standartinis)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -385,6 +357,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Leisti konvertuoti supaprastintus kinų, tradicinius kinų (Taivanas/Honkongas) ir japonų Shinjitai simbolius</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Įgalinti tradicinių simbolių konvertavimą į supaprastintus simbolius</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Supaprastinta</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Galimybė konvertuoti supaprastintus simbolius į tradicinius (Taivano) simbolius</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Tradicinis (Taivanas)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Galimybė konvertuoti supaprastintus simbolius į tradicinius (Honkongo) simbolius</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Tradicinis (Honkongas)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Supaprastinta į tradicinę kinų (Taivano) konversiją</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Supaprastinta į tradicinę kinų (Honkongo) konversija</translation>
     </message>
   </context>
   <context>
@@ -472,10 +476,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ar tikrai norite sugeneruoti grupių rinkinį pagal aplankus, kuriuose yra?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Ar tikrai norite sugeneruoti grupių rinkinį pagal metadata.toml?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Apjungti grupes pagal kalbą, iš kurios verčiama („%1-&gt;“)</translation>
     </message>
@@ -498,6 +498,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Tikrai norite pašalinti &lt;b&gt;%1&lt;/b&gt; grupę?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Ar tikrai norite generuoti grupių rinkinį pagal žodyno metaduomenų failus?</translation>
     </message>
   </context>
   <context>
@@ -784,6 +788,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New display name:</source>
       <translation>Naujas rodomas vardas:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Nepavyko suplanuoti žodyno perindeksavimui.</translation>
     </message>
   </context>
   <context>
@@ -1173,6 +1181,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>%1 Morphology</source>
       <translation>%1 (morfologija)</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Rašyba teisinga, jokių kitų žodžių formų nerasta.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Nuo %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Žodžių formos %1: </translation>
     </message>
   </context>
   <context>
@@ -2670,6 +2690,34 @@ Norėdami atverti parsisiuntimo puslapį, spauskite &lt;b&gt;Parsisiųsti&lt;/b&
       <source>Open in &amp;External Browser</source>
       <translation>Atidaryti ir išorinėje naršyklėje</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Dabar kuriant headwords talpyklą: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Priešdėlis</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Priesaga</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Daugiažodis</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Pilno teksto paieška…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Paieškos režimas</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Paieškos režimas: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3017,18 +3065,6 @@ būkite paskutiniai.</translation>
       <translation>Išvaizda</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Įgalinti sąsajos šriftą</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Šriftas</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Šrifto dydis</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3273,24 +3309,12 @@ užklausoms naudoti įgaliotąjį serverį.</translation>
       <translation>Denis:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Žodis</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Žodyno laukas...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Tekstas</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Apibrėžimo laukas...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Sakinys</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3561,6 +3585,30 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Įjungus, interneto svetainių žodynai atsidaro atskiroje kortelėje, o ne įterpiami į straipsnio peržiūrą. Tai leidžia išvengti iframe išdėstymo ir slinkimo apribojimų, taip pat leidžia žodyno Script stulpelį Dictionaries dialoge.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>Žodis:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>SMS žinutė:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Sakinys:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Sąsajos šriftas</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Individuali šeima</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Individualus dydis</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3786,6 +3834,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>Nepavyko parsiųsti nurodytų šaltinių.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Resursas būtų išsaugotas už paskirties aplanko ribų.</translation>
     </message>
   </context>
   <context>

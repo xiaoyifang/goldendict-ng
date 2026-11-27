@@ -28,6 +28,14 @@ if (BREW_ICU_ADDITIONAL_DYLIBS)
                   FOLLOW_SYMLINK_CHAIN)")
 endif ()
 
+set(QT_WEBENGINE_CORE_FRAMEWORK
+        "${Redistributable_APP}/Contents/Frameworks/QtWebEngineCore.framework")
+set(QT_WEBENGINE_HELPER_APP
+        "${QT_WEBENGINE_CORE_FRAMEWORK}/Versions/A/Helpers/QtWebEngineProcess.app")
+set(QT_WEBENGINE_HELPER_FRAMEWORKS "${QT_WEBENGINE_HELPER_APP}/Contents/Frameworks")
+set(QT_WEBENGINE_HELPER_ENTITLEMENTS
+        "${QT_WEBENGINE_HELPER_APP}/Contents/Resources/QtWebEngineProcess.entitlements")
+
 qt_generate_deploy_script(
         TARGET ${GOLDENDICT}
         OUTPUT_SCRIPT deploy_script
@@ -37,7 +45,6 @@ qt_generate_deploy_script(
         ${MACOS_DEPLOY_ICU_SETUP}
         qt_deploy_runtime_dependencies(
                     EXECUTABLE \"${Redistributable_APP}\"
-                    GENERATE_QT_CONF
                     NO_APP_STORE_COMPLIANCE)
         # Homebrew's aggregate Qt package exposes an optional virtual-keyboard
         # input plugin without its split framework on macdeployqt's default
@@ -48,13 +55,15 @@ qt_generate_deploy_script(
         # @executable_path/../Frameworks. That path is correct for the main
         # executable, but QtWebEngineProcess is nested several bundles deep.
         # Give the helper the same Frameworks view so dyld can start Chromium.
-        if (NOT EXISTS
-            \"${Redistributable_APP}/Contents/Frameworks/QtWebEngineCore.framework/Versions/A/Helpers/QtWebEngineProcess.app/Contents/Frameworks\"
-            AND NOT IS_SYMLINK
-            \"${Redistributable_APP}/Contents/Frameworks/QtWebEngineCore.framework/Versions/A/Helpers/QtWebEngineProcess.app/Contents/Frameworks\")
+        if (NOT EXISTS \"${QT_WEBENGINE_HELPER_FRAMEWORKS}\"
+            AND NOT IS_SYMLINK \"${QT_WEBENGINE_HELPER_FRAMEWORKS}\")
+            # NOTE: a symlink's target resolves relative to the symlink's
+            # parent dir (.../QtWebEngineProcess.app/Contents), so the six ..
+            # segments land on the main app's Contents/Frameworks. Same value
+            # as the bundles shipped in release 26.10.0.
             file(CREATE_LINK
                  \"../../../../../..\"
-                 \"${Redistributable_APP}/Contents/Frameworks/QtWebEngineCore.framework/Versions/A/Helpers/QtWebEngineProcess.app/Contents/Frameworks\"
+                 \"${QT_WEBENGINE_HELPER_FRAMEWORKS}\"
                  SYMBOLIC)
         endif()
 
@@ -83,12 +92,50 @@ install(DIRECTORY "${OPENCC_DATA_PATH_FOR_REAL}" DESTINATION "${Redistributable_
 
 install(SCRIPT ${deploy_script})
 
-set(QT_WEBENGINE_CORE_FRAMEWORK
-        "${Redistributable_APP}/Contents/Frameworks/QtWebEngineCore.framework")
-set(QT_WEBENGINE_HELPER_APP
-        "${QT_WEBENGINE_CORE_FRAMEWORK}/Versions/A/Helpers/QtWebEngineProcess.app")
-set(QT_WEBENGINE_HELPER_ENTITLEMENTS
-        "${QT_WEBENGINE_HELPER_APP}/Contents/Resources/QtWebEngineProcess.entitlements")
+# Qt's official macOS binaries are universal (x86_64 + arm64), and macdeployqt
+# copies them as they are. Keep only the architecture being built: the bundle
+# gets ~300 MB smaller, and macOS no longer spends seconds assessing these
+# universal libraries on the first launch after every reboot. Runs before the
+# signing step below, which re-signs the thinned files.
+#
+# CMAKE_SYSTEM_PROCESSOR is the host's architecture, so a single target set in
+# CMAKE_OSX_ARCHITECTURES takes precedence. A build for several architectures
+# (a universal GoldenDict) keeps every slice and skips this step.
+set(GD_THIN_ARCH "${CMAKE_SYSTEM_PROCESSOR}")
+if (CMAKE_OSX_ARCHITECTURES)
+    list(LENGTH CMAKE_OSX_ARCHITECTURES GD_OSX_ARCH_COUNT)
+    if (GD_OSX_ARCH_COUNT EQUAL 1)
+        set(GD_THIN_ARCH "${CMAKE_OSX_ARCHITECTURES}")
+    else ()
+        set(GD_THIN_ARCH "")
+    endif ()
+endif ()
+if (GD_THIN_ARCH)
+    install(CODE "set(GD_THIN_APP \"${Redistributable_APP}\")
+                  set(GD_THIN_ARCH \"${GD_THIN_ARCH}\")")
+    install(CODE [=[
+        # Do not follow the QtWebEngineProcess Frameworks symlink back up the tree.
+        cmake_policy(SET CMP0009 NEW)
+        find_program(GD_LIPO lipo REQUIRED)
+        file(GLOB_RECURSE gd_thin_files LIST_DIRECTORIES false "${GD_THIN_APP}/*")
+        foreach (gd_file IN LISTS gd_thin_files)
+            if (IS_SYMLINK "${gd_file}")
+                continue()
+            endif ()
+            execute_process(COMMAND "${GD_LIPO}" -archs "${gd_file}"
+                            OUTPUT_VARIABLE gd_archs
+                            RESULT_VARIABLE gd_result
+                            OUTPUT_STRIP_TRAILING_WHITESPACE
+                            ERROR_QUIET)
+            # Fat files list several architectures separated by spaces.
+            if (gd_result EQUAL 0 AND gd_archs MATCHES " ")
+                execute_process(COMMAND "${GD_LIPO}" -thin "${GD_THIN_ARCH}" "${gd_file}" -output "${gd_file}.thin"
+                                COMMAND_ERROR_IS_FATAL ANY)
+                file(RENAME "${gd_file}.thin" "${gd_file}")
+            endif ()
+        endforeach ()
+    ]=])
+endif ()
 
 install(CODE "
     # First sign every nested component, then restore the WebEngine helper's

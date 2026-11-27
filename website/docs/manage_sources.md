@@ -43,6 +43,7 @@ There are some specially tailored hunspell dicts to use for Morphology. Such as
 
 * <https://sourceforge.net/projects/goldendict/files/better%20morphologies/1.0/>
 * <https://github.com/Ajatt-Tools/hunspell-ja>
+* <https://github.com/yx-wh/hunspell_zh_CN> — Chinese traditional/simplified and variant forms; complements OpenCC by expanding one simplified form to several traditional ones (e.g. 发 → 發 / 髪).
 
 ## Websites
 

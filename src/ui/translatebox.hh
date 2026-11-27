@@ -24,6 +24,9 @@ public:
   void setModel( QStringList & _words );
   void setNoResults( bool noResults );
 
+protected:
+  bool eventFilter( QObject * watched, QEvent * event ) override;
+
 public slots:
   void setPopupEnabled( bool enable );
 

@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 / %2 maç</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Makaleyi Harici &amp;Tarayıcıda Aç</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,40 +336,8 @@ arasındaki farkı giderir)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Basitleştirilmiş karakterlerden geleneksel (Hong Kong değişken) karakterlere dönüştürmeyi etkinleştir</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Geleneksel Çince (Tayvan değişkeni) dönüşümüyle basitleştirildi</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Geleneksel Çince (Hong Kong değişkeni) dönüşümüyle basitleştirildi</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Basitleştirilmiş Çince dönüşümü için geleneksel</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Hong Kong varyantı</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Geleneksel karakterlerden basitleştirilmiş (Anakara) karakterlere dönüştürmeyi etkinleştirin</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Basitleştirilmiş (Anakara)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Basitleştirilmiş karakterlerden geleneksel (Tayvan/Standart) karakterlere dönüştürmeyi etkinleştirin</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Geleneksel (Tayvan/Standart)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +358,38 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Basitleştirilmiş Çince, geleneksel Çince (Tayvan/Hong Kong) ve Japon Shinjitai karakterleri arasında dönüşümü etkinleştirin</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Geleneksel karakterlerden basitleştirilmiş karakterlere dönüştürmeyi etkinleştir</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Basitleştirilmiş</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Basitleştirilmiş karakterlerden geleneksel (Tayvan) karakterlere dönüştürmeyi etkinleştirin</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Geleneksel (Tayvan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Basitleştirilmiş karakterlerden geleneksel (Hong Kong) karakterlere dönüştürmeyi etkinleştirin</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Geleneksel (Hong Kong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Geleneksel Çince (Tayvan) dönüşümüne basitleştirilmiş</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Geleneksel Çin (Hong Kong) dönüşümüne basitleştirilmiş</translation>
     </message>
   </context>
   <context>
@@ -473,10 +477,6 @@ arasındaki farkı giderir)</translation>
       <translation>İçerdiği klasörlere göre bir dizi grup oluşturmak istediğinizden emin misiniz?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>metadata.toml tabanlı bir grup grubu oluşturmak istediğinizden emin misiniz?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Grupları kaynak dile göre &quot;%1-&gt;&quot; ile birleştir</translation>
     </message>
@@ -499,6 +499,10 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>&lt;b&gt;%1&lt;/b&gt; isimli grubu kaldırmak istiyor musunuz?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Sözlük meta veri dosyalarına dayalı bir grup seti oluşturmak istediğinizden emin misiniz?</translation>
     </message>
   </context>
   <context>
@@ -785,6 +789,10 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>New display name:</source>
       <translation>Yeni gösterim adı:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Sözlüğü yeniden indeksleme için zamanlamayı başaramadı.</translation>
     </message>
   </context>
   <context>
@@ -1174,6 +1182,18 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>%1 Morphology</source>
       <translation>%1 Morfoloji</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Yazım doğru, başka kelime formu bulunamadı.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>From %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Kelime biçimleri %1: </translation>
     </message>
   </context>
   <context>
@@ -2670,6 +2690,34 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation>Aç &amp; Dış Tarayıcı</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Şimdi başlık önbelleği oluşturuyor: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Ön ek</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Eki</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Çok kelimeli</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Tam metin arama…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Arama modu</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Arama modu: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3015,18 +3063,6 @@ Son olanlar ol.</translation>
       <translation>Dış görünüş</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Arayüz Fontunu Etkinleştir</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Boyutu</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3271,24 +3307,12 @@ proxy sunucusu kullanmak istiyorsanız etkinleştirin.</translation>
       <translation>Güverte:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Kelime</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Kelime alanı...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Metin</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>tanım alanı...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Cümle</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3560,6 +3584,30 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Etkinleştirildiğinde, web sitesi sözlükleri makale görünümüne gömülü olmak yerine kendi sekmelerinde açılır. Bu, iframe düzeni ve kaydırma kısıtlamalarını önler ve Sözlükler diyalogunda sözlük başına Script sütununu etkinleştirir.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>Kelime:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Metin:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Cümle:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Arayüz Yazı Tipi</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Özel aile</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Özel boyut</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3785,6 +3833,10 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>Başvurulan kaynak indirilemedi.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Kaynak hedef klasörün dışında kaydedilirdi.</translation>
     </message>
   </context>
   <context>

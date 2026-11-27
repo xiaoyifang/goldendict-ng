@@ -28,6 +28,9 @@
        <property name="toolTip">
         <string>Filter string (fixed string, wildcards or regular expression)</string>
        </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>

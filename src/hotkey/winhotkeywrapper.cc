@@ -5,9 +5,38 @@
   #include <windows.h>
   #include <QWidget>
   #include <QTimer>
+  #include <QDebug>
 
 /// Implementation is pretty much using RegisterHotKey & UnregisterHotKey
 /// https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-registerhotkey
+///
+/// Pass-through hotkeys (e.g. the Ctrl+C of Ctrl+C+C) are handled differently:
+/// RegisterHotKey swallows the key system-wide, and re-injecting it with
+/// SendInput is silently blocked by UIPI when the focused window belongs to an
+/// elevated process (making Ctrl+C appear dead unless GoldenDict itself runs
+/// as admin). Instead those keys are monitored with a WH_KEYBOARD_LL hook,
+/// which observes the keystrokes without consuming them; only the second key
+/// of a sequence gets swallowed.
+
+static HotkeyWrapper * llHookOwner = nullptr;
+
+static LRESULT CALLBACK lowLevelKeyboardProc( int code, WPARAM wParam, LPARAM lParam )
+{
+  if ( code == HC_ACTION && llHookOwner ) {
+    const KBDLLHOOKSTRUCT * info = reinterpret_cast< const KBDLLHOOKSTRUCT * >( lParam );
+    bool swallow                 = false;
+    if ( wParam == WM_KEYDOWN || wParam == WM_SYSKEYDOWN ) {
+      swallow = llHookOwner->llKeyDown( info->vkCode );
+    }
+    else if ( wParam == WM_KEYUP || wParam == WM_SYSKEYUP ) {
+      swallow = llHookOwner->llKeyUp( info->vkCode );
+    }
+    if ( swallow ) {
+      return 1;
+    }
+  }
+  return CallNextHookEx( nullptr, code, wParam, lParam );
+}
 
 
 HotkeyWrapper::HotkeyWrapper( QObject * parent ):
@@ -175,6 +204,16 @@ bool HotkeyWrapper::setGlobalKey( const QKeySequence & seq, int handle )
 
   hotkeys.append( HotkeyStruct( vk, vk2, mod, handle, id ) );
 
+  if ( isPassThroughHotkey( hotkeys.last() ) ) {
+    installKeyboardHook();
+    if ( keyboardHook ) {
+      // Consume the ids exactly like the RegisterHotKey path would, so that
+      // ids stay unique within the hotkeys list.
+      id += ( key2 && key2 != key ) ? 2 : 1;
+      return true; // Monitored by the low-level hook; the key must not be swallowed.
+    }
+  }
+
   if ( !RegisterHotKey( hwnd, id++, mod, vk ) )
     return false;
 
@@ -182,6 +221,136 @@ bool HotkeyWrapper::setGlobalKey( const QKeySequence & seq, int handle )
     return RegisterHotKey( hwnd, id++, mod, vk2 );
 
   return true;
+}
+
+
+bool HotkeyWrapper::isPassThroughHotkey( const HotkeyStruct & hs ) const
+{
+  return hs.key2 != 0 || ( hs.modifier == MOD_CONTROL && ( hs.key == VK_INSERT || hs.key == 'C' ) );
+}
+
+void HotkeyWrapper::installKeyboardHook()
+{
+  if ( keyboardHook ) {
+    return;
+  }
+
+  HHOOK hook = SetWindowsHookEx( WH_KEYBOARD_LL, lowLevelKeyboardProc, GetModuleHandle( nullptr ), 0 );
+  if ( hook ) {
+    keyboardHook = hook;
+    llHookOwner  = this;
+    qDebug() << "Hotkey: pass-through keys are monitored via WH_KEYBOARD_LL hook (no RegisterHotKey, no SendInput)";
+  }
+  else {
+    qWarning() << "Hotkey: WH_KEYBOARD_LL hook installation failed, falling back to RegisterHotKey + SendInput";
+  }
+}
+
+void HotkeyWrapper::removeKeyboardHook()
+{
+  if ( keyboardHook ) {
+    UnhookWindowsHookEx( (HHOOK)keyboardHook );
+    keyboardHook = nullptr;
+    if ( llHookOwner == this ) {
+      llHookOwner = nullptr;
+    }
+  }
+  state2       = false;
+  swallowKeyUp = false;
+}
+
+bool HotkeyWrapper::llKeyDown( quint32 vk )
+{
+  quint32 mod = 0;
+  if ( GetAsyncKeyState( VK_CONTROL ) & 0x8000 ) {
+    mod |= MOD_CONTROL;
+  }
+  if ( GetAsyncKeyState( VK_MENU ) & 0x8000 ) {
+    mod |= MOD_ALT;
+  }
+  if ( GetAsyncKeyState( VK_SHIFT ) & 0x8000 ) {
+    mod |= MOD_SHIFT;
+  }
+  if ( ( GetAsyncKeyState( VK_LWIN ) | GetAsyncKeyState( VK_RWIN ) ) & 0x8000 ) {
+    mod |= MOD_WIN;
+  }
+
+  if ( state2 ) { // waiting for the 2nd key of a sequence
+
+    if ( state2waiter.key2 == vk && state2waiter.modifier == mod ) {
+      state2           = false;
+      swallowKeyUp     = true;
+      swallowVk        = vk;
+      const int handle = state2waiter.handle;
+      qDebug( "Hotkey: 2nd key of sequence detected via LL hook, activating (handle=%d)", handle );
+      // Notify asynchronously: the hook procedure must return promptly.
+      QMetaObject::invokeMethod(
+        this,
+        [ this, handle ]() {
+          emit hotkeyActivated( handle );
+        },
+        Qt::QueuedConnection );
+      return true; // Swallow the 2nd key of the sequence.
+    }
+
+    switch ( vk ) { // Modifier keys don't cancel the wait
+      case VK_CONTROL:
+      case VK_LCONTROL:
+      case VK_RCONTROL:
+      case VK_MENU:
+      case VK_LMENU:
+      case VK_RMENU:
+      case VK_SHIFT:
+      case VK_LSHIFT:
+      case VK_RSHIFT:
+      case VK_LWIN:
+      case VK_RWIN:
+        break;
+      default:
+        state2 = false; // Some other key was pressed; cancel the wait.
+    }
+  }
+
+  for ( int i = 0; i < hotkeys.count(); i++ ) {
+
+    const HotkeyStruct & hs = hotkeys.at( i );
+
+    if ( hs.key == vk && hs.modifier == mod && isPassThroughHotkey( hs ) ) {
+
+      if ( hs.key2 == 0 ) {
+        // Plain copy key: let it reach the focused application untouched.
+        qDebug( "Hotkey: plain copy key passed through via LL hook (handle=%d)", hs.handle );
+        const int handle = hs.handle;
+        QMetaObject::invokeMethod(
+          this,
+          [ this, handle ]() {
+            emit hotkeyActivated( handle );
+          },
+          Qt::QueuedConnection );
+        return false;
+      }
+
+      // First key of a compound sequence: pass it through (so the application
+      // still performs its copy) and start waiting for the 2nd key.
+      qDebug( "Hotkey: 1st key of sequence passed through via LL hook, waiting for 2nd key (handle=%d)", hs.handle );
+      state2       = true;
+      state2waiter = hs;
+      QTimer::singleShot( 500, this, &HotkeyWrapper::waitKey2 );
+
+      return false;
+    }
+  }
+
+  return false;
+}
+
+bool HotkeyWrapper::llKeyUp( quint32 vk )
+{
+  if ( swallowKeyUp && vk == swallowVk ) {
+    swallowKeyUp = false;
+    return true; // Swallow the key-up matching a swallowed key-down.
+  }
+  return false;
 }
 
 
@@ -196,6 +365,8 @@ bool HotkeyWrapper::winEvent( MSG * message, qintptr * result )
 
 void HotkeyWrapper::unregister()
 {
+  removeKeyboardHook();
+
   for ( int i = 0; i < hotkeys.count(); i++ ) {
     const HotkeyStruct & hk = hotkeys.at( i );
 

@@ -303,6 +303,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 %2</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>외부 브라우저에서 문서 열기(&amp;B)</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -331,40 +335,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>간체 문자에서 전통(홍콩 변형) 문자로 변환 가능</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>번체 중국어(대만 변형) 변환으로 간체</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>번체 중국어(홍콩 변형) 변환으로 간체</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>번체에서 간체로 변환</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>홍콩 변형</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>번체 문자에서 간체(본토) 문자로 변환 가능</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>심플리파이드 (본토)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>간체 문자에서 번체자(대만/표준) 문자로 변환 가능</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>전통 (대만/표준)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -385,6 +357,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>간체 중국어, 번체(대만/홍콩), 일본어 신지타이 문자 간 변환 가능</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>번체 문자에서 간체 문자로 변환 가능</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>간소화</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>간체 문자에서 번체(대만) 문자로의 변환 활성화</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>전통 (대만)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>간체 문자에서 번체(홍콩) 문자로의 변환 가능</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>전통 (홍콩)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>간체체를 번체체(대만) 변환</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>간체체(홍콩) 중국어로의 변환</translation>
     </message>
   </context>
   <context>
@@ -472,10 +476,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>포함된 폴더를 기반으로 그룹 세트를 생성하시겠습니까?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>metadata.toml을 기반으로 그룹 세트를 생성하시겠습니까?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>소스언어에 따라 그룹을 합칩니다  &quot;%1-&gt;&quot;</translation>
     </message>
@@ -498,6 +498,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>&lt;b&gt;%1&lt;/b&gt;그룹을 삭제하시겠습니까?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>사전 메타데이터 파일을 기반으로 그룹 집합을 생성하시겠습니까?</translation>
     </message>
   </context>
   <context>
@@ -784,6 +788,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New display name:</source>
       <translation>새로운 표시 이름:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>사전 재색인 일정을 맞추지 못했습니다.</translation>
     </message>
   </context>
   <context>
@@ -1173,6 +1181,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>%1 Morphology</source>
       <translation>%1 철자법사전</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>철자가 맞았고, 다른 단어 형태는 발견되지 않았습니다.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>출처 %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>어형 %1: </translation>
     </message>
   </context>
   <context>
@@ -2669,6 +2689,34 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation>외부 브라우저에서 열기</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>이제 헤드워드 캐시를 쌓아가고 있습니다: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>접두사</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>접미사</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>다중 단어</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>전체 텍스트 검색…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>검색 모드</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>검색 모드: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3015,18 +3063,6 @@ be the last ones.</source>
       <translation>모습</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>인터페이스 폰트 활성화</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>세례대</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>글꼴 크기</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>인터페이스 언어</translation>
     </message>
@@ -3271,24 +3307,12 @@ for all program&apos;s network requests.</source>
       <translation>갑판:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>단어</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>어휘 분야...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>텍스트</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>정의 필드...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>문장</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3560,6 +3584,30 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>활성화되면 웹사이트 사전이 기사 뷰에 삽입되지 않고 자체 탭에서 열립니다. 이로 인해 iframe 레이아웃과 스크롤 제한을 피하고, 사전 대화상자에서 각 사전별 스크립트 열이 활성화됩니다.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>단어:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>본문:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>문장:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>인터페이스 글꼴</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>커스텀 패밀리</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>맞춤 사이즈</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3785,6 +3833,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>참조할 리소스를 다운로드하지 못했습니다.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>리소스는 목적지 폴더 외부에 저장됩니다.</translation>
     </message>
   </context>
   <context>

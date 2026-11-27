@@ -1,20 +1,23 @@
-A `metadata.toml`, which uses [toml](https://toml.io) format, can be used to customize or override some properties of a certain dictionary. It is also used in [auto grouping by metadata](manage_groups.md)
+A metadata file, which uses [toml](https://toml.io) format, can be used to customize or override some properties of a certain dictionary. It is also used in [auto grouping by metadata](manage_groups.md)
 
-The `metadata.toml` should be placed on each dictionary's root folder (beside dictionary files) like
+The metadata file should be placed on each dictionary's root folder (beside dictionary files). It is named after the dictionary's main file (with its extension) plus a `.toml` suffix — for example `Cambridge.ifo.toml` for a StarDict dictionary, or `Collins.dsl.toml` for a DSL dictionary.
 
 ```
 .
 ├── Cambridge
-│    ├── metadata.toml < here
+│    ├── Cambridge.ifo.toml < here
+│    ├── Cambridge.ifo
 │    ├── Cambridge.idx
 │    ├── Cambridge.info
 │    ├── Cambridge.syn
 │    └── Cambridge.dict.dz
 └── Collins
-     ├── metadata.toml < here
+     ├── Collins.dsl.toml < here
      ├── res.zip
      └── Collins.dsl
 ```
+
+For backward compatibility, the legacy `metadata.toml` is read when the per-dictionary file does not exist. It is migrated automatically on load by renaming it to the `<main-file-name>.toml` of the first dictionary in the folder; the other dictionaries in that folder are no longer affected by it. This requires a writable dictionary folder; otherwise `metadata.toml` keeps being read as a fallback.
 
 ## Override display name
 

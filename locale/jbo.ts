@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 of %2 matches</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>claxu lo cukta fi'o lo jitro &amp;Browser</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,40 +336,8 @@ between classic and school orthography in cyrillic)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Simplified to traditional Chinese (Taiwan variant) conversion</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Simplified to traditional Chinese (Hong Kong variant) conversion</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Traditional to simplified Chinese conversion</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Hong Kong variant</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>gasnu lo cfika be'o lo prulamorfi lerfu lo sampu lerfu poi juncai</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>sampu poi juncai</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>gasnu lo cfika be'o lo sampu lerfu lo prulamorfi lerfu poi tainvan ja stani</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>prulamorfi poi tainvan ja stani</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +358,38 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>galfi le cirmu be'o lo sampu cninu .e lo banro cninu be'o taivan. .e xon.kong. .e lo ponjo shinjitai cifnu</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Enable conversion from traditional characters to simplified characters</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>cfipu</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>jbari lo fraso be'o lo cfipu cirocmu loi jai taiuan relcli cirocmu</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>taiuan relcli</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation type="unfinished">Traditional (Hong Kong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
     </message>
   </context>
   <context>
@@ -473,10 +477,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation>Are you sure you want to generate a set of groups based on containing folders?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Are you sure you want to generate a set of groups based on metadata.toml?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Combine groups by source language to &quot;%1-&gt;&quot;</translation>
     </message>
@@ -499,6 +499,10 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>.i xu do djica lo ka vimcu la&apos;o zoi. &lt;b&gt;%1&lt;/b&gt; .zoi noi selcmi</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Xu do selydi'a lo nu do ciksi lo nu finti lo girzu fi'o se cni lo jbobli'i cmavo datni faile?</translation>
     </message>
   </context>
   <context>
@@ -785,6 +789,10 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>New display name:</source>
       <translation>cnino cusku cmene:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>lo nu sisku lo valsi ciska lo nu zifre seltapla cu na sarcu</translation>
     </message>
   </context>
   <context>
@@ -1174,6 +1182,18 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>%1 Morphology</source>
       <translation>%1 Morphology</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>lo speli cu selyru'u. no drata valsi klesi na zvati.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>fi lo %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>valsi klesi fe lo %1: </translation>
     </message>
   </context>
   <context>
@@ -2670,6 +2690,34 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation type="unfinished">Open in &amp;External Browser</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation type="unfinished">Now building headwords cache: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>prerje'a</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>purje'a</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>munje'a</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>sisku fi ro lerpoi…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>tadji lo nu sisku</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>tadji lo nu sisku: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3015,18 +3063,6 @@ be the last ones.</source>
       <translation>Appearance</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>cfagau lo ninji ciska</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>ciska</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>ciska cinri</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3271,24 +3307,12 @@ for all program&apos;s network requests.</translation>
       <translation>Deck:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Word</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Vocabulary field...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Text</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Definition field...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Sentence</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3562,6 +3586,30 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>lo ka zifre cu rinka lo du'u lo web cukta cu selcu'e lo tabli ce'o na sefta lo lisri skepi. ti cu fanza lo re'iskafi selkai .e lo galri tcana. gi'e jmina lo skriptu stani be roi cukta fi lo cukta bangu ke xusra'a.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>Valsi:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Textu:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Bacru:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Interface Font</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>kusfa girzu</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>kusfa nilce</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3787,6 +3835,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>The referenced resource failed to download.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>lo se rirni cu ka'o se finti claxu lo fatri da'u.</translation>
     </message>
   </context>
   <context>

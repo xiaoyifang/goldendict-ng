@@ -159,25 +159,33 @@ public:
   BtreeDictionary( const string & id, const vector< string > & dictionaryFiles );
 
   /// Btree-indexed dictionaries are usually a good source for compound searches.
-  virtual Dictionary::Features getFeatures() const noexcept
+  virtual Dictionary::Features getFeatures() const noexcept override
   {
     return Dictionary::SuitableForCompoundSearching;
   }
 
   /// This function does the search using the btree index. Derivatives usually
   /// need not to implement this function.
-  virtual sptr< Dictionary::WordSearchRequest > prefixMatch( const std::u32string &, unsigned long );
+  virtual sptr< Dictionary::WordSearchRequest > prefixMatch( const std::u32string &, unsigned long ) override;
 
-  virtual sptr< Dictionary::WordSearchRequest >
-  stemmedMatch( const std::u32string &, unsigned minLength, unsigned maxSuffixVariation, unsigned long maxResults );
+  virtual sptr< Dictionary::WordSearchRequest > stemmedMatch( const std::u32string &,
+                                                              unsigned minLength,
+                                                              unsigned maxSuffixVariation,
+                                                              unsigned long maxResults ) override;
 
-  virtual bool isLocalDictionary()
+  virtual sptr< Dictionary::WordSearchRequest > suffixMatch( const std::u32string &,
+                                                             unsigned long maxResults ) override;
+
+  virtual sptr< Dictionary::WordSearchRequest > multiWordMatch( const std::u32string &,
+                                                                unsigned long maxResults ) override;
+
+  virtual bool isLocalDictionary() override
   {
     return true;
   }
 
-  virtual bool getHeadwords( QStringList & headwords );
-  virtual void findHeadWordsWithLenth( int &, QSet< QString > * headwords, uint32_t length );
+  virtual bool getHeadwords( QStringList & headwords ) override;
+  virtual void findHeadWordsWithLenth( int &, QSet< QString > * headwords, uint32_t length ) override;
 
   virtual void getArticleText( uint32_t articleAddress, QString & headword, QString & text );
 
@@ -190,6 +198,18 @@ public:
   {
     return ftsIdxMutex;
   }
+
+  /// BtreeDictionary is the canonical source for headword caches.
+  virtual bool supportsHeadwordsCache() const override
+  {
+    return true;
+  }
+
+  /// Path to the headword cache file. Built from indexDir + dictId + "_HW_x".
+  virtual std::string headwordsCachePath() const override;
+
+  /// Build the headword cache from btree leaves.
+  virtual void makeHeadwordsCache( QAtomicInt & isCancelled ) override;
 
   virtual uint32_t getFtsIndexVersion()
   {
@@ -220,6 +240,7 @@ protected:
   unsigned minLength;
   int maxSuffixVariation;
   bool allowMiddleMatches;
+  Dictionary::WordMatchMode matchMode;
   QAtomicInt isCancelled;
   QFuture< void > f;
 
@@ -231,7 +252,8 @@ public:
                           int maxSuffixVariation_,
                           bool allowMiddleMatches_,
                           unsigned long maxResults_,
-                          bool startRunnable = true );
+                          bool startRunnable              = true,
+                          Dictionary::WordMatchMode mode_ = Dictionary::WordMatchMode::Prefix );
 
   virtual void findMatches();
 

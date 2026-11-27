@@ -244,9 +244,10 @@ void DictionaryBar::updateToGroup( const Instances::Group * grp,
                                    Config::Class & cfg,
                                    bool isPopup )
 {
-  Q_ASSERT( grp != nullptr ); // should never occur
-  if ( !this->toggleViewAction()->isChecked() ) {
-    return; // It's not enabled, therefore hidden -- don't waste time
+  if ( !grp || !this->toggleViewAction()->isChecked() ) {
+    // The group may be missing while dictionary groups are still loading,
+    // or the bar is not enabled, therefore hidden -- don't waste time
+    return;
   }
 
   setMutedDictionaries( nullptr );
@@ -396,7 +397,8 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
 
     if ( dialog.exec() == QDialog::Accepted ) {
       QString newName = dialog.textValue();
-      Metadata::saveDisplayName( Utils::Path::combine( pDict->getContainingFolder(), "metadata.toml" ).toStdString(),
+      Metadata::saveDisplayName( pDict->getContainingFolder().toStdString(),
+                                 pDict->getMetadataFileStem(),
                                  newName.toStdString() );
       pDict->setName( newName.toStdString() );
       QString effectiveName = QString::fromUtf8( pDict->getName().c_str() );

@@ -19,6 +19,15 @@ jobs:
       contents: read
     runs-on: ubuntu-24.04
     steps:
+      - name: Cache apt packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            /var/cache/apt/archives
+            /var/lib/apt/lists
+          key: ubuntu-24.04-apt-${{ hashFiles('.github/workflows/PR-check-cmake.yml') }}
+          restore-keys: |
+            ubuntu-24.04-apt-
       - name: Install dependencies
         run: |
           sudo apt-get update
@@ -124,12 +133,15 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Install Qt
-        uses: jurplel/install-qt-action@v4.3.1
+        uses: jurplel/install-qt-action@v4.5.0
         with:
-          version: 6.10.3
+          version: 6.12.0
           arch: win64_msvc2022_64
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
-          # setup-python: 'false'
+          # aqtinstall PR #1048 (Qt 6.12 support) is merged into master but not yet
+          # released (latest is v3.3.0), so pin the merge commit. Drop the pin once a
+          # release newer than v3.3.0 includes it.
+          aqtsource: git+https://github.com/miurahr/aqtinstall.git@8e4ea786f8a4f9dc578516738a137dec80a0362c
       - uses: actions/checkout@v6
         with:
           submodules: true
@@ -156,39 +168,55 @@ jobs:
     container:
       image: ghcr.io/archlinux/archlinux:base-devel
     steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: false
       - name: Print Version
         run: |
           if [[ -f /etc/os-release ]]; then
             cat /etc/os-release
           fi
+      - uses: actions/cache@v4
+        with:
+          path: /var/cache/pacman/pkg
+          key: arch-pkg-${{ hashFiles('.github/workflows/PR-check-cmake.yml') }}
+          restore-keys: |
+            arch-pkg-
       - name: Install dependencies
         run: |
-          # https://github.com/archlinux/archlinux-docker
-          # base-devel is already included in the `base-devel` image
-          pacman --noconfirm -Syuu \
-          cmake \
-          ffmpeg \
-          fmt \
-          hunspell \
-          libvorbis \
-          libxtst \
-          libzim \
-          lzo \
-          ninja \
-          opencc \
-          qt6-5compat \
-          qt6-base \
-          qt6-multimedia \
-          qt6-speech \
-          qt6-svg \
-          qt6-tools \
-          qt6-webengine \
-          tomlplusplus \
-          xapian-core
+          # Make pacman fall back to the official mirror if the primary CDN flips out
+          # (e.g. fastly-backed geo.mirror.pkgbuild.com returning 404 mid-transaction).
+          printf '%s\n' \
+            'Server = https://geo.mirror.pkgbuild.com/$repo/os/$arch' \
+            'Server = https://mirror.archlinux.org/$repo/os/$arch' \
+            > /etc/pacman.d/mirrorlist
 
-      - uses: actions/checkout@v6
-        with:
-          submodules: false
+          # https://github.com/archlinux/archlinux-docker
+          # base-devel image brings gcc / make / patch etc., but NOT cmake / ninja —
+          # those still need to be installed explicitly.
+          # -Syu must run first so that the package DB matches the local state.
+          pacman -Syu --noconfirm --disable-download-timeout
+          pacman -S --noconfirm --needed --disable-download-timeout \
+            cmake \
+            ninja \
+            ffmpeg \
+            fmt \
+            hunspell \
+            libvorbis \
+            libxtst \
+            libzim \
+            lzo \
+            opencc \
+            qt6-5compat \
+            qt6-base \
+            qt6-multimedia \
+            qt6-speech \
+            qt6-svg \
+            qt6-tools \
+            qt6-webengine \
+            tomlplusplus \
+            xapian-core
+
       - name: Run build
         run: |
           mkdir build_dir

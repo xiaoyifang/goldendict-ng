@@ -289,6 +289,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 з %2 супадзенняў</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Адкрыць артыкул у вонкавым &amp;браўзеры</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -317,40 +321,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Уключыць канверсію са знакаў спрошчанага кітайскага пісьма ў знакі традыцыйнага пісьма (ганконгскі варыянт)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Канверсія знакаў спрошчанага кітайскага пісьма ў знакі традыцыйнага пісьма (тайванскі варыянт)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Канверсія знакаў спрошчанага кітайскага пісьма ў знакі традыцыйнага пісьма (ганконгскі варыянт)</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Канверсія знакаў традыцыйнага кітайскага пісьма ў знакі спрошчанага пісьма</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Ганконгскі варыянт</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Уключыць канверсію з традыцыйных знакаў у спрошчаныя (мацерыковыя) знакі</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Спрошчаны (Мацерыковы)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Уключыць канверсію з спрошчаных знакаў у традыцыйныя (Тайвань/Стандарт) знакі</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Традыцыйны (Тайвань/Стандарт)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -371,6 +343,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Уключыць канвертацыю паміж спрошчанымі кітайскімі, традыцыйнымі кітайскімі (Тайвань/Ганконг) і японскімі сімваламі шынджытай</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Уключыць канверсію са знакаў традыцыйнага кітайскага пісьма ў знакі спрошчанага пісьма</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Спрошчаная</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Уключыць пераўтварэнне са спрошчаных знакаў у традыцыйныя (Тайвань)</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Традыцыйная (Тайвань)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Уключыць канверсію са знакаў спрошчанага кітайскага пісьма ў знакі традыцыйнага кітайскага пісьма (Ганконг)</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Традыцыйныя (Ганконг)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Канверсія знакаў спрошчанага кітайскага пісьма ў знакі традыцыйнага кітайскага пісьма (Тайвань)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Канверсія знакаў спрошчанага кітайскага пісьма ў знакі традыцыйнага кітайскага пісьма (Ганконг)</translation>
     </message>
   </context>
   <context>
@@ -458,10 +462,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Сапраўды хочаце стварыць набор групаў на аснове каталогаў, якія змяшчаюцца?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Сапраўды хочаце стварыць набор групаў на аснове metadata.toml?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Спалучыць групы паводле зыходнай мовы &quot;%1-&gt;&quot;</translation>
     </message>
@@ -484,6 +484,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Сапраўды хочаце выдаліць групу &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Сапраўды хочаце стварыць набор групаў на аснове файлаў слоўнікавых метаданых?</translation>
     </message>
   </context>
   <context>
@@ -770,6 +774,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New display name:</source>
       <translation>Новая назва для адлюстравання:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Не ўдалося запланаваць слоўнік для пераіндэксацыі.</translation>
     </message>
   </context>
   <context>
@@ -1159,6 +1167,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>%1 Morphology</source>
       <translation>Марфалогія %1</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Правапіс правільны, іншых словаформ не знойдзена.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>З %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Словаформы для %1: </translation>
     </message>
   </context>
   <context>
@@ -2655,6 +2675,34 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation>Адкрыць у &amp;вонкавым браўзеры</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Зараз ствараецца кэш загалоўных слоў: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation type="unfinished">Prefix</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation type="unfinished">Suffix</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation type="unfinished">Multi-word</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation type="unfinished">Full-text search…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation type="unfinished">Search mode</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation type="unfinished">Search mode: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2995,18 +3043,6 @@ be the last ones.</source>
       <translation>Выгляд</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Уключыць шрыфт інтэрфейсу</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Шрыфт</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Памер шрыфта</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3249,24 +3285,12 @@ for all program&apos;s network requests.</source>
       <translation>Калода:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Слова</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Поле слоўніка...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Тэкст</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Поле азначэння...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Сказ</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3538,6 +3562,30 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Пры ўключэнні вэб-слоўнікі адкрываюцца ў асобнай укладцы замест убудавання ў выгляд артыкула. Гэта дазваляе пазбегнуць абмежаванняў макета iframe і пракруткі, а таксама ўключае слупок Скрыпт для кожнага слоўніка ў дыялогавым акне Слоўнікі.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>Слова:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Тэкст:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Сказ:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Шрыфт інтэрфейсу</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Карыстальніцкае сямейства</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Карыстальніцкі памер</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3763,6 +3811,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>Не ўдалося спампаваць пазначаны рэсурс.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>рэсурс будзе захаваны па-за тэчкі прызначэння.</translation>
     </message>
   </context>
   <context>

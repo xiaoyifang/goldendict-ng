@@ -9,10 +9,13 @@
 #include <QStandardPaths>
 #include <QDir>
 
-// Helper function to get the temporary history file name
+// Helper function to get the temporary history file name.
+// Keep it next to the real history file so that it follows the same directory
+// resolution (XDG data dir on Linux, portable dir when applicable) and always
+// lives on the same filesystem as its destination.
 QString getTempHistoryFileName()
 {
-  return Config::getHomeDir().filePath( "history.tmp" );
+  return Config::getHistoryFileName() + ".tmp";
 }
 
 History::History( unsigned size, unsigned maxItemLength_ ):

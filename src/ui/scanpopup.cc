@@ -20,7 +20,7 @@ using std::map;
 using std::pair;
 
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
   #include "macos/macmouseover.hh"
   #define MouseOver MacMouseOver
 #endif
@@ -28,6 +28,21 @@ using std::pair;
 static const Qt::WindowFlags defaultUnpinnedWindowFlags = Qt::Tool | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint;
 
 static const Qt::WindowFlags pinnedWindowFlags = Qt::Window;
+
+namespace {
+Dictionary::WordMatchMode toWordMatchMode( Config::SearchMode mode )
+{
+  switch ( mode ) {
+    case Config::SearchMode::Suffix:
+      return Dictionary::WordMatchMode::Suffix;
+    case Config::SearchMode::MultiWord:
+      return Dictionary::WordMatchMode::MultiWord;
+    case Config::SearchMode::Prefix:
+    default:
+      return Dictionary::WordMatchMode::Prefix;
+  }
+}
+} // namespace
 
 ScanPopup::ScanPopup( QWidget * parent,
                       Config::Class & cfg_,
@@ -340,7 +355,7 @@ ScanPopup::ScanPopup( QWidget * parent,
     updateBackForwardButtons();
   } );
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
   connect( &MouseOver::instance(), &MouseOver::hovered, this, &ScanPopup::handleInputWord );
 #endif
 
@@ -352,7 +367,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   mouseGrabPollTimer.setSingleShot( false );
   mouseGrabPollTimer.setInterval( 10 );
   connect( &mouseGrabPollTimer, &QTimer::timeout, this, &ScanPopup::mouseGrabPoll );
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
   MouseOver::instance().setPreferencesPtr( &( cfg.preferences ) );
 #endif
   ui.goBackButton->setEnabled( false );
@@ -782,7 +797,11 @@ void ScanPopup::updateSuggestionList( const QString & text )
     return;
   }
 
-  wordFinder.prefixMatch( req, getActiveDicts() );
+  wordFinder.prefixMatch( req,
+                          getActiveDicts(),
+                          40,
+                          Dictionary::NoFeatures,
+                          toWordMatchMode( cfg.preferences.searchMode ) );
 }
 
 void ScanPopup::translateInputFinished()
@@ -873,7 +892,12 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
     }
   }
 
-  if ( event->type() == QEvent::KeyPress && watched != translateBox->translateLine() ) {
+  // Only treat key presses on the popup window itself as "start typing".
+  // While the mouse is intercepted this filter is installed application-wide, so without this
+  // guard key presses belonging to other widgets (e.g. the completer popup) would clear the input
+  // on every keystroke instead of reaching their target (#3180). Key presses in the article view
+  // are handled separately by ArticleView's own typingEvent signal.
+  if ( event->type() == QEvent::KeyPress && ( watched == this || watched == definition ) ) {
 
     if ( const auto key_event = dynamic_cast< QKeyEvent * >( event );
          key_event->modifiers() == Qt::NoModifier || key_event->modifiers() == Qt::ShiftModifier ) {

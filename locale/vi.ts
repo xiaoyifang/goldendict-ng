@@ -289,6 +289,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 trên %2 trận đấu</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Mở bài viết trong trình duyệt &amp;bên ngoài</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -316,40 +320,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Cho phép chuyển đổi từ ký tự giản thể sang ký tự truyền thống (biến thể Hồng Kông)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Chuyển đổi tiếng Trung giản thể sang tiếng Trung phồn thể (biến thể Đài Loan)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Chuyển đổi tiếng Trung giản thể sang tiếng Trung phồn thể (biến thể Hồng Kông)</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Chuyển đổi tiếng Trung phồn thể sang giản thể</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Biến thể Hồng Kông</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Cho phép chuyển đổi từ ký tự truyền thống sang ký tự đơn giản (Mainland)</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Đơn giản hóa (Đại lục)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Bật chuyển đổi từ ký tự đơn giản sang ký tự truyền thống (Đài Loan/Chuẩn)</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Truyền thống (Đài Loan/Tiêu chuẩn)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -370,6 +342,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Cho phép chuyển đổi giữa chữ Trung giản thể, chữ Trung phồn thể (Đài Loan/Hồng Kông) và chữ Shinjitai tiếng Nhật</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Cho phép chuyển đổi từ chữ phồn thể sang chữ giản thể</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Đơn giản hóa</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Bật chuyển đổi từ ký tự đơn giản sang ký tự truyền thống (Đài Loan)</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Truyền thống (Đài Loan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Bật chuyển đổi từ ký tự đơn giản sang ký tự truyền thống (Hồng Kông)</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Truyền thống (Hồng Kông)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Đơn giản hóa thành chuyển đổi tiếng Trung phồn thể (Đài Loan)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Đơn giản hóa thành chuyển đổi tiếng Trung phồn thể (Hồng Kông)</translation>
     </message>
   </context>
   <context>
@@ -457,10 +461,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Bạn có chắc chắn muốn tạo một tập hợp các nhóm dựa trên các thư mục chứa không?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Bạn có chắc chắn muốn tạo một tập hợp các nhóm dựa trên metadata.toml không?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Kết hợp nhóm theo ngôn ngữ nguồn &quot;%1-&gt;&quot;</translation>
     </message>
@@ -483,6 +483,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Bạn có muốn xóa nhóm &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Bạn có chắc chắn muốn tạo một tập hợp các nhóm dựa trên các tệp siêu dữ liệu từ điển không?</translation>
     </message>
   </context>
   <context>
@@ -769,6 +773,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New display name:</source>
       <translation>Tên hiển thị mới:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Không thể lên lịch cho từ điển để lập chỉ mục lại.</translation>
     </message>
   </context>
   <context>
@@ -1158,6 +1166,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>%1 Morphology</source>
       <translation>Hình thái học %1</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Chính tả đúng, không tìm thấy dạng từ nào khác.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Từ %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Dạng từ cho %1: </translation>
     </message>
   </context>
   <context>
@@ -2654,6 +2674,34 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation>Mở trong &amp; trình duyệt bên ngoài</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Bây giờ đang xây dựng bộ nhớ đệm headwords: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Tiền tố</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>hậu tố</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Nhiều từ</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Tìm kiếm toàn văn…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Chế độ tìm kiếm</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Chế độ tìm kiếm: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2997,18 +3045,6 @@ be the last ones.</source>
       <translation>Vẻ bề ngoài</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Bật Phông chữ Giao diện</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Phông chữ</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Cỡ chữ</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3252,24 +3288,12 @@ cho tất cả các yêu cầu mạng của chương trình.</translation>
       <translation>Deck:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Từ</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Trường từ vựng...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Chữ</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Trường định nghĩa...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Câu</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3540,6 +3564,30 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Khi được bật, các từ điển trang web sẽ mở trong tab riêng thay vì được nhúng trong chế độ xem bài viết. Điều này giúp tránh các giới hạn về bố cục iframe và việc cuộn, đồng thời kích hoạt cột Script cho từng từ điển trong hộp thoại Từ điển.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>Từ:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Văn bản:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Câu:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Phông chữ giao diện</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Dòng tùy chỉnh</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Kích thước tùy chỉnh</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3765,6 +3813,10 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>Nguồn tham chiếu lỗi tải xuống.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Tài nguyên sẽ được lưu bên ngoài thư mục đích.</translation>
     </message>
   </context>
   <context>

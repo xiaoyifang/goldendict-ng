@@ -24,6 +24,9 @@ void MacUrlHandler::processURL( const QUrl & url )
         else if ( targetParam == "main" ) {
           message += "|window:main";
         }
+        else if ( targetParam == "newtab" ) {
+          message += "|newtab:true";
+        }
       }
 
       QString encodedWord = QUrl::toPercentEncoding( word );

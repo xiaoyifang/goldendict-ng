@@ -303,6 +303,10 @@
       <source>%1 of %2 matches</source>
       <translation>匹配（%1/%2）</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>在外部浏览器中打开文章(&amp;B)</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -330,40 +334,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>启用从简体中文字符转换为繁体中文（香港）字符</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>简体中文至正体中文（台湾）转换</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>简体中文至繁体中文（香港）转换</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>繁体中文至简体中文转换</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>香港变体</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>支持从繁体字转换为简体（大陆）字</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>简化（大陆）</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>支持从简体字转换为繁体（台湾/标准）字</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>繁体（台湾/标准）</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -371,19 +343,51 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Japanese Shinjitai</source>
-      <translation>日本新次体</translation>
+      <translation>日文新字体</translation>
     </message>
     <message>
       <source>Chinese to Japanese Shinjitai conversion</source>
-      <translation>中国向日本的Shinjitai改装</translation>
+      <translation>将中文汉字转换为日文新字体汉字</translation>
     </message>
     <message>
       <source>Chinese and Japanese Character Con&amp;version</source>
-      <translation>中文和日文字符转换</translation>
+      <translation>中文和日文汉字转换</translation>
     </message>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
-      <translation>支持简体中文、繁体中文（台湾/香港）和日文新字体字符之间的转换</translation>
+      <translation>支持简体中文、繁体中文（台湾/香港）和日文新字体汉字之间的转换</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>启用从繁体中文字符转换为简体中文字符</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>简化版</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>支持从简体字转换为繁体（台湾）字符</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>繁体（台湾）</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>支持从简体字转换为繁体（香港）字</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>繁体（香港）</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>简体中文到繁体中文（台湾）转换</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>简体中文转繁体中文（香港）</translation>
     </message>
   </context>
   <context>
@@ -471,10 +475,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>您确定根据文件夹结构生成词组吗？</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>您确定需要基于 metadata.toml 生成分组吗？</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>根据源语言合并群组&quot;%1-&gt;&quot;</translation>
     </message>
@@ -497,6 +497,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>确定要移除&lt;b&gt;%1&lt;/b&gt;群组吗？</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>您确定要基于字典元数据文件生成群组吗？</translation>
     </message>
   </context>
   <context>
@@ -783,6 +787,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New display name:</source>
       <translation>新显示名称：</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>未能安排词典重新索引。</translation>
     </message>
   </context>
   <context>
@@ -1172,6 +1180,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>%1 Morphology</source>
       <translation>%1 构词法</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>拼写正确，未发现其他词形。</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>来自 %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>词形为 %1: </translation>
     </message>
   </context>
   <context>
@@ -2669,6 +2689,34 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation>在外部浏览器中打开</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>正在建立词头缓存：</translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>前缀</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>后缀</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>多词</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>全文检索…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>搜索模式</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>搜索模式： %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3009,18 +3057,6 @@ be the last ones.</source>
       <translation>界面外观</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>启用接口字体</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>界面语言</translation>
     </message>
@@ -3264,24 +3300,12 @@ for all program&apos;s network requests.</source>
       <translation>牌组：</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>单词</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>对应 Anki 里面的变量名，如设置 word，则用{{Word}}引用</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>释义</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>释义的变量字段</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>句子</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3552,6 +3576,30 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>启用后，网站词典会在独立标签页中打开，而非嵌入文章视图中。这避免了 iframe 布局和滚动限制，并在词典对话框中启用了每个词典的 Script 栏。</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>词：</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>文本：</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>句子：</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>界面字体</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>自定义字体族</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>自定义字号</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3777,6 +3825,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>所引用的资源下载失败。</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>资源会保存在目标文件夹之外。</translation>
     </message>
   </context>
   <context>

@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 de %2 tupachiykuna</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>K'ichay artikuluta hawapi &amp;Wamp'uqpi</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,40 +336,8 @@ chiqan kayninta sumaqyachin)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Sasachasqa qillqakunamanta ñawpaq (Hong Kong variante) qillqakunaman tikrayta atichiy</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Simplificasqa tradicional chino (Taiwán variante) tikrayman</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Simplificasqa tradicional chino (Hong Kong variante) tikrayman</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Tradicionalmanta chino tikrayman pisiyachisqaman</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Hong Kong rikch'aq</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Ñawpaq qillqakunamanta pisiyachisqa (Suyu Hatun) qillqakunaman tikrayta atichiy</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Pisiyachisqa (Suyu Hatun)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Pisiyachisqa qillqakunamanta ñawpaq (Taiwán/Kamachiq) qillqakunaman tikrayta atichiy</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Ñawpaq (Taiwán/Kamachiq)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +358,38 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation type="unfinished">Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Ñawpa qillqakunamanta pisiyachisqa qillqakunaman tikrayta atichiy</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Sasachasqa</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Sasachasqa qillqakunamanta ñawpaq (Taiwán) qillqakunaman tikrayta atichiy</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Ñawpaq (Taiwán)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Sasachasqa qillqakunamanta ñawpaq (Hong Kong) qillqakunaman tikrayta atichiy</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Ñawpaq (Hong Kong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Sasachasqa qillqakunamanta ñawpaq China simiman (Taiwán) tikray</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Sasachasqa qillqakunamanta ñawpaq China simiman (Hong Kong) tikray</translation>
     </message>
   </context>
   <context>
@@ -473,10 +477,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>¿Segurochu kanki huk huñu huñukuna ruwayta munanki mayt'ukuna hap'iypi?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>¿Segurochu kanki metadata.toml nisqapi huk huñu huñukunata paqarichiyta munanki?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Pukyu simimanhina huñukunata huñuy &quot;%1-&gt;&quot;</translation>
     </message>
@@ -499,6 +499,10 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>&lt;b&gt;%1&lt;/b&gt; juñuta chinkachiyta munankichu?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>¿Segurochu kanki diccionario metadata willakuykuna nisqakunapi huk huñu huñukunata paqarichiyta munanki?</translation>
     </message>
   </context>
   <context>
@@ -785,6 +789,10 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>New display name:</source>
       <translation>Musuq rikuchina sutin:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Mana atipakurqachu simi qullqata musuqmanta allichanapaq wakichiyta.</translation>
     </message>
   </context>
   <context>
@@ -1174,6 +1182,18 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>%1 Morphology</source>
       <translation>Morfología %1</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Qillqanaqa chaninmi, huk simi rikch'aykuna mana tarisqachu.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Kaymanta %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Sutichaykuna %1-paq:</translation>
     </message>
   </context>
   <context>
@@ -2670,6 +2690,34 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation type="unfinished">Open in &amp;External Browser</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation type="unfinished">Now building headwords cache: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Ñawpaq simi</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Qhipaq simi</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Achka simi</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Tukuy qillqasqa maskay…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Maskay imayna</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Maskay imayna: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3013,18 +3061,6 @@ be the last ones.</source>
       <translation>Rikchaynin</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Rikunaq qillqana-rikch'ayta llamk'achiy</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Qillqana-rikch'ay</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Qillqana-rikch'aypa sayaynin</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3269,24 +3305,12 @@ servidor proxy por todas las solicitudes de red del programa.</translation>
       <translation>Carpeta:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Rimay</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Simikuna yachay pampa...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Qillqa</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Definición nisqa pampa...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Rimay</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3558,6 +3582,30 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Kacharisqa kaptinqa, web qillqarinakuna sapankama tabpi kicharinkun, manam qillqa rikuchinapi churasqa kaspankuchu. Kaywanqa iframe ruwaypa hinaspa purichiy hark'aykuna hark'asqa kanku, hinaspa sapanka qillqarinapaq Script nisqa siq'i Qillqarinakuna Rimarinapi kacharisqa kachkan.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation type="unfinished">Word:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation type="unfinished">Text:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation type="unfinished">Sentence:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Interfaz nisqa Fuente</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Sapanchasqa rikch'ay</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Sapanchasqa sayay</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3783,6 +3831,10 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>El recurso ha fallado de descargar.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>recursoqa destino q'ipaqpa hawapi waqaychasqa kanman.</translation>
     </message>
   </context>
   <context>

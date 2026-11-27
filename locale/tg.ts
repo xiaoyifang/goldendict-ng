@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 аз %2 бозӣ</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Мақоларо дар &amp;браузери беруна кушоед</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,40 +336,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Фаъол кардани табдил аз аломатҳои оддӣ ба анъанавӣ (Варианти ҳонконгӣ)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Табдилдиҳӣ аз хитоии оддӣ ба анъанавӣ (Варианти тайванӣ)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Табдилдиҳӣ аз хитоии анъанавӣ ба оддӣ (Варианти ҳонконгӣ)</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Табдилдиҳӣ аз хитоии оддӣ ба анъанавӣ</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Hong Kong variant</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Фаъол кардани табдил аз аломатҳои анъанавӣ ба аломатҳои содакардашудаи (Чинӣ)</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Содакардашуда (Чинӣ)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Фаъол кардани табдил аз аломатҳои содакардашуда ба аломатҳои анъанавии (Тайванӣ/Стандартӣ)</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Анъанавӣ (Тайванӣ/Стандартӣ)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +358,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation type="unfinished">Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Фаъол кардани табдил аз аломатҳои оддӣ ба аломатҳои анъанавӣ</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation type="unfinished">Simplified</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation type="unfinished">Enable conversion from simplified characters to traditional (Taiwan) characters</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation type="unfinished">Traditional (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation type="unfinished">Traditional (Hong Kong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
     </message>
   </context>
   <context>
@@ -473,10 +477,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Шумо мутмаин ҳастед, ки мехоҳед маҷмӯи гурӯҳҳоро дар асоси ҷузвдонҳои дорои ҷузвдонҳо тавлид кунед?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Шумо мутмаин ҳастед, ки мехоҳед маҷмӯи гурӯҳҳоро дар асоси metadata.toml эҷод кунед?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Муттаҳид кардани гурӯҳҳо аз рӯи забони аслӣ ба &quot;%1-&gt;&quot;</translation>
     </message>
@@ -499,6 +499,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Шумо мутмаин ҳастед, ки мехоҳед гурӯҳи &lt;b&gt;%1&lt;/b&gt;-ро тоза кунед?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Шумо мутмаин ҳастед, ки мехоҳед маҷмӯи гурӯҳҳоро дар асоси файлҳои метамаълумоти луғат эҷод кунед?</translation>
     </message>
   </context>
   <context>
@@ -785,6 +789,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New display name:</source>
       <translation>Номи нави намоиш:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Луғатро барои индексатсияи дубора ба нақша гирифтан муяссар нашуд.</translation>
     </message>
   </context>
   <context>
@@ -1174,6 +1182,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>%1 Morphology</source>
       <translation>Морфологияи %1</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Имло дуруст аст, шаклҳои дигари калима ёфт нашуданд.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Аз %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Шаклҳои калима барои %1: </translation>
     </message>
   </context>
   <context>
@@ -2670,6 +2690,34 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation type="unfinished">Open in &amp;External Browser</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation type="unfinished">Now building headwords cache: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Префикс</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Суффикс</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Калимаи бисёрҷузъа</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Ҷустуҷӯ дар тамоми матн…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Ҳолати ҷустуҷӯ</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Ҳолати ҷустуҷӯ: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3016,18 +3064,6 @@ be the last ones.</source>
       <translation>Намуди зоҳирӣ</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Шрифти интерфейсро фаъол созед</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Шрифт</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Андозаи шрифт</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3272,24 +3308,12 @@ for all program&apos;s network requests.</source>
       <translation>Девор:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Калом</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Соҳаи луғат...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Матн</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Майдони таъриф ...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Ҳукм</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3563,6 +3587,30 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Ҳангоми фаъол будан, луғатҳои вебсайт дар ҷадвали худ кушода мешаванд, на дар дохили намуди мақола. Ин маҳдудиятҳои тарҳбандии iframe ва ҳаракатро пешгирӣ мекунад ва сутуни скрипти барои ҳар як луғатро дар муколамаи Луғатҳо фаъол месозад.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation type="unfinished">Word:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation type="unfinished">Text:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation type="unfinished">Sentence:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Шрифти интерфейс</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Оилаи фармоишӣ</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Андозаи фармоишӣ</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3788,6 +3836,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>Боргирии манбаъи ишорашуда қатъ карда шуд.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>манбаъ берун аз ҷузвдони таъинотӣ захира карда мешуд.</translation>
     </message>
   </context>
   <context>
