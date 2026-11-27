@@ -337,7 +337,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Chinese and Japanese Character Con&amp;version</source>
-      <translation>Chuyển đổi ký tự Trung và Nhật</translation>
+      <translation>Chuyển đổi ký tự Trung Quốc và Nhật Bản</translation>
     </message>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
@@ -1131,7 +1131,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>A group with the name &apos;%1&apos; already exists.</source>
-      <translation>Một nhóm có tên '%1' đã tồn tại.</translation>
+      <translation>Một nhóm có tên &apos;'%1'&apos; đã tồn tại.</translation>
     </message>
   </context>
   <context>
@@ -2197,7 +2197,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Kabyle</source>
-      <translation>Kabyle</translation>
+      <translation>Tiếng Kabyle</translation>
     </message>
   </context>
   <context>
@@ -3582,11 +3582,11 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Custom family</source>
-      <translation>Dòng tùy chỉnh</translation>
+      <translation>Họ phông chữ tùy chỉnh</translation>
     </message>
     <message>
       <source>Custom size</source>
-      <translation>Kích thước tùy chỉnh</translation>
+      <translation>Kích thước phông chữ tùy chỉnh</translation>
     </message>
   </context>
   <context>
