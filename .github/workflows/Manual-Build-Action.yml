@@ -60,7 +60,10 @@ jobs:
           version: ${{ matrix.qt_ver }}
           arch: clang_64
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
-          aqtsource: git+https://github.com/miurahr/aqtinstall.git@refs/pull/1048/head
+          # aqtinstall PR #1048 (Qt 6.12 support) is merged into master but not yet
+          # released (latest is v3.3.0), so pin the merge commit. Drop the pin once a
+          # release newer than v3.3.0 includes it.
+          aqtsource: git+https://github.com/miurahr/aqtinstall.git@8e4ea786f8a4f9dc578516738a137dec80a0362c
       - name: Build
         run: |
           mkdir build_dir
@@ -123,7 +126,10 @@ jobs:
           version: ${{ matrix.qt_ver }}
           arch: ${{ matrix.arch }}
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
-          aqtsource: git+https://github.com/miurahr/aqtinstall.git@refs/pull/1048/head
+          # aqtinstall PR #1048 (Qt 6.12 support) is merged into master but not yet
+          # released (latest is v3.3.0), so pin the merge commit. Drop the pin once a
+          # release newer than v3.3.0 includes it.
+          aqtsource: git+https://github.com/miurahr/aqtinstall.git@8e4ea786f8a4f9dc578516738a137dec80a0362c
       - uses: actions/checkout@v6
         with:
           submodules: true
