@@ -5,6 +5,7 @@
 #include "articlewebview.hh"
 #include "version.hh"
 #include <QMouseEvent>
+#include <QKeyEvent>
 #include <QWebEngineScript>
 #include <QWebEngineScriptCollection>
 #include <QWebEnginePage>
@@ -12,18 +13,36 @@
 #include <QApplication>
 #include <QTimer>
 #include <QDialog>
+#include <QDesktopServices>
 #include <QMainWindow>
+#include <QSet>
+#include <memory>
 #ifdef Q_OS_WIN32
   #include <qt_windows.h>
 #endif
 
+namespace {
+
+/// Schemes the Resource Viewer is meant to display: resources referenced by an
+/// article (images, stylesheets, audio/video, built-in and local files).
+bool isResourceViewerUrl( const QUrl & url )
+{
+  static const QSet< QString > schemes = { "bres", "gico", "qrc", "qrcx", "file", "data", "gdau", "gdvideo" };
+  return schemes.contains( url.scheme() );
+}
+
+} // namespace
+
 ArticleWebView::ArticleWebView( QWidget * parent ):
   QWebEngineView( parent ),
   midButtonPressed( false ),
-  selectionBySingleClick( false )
+  selectionBySingleClick( false ),
+  singleClickToDbClick( false ),
+  dbClicked( false )
 {
   auto page = new ArticleWebPage( this );
   connect( page, &ArticleWebPage::linkClicked, this, &ArticleWebView::linkClicked );
+  connect( page, &QWebEnginePage::linkHovered, this, &ArticleWebView::linkHovered );
   this->setPage( page );
 
   QWebEngineScript script;
@@ -96,8 +115,66 @@ QWebEngineView * ArticleWebView::createWindow( QWebEnginePage::WebWindowType typ
     dlg->setCentralWidget( view );
     dlg->resize( 800, 600 );
     dlg->setWindowTitle( tr( "GoldenDict Resource Viewer" ) );
-    dlg->show();
 
+    auto dispatched = std::make_shared< bool >( false );
+    auto revealed   = std::make_shared< bool >( false );
+
+    // Navigation the viewer cannot display. Dictionary links are handled as if
+    // they were clicked inside an article, everything else goes to the desktop
+    // handler. A hidden window is discarded; a visible one stays open.
+    auto handleUnsupported = [ this, dlg, dispatched, revealed ]( const QUrl & url ) {
+      if ( *dispatched ) {
+        return;
+      }
+      if ( !*revealed ) {
+        *dispatched = true;
+        dlg->deleteLater();
+      }
+
+      if ( url.scheme() == "gdlookup" || url.scheme() == "bword" || url.scheme() == "entry" ) {
+        // Emit asynchronously: the article view may rebuild its tabs in
+        // response, and we are still inside a navigation callback here.
+        QTimer::singleShot( 0, this, [ this, url ]() {
+          emit linkClicked( url );
+        } );
+      }
+      else if ( url.scheme() == "http" || url.scheme() == "https" || url.scheme() == "ftp"
+                || url.scheme() == "mailto" ) {
+        QDesktopServices::openUrl( url );
+      }
+    };
+
+    auto handleUrl = [ handleUnsupported ]( const QUrl & url ) {
+      if ( !url.scheme().isEmpty() && url.scheme() != "about" && !isResourceViewerUrl( url ) ) {
+        handleUnsupported( url );
+      }
+    };
+
+    connect( view, &QWebEngineView::urlChanged, dlg, handleUrl );
+    connect( view, &QWebEngineView::loadFinished, dlg, [ view, dlg, dispatched, revealed, handleUrl ]( bool ok ) {
+      if ( *dispatched ) {
+        return;
+      }
+
+      const QUrl loaded = view->url();
+      if ( isResourceViewerUrl( loaded ) ) {
+        if ( ok ) {
+          *revealed = true;
+          dlg->show();
+        }
+        else if ( !*revealed ) {
+          *dispatched = true;
+          dlg->deleteLater();
+        }
+        return;
+      }
+
+      // urlChanged handles links clicked in an already visible viewer. Keep
+      // this fallback for the initial navigation, which may only finish here.
+      if ( !*revealed ) {
+        handleUrl( loaded );
+      }
+    } );
     return view;
   }
   return QWebEngineView::createWindow( type );
@@ -113,14 +190,37 @@ bool ArticleWebView::event( QEvent * event )
   return QWebEngineView::event( event );
 }
 
-void ArticleWebView::linkClickedInHtml( const QUrl & )
+void ArticleWebView::linkHovered( const QString & link )
 {
-  //disable single click to simulate dbclick action on the new loaded pages.
-  singleClickToDbClick = false;
+  hoveredLink = link;
 }
 
 bool ArticleWebView::eventFilter( QObject * obj, QEvent * ev )
 {
+  // Return/Enter with a non-empty selection looks the selected text up. With no
+  // selection the key keeps its normal browser behaviour (activating a focused
+  // link, submitting a form field, ...). ShortcutOverride is handled as well so
+  // that a parent QAction cannot steal the key before the KeyPress arrives.
+  if ( ev->type() == QEvent::ShortcutOverride || ev->type() == QEvent::KeyPress ) {
+    auto * keyEvent = static_cast< QKeyEvent * >( ev );
+    // Check the key first -- selectedText() is a synchronous call into the
+    // renderer, so only pay for it when the key is actually of interest.
+    if ( ( keyEvent->key() == Qt::Key_Return || keyEvent->key() == Qt::Key_Enter )
+         && !selectedText().trimmed().isEmpty() ) {
+      const Qt::KeyboardModifiers mods = keyEvent->modifiers();
+      // Only bare Enter and Ctrl+Enter belong to us. Shift/Alt/Meta variants
+      // are left alone (Qt::Key_Enter from the keypad carries KeypadModifier).
+      if ( !mods.testFlag( Qt::ShiftModifier ) && !mods.testFlag( Qt::AltModifier )
+           && !mods.testFlag( Qt::MetaModifier ) ) {
+        if ( ev->type() == QEvent::KeyPress ) {
+          emit searchSelectedText( mods.testFlag( Qt::ControlModifier ) );
+        }
+        ev->accept();
+        return true;
+      }
+    }
+  }
+
   if ( ev->type() == QEvent::MouseButtonDblClick ) {
     auto pe = dynamic_cast< QMouseEvent * >( ev );
     if ( Qt::MouseEventSynthesizedByApplication != pe->source() ) {
@@ -134,11 +234,18 @@ bool ArticleWebView::eventFilter( QObject * obj, QEvent * ev )
   if ( ev->type() == QEvent::MouseButtonPress ) {
     auto pe = dynamic_cast< QMouseEvent * >( ev );
     if ( pe->button() == Qt::LeftButton ) {
-      singleClickToDbClick = true;
-      dbClicked            = false;
-      QTimer::singleShot( QApplication::doubleClickInterval(), this, [ = ]() {
-        singleClickAction();
-      } );
+      dbClicked = false;
+      // A press on a link is a plain link click, not the start of a
+      // single-click-to-select-word action.
+      if ( !hoveredLink.isEmpty() ) {
+        singleClickToDbClick = false;
+      }
+      else {
+        singleClickToDbClick = true;
+        QTimer::singleShot( QApplication::doubleClickInterval(), this, [ = ]() {
+          singleClickAction();
+        } );
+      }
     }
     if ( pe->buttons() & Qt::MiddleButton ) {
       midButtonPressed = true;

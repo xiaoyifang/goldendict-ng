@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation type="unfinished">%1 of %2 matches</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation type="unfinished">Open Article in External &amp;Browser</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,40 +336,8 @@ between classic and school orthography in cyrillic)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong variant) characters</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Taiwan variant) conversion</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong variant) conversion</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation type="unfinished">Traditional to simplified Chinese conversion</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation type="unfinished">Hong Kong variant</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation type="unfinished">Enable conversion from traditional characters to simplified (Mainland) characters</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation type="unfinished">Simplified (Mainland)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation type="unfinished">Traditional (Taiwan/Standard)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +358,38 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation type="unfinished">Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation type="unfinished">Enable conversion from traditional characters to simplified characters</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation type="unfinished">Simplified</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation type="unfinished">Enable conversion from simplified characters to traditional (Taiwan) characters</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation type="unfinished">Traditional (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong) characters</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation type="unfinished">Traditional (Hong Kong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation type="unfinished">Simplified to traditional Chinese (Taiwan) conversion</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong) conversion</translation>
     </message>
   </context>
   <context>
@@ -473,10 +477,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation type="unfinished">Are you sure you want to generate a set of groups based on containing folders?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.toml?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation type="unfinished">Combine groups by source language to &quot;%1-&gt;&quot;</translation>
     </message>
@@ -499,6 +499,10 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation type="unfinished">Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation type="unfinished">Are you sure you want to generate a set of groups based on dictionary metadata files?</translation>
     </message>
   </context>
   <context>
@@ -785,6 +789,10 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>New display name:</source>
       <translation type="unfinished">New display name:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation type="unfinished">Failed to schedule the dictionary for reindexing.</translation>
     </message>
   </context>
   <context>
@@ -1174,6 +1182,18 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>%1 Morphology</source>
       <translation type="unfinished">%1 Morphology</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation type="unfinished">Spelling correct, no other word forms found.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation type="unfinished">From %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation type="unfinished">Word forms for %1: </translation>
     </message>
   </context>
   <context>
@@ -2670,6 +2690,34 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation type="unfinished">Open in &amp;External Browser</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation type="unfinished">Now building headwords cache: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation type="unfinished">Prefix</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation type="unfinished">Suffix</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation type="unfinished">Multi-word</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation type="unfinished">Full-text search…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation type="unfinished">Search mode</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation type="unfinished">Search mode: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3017,18 +3065,6 @@ be the last ones.</translation>
       <translation type="unfinished">Appearance</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation type="unfinished">Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation type="unfinished">Interface language</translation>
     </message>
@@ -3273,24 +3309,12 @@ for all program&apos;s network requests.</translation>
       <translation type="unfinished">Deck:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation type="unfinished">Word</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation type="unfinished">Vocabulary field...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation type="unfinished">Text</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation type="unfinished">Definition field...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation type="unfinished">Sentence</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3564,6 +3588,30 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation type="unfinished">When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation type="unfinished">Word:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation type="unfinished">Text:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation type="unfinished">Sentence:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation type="unfinished">Interface Font</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation type="unfinished">Custom family</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation type="unfinished">Custom size</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3789,6 +3837,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation type="unfinished">The referenced resource failed to download.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation type="unfinished">the resource would be saved outside of the destination folder.</translation>
     </message>
   </context>
   <context>

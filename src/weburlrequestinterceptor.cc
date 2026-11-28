@@ -19,11 +19,6 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
   if ( QUrl firstPartyUrl = info.firstPartyUrl(); firstPartyUrl.isValid()
        && ( firstPartyUrl.scheme() == "gdlookup" || firstPartyUrl.scheme() == "gdinternal" )
        && Utils::isExternalLink( url ) ) {
-    // For navigation to a main page, using the target URL's own host as Referer is safer
-    // than revealing the local scheme.
-    if ( info.requestMethod() != "GET" ) {
-      info.setHttpHeader( "origin", Utils::Url::getSchemeAndHost( url ).toUtf8() );
-    }
     info.setHttpHeader( "referer", Utils::Url::getSchemeAndHost( url ).toUtf8() + "/" );
   }
 
@@ -82,9 +77,11 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
       return;
     }
 
-    emit linkClicked( url );
-    qDebug() << "Blocked external link: " << url.toString();
-    info.block( true );
+    // Link clicks are decided by ArticleWebPage::acceptNavigationRequest: internal
+    // schemes (gdlookup, gdau, gdvideo, ...) trigger dictionary lookup / audio /
+    // video playback there, and external links go to the desktop handler. Blocking
+    // here would drop those requests before the page ever sees them.
+    return;
   }
 
   //window.location=audio link

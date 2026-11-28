@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 of %2 matches</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Ldi aḍris deg U&amp;myazan uffiɣ</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,40 +336,8 @@ between classic and school orthography in cyrillic)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Simplified to traditional Chinese (Taiwan variant) conversion</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Simplified to traditional Chinese (Hong Kong variant) conversion</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Traditional to simplified Chinese conversion</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation type="unfinished">Hong Kong variant</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Serrer abeddel seg yisekkilen imezwura ɣer yisekkilen isehlan (n Ccinwa n Aneẓruf)</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Asehlan (n Ccinwa n Aneẓruf)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Serrer abeddel seg yisekkilen isehlan ɣer yisekkilen imezwura (n Taiwán/Amezggan)</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Inesliyen (n Taiwán/Amezggan)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +358,38 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Slelli aslelli gar isekkilen icenwiyen yessefken, isekkilen icenwiyen n zik (Taiwan/Hong Kong) d isekkilen ijapuniyen n Shinjitai</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Enable conversion from traditional characters to simplified characters</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Afrar</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Swel aserwes seg isekkilen ifraren ɣer isekkilen imenzayen (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Amenzay (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Smed ambeddel seg yisekkilen issegzawiyen ɣer yisekkilen iqdimen (Hong Kong)</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Iqdimen (Hong Kong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Ambeddel n ussegzay ɣer uqdim n Ccinwa (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Ambeddel n ussegzay ɣer uqdim n Ccinwa (Hong Kong)</translation>
     </message>
   </context>
   <context>
@@ -473,10 +477,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation>Are you sure you want to generate a set of groups based on containing folders?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Are you sure you want to generate a set of groups based on metadata.toml?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Combine groups by source language to &quot;%1-&gt;&quot;</translation>
     </message>
@@ -499,6 +499,10 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Teqqenḍaḍ ad tessnulfu agraw n tegrawin seg yifayliwen n isefka imettwan n yisefranen?</translation>
     </message>
   </context>
   <context>
@@ -785,6 +789,10 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>New display name:</source>
       <translation type="unfinished">New display name:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Yezger wakles n umyawal i walseɣrudes.</translation>
     </message>
   </context>
   <context>
@@ -1174,6 +1182,18 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>%1 Morphology</source>
       <translation>%1 Morphology</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Tasebḍart teṣṣeḥ, ulac talɣiwin n wawal nniḍen i yettwafen.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Seg %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Talɣiwin n wawal i %1: </translation>
     </message>
   </context>
   <context>
@@ -2670,6 +2690,34 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation>Ldi deg &amp;Umeklas Uffiɣ</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Tella tebni n ugbur n yirawen n yisefra: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Amezwaru</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Anagaruy</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>S waṭas n wawalen</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Anadi ačuran n uḍris…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Talɣa n unadi</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Talɣa n unadi: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3017,18 +3065,6 @@ be the last ones.</translation>
       <translation>Udem</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Rmed tasefsit n ugrudem</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Tasefsit</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Teɣzi n tsefsit</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Tutlayt n ugrudem</translation>
     </message>
@@ -3273,24 +3309,12 @@ for all program&apos;s network requests.</translation>
       <translation>Deck:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Awal</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Vocabulary field...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Aḍris</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Definition field...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Tafyirt</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3564,6 +3588,30 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Mi yettwakerẓ, imawalen n ismal n internet ad ldin deg yiminigen-nsen, mačči deg uɛeṭṭaf n umagrad. Ayagi ad yegga i tlisa n usbeddi n iframe d usuddes, yerna ad yefk tallalt n Script s umawal deg tnedlist n yimawalen.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>Awal:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Aḍris:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Tafyirt:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Interface Font</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Tawacult yebnan</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Aqedduḥ yebnan</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3789,6 +3837,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>The referenced resource failed to download.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Asɣan ad yettwakkes beṛṛa n ufaylu n unegzum.</translation>
     </message>
   </context>
   <context>

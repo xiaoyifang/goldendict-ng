@@ -91,9 +91,6 @@
        <property name="text">
         <string notr="true">&lt;</string>
        </property>
-       <property name="shortcut">
-        <string notr="true">Del</string>
-       </property>
       </widget>
      </item>
      <item>

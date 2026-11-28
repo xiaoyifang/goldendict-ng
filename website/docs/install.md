@@ -37,7 +37,7 @@ Minimum supported "Linux" version is supposedly the current Ubuntu LTS and Debia
 
 Uses one of the `.dmg` installers in the [Download](#download).
 
-Requires at least macOS 13.
+The pre-built `.dmg` installers are built with Qt 6.12, so they require at least macOS 14.4 (the minimum supported by Qt 6.12). Self-built versions using an older Qt can still run on macOS 13.
 
 ## Versioning and Releasing
 

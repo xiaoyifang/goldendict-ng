@@ -1,6 +1,7 @@
 #pragma once
 
 #include "dict/dictionary.hh"
+#include "headwordscache.hh"
 #include <QAbstractListModel>
 
 static const int HEADWORDS_MAX_LIMIT = 500000;
@@ -23,6 +24,19 @@ public:
   bool containWord( const QString & word );
   QSet< QString > getRemainRows( int & nodeIndex );
   void setMaxFilterResults( int _maxFilterResults );
+
+  /// Returns true if we're reading from the mmap'd headword cache file
+  /// (fast path). False means we're using the legacy btree traversal
+  /// (slow path) because no cache is available yet.
+  bool usingCache() const
+  {
+    return cacheMode;
+  }
+
+  /// Re-check the cache file (called after a background build completes).
+  /// If the cache is now available, switches to cache mode and resets the model.
+  void refreshCache();
+
 signals:
   void numberPopulated( int number );
 
@@ -48,4 +62,18 @@ private:
   int index;
   char * ptr;
   QMutex lock;
+
+  // Headword cache (mmap'd). When valid, all reads go through this.
+  HeadwordCache::HeadwordCache hwCache;
+  bool cacheMode = false;
+
+  // Active filter range in cache mode (half-open [filterBegin, filterEnd)).
+  // When no filter is active both are 0, meaning "show all".
+  uint32_t filterBegin = 0;
+  uint32_t filterEnd   = 0;
+
+  // Cache-mode wildcard/regex results: absolute row indices into the cache,
+  // capped at maxFilterResults. Non-empty means "matches mode", which takes
+  // precedence over the filterBegin/filterEnd range above.
+  QVector< uint32_t > filterMatches;
 };

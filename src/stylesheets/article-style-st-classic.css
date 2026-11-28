@@ -477,6 +477,11 @@ div.xdxf {
   margin-top: 1em;
 }
 
+.gdmorphology {
+  /* Add some vertical space before the article */
+  margin-top: 1em;
+}
+
 /************* Stemmed suggestions *****************/
 
 .gdstemmedsuggestion {

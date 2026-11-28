@@ -214,8 +214,7 @@ std::vector< sptr< Dictionary::Class > > makeDictionaries( const Config::Chinese
     if ( cfg.enableSCToTWConversion ) {
       result.push_back( std::make_shared< CharacterConversionDictionary >(
         "bf1c33a59cbacea8f39b5b5475787cfd",
-        QCoreApplication::translate( "ChineseConversion",
-                                     "Simplified to traditional Chinese (Taiwan variant) conversion" )
+        QCoreApplication::translate( "ChineseConversion", "Simplified to traditional Chinese (Taiwan) conversion" )
           .toUtf8()
           .data(),
         QIcon( ":/icons/tc.svg" ),
@@ -226,8 +225,7 @@ std::vector< sptr< Dictionary::Class > > makeDictionaries( const Config::Chinese
     if ( cfg.enableSCToHKConversion ) {
       result.push_back( std::make_shared< CharacterConversionDictionary >(
         "9e0681fb9e1c0b6c90e6fb46111d96b5",
-        QCoreApplication::translate( "ChineseConversion",
-                                     "Simplified to traditional Chinese (Hong Kong variant) conversion" )
+        QCoreApplication::translate( "ChineseConversion", "Simplified to traditional Chinese (Hong Kong) conversion" )
           .toUtf8()
           .data(),
         QIcon( ":/icons/hk.svg" ),

@@ -15,13 +15,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // return if the link is like gdlookup:// or other valid url. bword:xxx is also valid url.
+    // Links containing a colon (gdlookup:, bword:, mailto:, http:, ...) are
+    // already absolute. Let them through as-is; the C++ acceptNavigationRequest
+    // handler will route internal schemes correctly.
     if (link.includes(":")) {
-      emitClickedEvent(link);
-      event.preventDefault();
       return;
     }
-    emitClickedEvent("");
 
     let newLink;
     const { href } = globalThis.location;

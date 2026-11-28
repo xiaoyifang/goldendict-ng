@@ -219,16 +219,48 @@ string ArticleNetworkAccessManager::getHtml( ResourceType resourceType )
 }
 
 namespace {
+// File paths are compared case-insensitively on Windows and case-sensitively
+// elsewhere.
+Qt::CaseSensitivity pathCaseSensitivity()
+{
+#if defined( Q_OS_WIN )
+  return Qt::CaseInsensitive;
+#else
+  return Qt::CaseSensitive;
+#endif
+}
+
 // Helper function to handle user files access
 sptr< Dictionary::DataRequest > handleUserFileRequest( const QUrl & url )
 {
   QString filePath = url.path().mid( 1 ); // Get path part and remove leading slash
 
+  // bres://user/ exists solely to serve the user's article script from the
+  // home directory into article pages. Serve only what the application itself
+  // references there -- config, history, favorites and other home-directory
+  // files must never be readable by web content. url.path() is fully decoded,
+  // so encoded separators ("%2F") have already become real ones here.
+  if ( !Utils::isSafeUserFileName( filePath )
+       || filePath != QString::fromStdString( Config::getUserJsFileName().value_or( "" ) ) ) {
+    qWarning( "Refusing unsafe or unknown user file request: %s", filePath.toUtf8().data() );
+    return {};
+  }
+
   // Look for the file in user's home directory
   QDir userDir     = Config::getHomeDir();
   QString fullPath = userDir.filePath( filePath );
 
-  QFile file( fullPath );
+  // Defense in depth: resolve the real file and make sure it still lives in
+  // the home directory (symlinks pointing elsewhere are rejected).
+  const QString canonicalFile = QFileInfo( fullPath ).canonicalFilePath();
+  const QString canonicalHome = userDir.canonicalPath();
+  if ( canonicalFile.isEmpty() || canonicalHome.isEmpty()
+       || !canonicalFile.startsWith( canonicalHome + QLatin1Char( '/' ), pathCaseSensitivity() ) ) {
+    qWarning( "Refusing user file outside the home directory: %s", fullPath.toUtf8().data() );
+    return {};
+  }
+
+  QFile file( canonicalFile );
   if ( file.open( QIODevice::ReadOnly ) ) {
     QByteArray content                         = file.readAll();
     sptr< Dictionary::DataRequestInstant > req = std::make_shared< Dictionary::DataRequestInstant >( true );
@@ -237,7 +269,7 @@ sptr< Dictionary::DataRequest > handleUserFileRequest( const QUrl & url )
     return req;
   }
   else {
-    qWarning( "Failed to open user file: %s", fullPath.toUtf8().data() );
+    qWarning( "Failed to open user file: %s", canonicalFile.toUtf8().data() );
     return {};
   }
 }
@@ -260,7 +292,17 @@ sptr< Dictionary::DataRequest > handleDictionaryResource(
         return ico;
       }
       try {
-        return dictionary->getResource( Utils::Url::path( url ).mid( 1 ).toUtf8().data() );
+        const QString resourceName = Utils::Url::path( url ).mid( 1 );
+
+        // Every backend joins this name onto the dictionary's own folder (or
+        // looks it up inside its resource archive), so any ".." segment would
+        // read files outside the dictionary directory.
+        if ( !Utils::isSafeResourceName( resourceName ) ) {
+          qWarning( "Refusing unsafe dictionary resource request: %s", resourceName.toUtf8().data() );
+          return {};
+        }
+
+        return dictionary->getResource( resourceName.toUtf8().data() );
       }
       catch ( std::exception & e ) {
         qWarning( "getResource request error (%s) in \"%s\"", e.what(), dictionary->getName().c_str() );
@@ -476,12 +518,6 @@ qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
     return 0;
   }
 
-  qDebug( "====reading  %lld of (%lld) bytes, %lld bytes readed . Finish status: %d",
-          toRead,
-          avail,
-          alreadyRead,
-          finished );
-
   try {
     req->getDataSlice( alreadyRead, toRead, out );
   }
@@ -507,12 +543,16 @@ void ArticleResourceReply::readyReadSlot()
 void ArticleResourceReply::finishedSlot()
 {
   if ( req->dataSize() < 0 ) {
+    qWarning( "ArticleResourceReply: content not found for %s", url().toEncoded().constData() );
     emit errorOccurred( ContentNotFoundError );
     setError( ContentNotFoundError, "content not found" );
   }
   //prevent sent multi times.
   if ( !finishSignalSent.loadAcquire() ) {
     finishSignalSent.ref();
+    qDebug( "ArticleResourceReply: %lld bytes served %s",
+            static_cast< long long >( alreadyRead ),
+            url().toEncoded().constData() );
     setFinished( true );
     emit finished();
   }

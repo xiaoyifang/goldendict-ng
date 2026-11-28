@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%2 oýundan %1</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Makalany Daşky &amp;Brauzerde Aç</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -331,40 +335,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Simplönekeýleşdirilen nyşanlardan adaty (Gonkong warianty) nyşanlara öwrülmegi üpjün ediň</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Adaty hytaý (Taýwan warianty) öwrülişine ýönekeýleşdirildi</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Adaty hytaý (Gonkong görnüşi) öwrülişine ýönekeýleşdirildi</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Chineseönekeýleşdirilen hytaý öwrülişigi</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Gonkong varianty</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Adatça karakterlerden sadalaşdyrylan (Materik) karakterlere öwürmegi mümkin</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Sadalaşdyrylan (materik)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Ýönekeýleşdirilen karakterlerden däp bolan (Taýwan/Standart) karakterlere öwürmegi mümkin et</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Adatça (Taýwan/Standart)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -385,6 +357,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Ýönekeýleşdirilen hytaý, däp bolan hytaý (Taýwan/Gonkong) we ýapon shinjitai karakterleriniň arasynda çalyşmagy mümkin</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Adaty nyşanlardan ýönekeýleşdirilen nyşanlara öwrülmegi üpjün ediň</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>sadalaşdyrylan</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Ýönekeýleşdirilen karakterlerden däp bolan (Taýwan) karakterlere öwürmegi mümkin et</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Adatça (Taýwan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Ýönekeýleşdirilen karakterlerden däp bolan (Gonkong) karakterlere öwürmegi mümkin et</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Adatça (Gonkong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Däp bolan hytaý (Taýwan) konwersiýasyna sadalaşdyryldy</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Ýönekeýleşdirilen däp bolan hytaý (Gonkong) konwersiýasy</translation>
     </message>
   </context>
   <context>
@@ -472,10 +476,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Papkalary öz içine alýan toparlar toplumyny döretmek isleýändigiňize ynanýarsyňyzmy?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Metadata.toml esasynda bir topar topar döretmek isleýändigiňize ynanýarsyňyzmy?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Toparlary çeşme dillere görä utgaşdyr -  &quot;%1-&gt;&quot;</translation>
     </message>
@@ -498,6 +498,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>&lt;b&gt;%1&lt;/b&gt;? topary çyndan hem aýyrmak isleýäňmi?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Siz sözlük metadata faýllary esasynda toparlar setini döretmek isleýändigiňize ynanýarmysyňyz?</translation>
     </message>
   </context>
   <context>
@@ -784,6 +788,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New display name:</source>
       <translation>Täze displeý ady:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Reindekslemek üçin sözlügi planlaşdyryp bilmedi.</translation>
     </message>
   </context>
   <context>
@@ -1173,6 +1181,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>%1 Morphology</source>
       <translation>%1 Morfologiýa</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Ýazylyşy dogry, başga söz formasy tapylmady.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>From %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Söz formalary %1: </translation>
     </message>
   </context>
   <context>
@@ -2669,6 +2689,34 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation>Aç &amp; Daşky Brauzer</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Indi headwords cache gurmak: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Prefiks</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Suffiks</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Köp söz</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Doly tekst agtarma…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Agtarma modu</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Agtarma modu: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3016,18 +3064,6 @@ iň soňkusy bol.</translation>
       <translation>Daş görnüşi</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Interfeýs kalamyny etkinleştir</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Kalam ululygy</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3272,24 +3308,12 @@ for all program&apos;s network requests.</source>
       <translation>Paluba:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Söz</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Sözlük meýdany ...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Tekst</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Kesgitleme meýdany ...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Jümle</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3563,6 +3587,30 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Web-saýtyň sözlükleri makala görnüşine gömülen däl-de, öz sekmesinde açylýar. Bu iframe düzümi we kaydırma çäklendirmelerinden gaça durýar we sözlükler dialogynda her sözlük üçin Script sütünini açýar.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>Söz:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Tekst:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Sözlem:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Interfeýs şrifti</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Gümrük maşgalasy</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Ýörite ululyklar</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3788,6 +3836,10 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>Salgylanýan çeşmäni ýükläp almak bolmady.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Resurs maksat haltasynyň daşynda saklanar.</translation>
     </message>
   </context>
   <context>

@@ -3,62 +3,113 @@
 
 #ifdef MAKE_QTMULTIMEDIA_PLAYER
 
-  #include <QByteArray>
   #include <QAudioDevice>
+  #include <QAudioOutput>
+  #include <QBuffer>
+  #include <QMediaDevices>
+  #include <QMediaPlayer>
   #include "multimediaaudioplayer.hh"
 
   #include <QDebug>
 
 MultimediaAudioPlayer::MultimediaAudioPlayer()
 {
-  audioOutput.setDevice( QMediaDevices::defaultAudioOutput() );
-  player.setAudioOutput( &audioOutput );
+  releaseTimer.setSingleShot( true );
+  releaseTimer.setInterval( 0 );
+  connect( &releaseTimer, &QTimer::timeout, this, &MultimediaAudioPlayer::destroyPlayer );
+}
 
-  connect( &player, &QMediaPlayer::errorChanged, this, &MultimediaAudioPlayer::onMediaPlayerError );
-  connect( &player, &QMediaPlayer::mediaStatusChanged, this, [ this ]( QMediaPlayer::MediaStatus status ) {
+MultimediaAudioPlayer::~MultimediaAudioPlayer()
+{
+  releaseTimer.stop();
+  destroyPlayer();
+}
+
+void MultimediaAudioPlayer::createPlayer()
+{
+  if ( player ) {
+    return;
+  }
+
+  audioOutput.reset( new QAudioOutput );
+  audioOutput->setDevice( QMediaDevices::defaultAudioOutput() );
+
+  player.reset( new QMediaPlayer );
+  player->setAudioOutput( audioOutput.data() );
+  connect( player.data(), &QMediaPlayer::errorChanged, this, &MultimediaAudioPlayer::onMediaPlayerError );
+  connect( player.data(), &QMediaPlayer::mediaStatusChanged, this, [ this ]( QMediaPlayer::MediaStatus status ) {
     if ( status == QMediaPlayer::EndOfMedia ) {
-      // After playback ends, ensure the player is stopped and resources are released.
-      stop();
+      // Release the audio device once playback ends, but never destroy
+      // the player from within its own signal handler.
+      releaseTimer.start();
     }
   } );
 
-  connect( &mediaDevices, &QMediaDevices::audioOutputsChanged, this, &MultimediaAudioPlayer::audioOutputChange );
+  mediaDevices.reset( new QMediaDevices );
+  connect( mediaDevices.data(), &QMediaDevices::audioOutputsChanged, this, &MultimediaAudioPlayer::audioOutputChange );
+}
+
+void MultimediaAudioPlayer::destroyPlayer()
+{
+  if ( player ) {
+    player->disconnect( this );
+    player->stop();
+    player->setSourceDevice( nullptr );
+    player->setSource( QUrl() );
+    player->setAudioOutput( nullptr );
+  }
+  if ( !audioBuffer.isNull() ) {
+    audioBuffer->close();
+    audioBuffer.reset( nullptr );
+  }
+  player.reset( nullptr );
+  audioOutput.reset( nullptr );
+  mediaDevices.reset( nullptr );
 }
 
 void MultimediaAudioPlayer::audioOutputChange()
 {
+  const QAudioDevice newDevice = QMediaDevices::defaultAudioOutput();
+  if ( !audioOutput || newDevice == audioOutput->device() ) {
+    // OS may emit several device notifications for a single plug/unplug
+    // event; only react when the default output actually changes.
+    return;
+  }
   qDebug() << "audio device changed";
-  audioOutput.setDevice( QMediaDevices::defaultAudioOutput() );
+  audioOutput->setDevice( newDevice );
 }
 
 QString MultimediaAudioPlayer::play( const char * data, int size )
 {
   stop();
+  createPlayer();
+
   audioBuffer.reset( new QBuffer() );
   audioBuffer->setData( data, size );
   if ( !audioBuffer->open( QIODevice::ReadOnly ) ) {
+    destroyPlayer();
     return tr( "Couldn't open audio buffer for reading." );
   }
-  player.setSourceDevice( audioBuffer.get() );
+  player->setSourceDevice( audioBuffer.data() );
 
-  player.play();
+  player->play();
   return {};
 }
 
 void MultimediaAudioPlayer::stop()
 {
-  player.stop();
-  player.setSourceDevice( nullptr ); // Explicitly disassociate the device.
-  player.setSource( QUrl() );
-  if ( !audioBuffer.isNull() ) {
-    audioBuffer->close();
-    audioBuffer.reset( nullptr );
-  }
+  releaseTimer.stop();
+  destroyPlayer();
 }
 
 void MultimediaAudioPlayer::onMediaPlayerError()
 {
-  emit error( player.errorString() );
+  if ( player->error() == QMediaPlayer::NoError ) {
+    return;
+  }
+  emit error( player->errorString() );
+  // Do not keep the audio device busy after a failed playback.
+  releaseTimer.start();
 }
 
 #endif // MAKE_QTMULTIMEDIA_PLAYER

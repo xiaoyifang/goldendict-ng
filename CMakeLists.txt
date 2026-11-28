@@ -29,7 +29,14 @@ if (WIN32)
         )
         FetchContent_MakeAvailable(vcpkg-export)
         set(VCPKG_MANIFEST_MODE OFF CACHE BOOL "disable existing manifest mode caused by the existrance of vcpkg.json" FORCE)
-        set(CMAKE_TOOLCHAIN_FILE "${CMAKE_BINARY_DIR}/_deps/vcpkg-export-src/scripts/buildsystems/vcpkg.cmake")
+        # Locate the toolchain regardless of the archive layout: newer vcpkg
+        # export wraps everything in a top-level folder named after --output,
+        # while older versions put scripts/ at the archive root.
+        file(GLOB _gd_vcpkg_toolchain
+                "${vcpkg-export_SOURCE_DIR}/scripts/buildsystems/vcpkg.cmake"
+                "${vcpkg-export_SOURCE_DIR}/*/scripts/buildsystems/vcpkg.cmake")
+        list(GET _gd_vcpkg_toolchain 0 _gd_vcpkg_toolchain)
+        set(CMAKE_TOOLCHAIN_FILE "${_gd_vcpkg_toolchain}")
     endif ()
     if (WITH_VCPKG_BREAKPAD)
         list(APPEND VCPKG_MANIFEST_FEATURES "breakpad")
@@ -70,6 +77,13 @@ if (WITH_TTS)
 endif ()
 
 find_package(Qt6 6.2 REQUIRED COMPONENTS ${GD_QT_COMPONENTS})
+
+# QTBUG-111538: Qt 6.5.0 introduces a crash in QDockAreaLayout::updateSeparatorWidgets
+# when restoring a saved dock/toolbar state. Fixed in 6.5.1 and 6.6.0.
+if (Qt6Core_VERSION VERSION_EQUAL "6.5.0")
+    message(FATAL_ERROR "Qt 6.5.0 has a known crash on state restore (QTBUG-111538). "
+            "Please build with Qt 6.2-6.4.x, or 6.5.1+.")
+endif ()
 
 qt_standard_project_setup()
 set(CMAKE_AUTORCC ON) # not included in the qt_standard_project_setup

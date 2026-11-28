@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 / %2 ottelua</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Avaa artikkeli ulkoisessa &amp;selaimessa</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,40 +336,8 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Ota käyttöön muuntaminen yksinkertaistetuista merkeistä perinteisiin (Hong Kong -variantti) merkkeihin</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Yksinkertaistettu perinteiseen kiinalaiseen (Taiwan variantti) muuntamiseen</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Yksinkertaistettu perinteiseen kiinalaiseen (Hong Kong -versioon) muuntamiseen</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Perinteinen yksinkertaistettu Kiinan muuntaminen</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Hongkongin muunnos</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Ota käyttöön muuntaminen perinteisistä merkeistä yksinkertaistettuihin (manner-) merkkeihin</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Simplified (Manner)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Ota käyttöön muuntaminen yksinkertaistetuista merkeistä perinteisiin (Taiwan/Standardi) merkkeihin</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Perinteinen (Taiwan/standardi)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +358,38 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Mahdollista muunnos yksinkertaistetun kiinan, perinteisen kiinan (Taiwan/Hongkong) ja japanilaisen shinjitai-merkkien välillä</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Ota käyttöön muuntaminen perinteisistä merkeistä yksinkertaistettuihin merkkeihin</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Yksinkertaistettu</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Ota muuntaminen yksinkertaistetuista merkeistä perinteisiksi (Taiwan) merkeiksi</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Perinteinen (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Ota käyttöön muuntaminen yksinkertaistetuista merkeistä perinteisiin (Hongkongin) merkkeihin</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Perinteinen (Hongkong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Yksinkertaistettu perinteiseen kiinalaiseen (Taiwan) muunnokseen</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Yksinkertaistettu perinteiseen kiinalaiseen (Hongkong) muunnokseen</translation>
     </message>
   </context>
   <context>
@@ -473,10 +477,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Haluatko varmasti luoda joukon ryhmiä sisältävien kansioiden perusteella?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Haluatko varmasti luoda joukon ryhmiä metadata.toml-tiedoston perusteella?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Yhdistä ryhmät lähdekielen mukaan &quot;%1-&gt;&quot;</translation>
     </message>
@@ -499,6 +499,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Oletko varma, että haluat poistaa ryhmän &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Oletko varma, että haluat luoda joukon ryhmiä sanakirjan metatietotiedostojen perusteella?</translation>
     </message>
   </context>
   <context>
@@ -785,6 +789,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>New display name:</source>
       <translation>Uusi näytön nimi:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Sanakirjan uudelleenindeksointi ei onnistunut.</translation>
     </message>
   </context>
   <context>
@@ -1174,6 +1182,18 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>%1 Morphology</source>
       <translation>%1 Morfologia</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Oikeinkirjoitus, muita sanamuotoja ei löytynyt.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Lähde %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Sanamuodot %1: </translation>
     </message>
   </context>
   <context>
@@ -2670,6 +2690,34 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <source>Open in &amp;External Browser</source>
       <translation>Avaa sisään &amp; ulkoinen selain</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Nyt rakennamme otsikkosanavarastoa: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Etuliite</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Päätte</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Monisanainen</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Koko tekstin haku…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Hakutila</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Hakutila: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3017,18 +3065,6 @@ ovat viimeisiä.</translation>
       <translation>Ulkomuoto</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Ota Käyttöön Käyttöliittymän Kirjasin</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Käyttöliittymän kieli</translation>
     </message>
@@ -3273,24 +3309,12 @@ kaikille ohjelmille&apos;s verkkopyyntöille.</translation>
       <translation>Pakka:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Sana</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Sanaston kenttä...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Teksti</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Määritelmän kenttä...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Lause</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3564,6 +3588,30 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Kun ne ovat käytössä, verkkosivuston sanakirjat avautuvat omalla välilehdellään artikkelinäkymän sijaan. Tämä välttää iframe-asettelun ja vieritysrajoitukset, ja mahdollistaa sanakirjakohtaisen Script-sarakkeen sanakirja-ikkunassa.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>Sana:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Tekstiviesti:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Lause:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Käyttöliittymän Kirjasin</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Mukautettu perhe</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Mukautettu koko</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3789,6 +3837,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>Viitattua resurssia ei voitu ladata.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Resurssi tallennettaisiin kohdekansion ulkopuolelle.</translation>
     </message>
   </context>
   <context>

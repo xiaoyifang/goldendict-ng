@@ -184,6 +184,16 @@ sptr< WordSearchRequest > Class::stemmedMatch( const std::u32string & /*str*/,
   return std::make_shared< WordSearchRequestInstant >();
 }
 
+sptr< WordSearchRequest > Class::suffixMatch( const std::u32string & /*str*/, unsigned long /*maxResults*/ )
+{
+  return std::make_shared< WordSearchRequestInstant >();
+}
+
+sptr< WordSearchRequest > Class::multiWordMatch( const std::u32string & /*str*/, unsigned long /*maxResults*/ )
+{
+  return std::make_shared< WordSearchRequestInstant >();
+}
+
 sptr< WordSearchRequest > Class::findHeadwordsForSynonym( const std::u32string & )
 {
   return std::make_shared< WordSearchRequestInstant >();
@@ -205,6 +215,16 @@ QString Class::getContainingFolder() const
   }
 
   return {};
+}
+
+string Class::getMetadataFileStem() const
+{
+  if ( dictionaryFiles.empty() ) {
+    return {};
+  }
+  // fileName() returns the file name with extension for files, and the
+  // directory name for directories (e.g. Epwing dictionaries).
+  return QFileInfo( QString::fromStdString( dictionaryFiles[ 0 ] ) ).fileName().toStdString();
 }
 
 sptr< DataRequest > Class::getResource( const string & /*name*/ )
@@ -662,6 +682,23 @@ bool needToRebuildIndex( const vector< string > & dictionaryFiles, const string 
 string getFtsSuffix()
 {
   return "_FTS_x";
+}
+
+string getHeadwordsSuffix()
+{
+  return "_HW_x";
+}
+
+void Class::setIndexedHeadwordsCount( long count )
+{
+  indexedHeadwordsCount = count;
+
+  auto newProgress = getHeadwordsCacheProgress();
+  if ( newProgress != lastHWProgress ) {
+    lastHWProgress = newProgress;
+    emit GlobalBroadcaster::instance() -> indexingHeadwordsCache(
+      QString( "%1......%%2" ).arg( QString::fromStdString( getName() ) ).arg( newProgress ) );
+  }
 }
 
 QString generateRandomDictionaryId()

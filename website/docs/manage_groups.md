@@ -69,11 +69,11 @@ More levels of folder nesting are not supported.
 |          └─ DictB Files
 ```
 
-## Auto groups by `metadata.toml`
+## Auto groups by metadata
 
-Click the "group by metadata" will group your dicts based on `metadata.toml`.
+Click the "group by metadata" will group your dicts based on their metadata files.
 
-The `metadata.toml` should be placed beside dictionary files. One `metadata.toml` for each dictionary.
+The metadata file should be placed beside dictionary files and named after the dictionary's main file (with its extension) plus a `.toml` suffix, e.g. `Cambridge.ifo.toml` or `Collins.dsl.toml`. The legacy `metadata.toml` is migrated automatically on load by renaming it to the per-dictionary file of the first dictionary in the folder; it keeps being read as a fallback when the dictionary folder is not writable.
 
 The metadata file uses [TOML](https://toml.io) format.
 
@@ -92,13 +92,14 @@ For example,
 ```
 .
 ├── Cambridge
-│    ├── metadata.toml     (A)
+│    ├── Cambridge.ifo.toml     (A)
+│    ├── Cambridge.ifo
 │    ├── Cambridge.idx
 │    ├── Cambridge.info
 │    ├── Cambridge.syn
 │    └── Cambridge.dict.dz
 └── Collins
-     ├── metadata.toml
+     ├── Collins.dsl.toml
      ├── res.zip
      └── Collins.dsl       (B)
 
@@ -120,4 +121,4 @@ The structure above will be auto grouped into three groups:
 * `图片词典` with `Collins`
 * `汉英词典` with `Cambridge`,`Collins`
 
-Note: Dictionaries without `metadata.toml` won't be auto-grouped.
+Note: Dictionaries without a metadata file won't be auto-grouped.

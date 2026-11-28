@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1件目 / %2件</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>外部ブラウザで記事を開く(&amp;B)</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -331,40 +335,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>簡体字から繁体字（香港用）への変換を有効にする</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>簡体字から台湾繁体字への変換</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>簡体字から香港繁体字への変換</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>繁体字から簡体字への変換</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>香港繁体字</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>繁体字から簡体字(本土)文字への変換を可能にする</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>簡略化(本土)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>簡体字から繁体字(台湾/標準)文字への変換を可能にする</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>トラディカル(台湾/スタンダード)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -385,6 +357,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>簡体字中国語、繁体字(台湾/香港)、日本語の新字台文字間の変換を可能にする</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>従来の文字から簡略化された文字への変換を有効にする</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>簡略化</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>簡体字から繁体字(台湾)文字への変換を有効にする</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>伝統的(台湾)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>簡体字から繁体字(香港)文字への変換を可能にする</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>トラディショナル(香港)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>簡体字から繁体字中国語(台湾)への変換</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>簡体字から繁体字(香港)への変換</translation>
     </message>
   </context>
   <context>
@@ -472,10 +476,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>含まれているフォルダに基づいて一連のグループを生成してもよろしいですか？</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>metadata.tomlに基づいてグループのセットを生成してもよろしいですか？</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>グループをソース言語別に結合し、「%1->」とする</translation>
     </message>
@@ -498,6 +498,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>グループ &lt;b&gt;%1&lt;/b&gt; を削除してもよろしいですか?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>辞書メタデータファイルに基づいてグループ群を生成しても本当に良いですか?</translation>
     </message>
   </context>
   <context>
@@ -783,6 +787,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New display name:</source>
       <translation>新しい表示名:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>辞書の再インデックス作成のスケジュールに失敗しました。</translation>
     </message>
   </context>
   <context>
@@ -1172,6 +1180,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>%1 Morphology</source>
       <translation>%1 形態</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>スペルは正しく、他の単語形態は見つかりませんでした。</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>そこから %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>語形は %1: </translation>
     </message>
   </context>
   <context>
@@ -2668,6 +2688,34 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation>外部ブラウザで開く(&amp;E)</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>現在、ヘッドワードの地位を築き上げています: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>接頭辞</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>接尾辞</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>マルチワード</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>全文検索…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>検索モード</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>検索モード: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3014,18 +3062,6 @@ be the last ones.</source>
       <translation>外観</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>インターフェースフォントを有効にする</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>フォント</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>フォントサイズ</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>インターフェース言語</translation>
     </message>
@@ -3270,24 +3306,12 @@ for all program&apos;s network requests.</source>
       <translation>デッキ:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>単語</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>語彙フィールド...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>テキスト</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>定義フィールド...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>センテンス</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3557,6 +3581,30 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>有効化すると、ウェブサイトの辞書は記事ビューに埋め込まれるのではなく、独立したタブで開きます。これによりiframeレイアウトやスクロールの制限を回避し、「辞書」ダイアログで辞書ごとのスクリプト欄が有効になります。</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>単語:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>テキスト:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>文:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>インターフェースフォント</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>カスタムファミリー</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>カスタムサイズ</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3782,6 +3830,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>参照されたリソースのダウンロードに失敗しました。</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>リソースは宛先フォルダの外に保存されます。</translation>
     </message>
   </context>
   <context>

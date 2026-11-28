@@ -102,7 +102,7 @@ private:
 class GDSwipeGestureRecognizer: public QGestureRecognizer
 {
 public:
-  GDSwipeGestureRecognizer() {}
+  GDSwipeGestureRecognizer() = default;
 
 private:
   static const int MOVE_X_TRESHOLD = 100;

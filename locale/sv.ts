@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 av %2 träffar</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Öppna artikel i extern &amp;webbläsare</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,40 +336,8 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Aktivera konvertering från förenklade tecken till traditionella (Hong Kong variant) tecken</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Förenklad till traditionell kinesisk (Taiwanesisk variant) konvertering</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Förenklad till traditionell kinesisk (Hong Kong variant) konvertering</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Traditionell till förenklad kinesisk konvertering</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Hongkong variant</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Möjliggöra konvertering från traditionella tecken till förenklade (fastlands) tecken</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Förenklad (fastlandet)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Möjliggör konvertering från förenklade tecken till traditionella (Taiwan/Standard) tecken</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Traditionell (Taiwan/Standard)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +358,38 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Aktivera konvertering mellan förenklade kinesiska, traditionella kinesiska (Taiwan/Hongkong) och japanska Shinjitai-tecken</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Aktivera konvertering från traditionella tecken till förenklade tecken</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Förenklad</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Aktivera konvertering från förenklade tecken till traditionella (taiwanska) tecken</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Traditionell (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Aktivera konvertering från förenklade tecken till traditionella (Hongkong-)tecken</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Traditionell (Hongkong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Förenklad till traditionell kinesisk (Taiwan) konvertering</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Förenklad till traditionell kinesisk (Hongkong) konvertering</translation>
     </message>
   </context>
   <context>
@@ -473,10 +477,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Är du säker på att du vill skapa en uppsättning grupper baserat på innehållande mappar?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Är du säker på att du vill skapa en uppsättning grupper baserade på metadata.toml?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Kombinera grupper efter källspråk till &quot;%1 &gt;&quot;</translation>
     </message>
@@ -499,6 +499,10 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Är du säker på att du vill ta bort gruppen &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Är du säker på att du vill generera en uppsättning grupper baserat på metadatafiler i ordboksdata?</translation>
     </message>
   </context>
   <context>
@@ -785,6 +789,10 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>New display name:</source>
       <translation>Nytt visningsnamn:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Misslyckades med att boka ordboken för omindexering.</translation>
     </message>
   </context>
   <context>
@@ -1174,6 +1182,18 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>%1 Morphology</source>
       <translation>Morfologi för %1</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Stavning rätt, inga andra ordformer hittades.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Från %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Ordformer för %1: </translation>
     </message>
   </context>
   <context>
@@ -2670,6 +2690,34 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
       <source>Open in &amp;External Browser</source>
       <translation>Öppna i &amp; Extern webbläsare</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Nu bygger vi headwords-cache: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Prefix</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Suffix</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Flerords</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Fulltextsökning…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Sökläge</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Sökläge: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3016,18 +3064,6 @@ vara de sista.</translation>
       <translation>Utseende</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Aktivera typsnitt för gränssnitt</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Gränssnittets språk</translation>
     </message>
@@ -3273,24 +3309,12 @@ förfrågningar.</translation>
       <translation>Däck:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Ord</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Ordförrådsfältet...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Text</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Definition fält...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Mening</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3565,6 +3589,30 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>När de är aktiverade öppnas webbplatsordböcker i en egen flik istället för att vara inbäddade i artikelvyn. Detta undviker begränsningar i iframe-layout och scrollning och aktiverar kolumnen Script per ordbok i dialogen för ordböcker.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>Ord:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Text:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Mening:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Gränssnittets teckensnitt</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Custom family</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Anpassad storlek</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3790,6 +3838,10 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>Det gick inte att hämta den refererade resursen.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Resursen sparades utanför destinationsmappen.</translation>
     </message>
   </context>
   <context>

@@ -25,8 +25,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-14,macos-15-intel]
-        qt_ver: [ 6.8.3, 6.10.3 ] # 6.8 is LTS which is relatively stable, don't dump it until next LTS.
+        os: [macos-15,macos-15-intel]
+        # Qt 6.12 LTS (also fixes the tray icon crash on macOS 27 that 6.8/6.10 lack)
+        qt_ver: [ 6.12.0 ]
     steps:
       - uses: actions/checkout@v6
         with:
@@ -55,11 +56,15 @@ jobs:
         uses: hendrikmuhs/ccache-action@v1.2
         with:
           key: ${{ runner.os }}-${{ runner.arch }}-${{ matrix.qt_ver }}
-      - uses: jurplel/install-qt-action@v4.3.1
+      - uses: jurplel/install-qt-action@v4.5.0
         with:
           version: ${{ matrix.qt_ver }}
           arch: clang_64
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
+          # aqtinstall PR #1048 (Qt 6.12 support) is merged into master but not yet
+          # released (latest is v3.3.0), so pin the merge commit. Drop the pin once a
+          # release newer than v3.3.0 includes it.
+          aqtsource: git+https://github.com/miurahr/aqtinstall.git@8e4ea786f8a4f9dc578516738a137dec80a0362c
       - name: Build
         run: |
           mkdir build_dir
@@ -82,6 +87,14 @@ jobs:
           ls -Rl ./build_dir/redist
           echo "--- .dmg files in  ---"
           ls -l *.dmg 2>/dev/null || echo "(none)"
+          echo "--- binary arch info ---"
+          BIN="./build_dir/redist/GoldenDict-ng.app/Contents/MacOS/GoldenDict-ng"
+          if [ -f "$BIN" ]; then
+            file "$BIN"
+            lipo -info "$BIN"
+          else
+            echo "Binary not found at $BIN"
+          fi
       - name: Verify eb is bundled
         run: |
           set -euo pipefail
@@ -114,18 +127,21 @@ jobs:
     strategy:
       matrix:
         os: [windows-2022]
-        qt_ver: [ 6.8.3, 6.10.3 ]
+        qt_ver: [ 6.12.0 ]
         arch: [ win64_msvc2022_64 ]
         include:
           - arch: win64_msvc2022_64
             vs_arch: amd64
     steps:
-      - uses: jurplel/install-qt-action@v4.3.1
+      - uses: jurplel/install-qt-action@v4.5.0
         with:
           version: ${{ matrix.qt_ver }}
           arch: ${{ matrix.arch }}
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
-          # setup-python: 'false'
+          # aqtinstall PR #1048 (Qt 6.12 support) is merged into master but not yet
+          # released (latest is v3.3.0), so pin the merge commit. Drop the pin once a
+          # release newer than v3.3.0 includes it.
+          aqtsource: git+https://github.com/miurahr/aqtinstall.git@8e4ea786f8a4f9dc578516738a137dec80a0362c
       - uses: actions/checkout@v6
         with:
           submodules: true
@@ -137,6 +153,9 @@ jobs:
         id: build
         run: |
           New-Item -Path './build_dir' -ItemType Directory
+
+          # No CMAKE_TOOLCHAIN_FILE passed: CMakeLists.txt fetches the pre-built
+          # vcpkg export itself and disables manifest mode in that path.
 
           # RelWithDebInfo + msvc's = .pdb file beside program file.
           cmake -S . -B "./build_dir" `
@@ -297,13 +316,30 @@ jobs:
           merge-multiple: true
       - name: List all files
         run: ls -R
+      - name: Create annotated tag
+        run: |
+          # Annotated tag date (= publish time) is what GitHub uses to order
+          # the Releases page; lightweight tags fall back to the commit date
+          # and make daily builds sort out of order.
+          if gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${{ env.newTag }}" >/dev/null 2>&1; then
+            echo "Tag ${{ env.newTag }} already exists, skip tag creation"
+          else
+            tag_obj=$(gh api "repos/${GITHUB_REPOSITORY}/git/tags" \
+              -f tag="${{ env.newTag }}" \
+              -f message="${{ env.releaseTitle }}" \
+              -f type="commit" \
+              -f object="${{ github.sha }}" \
+              --jq .sha)
+            gh api "repos/${GITHUB_REPOSITORY}/git/refs" \
+              -f ref="refs/tags/${{ env.newTag }}" \
+              -f sha="$tag_obj"
+          fi
       - name: Create new tag
         run: |
           if [[ '${{ env.prerelease }}' == 'true' ]]
           then
             gh release create '${{ env.newTag }}' \
               -t '${{ env.releaseTitle }}' \
-              --target '${{ github.ref_name }}' \
               --notes-file=./changelog.txt \
               --latest=false \
               --prerelease \
@@ -311,7 +347,6 @@ jobs:
           else
             gh release create '${{ env.newTag }}' \
               -t '${{ env.releaseTitle }}' \
-              --target '${{ github.ref_name }}' \
               --notes-file=./changelog.txt \
               --latest=true \
               --repo ${GITHUB_REPOSITORY}

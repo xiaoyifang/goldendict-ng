@@ -224,6 +224,59 @@ QString GlobalBroadcaster::getLsaIdFromPath( const QString & path ) const
   return lsaPathToIdMap.value( nativePath );
 }
 
+void GlobalBroadcaster::addSoundDirDictId( const QString & dictId )
+{
+  soundDirDictIds.insert( dictId );
+}
+
+const QSet< QString > & GlobalBroadcaster::getSoundDirDictIds() const
+{
+  return soundDirDictIds;
+}
+
+sptr< Dictionary::Class > GlobalBroadcaster::getSoundDictionaryByName( const QString & name ) const
+{
+  if ( name.isEmpty() || allDictionaries == nullptr ) {
+    return {};
+  }
+
+  for ( const auto & dict : *allDictionaries ) {
+    if ( !dict ) {
+      continue;
+    }
+
+    // Only sound dir dictionaries and Lingvo sound archives are eligible,
+    // they are the ones whose sounds can be shared between dictionaries.
+    const QString dictId = QString::fromStdString( dict->getId() );
+    if ( !soundDirDictIds.contains( dictId ) && !lsaIdToPathMap.contains( dictId ) ) {
+      continue;
+    }
+
+    if ( QString::fromStdString( dict->getName() ).compare( name, Qt::CaseInsensitive ) == 0 ) {
+      return dict;
+    }
+  }
+  return {};
+}
+
+bool GlobalBroadcaster::isDictionaryEnabledInBar( const QString & dictId ) const
+{
+  if ( !config ) {
+    return true; // No configuration context yet -- behave as before.
+  }
+
+  const QSet< QString > * mutedDictionaries = nullptr;
+
+  if ( currentGroupId == GroupId::AllGroupId ) {
+    mutedDictionaries = &config->mutedDictionaries;
+  }
+  else if ( const Config::Group * grp = config->getGroup( currentGroupId ) ) {
+    mutedDictionaries = &grp->mutedDictionaries;
+  }
+
+  return !mutedDictionaries || !mutedDictionaries->contains( dictId );
+}
+
 bool GlobalBroadcaster::isDarkReaderModeEnabled() const
 {
   if ( !config ) {

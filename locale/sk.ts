@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 z %2 zápasov</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Otvoriť článok v externom a prehliadači</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,40 +336,8 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Povoliť konverziu zjednodušených znakov na tradičné (Hong-Kongský variant)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Konverzia zo zjednodušenej do tradičnej čínštiny (Tajvanský variant)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Konverzia zo zjednodušenej do tradičnej čínštiny (Hong-Kongský variant)</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Konverzia z tradičnej do zjednodušenej čínštiny</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Hongkonský variant</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Umožniť konverziu z tradičných znakov na zjednodušené (pevninské) znaky</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Zjednodušené (pevnina)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Umožniť konverziu zo zjednodušených znakov na tradičné (Taiwan/Standard) znaky</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Tradičné (Taiwan/Standard)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +358,38 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Umožniť konverziu medzi zjednodušenou čínštinou, tradičnou čínštinou (Taiwan/Hongkong) a japonskými znakmi Shinjitai</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Povoliť konverziu tradičných znakov na zjednodušené znaky</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Zjednodušené</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Povoliť konverziu zo zjednodušených znakov na tradičné (Taiwan) znaky</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Tradičné (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Povoliť konverziu zo zjednodušených znakov na tradičné (hongkonské) znaky</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Tradičné (Hongkong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Zjednodušená konverzia na tradičnú čínštinu (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Zjednodušená konverzia na tradičnú čínštinu (Hongkong)</translation>
     </message>
   </context>
   <context>
@@ -473,10 +477,6 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <translation>Naozaj chcete vygenerovať skupinu skupín na základe priečinkov, ktoré obsahujú?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Naozaj chcete vygenerovať skupinu skupín na základe metadata.toml?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Kombinovať skupiny podľa zdrojového jazyka do &quot;%1-&gt;&quot;</translation>
     </message>
@@ -499,6 +499,10 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Ste si istí, že chcete odstrániť skupinu &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Ste si istí, že chcete vytvoriť sadu skupín na základe metadát slovníka?</translation>
     </message>
   </context>
   <context>
@@ -785,6 +789,10 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     <message>
       <source>New display name:</source>
       <translation>Nové zobrazované meno:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Nepodarilo sa mi naplánovať slovník na preindexovanie.</translation>
     </message>
   </context>
   <context>
@@ -1174,6 +1182,18 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     <message>
       <source>%1 Morphology</source>
       <translation>%1 morfológia</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Pravopis správny, žiadne iné slovné formy sa nenašli.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Z %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Slovné tvary pre %1: </translation>
     </message>
   </context>
   <context>
@@ -2671,6 +2691,34 @@ Pre vyhľadanie znakov &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos
       <source>Open in &amp;External Browser</source>
       <translation>Otvoriť v a externý prehliadač</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Teraz budovanie cache pre hlavičky: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Predpona</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Prípona</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Viacslovné</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Vyhľadávanie v plnom texte…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Režim vyhľadávania</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Režim vyhľadávania: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3011,18 +3059,6 @@ be the last ones.</source>
       <translation>Vzhľad</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Povoliť písmo rozhrania</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Písmo</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Veľkosť písma</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3266,24 +3302,12 @@ pre všetky sieťové požiadavky programu.</translation>
       <translation>Paluba:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Slovo</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Oblasť slovnej zásoby...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Text</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Definičné pole...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Veta</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3555,6 +3579,30 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Keď sú zapnuté, webové slovníky sa otvárajú vo vlastnej karte namiesto toho, aby boli vložené priamo v zobrazení článku. Tým sa eliminuje obmedzenia rozloženia a posúvania iframe a umožňuje stĺpec Script pre slovník v dialógu slovníkov.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>Slovo:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Text:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Veta:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Písmo rozhrania</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Vlastná rodina</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Vlastná veľkosť</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3780,6 +3828,10 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>Referencovaný zdroj sa nepodarilo stiahnuť.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Zdroj by bol uložený mimo cieľového priečinka.</translation>
     </message>
   </context>
   <context>

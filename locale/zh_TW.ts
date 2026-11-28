@@ -303,6 +303,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1/%2 個匹配</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>在外部瀏覽器中開啟條目(&amp;B)</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -330,40 +334,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>啟用簡體字轉換為香港繁體字</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>簡體字轉換為台灣繁體字</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>簡體字轉換為香港繁體字</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>繁體字轉換為簡體字</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>香港版本</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>啟用繁體字轉換為簡體（大陸）字</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>簡化（大陸）</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>啟用簡體字元轉換為繁體（台灣/標準）字元。</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>繁體（台灣/標準）</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -384,6 +356,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>支援簡體中文、繁體中文（台灣/香港）及日文新字體間的轉換</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>啟用繁體字轉換為簡體字</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>簡化版</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>啟用從簡體字元轉換為繁體（台灣）字元</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>繁體（台灣）</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>啟用從簡體字轉換為繁體（香港）</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>繁體（香港）</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>簡體中文轉繁體中文（台灣）</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>簡體中文轉繁體中文（香港）</translation>
     </message>
   </context>
   <context>
@@ -471,10 +475,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>您確定要根據包含的資料夾產生一組群組嗎？</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>您確定要依據metadata.toml產生群組嗎？</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>依來源語言合併分組至 &quot;%1-&gt;&quot;</translation>
     </message>
@@ -497,6 +497,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>您確定要移除&lt;b&gt;%1&lt;/b&gt;群組嗎？</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>您確定要根據字典元資料檔產生群組嗎？</translation>
     </message>
   </context>
   <context>
@@ -783,6 +787,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New display name:</source>
       <translation>新的顯示名稱：</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>沒能排定字典重新索引。</translation>
     </message>
   </context>
   <context>
@@ -1172,6 +1180,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>%1 Morphology</source>
       <translation>%1 構詞法</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>拼寫正確，未找到其他單字形式。</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>來自 %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>詞形為 %1: </translation>
     </message>
   </context>
   <context>
@@ -2669,6 +2689,34 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation>開啟 → 外部瀏覽器</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>正在建立詞頭緩存：</translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>前綴</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>後綴</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>多字</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>全文搜尋…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>搜尋模式</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>搜尋模式： %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3009,18 +3057,6 @@ be the last ones.</source>
       <translation>界面外觀</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>啟用介面字型</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>字體</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>字體大小</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>介面語言</translation>
     </message>
@@ -3264,24 +3300,12 @@ for all program&apos;s network requests.</source>
       <translation>牌組：</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>單字</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>字彙輸入欄</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>文字</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>定義輸入欄</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>語句</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3553,6 +3577,30 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>啟用後，網站字典會在獨立分頁開啟，而非嵌入文章檢視中。這避免了 iframe 版面與捲動限制，並啟用字典對話框中的每個字典腳本欄位。</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>字：</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>文字：</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>句子：</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>介面用字型</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>自訂家族</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>自訂尺寸</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3778,6 +3826,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>所引用的資源下載失敗。</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>資源會被儲存在目的地資料夾之外。</translation>
     </message>
   </context>
   <context>

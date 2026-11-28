@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 nga %2 ndeshje</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Hap artikullin në &amp;shfletues të jashtëm</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -331,40 +335,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Aktivizo konvertimin nga karaktere të thjeshtuara në karaktere tradicionale (varianti i Hong Kongut).</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Konvertimi i thjeshtuar në tradicional kinez (varianti i Tajvanit).</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Konvertimi i thjeshtuar në kinezisht tradicional (varianti i Hong Kongut).</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Konvertimi tradicional në kinezisht i thjeshtuar</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Varianti i Hong Kongut</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Mundësoni konvertimin nga karakteret tradicionale në karaktere të thjeshtuara (Mainland)</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Thjeshtuar (Kontinent)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Mundësoni konvertimin nga karakteret e thjeshtuara në karakteret tradicionale (Taiwan/Standard)</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Tradicionale (Tajvan/Standard)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -385,6 +357,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Mundësoni konvertimin midis kinezishtes së thjeshtuar, kinezishtes tradicionale (Taiwan/Hong Kong) dhe karaktereve japoneze Shinjitai</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Aktivizo konvertimin nga karaktere tradicionale në karaktere të thjeshtuara</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Thjeshtuar</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Mundësoni konvertimin nga karakteret e thjeshtuara në karaktere tradicionale (tajvaneze)</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Tradicionale (Tajvan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Mundësimi i konvertimit nga karakteret e thjeshtuara në karaktere tradicionale (Hong Kongu)</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Tradicionale (Hong Kong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Konvertimi i thjeshtuar në kinezisht tradicional (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Konvertimi i thjeshtuar në kinezisht tradicional (Hong Kong)</translation>
     </message>
   </context>
   <context>
@@ -472,10 +476,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Jeni i sigurt që dëshironi të krijoni një grup grupesh bazuar në dosjet që përmbajnë?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Jeni i sigurt që dëshironi të krijoni një grup grupesh bazuar në metadata.toml?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Kombinoj grupet sipas gjuhës së burimit në &quot;%1-&gt;&quot;</translation>
     </message>
@@ -498,6 +498,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Jeni i sigurt për heqjen e grupit &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Je i sigurt që dëshiron të gjenerosh një grup grupesh bazuar në skedarët e metadata-s së fjalorit?</translation>
     </message>
   </context>
   <context>
@@ -784,6 +788,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New display name:</source>
       <translation>Emri i ri i shfaqjes:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Dështova të caktoj fjalorin për riindeksim.</translation>
     </message>
   </context>
   <context>
@@ -1173,6 +1181,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>%1 Morphology</source>
       <translation>%1 Morfologjia</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Drejtshkrimi i saktë, nuk u gjetën forma të tjera fjalësh.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Nga %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Format e fjalëve për %1: </translation>
     </message>
   </context>
   <context>
@@ -2669,6 +2689,34 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
       <source>Open in &amp;External Browser</source>
       <translation>Hap në &amp;Shfletuesin e jashtëm</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Tani ndërtimi i cache-it të fjalëve kryesore: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Parashtesa</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Prapashtesa</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Me shumë fjalë</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Kërkimi me tekst të plotë…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Mënyra e kërkimit</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Mënyra e kërkimit: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3011,18 +3059,6 @@ aktive. Përndryshe, ato shtohen si të fundit.</translation>
       <translation>Pamja e jashtme</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Aktivizo fontin e ndërfaqes</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Fonti</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Madhësia e fontit</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3267,24 +3303,12 @@ për tërë kërkesat e programit për internet.</translation>
       <translation>Kuvertë:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>fjalë</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Fusha e fjalorit...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Teksti</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Fusha e përkufizimit...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Fjali</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3556,6 +3580,30 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Kur aktivizohet, fjalorët e faqeve të internetit hapen në skedën e tyre në vend që të jenë të integruar në pamjen e artikullit. Kjo shmang kufizimet e paraqitjes së iframe dhe lëvizjes, dhe aktivizon kolonën Script për çdo fjalor në dialogun e Fjalorëve.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>Fjala:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Teksti:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Fjalia:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Fonti i ndërfaqes</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Familja e personalizuar</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Madhësia e personalizuar</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3781,6 +3829,10 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>Dështoi shkarkimi i resursit të referuar.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>Burimi do të ruhej jashtë dosjes së destinacionit.</translation>
     </message>
   </context>
   <context>

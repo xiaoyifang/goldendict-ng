@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 van %2 wedstrijden</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Open artikel in Extern &amp;Browser</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -332,40 +336,8 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Schakel conversie van vereenvoudigde tekens naar traditionele (Hong Kong variant) tekens in</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Vereenvoudigd naar de traditionele Chinese conversie (Taiwan-variant)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Vereenvoudigd naar de traditionele Chinese (Hong Kong variant) conversie</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Traditioneel naar vereenvoudigde Chinese conversie</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Hong Kong variant</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>Schakel omzetting in van traditionele tekens naar vereenvoudigde (vasteland) tekens</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Vereenvoudigd (vasteland)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>Schakel omzetting in van vereenvoudigde tekens naar traditionele (Taiwan/Standaard) tekens</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Traditioneel (Taiwan/Standaard)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -386,6 +358,38 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Schakel omzetting in tussen vereenvoudigde Chinees, traditionele Chinese (Taiwan/Hong Kong) en Japanse Shinjitai-karakters mogelijk</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Schakel conversie van traditionele tekens naar vereenvoudigde tekens in</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Vereenvoudigd</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Schakel conversie in van vereenvoudigde tekens naar traditionele (Taiwanesche) tekens</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Traditioneel (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Schakel de conversie in van vereenvoudigde tekens naar traditionele (Hongkongse) tekens</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Traditioneel (Hongkong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Vereenvoudigd naar traditionele Chinese (Taiwan) conversie</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Vereenvoudigd naar traditionele Chinese (Hongkong) conversie</translation>
     </message>
   </context>
   <context>
@@ -473,10 +477,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Weet u zeker dat u een set groepen wilt genereren op basis van mappen?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Weet u zeker dat u een set groepen wilt genereren op basis van metadata.toml?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Groepen met dezelfde brontaal combineren tot &quot;%1-&gt;&quot;</translation>
     </message>
@@ -499,6 +499,10 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Weet u zeker dat u de groep &lt;b&gt;%1&lt;/b&gt; wilt verwijderen?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>Weet je zeker dat je een set groepen wilt genereren op basis van woordenboekmetadatabestanden?</translation>
     </message>
   </context>
   <context>
@@ -785,6 +789,10 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>New display name:</source>
       <translation>Nieuwe weergavenaam</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Het woordenboek voor herindexering is niet ingepland.</translation>
     </message>
   </context>
   <context>
@@ -1174,6 +1182,18 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>%1 Morphology</source>
       <translation>Morfologie %1</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Spelling correct, geen andere woordvormen gevonden.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Van %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Woordvormen voor %1: </translation>
     </message>
   </context>
   <context>
@@ -2670,6 +2690,34 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <source>Open in &amp;External Browser</source>
       <translation>Openen in &amp; Externe Browser</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Nu het opbouwen van headwords cache: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Voorvoegsel</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Suffix</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Meerwoordige</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Volledige tekst zoekopdracht…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Zoekmodus</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Zoekmodus: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3017,18 +3065,6 @@ de laatste.</translation>
       <translation>Verschijning</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Interfacetlettertype inschakelen</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface taal</translation>
     </message>
@@ -3272,24 +3308,12 @@ for all program&apos;s network requests.</source>
       <translation>Deck:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Woord</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Woordenboek velden...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Tekstveld</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Definitie velden...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Zin</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3561,6 +3585,30 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Wanneer ingeschakeld, openen websitewoordenboeken in hun eigen tabblad in plaats van ingebed te zijn in de artikelweergave. Dit voorkomt beperkingen in de indeling van iframes en scrollen, en schakelt de per-woordenboek-kolom Script in het dialoogvenster Woordenboeken in.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>Woord:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Tekst:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Zin:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Lettertype interface</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Aangepaste familie</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Aangepaste grootte</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3786,6 +3834,10 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>Kan de bron waarnaar wordt verwezen niet downloaden.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>De bron zou buiten de bestemmingsmap worden opgeslagen.</translation>
     </message>
   </context>
   <context>

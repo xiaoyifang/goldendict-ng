@@ -9,6 +9,7 @@
 #include "keyboardstate.hh"
 #include "logger.hh"
 #include <QWebEngineProfile>
+#include <QWebEngineDownloadRequest>
 #include "edit_dictionaries.hh"
 #include "dict/loaddictionaries.hh"
 #include "preferences.hh"
@@ -19,12 +20,18 @@
 #include "dictheadwords.hh"
 #include <QTextStream>
 #include <QDir>
+#include <QFontDatabase>
 #include <QUrl>
 #include <QMessageBox>
 #include <QIcon>
 #include <QPixmap>
 #include <QList>
 #include <QToolBar>
+#include <QPainter>
+#include <QPalette>
+#include <QMenu>
+#include <QActionGroup>
+#include <QCursor>
 #include <QCloseEvent>
 #include <QDesktopServices>
 #include <QCryptographicHash>
@@ -40,6 +47,7 @@
 #include <QStyleHints>
 #include <QNetworkProxyFactory>
 #include <QVersionNumber>
+#include <QShortcut>
 
 #include "weburlrequestinterceptor.hh"
 #include "folding.hh"
@@ -57,7 +65,7 @@
 #include "config.hh"
 #include "globalregex.hh"
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
   #include "macos/mac_app_activation.hh"
   #include "macos/macmouseover.hh"
 #endif
@@ -83,6 +91,7 @@
 #include <QWindow>
 #include <QWebEngineSettings>
 #include <QProxyStyle>
+#include <QTabBar>
 
 #ifdef WITH_X11
   #include <X11/Xlib.h>
@@ -155,6 +164,64 @@ void MainWindow::changeWebEngineViewFont() const
   }
 }
 
+/// A small monochrome icon that shows which end of a headword the mode matches:
+/// a bracket on the left for prefix, on the right for suffix, and a plus for
+/// multi-word.
+static QIcon searchModeIcon( Config::SearchMode mode, const QColor & color )
+{
+  constexpr qreal dpr = 2.0;
+  QPixmap pixmap( static_cast< int >( 20 * dpr ), static_cast< int >( 20 * dpr ) );
+  pixmap.setDevicePixelRatio( dpr );
+  pixmap.fill( Qt::transparent );
+
+  QPainter painter( &pixmap );
+  painter.setRenderHint( QPainter::Antialiasing );
+  painter.setPen( QPen( color, 1.6, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin ) );
+
+  if ( mode == Config::SearchMode::MultiWord ) {
+    // Two words joined by a plus.
+    painter.drawLine( QPointF( 2.5, 10 ), QPointF( 7.5, 10 ) );
+    painter.drawLine( QPointF( 12.5, 10 ), QPointF( 17.5, 10 ) );
+    painter.drawLine( QPointF( 10, 5 ), QPointF( 10, 15 ) );
+  }
+  else if ( mode == Config::SearchMode::Prefix ) {
+    // A left bracket around the start of the word bars.
+    painter.drawLine( QPointF( 3.5, 4 ), QPointF( 3.5, 16 ) );
+    painter.drawLine( QPointF( 3.5, 4 ), QPointF( 6.5, 4 ) );
+    painter.drawLine( QPointF( 3.5, 16 ), QPointF( 6.5, 16 ) );
+    painter.drawLine( QPointF( 8, 7 ), QPointF( 17, 7 ) );
+    painter.drawLine( QPointF( 8, 10 ), QPointF( 17, 10 ) );
+    painter.drawLine( QPointF( 8, 13 ), QPointF( 17, 13 ) );
+  }
+  else {
+    // A right bracket around the end of the word bars.
+    painter.drawLine( QPointF( 16.5, 4 ), QPointF( 16.5, 16 ) );
+    painter.drawLine( QPointF( 13.5, 4 ), QPointF( 16.5, 4 ) );
+    painter.drawLine( QPointF( 13.5, 16 ), QPointF( 16.5, 16 ) );
+    painter.drawLine( QPointF( 3, 7 ), QPointF( 12, 7 ) );
+    painter.drawLine( QPointF( 3, 10 ), QPointF( 12, 10 ) );
+    painter.drawLine( QPointF( 3, 13 ), QPointF( 12, 13 ) );
+  }
+
+  painter.end();
+  return QIcon( pixmap );
+}
+
+namespace {
+Dictionary::WordMatchMode toWordMatchMode( Config::SearchMode mode )
+{
+  switch ( mode ) {
+    case Config::SearchMode::Suffix:
+      return Dictionary::WordMatchMode::Suffix;
+    case Config::SearchMode::MultiWord:
+      return Dictionary::WordMatchMode::MultiWord;
+    case Config::SearchMode::Prefix:
+    default:
+      return Dictionary::WordMatchMode::Prefix;
+  }
+}
+} // namespace
+
 MainWindow::MainWindow( Config::Class & cfg_ ):
   trayIcon( nullptr ),
   foundInDictsLabel( &dictsPaneTitleBar ),
@@ -192,6 +259,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   isQuitting( false ),
   headwordsDlg( nullptr ),
   ftsIndexing( dictionaries ),
+  headwordIndexing( dictionaries ),
   ftsRestartTimer( this ), // Initialize timer with MainWindow as parent
   ftsStateChanged( false ),
   ftsDlg( nullptr ),
@@ -230,7 +298,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   } );
 
   localSchemeHandler     = new LocalSchemeHandler( articleNetMgr, this );
-  QStringList htmlScheme = { "gdlookup", "bword", "entry", "gdinternal" };
+  // A scheme handler is required even for schemes that are always rejected in
+  // acceptNavigationRequest: without one QtWebEngine treats the scheme as an
+  // external protocol and the click never reaches the page handler.
+  QStringList htmlScheme = { "gdlookup", "gdwiki", "bword", "entry", "gdinternal" };
   for ( const auto & localScheme : htmlScheme ) {
     QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( localScheme.toLatin1(), localSchemeHandler );
   }
@@ -259,7 +330,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   ui.setupUi( this );
 
   // Set own gesture recognizers
-#ifndef Q_OS_MAC
+#ifndef Q_OS_MACOS
   Gestures::registerRecognizers();
 #endif
   // use our own, custom statusbar
@@ -296,7 +367,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // popup
   navToolbar->addSeparator();
 
-  enableScanningAction = navToolbar->addAction( QIcon( ":/icons/wizard.svg" ), tr( "Toggle clipboard monitoring" ) );
+  enableScanningAction = navToolbar->addAction( QIcon( ":/icons/clipboard.svg" ), tr( "Toggle clipboard monitoring" ) );
   enableScanningAction->setCheckable( true );
 
   navToolbar->widgetForAction( enableScanningAction )->setObjectName( "scanPopupButton" );
@@ -305,9 +376,13 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // sound
   navPronounce = navToolbar->addAction( QIcon( ":/icons/playsound_full.png" ), tr( "Pronounce Word (Alt+S)" ) );
-  navPronounce->setShortcut( QKeySequence( "Alt+S" ) );
   navPronounce->setEnabled( false );
   navToolbar->widgetForAction( navPronounce )->setObjectName( "soundButton" );
+
+  // Bind Alt+S to the main window instead of the toolbar action, so the
+  // shortcut keeps working even when the navigation toolbar is hidden.
+  auto pronounceShortcut = new QShortcut( QKeySequence( "Alt+S" ), this );
+  connect( pronounceShortcut, &QShortcut::activated, navPronounce, &QAction::trigger );
 
   connect( navPronounce, &QAction::triggered, this, [ this ]() {
     getCurrentArticleView()->playSound();
@@ -402,6 +477,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
   connect( &wordFinder, &WordFinder::updated, this, &MainWindow::prefixMatchUpdated );
   connect( &wordFinder, &WordFinder::finished, this, &MainWindow::prefixMatchFinished );
+
+  setupSearchModeMenu();
 
 
   groupList->setFocusPolicy( Qt::ClickFocus );
@@ -789,6 +866,16 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            this,
            &MainWindow::showFTSIndexingName );
 
+  // Headword-cache build progress + completion ("") display
+  connect( GlobalBroadcaster::instance(),
+           &GlobalBroadcaster::indexingHeadwordsCache,
+           this,
+           &MainWindow::showHeadwordsCacheIndexingName );
+  connect( &headwordIndexing,
+           &HeadwordCache::HeadwordIndexing::newIndexingName,
+           this,
+           &MainWindow::showHeadwordsCacheIndexingName );
+
   // When FTS state changes (from DictInfo), stop indexing and schedule restart
   connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::stopFtsIndexing, this, [ this ]() {
     qDebug() << "FTS state changed, stopping indexing and scheduling restart";
@@ -851,7 +938,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // Create tab list menu
   createTabList();
 
-#if defined( Q_OS_MAC )
+#if defined( Q_OS_MACOS )
   defaultInterfaceStyle = "Fusion";
 #else
   defaultInterfaceStyle = QApplication::style()->name();
@@ -870,11 +957,19 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // restore should be called after all UI initialized but not necessarily after show()
   // This must be called before show() as of Qt6.5 on Windows, not sure if it is a bug
   // Due to a bug of WebEngine, this also must be called after WebEngine has a view loaded https://bugreports.qt.io/browse/QTBUG-115074
+  qInfo() << "Load window state, bytes:" << cfg.mainWindowState.size()
+          << "geometry bytes:" << cfg.mainWindowGeometry.size() << "portable:" << Config::isPortableVersion()
+          << "config:" << Config::getConfigFileName();
   if ( cfg.mainWindowState.size() && !cfg.resetState ) {
-    restoreState( cfg.mainWindowState );
+    const bool ok = restoreState( cfg.mainWindowState );
+    qInfo() << "Restore main window state, bytes:" << cfg.mainWindowState.size() << "ok:" << ok;
   }
   if ( cfg.mainWindowGeometry.size() ) {
-    restoreGeometry( cfg.mainWindowGeometry );
+    const bool ok = restoreGeometry( cfg.mainWindowGeometry );
+    qInfo() << "Restore main window geometry, bytes:" << cfg.mainWindowGeometry.size() << "ok:" << ok;
+  }
+  for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
+    qInfo() << "Restored dock:" << dock->objectName() << "visible:" << dock->isVisible() << "size:" << dock->size();
   }
 
   // Show window unless it is configured not to
@@ -907,13 +1002,13 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( enableScanningAction, &QAction::toggled, this, [ this ]( bool on ) {
     if ( on ) {
-      enableScanningAction->setIcon( QIcon( ":/icons/wizard-selected.svg" ) );
+      enableScanningAction->setIcon( QIcon( ":/icons/clipboard-selected.svg" ) );
     }
     else {
-      enableScanningAction->setIcon( QIcon( ":/icons/wizard.svg" ) );
+      enableScanningAction->setIcon( QIcon( ":/icons/clipboard.svg" ) );
     }
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
     if ( !MacMouseOver::isAXAPIEnabled() ) {
       mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000, QPixmap( ":/icons/error.svg" ) );
     }
@@ -967,7 +1062,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   updateStatusLine();
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
   if ( cfg.preferences.startWithScanPopupOn && !MacMouseOver::isAXAPIEnabled() ) {
     mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000, QPixmap( ":/icons/error.svg" ) );
   }
@@ -1035,6 +1130,12 @@ void MainWindow::ensureScanPopup()
   }
 
   if ( !GlobalBroadcaster::instance()->getAllDictionaries() || !GlobalBroadcaster::instance()->getGroups() ) {
+    return;
+  }
+
+  // The popup cannot be built before the dictionary groups are loaded,
+  // otherwise its group list would be empty and the first show() could crash.
+  if ( GlobalBroadcaster::instance()->getGroups()->empty() ) {
     return;
   }
 
@@ -1184,7 +1285,7 @@ void MainWindow::clipboardChange( QClipboard::Mode m )
     // Use delay show to prevent multiple popups while selection in progress
     scanPopup->selectionDelayTimer.start();
   }
-#elif defined( Q_OS_MAC )
+#elif defined( Q_OS_MACOS )
   scanPopup->translateWord( clipboardListener->text() );
 #else
   scanPopup->translateWordFromPrimaryClipboard();
@@ -1291,6 +1392,7 @@ MainWindow::~MainWindow()
   closeHeadwordsDialog();
 
   ftsIndexing.stopIndexing();
+  headwordIndexing.stopIndexing();
 #ifndef Q_OS_MACOS
   ui.centralWidget->ungrabGesture( Gestures::GDPinchGestureType );
   ui.centralWidget->ungrabGesture( Gestures::GDSwipeGestureType );
@@ -1364,16 +1466,40 @@ void MainWindow::commitData()
 
     const QFileInfoList entries = dir.entryInfoList( QDir::Files | QDir::NoDotAndDotDot );
 
+    // Every file derived from a loaded dictionary starts with its id: the
+    // main index ("<id>"), headword caches ("<id>_HW_x" and their ".progress"/
+    // "_data.tmp" scratch files), "<id>_FTS_x.stale" reindex markers etc.
+    // Those are valid data and must survive the cleanup.
+    auto belongsToLoadedDict = [ this ]( const QString & fileName ) {
+      const std::string name = fileName.toStdString();
+      if ( dictMap.contains( name ) ) {
+        return true;
+      }
+      for ( auto it = dictMap.keyBegin(); it != dictMap.keyEnd(); ++it ) {
+        if ( name.compare( 0, it->size(), *it ) == 0 ) {
+          return true;
+        }
+      }
+      return false;
+    };
+
+    // A dictionary may fail to load for transient reasons (an unreachable
+    // network path, a temporarily locked file), which would make its perfectly
+    // valid index look "invalid". To avoid discarding such indexes because of
+    // a single bad session, only remove files that have not been touched
+    // recently; genuine orphans (dictionaries deleted long ago) will still be
+    // cleaned up once they age past the threshold.
+    const QDateTime now      = QDateTime::currentDateTime();
+    const int keepRecentDays = 3;
+
     for ( auto & file : entries ) {
       const QString fileName = file.fileName();
 
-      if ( dictMap.contains( fileName.toStdString() ) ) {
+      if ( belongsToLoadedDict( fileName ) ) {
         continue;
       }
 
-      // Pending "Schedule for reindex" markers must survive the cleanup,
-      // otherwise the scheduled rebuild would never happen on the next start.
-      if ( fileName.endsWith( QLatin1String( ".stale" ) ) ) {
+      if ( file.lastModified().isValid() && file.lastModified().daysTo( now ) < keepRecentDays ) {
         continue;
       }
 
@@ -1404,14 +1530,15 @@ void MainWindow::commitData()
         continue;
       }
 
-      const QFileInfo info( fileName );
-      const QDateTime lastModified = info.lastModified();
+      // file is relative to the index dir; lastModified() only works with the
+      // absolute path.
+      const QDateTime lastModified = file.lastModified();
 
       //if the temp directory has not been modified within 7 days,remove the temp directory.
-      if ( lastModified.addDays( 7 ) > QDateTime::currentDateTime() ) {
+      if ( !lastModified.isValid() || lastModified.addDays( 7 ) > QDateTime::currentDateTime() ) {
         continue;
       }
-      QDir d( fileName );
+      QDir d( file.absoluteFilePath() );
       d.removeRecursively();
     }
   }
@@ -1422,6 +1549,23 @@ void MainWindow::commitData()
     cfg.mainWindowState    = saveState();
     cfg.mainWindowGeometry = saveGeometry();
 
+    qInfo() << "Save main window state, bytes:" << cfg.mainWindowState.size()
+            << "geometry bytes:" << cfg.mainWindowGeometry.size() << "portable:" << Config::isPortableVersion()
+            << "config:" << Config::getConfigFileName();
+    // Only overwrite the sizes of the docks that took part in the layout, or were
+    // restored earlier in this session. The entries of the docks that were never
+    // shown keep their loaded values.
+    for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
+      const QString dockName = dock->objectName();
+      if ( !dock->isVisible() && !restoredDockNames.contains( dockName ) ) {
+        continue;
+      }
+
+      const QSize dockSize = dockGroupSize( dock );
+      cfg.dockWidgetSizes.insert( dockName, dockSize );
+      qInfo() << "Save dock:" << dockName << "visible:" << dock->isVisible() << "size:" << dockSize;
+    }
+
     // Save popup window state and geometry
     if ( scanPopup ) {
       scanPopup->saveConfigData();
@@ -1430,6 +1574,7 @@ void MainWindow::commitData()
     // Save any changes in last chosen groups etc
     try {
       Config::save( cfg );
+      qInfo() << "Configuration saved to" << Config::getConfigFileName();
     }
     catch ( std::exception & e ) {
       qWarning( "Configuration saving failed, error: %s", e.what() );
@@ -1443,6 +1588,117 @@ void MainWindow::commitData()
   }
   catch ( std::exception & e ) {
     qWarning( "Commit data failed, error: %s", e.what() );
+  }
+}
+
+QSize MainWindow::dockGroupSize( QDockWidget * dock ) const
+{
+  if ( tabifiedDockWidgets( dock ).isEmpty() ) {
+    return dock->size();
+  }
+
+  const auto dockId = reinterpret_cast< quintptr >( dock );
+  for ( auto * tabBar : findChildren< QTabBar * >( QString(), Qt::FindDirectChildrenOnly ) ) {
+    bool ownsDock = false;
+    for ( int i = 0; i < tabBar->count(); ++i ) {
+      if ( tabBar->tabData( i ).value< quintptr >() == dockId ) {
+        ownsDock = true;
+        break;
+      }
+    }
+    if ( !ownsDock ) {
+      continue;
+    }
+
+    // A single visible tab gets no tab bar, so the group matches the dock content.
+    if ( tabBar->count() < 2 ) {
+      return dock->size();
+    }
+
+    // The dock content excludes the tab bar, while resizeDocks() expects the whole
+    // tab group. Inactive tabs are moved off-screen, so only the active dock can be
+    // used to compute the group extent.
+    const int current = tabBar->currentIndex();
+    if ( current < 0 ) {
+      return dock->size();
+    }
+
+    auto * activeDock = reinterpret_cast< QWidget * >( tabBar->tabData( current ).value< quintptr >() );
+    if ( activeDock == nullptr ) {
+      return dock->size();
+    }
+
+    return tabBar->geometry().united( activeDock->geometry() ).size();
+  }
+
+  return dock->size();
+}
+
+void MainWindow::applyDockWidgetSizes()
+{
+  static const QList< Qt::DockWidgetArea > areas = { Qt::LeftDockWidgetArea,
+                                                     Qt::RightDockWidgetArea,
+                                                     Qt::TopDockWidgetArea,
+                                                     Qt::BottomDockWidgetArea };
+
+  for ( Qt::DockWidgetArea area : areas ) {
+    QList< QDockWidget * > docks;
+    QList< int > widths;
+    QList< int > heights;
+
+    for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
+      if ( !dock->isVisible() || dock->isFloating() || dockWidgetArea( dock ) != area ) {
+        continue;
+      }
+
+      const auto savedSize = cfg.dockWidgetSizes.constFind( dock->objectName() );
+      if ( savedSize == cfg.dockWidgetSizes.cend() ) {
+        continue;
+      }
+
+      // resizeDocks() expects only one dock widget per tab group.
+      bool inTabGroup     = false;
+      const auto tabified = tabifiedDockWidgets( dock );
+      for ( auto * added : docks ) {
+        if ( tabified.contains( added ) ) {
+          inTabGroup = true;
+          break;
+        }
+      }
+      if ( inTabGroup ) {
+        continue;
+      }
+
+      docks.append( dock );
+      widths.append( savedSize->width() );
+      heights.append( savedSize->height() );
+
+      // All the tabs of a group share the size, so remember them too.
+      restoredDockNames.insert( dock->objectName() );
+      for ( auto * tabifiedDock : tabified ) {
+        restoredDockNames.insert( tabifiedDock->objectName() );
+      }
+    }
+
+    if ( docks.isEmpty() ) {
+      continue;
+    }
+
+    // The docks of an area can be split in both directions, restore the primary
+    // one always and the other one only when a split in that direction exists.
+    const bool horizontalArea = ( area == Qt::LeftDockWidgetArea || area == Qt::RightDockWidgetArea );
+    if ( horizontalArea ) {
+      resizeDocks( docks, widths, Qt::Horizontal );
+      if ( docks.size() > 1 ) {
+        resizeDocks( docks, heights, Qt::Vertical );
+      }
+    }
+    else {
+      resizeDocks( docks, heights, Qt::Vertical );
+      if ( docks.size() > 1 ) {
+        resizeDocks( docks, widths, Qt::Horizontal );
+      }
+    }
   }
 }
 
@@ -1559,15 +1815,19 @@ void MainWindow::updateAppearances( const QString & addonStyle,
   }
 #endif
 
-  // Re-apply the user-configured font after resetting the palette or style
-  if ( cfg.preferences.enableInterfaceFont && !cfg.preferences.interfaceFont.isEmpty() ) {
-    QFont font = QApplication::font();
+  // Re-apply the user-configured font after resetting the palette or style.
+  // If neither custom toggle is on, reset back to the OS default —
+  // QApplication::font() was polluted the last time we applied a custom font.
+  const QFont systemFont = QFontDatabase::systemFont( QFontDatabase::GeneralFont );
+  QFont font             = systemFont;
+  if ( cfg.preferences.enableInterfaceFontFamily && !cfg.preferences.interfaceFont.isEmpty() ) {
     font.setFamily( cfg.preferences.interfaceFont );
-    if ( cfg.preferences.interfaceFontSize > 0 ) {
-      font.setPixelSize( cfg.preferences.interfaceFontSize );
-    }
-    QApplication::setFont( font );
   }
+  if ( cfg.preferences.enableInterfaceFontSize && cfg.preferences.interfaceFontSize >= 8
+       && cfg.preferences.interfaceFontSize <= 32 ) {
+    font.setPointSize( cfg.preferences.interfaceFontSize );
+  }
+  QApplication::setFont( font );
 
 
   QByteArray css{};
@@ -1624,6 +1884,7 @@ void MainWindow::refreshAppearances()
                      cfg.preferences.displayStyle,
                      cfg.preferences.darkMode,
                      cfg.preferences.interfaceStyle );
+  updateSearchModeAction();
 }
 
 void MainWindow::trayIconUpdateOrInit()
@@ -1731,6 +1992,30 @@ void MainWindow::closeEvent( QCloseEvent * ev )
 #endif
 }
 
+void MainWindow::showEvent( QShowEvent * event )
+{
+  QMainWindow::showEvent( event );
+
+  // Dock sizes can only be restored once the window is actually visible, which
+  // may happen long after the constructor when the app starts minimized to tray.
+  if ( dockSizesApplied ) {
+    return;
+  }
+  dockSizesApplied = true;
+
+  if ( cfg.resetState ) {
+    return;
+  }
+
+  // Wait for the layout to be activated, otherwise resizeDocks() has no effect.
+  QTimer::singleShot( 0, this, [ this ]() {
+    applyDockWidgetSizes();
+    for ( auto * dock : findChildren< QDockWidget * >( QString(), Qt::FindDirectChildrenOnly ) ) {
+      qInfo() << "Dock after show:" << dock->objectName() << "visible:" << dock->isVisible() << "size:" << dock->size();
+    }
+  } );
+}
+
 void MainWindow::hideEvent( QHideEvent * event )
 {
   QMainWindow::hideEvent( event );
@@ -1805,6 +2090,8 @@ void MainWindow::makeDictionaries()
 
   ftsIndexing.stopIndexing();
   ftsIndexing.clearDictionaries();
+  headwordIndexing.stopIndexing();
+  headwordIndexing.setDictionaries( dictionaries );
 
   loadDictionaries( this, cfg, dictionaries, dictNetMgr, false );
 
@@ -1818,6 +2105,8 @@ void MainWindow::makeDictionaries()
 
   ftsIndexing.setDictionaries( dictionaries );
   ftsIndexing.doIndexing();
+  headwordIndexing.setDictionaries( dictionaries );
+  headwordIndexing.doIndexing();
 
   updateStatusLine();
   updateGroupList( false );
@@ -2429,6 +2718,7 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
     if ( dicts.areDictionariesChanged() || dicts.areGroupsChanged() ) {
       ftsIndexing.stopIndexing();
       ftsIndexing.clearDictionaries();
+      headwordIndexing.stopIndexing();
       // Set muted dictionaries from old groups
       for ( auto & group : newCfg.groups ) {
         unsigned id = group.id;
@@ -2458,6 +2748,8 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
 
       ftsIndexing.setDictionaries( dictionaries );
       ftsIndexing.doIndexing();
+      headwordIndexing.setDictionaries( dictionaries );
+      headwordIndexing.doIndexing();
     }
   }
 
@@ -2522,6 +2814,22 @@ void MainWindow::editPreferences()
       );
 
     cfg.preferences = p;
+
+    // Apply the accepted interface font after cfg.preferences holds the new
+    // values, so updateAppearances cannot restore the previous font. Starting
+    // from the OS default keeps disabled attributes from leaking over when the
+    // previous session had them enabled.
+    {
+      const QFont systemFont = QFontDatabase::systemFont( QFontDatabase::GeneralFont );
+      QFont font             = systemFont;
+      if ( p.enableInterfaceFontFamily && !p.interfaceFont.isEmpty() ) {
+        font.setFamily( p.interfaceFont );
+      }
+      if ( p.enableInterfaceFontSize && p.interfaceFontSize >= 8 && p.interfaceFontSize <= 32 ) {
+        font.setPointSize( p.interfaceFontSize );
+      }
+      QApplication::setFont( font );
+    }
 
 #ifdef Q_OS_MACOS
     MacAppActivation::setDockIconVisible( cfg.preferences.showDockIcon || isVisible() );
@@ -2641,6 +2949,11 @@ void MainWindow::currentGroupChanged( int )
 
   dictionaryBar.updateToGroup( groupInstances.findGroup( groupList->getCurrentGroup() ), &cfg.mutedDictionaries, cfg );
 
+  // The effective muted-dictionaries context has changed with the group.
+  // Broadcast it so listeners like DictServer dictionaries can initialize
+  // themselves when they become enabled in the new group.
+  GlobalBroadcaster::instance()->mutedDictionariesChanged();
+
   // Update word search results
   translateBox->setPopupEnabled( false );
   updateSuggestionList();
@@ -2676,6 +2989,116 @@ void MainWindow::translateInputChanged( const QString & newValue )
   updateSuggestionList( newValue );
   // Save translate line text. Later it can be passed to external applications.
   GlobalBroadcaster::instance()->translateLineText = newValue;
+}
+
+void MainWindow::setupSearchModeMenu()
+{
+  searchModeMenu = new QMenu( this );
+  searchModeMenu->setObjectName( "searchModeMenu" );
+
+  auto * modeGroup = new QActionGroup( searchModeMenu );
+  modeGroup->setExclusive( true );
+
+  auto addMode = [ & ]( const QString & text, Config::SearchMode mode ) {
+    QAction * action = searchModeMenu->addAction( text );
+    action->setCheckable( true );
+    action->setData( static_cast< int >( mode ) );
+    modeGroup->addAction( action );
+  };
+
+  addMode( tr( "Prefix" ), Config::SearchMode::Prefix );
+  addMode( tr( "Suffix" ), Config::SearchMode::Suffix );
+  addMode( tr( "Multi-word" ), Config::SearchMode::MultiWord );
+
+  searchModeMenu->addSeparator();
+  QAction * fullTextAction = searchModeMenu->addAction( QIcon( ":/icons/fulltext.svg" ), tr( "Full-text search…" ) );
+  fullTextAction->setObjectName( "searchModeFullTextAction" );
+
+  // An action, not a mode: full-text hits are a different pipeline (per-dictionary
+  // index, dictIDs, highlighting), so it opens the existing dialog instead.
+  connect( fullTextAction, &QAction::triggered, this, [ this ]() {
+    showFullTextSearchDialog();
+    if ( ftsDlg ) {
+      ftsDlg->setSearchText( translateLine->text() );
+    }
+  } );
+
+  searchModeAction = new QAction( tr( "Search mode" ), this );
+  searchModeAction->setObjectName( "searchModeAction" );
+
+  connect( searchModeAction, &QAction::triggered, this, [ this ]() {
+    searchModeMenu->exec( QCursor::pos() );
+  } );
+
+  connect( searchModeMenu, &QMenu::triggered, this, [ this ]( QAction * action ) {
+    if ( !action || action->isSeparator() || !action->data().isValid() ) {
+      return;
+    }
+
+    const auto mode = static_cast< Config::SearchMode >( action->data().toInt() );
+    if ( mode == cfg.preferences.searchMode ) {
+      return;
+    }
+
+    cfg.preferences.searchMode = mode;
+    updateSearchModeAction();
+
+    if ( !translateLine->text().trimmed().isEmpty() ) {
+      updateSuggestionList();
+    }
+  } );
+
+  // Both search boxes stay alive at the same time; the action is shared.
+  ui.translateLine->addAction( searchModeAction, QLineEdit::TrailingPosition );
+  translateBox->translateLine()->addAction( searchModeAction, QLineEdit::TrailingPosition );
+
+  // The icon is painted from the current palette: changeEvent() handles
+  // ApplicationPaletteChange, and refreshAppearances() covers colorSchemeChanged.
+  updateSearchModeAction();
+}
+
+void MainWindow::updateSearchModeAction()
+{
+  if ( !searchModeAction || !searchModeMenu ) {
+    return;
+  }
+
+  QString name;
+  switch ( cfg.preferences.searchMode ) {
+    case Config::SearchMode::Suffix:
+      name = tr( "Suffix" );
+      break;
+    case Config::SearchMode::MultiWord:
+      name = tr( "Multi-word" );
+      break;
+    case Config::SearchMode::Prefix:
+    default:
+      name = tr( "Prefix" );
+      break;
+  }
+
+  searchModeAction->setToolTip( tr( "Search mode: %1" ).arg( name ) );
+
+  // Match the input text colour: the icon sits inside the search box and must
+  // stay visible in both light and dark palettes.
+  searchModeAction->setIcon(
+    searchModeIcon( cfg.preferences.searchMode, translateLine->palette().color( QPalette::Text ) ) );
+
+  const int current = static_cast< int >( cfg.preferences.searchMode );
+  for ( QAction * action : searchModeMenu->actions() ) {
+    if ( !action->isSeparator() && action->data().isValid() ) {
+      action->setChecked( action->data().toInt() == current );
+    }
+  }
+}
+
+void MainWindow::changeEvent( QEvent * event )
+{
+  QMainWindow::changeEvent( event );
+
+  if ( event->type() == QEvent::ApplicationPaletteChange || event->type() == QEvent::PaletteChange ) {
+    updateSearchModeAction();
+  }
 }
 
 void MainWindow::updateSuggestionList()
@@ -2715,7 +3138,11 @@ void MainWindow::updateSuggestionList( const QString & newValue )
   }
 
   ui.wordList->setCursor( Qt::WaitCursor );
-  wordFinder.prefixMatch( req, getActiveDicts() );
+  wordFinder.prefixMatch( req,
+                          getActiveDicts(),
+                          40,
+                          Dictionary::NoFeatures,
+                          toWordMatchMode( cfg.preferences.searchMode ) );
 }
 
 void MainWindow::translateInputFinished( bool checkModifiers )
@@ -2724,14 +3151,12 @@ void MainWindow::translateInputFinished( bool checkModifiers )
   respondToTranslationRequest( word, checkModifiers );
 }
 
-void MainWindow::respondToTranslationRequest( const QString & word,
-                                              bool checkModifiers,
-                                              const QString & scrollTo,
-                                              bool focus )
+void MainWindow::respondToTranslationRequest(
+  const QString & word, bool checkModifiers, const QString & scrollTo, bool focus, bool newTab )
 {
   if ( !word.isEmpty() ) {
     Qt::KeyboardModifiers mods = QApplication::keyboardModifiers();
-    if ( checkModifiers && ( mods & ( Qt::ControlModifier | Qt::ShiftModifier ) ) ) {
+    if ( newTab || ( checkModifiers && ( mods & ( Qt::ControlModifier | Qt::ShiftModifier ) ) ) ) {
       addNewTab();
     }
 
@@ -3267,7 +3692,7 @@ void MainWindow::toggleMainWindow( bool ensureShow )
     // On macOS, minimizing triggers the accessory-mode transition when the
     // user has chosen not to keep a Dock icon in the background.
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
     showMinimized();
 #else
     if ( cfg.preferences.enableTrayIcon )
@@ -3355,10 +3780,12 @@ void MainWindow::hotKeyActivated( int hk )
       return;
     }
 
-#if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
-    // Delay clipboard handling on Linux to let active app finish handling Ctrl+C
-    // Workaround for Ctrl+C+C hotkey issue where clipboard may be empty
-    static constexpr int clipboardDelayMs = 10;
+#if !defined( Q_OS_MACOS )
+    // Delay clipboard handling on Linux and Windows to let the active app
+    // finish handling Ctrl+C. With a single-key clipboard hotkey (e.g. plain
+    // Ctrl+C) the lookup is triggered before the app has updated the
+    // clipboard, which would show the previously copied word instead.
+    static constexpr int clipboardDelayMs = 100;
     QTimer::singleShot( clipboardDelayMs, scanPopup, &ScanPopup::translateWordFromPrimaryClipboard );
 #else
     scanPopup->translateWordFromPrimaryClipboard();
@@ -3882,10 +4309,10 @@ void MainWindow::scaleArticlesByCurrentZoomFactor()
   }
 }
 
-void MainWindow::showTranslation( const QString & word, const QString & windowType )
+void MainWindow::showTranslation( const QString & word, const QString & windowType, bool newTab )
 {
   if ( windowType == "main" ) {
-    wordReceived( word );
+    wordReceived( word, newTab );
   }
   else {
     ensureScanPopup();
@@ -3910,11 +4337,14 @@ bool MainWindow::handleStructuredMessage( const QString & message )
     }
   }
 
-  if ( QString action = params.value( "action" ); action == "translate" ) {
+  const QString action = params.value( "action" );
+
+  if ( action == "translate" ) {
     QString windowType = params.value( "window", "main" );
     QString word       = QUrl::fromPercentEncoding( params.value( "word" ).toLatin1() );
     QString group      = params.value( "group" );
     QString popupGroup = params.value( "popupGroup" );
+    bool newTab        = params.value( "newtab" ) == "true";
 
     // Handle group settings if specified
     if ( !group.isEmpty() ) {
@@ -3925,10 +4355,37 @@ bool MainWindow::handleStructuredMessage( const QString & message )
     }
 
     // Show translation based on window type
-    showTranslation( word, windowType );
+    showTranslation( word, windowType, newTab );
+
+    return true;
   }
 
-  return true;
+  if ( action == "setGroup" ) {
+    setGroupByName( params.value( "group" ), true );
+    return true;
+  }
+
+  if ( action == "setPopupGroup" ) {
+    setGroupByName( params.value( "popupGroup" ), false );
+    return true;
+  }
+
+  if ( action == "togglePopup" ) {
+    enableScanningAction->trigger();
+    return true;
+  }
+
+  if ( action == "show" ) {
+    if ( params.value( "window", "main" ) == "popup" ) {
+      ensureScanPopup();
+    }
+    else {
+      toggleMainWindow( true );
+    }
+    return true;
+  }
+
+  return false;
 }
 
 
@@ -3936,11 +4393,6 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
 {
   if ( message == "bringToFront" ) {
     toggleMainWindow( true );
-    return;
-  }
-
-  if ( message == "toggleScanPopup" ) {
-    enableScanningAction->trigger();
     return;
   }
 
@@ -4022,14 +4474,14 @@ ArticleView * MainWindow::findArticleViewByDictId( const QString & dictId )
   return nullptr;
 }
 
-void MainWindow::wordReceived( const QString & word )
+void MainWindow::wordReceived( const QString & word, bool newTab )
 {
   const bool shouldFocus = cfg.preferences.raiseWindowOnSearch;
   if ( shouldFocus ) {
     toggleMainWindow( true );
   }
   setInputLineText( word, WildcardPolicy::EscapeWildcards, NoPopupChange );
-  respondToTranslationRequest( word, false, QString(), shouldFocus );
+  respondToTranslationRequest( word, false, QString(), shouldFocus, newTab );
 }
 
 void MainWindow::updateFavoritesMenu()
@@ -4420,6 +4872,13 @@ void MainWindow::showDictionaryHeadwords( Dictionary::Class * dict )
     else {
       headwordsDlg->setup( dict );
     }
+    // Refresh the model when the background cache build finishes,
+    // in case the dialog was opened before the cache was ready.
+    QObject::disconnect( &headwordIndexing, nullptr, headwordsDlg, nullptr );
+    connect( &headwordIndexing,
+             &HeadwordCache::HeadwordIndexing::indexingFinished,
+             headwordsDlg,
+             &DictHeadwords::refreshModelCache );
     headwordsDlg->show();
   }
 }
@@ -4565,7 +5024,6 @@ void MainWindow::showFullTextSearchDialog()
 {
   if ( !ftsDlg ) {
     ftsDlg = new FTS::FullTextSearchDialog( this, cfg, dictionaries, groupInstances, ftsIndexing );
-    // ftsDlg->setSearchText( translateLine->text() );
 
     addGlobalActionsToDialog( ftsDlg );
     addGroupComboBoxActionsToDialog( ftsDlg, groupList );
@@ -4612,6 +5070,16 @@ void MainWindow::showFTSIndexingName( const QString & name )
   }
   else {
     mainStatusBar->setBackgroundMessage( tr( "Now indexing for full-text search: " ) + name );
+  }
+}
+
+void MainWindow::showHeadwordsCacheIndexingName( const QString & name )
+{
+  if ( name.isEmpty() ) {
+    mainStatusBar->setBackgroundMessage( QString() );
+  }
+  else {
+    mainStatusBar->setBackgroundMessage( tr( "Now building headwords cache: " ) + name );
   }
 }
 
@@ -4803,6 +5271,23 @@ void MainWindow::headwordFromFavorites( const QString & headword, const QString 
 
 void MainWindow::handleDownloadRequested( QWebEngineDownloadRequest * download )
 {
+  qDebug() << "Download requested:" << download->url() << "isSavePageDownload:" << download->isSavePageDownload()
+           << "savePageFormat:" << download->savePageFormat() << "state:" << download->state();
+
+  // QWebEnginePage::save() (article saving) issues its own save-page download
+  // request. Its destination has already been chosen by the user in the
+  // "Save Article As" dialog, so don't show another dialog (or the save would
+  // appear to repeat). Such requests carry either the save-page flag or a
+  // non-unknown save page format (the flag propagation differs between Qt
+  // versions, the format is always set by QWebEnginePage::save()).
+  // Accept it explicitly: accept() is a no-op when the request was already
+  // auto-accepted by Qt, and guarantees the save proceeds with the pre-set
+  // destination on Qt versions that leave it unaccepted.
+  if ( download->isSavePageDownload() || download->savePageFormat() != QWebEngineDownloadRequest::UnknownSaveFormat ) {
+    download->accept();
+    return;
+  }
+
   QString savePath;
   if ( cfg.resourceSavePath.isEmpty() ) {
     savePath = QDir::homePath();

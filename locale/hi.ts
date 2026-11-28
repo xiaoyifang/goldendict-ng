@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%2 मैचों में से %1</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>लेख को बाहरी ब्राउज़र में खोलें</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -331,40 +335,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>सरलीकृत वर्णों से पारंपरिक (हांगकांग संस्करण) वर्णों में रूपांतरण सक्षम करें</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>सरलीकृत से पारंपरिक चीनी (ताइवान संस्करण) रूपांतरण</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>सरलीकृत से पारंपरिक चीनी (हांगकांग संस्करण) रूपांतरण</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>पारंपरिक से सरलीकृत चीनी में रूपांतरण</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>हांगकांग संस्करण</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>पारंपरिक वर्णों से सरलीकृत (मुख्यभूमि) वर्णों में रूपांतरण सक्षम करें</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>सरलीकृत (मुख्यभूमि)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>सरलीकृत वर्णों से पारंपरिक (ताइवान/मानक) वर्णों में रूपांतरण सक्षम करें</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>पारंपरिक (ताइवान/मानक)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -385,6 +357,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>सरलीकृत चीनी, पारंपरिक चीनी (ताइवान/हांगकांग) और जापानी शिंजिताई वर्णों के बीच रूपांतरण सक्षम करें</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>पारंपरिक वर्णों से सरलीकृत वर्णों में रूपांतरण सक्षम करें</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>सरलीकृत</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>सरल अक्षरों से पारंपरिक (ताइवान) अक्षरों में रूपांतरण सक्षम करें</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>पारंपरिक (ताइवान)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>सरल अक्षरों से पारंपरिक (हांगकांग) अक्षरों में रूपांतरण सक्षम करें</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>पारंपरिक (हांगकांग)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>पारंपरिक चीनी (ताइवान) रूपांतरण के लिए सरलीकृत</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>पारंपरिक चीनी (हांगकांग) रूपांतरण में सरलीकृत</translation>
     </message>
   </context>
   <context>
@@ -472,10 +476,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>क्या आप वाकई फ़ोल्डरों के आधार पर समूहों का एक सेट तैयार करना चाहते हैं?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>क्या आप वाकई मेटाडेटा.टीओएमएल पर आधारित समूहों का एक सेट तैयार करना चाहते हैं?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>स्रोत भाषा द्वारा समूहों को &quot;%1-&gt;&quot; में मिलाएं</translation>
     </message>
@@ -498,6 +498,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>क्या आप वस्तुतः &lt;b&gt;%1&lt;/b&gt; समूह को निकालना चाहते हैं?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>क्या आप सुनिश्चित हैं कि आप डिक्शनरी मेटाडेटा फ़ाइलों के आधार पर समूहों का एक सेट जनरेट करना चाहते हैं?</translation>
     </message>
   </context>
   <context>
@@ -784,6 +788,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New display name:</source>
       <translation>नया प्रदर्शन नाम:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>पुन: अनुक्रमणिका के लिए शब्दकोश शेड्यूल करने में विफल।</translation>
     </message>
   </context>
   <context>
@@ -1173,6 +1181,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>%1 Morphology</source>
       <translation>%1 आकारिकी</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>वर्तनी सही है, कोई अन्य शब्द रूप नहीं मिला।</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>से %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>के लिए शब्द रूप %1: </translation>
     </message>
   </context>
   <context>
@@ -2669,6 +2689,34 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <source>Open in &amp;External Browser</source>
       <translation>&amp;बाहरी ब्राउज़र में खोलें</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>अब हेडवर्ड कैश का निर्माण: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>पूर्वसर्ग</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>अनुलग्‍न</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>बहु शब्द</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>पूर्ण-पाठ खोज…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>खोज मोड</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>खोज मोड: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3011,18 +3059,6 @@ be the last ones.</source>
       <translation>उपस्थिति</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>इंटरफ़ेस फ़ॉन्ट सक्षम करें</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>फ़ांट</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>फ़ॉन्ट आकार</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3265,24 +3301,12 @@ for all program&apos;s network requests.</source>
       <translation>जहाज़ की छत:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>शब्द</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>शब्दावली क्षेत्र...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>मूलपाठ</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>परिभाषा फ़ील्ड...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>वाक्य</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3549,6 +3573,30 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>सक्षम होने पर, वेबसाइट शब्दकोश आलेख दृश्य में एम्बेड किए जाने के बजाय अपने स्वयं के टैब में खुलते हैं. यह iframe लेआउट और स्क्रॉलिंग सीमाओं से बचता है, और शब्दकोश संवाद में प्रति-शब्दकोश स्क्रिप्ट स्तंभ को सक्षम करता है.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>शब्द:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>टेक्स्ट:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>वाक्य:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>इंटरफ़ेस फ़ॉन्ट</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>कस्टम परिवार</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>कस्टम आकार</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3774,6 +3822,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>संदर्भित संसाधन डाउनलोड करने में विफल रहा।</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>संसाधन गंतव्य फ़ोल्डर के बाहर सहेजा जाएगा।</translation>
     </message>
   </context>
   <context>

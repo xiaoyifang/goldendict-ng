@@ -290,6 +290,10 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
       <source>%1 of %2 matches</source>
       <translation>%1 ukat %2 uñt’ayata</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>Qillqata Jawt'a &amp;Browser-na Jist'araña</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -317,40 +321,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Chino simplificado ukat chino tradicional (aru Hong Kong) ukaru tukuyawi naktayaña</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Chino simplificado ukat chino tradicional (aru Taiwan) tukuyawi</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Chino simplificado ukat chino tradicional (aru Hong Kong) tukuyawi</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Chino tradicional ukat chino simplificado tukuyawi</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Hong Kong uñacht'äwi</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>China qillqanaka tradicional uka china qillqanaka jisk'achata (Mainland) ukar tukuyayaña naktayaña</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>Jisk'achata (Mainland)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>China qillqanaka jisk'achata uka china qillqanaka tradicional (Taiwan/Standard) ukar tukuyayaña naktayaña</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>Tradicional (Taiwan/Standard)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -371,6 +343,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>Juk'achata Chinu, Nayra Chinu (Taiwan/Hong Kong) ukat Japonés Shinjitai qillqanak taypin tikxatäw wakiyaña</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>Chino aru tradicional uk chino aru simplificado ukar tukuyawi</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>Simplificado</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>Chino simplificado ukat chino tradicional (aru Taiwan) ukaru tukuyawi naktayaña</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>Tradicional (Taiwan)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>Chino simplificado ukat chino tradicional (aru Hong Kong) ukaru tukuyawi naktayaña</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>Tradicional (Hong Kong)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>Chino simplificado ukat chino tradicional (aru Taiwan) tukuyawi</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>Chino simplificado ukat chino tradicional (aru Hong Kong) tukuyawi</translation>
     </message>
   </context>
   <context>
@@ -460,10 +464,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>¿Jumaxa mä qutu qutuchata luraña muntati carpetas ukanaka utjatapata?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>¿Jumax metadata.toml ukarjam mä tama tamanak lurañ munasmati?</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>Aru qalltampi &quot;%1-&gt;&quot; ukarjama qutunak kisantaña</translation>
     </message>
@@ -487,6 +487,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>Chiqpacha &lt;b&gt;%1&lt;/b&gt; qutu chhaqtayañ muntati?&lt;br&gt;&lt;br&gt;
 ¿Esta seguro de que quiere eliminar el grupo &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>¿Jumax diccionario metadata qillqanak ukarjam mä tama tamanak lurañ munasmati?</translation>
     </message>
   </context>
   <context>
@@ -773,6 +777,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New display name:</source>
       <translation>Machaq uñacht'awi suti:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>Janiw aru pirwa jichhastayañataki sawkañjamäkänti.</translation>
     </message>
   </context>
   <context>
@@ -1186,6 +1194,18 @@ Abrir una lista de grupos</translation>
     <message>
       <source>%1 Morphology</source>
       <translation>Morfología %1</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>Ortugrafiya chiqapawa, janiw yaqha arunaka jikxatapkiti.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>Ukata %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>Aru formanakapa %1: </translation>
     </message>
   </context>
   <context>
@@ -2715,6 +2735,34 @@ Error de importación: datos incorrectos en el fichero.</translation>
       <source>Open in &amp;External Browser</source>
       <translation>&amp;Anqa Tuyurinxa jist'araña</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>Jichha arunaka qullqichata wakichaskaski: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>Nayraqata</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>Tukuyana</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>Walja arunaka</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>Taqi qillqan thaqhaña…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>Kunjams thaqhaña</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>Kunjams thaqhaña: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3075,18 +3123,6 @@ be the last ones.</source>
       <translation>Aparinsya</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>Interfaz Qillqa churaña</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Qillqa</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Qillqa jach'a</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3346,24 +3382,12 @@ para todos los accesos a la red del programa.</translation>
       <translation>Imantata:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>Aru</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>Vocabulario ukan yapupax...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>Panka</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>Qhanancht’awi yapu...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>Urasyuna</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3654,6 +3678,30 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>Aktibata ukhaxa, internet aru qillqatanakax jupanakpachpa patatjanjaman jist'arasi, yatichäwi uñjawi taypin juch'usa uñacht'ayata ukhama jan ukata. Aka jan juch'usa markachawi ukat muytayaña jark'anakaru chhaqaya, ukat Aru Qillqatanaka dialogon mayat mayaru Qillqawi qillqa qalltawa.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>Aru:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>Panka:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>Urasyuna:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Interfaz ukax Fuente ukawa</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>Sapan qillqa laya</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>Sapan tama</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3879,6 +3927,10 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>Internet ukat apaqasinxa pantjiwa.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>utjiri puriñ q'ipit anqan imataspawa.</translation>
     </message>
   </context>
   <context>

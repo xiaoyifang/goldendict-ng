@@ -304,6 +304,10 @@
       <source>%1 of %2 matches</source>
       <translation>%1 من %2 تطابق</translation>
     </message>
+    <message>
+      <source>Open Article in External &amp;Browser</source>
+      <translation>افتح المقالة في &amp;متصفح خارجي</translation>
+    </message>
   </context>
   <context>
     <name>ArticleWebView</name>
@@ -331,40 +335,8 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>ChineseConversion</name>
     <message>
-      <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>تمكين التحويل من الأحرف المبسطة إلى الأحرف التقليدية (متغير هونج كونج)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>مبسطة لتحويل الصينية التقليدية (البديل التايواني)</translation>
-    </message>
-    <message>
-      <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>مبسطة لتحويل الصينية التقليدية (متغير هونج كونج)</translation>
-    </message>
-    <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>التقليدية إلى الصينية المبسطة التحويل</translation>
-    </message>
-    <message>
-      <source>Hong Kong variant</source>
-      <translation>Hong Kong variant</translation>
-    </message>
-    <message>
-      <source>Enable conversion from traditional characters to simplified (Mainland) characters</source>
-      <translation>تمكين التحويل من الحروف التقليدية إلى الأحرف المبسطة (البر الرئيسي)</translation>
-    </message>
-    <message>
-      <source>Simplified (Mainland)</source>
-      <translation>مبسط (البر الرئيسي)</translation>
-    </message>
-    <message>
-      <source>Enable conversion from simplified characters to traditional (Taiwan/Standard) characters</source>
-      <translation>تمكين التحويل من الأحرف المبسطة إلى الأحرف التقليدية (تايواني/القياسية)</translation>
-    </message>
-    <message>
-      <source>Traditional (Taiwan/Standard)</source>
-      <translation>التقليدية (تايوان/ستاندرد)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified/traditional Chinese characters to Japanese Shinjitai characters</source>
@@ -385,6 +357,38 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Enable conversion between simplified Chinese, traditional Chinese (Taiwan/Hong Kong) and Japanese Shinjitai characters</source>
       <translation>تمكين التحويل بين الصينية المبسطة، والصينية التقليدية (تايوان/هونغ كونغ) والحروف اليابانية الشينجيتاي</translation>
+    </message>
+    <message>
+      <source>Enable conversion from traditional characters to simplified characters</source>
+      <translation>تمكين التحويل من الأحرف التقليدية إلى الأحرف المبسطة</translation>
+    </message>
+    <message>
+      <source>Simplified</source>
+      <translation>مبسط</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Taiwan) characters</source>
+      <translation>تمكين التحويل من الأحرف المبسطة إلى الأحرف التقليدية (تايوان)</translation>
+    </message>
+    <message>
+      <source>Traditional (Taiwan)</source>
+      <translation>التقليدي (تايوان)</translation>
+    </message>
+    <message>
+      <source>Enable conversion from simplified characters to traditional (Hong Kong) characters</source>
+      <translation>تمكين التحويل من الأحرف المبسطة إلى الأحرف التقليدية (هونغ كونغ)</translation>
+    </message>
+    <message>
+      <source>Traditional (Hong Kong)</source>
+      <translation>التقليدي (هونغ كونغ)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Taiwan) conversion</source>
+      <translation>تحويل مبسط إلى تقليدي صيني (تايوان)</translation>
+    </message>
+    <message>
+      <source>Simplified to traditional Chinese (Hong Kong) conversion</source>
+      <translation>تحويل مبسط إلى تقليدي صيني (هونغ كونغ)</translation>
     </message>
   </context>
   <context>
@@ -472,10 +476,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>هل أنت متأكد من أنك تريد إنشاء مجموعة من المجموعات بناءً على المجلدات المحتوية؟</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>هل أنت متأكد من أنك تريد إنشاء مجموعة من المجموعات بناءً على metadata.toml؟</translation>
-    </message>
-    <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
       <translation>ادمج المجموعات باللغة المصدر إلى &quot;%1-&gt;&quot;</translation>
     </message>
@@ -498,6 +498,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
       <translation>هل أنت متأكد من إزالة المجموعة &lt;b&gt;%1&lt;/b&gt;؟</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to generate a set of groups based on dictionary metadata files?</source>
+      <translation>هل أنت متأكد من رغبتك في إنشاء مجموعة من المجموعات بناء على ملفات بيانات وصفية للقاموس؟</translation>
     </message>
   </context>
   <context>
@@ -784,6 +788,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New display name:</source>
       <translation>اسم العرض الجديد:</translation>
+    </message>
+    <message>
+      <source>Failed to schedule the dictionary for reindexing.</source>
+      <translation>فشل في جدولة القاموس لإعادة الفهرسة.</translation>
     </message>
   </context>
   <context>
@@ -1173,6 +1181,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>%1 Morphology</source>
       <translation>الصَرْف %1</translation>
+    </message>
+    <message>
+      <source>Spelling correct, no other word forms found.</source>
+      <translation>التهجئة صحيحة، لم يتم العثور على أشكال كلمات أخرى.</translation>
+    </message>
+    <message>
+      <source>From %1</source>
+      <translation>من %1</translation>
+    </message>
+    <message>
+      <source>Word forms for %1: </source>
+      <translation>أشكال الكلمات ل %1: </translation>
     </message>
   </context>
   <context>
@@ -2669,6 +2689,34 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Open in &amp;External Browser</source>
       <translation>افتح في متصفّح &amp;خارجي</translation>
     </message>
+    <message>
+      <source>Now building headwords cache: </source>
+      <translation>الآن بناء ذاكرة تخزين مؤقت للكلمات الرئيسية: </translation>
+    </message>
+    <message>
+      <source>Prefix</source>
+      <translation>بادئة</translation>
+    </message>
+    <message>
+      <source>Suffix</source>
+      <translation>اللاحقة</translation>
+    </message>
+    <message>
+      <source>Multi-word</source>
+      <translation>الكلمات متعددة</translation>
+    </message>
+    <message>
+      <source>Full-text search…</source>
+      <translation>البحث الكامل…</translation>
+    </message>
+    <message>
+      <source>Search mode</source>
+      <translation>وضع البحث</translation>
+    </message>
+    <message>
+      <source>Search mode: %1</source>
+      <translation>وضع البحث: %1</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3016,18 +3064,6 @@ be the last ones.</source>
       <translation>مظهر</translation>
     </message>
     <message>
-      <source>Enable Interface Font</source>
-      <translation>تمكين خط الواجهة</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3272,24 +3308,12 @@ for all program&apos;s network requests.</source>
       <translation>ظهر السفينة:</translation>
     </message>
     <message>
-      <source>Word</source>
-      <translation>كلمة</translation>
-    </message>
-    <message>
       <source>Vocabulary field...</source>
       <translation>مجال المفردات ...</translation>
     </message>
     <message>
-      <source>Text</source>
-      <translation>نص</translation>
-    </message>
-    <message>
       <source>Definition field...</source>
       <translation>مجال التعريف...</translation>
-    </message>
-    <message>
-      <source>Sentence</source>
-      <translation>جملة</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
@@ -3562,6 +3586,30 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>When enabled, website dictionaries open in their own tab instead of being embedded in the article view. This avoids iframe layout and scrolling limitations, and enables the per-dictionary Script column in the Dictionaries dialog.</source>
       <translation>عند تفعيلها، تفتح قواميس المواقع في تبويب خاص بها بدلا من أن تكون مدمجة في عرض المقالة. هذا يتجنب قيود تخطيط iframe والتمرير، ويمكن من عمود السكريبت لكل قاموس في حوار القواميس.</translation>
     </message>
+    <message>
+      <source>Word:</source>
+      <translation>الكلمة:</translation>
+    </message>
+    <message>
+      <source>Text:</source>
+      <translation>النص:</translation>
+    </message>
+    <message>
+      <source>Sentence:</source>
+      <translation>الجملة:</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>واجهة الخط</translation>
+    </message>
+    <message>
+      <source>Custom family</source>
+      <translation>عائلة الكسٽم</translation>
+    </message>
+    <message>
+      <source>Custom size</source>
+      <translation>حجم مخصص</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3787,6 +3835,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>The referenced resource failed to download.</source>
       <translation>فشل تنزيل المورد المشار إليه.</translation>
+    </message>
+    <message>
+      <source>the resource would be saved outside of the destination folder.</source>
+      <translation>يتم حفظ المورد خارج مجلد الوجهة.</translation>
     </message>
   </context>
   <context>

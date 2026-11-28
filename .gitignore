@@ -60,3 +60,4 @@ node_modules
 /_deps
 /.qtc
 /qtcsettings.cmake
+.trae/*

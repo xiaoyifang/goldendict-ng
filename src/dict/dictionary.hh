@@ -25,6 +25,13 @@ using std::vector;
 using std::string;
 using std::map;
 
+/// How a headword search compares the query with a headword.
+enum class WordMatchMode {
+  Prefix    = 0, ///< Headwords starting with the query (the historical behaviour).
+  Suffix    = 1, ///< Headwords ending with the query.
+  MultiWord = 2, ///< Headwords containing every whitespace-separated token, in any order.
+};
+
 DEF_EX( Ex, "Dictionary error", std::exception )
 DEF_EX( exIndexOutOfRange, "The supplied index is out of range", Ex )
 DEF_EX( exSliceOutOfRange, "The requested data slice is out of range", Ex )
@@ -297,6 +304,10 @@ protected:
   bool dictionaryIconLoaded;
   bool can_FTS;
   QAtomicInt FTS_index_completed;
+  // headword cache: mmap'd sorted file for fast headword access
+  QAtomicInt HW_cache_completed;
+  long indexedHeadwordsCount = 0;
+  long lastHWProgress        = 0;
   bool synonymSearchEnabled;
   string dictionaryName;
   string originalDictionaryName;
@@ -335,7 +346,7 @@ public:
   virtual void deferredInit();
 
   /// Returns the dictionary's id.
-  string getId() noexcept
+  string getId() const noexcept
   {
     return id;
   }
@@ -349,6 +360,12 @@ public:
   /// Get the main folder that contains the dictionary, without the ending separator.
   /// If the dict don't have folder like website/program, an empty string will be returned.
   QString getContainingFolder() const;
+
+  /// Returns the base name (with extension) of the dictionary's main file,
+  /// e.g. "longman.mdx". For directory-based dictionaries (e.g. Epwing) it is
+  /// the directory name. Used to name the per-dictionary metadata file.
+  /// Returns an empty string when the dictionary has no files.
+  string getMetadataFileStem() const;
 
   /// Returns the dictionary's full name, utf8.
   virtual string getName()
@@ -421,6 +438,16 @@ public:
   /// dictionaries, the network ones particularly, may of course be slow.
   virtual sptr< WordSearchRequest > prefixMatch( const std::u32string &, unsigned long maxResults ) = 0;
 
+  /// Finds headwords ENDING with the given string, e.g. the entries a printed
+  /// reverse dictionary groups by their last character. Backends that cannot
+  /// do it should leave the default implementation, which returns empty.
+  virtual sptr< WordSearchRequest > suffixMatch( const std::u32string &, unsigned long maxResults );
+
+  /// Finds headwords containing every whitespace-separated token of the given
+  /// string, in any order and not necessarily adjacent. Backends that cannot
+  /// do it should leave the default implementation, which returns empty.
+  virtual sptr< WordSearchRequest > multiWordMatch( const std::u32string &, unsigned long maxResults );
+
   /// Looks up a given word in the dictionary, aiming to find different forms
   /// of the given word by allowing suffix variations. This means allowing words
   /// which can be as short as the input word size minus maxSuffixVariation, or as
@@ -457,6 +484,13 @@ public:
                                           const std::u32string & context = std::u32string(),
                                           bool ignoreDiacritics          = false ) = 0;
 
+  /// Returns the web page URL of the given word's article, or an empty string
+  /// when the dictionary has no corresponding website (e.g. local dictionaries).
+  virtual QString getArticleWebUrl( const std::u32string & /*word*/ )
+  {
+    return {};
+  }
+
   /// Loads contents of a resource named 'name' into the 'data' vector. This is
   /// usually a picture file referenced in the article or something like that.
   /// The default implementation always returns the non-existing resource
@@ -489,6 +523,20 @@ public:
     return false;
   }
 
+  /// Returns true if the dictionary provides only morphology/spelling data
+  /// instead of articles.
+  virtual bool isMorphologyDictionary() const noexcept
+  {
+    return false;
+  }
+
+  /// Returns an html fragment describing the morphology of the given word.
+  /// It is used when the group contains no article-providing dictionaries.
+  virtual string getMorphologyContent( const std::u32string & /*word*/ )
+  {
+    return {};
+  }
+
   /// Dictionary can full-text search
   bool canFTS()
   {
@@ -509,6 +557,53 @@ public:
 
   /// Make index for full-text search
   virtual void makeFTSIndex( QAtomicInt & ) {}
+
+  /// Dictionary have headword cache file (mmap'd sorted headwords)
+  bool haveHeadwordsCache()
+  {
+    return Utils::AtomicInt::loadAcquire( HW_cache_completed ) != 0;
+  }
+
+  /// Build headword cache file. Default impl is a no-op.
+  /// BtreeDictionary overrides this to write a .hwcache binary file.
+  virtual void makeHeadwordsCache( QAtomicInt & ) {}
+
+  /// Returns the path to the headword cache file.
+  /// BtreeDictionary sets this; base Class returns empty.
+  virtual std::string headwordsCachePath() const
+  {
+    return {};
+  }
+
+  /// Progress for headword cache building, 0-100
+  int getHeadwordsCacheProgress()
+  {
+    if ( haveHeadwordsCache() ) {
+      return 100;
+    }
+    auto total = getWordCount();
+    if ( total == 0 ) {
+      return 0;
+    }
+    int progress = (int)indexedHeadwordsCount * 100 / total;
+    return qMin( progress, 100 );
+  }
+
+  void setIndexedHeadwordsCount( long count );
+
+  /// Called by the cache builder when the headword cache file has been
+  /// successfully written and validated. Sets HW_cache_completed flag.
+  void markHeadwordsCacheCompleted()
+  {
+    HW_cache_completed.ref();
+  }
+
+  /// Whether this dictionary type can produce a headword cache
+  /// (only btree-indexed dictionaries do, ZIM/MDX/etc. override)
+  virtual bool supportsHeadwordsCache() const
+  {
+    return false;
+  }
 
   /// Create a duplicate of this dictionary instance
   /// This ensures the new instance inherits FTS state from the original
@@ -569,6 +664,11 @@ string makeDictionaryId( const vector< string > & dictionaryFiles ) noexcept;
 bool needToRebuildIndex( const vector< string > & dictionaryFiles, const string & indexFile ) noexcept;
 
 string getFtsSuffix();
+
+/// Suffix appended to the index file path to form the headword cache path,
+/// analogous to getFtsSuffix() for full-text search.
+string getHeadwordsSuffix();
+
 /// Returns a random dictionary id useful for interactively created
 /// dictionaries.
 QString generateRandomDictionaryId();

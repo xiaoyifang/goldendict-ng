@@ -500,6 +500,17 @@ void ZimDictionary::loadResource( std::string & resourceName, string & data )
   if ( resourceName.empty() ) {
     return;
   }
+
+  // A file placed next to the zim overrides the resource inside the archive,
+  // mirroring the behavior of MDX/MDD dictionaries.
+  if ( string fn = getContainingFolder().toStdString() + Utils::Fs::separator() + resourceName;
+       Utils::Fs::exists( fn ) ) {
+    vector< char > buffer;
+    File::loadFromFile( fn, buffer );
+    data.assign( buffer.data(), buffer.size() );
+    return;
+  }
+
   QMutexLocker _( &zimMutex );
   readArticleByPath( df, resourceName, data );
 }
